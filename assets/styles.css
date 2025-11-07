@@ -468,3 +468,69 @@ footer .socials .fb:hover{
     gap: 14px;
   }
 }
+/* ===== Burger menu (mobil) ===== */
+.nav {
+  position: relative;
+}
+
+/* knappen er skjult på desktop */
+.nav-toggle{
+  display: none;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+
+/* mobil-styles */
+@media (max-width: 720px){
+  .nav{
+    display: grid;
+    grid-template-columns: auto auto 1fr; /* brand | burger | (tom) */
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .nav .brand{ justify-self: start; }
+  .nav-toggle{ display: inline-flex; justify-self: end; }
+
+  /* menu som “drawer” under headeren */
+  .main-nav{
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    display: block;
+    background: rgba(15,15,18,.96);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 0;          /* skjult som default */
+    transition: max-height .25s ease;
+  }
+  .main-nav li{ list-style: none; }
+  .main-nav a{
+    display:block;
+    padding: 12px 14px;
+    color: var(--text);
+    text-decoration: none;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .main-nav li:first-child a{ border-top: 0; }
+  .main-nav a:hover{ background: rgba(255,255,255,.06); }
+
+  /* åben tilstand */
+  .nav.nav--open .main-nav{ max-height: 60vh; } /* “fold ud” */
+}
+
+/* desktop: behold din vandrette menu */
+@media (min-width: 721px){
+  .main-nav{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+}
