@@ -59,3 +59,52 @@ kbd{padding:2px 6px;border-radius:6px;border:1px solid var(--border);background:
 .card-body h3{margin:0 0 6px;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .badges{display:flex;gap:8px;flex-wrap:wrap}
 .badge{display:inline-block;font-size:12px;color:#f0eae2;background:var(--soft);border:1px solid var(--border);padding:4px 8px;border-radius:999px}
+/* ====== PATCH: match dine partials ====== */
+
+/* Header */
+.nav{
+  position: sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:12px 20px;
+  background: rgba(10,10,12,.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Brand + logo */
+.nav .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text)}
+.nav .brand-logo{display:inline-flex; width:40px; height:40px; border-radius:12px; overflow:hidden;
+  background: rgba(255,255,255,.06); box-shadow: 0 6px 18px rgba(0,0,0,.35)}
+.nav .brand-logo img{width:100%; height:100%; object-fit:contain; display:block}
+.nav .brand h1{margin:0; font-size:20px; line-height:1; font-weight:800; letter-spacing:.2px}
+
+/* Din .main-nav (vandret menu) */
+.main-nav{display:flex; align-items:center; gap:18px; list-style:none; margin:0; padding:0}
+.main-nav a{color:var(--text-dim); text-decoration:none; font-weight:600}
+.main-nav a:hover{color:var(--text)}
+@media (max-width: 760px){
+  .main-nav{gap:12px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
+  .main-nav::-webkit-scrollbar{display:none}
+}
+
+/* Footer (du bruger <footer> tag uden klasse) */
+footer{
+  border-top:1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  color: var(--text-dim);
+  padding: 18px 20px;
+}
+footer > div:first-child{ /* ©-linjen */
+  max-width:1100px; margin:0 auto;
+}
+footer .footer-links{max-width:1100px; margin:6px auto 0}
+footer .footer-links a{color:inherit; text-decoration:none}
+footer .footer-links a:hover{text-decoration:underline}
+
+footer .socials{max-width:1100px; margin:10px auto 0}
+footer .socials .fb{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border:1px solid var(--border);
+  border-radius:10px; color:var(--text-dim); text-decoration:none;
+}
+footer .socials .fb:hover{color:#fff; border-color: rgba(255,255,255,.3)}
