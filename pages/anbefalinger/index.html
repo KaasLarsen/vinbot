@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anbefalinger – Vinbot</title>
+  <meta name="description" content="Månedens vin, redaktionens favoritter og sæsonens bedste køb. Se udvalgte flasker med forklaring og pris." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Anbefalinger</h2>
+    <p>Udvalgte flasker med kort begrundelse – AI + redaktion i samspil. Ingen pay-to-play.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <a class="card" href="/anbefalinger/maanedens-vin.html"><h3>🏆 Månedens Vin</h3><p>Én flaske vi ville købe lige nu.</p></a>
+      <a class="card" href="/anbefalinger/redaktionens-favoritter.html"><h3>⭐ Redaktionens Favoritter</h3><p>Vine, vi vender tilbage til igen og igen.</p></a>
+      <a class="card" href="/anbefalinger/sæson.html"><h3>🍂 Sæson</h3><p>Efterår, jul, sommer – bedste match lige nu.</p></a>
+      <a class="card" href="/anbefalinger/vaerdi-for-pengene.html"><h3>💡 Værdi for Pengene</h3><p>Flasker der smager dyrere, end de koster.</p></a>
+    </section>
+
+    <section class="card">
+      <h3>Transparens</h3>
+      <p>Nogle links kan være affiliate. Det koster dig aldrig ekstra, og påvirker ikke vores vurderinger.</p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+    })();
+  </script>
+</body>
+</html>
