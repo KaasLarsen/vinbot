@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog – Vinbot</title>
+  <meta name="description" content="Guides, nyheder og tips om vin. Fra begyndervenlige råd til nørdede indsigter – alt samlet ét sted." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Blog</h2>
+    <p>Seneste indlæg, guides og sammenligninger – skrevet kort og skarpt.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid" id="posts">
+      <a class="card" href="/blog/saadan-virker-vinbot.html"><h3>🔧 Sådan virker Vinbot</h3><p>Hvad søger vi i feeds, og hvordan vægter vi forslag?</p></a>
+      <a class="card" href="/blog/bedste-rose-til-sommeren.html"><h3>☀️ Sommerens bedste rosévine</h3><p>Lyse, friske flasker til grill og terrasse.</p></a>
+      <a class="card" href="/blog/black-friday-vintilbud.html"><h3>🖤 Black Friday – vintilbud</h3><p>Sådan finder du reelle deals uden støj.</p></a>
+    </section>
+
+    <section class="card">
+      <h3>Tip</h3>
+      <p>Brug søgefeltet på forsiden – skriv fx <em>“barolo til bøf under 150”</em> – så filtrerer vi på tværs af shops.</p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+    })();
+  </script>
+</body>
+</html>
