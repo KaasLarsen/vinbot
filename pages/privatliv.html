@@ -2,154 +2,105 @@
 <html lang="da">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privatliv – Vinbot.dk</title>
-  <meta name="description" content="Læs hvordan Vinbot.dk behandler personoplysninger, cookies, Google AdSense og affiliate-sporing. Dine GDPR-rettigheder og kontakt." />
-  <link rel="canonical" href="/privatliv" />
-  <style>
-    :root{--bg:#0b0b0c;--grad1:#1b1214;--grad2:#0f0f10;--text:#e6e7ea;--muted:#a7acb8;--accent:#e74c3c;--card:#121316;--line:#26272c}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(120deg,var(--grad1),var(--grad2));color:var(--text);line-height:1.65}
-    a{color:inherit;text-decoration:none}
-    .header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#141315 0%, rgba(20,19,21,.85) 70%, rgba(20,19,21,0) 100%);backdrop-filter:saturate(1.1) blur(6px);border-bottom:1px solid var(--line)}
-    .bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:20px;padding:16px 20px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(60% 60% at 30% 30%,#ffffff 0%,#ddd 35%,#aaa 80%);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-    .logo::after{content:"🤖"}
-    .brand span{font-weight:700;font-size:1.15rem;letter-spacing:.3px}
-    nav{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
-    nav a{font-weight:600;opacity:.9}
-    nav a:hover{opacity:1;text-decoration:underline}
-    .pill{background:#1c1d22;border:1px solid var(--line);padding:8px 12px;border-radius:12px}
-    .wrap{max-width:1000px;margin:0 auto;padding:40px 20px}
-    h1{font-size:2.1rem;margin:12px 0 10px}
-    h2{font-size:1.3rem;margin:26px 0 10px}
-    p,li{color:#d6d8dd}
-    .muted{color:var(--muted)}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-    ul{padding-left:1.1rem}
-    .note{background:#15171c;border:1px dashed #3a3b41;border-radius:12px;padding:14px;margin:10px 0}
-    footer{border-top:1px solid var(--line);margin-top:40px}
-    .foot{max-width:1100px;margin:auto;padding:28px 20px;display:grid;gap:12px}
-    .foot small{color:var(--muted)}
-    .foot a{color:var(--muted)}
-    .foot a:hover{color:#fff;text-decoration:underline}
-  </style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"PrivacyPolicy","name":"Privatliv – Vinbot.dk","url":"https://vinbot.dk/privatliv",
-   "publisher":{"@type":"Organization","name":"Vinbot.dk","url":"https://vinbot.dk","email":"hej@vinbot.dk"}}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privatliv – Vinbot</title>
+  <meta name="description" content="Sådan behandler Vinbot personoplysninger, cookies, Google AdSense og affiliate-sporing. Dine GDPR-rettigheder." />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
   </script>
+
+  <!-- Ekstern CSS -->
+  <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
-  <header class="header">
-    <div class="bar">
-      <a class="brand" href="/"><div class="logo" aria-hidden="true"></div><span>Vinbot</span></a>
-      <nav aria-label="Primær navigation">
-        <a href="/soeg">Søg</a>
-        <a href="/vin-til-mad">Vin til Mad</a>
-        <a href="/druer">Druer</a>
-        <a href="/pris">Pris</a>
-        <a href="/anbefalinger">Anbefalinger</a>
-        <a href="/blog">Blog</a>
-        <a class="pill" href="/kontakt">Kontakt</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="wrap">
-    <p class="muted">Sidst opdateret: 7. november 2025</p>
-    <h1>Privatliv</h1>
+  <!-- header partial -->
+  <div id="header"></div>
 
-    <section class="note">
-      <strong>Overblik:</strong> Vi værner om dit privatliv. Denne politik dækker cookies, Google AdSense og affiliate-sporing, samt dine GDPR-rettigheder. Spørgsmål? Skriv til <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.
+  <main class="wrap page">
+    <header class="page-head">
+      <h2>Privatliv</h2>
+      <p class="muted">Sidst opdateret: 7. november 2025</p>
+    </header>
+
+    <section class="note card">
+      <p><strong>Overblik:</strong> Vi bruger cookies/teknologier til drift, statistik, annoncer (Google AdSense) og affiliate-sporing. Du kan altid ændre dit valg via “Cookie-indstillinger”. Spørgsmål? <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.</p>
     </section>
 
     <section class="card">
-      <h2>Dataansvarlig</h2>
-      <p>Vinbot.dk er dataansvarlig. Kontakt: <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.</p>
+      <h3>Dataansvarlig</h3>
+      <p>Vinbot (kontakt: <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>).</p>
     </section>
 
     <section class="card">
-      <h2>Hvilke oplysninger vi behandler</h2>
+      <h3>Oplysninger vi behandler</h3>
       <ul>
-        <li><strong>Tekniske data:</strong> IP-adresse, enheds- og browserinfo, tidspunkter, besøgte sider.</li>
-        <li><strong>Cookies og lignende:</strong> Drift, statistik, annoncer og affiliate-sporing.</li>
-        <li><strong>Korrespondance:</strong> Indhold af e-mails, hvis du skriver til os.</li>
+        <li><strong>Tekniske data:</strong> IP, enhed, browser, besøgte sider, tidspunkter.</li>
+        <li><strong>Cookies/lignende:</strong> drift, statistik, annoncer, affiliate.</li>
+        <li><strong>Korrespondance:</strong> e-mails, hvis du skriver til os.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>Formål og behandlingsgrundlag</h2>
+      <h3>Formål & grundlag</h3>
       <ul>
-        <li>Drift og sikkerhed af sitet (legitim interesse).</li>
-        <li>Statistik og forbedring af indhold (samtykke/legitim interesse).</li>
-        <li>Annoncering via Google AdSense (samtykke).</li>
-        <li>Affiliate-sporing ved klik til forhandlere (samtykke/legitim interesse).</li>
-        <li>Besvarelse af henvendelser (fuldbyrdelse af anmodning/legitim interesse).</li>
+        <li>Drift og sikkerhed (legitim interesse).</li>
+        <li>Statistik og forbedring (samtykke/legitim interesse).</li>
+        <li>Annoncer (samtykke).</li>
+        <li>Affiliate-sporing (samtykke/legitim interesse).</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>Cookies</h2>
-      <p>Vi bruger nødvendige, statistiske og marketing-cookies. Ved første besøg viser vi en cookie-besked, hvor du kan give eller afvise samtykke til ikke-nødvendige cookies. Du kan altid ændre dit valg via “cookie-indstillinger”.</p>
+      <h3>Cookies</h3>
+      <p>Ved første besøg viser vi en besked, hvor du kan give eller afvise samtykke til ikke-nødvendige cookies. Du kan til enhver tid ændre dit valg via “Cookie-indstillinger”.</p>
     </section>
 
     <section class="card">
-      <h2>Google AdSense</h2>
-      <p>Annoncer leveres af Google. Google kan anvende cookies og/eller mobil-id’er til at vise personligt tilpassede annoncer, hvis du har givet samtykke. Du kan administrere annonceindstillinger i din Google-konto.</p>
+      <h3>Google AdSense</h3>
+      <p>Google kan bruge cookies og/eller mobil-id’er til at vise personligt tilpassede annoncer (hvis du har givet samtykke).</p>
     </section>
 
     <section class="card">
-      <h2>Affiliate-links</h2>
-      <p>Nogle links er affiliate-links. Når du klikker, kan den pågældende affiliate-partner placere en cookie eller lignende for at spore et eventuelt køb og tildele kommission til os. Dette påvirker ikke din pris.</p>
+      <h3>Affiliate-links</h3>
+      <p>Nogle links er affiliate. Når du klikker, kan partneren sætte en cookie for at tildele kommission til os. Det påvirker ikke din pris.</p>
     </section>
 
     <section class="card">
-      <h2>Opbevaring</h2>
-      <p>Tekniske logdata opbevares typisk i op til 26 måneder. E-mailkorrespondance opbevares, så længe det er relevant for sagsbehandling eller lovkrav.</p>
+      <h3>Opbevaring</h3>
+      <p>Tekniske logdata op til ca. 26 måneder. E-mailkorrespondance så længe det er relevant eller krævet.</p>
     </section>
 
     <section class="card">
-      <h2>Modtagere</h2>
+      <h3>Dine rettigheder (GDPR)</h3>
       <ul>
-        <li>Hosting- og sikkerhedsleverandører (drift).</li>
-        <li>Analyse- og annoncenetværk (statistik/annoncer).</li>
-        <li>Affiliate-netværk og forhandlere (sporing af køb).</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Overførsel til tredjelande</h2>
-      <p>Nogle leverandører kan være placeret uden for EU/EØS. Overførsler sker efter gældende regler, fx standardkontraktbestemmelser.</p>
-    </section>
-
-    <section class="card">
-      <h2>Dine rettigheder (GDPR)</h2>
-      <ul>
-        <li>Indsigt, berigtigelse og sletning.</li>
+        <li>Indsigt, berigtigelse, sletning.</li>
         <li>Begrænsning og indsigelse.</li>
         <li>Dataportabilitet (hvis relevant).</li>
-        <li>Tilbagekaldelse af samtykke (gælder fremadrettet).</li>
+        <li>Tilbagekaldelse af samtykke (fremadrettet).</li>
       </ul>
-      <p>Udøvelse af rettigheder: skriv til <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>. Du kan også klage til Datatilsynet.</p>
-    </section>
-
-    <section class="card">
-      <h2>Sikkerhed</h2>
-      <p>Vi anvender passende tekniske og organisatoriske foranstaltninger for at beskytte data mod uautoriseret adgang og misbrug.</p>
-    </section>
-
-    <section class="card">
-      <h2>Ændringer</h2>
-      <p>Vi kan opdatere denne politik løbende. Væsentlige ændringer fremgår af datoen “Sidst opdateret”.</p>
     </section>
   </main>
 
-  <footer>
-    <div class="foot">
-      <small>© 2025 Vinbot.dk</small>
-      <small><a href="/om-os">Om os</a> · <a href="/betingelser">Betingelser</a> · <a href="/privatliv" aria-current="page">Privatliv</a> · <a href="/kontakt">Kontakt</a></small>
-    </div>
-  </footer>
+  <!-- footer partial -->
+  <div id="footer"></div>
+
+  <!-- partial loader -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+    })();
+  </script>
 </body>
 </html>
