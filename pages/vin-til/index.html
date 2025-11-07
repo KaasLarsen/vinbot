@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Mad – Vinbot</title>
+  <meta name="description" content="Find vin, der matcher din ret. Vælg efter køkken, råvare eller lejlighed – fra pasta og pizza til sushi og julemad." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Mad</h2>
+    <p>Gå efter klassiske parringer eller prøv noget nyt. Klik dig ind på en kategori og få konkrete flaskeforslag.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <a class="card" href="/vin-til/pasta.html"><h3>🍝 Pasta & Tomat</h3><p>Barbera, Sangiovese, Montepulciano – syre møder syre.</p></a>
+      <a class="card" href="/vin-til/bolognese.html"><h3>🍝 Bolognese</h3><p>Chianti Classico, Barbera d’Asti, Nero d’Avola.</p></a>
+      <a class="card" href="/vin-til/tapas.html"><h3>🧀 Tapas</h3><p>Cava, Albariño, Garnacha – friskhed til salt & fedme.</p></a>
+      <a class="card" href="/vin-til/sushi.html"><h3>🍣 Sushi</h3><p>Riesling, Grüner Veltliner, rosé med nerve.</p></a>
+      <a class="card" href="/vin-til/julemad.html"><h3>🎄 Julemad</h3><p>Pinot Noir, Zinfandel eller portvin til risalamande.</p></a>
+      <a class="card" href="/vin-til/ostebord.html"><h3>🧀 Ostebord</h3><p>Sødme til blåskimmel, friskhed til hvide oste.</p></a>
+    </section>
+
+    <section class="card">
+      <h3>Tip</h3>
+      <p>Er du i tvivl? Brug søgningen på forsiden – skriv fx <em>“sushi sommer under 120”</em> og få forslag på sekunder.</p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+    })();
+  </script>
+</body>
+</html>
