@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pris – Vinbot</title>
+  <meta name="description" content="God vin i alle prislag. Se vores anbefalinger under 50 kr, til 50–100 kr, og premium køb over 250 kr." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Pris</h2>
+    <p>Find stærke køb i den rigtige prisklasse – værdi for pengene, uden støj.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <a class="card" href="/pris/under-50.html"><h3>💸 Under 50 kr</h3><p>Basalt men brugbart — hverdagsvin uden ballade.</p></a>
+      <a class="card" href="/pris/50-100.html"><h3>💰 50–100 kr</h3><p>Det søde spot for hverdagskvalitet.</p></a>
+      <a class="card" href="/pris/100-200.html"><h3>💎 100–200 kr</h3><p>Bedste køb til middagsgæster og weekend.</p></a>
+      <a class="card" href="/pris/200-250.html"><h3>✨ 200–250 kr</h3><p>Seriøs kvalitet og tydelig oprindelse.</p></a>
+      <a class="card" href="/pris/250-plus.html"><h3>🏅 250+ kr</h3><p>Topvalg, lagring og særlige flasker.</p></a>
+    </section>
+
+    <section class="card">
+      <h3>Spar tid</h3>
+      <p>Søg direkte: <em>“pinot noir under 120”</em> eller <em>“chablis tilbud”</em>, så henter vi aktuelle flasker.</p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+    })();
+  </script>
+</body>
+</html>
