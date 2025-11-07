@@ -59,13 +59,10 @@
 
   <!-- søgelogik -->
   <script>
-    // ---- KONFIG ----
-    const USE_REDIRECT = false;     // sæt true når /out er klar
-    const OUT_BASE = "/out/";
-    const MERCHANTS = [
-      { name: "Jysk Vin", host: "jyskvin.dk", search: "https://jyskvin.dk/search?q={Q}" },
-      { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" }
-    ];
+    // ---- GLOBAL STATE ----
+    let MERCHANTS = [];              // indlæses fra /assets/merchants.json
+    const USE_REDIRECT = false;      // sæt true når /out er klar
+    const OUT_BASE = "/out/";        // fx "https://vinbot.dk/out/"
 
     // ---- MINI-ORDBØGER ----
     const MAP = {
@@ -85,7 +82,7 @@
       }
     };
 
-    // ---- LOGIK ----
+    // ---- UTIL ----
     function parseQuery(text){
       const q = (text||"").toLowerCase();
       const out = { druer:new Set(), mad:null, max:null, mood:null, raw:q.trim() };
@@ -106,10 +103,12 @@
     }
 
     function buildTarget(merchant, keyword){
+      // merchant.search forventes at indeholde {Q} som placeholder
       const target = merchant.search.includes("{Q}")
         ? merchant.search.replace("{Q}", encodeURIComponent(keyword))
         : merchant.search;
       if (!USE_REDIRECT) return target;
+
       const u = new URL(OUT_BASE, location.origin);
       u.searchParams.set("to", target);
       u.searchParams.set("subid", "search-"+Date.now());
@@ -117,23 +116,32 @@
     }
 
     function createIdeas(text){
+      if (!MERCHANTS.length) return [];
       const f = parseQuery(text);
       const keys = [];
       if (f.mad && MAP.mad[f.mad]) keys.push(...MAP.mad[f.mad].slice(0,2));
       if (f.druer.size) keys.push(...Array.from(f.druer).slice(0,2));
       if (!keys.length && f.raw) keys.push(f.raw);
 
+      // sortér let efter kommission (højere først) – tiebreaker for synlighed
+      const merchants = [...MERCHANTS].sort((a,b)=> (b.commission||0)-(a.commission||0));
+
       const ideas = [];
       for (const kw of keys){
-        for (const m of MERCHANTS){
+        for (const m of merchants){
           ideas.push({
             title: `${kw} hos ${m.name}`,
             href: buildTarget(m, kw),
-            badges: [f.mad?`Mad: ${f.mad}`:null, f.max?`Under ${f.max} kr`:null, f.mood?`${f.mood}`:null].filter(Boolean)
+            badges: [
+              f.mad?`Mad: ${f.mad}`:null,
+              f.max?`Under ${f.max} kr`:null,
+              f.mood?`${f.mood}`:null,
+              m.commission?`${m.commission}%`:null
+            ].filter(Boolean)
           });
         }
       }
-      return ideas.slice(0, 9);
+      return ideas.slice(0, 12);
     }
 
     // ---- RENDER ----
@@ -141,10 +149,7 @@
     const $res = document.getElementById('results');
 
     function render(items){
-      if (!items.length) {
-        $res.innerHTML = ""; // ← empty state fjernet
-        return;
-      }
+      if (!items.length) { $res.innerHTML = ""; return; }
       $res.innerHTML = items.map(i => `
         <a class="card outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title}">
           <h3>${i.title}</h3>
@@ -157,19 +162,25 @@
 
     $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
 
-    // ---- GA4 outbound click tracking ----
+    // GA4: track outbound
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      try {
-        gtag('event', 'outbound_click', {
-          event_category: 'affiliate',
-          event_label: a.dataset.label || a.href
-        });
-      } catch(_) {}
+      try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label||a.href}); } catch(_){}
     });
 
-    // init
-    update();
+    // ---- LOAD MERCHANTS ----
+    (async function loadMerchants(){
+      try{
+        const res = await fetch("/assets/merchants.json", {cache:"no-store"});
+        MERCHANTS = await res.json();
+      } catch(err){
+        console.error("Kunne ikke loade merchants.json", err);
+        MERCHANTS = [];
+      } finally {
+        // kør en initial render (tom, indtil bruger trykker Enter)
+        render([]);
+      }
+    })();
   </script>
 </body>
 </html>
