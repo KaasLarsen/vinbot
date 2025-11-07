@@ -2,94 +2,153 @@
 <html lang="da">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vinbot.dk – find vin og gode tilbud</title>
-  <meta name="description" content="Vinbot.dk hjælper dig med at finde vin og gode tilbud. Søg efter vine og sammenlign priser." />
-  <style>
-    /* Simpel basis – rør ikke eksisterende globale styles */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    header,main,footer{max-width:1100px;margin:0 auto;padding:16px}
-    form[role="search"]{display:flex;gap:8px;align-items:center}
-    form[role="search"] input[type="search"]{flex:1;padding:10px;border:1px solid #ddd;border-radius:6px}
-    form[role="search"] button{padding:10px 14px;border:1px solid #ddd;border-radius:6px;background:#f6f4f1;cursor:pointer}
-    .footer-links{margin-top:8px;font-size:12px;color:#bdb7ad;opacity:.8}
-    .footer-links a{color:inherit;text-decoration:none}
-    .footer-links a:hover{text-decoration:underline}
-    .socials{margin-top:10px}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vinbot – din personlige vinassistent</title>
+  <meta name="description" content="Find den perfekte vin på sekunder. Søg efter drue, land, mad eller humør – Vinbot guider dig til de bedste køb." />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <!-- Ekstern CSS -->
+  <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
 
-  <header>
-    <h1>Vinbot.dk</h1>
-    <p>Find vin, sammenlign priser og opdag gode tilbud.</p>
+  <!-- header partial -->
+  <div id="header"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h2>Find vin på sekunder</h2>
+    <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
+
+    <div id="search" class="search-wrap">
+      <form id="searchForm" class="search" action="#" method="get" novalidate>
+        <div class="icon">🔎</div>
+        <input
+          id="q"
+          type="search"
+          placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”"
+          autocomplete="off"
+          enterkeyhint="search"
+          inputmode="search"
+        />
+        <!-- Synlig fallback-knap for mobil -->
+        <button type="submit" aria-label="Søg" style="
+          border:0;padding:10px 14px;margin-left:6px;cursor:pointer;color:#fff;
+          border-radius:12px;background:linear-gradient(135deg,#e63b3b,#ff8a4c);
+          box-shadow:0 10px 30px rgba(230,59,59,.35);font-weight:700;
+        ">Søg</button>
+      </form>
+      <div class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</div>
+    </div>
   </header>
 
-  <main>
-    <section aria-labelledby="search-title">
-      <h2 id="search-title">søg vin</h2>
-      <form id="search-form" action="/search.html" method="GET" role="search">
-        <label for="q" class="sr-only">Søg efter vin</label>
-        <input id="q" name="q" type="search" placeholder="Søg efter vin, område, drue..." enterkeyhint="search" required />
-        <button id="search-btn" type="submit" aria-label="Søg">Gå</button>
-      </form>
-    </section>
-
-    <!-- Her kan dit indhold / liste med produkter indlæses -->
-    <section aria-labelledby="featured-title">
-      <h2 id="featured-title">udvalgte vine</h2>
-      <p>Tilføj dine feed-baserede lister her.</p>
-    </section>
+  <!-- RESULTATER -->
+  <main class="wrap">
+    <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
-  <footer>
-    <div>© <span id="y"></span> Vinbot.dk · Alle rettigheder forbeholdes</div>
+  <!-- footer partial -->
+  <div id="footer"></div>
 
-    <!-- Små links -->
-    <div class="footer-links">
-      <a href="/pages/om-os.html">om os</a> ·
-      <a href="/pages/kontakt.html">kontakt</a> ·
-      <a href="/pages/betingelser.html">betingelser</a> ·
-      <a href="/pages/privatliv.html">privatliv</a>
-    </div>
+  <!-- partial loader -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+    })();
+  </script>
 
-    <!-- Sociale medier nederst -->
-    <div class="socials" aria-label="sociale medier">
-      <a class="fb" href="https://facebook.com" target="_blank" rel="noopener nofollow" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="#cfc7bd" aria-hidden="true">
-          <path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.98 3.64 9.12 8.4 9.94v-7.03H7.9v-2.91h2.38V9.48c0-2.35 1.4-3.65 3.54-3.65 1.03 0 2.1.18 2.1.18v2.31h-1.18c-1.16 0-1.52.72-1.52 1.46v1.75h2.59l-.41 2.91h-2.18V22c4.76-.82 8.4-4.96 8.4-9.94z"/>
-        </svg>
-      </a>
-    </div>
+  <!-- SØGE-UI (feed-baseret + mobil-fix + live-søgning) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $q    = document.getElementById('q');
+      const $res  = document.getElementById('results');
+      const $form = document.getElementById('searchForm');
 
-    <script>
-      document.getElementById('y').textContent = new Date().getFullYear();
-      (function () {
-        const form  = document.getElementById('search-form');
-        const input = document.getElementById('q');
-        const btn   = document.getElementById('search-btn');
-        if (!form || !input) return;
+      // ---- Hjælpere ----
+      const formatPrice = (v, c) => {
+        try { return new Intl.NumberFormat('da-DK', { style:'currency', currency: c || 'DKK', maximumFractionDigits: 2 }).format(v); }
+        catch { return (v + ' ' + (c||'DKK')); }
+      };
 
-        form.addEventListener('submit', function (e) {
-          const q = input.value.trim();
-          if (!q) { e.preventDefault(); return; }
-        });
+      const renderProducts = (items) => {
+        if (!items.length) { $res.innerHTML = ""; return; }
+        $res.innerHTML = items.map(i => `
+          <a class="card product outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title} @ ${i.merchant}">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="width:64px;height:64px;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.08);flex:0 0 64px;">
+                ${i.image ? `<img src="${i.image}" alt="${i.title}" style="width:100%;height:100%;object-fit:cover;">` : ``}
+              </div>
+              <div style="flex:1;min-width:0;">
+                <h3 style="margin:0 0 6px;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${i.title}</h3>
+                <div class="badges">
+                  ${i.price ? `<span class="badge">${formatPrice(i.price, i.currency)}</span>` : ``}
+                  <span class="badge">${i.merchant}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        `).join('');
+      };
 
-        input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') {
-            if (form.requestSubmit) form.requestSubmit();
-            else form.submit();
-          }
-        });
-
-        if (btn) {
-          btn.addEventListener('click', function () {
-            if (form.requestSubmit) form.requestSubmit();
-            else form.submit();
-          });
+      let inflight = 0;
+      const search = async (query) => {
+        const q = (query||"").trim();
+        if (!q) { renderProducts([]); return; }
+        const ticket = ++inflight;
+        try{
+          const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { cache: "no-store" });
+          const data = await r.json();
+          if (ticket !== inflight) return; // drop forældet svar
+          const items = (data.products || []).map(p => ({
+            title: p.title,
+            price: p.price,
+            currency: p.currency || "DKK",
+            image: p.image,
+            merchant: p.merchant,
+            href: p.url // (kan routes via /out senere)
+          }));
+          renderProducts(items);
+        } catch (e){
+          console.error("Search failed", e);
+          if (ticket === inflight) renderProducts([]);
         }
-      })();
-    </script>
-  </footer>
+      };
+
+      // ---- Events: submit (mobil/desktop) + live-søgning ----
+      $form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        search($q.value);
+      });
+
+      // Live-søgning med debounce (300 ms)
+      let t = null;
+      $q.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(() => search($q.value), 300);
+      });
+
+      // GA4: track outbound klik
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a.outbound'); if(!a) return;
+        try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
+      });
+
+      // init – tomt ved start
+      renderProducts([]);
+    });
+  </script>
 </body>
 </html>
