@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="da">
+>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,11 +16,10 @@
     gtag('config', 'G-JB0QD6J59G');
   </script>
 
-  <!-- Ekstern CSS -->
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body>
 
+<body>
   <!-- header partial -->
   <div id="header"></div>
 
@@ -39,7 +39,6 @@
           enterkeyhint="search"
           inputmode="search"
         />
-        <!-- Synlig fallback-knap for mobil -->
         <button type="submit" aria-label="Søg" style="
           border:0;padding:10px 14px;margin-left:6px;cursor:pointer;color:#fff;
           border-radius:12px;background:linear-gradient(135deg,#e63b3b,#ff8a4c);
@@ -70,17 +69,20 @@
     })();
   </script>
 
-  <!-- SØGE-UI (feed-baseret + mobil-fix + live-søgning) -->
+  <!-- SØGE-UI -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const $q    = document.getElementById('q');
       const $res  = document.getElementById('results');
       const $form = document.getElementById('searchForm');
 
-      // ---- Hjælpere ----
       const formatPrice = (v, c) => {
         try { return new Intl.NumberFormat('da-DK', { style:'currency', currency: c || 'DKK', maximumFractionDigits: 2 }).format(v); }
         catch { return (v + ' ' + (c||'DKK')); }
+      };
+
+      const renderError = (msg) => {
+        $res.innerHTML = `<div style="opacity:.8;text-align:center;padding:20px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.06)">${msg}</div>`;
       };
 
       const renderProducts = (items) => {
@@ -110,43 +112,37 @@
         const ticket = ++inflight;
         try{
           const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { cache: "no-store" });
+          if (!r.ok) throw new Error("API not OK");
           const data = await r.json();
-          if (ticket !== inflight) return; // drop forældet svar
+          if (ticket !== inflight) return;
           const items = (data.products || []).map(p => ({
             title: p.title,
             price: p.price,
             currency: p.currency || "DKK",
             image: p.image,
             merchant: p.merchant,
-            href: p.url // (kan routes via /out senere)
+            href: p.url
           }));
           renderProducts(items);
         } catch (e){
           console.error("Search failed", e);
-          if (ticket === inflight) renderProducts([]);
+          if (ticket === inflight) renderError("Kunne ikke hente produkter lige nu. Prøv igen.");
         }
       };
 
-      // ---- Events: submit (mobil/desktop) + live-søgning ----
-      $form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        search($q.value);
-      });
+      // mobil & desktop
+      $form.addEventListener('submit', (e) => { e.preventDefault(); search($q.value); });
 
-      // Live-søgning med debounce (300 ms)
+      // live-søgning mens man skriver
       let t = null;
-      $q.addEventListener('input', () => {
-        clearTimeout(t);
-        t = setTimeout(() => search($q.value), 300);
-      });
+      $q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => search($q.value), 300); });
 
-      // GA4: track outbound klik
+      // GA4 outbound tracking
       document.addEventListener('click', (e)=>{
         const a = e.target.closest('a.outbound'); if(!a) return;
         try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
       });
 
-      // init – tomt ved start
       renderProducts([]);
     });
   </script>
