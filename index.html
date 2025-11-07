@@ -29,95 +29,74 @@
       --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
       --shadow-lg: 0 12px 40px rgba(0,0,0,.45);
     }
-    *{ box-sizing: border-box }
+    *{ box-sizing:border-box }
     html,body{ height:100% }
     body{
-      margin:0;
+      margin:0; color:var(--fg);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
-      color:var(--fg);
       background:
         radial-gradient(1200px 500px at 10% -10%, rgba(230,59,59,.25), transparent 60%),
         radial-gradient(1200px 600px at 110% 10%, rgba(255,138,76,.22), transparent 65%),
         linear-gradient(180deg, #121114 0%, #0b0a0c 100%);
     }
 
-    /* Topbar */
-    .nav{
-      max-width:1100px; margin:0 auto; padding:18px 20px;
-      display:flex; align-items:center; justify-content:flex-start; gap:14px;
+    /* header partial */
+    .nav{ max-width:1100px; margin:0 auto; padding:24px 28px; display:flex; align-items:center; gap:18px; }
+    .brand{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--fg); }
+    .brand-logo{
+      width:76px; height:76px; display:grid; place-items:center;
+      padding:8px; border-radius:16px;
+      background: rgba(255,255,255,0.16);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 26px rgba(0,0,0,.45);
     }
-    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg); }
-    .brand img{
-      width:40px; height:40px; display:block; object-fit:contain;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
-    }
-    .brand h1{ font-size:20px; margin:0; letter-spacing:.2px }
+    .brand-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
+    .brand h1{ margin:0; font-size:28px; letter-spacing:.2px }
 
-    /* Hero */
-    .hero{
-      max-width:980px; margin:32px auto 16px; padding:0 20px; text-align:center;
-    }
-    .hero h2{
-      margin:0 0 10px;
-      font-size: clamp(28px, 6vw, 56px);
-      line-height:1.05; letter-spacing:-.5px;
-    }
-    .hero p{ margin: 0 auto 22px; max-width:760px; color:var(--muted); font-size: clamp(16px, 2.3vw, 18px); }
+    /* hero */
+    .hero{ max-width:980px; margin:28px auto 14px; padding:0 20px; text-align:center; }
+    .hero h2{ margin:0 0 10px; font-size:clamp(28px,6vw,56px); line-height:1.05; letter-spacing:-.5px; }
+    .hero p{ margin:0 auto 22px; max-width:760px; color:var(--muted); font-size:clamp(16px,2.3vw,18px); }
 
-    /* Search */
-    .search-wrap{
-      max-width:900px; margin: 22px auto 0; padding: 12px;
-      border-radius: var(--radius-lg);
+    /* search */
+    .search-wrap{ max-width:900px; margin:22px auto 0; padding:12px; border-radius:18px;
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border: 1px solid var(--cardBorder);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(8px);
+      border:1px solid var(--cardBorder); box-shadow: var(--shadow-lg); backdrop-filter: blur(8px);
     }
-    .search{
-      display:flex; align-items:center; gap:12px;
-      background: rgba(0,0,0,.25); border-radius: 14px; padding: 8px 10px;
-      border:1px solid rgba(255,255,255,.08);
-    }
+    .search{ display:flex; align-items:center; gap:12px; background: rgba(0,0,0,.25);
+      border-radius:14px; padding:8px 10px; border:1px solid rgba(255,255,255,.08); }
     .search .icon{ opacity:.7; padding-left:8px }
-    .search input{
-      flex:1; border:0; outline:none; background:transparent; color:var(--fg);
-      font-size: clamp(16px, 2.4vw, 20px); padding: 12px 2px;
-    }
-    .search button{
-      border:0; padding:12px 16px; cursor:pointer; color:white;
-      border-radius:12px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: var(--glow);
-      font-weight:700; transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .search button:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(230,59,59,0.4) }
+    .search input{ flex:1; border:0; outline:none; background:transparent; color:var(--fg);
+      font-size:clamp(16px,2.4vw,20px); padding:12px 2px; }
+    .search button{ border:0; padding:12px 16px; cursor:pointer; color:#fff;
+      border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow: var(--glow); font-weight:700; transition: transform .12s, box-shadow .12s; }
+    .search button:hover{ transform:translateY(-1px); box-shadow:0 12px 26px rgba(230,59,59,.4); }
 
-    /* Results */
-    .wrap{ max-width:1100px; margin: 28px auto 80px; padding:0 20px; }
+    /* results */
+    .wrap{ max-width:1100px; margin:28px auto 80px; padding:0 20px; }
     .grid{ display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-    .card{
-      display:block; text-decoration:none; color:inherit;
-      background: var(--card); border: 1px solid var(--cardBorder);
-      border-radius: var(--radius-lg); padding:16px; box-shadow: var(--shadow-sm);
-      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .card:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.28); box-shadow: var(--shadow-lg); }
+    .card{ display:block; text-decoration:none; color:inherit; background:var(--card);
+      border:1px solid var(--cardBorder); border-radius:18px; padding:16px; box-shadow:var(--shadow-sm);
+      transition: transform .12s, box-shadow .12s, border-color .12s; }
+    .card:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.28); box-shadow:var(--shadow-lg); }
     .card h3{ margin:0 0 8px; font-size:18px; letter-spacing:.2px }
     .badges{ display:flex; gap:8px; flex-wrap:wrap }
-    .badge{ font-size:12px; color:#f7f2ec; background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); padding:6px 8px; border-radius:999px; }
+    .badge{ font-size:12px; color:#f7f2ec; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16);
+      padding:6px 8px; border-radius:999px; }
 
-    footer{ color:#a99f95; text-align:center; padding:26px 20px 60px; font-size:13px; }
+    /* footer partial */
+    footer{ color:#a99f95; text-align:center; padding:30px 20px 60px; font-size:13px; }
+    .socials{ display:flex; justify-content:center; gap:12px; margin-top:6px; }
+    .fb{ width:18px; height:18px; display:inline-block; }
 
+    /* a11y focus */
     .card:focus-visible, .search input:focus-visible, .search button:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a class="brand" href="/">
-      <!-- Brug din transparente PNG/SVG her -->
-      <img src="/assets/vinbot-logo.png" alt="Vinbot logo" />
-      <h1>Vinbot</h1>
-    </a>
-  </nav>
+  <!-- header partial mount -->
+  <div id="header"></div>
 
   <header class="hero">
     <h2>Find vin på sekunder</h2>
@@ -129,7 +108,6 @@
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
         <button id="searchBtn">Søg</button>
       </div>
-      <!-- Chips-linjen er fjernet som ønsket -->
     </div>
   </header>
 
@@ -137,14 +115,25 @@
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
-  <footer>
-    Annonce- og affiliate-disclaimer: Vi kan modtage kommission via links. 🤝
-  </footer>
+  <!-- footer partial mount -->
+  <div id="footer"></div>
+
+  <script>
+    // hent header/footer partials
+    (async function loadPartials(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+    })();
+  </script>
 
   <script>
     // ---- KONFIG ----
-    const USE_REDIRECT = false;               // sæt true når /out er klar
-    const OUT_BASE = "/out/";                 // fx "https://vinbot.dk/out/"
+    const USE_REDIRECT = false;   // sæt true når /out er klar
+    const OUT_BASE = "/out/";
     const MERCHANTS = [
       { name: "Jysk Vin", host: "jyskvin.dk", search: "https://jyskvin.dk/search?q={Q}" },
       { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" }
@@ -232,6 +221,7 @@
             <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
           </a>
         `).join('')
+        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv i feltet ovenfor og tryk Søg.</div>`;
     }
     function update(){ render(createIdeas($q.value)); }
 
