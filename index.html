@@ -15,15 +15,14 @@
     gtag('config', 'G-JB0QD6J59G');
   </script>
 
-  <!-- Ekstern CSS -->
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
 
-  <!-- header partial mount -->
+  <!-- header partial -->
   <div id="header"></div>
 
-  <!-- hero / søgefelt -->
+  <!-- HERO -->
   <header class="hero">
     <h2>Find vin på sekunder</h2>
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
@@ -32,22 +31,22 @@
       <div class="search">
         <div class="icon">🔎</div>
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
-        <button id="searchBtn">Søg</button>
       </div>
+      <div class="search-hint">Tryk <kbd>Enter</kbd> for forslag</div>
     </div>
   </header>
 
-  <!-- resultater -->
+  <!-- RESULTATER -->
   <main class="wrap">
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
-  <!-- footer partial mount -->
+  <!-- footer partial -->
   <div id="footer"></div>
 
   <!-- partial loader -->
   <script>
-    (async function loadPartials(){
+    (async function(){
       const [h,f] = await Promise.all([
         fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
         fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
@@ -57,17 +56,15 @@
     })();
   </script>
 
-  <!-- søgefunktion -->
+  <!-- søgelogik -->
   <script>
-    // ---- KONFIG ----
-    const USE_REDIRECT = false;   // sæt true når /out er klar
+    const USE_REDIRECT = false;     // sæt true når /out er klar
     const OUT_BASE = "/out/";
     const MERCHANTS = [
       { name: "Jysk Vin", host: "jyskvin.dk", search: "https://jyskvin.dk/search?q={Q}" },
       { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" }
     ];
 
-    // ---- MINI-ORDBØGER ----
     const MAP = {
       druer: {
         "barolo":"nebbiolo","nebbiolo":"nebbiolo","pinot noir":"pinot noir","pinot":"pinot noir",
@@ -85,22 +82,17 @@
       }
     };
 
-    // ---- LOGIK ----
     function parseQuery(text){
       const q = (text||"").toLowerCase();
       const out = { druer:new Set(), mad:null, max:null, mood:null, raw:q.trim() };
-
       Object.keys(MAP.druer).forEach(k => { if (q.includes(k)) out.druer.add(MAP.druer[k]); });
       Object.keys(MAP.mad).forEach(k => { if (q.includes(k)) out.mad = k; });
-
       const m = q.match(/under\s*(\d+)\s*kr|(\d+)\s*kr/);
       if (m){ const n = parseInt(m[1]||m[2],10); if (!isNaN(n)) out.max = n; }
       if (q.includes("billig") || q.includes("budget")) out.max = Math.min(out.max||9999, 100);
-
       if (q.includes("sommer") || q.includes("terrasse")) out.mood = "sommer";
       if (q.includes("hygge")) out.mood = "hygge";
       if (q.includes("romantisk")) out.mood = "romantisk";
-
       if (!out.druer.size && !out.mad && out.raw) out.druer.add(out.raw);
       return out;
     }
@@ -136,9 +128,7 @@
       return ideas.slice(0, 9);
     }
 
-    // ---- RENDER ----
     const $q = document.getElementById('q');
-    const $btn = document.getElementById('searchBtn');
     const $res = document.getElementById('results');
 
     function render(items){
@@ -149,26 +139,19 @@
             <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
           </a>
         `).join('')
-        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv i feltet ovenfor og tryk Søg.</div>`;
+        : `<div class="empty">Skriv i feltet ovenfor og tryk <b>Enter</b>.</div>`;
     }
 
     function update(){ render(createIdeas($q.value)); }
 
     $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
-    $btn.addEventListener('click', update);
 
-    // ---- GA4 tracking af outbound klik ----
+    // GA4: track outbound
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      try {
-        gtag('event', 'outbound_click', {
-          event_category: 'affiliate',
-          event_label: a.dataset.label || a.href
-        });
-      } catch(_) {}
+      try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label||a.href}); } catch(_){}
     });
 
-    // init
     update();
   </script>
 </body>
