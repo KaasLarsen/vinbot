@@ -3,77 +3,126 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>om os – vinbot.dk</title>
-  <meta name="description" content="VinBot.dk – din digitale vinassistent. Vi matcher vin og mad med AI og finder gode tilbud fra danske forhandlere." />
-  <link rel="canonical" href="https://vinbot.dk/om-os" />
+  <title>Om os – Vinbot.dk</title>
+  <meta name="description" content="Vinbot.dk – din digitale vinassistent. Vi matcher vin og mad med AI og finder gode tilbud fra danske forhandlere." />
+  <link rel="canonical" href="/om-os" />
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;margin:0;color:#0f172a}
-    header,main,footer{max-width:800px;margin:auto;padding:24px}
-    nav a{margin-right:12px;color:#334155;text-decoration:none}
-    nav a:hover{text-decoration:underline}
-    h1{text-transform:lowercase;font-size:2rem;margin:.2rem 0 1rem}
-    h2{text-transform:lowercase;font-size:1.25rem;margin-top:1.5rem}
-    .muted{color:#64748b}
-    .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px}
+    :root{
+      --bg:#0b0b0c;--bg2:#1b1b1f;--grad1:#1b1214;--grad2:#0f0f10;
+      --text:#e6e7ea;--muted:#a7acb8;--accent:#e74c3c;--card:#121316;--line:#26272c
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(120deg,var(--grad1),var(--grad2));color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    /* Header */
+    .header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg,#141315 0%, rgba(20,19,21,.85) 70%, rgba(20,19,21,0) 100%);
+      backdrop-filter:saturate(1.1) blur(6px);
+      border-bottom:1px solid var(--line)
+    }
+    .bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:20px;padding:16px 20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(60% 60% at 30% 30%,#ffffff 0%,#ddd 35%,#aaa 80%);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .logo::after{content:"🤖";filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+    .brand span{font-weight:700;font-size:1.15rem;letter-spacing:.3px}
+    nav{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+    nav a{opacity:.9;font-weight:600}
+    nav a:hover{opacity:1;text-decoration:underline}
+    .pill{background:#1c1d22;border:1px solid var(--line);padding:8px 12px;border-radius:12px}
+    /* Layout */
+    .wrap{max-width:980px;margin:0 auto;padding:40px 20px}
+    h1{font-size:2.1rem;margin:12px 0 10px}
+    h2{font-size:1.35rem;margin:28px 0 10px}
+    p,li{color:#d6d8dd}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:820px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+    .accent{border-left:3px solid var(--accent);padding-left:14px}
+    /* Footer */
+    footer{border-top:1px solid var(--line);margin-top:40px}
+    .foot{max-width:1100px;margin:auto;padding:28px 20px;display:grid;gap:12px}
+    .foot small{color:var(--muted)}
+    .foot a{color:var(--muted)}
+    .foot a:hover{color:#fff;text-decoration:underline}
+    /* Badges */
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+    .badge{background:#1a1b1f;border:1px solid var(--line);padding:6px 10px;border-radius:10px;font-size:.85rem;color:#cbd0d9}
   </style>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"AboutPage",
-    "name":"Om os – VinBot.dk",
+    "name":"Om os – Vinbot.dk",
     "url":"https://vinbot.dk/om-os",
-    "breadcrumb":{
-      "@type":"BreadcrumbList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Forside","item":"https://vinbot.dk/"},
-        {"@type":"ListItem","position":2,"name":"Om os","item":"https://vinbot.dk/om-os"}
-      ]
-    },
     "about":{
       "@type":"Organization",
-      "name":"VinBot.dk",
+      "name":"Vinbot.dk",
       "url":"https://vinbot.dk",
-      "email":"hej@vinbot.dk",
-      "contactPoint":[{"@type":"ContactPoint","email":"hej@vinbot.dk","contactType":"customer support"}]
+      "email":"hej@vinbot.dk"
     }
   }
   </script>
 </head>
 <body>
-  <header>
-    <nav aria-label="primær">
-      <a href="/">forside</a>
-      <a href="/om-os" aria-current="page">om os</a>
-      <a href="/kontakt">kontakt</a>
-      <a href="/betingelser">betingelser</a>
-      <a href="/privatliv">privatliv</a>
-    </nav>
-    <h1>om os</h1>
-    <p class="muted">sidst opdateret: 7. november 2025</p>
+  <header class="header">
+    <div class="bar">
+      <a class="brand" href="/"><div class="logo" aria-hidden="true"></div><span>Vinbot</span></a>
+      <nav aria-label="Primær navigation">
+        <a href="/soeg">Søg</a>
+        <a href="/vin-til-mad">Vin til Mad</a>
+        <a href="/druer">Druer</a>
+        <a href="/pris">Pris</a>
+        <a href="/anbefalinger">Anbefalinger</a>
+        <a href="/blog">Blog</a>
+        <a class="pill" href="/kontakt">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <p><strong>vinbot.dk</strong> er din digitale vinassistent. vi kombinerer kunstig intelligens, redaktionel viden og aktuelle tilbud fra danske vinhandlere, så du nemt kan finde vin, der matcher både mad, budget og smag.</p>
+  <main class="wrap">
+    <p class="muted">Sidst opdateret: 7. november 2025</p>
+    <h1>Om os</h1>
+    <p class="accent">Vinbot.dk er din digitale vinassistent. Vi kombinerer kunstig intelligens, redaktionel viden og aktuelle tilbud fra danske vinhandlere, så du nemt kan finde vin, der matcher mad, smag og budget.</p>
 
-    <h2>hvad vi gør</h2>
-    <ul>
-      <li>matcher retter og vine med ai-forslag og simple forklaringer</li>
-      <li>viser priser, kampagner og forhandlere, når tilgængeligt</li>
-      <li>giver korte, håndgribelige råd til servering, temperatur og lagring</li>
-    </ul>
-
-    <h2>sådan tjener vi penge</h2>
-    <div class="box">
-      <p>vi er gratis at bruge. når du klikker på et link til en vinforhandler, kan vi modtage en mindre kommission via <strong>affiliate-partnerskaber</strong>. vi viser også annoncer via <strong>google adsense</strong>. det koster dig ikke ekstra og hjælper os med at drive siden uafhængigt.</p>
+    <div class="grid">
+      <section class="card">
+        <h2>Hvad vi gør</h2>
+        <ul>
+          <li>Matcher retter og vine med forklaringer, temperatur og servering.</li>
+          <li>Viser priser, kampagner og forhandlere, når de er tilgængelige.</li>
+          <li>Giver enkle anbefalinger for både begyndere og vinkendere.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>Sådan tjener vi penge</h2>
+        <p>Vi er gratis at bruge. Når du klikker på et link til en vinforhandler, kan vi modtage en mindre kommission via <strong>affiliate-partnerskaber</strong>. Vi viser også annoncer via <strong>Google AdSense</strong>. Det koster dig ikke ekstra og hjælper os med at drive siden uafhængigt.</p>
+        <div class="badges">
+          <span class="badge">Uafhængige anbefalinger</span>
+          <span class="badge">Annonce- og affiliatepolitik</span>
+          <span class="badge">Gennemsigtighed</span>
+        </div>
+      </section>
     </div>
 
-    <h2>uafhængighed</h2>
-    <p>anbefalinger er baseret på data, smagsprofiler og redaktionelle vurderinger. kommercielle samarbejder påvirker ikke vores vurdering eller indhold.</p>
-
-    <h2>kontakt</h2>
-    <p>har du forslag, rettelser eller samarbejdsidéer? skriv til <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.</p>
+    <section class="card">
+      <h2>Kontakt os</h2>
+      <p>Har du forslag, rettelser eller samarbejdsidéer? Du er altid velkommen til at skrive til <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.</p>
+      <p class="muted">Vi har ingen fysisk adresse eller telefon – al kontakt foregår via e-mail.</p>
+    </section>
   </main>
 
-  <footer><small class="muted">© vinbot.dk · <a href="/betingelser">betingelser</a> · <a href="/privatliv">privatliv</a></small></footer>
+  <footer>
+    <div class="foot">
+      <small>© 2025 Vinbot.dk</small>
+      <small>
+        <a href="/om-os" aria-current="page">Om os</a> ·
+        <a href="/betingelser">Betingelser</a> ·
+        <a href="/privatliv">Privatliv</a> ·
+        <a href="/kontakt">Kontakt</a>
+      </small>
+    </div>
+  </footer>
 </body>
 </html>
