@@ -1,5 +1,5 @@
 // /api/ping.js
-export const config = { runtime: "nodejs18.x" };
+export const config = { runtime: "nodejs" };
 
 export default async function handler(req, res) {
   res.setHeader("content-type", "application/json; charset=utf-8");
