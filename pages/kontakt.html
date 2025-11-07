@@ -3,69 +3,94 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>kontakt – vinbot.dk</title>
-  <meta name="description" content="Kontakt VinBot.dk – skriv til os på e-mail for support, presse og samarbejde." />
-  <link rel="canonical" href="https://vinbot.dk/kontakt" />
+  <title>Kontakt – Vinbot.dk</title>
+  <meta name="description" content="Kontakt Vinbot.dk – skriv til os via e-mail for support, presse og samarbejde." />
+  <link rel="canonical" href="/kontakt" />
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;margin:0;color:#0f172a}
-    header,main,footer{max-width:800px;margin:auto;padding:24px}
-    nav a{margin-right:12px;color:#334155;text-decoration:none}
-    nav a:hover{text-decoration:underline}
-    h1{text-transform:lowercase;font-size:2rem;margin:.2rem 0 1rem}
-    h2{text-transform:lowercase;font-size:1.25rem;margin-top:1.5rem}
-    .muted{color:#64748b}
-    .card{border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:18px}
-    code{background:#0f172a0d;padding:2px 6px;border-radius:6px}
+    :root{--bg:#0b0b0c;--grad1:#1b1214;--grad2:#0f0f10;--text:#e6e7ea;--muted:#a7acb8;--accent:#e74c3c;--card:#121316;--line:#26272c}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(120deg,var(--grad1),var(--grad2));color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#141315 0%, rgba(20,19,21,.85) 70%, rgba(20,19,21,0) 100%);backdrop-filter:saturate(1.1) blur(6px);border-bottom:1px solid var(--line)}
+    .bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:20px;padding:16px 20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(60% 60% at 30% 30%,#ffffff 0%,#ddd 35%,#aaa 80%);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .logo::after{content:"🤖"}
+    .brand span{font-weight:700;font-size:1.15rem;letter-spacing:.3px}
+    nav{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+    nav a{font-weight:600;opacity:.9}
+    nav a:hover{opacity:1;text-decoration:underline}
+    .pill{background:#1c1d22;border:1px solid var(--line);padding:8px 12px;border-radius:12px}
+    .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+    h1{font-size:2.1rem;margin:12px 0 10px}
+    h2{font-size:1.35rem;margin:28px 0 10px}
+    p,li{color:#d6d8dd}
+    .muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+    .row{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:820px){.row{grid-template-columns:1.1fr .9fr}}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .btn{background:#22232a;border:1px solid var(--line);padding:10px 14px;border-radius:10px;font-weight:600}
+    footer{border-top:1px solid var(--line);margin-top:40px}
+    .foot{max-width:1100px;margin:auto;padding:28px 20px;display:grid;gap:12px}
+    .foot small{color:var(--muted)}
+    .foot a{color:var(--muted)}
+    .foot a:hover{color:#fff;text-decoration:underline}
   </style>
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ContactPage",
-    "name":"Kontakt – VinBot.dk",
-    "url":"https://vinbot.dk/kontakt",
-    "publisher":{"@type":"Organization","name":"VinBot.dk","url":"https://vinbot.dk","email":"hej@vinbot.dk"},
-    "contactPoint":[{"@type":"ContactPoint","email":"hej@vinbot.dk","contactType":"customer support"}]
-  }
+  {"@context":"https://schema.org","@type":"ContactPage","name":"Kontakt – Vinbot.dk","url":"https://vinbot.dk/kontakt",
+   "publisher":{"@type":"Organization","name":"Vinbot.dk","url":"https://vinbot.dk","email":"hej@vinbot.dk"},
+   "contactPoint":[{"@type":"ContactPoint","email":"hej@vinbot.dk","contactType":"customer support"}]}
   </script>
 </head>
 <body>
-  <header>
-    <nav aria-label="primær">
-      <a href="/">forside</a>
-      <a href="/om-os">om os</a>
-      <a href="/kontakt" aria-current="page">kontakt</a>
-      <a href="/betingelser">betingelser</a>
-      <a href="/privatliv">privatliv</a>
-    </nav>
-    <h1>kontakt</h1>
-    <p class="muted">sidst opdateret: 7. november 2025</p>
+  <header class="header">
+    <div class="bar">
+      <a class="brand" href="/"><div class="logo" aria-hidden="true"></div><span>Vinbot</span></a>
+      <nav aria-label="Primær navigation">
+        <a href="/soeg">Søg</a>
+        <a href="/vin-til-mad">Vin til Mad</a>
+        <a href="/druer">Druer</a>
+        <a href="/pris">Pris</a>
+        <a href="/anbefalinger">Anbefalinger</a>
+        <a href="/blog">Blog</a>
+        <a class="pill" href="/kontakt" aria-current="page">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <div class="card">
-      <p>du kan altid skrive til os på <strong><a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a></strong>.</p>
-      <ul>
-        <li>support og spørgsmål</li>
-        <li>presse og medier</li>
-        <li>samarbejder og affiliate</li>
-        <li>forespørgsler om data og privatliv</li>
-      </ul>
-      <p class="muted">vi har ingen fysisk adresse eller telefon – al kontakt foregår via e-mail.</p>
+  <main class="wrap">
+    <p class="muted">Sidst opdateret: 7. november 2025</p>
+    <h1>Kontakt</h1>
+    <div class="row">
+      <section class="card">
+        <h2>Skriv til os</h2>
+        <p>Vi svarer normalt inden for 1–2 hverdage.</p>
+        <div class="cta">
+          <a class="btn" href="mailto:hej@vinbot.dk">✉️ hej@vinbot.dk</a>
+          <a class="btn" href="/privatliv">🔒 Privatliv</a>
+          <a class="btn" href="/betingelser">📄 Betingelser</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Vi har ingen fysisk adresse eller telefon – al kontakt foregår via e-mail.</p>
+      </section>
+      <aside class="card">
+        <h2>Henvendelsestyper</h2>
+        <ul>
+          <li>Support og spørgsmål</li>
+          <li>Presse og medier</li>
+          <li>Samarbejde og affiliate</li>
+          <li>Data og privatliv</li>
+        </ul>
+        <p><strong>Dataansvarlig:</strong> Vinbot.dk · <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a></p>
+      </aside>
     </div>
-
-    <h2>behandlingstid</h2>
-    <p>vi forsøger at svare inden for 1–2 hverdage.</p>
-
-    <h2>dataansvarlig</h2>
-    <p>vinbot.dk (dataansvarlig). kontakt: <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>.</p>
-
-    <h2>nyhedsindhold og annoncer</h2>
-    <p>henvendelser om annoncering og affiliate-partnerskaber modtages gerne på <a href="mailto:hej@vinbot.dk">hej@vinbot.dk</a>. læs også <a href="/betingelser">betingelser</a> og <a href="/privatliv">privatliv</a>.</p>
-
-    <h2>dkim/spf</h2>
-    <p>hvis du ikke modtager svar, tjek spam. whitelist domænet <code>vinbot.dk</code>.</p>
   </main>
 
-  <footer><small class="muted">© vinbot.dk · <a href="/betingelser">betingelser</a> · <a href="/privatliv">privatliv</a></small></footer>
+  <footer>
+    <div class="foot">
+      <small>© 2025 Vinbot.dk</small>
+      <small><a href="/om-os">Om os</a> · <a href="/betingelser">Betingelser</a> · <a href="/privatliv">Privatliv</a> · <a href="/kontakt" aria-current="page">Kontakt</a></small>
+    </div>
+  </footer>
 </body>
 </html>
