@@ -221,7 +221,6 @@
             <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
           </a>
         `).join('')
-        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv i feltet ovenfor og tryk Søg.</div>`;
     }
     function update(){ render(createIdeas($q.value)); }
 
