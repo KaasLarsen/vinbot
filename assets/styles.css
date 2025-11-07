@@ -407,3 +407,64 @@ footer .socials .fb:hover{
     gap: 14px;
   }
 }
+/* === CENTERET RÆKKE: [logo + menu] – logo til venstre, alt centreret === */
+.nav{
+  display: flex !important;          /* overstyr evt. grid/flex fra før */
+  justify-content: center;           /* centrer hele rækken i headeren */
+  align-items: center;
+  gap: 28px;                         /* afstand mellem logo og menupunkter */
+  padding: 14px 24px;
+  background: rgba(10,10,12,.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Logo-blok (til venstre i den centrerede række) */
+.nav .brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  margin: 0;                         /* ingen “skub” fra margin */
+}
+.nav .brand-logo{
+  width: 56px; height: 56px;
+  background: #fff;                  /* hvid baggrund = synligt logo */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.nav .brand-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
+.nav .brand h1{ margin:0; font-size:24px; font-weight:800; letter-spacing:.3px }
+
+/* Menu (står lige til højre for logoet, stadig i midten som helhed) */
+.main-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;           /* gør at selve link-rækken er stram og centreret */
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a{
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+.main-nav a:hover{ color: var(--text); }
+
+/* Mobil: stack under hinanden men stadig centreret */
+@media (max-width: 720px){
+  .nav{
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .main-nav{
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
