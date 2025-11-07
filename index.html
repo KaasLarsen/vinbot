@@ -15,6 +15,7 @@
     gtag('config', 'G-JB0QD6J59G');
   </script>
 
+  <!-- Ekstern CSS -->
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -58,6 +59,7 @@
 
   <!-- søgelogik -->
   <script>
+    // ---- KONFIG ----
     const USE_REDIRECT = false;     // sæt true når /out er klar
     const OUT_BASE = "/out/";
     const MERCHANTS = [
@@ -65,6 +67,7 @@
       { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" }
     ];
 
+    // ---- MINI-ORDBØGER ----
     const MAP = {
       druer: {
         "barolo":"nebbiolo","nebbiolo":"nebbiolo","pinot noir":"pinot noir","pinot":"pinot noir",
@@ -82,17 +85,22 @@
       }
     };
 
+    // ---- LOGIK ----
     function parseQuery(text){
       const q = (text||"").toLowerCase();
       const out = { druer:new Set(), mad:null, max:null, mood:null, raw:q.trim() };
+
       Object.keys(MAP.druer).forEach(k => { if (q.includes(k)) out.druer.add(MAP.druer[k]); });
       Object.keys(MAP.mad).forEach(k => { if (q.includes(k)) out.mad = k; });
+
       const m = q.match(/under\s*(\d+)\s*kr|(\d+)\s*kr/);
       if (m){ const n = parseInt(m[1]||m[2],10); if (!isNaN(n)) out.max = n; }
       if (q.includes("billig") || q.includes("budget")) out.max = Math.min(out.max||9999, 100);
+
       if (q.includes("sommer") || q.includes("terrasse")) out.mood = "sommer";
       if (q.includes("hygge")) out.mood = "hygge";
       if (q.includes("romantisk")) out.mood = "romantisk";
+
       if (!out.druer.size && !out.mad && out.raw) out.druer.add(out.raw);
       return out;
     }
@@ -128,30 +136,39 @@
       return ideas.slice(0, 9);
     }
 
+    // ---- RENDER ----
     const $q = document.getElementById('q');
     const $res = document.getElementById('results');
 
     function render(items){
-      $res.innerHTML = items.length
-        ? items.map(i => `
-          <a class="card outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title}">
-            <h3>${i.title}</h3>
-            <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
-          </a>
-        `).join('')
-        : `<div class="empty">Skriv i feltet ovenfor og tryk <b>Enter</b>.</div>`;
+      if (!items.length) {
+        $res.innerHTML = ""; // ← empty state fjernet
+        return;
+      }
+      $res.innerHTML = items.map(i => `
+        <a class="card outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title}">
+          <h3>${i.title}</h3>
+          <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
+        </a>
+      `).join('');
     }
 
     function update(){ render(createIdeas($q.value)); }
 
     $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
 
-    // GA4: track outbound
+    // ---- GA4 outbound click tracking ----
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label||a.href}); } catch(_){}
+      try {
+        gtag('event', 'outbound_click', {
+          event_category: 'affiliate',
+          event_label: a.dataset.label || a.href
+        });
+      } catch(_) {}
     });
 
+    // init
     update();
   </script>
 </body>
