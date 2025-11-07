@@ -1,25 +1,32 @@
 <!doctype html>
 <html lang="da">
->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vinbot – din personlige vinassistent</title>
   <meta name="description" content="Find den perfekte vin på sekunder. Søg efter drue, land, mad eller humør – Vinbot guider dig til de bedste køb." />
 
-  <!-- Google Analytics (GA4) -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-JB0QD6J59G');
+    gtag('js', new Date()); gtag('config', 'G-JB0QD6J59G');
   </script>
 
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* små UI-tilføjelser til loading/fejl */
+    .status{max-width:1100px;margin:0 auto;padding:0 20px}
+    .msg{margin:8px auto 0; padding:12px 14px; border-radius:12px; font-size:14px}
+    .msg.info{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); color:#efe9e0}
+    .msg.err{background:rgba(255,0,0,.08); border:1px solid rgba(255,0,0,.25); color:#ffeaea}
+    .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:-2px;margin-right:8px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
 </head>
-
 <body>
+
   <!-- header partial -->
   <div id="header"></div>
 
@@ -49,6 +56,9 @@
     </div>
   </header>
 
+  <!-- STATUS/FEJL -->
+  <div class="status"><div id="statusMsg"></div></div>
+
   <!-- RESULTATER -->
   <main class="wrap">
     <section class="grid" id="results" aria-live="polite"></section>
@@ -61,32 +71,33 @@
   <script>
     (async function(){
       const [h,f] = await Promise.all([
-        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
-        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()).catch(()=>"<nav class='nav'><a class='brand' href='/'><h1>Vinbot</h1></a></nav>"),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text()).catch(()=>"<footer>© <script>document.write(new Date().getFullYear())<\/script> Vinbot.dk</footer>")
       ]);
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
     })();
   </script>
 
-  <!-- SØGE-UI -->
+  <!-- SØGE-UI (mobil/desktop + live + robust fallback) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const $q    = document.getElementById('q');
-      const $res  = document.getElementById('results');
-      const $form = document.getElementById('searchForm');
+      const $q     = document.getElementById('q');
+      const $res   = document.getElementById('results');
+      const $form  = document.getElementById('searchForm');
+      const $status= document.getElementById('statusMsg');
 
-      const formatPrice = (v, c) => {
-        try { return new Intl.NumberFormat('da-DK', { style:'currency', currency: c || 'DKK', maximumFractionDigits: 2 }).format(v); }
+      let inflight = 0;      // drop forældede svar
+      let triedMock = false; // auto-selftest kun én gang
+
+      // ---- UI helpers ----
+      const setStatus = (html, cls="info") => { $status.innerHTML = html ? `<div class="msg ${cls}">${html}</div>` : ""; };
+      const priceFmt = (v,c) => {
+        try { return new Intl.NumberFormat('da-DK',{style:'currency',currency:c||'DKK',maximumFractionDigits:2}).format(v); }
         catch { return (v + ' ' + (c||'DKK')); }
       };
-
-      const renderError = (msg) => {
-        $res.innerHTML = `<div style="opacity:.8;text-align:center;padding:20px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.06)">${msg}</div>`;
-      };
-
       const renderProducts = (items) => {
-        if (!items.length) { $res.innerHTML = ""; return; }
+        if (!items.length){ $res.innerHTML=""; return; }
         $res.innerHTML = items.map(i => `
           <a class="card product outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title} @ ${i.merchant}">
             <div style="display:flex; gap:12px; align-items:center;">
@@ -96,7 +107,7 @@
               <div style="flex:1;min-width:0;">
                 <h3 style="margin:0 0 6px;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${i.title}</h3>
                 <div class="badges">
-                  ${i.price ? `<span class="badge">${formatPrice(i.price, i.currency)}</span>` : ``}
+                  ${i.price ? `<span class="badge">${priceFmt(i.price, i.currency)}</span>` : ``}
                   <span class="badge">${i.merchant}</span>
                 </div>
               </div>
@@ -105,37 +116,51 @@
         `).join('');
       };
 
-      let inflight = 0;
+      // ---- fetch products ----
+      const fetchProducts = async (q, {mock=false}={}) => {
+        const url = `/api/search?q=${encodeURIComponent(q)}${mock ? "&mock=1" : ""}`;
+        const r = await fetch(url, { cache:"no-store" });
+        if (!r.ok) throw new Error("API not OK");
+        const data = await r.json();
+        return (data.products || []).map(p => ({
+          title: p.title, price: p.price, currency: p.currency || "DKK",
+          image: p.image, merchant: p.merchant, href: p.url
+        }));
+      };
+
+      // ---- main search flow ----
       const search = async (query) => {
         const q = (query||"").trim();
-        if (!q) { renderProducts([]); return; }
+        if (!q){ renderProducts([]); setStatus(""); return; }
+
         const ticket = ++inflight;
+        setStatus(`<span class="spinner"></span> Søger efter “${q}”…`, "info");
         try{
-          const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { cache: "no-store" });
-          if (!r.ok) throw new Error("API not OK");
-          const data = await r.json();
-          if (ticket !== inflight) return;
-          const items = (data.products || []).map(p => ({
-            title: p.title,
-            price: p.price,
-            currency: p.currency || "DKK",
-            image: p.image,
-            merchant: p.merchant,
-            href: p.url
-          }));
-          renderProducts(items);
+          let items = await fetchProducts(q, {mock:false});
+          // hvis ingen hits og vi har ikke prøvet mock endnu → lav autodemo for at tjekke UI-kæden
+          if ((!items || !items.length) && !triedMock){
+            triedMock = true;
+            const mockItems = await fetchProducts(q, {mock:true}).catch(()=>[]);
+            if (mockItems.length){
+              setStatus(`Ingen live-hits på “${q}”. Viser demo-resultater (mock) for at bekræfte at søgning virker.`, "info");
+              if (ticket === inflight) renderProducts(mockItems);
+              return;
+            }
+          }
+          setStatus(items.length ? "" : `Ingen resultater på “${q}”. Prøv fx: barolo, nebbiolo, riesling.`, "info");
+          if (ticket === inflight) renderProducts(items);
         } catch (e){
-          console.error("Search failed", e);
-          if (ticket === inflight) renderError("Kunne ikke hente produkter lige nu. Prøv igen.");
+          console.error(e);
+          if (ticket === inflight){
+            setStatus(`Søgningen fejlede. Tjek /api/search direkte (prøv /api/search?q=barolo&mock=1).`, "err");
+            renderProducts([]);
+          }
         }
       };
 
-      // mobil & desktop
+      // ---- events ----
       $form.addEventListener('submit', (e) => { e.preventDefault(); search($q.value); });
-
-      // live-søgning mens man skriver
-      let t = null;
-      $q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => search($q.value), 300); });
+      let t=null; $q.addEventListener('input', () => { clearTimeout(t); t=setTimeout(()=>search($q.value), 300); });
 
       // GA4 outbound tracking
       document.addEventListener('click', (e)=>{
@@ -143,7 +168,8 @@
         try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
       });
 
-      renderProducts([]);
+      // init
+      renderProducts([]); setStatus("");
     });
   </script>
 </body>
