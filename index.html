@@ -29,11 +29,20 @@
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
 
     <div id="search" class="search-wrap">
-      <div class="search">
+      <form id="searchForm" class="search">
         <div class="icon">🔎</div>
-        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
-      </div>
-      <div class="search-hint">Tryk <kbd>Enter</kbd> for forslag</div>
+        <input
+          id="q"
+          type="search"
+          placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”"
+          autocomplete="off"
+          autofocus
+          enterkeyhint="search"
+          inputmode="search"
+        />
+        <button type="submit" style="display:none"></button>
+      </form>
+      <div class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</div>
     </div>
   </header>
 
@@ -57,10 +66,20 @@
     })();
   </script>
 
-  <!-- SØGE-UI (V1: henter produkter fra /api/search) -->
+  <!-- SØGE-UI (V1 feed-baseret + mobil-fix) -->
   <script>
     const $q = document.getElementById('q');
     const $res = document.getElementById('results');
+    const $form = document.getElementById('searchForm');
+
+    // mobil + desktop: submit trigger søgning
+    $form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      update();
+    });
+
+    // desktop fallback
+    $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
 
     async function update(){
       const q = $q.value.trim();
@@ -110,16 +129,13 @@
       } catch { return (v + ' ' + (c||'DKK')); }
     }
 
-    // Enter udfører søgning
-    $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
-
     // GA4: track outbound klik
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
       try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
     });
 
-    // init – hold resultater tomme indtil første søgning
+    // init – tomt ved start
     renderProducts([]);
   </script>
 </body>
