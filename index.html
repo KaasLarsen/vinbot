@@ -4,96 +4,247 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vinbot – din personlige vinassistent</title>
-  <meta name="description" content="Find den rigtige vin på sekunder. Søg efter drue, land, mad eller humør – Vinbot guider dig." />
+  <meta name="description" content="Find den perfekte vin på sekunder. Søg efter drue, land, mad eller humør – Vinbot guider dig til de bedste køb." />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX'); // ← indsæt dit GA4-id
+  </script>
+
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif;margin:0;background:#faf7f5;color:#222;}
-    header{padding:64px 16px;text-align:center}
-    h1{font-size: clamp(28px, 4vw, 44px);margin:0 0 12px}
-    p.lead{font-size: clamp(16px, 2.3vw, 20px);opacity:.85;margin:0 0 24px}
-    .search{max-width:820px;margin:16px auto;display:flex;gap:8px;padding:0 16px}
-    .search input{flex:1;font-size:20px;padding:16px 18px;border-radius:14px;border:1px solid #ddd;background:#fff;outline:none}
-    .grid{max-width:980px;margin:24px auto 56px;display:grid;gap:14px;padding:0 16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-    .card{display:block;padding:14px;border-radius:14px;border:1px solid #e9e3df;background:white;text-decoration:none;color:inherit}
-    .card h3{margin:0 0 6px;font-size:18px}
-    .pill{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #e6e0dc;background:#fcfbfa;margin-right:6px}
-    footer{padding:24px;color:#6b6059;font-size:13px;text-align:center}
+    :root{
+      --bg: #0f0e10;
+      --fg: #f4efe9;
+      --muted: #cfc7bd;
+      --card: rgba(255,255,255,0.07);
+      --cardBorder: rgba(255,255,255,0.15);
+      --accent: #e63b3b; /* moden rød */
+      --accent-2: #ff8a4c; /* varm orange til grad */
+      --glow: 0 10px 30px rgba(230,59,59,0.35);
+      --radius-lg: 18px;
+      --radius-sm: 12px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.45);
+    }
+    *{ box-sizing: border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "SF Pro Text", Arial, sans-serif;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(230,59,59,.25), transparent 60%),
+        radial-gradient(1200px 600px at 110% 10%, rgba(255,138,76,.22), transparent 65%),
+        linear-gradient(180deg, #121114 0%, #0b0a0c 100%);
+    }
+
+    /* Header / hero */
+    .nav{
+      max-width:1100px; margin:0 auto; padding:20px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg);
+    }
+    .brand-logo{
+      width:36px; height:36px; border-radius:10px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--glow);
+      font-weight:700;
+    }
+    .brand h1{ font-size:20px; margin:0; letter-spacing:.2px }
+
+    .hero{
+      max-width:1100px; margin:36px auto 24px; padding:0 20px;
+      text-align:center;
+    }
+    .hero h2{
+      margin:0 0 10px;
+      font-size: clamp(28px, 6vw, 56px);
+      line-height:1.05;
+      letter-spacing: -.5px;
+    }
+    .hero p{
+      margin:0 auto 26px; max-width:760px;
+      color:var(--muted); font-size: clamp(16px, 2.3vw, 18px);
+    }
+
+    /* Search */
+    .search-wrap{
+      max-width:900px; margin: 26px auto 10px; padding: 10px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid var(--cardBorder);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(8px);
+    }
+    .search{
+      display:flex; align-items:center; gap:12px;
+      background: rgba(0,0,0,.25); border-radius: 14px; padding: 8px 10px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .search .icon{ opacity:.7; padding-left:8px }
+    .search input{
+      flex:1; border:0; outline: none; background: transparent; color: var(--fg);
+      font-size: clamp(16px, 2.4vw, 20px); padding: 12px 2px;
+    }
+    .search button{
+      border:0; padding:12px 16px; cursor:pointer; color:white;
+      border-radius:12px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--glow);
+      font-weight: 700;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .search button:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(230,59,59,0.4) }
+    .chips{
+      display:flex; gap:10px; flex-wrap: wrap; margin-top:12px;
+      justify-content:center;
+    }
+    .chip{
+      border:1px solid var(--cardBorder); background: var(--card);
+      padding:8px 12px; border-radius:999px; font-size:14px; color:var(--fg);
+      cursor:pointer; transition: background .12s, transform .12s; user-select:none;
+    }
+    .chip:hover{ background: rgba(255,255,255,.14); transform: translateY(-1px) }
+
+    /* Results grid */
+    .wrap{
+      max-width:1100px; margin: 24px auto 80px; padding:0 20px;
+    }
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .card{
+      display:block; text-decoration:none; color:inherit;
+      background: var(--card);
+      border: 1px solid var(--cardBorder);
+      border-radius: var(--radius-lg);
+      padding:16px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+      box-shadow: var(--shadow-lg);
+    }
+    .card h3{ margin:0 0 8px; font-size:18px; letter-spacing:.2px }
+    .badges{ display:flex; gap:8px; flex-wrap:wrap }
+    .badge{
+      font-size:12px; color:#f7f2ec; background: rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.16);
+      padding:6px 8px; border-radius: 999px;
+    }
+
+    /* Footer */
+    footer{
+      color: #a99f95; text-align:center; padding:26px 20px 60px;
+      font-size: 13px;
+    }
+
+    /* focus-visible for a11y */
+    .card:focus-visible, .chip:focus-visible, .search input:focus-visible, .search button:focus-visible{
+      outline: 2px solid #ffffff; outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Vinbot</h1>
-    <p class="lead">Søg vin efter <b>drue</b>, <b>land</b>, <b>mad</b> eller <b>humør</b> – vi foreslår de bedste steder at starte.</p>
-    <div class="search">
-      <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autofocus />
-    </div>
-    <div id="chips" aria-label="hurtige genveje" style="margin-top:8px">
-      <span class="pill" data-q="barolo til bøf under 150 kr">Barolo · bøf · <150</span>
-      <span class="pill" data-q="chianti til pizza">Chianti · pizza</span>
-      <span class="pill" data-q="sauvignon blanc til sushi">Sauvignon Blanc · sushi</span>
-      <span class="pill" data-q="rosé til terrasse under 100 kr">Rosé · terrasse · <100</span>
+  <nav class="nav">
+    <a class="brand" href="/">
+      <div class="brand-logo">🍷</div>
+      <h1>Vinbot</h1>
+    </a>
+  </nav>
+
+  <header class="hero">
+    <h2>Find vin på sekunder</h2>
+    <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
+
+    <div class="search-wrap">
+      <div class="search">
+        <div class="icon">🔎</div>
+        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
+        <button id="searchBtn">Søg</button>
+      </div>
+      <div class="chips" id="chips">
+        <span class="chip" data-q="barolo til bøf under 150 kr">Barolo · bøf · &lt;150</span>
+        <span class="chip" data-q="chianti til pizza">Chianti · pizza</span>
+        <span class="chip" data-q="sauvignon blanc til sushi">Sauvignon Blanc · sushi</span>
+        <span class="chip" data-q="rosé terrasse under 100 kr">Rosé · terrasse · &lt;100</span>
+        <span class="chip" data-q="riesling til ostebord">Riesling · ost</span>
+      </div>
     </div>
   </header>
 
-  <section class="grid" id="results" aria-live="polite"></section>
+  <main class="wrap">
+    <section class="grid" id="results" aria-live="polite"></section>
+  </main>
 
   <footer>
-    <div>Annonce- og affiliate-disclaimer: Vi kan modtage kommission via links. 🍷</div>
+    Annonce- og affiliate-disclaimer: Vi kan modtage kommission via links. 🤝
   </footer>
 
   <script>
-    // ---- KONFIG (midlertidig) ----
-    // Når du senere vil aktivere din /out-redirector, sæt USE_REDIRECT=true og angiv OUT_BASE.
+    // ---- KONFIG ----
+    // Når du vil aktivere din /out-redirect senere: sæt USE_REDIRECT=true og justér OUT_BASE.
     const USE_REDIRECT = false;
     const OUT_BASE = "/out/"; // fx "https://vinbot.dk/out/"
-
-    // Dine forhandlere (vi kan tilføje flere og kommission senere)
+    // Forhandlere (udvid senere + kommission/EPC når vi vil vægte)
     const MERCHANTS = [
       { name: "Jysk Vin", host: "jyskvin.dk", search: "https://jyskvin.dk/search?q={Q}" },
-      { name: "Beer Me", host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" },
+      { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" },
       // { name: "VildMedVin", host: "vildmedvin.dk", search: "https://vildmedvin.dk/search?q={Q}" },
     ];
 
-    // Simple ordbøger/synonymer (kan udvides løbende)
+    // ---- SIMPLE ORDBØGER / SYNONYMER ----
     const MAP = {
       druer: {
-        "barolo":"nebbiolo","nebbiolo":"nebbiolo","pinot noir":"pinot noir","chianti":"sangiovese",
-        "sauvignon blanc":"sauvignon blanc","riesling":"riesling","chardonnay":"chardonnay","malbec":"malbec","syrah":"syrah","shiraz":"syrah"
+        "barolo":"nebbiolo","nebbiolo":"nebbiolo","pinot noir":"pinot noir","pinot":"pinot noir",
+        "chianti":"sangiovese","sangiovese":"sangiovese","primitivo":"primitivo",
+        "sauvignon blanc":"sauvignon blanc","riesling":"riesling","chardonnay":"chardonnay",
+        "syrah":"syrah","shiraz":"syrah","malbec":"malbec","barbera":"barbera","tempranillo":"tempranillo",
+        "rioja":"tempranillo","ribera":"tempranillo","albariño":"albariño","albarino":"albariño",
+        "crémant":"crémant","cremant":"crémant","rosé":"rosé","rose":"rosé","chablis":"chardonnay"
       },
       mad: {
         "bøf":["nebbiolo","cabernet","syrah"], "oksekød":["cabernet","syrah","barolo"],
         "pizza":["chianti","primitivo","barbera"], "tapas":["rioja","garnacha","cava"],
-        "sushi":["riesling","sauvignon blanc","crémant"], "fisk":["riesling","chablis","albariño"]
+        "sushi":["riesling","sauvignon blanc","crémant"], "fisk":["riesling","chablis","albariño"],
+        "lam":["syrah","ribera","chianti"], "ost":["riesling","portvin","chardonnay"]
       }
     };
 
+    // ---- LOGIK ----
     function parseQuery(text){
       const q = (text||"").toLowerCase();
-      const out = { druer:new Set(), mad:null, max:null, mood:null, raw:q };
+      const out = { druer:new Set(), mad:null, max:null, mood:null, raw:q.trim() };
 
-      // drue/region-baseret nøgler
       Object.keys(MAP.druer).forEach(k => { if (q.includes(k)) out.druer.add(MAP.druer[k]); });
-
-      // mad
       Object.keys(MAP.mad).forEach(k => { if (q.includes(k)) out.mad = k; });
 
-      // pris
+      // pris: "under 150 kr" eller bare "150 kr"
       const m = q.match(/under\s*(\d+)\s*kr|(\d+)\s*kr/);
       if (m){ const n = parseInt(m[1]||m[2],10); if (!isNaN(n)) out.max = n; }
+      if (q.includes("billig") || q.includes("budget")) out.max = Math.min(out.max||9999, 100);
 
-      // humør/lejlighed (kan udvides)
       if (q.includes("sommer") || q.includes("terrasse")) out.mood = "sommer";
       if (q.includes("hygge")) out.mood = "hygge";
       if (q.includes("romantisk")) out.mood = "romantisk";
 
-      // hvis brugeren intet skriver specifikt, brug hele teksten som søgeord
-      if (!out.druer.size && !out.mad) out.druer.add(q.trim());
+      if (!out.druer.size && !out.mad && out.raw) out.druer.add(out.raw);
       return out;
     }
 
     function buildTarget(merchant, keyword){
       const target = merchant.search.includes("{Q}")
         ? merchant.search.replace("{Q}", encodeURIComponent(keyword))
-        : merchant.search; // kategori fallback
+        : merchant.search;
       if (!USE_REDIRECT) return target;
       const u = new URL(OUT_BASE, location.origin);
       u.searchParams.set("to", target);
@@ -101,18 +252,17 @@
       return u.toString();
     }
 
-    function suggest(text){
+    function createIdeas(text){
       const f = parseQuery(text);
-      const keywords = [];
-      if (f.mad && MAP.mad[f.mad]) keywords.push(...MAP.mad[f.mad].slice(0,2));
-      if (f.druer.size) keywords.push(...Array.from(f.druer).slice(0,2));
-      if (!keywords.length && f.raw) keywords.push(f.raw);
+      const keys = [];
+      if (f.mad && MAP.mad[f.mad]) keys.push(...MAP.mad[f.mad].slice(0,2));
+      if (f.druer.size) keys.push(...Array.from(f.druer).slice(0,2));
+      if (!keys.length && f.raw) keys.push(f.raw);
 
-      // Vægtning kan senere tage højde for kommission/EPC
-      const merchants = MERCHANTS.slice(0, 4);
+      // TODO senere: vægt efter kommission/EPC
       const ideas = [];
-      for (const kw of keywords){
-        for (const m of merchants){
+      for (const kw of keys){
+        for (const m of MERCHANTS){
           ideas.push({
             title: `${kw} hos ${m.name}`,
             href: buildTarget(m, kw),
@@ -120,28 +270,47 @@
           });
         }
       }
-      return ideas.slice(0, 8);
+      return ideas.slice(0, 9);
     }
 
+    // ---- RENDER ----
     const $q = document.getElementById('q');
+    const $btn = document.getElementById('searchBtn');
     const $res = document.getElementById('results');
+
     function render(items){
-      $res.innerHTML = items.map(i => `
-        <a class="card" href="${i.href}" rel="nofollow sponsored" target="_blank">
-          <h3>${i.title}</h3>
-          <div>${i.badges.map(b=>`<span class="pill">${b}</span>`).join(' ')}</div>
-        </a>
-      `).join('') || `<div style="opacity:.7;text-align:center">Skriv fx “barolo til bøf under 150 kr”</div>`;
+      $res.innerHTML = items.length
+        ? items.map(i => `
+          <a class="card outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title}">
+            <h3>${i.title}</h3>
+            <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
+          </a>
+        `).join('')
+        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv fx <em>“barolo til bøf under 150 kr”</em> eller vælg en chip ovenfor.</div>`;
     }
 
-    $q.addEventListener('input', e => render(suggest(e.target.value)));
+    function update(){ render(createIdeas($q.value)); }
+
+    $q.addEventListener('input', update);
+    $btn.addEventListener('click', update);
     document.getElementById('chips').addEventListener('click', e=>{
-      const pill = e.target.closest('[data-q]'); if(!pill) return;
-      $q.value = pill.dataset.q; render(suggest($q.value));
+      const chip = e.target.closest('.chip'); if(!chip) return;
+      $q.value = chip.dataset.q; update();
     });
 
-    // Første indlæsning
-    render(suggest(""));
+    // GA4 outbound-click event
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a.outbound'); if(!a) return;
+      try {
+        gtag('event', 'outbound_click', {
+          event_category: 'affiliate',
+          event_label: a.dataset.label || a.href
+        });
+      } catch(_) {}
+    });
+
+    // init
+    update();
   </script>
 </body>
 </html>
