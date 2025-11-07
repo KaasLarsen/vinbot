@@ -14,19 +14,21 @@
     gtag('js', new Date());
     gtag('config', 'G-JB0QD6J59G');
   </script>
-  
-<link rel="stylesheet" href="/assets/styles.css">
 
+  <!-- Ekstern CSS -->
+  <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
+
   <!-- header partial mount -->
   <div id="header"></div>
 
+  <!-- hero / søgefelt -->
   <header class="hero">
     <h2>Find vin på sekunder</h2>
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
 
-    <div class="search-wrap">
+    <div id="search" class="search-wrap">
       <div class="search">
         <div class="icon">🔎</div>
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
@@ -35,6 +37,7 @@
     </div>
   </header>
 
+  <!-- resultater -->
   <main class="wrap">
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
@@ -42,8 +45,8 @@
   <!-- footer partial mount -->
   <div id="footer"></div>
 
+  <!-- partial loader -->
   <script>
-    // hent header/footer partials
     (async function loadPartials(){
       const [h,f] = await Promise.all([
         fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
@@ -54,6 +57,7 @@
     })();
   </script>
 
+  <!-- søgefunktion -->
   <script>
     // ---- KONFIG ----
     const USE_REDIRECT = false;   // sæt true når /out er klar
@@ -145,13 +149,15 @@
             <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
           </a>
         `).join('')
+        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv i feltet ovenfor og tryk Søg.</div>`;
     }
+
     function update(){ render(createIdeas($q.value)); }
 
     $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
     $btn.addEventListener('click', update);
 
-    // GA4 outbound-click event
+    // ---- GA4 tracking af outbound klik ----
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
       try {
