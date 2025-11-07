@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vinbot – din personlige vinassistent</title>
   <meta name="description" content="Find den perfekte vin på sekunder. Søg efter drue, mad, pris eller lejlighed." />
+
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
   <script>
-    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-    gtag('js',new Date()); gtag('config','G-JB0QD6J59G');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date()); gtag('config', 'G-JB0QD6J59G');
   </script>
+
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
+  <!-- HEADER PARTIAL -->
   <div id="header"></div>
 
+  <!-- HERO -->
   <header class="hero">
     <h1>Find vin på sekunder</h1>
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
@@ -22,17 +28,24 @@
     <div class="search-wrap">
       <form id="searchForm" class="search" action="#" method="get" novalidate>
         <div class="icon">🔎</div>
-        <input id="q" type="search" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" enterkeyhint="search" inputmode="search" />
+        <input
+          id="q"
+          type="search"
+          placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”"
+          autocomplete="off"
+          enterkeyhint="search"
+          inputmode="search"
+        />
         <button type="submit" class="btn-primary">Søg</button>
       </form>
       <div class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</div>
     </div>
   </header>
 
-  <!-- Dialog-boks (AI-agtig opfølgning) -->
+  <!-- OPFØLGNING (AI-agtig) -->
   <section id="followup" class="followup hidden">
     <div class="followup-inner">
-      <h2>Lad mig lige finpudse matchene</h2>
+      <h2>Fint! Skal jeg lige finpudse?</h2>
       <form id="followForm" class="follow-grid">
         <label>Type
           <select id="f_type">
@@ -61,82 +74,137 @@
     </div>
   </section>
 
+  <!-- STATUS -->
   <div class="status"><div id="statusMsg"></div></div>
 
+  <!-- RESULTATER -->
   <main class="wrap">
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
+  <!-- FOOTER PARTIAL -->
   <div id="footer"></div>
 
+  <!-- PARTIAL LOADER + BURGER INIT -->
   <script>
-    (async function(){
-      const [h,f] = await Promise.all([
-        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()).catch(()=>"<nav class='nav'><a class='brand' href='/'><h1>Vinbot</h1></a></nav>"),
-        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text()).catch(()=>"<footer class='footer'>© <script>document.write(new Date().getFullYear())<\/script> Vinbot.dk</footer>")
-      ]);
-      document.getElementById('header').innerHTML = h;
-      document.getElementById('footer').innerHTML = f;
+    (async function loadPartials(){
+      const bust = `v=${Date.now()}`;
+      async function get(url, fallback){
+        try{
+          const r = await fetch(`${url}?${bust}`, { cache: "no-store" });
+          if (!r.ok) throw new Error(r.status);
+          return await r.text();
+        }catch(e){
+          console.warn("Kunne ikke hente partial:", url, e);
+          return fallback;
+        }
+      }
+
+      const headerHTML = await get(
+        "/partials/header.html",
+        "<nav class='nav'><a class='brand' href='/'><span class='brand-logo'></span><h1>Vinbot</h1></a><ul class='main-nav'><li><a href='/'>Søg</a></li></ul></nav>"
+      );
+      const footerHTML = await get(
+        "/partials/footer.html",
+        "<footer>© <span id='y'></span> Vinbot.dk</footer>"
+      );
+
+      document.getElementById("header").innerHTML = headerHTML;
+      document.getElementById("footer").innerHTML = footerHTML;
+
+      // sæt år hvis fallback blev brugt
+      const yEl = document.getElementById("y"); if (yEl) yEl.textContent = new Date().getFullYear();
+
+      // === Init burger-menu (når headeren er indsat) ===
+      const nav  = document.querySelector('.nav');
+      const btn  = document.querySelector('.nav-toggle');
+      const menu = document.getElementById('mainMenu');
+      if (nav && btn && menu){
+        const close = () => { nav.classList.remove('nav--open'); btn.setAttribute('aria-expanded','false'); };
+        const toggle = () => {
+          const open = !nav.classList.contains('nav--open');
+          nav.classList.toggle('nav--open', open);
+          btn.setAttribute('aria-expanded', String(open));
+        };
+        btn.addEventListener('click', toggle);
+        menu.addEventListener('click', (e)=>{ if (e.target.matches('a')) close(); });
+        document.addEventListener('click', (e)=>{ if (!nav.contains(e.target)) close(); });
+        document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
+      }
     })();
   </script>
 
+  <!-- SEARCH UI -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const $q = document.getElementById('q');
-      const $form = document.getElementById('searchForm');
-      const $res = document.getElementById('results');
+      const $q      = document.getElementById('q');
+      const $form   = document.getElementById('searchForm');
+      const $res    = document.getElementById('results');
       const $status = document.getElementById('statusMsg');
       const $follow = document.getElementById('followup');
       const $followForm = document.getElementById('followForm');
 
       let inflight = 0;
+
       const setStatus = (html, cls="info") => { $status.innerHTML = html ? `<div class="msg ${cls}">${html}</div>` : ""; };
       const priceFmt = (v,c) => { try { return new Intl.NumberFormat('da-DK',{style:'currency',currency:c||'DKK'}).format(v); } catch { return v+(c?' '+c:''); } };
+
       const render = (items) => {
         if (!items.length){ $res.innerHTML=""; return; }
-        $res.innerHTML = items.map(i=>`
+        $res.innerHTML = items.map(i => `
           <a class="card product outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title} @ ${i.merchant}">
-            <div class="card-media">${i.image?`<img src="${i.image}" alt="${i.title}" loading="lazy">`:`<div class="img-fallback">🍷</div>`}</div>
+            <div class="card-media">${i.image ? `<img src="${i.image}" alt="${i.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}</div>
             <div class="card-body">
               <h3>${i.title}</h3>
               <div class="badges">
-                ${i.price?`<span class="badge">${priceFmt(i.price,i.currency)}</span>`:""}
+                ${i.price ? `<span class="badge">${priceFmt(i.price, i.currency)}</span>` : ``}
                 <span class="badge">${i.merchant}</span>
               </div>
             </div>
-          </a>`).join('');
+          </a>
+        `).join('');
       };
 
       async function fetchProducts(q){
-        const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`,{cache:"no-store"});
+        const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { cache:"no-store" });
         if (!r.ok) throw new Error("API not OK");
         const data = await r.json();
-        return (data.products||[]).map(p=>({ title:p.title, price:p.price, currency:p.currency||"DKK", image:p.image, merchant:p.merchant, href:p.url }));
+        return (data.products || []).map(p => ({
+          title: p.title,
+          price: p.price,
+          currency: p.currency || "DKK",
+          image: p.image,
+          merchant: p.merchant,
+          href: p.url
+        }));
       }
 
       async function search(query){
         const q = (query||"").trim();
         if (!q){ render([]); setStatus(""); return; }
+
         const ticket = ++inflight;
-        setStatus(`<span class="spinner"></span> Søger efter “${q}”…`);
+        setStatus(`<span class="spinner"></span> Søger efter “${q}”…`, "info");
         try{
           const items = await fetchProducts(q);
           if (ticket !== inflight) return;
           render(items);
-          setStatus(items.length?"":"Ingen resultater. Prøv at præcisere – brug boksen nedenfor.");
-          // Vis follow-up boksen hvis få resultater
+          setStatus(items.length ? "" : `Ingen resultater. Prøv at præcisere – brug boksen nedenfor.`);
+          // vis opfølgning hvis få/ingen resultater
           $follow.classList.toggle('hidden', items.length >= 6);
         } catch(e){
           if (ticket !== inflight) return;
+          console.error(e);
           setStatus("Søgningen fejlede. Prøv igen.", "err");
           render([]); $follow.classList.remove('hidden');
         }
       }
 
+      // events
       $form.addEventListener('submit', (e)=>{ e.preventDefault(); search($q.value); });
       let t=null; $q.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(()=>search($q.value), 300); });
 
-      // Follow-up: bygger ny søgning ud fra brugerens valg
+      // opfølgning → bygger ny query
       $followForm.addEventListener('submit', (e)=>{
         e.preventDefault();
         const type = document.getElementById('f_type').value;
@@ -148,12 +216,13 @@
         search(newQ);
       });
 
-      // GA4 outbound
+      // GA4 outbound tracking
       document.addEventListener('click', (e)=>{
-        const a=e.target.closest('a.outbound'); if(!a) return;
-        try{ gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label||a.href}); }catch(_){}
+        const a = e.target.closest('a.outbound'); if(!a) return;
+        try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
       });
 
+      // init
       render([]); setStatus("");
     });
   </script>
