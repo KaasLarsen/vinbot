@@ -12,7 +12,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-JB0QD6J59G'); // ← indsæt dit GA4-id
+    gtag('config', 'G-JB0QD6J59G');
   </script>
 
   <style>
@@ -22,11 +22,10 @@
       --muted: #cfc7bd;
       --card: rgba(255,255,255,0.07);
       --cardBorder: rgba(255,255,255,0.15);
-      --accent: #e63b3b; /* moden rød */
-      --accent-2: #ff8a4c; /* varm orange til grad */
+      --accent: #e63b3b;
+      --accent-2: #ff8a4c;
       --glow: 0 10px 30px rgba(230,59,59,0.35);
       --radius-lg: 18px;
-      --radius-sm: 12px;
       --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
       --shadow-lg: 0 12px 40px rgba(0,0,0,.45);
     }
@@ -34,7 +33,7 @@
     html,body{ height:100% }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "SF Pro Text", Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
       color:var(--fg);
       background:
         radial-gradient(1200px 500px at 10% -10%, rgba(230,59,59,.25), transparent 60%),
@@ -42,41 +41,32 @@
         linear-gradient(180deg, #121114 0%, #0b0a0c 100%);
     }
 
-    /* Header / hero */
+    /* Topbar */
     .nav{
-      max-width:1100px; margin:0 auto; padding:20px 20px;
-      display:flex; align-items:center; justify-content:space-between;
+      max-width:1100px; margin:0 auto; padding:18px 20px;
+      display:flex; align-items:center; justify-content:flex-start; gap:14px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg);
-    }
-    .brand-logo{
-      width:36px; height:36px; border-radius:10px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: var(--glow);
-      font-weight:700;
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg); }
+    .brand img{
+      width:40px; height:40px; display:block; object-fit:contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
     }
     .brand h1{ font-size:20px; margin:0; letter-spacing:.2px }
 
+    /* Hero */
     .hero{
-      max-width:1100px; margin:36px auto 24px; padding:0 20px;
-      text-align:center;
+      max-width:980px; margin:32px auto 16px; padding:0 20px; text-align:center;
     }
     .hero h2{
       margin:0 0 10px;
       font-size: clamp(28px, 6vw, 56px);
-      line-height:1.05;
-      letter-spacing: -.5px;
+      line-height:1.05; letter-spacing:-.5px;
     }
-    .hero p{
-      margin:0 auto 26px; max-width:760px;
-      color:var(--muted); font-size: clamp(16px, 2.3vw, 18px);
-    }
+    .hero p{ margin: 0 auto 22px; max-width:760px; color:var(--muted); font-size: clamp(16px, 2.3vw, 18px); }
 
     /* Search */
     .search-wrap{
-      max-width:900px; margin: 26px auto 10px; padding: 10px;
+      max-width:900px; margin: 22px auto 0; padding: 12px;
       border-radius: var(--radius-lg);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border: 1px solid var(--cardBorder);
@@ -90,74 +80,41 @@
     }
     .search .icon{ opacity:.7; padding-left:8px }
     .search input{
-      flex:1; border:0; outline: none; background: transparent; color: var(--fg);
+      flex:1; border:0; outline:none; background:transparent; color:var(--fg);
       font-size: clamp(16px, 2.4vw, 20px); padding: 12px 2px;
     }
     .search button{
       border:0; padding:12px 16px; cursor:pointer; color:white;
       border-radius:12px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: var(--glow);
-      font-weight: 700;
-      transition: transform .12s ease, box-shadow .12s ease;
+      font-weight:700; transition: transform .12s ease, box-shadow .12s ease;
     }
     .search button:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(230,59,59,0.4) }
-    .chips{
-      display:flex; gap:10px; flex-wrap: wrap; margin-top:12px;
-      justify-content:center;
-    }
-    .chip{
-      border:1px solid var(--cardBorder); background: var(--card);
-      padding:8px 12px; border-radius:999px; font-size:14px; color:var(--fg);
-      cursor:pointer; transition: background .12s, transform .12s; user-select:none;
-    }
-    .chip:hover{ background: rgba(255,255,255,.14); transform: translateY(-1px) }
 
-    /* Results grid */
-    .wrap{
-      max-width:1100px; margin: 24px auto 80px; padding:0 20px;
-    }
-    .grid{
-      display:grid; gap:16px;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    }
+    /* Results */
+    .wrap{ max-width:1100px; margin: 28px auto 80px; padding:0 20px; }
+    .grid{ display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     .card{
       display:block; text-decoration:none; color:inherit;
-      background: var(--card);
-      border: 1px solid var(--cardBorder);
-      border-radius: var(--radius-lg);
-      padding:16px;
-      box-shadow: var(--shadow-sm);
+      background: var(--card); border: 1px solid var(--cardBorder);
+      border-radius: var(--radius-lg); padding:16px; box-shadow: var(--shadow-sm);
       transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.28);
-      box-shadow: var(--shadow-lg);
-    }
+    .card:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.28); box-shadow: var(--shadow-lg); }
     .card h3{ margin:0 0 8px; font-size:18px; letter-spacing:.2px }
     .badges{ display:flex; gap:8px; flex-wrap:wrap }
-    .badge{
-      font-size:12px; color:#f7f2ec; background: rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.16);
-      padding:6px 8px; border-radius: 999px;
-    }
+    .badge{ font-size:12px; color:#f7f2ec; background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); padding:6px 8px; border-radius:999px; }
 
-    /* Footer */
-    footer{
-      color: #a99f95; text-align:center; padding:26px 20px 60px;
-      font-size: 13px;
-    }
+    footer{ color:#a99f95; text-align:center; padding:26px 20px 60px; font-size:13px; }
 
-    /* focus-visible for a11y */
-    .card:focus-visible, .chip:focus-visible, .search input:focus-visible, .search button:focus-visible{
-      outline: 2px solid #ffffff; outline-offset: 3px;
-    }
+    .card:focus-visible, .search input:focus-visible, .search button:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
   </style>
 </head>
 <body>
   <nav class="nav">
     <a class="brand" href="/">
-      <div class="brand-logo">🍷</div>
+      <!-- Brug din transparente PNG/SVG her -->
+      <img src="/assets/vinbot-logo.png" alt="Vinbot logo" />
       <h1>Vinbot</h1>
     </a>
   </nav>
@@ -172,13 +129,7 @@
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”" autocomplete="off" autofocus />
         <button id="searchBtn">Søg</button>
       </div>
-      <div class="chips" id="chips">
-        <span class="chip" data-q="barolo til bøf under 150 kr">Barolo · bøf · &lt;150</span>
-        <span class="chip" data-q="chianti til pizza">Chianti · pizza</span>
-        <span class="chip" data-q="sauvignon blanc til sushi">Sauvignon Blanc · sushi</span>
-        <span class="chip" data-q="rosé terrasse under 100 kr">Rosé · terrasse · &lt;100</span>
-        <span class="chip" data-q="riesling til ostebord">Riesling · ost</span>
-      </div>
+      <!-- Chips-linjen er fjernet som ønsket -->
     </div>
   </header>
 
@@ -192,17 +143,14 @@
 
   <script>
     // ---- KONFIG ----
-    // Når du vil aktivere din /out-redirect senere: sæt USE_REDIRECT=true og justér OUT_BASE.
-    const USE_REDIRECT = false;
-    const OUT_BASE = "/out/"; // fx "https://vinbot.dk/out/"
-    // Forhandlere (udvid senere + kommission/EPC når vi vil vægte)
+    const USE_REDIRECT = false;               // sæt true når /out er klar
+    const OUT_BASE = "/out/";                 // fx "https://vinbot.dk/out/"
     const MERCHANTS = [
       { name: "Jysk Vin", host: "jyskvin.dk", search: "https://jyskvin.dk/search?q={Q}" },
-      { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" },
-      // { name: "VildMedVin", host: "vildmedvin.dk", search: "https://vildmedvin.dk/search?q={Q}" },
+      { name: "Beer Me",  host: "beerme.dk",  search: "https://beerme.dk/soeg?q={Q}" }
     ];
 
-    // ---- SIMPLE ORDBØGER / SYNONYMER ----
+    // ---- MINI-ORDBØGER ----
     const MAP = {
       druer: {
         "barolo":"nebbiolo","nebbiolo":"nebbiolo","pinot noir":"pinot noir","pinot":"pinot noir",
@@ -228,7 +176,6 @@
       Object.keys(MAP.druer).forEach(k => { if (q.includes(k)) out.druer.add(MAP.druer[k]); });
       Object.keys(MAP.mad).forEach(k => { if (q.includes(k)) out.mad = k; });
 
-      // pris: "under 150 kr" eller bare "150 kr"
       const m = q.match(/under\s*(\d+)\s*kr|(\d+)\s*kr/);
       if (m){ const n = parseInt(m[1]||m[2],10); if (!isNaN(n)) out.max = n; }
       if (q.includes("billig") || q.includes("budget")) out.max = Math.min(out.max||9999, 100);
@@ -259,7 +206,6 @@
       if (f.druer.size) keys.push(...Array.from(f.druer).slice(0,2));
       if (!keys.length && f.raw) keys.push(f.raw);
 
-      // TODO senere: vægt efter kommission/EPC
       const ideas = [];
       for (const kw of keys){
         for (const m of MERCHANTS){
@@ -286,17 +232,12 @@
             <div class="badges">${i.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
           </a>
         `).join('')
-        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv fx <em>“barolo til bøf under 150 kr”</em> eller vælg en chip ovenfor.</div>`;
+        : `<div style="opacity:.75;text-align:center;padding:26px 0;">Skriv i feltet ovenfor og tryk Søg.</div>`;
     }
-
     function update(){ render(createIdeas($q.value)); }
 
-    $q.addEventListener('input', update);
+    $q.addEventListener('keydown', e => { if (e.key === 'Enter') update(); });
     $btn.addEventListener('click', update);
-    document.getElementById('chips').addEventListener('click', e=>{
-      const chip = e.target.closest('.chip'); if(!chip) return;
-      $q.value = chip.dataset.q; update();
-    });
 
     // GA4 outbound-click event
     document.addEventListener('click', (e)=>{
