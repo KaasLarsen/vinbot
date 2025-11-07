@@ -15,24 +15,14 @@
   </script>
 
   <link rel="stylesheet" href="/assets/styles.css">
-  <style>
-    /* små UI-tilføjelser til loading/fejl */
-    .status{max-width:1100px;margin:0 auto;padding:0 20px}
-    .msg{margin:8px auto 0; padding:12px 14px; border-radius:12px; font-size:14px}
-    .msg.info{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); color:#efe9e0}
-    .msg.err{background:rgba(255,0,0,.08); border:1px solid rgba(255,0,0,.25); color:#ffeaea}
-    .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:-2px;margin-right:8px}
-    @keyframes spin{to{transform:rotate(360deg)}}
-  </style>
 </head>
 <body>
-
   <!-- header partial -->
   <div id="header"></div>
 
   <!-- HERO -->
   <header class="hero">
-    <h2>Find vin på sekunder</h2>
+    <h1>Find vin på sekunder</h1>
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
 
     <div id="search" class="search-wrap">
@@ -46,17 +36,30 @@
           enterkeyhint="search"
           inputmode="search"
         />
-        <button type="submit" aria-label="Søg" style="
-          border:0;padding:10px 14px;margin-left:6px;cursor:pointer;color:#fff;
-          border-radius:12px;background:linear-gradient(135deg,#e63b3b,#ff8a4c);
-          box-shadow:0 10px 30px rgba(230,59,59,.35);font-weight:700;
-        ">Søg</button>
+        <button type="submit" aria-label="Søg" class="btn-primary">Søg</button>
       </form>
       <div class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</div>
+
+      <!-- Assistent-chips -->
+      <div id="assistChips" class="chips">
+        <!-- Type -->
+        <button class="chip" data-add=" rødvin">Rødvin</button>
+        <button class="chip" data-add=" hvidvin">Hvidvin</button>
+        <button class="chip" data-add=" rosé">Rosé</button>
+        <button class="chip" data-add=" mousserende">Mousserende</button>
+        <!-- Budget -->
+        <button class="chip" data-add=" under 100 kr">Under 100 kr</button>
+        <button class="chip" data-add=" under 150 kr">Under 150 kr</button>
+        <button class="chip" data-add=" under 250 kr">Under 250 kr</button>
+        <!-- Mad -->
+        <button class="chip" data-add=" til pizza">Til pizza</button>
+        <button class="chip" data-add=" til sushi">Til sushi</button>
+        <button class="chip" data-add=" til oksekød">Til oksekød</button>
+      </div>
     </div>
   </header>
 
-  <!-- STATUS/FEJL -->
+  <!-- STATUS -->
   <div class="status"><div id="statusMsg"></div></div>
 
   <!-- RESULTATER -->
@@ -72,25 +75,26 @@
     (async function(){
       const [h,f] = await Promise.all([
         fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()).catch(()=>"<nav class='nav'><a class='brand' href='/'><h1>Vinbot</h1></a></nav>"),
-        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text()).catch(()=>"<footer>© <script>document.write(new Date().getFullYear())<\/script> Vinbot.dk</footer>")
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text()).catch(()=>"<footer class='footer'>© <script>document.write(new Date().getFullYear())<\/script> Vinbot.dk</footer>")
       ]);
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
     })();
   </script>
 
-  <!-- SØGE-UI (mobil/desktop + live + robust fallback) -->
+  <!-- SØGE-UI -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const $q     = document.getElementById('q');
-      const $res   = document.getElementById('results');
-      const $form  = document.getElementById('searchForm');
-      const $status= document.getElementById('statusMsg');
+      const $q      = document.getElementById('q');
+      const $res    = document.getElementById('results');
+      const $form   = document.getElementById('searchForm');
+      const $status = document.getElementById('statusMsg');
+      const $chips  = document.getElementById('assistChips');
 
-      let inflight = 0;      // drop forældede svar
-      let triedMock = false; // auto-selftest kun én gang
+      let inflight = 0;
+      let triedMock = false;
 
-      // ---- UI helpers ----
+      // UI helpers
       const setStatus = (html, cls="info") => { $status.innerHTML = html ? `<div class="msg ${cls}">${html}</div>` : ""; };
       const priceFmt = (v,c) => {
         try { return new Intl.NumberFormat('da-DK',{style:'currency',currency:c||'DKK',maximumFractionDigits:2}).format(v); }
@@ -100,23 +104,21 @@
         if (!items.length){ $res.innerHTML=""; return; }
         $res.innerHTML = items.map(i => `
           <a class="card product outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title} @ ${i.merchant}">
-            <div style="display:flex; gap:12px; align-items:center;">
-              <div style="width:64px;height:64px;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.08);flex:0 0 64px;">
-                ${i.image ? `<img src="${i.image}" alt="${i.title}" style="width:100%;height:100%;object-fit:cover;">` : ``}
-              </div>
-              <div style="flex:1;min-width:0;">
-                <h3 style="margin:0 0 6px;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${i.title}</h3>
-                <div class="badges">
-                  ${i.price ? `<span class="badge">${priceFmt(i.price, i.currency)}</span>` : ``}
-                  <span class="badge">${i.merchant}</span>
-                </div>
+            <div class="card-media">
+              ${i.image ? `<img src="${i.image}" alt="${i.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}
+            </div>
+            <div class="card-body">
+              <h3>${i.title}</h3>
+              <div class="badges">
+                ${i.price ? `<span class="badge">${priceFmt(i.price, i.currency)}</span>` : ``}
+                <span class="badge">${i.merchant}</span>
               </div>
             </div>
           </a>
         `).join('');
       };
 
-      // ---- fetch products ----
+      // API
       const fetchProducts = async (q, {mock=false}={}) => {
         const url = `/api/search?q=${encodeURIComponent(q)}${mock ? "&mock=1" : ""}`;
         const r = await fetch(url, { cache:"no-store" });
@@ -128,7 +130,6 @@
         }));
       };
 
-      // ---- main search flow ----
       const search = async (query) => {
         const q = (query||"").trim();
         if (!q){ renderProducts([]); setStatus(""); return; }
@@ -137,7 +138,6 @@
         setStatus(`<span class="spinner"></span> Søger efter “${q}”…`, "info");
         try{
           let items = await fetchProducts(q, {mock:false});
-          // hvis ingen hits og vi har ikke prøvet mock endnu → lav autodemo for at tjekke UI-kæden
           if ((!items || !items.length) && !triedMock){
             triedMock = true;
             const mockItems = await fetchProducts(q, {mock:true}).catch(()=>[]);
@@ -150,19 +150,30 @@
           setStatus(items.length ? "" : `Ingen resultater på “${q}”. Prøv fx: barolo, nebbiolo, riesling.`, "info");
           if (ticket === inflight) renderProducts(items);
         } catch (e){
-          console.error(e);
           if (ticket === inflight){
+            console.error(e);
             setStatus(`Søgningen fejlede. Tjek /api/search direkte (prøv /api/search?q=barolo&mock=1).`, "err");
             renderProducts([]);
           }
         }
       };
 
-      // ---- events ----
+      // events
       $form.addEventListener('submit', (e) => { e.preventDefault(); search($q.value); });
       let t=null; $q.addEventListener('input', () => { clearTimeout(t); t=setTimeout(()=>search($q.value), 300); });
 
-      // GA4 outbound tracking
+      // chips
+      $chips.addEventListener('click', (e)=>{
+        const b = e.target.closest('.chip'); if(!b) return;
+        const add = (b.dataset.add || "").trim();
+        const cur = $q.value.toLowerCase();
+        if (add && !cur.includes(add.toLowerCase())) {
+          $q.value = ($q.value.trim() + " " + add).trim();
+        }
+        $form.dispatchEvent(new Event('submit', {cancelable:true}));
+      });
+
+      // GA4 outbound
       document.addEventListener('click', (e)=>{
         const a = e.target.closest('a.outbound'); if(!a) return;
         try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
