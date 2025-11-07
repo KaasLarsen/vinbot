@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Druer – Vinbot</title>
+  <meta name="description" content="Lær druerne at kende. Smagsprofil, typiske områder og bedste match til mad – fra Pinot Noir og Nebbiolo til Riesling og Chardonnay." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Druer</h2>
+    <p>Smagsprofiler, områder og madmatch. Find din stil – let og frisk, krydret og kraftig, eller elegant og mineralsk.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <a class="card" href="/druer/pinot-noir.html"><h3>🍷 Pinot Noir</h3><p>Frisk rød frugt, let krop – perfekt til fjerkræ & svampe.</p></a>
+      <a class="card" href="/druer/nebbiolo.html"><h3>🍷 Nebbiolo</h3><p>Høj syre, tannin, tjære & roser – til rødt kød og trøffel.</p></a>
+      <a class="card" href="/druer/cabernet-sauvignon.html"><h3>🍷 Cabernet Sauvignon</h3><p>Solbær, ceder, struktur – klassiker til bøf.</p></a>
+      <a class="card" href="/druer/chardonnay.html"><h3>🥂 Chardonnay</h3><p>Fra sprød citrus til smør og fad – fra fisk til kylling.</p></a>
+      <a class="card" href="/druer/riesling.html"><h3>🥂 Riesling</h3><p>Aromatisk, syrlig og alsidig – stærk til spicy køkken.</p></a>
+      <a class="card" href="/druer/sangiovese.html"><h3>🍷 Sangiovese</h3><p>Kirsebær, urter, syre – perfekt til tomatretter.</p></a>
+    </section>
+
+    <section class="card">
+      <h3>Find din smag</h3>
+      <p>Prøv at søge efter <em>“frisk hvid til ceviche”</em> eller <em>“kraftig rød til grill under 100”</em> på forsiden.</p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+    })();
+  </script>
+</body>
+</html>
