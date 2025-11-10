@@ -609,3 +609,20 @@ footer .socials .fb:hover{
   flex: 1 1 300px; /* samme dynamik som før */
   max-width: 400px;
 }
+/* 1) Gør kun grid-kort små – ikke alt med .card */
+.wrap.page .grid .card {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+/* 2) Lad partner-banner fylde hele indholdsbredden */
+.partner-block {
+  width: min(1100px, 100%);
+  max-width: none;
+  flex: 0 0 auto; /* må ikke krympe */
+}
+
+/* 3) Når vi centrerer .wrap.page med flex, så giv bredde til direkte børn */
+.wrap.page > * {
+  width: min(1100px, 100%);
+}
