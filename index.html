@@ -52,6 +52,9 @@
     <div id="moreWrap" class="load-more" style="display:none;">
       <button id="moreBtn" class="btn-primary">Vis flere</button>
     </div>
+
+    <!-- Partnere uden feeds (fallback) -->
+    <section id="alsoStores" class="also-stores" style="display:none;"></section>
   </main>
 
   <!-- Footer partial -->
@@ -67,6 +70,80 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
     })();
+  </script>
+
+  <script>
+    /* ---------------- PARTNERE UDEN FEEDS (man kan udfylde affiliate senere) ---------------- */
+    // NOTE: Hvis du har Partner-ads deeplink, udfyld affiliateTemplate per butik:
+    // fx affiliateTemplate: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=87611&htmlurl={URL}"
+    // Hvis tom/null -> vi linker direkte til butikkens søgning (stadig rel="sponsored nofollow").
+    const PARTNERS_NO_FEED = [
+      {
+        name: "Den Sidste Flaske",
+        baseUrl: "https://densidsteflaske.dk/",
+        searchUrl: "https://densidsteflaske.dk/search?q={Q}",
+        affiliateTemplate: null, // fx "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=XXXXX&htmlurl={URL}"
+        rate: 0.10,
+        logo: "/assets/partners/densidsteflaske.png"
+      },
+      {
+        name: "Barlife",
+        baseUrl: "https://www.barlife.dk/",
+        searchUrl: "https://www.barlife.dk/search/{Q}",
+        affiliateTemplate: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}",
+        rate: 0.07,
+        logo: "/assets/partners/barlife.png"
+      },
+      {
+        name: "Beer Me",
+        baseUrl: "https://www.beer-me.dk/",
+        searchUrl: "https://www.beer-me.dk/search/vin", // hvis deres søgning ikke tager q, kan vi bare sende til vin
+        affiliateTemplate: null,
+        rate: 0.10,
+        logo: "/assets/partners/beerme.png"
+      },
+      {
+        name: "DH Wines",
+        baseUrl: "https://dhwines.dk/",
+        searchUrl: "https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
+        affiliateTemplate: null,
+        rate: 0.10,
+        logo: "/assets/partners/dhwines.png"
+      },
+      {
+        name: "Herslev Bryghus",
+        baseUrl: "https://herslevbryghus.dk/",
+        searchUrl: "https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
+        affiliateTemplate: null,
+        rate: 0.10,
+        logo: "/assets/partners/herslev.png"
+      },
+      {
+        name: "Fantombryg",
+        baseUrl: "https://fantombryg.dk/",
+        searchUrl: "https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
+        affiliateTemplate: null,
+        rate: 0.08,
+        logo: "/assets/partners/fantombryg.png"
+      },
+      {
+        name: "Johnsen Wine",
+        baseUrl: "https://www.johnsenwine.dk/",
+        searchUrl: "https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+        affiliateTemplate: null,
+        rate: 0.10,
+        logo: "/assets/partners/johnsen.png"
+      },
+      {
+        name: "D’Wine",
+        baseUrl: "https://d-wine.dk/",
+        searchUrl: "https://d-wine.dk/?s={Q}&post_type=page%2Cproduct",
+        affiliateTemplate: null,
+        rate: 0.08,
+        logo: "/assets/partners/dwine.png"
+      }
+      // ... tilføj flere når du vil
+    ];
   </script>
 
   <script>
@@ -99,11 +176,12 @@
     const state = {
       baseTerms: [],
       filters: { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null },
-      products: [],        // alle produkter fra API
-      picks: [],           // top 3 anbefalinger
-      visible: 0,          // hvor mange kort renderet
+      products: [],
+      picks: [],
+      visible: 0,
       pageSize: 24,
-      sortBy: "relevance", // relevance | price_asc | price_desc
+      sortBy: "relevance",
+      lastQueryText: ""
     };
 
     const CHIP_MAP = {
@@ -160,7 +238,6 @@
 
     /* ---------------- RENDER HJÆLPERE ---------------- */
     function priceHTML(p){
-      // forsøger at finde en før-pris i almindelige felter hvis API’et sender dem med
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
       const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
       if (old && p.price && Number(old) > Number(p.price)) {
@@ -177,7 +254,6 @@
       if (state.filters.land && state.filters.land.length) b.push(...state.filters.land);
       if (state.filters.anledning) b.push(state.filters.anledning);
       if (state.filters.mad) b.push(`til ${state.filters.mad}`);
-      // Tilbud-badge når der er førpris
       const hasOld = p.price_old ?? p.glpris ?? p.compareAt ?? null;
       if (hasOld && p.price && Number(hasOld) > Number(p.price)) b.push("Tilbud");
       const m = p.merchant ? [p.merchant] : [];
@@ -248,9 +324,63 @@
       return chosen;
     }
 
+    /* ---------------- BYG LINKS TIL PARTNERE UDEN FEED ---------------- */
+    function buildPartnerSearchUrl(p, query){
+      const q = encodeURIComponent(query);
+      const search = (p.searchUrl || p.baseUrl).replace("{Q}", q);
+      if (p.affiliateTemplate) {
+        return p.affiliateTemplate.replace("{URL}", encodeURIComponent(search));
+      }
+      return search;
+    }
+    function renderAlsoStores(query){
+      const $wrap = document.getElementById("alsoStores");
+      const q = query && query.trim() ? query.trim() : "vin";
+      // lav en lille score så vi viser de bedste først (har affiliate + høj sats + måske match på ord)
+      function score(partner){
+        let s = 0;
+        if (partner.affiliateTemplate) s += 2;
+        s += Math.round((partner.rate || 0) * 10); // 10% → +1
+        const name = (partner.name||"").toLowerCase();
+        const qn = q.toLowerCase();
+        if (name.includes("vin")) s += 1;
+        if (qn.length >= 4) s += 1;
+        return s;
+      }
+      const sorted = [...PARTNERS_NO_FEED].sort((a,b)=>score(b)-score(a)).slice(0, 8);
+
+      const html = `
+        <h2 class="also-title">Se også hos</h2>
+        <div class="grid">
+          ${sorted.map(p=>{
+            const href = buildPartnerSearchUrl(p, q);
+            return `
+              <a class="card outbound" href="${href}" target="_blank" rel="nofollow sponsored noopener" data-label="Store: ${p.name} · ${q}">
+                <div class="card-body" style="display:flex;align-items:center;gap:10px">
+                  ${p.logo ? `<img src="${p.logo}" alt="${p.name}" style="width:28px;height:28px;border-radius:6px;object-fit:cover;background:var(--soft)" />` : `<div class="img-fallback" style="width:28px;height:28px;border-radius:6px">🏷️</div>`}
+                  <div>
+                    <h3 style="margin:0 0 4px">${p.name}</h3>
+                    <div class="badges">
+                      <span class="badge">Søg: “${q}”</span>
+                      ${p.rate ? `<span class="badge">${Math.round(p.rate*100)}%</span>` : ""}
+                      ${p.affiliateTemplate ? `<span class="badge">affiliate</span>` : ""}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            `;
+          }).join("")}
+        </div>
+      `;
+
+      $wrap.innerHTML = html;
+      $wrap.style.display = "block";
+    }
+
     /* ---------------- SØGNING ---------------- */
     async function doSearch(fromChip=false){
       const q = document.getElementById('q').value.trim();
+      state.lastQueryText = q;
       if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
 
       const base = deriveTermsFromInput(q);
@@ -294,6 +424,9 @@
       document.getElementById("sortSel").value = "relevance";
       renderAll();          // render top picks + første side
       renderFollowup(q, state.products.length);
+
+      // Nyt: partner-fallback nederst (vises altid – især nyttigt hvis få/ingen feed-hits)
+      renderAlsoStores(state.lastQueryText || "vin");
     }
 
     // sortering + paginering
@@ -310,7 +443,6 @@
       const $res = document.getElementById("results");
       const sorted = sortProducts(state.products);
 
-      // top picks kun ved relevans
       const topHTML = (state.sortBy === "relevance" && state.picks.length) ? `
         <section class="top-picks">
           <h2>Anbefalet af Vinbot</h2>
@@ -338,7 +470,6 @@
       const next = Math.min(state.visible + state.pageSize, sorted.length);
       if (next <= state.visible) return;
 
-      // append nye kort til eksisterende grid (sidste section i results)
       const grid = $res.querySelector(".grid");
       const slice = sorted.slice(state.visible, next).map(p => cardHTML(p)).join("");
       grid.insertAdjacentHTML("beforeend", slice);
@@ -431,7 +562,7 @@
       }
     }
 
-    // GA4 outbound tracking (du har allerede global gtag i head)
+    // GA4 outbound tracking
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
       if (typeof gtag === 'function'){
