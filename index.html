@@ -3,18 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="TAg4EsNfNUB7AkuPcieafa_4H9OTTRHkISmJK6EJeUs" />
-
   <title>Vinbot – find vin på sekunder</title>
   <meta name="description" content="Find den perfekte vin til mad, humør eller lejlighed. Vinbot viser konkrete flasker med billeder, priser og links til de bedste butikker." />
-
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
 </head>
-
 <body>
+  <!-- Header partial -->
   <div id="header"></div>
 
   <header class="hero">
@@ -26,21 +21,28 @@
         <div class="icon">🔎</div>
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" autofocus
                onkeydown="if(event.key==='Enter'){doSearch()}" />
-        <button class="btn-primary" onclick="doSearch()">Søg</button>
+        <button class="btn-primary" id="searchBtn" onclick="doSearch()">Søg</button>
       </div>
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
 
   <main class="wrap">
+    <!-- STATUS -->
     <div id="status" class="status"></div>
+
+    <!-- AI-opfølgning -->
+    <section id="followup" class="followup hidden" aria-live="polite"></section>
+
+    <!-- Resultater -->
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
+  <!-- Footer partial -->
   <div id="footer"></div>
 
   <script>
-    // load header/footer partials
+    // Load partials
     (async()=> {
       const [h,f] = await Promise.all([
         fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
@@ -49,12 +51,26 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
     })();
+  </script>
 
-    // simple intent → vin-termer (vi kan udvide, men først beviser vi dataflow)
+  <script>
+    // ---------- Intent & synonymer ----------
     const INTENT = {
+      // mad
       ost:["portvin","riesling","chardonnay","sauternes"],
       pizza:["chianti","barbera","primitivo"],
+      bøf:["barolo","cabernet sauvignon","syrah"],
+      oksekød:["cabernet","syrah","malbec"],
+      lam:["syrah","rioja","ribera del duero"],
+      fisk:["riesling","chablis","albariño"],
+      sushi:["riesling","sauvignon blanc","crémant"],
+      tapas:["rioja","garnacha","cava"],
+      dessert:["sauternes","portvin","moscato"],
+      // humør/lejlighed
       sommer:["rosé","sauvignon blanc","crémant"],
+      terrasse:["rosé","cava","prosecco"],
+      hygge:["primitivo","zinfandel","malbec"],
+      romantisk:["pinot noir","champagne"]
     };
     const EQUIV = {
       barolo:["nebbiolo"], nebbiolo:["barolo"],
@@ -65,29 +81,106 @@
       cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
     };
 
-    function deriveTerms(raw){
+    // ---------- Filter state (AI-opfølgning) ----------
+    const state = {
+      baseTerms: [],     // termer fra brugerens input
+      filters: {         // udfyldes via chips
+        farve: null,     // "rød","hvid","rosé","bobler"
+        stil: [],        // "let","frugtig","kraftig","tør","sød"
+        pris: null,      // tal (max)
+        land: [],        // fx "italien","frankrig","spanien"
+        anledning: null, // "hygge","romantisk","sommer","fest"
+        mad: null        // "ost","pizza","bøf"...
+      }
+    };
+
+    // mapping fra chips -> søgetermer
+    const CHIP_MAP = {
+      farve: {
+        "rød":["barolo","nebbiolo","cabernet","syrah","malbec","tempranillo","zinfandel","primitivo","pinot noir"],
+        "hvid":["chardonnay","riesling","sauvignon blanc","chablis","albariño","arneis"],
+        "rosé":["rosé","provencalsk rosé"],
+        "bobler":["champagne","crémant","cava","prosecco"]
+      },
+      stil: {
+        "let":["pinot noir","gamay","bardolino","valpolicella"],
+        "frugtig":["primitivo","zinfandel","malbec"],
+        "kraftig":["barolo","amarone","cabernet sauvignon","syrah"],
+        "tør":["riesling trocken","chablis","albariño","fiano"],
+        "sød":["sauternes","moscato","portvin"]
+      },
+      land: {
+        "italien":["barolo","chianti","amarone","prosecco","arneis"],
+        "frankrig":["bourgogne","chablis","côtes du rhône","crémant","champagne"],
+        "spanien":["rioja","ribera del duero","albariño","cava"],
+        "tyskland":["riesling","spätburgunder"],
+        "portugal":["portvin","vinho verde"]
+      },
+      anledning: {
+        "sommer":["rosé","sauvignon blanc","crémant"],
+        "hygge":["primitivo","zinfandel","malbec"],
+        "romantisk":["pinot noir","champagne"],
+        "fest":["cava","prosecco","crémant"]
+      }
+    };
+
+    function deriveTermsFromInput(raw){
       const q = (raw||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
       const S=new Set();
+      // mad/humør
       Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
+      // direkte tokens + ækvivalenter
       q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
+      // budget
       let max=null; const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/); if(m) max=parseInt(m[1],10);
       if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
       return {terms:[...S], max};
     }
 
-    async function doSearch(){
-      const q = document.getElementById('q').value.trim();
-      if(!q) return;
-      const {terms, max} = deriveTerms(q);
+    function deriveTermsFromFilters(){
+      const f = state.filters;
+      const extra = new Set();
 
+      if (f.farve && CHIP_MAP.farve[f.farve]) CHIP_MAP.farve[f.farve].forEach(t=>extra.add(t));
+      f.stil.forEach(s => { (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)); });
+      f.land.forEach(l => { (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)); });
+      if (f.anledning && CHIP_MAP.anledning[f.anledning]) CHIP_MAP.anledning[f.anledning].forEach(t=>extra.add(t));
+      if (f.mad && INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
+
+      // to-vejs ækvivalenter
+      [...extra].forEach(t => (EQUIV[t]||[]).forEach(x=>extra.add(x)));
+      return [...extra];
+    }
+
+    async function doSearch(fromChip=false){
+      const q = document.getElementById('q').value.trim();
+      if (!fromChip) {
+        // ny grundsøgning -> nulstil filter-state (behold dog feltet pris hvis brugeren skrev det)
+        state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
+      }
+
+      const base = deriveTermsFromInput(q);
+      state.baseTerms = base.terms;
+      if (base.max != null) state.filters.pris = base.max;
+
+      const refined = deriveTermsFromFilters();
+      const finalTerms = Array.from(new Set([...state.baseTerms, ...refined]));
+
+      // UI
       const $status = document.getElementById("status");
       const $res = document.getElementById("results");
       $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
       $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
 
-      const r = await fetch(`/api/search?q=${encodeURIComponent(terms.join(" "))}${max?`&max=${max}`:""}`, {cache:"no-store"});
+      // kald api
+      const params = new URLSearchParams();
+      params.set("q", finalTerms.join(" "));
+      if (state.filters.pris != null) params.set("max", String(state.filters.pris));
+
+      const r = await fetch(`/api/search?${params.toString()}`, {cache:"no-store"});
       const data = await r.json();
 
+      // STATUS
       const meta = data.meta || {};
       if (data.source === "feed") {
         const bits = [];
@@ -101,28 +194,118 @@
         $status.innerHTML = `<div class="msg err">Ingen resultater.</div>`;
       }
 
-      if (!data.products?.length) {
-        $res.innerHTML = `<div class="msg err">Ingen rigtige produkter for “${q}”.</div>`;
-        return;
+      // RENDER RESULTATER
+      const products = data.products || [];
+      if (!products.length) {
+        document.getElementById("results").innerHTML = `<div class="msg err">Ingen rigtige produkter endnu.</div>`;
+      } else {
+        document.getElementById("results").innerHTML = products.map(p => `
+          <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+            <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
+            <div class="card-body">
+              <h3>${p.title}</h3>
+              <div class="badges">
+                ${p.price!=null ? `<span class="badge">${Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
+                ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
+              </div>
+            </div>
+          </a>
+        `).join("");
       }
 
-      // vis også produkter uden billede (med placeholder) – indtil feeds/OG spiller 100%
-      const html = data.products.map(p => `
-        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
-          <div class="card-media">
-            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
-          </div>
-          <div class="card-body">
-            <h3>${p.title}</h3>
-            <div class="badges">
-              ${p.price!=null ? `<span class="badge">${Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
-              ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
-            </div>
-          </div>
-        </a>`).join("");
-
-      $res.innerHTML = html;
+      // RENDER AI-OPFØLGNING (chips)
+      renderFollowup(q, products.length);
     }
+
+    function renderFollowup(query, resultCount){
+      const $f = document.getElementById("followup");
+
+      // Vis opfølgning når: 1) første søgning, eller 2) mange generiske termer, eller 3) få resultater
+      const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
+      const shouldAsk = generic || resultCount < 8;
+
+      if (!shouldAsk) { $f.classList.add("hidden"); $f.innerHTML=""; return; }
+
+      const chips = (group, items, multi=false) => `
+        <div class="chip-group" data-group="${group}" data-multi="${multi}">
+          <div class="chip-title">${group}</div>
+          <div class="chip-row">
+            ${items.map(label => `<button class="chip ${isActive(group,label) ? 'on':''}" data-value="${label}">${label}</button>`).join("")}
+          </div>
+        </div>`;
+
+      const ui = `
+        <div class="followup-inner">
+          <h2>Hjælp mig med at ramme smagen</h2>
+          <div class="chip-grid">
+            ${chips("farve", ["rød","hvid","rosé","bobler"], false)}
+            ${chips("stil", ["let","frugtig","kraftig","tør","sød"], true)}
+            ${chips("land", ["italien","frankrig","spanien","tyskland","portugal"], true)}
+            ${chips("anledning", ["sommer","hygge","romantisk","fest"], false)}
+            ${chips("mad", ["ost","pizza","bøf","lam","fisk","sushi","tapas","dessert"], false)}
+          </div>
+          <div class="chip-actions">
+            <div class="price-wrap">
+              <label for="ai-price">Maks pris</label>
+              <input id="ai-price" type="number" min="30" step="10" placeholder="fx 150" value="${state.filters.pris ?? ''}">
+            </div>
+            <button id="applyChips" class="btn-primary">Opdater</button>
+            <button id="clearChips" class="btn-soft">Nulstil</button>
+          </div>
+        </div>
+      `;
+
+      $f.innerHTML = ui;
+      $f.classList.remove("hidden");
+
+      // events
+      $f.querySelectorAll(".chip").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const group = btn.closest(".chip-group").dataset.group;
+          const multi = btn.closest(".chip-group").dataset.multi === "true";
+          toggleChip(group, btn.dataset.value, multi);
+          btn.classList.toggle("on");
+          // auto-opdater hurtigt når single-valg (farve/anledning/mad)
+          if (!multi) doSearch(true);
+        });
+      });
+      $f.querySelector("#applyChips").addEventListener("click", ()=>{
+        const v = document.getElementById("ai-price").value.trim();
+        state.filters.pris = v ? Math.max(0, parseInt(v,10)) : null;
+        doSearch(true);
+      });
+      $f.querySelector("#clearChips").addEventListener("click", ()=>{
+        state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
+        doSearch(true);
+      });
+    }
+
+    function isActive(group, label){
+      const f = state.filters;
+      if (Array.isArray(f[group])) return f[group].includes(label);
+      return f[group] === label;
+    }
+    function toggleChip(group, label, multi){
+      const f = state.filters;
+      if (multi) {
+        const arr = Array.isArray(f[group]) ? f[group] : [];
+        const i = arr.indexOf(label);
+        if (i === -1) arr.push(label); else arr.splice(i,1);
+        f[group] = arr;
+      } else {
+        f[group] = (f[group] === label) ? null : label;
+      }
+    }
+
+    // GA4 outbound tracking (valgfri)
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a.outbound'); if(!a) return;
+      if (typeof gtag === 'function'){
+        gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
+      }
+    });
+
+    // kickstart: ingen søgning på load; bruger skriver selv el. klikker chips
   </script>
 </body>
 </html>
