@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
 </head>
 <body>
-  <!-- Header partial mount -->
   <div id="header"></div>
 
   <header class="hero">
@@ -19,145 +18,105 @@
     <div class="search-wrap">
       <div class="search">
         <div class="icon">🔎</div>
-        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" autofocus onkeydown="if(event.key==='Enter'){doSearch()}" />
-        <button class="btn-primary" id="searchBtn" onclick="doSearch()">Søg</button>
+        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" autofocus
+               onkeydown="if(event.key==='Enter'){doSearch()}" />
+        <button class="btn-primary" onclick="doSearch()">Søg</button>
       </div>
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- STATUSBAR -->
     <div id="status" class="status"></div>
-
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
-  <!-- Footer partial mount -->
   <div id="footer"></div>
 
   <script>
-    // Hent header/footer partials (bevarer dit layout & styling)
-    (async function loadPartials(){
+    // load header/footer partials
+    (async()=> {
       const [h,f] = await Promise.all([
-        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
-        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text()),
       ]);
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
     })();
-  </script>
 
-  <script>
-  // === Intent -> VIN-TERMER ===
-  const FOOD_TO_WINES = {
-    ost:["portvin","riesling","chardonnay","sauternes"],
-    pizza:["chianti","barbera","primitivo"],
-    bøf:["barolo","cabernet sauvignon","syrah"],
-    oksekød:["cabernet","syrah","malbec"],
-    lam:["syrah","rioja","ribera del duero"],
-    svin:["pinot noir","riesling"],
-    fisk:["riesling","chablis","albariño"],
-    sushi:["riesling","sauvignon blanc","crémant"],
-    tapas:["rioja","garnacha","cava"],
-    dessert:["sauternes","portvin","moscato"]
-  };
-  const MOOD_TO_WINES = {
-    sommer:["rosé","sauvignon blanc","crémant"],
-    terrasse:["rosé","cava","prosecco"],
-    hygge:["primitivo","zinfandel","malbec"],
-    romantisk:["pinot noir","champagne"]
-  };
-  const SYNONYMS = { shiraz:"syrah", cremant:"crémant", rose:"rosé", barolo:"nebbiolo", rioja:"tempranillo", ribera:"ribera del duero" };
+    // simple intent → vin-termer (vi kan udvide, men først beviser vi dataflow)
+    const INTENT = {
+      ost:["portvin","riesling","chardonnay","sauternes"],
+      pizza:["chianti","barbera","primitivo"],
+      sommer:["rosé","sauvignon blanc","crémant"],
+    };
+    const EQUIV = {
+      barolo:["nebbiolo"], nebbiolo:["barolo"],
+      rioja:["tempranillo"], tempranillo:["rioja"],
+      ribera:["ribera del duero","tempranillo"], "ribera del duero":["ribera","tempranillo"],
+      shiraz:["syrah"], syrah:["shiraz"],
+      rose:["rosé"], "rosé":["rose"],
+      cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
+    };
 
-  function deriveSearchTerms(raw){
-    const q = (raw||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-    let mapped = new Set();
+    function deriveTerms(raw){
+      const q = (raw||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const S=new Set();
+      Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
+      q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
+      let max=null; const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/); if(m) max=parseInt(m[1],10);
+      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
+      return {terms:[...S], max};
+    }
 
-    Object.keys(FOOD_TO_WINES).forEach(k => { if (q.includes(k)) FOOD_TO_WINES[k].forEach(v => mapped.add(v)); });
-    Object.keys(MOOD_TO_WINES).forEach(k => { if (q.includes(k)) MOOD_TO_WINES[k].forEach(v => mapped.add(v)); });
-    Object.keys(SYNONYMS).forEach(k => { if (q.includes(k)) mapped.add(SYNONYMS[k]); });
+    async function doSearch(){
+      const q = document.getElementById('q').value.trim();
+      if(!q) return;
+      const {terms, max} = deriveTerms(q);
 
-    // Budget
-    let max = null;
-    const m = q.match(/(?:under|max)\s*(\d{2,4})\s*kr/);
-    if (m) max = parseInt(m[1], 10);
-    if (/billig|budget/.test(q)) max = Math.min(max ?? 9999, 100);
+      const $status = document.getElementById("status");
+      const $res = document.getElementById("results");
+      $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
+      $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
 
-    // Hvis vi fandt vin-termer, SÅ BRUG KUN DEM. Ellers brug tokens fra q.
-    const terms = mapped.size ? Array.from(mapped) : q.split(/\s+/).filter(Boolean);
-    return { terms, max };
-  }
-
-  // === SØGNING MED STATUSBAR ===
-  async function doSearch(){
-    const qInput = document.getElementById('q').value.trim();
-    if (!qInput) return;
-
-    const { terms, max } = deriveSearchTerms(qInput);
-    const qForApi = terms.join(" ");
-
-    const $res = document.getElementById("results");
-    const $status = document.getElementById("status");
-
-    $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
-    $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
-
-    try {
-      const r = await fetch(`/api/search?q=${encodeURIComponent(qForApi)}${max?`&max=${max}`:""}`, { cache: "no-store" });
+      const r = await fetch(`/api/search?q=${encodeURIComponent(terms.join(" "))}${max?`&max=${max}`:""}`, {cache:"no-store"});
       const data = await r.json();
 
-      // STATUS
-      const mt = data.meta || {};
-      if (data.source && /feed/.test(data.source)) {
-        const ok = mt.feeds_ok ?? null, tot = mt.feeds_total ?? null, fail = mt.feeds_failed ?? null;
+      const meta = data.meta || {};
+      if (data.source === "feed") {
         const bits = [];
         bits.push(`Viser ${data.products?.length ?? 0} flasker`);
-        if (ok != null && tot != null) bits.push(`fra ${ok} ud af ${tot} butikker`);
-        if (fail) bits.push(`(${fail} fejlede)`);
+        if (meta.feeds_ok != null && meta.feeds_total != null) bits.push(`fra ${meta.feeds_ok} / ${meta.feeds_total} butikker`);
+        if (meta.feeds_failed) bits.push(`(${meta.feeds_failed} fejlede)`);
         $status.innerHTML = `<div class="msg info">${bits.join(" · ")}</div>`;
       } else if (data.source === "fallback") {
-        $status.innerHTML = `<div class="msg err">Ingen direkte feed-træf på “${qInput}”. Viser butikssider uden pris.</div>`;
+        $status.innerHTML = `<div class="msg err">Ingen direkte feed-træf. Viser butikssider uden pris.</div>`;
       } else {
-        $status.innerHTML = `<div class="msg err">Ingen resultater for “${qInput}”. Prøv en drue (fx “riesling”) eller justér budget.</div>`;
+        $status.innerHTML = `<div class="msg err">Ingen resultater.</div>`;
       }
 
-      // VIS KUN ÆGTE PRODUKTER (skjul fallback-kort)
-      if (!data.products?.length || (data.source && !/feed/.test(data.source))) {
-        $res.innerHTML = `<div class="msg err">Ingen rigtige produkt-træf endnu for “${qInput}”.</div>`;
+      if (!data.products?.length) {
+        $res.innerHTML = `<div class="msg err">Ingen rigtige produkter for “${q}”.</div>`;
         return;
       }
 
-      const html = data.products
-        .filter(p => p.image && p.url)
-        .map(p => `
-          <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
-            <div class="card-media"><img src="${p.image}" alt="${p.title}"></div>
-            <div class="card-body">
-              <h3>${p.title}</h3>
-              <div class="badges">
-                ${p.price!=null ? `<span class="badge">${Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
-                ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
-              </div>
+      // vis også produkter uden billede (med placeholder) – indtil feeds/OG spiller 100%
+      const html = data.products.map(p => `
+        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+          <div class="card-media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
+          </div>
+          <div class="card-body">
+            <h3>${p.title}</h3>
+            <div class="badges">
+              ${p.price!=null ? `<span class="badge">${Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
+              ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
             </div>
-          </a>
-        `).join("");
+          </div>
+        </a>`).join("");
 
-      $res.innerHTML = html || `<div class="msg err">Ingen rigtige flasker fundet for “${qInput}”.</div>`;
-    } catch (err) {
-      console.error(err);
-      document.getElementById("status").innerHTML = `<div class="msg err">Teknisk fejl – prøv igen om lidt.</div>`;
-      document.getElementById("results").innerHTML = `<div class="msg err">Kunne ikke hente resultater.</div>`;
+      $res.innerHTML = html;
     }
-  }
-
-  // GA4 outbound tracking (valgfrit)
-  document.addEventListener('click', (e)=>{
-    const a = e.target.closest('a.outbound'); if(!a) return;
-    if (typeof gtag === 'function'){
-      gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
-    }
-  });
   </script>
 </body>
 </html>
