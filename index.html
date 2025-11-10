@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
 </head>
 <body>
-  <!-- Header partial -->
+  <!-- Header partial mount -->
   <div id="header"></div>
 
   <header class="hero">
@@ -27,14 +27,17 @@
   </header>
 
   <main class="wrap">
+    <!-- STATUSBAR -->
+    <div id="status" class="status"></div>
+
     <section class="grid" id="results" aria-live="polite"></section>
   </main>
 
-  <!-- Footer partial -->
+  <!-- Footer partial mount -->
   <div id="footer"></div>
 
   <script>
-    // Loader header/footer partials
+    // Hent header/footer partials (bevarer dit layout & styling)
     (async function loadPartials(){
       const [h,f] = await Promise.all([
         fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
@@ -46,7 +49,7 @@
   </script>
 
   <script>
-  // === Intent -> VIN-TERMER (nyt og forbedret) ===
+  // === Intent -> VIN-TERMER ===
   const FOOD_TO_WINES = {
     ost:["portvin","riesling","chardonnay","sauternes"],
     pizza:["chianti","barbera","primitivo"],
@@ -86,22 +89,42 @@
     return { terms, max };
   }
 
+  // === SØGNING MED STATUSBAR ===
   async function doSearch(){
     const qInput = document.getElementById('q').value.trim();
     if (!qInput) return;
+
     const { terms, max } = deriveSearchTerms(qInput);
     const qForApi = terms.join(" ");
 
     const $res = document.getElementById("results");
+    const $status = document.getElementById("status");
+
+    $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
     $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
 
     try {
       const r = await fetch(`/api/search?q=${encodeURIComponent(qForApi)}${max?`&max=${max}`:""}`, { cache: "no-store" });
       const data = await r.json();
 
-      // Vis kun produkter med billeder & links – skip fallback
+      // STATUS
+      const mt = data.meta || {};
+      if (data.source && /feed/.test(data.source)) {
+        const ok = mt.feeds_ok ?? null, tot = mt.feeds_total ?? null, fail = mt.feeds_failed ?? null;
+        const bits = [];
+        bits.push(`Viser ${data.products?.length ?? 0} flasker`);
+        if (ok != null && tot != null) bits.push(`fra ${ok} ud af ${tot} butikker`);
+        if (fail) bits.push(`(${fail} fejlede)`);
+        $status.innerHTML = `<div class="msg info">${bits.join(" · ")}</div>`;
+      } else if (data.source === "fallback") {
+        $status.innerHTML = `<div class="msg err">Ingen direkte feed-træf på “${qInput}”. Viser butikssider uden pris.</div>`;
+      } else {
+        $status.innerHTML = `<div class="msg err">Ingen resultater for “${qInput}”. Prøv en drue (fx “riesling”) eller justér budget.</div>`;
+      }
+
+      // VIS KUN ÆGTE PRODUKTER (skjul fallback-kort)
       if (!data.products?.length || (data.source && !/feed/.test(data.source))) {
-        $res.innerHTML = `<div class="msg err">Ingen rigtige produkt-træf endnu for “${qInput}”. Prøv fx “riesling” eller “pinot noir”.</div>`;
+        $res.innerHTML = `<div class="msg err">Ingen rigtige produkt-træf endnu for “${qInput}”.</div>`;
         return;
       }
 
@@ -117,16 +140,18 @@
                 ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
               </div>
             </div>
-          </a>`).join("");
+          </a>
+        `).join("");
 
       $res.innerHTML = html || `<div class="msg err">Ingen rigtige flasker fundet for “${qInput}”.</div>`;
     } catch (err) {
       console.error(err);
-      $res.innerHTML = `<div class="msg err">Der skete en fejl – prøv igen senere.</div>`;
+      document.getElementById("status").innerHTML = `<div class="msg err">Teknisk fejl – prøv igen om lidt.</div>`;
+      document.getElementById("results").innerHTML = `<div class="msg err">Kunne ikke hente resultater.</div>`;
     }
   }
 
-  // Google Analytics outbound tracking
+  // GA4 outbound tracking (valgfrit)
   document.addEventListener('click', (e)=>{
     const a = e.target.closest('a.outbound'); if(!a) return;
     if (typeof gtag === 'function'){
