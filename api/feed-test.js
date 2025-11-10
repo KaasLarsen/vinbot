@@ -23,33 +23,33 @@ export default async function handler(req,res){
 
   try{
     const r = await fetch(fetchUrl, { headers, redirect: "follow" });
-    const status = r.status;
-    const text = await r.text();
+    const buf = await r.arrayBuffer();
+    let text = decodeText(buf); // håndter ISO-8859-1 korrekt
 
-    // Hvis brugeren beder om raw, eller vores parser ikke finder noget -> vis råt udsnit
     if (forceRaw) {
       res.setHeader("content-type","text/plain; charset=utf-8");
       return res.status(200).send(text.slice(0, 4000));
     }
 
-    const looksXML = /<\?xml|<rss|<feed|<channel|<products|<product|<item/i.test(text);
+    const looksXML = /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(text);
     let rows=0, sample=[], headersOut=[], type="";
 
     if (looksXML) {
       type = "xml";
-      // Prøv kendte blokke
+      // Kendte varianter: product/item + dansk: produkt
       let blocks = splitBlocks(text,"product");
       if (!blocks.length) blocks = splitBlocks(text,"item");
+      if (!blocks.length) blocks = splitBlocks(text,"produkt"); // ← vigtig
       if (!blocks.length) {
-        // Generisk: find blokke omkring et URL-felt (deeplink/link/producturl/url)
-        blocks = genericXmlBlocks(text, ["product","item","row","entry","offer","record","node"], ["deeplink","link","producturl","url","g:link"]);
+        blocks = genericXmlBlocks(text, ["product","item","row","entry","offer","record","node","produkt"], ["deeplink","link","producturl","url","g:link","vareurl"]);
       }
       rows = blocks.length;
       sample = blocks.slice(0,5).map(b=>({
-        title: pickOne(b,["name","title","g:title"]) || null,
-        url:   pickOne(b,["deeplink","link","producturl","url","g:link"]) || null,
-        image: pickOne(b,["imageurl","image_url","image","largeimage","g:image_link","picture","picture_url","img","imgurl","thumbnail"]) || null,
-        price: pickOne(b,["price","price_inc_vat","price_with_vat","saleprice","g:price","pris"]) || null,
+        title:  pickOne(b,["name","title","g:title","produktnavn"]) || null,
+        url:    pickOne(b,["deeplink","link","producturl","url","g:link","vareurl"]) || null,
+        image:  pickOne(b,["imageurl","image_url","image","largeimage","g:image_link","picture","picture_url","img","imgurl","thumbnail","billedurl"]) || null,
+        price:  pickOne(b,["price","price_inc_vat","price_with_vat","saleprice","g:price","pris","nypris"]) || null,
+        brand:  pickOne(b,["brand","manufacturer","producer","vendor","creator","forhandler"]) || null,
       }));
     } else {
       type = "csv/tsv";
@@ -62,31 +62,46 @@ export default async function handler(req,res){
       const h = headersOut.map(h=>h.toLowerCase().replace(/\s+/g,"").replace(/[^a-z0-9:_-]/g,""));
       const idx = (names)=>{ for(const n of names){ const i=h.indexOf(n); if(i!==-1) return i; } return -1; };
       sample = body.slice(0,5).map(r=>({
-        title: r[idx(["name","title","productname","product","navn"])] || null,
-        url:   r[idx(["deeplink","link","producturl","url"])] || null,
-        image: r[idx(["imageurl","image_url","image","largeimage","picture","picture_url","img","imgurl","thumbnail","g:image_link","image_link"])] || null,
-        price: r[idx(["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris"])] || null,
+        title: r[idx(["name","title","productname","product","navn","produktnavn"])] || null,
+        url:   r[idx(["deeplink","link","producturl","url","vareurl"])] || null,
+        image: r[idx(["imageurl","image_url","image","largeimage","picture","picture_url","img","imgurl","thumbnail","g:image_link","image_link","billedurl"])] || null,
+        price: r[idx(["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","nypris"])] || null,
       }));
     }
 
-    // Auto-RAW fallback hvis rækker = 0 (så du ser feed-toppen uden at tilføje ?raw=1)
     if (rows === 0) {
       res.setHeader("content-type","application/json; charset=utf-8");
       return res.status(200).json({
-        ok:true, feed:feed.name, http_status:status, type, rows, headers: headersOut.slice(0,20),
+        ok:true, feed:feed.name, http_status:r.status, type, rows, headers: headersOut.slice(0,20),
         sample,
-        hint:"rows=0 → open same URL with &raw=1 to view the first 4000 chars and identify tag names"
+        hint:"rows=0 → open same URL with &raw=1 to view first 4000 chars (we also handle <produkt> tags now)"
       });
     }
 
     res.setHeader("content-type","application/json; charset=utf-8");
-    res.status(200).json({ ok:true, feed:feed.name, http_status:status, type, rows, headers: headersOut.slice(0,20), sample });
+    res.status(200).json({ ok:true, feed:feed.name, http_status:r.status, type, rows, headers: headersOut.slice(0,20), sample });
   }catch(e){
     res.status(200).json({ ok:false, feed:feed.name, error:String(e) });
   }
 }
 
 const UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
+
+/* ---- decode helper (ISO-8859-1 aware) ---- */
+function decodeText(buf){
+  try{
+    // Læs første bytes og tjek xml encoding
+    const head = new TextDecoder("utf-8").decode(buf.slice(0, 200));
+    const m = head.match(/encoding=["']([^"']+)["']/i);
+    const enc = (m ? m[1] : "utf-8").toLowerCase();
+    if (enc.includes("8859") || enc.includes("latin1")) {
+      return new TextDecoder("iso-8859-1").decode(buf);
+    }
+    return new TextDecoder("utf-8").decode(buf);
+  }catch{
+    return new TextDecoder("utf-8").decode(buf);
+  }
+}
 
 /* ---- XML helpers ---- */
 function splitBlocks(xml, tag){ return xml.split(new RegExp(`<${tag}\\b[^>]*>`,"i")).slice(1).map(b=>b.split(new RegExp(`</${tag}>`,"i"))[0]); }
@@ -107,15 +122,6 @@ function genericXmlBlocks(xml, containers, urlFields){
     const hasUrl = urlFields.some(f => new RegExp(`<${f}\\b[^>]*>`,`i`).test(block));
     if (hasUrl) out.push(block);
     openRe.lastIndex = close.index + close[0].length;
-  }
-  if (!out.length){
-    const urlRe = new RegExp(`<(${urlFields.join("|")})\\b[^>]*>([\\s\\S]*?)<\\/\\1>`,"ig");
-    let mu;
-    while ((mu=urlRe.exec(xml))){
-      const start = Math.max(0, mu.index - 800);
-      const end   = Math.min(xml.length, urlRe.lastIndex + 800);
-      out.push(xml.slice(start,end));
-    }
   }
   return out;
 }
