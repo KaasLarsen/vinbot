@@ -534,3 +534,18 @@ footer .socials .fb:hover{
     margin: 0; padding: 0;
   }
 }
+/* ---- AI follow-up (chips) ---- */
+.followup.hidden{display:none}
+.followup-inner{border:1px solid var(--border);border-radius:16px;background:var(--soft);padding:16px;margin:10px 0 0}
+.followup-inner h2{margin:0 0 12px;font-size:18px}
+.chip-grid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:720px){.chip-grid{grid-template-columns:1fr}}
+.chip-group{padding:8px;border:1px dashed var(--border);border-radius:12px;background:rgba(255,255,255,.03)}
+.chip-title{font-size:12px;opacity:.85;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--border);background:var(--bg);color:var(--text);padding:8px 12px;border-radius:999px;font-size:14px;cursor:pointer}
+.chip.on{background:linear-gradient(135deg,var(--primary-2),var(--primary));border-color:transparent;color:#fff}
+.chip-actions{display:flex;align-items:flex-end;gap:10px;margin-top:10px;flex-wrap:wrap}
+.btn-soft{border:1px solid var(--border);background:var(--soft);color:var(--text);padding:10px 14px;border-radius:12px}
+.price-wrap{display:flex;flex-direction:column;gap:6px}
+#ai-price{width:140px;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0f0f12;color:var(--text)}
