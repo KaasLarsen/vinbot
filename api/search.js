@@ -2,34 +2,17 @@
 export const config = { runtime: "nodejs" };
 
 /**
- * Returnér FLASKER (enkelt-produkter) med billede/pris fra Partner-ads feeds.
- * - Understøtter <product> og <item> som rodtag for produkter.
- * - Masser af alternative feltnavne for image, link, pris, osv.
- * - Alle billeder proxys via /api/img for stabil indlæsning.
- * - Fallback: butiks-søgesider (med OG-billeder) KUN hvis ingen feed-hits.
+ * Søg efter FLASKER (enkelt-produkter) via Partner-ads feeds.
+ * - Understøtter XML (<product>/<item>) OG CSV/TSV feeds.
+ * - Normaliserer & proxy'er billeder via /api/img.
+ * - Returnerer kun feed-produkter; fallback til butikssøgesider UDEN pris,
+ *   KUN hvis der ikke findes feed-hits.
  */
 export default async function handler(req, res) {
   try {
     const q = (req.query.q || "").toString().trim();
-    const mock = req.query.mock === "1";
-    if (!q && !mock) return json(res, { products: [] });
+    if (!q) return json(res, { products: [] });
 
-    if (mock) {
-      return json(res, {
-        products: [
-          {
-            merchant: "Mere om Vin",
-            title: "Barolo DOCG 2019 – Test",
-            price: 179,
-            currency: "DKK",
-            image: proxyImg("https://via.placeholder.com/300x300.png?text=Barolo"),
-            url: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537"
-          }
-        ]
-      });
-    }
-
-    // === FEEDS du har givet ===
     const FEEDS = [
       { merchant: "Mere om Vin",  url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
       { merchant: "Winther Vin",  url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
@@ -44,40 +27,47 @@ export default async function handler(req, res) {
 
     const terms = expandQuery(q);
 
-    // --- Hent feeds parallelt ---
-    const results = await Promise.all(
+    // --- Hent & pars alle feeds (XML eller CSV/TSV) ---
+    const lists = await Promise.all(
       FEEDS.map(async ({ merchant, url }) => {
         try {
-          const r = await fetch(url, { headers });
-          const xml = await r.text();
-          const all = parseProducts(xml, merchant); // ← FLASKER
-          const hits = all
-            .filter(p => terms.some(t => p._search.includes(t)))  // match
+          const r = await fetch(url, { headers, redirect: "follow" });
+          const text = await r.text();
+
+          let products = [];
+          if (looksLikeXML(text)) {
+            products = parseXMLProducts(text, merchant);
+          } else {
+            products = parseCSVProducts(text, merchant); // CSV/TSV
+          }
+
+          // match + normaliser billede + proxy + filter kun valide produkter
+          const hits = products
+            .filter(p => p.title && p.url) // basiskrav
+            .filter(p => terms.some(t => p._search.includes(t)))
             .map(p => {
-              // normalisér + proxy billede
               const img = normalizeUrl(p.image, p.url);
               return img ? { ...p, image: proxyImg(img) } : { ...p, image: null };
-            })
-            .filter(p => p.title && p.url) // sikre validt produkt
-            .slice(0, 60); // tag lidt flere, vi filtrerer senere
+            });
+
           return hits;
         } catch (e) {
-          console.error("Feed error", merchant, e?.message || e);
+          console.error("feed_error", merchant, e?.message || e);
           return [];
         }
       })
     );
 
-    // Saml, berig enkelte uden billede, fjern dem uden billede, sorter og returnér
-    let products = results.flat();
+    // Saml
+    let items = lists.flat();
 
-    // Prøv at berige få uden billede via OpenGraph
-    const noImg = products.filter(p => !p.image).slice(0, 8);
+    // Forsøg at berige FÅ uden billede via OG (hurtigt)
+    const noImg = items.filter(p => !p.image).slice(0, 8);
     if (noImg.length) {
       try {
         const enriched = await enrichWithOpenGraph(noImg, headers);
         const map = new Map(enriched.map(e => [e.url, e]));
-        products = products.map(p => {
+        items = items.map(p => {
           if (p.image) return p;
           const e = map.get(p.url);
           const img = e?.image ? normalizeUrl(e.image, p.url) : null;
@@ -86,23 +76,25 @@ export default async function handler(req, res) {
       } catch {}
     }
 
-    // Kun produkter med billede for et lækkert grid
-    products = products.filter(p => p.image);
+    // Kun produkter med billede → pænt grid, ingen “broken” tiles
+    items = items.filter(p => p.image);
 
-    // Sortér: bedste match først, billigst indenfor samme score
-    products = scoreAndSort(products, terms).slice(0, 30);
+    // Sortér: bedst match, derefter laveste pris
+    items = scoreAndSort(items, terms).slice(0, 40);
 
-    if (products.length) {
-      return json(res, { products });
-    }
+    if (items.length) return json(res, { products: items });
 
-    // === Fallback: butikker uden feed (viser butik-søgesider med OG-billede) ===
+    // --- Fallback: butikker uden feeds (ingen priser, kun billede via OG) ---
     const merchants = await getMerchants(req).catch(() => []);
     const baseLinks = merchants.map(m => {
       const href = (m.search || "").includes("{Q}")
         ? m.search.replace("{Q}", encodeURIComponent(q))
         : (m.search || m.home || m.url || "");
-      return { merchant: m.name || m.host || "Ukendt butik", title: `${q} hos ${m.name || m.host}`, url: href, price: null, currency: "DKK", image: null, _page: href };
+      return {
+        merchant: m.name || m.host || "Ukendt butik",
+        title: `${q} hos ${m.name || m.host}`,
+        url: href, image: null, price: null, currency: "DKK", _page: href
+      };
     });
 
     const enriched = await enrichWithOpenGraph(baseLinks.slice(0, 12), headers).catch(() => baseLinks);
@@ -113,9 +105,7 @@ export default async function handler(req, res) {
       })
       .filter(it => it.image);
 
-    if (!withImg.length) return json(res, { products: baseLinks.slice(0, 12) });
     return json(res, { products: withImg.slice(0, 24) });
-
   } catch (err) {
     console.error("search_failed", err?.message || err);
     return json(res, { products: [] });
@@ -127,36 +117,43 @@ function json(res, obj, status=200){ res.setHeader("content-type","application/j
 
 const UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
-const SYNONYMS = { barolo:["nebbiolo"], rioja:["tempranillo"], ribera:["tempranillo","ribera del duero"], chianti:["sangiovese"], shiraz:["syrah"], cremant:["crémant"], rose:["rosé"] };
+const SYNONYMS = { barolo:["nebbiolo"], rioja:["tempranillo"], ribera:["tempranillo","ribera del duero"], chianti:["sangiovese"], shiraz:["syrah"], cremant:["crémant"], rose:["rosé"], cab:["cabernet"], cabernet:["cabernet"] };
 function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim(); }
 function expandQuery(q){ const base=normalize(q); const t=new Set([base]); Object.keys(SYNONYMS).forEach(k=>{ if(base.includes(k)) SYNONYMS[k].forEach(s=>t.add(normalize(s))); }); return [...t]; }
 function toNumber(s){ if(!s) return null; const n=s.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"."); const v=parseFloat(n); return Number.isFinite(v)?v:null; }
-function decodeHTMLEntities(t){ return t.replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#039;/g,"'"); }
+function decodeHTMLEntities(t){ return (t||"").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#039;/g,"'"); }
 function stripCdata(s=""){ return s.replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,""); }
+function looksLikeXML(txt){ return /<\?xml|<rss|<feed|<products|<product|<channel|<item/i.test(txt); }
+function proxyImg(src){ return `/api/img?src=${encodeURIComponent(src)}`; }
+function normalizeUrl(maybe, pageUrl){
+  if (!maybe) return null;
+  let s = maybe.trim().replace(/&amp;/g,"&");
+  if (s.startsWith("//")) s = "https:" + s;
+  try{ new URL(s); return s; }catch{}
+  if (pageUrl){ try{ return new URL(s, pageUrl).toString(); }catch{} }
+  return null;
+}
 
-/* Robust product-parser:
-   - Del på både <product> og RSS <item>
-   - Flerfelts billed- og prishåndtering
-*/
-function parseProducts(xml, merchant){
+/* ---------- XML parser (product/item) ---------- */
+function parseXMLProducts(xml, merchant){
   const out=[];
 
-  const prodBlocks = splitBlocks(xml, "product");
-  const itemBlocks = splitBlocks(xml, "item");
-  const blocks = prodBlocks.length ? prodBlocks : itemBlocks;
+  const blocks = splitBlocks(xml, "product");
+  const items  = splitBlocks(xml, "item");
+  const rows = blocks.length ? blocks : items;
 
-  for (const b of blocks){
+  for (const b of rows){
     const title = pickOne(b, ["name","title"]);
     const desc  = pickOne(b, ["description","shortdescription","longdescription","long_description","content:encoded"]);
     const category = pickOne(b, ["categorypath","category","categories"]);
     const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator"]);
 
     const priceStr = pickOne(b, ["price","price_inc_vat","price_with_vat","saleprice","ourprice","current_price","g:price","price_old"]);
+    const price = toNumber(cleanPrice(priceStr));
     const currency = pickOne(b, ["currency","currency_iso"]) || extractCurrency(priceStr) || "DKK";
 
     const url = pickOne(b, ["deeplink","link","producturl","url","g:link"]);
 
-    // IMAGE: mange varianter + nested
     let image = pickOne(b, [
       "imageurl","image_url","image","largeimage","large_image","g:image_link",
       "picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","enclosure url"
@@ -170,7 +167,6 @@ function parseProducts(xml, merchant){
     }
 
     if (!title || !url) continue;
-    const price = toNumber(cleanPrice(priceStr));
 
     out.push({
       merchant, title, desc, category, brand, price, currency,
@@ -178,22 +174,19 @@ function parseProducts(xml, merchant){
       _search: normalize([title, desc, category, brand].filter(Boolean).join(" "))
     });
   }
-
   return out;
 }
-
 function splitBlocks(xml, tag){
   return xml.split(new RegExp(`<${tag}\\b[^>]*>`, "i"))
             .slice(1)
             .map(b => b.split(new RegExp(`</${tag}>`, "i"))[0]);
 }
 function pickTag(block, tag){
-  const m = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
+  const m = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`,"i"));
   return m ? decodeHTMLEntities(stripCdata(m[1].trim())) : "";
 }
 function pickOne(block, tags){
   for (const t of tags){
-    // special-case: attributes på fx <enclosure url="...">
     if (t.includes(" ")){ // fx "enclosure url"
       const [el, attr] = t.split(" ");
       const m = block.match(new RegExp(`<${el}[^>]*${attr}=["']([^"']+)["'][^>]*>`, "i"));
@@ -219,30 +212,69 @@ function extractCurrency(s){
   return null;
 }
 
-function scoreAndSort(items, terms){
-  const norm=(s)=>normalize(s||"");
-  const score=(p)=>{ let sc=0; const s=p._search||""; terms.forEach(t=>{ if(s.includes(t)) sc+=10; });
-    if(p.title && norm(p.title).includes(terms[0])) sc+=5;
-    if(p.price!=null) sc+=1;
-    if(p.image) sc+=2;
-    return -sc;
+/* ---------- CSV/TSV parser ---------- */
+function parseCSVProducts(text, merchant){
+  // find delimiter (semicolon, comma eller tab)
+  const head = text.slice(0, 1024);
+  const delim = head.includes("\t") ? "\t" : (head.includes(";") ? ";" : ",");
+  const rows = parseCSV(text, delim);
+
+  // map kolonnenavne (gør dem små og uden mellemrum/tegn)
+  const headers = rows.shift()?.map(n => n.toLowerCase().replace(/\s+/g,"").replace(/[^a-z0-9:_-]/g,"")) || [];
+  const idx = name => {
+    const aliases = {
+      title: ["name","title","productname","product","navn"],
+      url: ["deeplink","link","producturl","url"],
+      image: ["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link"],
+      price: ["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","price_old"],
+      currency: ["currency","currency_iso","valuta"]
+    };
+    for (const a of aliases[name]) {
+      const i = headers.indexOf(a);
+      if (i !== -1) return i;
+    }
+    return -1;
   };
-  return [...items].sort((a,b)=> score(a)-score(b) || (a.price??9e9)-(b.price??9e9));
-}
 
-function normalizeUrl(maybe, pageUrl){
-  if (!maybe) return null;
-  let s = maybe.trim().replace(/&amp;/g,"&");
-  if (s.startsWith("//")) s = "https:" + s;
-  try{ new URL(s); return s; }catch{}
-  if (pageUrl){
-    try{ return new URL(s, pageUrl).toString(); }catch{}
+  const ititle=idx("title"), iurl=idx("url"), iimg=idx("image"), iprice=idx("price"), icur=idx("currency");
+  const out=[];
+  for (const r of rows){
+    const title = r[ititle] || "";
+    const url   = r[iurl]   || "";
+    const image = r[iimg]   || "";
+    const price = toNumber(r[iprice] || "");
+    const currency = r[icur] || "DKK";
+    if (!title || !url) continue;
+    out.push({
+      merchant, title,
+      desc:"", category:"", brand:"",
+      price, currency, image, url,
+      _search: normalize(title)
+    });
   }
-  return null;
+  return out;
 }
-function proxyImg(src){ return `/api/img?src=${encodeURIComponent(src)}`; }
+function parseCSV(text, delim){
+  const rows=[]; let field=""; let row=[]; let inQ=false; const d=delim;
+  for (let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if (inQ){
+      if (c==='"' && n=== '"'){ field+='"'; i++; continue; }
+      if (c=== '"'){ inQ=false; continue; }
+      field+=c; continue;
+    } else {
+      if (c=== '"'){ inQ=true; continue; }
+      if (c=== d){ row.push(field); field=""; continue; }
+      if (c=== '\n'){ if (n=== '\r'){ /* ignore */ } row.push(field); rows.push(row); field=""; row=[]; continue; }
+      if (c=== '\r'){ row.push(field); rows.push(row); field=""; row=[]; continue; }
+      field+=c;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(x => (x||"").trim().length));
+}
 
-// Merchants uden feed (bruges kun som fallback)
+/* ---------- Fallback (butikker uden feed) ---------- */
 async function getMerchants(req){
   try{
     const base=`${req.headers["x-forwarded-proto"]||"https"}://${req.headers.host}`;
@@ -259,7 +291,7 @@ async function getMerchants(req){
   }
 }
 
-// OpenGraph enrichment (hurtig, lille batch)
+/* ---------- OpenGraph enrichment (kun billede; ingen pris på fallback) ---------- */
 async function enrichWithOpenGraph(items, headers){
   const tasks = items.map(async it=>{
     try{
@@ -267,8 +299,7 @@ async function enrichWithOpenGraph(items, headers){
       const html = await r.text();
       const ogImg = pickMeta(html, /(property|name)=["']og:image["']/i);
       const twImg = pickMeta(html, /(property|name)=["']twitter:image["']/i);
-      const price = pickMeta(html, /(property|name)=["']product:price:amount["']/i) || findPriceInText(html);
-      return { ...it, image: ogImg || twImg || null, price: it.price ?? (price ? toNumber(price) : null) };
+      return { ...it, image: ogImg || twImg || null };
     }catch{ return it; }
   });
   return Promise.all(tasks);
@@ -277,7 +308,15 @@ function pickMeta(html, attrRe){
   const m = html.match(new RegExp(`<meta[^>]+${attrRe.source}[^>]+content=["']([^"']+)["']`,"i"));
   return m ? m[1] : null;
 }
-function findPriceInText(html){
-  const m = html.replace(/\s+/g," ").match(/(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)\s?kr/i);
-  return m ? m[1] : null;
+
+/* ---------- Scoring ---------- */
+function scoreAndSort(items, terms){
+  const norm=(s)=>normalize(s||"");
+  const score=(p)=>{ let sc=0; const s=p._search||""; terms.forEach(t=>{ if(s.includes(t)) sc+=10; });
+    if(p.title && norm(p.title).includes(terms[0])) sc+=5;
+    if(p.price!=null) sc+=1;
+    if(p.image) sc+=2;
+    return -sc;
+  };
+  return [...items].sort((a,b)=> score(a)-score(b) || (a.price??9e9)-(b.price??9e9));
 }
