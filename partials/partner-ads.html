@@ -1,0 +1,95 @@
+<!-- PARTNER / AFFILIATE – Vinbot -->
+<section class="card partner-block" aria-label="Partner">
+  <div class="partner-head">
+    <h3>Partner</h3>
+    <small class="muted">Annoncer/affiliate · støtter driften</small>
+  </div>
+
+  <!-- Consent-gate placeholder (vises hvis affiliate/ads ikke er givet) -->
+  <div class="partner-consent" hidden>
+    <p>Vi viser partnerindhold her, når du tillader annoncer/affiliate i cookie-indstillinger.</p>
+    <button class="btn" type="button" id="partner-enable">Tillad nu</button>
+  </div>
+
+  <!-- Banner-container -->
+  <div class="partner-slot">
+    <!-- Link: outbound + label for GA4 -->
+    <a
+      class="card outbound"
+      id="partner-link"
+      href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94856"
+      target="_blank"
+      rel="nofollow sponsored noopener"
+      data-label="Partner-ads 94856"
+      style="display:block;padding:0;border:none;box-shadow:none"
+    >
+      <!-- Billedet loader først efter consent (data-src -> src) -->
+      <img
+        id="partner-img"
+        data-src="https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94856"
+        alt="Godt vintilbud hos partner"
+        loading="lazy"
+        style="width:100%;height:auto;display:block;border-radius:12px"
+      />
+      <noscript>
+        <img src="https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94856" alt="Godt vintilbud hos partner" />
+      </noscript>
+    </a>
+  </div>
+</section>
+
+<style>
+  .partner-block{margin:16px 0}
+  .partner-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+  .partner-consent{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card, #121316);border:1px dashed var(--line,#333);border-radius:12px;padding:12px}
+  .partner-block .btn{background:#22232a;border:1px solid #333;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+  .partner-block .btn:hover{background:#2a2b31}
+</style>
+
+<script>
+  (function(){
+    // Kræv enten 'affiliate' ELLER 'ads' consent for at vise banneret
+    function allowed(state){
+      if(!state || !state.choiceMade) return false;
+      return !!(state.affiliate || state.ads);
+    }
+
+    function reveal(){
+      // flyt data-src -> src, så billedet først loader efter consent
+      const img = document.getElementById('partner-img');
+      if(img && img.dataset.src && !img.src){ img.src = img.dataset.src; }
+    }
+
+    function showConsentGate(){
+      const gate = document.querySelector('.partner-consent');
+      if(!gate) return;
+      gate.hidden = false;
+      const btn = document.getElementById('partner-enable');
+      if(btn){
+        btn.addEventListener('click', function(){
+          // Åbn Consent Manager, hvis tilgængelig
+          try { window.VinbotConsent && window.VinbotConsent.set({ affiliate:true }); } catch(e){}
+          // Forsøg at vise banner straks efter
+          try {
+            const st = window.VinbotConsent ? window.VinbotConsent.get() : null;
+            if(allowed(st)){ gate.hidden = true; reveal(); }
+          } catch(e){}
+        });
+      }
+    }
+
+    try{
+      const st = window.VinbotConsent ? window.VinbotConsent.get() : null;
+      if(allowed(st)){ reveal(); }
+      else { showConsentGate(); }
+
+      // Hvis consent ændres dynamisk (fx via modal), kan du lytte her:
+      // (let op: vores simple consent.js udsender ikke event by default.
+      // Hvis du tilføjer det, kan du hooke ind her.)
+      // window.addEventListener('vinbot:consent-change', () => {...});
+    }catch(e){
+      // Fallback: ingen consent-manager → vis banneret
+      reveal();
+    }
+  })();
+</script>
