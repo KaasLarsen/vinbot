@@ -716,3 +716,18 @@ footer .socials .fb:hover{
 
 /* 3) Luft op til sektionen over */
 .partner-block { margin-top: 24px !important; }
+/* desktop default */
+.nav-toggle{display:none}
+
+/* mobil: skjul menu, vis burger */
+@media (max-width: 860px){
+  .nav-toggle{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:transparent; border:1px solid var(--border); border-radius:10px; padding:8px; color:var(--text)}
+  .main-nav{display:none; position:absolute; top:64px; left:16px; right:16px;
+    background:linear-gradient(180deg,var(--card),var(--card-2)); border:1px solid var(--border);
+    border-radius:14px; padding:10px}
+  .nav.nav--open .main-nav{display:block}
+  .main-nav li{list-style:none}
+  .main-nav a{display:block; padding:10px 12px; border-radius:10px; text-decoration:none; color:var(--text)}
+  .main-nav a:hover{background:var(--soft)}
+}
