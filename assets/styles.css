@@ -589,3 +589,23 @@ footer .socials .fb:hover{
   max-width: 800px;
   margin: 0 auto;
 }
+/* centrér hele wrap-blokken horisontalt */
+.wrap.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* flyt alt indhold i midten af skærmen */
+}
+
+/* behold normal bredde på grid og kort */
+.wrap.page .grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;  /* sørg for kortene står centreret */
+}
+
+.wrap.page .card {
+  flex: 1 1 300px; /* samme dynamik som før */
+  max-width: 400px;
+}
