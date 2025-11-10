@@ -62,7 +62,7 @@
   <div id="footer"></div>
 
   <script>
-    // Load partials
+    // Load partials + init burger
     (async()=> {
       const [h,f] = await Promise.all([
         fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
@@ -70,7 +70,33 @@
       ]);
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
+
+      // init mobilmenu efter at headeren er indsat
+      initMobileNav();
     })();
+
+    // Burger-init (virker også når headeren indlæses som partial)
+    function initMobileNav(){
+      const nav  = document.querySelector(".nav");
+      const btn  = document.querySelector(".nav-toggle");
+      const menu = document.getElementById("mainMenu");
+      if (!nav || !btn || !menu) return;
+
+      const close = () => {
+        nav.classList.remove("nav--open");
+        btn.setAttribute("aria-expanded","false");
+      };
+      const toggle = () => {
+        const open = !nav.classList.contains("nav--open");
+        nav.classList.toggle("nav--open", open);
+        btn.setAttribute("aria-expanded", String(open));
+      };
+
+      btn.addEventListener("click", toggle);
+      menu.addEventListener("click", e => { if (e.target.matches("a")) close(); });
+      document.addEventListener("click", e => { if (!nav.contains(e.target)) close(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    }
   </script>
 
   <!-- Partnere uden feed (favicon fallback) -->
