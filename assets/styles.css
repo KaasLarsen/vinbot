@@ -660,3 +660,29 @@ footer .socials .fb:hover{
 .wrap.page > .partner-block {
   width: min(1100px, 100%) !important; /* match din content-bredde */
 }
+/* Partner banner: fyld hele kortet */
+.partner-block .partner-slot a {
+  display: block !important;      /* ikke inline / inline-block */
+  width: 100% !important;         /* fyld hele kortet */
+}
+
+.partner-block .partner-slot img {
+  display: block !important;
+  width: 100% !important;         /* stræk billedet proportionalt */
+  height: auto !important;
+  max-width: none !important;     /* ignorér globale img-regler */
+  border-radius: 12px;
+}
+
+/* Gør ikke partner-kortet smallere end de andre sektioner */
+.wrap.page > .partner-block.card {
+  width: min(1100px, 100%) !important;
+  max-width: none !important;
+  align-self: center !important;
+  flex: 0 0 auto !important;
+}
+
+/* Afstand op til boksen over */
+.partner-block {
+  margin-top: 24px !important;    /* ekstra luft */
+}
