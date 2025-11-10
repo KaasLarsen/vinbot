@@ -626,3 +626,37 @@ footer .socials .fb:hover{
 .wrap.page > * {
   width: min(1100px, 100%);
 }
+/* --- Partner banner: tving fuld bredde --- */
+
+/* 1) Sørg for at partner-blokken ikke arver .card's max-width */
+.partner-block.card { 
+  max-width: none !important; 
+  width: 100% !important; 
+  align-self: stretch !important; 
+  flex: 0 0 auto !important;
+}
+
+/* 2) Hvis den (ved en fejl) ender inde i et .grid, så lad den span’e hele rækken */
+.grid .partner-block.card {
+  flex-basis: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 3) Selve indholdet: block-elementer og responsive billede */
+.partner-block .partner-slot a { 
+  display: block !important; 
+  width: 100% !important; 
+}
+
+.partner-block .partner-slot img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  border-radius: 12px;
+}
+
+/* 4) Når .wrap.page centreres med flex, skal direkte børn kunne fylde hele banen */
+.wrap.page > .partner-block {
+  width: min(1100px, 100%) !important; /* match din content-bredde */
+}
