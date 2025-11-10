@@ -19,7 +19,8 @@
     <div class="search-wrap">
       <div class="search">
         <div class="icon">🔎</div>
-        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" autofocus
+        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”"
+               autocomplete="off" autofocus
                onkeydown="if(event.key==='Enter'){doSearch()}" />
         <button class="btn-primary" id="searchBtn" onclick="doSearch()">Søg</button>
       </div>
@@ -34,8 +35,23 @@
     <!-- AI-opfølgning -->
     <section id="followup" class="followup hidden" aria-live="polite"></section>
 
+    <!-- Sortering -->
+    <div id="sortbar" class="sortbar" style="display:none;">
+      <label for="sortSel">Sortér: </label>
+      <select id="sortSel">
+        <option value="relevance">Mest relevant</option>
+        <option value="price_asc">Laveste pris</option>
+        <option value="price_desc">Højeste pris</option>
+      </select>
+    </div>
+
     <!-- Resultater -->
-    <section class="grid" id="results" aria-live="polite"></section>
+    <section id="results" aria-live="polite"></section>
+
+    <!-- Vis flere -->
+    <div id="moreWrap" class="load-more" style="display:none;">
+      <button id="moreBtn" class="btn-primary">Vis flere</button>
+    </div>
   </main>
 
   <!-- Footer partial -->
@@ -54,9 +70,8 @@
   </script>
 
   <script>
-    // ---------- Intent & synonymer ----------
+    /* ---------------- INTENT & SYNONYMER ---------------- */
     const INTENT = {
-      // mad
       ost:["portvin","riesling","chardonnay","sauternes"],
       pizza:["chianti","barbera","primitivo"],
       bøf:["barolo","cabernet sauvignon","syrah"],
@@ -66,7 +81,6 @@
       sushi:["riesling","sauvignon blanc","crémant"],
       tapas:["rioja","garnacha","cava"],
       dessert:["sauternes","portvin","moscato"],
-      // humør/lejlighed
       sommer:["rosé","sauvignon blanc","crémant"],
       terrasse:["rosé","cava","prosecco"],
       hygge:["primitivo","zinfandel","malbec"],
@@ -81,20 +95,17 @@
       cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
     };
 
-    // ---------- Filter state (AI-opfølgning) ----------
+    /* ---------------- FILTER-STATE ---------------- */
     const state = {
-      baseTerms: [],     // termer fra brugerens input
-      filters: {         // udfyldes via chips
-        farve: null,     // "rød","hvid","rosé","bobler"
-        stil: [],        // "let","frugtig","kraftig","tør","sød"
-        pris: null,      // tal (max)
-        land: [],        // fx "italien","frankrig","spanien"
-        anledning: null, // "hygge","romantisk","sommer","fest"
-        mad: null        // "ost","pizza","bøf"...
-      }
+      baseTerms: [],
+      filters: { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null },
+      products: [],        // alle produkter fra API
+      picks: [],           // top 3 anbefalinger
+      visible: 0,          // hvor mange kort renderet
+      pageSize: 24,
+      sortBy: "relevance", // relevance | price_asc | price_desc
     };
 
-    // mapping fra chips -> søgetermer
     const CHIP_MAP = {
       farve: {
         "rød":["barolo","nebbiolo","cabernet","syrah","malbec","tempranillo","zinfandel","primitivo","pinot noir"],
@@ -124,64 +135,144 @@
       }
     };
 
+    /* ---------------- UTIL ---------------- */
+    function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
     function deriveTermsFromInput(raw){
-      const q = (raw||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const q = normalize(raw||"");
       const S=new Set();
-      // mad/humør
       Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
-      // direkte tokens + ækvivalenter
       q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
-      // budget
       let max=null; const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/); if(m) max=parseInt(m[1],10);
       if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
       return {terms:[...S], max};
     }
-
     function deriveTermsFromFilters(){
       const f = state.filters;
       const extra = new Set();
-
       if (f.farve && CHIP_MAP.farve[f.farve]) CHIP_MAP.farve[f.farve].forEach(t=>extra.add(t));
-      f.stil.forEach(s => { (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)); });
-      f.land.forEach(l => { (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)); });
+      f.stil.forEach(s => (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)));
+      f.land.forEach(l => (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)));
       if (f.anledning && CHIP_MAP.anledning[f.anledning]) CHIP_MAP.anledning[f.anledning].forEach(t=>extra.add(t));
       if (f.mad && INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
-
-      // to-vejs ækvivalenter
       [...extra].forEach(t => (EQUIV[t]||[]).forEach(x=>extra.add(x)));
       return [...extra];
     }
 
+    /* ---------------- RENDER HJÆLPERE ---------------- */
+    function priceHTML(p){
+      // forsøger at finde en før-pris i almindelige felter hvis API’et sender dem med
+      const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
+      const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
+      if (old && p.price && Number(old) > Number(p.price)) {
+        const oldF = Number(old).toLocaleString("da-DK",{style:"currency",currency:"DKK"});
+        return `<span class="price price-sale">${curr}</span><span class="price price-old">${oldF}</span>`;
+      }
+      return curr ? `<span class="price">${curr}</span>` : "";
+    }
+    function badgesHTML(p){
+      const b = [];
+      if (state.filters.pris) b.push(`budget ≤ ${state.filters.pris} kr`);
+      if (state.filters.farve) b.push(state.filters.farve);
+      if (state.filters.stil && state.filters.stil.length) b.push(...state.filters.stil);
+      if (state.filters.land && state.filters.land.length) b.push(...state.filters.land);
+      if (state.filters.anledning) b.push(state.filters.anledning);
+      if (state.filters.mad) b.push(`til ${state.filters.mad}`);
+      // Tilbud-badge når der er førpris
+      const hasOld = p.price_old ?? p.glpris ?? p.compareAt ?? null;
+      if (hasOld && p.price && Number(hasOld) > Number(p.price)) b.push("Tilbud");
+      const m = p.merchant ? [p.merchant] : [];
+      return `<div class="badges">
+        ${priceHTML(p)}
+        ${m.concat(b).map(t=>`<span class="badge ${t==='Tilbud'?'badge--sale':''}">${t}</span>`).join("")}
+      </div>`;
+    }
+    function cardHTML(p){
+      return `
+        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+          <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
+          <div class="card-body">
+            <h3>${p.title}</h3>
+            ${badgesHTML(p)}
+          </div>
+        </a>
+      `;
+    }
+
+    /* ---------------- TOP 3 ANBEFALINGER ---------------- */
+    function pickTop3(items, terms){
+      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
+      const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
+      const budget = state.filters.pris ?? null;
+
+      function relScore(p){
+        let s=0; const hay=((p.title||"")+" "+(p.brand||"")).toLowerCase();
+        terms.forEach(t=>{ if(hay.includes(t)) s+=1; });
+        return s*W.rel + (p.image?W.img:0);
+      }
+      function priceScore(p){
+        if (p.price==null || !budget) return 0;
+        const d = Math.abs(p.price - budget);
+        const pct = Math.min(1, d / Math.max(1,budget));
+        return (1 - pct) * W.pricedist;
+      }
+      function commScore(p){
+        const c = COMM[p.merchant] ?? 0;
+        return c * 10 * W.comm;
+      }
+      function normScore(p){
+        if (/(\bmagnum\b|\bjeroboam\b|\b6 ?l\b|\bkasse\b|\bsmagekasse\b|\bpack\b)/i.test(p.title||"")) return -2*W.norm;
+        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i.test(p.title||"")) return -2*W.norm;
+        return 0;
+      }
+      function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
+      function overlap(a,b){
+        const A=new Set((a.title||"").toLowerCase().split(/\W+/));
+        const B=new Set((b.title||"").toLowerCase().split(/\W+/));
+        let inter=0; A.forEach(x=>{ if(B.has(x)) inter++; });
+        return inter / Math.max(1, Math.min(A.size,B.size));
+      }
+
+      const pool=[...items].sort((a,b)=>baseScore(b)-baseScore(a)).slice(0,50);
+      const chosen=[];
+      while (chosen.length<3 && pool.length){
+        let best=null, bestS=-1e9;
+        for (const p of pool){
+          const penalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
+          const s = baseScore(p) - penalty*W.diversity;
+          if (s > bestS){ best=p; bestS=s; }
+        }
+        if (!best) break;
+        chosen.push(best);
+        pool.splice(pool.indexOf(best),1);
+      }
+      return chosen;
+    }
+
+    /* ---------------- SØGNING ---------------- */
     async function doSearch(fromChip=false){
       const q = document.getElementById('q').value.trim();
-      if (!fromChip) {
-        // ny grundsøgning -> nulstil filter-state (behold dog feltet pris hvis brugeren skrev det)
-        state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
-      }
+      if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
 
       const base = deriveTermsFromInput(q);
       state.baseTerms = base.terms;
       if (base.max != null) state.filters.pris = base.max;
 
       const refined = deriveTermsFromFilters();
-      const finalTerms = Array.from(new Set([...state.baseTerms, ...refined]));
+      const terms = Array.from(new Set([...state.baseTerms, ...refined]));
 
-      // UI
       const $status = document.getElementById("status");
       const $res = document.getElementById("results");
       $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
       $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
 
-      // kald api
       const params = new URLSearchParams();
-      params.set("q", finalTerms.join(" "));
+      params.set("q", terms.join(" "));
       if (state.filters.pris != null) params.set("max", String(state.filters.pris));
 
       const r = await fetch(`/api/search?${params.toString()}`, {cache:"no-store"});
       const data = await r.json();
-
-      // STATUS
       const meta = data.meta || {};
+
       if (data.source === "feed") {
         const bits = [];
         bits.push(`Viser ${data.products?.length ?? 0} flasker`);
@@ -194,33 +285,79 @@
         $status.innerHTML = `<div class="msg err">Ingen resultater.</div>`;
       }
 
-      // RENDER RESULTATER
-      const products = data.products || [];
-      if (!products.length) {
-        document.getElementById("results").innerHTML = `<div class="msg err">Ingen rigtige produkter endnu.</div>`;
-      } else {
-        document.getElementById("results").innerHTML = products.map(p => `
-          <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
-            <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
-            <div class="card-body">
-              <h3>${p.title}</h3>
-              <div class="badges">
-                ${p.price!=null ? `<span class="badge">${Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
-                ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
-              </div>
-            </div>
-          </a>
-        `).join("");
-      }
+      state.products = Array.isArray(data.products) ? data.products : [];
+      state.sortBy = "relevance";
+      state.picks = pickTop3(state.products, terms);
+      state.visible = 0;
 
-      // RENDER AI-OPFØLGNING (chips)
-      renderFollowup(q, products.length);
+      document.getElementById("sortbar").style.display = state.products.length ? "block" : "none";
+      document.getElementById("sortSel").value = "relevance";
+      renderAll();          // render top picks + første side
+      renderFollowup(q, state.products.length);
     }
 
+    // sortering + paginering
+    function sortProducts(list){
+      const arr = [...list];
+      if (state.sortBy === "price_asc") {
+        return arr.sort((a,b)=> (a.price ?? 9e12) - (b.price ?? 9e12));
+      } else if (state.sortBy === "price_desc") {
+        return arr.sort((a,b)=> (b.price ?? -1) - (a.price ?? -1));
+      }
+      return arr; // relevance (API-rækkefølge)
+    }
+    function renderAll(){
+      const $res = document.getElementById("results");
+      const sorted = sortProducts(state.products);
+
+      // top picks kun ved relevans
+      const topHTML = (state.sortBy === "relevance" && state.picks.length) ? `
+        <section class="top-picks">
+          <h2>Anbefalet af Vinbot</h2>
+          <div class="picks-row">
+            ${state.picks.map(p => cardHTML(p)).join("")}
+          </div>
+        </section>
+      ` : "";
+
+      state.visible = Math.min(state.pageSize, sorted.length);
+      const listHTML = `
+        <section class="grid">
+          ${sorted.slice(0, state.visible).map(p => cardHTML(p)).join("")}
+        </section>
+      `;
+      $res.innerHTML = topHTML + listHTML;
+
+      const hasMore = state.visible < sorted.length;
+      const mw = document.getElementById("moreWrap");
+      mw.style.display = hasMore ? "block" : "none";
+    }
+    function showMore(){
+      const $res = document.getElementById("results");
+      const sorted = sortProducts(state.products);
+      const next = Math.min(state.visible + state.pageSize, sorted.length);
+      if (next <= state.visible) return;
+
+      // append nye kort til eksisterende grid (sidste section i results)
+      const grid = $res.querySelector(".grid");
+      const slice = sorted.slice(state.visible, next).map(p => cardHTML(p)).join("");
+      grid.insertAdjacentHTML("beforeend", slice);
+
+      state.visible = next;
+      const hasMore = state.visible < sorted.length;
+      document.getElementById("moreWrap").style.display = hasMore ? "block" : "none";
+    }
+
+    // events
+    document.getElementById("moreBtn").addEventListener("click", showMore);
+    document.getElementById("sortSel").addEventListener("change", (e)=>{
+      state.sortBy = e.target.value;
+      renderAll();
+    });
+
+    /* ---------------- AI-OPFØLGNING ---------------- */
     function renderFollowup(query, resultCount){
       const $f = document.getElementById("followup");
-
-      // Vis opfølgning når: 1) første søgning, eller 2) mange generiske termer, eller 3) få resultater
       const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
       const shouldAsk = generic || resultCount < 8;
 
@@ -258,14 +395,12 @@
       $f.innerHTML = ui;
       $f.classList.remove("hidden");
 
-      // events
       $f.querySelectorAll(".chip").forEach(btn=>{
         btn.addEventListener("click", ()=>{
           const group = btn.closest(".chip-group").dataset.group;
           const multi = btn.closest(".chip-group").dataset.multi === "true";
           toggleChip(group, btn.dataset.value, multi);
           btn.classList.toggle("on");
-          // auto-opdater hurtigt når single-valg (farve/anledning/mad)
           if (!multi) doSearch(true);
         });
       });
@@ -279,7 +414,6 @@
         doSearch(true);
       });
     }
-
     function isActive(group, label){
       const f = state.filters;
       if (Array.isArray(f[group])) return f[group].includes(label);
@@ -297,15 +431,13 @@
       }
     }
 
-    // GA4 outbound tracking (valgfri)
+    // GA4 outbound tracking (du har allerede global gtag i head)
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
       if (typeof gtag === 'function'){
         gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
       }
     });
-
-    // kickstart: ingen søgning på load; bruger skriver selv el. klikker chips
   </script>
 </body>
 </html>
