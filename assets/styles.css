@@ -549,3 +549,7 @@ footer .socials .fb:hover{
 .btn-soft{border:1px solid var(--border);background:var(--soft);color:var(--text);padding:10px 14px;border-radius:12px}
 .price-wrap{display:flex;flex-direction:column;gap:6px}
 #ai-price{width:140px;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0f0f12;color:var(--text)}
+.top-picks{margin:6px 0 14px}
+.top-picks h2{font-size:18px;margin:0 0 8px}
+.picks-row{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:960px){.picks-row{grid-template-columns:1fr}}
