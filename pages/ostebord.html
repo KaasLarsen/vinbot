@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Ostebord – Vinbot</title>
+  <meta name="description" content="Vin til ostebord: Sødme til blåskimmel, frisk hvid til cremede oste og let rød til faste oste. Serveringstips og budget." />
+  
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Ostebord</h2>
+    <p>Én vin passer sjældent til alle oste. Tænk sødme til blå, frisk syre til smørbløde hvide og let rød til faste oste.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    
+    <section class="grid">
+      <div class="card">
+        <h3>Hurtige parringer</h3>
+        <ul>
+          <li><strong>Blåskimmel</strong> → Portvin, Sauternes.</li>
+          <li><strong>Hvidskimmel (Brie/Camembert)</strong> → Chardonnay uden tungt fad, Crémant.</li>
+          <li><strong>Faste oste</strong> → Beaujolais, Dolcetto, Chianti.</li>
+          <li><strong>Friske gedeoste</strong> → Sauvignon Blanc/Sancerre.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Sød vs. salt</h3>
+        <p>Salte oste elsker vin med lidt sødme – især blåskimmel. Ellers dominerer osten.</p>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="card">
+        <h3>Servering</h3>
+        <ul>
+          <li>Hvid/bobler: <strong>7–10 °C</strong>. Let rød: <strong>12–14 °C</strong>.</li>
+          <li>Lad rødvinen få en kort luftning.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Budget</h3>
+        <ul>
+          <li><strong>Under 80 kr:</strong> Basis-Crémant, Beaujolais.</li>
+          <li><strong>80–150 kr:</strong> Sancerre-lignende stil, bedre Beaujolais.</li>
+          <li><strong>150+ kr:</strong> Champagne, top-Beaujolais Cru.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block">
+      <h3>Relateret indhold</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Tapas</h4></a>
+        <a class="card" href="/pages/vin-til/picnic.html"><h4>🧺 Picnic</h4></a>
+        <a class="card" href="/pages/vin-til/hvide-oste.html"><h4>🧈 Hvide Oste</h4></a>
+      </div>
+    </section>
+    
+
+    <!-- Partner banner partial -->
+    <div data-partial="/partials/partner-ads.html"></div>
+  </main>
+
+  <div id="footer"></div>
+  
+  <!-- partial loader (header, footer + data-partials) -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const nodes = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(nodes.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

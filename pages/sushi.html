@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Sushi – Vinbot</title>
+  <meta name="description" content="Vin til sushi: Riesling, Grüner Veltliner, Albariño og tør rosé. Vælg friskhed og syre frem for fad – servering og budgettips." />
+  
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Sushi</h2>
+    <p>Vælg sprød syre og ren frugt – vinene skal ikke overdøve fisk, tang og ris.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    
+    <section class="grid">
+      <div class="card">
+        <h3>Topvalg</h3>
+        <ul>
+          <li><strong>Riesling (tør)</strong> – citronsyre, aromatisk løft.</li>
+          <li><strong>Grüner Veltliner</strong> – frisk, let pebret.</li>
+          <li><strong>Albariño</strong> – salt mineralitet, citrus.</li>
+          <li><strong>Tør rosé</strong> – især til tun og laks.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Undgå</h3>
+        <p>Tung fadlagret Chardonnay og høj alkohol – de slår fisken ihjel.</p>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="card">
+        <h3>Servering</h3>
+        <ul>
+          <li><strong>7–9 °C</strong> for hvide/rosé.</li>
+          <li>Soya + wasabi = kræver syre, ikke fad.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Budget</h3>
+        <ul>
+          <li><strong>Under 80 kr:</strong> Vinho Verde, basis-Riesling.</li>
+          <li><strong>80–150 kr:</strong> God Riesling/Grüner.</li>
+          <li><strong>150+ kr:</strong> Top-Albariño, single-vineyard Riesling.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block">
+      <h3>Relateret indhold</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Fisk</h4></a>
+        <a class="card" href="/pages/vin-til/asiatisk.html"><h4>🌏 Asiatisk</h4></a>
+        <a class="card" href="/pages/vin-til/rose.html"><h4>🌸 Rosé</h4></a>
+      </div>
+    </section>
+    
+
+    <!-- Partner banner partial -->
+    <div data-partial="/partials/partner-ads.html"></div>
+  </main>
+
+  <div id="footer"></div>
+  
+  <!-- partial loader (header, footer + data-partials) -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const nodes = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(nodes.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Julemad – Vinbot</title>
+  <meta name="description" content="And, flæskesteg, brun sovs og rødkål: vælg Pinot Noir, Zinfandel/Primitivo eller Amarone. Søde vine til risalamande." />
+  
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Julemad</h2>
+    <p>Fedme, sødme og syre på samme tallerken – gå efter saftige rødvine med moden frugt og blød tannin.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    
+    <section class="grid">
+      <div class="card">
+        <h3>Til hovedretten</h3>
+        <ul>
+          <li><strong>Pinot Noir</strong> – kirsebær og krydderi, god til and.</li>
+          <li><strong>Zinfandel / Primitivo</strong> – moden frugt, bløde tanniner.</li>
+          <li><strong>Amarone / Ripasso</strong> – sødme og power til flæskesteg.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Til desserten</h3>
+        <ul>
+          <li><strong>Portvin (Tawny / LBV)</strong> – til risalamande.</li>
+          <li><strong>Sauternes</strong> – cremet sødme med syre.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="card">
+        <h3>Servering</h3>
+        <ul>
+          <li>Rød ved <strong>16–18 °C</strong>. Let luftning hjælper.</li>
+          <li>Tænk på sovsen – justér vinens kraft derefter.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Budget</h3>
+        <ul>
+          <li><strong>Under 90 kr:</strong> Zinfandel/Primitivo.</li>
+          <li><strong>90–200 kr:</strong> Pinot Noir fra Chile/New Zealand.</li>
+          <li><strong>200+ kr:</strong> Amarone, god Bourgogne Pinot.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block">
+      <h3>Relateret indhold</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/and.html"><h4>🦆 And</h4></a>
+        <a class="card" href="/pages/vin-til/flaeskesteg.html"><h4>🐖 Flæskesteg</h4></a>
+        <a class="card" href="/pages/vin-til/nytarsaften.html"><h4>🎆 Nytårsaften</h4></a>
+      </div>
+    </section>
+    
+
+    <!-- Partner banner partial -->
+    <div data-partial="/partials/partner-ads.html"></div>
+  </main>
+
+  <div id="footer"></div>
+  
+  <!-- partial loader (header, footer + data-partials) -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const nodes = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(nodes.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

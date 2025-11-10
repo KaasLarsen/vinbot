@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Pasta & Tomat – Vinbot</title>
+  <meta name="description" content="Barbera, Sangiovese og Montepulciano – syre møder syre. Klassiske vine til pastaretter med tomat og parmesan." />
+  
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Pasta & Tomat</h2>
+    <p>Tomat kræver syre – vælg røde med friskhed og kirsebær/urter.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    
+    <section class="grid">
+      <div class="card">
+        <h3>Topvalg</h3>
+        <ul>
+          <li><strong>Barbera</strong> – høj syre, saftig frugt.</li>
+          <li><strong>Sangiovese</strong> – kirsebær og urter.</li>
+          <li><strong>Montepulciano</strong> – lidt mere krop.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Alternativer</h3>
+        <ul>
+          <li><strong>Aglianico (let)</strong>, <strong>Nero d’Avola</strong>, <strong>Frappato</strong>.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="card">
+        <h3>Servering</h3>
+        <ul>
+          <li><strong>16–18 °C</strong>, gerne i større glas.</li>
+          <li>Undgå høj alkohol og tungt fad.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Relateret</h3>
+        <ul>
+          <li><a href="/pages/vin-til/bolognese.html">Bolognese</a></li>
+          <li><a href="/pages/vin-til/pizza.html">Pizza</a></li>
+          <li><a href="/pages/vin-til/italiensk.html">Italiensk</a></li>
+        </ul>
+      </div>
+    </section>
+    
+
+    <!-- Partner banner partial -->
+    <div data-partial="/partials/partner-ads.html"></div>
+  </main>
+
+  <div id="footer"></div>
+  
+  <!-- partial loader (header, footer + data-partials) -->
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const nodes = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(nodes.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>
