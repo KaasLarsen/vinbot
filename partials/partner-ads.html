@@ -1,124 +1,27 @@
-<!-- PARTNER / AFFILIATE – Vinbot -->
 <section class="card partner-block" aria-label="Partner">
   <div class="partner-head">
     <h3>Partner</h3>
     <small class="muted">Annoncer/affiliate · støtter driften</small>
   </div>
 
-  <!-- Consent-gate -->
-  <div class="partner-consent" hidden>
-    <p>Vis partnerindhold? Du kan ændre dit valg senere under “Cookie-indstillinger”.</p>
-    <button class="btn" type="button" id="partner-enable">Tillad nu</button>
-  </div>
-
-  <!-- Banner -->
-  <div class="partner-slot">
-    <a
-      class="card outbound"
-      id="partner-link"
-      href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94856"
-      target="_blank"
-      rel="nofollow sponsored noopener"
-      data-label="Partner-ads 94856"
-      style="display:block;padding:0;border:none;box-shadow:none"
-    >
-      <img
-        id="partner-img"
-        data-src="https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94856"
-        alt="Godt vintilbud hos partner"
-        loading="lazy"
-        style="width:100%;height:auto;display:block;border-radius:12px"
-      />
-      <noscript>
-        <img src="https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94856" alt="Godt vintilbud hos partner" />
-      </noscript>
-    </a>
-  </div>
+  <a
+    class="card outbound"
+    href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94856"
+    target="_blank"
+    rel="nofollow sponsored noopener"
+    data-label="Partner-ads 94856"
+    style="display:block;padding:0;border:none;box-shadow:none"
+  >
+    <img
+      src="https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94856"
+      alt="Godt vintilbud hos partner"
+      loading="lazy"
+      style="width:100%;height:auto;display:block;border-radius:12px"
+    />
+  </a>
 </section>
 
 <style>
   .partner-block{margin:16px 0}
   .partner-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
-  .partner-consent{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card, #121316);border:1px dashed var(--line,#333);border-radius:12px;padding:12px}
-  .partner-block .btn{background:#22232a;border:1px solid #333;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
-  .partner-block .btn:hover{background:#2a2b31}
 </style>
-
-<script>
-(function(){
-  // Samme nøgle som i consent.js
-  const LS_KEY = "vinbot_consent_v1";
-
-  function getConsent(){
-    try {
-      const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return {choiceMade:false, analytics:false, ads:false, affiliate:false};
-      const s = JSON.parse(raw);
-      return {choiceMade:!!s.choiceMade, analytics:!!s.analytics, ads:!!s.ads, affiliate:!!s.affiliate};
-    } catch(_) { return {choiceMade:false, analytics:false, ads:false, affiliate:false}; }
-  }
-
-  function isAllowed(state){
-    return !!(state && state.choiceMade && (state.affiliate || state.ads));
-  }
-
-  function reveal(){
-    const gate = document.querySelector('.partner-consent');
-    if (gate) gate.hidden = true;
-    const img = document.getElementById('partner-img');
-    if(img && img.dataset.src && !img.src){ img.src = img.dataset.src; }
-  }
-
-  function showGate(){
-    const gate = document.querySelector('.partner-consent');
-    if (gate) gate.hidden = false;
-  }
-
-  // Knappen: sæt consent og vis straks
-  function wireButton(){
-    const btn = document.getElementById('partner-enable');
-    if(!btn) return;
-    btn.addEventListener('click', function(){
-      try {
-        // Hvis global consent-manager findes → brug den
-        if (window.VinbotConsent && typeof window.VinbotConsent.set === "function") {
-          window.VinbotConsent.set({ affiliate: true, ads: true });
-        } else {
-          // Ellers: skriv direkte til localStorage (samme format)
-          const s = getConsent();
-          const next = { ...s, choiceMade: true, affiliate: true, ads: true };
-          localStorage.setItem(LS_KEY, JSON.stringify(next));
-        }
-      } catch(_) {}
-      reveal();
-    });
-  }
-
-  // Når partialen er indsat i DOM: init
-  function init(){
-    wireButton();
-    const state = (window.VinbotConsent && typeof window.VinbotConsent.get === "function")
-      ? window.VinbotConsent.get()
-      : getConsent();
-
-    if (isAllowed(state)) reveal(); else showGate();
-  }
-
-  // Nogle gange loader consent.js senere → lav et par retries
-  let tries = 0;
-  function tryInit(){
-    tries++;
-    init();
-    if (!isAllowed((window.VinbotConsent && window.VinbotConsent.get && window.VinbotConsent.get()) || getConsent()) && tries < 5){
-      setTimeout(tryInit, 300); // prøv igen om 300ms
-    }
-  }
-
-  // Kør når DOM er klar
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", tryInit);
-  } else {
-    tryInit();
-  }
-})();
-</script>
