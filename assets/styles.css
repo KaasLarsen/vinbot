@@ -571,3 +571,21 @@ footer .socials .fb:hover{
 .store-fallback{display:none;font-weight:700;opacity:.8}
 
 .store-body h3{margin:0 0 4px;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* --- centrér alt indhold på undersider --- */
+.wrap.page {
+  max-width: 900px;
+  margin: 0 auto;       /* centrér horisontalt */
+  text-align: left;     /* behold normal tekstjustering */
+}
+
+/* centrér cards lidt bedre på bred skærm */
+.wrap.page .grid {
+  justify-content: center;
+  gap: 24px;
+}
+
+/* giv cards lidt bedre spacing */
+.wrap.page .card {
+  max-width: 800px;
+  margin: 0 auto;
+}
