@@ -1,231 +1,135 @@
 <!doctype html>
 <html lang="da">
 <head>
-  <meta name="google-site-verification" content="TAg4EsNfNUB7AkuPcieafa_4H9OTTRHkISmJK6EJeUs" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vinbot – din personlige vinassistent</title>
-  <meta name="description" content="Find den perfekte vin på sekunder. Søg efter drue, mad, pris eller lejlighed." />
-
-  <!-- GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date()); gtag('config', 'G-JB0QD6J59G');
-  </script>
-
-  <link rel="stylesheet" href="/assets/styles.css">
+  <title>Vinbot – find vin på sekunder</title>
+  <meta name="description" content="Find den perfekte vin til mad, humør eller lejlighed. Vinbot sammenligner priser og viser de bedste flasker fra danske vinhandlere." />
+  <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
   <!-- HEADER PARTIAL -->
-  <div id="header"></div>
+  <nav class="nav">
+    <a class="brand" href="/">
+      <span class="brand-logo">
+        <img src="/assets/vinbot-logo.png" alt="Vinbot logo" />
+      </span>
+      <h1>Vinbot</h1>
+    </a>
+    <ul class="main-nav">
+      <li><a href="/">Søg</a></li>
+      <li><a href="/vin-til/">Vin til Mad</a></li>
+      <li><a href="/druer/">Druer</a></li>
+      <li><a href="/pris/">Pris</a></li>
+      <li><a href="/anbefalinger/">Anbefalinger</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+  </nav>
 
-  <!-- HERO -->
-  <header class="hero">
+  <div class="hero">
     <h1>Find vin på sekunder</h1>
-    <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste butikker.</p>
+    <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste flasker og butikker.</p>
+  </div>
 
-    <div class="search-wrap">
-      <form id="searchForm" class="search" action="#" method="get" novalidate>
-        <div class="icon">🔎</div>
-        <input
-          id="q"
-          type="search"
-          placeholder="fx “barolo til bøf under 150 kr” eller “sushi og sommer”"
-          autocomplete="off"
-          enterkeyhint="search"
-          inputmode="search"
-        />
-        <button type="submit" class="btn-primary">Søg</button>
-      </form>
-      <div class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</div>
+  <div class="search-wrap">
+    <div class="search">
+      <span class="icon">🔍</span>
+      <input id="q" type="text" placeholder="fx Barolo til bøf under 150 kr" onkeydown="if(event.key==='Enter'){doSearch()}" />
+      <button class="btn-primary" onclick="doSearch()">Søg</button>
     </div>
-  </header>
+    <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
+  </div>
 
-  <!-- OPFØLGNING (AI-agtig) -->
-  <section id="followup" class="followup hidden">
-    <div class="followup-inner">
-      <h2>Fint! Skal jeg lige finpudse?</h2>
-      <form id="followForm" class="follow-grid">
-        <label>Type
-          <select id="f_type">
-            <option value="">Ingen præference</option>
-            <option>rødvin</option><option>hvidvin</option><option>rosé</option><option>mousserende</option>
-          </select>
-        </label>
-        <label>Budget (max)
-          <select id="f_budget">
-            <option value="">Intet max</option>
-            <option>under 100 kr</option>
-            <option>under 150 kr</option>
-            <option>under 250 kr</option>
-            <option>under 400 kr</option>
-          </select>
-        </label>
-        <label>Til maden?
-          <select id="f_food">
-            <option value="">Ingen</option>
-            <option>til pizza</option><option>til sushi</option><option>til oksekød</option>
-            <option>til tapas</option><option>til ost</option>
-          </select>
-        </label>
-        <button class="btn-primary" type="submit">Opdater forslag</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- STATUS -->
-  <div class="status"><div id="statusMsg"></div></div>
-
-  <!-- RESULTATER -->
-  <main class="wrap">
-    <section class="grid" id="results" aria-live="polite"></section>
-  </main>
+  <div id="results" class="wrap"></div>
 
   <!-- FOOTER PARTIAL -->
-  <div id="footer"></div>
+  <footer>
+    <div>© <span id="y"></span> Vinbot.dk · Alle rettigheder forbeholdes</div>
+    <div class="footer-links">
+      <a href="/pages/om-os.html">om os</a> ·
+      <a href="/pages/kontakt.html">kontakt</a> ·
+      <a href="/pages/betingelser.html">betingelser</a> ·
+      <a href="/pages/privatliv.html">privatliv</a>
+    </div>
+    <div class="socials" aria-label="sociale medier">
+      <a class="fb" href="https://facebook.com" target="_blank" rel="noopener nofollow" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#cfc7bd" aria-hidden="true">
+          <path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.98 3.64 9.12 8.4 9.94v-7.03H7.9v-2.91h2.38V9.48c0-2.35 1.4-3.65 3.54-3.65 1.03 0 2.1.18 2.1.18v2.31h-1.18c-1.16 0-1.52.72-1.52 1.46v1.75h2.59l-.41 2.91h-2.18V22c4.76-.82 8.4-4.96 8.4-9.94z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
-  <!-- PARTIAL LOADER + BURGER INIT -->
   <script>
-    (async function loadPartials(){
-      const bust = `v=${Date.now()}`;
-      async function get(url, fallback){
-        try{
-          const r = await fetch(`${url}?${bust}`, { cache: "no-store" });
-          if (!r.ok) throw new Error(r.status);
-          return await r.text();
-        }catch(e){
-          console.warn("Kunne ikke hente partial:", url, e);
-          return fallback;
-        }
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // --- INTELLIGENT INTENT DETECTION ---
+    const FOOD_TO_WINES = {
+      "ost":["portvin","riesling","chardonnay","sauternes"],
+      "pizza":["chianti","barbera","primitivo"],
+      "bøf":["barolo","cabernet sauvignon","syrah"],
+      "oksekød":["cabernet","syrah","malbec"],
+      "lam":["syrah","rioja","ribera del duero"],
+      "svin":["pinot noir","riesling"],
+      "fisk":["riesling","chablis","albariño"],
+      "sushi":["riesling","sauvignon blanc","crémant"],
+      "tapas":["rioja","garnacha","cava"],
+      "dessert":["sauternes","portvin","moscato"]
+    };
+    const MOOD_TO_WINES = {
+      "sommer":["rosé","sauvignon blanc","crémant"],
+      "terrasse":["rosé","cava","prosecco"],
+      "hygge":["primitivo","zinfandel","malbec"],
+      "romantisk":["pinot noir","champagne"]
+    };
+    const SYN = { "shiraz":"syrah","cremant":"crémant","rose":"rosé","barolo":"nebbiolo","rioja":"tempranillo","ribera":"ribera del duero" };
+
+    function planFromText(raw){
+      const q = (raw||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const terms = new Set([q]);
+      Object.keys(FOOD_TO_WINES).forEach(k=>{ if(q.includes(k)) FOOD_TO_WINES[k].forEach(v=>terms.add(v)); });
+      Object.keys(MOOD_TO_WINES).forEach(k=>{ if(q.includes(k)) MOOD_TO_WINES[k].forEach(v=>terms.add(v)); });
+      Object.keys(SYN).forEach(k=>{ if(q.includes(k)) terms.add(SYN[k]); });
+      if(terms.size===1) q.split(/\s+/).forEach(t=>t&&terms.add(t));
+      // Budget
+      let max=null; const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/); if(m) max=parseInt(m[1],10);
+      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
+      return {terms:[...terms], max};
+    }
+
+    async function doSearch(){
+      const input = document.getElementById('q');
+      const query = input.value.trim();
+      if(!query) return;
+
+      const {terms, max} = planFromText(query);
+      const qForApi = terms.join(" ");
+      document.getElementById("results").innerHTML = `<p class="msg info">🔎 Søger efter vin...</p>`;
+
+      const r = await fetch(`/api/search?q=${encodeURIComponent(qForApi)}${max?`&max=${max}`:""}`, {cache:"no-store"});
+      const data = await r.json();
+
+      if(!data.products || !data.products.length){
+        document.getElementById("results").innerHTML = `<p class="msg err">Ingen resultater for “${query}”.</p>`;
+        return;
       }
 
-      const headerHTML = await get(
-        "/partials/header.html",
-        "<nav class='nav'><a class='brand' href='/'><span class='brand-logo'></span><h1>Vinbot</h1></a><ul class='main-nav'><li><a href='/'>Søg</a></li></ul></nav>"
-      );
-      const footerHTML = await get(
-        "/partials/footer.html",
-        "<footer>© <span id='y'></span> Vinbot.dk</footer>"
-      );
-
-      document.getElementById("header").innerHTML = headerHTML;
-      document.getElementById("footer").innerHTML = footerHTML;
-
-      // sæt år hvis fallback blev brugt
-      const yEl = document.getElementById("y"); if (yEl) yEl.textContent = new Date().getFullYear();
-
-      // === Init burger-menu (når headeren er indsat) ===
-      const nav  = document.querySelector('.nav');
-      const btn  = document.querySelector('.nav-toggle');
-      const menu = document.getElementById('mainMenu');
-      if (nav && btn && menu){
-        const close = () => { nav.classList.remove('nav--open'); btn.setAttribute('aria-expanded','false'); };
-        const toggle = () => {
-          const open = !nav.classList.contains('nav--open');
-          nav.classList.toggle('nav--open', open);
-          btn.setAttribute('aria-expanded', String(open));
-        };
-        btn.addEventListener('click', toggle);
-        menu.addEventListener('click', (e)=>{ if (e.target.matches('a')) close(); });
-        document.addEventListener('click', (e)=>{ if (!nav.contains(e.target)) close(); });
-        document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
-      }
-    })();
-  </script>
-
-  <!-- SEARCH UI -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const $q      = document.getElementById('q');
-      const $form   = document.getElementById('searchForm');
-      const $res    = document.getElementById('results');
-      const $status = document.getElementById('statusMsg');
-      const $follow = document.getElementById('followup');
-      const $followForm = document.getElementById('followForm');
-
-      let inflight = 0;
-
-      const setStatus = (html, cls="info") => { $status.innerHTML = html ? `<div class="msg ${cls}">${html}</div>` : ""; };
-      const priceFmt = (v,c) => { try { return new Intl.NumberFormat('da-DK',{style:'currency',currency:c||'DKK'}).format(v); } catch { return v+(c?' '+c:''); } };
-
-      const render = (items) => {
-        if (!items.length){ $res.innerHTML=""; return; }
-        $res.innerHTML = items.map(i => `
-          <a class="card product outbound" href="${i.href}" rel="nofollow sponsored" target="_blank" data-label="${i.title} @ ${i.merchant}">
-            <div class="card-media">${i.image ? `<img src="${i.image}" alt="${i.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}</div>
-            <div class="card-body">
-              <h3>${i.title}</h3>
-              <div class="badges">
-                ${i.price ? `<span class="badge">${priceFmt(i.price, i.currency)}</span>` : ``}
-                <span class="badge">${i.merchant}</span>
-              </div>
+      const html = data.products.map(p=>`
+        <a class="card product" href="${p.url}" target="_blank" rel="noopener nofollow">
+          <div class="card-media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
+          </div>
+          <div class="card-body">
+            <h3>${p.title}</h3>
+            <div class="badges">
+              ${p.price ? `<span class="badge">${p.price.toLocaleString("da-DK",{style:"currency",currency:"DKK"})}</span>` : ""}
+              ${p.merchant ? `<span class="badge">${p.merchant}</span>` : ""}
             </div>
-          </a>
-        `).join('');
-      };
-
-      async function fetchProducts(q){
-        const r = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { cache:"no-store" });
-        if (!r.ok) throw new Error("API not OK");
-        const data = await r.json();
-        return (data.products || []).map(p => ({
-          title: p.title,
-          price: p.price,
-          currency: p.currency || "DKK",
-          image: p.image,
-          merchant: p.merchant,
-          href: p.url
-        }));
-      }
-
-      async function search(query){
-        const q = (query||"").trim();
-        if (!q){ render([]); setStatus(""); return; }
-
-        const ticket = ++inflight;
-        setStatus(`<span class="spinner"></span> Søger efter “${q}”…`, "info");
-        try{
-          const items = await fetchProducts(q);
-          if (ticket !== inflight) return;
-          render(items);
-          setStatus(items.length ? "" : `Ingen resultater. Prøv at præcisere – brug boksen nedenfor.`);
-          // vis opfølgning hvis få/ingen resultater
-          $follow.classList.toggle('hidden', items.length >= 6);
-        } catch(e){
-          if (ticket !== inflight) return;
-          console.error(e);
-          setStatus("Søgningen fejlede. Prøv igen.", "err");
-          render([]); $follow.classList.remove('hidden');
-        }
-      }
-
-      // events
-      $form.addEventListener('submit', (e)=>{ e.preventDefault(); search($q.value); });
-      let t=null; $q.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(()=>search($q.value), 300); });
-
-      // opfølgning → bygger ny query
-      $followForm.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const type = document.getElementById('f_type').value;
-        const budget = document.getElementById('f_budget').value;
-        const food = document.getElementById('f_food').value;
-        const parts = [$q.value.trim(), type, budget, food].filter(Boolean);
-        const newQ = parts.join(' ').replace(/\s+/g,' ').trim();
-        $q.value = newQ;
-        search(newQ);
-      });
-
-      // GA4 outbound tracking
-      document.addEventListener('click', (e)=>{
-        const a = e.target.closest('a.outbound'); if(!a) return;
-        try { gtag('event','outbound_click',{event_category:'affiliate', event_label:a.dataset.label || a.href}); } catch(_){}
-      });
-
-      // init
-      render([]); setStatus("");
-    });
+          </div>
+        </a>`).join("");
+      document.getElementById("results").innerHTML = `<div class="grid">${html}</div>`;
+    }
   </script>
 </body>
 </html>
