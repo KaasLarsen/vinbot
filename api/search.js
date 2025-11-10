@@ -22,7 +22,8 @@ export default async function handler(req, res) {
     const lists = await Promise.all(FEEDS.map(async ({ merchant, url })=>{
       try{
         const r = await fetch(url, { headers, redirect:"follow" });
-        const text = await r.text();
+        const buf = await r.arrayBuffer();
+        const text = decodeText(buf);
 
         let products = looksLikeXML(text)
           ? parseXMLProducts(text, merchant)
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
 
         if (budgetMax != null) products = products.filter(p => p.price != null && p.price <= budgetMax);
 
-        // match bredt – hvis 0 strikte matches, vis top fra feed (for at bevise liv)
+        // match bredt – hvis 0 strikte: vis top fra feed (bevis liv)
         let matches = products.filter(p => terms.some(t => (p._search||"").includes(t)));
         if (!matches.length) matches = products.slice(0, 24);
 
@@ -54,7 +55,6 @@ export default async function handler(req, res) {
     const meta = { feeds_total: FEEDS.length, feeds_ok, feeds_failed };
 
     if (items.length) return send(res, { source:"feed", products: items, meta });
-
     return send(res, { source:"fallback", products: [], meta });
   } catch (e) {
     return send(res, { source:"error", products: [], meta:{feeds_total:0,feeds_ok:0,feeds_failed:0} }, 200);
@@ -83,31 +83,47 @@ function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u03
 function toNumber(s){ if(!s) return null; const n=s.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"."); const v=parseFloat(n); return Number.isFinite(v)?v:null; }
 function decodeHTMLEntities(t){ return (t||"").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#039;/g,"'"); }
 function stripCdata(s=""){ return s.replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,""); }
-function looksLikeXML(txt){ return /<\?xml|<rss|<feed|<channel|<products|<product|<item/i.test(txt); }
+function looksLikeXML(txt){ return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt); }
 function proxyImg(src){ return `/api/img?src=${encodeURIComponent(src)}`; }
 function normalizeUrl(maybe, pageUrl){ if(!maybe) return null; let s=maybe.trim().replace(/&amp;/g,"&"); if(s.startsWith("//")) s="https:"+s; try{ new URL(s); return s; }catch{} try{ return new URL(s,pageUrl).toString(); }catch{} return null; }
-function score(p, terms){ const s=p._search||""; let sc=0; terms.forEach(t=>{ if(s.includes(t)) sc+=5; }); if(p.title && terms.some(t => p.title.toLowerCase().includes(t))) sc+=3; if(p.image) sc+=2; if(p.price!=null) sc+=1; return sc; }
+function score(p, terms){ const s=p._search||""; let sc=0; terms.forEach(t=>{ if(s.includes(t)) sc+=5; }); if(p.title && terms.some(t => (p.title||"").toLowerCase().includes(t))) sc+=3; if(p.image) sc+=2; if(p.price!=null) sc+=1; return sc; }
+function decodeText(buf){
+  try{
+    const head = new TextDecoder("utf-8").decode(buf.slice(0, 200));
+    const m = head.match(/encoding=["']([^"']+)["']/i);
+    const enc = (m ? m[1] : "utf-8").toLowerCase();
+    if (enc.includes("8859") || enc.includes("latin1")) {
+      return new TextDecoder("iso-8859-1").decode(buf);
+    }
+    return new TextDecoder("utf-8").decode(buf);
+  }catch{
+    return new TextDecoder("utf-8").decode(buf);
+  }
+}
 
-/* ---------- XML parser (generisk) ---------- */
+/* ---------- XML parser (inkl. danske tags) ---------- */
 function parseXMLProducts(xml, merchant){
   const out=[];
+  // Fjern namespaces (g:image_link -> g_image_link)
   let txt = xml.replace(/<([a-z0-9]+):/ig, "<$1_").replace(/<\/([a-z0-9]+):/ig, "</$1_");
+  // Kendte blokke inkl. dansk
   let blocks = splitBlocks(txt,"product");
   if (!blocks.length) blocks = splitBlocks(txt,"item");
-  if (!blocks.length) blocks = genericXmlBlocks(txt, ["product","item","row","entry","offer","record","node"], ["deeplink","link","producturl","url","g_link"]);
+  if (!blocks.length) blocks = splitBlocks(txt,"produkt"); // ← vigtig
+  if (!blocks.length) blocks = genericXmlBlocks(txt, ["product","item","row","entry","offer","record","node","produkt"], ["deeplink","link","producturl","url","g_link","vareurl"]);
 
   for (const b of blocks){
-    const title = pickOne(b, ["name","title","g_title"]);
-    const desc  = pickOne(b, ["description","shortdescription","longdescription","long_description","content_encoded"]);
-    const category = pickOne(b, ["categorypath","category","categories"]);
-    const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator"]);
+    const title = pickOne(b, ["name","title","g_title","produktnavn"]);
+    const desc  = pickOne(b, ["description","shortdescription","longdescription","long_description","content_encoded","beskrivelse"]);
+    const category = pickOne(b, ["categorypath","category","categories","kategorinavn"]);
+    const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator","forhandler"]);
 
-    const priceStr = pickOne(b, ["price","price_inc_vat","price_with_vat","saleprice","ourprice","current_price","g_price","price_old","pris"]);
+    const priceStr = pickOne(b, ["price","price_inc_vat","price_with_vat","saleprice","ourprice","current_price","g_price","price_old","pris","nypris"]);
     const price = toNumber(cleanPrice(priceStr));
     const currency = pickOne(b, ["currency","currency_iso"]) || extractCurrency(priceStr) || "DKK";
 
-    const url = pickOne(b, ["deeplink","link","producturl","url","g_link"]);
-    let image = pickOne(b, ["imageurl","image_url","image","largeimage","large_image","g_image_link","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","enclosure url"]);
+    const url = pickOne(b, ["deeplink","link","producturl","url","g_link","vareurl"]);
+    let image = pickOne(b, ["imageurl","image_url","image","largeimage","large_image","g_image_link","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","enclosure url","billedurl"]);
     if (!image) image = pickFirstMatch(b,[
       /<images>[\s\S]*?<image>([\s\S]*?)<\/image>[\s\S]*?<\/images>/i,
       /<additionalimage>([\s\S]*?)<\/additionalimage>/i,
@@ -117,7 +133,9 @@ function parseXMLProducts(xml, merchant){
     if (!title || !url) continue;
 
     out.push({
-      merchant, title, desc, category, brand, price, currency, image: image||"", url,
+      merchant, title: decodeHTMLEntities(title), desc: decodeHTMLEntities(desc),
+      category: decodeHTMLEntities(category), brand: decodeHTMLEntities(brand),
+      price, currency, image: image||"", url,
       _search: normalize([title, desc, category, brand].filter(Boolean).join(" "))
     });
   }
@@ -164,12 +182,12 @@ function parseCSVProducts(text, merchant){
   const rows = parseCSV(text, delim);
   const headers = rows.shift()?.map(n=>n.toLowerCase().replace(/\s+/g,"").replace(/[^a-z0-9:_-]/g,""))||[];
   const pick=(names)=>{ for(const n of names){ const i=headers.indexOf(n); if(i!==-1) return i; } return -1; };
-  const it=pick(["name","title","productname","product","navn"]);
-  const iu=pick(["deeplink","link","producturl","url"]);
-  const ii=pick(["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link"]);
-  const ip=pick(["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","price_old"]);
+  const it=pick(["name","title","productname","product","navn","produktnavn"]);
+  const iu=pick(["deeplink","link","producturl","url","vareurl"]);
+  const ii=pick(["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link","billedurl"]);
+  const ip=pick(["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","price_old","nypris"]);
   const ic=pick(["currency","currency_iso","valuta"]);
-  const ib=pick(["brand","manufacturer","producer","vendor"]);
+  const ib=pick(["brand","manufacturer","producer","vendor","forhandler"]);
   const out=[];
   for(const r of rows){
     const title=r[it]||"", url=r[iu]||"", image=r[ii]||"", price=toNumber(r[ip]||""), currency=r[ic]||"DKK", brand=r[ib]||"";
