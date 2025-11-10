@@ -686,3 +686,33 @@ footer .socials .fb:hover{
 .partner-block {
   margin-top: 24px !important;    /* ekstra luft */
 }
+/* --- Partner banner: tvang 100% bredde --- */
+
+/* 0) Sørg for at wrapper ikke shrink-to-fit */
+.partner-block .partner-slot {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* 1) Linket inde i partnerblokken må ikke have max-width fra .card */
+.partner-block .partner-slot .card,
+.partner-block #partner-link {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 2) Selve billedet: fyld hele kortet */
+.partner-block .partner-slot img {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;   /* tilsidesæt evt. globale img-regler */
+  height: auto !important;
+  border-radius: 12px;
+}
+
+/* 3) Luft op til sektionen over */
+.partner-block { margin-top: 24px !important; }
