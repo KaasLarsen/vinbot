@@ -1,17 +1,15 @@
-// /api/search.js
 export const config = { runtime: "nodejs" };
 
-/**
- * Søg efter FLASKER (enkelt-produkter) via Partner-ads feeds.
- * - Understøtter XML (<product>/<item>) OG CSV/TSV feeds.
- * - Normaliserer & proxy'er billeder via /api/img.
- * - Returnerer kun feed-produkter; fallback til butikssøgesider UDEN pris,
- *   KUN hvis der ikke findes feed-hits.
- */
 export default async function handler(req, res) {
   try {
     const q = (req.query.q || "").toString().trim();
-    if (!q) return json(res, { products: [] });
+    const debug = req.query.debug === "1";
+    if (!q) return send(res, { products: [], note: "empty query" });
+
+    // Brug det aktuelle hostnavn til referer (Partner-ads blokkerer ellers)
+    const proto = req.headers["x-forwarded-proto"] || "https";
+    const host = req.headers.host;
+    const base = `${proto}://${host}`;
 
     const FEEDS = [
       { merchant: "Mere om Vin",  url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
@@ -20,30 +18,26 @@ export default async function handler(req, res) {
     ];
 
     const headers = {
-      "cache-control": "no-cache",
       "user-agent": UA,
-      "referer": "https://vinbot.dk/"
+      "referer": base,
+      "accept": "text/xml,application/xml,text/plain,*/*",
+      "cache-control": "no-cache",
     };
 
     const terms = expandQuery(q);
 
-    // --- Hent & pars alle feeds (XML eller CSV/TSV) ---
     const lists = await Promise.all(
       FEEDS.map(async ({ merchant, url }) => {
         try {
           const r = await fetch(url, { headers, redirect: "follow" });
           const text = await r.text();
 
-          let products = [];
-          if (looksLikeXML(text)) {
-            products = parseXMLProducts(text, merchant);
-          } else {
-            products = parseCSVProducts(text, merchant); // CSV/TSV
-          }
+          const products = looksLikeXML(text)
+            ? parseXMLProducts(text, merchant)
+            : parseCSVProducts(text, merchant);
 
-          // match + normaliser billede + proxy + filter kun valide produkter
           const hits = products
-            .filter(p => p.title && p.url) // basiskrav
+            .filter(p => p.title && p.url)
             .filter(p => terms.some(t => p._search.includes(t)))
             .map(p => {
               const img = normalizeUrl(p.image, p.url);
@@ -52,17 +46,17 @@ export default async function handler(req, res) {
 
           return hits;
         } catch (e) {
-          console.error("feed_error", merchant, e?.message || e);
+          if (debug) console.error("feed_error", merchant, e?.message || e);
           return [];
         }
       })
     );
 
-    // Saml
+    // Saml resultater
     let items = lists.flat();
 
-    // Forsøg at berige FÅ uden billede via OG (hurtigt)
-    const noImg = items.filter(p => !p.image).slice(0, 8);
+    // Berig FÅ uden billede via OpenGraph
+    const noImg = items.filter(p => !p.image).slice(0, 6);
     if (noImg.length) {
       try {
         const enriched = await enrichWithOpenGraph(noImg, headers);
@@ -76,25 +70,21 @@ export default async function handler(req, res) {
       } catch {}
     }
 
-    // Kun produkter med billede → pænt grid, ingen “broken” tiles
+    // Kun dem med billede (pænt grid)
     items = items.filter(p => p.image);
-
-    // Sortér: bedst match, derefter laveste pris
     items = scoreAndSort(items, terms).slice(0, 40);
 
-    if (items.length) return json(res, { products: items });
+    if (items.length) {
+      return send(res, { products: items, source: "feed" });
+    }
 
-    // --- Fallback: butikker uden feeds (ingen priser, kun billede via OG) ---
-    const merchants = await getMerchants(req).catch(() => []);
+    // Fallback: butikssider (uden pris)
+    const merchants = await getMerchants(base).catch(() => []);
     const baseLinks = merchants.map(m => {
       const href = (m.search || "").includes("{Q}")
         ? m.search.replace("{Q}", encodeURIComponent(q))
         : (m.search || m.home || m.url || "");
-      return {
-        merchant: m.name || m.host || "Ukendt butik",
-        title: `${q} hos ${m.name || m.host}`,
-        url: href, image: null, price: null, currency: "DKK", _page: href
-      };
+      return { merchant: m.name || m.host || "Ukendt butik", title: `${q} hos ${m.name || m.host}`, url: href, image: null, price: null, currency: "DKK", _page: href };
     });
 
     const enriched = await enrichWithOpenGraph(baseLinks.slice(0, 12), headers).catch(() => baseLinks);
@@ -105,19 +95,18 @@ export default async function handler(req, res) {
       })
       .filter(it => it.image);
 
-    return json(res, { products: withImg.slice(0, 24) });
+    return send(res, { products: withImg.slice(0, 24), source: "fallback" });
+
   } catch (err) {
     console.error("search_failed", err?.message || err);
-    return json(res, { products: [] });
+    return send(res, { products: [], error: "search_failed" }, 200);
   }
 }
 
-/* ---------------- helpers ---------------- */
-function json(res, obj, status=200){ res.setHeader("content-type","application/json; charset=utf-8"); res.status(status).json(obj); }
-
-const UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
-
-const SYNONYMS = { barolo:["nebbiolo"], rioja:["tempranillo"], ribera:["tempranillo","ribera del duero"], chianti:["sangiovese"], shiraz:["syrah"], cremant:["crémant"], rose:["rosé"], cab:["cabernet"], cabernet:["cabernet"] };
+/* ---------- utils ---------- */
+function send(res, obj, status = 200) { res.setHeader("content-type", "application/json; charset=utf-8"); res.status(status).json(obj); }
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
+const SYNONYMS = { barolo:["nebbiolo"], rioja:["tempranillo"], ribera:["tempranillo","ribera del duero"], chianti:["sangiovese"], shiraz:["syrah"], cremant:["crémant"], rose:["rosé"] };
 function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim(); }
 function expandQuery(q){ const base=normalize(q); const t=new Set([base]); Object.keys(SYNONYMS).forEach(k=>{ if(base.includes(k)) SYNONYMS[k].forEach(s=>t.add(normalize(s))); }); return [...t]; }
 function toNumber(s){ if(!s) return null; const n=s.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"."); const v=parseFloat(n); return Number.isFinite(v)?v:null; }
@@ -129,15 +118,14 @@ function normalizeUrl(maybe, pageUrl){
   if (!maybe) return null;
   let s = maybe.trim().replace(/&amp;/g,"&");
   if (s.startsWith("//")) s = "https:" + s;
-  try{ new URL(s); return s; }catch{}
-  if (pageUrl){ try{ return new URL(s, pageUrl).toString(); }catch{} }
+  try { new URL(s); return s; } catch {}
+  if (pageUrl) { try { return new URL(s, pageUrl).toString(); } catch {} }
   return null;
 }
 
-/* ---------- XML parser (product/item) ---------- */
+/* ---------- XML ---------- */
 function parseXMLProducts(xml, merchant){
   const out=[];
-
   const blocks = splitBlocks(xml, "product");
   const items  = splitBlocks(xml, "item");
   const rows = blocks.length ? blocks : items;
@@ -187,97 +175,62 @@ function pickTag(block, tag){
 }
 function pickOne(block, tags){
   for (const t of tags){
-    if (t.includes(" ")){ // fx "enclosure url"
-      const [el, attr] = t.split(" ");
-      const m = block.match(new RegExp(`<${el}[^>]*${attr}=["']([^"']+)["'][^>]*>`, "i"));
-      if (m) return decodeHTMLEntities(stripCdata(m[1].trim()));
-      continue;
-    }
-    const v = pickTag(block, t);
-    if (v) return v;
+    if (t.includes(" ")){ const [el, attr]=t.split(" "); const m=block.match(new RegExp(`<${el}[^>]*${attr}=["']([^"']+)["'][^>]*>`,"i")); if (m) return decodeHTMLEntities(stripCdata(m[1].trim())); continue; }
+    const v = pickTag(block, t); if (v) return v;
   }
   return "";
 }
-function pickFirstMatch(block, regexes){
-  for (const re of regexes){
-    const m = block.match(re);
-    if (m) return decodeHTMLEntities(stripCdata(m[1].trim()));
-  }
-  return "";
-}
+function pickFirstMatch(block, regs){ for (const re of regs){ const m=block.match(re); if(m) return decodeHTMLEntities(stripCdata(m[1].trim())); } return ""; }
 function cleanPrice(s){ return (s||"").replace(/[A-Z]{3}/ig,"").replace(/kr\./ig,"kr").trim(); }
-function extractCurrency(s){
-  const m=(s||"").match(/\b([A-Z]{3})\b/); if (m) return m[1];
-  if (/\skr/.test(s||"")) return "DKK";
-  return null;
-}
+function extractCurrency(s){ const m=(s||"").match(/\b([A-Z]{3})\b/); if(m) return m[1]; if(/\skr/.test(s||"")) return "DKK"; return null; }
 
-/* ---------- CSV/TSV parser ---------- */
+/* ---------- CSV/TSV ---------- */
 function parseCSVProducts(text, merchant){
-  // find delimiter (semicolon, comma eller tab)
-  const head = text.slice(0, 1024);
+  const head=text.slice(0,1024);
   const delim = head.includes("\t") ? "\t" : (head.includes(";") ? ";" : ",");
   const rows = parseCSV(text, delim);
 
-  // map kolonnenavne (gør dem små og uden mellemrum/tegn)
   const headers = rows.shift()?.map(n => n.toLowerCase().replace(/\s+/g,"").replace(/[^a-z0-9:_-]/g,"")) || [];
   const idx = name => {
-    const aliases = {
+    const map = {
       title: ["name","title","productname","product","navn"],
       url: ["deeplink","link","producturl","url"],
       image: ["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link"],
       price: ["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","price_old"],
-      currency: ["currency","currency_iso","valuta"]
+      currency: ["currency","currency_iso","valuta"],
+      brand: ["brand","manufacturer","producer","vendor"]
     };
-    for (const a of aliases[name]) {
-      const i = headers.indexOf(a);
-      if (i !== -1) return i;
-    }
+    for (const k of map[name]) { const i = headers.indexOf(k); if (i !== -1) return i; }
     return -1;
   };
 
-  const ititle=idx("title"), iurl=idx("url"), iimg=idx("image"), iprice=idx("price"), icur=idx("currency");
+  const it=idx("title"), iu=idx("url"), ii=idx("image"), ip=idx("price"), ic=idx("currency"), ib=idx("brand");
   const out=[];
   for (const r of rows){
-    const title = r[ititle] || "";
-    const url   = r[iurl]   || "";
-    const image = r[iimg]   || "";
-    const price = toNumber(r[iprice] || "");
-    const currency = r[icur] || "DKK";
+    const title=r[it]||"", url=r[iu]||"", image=r[ii]||"", price=toNumber(r[ip]||""), currency=r[ic]||"DKK", brand=r[ib]||"";
     if (!title || !url) continue;
-    out.push({
-      merchant, title,
-      desc:"", category:"", brand:"",
-      price, currency, image, url,
-      _search: normalize(title)
-    });
+    out.push({ merchant, title, desc:"", category:"", brand, price, currency, image, url, _search: normalize([title,brand].join(" ")) });
   }
   return out;
 }
 function parseCSV(text, delim){
-  const rows=[]; let field=""; let row=[]; let inQ=false; const d=delim;
+  const rows=[]; let f=""; let row=[]; let q=false; const d=delim;
   for (let i=0;i<text.length;i++){
     const c=text[i], n=text[i+1];
-    if (inQ){
-      if (c==='"' && n=== '"'){ field+='"'; i++; continue; }
-      if (c=== '"'){ inQ=false; continue; }
-      field+=c; continue;
-    } else {
-      if (c=== '"'){ inQ=true; continue; }
-      if (c=== d){ row.push(field); field=""; continue; }
-      if (c=== '\n'){ if (n=== '\r'){ /* ignore */ } row.push(field); rows.push(row); field=""; row=[]; continue; }
-      if (c=== '\r'){ row.push(field); rows.push(row); field=""; row=[]; continue; }
-      field+=c;
-    }
+    if(q){ if(c==='"'&&n==='"'){f+='"';i++;continue;} if(c==='"'){q=false;continue;} f+=c; continue; }
+    if(c==='"'){q=true;continue;}
+    if(c===d){row.push(f);f="";continue;}
+    if(c==='\n'){row.push(f);rows.push(row);f="";row=[];continue;}
+    if(c==='\r'){continue;}
+    f+=c;
   }
-  if (field.length || row.length) { row.push(field); rows.push(row); }
+  if (f.length || row.length){ row.push(f); rows.push(row); }
   return rows.filter(r => r.some(x => (x||"").trim().length));
 }
 
-/* ---------- Fallback (butikker uden feed) ---------- */
-async function getMerchants(req){
+/* ---------- Merchants (fallback) ---------- */
+async function getMerchants(base){
   try{
-    const base=`${req.headers["x-forwarded-proto"]||"https"}://${req.headers.host}`;
     const r=await fetch(`${base}/assets/merchants.json`,{headers:{"cache-control":"no-cache"}});
     if(!r.ok) throw 0; const arr=await r.json(); return Array.isArray(arr)?arr:[];
   }catch{
@@ -291,7 +244,7 @@ async function getMerchants(req){
   }
 }
 
-/* ---------- OpenGraph enrichment (kun billede; ingen pris på fallback) ---------- */
+/* ---------- OG-enrichment (billede kun) ---------- */
 async function enrichWithOpenGraph(items, headers){
   const tasks = items.map(async it=>{
     try{
@@ -312,11 +265,6 @@ function pickMeta(html, attrRe){
 /* ---------- Scoring ---------- */
 function scoreAndSort(items, terms){
   const norm=(s)=>normalize(s||"");
-  const score=(p)=>{ let sc=0; const s=p._search||""; terms.forEach(t=>{ if(s.includes(t)) sc+=10; });
-    if(p.title && norm(p.title).includes(terms[0])) sc+=5;
-    if(p.price!=null) sc+=1;
-    if(p.image) sc+=2;
-    return -sc;
-  };
+  const score=(p)=>{ let sc=0; const s=p._search||""; terms.forEach(t=>{ if(s.includes(t)) sc+=10; }); if(p.title&&norm(p.title).includes(terms[0])) sc+=5; if(p.price!=null) sc+=1; if(p.image) sc+=2; return -sc; };
   return [...items].sort((a,b)=> score(a)-score(b) || (a.price??9e9)-(b.price??9e9));
 }
