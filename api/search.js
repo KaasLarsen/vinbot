@@ -80,7 +80,40 @@ function expandQuery(q){
   return Array.from(set);
 }
 function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim(); }
-function toNumber(s){ if(!s) return null; const n=s.replace(/\s/g,"").replace(/\./g,"").replace(/,/g,"."); const v=parseFloat(n); return Number.isFinite(v)?v:null; }
+
+/* ======= OPDATERET PRIS-PARSER ======= */
+function toNumber(s) {
+  if (!s) return null;
+  let str = String(s).trim();
+
+  // fjern valuta/labels og whitespace
+  str = str.replace(/\s*(kr\.?|dkk)\s*$/i, "").replace(/\s/g, "");
+
+  // 1) EU-format: 1.234,56 eller 12.345
+  if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(str)) {
+    str = str.replace(/\./g, "").replace(",", ".");
+    const v = parseFloat(str);
+    return Number.isFinite(v) ? v : null;
+  }
+
+  // 2) DK decimal med komma: 849,00
+  if (/^\d+,\d+$/.test(str)) {
+    const v = parseFloat(str.replace(",", "."));
+    return Number.isFinite(v) ? v : null;
+  }
+
+  // 3) US-format med komma som tusinder: 1,234.56
+  if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(str)) {
+    const v = parseFloat(str.replace(/,/g, ""));
+    return Number.isFinite(v) ? v : null;
+  }
+
+  // 4) Plain "849.00" eller "849"
+  const v = parseFloat(str);
+  return Number.isFinite(v) ? v : null;
+}
+/* ======= /pris-parser ======= */
+
 function decodeHTMLEntities(t){ return (t||"").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#039;/g,"'"); }
 function stripCdata(s=""){ return s.replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,""); }
 function looksLikeXML(txt){ return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt); }
