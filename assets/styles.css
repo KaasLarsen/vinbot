@@ -731,3 +731,24 @@ footer .socials .fb:hover{
   .main-nav a{display:block; padding:10px 12px; border-radius:10px; text-decoration:none; color:var(--text)}
   .main-nav a:hover{background:var(--soft)}
 }
+/* Featured sektioner */
+.featured{margin:10px auto 30px}
+.featured-title{font-size:20px;margin:0 0 12px}
+
+/* Butik-logoer */
+.logo-grid{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.logo-grid{grid-template-columns:1fr}}
+
+.logo-card{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);
+  background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--border);
+  border-radius:16px;padding:12px;transition:transform .12s,border-color .12s,box-shadow .12s}
+.logo-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.logo-round{width:56px;height:56px;border-radius:999px;overflow:hidden;display:grid;place-items:center;background:var(--soft)}
+.logo-round img{width:100%;height:100%;object-fit:cover;display:block}
+.logo-meta{display:flex;flex-direction:column;gap:2px}
+.logo-name{font-weight:700}
+.logo-badge{font-size:12px;opacity:.8}
+
+/* Ensartethed til featured card-tekst */
+.card-text{margin-top:.25rem}
