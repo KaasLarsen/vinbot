@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Faste/Hårde Oste – Vinbot</title>
+  <meta name="description" content="Comté, Gruyère, Cheddar, Parmesan: vælg vin med nøddepræg, dybde og syre. Fra Chardonnay og Chenin til rød Bourgogne og oxidativ stil." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Faste/Hårde Oste</h2>
+    <p>Faste oste (Comté, Gruyère, Cheddar, Parmesan) er <strong>salte, nøddeagtige og umamirige</strong>. De elsker vin med <strong>dybde og syre</strong> – hvid eller rød.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a> · <a href="/pages/vin-til/ostebord.html">Til Ostebord</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hvide, der spiller</h3>
+        <ul>
+          <li><strong>Chardonnay</strong> (Bourgogne/Jura/“Bourgogne-stil”) – æble, citrus, nød; lidt fad ok.</li>
+          <li><strong>Chenin Blanc</strong> (Loire) – høj syre, æble/honning; tør/små-oxideret stil er flot.</li>
+          <li><strong>Oxidativ stil</strong> (Vin Jaune/“sous voile”) – nød og karrynoter → Comté’s bedste ven.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Røde, der virker</h3>
+        <ul>
+          <li><strong>Pinot Noir</strong> (kølig) – kirsebær, svampe; lav tannin = ingen bitterhed mod salt.</li>
+          <li><strong>Gamay</strong> – saftig og let; perfekt til bord med flere ostetyper.</li>
+          <li><strong>Nebbiolo</strong> (moden/blød stil) – hvis du elsker tannin, så vælg modenhed og luftning.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Ost → vin (konkret)</h3>
+        <ul>
+          <li><strong>Comté/Gruyère:</strong> Chardonnay (Jura/Bourgogne) eller oxidativ stil.</li>
+          <li><strong>Cheddar:</strong> Chenin (tør) eller Pinot Noir.</li>
+          <li><strong>Parmesan:</strong> Bobler (Champagne/Crémant) eller tør, mineralsk hvid.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Servering & budget</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Hvid 9–11 °C; Rød 14–16 °C.</li>
+          <li><strong>Glas:</strong> Pinot/Gamay i stor bowle fremhæver duft.</li>
+          <li><strong>Pris:</strong> Chardonnay/Chenin 110–200 kr; Pinot/Gamay 110–180 kr; oxidativ Jura 250+.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Fejl at undgå</h3>
+      <ul>
+        <li><strong>Meget tanninrig rød</strong> → bittert mod salt ost.</li>
+        <li><strong>Sød hvid</strong> til meget salt fast ost → opleves klæbrig.</li>
+        <li><strong>For lav syre</strong> → ost + vin bliver tunge sammen.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/ostebord-blaaskimmel.html"><h4>💙 Blåskimmel</h4><p>Port/Sauternes/senthøstet – balance til salt og skarphed.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord-hvidskimmel.html"><h4>🤍 Hvidskimmel</h4><p>Cremet ost → frisk hvid eller let rød (afkølet).</p></a>
+        <a class="card" href="/pages/vin-til/ostebord.html"><h4>🧺 Ostebord – overblik</h4><p>Byg et helt ostebord med sikre parringer.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
