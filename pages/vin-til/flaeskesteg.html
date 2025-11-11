@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Flæskesteg – Vinbot</title>
+  <meta name="description" content="Find vinen der matcher flæskestegens salt, fedme og sprøde svær. Fra Riesling og Grüner til rosé og rød med frisk syre." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Flæskesteg</h2>
+    <p>Flæskesteg handler om <strong>salt, fedme og sprød svær</strong>. Vælg vin med <em>frisk syre, saftig frugt</em> og evt. <em>en snert sødme</em>, så retten føles lettere.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hvid, rosé eller rød?</h3>
+        <ul>
+          <li><strong>Riesling (tør/halvtør)</strong> – citron, æble og høj syre; super mod fedme og salt.</li>
+          <li><strong>Grüner Veltliner</strong> – citrus og hvid peber; renser fint og elsker svin.</li>
+          <li><strong>Rosé (tør, Provence-stil)</strong> – hvis menuen er lys/grønt tilbehør.</li>
+          <li><strong>Barbera / Pinot Noir</strong> – hvis du vil rød: høj syre, blød tannin.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tilbehør & sauce → justér</h3>
+        <ul>
+          <li><strong>Rødkål/sødme:</strong> halvtør Riesling (kaldet Feinherb/Kabinett) eller saftig rosé.</li>
+          <li><strong>Brun sauce:</strong> Barbera eller Pinot Noir giver rygrad uden bitter tannin.</li>
+          <li><strong>Æbler/urter:</strong> Grüner Veltliner matcher grønne noter perfekt.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Servering & pris</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Hvid/rosé 8–10 °C; Rød 14–16 °C.</li>
+          <li><strong>Glas:</strong> Hvid/rosé i hvidvinsglas; rød i medium bowle.</li>
+          <li><strong>Budget:</strong> Riesling/Grüner god fra 80–140 kr. Barbera/Pinot 120–180 kr.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fejl at undgå</h3>
+        <ul>
+          <li><strong>Tungt fad på hvid</strong> kan føles klodset mod svær/salt.</li>
+          <li><strong>Meget tanninrig rød</strong> bliver bitter mod fedmen.</li>
+          <li><strong>For varm servering</strong> gør alkoholen mere markant – køl 20–30 min før servering.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Konkrete købestrategier</h3>
+      <ul>
+        <li>Overvej <strong>en hvid + en rød</strong> til bordet – alle bliver glade.</li>
+        <li><strong>Halvtør Riesling</strong> (7–20 g/l RS) er jokerkortet til rødkål og brunede kartofler.</li>
+        <li>Kig efter <strong>Grüner</strong> fra Wachau/Kamptal/Kremstal for skarp præcision.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/and.html"><h4>🦆 Vin til And</h4><p>Syre, rød frugt og blød tannin – den sikre vej.</p></a>
+        <a class="card" href="/pages/vin-til/nytaarsaften.html"><h4>🎆 Vin til Nytårsaften</h4><p>Bobler til snacks, fisk og kransekage.</p></a>
+        <a class="card" href="/pages/vin-til/julemad.html"><h4>🎄 Vin til Julemad</h4><p>Samlet overblik for hele julemenuen.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
