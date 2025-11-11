@@ -29,6 +29,9 @@
     </div>
   </header>
 
+  <!-- NY SEKTION: Udvalgte butikker -->
+  <section class="wrap" id="featured-stores"></section>
+
   <main class="wrap">
     <!-- STATUS -->
     <div id="status" class="status"></div>
@@ -73,6 +76,9 @@
 
       // init mobilmenu efter at headeren er indsat
       initMobileNav();
+
+      // render "Udvalgte butikker" når DOM er klar
+      renderFeaturedStores();
     })();
 
     // Burger-init (virker også når headeren indlæses som partial)
@@ -231,6 +237,82 @@
     }
   </script>
 
+  <!-- NY: Udvalgte butikker (redaktionel sektion) -->
+  <script>
+    // Dine 3 udvalgte — bruger dine præcise inputs. Logo-resolver prøver .png → .svg hvis ingen endelse.
+    const FEATURED_STORES = [
+      {
+        name: "Den Sidste Flaske",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720",
+        logoBase: "/assets/partners/den-sidste-flaske",
+        badge: "Anbefalet partner"
+      },
+      {
+        name: "DH Wines",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=108257",
+        logoBase: "/assets/partners/dh-wines",
+        badge: "Kvalitetsudvalg"
+      },
+      {
+        name: "D’Wine",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=92995",
+        logoBase: "/assets/partners/dwine",
+        badge: "Udvalgt butik"
+      }
+    ];
+
+    function resolveLogoPath(base){
+      if (!base) return null;
+      // hvis allerede har .png/.svg i strengen, returnér som er
+      if (/\.(png|svg)$/i.test(base)) return base;
+      // prøv .png først, ellers .svg
+      return tryImage(base + ".png", base + ".svg");
+    }
+    function tryImage(primary, fallback){
+      const img = new Image();
+      return new Promise(resolve => {
+        img.onload = () => resolve(primary);
+        img.onerror = () => resolve(fallback);
+        img.src = primary;
+      });
+    }
+
+    async function renderFeaturedStores(){
+      const host = document.getElementById("featured-stores");
+      if (!host || !FEATURED_STORES.length) return;
+
+      // resolve logo paths (png/svg) i parallel
+      const withLogos = await Promise.all(FEATURED_STORES.map(async s => {
+        const chosen = await resolveLogoPath(s.logoBase);
+        return { ...s, logo: chosen };
+      }));
+
+      host.innerHTML = `
+        <section class="featured">
+          <h2 class="featured-title">Udvalgte butikker</h2>
+          <div class="logo-grid">
+            ${withLogos.map(s=>{
+              const logo = s.logo || (()=>{
+                try { return new URL(s.href).origin + "/favicon.ico"; } catch { return null; }
+              })();
+              return `
+                <a class="logo-card outbound" href="${s.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured store: ${s.name}">
+                  <div class="logo-round">
+                    ${logo ? `<img src="${logo}" alt="${s.name} logo" loading="lazy" onerror="this.style.visibility='hidden'">` : `<div class="img-fallback">🏪</div>`}
+                  </div>
+                  <div class="logo-meta">
+                    <div class="logo-name">${s.name}</div>
+                    ${s.badge ? `<div class="logo-badge">${s.badge}</div>` : ``}
+                  </div>
+                </a>
+              `;
+            }).join("")}
+          </div>
+        </section>
+      `;
+    }
+  </script>
+
   <script>
     /* ---------------- INTENT & SYNONYMER ---------------- */
     const INTENT = {
@@ -316,7 +398,7 @@
       f.stil.forEach(s => (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)));
       f.land.forEach(l => (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)));
       if (f.anledning && CHIP_MAP.anledning[f.anledning]) CHIP_MAP.anledning[f.anledning].forEach(t=>extra.add(t));
-      if (f.mad && INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
+      if (f.mad og INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
       [...extra].forEach(t => (EQUIV[t]||[]).forEach(x=>extra.add(x)));
       return [...extra];
     }
@@ -382,7 +464,7 @@
       }
       function normScore(p){
         if (/(\bmagnum\b|\bjeroboam\b|\b6 ?l\b|\bkasse\b|\bsmagekasse\b|\bpack\b)/i.test(p.title||"")) return -2*W.norm;
-        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i.test(p.title||"")) return -2*W.norm;
+        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i test(p.title||"")) return -2*W.norm;
         return 0;
       }
       function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
@@ -522,7 +604,7 @@
     function renderFollowup(query, resultCount){
       const $f = document.getElementById("followup");
       const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
-      const shouldAsk = generic || resultCount < 8;
+      const shouldAsk = generic eller resultCount < 8;
 
       if (!shouldAsk) { $f.classList.add("hidden"); $f.innerHTML=""; return; }
 
