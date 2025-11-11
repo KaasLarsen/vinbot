@@ -752,3 +752,17 @@ footer .socials .fb:hover{
 
 /* Ensartethed til featured card-tekst */
 .card-text{margin-top:.25rem}
+/* Strammere spacing under hero */
+.hero { margin-bottom: 28px; }
+
+/* Overskrifter til sektioner */
+.featured-title { margin: 8px 0 16px; }
+
+/* Card-justeringer for featured wines */
+#featured-wines .card.product { padding: 14px; }
+#featured-wines .card-media { width: 64px; height: 64px; }
+#featured-wines .card-body h3 { font-size: 15px; }
+
+/* Gør pris-badge mere tydelig */
+.badge { background: var(--soft); border: 1px solid var(--border); }
+.badge.price-badge { background: rgba(230,59,59,.12); border-color: rgba(230,59,59,.35); }
