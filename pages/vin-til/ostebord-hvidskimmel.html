@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Hvidskimmel (Brie/Camembert) – Vinbot</title>
+  <meta name="description" content="Hvilken vin til Brie og Camembert? Vælg frisk hvid, cremet Chardonnay eller let rød. Se hvorfor, konkrete druer, servering og fejl at undgå." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Hvidskimmel (Brie/Camembert)</h2>
+    <p>Hvidskimmel har <strong>cremet, smørret tekstur</strong> og mild svampearoma. Du vinder med <strong>frisk syre</strong> eller <strong>let cremet hvid</strong> – og nogle gange <strong>let rød</strong>.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a> · <a href="/pages/vin-til/ostebord.html">Til Ostebord</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Sikre hvide</h3>
+        <ul>
+          <li><strong>Chardonnay</strong> (let fad/ingen) – cremet møder cremet, men hold syren høj (Chablis/“Chablis-style”).</li>
+          <li><strong>Champagne/Crémant</strong> – bobler + syre skærer gennem fedmen.</li>
+          <li><strong>Chenin Blanc</strong> (tør) – æble, honning, høj syre.</li>
+          <li><strong>Riesling</strong> (tør/halvtør) – frisk, citrus og grønt æble.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Let rød (afkølet 13–14 °C)</h3>
+        <ul>
+          <li><strong>Gamay/Beaujolais</strong> – saftig rød frugt, lav tannin.</li>
+          <li><strong>Pinot Noir</strong> (kølig stil) – svampe-noter og elegant syre.</li>
+          <li><strong>Barbera</strong> – høj syre, blød tannin; god hvis der også er charcuteri.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Toppings & tilbehør</h3>
+        <ul>
+          <li><strong>Honning/nødder:</strong> prøv crémant/champagne eller let fad-Chardonnay.</li>
+          <li><strong>Syltede svampe/urter:</strong> Pinot Noir/Gamay fremhæver umami.</li>
+          <li><strong>Brød/kræmmerhus:</strong> vælg vin med frisk syre, så munden ikke “feder til”.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Servering & budget</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Hvid/bobler 7–10 °C; Rød 13–14 °C.</li>
+          <li><strong>Glas:</strong> Champagne i hvidvinsglas for mere aroma.</li>
+          <li><strong>Pris:</strong> Flot crémant 90–140 kr; Chardonnay 110–180 kr; Pinot/Gamay 110–180 kr.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Fejl at undgå</h3>
+      <ul>
+        <li><strong>Meget fad og lav syre</strong> på hvid → bliver tungt mod cremet ost.</li>
+        <li><strong>Tanninrig rød</strong> → bittert mod fedme og skimmel.</li>
+        <li><strong>For kold ost</strong> → tag ud af køl 30–45 min før servering.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/ostebord-blaaskimmel.html"><h4>💙 Blåskimmel</h4><p>Sød vin + syre = perfekt balance til salt og skarphed.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord-faste-oste.html"><h4>🧀 Faste oste</h4><p>Fra nøddeagtig hvid til elegant rød.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord.html"><h4>🧺 Ostebord – overblik</h4><p>Byg et helt ostebord med sikre parringer.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
