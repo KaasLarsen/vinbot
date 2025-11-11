@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til And – Vinbot</title>
+  <meta name="description" content="Den sikre vin til and: Pinot Noir, Zinfandel eller Amarone? Se hvilke stilarter, priser og serveringstemperaturer der spiller med sprødt skind, fedme og sød/syrlig sauce." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til And</h2>
+    <p>And har <strong>fedme</strong>, sprødt skind og ofte <strong>sødme/syre</strong> fra sauce eller rødkål. Vinen skal have <em>frugt, syre og blød tannin</em> for ikke at føles bitter mod fedmen.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Derfor virker det</h3>
+        <ul>
+          <li><strong>Syre skærer fedme:</strong> frisk syre gør munden ren → and føles lettere.</li>
+          <li><strong>Rød frugt matcher sødme:</strong> kirsebær/jordbær spiller med appelsin, rødkål og brunede kartofler.</li>
+          <li><strong>Lav til moderat tannin:</strong> for meget tannin kan virke tørt/bittert mod fedmen.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Top-druer & stilarter</h3>
+        <ul>
+          <li><strong>Pinot Noir</strong> (Bourgogne, Oregon, Tyskland, NZ) – rød frugt, høj syre, fin tannin.</li>
+          <li><strong>Zinfandel / Primitivo</strong> – moden frugt og krydderi; god til sødmefulde elementer.</li>
+          <li><strong>Barbera</strong> – høj syre, lav tannin; super til rødkål og fedme.</li>
+          <li><strong>Gamay (Beaujolais)</strong> – saftig, let afkølet servering; fantastisk til flere tilbehør.</li>
+          <li><strong>Amarone/Ripasso</strong> – julet, mørk frugt og sødme; vælg hvis du går “rich & cosy”.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Sauce & tilbehør → vælg stil</h3>
+        <ul>
+          <li><strong>Appelsinsauce / sødlig glaze:</strong> Pinot Noir (Bourgogne/DE) eller saftig Gamay.</li>
+          <li><strong>Brun sauce + brunede kartofler:</strong> Zinfandel/Primitivo eller Valpolicella Ripasso.</li>
+          <li><strong>Rødkål med syre/sødme:</strong> Barbera (d’Asti) balancerer perfekt.</li>
+          <li><strong>Krydderprofil (nellike, kanel):</strong> Zinfandel/Amarone rammer krydderiet flot.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Servering & budget</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> 14–16 °C (Pinot/Gamay/Barbera), 16–18 °C (Zinfandel/Ripasso/Amarone).</li>
+          <li><strong>Glas:</strong> større rødvinsglas; Pinot/Gamay må gerne have bred bowle.</li>
+          <li><strong>Pris:</strong> god oplevelse fra 120–180 kr (Pinot/Gamay/Barbera). Zinfandel/Ripasso 100–160 kr. Amarone 200+.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Konkrete købetips</h3>
+      <ul>
+        <li>Vælg <strong>friske årgange</strong> på Pinot/Gamay (fx 2022–2024) for syre og energi.</li>
+        <li>Til gæster: køb <strong>to stilarter</strong> – én frisk (Pinot/Barbera) + én fyldigere (Zin/Ripasso) og lad folk vælge.</li>
+        <li><strong>Luftning:</strong> 30–60 min til Amarone/Ripasso; 15–20 min til Zinfandel.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/flaeskesteg.html"><h4>🍖 Vin til Flæskesteg</h4><p>Sprød svær, salt og sødme – sådan rammer du balancen.</p></a>
+        <a class="card" href="/pages/vin-til/nytaarsaften.html"><h4>🎆 Vin til Nytårsaften</h4><p>Bobler + menu: fra snacks til kransekage.</p></a>
+        <a class="card" href="/pages/vin-til/julemad.html"><h4>🎄 Vin til Julemad</h4><p>Overblik: and, flæskesteg, tilbehør og desserter.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
