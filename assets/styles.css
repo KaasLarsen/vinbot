@@ -766,3 +766,54 @@ footer .socials .fb:hover{
 /* Gør pris-badge mere tydelig */
 .badge { background: var(--soft); border: 1px solid var(--border); }
 .badge.price-badge { background: rgba(230,59,59,.12); border-color: rgba(230,59,59,.35); }
+/* ---- MOBIL: forhindre horisontal scroll & wrap korrekt ---- */
+@media (max-width: 640px) {
+  html, body { overflow-x: hidden; }            /* stop swipe sideværts */
+  
+  /* gør alle sektioner "bokset" indenfor skærmens bredde */
+  .wrap, .hero, .search-wrap,
+  .featured-stores, #featured-stores,
+  .featured-wines, #featured-wines,
+  #results, .grid, .picks-row {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* billeder skal aldrig sprænge boksen */
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* undgå at et flex-barn “tvinger” bredden større end viewport */
+  .card, .card-body, .card-media,
+  .store-card, .store-logo, .store-body {
+    min-width: 0;
+  }
+
+  /* hvis dine "Udvalgte butikker" ligger i et grid/flex: wrap vertikalt */
+  .store-grid { 
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* "Udvalgte vine" – vis 1 pr. række på mobil */
+  #featured-wines .picks-row,
+  #featured-wines .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* kort fylder hele rækken på mobil */
+  #featured-wines .card.product,
+  .store-card {
+    width: 100%;
+  }
+
+  /* hvis skygger/border-radius skulle rage ud, klip dem i sektionerne */
+  .featured-stores, #featured-stores,
+  .featured-wines, #featured-wines {
+    overflow: hidden;
+  }
+}
