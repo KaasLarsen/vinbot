@@ -4,9 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anbefalinger – Vinbot</title>
-  <meta name="description" content="Månedens vin, redaktionens favoritter og sæsonens bedste køb. Se udvalgte flasker med forklaring og pris." />
+  <meta name="description" content="Vores bedste anbefalinger: hverdagsvin, top 10, vin til gave og de bedste køb i hver prisklasse – rødt, hvidt, rosé og bobler." />
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -14,32 +21,53 @@
 
   <header class="hero">
     <h2>Anbefalinger</h2>
-    <p>Udvalgte flasker med kort begrundelse – AI + redaktion i samspil. Ingen pay-to-play.</p>
+    <p>Guides og kuraterede lister. Gå direkte til dit behov – pris, sæson, stil eller lejlighed – og få konkrete flasketyper og shoppingtips.</p>
   </header>
 
-  <main class="wrap">
+  <main class="wrap page">
     <section class="grid">
-      <a class="card" href="/anbefalinger/maanedens-vin.html"><h3>🏆 Månedens Vin</h3><p>Én flaske vi ville købe lige nu.</p></a>
-      <a class="card" href="/anbefalinger/redaktionens-favoritter.html"><h3>⭐ Redaktionens Favoritter</h3><p>Vine, vi vender tilbage til igen og igen.</p></a>
-      <a class="card" href="/anbefalinger/sæson.html"><h3>🍂 Sæson</h3><p>Efterår, jul, sommer – bedste match lige nu.</p></a>
-      <a class="card" href="/anbefalinger/vaerdi-for-pengene.html"><h3>💡 Værdi for Pengene</h3><p>Flasker der smager dyrere, end de koster.</p></a>
+      <a class="card" href="/pages/anbefalinger/under-75.html"><h3>💸 Bedste køb under 75 kr</h3><p>Maksimal værdi på små budgetter.</p></a>
+      <a class="card" href="/pages/anbefalinger/under-100.html"><h3>💸 Bedste køb under 100 kr</h3><p>Klassikere og sikre hverdagsvine.</p></a>
+      <a class="card" href="/pages/anbefalinger/under-150.html"><h3>💸 Bedste køb under 150 kr</h3><p>Step up – kvalitet der kan mærkes.</p></a>
+      <a class="card" href="/pages/anbefalinger/hverdagsvin.html"><h3>🏠 Hverdagsvin</h3><p>Let, frisk og nemt at drikke.</p></a>
+      <a class="card" href="/pages/anbefalinger/til-sommer.html"><h3>☀️ Til sommer</h3><p>Terrasse, grill og lyse retter.</p></a>
+      <a class="card" href="/pages/anbefalinger/til-vinter.html"><h3>❄️ Til vinter</h3><p>Fylde, krydderi og hygge.</p></a>
+      <a class="card" href="/pages/anbefalinger/gavevin.html"><h3>🎁 Gavevin</h3><p>Sikre crowd-pleasers i tre prislag.</p></a>
+      <a class="card" href="/pages/anbefalinger/bobler.html"><h3>🥂 Bobler</h3><p>Crémant, cava, prosecco & champagne.</p></a>
+      <a class="card" href="/pages/anbefalinger/rose.html"><h3>🌸 Rosé</h3><p>Tør og frisk – Provence-style.</p></a>
+      <a class="card" href="/pages/anbefalinger/oekologisk.html"><h3>🌿 Økologisk & bæredygtig</h3><p>Ren stil og ansvarlige valg.</p></a>
+      <a class="card" href="/pages/anbefalinger/naturvin.html"><h3>🍊 Naturvin</h3><p>Frisk funk og vilde gæringer.</p></a>
+      <a class="card" href="/pages/anbefalinger/top-10.html"><h3>⭐ Top 10 lige nu</h3><p>Vores kuraterede hitliste.</p></a>
     </section>
 
-    <section class="card">
-      <h3>Transparens</h3>
-      <p>Nogle links kan være affiliate. Det koster dig aldrig ekstra, og påvirker ikke vores vurderinger.</p>
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="card" style="margin-top:24px;">
+      <h3>Tip</h3>
+      <p>Brug søgningen på forsiden: skriv f.eks. <em>“let rød under 80 til pasta”</em> eller <em>“crémant til nytår 150-250”</em>.</p>
     </section>
   </main>
 
   <div id="footer"></div>
+  
   <script>
     (async function(){
-      const [h,f]=await Promise.all([
-        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
-        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
       ]);
-      header.innerHTML=h; footer.innerHTML=f;
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
     })();
   </script>
+
 </body>
 </html>

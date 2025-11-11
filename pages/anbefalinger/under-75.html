@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bedste køb under 75 kr – Vinbot</title>
+  <meta name="description" content="Vine med maksimal værdi for små budgetter – rød, hvid, rosé og bobler." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Bedste køb under 75 kr</h2>
+    <p>Fokus på friskhed, saftig frugt og rene udtryk.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/anbefalinger/">← Tilbage til Anbefalinger</a></nav>
+
+    <section class="grid">
+<div class="card"><h3>Rød – sikre valg</h3><ul><li>Portugisisk blend (Douro/Tejo) – saftig frugt</li><li>Monastrell/Tempranillo – fylde for pengene</li><li>Beaujolais Villages (tilbud) – let og saftig</li></ul></div>
+<div class="card"><h3>Hvid – friske køb</h3><ul><li>Vinho Verde – citrus og perlende friskhed</li><li>Sauvignon Blanc (Chile) – stikkelsbær og lime</li><li>Pinot Grigio – let og ren</li></ul></div>
+</section><section class="grid">
+<div class="card"><h3>Rosé & bobler</h3><ul><li>Tør rosé fra Languedoc</li><li>Cava Brut – bedre bobler i prisklassen</li></ul></div>
+<div class="card"><h3>Butikstips</h3><ul><li>Ny årgang på hvid/rosé</li><li>6-flaskers tilbud</li><li>Undgå tungt fad i denne prisklasse</li></ul></div>
+</section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/julemad.html"><h4>🎄 Vin til Julemad</h4><p>Rød med saft og sødme.</p></a><a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Vin til Tapas</h4><p>Bobler, Albariño, Garnacha.</p></a><a class="card" href="/pages/vin-til/sushi.html"><h4>🍣 Vin til Sushi</h4><p>Riesling, Grüner, rosé.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

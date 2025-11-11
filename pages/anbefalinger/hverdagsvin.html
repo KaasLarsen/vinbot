@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hverdagsvin – Vinbot</title>
+  <meta name="description" content="Let, frisk og ukompliceret – perfekt til hverdagsmad og hygge." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Hverdagsvin</h2>
+    <p>Vine der fungerer til alt fra pasta til salater – uden tungt fad.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/anbefalinger/">← Tilbage til Anbefalinger</a></nav>
+
+    <section class="grid">
+<div class="card"><h3>Let rød (afkølet 12–14 °C)</h3><ul><li>Beaujolais/Gamay – saftig kirsebær</li><li>Pinot Noir (entry) – rød frugt</li><li>Frappato/Nero d’Avola (let) – frisk</li></ul></div>
+<div class="card"><h3>Frisk hvid</h3><ul><li>Sauvignon Blanc – salat/fisk</li><li>Albariño – skaldyr</li><li>Vinho Verde – sommerlig</li></ul></div>
+</section><section class="grid">
+<div class="card"><h3>Rosé & bobler</h3><ul><li>Tør rosé – allround</li><li>Cava/Crémant – fredagshygge</li></ul></div>
+<div class="card"><h3>Praktisk</h3><ul><li>Køb 3–6 af noget du kan lide</li><li>Opbevar køligt 12–16 °C</li></ul></div>
+</section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/julemad.html"><h4>🎄 Vin til Julemad</h4><p>Rød med saft og sødme.</p></a><a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Vin til Tapas</h4><p>Bobler, Albariño, Garnacha.</p></a><a class="card" href="/pages/vin-til/sushi.html"><h4>🍣 Vin til Sushi</h4><p>Riesling, Grüner, rosé.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>
