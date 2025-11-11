@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Picnic – Vinbot</title>
+  <meta name="description" content="Let, frisk og praktisk: rosé, perlende hvid, let rød (afkølet) og bobler på skruelåg. Se temperaturer, flaskemængder og madmatch til picnic." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Picnic</h2>
+    <p>Udendørs = <strong>friskhed, lav alkohol og nem servering</strong>. Tænk rosé, perlende hvid og <em>let rød, afkølet</em>. Skruelåg og dåse-bobler er din ven.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Sikre stilarter</h3>
+        <ul>
+          <li><strong>Tør rosé (Provence/Languedoc)</strong> – allround til salater, kylling, tapas.</li>
+          <li><strong>Vinho Verde / let perlende hvid</strong> – citrus, lav alkohol, super i varme.</li>
+          <li><strong>Sauvignon Blanc</strong> – lime og urter til grønt og fisk.</li>
+          <li><strong>Gamay / Beaujolais</strong> (13–14 °C) – saftig rød til charcuteri og sandwich.</li>
+          <li><strong>Crémant / Cava</strong> – velkomst, chips, fritter – og god humørstarter.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Madmatch (hurtig guide)</h3>
+        <ul>
+          <li><strong>Salater med citrus/urter:</strong> Sauvignon Blanc eller Vinho Verde.</li>
+          <li><strong>Kylling, pesto, pasta-salat:</strong> rosé eller let Chardonnay uden tungt fad.</li>
+          <li><strong>Tapas/charcuteri:</strong> rosé eller afkølet Beaujolais.</li>
+          <li><strong>Fisk/skaldyr:</strong> Albariño, Vermentino eller sprød Sauvignon.</li>
+          <li><strong>Friskost & milde oste:</strong> rosé eller tør Riesling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Praktik: temperatur & mængde</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Hvid/rosé/bobler 6–9 °C · Let rød 13–14 °C.</li>
+          <li><strong>Flasker:</strong> Regn med 1 fl. pr. 3–4 personer pr. 2–3 timer (plus vand!).</li>
+          <li><strong>Køling:</strong> Frys enkelte vandflasker → fungerer som isklodser i kurven.</li>
+          <li><strong>Glas:</strong> Tag rigtige (letvægts) plastglas/akryl – det løfter oplevelsen.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fejl at undgå</h3>
+        <ul>
+          <li><strong>For høj alkohol</strong> i solen → tungt og trættende.</li>
+          <li><strong>Tung fad-hvid</strong> → bliver klodset til kold picnicmad.</li>
+          <li><strong>Varme flasker</strong> → smag kollapser. Køl ned hjemmefra.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Hurtige købstricks</h3>
+      <ul>
+        <li>Prioritér <strong>skruelåg</strong> eller <strong>dåse-bobler</strong> (pét-nat/prosecco i små dåser) for nem servering.</li>
+        <li>Vælg <strong>ny årgang</strong> på hvid/rosé (2023/2024) for friskhed.</li>
+        <li>Tag <strong>én hvid + én rosé + én let rød</strong>, så alle er dækket ind.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/ostebord-hvide-oste.html"><h4>🤍 Hvide Oste</h4><p>Feta, mozzarella & burrata – sprød hvid og rosé.</p></a>
+        <a class="card" href="/pages/anbefalinger/til-sommer.html"><h4>☀️ Til sommer</h4><p>Friskhed, lav alkohol og kolde serveringer.</p></a>
+        <a class="card" href="/pages/anbefalinger/rose.html"><h4>🌸 Rosé</h4><p>Tør og elegant i picnic-venlig stil.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
