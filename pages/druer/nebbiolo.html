@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nebbiolo – drue – Vinbot</title>
+  <meta name="description" content="Tar og roser: høj syre og tannin. Barolo/Barbaresco i Piemonte." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Nebbiolo</h2>
+    <p>Transparent farve men massiv struktur; kræver mad eller lagring.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/druer/">← Tilbage til Druer</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Smagsprofil & stil</h3>
+        <ul><li>Roser, tjære, kirsebær</li><li>Høj syre og høj tannin</li><li>Lang lagringsevne</li></ul>
+      </div>
+      <div class="card">
+        <h3>Områder & typiske stilarter</h3>
+        <ul><li>Barolo/Barbaresco – ikoniske</li><li>Langhe Nebbiolo – tilgængelig</li><li>Roero – lysere stil</li></ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Vin til mad</h3>
+        <ul><li>Okse og lam med fedt</li><li>Trøffelretter</li><li>Hårde oste</li></ul>
+      </div>
+      <div class="card">
+        <h3>Servering & pris</h3>
+        <ul>
+          <li><strong>Servering:</strong> 16–18 °C, karaflering anbefales</li>
+          <li><strong>Budget:</strong> Værdi 120–180 kr (Langhe); Barolo 300+</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid"><a class="card" href="/pages/vin-til/okseboef.html"><h4>🥩 Vin til Oksebøf</h4></a><a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 Vin til Kylling</h4></a><a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Vin til Fisk</h4></a></div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

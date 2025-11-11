@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barbera – drue – Vinbot</title>
+  <meta name="description" content="Høj syre og lav tannin – super madvin fra Piemonte." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Barbera</h2>
+    <p>Saftig rød med kirsebær; Barbera d’Asti er ofte mest elegant.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/druer/">← Tilbage til Druer</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Smagsprofil & stil</h3>
+        <ul><li>Kirsebær, syre, sort peber</li><li>Lav tannin, høj syre</li><li>Fad kan give chokolade/vanilje</li></ul>
+      </div>
+      <div class="card">
+        <h3>Områder & typiske stilarter</h3>
+        <ul><li>Asti/Alba – klassikere</li><li>Monferrato – value</li></ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Vin til mad</h3>
+        <ul><li>Tomatretter, pizza</li><li>Tapas og ost</li><li>Grillet svin</li></ul>
+      </div>
+      <div class="card">
+        <h3>Servering & pris</h3>
+        <ul>
+          <li><strong>Servering:</strong> 14–16 °C</li>
+          <li><strong>Budget:</strong> Værdi 50–110 kr; Superiore 120–180 kr</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid"><a class="card" href="/pages/vin-til/okseboef.html"><h4>🥩 Vin til Oksebøf</h4></a><a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 Vin til Kylling</h4></a><a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Vin til Fisk</h4></a></div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

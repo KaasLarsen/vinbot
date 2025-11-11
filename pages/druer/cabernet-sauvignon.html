@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cabernet Sauvignon – drue – Vinbot</title>
+  <meta name="description" content="Solbær, ceder og struktur – fra Bordeaux til Napa. Klassisk rød med tannin og lagringspotentiale." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Cabernet Sauvignon</h2>
+    <p>Struktureret rød med solbær, ceder og markant tannin. Fra kølig Bordeaux-stil til solmoden Napa-power.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/druer/">← Tilbage til Druer</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Smagsprofil & stil</h3>
+        <ul><li>Solbær, blomme, ceder, grafit</li><li>Mellem- til fyldig krop, høj tannin</li><li>Kan tåle fad og lagring</li><li>Tør, ofte tørreffekt fra tannin</li></ul>
+      </div>
+      <div class="card">
+        <h3>Områder & typiske stilarter</h3>
+        <ul><li>Bordeaux (Médoc, Pauillac) – klassisk, kølig</li><li>Napa/California – moden frugt, fad</li><li>Chile – ren frugt, pebermynte</li><li>Coonawarra – eukalyptus, stram syre</li></ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Vin til mad</h3>
+        <ul><li>Grillet okse og lam</li><li>Vildt og kraftige gryderetter</li><li>Modne faste oste</li></ul>
+      </div>
+      <div class="card">
+        <h3>Servering & pris</h3>
+        <ul>
+          <li><strong>Servering:</strong> 16–18 °C, gerne luftning</li>
+          <li><strong>Budget:</strong> God værdi 90–200 kr; ikonvine langt højere</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid"><a class="card" href="/pages/vin-til/okseboef.html"><h4>🥩 Vin til Oksebøf</h4></a><a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 Vin til Kylling</h4></a><a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Vin til Fisk</h4></a></div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

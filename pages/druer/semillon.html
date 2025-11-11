@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sémillon – drue – Vinbot</title>
+  <meta name="description" content="Voksagtig tekstur, citron og honning. Basis i Sauternes." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Sémillon</h2>
+    <p>Tør i Hunter Valley; sød i Bordeaux (Sauternes).</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/druer/">← Tilbage til Druer</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Smagsprofil & stil</h3>
+        <ul><li>Citron, voks, honning</li><li>Fyldig for en hvid</li><li>God til blend med Sauvignon Blanc</li></ul>
+      </div>
+      <div class="card">
+        <h3>Områder & typiske stilarter</h3>
+        <ul><li>Bordeaux – tør/sød (Sauternes)</li><li>Australien (Hunter) – tør, lagringsdygtig</li></ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Vin til mad</h3>
+        <ul><li>Fisk med smør/sauce</li><li>Oste og desserter (sød)</li></ul>
+      </div>
+      <div class="card">
+        <h3>Servering & pris</h3>
+        <ul>
+          <li><strong>Servering:</strong> 8–10 °C (sød 10–12 °C)</li>
+          <li><strong>Budget:</strong> Værdi 70–120 kr; Sauternes 200+</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid"><a class="card" href="/pages/vin-til/okseboef.html"><h4>🥩 Vin til Oksebøf</h4></a><a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 Vin til Kylling</h4></a><a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Vin til Fisk</h4></a></div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>
