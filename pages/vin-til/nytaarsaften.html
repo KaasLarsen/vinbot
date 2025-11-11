@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Nytårsaften – Vinbot</title>
+  <meta name="description" content="Nytårsvin fra velkomstbobler til kransekage. Se sikre vine til snacks, forret (fisk/skaldyr), hovedret og midnat – med temperaturer og prisniveauer." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Nytårsaften</h2>
+    <p>Planlæg hele aftenen: <strong>velkomstbobler</strong>, vin til <strong>fisk/forret</strong>, <strong>hovedret</strong> – og bobler til <strong>midnat & kransekage</strong>. Nemt og fejlfrit.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Velkomst & snacks</h3>
+        <ul>
+          <li><strong>Crémant (Alsace/Limoux/Bourgogne)</strong> – sprød, tør, høj værdi; perfekt start.</li>
+          <li><strong>Cava Brut</strong> – mere kompleks end prosecco i samme prislag.</li>
+          <li><strong>Prosecco Brut</strong> – frugtig og let; vælg brut for at undgå sød finish.</li>
+          <li><em>Temperatur:</em> 6–8 °C · server i hvidvinsglas for mere aroma.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Forret: fisk & skaldyr</h3>
+        <ul>
+          <li><strong>Sauvignon Blanc</strong> (Loire/NZ) – lime, urter; top til østers, ceviche, tatar.</li>
+          <li><strong>Albariño</strong> – salt citrus og fersken; fantastisk til skaldyr.</li>
+          <li><strong>Chablis</strong> – mineralsk, rank; perfekt til hvide fisk og skal.</li>
+          <li><em>Temperatur:</em> 7–9 °C.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hovedret</h3>
+        <ul>
+          <li><strong>Lyst kød (kalv/kylling):</strong> Chardonnay med let fad eller frisk Pinot Noir.</li>
+          <li><strong>Okse:</strong> kølig-stilet Cabernet/Blends (Bordeaux) eller Syrah fra køligt klima.</li>
+          <li><strong>And/flæskesteg:</strong> se vores sider – Pinot/Barbera eller Riesling/Grüner + Barbera.</li>
+          <li><em>Temperatur:</em> Hvid 9–11 °C; Rød 14–16 °C (18 °C til kraftig rød).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Midnat & kransekage</h3>
+        <ul>
+          <li><strong>Champagne Brut/Extra Brut</strong> er bedst <em>før</em> kransekage.</li>
+          <li><strong>Demi-sec (sødere)</strong> eller <strong>Moscatel/Asti</strong> passer bedst <em>til</em> kransekagen.</li>
+          <li><em>Temperatur:</em> 6–8 °C · hav en ekstra flaske på køl.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Indkøbsplan (hurtig liste)</h3>
+      <ul>
+        <li><strong>Velkomst:</strong> 1 fl. crémant per 6–8 gæster.</li>
+        <li><strong>Forret:</strong> 1 fl. hvid per 4–5 gæster.</li>
+        <li><strong>Hovedret:</strong> 1 fl. rød/hvid per 3–4 gæster (afhængigt af menuen).</li>
+        <li><strong>Midnat:</strong> 1 fl. bobler per 4–6 gæster (overvej en sødere til kransekage).</li>
+      </ul>
+      <p><em>Pro tip:</em> Køb to stilarter af hovedrets-vinen (frisk rød + fyldigere rød) så alle rammes.</p>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/and.html"><h4>🦆 Vin til And</h4><p>Frugt, syre og blød tannin – ram fedmen perfekt.</p></a>
+        <a class="card" href="/pages/vin-til/flaeskesteg.html"><h4>🍖 Vin til Flæskesteg</h4><p>Riesling/Grüner + Barbera/Pinot – sikre kombinationer.</p></a>
+        <a class="card" href="/pages/vin-til/julemad.html"><h4>🎄 Vin til Julemad</h4><p>Det store overblik for hele julebordet.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
