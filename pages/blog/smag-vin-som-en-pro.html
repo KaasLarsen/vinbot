@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smag vin som en pro – 5 trin på 30 sek – Vinbot</title>
+  <meta name="description" content="Se, duft, smag, bedøm, husk – en mikro-rutine der virker." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Smag vin som en pro – 5 trin på 30 sek</h2>
+    <p>En lille vane gør dine valg meget bedre – her er opskriften.</p>
+  </header>
+
+  <main class="wrap page">
+    
+        <article class="card" style="padding:24px;">
+          
+<ol>
+  <li><strong>Se:</strong> farve og intensitet (hint om stil/aldre).</li>
+  <li><strong>Duft:</strong> 2–3 korte snif – sig tre ting du fanger.</li>
+  <li><strong>Smag:</strong> sødme, syre, tannin, krop, alkohol.</li>
+  <li><strong>Konkludér:</strong> let/medium/fyldig – og hvad passer den til?</li>
+  <li><strong>Husk:</strong> skriv 1 linje i telefonen. Læringen kommer her.</li>
+</ol>
+<p><em>Bonus:</em> Afkøl let rød til 14 °C – bliver næsten altid bedre.</p>
+
+        </article>
+
+        <div data-partial="/partials/partner-ads.html"></div>
+
+        <section class="block">
+          <h3>Relateret</h3>
+          <div class="grid">
+            <a class="card" href="/pages/vin-til/"><h4>Vin til Mad</h4><p>Vælg vin efter ret, råvare eller lejlighed.</p></a>
+            <a class="card" href="/pages/druer/"><h4>Druer</h4><p>Smagsprofiler, områder og madmatch.</p></a>
+            <a class="card" href="/pages/anbefalinger/"><h4>Anbefalinger</h4><p>Kuraterede lister og bedste køb.</p></a>
+          </div>
+        </section>
+        
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

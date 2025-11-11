@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guide til vintemperaturer (nem huskeregel) – Vinbot</title>
+  <meta name="description" content="Server rigtigt og få mere smag – fra bobler til kraftig rød." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Guide til vintemperaturer (nem huskeregel)</h2>
+    <p>Temperatur gør enorm forskel. Brug vores simple huskeregel.</p>
+  </header>
+
+  <main class="wrap page">
+    
+        <article class="card" style="padding:24px;">
+          
+<h3>Hurtig huskeregel</h3>
+<ul>
+  <li><strong>Bobler:</strong> 6–8 °C</li>
+  <li><strong>Let hvid/rosé:</strong> 7–9 °C</li>
+  <li><strong>Fyldig hvid:</strong> 9–12 °C</li>
+  <li><strong>Let rød:</strong> 12–14 °C</li>
+  <li><strong>Kraftig rød:</strong> 16–18 °C</li>
+</ul>
+<p><em>Tip:</em> 15 min i fryseren ≈ 2–3 °C ned. Varm rød? 10 min i køl gør underværker.</p>
+
+<h3>Glas & servering</h3>
+<ul>
+  <li>Hvide/rosé: smalle hvidvinsglas.</li>
+  <li>Rød: større bowle (især Pinot/Nebbiolo).</li>
+  <li>Champagne: hvidvinsglas frem for flute for mere aroma.</li>
+</ul>
+
+        </article>
+
+        <div data-partial="/partials/partner-ads.html"></div>
+
+        <section class="block">
+          <h3>Relateret</h3>
+          <div class="grid">
+            <a class="card" href="/pages/vin-til/"><h4>Vin til Mad</h4><p>Vælg vin efter ret, råvare eller lejlighed.</p></a>
+            <a class="card" href="/pages/druer/"><h4>Druer</h4><p>Smagsprofiler, områder og madmatch.</p></a>
+            <a class="card" href="/pages/anbefalinger/"><h4>Anbefalinger</h4><p>Kuraterede lister og bedste køb.</p></a>
+          </div>
+        </section>
+        
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

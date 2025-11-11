@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>De bedste måder at finde vin på nettet (apps + Vinbot) – Vinbot</title>
+  <meta name="description" content="Hvornår er apps gode – og hvornår er Vinbot hurtigere?" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>De bedste måder at finde vin på nettet (apps + Vinbot)</h2>
+    <p>Find ud af hvornår du skal scanne – og hvornår du bare skal skrive til Vinbot.</p>
+  </header>
+
+  <main class="wrap page">
+    
+        <article class="card" style="padding:24px;">
+          
+<p>Apps er gode til <strong>hurtige ratings</strong> og <strong>etiket-scanning</strong>. Men de er ofte butiks-/brugerdrevne.</p>
+<ul>
+  <li>Brug apps til at tjekke <em>“er den ok?”</em></li>
+  <li>Brug <strong>Vinbot</strong> når du vil have <em>konkrete køb</em> ud fra <strong>pris, stil og mad</strong>.</li>
+</ul>
+<p>Eksempler: “barbera til pizza under 90”, “hvid til ceviche 120-160”, “rosé til sommerfest”.</p>
+
+        </article>
+
+        <div data-partial="/partials/partner-ads.html"></div>
+
+        <section class="block">
+          <h3>Relateret</h3>
+          <div class="grid">
+            <a class="card" href="/pages/vin-til/"><h4>Vin til Mad</h4><p>Vælg vin efter ret, råvare eller lejlighed.</p></a>
+            <a class="card" href="/pages/druer/"><h4>Druer</h4><p>Smagsprofiler, områder og madmatch.</p></a>
+            <a class="card" href="/pages/anbefalinger/"><h4>Anbefalinger</h4><p>Kuraterede lister og bedste køb.</p></a>
+          </div>
+        </section>
+        
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>

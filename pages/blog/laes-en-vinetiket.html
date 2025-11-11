@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lær at læse en vinetiket som en pro – Vinbot</title>
+  <meta name="description" content="AOC, DOC, trocken, riserva – de vigtigste begreber oversat." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Lær at læse en vinetiket som en pro</h2>
+    <p>Etiketten fortæller mere, end man tror – her er en hurtig læsning.</p>
+  </header>
+
+  <main class="wrap page">
+    
+        <article class="card" style="padding:24px;">
+          
+<p>Etiketter er mini-kontrakter. Læs dem sådan:</p>
+<ul>
+  <li><strong>Oprindelse:</strong> AOC/DOC/DOP = strammere regler; IGP/VdF = friere stil.</li>
+  <li><strong>Årgang:</strong> siger noget om klimaet det år.</li>
+  <li><strong>Drue/klassifikation:</strong> “Riserva/Reserva/Gran Reserva” = typisk længere lagring.</li>
+  <li><strong>Alkohol%:</strong> 12,5–13,5 % = friskere; 14,5 %+ = ofte varmere, sødere frugt.</li>
+</ul>
+
+        </article>
+
+        <div data-partial="/partials/partner-ads.html"></div>
+
+        <section class="block">
+          <h3>Relateret</h3>
+          <div class="grid">
+            <a class="card" href="/pages/vin-til/"><h4>Vin til Mad</h4><p>Vælg vin efter ret, råvare eller lejlighed.</p></a>
+            <a class="card" href="/pages/druer/"><h4>Druer</h4><p>Smagsprofiler, områder og madmatch.</p></a>
+            <a class="card" href="/pages/anbefalinger/"><h4>Anbefalinger</h4><p>Kuraterede lister og bedste køb.</p></a>
+          </div>
+        </section>
+        
+  </main>
+
+  <div id="footer"></div>
+  
+  <script>
+    (async function(){
+      const [h,f] = await Promise.all([
+        fetch("/partials/header.html", {cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html", {cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial');
+        if(!url) return;
+        const html = await fetch(url, {cache:"no-store"}).then(r=>r.text());
+        el.innerHTML = html;
+      }));
+    })();
+  </script>
+
+</body>
+</html>
