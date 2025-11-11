@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Blåskimmel – Vinbot</title>
+  <meta name="description" content="Den sikre vin til blåskimmelost: sødme + syre. Portvin, Sauternes eller senthøstet Riesling? Se hvorfor det virker, konkrete alternativer og serveringstips." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Blåskimmel</h2>
+    <p>Blåskimmel (Roquefort, Gorgonzola, Stilton) har <strong>salt, skarphed og fedme</strong>. Derfor vinder du med <strong>søde vine med høj syre</strong> – balancen bliver magisk.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a> · <a href="/pages/vin-til/ostebord.html">Til Ostebord</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Derfor virker sød vin</h3>
+        <ul>
+          <li><strong>Sødme balancerer salt:</strong> salte, skarpe noter blødgøres.</li>
+          <li><strong>Høj syre renser fedme:</strong> munden føles frisk efter hver bid.</li>
+          <li><strong>Aromatik matcher skimmel:</strong> honning, tørret frugt og nødder spiller med ostens kompleksitet.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Sikre valg</h3>
+        <ul>
+          <li><strong>Portvin (Tawny 10/20 år)</strong> – nødder, karamel, tørret frugt.</li>
+          <li><strong>Sauternes/Barsac</strong> – botrytis-sødme, abrikos, honning; høj syre.</li>
+          <li><strong>Senthøstet Riesling</strong> (Spätlese/Auslese) – citrus, fersken, frisk syre.</li>
+          <li><strong>Moscatel/Asti</strong> – lettere, perlende alternativ; god til milde blåskimmeltyper.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hurtig parring: ost → vin</h3>
+        <ul>
+          <li><strong>Roquefort (fåremælk):</strong> Sauternes eller Tawny Port.</li>
+          <li><strong>Gorgonzola piccante:</strong> Tawny Port eller senthøstet Riesling.</li>
+          <li><strong>Stilton:</strong> Vintage/Reserve Port – klassisk britisk combo.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Servering & budget</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Sød hvid 8–10 °C; Port 12–16 °C.</li>
+          <li><strong>Portionering:</strong> 5–8 cl per person er nok; søde vine mætter.</li>
+          <li><strong>Pris:</strong> God Tawny fra 150–250 kr; senthøstet Riesling 100–180 kr; Sauternes 250+.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Fejl at undgå</h3>
+      <ul>
+        <li><strong>Tør, tanninrig rød</strong> → bittert mod salt skimmel.</li>
+        <li><strong>For sød prosecco</strong> til meget salt/skarp ost → virker slattent.</li>
+        <li><strong>For varm servering</strong> → alkoholen føles skarpere.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/ostebord-hvidskimmel.html"><h4>🤍 Hvidskimmel (Brie/Camembert)</h4><p>Fra frisk hvid til let rød – sådan rammer du cremetheden.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord-faste-oste.html"><h4>🧀 Faste oste (Comté, Gruyère, Parmesan)</h4><p>Fra Chardonnay til rød Bourgogne – og oxidativ stil.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord.html"><h4>🧺 Ostebord – overblik</h4><p>Byg et helt ostebord med sikre kombinationer.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
