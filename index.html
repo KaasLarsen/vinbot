@@ -7,7 +7,7 @@
   <meta name="description" content="Find den perfekte vin til mad, humør eller lejlighed. Vinbot viser konkrete flasker med billeder, priser og links til de bedste butikker." />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
-  <!-- GA4 skal allerede ligge globalt hos dig -->
+  <!-- GA4 (ligger globalt hos dig) -->
 </head>
 <body>
   <!-- Header partial -->
@@ -29,7 +29,7 @@
     </div>
   </header>
 
-  <!-- NY SEKTION: Udvalgte butikker -->
+  <!-- Udvalgte butikker (redaktionel sektion under hero) -->
   <section class="wrap" id="featured-stores"></section>
 
   <main class="wrap">
@@ -64,8 +64,8 @@
   <!-- Footer partial -->
   <div id="footer"></div>
 
+  <!-- Load partials + init burger + render Udvalgte butikker -->
   <script>
-    // Load partials + init burger
     (async()=> {
       const [h,f] = await Promise.all([
         fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
@@ -74,14 +74,14 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
 
-      // init mobilmenu efter at headeren er indsat
+      // init mobilmenu efter at headeren er sat ind
       initMobileNav();
 
-      // render "Udvalgte butikker" når DOM er klar
+      // render “Udvalgte butikker”
       renderFeaturedStores();
     })();
 
-    // Burger-init (virker også når headeren indlæses som partial)
+    // Burger-init (virker når headeren er indsat som partial)
     function initMobileNav(){
       const nav  = document.querySelector(".nav");
       const btn  = document.querySelector(".nav-toggle");
@@ -99,9 +99,9 @@
       };
 
       btn.addEventListener("click", toggle);
-      menu.addEventListener("click", e => { if (e.target.matches("a")) close(); });
-      document.addEventListener("click", e => { if (!nav.contains(e.target)) close(); });
-      document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+      menu.addEventListener("click", (e) => { if (e.target.matches("a")) close(); });
+      document.addEventListener("click", (e) => { if (!nav.contains(e.target)) close(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
     }
   </script>
 
@@ -113,69 +113,60 @@
         baseUrl: "https://densidsteflaske.dk/",
         searchUrl: "https://densidsteflaske.dk/search?q={Q}",
         affiliateTemplate: null,
-        rate: 0.10,
-        logo: null
+        rate: 0.10
       },
       {
         name: "Barlife",
         baseUrl: "https://www.barlife.dk/",
         searchUrl: "https://www.barlife.dk/search/{Q}",
         affiliateTemplate: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}",
-        rate: 0.07,
-        logo: null
+        rate: 0.07
       },
       {
         name: "Beer Me",
         baseUrl: "https://www.beer-me.dk/",
         searchUrl: "https://www.beer-me.dk/search/vin",
         affiliateTemplate: null,
-        rate: 0.10,
-        logo: null
+        rate: 0.10
       },
       {
         name: "DH Wines",
         baseUrl: "https://dhwines.dk/",
         searchUrl: "https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
         affiliateTemplate: null,
-        rate: 0.10,
-        logo: null
+        rate: 0.10
       },
       {
         name: "Herslev Bryghus",
         baseUrl: "https://herslevbryghus.dk/",
         searchUrl: "https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
         affiliateTemplate: null,
-        rate: 0.10,
-        logo: null
+        rate: 0.10
       },
       {
         name: "Fantombryg",
         baseUrl: "https://fantombryg.dk/",
         searchUrl: "https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
         affiliateTemplate: null,
-        rate: 0.08,
-        logo: null
+        rate: 0.08
       },
       {
         name: "Johnsen Wine",
         baseUrl: "https://www.johnsenwine.dk/",
         searchUrl: "https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
         affiliateTemplate: null,
-        rate: 0.10,
-        logo: null
+        rate: 0.10
       },
       {
         name: "D’Wine",
         baseUrl: "https://d-wine.dk/",
         searchUrl: "https://d-wine.dk/?s={Q}&post_type=page%2Cproduct",
         affiliateTemplate: null,
-        rate: 0.08,
-        logo: null
+        rate: 0.08
       }
     ];
 
     function partnerLogo(p){
-      if (p.logo) return p.logo;
       try { const u = new URL(p.baseUrl); return `${u.origin}/favicon.ico`; }
       catch { return null; }
     }
@@ -187,6 +178,8 @@
       }
       return search;
     }
+
+    // Opdateret: viser IKKE kommissionsprocenter – kun neutral badge
     function renderAlsoStores(query){
       const $wrap = document.getElementById("alsoStores");
       const q = query && query.trim() ? query.trim() : "vin";
@@ -194,12 +187,13 @@
       function score(partner){
         let s = 0;
         if (partner.affiliateTemplate) s += 2;
-        s += Math.round((partner.rate || 0) * 10);
+        s += Math.round((partner.rate || 0) * 10); // intern ranking, ikke vist
         const name = (partner.name||"").toLowerCase();
         if (name.includes("vin")) s += 1;
         if (q.toLowerCase().length >= 4) s += 1;
         return s;
       }
+
       const sorted = [...PARTNERS_NO_FEED].sort((a,b)=>score(b)-score(a)).slice(0, 8);
 
       const html = `
@@ -211,19 +205,14 @@
             return `
               <a class="store-card outbound" href="${href}" target="_blank" rel="nofollow sponsored noopener" data-label="Store: ${p.name} · ${q}">
                 <div class="store-logo">
-                  ${
-                    logoSrc
-                      ? `<img src="${logoSrc}" alt="${p.name} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('noimg')" />`
-                      : ``
-                  }
+                  ${logoSrc ? `<img src="${logoSrc}" alt="${p.name} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('noimg')">` : ``}
                   <span class="store-fallback">${(p.name||'?').charAt(0)}</span>
                 </div>
                 <div class="store-body">
                   <h3>${p.name}</h3>
                   <div class="badges">
                     <span class="badge">Søg: “${q}”</span>
-                    ${p.rate ? `<span class="badge">${Math.round(p.rate*100)}%</span>` : ""}
-                    ${p.affiliateTemplate ? `<span class="badge">affiliate</span>` : ""}
+                    ${p.affiliateTemplate ? `<span class="badge">Annoncelink</span>` : `<span class="badge">Partner</span>`}
                   </div>
                 </div>
               </a>
@@ -237,9 +226,9 @@
     }
   </script>
 
-  <!-- NY: Udvalgte butikker (redaktionel sektion) -->
+  <!-- Udvalgte butikker (redaktionel sektion) -->
   <script>
-    // Dine 3 udvalgte — bruger dine præcise inputs. Logo-resolver prøver .png → .svg hvis ingen endelse.
+    // Dine 3 udvalgte
     const FEATURED_STORES = [
       {
         name: "Den Sidste Flaske",
@@ -263,9 +252,7 @@
 
     function resolveLogoPath(base){
       if (!base) return null;
-      // hvis allerede har .png/.svg i strengen, returnér som er
       if (/\.(png|svg)$/i.test(base)) return base;
-      // prøv .png først, ellers .svg
       return tryImage(base + ".png", base + ".svg");
     }
     function tryImage(primary, fallback){
@@ -281,7 +268,7 @@
       const host = document.getElementById("featured-stores");
       if (!host || !FEATURED_STORES.length) return;
 
-      // resolve logo paths (png/svg) i parallel
+      // resolve logo-sti (.png → .svg fallback)
       const withLogos = await Promise.all(FEATURED_STORES.map(async s => {
         const chosen = await resolveLogoPath(s.logoBase);
         return { ...s, logo: chosen };
@@ -289,12 +276,10 @@
 
       host.innerHTML = `
         <section class="featured">
-          <h2 class="featured-title">Udvalgte butikker</h2>
+          <h2 class="featured-title" style="text-align:center;">Udvalgte butikker</h2>
           <div class="logo-grid">
             ${withLogos.map(s=>{
-              const logo = s.logo || (()=>{
-                try { return new URL(s.href).origin + "/favicon.ico"; } catch { return null; }
-              })();
+              const logo = s.logo || (()=>{ try { return new URL(s.href).origin + "/favicon.ico"; } catch { return null; } })();
               return `
                 <a class="logo-card outbound" href="${s.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured store: ${s.name}">
                   <div class="logo-round">
@@ -313,6 +298,7 @@
     }
   </script>
 
+  <!-- ---------------- SØGNING & AI-FILTER ---------------- -->
   <script>
     /* ---------------- INTENT & SYNONYMER ---------------- */
     const INTENT = {
@@ -398,7 +384,7 @@
       f.stil.forEach(s => (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)));
       f.land.forEach(l => (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)));
       if (f.anledning && CHIP_MAP.anledning[f.anledning]) CHIP_MAP.anledning[f.anledning].forEach(t=>extra.add(t));
-      if (f.mad og INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
+      if (f.mad && INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
       [...extra].forEach(t => (EQUIV[t]||[]).forEach(x=>extra.add(x)));
       return [...extra];
     }
@@ -463,8 +449,9 @@
         return c * 10 * W.comm;
       }
       function normScore(p){
+        // Straffe kasser/magnum mv i top-3
         if (/(\bmagnum\b|\bjeroboam\b|\b6 ?l\b|\bkasse\b|\bsmagekasse\b|\bpack\b)/i.test(p.title||"")) return -2*W.norm;
-        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i test(p.title||"")) return -2*W.norm;
+        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i.test(p.title||"")) return -2*W.norm;
         return 0;
       }
       function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
@@ -604,7 +591,7 @@
     function renderFollowup(query, resultCount){
       const $f = document.getElementById("followup");
       const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
-      const shouldAsk = generic eller resultCount < 8;
+      const shouldAsk = generic || resultCount < 8;
 
       if (!shouldAsk) { $f.classList.add("hidden"); $f.innerHTML=""; return; }
 
@@ -676,12 +663,14 @@
       }
     }
 
-    // GA4 outbound tracking
+    // GA4 outbound-click event
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      if (typeof gtag === 'function'){
-        gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
-      }
+      try {
+        if (typeof gtag === 'function'){
+          gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
+        }
+      } catch(_) {}
     });
   </script>
 </body>
