@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Hvide Oste (friske) – Vinbot</title>
+  <meta name="description" content="Feta, mozzarella, burrata, ricotta og frisk gedeost. Se de bedste vine: sprød hvid, let aromatisk, tør rosé og let rød – samt servering og fejl at undgå." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Hvide Oste (friske)</h2>
+    <p><strong>Feta, mozzarella, burrata, ricotta, frisk gedeost</strong> er <em>salte, friske og cremede</em>. Vælg <strong>sprød hvid</strong> eller <strong>tør rosé</strong> – og nogle gange <strong>let rød</strong> afkølet.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a> · <a href="/pages/vin-til/ostebord.html">Til Ostebord</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Sikre valg (hvid & rosé)</h3>
+        <ul>
+          <li><strong>Sauvignon Blanc</strong> – lime/urter løfter salater, tomat & basilikum.</li>
+          <li><strong>Albariño / Vermentino</strong> – salt citrus, perfekt til oliven/kapers.</li>
+          <li><strong>Tør rosé (Provence-stil)</strong> – elegant, bærfrugt; stærk til tomat og urter.</li>
+          <li><strong>Pinot Grigio</strong> – let, ren, ukompliceret til snacks.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Let rød (når det giver mening)</h3>
+        <ul>
+          <li><strong>Gamay/Beaujolais</strong> (13–14 °C) – til antipasti, skinke og mild friskost.</li>
+          <li><strong>Frisk Pinot Noir</strong> – hvis bordet også har tomat/svampe.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Ost → vin (konkret)</h3>
+        <ul>
+          <li><strong>Feta (salt/syre):</strong> Vermentino/Albariño eller tør rosé.</li>
+          <li><strong>Mozzarella/Burrata:</strong> Sauvignon Blanc; rosé til tomattunge retter.</li>
+          <li><strong>Ricotta (mild):</strong> Pinot Grigio eller frisk Chardonnay uden tungt fad.</li>
+          <li><strong>Frisk gedeost:</strong> Sauvignon Blanc (Loire-stil) – klassisk match.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Servering & tips</h3>
+        <ul>
+          <li><strong>Temperatur:</strong> Hvid/rosé 7–9 °C; Let rød 13–14 °C.</li>
+          <li><strong>Krydder & olivenolie:</strong> vin med syre (Sauvignon/Albariño) renser perfekt.</li>
+          <li><strong>Tomat:</strong> vælg vin med tydelig syre (rosé eller Sauvignon), undgå sødmefuld hvid.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Fejl at undgå</h3>
+      <ul>
+        <li><strong>Tung fad-hvid</strong> → kæmper mod friske, salte oste.</li>
+        <li><strong>Tanninrig rød</strong> → bitter mod salt og syre.</li>
+        <li><strong>For varmt serveret</strong> → alkoholen stikker, især udendørs.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/picnic.html"><h4>🧺 Picnic</h4><p>Friskhed, lav alkohol og nem servering.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord-hvidskimmel.html"><h4>🤍 Hvidskimmel</h4><p>Brie/Camembert – frisk hvid eller let rød.</p></a>
+        <a class="card" href="/pages/vin-til/ostebord-faste-oste.html"><h4>🧀 Faste oste</h4><p>Chardonnay, Chenin eller elegant rød.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      document.getElementById("header").innerHTML=h;
+      document.getElementById("footer").innerHTML=f;
+
+      const mounts = Array.from(document.querySelectorAll('[data-partial]'));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute('data-partial'); if(!url) return;
+        el.innerHTML = await fetch(url,{cache:"no-store"}).then(r=>r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
