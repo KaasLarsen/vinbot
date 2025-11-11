@@ -29,8 +29,10 @@
     </div>
   </header>
 
-  <!-- Udvalgte butikker (redaktionel sektion under hero) -->
+  <!-- Udvalgte butikker -->
   <section class="wrap" id="featured-stores"></section>
+  <!-- Udvalgte vine -->
+  <section class="wrap" id="featured-wines"></section>
 
   <main class="wrap">
     <!-- STATUS -->
@@ -64,7 +66,7 @@
   <!-- Footer partial -->
   <div id="footer"></div>
 
-  <!-- Load partials + init burger + render Udvalgte butikker -->
+  <!-- Load partials + init burger + render Udvalgte sektioner -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -74,11 +76,12 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
 
-      // init mobilmenu efter at headeren er sat ind
+      // init mobilmenu
       initMobileNav();
 
-      // render “Udvalgte butikker”
+      // render redaktionelle sektioner
       renderFeaturedStores();
+      renderFeaturedWines();
     })();
 
     // Burger-init (virker når headeren er indsat som partial)
@@ -228,7 +231,7 @@
 
   <!-- Udvalgte butikker (redaktionel sektion) -->
   <script>
-    // Dine 3 udvalgte
+    // Dine 3 udvalgte butikker
     const FEATURED_STORES = [
       {
         name: "Den Sidste Flaske",
@@ -292,6 +295,65 @@
                 </a>
               `;
             }).join("")}
+          </div>
+        </section>
+      `;
+    }
+  </script>
+
+  <!-- Udvalgte vine lige nu -->
+  <script>
+    // De 3 vine du sendte – pris som tekstbadge
+    const FEATURED_WINES = [
+      {
+        title: "Primitivo Susumaniello Salento Boccantino 2024",
+        blurb: "Den mest elskede rødvin i Danmark – og med god grund",
+        priceText: "55,- ved køb af min 12 flasker",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
+        image: "/assets/partners/products/primitivo.png",
+        merchant: "Den Sidste Flaske"
+      },
+      {
+        title: "The Guv'nor Tinto",
+        blurb: "Fyldig, blød og fuld af mørke bær og krydderier",
+        priceText: "55,- ved køb af min 12 flasker",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/the-guv-nor-tinto",
+        image: "/assets/partners/products/theguvnor.png",
+        merchant: "Den Sidste Flaske"
+      },
+      {
+        title: "Weinhof 519 Alte Reben Rheingau Riesling Trocken 2024",
+        blurb: "Frisk citrus & grønne æbler",
+        priceText: "55,- ved køb af min 12 flasker",
+        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
+        image: "/assets/partners/products/altereben.png",
+        merchant: "Den Sidste Flaske"
+      }
+    ];
+
+    function renderFeaturedWines(){
+      const host = document.getElementById("featured-wines");
+      if (!host || !FEATURED_WINES.length) return;
+
+      host.innerHTML = `
+        <section class="featured">
+          <h2 class="featured-title" style="text-align:center;">Udvalgte vine lige nu 🍷</h2>
+          <div class="grid">
+            ${FEATURED_WINES.map(w => `
+              <a class="card product outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
+                <div class="card-media">
+                  ${w.image ? `<img src="${w.image}" alt="${w.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}
+                </div>
+                <div class="card-body">
+                  <h3>${w.title}</h3>
+                  <div class="badges">
+                    ${w.priceText ? `<span class="badge">${w.priceText}</span>` : ``}
+                    ${w.merchant ? `<span class="badge">${w.merchant}</span>` : ``}
+                  </div>
+                  ${w.blurb ? `<p class="card-text" style="margin:.4rem 0 0;color:var(--text-dim);font-size:14px;line-height:1.4">${w.blurb}</p>` : ``}
+                </div>
+              </a>
+            `).join("")}
           </div>
         </section>
       `;
@@ -449,7 +511,6 @@
         return c * 10 * W.comm;
       }
       function normScore(p){
-        // Straffe kasser/magnum mv i top-3
         if (/(\bmagnum\b|\bjeroboam\b|\b6 ?l\b|\bkasse\b|\bsmagekasse\b|\bpack\b)/i.test(p.title||"")) return -2*W.norm;
         if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i.test(p.title||"")) return -2*W.norm;
         return 0;
