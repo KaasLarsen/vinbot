@@ -229,29 +229,93 @@
     }
   </script>
 
-  <!-- Udvalgte butikker (redaktionel sektion) -->
-  <script>
-    // Dine 3 udvalgte butikker
-    const FEATURED_STORES = [
-      {
-        name: "Den Sidste Flaske",
-        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720",
-        logoBase: "/assets/partners/den-sidste-flaske",
-        badge: "Anbefalet partner"
-      },
-      {
-        name: "DH Wines",
-        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=108257",
-        logoBase: "/assets/partners/dh-wines",
-        badge: "Kvalitetsudvalg"
-      },
-      {
-        name: "D’Wine",
-        href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=92995",
-        logoBase: "/assets/partners/dwine",
-        badge: "Udvalgt butik"
-      }
-    ];
+  <!-- Udvalgte butikker -->
+<section class="featured wrap">
+  <h2 class="featured-title">Udvalgte butikker</h2>
+
+  <div class="featured-grid">
+    <!-- Række 1 (de eksisterende tre) -->
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · Den Sidste Flaske">
+      <div class="featured-logo">
+        <img src="/assets/partners/den-sidste-flaske.png" alt="Den Sidste Flaske logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>Den Sidste Flaske</h3>
+        <p>Anbefalet partner</p>
+      </div>
+    </a>
+
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=108257"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · DH Wines">
+      <div class="featured-logo">
+        <img src="/assets/partners/dh-wines.png" alt="DH Wines logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>DH Wines</h3>
+        <p>Kvalitetsudvalg</p>
+      </div>
+    </a>
+
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=92995"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · D’Wine">
+      <div class="featured-logo">
+        <img src="/assets/partners/dwine.png" alt="D’Wine logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>D’Wine</h3>
+        <p>Udvalgt butik</p>
+      </div>
+    </a>
+
+    <!-- Række 2 (de tre nye) -->
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=71309"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · Johnsen Wine">
+      <div class="featured-logo">
+        <img src="/assets/partners/johnsen.png" alt="Johnsen Wine logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>Johnsen Wine</h3>
+        <p>Håndplukkede vine</p>
+      </div>
+    </a>
+
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=87612"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · Mere om Vin">
+      <div class="featured-logo">
+        <img src="/assets/partners/meromvin.png" alt="Mere om Vin logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>Mere om Vin</h3>
+        <p>Historier & flasker</p>
+      </div>
+    </a>
+
+    <a class="featured-card outbound"
+       href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=76709"
+       target="_blank" rel="nofollow sponsored noopener"
+       data-label="Udvalgt butik · Winther Vin">
+      <div class="featured-logo">
+        <img src="/assets/partners/winthervin.png" alt="Winther Vin logo" loading="lazy">
+      </div>
+      <div class="featured-body">
+        <h3>Winther Vin</h3>
+        <p>Små producenter</p>
+      </div>
+    </a>
+  </div>
+</section>
+
 
     function resolveLogoPath(base){
       if (!base) return null;
