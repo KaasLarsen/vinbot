@@ -13,7 +13,7 @@
   <!-- Header partial -->
   <div id="header"></div>
 
-  <!-- Hero med søgning -->
+  <!-- Hero + søgning -->
   <header class="hero">
     <h1>Find vin på sekunder</h1>
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste flasker og butikker.</p>
@@ -22,18 +22,101 @@
       <div class="search">
         <div class="icon">🔎</div>
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”"
-               autocomplete="off" autofocus
-               onkeydown="if(event.key==='Enter'){doSearch()}" />
-        <button class="btn-primary" id="searchBtn" onclick="doSearch()">Søg</button>
+               autocomplete="off" autofocus />
+        <button class="btn-primary" id="searchBtn">Søg</button>
       </div>
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
 
-  <!-- Udvalgte butikker (renderes via JS) -->
-  <section class="wrap" id="featured-stores"></section>
+  <!-- Udvalgte butikker (STATISK, 6 logoer) -->
+  <section class="featured wrap">
+    <h2 class="featured-title" style="text-align:center;">Udvalgte butikker</h2>
 
-  <!-- Udvalgte vine (renderes via JS) -->
+    <div class="featured-grid">
+      <!-- Række 1 -->
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · Den Sidste Flaske">
+        <div class="featured-logo">
+          <img src="/assets/partners/den-sidste-flaske.png" alt="Den Sidste Flaske logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>Den Sidste Flaske</h3>
+          <p>Anbefalet partner</p>
+        </div>
+      </a>
+
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=108257"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · DH Wines">
+        <div class="featured-logo">
+          <img src="/assets/partners/dh-wines.png" alt="DH Wines logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>DH Wines</h3>
+          <p>Kvalitetsudvalg</p>
+        </div>
+      </a>
+
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=92995"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · D’Wine">
+        <div class="featured-logo">
+          <img src="/assets/partners/dwine.png" alt="D’Wine logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>D’Wine</h3>
+          <p>Udvalgt butik</p>
+        </div>
+      </a>
+
+      <!-- Række 2 -->
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=71309"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · Johnsen Wine">
+        <div class="featured-logo">
+          <img src="/assets/partners/johnsen.png" alt="Johnsen Wine logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>Johnsen Wine</h3>
+          <p>Håndplukkede vine</p>
+        </div>
+      </a>
+
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=87612"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · Mere om Vin">
+        <div class="featured-logo">
+          <img src="/assets/partners/meromvin.png" alt="Mere om Vin logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>Mere om Vin</h3>
+          <p>Historier & flasker</p>
+        </div>
+      </a>
+
+      <a class="featured-card outbound"
+         href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=76709"
+         target="_blank" rel="nofollow sponsored noopener"
+         data-label="Udvalgt butik · Winther Vin">
+        <div class="featured-logo">
+          <img src="/assets/partners/winthervin.png" alt="Winther Vin logo" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <h3>Winther Vin</h3>
+          <p>Små producenter</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Udvalgte vine (renderes via script) -->
   <section class="wrap" id="featured-wines"></section>
 
   <main class="wrap">
@@ -68,7 +151,7 @@
   <!-- Footer partial -->
   <div id="footer"></div>
 
-  <!-- Indsæt partials + init burger + render featured sektioner -->
+  <!-- Partials + burger init -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -78,12 +161,8 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
 
-      // init mobilmenu (burger) efter headeren er indsat
+      // init mobilmenu når header er indsat
       initMobileNav();
-
-      // render redaktionelle sektioner
-      renderFeaturedStores();
-      renderFeaturedWines();
     })();
 
     function initMobileNav(){
@@ -129,26 +208,22 @@
     function buildPartnerSearchUrl(p, query){
       const q = encodeURIComponent(query && query.trim() ? query.trim() : "vin");
       const search = (p.searchUrl || p.baseUrl).replace("{Q}", q);
-      if (p.affiliateTemplate) {
-        return p.affiliateTemplate.replace("{URL}", encodeURIComponent(search));
-      }
+      if (p.affiliateTemplate) return p.affiliateTemplate.replace("{URL}", encodeURIComponent(search));
       return search;
     }
-
     function renderAlsoStores(query){
       const $wrap = document.getElementById("alsoStores");
       const q = query && query.trim() ? query.trim() : "vin";
 
       function score(partner){
         let s = 0;
-        if (partner.affiliateTemplate) s += 2;      // intern ranking (vises ikke)
-        s += Math.round((partner.rate || 0) * 10);  // intern ranking (vises ikke)
+        if (partner.affiliateTemplate) s += 2;
+        s += Math.round((partner.rate || 0) * 10); // intern ranking
         const name = (partner.name||"").toLowerCase();
         if (name.includes("vin")) s += 1;
         if (q.toLowerCase().length >= 4) s += 1;
         return s;
       }
-
       const sorted = [...PARTNERS_NO_FEED].sort((a,b)=>score(b)-score(a)).slice(0, 8);
 
       const html = `
@@ -175,71 +250,12 @@
           }).join("")}
         </div>
       `;
-
       $wrap.innerHTML = html;
       $wrap.style.display = "block";
     }
   </script>
 
-  <!-- Udvalgte butikker (6 stk) -->
-  <script>
-    const FEATURED_STORES = [
-      { name:"Den Sidste Flaske", href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720",  logoBase:"/assets/partners/den-sidste-flaske", badge:"Anbefalet partner" },
-      { name:"DH Wines",          href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=108257", logoBase:"/assets/partners/dh-wines",         badge:"Kvalitetsudvalg" },
-      { name:"D’Wine",            href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=92995",  logoBase:"/assets/partners/dwine",            badge:"Udvalgt butik" },
-      { name:"Johnsen Wine",      href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=71309",  logoBase:"/assets/partners/johnsen",          badge:"Håndplukkede vine" },
-      { name:"Mere om Vin",       href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=87612",  logoBase:"/assets/partners/meromvin",         badge:"Historier & flasker" },
-      { name:"Winther Vin",       href:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=76709",  logoBase:"/assets/partners/winthervin",       badge:"Små producenter" }
-    ];
-
-    function resolveLogoPath(base){
-      if (!base) return null;
-      if (/\.(png|svg)$/i.test(base)) return base;
-      return tryImage(base + ".png", base + ".svg");
-    }
-    function tryImage(primary, fallback){
-      const img = new Image();
-      return new Promise(resolve => {
-        img.onload = () => resolve(primary);
-        img.onerror = () => resolve(fallback);
-        img.src = primary;
-      });
-    }
-
-    async function renderFeaturedStores(){
-      const host = document.getElementById("featured-stores");
-      if (!host || !FEATURED_STORES.length) return;
-
-      const withLogos = await Promise.all(FEATURED_STORES.map(async s => {
-        const chosen = await resolveLogoPath(s.logoBase);
-        return { ...s, logo: chosen };
-      }));
-
-      host.innerHTML = `
-        <section class="featured">
-          <h2 class="featured-title" style="text-align:center;">Udvalgte butikker</h2>
-          <div class="logo-grid">
-            ${withLogos.map(s=>{
-              const logo = s.logo || (()=>{ try { return new URL(s.href).origin + "/favicon.ico"; } catch { return null; } })();
-              return `
-                <a class="logo-card outbound" href="${s.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured store: ${s.name}">
-                  <div class="logo-round">
-                    ${logo ? `<img src="${logo}" alt="${s.name} logo" loading="lazy" onerror="this.style.visibility='hidden'">` : `<div class="img-fallback">🏪</div>`}
-                  </div>
-                  <div class="logo-meta">
-                    <div class="logo-name">${s.name}</div>
-                    ${s.badge ? `<div class="logo-badge">${s.badge}</div>` : ``}
-                  </div>
-                </a>
-              `;
-            }).join("")}
-          </div>
-        </section>
-      `;
-    }
-  </script>
-
-  <!-- Udvalgte vine lige nu (3 stk) -->
+  <!-- Udvalgte vine lige nu -->
   <script>
     const FEATURED_WINES = [
       {
@@ -297,9 +313,9 @@
     }
   </script>
 
-  <!-- Søgning, AI-filtre, render & tracking -->
+  <!-- Søgning & AI-filter -->
   <script>
-    /* --------- INTENT & SYNONYMER --------- */
+    /* Intent & synonymer */
     const INTENT = {
       ost:["portvin","riesling","chardonnay","sauternes"],
       pizza:["chianti","barbera","primitivo"],
@@ -324,7 +340,7 @@
       cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
     };
 
-    /* --------- STATE --------- */
+    /* Filter-state */
     const state = {
       baseTerms: [],
       filters: { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null },
@@ -365,7 +381,7 @@
       }
     };
 
-    /* --------- UTIL --------- */
+    /* Utils */
     function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
     function deriveTermsFromInput(raw){
       const q = normalize(raw||"");
@@ -388,7 +404,7 @@
       return [...extra];
     }
 
-    /* --------- RENDER HELPERS --------- */
+    /* Render hjælpere */
     function priceHTML(p){
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
       const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
@@ -426,7 +442,7 @@
       `;
     }
 
-    /* --------- TOP 3 ANBEFALINGER --------- */
+    /* Top 3 anbefalinger */
     function pickTop3(items, terms){
       const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
       const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
@@ -476,7 +492,7 @@
       return chosen;
     }
 
-    /* --------- SØGNING --------- */
+    /* Søgning */
     async function doSearch(fromChip=false){
       const q = document.getElementById('q').value.trim();
       state.lastQueryText = q;
@@ -585,7 +601,7 @@
       renderAll();
     });
 
-    /* --------- AI-OPFØLGNING --------- */
+    /* AI-opfølgning */
     function renderFollowup(query, resultCount){
       const $f = document.getElementById("followup");
       const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
@@ -661,16 +677,27 @@
       }
     }
 
-    // GA4 outbound tracking
+    // GA4 outbound-click event
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      if (typeof gtag === 'function'){
-        gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
-      }
+      try {
+        if (typeof gtag === 'function'){
+          gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
+        }
+      } catch(_) {}
+    });
+
+    // Safety-bind: Enter/click på søgning + render udvalgte vine på load
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const $q = document.getElementById('q');
+      const $btn = document.getElementById('searchBtn');
+      if ($q)  $q.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+      if ($btn) $btn.addEventListener('click', doSearch);
+      renderFeaturedWines();
     });
   </script>
 
-  <!-- Structured data for de udvalgte vine -->
+  <!-- SEO: Udvalgte vine structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
