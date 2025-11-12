@@ -847,5 +847,8 @@ footer .socials .fb:hover{
 }
 
 .card.product:hover .card-media img {
-  transform: scale(1.15); /* zoom-størrelse, fx 1.1–1.25 */
+  transform: scale(1.30); /* zoom-størrelse, fx 1.1–1.25 */
+}
+.card.product:hover .card-media {
+  background: rgba(255,255,255,0.1);
 }
