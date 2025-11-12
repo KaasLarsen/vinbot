@@ -835,3 +835,17 @@ footer .socials .fb:hover{
   object-fit: contain !important; /* vigtig: ingen crop */
   display: block;
 }
+/* Zoom-effekt på produktbilleder ved hover */
+.card.product .card-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.card.product .card-media img {
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.card.product:hover .card-media img {
+  transform: scale(1.15); /* zoom-størrelse, fx 1.1–1.25 */
+}
