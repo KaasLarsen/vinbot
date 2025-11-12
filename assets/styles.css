@@ -852,3 +852,26 @@ footer .socials .fb:hover{
 .card.product:hover .card-media {
   background: rgba(255,255,255,0.1);
 }
+/* Let product image overflow above the card and neighbors */
+.card.product { position: relative; overflow: visible; }
+.card.product .card-media { 
+  position: relative; 
+  overflow: visible; 
+  z-index: 1;           /* sits above card body */
+}
+.card.product .card-media img{
+  transform-origin: center center;
+  transition: transform .28s ease, filter .28s ease, box-shadow .28s ease;
+  will-change: transform;
+}
+
+/* Only enlarge when hovering the image area (not the whole card) */
+@media (pointer: fine) { /* avoid weirdness on touch devices */
+  .card.product .card-media:hover img{
+    transform: scale(1.9);             /* how big the bottle gets */
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,.45));
+  }
+
+  /* make sure the zoomed image sits on top of neighbors */
+  .card.product .card-media:hover { z-index: 5; }
+}
