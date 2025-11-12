@@ -1,59 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- Forside -->
   <url>
     <loc>https://vinbot.dk/</loc>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
 
-  <!-- Primære sektioner (landingssider til SEO) -->
+  <!-- Hovedsektioner (landingssider) -->
   <url>
     <loc>https://vinbot.dk/vin-til/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/druer/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/pris/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/anbefalinger/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
 
-  <!-- Statisk indhold / information -->
+  <!-- Informationssider i footer -->
   <url>
     <loc>https://vinbot.dk/pages/om-os.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/pages/kontakt.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/pages/betingelser.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
   <url>
     <loc>https://vinbot.dk/pages/privatliv.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+    <lastmod>2025-11-12</lastmod>
   </url>
+
+  <!-- /pages/ (fra dit screenshot) -->
+  <url>
+    <loc>https://vinbot.dk/pages/index.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/bobler.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/gavevin.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/hverdagsvin.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/naturvin.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/oekologisk.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/rose.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/til-sommer.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/til-vinter.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/top-10.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/under-100.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/under-150.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://vinbot.dk/pages/under-75.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+
+  <!-- Hvis /pages/anbefalinger/ har en index.html, behold nedenstående; ellers slet den linje -->
+  <url>
+    <loc>https://vinbot.dk/pages/anbefalinger/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2025-11-12</lastmod>
+  </url>
+
 </urlset>
