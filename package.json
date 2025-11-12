@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "prebuild": "node scripts/gen-sitemap-manifest.js",
+    "build": "next build"
+  }
+}
