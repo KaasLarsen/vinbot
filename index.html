@@ -8,8 +8,13 @@
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
   <!-- GA4 skal ligge globalt -->
+
+  <!-- Lidt “scoped” finpudsning så forsiden opfører sig rigtigt -->
   <style>
-    /* Lille, scoped styling så logo-sektionen ser ud som før */
+    /* Stop uønsket horisontal scroll på mobil ift. udvalgte-sektioner */
+    .wrap { overflow-x: hidden; }
+
+    /* Featured sektion – samme look som før (croppet runde logoer) */
     .featured { margin: 24px auto 8px; }
     .featured-title { text-align:center; margin: 0 0 14px; }
     .featured-grid {
@@ -27,11 +32,13 @@
     }
     .featured-card:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.4); }
     .featured-logo{ width:88px; height:88px; border-radius:999px; overflow:hidden; background:#fff; flex:0 0 88px; }
-    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; } /* ← crop som før */
+    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; } /* bevidst crop */
+
     .featured-body h3{ margin:0 0 4px; font-size:16px; }
     .featured-body p { margin:0; color:var(--text-dim); font-size:14px; }
 
-    /* Udvalgte vine genbruger eksisterende .grid/.card styles fra styles.css */
+    /* Sørg for at featured-wines billeder aldrig sprænger layout */
+    #featured-wines img { max-width: 100%; height: auto; display:block; }
   </style>
 </head>
 <body>
@@ -46,8 +53,7 @@
       <!-- FORM så Enter fungerer på mobil/desktop -->
       <form class="search" id="searchForm" novalidate>
         <div class="icon">🔎</div>
-        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”"
-               autocomplete="off" />
+        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" />
         <button class="btn-primary" id="searchBtn" type="submit">Søg</button>
       </form>
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
@@ -55,7 +61,7 @@
   </header>
 
   <!-- Udvalgte butikker (6 stk) -->
-  <section class="featured wrap" aria-labelledby="sec-featured-stores">
+  <section id="featured-stores" class="featured wrap" aria-labelledby="sec-featured-stores">
     <h2 id="sec-featured-stores" class="featured-title">Udvalgte butikker</h2>
     <div class="featured-grid">
       <!-- Række 1 -->
@@ -284,11 +290,10 @@
     function renderAlsoStores(query){
       const $wrap = document.getElementById("alsoStores");
       const q = query && query.trim() ? query.trim() : "vin";
-      const sorted = [...PARTNERS_NO_FEED]; // simpel rækkefølge
       const html = `
         <h2 class="also-title">Se også hos</h2>
         <div class="store-grid">
-          ${sorted.slice(0,8).map(p=>{
+          ${PARTNERS_NO_FEED.slice(0,8).map(p=>{
             const href = buildPartnerSearchUrl(p, q);
             const logoSrc = partnerLogo(p);
             return `
@@ -538,16 +543,16 @@
       renderAll();
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
-      // Skjul "Udvalgte" når der er resultater, så de ligger direkte under søgefeltet
-const hasResults = state.products.length > 0;
-const secStores = document.getElementById('featured-stores')?.closest('section');
-const secWines  = document.getElementById('featured-wines')?.closest('section');
-if (secStores) secStores.style.display = hasResults ? 'none' : '';
-if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
-// Scroll brugeren til resultaterne (så det føles “lige under” søgefeltet)
-document.getElementById('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      /* Skjul udvalgte sektioner når der er resultater */
+      const hasResults = state.products.length > 0;
+      const secStores = document.getElementById('featured-stores'); // ← nu har sektionen id
+      const secWines  = document.getElementById('featured-wines');  // vi skjuler wrapperen
+      if (secStores) secStores.style.display = hasResults ? 'none' : '';
+      if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
+      /* Scroll til resultaterne */
+      document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
     function sortProducts(list){
