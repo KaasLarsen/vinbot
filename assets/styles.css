@@ -817,3 +817,21 @@ footer .socials .fb:hover{
     overflow: hidden;
   }
 }
+/* FIX: vis hele flasken/etiketten i produktkort og udvalgte vine */
+.card.product .card-media{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;         /* justér ved behov */
+  padding: 8px;
+  background: rgba(255,255,255,.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card.product .card-media img{
+  max-height: 100%;
+  width: auto;
+  object-fit: contain !important; /* vigtig: ingen crop */
+  display: block;
+}
