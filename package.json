@@ -1,9 +1,0 @@
-{
-  "name": "vinbot",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "prebuild": "node scripts/gen-sitemap-manifest.js",
-    "build": "echo \"Build complete\""
-  }
-}
