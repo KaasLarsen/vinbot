@@ -875,3 +875,26 @@ footer .socials .fb:hover{
   /* make sure the zoomed image sits on top of neighbors */
   .card.product .card-media:hover { z-index: 5; }
 }
+/* Bigger hover zoom for bottles */
+.card.product { position: relative; overflow: visible; }
+.card.product .card-media { 
+  position: relative; 
+  overflow: visible; 
+  z-index: 1;
+}
+.card.product .card-media img {
+  transform-origin: bottom center;     /* bottle grows upward */
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform;
+}
+
+/* Hover: BIG zoom */
+@media (pointer: fine) {
+  .card.product .card-media:hover img {
+    transform: scale(2.6); /* was 1.9 – try 2.3–2.8 for stronger effect */
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,.55));
+  }
+  .card.product .card-media:hover { 
+    z-index: 10; 
+  }
+}
