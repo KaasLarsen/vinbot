@@ -9,9 +9,8 @@
     <a href="/pages/privatliv.html">privatliv</a>
   </div>
 
-  <!-- Sociale medier nederst -->
+  <!-- Sociale medier -->
   <div class="socials" aria-label="sociale medier">
-    <!-- Lille Facebook-ikon (inline SVG) -->
     <a class="fb" href="https://www.facebook.com/profile.php?id=61554449533252" target="_blank" rel="noopener nofollow" aria-label="Facebook">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="#cfc7bd" aria-hidden="true">
         <path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.98 3.64 9.12 8.4 9.94v-7.03H7.9v-2.91h2.38V9.48c0-2.35 1.4-3.65 3.54-3.65 1.03 0 2.1.18 2.1.18v2.31h-1.18c-1.16 0-1.52.72-1.52 1.46v1.75h2.59l-.41 2.91h-2.18V22c4.76-.82 8.4-4.96 8.4-9.94z"/>
@@ -19,11 +18,23 @@
     </a>
   </div>
 
+  <!-- Tekst nederst -->
+  <div class="footer-note">
+    En del af <a href="https://www.facebook.com/groups/olvin" target="_blank" rel="noopener">Øl & Vin</a> universet
+  </div>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 
   <style>
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-family: sans-serif;
+      color: #d8d2c8;
+    }
+
     .footer-links {
       margin-top: 8px;
       font-size: 12px;
@@ -37,8 +48,24 @@
     .footer-links a:hover {
       text-decoration: underline;
     }
+
     .socials {
       margin-top: 10px;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      font-size: 11px;
+      color: #a49e95;
+      opacity: 0.7;
+    }
+    .footer-note a {
+      color: #cfc7bd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
     }
   </style>
 </footer>
