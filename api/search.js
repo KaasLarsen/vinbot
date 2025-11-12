@@ -9,7 +9,6 @@ const FEEDS = [
   { merchant: "Mere om Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
   { merchant: "Winther Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
   { merchant: "Vinea",              url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=111911&feedid=3767" },
-  { merchant: "Barlife",            url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=46609&feedid=651" },
   { merchant: "DH Wines",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=108173&feedid=3461" },
   { merchant: "D’Wine",             url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=92927&feedid=2455" },
   { merchant: "Gourmetshoppen",     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=80950&feedid=1925" },
