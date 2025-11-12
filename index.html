@@ -538,6 +538,16 @@
       renderAll();
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
+      // Skjul "Udvalgte" når der er resultater, så de ligger direkte under søgefeltet
+const hasResults = state.products.length > 0;
+const secStores = document.getElementById('featured-stores')?.closest('section');
+const secWines  = document.getElementById('featured-wines')?.closest('section');
+if (secStores) secStores.style.display = hasResults ? 'none' : '';
+if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
+
+// Scroll brugeren til resultaterne (så det føles “lige under” søgefeltet)
+document.getElementById('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     }
 
     function sortProducts(list){
