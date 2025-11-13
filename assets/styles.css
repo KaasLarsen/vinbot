@@ -909,3 +909,20 @@ footer .socials .fb:hover{
   filter: none !important;
   transition: none !important;
 }
+/* Scopet zoom – kun på forsiden under #featured-wines */
+#featured-wines .card.product { position: relative; overflow: visible; }
+#featured-wines .card.product .card-media { position: relative; overflow: visible; z-index: 1; }
+#featured-wines .card.product .card-media img {
+  transform-origin: bottom center;
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform;
+}
+
+/* Hover: stor zoom (justér scale efter smag) */
+@media (pointer: fine) {
+  #featured-wines .card.product .card-media:hover img {
+    transform: scale(2.6);
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,.55));
+  }
+  #featured-wines .card.product .card-media:hover { z-index: 10; }
+}
