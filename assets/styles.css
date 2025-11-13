@@ -898,3 +898,14 @@ footer .socials .fb:hover{
     z-index: 10; 
   }
 }
+/* RESET: søge-resultaterne skal IKKE zoome eller flyde ud */
+.wrap .grid .card.product { overflow: hidden; }
+.wrap .grid .card.product .card-media { overflow: hidden; z-index: 0; }
+.wrap .grid .card.product .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
