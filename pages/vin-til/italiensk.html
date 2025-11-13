@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Italiensk Mad – Vinbot</title>
+  <meta name="description" content="Find vin til italiensk mad: tomat, pasta, pizza, svampe, risotto, kød og ost. Se klassiske match som Sangiovese, Barbera, Nebbiolo, Verdicchio og Pinot Grigio." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Italiensk Mad</h2>
+    <p>italienske retter betyder <strong>syre, urter, tomat, parmesan, olivenolie</strong>. derfor elsker italienere vine med friskhed, struktur og tydelige druer.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>klassiske italienske druer</h3>
+        <ul>
+          <li><strong>sangiovese</strong> – syre & kirsebær til tomat, pizza og pasta.</li>
+          <li><strong>barbera</strong> – saftig syre; genial til fedme + tomat.</li>
+          <li><strong>nebbiolo</strong> – struktur til kød, trøffel & svampe.</li>
+          <li><strong>montepulciano</strong> – blød, mørk frugt til rustikke retter.</li>
+          <li><strong>verdicchio / vermentino</strong> – sprød hvid til skaldyr & grønt.</li>
+          <li><strong>pinot grigio</strong> – let & frisk til antipasti.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>retter → vin</h3>
+        <ul>
+          <li><strong>pasta/pizza med tomat:</strong> sangiovese, barbera, montepulciano.</li>
+          <li><strong>pasta carbonara:</strong> frizzante, verdicchio eller pinot grigio.</li>
+          <li><strong>bolognese:</strong> sangiovese, chianti classico, barbera d’asti.</li>
+          <li><strong>risotto svampe:</strong> nebbiolo, pinot noir, barbera.</li>
+          <li><strong>skaldyr:</strong> vermentino, verdicchio, gavi.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>servering</h3>
+        <ul>
+          <li><strong>hvid:</strong> 8–10 °c</li>
+          <li><strong>rød:</strong> 15–17 °c (italienske rødvine dufter bedst lidt køligt)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>prisniveau</h3>
+        <ul>
+          <li>flotte køb: 70–120 kr (barbera, montepulciano)</li>
+          <li>klassikere: 90–160 kr (chianti classico)</li>
+          <li>premium: barolo/barbaresco fra 250+ kr</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>fejl at undgå</h3>
+      <ul>
+        <li>for tung fad-hvid til tomat – syren clasher.</li>
+        <li>for sød vin til parmesan – bliver tungt og klægt.</li>
+      </ul>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/pasta-tomat.html"><h4>🍝 Pasta & Tomat</h4><p>syre møder syre.</p></a>
+        <a class="card" href="/pages/vin-til/bolognese.html"><h4>🍝 Bolognese</h4><p>chianti & barbera.</p></a>
+        <a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Tapas</h4><p>friskhed til salt & fedme.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html").then(r=>r.text()),
+        fetch("/partials/footer.html").then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+
+      const mounts=[...document.querySelectorAll('[data-partial]')];
+      await Promise.all(mounts.map(async el=>el.innerHTML=await (await fetch(el.dataset.partial)).text()));
+    })();
+  </script>
+</body>
+</html>
