@@ -271,52 +271,61 @@
   <!-- Partnere uden feed (favicon-fallback, ingen kommissionsvisning) -->
   <script>
     const PARTNERS_NO_FEED = [
-      { name:"Den Sidste Flaske", baseUrl:"https://densidsteflaske.dk/", searchUrl:"https://densidsteflaske.dk/search?q={Q}", affiliateTemplate:null },
-      { name:"Barlife", baseUrl:"https://www.barlife.dk/", searchUrl:"https://www.barlife.dk/search/{Q}", affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}" },
-      { name:"Beer Me", baseUrl:"https://www.beer-me.dk/", searchUrl:"https://www.beer-me.dk/search/vin", affiliateTemplate:null },
-      { name:"DH Wines", baseUrl:"https://dhwines.dk/", searchUrl:"https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last", affiliateTemplate:null },
-      { name:"Herslev Bryghus", baseUrl:"https://herslevbryghus.dk/", searchUrl:"https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last", affiliateTemplate:null },
-      { name:"Fantombryg", baseUrl:"https://fantombryg.dk/", searchUrl:"https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last", affiliateTemplate:null },
-      { name:"Johnsen Wine", baseUrl:"https://www.johnsenwine.dk/", searchUrl:"https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1", affiliateTemplate:null },
-      { name:"D’Wine", baseUrl:"https://d-wine.dk/", searchUrl:"https://d-wine.dk/?s={Q}&post_type=page%2Cproduct", affiliateTemplate:null }
-    ];
-    function partnerLogo(p){ try{ const u=new URL(p.baseUrl); return `${u.origin}/favicon.ico`; }catch{ return null; } }
-    function buildPartnerSearchUrl(p, query){
-      const q = encodeURIComponent(query && query.trim() ? query.trim() : "vin");
-      const search = (p.searchUrl || p.baseUrl).replace("{Q}", q);
-      if (p.affiliateTemplate) return p.affiliateTemplate.replace("{URL}", encodeURIComponent(search));
-      return search;
-    }
-    function renderAlsoStores(query){
-      const $wrap = document.getElementById("alsoStores");
-      const q = query && query.trim() ? query.trim() : "vin";
-      const html = `
-        <h2 class="also-title">Se også hos</h2>
-        <div class="store-grid">
-          ${PARTNERS_NO_FEED.slice(0,8).map(p=>{
-            const href = buildPartnerSearchUrl(p, q);
-            const logoSrc = partnerLogo(p);
-            return `
-              <a class="store-card outbound" href="${href}" target="_blank" rel="nofollow sponsored noopener" data-label="Store: ${p.name} · ${q}">
-                <div class="store-logo">
-                  ${logoSrc ? `<img src="${logoSrc}" alt="${p.name} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('noimg')">` : ``}
-                  <span class="store-fallback">${(p.name||'?').charAt(0)}</span>
-                </div>
-                <div class="store-body">
-                  <h3>${p.name}</h3>
-                  <div class="badges">
-                    <span class="badge">Søg: “${q}”</span>
-                    <span class="badge">Partner</span>
-                  </div>
-                </div>
-              </a>
-            `;
-          }).join("")}
-        </div>
-      `;
-      $wrap.innerHTML = html;
-      $wrap.style.display = "block";
-    }
+  {
+    name:"Den Sidste Flaske",
+    baseUrl:"https://densidsteflaske.dk/",
+    searchUrl:"https://densidsteflaske.dk/search?q={Q}",
+    affiliateTemplate:null,
+    logo:"/assets/partners/den-sidste-flaske.png"
+  },
+  {
+    name:"Barlife",
+    baseUrl:"https://www.barlife.dk/",
+    searchUrl:"https://www.barlife.dk/search/{Q}",
+    affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}",
+    // hvis du laver en fil: logo:"/assets/partners/barlife.png"
+  },
+  {
+    name:"Beer Me",
+    baseUrl:"https://www.beer-me.dk/",
+    searchUrl:"https://www.beer-me.dk/search/vin",
+    affiliateTemplate:null
+  },
+  {
+    name:"DH Wines",
+    baseUrl:"https://dhwines.dk/",
+    searchUrl:"https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
+    affiliateTemplate:null,
+    logo:"/assets/partners/dh-wines.png"
+  },
+  {
+    name:"Herslev Bryghus",
+    baseUrl:"https://herslevbryghus.dk/",
+    searchUrl:"https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
+    affiliateTemplate:null
+  },
+  {
+    name:"Fantombryg",
+    baseUrl:"https://fantombryg.dk/",
+    searchUrl:"https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
+    affiliateTemplate:null
+  },
+  {
+    name:"Johnsen Wine",
+    baseUrl:"https://www.johnsenwine.dk/",
+    searchUrl:"https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+    affiliateTemplate:null,
+    logo:"/assets/partners/johnsen.png"
+  },
+  {
+    name:"D’Wine",
+    baseUrl:"https://d-wine.dk/",
+    searchUrl:"https://d-wine.dk/?s={Q}&post_type=page%2Cproduct",
+    affiliateTemplate:null,
+    logo:"/assets/partners/dwine.png"
+  }
+];
+
   </script>
 
   <!-- Søgning + AI-opfølgning -->
