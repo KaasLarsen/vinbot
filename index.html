@@ -32,7 +32,7 @@
     }
     .featured-card:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.4); }
     .featured-logo{ width:88px; height:88px; border-radius:999px; overflow:hidden; background:#fff; flex:0 0 88px; }
-    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; }
+    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; } /* bevidst crop */
 
     .featured-body h3{ margin:0 0 4px; font-size:16px; }
     .featured-body p { margin:0; color:var(--text-dim); font-size:14px; }
@@ -40,9 +40,26 @@
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
 
-    /* Zoom-origin til de tre udvalgte vine (JS styrer selve zoom) */
+    /* Zoom-effekt KUN på udvalgte vine på forsiden */
+    .card--featured {
+      position: relative;
+      overflow: visible; /* flasken må gerne stikke udenfor kortet */
+    }
+    .card--featured .card-media {
+      position: relative;
+      overflow: visible;
+      z-index: 1;
+    }
     .card--featured .card-media img {
+      transition: transform .18s ease-out, box-shadow .18s ease-out;
       transform-origin: center bottom;
+    }
+    /* Kun på devices med “rigtig” hover (desktop) */
+    @media (hover:hover) and (pointer:fine) {
+      .card--featured:hover .card-media img {
+        transform: scale(1.9);
+        box-shadow: 0 18px 40px rgba(0,0,0,.7);
+      }
     }
   </style>
 </head>
@@ -186,7 +203,7 @@
   <!-- Footer partial mount -->
   <div id="footer"></div>
 
-  <!-- Udvalgte vine lige nu (DATA + FUNKTION + ZOOM) -->
+  <!-- Udvalgte vine lige nu (DATA + MARKUP) -->
   <script>
     const FEATURED_WINES = [
       {
@@ -241,41 +258,9 @@
         </section>
       `;
     }
-
-    // JS-baseret zoom kun på .card--featured billeder (desktop/hover)
-    function initFeaturedZoom(){
-      const cards = document.querySelectorAll('.card--featured');
-      cards.forEach(card => {
-        const media = card.querySelector('.card-media');
-        const img   = media ? media.querySelector('img') : null;
-        if (!media || !img) return;
-
-        // Flasken må stikke ud over kortet
-        card.style.overflow = 'visible';
-        card.style.position = 'relative';
-        media.style.overflow = 'visible';
-        media.style.position = 'relative';
-        media.style.zIndex = '2';
-
-        img.style.transition = 'transform .18s ease-out, box-shadow .18s ease-out';
-        img.style.transformOrigin = 'center bottom';
-
-        card.addEventListener('mouseenter', () => {
-          img.style.transform = 'scale(1.9)';
-          img.style.boxShadow = '0 18px 40px rgba(0,0,0,.7)';
-          card.style.zIndex = '30';
-        });
-
-        card.addEventListener('mouseleave', () => {
-          img.style.transform = '';
-          img.style.boxShadow = '';
-          card.style.zIndex = '';
-        });
-      });
-    }
   </script>
 
-  <!-- Partials + kald af renderFeaturedWines + zoom -->
+  <!-- Partials + kald af renderFeaturedWines -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -285,45 +270,42 @@
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
       renderFeaturedWines();
-      initFeaturedZoom();
     })();
   </script>
 
-  <!-- Global burger-menu logik (virker også når header er loaded via fetch) -->
+  <!-- Global burger-menu logik (bruger .nav og .nav-toggle fra header.html) -->
   <script>
-    // Åbn/luk når man trykker på burger-knappen
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.nav-toggle');
-      if (!btn) return;
-      const nav = document.querySelector('.nav');
-      if (!nav) return;
-
-      e.stopPropagation();
-      const open = !nav.classList.contains('nav--open');
-      nav.classList.toggle('nav--open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    // Luk når man klikker udenfor menuen
-    document.addEventListener('click', (e) => {
+    function toggleNav(openForce){
       const nav = document.querySelector('.nav');
       const btn = document.querySelector('.nav-toggle');
       if (!nav || !btn) return;
+      const open = (typeof openForce === 'boolean')
+        ? openForce
+        : !nav.classList.contains('nav--open');
+      nav.classList.toggle('nav--open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
 
-      if (!nav.contains(e.target) && !e.target.closest('.nav-toggle')) {
-        nav.classList.remove('nav--open');
-        btn.setAttribute('aria-expanded','false');
+    // Åbn/luk når man klikker på burger-knappen
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.nav-toggle');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleNav();
+        return;
+      }
+      // Luk når man klikker udenfor
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      if (nav.classList.contains('nav--open') && !nav.contains(e.target)) {
+        toggleNav(false);
       }
     });
 
     // Luk på Escape
     document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape') return;
-      const nav = document.querySelector('.nav');
-      const btn = document.querySelector('.nav-toggle');
-      if (!nav || !btn) return;
-      nav.classList.remove('nav--open');
-      btn.setAttribute('aria-expanded','false');
+      if (e.key === 'Escape') toggleNav(false);
     });
   </script>
 
