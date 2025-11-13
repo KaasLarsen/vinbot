@@ -515,7 +515,7 @@
     }
     function cardHTML(p){
       return `
-        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+        <a class="card card--featured outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
           <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
           <div class="card-body">
             <h3>${p.title}</h3>
