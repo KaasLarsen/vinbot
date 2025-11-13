@@ -3,21 +3,28 @@ export const config = { runtime: "nodejs" };
 export default async function handler(req, res) {
   try {
     const qRaw = (req.query.q || "").toString().trim();
-    const budgetMax = req.query.max ? parseInt(req.query.max, 10) : null;
 
-const FEEDS = [
-  { merchant: "Mere om Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
-  { merchant: "Winther Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
-  { merchant: "Vinea",              url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=111911&feedid=3767" },
-  { merchant: "DH Wines",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=108173&feedid=3461" },
-  { merchant: "D’Wine",             url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=92927&feedid=2455" },
-  { merchant: "Gourmetshoppen",     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=80950&feedid=1925" },
-  { merchant: "Johnsen Vine",       url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114732&feedid=4073" },
-  { merchant: "SPS Wine",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112662&feedid=3860" },
-  { merchant: "Westjysk Smag",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
-  { merchant: "Winesommelier",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" }
-];
+    // Evt. max fra frontend (chips / "under 150 kr" osv.)
+    const budgetMaxParam = req.query.max ? parseInt(req.query.max, 10) : null;
 
+    // Parse pris-interval fra selve søgeteksten (fx "100-150 kr")
+    const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
+    const priceMin = priceFilter.min;
+    const priceMax = priceFilter.max;
+
+    const FEEDS = [
+      { merchant: "Mere om Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
+      { merchant: "Winther Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
+      { merchant: "Vinea",              url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=111911&feedid=3767" },
+      { merchant: "Barlife",            url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=46609&feedid=651" },
+      { merchant: "DH Wines",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=108173&feedid=3461" },
+      { merchant: "D’Wine",             url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=92927&feedid=2455" },
+      { merchant: "Gourmetshoppen",     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=80950&feedid=1925" },
+      { merchant: "Johnsen Vine",       url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114732&feedid=4073" },
+      { merchant: "SPS Wine",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112662&feedid=3860" },
+      { merchant: "Westjysk Smag",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
+      { merchant: "Winesommelier",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" }
+    ];
 
     const headers = {
       "user-agent": UA,
@@ -25,69 +32,248 @@ const FEEDS = [
     };
 
     const terms = expandQuery(qRaw);
-    let feeds_ok=0, feeds_failed=0;
+    let feeds_ok = 0, feeds_failed = 0;
 
-    const lists = await Promise.all(FEEDS.map(async ({ merchant, url })=>{
-      try{
-        const r = await fetch(url, { headers, redirect:"follow" });
-        const buf = await r.arrayBuffer();
-        const text = decodeText(buf);
+    const lists = await Promise.all(
+      FEEDS.map(async ({ merchant, url }) => {
+        try {
+          const r = await fetch(url, { headers, redirect: "follow" });
+          const buf = await r.arrayBuffer();
+          const text = decodeText(buf);
 
-        let products = looksLikeXML(text)
-          ? parseXMLProducts(text, merchant)
-          : parseCSVProducts(text, merchant);
+          let products = looksLikeXML(text)
+            ? parseXMLProducts(text, merchant)
+            : parseCSVProducts(text, merchant);
 
-        if (budgetMax != null) products = products.filter(p => p.price != null && p.price <= budgetMax);
+          // 1) Filtrér til vin-lignende produkter
+          products = products.filter(isWineLike);
 
-        // match bredt – hvis 0 strikte: vis top fra feed (bevis liv)
-        let matches = products.filter(p => terms.some(t => (p._search||"").includes(t)));
-        if (!matches.length) matches = products.slice(0, 24);
+          // 2) Filtrér på pris-interval, hvis vi har noget at gå efter
+          if (priceMin != null || priceMax != null) {
+            products = products.filter(p => {
+              if (p.price == null) return false;
+              if (priceMin != null && p.price < priceMin) return false;
+              if (priceMax != null && p.price > priceMax) return false;
+              return true;
+            });
+          }
 
-        matches = matches.map(p => {
-          const img = normalizeUrl(p.image, p.url);
-          return img ? { ...p, image: proxyImg(img) } : { ...p, image: null };
-        });
+          // Ingen produkter tilbage i dette feed → bare skip feedet
+          if (!products.length) {
+            feeds_ok++;
+            return [];
+          }
 
-        feeds_ok++; return matches;
-      }catch{ feeds_failed++; return []; }
-    }));
+          // match bredt – men kun på vin-produkter
+          let matches = products.filter(p =>
+            terms.some(t => (p._search || "").includes(t))
+          );
+
+          // hvis ingen match for denne butik → lad den være tom (ingen random crap)
+          if (!matches.length) {
+            feeds_ok++;
+            return [];
+          }
+
+          // proxy billede
+          matches = matches.map(p => {
+            const img = normalizeUrl(p.image, p.url);
+            return img ? { ...p, image: proxyImg(img) } : { ...p, image: null };
+          });
+
+          feeds_ok++;
+          return matches;
+        } catch {
+          feeds_failed++;
+          return [];
+        }
+      })
+    );
 
     let items = lists.flat();
 
     // sortér: matchscore, billede, pris
-    items = items.sort((a,b)=>{
-      const sa = score(a, terms), sb = score(b, terms);
-      return sb-sa || (a.image?0:1)-(b.image?0:1) || (a.price??9e9)-(b.price??9e9);
-    }).slice(0, 48);
+    items = items
+      .sort((a, b) => {
+        const sa = score(a, terms), sb = score(b, terms);
+        return (
+          sb - sa ||
+          (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+          (a.price ?? 9e9) - (b.price ?? 9e9)
+        );
+      })
+      .slice(0, 48);
 
-    const meta = { feeds_total: FEEDS.length, feeds_ok, feeds_failed };
+    const meta = {
+      feeds_total: FEEDS.length,
+      feeds_ok,
+      feeds_failed,
+      priceMin,
+      priceMax
+    };
 
-    if (items.length) return send(res, { source:"feed", products: items, meta });
-    return send(res, { source:"fallback", products: [], meta });
+    if (items.length) return send(res, { source: "feed", products: items, meta });
+    return send(res, { source: "fallback", products: [], meta });
   } catch (e) {
-    return send(res, { source:"error", products: [], meta:{feeds_total:0,feeds_ok:0,feeds_failed:0} }, 200);
+    return send(
+      res,
+      { source: "error", products: [], meta: { feeds_total: 0, feeds_ok: 0, feeds_failed: 0 } },
+      200
+    );
   }
 }
 
 /* ---------- helpers ---------- */
-function send(res,obj,status=200){ res.setHeader("content-type","application/json; charset=utf-8"); res.status(status).json(obj); }
-const UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
+function send(res, obj, status = 200) {
+  res.setHeader("content-type", "application/json; charset=utf-8");
+  res.status(status).json(obj);
+}
+const UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
-function expandQuery(q){
+/* === Prisforståelse fra fri tekst === */
+function parsePriceFilter(qRaw, budgetMaxParam) {
+  const txt = (qRaw || "").toLowerCase();
+
+  let min = null;
+  let max = null;
+
+  // Interval: "100-150 kr", "100 – 150 kr"
+  let m = txt.match(/(\d{2,5})\s*[-–]\s*(\d{2,5})\s*kr/);
+  if (m) {
+    const a = parseInt(m[1], 10);
+    const b = parseInt(m[2], 10);
+    min = Math.min(a, b);
+    max = Math.max(a, b);
+  }
+
+  // "fra 100 til 150 kr", "mellem 80 og 120 kr"
+  if (!m) {
+    m = txt.match(/(?:fra|mellem)\s*(\d{2,5})\s*(?:til|og)\s*(\d{2,5})\s*kr/);
+    if (m) {
+      const a = parseInt(m[1], 10);
+      const b = parseInt(m[2], 10);
+      min = Math.min(a, b);
+      max = Math.max(a, b);
+    }
+  }
+
+  // "under 150 kr", "max 150 kr"
+  if (max == null) {
+    m = txt.match(/(?:under|max)\s*(\d{2,5})\s*kr/);
+    if (m) {
+      max = parseInt(m[1], 10);
+    }
+  }
+
+  // "mindst 100 kr", "over 200 kr", "fra 100 kr"
+  if (min == null) {
+    m = txt.match(/(?:mindst|over|fra)\s*(\d{2,5})\s*kr/);
+    if (m) {
+      min = parseInt(m[1], 10);
+    }
+  }
+
+  // Hvis frontend har sendt en max, så lad den "vinde"
+  if (budgetMaxParam != null) {
+    if (max == null || budgetMaxParam < max) {
+      max = budgetMaxParam;
+    }
+  }
+
+  // Simpel "billig/budget" fallback hvis intet max
+  if (max == null && /billig|budget/.test(txt)) {
+    max = 100;
+  }
+
+  return { min, max };
+}
+
+/* === Vin-/ikke-vin-filtret === */
+function isWineLike(p) {
+  const text = (
+    (p.title || "") + " " +
+    (p.desc || "") + " " +
+    (p.category || "")
+  ).toLowerCase();
+
+  const positive = [
+    "vin", "wine",
+    "rødvin", "hvidvin", "dessertvin",
+    "riesling", "chardonnay", "sauvignon", "pinot", "nebbiolo", "barolo",
+    "cabernet", "merlot", "malbec", "tempranillo", "zinfandel", "primitivo",
+    "bordeaux", "bourgogne", "burgundy", "chianti", "valpolicella", "amarone",
+    "rioja", "ribera del duero",
+    "cava", "prosecco", "champagne", "crémant", "cremant", "spumante",
+    "moscato", "sauternes", "portvin", "port", "sherry",
+    "tinto", "rosso", "rouge", "blanc", "rosé", "rose"
+  ];
+
+  const negative = [
+    "øl", "oel", "beer", "bryg", "brew",
+    "gin", "rum", "rom", "whisky", "whiskey", "vodka", "tequila", "cognac", "brandy",
+    "likør", "liqueur", "akvavit", "snaps",
+    "glas", "vinglas", "karaffel", "karafel", "dekanter", "vinreol",
+    "oplukker", "proptrækker", "korkskruer",
+    "ølglas", "cocktailglas",
+    "gavekort", "gadget", "chokolade", "kaffe"
+  ];
+
+  let hasPos = false;
+  for (const w of positive) {
+    if (text.includes(w)) {
+      hasPos = true;
+      break;
+    }
+  }
+
+  let hasNeg = false;
+  for (const w of negative) {
+    if (text.includes(w)) {
+      hasNeg = true;
+      break;
+    }
+  }
+
+  // Hvis det tydeligt ligner noget med øl/spirits/glas og IKKE har vin-signaler → smid ud
+  if (hasNeg && !hasPos) return false;
+
+  // Ellers acceptere vi det – hellere lidt for meget end at fjerne gode vine
+  return true;
+}
+
+/* -------- INTENT/SYNONYMER (backenden) -------- */
+function expandQuery(q) {
   const base = normalize(q);
   const eq = {
-    barolo:["nebbiolo"], nebbiolo:["barolo"],
-    rioja:["tempranillo"], tempranillo:["rioja"],
-    ribera:["ribera del duero","tempranillo"], "ribera del duero":["ribera","tempranillo"],
-    shiraz:["syrah"], syrah:["shiraz"],
-    rose:["rosé"], "rosé":["rose"],
-    cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
+    barolo: ["nebbiolo"], nebbiolo: ["barolo"],
+    rioja: ["tempranillo"], tempranillo: ["rioja"],
+    ribera: ["ribera del duero", "tempranillo"],
+    "ribera del duero": ["ribera", "tempranillo"],
+    shiraz: ["syrah"], syrah: ["shiraz"],
+    rose: ["rosé"], "rosé": ["rose"],
+    cab: ["cabernet", "cabernet sauvignon"],
+    cabernet: ["cab", "cabernet sauvignon"],
+    "cabernet sauvignon": ["cab", "cabernet"]
   };
   const set = new Set();
-  base.split(/\s+/).forEach(t=>{ if(!t) return; const n=normalize(t); set.add(n); (eq[n]||[]).forEach(x=>set.add(normalize(x))); });
+  base.split(/\s+/).forEach(t => {
+    if (!t) return;
+    const n = normalize(t);
+    set.add(n);
+    (eq[n] || []).forEach(x => set.add(normalize(x)));
+  });
   return Array.from(set);
 }
-function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim(); }
+
+function normalize(s = "") {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 /* ======= OPDATERET PRIS-PARSER ======= */
 function toNumber(s) {
@@ -95,7 +281,9 @@ function toNumber(s) {
   let str = String(s).trim();
 
   // fjern valuta/labels og whitespace
-  str = str.replace(/\s*(kr\.?|dkk)\s*$/i, "").replace(/\s/g, "");
+  str = str
+    .replace(/\s*(kr\.?|dkk)\s*$/i, "")
+    .replace(/\s/g, "");
 
   // 1) EU-format: 1.234,56 eller 12.345
   if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(str)) {
@@ -120,14 +308,48 @@ function toNumber(s) {
   const v = parseFloat(str);
   return Number.isFinite(v) ? v : null;
 }
-/* ======= /pris-parser ======= */
 
-function decodeHTMLEntities(t){ return (t||"").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#039;/g,"'"); }
-function stripCdata(s=""){ return s.replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,""); }
-function looksLikeXML(txt){ return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt); }
-function proxyImg(src){ return `/api/img?src=${encodeURIComponent(src)}`; }
-function normalizeUrl(maybe, pageUrl){ if(!maybe) return null; let s=maybe.trim().replace(/&amp;/g,"&"); if(s.startsWith("//")) s="https:"+s; try{ new URL(s); return s; }catch{} try{ return new URL(s,pageUrl).toString(); }catch{} return null; }
-function score(p, terms){ const s=p._search||""; let sc=0; terms.forEach(t=>{ if(s.includes(t)) sc+=5; }); if(p.title && terms.some(t => (p.title||"").toLowerCase().includes(t))) sc+=3; if(p.image) sc+=2; if(p.price!=null) sc+=1; return sc; }
+/* øvrige helpers: decode, parsere, score osv. – uændret fra før */
+
+function decodeHTMLEntities(t){
+  return (t||"")
+    .replace(/&amp;/g,"&")
+    .replace(/&lt;/g,"<")
+    .replace(/&gt;/g,">")
+    .replace(/&quot;/g,'"')
+    .replace(/&#039;/g,"'");
+}
+function stripCdata(s=""){
+  return s.replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,"");
+}
+function looksLikeXML(txt){
+  return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt);
+}
+function proxyImg(src){
+  return `/api/img?src=${encodeURIComponent(src)}`;
+}
+function normalizeUrl(maybe, pageUrl){
+  if(!maybe) return null;
+  let s = maybe.trim().replace(/&amp;/g,"&");
+  if(s.startsWith("//")) s="https:"+s;
+  try{
+    new URL(s);
+    return s;
+  }catch{}
+  try{
+    return new URL(s,pageUrl).toString();
+  }catch{}
+  return null;
+}
+function score(p, terms){
+  const s=p._search||"";
+  let sc=0;
+  terms.forEach(t=>{ if(s.includes(t)) sc+=5; });
+  if(p.title && terms.some(t => (p.title||"").toLowerCase().includes(t))) sc+=3;
+  if(p.image) sc+=2;
+  if(p.price!=null) sc+=1;
+  return sc;
+}
 function decodeText(buf){
   try{
     const head = new TextDecoder("utf-8").decode(buf.slice(0, 200));
@@ -146,12 +368,18 @@ function decodeText(buf){
 function parseXMLProducts(xml, merchant){
   const out=[];
   // Fjern namespaces (g:image_link -> g_image_link)
-  let txt = xml.replace(/<([a-z0-9]+):/ig, "<$1_").replace(/<\/([a-z0-9]+):/ig, "</$1_");
+  let txt = xml
+    .replace(/<([a-z0-9]+):/ig, "<$1_")
+    .replace(/<\/([a-z0-9]+):/ig, "</$1_");
   // Kendte blokke inkl. dansk
   let blocks = splitBlocks(txt,"product");
   if (!blocks.length) blocks = splitBlocks(txt,"item");
-  if (!blocks.length) blocks = splitBlocks(txt,"produkt"); // ← vigtig
-  if (!blocks.length) blocks = genericXmlBlocks(txt, ["product","item","row","entry","offer","record","node","produkt"], ["deeplink","link","producturl","url","g_link","vareurl"]);
+  if (!blocks.length) blocks = splitBlocks(txt,"produkt");
+  if (!blocks.length) blocks = genericXmlBlocks(
+    txt,
+    ["product","item","row","entry","offer","record","node","produkt"],
+    ["deeplink","link","producturl","url","g_link","vareurl"]
+  );
 
   for (const b of blocks){
     const title = pickOne(b, ["name","title","g_title","produktnavn"]);
@@ -174,20 +402,53 @@ function parseXMLProducts(xml, merchant){
     if (!title || !url) continue;
 
     out.push({
-      merchant, title: decodeHTMLEntities(title), desc: decodeHTMLEntities(desc),
-      category: decodeHTMLEntities(category), brand: decodeHTMLEntities(brand),
-      price, currency, image: image||"", url,
+      merchant,
+      title: decodeHTMLEntities(title),
+      desc: decodeHTMLEntities(desc),
+      category: decodeHTMLEntities(category),
+      brand: decodeHTMLEntities(brand),
+      price,
+      currency,
+      image: image || "",
+      url,
       _search: normalize([title, desc, category, brand].filter(Boolean).join(" "))
     });
   }
   return out;
 }
-function splitBlocks(xml, tag){ return xml.split(new RegExp(`<${tag}\\b[^>]*>`,"i")).slice(1).map(b=>b.split(new RegExp(`</${tag}>`,"i"))[0]); }
-function pickTag(block, tag){ const m=block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`,"i")); return m?decodeHTMLEntities(stripCdata(m[1].trim())):""; }
-function pickOne(block, tags){ for(const t of tags){ const v=pickTag(block,t); if(v) return v; } return ""; }
-function pickFirstMatch(block, regs){ for(const re of regs){ const m=block.match(re); if(m) return decodeHTMLEntities(stripCdata(m[1].trim())); } return ""; }
-function cleanPrice(s){ return (s||"").replace(/[A-Z]{3}/ig,"").replace(/kr\./ig,"kr").trim(); }
-function extractCurrency(s){ const m=(s||"").match(/\b([A-Z]{3})\b/); if(m) return m[1]; if(/\skr/.test(s||"")) return "DKK"; return null; }
+function splitBlocks(xml, tag){
+  return xml
+    .split(new RegExp(`<${tag}\\b[^>]*>`,"i"))
+    .slice(1)
+    .map(b=>b.split(new RegExp(`</${tag}>`,"i"))[0]);
+}
+function pickTag(block, tag){
+  const m=block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`,"i"));
+  return m?decodeHTMLEntities(stripCdata(m[1].trim())):"";
+}
+function pickOne(block, tags){
+  for(const t of tags){
+    const v=pickTag(block,t);
+    if(v) return v;
+  }
+  return "";
+}
+function pickFirstMatch(block, regs){
+  for(const re of regs){
+    const m=block.match(re);
+    if(m) return decodeHTMLEntities(stripCdata(m[1].trim()));
+  }
+  return "";
+}
+function cleanPrice(s){
+  return (s||"").replace(/[A-Z]{3}/ig,"").replace(/kr\./ig,"kr").trim();
+}
+function extractCurrency(s){
+  const m=(s||"").match(/\b([A-Z]{3})\b/);
+  if(m) return m[1];
+  if(/\skr/.test(s||"")) return "DKK";
+  return null;
+}
 function genericXmlBlocks(xml, containers, urlFields){
   const out=[];
   const openRe = new RegExp(`<(${containers.join("|")})\\b[^>]*>`,"ig");
@@ -200,7 +461,7 @@ function genericXmlBlocks(xml, containers, urlFields){
     const close = closeRe.exec(xml);
     if (!close) continue;
     const block = xml.slice(m.index, close.index + close[0].length);
-    const hasUrl = urlFields.some(f => new RegExp(`<${f}\\b[^>]*>`,`i`).test(block));
+    const hasUrl = urlFields.some(f => new RegExp(`<${f}\\b[^>]*>`,"i").test(block));
     if (hasUrl) out.push(block);
     openRe.lastIndex = close.index + close[0].length;
   }
@@ -233,7 +494,18 @@ function parseCSVProducts(text, merchant){
   for(const r of rows){
     const title=r[it]||"", url=r[iu]||"", image=r[ii]||"", price=toNumber(r[ip]||""), currency=r[ic]||"DKK", brand=r[ib]||"";
     if(!title || !url) continue;
-    out.push({ merchant, title, desc:"", category:"", brand, price, currency, image, url, _search: normalize([title,brand].join(" ")) });
+    out.push({
+      merchant,
+      title,
+      desc:"",
+      category:"",
+      brand,
+      price,
+      currency,
+      image,
+      url,
+      _search: normalize([title,brand].join(" "))
+    });
   }
   return out;
 }
@@ -241,7 +513,12 @@ function parseCSV(text, delim){
   const rows=[]; let f="", row=[], q=false;
   for(let i=0;i<text.length;i++){
     const c=text[i], n=text[i+1];
-    if(q){ if(c==='"'&&n==='"'){f+='"';i++;continue;} if(c==='"'){q=false;continue;} f+=c; continue; }
+    if(q){
+      if(c==='"'&&n==='"'){f+='"';i++;continue;}
+      if(c==='"'){q=false;continue;}
+      f+=c;
+      continue;
+    }
     if(c==='"'){q=true;continue;}
     if(c===delim){row.push(f);f="";continue;}
     if(c==='\n'){row.push(f);rows.push(row);f="";row=[];continue;}
