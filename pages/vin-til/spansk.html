@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Spansk Mad – Vinbot</title>
+  <meta name="description" content="Spanske retter kræver friskhed og energi. Se vin til tapas, paella, grill, fede retter og fisk. Albariño, Verdejo, Garnacha, Rioja og Cava." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Spansk Mad</h2>
+    <p>spansk mad er <strong>salt, krydret, fedme & umami</strong>. derfor fungerer vine med friskhed, sødmefuld frugt og gode bobler bedst.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>topvalg</h3>
+        <ul>
+          <li><strong>albariño</strong> – salt citrus til fisk, tapas & skaldyr.</li>
+          <li><strong>verdejo</strong> – aromatisk, frisk; genial til krydret mad.</li>
+          <li><strong>garnacha</strong> – frugtig rød til grill & tapas.</li>
+          <li><strong>tempranillo (rioja)</strong> – klassisk til kød, ost og tomat.</li>
+          <li><strong>cava</strong> – bobler renser salt & friture.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>retter → vin</h3>
+        <ul>
+          <li><strong>tapas:</strong> cava, albariño, garnacha.</li>
+          <li><strong>paella:</strong> verdejo (fisk) eller garnacha (kød).</li>
+          <li><strong>grill:</strong> garnacha eller rioja.</li>
+          <li><strong>fisk:</strong> albariño, txakoli, let cava.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>servering</h3>
+        <ul>
+          <li><strong>hvid/cava:</strong> 7–9 °c</li>
+          <li><strong>rød:</strong> 14–16 °c (spanien drikkes bedst let afkølet)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>prisniveau</h3>
+        <ul>
+          <li>god hvid: 60–110 kr</li>
+          <li>garnacha: 70–120 kr</li>
+          <li>rioja reserva: 100–170 kr</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>fejl at undgå</h3>
+      <ul>
+        <li>for tung fad-hvid til salt → virker kvalmt.</li>
+        <li>for varm rød → alkoholen stikker.</li>
+      </ul>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Tapas</h4><p>salt & fedme → friskhed.</p></a>
+        <a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 Fisk</h4><p>sprød hvid med syre.</p></a>
+        <a class="card" href="/pages/anbefalinger/bobler.html"><h4>🥂 Bobler</h4><p>perfekt til friture.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html").then(r=>r.text()),
+        fetch("/partials/footer.html").then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+      const mounts=[...document.querySelectorAll('[data-partial]')];
+      await Promise.all(mounts.map(async el=>el.innerHTML=await (await fetch(el.dataset.partial)).text()));
+    })();
+  </script>
+</body>
+</html>
