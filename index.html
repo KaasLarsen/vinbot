@@ -39,29 +39,6 @@
 
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
-
-    /* Zoom-effekt KUN på udvalgte vine på forsiden */
-    .card--featured {
-      position: relative;
-      overflow: visible;          /* overstyr evt. overflow:hidden på .card */
-      z-index: 1;                 /* basis, hæves ved hover */
-    }
-    .card--featured .card-media {
-      position: relative;
-      overflow: visible;          /* billedet må gerne stikke udenfor selve kortet */
-    }
-    .card--featured .card-media img {
-      transition: transform .18s ease-out, box-shadow .18s ease-out;
-      transform-origin: center bottom;
-      will-change: transform;
-    }
-    .card--featured:hover {
-      z-index: 10;                /* så flasken kan ligge over nabo-kort */
-    }
-    .card--featured:hover .card-media img {
-      transform: scale(1.9);      /* gør flasken ekstra stor */
-      box-shadow: 0 18px 40px rgba(0,0,0,.7);
-    }
   </style>
 </head>
 <body>
@@ -259,9 +236,39 @@
         </section>
       `;
     }
+
+    // JS-baseret zoom kun på .card--featured billeder
+    function initFeaturedZoom(){
+      const cards = document.querySelectorAll('.card--featured');
+      cards.forEach(card => {
+        const media = card.querySelector('.card-media');
+        const img   = media ? media.querySelector('img') : null;
+        if (!media || !img) return;
+
+        // Sørg for at billedet kan stikke udenfor sin boks
+        media.style.overflow = 'visible';
+        media.style.position = 'relative';
+        media.style.zIndex = '1';
+
+        img.style.transition = 'transform .18s ease-out, box-shadow .18s ease-out';
+        img.style.transformOrigin = 'center bottom';
+
+        card.addEventListener('mouseenter', () => {
+          img.style.transform = 'scale(1.9)';
+          img.style.boxShadow = '0 18px 40px rgba(0,0,0,.7)';
+          card.style.zIndex = '20';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          img.style.transform = '';
+          img.style.boxShadow = '';
+          card.style.zIndex = '';
+        });
+      });
+    }
   </script>
 
-  <!-- Partials + mobilmenu init + kald af renderFeaturedWines -->
+  <!-- Partials + mobilmenu init + kald af renderFeaturedWines + zoom -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -272,6 +279,7 @@
       document.getElementById("footer").innerHTML = f;
       initMobileNav();
       renderFeaturedWines();
+      initFeaturedZoom(); // <- aktiver zoom EFTER vi har rendered kortene
     })();
 
     function initMobileNav(){
