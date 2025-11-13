@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Fisk – Vinbot</title>
+  <meta name="description" content="Hvilken vin til fisk? Det afhænger af fedme, tilberedning og sauce. Se guide: sprød hvid, fed hvid, rosé og let rød – samt konkrete eksempler." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Fisk</h2>
+    <p>tænk i <strong>fedme og tilberedning</strong>. jo federe/rigere fisken er, jo mere <strong>fylde</strong> kan vinen have – men <strong>syren</strong> skal altid rense.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>sprød & let</h3>
+        <ul>
+          <li><strong>torsk, rødspætte, sej (citrus/urter):</strong> sauvignon blanc, albariño, riesling (tør).</li>
+          <li><strong>ceviche/tatar:</strong> sauvignon/verdejo; gerne extra brut bobler.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>mere fylde</h3>
+        <ul>
+          <li><strong>laks, ørred, sværdfisk:</strong> chardonnay (let fad), chenin blanc; også tør rosé.</li>
+          <li><strong>smør/flødesauce:</strong> chardonnay med lidt fad eller seriøs chenin.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>tilberedning → vin</h3>
+        <ul>
+          <li><strong>grill/røg:</strong> rosé eller chardonnay; pinot noir (kølig) kan virke til laks.</li>
+          <li><strong>friture:</strong> bobler! cava/crémant renser fedmen.</li>
+          <li><strong>asiatisk/krydret:</strong> riesling (tør/halvtør) eller sprød rosé.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>servering & pris</h3>
+        <ul>
+          <li><strong>temperatur:</strong> hvid/bobler 7–9 °c; rosé 8–10 °c; pinot til laks 13–14 °c.</li>
+          <li><strong>budget:</strong> flotte køb 90–150 kr. bobler fra 80–140 kr (cava/crémant).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>fejl at undgå</h3>
+      <ul>
+        <li><strong>kraftig fad-hvid</strong> til delikate hvide fisk → overdøver retten.</li>
+        <li><strong>tanninrig rød</strong> → metalisk smag mod fisk.</li>
+      </ul>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 vin til kylling</h4><p>vælg efter sauce og krydring.</p></a>
+        <a class="card" href="/pages/anbefalinger/bobler.html"><h4>🥂 bobler</h4><p>perfekt til friture og skaldyr.</p></a>
+        <a class="card" href="/pages/druer/chardonnay.html"><h4>🥂 chardonnay</h4><p>fra sprød til cremet – til fisk.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+      const mounts=[...document.querySelectorAll('[data-partial]')];
+      await Promise.all(mounts.map(async el=>el.innerHTML=await (await fetch(el.dataset.partial||'/partials/partner-ads.html',{cache:'no-store'})).text()));
+    })();
+  </script>
+</body>
+</html>
