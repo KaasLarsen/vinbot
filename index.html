@@ -218,7 +218,7 @@
           <h2 class="featured-title">Udvalgte vine lige nu 🍷</h2>
           <div class="grid">
             ${FEATURED_WINES.map(w => `
-                <a class="card card--featured product outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
+                <a class="card product card--featured outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
                 <div class="card-media">
                   ${w.image ? `<img src="${w.image}" alt="${w.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}
                 </div>
