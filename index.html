@@ -40,7 +40,7 @@
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
 
-    /* Lille base for zoom (resten styres via JS inline-styles) */
+    /* Zoom-origin til de tre udvalgte vine (JS styrer selve zoom) */
     .card--featured .card-media img {
       transform-origin: center bottom;
     }
@@ -55,6 +55,7 @@
     <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste flasker og butikker.</p>
 
     <div class="search-wrap">
+      <!-- FORM så Enter fungerer på mobil/desktop -->
       <form class="search" id="searchForm" novalidate>
         <div class="icon">🔎</div>
         <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" />
@@ -185,7 +186,7 @@
   <!-- Footer partial mount -->
   <div id="footer"></div>
 
-  <!-- Udvalgte vine lige nu (DATA + FUNKTION) -->
+  <!-- Udvalgte vine lige nu (DATA + FUNKTION + ZOOM) -->
   <script>
     const FEATURED_WINES = [
       {
@@ -241,7 +242,7 @@
       `;
     }
 
-    // JS-baseret zoom kun på .card--featured billeder
+    // JS-baseret zoom kun på .card--featured billeder (desktop/hover)
     function initFeaturedZoom(){
       const cards = document.querySelectorAll('.card--featured');
       cards.forEach(card => {
@@ -249,7 +250,7 @@
         const img   = media ? media.querySelector('img') : null;
         if (!media || !img) return;
 
-        // flasken må stikke ud over kortet
+        // Flasken må stikke ud over kortet
         card.style.overflow = 'visible';
         card.style.position = 'relative';
         media.style.overflow = 'visible';
@@ -274,7 +275,7 @@
     }
   </script>
 
-  <!-- Partials + mobilmenu init + kald af renderFeaturedWines + zoom -->
+  <!-- Partials + kald af renderFeaturedWines + zoom -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -283,46 +284,47 @@
       ]);
       document.getElementById("header").innerHTML = h;
       document.getElementById("footer").innerHTML = f;
-      initMobileNav();
       renderFeaturedWines();
-      initFeaturedZoom(); // zoom efter kort er rendered
+      initFeaturedZoom();
     })();
+  </script>
 
-    function initMobileNav(){
-      const nav  = document.querySelector(".nav");
-      const btn  = document.querySelector(".nav-toggle");
-      const menu = document.getElementById("mainMenu"); // kan være null
+  <!-- Global burger-menu logik (virker også når header er loaded via fetch) -->
+  <script>
+    // Åbn/luk når man trykker på burger-knappen
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.nav-toggle');
+      if (!btn) return;
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
 
+      e.stopPropagation();
+      const open = !nav.classList.contains('nav--open');
+      nav.classList.toggle('nav--open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Luk når man klikker udenfor menuen
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('.nav');
+      const btn = document.querySelector('.nav-toggle');
       if (!nav || !btn) return;
 
-      const close = () => {
-        nav.classList.remove("nav--open");
-        btn.setAttribute("aria-expanded","false");
-      };
-      const toggle = () => {
-        const open = !nav.classList.contains("nav--open");
-        nav.classList.toggle("nav--open", open);
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
-      };
-
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        toggle();
-      });
-
-      if (menu) {
-        menu.addEventListener("click", (e) => {
-          if (e.target.closest("a")) close();
-        });
+      if (!nav.contains(e.target) && !e.target.closest('.nav-toggle')) {
+        nav.classList.remove('nav--open');
+        btn.setAttribute('aria-expanded','false');
       }
+    });
 
-      document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target)) close();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") close();
-      });
-    }
+    // Luk på Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const nav = document.querySelector('.nav');
+      const btn = document.querySelector('.nav-toggle');
+      if (!nav || !btn) return;
+      nav.classList.remove('nav--open');
+      btn.setAttribute('aria-expanded','false');
+    });
   </script>
 
   <!-- Partnere uden feed (favicon-fallback, ingen kommissionsvisning) -->
@@ -611,6 +613,7 @@
       state.lastQueryText = q;
       if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
 
+      /* Skjul forsidesektioner med det samme */
       const secStoresStart = document.getElementById('featured-stores');
       const secWinesStart  = document.getElementById('featured-wines');
       if (secStoresStart) secStoresStart.style.display = 'none';
