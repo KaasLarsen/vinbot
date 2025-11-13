@@ -30,9 +30,19 @@
       background:linear-gradient(180deg,var(--card),var(--card-2));
       transition:transform .12s,border-color .12s,box-shadow .12s;
     }
-    .featured-card:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.4); }
-    .featured-logo{ width:88px; height:88px; border-radius:999px; overflow:hidden; background:#fff; flex:0 0 88px; }
-    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; } /* bevidst crop */
+    .featured-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.28);
+      box-shadow:0 10px 24px rgba(0,0,0,.4);
+    }
+    .featured-logo{
+      width:88px; height:88px; border-radius:999px;
+      overflow:hidden; background:#fff; flex:0 0 88px;
+    }
+    .featured-logo img{
+      width:88px; height:88px;
+      object-fit:cover; display:block; /* bevidst crop */
+    }
 
     .featured-body h3{ margin:0 0 4px; font-size:16px; }
     .featured-body p { margin:0; color:var(--text-dim); font-size:14px; }
@@ -271,61 +281,121 @@
   <!-- Partnere uden feed (favicon-fallback, ingen kommissionsvisning) -->
   <script>
     const PARTNERS_NO_FEED = [
-  {
-    name:"Den Sidste Flaske",
-    baseUrl:"https://densidsteflaske.dk/",
-    searchUrl:"https://densidsteflaske.dk/search?q={Q}",
-    affiliateTemplate:null,
-    logo:"/assets/partners/den-sidste-flaske.png"
-  },
-  {
-    name:"Barlife",
-    baseUrl:"https://www.barlife.dk/",
-    searchUrl:"https://www.barlife.dk/search/{Q}",
-    affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}",
-    // hvis du laver en fil: logo:"/assets/partners/barlife.png"
-  },
-  {
-    name:"Beer Me",
-    baseUrl:"https://www.beer-me.dk/",
-    searchUrl:"https://www.beer-me.dk/search/vin",
-    affiliateTemplate:null
-  },
-  {
-    name:"DH Wines",
-    baseUrl:"https://dhwines.dk/",
-    searchUrl:"https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
-    affiliateTemplate:null,
-    logo:"/assets/partners/dh-wines.png"
-  },
-  {
-    name:"Herslev Bryghus",
-    baseUrl:"https://herslevbryghus.dk/",
-    searchUrl:"https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
-    affiliateTemplate:null
-  },
-  {
-    name:"Fantombryg",
-    baseUrl:"https://fantombryg.dk/",
-    searchUrl:"https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
-    affiliateTemplate:null
-  },
-  {
-    name:"Johnsen Wine",
-    baseUrl:"https://www.johnsenwine.dk/",
-    searchUrl:"https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
-    affiliateTemplate:null,
-    logo:"/assets/partners/johnsen.png"
-  },
-  {
-    name:"D’Wine",
-    baseUrl:"https://d-wine.dk/",
-    searchUrl:"https://d-wine.dk/?s={Q}&post_type=page%2Cproduct",
-    affiliateTemplate:null,
-    logo:"/assets/partners/dwine.png"
-  }
-];
+      {
+        name:"Den Sidste Flaske",
+        baseUrl:"https://densidsteflaske.dk/",
+        searchUrl:"https://densidsteflaske.dk/search?q={Q}",
+        affiliateTemplate:null,
+        logo:"/assets/partners/den-sidste-flaske.png"
+      },
+      {
+        name:"Barlife",
+        baseUrl:"https://www.barlife.dk/",
+        searchUrl:"https://www.barlife.dk/search/{Q}",
+        affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}"
+        // hvis du laver en fil: logo:"/assets/partners/barlife.png"
+      },
+      {
+        name:"Beer Me",
+        baseUrl:"https://www.beer-me.dk/",
+        searchUrl:"https://www.beer-me.dk/search/vin",
+        affiliateTemplate:null
+      },
+      {
+        name:"DH Wines",
+        baseUrl:"https://dhwines.dk/",
+        searchUrl:"https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
+        affiliateTemplate:null,
+        logo:"/assets/partners/dh-wines.png"
+      },
+      {
+        name:"Herslev Bryghus",
+        baseUrl:"https://herslevbryghus.dk/",
+        searchUrl:"https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
+        affiliateTemplate:null
+      },
+      {
+        name:"Fantombryg",
+        baseUrl:"https://fantombryg.dk/",
+        searchUrl:"https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
+        affiliateTemplate:null
+      },
+      {
+        name:"Johnsen Wine",
+        baseUrl:"https://www.johnsenwine.dk/",
+        searchUrl:"https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+        affiliateTemplate:null,
+        logo:"/assets/partners/johnsen.png"
+      },
+      {
+        name:"D’Wine",
+        baseUrl:"https://d-wine.dk/",
+        searchUrl:"https://d-wine.dk/?s={Q}&post_type=page%2Cproduct",
+        affiliateTemplate:null,
+        logo:"/assets/partners/dwine.png"
+      }
+    ];
 
+    function partnerLogo(p){
+      // Brug lokalt logo hvis det findes
+      if (p.logo) return p.logo;
+      // Ellers favicon som fallback
+      try {
+        const u = new URL(p.baseUrl);
+        return `${u.origin}/favicon.ico`;
+      } catch {
+        return null;
+      }
+    }
+
+    function buildPartnerSearchUrl(p, query){
+      const q = encodeURIComponent(query && query.trim() ? query.trim() : "vin");
+      const search = (p.searchUrl || p.baseUrl).replace("{Q}", q);
+      if (p.affiliateTemplate) {
+        return p.affiliateTemplate.replace("{URL}", encodeURIComponent(search));
+      }
+      return search;
+    }
+
+    function renderAlsoStores(query){
+      const $wrap = document.getElementById("alsoStores");
+      if (!$wrap) return;
+
+      const q = query && query.trim() ? query.trim() : "vin";
+      const sorted = [...PARTNERS_NO_FEED];
+
+      const html = `
+        <h2 class="also-title">Se også hos</h2>
+        <div class="store-grid">
+          ${sorted.slice(0,8).map(p=>{
+            const href = buildPartnerSearchUrl(p, q);
+            const logoSrc = partnerLogo(p);
+            return `
+              <a class="store-card outbound" href="${href}" target="_blank"
+                 rel="nofollow sponsored noopener"
+                 data-label="Store: ${p.name} · ${q}">
+                <div class="store-logo">
+                  ${logoSrc
+                    ? `<img src="${logoSrc}" alt="${p.name} logo" loading="lazy"
+                           onerror="this.style.display='none';this.parentElement.classList.add('noimg')">`
+                    : ``}
+                  <span class="store-fallback">${(p.name||'?').charAt(0)}</span>
+                </div>
+                <div class="store-body">
+                  <h3>${p.name}</h3>
+                  <div class="badges">
+                    <span class="badge">Søg: “${q}”</span>
+                    <span class="badge">Partner</span>
+                  </div>
+                </div>
+              </a>
+            `;
+          }).join("")}
+        </div>
+      `;
+      $wrap.innerHTML = html;
+      $wrap.style.display = "block";
+    }
   </script>
 
   <!-- Søgning + AI-opfølgning -->
@@ -422,7 +492,9 @@
     /* -------- RENDER HELPERS -------- */
     function priceHTML(p){
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
-      const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
+      const curr = (p.price != null)
+        ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})
+        : null;
       if (old && p.price && Number(old) > Number(p.price)) {
         const oldF = Number(old).toLocaleString("da-DK",{style:"currency",currency:"DKK"});
         return `<span class="price price-sale">${curr}</span><span class="price price-old">${oldF}</span>`;
@@ -447,8 +519,11 @@
     }
     function cardHTML(p){
       return `
-        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
-          <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
+        <a class="card product outbound" href="${p.url}" target="_blank"
+           rel="nofollow sponsored noopener" data-label="${p.title}">
+          <div class="card-media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
+          </div>
           <div class="card-body">
             <h3>${p.title}</h3>
             ${badgesHTML(p)}
@@ -551,16 +626,18 @@
       document.getElementById("sortSel").value = "relevance";
       renderAll();
       renderFollowup(q, state.products.length);
+
+      // nederste partner-sektion
       renderAlsoStores(state.lastQueryText || "vin");
 
-      /* Skjul udvalgte sektioner når der er resultater */
+      // Skjul udvalgte sektioner når der er resultater
       const hasResults = state.products.length > 0;
-      const secStores = document.getElementById('featured-stores'); // ← nu har sektionen id
-      const secWines  = document.getElementById('featured-wines');  // vi skjuler wrapperen
+      const secStores = document.getElementById('featured-stores');
+      const secWines  = document.getElementById('featured-wines');
       if (secStores) secStores.style.display = hasResults ? 'none' : '';
       if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
-      /* Scroll til resultaterne */
+      // Scroll til resultaterne
       document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
@@ -641,7 +718,8 @@
           <div class="chip-actions">
             <div class="price-wrap">
               <label for="ai-price">Maks pris</label>
-              <input id="ai-price" type="number" min="30" step="10" placeholder="fx 150" value="${state.filters.pris ?? ''}">
+              <input id="ai-price" type="number" min="30" step="10"
+                     placeholder="fx 150" value="${state.filters.pris ?? ''}">
             </div>
             <button id="applyChips" class="btn-primary">Opdater</button>
             <button id="clearChips" class="btn-soft">Nulstil</button>
@@ -690,13 +768,19 @@
     // GA4 outbound
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
-      try{ if (typeof gtag === 'function'){ gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href}); } }catch(_){}
+      try{
+        if (typeof gtag === 'function'){
+          gtag('event','outbound_click',{
+            event_category:'affiliate',
+            event_label:a.dataset.label || a.href
+          });
+        }
+      }catch(_){}
     });
   </script>
 
   <!-- Gør doSearch global + robuste bindings til Enter/knap -->
   <script>
-    // eksponér søgning globalt (til Enter/knap)
     window.doSearch = doSearch;
 
     (function(){
