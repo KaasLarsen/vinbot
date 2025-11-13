@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Oksebøf – Vinbot</title>
+  <meta name="description" content="Find rødvinen til oksebøf: Cabernet, Syrah eller Malbec? Se hvad der passer til stegning, fedtmarmorering, pebersauce, bearnaise m.m. med servering og prisniveau." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Oksebøf</h2>
+    <p>oksekød kræver <strong>struktur</strong>, <strong>tannin</strong> og <strong>mørk frugt</strong> – især hvis der er stegeskorpe, peber eller smør/bearnaise. vælg rød med rygrad og friskhed.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>topdruer</h3>
+        <ul>
+          <li><strong>cabernet sauvignon / bordeaux-blend</strong> – solbær, ceder, tannin til kødsaft.</li>
+          <li><strong>syrah/shiraz</strong> – peber, mørk frugt; perfekt til pebersauce.</li>
+          <li><strong>malbec</strong> (mendoza/uco) – blødere tannin, stor frugt til grillmærker.</li>
+          <li><strong>tempranillo (rioja reserva)</strong> – vanilje, læder; super til smør og urter.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>tilbehør → vælg stil</h3>
+        <ul>
+          <li><strong>bearnaise/smør:</strong> cabernet eller rioja (syre + fad matcher fedme).</li>
+          <li><strong>pebersauce:</strong> syrah/shiraz (peber møder peber).</li>
+          <li><strong>grill/ristede noter:</strong> malbec eller cabernet.</li>
+          <li><strong>svampe/urter:</strong> kølig pinot noir <em>kan</em> gå til rosa bøf uden tung sauce.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>servering</h3>
+        <ul>
+          <li><strong>temperatur:</strong> 16–18 °c (cab/syrah/malbec), 15–16 °c (pinot).</li>
+          <li><strong>luftning:</strong> 30–60 min for cabernet/rioja; 20–30 min for syrah.</li>
+          <li><strong>glas:</strong> store rødvinsglas fremhæver struktur og duft.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>pris & købstricks</h3>
+        <ul>
+          <li>bedste værdi: <strong>cabernet fra chile</strong> eller <strong>bordea ux sup.</strong> 90–140 kr.</li>
+          <li><strong>syrah</strong> fra nordrhône/australien 120–200 kr.</li>
+          <li><strong>malbec</strong> uco valley 100–160 kr – frisk højde = bedre syre.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>fejl at undgå</h3>
+      <ul>
+        <li>for blød/frugtsød rød til kraftig sauce → opleves flad.</li>
+        <li>for varm servering → alkoholen stikker. hold 16–18 °c.</li>
+      </ul>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/kylling.html"><h4>🍗 vin til kylling</h4><p>fra citron/urter til flødesauce – hvid eller let rød.</p></a>
+        <a class="card" href="/pages/vin-til/fisk.html"><h4>🐟 vin til fisk</h4><p>sprød hvid, fed hvid eller rosé – afhænger af tilberedning.</p></a>
+        <a class="card" href="/pages/anbefalinger/under-150.html"><h4>💸 bedste køb under 150</h4><p>steg-opgraderinger uden at sprænge budget.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html",{cache:"no-store"}).then(r=>r.text()),
+        fetch("/partials/footer.html",{cache:"no-store"}).then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+      const mounts=[...document.querySelectorAll('[data-partial]')];
+      await Promise.all(mounts.map(async el=>el.innerHTML=await (await fetch(el.dataset.partial||'/partials/partner-ads.html',{cache:'no-store'})).text()));
+    })();
+  </script>
+</body>
+</html>
