@@ -30,9 +30,23 @@
       background:linear-gradient(180deg,var(--card),var(--card-2));
       transition:transform .12s,border-color .12s,box-shadow .12s;
     }
-    .featured-card:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.4); }
-    .featured-logo{ width:88px; height:88px; border-radius:999px; overflow:hidden; background:#fff; flex:0 0 88px; }
-    .featured-logo img{ width:88px; height:88px; object-fit:cover; display:block; } /* bevidst crop */
+    .featured-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.28);
+      box-shadow:0 10px 24px rgba(0,0,0,.4);
+    }
+    .featured-logo{
+      width:88px; height:88px;
+      border-radius:999px;
+      overflow:hidden;
+      background:#fff;
+      flex:0 0 88px;
+    }
+    .featured-logo img{
+      width:88px; height:88px;
+      object-fit:cover;
+      display:block;
+    }
 
     .featured-body h3{ margin:0 0 4px; font-size:16px; }
     .featured-body p { margin:0; color:var(--text-dim); font-size:14px; }
@@ -41,25 +55,22 @@
     #featured-wines img { max-width: 100%; height: auto; display:block; }
 
     /* Zoom-effekt KUN på udvalgte vine på forsiden */
-    .card--featured {
+    .card--featured{
       position: relative;
       overflow: visible; /* flasken må gerne stikke udenfor kortet */
     }
-    .card--featured .card-media {
+    .card--featured .card-media{
       position: relative;
       overflow: visible;
-      z-index: 1;
+      z-index: 2;
     }
-    .card--featured .card-media img {
-      transition: transform .18s ease-out, box-shadow .18s ease-out;
+    .card--featured .card-media img{
+      transition: transform .2s ease-out, box-shadow .2s ease-out;
       transform-origin: center bottom;
     }
-    /* Kun på devices med “rigtig” hover (desktop) */
-    @media (hover:hover) and (pointer:fine) {
-      .card--featured:hover .card-media img {
-        transform: scale(1.9);
-        box-shadow: 0 18px 40px rgba(0,0,0,.7);
-      }
+    .card--featured:hover .card-media img{
+      transform: scale(1.9);
+      box-shadow: 0 18px 40px rgba(0,0,0,.7);
     }
   </style>
 </head>
@@ -273,42 +284,6 @@
     })();
   </script>
 
-  <!-- Global burger-menu logik (bruger .nav og .nav-toggle fra header.html) -->
-  <script>
-    function toggleNav(openForce){
-      const nav = document.querySelector('.nav');
-      const btn = document.querySelector('.nav-toggle');
-      if (!nav || !btn) return;
-      const open = (typeof openForce === 'boolean')
-        ? openForce
-        : !nav.classList.contains('nav--open');
-      nav.classList.toggle('nav--open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-
-    // Åbn/luk når man klikker på burger-knappen
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.nav-toggle');
-      if (btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleNav();
-        return;
-      }
-      // Luk når man klikker udenfor
-      const nav = document.querySelector('.nav');
-      if (!nav) return;
-      if (nav.classList.contains('nav--open') && !nav.contains(e.target)) {
-        toggleNav(false);
-      }
-    });
-
-    // Luk på Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') toggleNav(false);
-    });
-  </script>
-
   <!-- Partnere uden feed (favicon-fallback, ingen kommissionsvisning) -->
   <script>
     const PARTNERS_NO_FEED = [
@@ -421,6 +396,7 @@
 
   <!-- Søgning + AI-opfølgning -->
   <script>
+    /* -------- INTENT & SYNONYMER -------- */
     const INTENT = {
       ost:["portvin","riesling","chardonnay","sauternes"],
       pizza:["chianti","barbera","primitivo"],
@@ -445,6 +421,7 @@
       cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
     };
 
+    /* -------- STATE -------- */
     const state = {
       baseTerms: [],
       filters: { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null },
@@ -485,6 +462,7 @@
       }
     };
 
+    /* -------- UTIL -------- */
     function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
     function deriveTermsFromInput(raw){
       const q = normalize(raw||"");
@@ -507,6 +485,7 @@
       return [...extra];
     }
 
+    /* -------- RENDER HELPERS -------- */
     function priceHTML(p){
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
       const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
@@ -544,6 +523,7 @@
       `;
     }
 
+    /* -------- TOP 3 PICKS -------- */
     function pickTop3(items, terms){
       const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
       const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
@@ -590,12 +570,13 @@
       return chosen;
     }
 
+    /* -------- SØGNING -------- */
     async function doSearch(fromChip=false){
       const q = document.getElementById('q').value.trim();
       state.lastQueryText = q;
       if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
 
-      /* Skjul forsidesektioner med det samme */
+      /* Skjul forsidesektioner MED DET SAMME, så status bliver lige under søgefeltet */
       const secStoresStart = document.getElementById('featured-stores');
       const secWinesStart  = document.getElementById('featured-wines');
       if (secStoresStart) secStoresStart.style.display = 'none';
@@ -644,12 +625,14 @@
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
 
+      /* Skjul / vis forsidesektioner alt efter om der ER resultater */
       const hasResults = state.products.length > 0;
       const secStores = document.getElementById('featured-stores');
       const secWines  = document.getElementById('featured-wines');
       if (secStores) secStores.style.display = hasResults ? 'none' : '';
       if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
+      /* Scroll til resultaterne */
       document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
@@ -695,12 +678,14 @@
       document.getElementById("moreWrap").style.display = state.visible < sorted.length ? "block" : "none";
     }
 
+    // events
     document.getElementById("moreBtn").addEventListener("click", showMore);
     document.getElementById("sortSel").addEventListener("change", (e)=>{
       state.sortBy = e.target.value;
       renderAll();
     });
 
+    /* -------- AI-OPFØLGNING -------- */
     function renderFollowup(query, resultCount){
       const $f = document.getElementById("followup");
       const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
@@ -774,6 +759,7 @@
       }
     }
 
+    // GA4 outbound
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a.outbound'); if(!a) return;
       try{
@@ -783,6 +769,7 @@
       }catch(_){}
     });
 
+    // Gør doSearch global + robuste bindings til Enter/knap
     window.doSearch = doSearch;
 
     (function(){
