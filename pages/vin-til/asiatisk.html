@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Asiatisk Mad – Vinbot</title>
+  <meta name="description" content="Vin til asiatiske retter: spicy, sødt, syrligt og krydret. Riesling, Gewürztraminer, rosé og perlende vin fungerer bedst. Se guide." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-JB0QD6J59G');</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Asiatisk Mad</h2>
+    <p>asiatisk mad er <strong>spicy, sødt, syrligt, salt</strong>. vin skal være <strong>aromatisk</strong>, <strong>frisk</strong>, gerne med <strong>let sødme</strong> og <strong>lav alkohol</strong>.</p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>bedste valg</h3>
+        <ul>
+          <li><strong>riesling (tør/halvtør)</strong> – syre + let sødme dæmper chili.</li>
+          <li><strong>gewürztraminer</strong> – aromatisk; stærk til kokos & ingefær.</li>
+          <li><strong>tør rosé</strong> – frisk til wok & nudler.</li>
+          <li><strong>sparkling</strong> – bobler renser fedme og chili.</li>
+          <li><strong>pinot gris</strong> – fylde + aromatik til sød/salt kombinationer.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>retter → vin</h3>
+        <ul>
+          <li><strong>thai (kokos/chili):</strong> riesling halvtør eller gewürztraminer.</li>
+          <li><strong>vietnamesisk (lime/urter):</strong> sauvignon blanc.</li>
+          <li><strong>kinesisk (sødt/salt):</strong> pinot gris eller rosé.</li>
+          <li><strong>japansk:</strong> tør hvid/rosé (ikke for aromatisk).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>servering</h3>
+        <ul>
+          <li>køl gerne til <strong>7–9 °c</strong></li>
+          <li>vælg vin med <strong>lav alkohol</strong> (12% eller lavere).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>prisniveau</h3>
+        <ul>
+          <li>riesling: 70–130 kr</li>
+          <li>pinot gris: 80–140 kr</li>
+          <li>rosé: 70–120 kr</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>fejl at undgå</h3>
+      <ul>
+        <li><strong>tanninrig rød</strong> → chili + tannin = bitterhed.</li>
+        <li><strong>tung fad-hvid</strong> → clasher med lime og ingefær.</li>
+        <li><strong>vin uden syre</strong> → virker sød og tung mod maden.</li>
+      </ul>
+    </section>
+
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/sushi.html"><h4>🍣 Sushi</h4><p>sprød hvid & rosé.</p></a>
+        <a class="card" href="/pages/vin-til/tapas.html"><h4>🧀 Tapas</h4><p>friskhed til salt.</p></a>
+        <a class="card" href="/pages/druer/riesling.html"><h4>🥂 Riesling</h4><p>perfekt til spicy.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    (async function(){
+      const [h,f]=await Promise.all([
+        fetch("/partials/header.html").then(r=>r.text()),
+        fetch("/partials/footer.html").then(r=>r.text())
+      ]);
+      header.innerHTML=h; footer.innerHTML=f;
+      const mounts=[...document.querySelectorAll('[data-partial]')];
+      await Promise.all(mounts.map(async el=>el.innerHTML=await (await fetch(el.dataset.partial)).text()));
+    })();
+  </script>
+</body>
+</html>
