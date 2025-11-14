@@ -54,22 +54,17 @@
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
 
-    /* Zoom-effekt KUN på udvalgte vine på forsiden */
-    .card--featured{
-      position: relative;
-      overflow: visible; /* flasken må gerne stikke udenfor kortet */
-    }
-    .card--featured .card-media{
+    /* Zoom-effekt KUN på forsides udvalgte vine */
+    .card--zoom .card-media {
       position: relative;
       overflow: visible;
-      z-index: 2;
     }
-    .card--featured .card-media img{
-      transition: transform .2s ease-out, box-shadow .2s ease-out;
+    .card--zoom .card-media img {
+      transition: transform .18s ease-out, box-shadow .18s ease-out;
       transform-origin: center bottom;
     }
-    .card--featured:hover .card-media img{
-      transform: scale(1.9);
+    .card--zoom:hover .card-media img {
+      transform: scale(1.7);
       box-shadow: 0 18px 40px rgba(0,0,0,.7);
     }
   </style>
@@ -92,6 +87,9 @@
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
+
+  <!-- AI-udvalgte vine efter søgning (kommer DYNAMISK) -->
+  <section id="ai-picks" class="wrap" aria-live="polite" style="display:none;"></section>
 
   <!-- Udvalgte butikker (6 stk) -->
   <section id="featured-stores" class="featured wrap" aria-labelledby="sec-featured-stores">
@@ -214,7 +212,7 @@
   <!-- Footer partial mount -->
   <div id="footer"></div>
 
-  <!-- Udvalgte vine lige nu (DATA + MARKUP) -->
+  <!-- Udvalgte vine lige nu (DATA + FUNKTION) -->
   <script>
     const FEATURED_WINES = [
       {
@@ -251,7 +249,7 @@
           <h2 class="featured-title">Udvalgte vine lige nu 🍷</h2>
           <div class="grid">
             ${FEATURED_WINES.map(w => `
-              <a class="card product card--featured outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
+              <a class="card product card--zoom outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
                 <div class="card-media">
                   ${w.image ? `<img src="${w.image}" alt="${w.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}
                 </div>
@@ -271,7 +269,7 @@
     }
   </script>
 
-  <!-- Partials + kald af renderFeaturedWines -->
+  <!-- Partials (header/footer) – ingen ekstra burger-logik her -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -299,6 +297,7 @@
         baseUrl:"https://www.barlife.dk/",
         searchUrl:"https://www.barlife.dk/search/{Q}",
         affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=25810&htmlurl={URL}"
+        // evt. logo:"/assets/partners/barlife.png"
       },
       {
         name:"Beer Me",
@@ -464,15 +463,30 @@
 
     /* -------- UTIL -------- */
     function normalize(s=""){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+
     function deriveTermsFromInput(raw){
       const q = normalize(raw||"");
       const S=new Set();
+
       Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
       q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
-      let max=null; const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/); if(m) max=parseInt(m[1],10);
-      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
+
+      let max = null;
+
+      // Prisintervaller: fx "100-150 kr"
+      const mRange = q.match(/(\d{2,4})\s*[-–]\s*(\d{2,4})\s*kr/);
+      if (mRange) {
+        max = parseInt(mRange[2],10);
+      } else {
+        const m = q.match(/(?:under|maks|max|optil)\s*(\d{2,4})\s*kr/);
+        if (m) max = parseInt(m[1],10);
+      }
+
+      if(/billig|budget/.test(q)) max = Math.min(max ?? 9999, 100);
+
       return {terms:[...S], max};
     }
+
     function deriveTermsFromFilters(){
       const f = state.filters;
       const extra = new Set();
@@ -495,6 +509,7 @@
       }
       return curr ? `<span class="price">${curr}</span>` : "";
     }
+
     function badgesHTML(p){
       const b = [];
       if (state.filters.pris) b.push(`budget ≤ ${state.filters.pris} kr`);
@@ -511,12 +526,44 @@
         ${m.concat(b).map(t=>`<span class="badge ${t==='Tilbud'?'badge--sale':''}">${t}</span>`).join("")}
       </div>`;
     }
+
+    function infoHTML(p){
+      const snippets = [];
+      const rawDesc = (p.desc || "").replace(/\s+/g," ").trim();
+
+      if (rawDesc){
+        const parts = rawDesc.split(/[.!?]/).map(x=>x.trim()).filter(x=>x.length > 12);
+        if (parts[0]) snippets.push(parts[0]);
+        if (parts[1]) snippets.push(parts[1]);
+      }
+
+      if (!snippets.length){
+        const t = (p.title || "").toLowerCase();
+        if (t.includes("pinot noir")) {
+          snippets.push("Elegant og lys rødvin med røde bær og fine tanniner.");
+        } else if (t.includes("primitivo") || t.includes("zinfandel")) {
+          snippets.push("Fyldig, frugtig rødvin med masser af solmodne bær.");
+        } else if (t.includes("riesling")) {
+          snippets.push("Frisk hvidvin med citrus, grønne æbler og høj syre.");
+        } else if (t.includes("chardonnay")) {
+          snippets.push("Hvidvin med noter af æble, citrus og evt. smør og eg.");
+        } else if (t.includes("champagne") || t.includes("cava") || t.includes("prosecco") || t.includes("crémant")) {
+          snippets.push("Bobler med frisk syre og noter af citrus, æble og brioche.");
+        }
+      }
+
+      if (!snippets.length) return "";
+      const text = snippets.slice(0,2).join(" ");
+      return `<p class="card-text">${text}</p>`;
+    }
+
     function cardHTML(p){
       return `
         <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
           <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
           <div class="card-body">
             <h3>${p.title}</h3>
+            ${infoHTML(p)}
             ${badgesHTML(p)}
           </div>
         </a>
@@ -525,7 +572,7 @@
 
     /* -------- TOP 3 PICKS -------- */
     function pickTop3(items, terms){
-      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
+      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2, merch:2 };
       const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
       const budget = state.filters.pris ?? null;
 
@@ -547,6 +594,7 @@
         return 0;
       }
       function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
+
       function overlap(a,b){
         const A=new Set((a.title||"").toLowerCase().split(/\W+/));
         const B=new Set((b.title||"").toLowerCase().split(/\W+/));
@@ -559,8 +607,9 @@
       while (chosen.length<3 && pool.length){
         let best=null, bestS=-1e9;
         for (const p of pool){
-          const penalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
-          const s = baseScore(p) - penalty*W.diversity;
+          const diversityPenalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
+          const sameMerchantPenalty = chosen.some(c => c.merchant && p.merchant && c.merchant === p.merchant) ? 1 : 0;
+          const s = baseScore(p) - diversityPenalty*W.diversity - sameMerchantPenalty*W.merch;
           if (s > bestS){ best=p; bestS=s; }
         }
         if (!best) break;
@@ -568,6 +617,25 @@
         pool.splice(pool.indexOf(best),1);
       }
       return chosen;
+    }
+
+    function renderAIPicks(){
+      const host = document.getElementById("ai-picks");
+      if (!host) return;
+      if (!state.picks.length) {
+        host.innerHTML = "";
+        host.style.display = "none";
+        return;
+      }
+      host.innerHTML = `
+        <section class="top-picks">
+          <h2>Anbefalet af Vinbot</h2>
+          <div class="picks-row">
+            ${state.picks.map(p => cardHTML(p)).join("")}
+          </div>
+        </section>
+      `;
+      host.style.display = "block";
     }
 
     /* -------- SØGNING -------- */
@@ -619,20 +687,20 @@
       state.picks = pickTop3(state.products, terms);
       state.visible = 0;
 
+      renderAIPicks();
+
       document.getElementById("sortbar").style.display = state.products.length ? "block" : "none";
       document.getElementById("sortSel").value = "relevance";
       renderAll();
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
 
-      /* Skjul / vis forsidesektioner alt efter om der ER resultater */
       const hasResults = state.products.length > 0;
       const secStores = document.getElementById('featured-stores');
       const secWines  = document.getElementById('featured-wines');
       if (secStores) secStores.style.display = hasResults ? 'none' : '';
       if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
-      /* Scroll til resultaterne */
       document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
@@ -642,30 +710,22 @@
       if (state.sortBy === "price_desc") return arr.sort((a,b)=> (b.price ?? -1) - (a.price ?? -1));
       return arr;
     }
+
     function renderAll(){
       const $res = document.getElementById("results");
       const sorted = sortProducts(state.products);
-
-      const topHTML = (state.sortBy === "relevance" && state.picks.length) ? `
-        <section class="top-picks">
-          <h2>Anbefalet af Vinbot</h2>
-          <div class="picks-row">
-            ${state.picks.map(p => cardHTML(p)).join("")}
-          </div>
-        </section>
-      ` : "";
-
       state.visible = Math.min(state.pageSize, sorted.length);
       const listHTML = `
         <section class="grid">
           ${sorted.slice(0, state.visible).map(p => cardHTML(p)).join("")}
         </section>
       `;
-      $res.innerHTML = topHTML + listHTML;
+      $res.innerHTML = listHTML;
 
       const hasMore = state.visible < sorted.length;
       document.getElementById("moreWrap").style.display = hasMore ? "block" : "none";
     }
+
     function showMore(){
       const $res = document.getElementById("results");
       const sorted = sortProducts(state.products);
@@ -742,6 +802,7 @@
         doSearch(true);
       });
     }
+
     function isActive(group, label){
       const f = state.filters;
       if (Array.isArray(f[group])) return f[group].includes(label);
@@ -768,8 +829,10 @@
         }
       }catch(_){}
     });
+  </script>
 
-    // Gør doSearch global + robuste bindings til Enter/knap
+  <!-- Gør doSearch global + robuste bindings til Enter/knap -->
+  <script>
     window.doSearch = doSearch;
 
     (function(){
