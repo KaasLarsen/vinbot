@@ -531,33 +531,52 @@
 
     /* -------- filtrér åbenlyst ikke-vin -------- */
     function isWineProduct(p){
-      const t = ((p.title||"") + " " + (p.category||"") + " " + (p.brand||"")).toLowerCase();
+  const t = ((p.title || "") + " " + (p.category || "") + " " + (p.brand || "")).toLowerCase();
 
-      const wineWords = [
-        "vin","rødvin","hvidvin","rosé","rose",
-        "champagne","cava","prosecco","crémant",
-        "riesling","pinot","barolo","nebbiolo",
-        "bordeaux","bourgogne","chianti","amarone",
-        "zinfandel","malbec","sauvignon","chardonnay",
-        "primitivo","portvin","sherry","nebbiolo"
-      ];
+  // Stærke signaler på at det er vin
+  const strongWineWords = [
+    "rødvin","hvidvin","rosé","rose",
+    "champagne","cava","prosecco","crémant",
+    "riesling","pinot","nebbiolo","barolo",
+    "bordeaux","bourgogne","chianti","amarone",
+    "zinfandel","malbec","sauvignon","chardonnay",
+    "primitivo","rioja","ribera del duero",
+    "portvin","sherry","vinho verde","spätburgunder",
+    "tempranillo"
+  ];
 
-      const badWords = [
-        "glas","vinglas","karaffel","proptrækker","åbner",
-        "skænk","vinreol","vinkøler","kasse","smagekasse",
-        "smagepakke","pakke","gavekort","abonnement",
-        "magnet","plakat","bog","kosteskaft","kost",
-        "kaffekapsler","ølglas","shotglas"
-      ];
+  // Svagt signal (bruges kun hvis der IKKE er udstyrs-ord)
+  const weakWineWords = [" vin " , "vin ", " vin"]; // “vin” alene
 
-      const hasWine = wineWords.some(w => t.includes(w));
-      const hasBad = badWords.some(w => t.includes(w));
+  // Alt det her er udstyr / glas / lir – det skal normalt ud
+  const accessoryWords = [
+    "glas","vinglas","drikkeglas","shotglas","ølglas",
+    "glasflaske","flaske med svinglåg","karaffel","karafel",
+    "dekanter","decanter","proptrækker","oplukker","åbner",
+    "folieskærer","foliekniv","vinreol","vinholder","vinkøler",
+    "vinkasse","gaveæske","smagekasse","smagepakke","pakke",
+    "gavekort","abonnement","magnet","plakat","bog",
+    "kosteskaft","kosteskaftet","kost","kop","krus","kande",
+    "greencups","cup","sugerør","serviet"
+  ];
 
-      if (!hasWine) return false;
-      if (hasBad && !t.includes("vin")) return false;
+  const hasStrong = strongWineWords.some(w => t.includes(w));
+  const hasWeak   = weakWineWords.some(w => t.includes(w));
+  const hasAcc    = accessoryWords.some(w => t.includes(w));
 
-      return true;
-    }
+  // Hvis det ligner udstyr og IKKE har stærke vin-signaler → smid ud
+  if (hasAcc && !hasStrong) return false;
+
+  // Rigtige vine: stærke ord vinder altid
+  if (hasStrong) return true;
+
+  // Hvis der kun står “vin”, men ingen udstyrsord → vi accepterer
+  if (hasWeak && !hasAcc) return true;
+
+  // Alt andet er sandsynligvis ikke en vin
+  return false;
+}
+
 
     /* -------- RENDER HELPERS -------- */
     function priceHTML(p){
