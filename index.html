@@ -37,15 +37,12 @@
     }
     .featured-logo{
       width:88px; height:88px;
-      border-radius:999px;
-      overflow:hidden;
-      background:#fff;
-      flex:0 0 88px;
+      border-radius:999px; overflow:hidden;
+      background:#fff; flex:0 0 88px;
     }
     .featured-logo img{
       width:88px; height:88px;
-      object-fit:cover;
-      display:block;
+      object-fit:cover; display:block; /* bevidst crop */
     }
 
     .featured-body h3{ margin:0 0 4px; font-size:16px; }
@@ -54,16 +51,26 @@
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
 
-    /* Zoom-effekt KUN på forsides udvalgte vine */
-    .card--zoom .card-media {
-      position: relative;
-      overflow: visible;
+    /* Små tekster til smagsnote og madmatch */
+    .card-small {
+      font-size: 13px;
+      margin: 4px 0 0;
+      line-height: 1.35;
     }
-    .card--zoom .card-media img {
+    .card-small.dim {
+      color: var(--text-dim);
+    }
+
+    /* Zoom-effekt KUN på udvalgte vine på forsiden */
+    .card--featured .card-media {
+      position: relative;
+      overflow: visible; /* billedet må godt stikke udenfor kortet */
+    }
+    .card--featured .card-media img {
       transition: transform .18s ease-out, box-shadow .18s ease-out;
       transform-origin: center bottom;
     }
-    .card--zoom:hover .card-media img {
+    .card--featured:hover .card-media img {
       transform: scale(1.7);
       box-shadow: 0 18px 40px rgba(0,0,0,.7);
     }
@@ -87,9 +94,6 @@
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
-
-  <!-- AI-udvalgte vine efter søgning (kommer DYNAMISK) -->
-  <section id="ai-picks" class="wrap" aria-live="polite" style="display:none;"></section>
 
   <!-- Udvalgte butikker (6 stk) -->
   <section id="featured-stores" class="featured wrap" aria-labelledby="sec-featured-stores">
@@ -249,7 +253,7 @@
           <h2 class="featured-title">Udvalgte vine lige nu 🍷</h2>
           <div class="grid">
             ${FEATURED_WINES.map(w => `
-              <a class="card product card--zoom outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
+              <a class="card product card--featured outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
                 <div class="card-media">
                   ${w.image ? `<img src="${w.image}" alt="${w.title}" loading="lazy">` : `<div class="img-fallback">🍷</div>`}
                 </div>
@@ -269,7 +273,7 @@
     }
   </script>
 
-  <!-- Partials (header/footer) – burger styres af header-partialen selv -->
+  <!-- Partials + kald af renderFeaturedWines (ingen ekstra burger-logic) -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -362,7 +366,7 @@
       if (!$wrap) return;
 
       const q = query && query.trim() ? query.trim() : "vin";
-      const sorted = [...PARTNERS_NO_FEED];
+      const sorted = [...PARTNERS_NO_FEED]; // simpel rækkefølge
 
       const html = `
         <h2 class="also-title">Se også hos</h2>
@@ -427,7 +431,7 @@
       products: [],
       picks: [],
       visible: 0,
-      pageSize: 12,      // <-- maks 12 ad gangen
+      pageSize: 12,      // ← max 12 første
       sortBy: "relevance",
       lastQueryText: ""
     };
@@ -467,23 +471,13 @@
     function deriveTermsFromInput(raw){
       const q = normalize(raw||"");
       const S=new Set();
-
       Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
       q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
 
-      let max = null;
-
-      // Prisintervaller: fx "100-150 kr"
-      const mRange = q.match(/(\d{2,4})\s*[-–]\s*(\d{2,4})\s*kr/);
-      if (mRange) {
-        max = parseInt(mRange[2],10);
-      } else {
-        const m = q.match(/(?:under|maks|max|optil)\s*(\d{2,4})\s*kr/);
-        if (m) max = parseInt(m[1],10);
-      }
-
-      if(/billig|budget/.test(q)) max = Math.min(max ?? 9999, 100);
-
+      let max=null;
+      const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/);
+      if(m) max=parseInt(m[1],10);
+      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
       return {terms:[...S], max};
     }
 
@@ -499,39 +493,79 @@
       return [...extra];
     }
 
-    // Filtrer ikke-vin produkter (kosteskaft, glas, tilbehør osv.)
-    function isWineLike(p){
-      const txt = ((p.title || "") + " " + (p.category || "") + " " + (p.brand || "")).toLowerCase();
+    /* -------- AI-smagsnote + madmatch -------- */
+    function generateTastingNote(p) {
+      const t = (p.title || "").toLowerCase();
+      const notes = [];
 
-      const badWords = [
-        "glas","oplukker","proptrækker","stativ","reol","reoler","hylde","karklud","serviet",
-        "kost","kosteskaft","spand","fejebakke","sodavand","cola","fanta","sprite",
-        "gin","vodka","rom","whisky","whiskey","tequila","øl ","øl-","beer ",
-        "gavekort","bog ","bøger","plakat","kurv","chokolade","lakrids","karamel"
-      ];
-      if (badWords.some(w => txt.includes(w))) return false;
+      if (t.includes("pinot")) notes.push("Let og elegant rødvin med røde bær og bløde tanniner");
+      if (t.includes("nebbiolo") || t.includes("barolo")) notes.push("Stram tannin, røde frugter og let krydret finish");
+      if (t.includes("primitivo") || t.includes("zinfandel")) notes.push("Fyldig, varm og frugtig med modne mørke bær");
+      if (t.includes("cabernet")) notes.push("Kraftig vin med solbær, eg og markerede tanniner");
+      if (t.includes("malbec")) notes.push("Mørk, saftig og blød med blomme og mørke bær");
+      if (t.includes("riesling")) notes.push("Frisk og aromatisk med citrus og grønne æbler");
+      if (t.includes("chardonnay")) notes.push("Fyldig hvidvin med smør, vanilje og moden frugt");
+      if (t.includes("sauvignon")) notes.push("Sprød, frisk og aromatisk med stikkelsbær og lime");
+      if (t.includes("rosé")) notes.push("Let og frisk rosé med noter af jordbær og hindbær");
 
-      const goodWords = [
-        "vin","rødvin","hvidvin","rosé","rose",
-        "pinot","merlot","cabernet","riesling","chardonnay","sauvignon blanc",
-        "nebbiolo","barolo","barbaresco","chianti","amarone",
-        "bordeaux","bourgogne","tempranillo","rioja","ribera del duero",
-        "zinfandel","primitivo","malbec","syrah","shiraz",
-        "champagne","cava","prosecco","crémant","portvin","sherry","madeira"
-      ];
-      return goodWords.some(w => txt.includes(w));
+      if (!notes.length) notes.push("Balanceret vin med frugt, syre og god struktur");
+
+      return notes[0].split(" ").slice(0, 22).join(" ");
     }
 
-    function truncateWords(text, maxWords){
-      const words = text.split(/\s+/);
-      if (words.length <= maxWords) return text;
-      return words.slice(0, maxWords).join(" ") + "…";
+    function generateFoodMatch(p) {
+      const t = (p.title || "").toLowerCase();
+
+      if (t.includes("pinot")) return "Perfekt til and, svampe og lyst kød";
+      if (t.includes("nebbiolo") || t.includes("barolo")) return "God til bøf, oksekød og vildt";
+      if (t.includes("primitivo") || t.includes("zinfandel")) return "Matcher pizza, grill og spicy retter";
+      if (t.includes("cabernet") || t.includes("malbec")) return "Ideel til rødt kød, grill og kraftige retter";
+      if (t.includes("riesling")) return "Super til fisk, asiatisk og let krydret mad";
+      if (t.includes("chardonnay")) return "Matcher kylling, retter med fløde og fisk";
+      if (t.includes("sauvignon")) return "God til salater, fisk og grønt";
+      if (t.includes("rosé")) return "Perfekt på terrassen og til let sommermad";
+      if (t.includes("cava") || t.includes("champagne")) return "Perfekt til tapas, snacks og forretter";
+
+      return "Matcher et bredt udvalg af retter";
+    }
+
+    /* -------- filtrér åbenlyst ikke-vin -------- */
+    function isWineProduct(p){
+      const t = ((p.title||"") + " " + (p.category||"") + " " + (p.brand||"")).toLowerCase();
+
+      const wineWords = [
+        "vin","rødvin","hvidvin","rosé","rose",
+        "champagne","cava","prosecco","crémant",
+        "riesling","pinot","barolo","nebbiolo",
+        "bordeaux","bourgogne","chianti","amarone",
+        "zinfandel","malbec","sauvignon","chardonnay",
+        "primitivo","portvin","sherry","nebbiolo"
+      ];
+
+      const badWords = [
+        "glas","vinglas","karaffel","proptrækker","åbner",
+        "skænk","vinreol","vinkøler","kasse","smagekasse",
+        "smagepakke","pakke","gavekort","abonnement",
+        "magnet","plakat","bog","kosteskaft","kost",
+        "kaffekapsler","ølglas","shotglas"
+      ];
+
+      const hasWine = wineWords.some(w => t.includes(w));
+      const hasBad = badWords.some(w => t.includes(w));
+
+      if (!hasWine) return false;
+      if (hasBad && !t.includes("vin")) return false;
+
+      return true;
     }
 
     /* -------- RENDER HELPERS -------- */
     function priceHTML(p){
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
-      const curr = (p.price != null) ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"}) : null;
+      const curr = (p.price != null)
+        ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})
+        : null;
+
       if (old && p.price && Number(old) > Number(p.price)) {
         const oldF = Number(old).toLocaleString("da-DK",{style:"currency",currency:"DKK"});
         return `<span class="price price-sale">${curr}</span><span class="price price-old">${oldF}</span>`;
@@ -556,45 +590,20 @@
       </div>`;
     }
 
-    function infoHTML(p){
-      const snippets = [];
-      const rawDesc = (p.desc || "").replace(/\s+/g," ").trim();
-
-      if (rawDesc){
-        const parts = rawDesc.split(/[.!?]/).map(x=>x.trim()).filter(x=>x.length > 12);
-        if (parts[0]) snippets.push(parts[0]);
-        if (parts[1]) snippets.push(parts[1]);
-      }
-
-      if (!snippets.length){
-        const t = (p.title || "").toLowerCase();
-        if (t.includes("pinot noir")) {
-          snippets.push("Elegant og lys rødvin med røde bær og fine tanniner.");
-        } else if (t.includes("primitivo") || t.includes("zinfandel")) {
-          snippets.push("Fyldig, frugtig rødvin med masser af solmodne bær.");
-        } else if (t.includes("riesling")) {
-          snippets.push("Frisk hvidvin med citrus, grønne æbler og høj syre.");
-        } else if (t.includes("chardonnay")) {
-          snippets.push("Hvidvin med noter af æble, citrus og evt. smør og eg.");
-        } else if (t.includes("champagne") || t.includes("cava") || t.includes("prosecco") || t.includes("crémant")) {
-          snippets.push("Bobler med frisk syre og noter af citrus, æble og brioche.");
-        }
-      }
-
-      if (!snippets.length) return "";
-      const text = snippets.slice(0,2).join(" ");
-      const shortText = truncateWords(text, 25); /* maks ~25 ord */
-      return `<p class="card-text">${shortText}</p>`;
-    }
-
     function cardHTML(p){
+      const note = generateTastingNote(p);
+      const food = generateFoodMatch(p);
+
       return `
-        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
-          <div class="card-media">${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}</div>
+        <a class="card outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+          <div class="card-media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
+          </div>
           <div class="card-body">
             <h3>${p.title}</h3>
-            ${infoHTML(p)}
             ${badgesHTML(p)}
+            <p class="card-small">${note}</p>
+            <p class="card-small dim">Madmatch: ${food}</p>
           </div>
         </a>
       `;
@@ -602,7 +611,7 @@
 
     /* -------- TOP 3 PICKS -------- */
     function pickTop3(items, terms){
-      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2, merch:2 };
+      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
       const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
       const budget = state.filters.pris ?? null;
 
@@ -624,7 +633,6 @@
         return 0;
       }
       function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
-
       function overlap(a,b){
         const A=new Set((a.title||"").toLowerCase().split(/\W+/));
         const B=new Set((b.title||"").toLowerCase().split(/\W+/));
@@ -637,9 +645,8 @@
       while (chosen.length<3 && pool.length){
         let best=null, bestS=-1e9;
         for (const p of pool){
-          const diversityPenalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
-          const sameMerchantPenalty = chosen.some(c => c.merchant && p.merchant && c.merchant === p.merchant) ? 1 : 0;
-          const s = baseScore(p) - diversityPenalty*W.diversity - sameMerchantPenalty*W.merch;
+          const penalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
+          const s = baseScore(p) - penalty*W.diversity;
           if (s > bestS){ best=p; bestS=s; }
         }
         if (!best) break;
@@ -647,25 +654,6 @@
         pool.splice(pool.indexOf(best),1);
       }
       return chosen;
-    }
-
-    function renderAIPicks(){
-      const host = document.getElementById("ai-picks");
-      if (!host) return;
-      if (!state.picks.length) {
-        host.innerHTML = "";
-        host.style.display = "none";
-        return;
-      }
-      host.innerHTML = `
-        <section class="top-picks">
-          <h2>Anbefalet af Vinbot</h2>
-          <div class="picks-row">
-            ${state.picks.map(p => cardHTML(p)).join("")}
-          </div>
-        </section>
-      `;
-      host.style.display = "block";
     }
 
     /* -------- SØGNING -------- */
@@ -700,14 +688,16 @@
       const data = await r.json();
       const meta = data.meta || {};
 
+      /* filtrér åbenlyst ikke-vin – men fald tilbage hvis alt forsvinder */
       let products = Array.isArray(data.products) ? data.products : [];
-
-      // Frontend-filter: kun vin-lignende produkter
-      products = products.filter(isWineLike);
+      const filtered = products.filter(isWineProduct);
+      if (filtered.length >= 4) {
+        products = filtered;
+      }
 
       if (data.source === "feed") {
         const bits = [];
-        bits.push(`Viser ${products.length} flasker`);
+        bits.push(`Viser ${products.length ?? 0} flasker`);
         if (meta.feeds_ok != null && meta.feeds_total != null) bits.push(`fra ${meta.feeds_ok} / ${meta.feeds_total} butikker`);
         if (meta.feeds_failed) bits.push(`(${meta.feeds_failed} fejlede)`);
         $status.innerHTML = `<div class="msg info">${bits.join(" · ")}</div>`;
@@ -722,20 +712,20 @@
       state.picks = pickTop3(state.products, terms);
       state.visible = 0;
 
-      renderAIPicks();
-
       document.getElementById("sortbar").style.display = state.products.length ? "block" : "none";
       document.getElementById("sortSel").value = "relevance";
       renderAll();
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
 
+      /* Skjul / vis forsidesektioner alt efter om der ER resultater */
       const hasResults = state.products.length > 0;
       const secStores = document.getElementById('featured-stores');
       const secWines  = document.getElementById('featured-wines');
       if (secStores) secStores.style.display = hasResults ? 'none' : '';
       if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
 
+      /* Scroll til resultaterne */
       document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
@@ -749,13 +739,23 @@
     function renderAll(){
       const $res = document.getElementById("results");
       const sorted = sortProducts(state.products);
+
+      const topHTML = (state.sortBy === "relevance" && state.picks.length) ? `
+        <section class="top-picks">
+          <h2>Anbefalet af Vinbot</h2>
+          <div class="picks-row">
+            ${state.picks.map(p => cardHTML(p)).join("")}
+          </div>
+        </section>
+      ` : "";
+
       state.visible = Math.min(state.pageSize, sorted.length);
       const listHTML = `
         <section class="grid">
           ${sorted.slice(0, state.visible).map(p => cardHTML(p)).join("")}
         </section>
       `;
-      $res.innerHTML = listHTML;
+      $res.innerHTML = topHTML + listHTML;
 
       const hasMore = state.visible < sorted.length;
       document.getElementById("moreWrap").style.display = hasMore ? "block" : "none";
@@ -837,11 +837,13 @@
         doSearch(true);
       });
     }
+
     function isActive(group, label){
       const f = state.filters;
       if (Array.isArray(f[group])) return f[group].includes(label);
       return f[group] === label;
     }
+
     function toggleChip(group, label, multi){
       const f = state.filters;
       if (multi) {
@@ -859,13 +861,16 @@
       const a = e.target.closest('a.outbound'); if(!a) return;
       try{
         if (typeof gtag === 'function'){
-          gtag('event','outbound_click',{event_category:'affiliate',event_label:a.dataset.label || a.href});
+          gtag('event','outbound_click',{
+            event_category:'affiliate',
+            event_label:a.dataset.label || a.href
+          });
         }
       }catch(_){}
     });
   </script>
 
-  <!-- Gør doSearch global + robuste bindings til Enter/knap -->
+  <!-- Gør doSearch global + bindings til Enter/knap -->
   <script>
     window.doSearch = doSearch;
 
