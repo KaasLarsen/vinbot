@@ -269,7 +269,7 @@
     }
   </script>
 
-  <!-- Partials (header/footer) – ingen ekstra burger-logik her -->
+  <!-- Partials (header/footer) – burger styres af header-partialen selv -->
   <script>
     (async()=> {
       const [h,f] = await Promise.all([
@@ -427,7 +427,7 @@
       products: [],
       picks: [],
       visible: 0,
-      pageSize: 24,
+      pageSize: 12,      // <-- maks 12 ad gangen
       sortBy: "relevance",
       lastQueryText: ""
     };
@@ -499,6 +499,35 @@
       return [...extra];
     }
 
+    // Filtrer ikke-vin produkter (kosteskaft, glas, tilbehør osv.)
+    function isWineLike(p){
+      const txt = ((p.title || "") + " " + (p.category || "") + " " + (p.brand || "")).toLowerCase();
+
+      const badWords = [
+        "glas","oplukker","proptrækker","stativ","reol","reoler","hylde","karklud","serviet",
+        "kost","kosteskaft","spand","fejebakke","sodavand","cola","fanta","sprite",
+        "gin","vodka","rom","whisky","whiskey","tequila","øl ","øl-","beer ",
+        "gavekort","bog ","bøger","plakat","kurv","chokolade","lakrids","karamel"
+      ];
+      if (badWords.some(w => txt.includes(w))) return false;
+
+      const goodWords = [
+        "vin","rødvin","hvidvin","rosé","rose",
+        "pinot","merlot","cabernet","riesling","chardonnay","sauvignon blanc",
+        "nebbiolo","barolo","barbaresco","chianti","amarone",
+        "bordeaux","bourgogne","tempranillo","rioja","ribera del duero",
+        "zinfandel","primitivo","malbec","syrah","shiraz",
+        "champagne","cava","prosecco","crémant","portvin","sherry","madeira"
+      ];
+      return goodWords.some(w => txt.includes(w));
+    }
+
+    function truncateWords(text, maxWords){
+      const words = text.split(/\s+/);
+      if (words.length <= maxWords) return text;
+      return words.slice(0, maxWords).join(" ") + "…";
+    }
+
     /* -------- RENDER HELPERS -------- */
     function priceHTML(p){
       const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
@@ -554,7 +583,8 @@
 
       if (!snippets.length) return "";
       const text = snippets.slice(0,2).join(" ");
-      return `<p class="card-text">${text}</p>`;
+      const shortText = truncateWords(text, 25); /* maks ~25 ord */
+      return `<p class="card-text">${shortText}</p>`;
     }
 
     function cardHTML(p){
@@ -670,9 +700,14 @@
       const data = await r.json();
       const meta = data.meta || {};
 
+      let products = Array.isArray(data.products) ? data.products : [];
+
+      // Frontend-filter: kun vin-lignende produkter
+      products = products.filter(isWineLike);
+
       if (data.source === "feed") {
         const bits = [];
-        bits.push(`Viser ${data.products?.length ?? 0} flasker`);
+        bits.push(`Viser ${products.length} flasker`);
         if (meta.feeds_ok != null && meta.feeds_total != null) bits.push(`fra ${meta.feeds_ok} / ${meta.feeds_total} butikker`);
         if (meta.feeds_failed) bits.push(`(${meta.feeds_failed} fejlede)`);
         $status.innerHTML = `<div class="msg info">${bits.join(" · ")}</div>`;
@@ -682,7 +717,7 @@
         $status.innerHTML = `<div class="msg err">Ingen resultater.</div>`;
       }
 
-      state.products = Array.isArray(data.products) ? data.products : [];
+      state.products = products;
       state.sortBy = "relevance";
       state.picks = pickTop3(state.products, terms);
       state.visible = 0;
@@ -802,7 +837,6 @@
         doSearch(true);
       });
     }
-
     function isActive(group, label){
       const f = state.filters;
       if (Array.isArray(f[group])) return f[group].includes(label);
