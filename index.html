@@ -140,7 +140,7 @@
       box-shadow: 0 18px 40px rgba(0,0,0,.7);
     }
 
-    /* Home shortcuts (populære søgninger) – kun layout, ikke farver */
+    /* Home shortcuts (populære søgninger) – layout */
     .home-shortcuts {
       max-width: 1100px;
       margin: 0 auto;
@@ -214,6 +214,10 @@
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
     </div>
   </header>
+
+  <!-- STATUS + AI-OPFØLGNING LIGE UNDER SØGNING -->
+  <div id="status" class="status"></div>
+  <section id="followup" class="followup hidden" aria-live="polite"></section>
 
   <!-- SEKTION 1: Populære søgninger / genveje -->
   <section class="home-shortcuts wrap front-section" aria-labelledby="sec-home-shortcuts">
@@ -356,12 +360,6 @@
   <section class="wrap front-section" id="featured-wines"></section>
 
   <main class="wrap">
-    <!-- Status -->
-    <div id="status" class="status"></div>
-
-    <!-- AI-opfølgning -->
-    <section id="followup" class="followup hidden" aria-live="polite"></section>
-
     <!-- Sortering -->
     <div id="sortbar" class="sortbar" style="display:none;">
       <label for="sortSel">Sortér: </label>
@@ -375,8 +373,8 @@
     <!-- Resultater -->
     <section id="results" aria-live="polite"></section>
 
-    <!-- Vis flere -->
-    <div id="moreWrap" class="load-more" style="display:none%;">
+    <!-- Vis flere (start skjult!) -->
+    <div id="moreWrap" class="load-more" style="display:none;">
       <button id="moreBtn" class="btn-primary">Vis flere</button>
     </div>
 
@@ -567,7 +565,7 @@
     }
   </script>
 
-  <!-- Søgning + AI-opfølgning (din eksisterende kode) -->
+  <!-- Søgning + AI-opfølgning -->
   <script>
     /* -------- INTENT & SYNONYMER -------- */
     const INTENT = {
@@ -840,8 +838,11 @@
       state.lastQueryText = q;
       if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
 
+      /* Skjul forsidesektioner MED DET SAMME, så status bliver lige under søgefeltet */
+      const secShort = document.querySelector('.home-shortcuts');
       const secStoresStart = document.getElementById('featured-stores');
       const secWinesStart  = document.getElementById('featured-wines');
+      if (secShort)       secShort.style.display = 'none';
       if (secStoresStart) secStoresStart.style.display = 'none';
       if (secWinesStart)  secWinesStart.style.display  = 'none';
 
@@ -894,12 +895,16 @@
       renderFollowup(q, state.products.length);
       renderAlsoStores(state.lastQueryText || "vin");
 
+      /* Skjul / vis forsidesektioner alt efter om der ER resultater */
       const hasResults = state.products.length > 0;
-      const secStores = document.getElementById('featured-stores');
-      const secWines  = document.getElementById('featured-wines');
-      if (secStores) secStores.style.display = hasResults ? 'none' : '';
-      if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
+      const secShort2  = document.querySelector('.home-shortcuts');
+      const secStores  = document.getElementById('featured-stores');
+      const secWines   = document.getElementById('featured-wines');
+      if (secShort2) secShort2.style.display = hasResults ? 'none' : '';
+      if (secStores) secStores.style.display  = hasResults ? 'none' : '';
+      if (secWines)  secWines.style.display   = hasResults ? 'none' : '';
 
+      /* Scroll til resultaterne */
       document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
     }
 
