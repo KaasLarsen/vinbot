@@ -1040,3 +1040,16 @@ footer .socials .fb:hover{
 #featured-wines .featured {
   margin: 32px auto 0;
 }
+/* Ens afstand mellem alle forsidesektioner — hard reset */
+.home-shortcuts,
+#featured-stores,
+#featured-wines {
+  margin-bottom: 32px !important;
+  padding-bottom: 0 !important;
+}
+
+.home-shortcuts *,
+#featured-stores *,
+#featured-wines * {
+  margin-bottom: 0 !important;
+}
