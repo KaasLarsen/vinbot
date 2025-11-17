@@ -1027,3 +1027,16 @@ footer .socials .fb:hover{
   font-size: 13px;
   color: var(--text-dim);
 }
+/* Ens afstand mellem forsiden-sektioner */
+.home-shortcuts {
+  margin: 32px auto 0;
+}
+
+#featured-stores {
+  margin: 32px auto 0;
+}
+
+/* den indre .featured som bliver renderet inde i #featured-wines */
+#featured-wines .featured {
+  margin: 32px auto 0;
+}
