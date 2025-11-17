@@ -1137,5 +1137,30 @@
     ]
   }
   </script>
+  <script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (!q) return; // ingen q = ingen auto-søgning
+
+    function initDeepLinkSearch() {
+      const input = document.getElementById("q");
+      if (!input || typeof window.doSearch !== "function") {
+        // hvis ikke alt er klar endnu, prøv igen om et øjeblik
+        return setTimeout(initDeepLinkSearch, 80);
+      }
+
+      input.value = q;          // udfyld søgefelt
+      window.doSearch();        // kør søgning
+    }
+
+    // kør når siden er klar
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initDeepLinkSearch);
+    } else {
+      initDeepLinkSearch();
+    }
+  })();
+</script>
 </body>
 </html>
