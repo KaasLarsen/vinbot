@@ -1050,3 +1050,27 @@ footer .socials .fb:hover{
 #featured-wines section.featured {
   margin-top: 0 !important; /* Fjern ekstra margin som JS indsætter */
 }
+/* FRONT: ens afstand mellem de tre hovedsektioner på forsiden */
+
+/* sektion 1: populære søgninger */
+.home-shortcuts {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+/* sektion 2: udvalgte butikker (sektionen med id="featured-stores") */
+#featured-stores {
+  margin-top: 0;           /* ligger lige efter .home-shortcuts pga margin-collapse */
+  margin-bottom: 32px;
+}
+
+/* sektion 3: udvalgte vine lige nu (ydre wrap med id="featured-wines") */
+#featured-wines {
+  margin-top: 32px;        /* samme afstand op som mellem 1 og 2 */
+  margin-bottom: 32px;
+}
+
+/* den indre .featured inde i #featured-wines skal ikke lave ekstra luft */
+#featured-wines .featured {
+  margin-top: 0;
+}
