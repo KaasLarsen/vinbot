@@ -8,44 +8,110 @@
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="icon" type="image/png" href="/assets/vinbot-logo.png" />
 
-  <!-- Lidt “scoped” finpudsning så forsiden opfører sig rigtigt -->
+  <!-- Forside-specifik finpudsning: kort, sektioner, spacing -->
   <style>
-    /* Stop uønsket horisontal scroll på mobil ift. udvalgte-sektioner */
+    /* Stop uønsket horisontal scroll på mobil ift. udvalgte sektioner */
     .wrap { overflow-x: hidden; }
 
-    /* Featured sektion – samme look som før (croppet runde logoer) */
-    .featured { margin: 10px auto 30px; }
-    .featured-title { text-align:center; margin: 0 0 14px; }
+    /* === FORSIDE-SEKTIONER & SPACING === */
+
+    /* Hero lidt luft nedad */
+    .hero {
+      padding-bottom: 40px;
+    }
+
+    /* Alle tre hovedsektioner på forsiden */
+    .front-section {
+      padding-top: 40px;   /* ens afstand op til hvert sektionstitel */
+    }
+
+    /* Nulstil margin-top/-bottom fra global CSS (så vi har fuld kontrol) */
+    .home-shortcuts,
+    #featured-stores,
+    #featured-wines {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
+    }
+
+    /* Indre featured-blok i #featured-wines må ikke give ekstra afstand */
+    #featured-wines .featured {
+      margin-top: 0;
+    }
+
+    /* Sektionstitler – ens spacing under overskrifterne */
+    .home-shortcuts-title,
+    .featured-title {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    /* === FEATURED SEKTIONER (BUTIKKER + VINE) === */
+
+    .featured {
+      margin: 0 auto 30px; /* 0 top, lidt luft i bunden */
+    }
+
+    .featured-title {
+      text-align: center;
+      font-size: 20px;
+    }
+
     .featured-grid {
-      display:grid; gap:14px;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    @media (max-width:900px){ .featured-grid{ grid-template-columns: repeat(2,1fr);} }
-    @media (max-width:560px){ .featured-grid{ grid-template-columns: 1fr;} }
-
-    .featured-card{
-      display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;
-      padding:12px; border:1px solid var(--border); border-radius:16px;
-      background:linear-gradient(180deg,var(--card),var(--card-2));
-      transition:transform .12s,border-color .12s,box-shadow .12s;
-    }
-    .featured-card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(255,255,255,.28);
-      box-shadow:0 10px 24px rgba(0,0,0,.4);
-    }
-    .featured-logo{
-      width:88px; height:88px;
-      border-radius:999px; overflow:hidden;
-      background:#fff; flex:0 0 88px;
-    }
-    .featured-logo img{
-      width:88px; height:88px;
-      object-fit:cover; display:block; /* bevidst crop */
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .featured-body h3{ margin:0 0 4px; font-size:16px; }
-    .featured-body p { margin:0; color:var(--text-dim); font-size:14px; }
+    @media (max-width:900px){
+      .featured-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width:560px){
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+
+    .featured-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg,var(--card),var(--card-2));
+      transition: transform .12s,border-color .12s,box-shadow .12s;
+    }
+    .featured-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+      box-shadow: 0 10px 24px rgba(0,0,0,.4);
+    }
+
+    .featured-logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      flex: 0 0 88px;
+    }
+    .featured-logo img {
+      width: 88px;
+      height: 88px;
+      object-fit: cover;
+      display: block; /* bevidst crop */
+    }
+
+    .featured-body h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+    .featured-body p {
+      margin: 0;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
 
     /* Sørg for at featured-wines billeder aldrig sprænger layout */
     #featured-wines img { max-width: 100%; height: auto; display:block; }
@@ -73,6 +139,61 @@
       transform: scale(1.7);
       box-shadow: 0 18px 40px rgba(0,0,0,.7);
     }
+
+    /* Home shortcuts (populære søgninger) – kun layout, ikke farver */
+    .home-shortcuts {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .home-shortcuts-title {
+      text-align: center;
+      font-size: 20px;
+    }
+    .home-shortcuts-sub {
+      text-align: center;
+      margin: 0 0 18px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .home-shortcuts-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+    @media (max-width:900px){
+      .home-shortcuts-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:600px){
+      .home-shortcuts-grid { grid-template-columns: 1fr; }
+    }
+
+    .home-shortcut-card {
+      text-decoration: none;
+      color: inherit;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg,var(--card),var(--card-2));
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform .12s, box-shadow .12s, border-color .12s;
+    }
+    .home-shortcut-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.4);
+      border-color: rgba(255,255,255,.32);
+    }
+    .home-shortcut-card h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+    .home-shortcut-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
   </style>
 </head>
 <body>
@@ -87,7 +208,7 @@
       <!-- FORM så Enter fungerer på mobil/desktop -->
       <form class="search" id="searchForm" novalidate>
         <div class="icon">🔎</div>
-        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" />
+        <input id="q" placeholder="Fx “Barolo til bøf under 150 kr” eller “Ost og hygge”" autocomplete="off" />
         <button class="btn-primary" id="searchBtn" type="submit">Søg</button>
       </form>
       <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
@@ -96,58 +217,58 @@
 
   <!-- SEKTION 1: Populære søgninger / genveje -->
   <section class="home-shortcuts wrap front-section" aria-labelledby="sec-home-shortcuts">
-    <h2 id="sec-home-shortcuts" class="home-shortcuts-title">✨ populære søgninger og temaer</h2>
+    <h2 id="sec-home-shortcuts" class="home-shortcuts-title">✨ Populære søgninger og temaer</h2>
     <p class="home-shortcuts-sub">
-      klik på en genvej og kom direkte til guides og anbefalinger – eller brug søgefeltet ovenfor.
+      Klik på en genvej og kom direkte til guides og anbefalinger – eller brug søgefeltet ovenfor.
     </p>
     <div class="home-shortcuts-grid">
       <!-- række 1 -->
       <a class="home-shortcut-card" href="/pages/vin-til/juleaften.html">
-        <h3>🎄 vin til juleaften</h3>
-        <p>vin til and, flæskesteg og hele julemenuen.</p>
+        <h3>🎄 Vin til juleaften</h3>
+        <p>Vin til and, flæskesteg og hele julemenuen.</p>
       </a>
       <a class="home-shortcut-card" href="/pages/vin-til/nytaarsaften.html">
-        <h3>🥂 vin til nytårsaften</h3>
-        <p>bobler og vin til nytårsmenu og kransekage.</p>
+        <h3>🥂 Vin til nytårsaften</h3>
+        <p>Bobler og vin til nytårsmenu og kransekage.</p>
       </a>
       <a class="home-shortcut-card" href="/vin-til/tapas.html">
-        <h3>🧀 vin til tapas</h3>
-        <p>rødvin, hvidvin og bobler til små retter og hygge.</p>
+        <h3>🧀 Vin til tapas</h3>
+        <p>Rødvin, hvidvin og bobler til små retter og hygge.</p>
       </a>
 
       <!-- række 2 -->
       <a class="home-shortcut-card" href="/pages/under-100.html">
-        <h3>💸 god vin under 100 kr</h3>
-        <p>hverdagsvenlige flasker når budgettet er vigtigt.</p>
+        <h3>💸 God vin under 100 kr</h3>
+        <p>Hverdagsvenlige flasker når budgettet er vigtigt.</p>
       </a>
       <a class="home-shortcut-card" href="/pages/hverdagsvin.html">
-        <h3>🍷 hverdagsvin</h3>
-        <p>nemme, sikre flasker til helt almindelige aftener.</p>
+        <h3>🍷 Hverdagsvin</h3>
+        <p>Nemme, sikre flasker til helt almindelige aftener.</p>
       </a>
       <a class="home-shortcut-card" href="/druer/">
-        <h3>🍇 lær druerne at kende</h3>
-        <p>fra cabernet til riesling – drueguides samlet ét sted.</p>
+        <h3>🍇 Lær druerne at kende</h3>
+        <p>Fra Cabernet til Riesling – drueguides samlet ét sted.</p>
       </a>
 
       <!-- række 3 -->
       <a class="home-shortcut-card" href="/vin-til/ostebord.html">
-        <h3>🧈 vin til ostebord</h3>
-        <p>vin til faste oste, blåskimmel og bløde oste.</p>
+        <h3>🧈 Vin til ostebord</h3>
+        <p>Vin til faste oste, blåskimmel og bløde oste.</p>
       </a>
       <a class="home-shortcut-card" href="/blog/hvad-betyder-naturvin.html">
-        <h3>🌿 hvad betyder naturvin?</h3>
-        <p>bliv klog på naturvin og hvornår det giver mening.</p>
+        <h3>🌿 Hvad betyder naturvin?</h3>
+        <p>Bliv klog på naturvin og hvornår det giver mening.</p>
       </a>
       <a class="home-shortcut-card" href="/blog/guide-til-vintemperaturer.html">
-        <h3>🌡️ guide til vintemperatur</h3>
-        <p>server rødvin, hvidvin og bobler ved den rigtige temperatur.</p>
+        <h3>🌡️ Guide til vintemperatur</h3>
+        <p>Server rødvin, hvidvin og bobler ved den rigtige temperatur.</p>
       </a>
     </div>
   </section>
 
   <!-- SEKTION 2: Udvalgte butikker -->
   <section id="featured-stores" class="featured wrap front-section" aria-labelledby="sec-featured-stores">
-    <h2 id="sec-featured-stores" class="featured-title">🏪 udvalgte butikker</h2>
+    <h2 id="sec-featured-stores" class="featured-title">🏪 Udvalgte butikker</h2>
     <div class="featured-grid">
       <!-- Række 1 -->
       <a class="featured-card outbound"
@@ -211,7 +332,7 @@
           <img src="/assets/partners/meromvin.png" alt="Mere om Vin logo" loading="lazy">
         </div>
         <div class="featured-body">
-          <h3>Mere om Vin</h3>
+          <h3>Mere Om Vin</h3>
           <p>Historier & flasker</p>
         </div>
       </a>
@@ -255,7 +376,7 @@
     <section id="results" aria-live="polite"></section>
 
     <!-- Vis flere -->
-    <div id="moreWrap" class="load-more" style="display:none;">
+    <div id="moreWrap" class="load-more" style="display:none%;">
       <button id="moreBtn" class="btn-primary">Vis flere</button>
     </div>
 
@@ -271,24 +392,24 @@
     const FEATURED_WINES = [
       {
         title: "Primitivo Susumaniello Salento Boccantino 2024",
-        blurb: "Den mest elskede rødvin i Danmark – og med god grund",
-        priceText: "55,- ved køb af min 12 flasker",
+        blurb: "Den mest elskede rødvin i Danmark – og med god grund.",
+        priceText: "55,- ved køb af min. 12 flasker",
         href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
         image: "/assets/partners/products/primitivo.png",
         merchant: "Den Sidste Flaske"
       },
       {
         title: "The Guv'nor Tinto",
-        blurb: "Fyldig, blød og fuld af mørke bær og krydderier",
-        priceText: "55,- ved køb af min 12 flasker",
+        blurb: "Fyldig, blød og fuld af mørke bær og krydderier.",
+        priceText: "55,- ved køb af min. 12 flasker",
         href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/the-guv-nor-tinto",
         image: "/assets/partners/products/theguvnor.png",
         merchant: "Den Sidste Flaske"
       },
       {
         title: "Weinhof 519 Alte Reben Rheingau Riesling Trocken 2024",
-        blurb: "Frisk citrus & grønne æbler",
-        priceText: "55,- ved køb af min 12 flasker",
+        blurb: "Frisk Riesling med citrus og grønne æbler.",
+        priceText: "55,- ved køb af min. 12 flasker",
         href: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=68720&htmlurl=https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
         image: "/assets/partners/products/altereben.png",
         merchant: "Den Sidste Flaske"
@@ -300,7 +421,7 @@
       if (!host || !FEATURED_WINES.length) return;
       host.innerHTML = `
         <section class="featured">
-          <h2 class="featured-title">🍷 udvalgte vine lige nu</h2>
+          <h2 class="featured-title">🍷 Udvalgte vine lige nu</h2>
           <div class="grid">
             ${FEATURED_WINES.map(w => `
               <a class="card product card--featured outbound" href="${w.href}" target="_blank" rel="nofollow sponsored noopener" data-label="Featured wine: ${w.title}">
@@ -446,11 +567,479 @@
     }
   </script>
 
-  <!-- Søgning + AI-opfølgning (DIN EKSISTERENDE KODE – UÆNDRET) -->
-  <!-- ... hele din lange søge-js her, samme som du har nu ... -->
-  <!-- For korthed har jeg ikke gentaget alt her i svaret,
-       men du skal bare beholde den nuværende /api/search-logik,
-       INTENT, EQUIV, doSearch osv.  -->
+  <!-- Søgning + AI-opfølgning (din eksisterende kode) -->
+  <script>
+    /* -------- INTENT & SYNONYMER -------- */
+    const INTENT = {
+      ost:["portvin","riesling","chardonnay","sauternes"],
+      pizza:["chianti","barbera","primitivo"],
+      bøf:["barolo","cabernet sauvignon","syrah"],
+      oksekød:["cabernet","syrah","malbec"],
+      lam:["syrah","rioja","ribera del duero"],
+      fisk:["riesling","chablis","albariño"],
+      sushi:["riesling","sauvignon blanc","crémant"],
+      tapas:["rioja","garnacha","cava"],
+      dessert:["sauternes","portvin","moscato"],
+      sommer:["rosé","sauvignon blanc","crémant"],
+      terrasse:["rosé","cava","prosecco"],
+      hygge:["primitivo","zinfandel","malbec"],
+      romantisk:["pinot noir","champagne"]
+    };
+    const EQUIV = {
+      barolo:["nebbiolo"], nebbiolo:["barolo"],
+      rioja:["tempranillo"], tempranillo:["rioja"],
+      ribera:["ribera del duero","tempranillo"], "ribera del duero":["ribera","tempranillo"],
+      shiraz:["syrah"], syrah:["shiraz"],
+      rose:["rosé"], "rosé":["rose"],
+      cab:["cabernet","cabernet sauvignon"], cabernet:["cab","cabernet sauvignon"], "cabernet sauvignon":["cab","cabernet"]
+    };
+
+    /* -------- STATE -------- */
+    const state = {
+      baseTerms: [],
+      filters: { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null },
+      products: [],
+      picks: [],
+      visible: 0,
+      pageSize: 12,
+      sortBy: "relevance",
+      lastQueryText: ""
+    };
+
+    const CHIP_MAP = {
+      farve: {
+        "rød":["barolo","nebbiolo","cabernet","syrah","malbec","tempranillo","zinfandel","primitivo","pinot noir"],
+        "hvid":["chardonnay","riesling","sauvignon blanc","chablis","albariño","arneis"],
+        "rosé":["rosé","provencalsk rosé"],
+        "bobler":["champagne","crémant","cava","prosecco"]
+      },
+      stil: {
+        "let":["pinot noir","gamay","bardolino","valpolicella"],
+        "frugtig":["primitivo","zinfandel","malbec"],
+        "kraftig":["barolo","amarone","cabernet sauvignon","syrah"],
+        "tør":["riesling trocken","chablis","albariño","fiano"],
+        "sød":["sauternes","moscato","portvin"]
+      },
+      land: {
+        "italien":["barolo","chianti","amarone","prosecco","arneis"],
+        "frankrig":["bourgogne","chablis","côtes du rhône","crémant","champagne"],
+        "spanien":["rioja","ribera del duero","albariño","cava"],
+        "tyskland":["riesling","spätburgunder"],
+        "portugal":["portvin","vinho verde"]
+      },
+      anledning: {
+        "sommer":["rosé","sauvignon blanc","crémant"],
+        "hygge":["primitivo","zinfandel","malbec"],
+        "romantisk":["pinot noir","champagne"],
+        "fest":["cava","prosecco","crémant"]
+      }
+    };
+
+    function normalize(s = "") {
+      return s
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/\s+/g," ")
+        .trim();
+    }
+
+    function deriveTermsFromInput(raw){
+      const q = normalize(raw||"");
+      const S=new Set();
+      Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
+      q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
+
+      let max=null;
+      const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/);
+      if(m) max=parseInt(m[1],10);
+      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
+      return {terms:[...S], max};
+    }
+
+    function deriveTermsFromFilters(){
+      const f = state.filters;
+      const extra = new Set();
+      if (f.farve && CHIP_MAP.farve[f.farve]) CHIP_MAP.farve[f.farve].forEach(t=>extra.add(t));
+      f.stil.forEach(s => (CHIP_MAP.stil[s]||[]).forEach(t=>extra.add(t)));
+      f.land.forEach(l => (CHIP_MAP.land[l]||[]).forEach(t=>extra.add(t)));
+      if (f.anledning && CHIP_MAP.anledning[f.anledning]) CHIP_MAP.anledning[f.anledning].forEach(t=>extra.add(t));
+      if (f.mad && INTENT[f.mad]) INTENT[f.mad].forEach(t=>extra.add(t));
+      [...extra].forEach(t => (EQUIV[t]||[]).forEach(x=>extra.add(x)));
+      return [...extra];
+    }
+
+    function generateTastingNote(p) {
+      const t = (p.title || "").toLowerCase();
+      const notes = [];
+
+      if (t.includes("pinot")) notes.push("Let og elegant rødvin med røde bær og bløde tanniner.");
+      if (t.includes("nebbiolo") || t.includes("barolo")) notes.push("Stram tannin, røde frugter og let krydret finish.");
+      if (t.includes("primitivo") || t.includes("zinfandel")) notes.push("Fyldig, varm og frugtig med modne mørke bær.");
+      if (t.includes("cabernet")) notes.push("Kraftig vin med solbær, eg og markerede tanniner.");
+      if (t.includes("malbec")) notes.push("Mørk, saftig og blød med blomme og mørke bær.");
+      if (t.includes("riesling")) notes.push("Frisk og aromatisk med citrus og grønne æbler.");
+      if (t.includes("chardonnay")) notes.push("Fyldig hvidvin med smør, vanilje og moden frugt.");
+      if (t.includes("sauvignon")) notes.push("Sprød, frisk og aromatisk med stikkelsbær og lime.");
+      if (t.includes("rosé")) notes.push("Let og frisk rosé med noter af jordbær og hindbær.");
+
+      if (!notes.length) notes.push("Balanceret vin med frugt, syre og god struktur.");
+      return notes[0];
+    }
+
+    function generateFoodMatch(p) {
+      const t = (p.title || "").toLowerCase();
+
+      if (t.includes("pinot")) return "Perfekt til and, svampe og lyst kød.";
+      if (t.includes("nebbiolo") || t.includes("barolo")) return "God til bøf, oksekød og vildt.";
+      if (t.includes("primitivo") || t.includes("zinfandel")) return "Matcher pizza, grill og krydrede retter.";
+      if (t.includes("cabernet") || t.includes("malbec")) return "Ideel til rødt kød, grill og kraftige retter.";
+      if (t.includes("riesling")) return "Super til fisk, asiatisk og let krydret mad.";
+      if (t.includes("chardonnay")) return "Matcher kylling, retter med fløde og fisk.";
+      if (t.includes("sauvignon")) return "God til salater, fisk og grønt.";
+      if (t.includes("rosé")) return "Perfekt på terrassen og til let sommermad.";
+      if (t.includes("cava") || t.includes("champagne")) return "Perfekt til tapas, snacks og forretter.";
+
+      return "Matcher et bredt udvalg af retter.";
+    }
+
+    function isWineProduct(p){
+      const t = ((p.title || "") + " " + (p.category || "") + " " + (p.brand || "")).toLowerCase();
+
+      const strongWineWords = [
+        "rødvin","hvidvin","rosé","rose",
+        "champagne","cava","prosecco","crémant",
+        "riesling","pinot","nebbiolo","barolo",
+        "bordeaux","bourgogne","chianti","amarone",
+        "zinfandel","malbec","sauvignon","chardonnay",
+        "primitivo","rioja","ribera del duero",
+        "portvin","sherry","vinho verde","spätburgunder",
+        "tempranillo"
+      ];
+
+      const weakWineWords = [" vin ", "vin ", " vin"];
+
+      const accessoryWords = [
+        "glas","vinglas","drikkeglas","shotglas","ølglas",
+        "glasflaske","flaske med svinglåg","karaffel","karafel",
+        "dekanter","decanter","proptrækker","oplukker","åbner",
+        "folieskærer","foliekniv","vinreol","vinholder","vinkøler",
+        "vinkasse","gaveæske","smagekasse","smagepakke","pakke",
+        "gavekort","abonnement","magnet","plakat","bog",
+        "kosteskaft","kosteskaftet","kost","kop","krus","kande",
+        "greencups","cup","sugerør","serviet"
+      ];
+
+      const hasStrong = strongWineWords.some(w => t.includes(w));
+      const hasWeak   = weakWineWords.some(w => t.includes(w));
+      const hasAcc    = accessoryWords.some(w => t.includes(w));
+
+      if (hasAcc && !hasStrong) return false;
+      if (hasStrong) return true;
+      if (hasWeak && !hasAcc) return true;
+      return false;
+    }
+
+    function priceHTML(p){
+      const old = p.price_old ?? p.glpris ?? p.compareAt ?? p.saleprice_old ?? null;
+      const curr = (p.price != null)
+        ? Number(p.price).toLocaleString("da-DK",{style:"currency",currency:"DKK"})
+        : null;
+
+      if (old && p.price && Number(old) > Number(p.price)) {
+        const oldF = Number(old).toLocaleString("da-DK",{style:"currency",currency:"DKK"});
+        return `<span class="price price-sale">${curr}</span><span class="price price-old">${oldF}</span>`;
+      }
+      return curr ? `<span class="price">${curr}</span>` : "";
+    }
+
+    function badgesHTML(p){
+      const b = [];
+      if (state.filters.pris) b.push(`Budget ≤ ${state.filters.pris} kr`);
+      if (state.filters.farve) b.push(state.filters.farve);
+      if (state.filters.stil && state.filters.stil.length) b.push(...state.filters.stil);
+      if (state.filters.land && state.filters.land.length) b.push(...state.filters.land);
+      if (state.filters.anledning) b.push(state.filters.anledning);
+      if (state.filters.mad) b.push(`Til ${state.filters.mad}`);
+      const hasOld = p.price_old ?? p.glpris ?? p.compareAt ?? null;
+      if (hasOld && p.price && Number(hasOld) > Number(p.price)) b.push("Tilbud");
+      const m = p.merchant ? [p.merchant] : [];
+      return `<div class="badges">
+        ${priceHTML(p)}
+        ${m.concat(b).map(t=>`<span class="badge ${t==='Tilbud'?'badge--sale':''}">${t}</span>`).join("")}
+      </div>`;
+    }
+
+    function cardHTML(p){
+      const note = generateTastingNote(p);
+      const food = generateFoodMatch(p);
+
+      return `
+        <a class="card product outbound" href="${p.url}" target="_blank" rel="nofollow sponsored noopener" data-label="${p.title}">
+          <div class="card-media">
+            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div class="img-fallback">🍷</div>`}
+          </div>
+          <div class="card-body">
+            <h3>${p.title}</h3>
+            ${badgesHTML(p)}
+            <p class="card-small">${note}</p>
+            <p class="card-small dim">Madmatch: ${food}</p>
+          </div>
+        </a>
+      `;
+    }
+
+    function pickTop3(items, terms){
+      const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
+      const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
+      const budget = state.filters.pris ?? null;
+
+      function relScore(p){
+        let s=0; const hay=((p.title||"")+" "+(p.brand||"")).toLowerCase();
+        terms.forEach(t=>{ if(hay.includes(t)) s+=1; });
+        return s*W.rel + (p.image?W.img:0);
+      }
+      function priceScore(p){
+        if (p.price==null || !budget) return 0;
+        const d = Math.abs(p.price - budget);
+        const pct = Math.min(1, d / Math.max(1,budget));
+        return (1 - pct) * W.pricedist;
+      }
+      function commScore(p){ return (COMM[p.merchant] ?? 0) * 10 * W.comm; }
+      function normScore(p){
+        if (/(\bmagnum\b|\bjeroboam\b|\b6 ?l\b|\bkasse\b|\bsmagekasse\b|\bpack\b)/i.test(p.title||"")) return -2*W.norm;
+        if (p.price!=null && p.price > 5000 && !/\bmagnum|kasse|samling|årgang\b/i.test(p.title||"")) return -2*W.norm;
+        return 0;
+      }
+      function baseScore(p){ return relScore(p) + priceScore(p) + commScore(p) + normScore(p); }
+      function overlap(a,b){
+        const A=new Set((a.title||"").toLowerCase().split(/\W+/));
+        const B=new Set((b.title||"").toLowerCase().split(/\W+/));
+        let inter=0; A.forEach(x=>{ if(B.has(x)) inter++; });
+        return inter / Math.max(1, Math.min(A.size,B.size));
+      }
+
+      const pool=[...items].sort((a,b)=>baseScore(b)-baseScore(a)).slice(0,50);
+      const chosen=[];
+      while (chosen.length<3 && pool.length){
+        let best=null, bestS=-1e9;
+        for (const p of pool){
+          const penalty = chosen.length ? Math.max(...chosen.map(c=>overlap(p,c))) : 0;
+          const s = baseScore(p) - penalty*W.diversity;
+          if (s > bestS){ best=p; bestS=s; }
+        }
+        if (!best) break;
+        chosen.push(best);
+        pool.splice(pool.indexOf(best),1);
+      }
+      return chosen;
+    }
+
+    async function doSearch(fromChip=false){
+      const q = document.getElementById('q').value.trim();
+      state.lastQueryText = q;
+      if (!fromChip) state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
+
+      const secStoresStart = document.getElementById('featured-stores');
+      const secWinesStart  = document.getElementById('featured-wines');
+      if (secStoresStart) secStoresStart.style.display = 'none';
+      if (secWinesStart)  secWinesStart.style.display  = 'none';
+
+      const base = deriveTermsFromInput(q);
+      state.baseTerms = base.terms;
+      if (base.max != null) state.filters.pris = base.max;
+
+      const refined = deriveTermsFromFilters();
+      const terms = Array.from(new Set([...state.baseTerms, ...refined]));
+
+      const $status = document.getElementById("status");
+      const $res = document.getElementById("results");
+      $status.innerHTML = `<div class="msg info"><span class="spinner"></span> Søger i butikker…</div>`;
+      $res.innerHTML = `<div class="msg info"><span class="spinner"></span> Finder flasker…</div>`;
+
+      const params = new URLSearchParams();
+      params.set("q", terms.join(" "));
+      if (state.filters.pris != null) params.set("max", String(state.filters.pris));
+
+      const r = await fetch(`/api/search?${params.toString()}`, {cache:"no-store"});
+      const data = await r.json();
+      const meta = data.meta || {};
+
+      let products = Array.isArray(data.products) ? data.products : [];
+      const filtered = products.filter(isWineProduct);
+      if (filtered.length >= 4) {
+        products = filtered;
+      }
+
+      if (data.source === "feed") {
+        const bits = [];
+        bits.push(`Viser ${products.length ?? 0} flasker`);
+        if (meta.feeds_ok != null && meta.feeds_total != null) bits.push(`Fra ${meta.feeds_ok} / ${meta.feeds_total} butikker`);
+        if (meta.feeds_failed) bits.push(`(${meta.feeds_failed} fejlede)`);
+        $status.innerHTML = `<div class="msg info">${bits.join(" · ")}</div>`;
+      } else if (data.source === "fallback") {
+        $status.innerHTML = `<div class="msg err">Ingen direkte feed-træf. Viser butikssider uden pris.</div>`;
+      } else {
+        $status.innerHTML = `<div class="msg err">Ingen resultater.</div>`;
+      }
+
+      state.products = products;
+      state.sortBy = "relevance";
+      state.picks = pickTop3(state.products, terms);
+      state.visible = 0;
+
+      document.getElementById("sortbar").style.display = state.products.length ? "block" : "none";
+      document.getElementById("sortSel").value = "relevance";
+      renderAll();
+      renderFollowup(q, state.products.length);
+      renderAlsoStores(state.lastQueryText || "vin");
+
+      const hasResults = state.products.length > 0;
+      const secStores = document.getElementById('featured-stores');
+      const secWines  = document.getElementById('featured-wines');
+      if (secStores) secStores.style.display = hasResults ? 'none' : '';
+      if (secWines)  secWines.style.display  = hasResults ? 'none' : '';
+
+      document.getElementById('results')?.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+
+    function sortProducts(list){
+      const arr = [...list];
+      if (state.sortBy === "price_asc") return arr.sort((a,b)=> (a.price ?? 9e12) - (b.price ?? 9e12));
+      if (state.sortBy === "price_desc") return arr.sort((a,b)=> (b.price ?? -1) - (a.price ?? -1));
+      return arr;
+    }
+
+    function renderAll(){
+      const $res = document.getElementById("results");
+      const sorted = sortProducts(state.products);
+
+      const topHTML = (state.sortBy === "relevance" && state.picks.length) ? `
+        <section class="top-picks">
+          <h2>Anbefalet af Vinbot</h2>
+          <div class="picks-row">
+            ${state.picks.map(p => cardHTML(p)).join("")}
+          </div>
+        </section>
+      ` : "";
+
+      state.visible = Math.min(state.pageSize, sorted.length);
+      const listHTML = `
+        <section class="grid">
+          ${sorted.slice(0, state.visible).map(p => cardHTML(p)).join("")}
+        </section>
+      `;
+      $res.innerHTML = topHTML + listHTML;
+
+      const hasMore = state.visible < sorted.length;
+      document.getElementById("moreWrap").style.display = hasMore ? "block" : "none";
+    }
+
+    function showMore(){
+      const $res = document.getElementById("results");
+      const sorted = sortProducts(state.products);
+      const next = Math.min(state.visible + state.pageSize, sorted.length);
+      if (next <= state.visible) return;
+      const grid = $res.querySelector(".grid");
+      const slice = sorted.slice(state.visible, next).map(p => cardHTML(p)).join("");
+      grid.insertAdjacentHTML("beforeend", slice);
+      state.visible = next;
+      document.getElementById("moreWrap").style.display = state.visible < sorted.length ? "block" : "none";
+    }
+
+    document.getElementById("moreBtn").addEventListener("click", showMore);
+    document.getElementById("sortSel").addEventListener("change", (e)=>{
+      state.sortBy = e.target.value;
+      renderAll();
+    });
+
+    function renderFollowup(query, resultCount){
+      const $f = document.getElementById("followup");
+      const generic = /rødvin|hvidvin|ros[eé]|bobler|vin|ost|pizza|kød|bøf|mad|sommer|hygge/i.test(query);
+      const shouldAsk = generic || resultCount < 8;
+      if (!shouldAsk) { $f.classList.add("hidden"); $f.innerHTML=""; return; }
+
+      const chips = (group, items, multi=false) => `
+        <div class="chip-group" data-group="${group}" data-multi="${multi}">
+          <div class="chip-title">${group}</div>
+          <div class="chip-row">
+            ${items.map(label => `<button class="chip ${isActive(group,label) ? 'on':''}" data-value="${label}">${label}</button>`).join("")}
+          </div>
+        </div>`;
+
+      const ui = `
+        <div class="followup-inner">
+          <h2>Hjælp mig med at ramme smagen</h2>
+          <div class="chip-grid">
+            ${chips("farve", ["rød","hvid","rosé","bobler"], false)}
+            ${chips("stil", ["let","frugtig","kraftig","tør","sød"], true)}
+            ${chips("land", ["italien","frankrig","spanien","tyskland","portugal"], true)}
+            ${chips("anledning", ["sommer","hygge","romantisk","fest"], false)}
+            ${chips("mad", ["ost","pizza","bøf","lam","fisk","sushi","tapas","dessert"], false)}
+          </div>
+          <div class="chip-actions">
+            <div class="price-wrap">
+              <label for="ai-price">Maks pris</label>
+              <input id="ai-price" type="number" min="30" step="10" placeholder="Fx 150" value="${state.filters.pris ?? ''}">
+            </div>
+            <button id="applyChips" class="btn-primary">Opdater</button>
+            <button id="clearChips" class="btn-soft">Nulstil</button>
+          </div>
+        </div>
+      `;
+      $f.innerHTML = ui;
+      $f.classList.remove("hidden");
+
+      $f.querySelectorAll(".chip").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const group = btn.closest(".chip-group").dataset.group;
+          const multi = btn.closest(".chip-group").dataset.multi === "true";
+          toggleChip(group, btn.dataset.value, multi);
+          btn.classList.toggle("on");
+          if (!multi) doSearch(true);
+        });
+      });
+      $f.querySelector("#applyChips").addEventListener("click", ()=>{
+        const v = document.getElementById("ai-price").value.trim();
+        state.filters.pris = v ? Math.max(0, parseInt(v,10)) : null;
+        doSearch(true);
+      });
+      $f.querySelector("#clearChips").addEventListener("click", ()=>{
+        state.filters = { farve:null, stil:[], pris:null, land:[], anledning:null, mad:null };
+        doSearch(true);
+      });
+    }
+
+    function isActive(group, label){
+      const f = state.filters;
+      if (Array.isArray(f[group])) return f[group].includes(label);
+      return f[group] === label;
+    }
+
+    function toggleChip(group, label, multi){
+      const f = state.filters;
+      if (multi) {
+        const arr = Array.isArray(f[group]) ? f[group] : [];
+        const i = arr.indexOf(label);
+        if (i === -1) arr.push(label); else arr.splice(i,1);
+        f[group] = arr;
+      } else {
+        f[group] = (f[group] === label) ? null : label;
+      }
+    }
+
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a.outbound'); if(!a) return;
+      try{
+        if (typeof gtag === 'function'){
+          gtag('event','outbound_click',{
+            event_category:'affiliate',
+            event_label:a.dataset.label || a.href
+          });
+        }
+      }catch(_){}
+    });
+  </script>
 
   <!-- Gør doSearch global + bindings til Enter/knap -->
   <script>
@@ -486,7 +1075,7 @@
     })();
   </script>
 
-  <!-- SEO: Udvalgte vine structured data (som du havde) -->
+  <!-- SEO: Udvalgte vine structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -498,7 +1087,7 @@
           "@type":"Product",
           "name":"Primitivo Susumaniello Salento Boccantino 2024",
           "image":"https://vinbot.dk/assets/partners/products/primitivo.png",
-          "description":"Den mest elskede rødvin i Danmark – og med god grund",
+          "description":"Den mest elskede rødvin i Danmark – og med god grund.",
           "brand":{"@type":"Brand","name":"Den Sidste Flaske"},
           "offers":{
             "@type":"Offer",
@@ -514,7 +1103,7 @@
           "@type":"Product",
           "name":"The Guv'nor Tinto",
           "image":"https://vinbot.dk/assets/partners/products/theguvnor.png",
-          "description":"Fyldig, blød og fuld af mørke bær og krydderier",
+          "description":"Fyldig, blød og fuld af mørke bær og krydderier.",
           "brand":{"@type":"Brand","name":"Den Sidste Flaske"},
           "offers":{
             "@type":"Offer",
@@ -530,7 +1119,7 @@
           "@type":"Product",
           "name":"Weinhof 519 Alte Reben Rheingau Riesling Trocken 2024",
           "image":"https://vinbot.dk/assets/partners/products/altereben.png",
-          "description":"Frisk citrus & grønne æbler",
+          "description":"Frisk citrus og grønne æbler.",
           "brand":{"@type":"Brand","name":"Den Sidste Flaske"},
           "offers":{
             "@type":"Offer",
