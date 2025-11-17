@@ -102,7 +102,7 @@ export default async function handler(req, res) {
           (a.price ?? 9e9) - (b.price ?? 9e9)
         );
       })
-      .slice(0, 48);
+      .slice(0, 48); // kan sættes ned til 12 hvis du vil vise færre pr. kald
 
     const meta = {
       feeds_total: FEEDS.length,
@@ -128,6 +128,7 @@ function send(res, obj, status = 200) {
   res.setHeader("content-type", "application/json; charset=utf-8");
   res.status(status).json(obj);
 }
+
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
@@ -189,7 +190,7 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
   return { min, max };
 }
 
-/* === Vin-/ikke-vin-filtret === */
+/* === Vin-/ikke-vin-filtret (opdateret) === */
 function isWineLike(p) {
   const text = (
     (p.title || "") + " " +
@@ -197,13 +198,35 @@ function isWineLike(p) {
     (p.category || "")
   ).toLowerCase();
 
+  // Ting vi ALDRIG vil vise – selv hvis der står "vin" i teksten
+  const hardNegative = [
+    // Glas & udstyr
+    "glas", "vinglas", "wine glass", "ølglas", "champagneglas",
+    "karaffel", "karafel", "dekanter", "decanter",
+    "vinreol", "vinskab", "vinholder",
+    "oplukker", "proptrækker", "korkskruer",
+    "iskøler", "vinkøler",
+    "shotglas", "shotsglas",
+    "cocktailglas", "martiniglas",
+
+    // Random non-vin crap
+    "kosteskaft", "fejekost", "kost", "fejeblad", "moppe", "spand"
+  ];
+
+  if (hardNegative.some(w => text.includes(w))) {
+    return false;
+  }
+
   const positive = [
     "vin", "wine",
-    "rødvin", "hvidvin", "dessertvin",
-    "riesling", "chardonnay", "sauvignon", "pinot", "nebbiolo", "barolo",
-    "cabernet", "merlot", "malbec", "tempranillo", "zinfandel", "primitivo",
-    "bordeaux", "bourgogne", "burgundy", "chianti", "valpolicella", "amarone",
-    "rioja", "ribera del duero",
+    "rødvin", "hvidvin", "dessertvin", "mousserende", "sparkling",
+    "riesling", "chardonnay", "sauvignon", "sauvignon blanc",
+    "pinot", "pinot noir", "nebbiolo", "barolo",
+    "cabernet", "cabernet sauvignon", "merlot", "malbec",
+    "tempranillo", "zinfandel", "primitivo",
+    "bordeaux", "bourgogne", "burgundy", "chianti",
+    "valpolicella", "amarone", "ripasso",
+    "rioja", "ribera del duero", "ribera",
     "cava", "prosecco", "champagne", "crémant", "cremant", "spumante",
     "moscato", "sauternes", "portvin", "port", "sherry",
     "tinto", "rosso", "rouge", "blanc", "rosé", "rose"
@@ -211,40 +234,40 @@ function isWineLike(p) {
 
   const negative = [
     "øl", "oel", "beer", "bryg", "brew",
-    "gin", "rum", "rom", "whisky", "whiskey", "vodka", "tequila", "cognac", "brandy",
+    "gin", "rum", "rom", "whisky", "whiskey", "vodka", "tequila",
+    "cognac", "brandy",
     "likør", "liqueur", "akvavit", "snaps",
-    "glas", "vinglas", "karaffel", "karafel", "dekanter", "vinreol",
-    "oplukker", "proptrækker", "korkskruer",
-    "ølglas", "cocktailglas",
-    "gavekort", "gadget", "chokolade", "kaffe"
+    "gavekurv", "gavekurve", "gaveæske", "gaveboks",
+    "chokolade", "kaffe",
+    "sirup", "sodavand", "lemonade"
   ];
 
-  let hasPos = false;
-  for (const w of positive) {
-    if (text.includes(w)) {
-      hasPos = true;
-      break;
-    }
-  }
+  const hasPos = positive.some(w => text.includes(w));
+  const hasNeg = negative.some(w => text.includes(w));
 
-  let hasNeg = false;
-  for (const w of negative) {
-    if (text.includes(w)) {
-      hasNeg = true;
-      break;
-    }
-  }
-
-  // Hvis det tydeligt ligner noget med øl/spirits/glas og IKKE har vin-signaler → smid ud
+  // Hvis det tydeligt ligner øl/spirits/chokolade osv. og IKKE har stærke vin-signaler → ud
   if (hasNeg && !hasPos) return false;
 
-  // Ellers acceptere vi det – hellere lidt for meget end at fjerne gode vine
+  // Hvis der hverken er vin-signaler eller ordet vin/wine overhovedet → ud
+  if (!hasPos && !/vin|wine/.test(text)) {
+    return false;
+  }
+
+  // Ellers accepterer vi det
   return true;
 }
 
 /* -------- INTENT/SYNONYMER (backenden) -------- */
 function expandQuery(q) {
   const base = normalize(q);
+
+  // Ord der ikke hjælper søgningen (stopord)
+  const stopwords = new Set([
+    "vin", "vine",
+    "til", "for", "med", "og", "eller",
+    "en", "et", "den", "det", "de"
+  ]);
+
   const eq = {
     barolo: ["nebbiolo"], nebbiolo: ["barolo"],
     rioja: ["tempranillo"], tempranillo: ["rioja"],
@@ -256,14 +279,110 @@ function expandQuery(q) {
     cabernet: ["cab", "cabernet sauvignon"],
     "cabernet sauvignon": ["cab", "cabernet"]
   };
+
   const set = new Set();
+
+  // 1) Normale søgeord + drue-synonymer
   base.split(/\s+/).forEach(t => {
     if (!t) return;
     const n = normalize(t);
+    if (stopwords.has(n)) return; // skip fx "vin", "til"
     set.add(n);
     (eq[n] || []).forEach(x => set.add(normalize(x)));
   });
+
+  // 2) Intent-baserede ekstra termer (vin til juleaften/nytår/bøf/fisk/tapas osv.)
+  intentTermsFromQuery(q).forEach(term => {
+    set.add(normalize(term));
+  });
+
+  // 3) Fallback – hvis alt blev filtreret væk, så søg i det mindste på "vin"
+  if (!set.size) {
+    set.add("vin");
+  }
+
   return Array.from(set);
+}
+
+function intentTermsFromQuery(q = "") {
+  const txt = q.toLowerCase();
+  const out = [];
+
+  // --- JULEAFTEN / JULEMAD / ANDE-/FLÆSKESTEG ---
+  if (/(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost)/.test(txt)) {
+    out.push(
+      "rødvin",
+      "pinot noir",
+      "bourgogne",
+      "valpolicella",
+      "amarone",
+      "barolo",
+      "rioja",
+      "cotes du rhone"
+    );
+  }
+
+  // --- NYTÅRSAFTEN / NYTÅR ---
+  if (/(nytår|nytaar|nytarsaften|nytaarsaften|nytårsaften)/.test(txt)) {
+    out.push(
+      "champagne",
+      "cava",
+      "prosecco",
+      "cremant",
+      "crémant",
+      "sparkling",
+      "mousserende"
+    );
+  }
+
+  // --- BØF / OKSEKØD / STEAK ---
+  if (/(bøf|bof|boef|oksekød|oksekoed|oksekod|steak|entrecote|entrecôte|ribeye|rib-eye)/.test(txt)) {
+    out.push(
+      "cabernet sauvignon",
+      "malbec",
+      "barolo",
+      "bordeaux",
+      "syrah",
+      "shiraz",
+      "rioja"
+    );
+  }
+
+  // --- SVINEKØD / GRIS / KAM-/FLÆSKESTEG ---
+  if (/(svinekød|svinekoed|svinekod|gris|kamsteg|flæskesteg|flaeskesteg)/.test(txt)) {
+    out.push(
+      "pinot noir",
+      "bourgogne",
+      "cotes du rhone",
+      "chianti"
+    );
+  }
+
+  // --- FISK & SKALDYR ---
+  if (/(fisk|torsk|kuller|kabelau|kabeljau|laks|ørred|orred|rejer|skaldyr|muslinger|østers|oesters)/.test(txt)) {
+    out.push(
+      "hvidvin",
+      "riesling",
+      "sauvignon blanc",
+      "chardonnay",
+      "albariño",
+      "albarino",
+      "chablis"
+    );
+  }
+
+  // --- TAPAS / OST / CHARCUTERI ---
+  if (/(tapas|ostebord|oste|ost|charcuteri|pølsebord|pølse|pålæg|palaeg)/.test(txt)) {
+    out.push(
+      "cava",
+      "rioja",
+      "tempranillo",
+      "garnacha",
+      "sherry"
+    );
+  }
+
+  return out;
 }
 
 function normalize(s = "") {
