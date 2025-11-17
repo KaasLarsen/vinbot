@@ -95,6 +95,69 @@
     </div>
   </header>
 
+  <header class="hero">
+    <h1>Find vin på sekunder</h1>
+    <p>Fortæl hvad du er i humør til – <strong>drue</strong>, <strong>mad</strong>, <strong>pris</strong> eller <strong>lejlighed</strong>. Vinbot guider dig til de bedste flasker og butikker.</p>
+
+    <div class="search-wrap">
+      <!-- FORM så Enter fungerer på mobil/desktop -->
+      <form class="search" id="searchForm" novalidate>
+        <div class="icon">🔎</div>
+        <input id="q" placeholder="fx “barolo til bøf under 150 kr” eller “ost og hygge”" autocomplete="off" />
+        <button class="btn-primary" id="searchBtn" type="submit">Søg</button>
+      </form>
+      <p class="search-hint">Tryk <kbd>Enter</kbd> eller brug mobilens “Søg”</p>
+    </div>
+  </header>
+
+  <!-- NY SEKTION: udvalgt indhold / populære søgninger -->
+  <section class="home-shortcuts wrap" aria-labelledby="sec-home-shortcuts">
+    <h2 id="sec-home-shortcuts" class="home-shortcuts-title">Populære søgninger og temaer</h2>
+    <p class="home-shortcuts-sub">
+      Prøv en af de mest brugte søgninger, eller hop direkte til vores guides om vin og druer.
+    </p>
+    <div class="home-shortcuts-grid">
+      <!-- Vin til mad / lejligheder -->
+      <a class="home-shortcut-card" href="/vin-til/juleaften.html">
+        <h3>🎄 vin til juleaften</h3>
+        <p>Find vin til and, flæskesteg og hele julemenuen.</p>
+      </a>
+      <a class="home-shortcut-card" href="/vin-til/nytaarsaften.html">
+        <h3>🥂 vin til nytårsaften</h3>
+        <p>Champagne, cava og vin til nytårsmenu og kransekage.</p>
+      </a>
+      <a class="home-shortcut-card" href="/vin-til/tapas.html">
+        <h3>🧀 vin til tapas</h3>
+        <p>Rødvin, hvidvin og bobler til små retter og hygge.</p>
+      </a>
+
+      <!-- Pris / hverdagsvin -->
+      <a class="home-shortcut-card" href="/pages/under-100.html">
+        <h3>💸 god vin under 100 kr</h3>
+        <p>Hverdagsvenlige flasker når budgettet er vigtigt.</p>
+      </a>
+      <a class="home-shortcut-card" href="/pages/hverdagsvin.html">
+        <h3>🍷 hverdagsvin</h3>
+        <p>Nemme, sikre flasker til helt almindelige aftener.</p>
+      </a>
+
+      <!-- Druer + blog / læring -->
+      <a class="home-shortcut-card" href="/druer/">
+        <h3>🍇 lær druerne at kende</h3>
+        <p>Overblik over de vigtigste druer – fra cabernet til riesling.</p>
+      </a>
+      <a class="home-shortcut-card" href="/blog/hvad-betyder-naturvin.html">
+        <h3>🌿 hvad betyder naturvin?</h3>
+        <p>Forstå naturvin, og hvornår det giver mening at vælge den.</p>
+      </a>
+      <a class="home-shortcut-card" href="/blog/guide-til-vintemperaturer.html">
+        <h3>🌡️ guide til vintemperatur</h3>
+        <p>Server rødvin, hvidvin og bobler ved den rigtige temperatur.</p>
+      </a>
+    </div>
+  </section>
+
+  
   <!-- Udvalgte butikker (6 stk) -->
   <section id="featured-stores" class="featured wrap" aria-labelledby="sec-featured-stores">
     <h2 id="sec-featured-stores" class="featured-title">Udvalgte butikker</h2>
