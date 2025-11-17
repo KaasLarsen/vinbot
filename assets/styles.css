@@ -1074,3 +1074,22 @@ footer .socials .fb:hover{
 #featured-wines .featured {
   margin-top: 0;
 }
+/* === FRONT PAGE SPACING – ENS AFSTAND MELLEM SEKTIONER === */
+
+/* lidt luft under hero, før første sektion */
+.hero {
+  margin-bottom: 40px !important;
+}
+
+/* alle tre forsidesektioner (genveje, butikker, udvalgte vine) */
+.home-shortcuts.wrap.front-section,
+#featured-stores.front-section,
+#featured-wines.front-section {
+  margin-top: 40px !important;   /* ens topafstand */
+  margin-bottom: 0;
+}
+
+/* indre featured-blok i #featured-wines skal ikke lave ekstra ekstra luft */
+#featured-wines .featured {
+  margin-top: 0 !important;
+}
