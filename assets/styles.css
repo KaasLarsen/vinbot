@@ -1097,34 +1097,3 @@ footer .socials .fb:hover{
 h2, h3 {
   text-transform: none !important;
 }
-/* === ENS SPACING MELLEM FORSIDE-SEKTIONER === */
-
-/* Nulstil al default margin */
-.home-shortcuts,
-#featured-stores,
-#featured-wines {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Giv ens spacing mellem alle sektioner */
-.front-section {
-  margin-top: 48px !important;
-}
-
-/* Hero skal ikke skabe forskel */
-.hero {
-  margin-bottom: 48px !important;
-}
-
-/* Nulstil JS-injectet margin inde i Featured Wines */
-#featured-wines .featured {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Sikrer at h2 ikke skaber ekstra mellemrum forskelligt */
-.front-section h2 {
-  margin-top: 0 !important;
-  margin-bottom: 16px !important;
-}
