@@ -1053,3 +1053,12 @@ footer .socials .fb:hover{
 #featured-wines * {
   margin-bottom: 0 !important;
 }
+/* Ens spacing mellem alle tre forsidesektioner */
+#featured-stores .featured-title,
+#featured-wines .featured-title {
+  margin-top: 32px; /* Samme som mellem 1 og 2 */
+}
+
+#featured-wines section.featured {
+  margin-top: 0 !important; /* Fjern ekstra margin som JS indsætter */
+}
