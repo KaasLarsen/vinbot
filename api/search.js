@@ -133,14 +133,18 @@ const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
 /* === Prisforståelse fra fri tekst === */
+/* ⬇️ OPDATERET VERSION – håndterer "under 100", "100-150", "over 200" osv. også uden "kr" */
 function parsePriceFilter(qRaw, budgetMaxParam) {
   const txt = (qRaw || "").toLowerCase();
 
   let min = null;
   let max = null;
 
-  // Interval: "100-150 kr", "100 – 150 kr"
-  let m = txt.match(/(\d{2,5})\s*[-–]\s*(\d{2,5})\s*kr/);
+  // helper til valuta-del: "kr", "kr.", "dkk", ",-" osv. (valgfri)
+  const money = '(?:\\s*(?:kr\\.?)|\\s*dkk|\\s*,-)?';
+
+  // 1) Interval: "100-150", "100 - 150 kr", "100–150 dkk"
+  let m = txt.match(new RegExp(`(\\d{2,5})\\s*[-–]\\s*(\\d{2,5})${money}`));
   if (m) {
     const a = parseInt(m[1], 10);
     const b = parseInt(m[2], 10);
@@ -148,9 +152,9 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     max = Math.max(a, b);
   }
 
-  // "fra 100 til 150 kr", "mellem 80 og 120 kr"
+  // 2) "fra 100 til 150 kr" / "mellem 80 og 120"
   if (!m) {
-    m = txt.match(/(?:fra|mellem)\s*(\d{2,5})\s*(?:til|og)\s*(\d{2,5})\s*kr/);
+    m = txt.match(new RegExp(`(?:fra|mellem)\\s*(\\d{2,5})\\s*(?:til|og)\\s*(\\d{2,5})${money}`));
     if (m) {
       const a = parseInt(m[1], 10);
       const b = parseInt(m[2], 10);
@@ -159,32 +163,40 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     }
   }
 
-  // "under 150 kr", "max 150 kr"
+  // 3) "under 150", "max 150", "under 150 kr", "max 150,-"
   if (max == null) {
-    m = txt.match(/(?:under|max)\s*(\d{2,5})\s*kr/);
+    m = txt.match(new RegExp(`(?:under|max)\\s*(\\d{2,5})${money}`));
     if (m) {
       max = parseInt(m[1], 10);
     }
   }
 
-  // "mindst 100 kr", "over 200 kr", "fra 100 kr"
+  // 4) "mindst 100", "over 200", "fra 100 kr"
   if (min == null) {
-    m = txt.match(/(?:mindst|over|fra)\s*(\d{2,5})\s*kr/);
+    m = txt.match(new RegExp(`(?:mindst|over|fra)\\s*(\\d{2,5})${money}`));
     if (m) {
       min = parseInt(m[1], 10);
     }
   }
 
-  // Hvis frontend har sendt en max, så lad den "vinde"
+  // 5) Hvis frontend har sendt en max, så lad den vinde / stramme
   if (budgetMaxParam != null) {
     if (max == null || budgetMaxParam < max) {
       max = budgetMaxParam;
     }
   }
 
-  // Simpel "billig/budget" fallback hvis intet max
+  // 6) "billig/budget" fallback hvis intet max
   if (max == null && /billig|budget/.test(txt)) {
     max = 100;
+  }
+
+  // 7) Ekstra fallback: enkel pris "100 kr" / "100,-" / "100"
+  if (min == null && max == null) {
+    const lone = txt.match(new RegExp(`(\\d{2,5})${money}`));
+    if (lone) {
+      max = parseInt(lone[1], 10);
+    }
   }
 
   return { min, max };
