@@ -34,7 +34,7 @@
       }
 
       .side-banner-close {
-        position: absolute;
+        position: fixed;
         top: -8px;
         right: -8px;
         width: 18px;
