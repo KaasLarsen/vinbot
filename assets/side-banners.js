@@ -1,28 +1,31 @@
-(function () {
-  const MIN_WIDTH = 1000; // kun desktop
+/* ===== Vinbot – Side Bannere (global) ===== */
 
+(function () {
+  if (window.__sideBannersInitialized) return;
+  window.__sideBannersInitialized = true;
+
+  // Skjul hvis brugeren har lukket dem før
+  const closedKey = "vinbot_side_banners_closed";
+  if (localStorage.getItem(closedKey) === "1") return;
+
+  // Kun vis på større skærme
+  if (window.innerWidth < 1100) return;
+
+  /* --------------------------
+     CSS
+  --------------------------- */
   function createStyle() {
     const css = `
       .side-banner {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
+        position: fixed; 
+        top: 140px;
         z-index: 9999;
-        width: 150px;
         opacity: 0;
-        pointer-events: none;
         transition: opacity .4s ease;
       }
 
-      .side-banner.sb-visible {
+      .side-banner.visible {
         opacity: 1;
-        pointer-events: auto;
-      }
-
-      .side-banner img {
-        width: 100%;
-        height: auto;
-        display: block;
       }
 
       .side-banner.left-banner {
@@ -33,115 +36,95 @@
         right: 40px;
       }
 
-      .side-banner-close {
-        position: fixed;
-        top: -8px;
-        right: -8px;
-        width: 18px;
-        height: 18px;
-        border-radius: 999px;
-        border: none;
-        background: rgba(0,0,0,.6);
+      .side-banner img {
+        max-width: 160px;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+      }
+
+      .side-banner .close-btn {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.65);
         color: #fff;
-        font-size: 12px;
-        line-height: 18px;
-        padding: 0;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
         cursor: pointer;
-      }
-
-      .side-banner-close:hover {
-        background: rgba(0,0,0,.8);
-      }
-
-      @media (max-width: 1000px) {
-        .side-banner {
-          display: none !important;
-        }
+        user-select: none;
       }
     `;
-    const style = document.createElement("style");
-    style.textContent = css;
-    document.head.appendChild(style);
+
+    const el = document.createElement("style");
+    el.textContent = css;
+    document.head.appendChild(el);
   }
 
-  function createBanner(className, clickUrl, imgUrl, label) {
+  /* --------------------------
+     Opret banner-element
+  --------------------------- */
+  function createBanner({ side, link, image }) {
     const wrap = document.createElement("div");
-    wrap.className = "side-banner " + className;
-
-    const close = document.createElement("button");
-    close.type = "button";
-    close.className = "side-banner-close";
-    close.setAttribute("aria-label", "Luk annonce");
-    close.textContent = "×";
+    wrap.className = `side-banner ${side}-banner`;
 
     const a = document.createElement("a");
-    a.href = clickUrl;
+    a.href = link;
     a.target = "_blank";
-    a.rel = "nofollow noopener sponsored";
-    a.dataset.label = label || "Side banner";
+    a.rel = "nofollow noopener";
 
     const img = document.createElement("img");
-    img.src = imgUrl;
-    img.alt = "";
+    img.src = image;
+
+    const closeBtn = document.createElement("div");
+    closeBtn.className = "close-btn";
+    closeBtn.textContent = "×";
+    closeBtn.onclick = () => {
+      wrap.remove();
+      localStorage.setItem(closedKey, "1");
+    };
 
     a.appendChild(img);
-    wrap.appendChild(close);
     wrap.appendChild(a);
+    wrap.appendChild(closeBtn);
 
-    close.addEventListener("click", function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      wrap.style.display = "none";
-      try {
-        sessionStorage.setItem("VINBOT_HIDE_SIDE_BANNERS", "1");
-      } catch (_) {}
-    });
+    document.body.appendChild(wrap);
+
+    // Fade-in
+    setTimeout(() => wrap.classList.add("visible"), 50);
 
     return wrap;
   }
 
-  function initSideBanners() {
-    // kun desktop
-    if (window.innerWidth < MIN_WIDTH) return;
-
-    // hvis brugeren allerede har lukket dem i denne session
-    try {
-      if (sessionStorage.getItem("VINBOT_HIDE_SIDE_BANNERS") === "1") return;
-    } catch (_) {}
-
+  /* --------------------------
+     Init
+  --------------------------- */
+  function init() {
     createStyle();
 
-    const left = createBanner(
-      "left-banner",
-      "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94898",
-      "https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94898",
-      "Side banner · venstre"
-    );
+    // Højre banner
+    createBanner({
+      side: "right",
+      link: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94900",
+      image: "https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94900"
+    });
 
-    const right = createBanner(
-      "right-banner",
-      "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94900",
-      "https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94900",
-      "Side banner · højre"
-    );
-
-    document.body.appendChild(left);
-    document.body.appendChild(right);
-
-    // fade-in
-    setTimeout(() => {
-      left.classList.add("sb-visible");
-      right.classList.add("sb-visible");
-    }, 100);
+    // Venstre banner
+    createBanner({
+      side: "left",
+      link: "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=94898",
+      image: "https://www.partner-ads.com/dk/visbanner.php?partnerid=50537&bannerid=94898"
+    });
   }
 
-  function ready(fn) {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", fn);
-    } else {
-      fn();
-    }
+  // Kør når DOM er klar
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener("DOMContentLoaded", init);
   }
-
-  ready(initSideBanners);
 })();
