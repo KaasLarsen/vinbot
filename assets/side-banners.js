@@ -26,11 +26,11 @@
       }
 
       .side-banner.left-banner {
-        left: 10px;
+        left: 40px;
       }
 
       .side-banner.right-banner {
-        right: 10px;
+        right: 40px;
       }
 
       .side-banner-close {
