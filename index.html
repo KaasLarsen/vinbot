@@ -477,7 +477,7 @@
         baseUrl:"https://www.beer-me.dk/",
         searchUrl:"https://www.beer-me.dk/search/vin",
         affiliateTemplate:"https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=74640&htmlurl={URL}",
-        logo:"/assets/partners/beerme.png"
+        logo:"/assets/partners/beer-me.png"
       },
       {
         name:"DH Wines",
@@ -646,17 +646,34 @@
         .trim();
     }
 
+    // ⬇️ OPDATERET: fanger nu "under 100", "under 100,-", "under 100 kr", "max 150" osv.
     function deriveTermsFromInput(raw){
       const q = normalize(raw||"");
-      const S=new Set();
-      Object.keys(INTENT).forEach(k=>{ if(q.includes(k)) INTENT[k].forEach(v=>S.add(v)); });
-      q.split(/\s+/).forEach(t=>{ if(!t) return; S.add(t); (EQUIV[t]||[]).forEach(x=>S.add(x)); });
+      const S = new Set();
 
-      let max=null;
-      const m=q.match(/(?:under|max)\s*(\d{2,4})\s*kr/);
-      if(m) max=parseInt(m[1],10);
-      if(/billig|budget/.test(q)) max=Math.min(max??9999,100);
-      return {terms:[...S], max};
+      // intent (julemad, bøf osv.)
+      Object.keys(INTENT).forEach(k => {
+        if (q.includes(k)) INTENT[k].forEach(v => S.add(v));
+      });
+
+      // almindelige ord + synonymer
+      q.split(/\s+/).forEach(t => {
+        if (!t) return;
+        S.add(t);
+        (EQUIV[t] || []).forEach(x => S.add(x));
+      });
+
+      // pris: under 100 / max 150 / under 100 kr / under 100,-
+      let max = null;
+      const m = q.match(/(?:under|max)\s*(\d{2,4})(?:\s*(?:kr\.?|dkk|,-))?/);
+      if (m) max = parseInt(m[1], 10);
+
+      // "billig/budget" → max 100 hvis ikke andet
+      if (/billig|budget/.test(q)) {
+        max = Math.min(max ?? 9999, 100);
+      }
+
+      return { terms:[...S], max };
     }
 
     function deriveTermsFromFilters(){
