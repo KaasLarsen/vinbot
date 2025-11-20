@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Hummer – Vinbot</title>
+  <meta name="description" content="Hummer er ren luksus – og vinen skal følge med. Se hvilke hvidvine, champagne og crémant der passer til hummer nature, gratineret hummer og hummerbisque.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Hummer</h2>
+    <p>
+      Hummer har <strong>sødt, delikat kød</strong>, som ofte serveres med smør, citron, urter eller cremede saucer.
+      Vinen skal være <em>elegant, tør og præcis</em> – uden at overdøve luksusfornemmelsen på tallerkenen.
+    </p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hvidvin til Hummer Nature</h3>
+        <ul>
+          <li><strong>Chablis</strong> – mineralsk, stram Chardonnay uden tungt fad.</li>
+          <li><strong>Hvid Bourgogne</strong> – fx Mâcon eller Côte de Beaune med let fad.</li>
+          <li><strong>Tør Riesling</strong> – især hvis der er citron og friske urter i retten.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Champagne & Bobler</h3>
+        <ul>
+          <li><strong>Champagne Brut</strong> – især Blanc de Blancs til hummer nature.</li>
+          <li><strong>Crémant</strong> – hvis du vil tæt på champagneoplevelsen til lavere pris.</li>
+          <li>Bobler er stærke til både <strong>hummer-tatar, hummerhaler og små starters</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Gratineret Hummer & Hummerbisque</h3>
+        <ul>
+          <li><strong>Fyldigere hvid Bourgogne</strong> med mere krop og let fad til gratineret hummer.</li>
+          <li><strong>Cremet Chardonnay</strong> til hummerbisque med dybde og smør.</li>
+          <li><strong>Koncentreret Riesling</strong> kan også fungere flot til bisque og reducerede saucer.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fejlkøb til Hummer</h3>
+        <ul>
+          <li><strong>Tunge, fadpumpede vine:</strong> Kan overdøve hummerens fine smag.</li>
+          <li><strong>Meget aromatiske vine med sødme:</strong> Stjæler fokus og gør retten mindre elegant.</li>
+          <li><strong>Rødvin med tannin:</strong> Slår hummerens tekstur ihjel – gem rødvinen til hovedretten.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Servering & Stemning</h3>
+      <ul>
+        <li>Server hvidvin og bobler <strong>kølige, men ikke iskolde</strong>, så du bevarer aromaerne.</li>
+        <li>Vælg hellere én god flaske mindre end for mange middelmådige til hummer – det er en <strong>signaturservering</strong>.</li>
+        <li>Går du all-in, er kombinationen <strong>champagne + hummer</strong> stadig noget af det mest sikre i vinverdenen.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/skaldyr.html">
+          <h4>🦐 Vin til Skaldyr</h4>
+          <p>Rå rejer, muslinger og østers – vine til hav-smage.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/fisk.html">
+          <h4>🐟 Vin til Fisk</h4>
+          <p>Fra hvid fisk til laks og grillede fiskeretter.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/nytaarsaften.html">
+          <h4>🎆 Vin til Nytårsaften</h4>
+          <p>Bobler og vin til luksusmenuer med fisk og skaldyr.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h, f] = await Promise.all([
+        fetch("/partials/header.html", { cache: "no-store" }).then(r => r.text()),
+        fetch("/partials/footer.html", { cache: "no-store" }).then(r => r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll("[data-partial]"));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute("data-partial");
+        if (!url) return;
+        el.innerHTML = await fetch(url, { cache: "no-store" }).then(r => r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
