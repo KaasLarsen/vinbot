@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Mexicansk Mad – Vinbot</title>
+  <meta name="description" content="Chili, lime og koriander gør vin til mexicansk mad tricky. Få forslag til rødvin, hvidvin og rosé til tacos, chili con carne, fajitas og nachos.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Mexicansk Mad</h2>
+    <p>
+      Mexicansk mad er fuld af <strong>chili, lime, koriander og krydderier</strong>. Det gør vinvalget udfordrende –
+      men ikke umuligt. Nøglen er <em>frugtige vine med blød struktur og gerne en smule restsødme</em>.
+    </p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Hvidvin til Tacos & Fajitas</h3>
+        <ul>
+          <li><strong>Riesling (halvtør)</strong> dæmper chili og spiller med lime og koriander.</li>
+          <li><strong>Gewürztraminer</strong> matcher krydderi, sødme og fedme i fx pulled pork-tacos.</li>
+          <li><strong>Chenin Blanc</strong> med frugt og syre fungerer både til kylling og grøntsager.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Rødvin til Chili con Carne & Fede Retter</h3>
+        <ul>
+          <li><strong>Zinfandel/Primitivo</strong> – saftig frugt og krydderi til chili con carne.</li>
+          <li><strong>Garnacha/Grenache</strong> – blød, frugtig og uden hård tannin.</li>
+          <li><strong>Malbec</strong> – god til mørkere, mere kødfulde mexicanske retter.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Rosé til Nachos & Del-Bord</h3>
+        <ul>
+          <li><strong>Tør rosé</strong> kan tage både ost, salsa, kød og grønt på én gang.</li>
+          <li>Vælg en rosé med <strong>frugt og friskhed</strong> – ikke en tung, sødlig stil.</li>
+          <li>Server godt kølig, især hvis maden er stærk og varm.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fejlkøb du skal undgå</h3>
+        <ul>
+          <li><strong>Meget tanninrig rødvin:</strong> Chili + hård tannin = bitter og ubehagelig smag.</li>
+          <li><strong>Meget tør, stram hvidvin:</strong> Lime og chili får vinen til at virke tynd og sur.</li>
+          <li><strong>Høj alkohol:</strong> Forstærker følelsen af styrke fra chili, gør det anstrengende at drikke.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Tip: Match styrken på retten</h3>
+      <ul>
+        <li>Jo mere <strong>chili</strong>, jo mere må vinen gerne have <strong>frugt og evt. lidt sødme</strong>.</li>
+        <li>Til milde tacos kan du slippe afsted med både frisk hvidvin og let rødvin.</li>
+        <li>Til meget stærk mad kan <strong>øl eller cocktails</strong> være bedre end vin – og det er helt ok.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/asiatisk.html">
+          <h4>🥢 Vin til Asiatisk Mad</h4>
+          <p>Sådan tackler du chili, soja, ingefær og sødme i samme ret.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/thai.html">
+          <h4>🌶 Vin til Thai</h4>
+          <p>Grøn karry, pad thai og wok med kokosmælk og lime.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/burger.html">
+          <h4>🍔 Vin til Burger</h4>
+          <p>Saftig komfortmad – vine med frugt og power.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h, f] = await Promise.all([
+        fetch("/partials/header.html", { cache: "no-store" }).then(r => r.text()),
+        fetch("/partials/footer.html", { cache: "no-store" }).then(r => r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll("[data-partial]"));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute("data-partial");
+        if (!url) return;
+        el.innerHTML = await fetch(url, { cache: "no-store" }).then(r => r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
