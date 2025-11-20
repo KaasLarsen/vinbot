@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Bryllup – Vinbot</title>
+  <meta name="description" content="Vin til bryllup skal være elegant og publikumsvenlig. Få en enkel strategi til bobler, hvidvin, rødvin og vin til natmad, der rammer bredt.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Bryllup</h2>
+    <p>
+      Til bryllup er der lang tid ved bordet, mange taler og blandede gæster.
+      Vinen skal være <strong>elegant, men også nem at drikke</strong> – og budgettet skal kunne følge med, når du ganger op til 50–100 gæster.
+    </p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Bobler til Reception & Skåltaler</h3>
+        <ul>
+          <li><strong>Champagne Brut</strong> – hvis budgettet tillader det, er det stadig kongen til bryllup.</li>
+          <li><strong>Crémant</strong> – samme metode, lavere pris; god balance mellem kvalitet og budget.</li>
+          <li><strong>Cava Brut</strong> – bedste value, især ved mange gæster og lang reception.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Hvidvin til Forret</h3>
+        <ul>
+          <li><strong>Sancerre/Pouilly-Fumé</strong> – klassisk tør Sauvignon Blanc til fisk og skaldyr.</li>
+          <li><strong>Chablis</strong> – mineralsk Chardonnay uden tungt fad, meget bryllupsvenlig.</li>
+          <li><strong>Riesling</strong> – hvis menuen har lidt syre, urter eller asiatisk præg.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Rødvin til Hovedret</h3>
+        <ul>
+          <li><strong>Bourgogne Rouge</strong> (Pinot Noir) til kalv, fjerkræ eller mildere kødretter.</li>
+          <li><strong>Blød Bordeaux</strong> med moden frugt til oksekød eller lam.</li>
+          <li><strong>Rioja Reserva</strong> – rund, let fad og meget gæstevenlig stil.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Vin til Natmad & Sen Aften</h3>
+        <ul>
+          <li><strong>Nem rødvin med skruelåg</strong> til natmad som hotdogs, sliders eller tærter.</li>
+          <li><strong>Frisk hvidvin</strong> til dem, der vil have noget lettere senere på aftenen.</li>
+          <li>Her gælder: <strong>ukompliceret er bedre</strong> end komplekst – fokus er på fest, ikke på vinanalyse.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Budget og mængder til Bryllup</h3>
+      <ul>
+        <li>Regn typisk med <strong>¾ flaske vin pr. voksen</strong> til middag + bobler til reception og skål.</li>
+        <li>Vælg hellere en <strong>god vin i fair prisklasse</strong> end en dyr vin, du er nødt til at købe for lidt af.</li>
+        <li>Undgå meget ekstreme vine – bryllupsvin skal ramme <strong>80–90 % af gæsterne</strong>, ikke kun nørderne.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/konfirmation.html">
+          <h4>🎓 Vin til Konfirmation</h4>
+          <p>Enkel strategi til vin, der rammer bredt ved familiefejring.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/romantisk-middag.html">
+          <h4>❤️ Vin til Romantisk Middag</h4>
+          <p>Flasker til mindre, intime middage før og efter brylluppet.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/nytaarsaften.html">
+          <h4>🎆 Vin til Nytårsaften</h4>
+          <p>Bobler og vine til stor menu, kransekage og fyrværkeri.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h, f] = await Promise.all([
+        fetch("/partials/header.html", { cache: "no-store" }).then(r => r.text()),
+        fetch("/partials/footer.html", { cache: "no-store" }).then(r => r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll("[data-partial]"));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute("data-partial");
+        if (!url) return;
+        el.innerHTML = await fetch(url, { cache: "no-store" }).then(r => r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
