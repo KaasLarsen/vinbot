@@ -24,21 +24,25 @@
       Klik ind på en side for at få overblik, og brug derefter Vinbot-søgningen til at finde specifikke flasker.
     </p>
 
-    <!-- Mini søgefunktion – mere clean -->
-    <form class="mini-search" action="/" method="get">
-      <input
-        id="vinbot-q"
-        name="q"
-        type="search"
-        placeholder="Søg fx: vin til bolognese under 120"
-        autocomplete="off"
-        aria-label="Søg direkte i Vinbot"
-      />
-      <button type="submit">🔍 Søg</button>
-    </form>
-    <p class="mini-search-help">
-      Tip: skriv ret + stemning + prisniveau – fx “vin til sushi fredag aften” eller “vin til tapas under 100”.
-    </p>
+    <!-- Mini søgefunktion – samme struktur som forsiden, bare small wrapper -->
+    <div class="hero-search hero-search--small" style="max-width: 480px; margin: 1.5rem auto 0;">
+      <form id="search-form" action="/" method="get">
+        <div class="search-row">
+          <input
+            id="q"
+            name="q"
+            type="search"
+            placeholder="Søg fx: vin til bolognese under 120"
+            autocomplete="off"
+            aria-label="Søg i Vinbot"
+          />
+          <button type="submit">Søg</button>
+        </div>
+      </form>
+      <p class="search-help">
+        Tip: skriv ret + stemning + prisniveau – fx “vin til sushi fredag aften” eller “vin til tapas under 100”.
+      </p>
+    </div>
   </header>
 
   <main class="wrap">
