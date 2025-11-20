@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Påskefrokost – Vinbot</title>
+  <meta name="description" content="Hvilken vin passer til påskefrokost? Få styr på vin til sild, æg, laks, lam og grønne forårsretter – og se hvilke stilarter der rammer bredt ved bordet.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Påskefrokost</h2>
+    <p>
+      Påskefrokosten er lysere og lettere end jul – men stadig med <strong>sild, æg, laks, lune retter og ofte lam</strong> på bordet.
+      Vinen skal være <em>frisk, forårsagtig og tilpas alsidig</em> til at kunne følge med både fisk og kød uden at virke tung.
+    </p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Første servering: Sild, Æg & Laks</h3>
+        <ul>
+          <li><strong>Øl og snaps</strong> er stadig det bedste match til klassisk sild og meget syrlige/eddikeprægede retter.</li>
+          <li><strong>Tør Riesling eller Sauvignon Blanc</strong> fungerer godt til laks, rejer, æg og asparges.</li>
+          <li><strong>Crémant eller Cava Brut</strong> som lette bobler til at åbne måltidet og rense ganen.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Lune Retter & Forårsbord</h3>
+        <ul>
+          <li><strong>Fyldigere hvidvin</strong> (fx Chardonnay uden for meget fad) til lune fiskeretter og lyse retter.</li>
+          <li><strong>Let rødvin</strong> som Beaujolais eller Pinot Noir til frikadeller, påskeskinke og tærter.</li>
+          <li><strong>Rosé</strong> som brobygger, hvis bordet er meget blandet med både fisk, kød og grønt.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Lam på Påskebordet</h3>
+        <ul>
+          <li><strong>Rød Bordeaux</strong> (gerne merlot-domineret) til lam med klassisk sovs og kartofler.</li>
+          <li><strong>Syrah/Shiraz</strong> til mere krydrede lammeretter med rosmarin, hvidløg og timian.</li>
+          <li><strong>Chianti Classico</strong> hvis tilbehøret har tomat, middelhavsurter og masser af grønt.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Bobler & Rosé til Forårsstemning</h3>
+        <ul>
+          <li><strong>Tør rosé</strong> fra Provence eller Languedoc fungerer til både charcuteri, salater og kylling.</li>
+          <li><strong>Crémant d’Alsace</strong> eller Cava kan gå hele vejen fra snacks til de første retter.</li>
+          <li>Hold stilen <strong>tør og frisk</strong> – undgå meget søde roséer til hoveddelen af måltidet.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Undgå fejlkøb til Påskefrokost</h3>
+      <ul>
+        <li><strong>Tung, fadlagret rødvin:</strong> Risikerer at virke klodset til lyse retter og forårsgrønt.</li>
+        <li><strong>Knastør, neutral hvidvin:</strong> Opleves hurtigt sur og kedelig ved siden af syre, urter og æg.</li>
+        <li><strong>Ekstremt søde vine til hovedret:</strong> Gem dem til dessert eller påskeæg i stedet.</li>
+        <li><strong>For få lette vine:</strong> Gæsterne vil ofte hellere have ét ekstra glas frisk hvid/rosé end tung rødvin til frokost.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/julefrokost.html">
+          <h4>🎄 Vin til Julefrokost</h4>
+          <p>Sild, lune retter og flæskesteg – sådan vælger du vin.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/lam.html">
+          <h4>🐑 Vin til Lam</h4>
+          <p>Fra klassisk lammeskank til lammekrone og påskemiddag.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/sommerretter.html">
+          <h4>☀️ Vin til Sommerretter</h4>
+          <p>Let, frisk vin til salater, grill og forårsretter.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h, f] = await Promise.all([
+        fetch("/partials/header.html", { cache: "no-store" }).then(r => r.text()),
+        fetch("/partials/footer.html", { cache: "no-store" }).then(r => r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll("[data-partial]"));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute("data-partial");
+        if (!url) return;
+        el.innerHTML = await fetch(url, { cache: "no-store" }).then(r => r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
