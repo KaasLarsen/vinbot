@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vin til Brunch – Vinbot</title>
+  <meta name="description" content="Hvilken vin serverer man til brunch? Få forslag til bobler, hvidvin og rosé, der passer til æg, bacon, yoghurt, frugt og pandekager.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB0QD6J59G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'G-JB0QD6J59G');
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <header class="hero">
+    <h2>Vin til Brunch</h2>
+    <p>
+      Brunch blander <strong>æg, bacon, ost, yoghurt, frugt og søde sager</strong> på samme bord.
+      Vinen skal være <em>let, frisk og ikke for seriøs</em> – mere hyggelig selskabsdrik end tung middagsvin.
+    </p>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="/pages/vin-til/">← Tilbage til Vin til Mad</a></nav>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Bobler – den sikre brunchstarter</h3>
+        <ul>
+          <li><strong>Prosecco Brut</strong> – blød og frugtig, fungerer til det meste på bordet.</li>
+          <li><strong>Cava eller Crémant Brut</strong> – lidt mere syre og struktur til ost og charcuteri.</li>
+          <li>Perfekt base til <strong>mimosa</strong> (appelsinjuice) eller <strong>bellini</strong> (ferskenpuré).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Hvidvin til Æg, Laks & Ost</h3>
+        <ul>
+          <li><strong>Sauvignon Blanc</strong> til friskost, grønt og salater.</li>
+          <li><strong>Riesling</strong> (tør/halvtør) til laks, skaldyr og frugt.</li>
+          <li><strong>Pinot Blanc/Pinot Gris</strong> til mildere brunchretter og tærter.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Rosé til det blandede bord</h3>
+        <ul>
+          <li><strong>Tør rosé</strong> fra Provence, Languedoc eller Spanien fungerer til både ost, charcuteri og salater.</li>
+          <li>Server den <strong>godt kølig</strong> – så føles den frisk og let, selv til de lidt tungere ting.</li>
+          <li>Undgå meget søde roséer, hvis du vil bruge vinen til “hoveddelen” af brunchen.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Let Rødvin – hvis det bliver mere frokost</h3>
+        <ul>
+          <li><strong>Beaujolais (Gamay)</strong> eller <strong>Pinot Noir</strong> til brunchburgere, charcuteri eller shakshuka.</li>
+          <li>Server let afkølet, så vinen fremstår frisk og saftig.</li>
+          <li>Hold dig fra tunge, fadlagrede rødvine – de virker for “aftensmadsagtige” tidligt på dagen.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Typiske fejlkøb til Brunch</h3>
+      <ul>
+        <li><strong>Tung, alkoholrig rødvin:</strong> Dræber den lette brunchstemning og clasher med frugt/yoghurt.</li>
+        <li><strong>Meget søde dessertvine:</strong> Gem dem til dessert – de er for tunge til main brunchen.</li>
+        <li><strong>Kraftigt fadprægede hvidvine:</strong> Føles tunge og “middagsagtige” til æg og yoghurt.</li>
+        <li>Brunchvin må godt være <strong>ukompliceret og nem at drikke</strong> – det er en feature, ikke en fejl.</li>
+      </ul>
+    </section>
+
+    <!-- Partner-banner -->
+    <div data-partial="/partials/partner-ads.html"></div>
+
+    <section class="block">
+      <h3>Relateret</h3>
+      <div class="grid">
+        <a class="card" href="/pages/vin-til/picnic.html">
+          <h4>☀️ Vin til Picnic</h4>
+          <p>Let, frisk vin til madkurv, snacks og tapas i det fri.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/romantisk-middag.html">
+          <h4>❤️ Vin til Romantisk Middag</h4>
+          <p>Flasker der skaber stemning uden at stjæle fokus.</p>
+        </a>
+        <a class="card" href="/pages/vin-til/sommerretter.html">
+          <h4>🌿 Vin til Sommerretter</h4>
+          <p>Friske vine til salater, grillede grøntsager og let mad.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    (async function(){
+      const [h, f] = await Promise.all([
+        fetch("/partials/header.html", { cache: "no-store" }).then(r => r.text()),
+        fetch("/partials/footer.html", { cache: "no-store" }).then(r => r.text())
+      ]);
+      document.getElementById("header").innerHTML = h;
+      document.getElementById("footer").innerHTML = f;
+
+      // indlæs partner-partials
+      const mounts = Array.from(document.querySelectorAll("[data-partial]"));
+      await Promise.all(mounts.map(async el => {
+        const url = el.getAttribute("data-partial");
+        if (!url) return;
+        el.innerHTML = await fetch(url, { cache: "no-store" }).then(r => r.text());
+      }));
+    })();
+  </script>
+</body>
+</html>
