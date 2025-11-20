@@ -45,7 +45,7 @@ export default async function handler(req, res) {
             ? parseXMLProducts(text, merchant)
             : parseCSVProducts(text, merchant);
 
-          // 1) Filtrér til vin-lignende produkter
+          // 1) Filtrér til vin-lignende produkter (STRAMMET)
           products = products.filter(isWineLike);
 
           // 2) Filtrér på pris-interval, hvis vi har noget at gå efter
@@ -133,7 +133,7 @@ const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
 /* === Prisforståelse fra fri tekst === */
-/* ⬇️ OPDATERET VERSION – håndterer "under 100", "100-150", "over 200" osv. også uden "kr" */
+/* håndterer "under 100", "100-150", "over 200" osv. også uden "kr" */
 function parsePriceFilter(qRaw, budgetMaxParam) {
   const txt = (qRaw || "").toLowerCase();
 
@@ -202,7 +202,7 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
   return { min, max };
 }
 
-/* === Vin-/ikke-vin-filtret (opdateret) === */
+/* === Vin-/ikke-vin-filtret (STRAMMET) === */
 function isWineLike(p) {
   const text = (
     (p.title || "") + " " +
@@ -221,8 +221,23 @@ function isWineLike(p) {
     "shotglas", "shotsglas",
     "cocktailglas", "martiniglas",
 
+    // Oscar-statuetter & figurer
+    "oscar", "oscarstatuette", "oscar statuette",
+    "statuette", "statuet", "prisfigur", "pris statuette",
+
     // Random non-vin crap
-    "kosteskaft", "fejekost", "kost", "fejeblad", "moppe", "spand"
+    "kosteskaft", "fejekost", "kost", "fejeblad", "moppe", "spand",
+
+    // Eddike / vinegar – selvom "vin" kan indgå i ordet
+    "eddike", "vineddike", "hvidvinseddike", "rødvinseddike", "rodvinseddike",
+    "balsamico", "balsamic", "vinegar",
+
+    // Olie / olie-baserede ting
+    "olie", "olivenolie", "rapsolie", "trøffelolie", "troffelolie",
+
+    // Salt / krydderier
+    "salt", "havsalt", "flagesalt", "krydderisalt",
+    "peber", "pebermix", "krydderi", "krydderier"
   ];
 
   if (hardNegative.some(w => text.includes(w))) {
@@ -518,7 +533,19 @@ function parseXMLProducts(xml, merchant){
     const category = pickOne(b, ["categorypath","category","categories","kategorinavn"]);
     const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator","forhandler"]);
 
-    const priceStr = pickOne(b, ["price","price_inc_vat","price_with_vat","saleprice","ourprice","current_price","g_price","price_old","pris","nypris"]);
+    // PRISFELTER – NY RÆKKEFØLGE (ingen price_old med mindre ALT andet mangler)
+    const priceStr = pickOne(b, [
+      "nypris",          // specifik nypris/førpris-setup
+      "saleprice",       // udsalgspris
+      "ourprice",
+      "current_price",
+      "price_inc_vat",
+      "price_with_vat",
+      "g_price",
+      "pris",
+      "price",           // generisk fallback
+      "price_old"        // KUN hvis alt andet mangler
+    ]);
     const price = toNumber(cleanPrice(priceStr));
     const currency = pickOne(b, ["currency","currency_iso"]) || extractCurrency(priceStr) || "DKK";
 
@@ -618,12 +645,28 @@ function parseCSVProducts(text, merchant){
   const it=pick(["name","title","productname","product","navn","produktnavn"]);
   const iu=pick(["deeplink","link","producturl","url","vareurl"]);
   const ii=pick(["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link","billedurl"]);
-  const ip=pick(["price","price_inc_vat","pricewithvat","saleprice","ourprice","current_price","g:price","pris","price_old","nypris"]);
+
+  // PRISFELTER – NY RÆKKEFØLGE
+  const ip=pick([
+    "nypris",
+    "saleprice",
+    "ourprice",
+    "current_price",
+    "price_inc_vat",
+    "pricewithvat",
+    "g:price",
+    "pris",
+    "price",
+    "price_old" // kun hvis alt andet mangler
+  ]);
+
   const ic=pick(["currency","currency_iso","valuta"]);
   const ib=pick(["brand","manufacturer","producer","vendor","forhandler"]);
   const out=[];
   for(const r of rows){
-    const title=r[it]||"", url=r[iu]||"", image=r[ii]||"", price=toNumber(r[ip]||""), currency=r[ic]||"DKK", brand=r[ib]||"";
+    const title=r[it]||"", url=r[iu]||"", image=r[ii]||"";
+    const price=toNumber(r[ip]||"");
+    const currency=r[ic]||"DKK", brand=r[ib]||"";
     if(!title || !url) continue;
     out.push({
       merchant,
