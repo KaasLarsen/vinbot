@@ -88,8 +88,9 @@ export default async function handler(req, res) {
 
           feeds_ok++;
           return matches;
-        } catch {
+        } catch (err) {
           feeds_failed++;
+          console.error(`[search] feed FAILED for ${merchant}:`, err?.message || err);
           return [];
         }
       })
@@ -120,6 +121,7 @@ export default async function handler(req, res) {
     if (items.length) return send(res, { source: "feed", products: items, meta });
     return send(res, { source: "fallback", products: [], meta });
   } catch (e) {
+    console.error("[search] fatal error:", e);
     return send(
       res,
       { source: "error", products: [], meta: { feeds_total: 0, feeds_ok: 0, feeds_failed: 0 } },
@@ -138,17 +140,14 @@ const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
 /* === Prisforståelse fra fri tekst === */
-/* håndterer "under 100", "100-150", "over 200" osv. også uden "kr" */
 function parsePriceFilter(qRaw, budgetMaxParam) {
   const txt = (qRaw || "").toLowerCase();
 
   let min = null;
   let max = null;
 
-  // helper til valuta-del: "kr", "kr.", "dkk", ",-" osv. (valgfri)
   const money = '(?:\\s*(?:kr\\.?)|\\s*dkk|\\s*,-)?';
 
-  // 1) Interval: "100-150", "100 - 150 kr", "100–150 dkk"
   let m = txt.match(new RegExp(`(\\d{2,5})\\s*[-–]\\s*(\\d{2,5})${money}`));
   if (m) {
     const a = parseInt(m[1], 10);
@@ -157,7 +156,6 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     max = Math.max(a, b);
   }
 
-  // 2) "fra 100 til 150 kr" / "mellem 80 og 120"
   if (!m) {
     m = txt.match(new RegExp(`(?:fra|mellem)\\s*(\\d{2,5})\\s*(?:til|og)\\s*(\\d{2,5})${money}`));
     if (m) {
@@ -168,7 +166,6 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     }
   }
 
-  // 3) "under 150", "max 150", "under 150 kr", "max 150,-"
   if (max == null) {
     m = txt.match(new RegExp(`(?:under|max)\\s*(\\d{2,5})${money}`));
     if (m) {
@@ -176,7 +173,6 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     }
   }
 
-  // 4) "mindst 100", "over 200", "fra 100 kr"
   if (min == null) {
     m = txt.match(new RegExp(`(?:mindst|over|fra)\\s*(\\d{2,5})${money}`));
     if (m) {
@@ -184,19 +180,16 @@ function parsePriceFilter(qRaw, budgetMaxParam) {
     }
   }
 
-  // 5) Hvis frontend har sendt en max, så lad den vinde / stramme
   if (budgetMaxParam != null) {
     if (max == null || budgetMaxParam < max) {
       max = budgetMaxParam;
     }
   }
 
-  // 6) "billig/budget" fallback hvis intet max
   if (max == null && /billig|budget/.test(txt)) {
     max = 100;
   }
 
-  // 7) Ekstra fallback: enkel pris "100 kr" / "100,-" / "100"
   if (min == null && max == null) {
     const lone = txt.match(new RegExp(`(\\d{2,5})${money}`));
     if (lone) {
@@ -215,7 +208,6 @@ function isWineLike(p) {
     (p.category || "")
   ).toLowerCase();
 
-  // Ting vi ALDRIG vil vise – selv hvis der står "vin" i teksten
   const hardNegative = [
     // Glas & udstyr
     "glas", "vinglas", "wine glass", "ølglas", "champagneglas",
@@ -295,15 +287,12 @@ function isWineLike(p) {
   const hasPos = positive.some(w => text.includes(w));
   const hasNeg = negative.some(w => text.includes(w));
 
-  // Hvis det tydeligt ligner øl/spirits/chokolade osv. og IKKE har stærke vin-signaler → ud
   if (hasNeg && !hasPos) return false;
 
-  // Hvis der hverken er vin-signaler eller ordet vin/wine overhovedet → ud
   if (!hasPos && !/vin|wine/.test(text)) {
     return false;
   }
 
-  // Ellers accepterer vi det
   return true;
 }
 
@@ -311,7 +300,6 @@ function isWineLike(p) {
 function expandQuery(q) {
   const base = normalize(q);
 
-  // Ord der ikke hjælper søgningen (stopord)
   const stopwords = new Set([
     "vin", "vine",
     "til", "for", "med", "og", "eller",
@@ -332,21 +320,18 @@ function expandQuery(q) {
 
   const set = new Set();
 
-  // 1) Normale søgeord + drue-synonymer
   base.split(/\s+/).forEach(t => {
     if (!t) return;
     const n = normalize(t);
-    if (stopwords.has(n)) return; // skip fx "vin", "til"
+    if (stopwords.has(n)) return;
     set.add(n);
     (eq[n] || []).forEach(x => set.add(normalize(x)));
   });
 
-  // 2) Intent-baserede ekstra termer (vin til juleaften/nytår/bøf/fisk/tapas osv.)
   intentTermsFromQuery(q).forEach(term => {
     set.add(normalize(term));
   });
 
-  // 3) Fallback – hvis alt blev filtreret væk, så søg i det mindste på "vin"
   if (!set.size) {
     set.add("vin");
   }
@@ -358,7 +343,6 @@ function intentTermsFromQuery(q = "") {
   const txt = q.toLowerCase();
   const out = [];
 
-  // --- JULEAFTEN / JULEMAD / ANDE-/FLÆSKESTEG ---
   if (/(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost)/.test(txt)) {
     out.push(
       "rødvin",
@@ -372,7 +356,6 @@ function intentTermsFromQuery(q = "") {
     );
   }
 
-  // --- NYTÅRSAFTEN / NYTÅR ---
   if (/(nytår|nytaar|nytarsaften|nytaarsaften|nytårsaften)/.test(txt)) {
     out.push(
       "champagne",
@@ -385,7 +368,6 @@ function intentTermsFromQuery(q = "") {
     );
   }
 
-  // --- BØF / OKSEKØD / STEAK ---
   if (/(bøf|bof|boef|oksekød|oksekoed|oksekod|steak|entrecote|entrecôte|ribeye|rib-eye)/.test(txt)) {
     out.push(
       "cabernet sauvignon",
@@ -398,7 +380,6 @@ function intentTermsFromQuery(q = "") {
     );
   }
 
-  // --- SVINEKØD / GRIS / KAM-/FLÆSKESTEG ---
   if (/(svinekød|svinekoed|svinekod|gris|kamsteg|flæskesteg|flaeskesteg)/.test(txt)) {
     out.push(
       "pinot noir",
@@ -408,7 +389,6 @@ function intentTermsFromQuery(q = "") {
     );
   }
 
-  // --- FISK & SKALDYR ---
   if (/(fisk|torsk|kuller|kabelau|kabeljau|laks|ørred|orred|rejer|skaldyr|muslinger|østers|oesters)/.test(txt)) {
     out.push(
       "hvidvin",
@@ -421,7 +401,6 @@ function intentTermsFromQuery(q = "") {
     );
   }
 
-  // --- TAPAS / OST / CHARCUTERI ---
   if (/(tapas|ostebord|oste|ost|charcuteri|pølsebord|pølse|pålæg|palaeg)/.test(txt)) {
     out.push(
       "cava",
@@ -449,37 +428,31 @@ function toNumber(s) {
   if (!s) return null;
   let str = String(s).trim();
 
-  // fjern valuta/labels og whitespace
   str = str
     .replace(/\s*(kr\.?|dkk)\s*$/i, "")
     .replace(/\s/g, "");
 
-  // 1) EU-format: 1.234,56 eller 12.345
   if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(str)) {
     str = str.replace(/\./g, "").replace(",", ".");
     const v = parseFloat(str);
     return Number.isFinite(v) ? v : null;
   }
 
-  // 2) DK decimal med komma: 849,00
   if (/^\d+,\d+$/.test(str)) {
     const v = parseFloat(str.replace(",", "."));
     return Number.isFinite(v) ? v : null;
   }
 
-  // 3) US-format med komma som tusinder: 1,234.56
   if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(str)) {
     const v = parseFloat(str.replace(/,/g, ""));
     return Number.isFinite(v) ? v : null;
   }
 
-  // 4) Plain "849.00" eller "849"
   const v = parseFloat(str);
   return Number.isFinite(v) ? v : null;
 }
 
-/* øvrige helpers: decode, parsere, score osv. – uændret fra før */
-
+/* øvrige helpers */
 function decodeHTMLEntities(t){
   return (t||"")
     .replace(/&amp;/g,"&")
@@ -533,14 +506,13 @@ function decodeText(buf){
   }
 }
 
-/* ---------- XML parser (inkl. danske tags + Daisycon) ---------- */
+/* ---------- XML parser (inkl. Daisycon + merchant i _search) ---------- */
 function parseXMLProducts(xml, merchant){
   const out=[];
-  // Fjern namespaces (g:image_link -> g_image_link)
   let txt = xml
     .replace(/<([a-z0-9]+):/ig, "<$1_")
     .replace(/<\/([a-z0-9]+):/ig, "</$1_");
-  // Kendte blokke inkl. dansk
+
   let blocks = splitBlocks(txt,"product");
   if (!blocks.length) blocks = splitBlocks(txt,"item");
   if (!blocks.length) blocks = splitBlocks(txt,"produkt");
@@ -556,18 +528,17 @@ function parseXMLProducts(xml, merchant){
     const category = pickOne(b, ["categorypath","category","categories","kategorinavn"]);
     const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator","forhandler"]);
 
-    // PRISFELTER – primære først, price_old som fallback
     const priceStr = pickOne(b, [
-      "nypris",          // specifik nypris/førpris-setup
-      "saleprice",       // udsalgspris
+      "nypris",
+      "saleprice",
       "ourprice",
       "current_price",
       "price_inc_vat",
       "price_with_vat",
       "g_price",
       "pris",
-      "price",           // generisk fallback
-      "price_old"        // KUN hvis alt andet mangler
+      "price",
+      "price_old"
     ]);
     const price = toNumber(cleanPrice(priceStr));
     const currency = pickOne(b, ["currency","currency_iso"]) || extractCurrency(priceStr) || "DKK";
@@ -575,7 +546,7 @@ function parseXMLProducts(xml, merchant){
     const url = pickOne(b, ["deeplink","link","producturl","url","g_link","vareurl"]);
 
     let image = pickOne(b, [
-      "default_image",   // Daisycon
+      "default_image",
       "imageurl","image_url","image","largeimage","large_image",
       "g_image_link","picture","picture_url","img","imgurl",
       "thumbnail","thumb","smallimage","enclosure url","billedurl"
@@ -585,8 +556,6 @@ function parseXMLProducts(xml, merchant){
       /<additionalimage>([\s\S]*?)<\/additionalimage>/i,
       /<media_content[^>]+url=["']([^"']+)["']/i
     ]);
-
-    // Daisycon kan have flere billeder adskilt med | – tag det første
     if (image && image.includes("|")) {
       image = image.split("|")[0].trim();
     }
@@ -603,7 +572,9 @@ function parseXMLProducts(xml, merchant){
       currency,
       image: image || "",
       url,
-      _search: normalize([title, desc, category, brand].filter(Boolean).join(" "))
+      _search: normalize(
+        [title, desc, category, brand, merchant].filter(Boolean).join(" ")
+      )
     });
   }
   return out;
@@ -669,7 +640,7 @@ function genericXmlBlocks(xml, containers, urlFields){
   return out;
 }
 
-/* ---------- CSV/TSV parser (inkl. Daisycon default_image) ---------- */
+/* ---------- CSV/TSV parser (inkl. Daisycon + merchant i _search) ---------- */
 function parseCSVProducts(text, merchant){
   const head=text.slice(0,1024);
   const delim = head.includes("\t") ? "\t" : (head.includes(";") ? ";" : ",");
@@ -679,13 +650,12 @@ function parseCSVProducts(text, merchant){
   const it=pick(["name","title","productname","product","navn","produktnavn"]);
   const iu=pick(["deeplink","link","producturl","url","vareurl"]);
   const ii=pick([
-    "default_image", // Daisycon
+    "default_image",
     "imageurl","image_url","image","largeimage","large_image",
     "picture","picture_url","img","imgurl","thumbnail","thumb",
     "smallimage","g:image_link","image_link","billedurl"
   ]);
 
-  // PRISFELTER – prioriter nypris/sale/inkl. moms, price_old sidst
   const ip=pick([
     "nypris",
     "saleprice",
@@ -696,7 +666,7 @@ function parseCSVProducts(text, merchant){
     "g:price",
     "pris",
     "price",
-    "price_old" // kun hvis alt andet mangler
+    "price_old"
   ]);
 
   const ic=pick(["currency","currency_iso","valuta"]);
@@ -721,7 +691,9 @@ function parseCSVProducts(text, merchant){
       currency,
       image,
       url,
-      _search: normalize([title,brand].join(" "))
+      _search: normalize(
+        [title, brand, merchant].filter(Boolean).join(" ")
+      )
     });
   }
   return out;
