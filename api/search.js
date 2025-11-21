@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     const priceMax = priceFilter.max;
 
     const FEEDS = [
+      // Partner-ads
       { merchant: "Mere om Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
       { merchant: "Winther Vin",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
       { merchant: "Vinea",              url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=111911&feedid=3767" },
@@ -23,7 +24,11 @@ export default async function handler(req, res) {
       { merchant: "Johnsen Vine",       url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114732&feedid=4073" },
       { merchant: "SPS Wine",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112662&feedid=3860" },
       { merchant: "Westjysk Smag",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
-      { merchant: "Winesommelier",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" }
+      { merchant: "Winesommelier",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" },
+
+      // Daisycon – nye partnere
+      { merchant: "Bottles With History", url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=20114&html_transform=none&rawdata=false&encoding=utf8&general=false" },
+      { merchant: "Wine Store",           url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=1&language_code=da&locale_id=11&type=xml&program_id=20108&html_transform=none&rawdata=false&encoding=utf8&general=false" }
     ];
 
     const headers = {
@@ -221,9 +226,19 @@ function isWineLike(p) {
     "shotglas", "shotsglas",
     "cocktailglas", "martiniglas",
 
+    // Tallerkener / skåle / service
+    "tallerken", "tallerkener",
+    "skål", "skaal", "skåle",
+    "fad", "serveringsfad", "tapastallerken",
+    "kop", "kopper", "krus",
+    "glas sæt", "glassæt",
+    "bestik", "gaffel", "gafler", "kniv", "knive", "ske", "skeer",
+    "serviet", "servietter", "dug",
+
     // Oscar-statuetter & figurer
     "oscar", "oscarstatuette", "oscar statuette",
     "statuette", "statuet", "prisfigur", "pris statuette",
+    "trofæ", "trofae", "pokal", "figur",
 
     // Random non-vin crap
     "kosteskaft", "fejekost", "kost", "fejeblad", "moppe", "spand",
@@ -237,7 +252,15 @@ function isWineLike(p) {
 
     // Salt / krydderier
     "salt", "havsalt", "flagesalt", "krydderisalt",
-    "peber", "pebermix", "krydderi", "krydderier"
+    "peber", "pebermix", "krydderi", "krydderier",
+
+    // Juice / saft / lemonade osv.
+    "juice", "æblejuice", "applejuice", "appelsinjuice",
+    "saft", "frugtsaft", "most", "æblemost", "aeblemost",
+    "smoothie", "soft drink",
+
+    // Kort / gavekort
+    "gavekort", "postkort"
   ];
 
   if (hardNegative.some(w => text.includes(w))) {
@@ -510,7 +533,7 @@ function decodeText(buf){
   }
 }
 
-/* ---------- XML parser (inkl. danske tags) ---------- */
+/* ---------- XML parser (inkl. danske tags + Daisycon) ---------- */
 function parseXMLProducts(xml, merchant){
   const out=[];
   // Fjern namespaces (g:image_link -> g_image_link)
@@ -533,7 +556,7 @@ function parseXMLProducts(xml, merchant){
     const category = pickOne(b, ["categorypath","category","categories","kategorinavn"]);
     const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator","forhandler"]);
 
-    // PRISFELTER – NY RÆKKEFØLGE (ingen price_old med mindre ALT andet mangler)
+    // PRISFELTER – primære først, price_old som fallback
     const priceStr = pickOne(b, [
       "nypris",          // specifik nypris/førpris-setup
       "saleprice",       // udsalgspris
@@ -550,12 +573,23 @@ function parseXMLProducts(xml, merchant){
     const currency = pickOne(b, ["currency","currency_iso"]) || extractCurrency(priceStr) || "DKK";
 
     const url = pickOne(b, ["deeplink","link","producturl","url","g_link","vareurl"]);
-    let image = pickOne(b, ["imageurl","image_url","image","largeimage","large_image","g_image_link","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","enclosure url","billedurl"]);
+
+    let image = pickOne(b, [
+      "default_image",   // Daisycon
+      "imageurl","image_url","image","largeimage","large_image",
+      "g_image_link","picture","picture_url","img","imgurl",
+      "thumbnail","thumb","smallimage","enclosure url","billedurl"
+    ]);
     if (!image) image = pickFirstMatch(b,[
       /<images>[\s\S]*?<image>([\s\S]*?)<\/image>[\s\S]*?<\/images>/i,
       /<additionalimage>([\s\S]*?)<\/additionalimage>/i,
       /<media_content[^>]+url=["']([^"']+)["']/i
     ]);
+
+    // Daisycon kan have flere billeder adskilt med | – tag det første
+    if (image && image.includes("|")) {
+      image = image.split("|")[0].trim();
+    }
 
     if (!title || !url) continue;
 
@@ -635,7 +669,7 @@ function genericXmlBlocks(xml, containers, urlFields){
   return out;
 }
 
-/* ---------- CSV/TSV parser ---------- */
+/* ---------- CSV/TSV parser (inkl. Daisycon default_image) ---------- */
 function parseCSVProducts(text, merchant){
   const head=text.slice(0,1024);
   const delim = head.includes("\t") ? "\t" : (head.includes(";") ? ";" : ",");
@@ -644,9 +678,14 @@ function parseCSVProducts(text, merchant){
   const pick=(names)=>{ for(const n of names){ const i=headers.indexOf(n); if(i!==-1) return i; } return -1; };
   const it=pick(["name","title","productname","product","navn","produktnavn"]);
   const iu=pick(["deeplink","link","producturl","url","vareurl"]);
-  const ii=pick(["imageurl","image_url","image","largeimage","large_image","picture","picture_url","img","imgurl","thumbnail","thumb","smallimage","g:image_link","image_link","billedurl"]);
+  const ii=pick([
+    "default_image", // Daisycon
+    "imageurl","image_url","image","largeimage","large_image",
+    "picture","picture_url","img","imgurl","thumbnail","thumb",
+    "smallimage","g:image_link","image_link","billedurl"
+  ]);
 
-  // PRISFELTER – NY RÆKKEFØLGE
+  // PRISFELTER – prioriter nypris/sale/inkl. moms, price_old sidst
   const ip=pick([
     "nypris",
     "saleprice",
@@ -664,7 +703,11 @@ function parseCSVProducts(text, merchant){
   const ib=pick(["brand","manufacturer","producer","vendor","forhandler"]);
   const out=[];
   for(const r of rows){
-    const title=r[it]||"", url=r[iu]||"", image=r[ii]||"";
+    const title=r[it]||"", url=r[iu]||"";
+    let image=r[ii]||"";
+    if (image && image.includes("|")) {
+      image = image.split("|")[0].trim();
+    }
     const price=toNumber(r[ip]||"");
     const currency=r[ic]||"DKK", brand=r[ib]||"";
     if(!title || !url) continue;
