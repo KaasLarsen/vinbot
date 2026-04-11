@@ -1,8 +1,8 @@
 {
-  "framework": null,
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" }
+  "crons": [
+    {
+      "path": "/api/cron/revalidate-feeds",
+      "schedule": "0 */6 * * *"
+    }
   ]
 }

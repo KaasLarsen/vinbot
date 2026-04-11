@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Barlife",
+    "host": "barlife.dk",
+    "search": "https://www.barlife.dk/search/{Q}",
+    "commission": 7
+  },
+  {
+    "name": "Den Sidste Flaske",
+    "host": "densidsteflaske.dk",
+    "search": "https://densidsteflaske.dk/search?q={Q}&form_type=product&utf8=%E2%9C%93",
+    "commission": 10
+  },
+  {
+    "name": "Beer Me",
+    "host": "beer-me.dk",
+    "search": "https://www.beer-me.dk/search/{Q}",
+    "commission": 10
+  },
+  {
+    "name": "DH Wines",
+    "host": "dhwines.dk",
+    "search": "https://dhwines.dk/search?q={Q}&options%5Bprefix%5D=last",
+    "commission": 10
+  },
+  {
+    "name": "D'Wine",
+    "host": "d-wine.dk",
+    "search": "https://d-wine.dk/?s={Q}&jet_ajax_search_settings=%7B%22search_source%22%3A%5B%22page%22%2C%22product%22%5D%7D&post_type=page%2Cproduct",
+    "commission": 8
+  },
+  {
+    "name": "Fantombryg",
+    "host": "fantombryg.dk",
+    "search": "https://fantombryg.dk/search?q={Q}&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last",
+    "commission": 8
+  },
+  {
+    "name": "Herslev Bryghus",
+    "host": "herslevbryghus.dk",
+    "search": "https://herslevbryghus.dk/search?q={Q}&options%5Bprefix%5D=last",
+    "commission": 10
+  },
+  {
+    "name": "Johnsen Wine",
+    "host": "johnsenwine.dk",
+    "search": "https://www.johnsenwine.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+    "commission": 10
+  },
+  {
+    "name": "Mere om Vin",
+    "host": "mereomvin.dk",
+    "search": "https://mereomvin.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+    "commission": 10
+  },
+  {
+    "name": "SPS Wine",
+    "host": "spswine.dk",
+    "search": "https://www.spswine.dk/?s={Q}&post_type=product",
+    "commission": 15
+  },
+  {
+    "name": "Vinea",
+    "host": "vinea.dk",
+    "search": "https://vinea.dk/search?options%5Bprefix%5D=last&q={Q}",
+    "commission": 10
+  },
+  {
+    "name": "Winther Vin",
+    "host": "winthervin.dk",
+    "search": "https://winthervin.dk/?s={Q}&post_type=product",
+    "commission": 10
+  },
+  {
+    "name": "Winesommelier",
+    "host": "winesommelier.dk",
+    "search": "https://winesommelier.dk/?s={Q}",
+    "commission": 10
+  }
+]
