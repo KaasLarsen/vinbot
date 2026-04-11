@@ -1,13 +1,6 @@
-# Deploy til Vercel ved push til main (bygger pa Vercels servere — samme som Git-integration).
-# Brug dette hvis Vercel ikke opretter nye deployments fra GitHub automatisk.
+# Deploy til Vercel (production). Kraever GitHub secrets — kør: npm run vercel:secrets
 #
-# Engangs-setup: GitHub repo -> Settings -> Secrets and variables -> Actions:
-#   VERCEL_TOKEN        https://vercel.com/account/tokens
-#   VERCEL_ORG_ID       Vercel Team Settings -> General (Team ID)
-#   VERCEL_PROJECT_ID   Project -> Settings -> General (Project ID)
-#
-# Vigtigt i Vercel UI: Settings -> General -> Root Directory skal vaere TOM.
-# Hvis den er sat til "legacy", faar du den gamle statiske forside.
+# Vercel UI for vinbot-thisone: Root Directory skal vaere TOM (ikke "legacy").
 
 name: Deploy production to Vercel
 
@@ -15,6 +8,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -23,8 +21,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Vercel
-        run: npx vercel@latest deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Bekraeft Next.js repo (ikke kun legacy)
+        run: |
+          test -f app/layout.tsx || (echo "::error::Mangler app/layout.tsx — forkert root eller gammelt checkout"; exit 1)
+          node -e "const p=require('./package.json'); if(!p.dependencies?.next) { process.exit(1) }" || (echo "::error::package.json skal have next"; exit 1)
+
+      - name: Tjek Vercel secrets
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then echo "::error::Mangler GitHub secret VERCEL_TOKEN. Kør: npm run vercel:secrets"; exit 1; fi
+          if [ -z "${{ secrets.VERCEL_ORG_ID }}" ]; then echo "::error::Mangler VERCEL_ORG_ID"; exit 1; fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then echo "::error::Mangler VERCEL_PROJECT_ID (brug ID fra vinbot-thisone)"; exit 1; fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Deploy til Vercel
+        run: npx vercel@latest deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
