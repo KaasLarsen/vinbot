@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "vercel:secrets": "bash scripts/push-vercel-secrets.sh"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
