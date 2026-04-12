@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Humør og stemning — vælg vin efter lejlighed",
-  description: "Hygge, romantik, fest og sommer: vælg vin der matcher stemningen. Link til guides, feeds og Den Sidste Flaske.",
+  description: "Hygge, romantik, fest og sommer: vælg vin der matcher stemningen. Guides og vinsøgning.",
   alternates: { canonical: `${siteUrl}/humoer-og-vin` },
 };
 

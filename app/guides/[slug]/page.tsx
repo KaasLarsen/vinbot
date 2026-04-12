@@ -74,9 +74,9 @@ export default async function GuidePage({ params }: Props) {
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
       </div>
       <section className="mt-10 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-700">
-        <p className="font-semibold text-stone-900">Intern linking på Vinbot</p>
+        <p className="font-semibold text-stone-900">Læs også</p>
         <p className="mt-2">
-          Vi linker aktivt mellem{" "}
+          Udforsk{" "}
           <a href="/mad-og-vin" className="text-rose-900 hover:underline">
             mad og vin
           </a>
@@ -87,8 +87,8 @@ export default async function GuidePage({ params }: Props) {
           og{" "}
           <a href="/saeson" className="text-rose-900 hover:underline">
             sæson
-          </a>{" "}
-          for at gøre det nemt for både læsere og søgemaskiner at finde relateret kvalitetsindhold.
+          </a>
+          — eller spring direkte til en af de andre guides herunder.
         </p>
         <ul className="mt-3 list-disc pl-5">
           {listGuides()

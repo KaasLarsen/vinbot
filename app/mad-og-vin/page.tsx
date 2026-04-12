@@ -5,9 +5,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Mad og vin — guides, parring og intern linking",
+  title: "Mad og vin — guides og parring",
   description:
-    "Hub for mad og vin: dybdegående guides om parring af rødvin og hvidvin, julemad, ost og meget mere. Alle sider er bygget til SEO og danske læsere.",
+    "Guides om parring af rødvin og hvidvin til julemad, ost, kød, fisk og meget mere — skrevet til danske borde og lejligheder.",
   alternates: { canonical: `${siteUrl}/mad-og-vin` },
 };
 
@@ -19,7 +19,7 @@ export default function MadOgVinHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/mad-og-vin", label: "Mad & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Mad og vin</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Vinbot samler danske guides om parring, temperatur og praktiske valg. Brug søgningen på forsiden til at finde flasker med pris og billede fra feeds — og læs videre her for at forstå hvorfor visse vine fungerer til netop din ret.
+        Vinbot samler danske guides om parring, temperatur og praktiske valg. Brug søgningen på forsiden til at gå fra idé til forslag — og læs videre her for at forstå, hvorfor visse vine fungerer til netop din ret.
       </p>
       <section className="mt-10 space-y-6">
         <h2 className="text-2xl font-semibold text-stone-900">Udvalgte guides</h2>
@@ -49,7 +49,7 @@ export default function MadOgVinHubPage() {
           <Link href="/den-sidste-flaske" className="text-rose-900 hover:underline">
             Den Sidste Flaske
           </Link>{" "}
-          for et udvalgt partnerskab uden produktfeed.
+          for ekstra inspiration og gode købsidéer.
         </p>
       </section>
     </div>

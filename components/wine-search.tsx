@@ -17,12 +17,18 @@ const CHIPS: { label: string; q: string; max?: number }[] = [
 
 type ApiResponse = { source: string; products: ProductHit[]; meta: SearchMeta };
 
+const PAGE_MORE = 10;
+
 export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const [q, setQ] = useState(initialQuery?.trim() || "pinot noir");
   const [max, setMax] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  /** Antal bedste match der vises først: 3 eller 5 */
+  const [firstCount, setFirstCount] = useState<3 | 5>(3);
+  /** Hvor mange gange brugeren har trykket "Se flere" (+PAGE_MORE pr. gang) */
+  const [moreSteps, setMoreSteps] = useState(0);
 
   const maxNum = useMemo(() => {
     const n = parseInt(max, 10);
@@ -53,6 +59,22 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     const iq = initialQuery?.trim();
     if (iq) void search(iq, null);
   }, [initialQuery, search]);
+
+  const products = data?.products ?? [];
+  const total = products.length;
+
+  useEffect(() => {
+    setMoreSteps(0);
+  }, [data]);
+
+  const visibleCount = useMemo(() => {
+    if (!total) return 0;
+    const cap = firstCount + moreSteps * PAGE_MORE;
+    return Math.min(cap, total);
+  }, [total, firstCount, moreSteps]);
+
+  const visibleProducts = useMemo(() => products.slice(0, visibleCount), [products, visibleCount]);
+  const canLoadMore = total > 0 && visibleCount < total;
 
   return (
     <div className="space-y-6">
@@ -120,15 +142,71 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
       {data && (
         <div className="space-y-4">
           <p className="text-sm text-stone-600">
-            {data.products.length
-              ? `Viser ${data.products.length} forslag fra feeds (${data.meta.feeds_ok}/${data.meta.feeds_total} feeds svarede).`
-              : "Ingen produkter matchede — prøv bredere ord som “rødvin”, “champagne” eller en drue."}
+            {total
+              ? `Vi har fundet ${total} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`
+              : "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."}
           </p>
+
+          {total > 0 && (
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+              <span className="text-sm font-medium text-stone-700">Start med</span>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setFirstCount(3)}
+                  aria-pressed={firstCount === 3}
+                  className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
+                    firstCount === 3
+                      ? "border-rose-900 bg-rose-900 text-white"
+                      : "border-stone-200 bg-white text-stone-800 hover:border-rose-300"
+                  }`}
+                >
+                  3 bedste match
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFirstCount(5)}
+                  aria-pressed={firstCount === 5}
+                  className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
+                    firstCount === 5
+                      ? "border-rose-900 bg-rose-900 text-white"
+                      : "border-stone-200 bg-white text-stone-800 hover:border-rose-300"
+                  }`}
+                >
+                  5 bedste match
+                </button>
+              </div>
+            </div>
+          )}
+
+          {total > 0 && (
+            <p className="text-sm text-stone-500">
+              Viser {visibleCount} af {total}
+              {visibleCount < total ? " — der er flere at udforske." : "."}
+            </p>
+          )}
+
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {data.products.map((p, i) => (
-              <ProductCard key={`${p.url}-${i}`} product={p} />
+            {visibleProducts.map((p, i) => (
+              <ProductCard key={`${p.url}-${i}`} product={p} compactImage />
             ))}
           </div>
+
+          {canLoadMore && (
+            <div className="flex flex-col items-center gap-1 pt-2">
+              <button
+                type="button"
+                onClick={() => setMoreSteps((s) => s + 1)}
+                className="rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm hover:border-rose-400 hover:bg-rose-50"
+              >
+                Se flere muligheder
+              </button>
+              <p className="text-xs text-stone-500">
+                +{Math.min(PAGE_MORE, total - visibleCount)} næste
+                {total - visibleCount > PAGE_MORE ? ` · ${total - visibleCount} i alt tilbage` : ""}
+              </p>
+            </div>
+          )}
         </div>
       )}
     </div>

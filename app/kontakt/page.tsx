@@ -18,7 +18,7 @@ export default function KontaktPage() {
         <a href="mailto:hej@vinbot.dk" className="text-rose-900 hover:underline">
           hej@vinbot.dk
         </a>{" "}
-        ved presse, partnerskaber eller fejl i feeds. Vi svarer så hurtigt vi kan.
+        ved presse, samarbejde eller hvis noget på sitet ser forkert ud. Vi svarer så hurtigt vi kan.
       </p>
     </div>
   );

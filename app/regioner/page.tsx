@@ -15,8 +15,9 @@ const REGIONER = [
 ];
 
 export const metadata: Metadata = {
-  title: "Vinregioner — hub med søgning og guides",
-  description: "Klassiske vinregioner forklaret kort med links til Vinbot-søgning og dybdegående guides om mad og vin.",
+  title: "Vinregioner — klassiske områder og inspiration",
+  description:
+    "Klassiske vinregioner forklaret kort: stil, madparring og forslag til, hvad du kan søge efter hos forhandlerne — suppleret med guider om mad og vin.",
   alternates: { canonical: `${siteUrl}/regioner` },
 };
 

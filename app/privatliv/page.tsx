@@ -47,7 +47,7 @@ export default function PrivatlivPage() {
         <h2 className="text-xl font-semibold text-stone-900">Google AdSense</h2>
         <p>Google kan bruge cookies til at vise personligt tilpassede annoncer, hvis du har givet samtykke.</p>
         <h2 className="text-xl font-semibold text-stone-900">Affiliate-links</h2>
-        <p>Nogle links er affiliate. Når du klikker, kan partneren sætte en cookie for at tildele kommission. Det påvirker ikke din pris.</p>
+        <p>Nogle links er affiliate. Når du klikker, kan forhandleren sætte en cookie for at tildele kommission. Det påvirker ikke din pris.</p>
         <p className="pt-6">
           <Link href="/betingelser" className="text-rose-900 hover:underline">
             Læs betingelser

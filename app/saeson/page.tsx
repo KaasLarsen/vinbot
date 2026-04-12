@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sæson og vin — forår, sommer, efterår, vinter",
-  description: "Vælg vin efter årstid i Danmark. Hub med guides, intern linking og søgning i Partner-Ads feeds.",
+  description: "Vælg vin efter årstid i Danmark — med guides og vinsøgning.",
   alternates: { canonical: `${siteUrl}/saeson` },
 };
 
@@ -18,7 +18,7 @@ export default function SaesonHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/saeson", label: "Sæson" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Sæson og vin</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Årstiden påvirker både køkkenet og lysten i glasset. Her finder du sæsonbetonet inspiration med stærk intern linking til øvrige guides.
+        Årstiden påvirker både køkkenet og lysten i glasset. Her finder du sæsonbetonet inspiration og nem adgang til relaterede guides.
       </p>
       <ul className="mt-10 space-y-4">
         {(guides.length ? guides : listGuides().filter((g) => g.slug.includes("saeson"))).map((g) => (

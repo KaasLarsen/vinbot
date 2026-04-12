@@ -17,8 +17,9 @@ const DRUER = [
 ];
 
 export const metadata: Metadata = {
-  title: "Druesorter — hub med søgelinks og guides",
-  description: "Udforsk druesorter: pinot noir, riesling, chardonnay og flere. Hver drue linker til søgning i Vinbots feeds og relaterede guides.",
+  title: "Druesorter — oversigt og vinsøgning",
+  description:
+    "Udforsk druesorter: pinot noir, riesling, chardonnay og flere. Søg efter stilen, og læs videre i guiderne om mad og vin.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 
@@ -28,7 +29,7 @@ export default function DruesorterHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/druesorter", label: "Druesorter" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Druesorter</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Brug listen til hurtigt at hoppe til en søgning i vores feeds — du får vist flasker med billede og pris fra forskellige forhandlere. Læs den{" "}
+        Brug listen til hurtigt at hoppe til en søgning — du får forslag fra flere forhandlere. Læs den{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           komplette guide til vin og mad
         </Link>{" "}
@@ -40,7 +41,7 @@ export default function DruesorterHubPage() {
             <h2 className="text-xl font-semibold text-stone-900">{d.navn}</h2>
             <p className="mt-2 text-stone-600">{d.note}</p>
             <Link href={`/?q=${encodeURIComponent(d.q)}`} className="mt-3 inline-block text-rose-900 hover:underline">
-              Søg efter {d.navn} i feeds →
+              Søg efter {d.navn} →
             </Link>
           </li>
         ))}

@@ -5,7 +5,7 @@ import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Om Vinbot",
-  description: "Vinbot er et dansk vinindholds-univers med søgning i Partner-Ads feeds, guides og fokus på SEO og læservenlighed.",
+  description: "Vinbot er dansk vin-inspiration: dybdegående guides, vinsøgning på tværs af forhandlere og tydelig vej videre, når du vil handle.",
   alternates: { canonical: `${siteUrl}/om-os` },
 };
 
@@ -15,7 +15,7 @@ export default function OmOsPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/om-os", label: "Om os" }]} />
       <h1 className="mt-6 text-3xl font-semibold text-stone-900">Om Vinbot</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Vinbot hjælper danskere med at finde vin til mad, humør og årstid. Vi kombinerer lange, SEO-optimerede guides med en teknisk søgemaskine over produktfeeds fra Partner-Ads og udvalgte Daisycon-programmer.
+        Vinbot er bygget til at være det naturlige sted at starte, når du skal finde vin til mad, humør og årstid. Vi kombinerer grundige guides med en vinsøgning, der samler forslag fra mange danske netbutikker — så du hurtigt kan sammenligne og vælge med ro i maven.
       </p>
       <p className="mt-4 text-stone-700">
         Indtægter kommer fra annoncer (Google AdSense) og affiliate-provision. Det påvirker ikke din pris hos forhandlerne. Vi markerer kommercielt indhold tydeligt — se{" "}

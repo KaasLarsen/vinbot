@@ -10,8 +10,8 @@ export function AffiliateDisclosure({ compact }: { compact?: boolean }) {
     <aside className="rounded-2xl border border-amber-200/80 bg-amber-50/80 p-5 text-stone-800">
       <p className="font-semibold text-stone-900">Kommercielt indhold</p>
       <p className="mt-2 text-sm leading-relaxed">
-        Vinbot indeholder affiliate-links (fx Partner-Ads) og annoncer. Vi linker til forhandlere med produktfeeds, så du kan sammenligne
-        udvalg. Vi opdaterer ikke priser manuelt i realtid — tjek altid pris, levering og vilkår hos forhandleren før køb.
+        Vinbot indeholder annoncer og links, hvor vi kan få provision, når du handler hos en forhandler. Det er uden ekstra omkostning for
+        dig hos butikken. Vi viser vej til udvalg hos flere forhandlere; tjek altid pris, levering og vilkår hos forhandleren før du køber.
       </p>
     </aside>
   );
