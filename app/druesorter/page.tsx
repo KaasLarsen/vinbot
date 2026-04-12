@@ -10,6 +10,7 @@ const DRUER: Drue[] = [
   { navn: "Riesling", q: "riesling", note: "Syre og aroma — fisk, asiatisk, brunch og mange oste.", guide: "riesling-druen" },
   { navn: "Sauvignon Blanc", q: "sauvignon blanc", note: "Urtet og frisk — grøntsager, fisk og lette saucer.", guide: "sauvignon-blanc-druen" },
   { navn: "Chardonnay", q: "chardonnay", note: "Fad og krop — kylling, skaldyr og cremede saucer.", guide: "chardonnay-druen" },
+  { navn: "Pinot Blanc", q: "pinot blanc", note: "Ren hvid fra pinot-familien — fisk, svampe og mild ost.", guide: "pinot-blanc-druen" },
   {
     navn: "Cabernet Sauvignon",
     q: "cabernet sauvignon",

@@ -67,11 +67,23 @@ const legacyRedirects: { source: string; destination: string }[] = [
   },
   {
     source: "/pages/blog/hvad-betyder-naturvin.html",
-    destination: "/guides/vin-begreber-i-praksis",
+    destination: "/guides/naturvin-hvad-er-det",
+  },
+  {
+    source: "/pages/blog/alkoholsvag-og-alkoholfri-vin.html",
+    destination: "/guides/alkoholsvag-og-alkoholfri-vin",
+  },
+  {
+    source: "/pages/blog/vin-til-dessert.html",
+    destination: "/guides/vin-til-dessert-og-kransekage",
   },
   {
     source: "/pages/blog/smag-vin-som-en-pro.html",
     destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/oekologisk-vs-konventionel-vin.html",
+    destination: "/guides/naturvin-hvad-er-det",
   },
 
   // Vin til jul / påske / nytår / fest
@@ -222,7 +234,7 @@ const legacyRedirects: { source: string; destination: string }[] = [
   },
   { source: "/pages/druer/malbec.html", destination: "/guides/malbec-druen" },
   { source: "/pages/druer/mourvedre.html", destination: "/guides/syrah-druen" },
-  { source: "/pages/druer/pinot-blanc.html", destination: "/guides/chardonnay-druen" },
+  { source: "/pages/druer/pinot-blanc.html", destination: "/guides/pinot-blanc-druen" },
   { source: "/pages/druer/barbera.html", destination: "/guides/barbera-druen" },
   { source: "/pages/druer/gamay.html", destination: "/guides/gamay-druen" },
   { source: "/pages/druer/garnacha.html", destination: "/guides/grenache-druen" },
