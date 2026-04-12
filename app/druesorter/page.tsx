@@ -19,21 +19,27 @@ const DRUER: Drue[] = [
   { navn: "Merlot", q: "merlot", note: "Blødere frugt og rundere mundfuld — pizza, lyst kød og hverdags simreretter.", guide: "merlot-druen" },
   { navn: "Malbec", q: "malbec", note: "Mørke bær og blid struktur — burger, grill og argentinsk-inspireret kød.", guide: "malbec-druen" },
   { navn: "Syrah / Shiraz", q: "syrah", note: "Krydderi og mørke bær — grill, lam og gryde.", guide: "syrah-druen" },
-  { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering." },
-  { navn: "Albariño", q: "albariño", note: "Citrus og salt — skaldyr, tapas og let fisk." },
-  { navn: "Chenin Blanc", q: "chenin blanc", note: "Syre og alsidighed — ost, gris og både tør og halvtør stil." },
-  { navn: "Grüner Veltliner", q: "grüner veltliner", note: "Hvid peber og friskhed — grønt, brunch og asiatisk-inspireret." },
-  { navn: "Pinot Gris / Grigio", q: "pinot grigio", note: "Neutral til aromatisk — salat, let pasta og som rosé-alternativ." },
-  { navn: "Tempranillo / Rioja", q: "rioja", note: "Bær og krydderi — tapas, pølser og simremad." },
-  { navn: "Sangiovese / Chianti", q: "chianti", note: "Syre og tomatven — pizza, pasta og italiensk." },
-  { navn: "Nebbiolo / Barolo", q: "barolo", note: "Tanniner og parfume — langtidssteg og kraftigere retter." },
-  { navn: "Grenache / Garnacha", q: "garnacha", note: "Moden frugt — grill, middelhavsmad og BBQ." },
+  { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering.", guide: "gamay-druen" },
+  { navn: "Albariño", q: "albariño", note: "Citrus og salt — skaldyr, tapas og let fisk.", guide: "albarino-druen" },
+  { navn: "Chenin Blanc", q: "chenin blanc", note: "Syre og alsidighed — ost, gris og både tør og halvtør stil.", guide: "chenin-blanc-druen" },
+  {
+    navn: "Grüner Veltliner",
+    q: "grüner veltliner",
+    note: "Hvid peber og friskhed — grønt, brunch og asiatisk-inspireret.",
+    guide: "gruener-veltliner-druen",
+  },
+  { navn: "Pinot Gris / Grigio", q: "pinot grigio", note: "Neutral til aromatisk — salat, let pasta og som rosé-alternativ.", guide: "pinot-gris-druen" },
+  { navn: "Tempranillo / Rioja", q: "rioja", note: "Bær og krydderi — tapas, pølser og simremad.", guide: "tempranillo-druen" },
+  { navn: "Sangiovese / Chianti", q: "chianti", note: "Syre og tomatven — pizza, pasta og italiensk.", guide: "sangiovese-druen" },
+  { navn: "Nebbiolo / Barolo", q: "barolo", note: "Tanniner og parfume — langtidssteg og kraftigere retter.", guide: "nebbiolo-druen" },
+  { navn: "Barbera", q: "barbera", note: "Syre og mørke bær uden tung tannin — tomat, pizza og piemonte.", guide: "barbera-druen" },
+  { navn: "Grenache / Garnacha", q: "garnacha", note: "Moden frugt — grill, middelhavsmad og BBQ.", guide: "grenache-druen" },
 ];
 
 export const metadata: Metadata = {
   title: "Druesorter — oversigt og vinsøgning",
   description:
-    "Druesorter: merlot, syrah, cabernet, pinot noir, chardonnay, riesling m.fl. — korte guides til hver hoveddrue plus søgning og madparring.",
+    "Druesorter med dansk guide til hver: gamay, albariño, chenin, grüner, pinot gris, tempranillo, sangiovese, nebbiolo, barbera, grenache m.fl. — plus søgning og madparring.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 
@@ -43,7 +49,7 @@ export default function DruesorterHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/druesorter", label: "Druesorter" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Druesorter</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Brug listen til hurtigt at hoppe til en søgning — du får forslag fra flere forhandlere. Flere druer har en kort dedikeret guide (merlot, syrah, cabernet, pinot noir, chardonnay, riesling, sauvignon blanc, malbec). Læs den{" "}
+        Brug listen til hurtigt at hoppe til en søgning — du får forslag fra flere forhandlere. Hver drue i listen har sin egen korte guide. Læs den{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           komplette guide til vin og mad
         </Link>
