@@ -3,15 +3,22 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { siteUrl } from "@/lib/site";
 
-const DRUER = [
-  { navn: "Pinot Noir", q: "pinot noir", note: "Let til mellem fyldig rød — alsidig til fjerkræ, svampe og lyst kød." },
-  { navn: "Riesling", q: "riesling", note: "Syre og aroma — fisk, asiatisk, brunch og mange oste." },
-  { navn: "Sauvignon Blanc", q: "sauvignon blanc", note: "Urtet og frisk — grøntsager, fisk og lette saucer." },
-  { navn: "Chardonnay", q: "chardonnay", note: "Fad og krop — kylling, skaldyr og cremede saucer." },
-  { navn: "Cabernet Sauvignon", q: "cabernet sauvignon", note: "Struktur og tanniner — okse, grill og kraftige retter." },
-  { navn: "Merlot", q: "merlot", note: "Blødere frugt og rundere mundfuld — pizza, lyst kød og hverdags simreretter." },
-  { navn: "Malbec", q: "malbec", note: "Mørke bær og blid struktur — burger, grill og argentinsk-inspireret kød." },
-  { navn: "Syrah / Shiraz", q: "syrah", note: "Krydderi og mørke bær — grill, lam og gryde." },
+type Drue = { navn: string; q: string; note: string; guide?: string };
+
+const DRUER: Drue[] = [
+  { navn: "Pinot Noir", q: "pinot noir", note: "Let til mellem fyldig rød — alsidig til fjerkræ, svampe og lyst kød.", guide: "pinot-noir-druen" },
+  { navn: "Riesling", q: "riesling", note: "Syre og aroma — fisk, asiatisk, brunch og mange oste.", guide: "riesling-druen" },
+  { navn: "Sauvignon Blanc", q: "sauvignon blanc", note: "Urtet og frisk — grøntsager, fisk og lette saucer.", guide: "sauvignon-blanc-druen" },
+  { navn: "Chardonnay", q: "chardonnay", note: "Fad og krop — kylling, skaldyr og cremede saucer.", guide: "chardonnay-druen" },
+  {
+    navn: "Cabernet Sauvignon",
+    q: "cabernet sauvignon",
+    note: "Struktur og tanniner — okse, grill og kraftige retter.",
+    guide: "cabernet-sauvignon-druen",
+  },
+  { navn: "Merlot", q: "merlot", note: "Blødere frugt og rundere mundfuld — pizza, lyst kød og hverdags simreretter.", guide: "merlot-druen" },
+  { navn: "Malbec", q: "malbec", note: "Mørke bær og blid struktur — burger, grill og argentinsk-inspireret kød.", guide: "malbec-druen" },
+  { navn: "Syrah / Shiraz", q: "syrah", note: "Krydderi og mørke bær — grill, lam og gryde.", guide: "syrah-druen" },
   { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering." },
   { navn: "Albariño", q: "albariño", note: "Citrus og salt — skaldyr, tapas og let fisk." },
   { navn: "Chenin Blanc", q: "chenin blanc", note: "Syre og alsidighed — ost, gris og både tør og halvtør stil." },
@@ -26,7 +33,7 @@ const DRUER = [
 export const metadata: Metadata = {
   title: "Druesorter — oversigt og vinsøgning",
   description:
-    "Druesorter fra pinot noir og chardonnay til merlot, gamay og albariño: kort om smag og mad. Søg flasker og læs vinbegreber og madparring.",
+    "Druesorter: merlot, syrah, cabernet, pinot noir, chardonnay, riesling m.fl. — korte guides til hver hoveddrue plus søgning og madparring.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 
@@ -36,7 +43,7 @@ export default function DruesorterHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/druesorter", label: "Druesorter" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Druesorter</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Brug listen til hurtigt at hoppe til en søgning — du får forslag fra flere forhandlere. Læs den{" "}
+        Brug listen til hurtigt at hoppe til en søgning — du får forslag fra flere forhandlere. Flere druer har en kort dedikeret guide (merlot, syrah, cabernet, pinot noir, chardonnay, riesling, sauvignon blanc, malbec). Læs den{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           komplette guide til vin og mad
         </Link>
@@ -55,9 +62,16 @@ export default function DruesorterHubPage() {
           <li key={d.q} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-xl font-semibold text-stone-900">{d.navn}</h2>
             <p className="mt-2 text-stone-600">{d.note}</p>
-            <Link href={`/?q=${encodeURIComponent(d.q)}`} className="mt-3 inline-block text-rose-900 hover:underline">
-              Søg efter {d.navn} →
-            </Link>
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+              {d.guide ? (
+                <Link href={`/guides/${d.guide}`} className="text-rose-900 hover:underline">
+                  Læs guiden om {d.navn.split("/")[0].trim()} →
+                </Link>
+              ) : null}
+              <Link href={`/?q=${encodeURIComponent(d.q)}`} className="text-rose-900 hover:underline">
+                Søg efter {d.navn.split("/")[0].trim()} →
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

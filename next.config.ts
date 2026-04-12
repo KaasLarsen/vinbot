@@ -209,7 +209,28 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/den-sidste-flaske",
   },
 
-  // Druer (ingen enkeltsider på nyt site)
+  // Druer: dedikerede guides (før catch-all til oversigt)
+  { source: "/pages/druer/merlot.html", destination: "/guides/merlot-druen" },
+  { source: "/pages/druer/syrah.html", destination: "/guides/syrah-druen" },
+  {
+    source: "/pages/druer/cabernet-sauvignon.html",
+    destination: "/guides/cabernet-sauvignon-druen",
+  },
+  {
+    source: "/pages/druer/cabernet-franc.html",
+    destination: "/guides/cabernet-sauvignon-druen",
+  },
+  { source: "/pages/druer/malbec.html", destination: "/guides/malbec-druen" },
+  { source: "/pages/druer/mourvedre.html", destination: "/guides/syrah-druen" },
+  { source: "/pages/druer/pinot-blanc.html", destination: "/guides/chardonnay-druen" },
+  { source: "/pages/druer/barbera.html", destination: "/guides/vin-til-italiensk-mad" },
+  { source: "/pages/druer/garganega.html", destination: "/guides/vin-til-italiensk-mad" },
+  { source: "/pages/druer/verdejo.html", destination: "/guides/sauvignon-blanc-druen" },
+  { source: "/pages/druer/semillon.html", destination: "/guides/sauvignon-blanc-druen" },
+  { source: "/pages/druer/assyrtiko.html", destination: "/guides/vin-til-fisk-og-skaldyr" },
+  { source: "/pages/druer/txakoli.html", destination: "/guides/vin-til-fisk-og-skaldyr" },
+
+  // Druer: øvrige → oversigt
   {
     source: "/pages/druer/:slug.html",
     destination: "/druesorter",
