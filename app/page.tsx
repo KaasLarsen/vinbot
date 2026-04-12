@@ -3,6 +3,8 @@ import Link from "next/link";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
+import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
+import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { siteDescription, siteName } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -88,6 +90,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
         <AffiliateDisclosure compact />
         <WineSearch initialQuery={q} />
       </section>
+
+      <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
       <section className="mt-16 grid gap-8 sm:grid-cols-3">
         <Link

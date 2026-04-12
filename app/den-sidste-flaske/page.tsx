@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { FaqJsonLd } from "@/components/json-ld";
+import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
+import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -76,6 +78,8 @@ export default function DenSidsteFlaskePage() {
           .
         </p>
       </section>
+
+      <DsfFeaturedPicks picks={dsfFeaturedPicks} />
 
       <section className="mt-14 space-y-6">
         <h2 className="text-2xl font-semibold text-stone-900">Måske finder du også…</h2>
