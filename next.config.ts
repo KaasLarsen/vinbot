@@ -29,6 +29,10 @@ const legacyRedirects: { source: string; destination: string }[] = [
     source: "/pages/blog/champagne-vs-cava-vs-prosecco.html",
     destination: "/guides/bobler-champagne-cava-prosecco-og-cremant",
   },
+  {
+    source: "/pages/blog/vin-til-ost.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
 
   // Vin til jul / påske / nytår / fest
   {
@@ -49,7 +53,46 @@ const legacyRedirects: { source: string; destination: string }[] = [
   },
   {
     source: "/pages/vin-til/nytarsaften.html",
-    destination: "/guides/bobler-champagne-cava-prosecco-og-cremant",
+    destination: "/guides/vin-til-nytaar-og-nytaarsmenu",
+  },
+
+  // Vin til tapas, ost, fisk, kylling (Search Console-prioriteret)
+  { source: "/pages/vin-til/tapas.html", destination: "/guides/vin-til-tapas" },
+  {
+    source: "/pages/vin-til/ostebord.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/ostebord-blaaskimmel.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/ostebord-hvidskimmel.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/ostebord-faste-oste.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/hvide-oste.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/fisk.html",
+    destination: "/guides/vin-til-fisk-og-skaldyr",
+  },
+  {
+    source: "/pages/vin-til/hummer.html",
+    destination: "/guides/vin-til-fisk-og-skaldyr",
+  },
+  {
+    source: "/pages/vin-til/sushi.html",
+    destination: "/guides/vin-til-fisk-og-skaldyr",
+  },
+  {
+    source: "/pages/vin-til/kylling.html",
+    destination: "/guides/vin-til-kylling-og-lyst-koed",
   },
 
   // Krydret / asiatisk (samme guide)
