@@ -6,7 +6,8 @@ import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sæson og vin — forår, sommer, efterår, vinter",
-  description: "Vælg vin efter årstid i Danmark — med guides og vinsøgning.",
+  description:
+    "Sæsonvin i Danmark: forår, sommer, grill og fest. Guides til påske, jul, nytår, brunch og udendørsmad.",
   alternates: { canonical: `${siteUrl}/saeson` },
 };
 
@@ -34,6 +35,22 @@ export default function SaesonHubPage() {
         Se også{" "}
         <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">
           vin til julemad
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="text-rose-900 hover:underline">
+          nytår og nytårsmenu
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-paaske-og-paaskefrokost" className="text-rose-900 hover:underline">
+          påske og påskefrokost
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-brunch" className="text-rose-900 hover:underline">
+          brunch
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
+          grill og BBQ
         </Link>{" "}
         og{" "}
         <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">

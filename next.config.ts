@@ -33,6 +33,46 @@ const legacyRedirects: { source: string; destination: string }[] = [
     source: "/pages/blog/vin-til-ost.html",
     destination: "/guides/vin-til-ost-og-ostebord",
   },
+  {
+    source: "/pages/blog/hvad-er-tanniner.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/hvad-er-fadlagring-i-vin.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/hvad-betyder-reserva-og-riserva.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/toer-halvtoer-soed-hvad-betyder-det.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/hvad-er-syre-i-vin.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/saadan-laeser-du-en-vinetiket.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/laes-en-vinetiket.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/hvad-er-pet-nat.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/hvad-betyder-naturvin.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
+  {
+    source: "/pages/blog/smag-vin-som-en-pro.html",
+    destination: "/guides/vin-begreber-i-praksis",
+  },
 
   // Vin til jul / påske / nytår / fest
   {
@@ -93,6 +133,38 @@ const legacyRedirects: { source: string; destination: string }[] = [
   {
     source: "/pages/vin-til/kylling.html",
     destination: "/guides/vin-til-kylling-og-lyst-koed",
+  },
+  {
+    source: "/pages/vin-til/grillmad.html",
+    destination: "/guides/vin-til-grill-og-bbq",
+  },
+  {
+    source: "/pages/vin-til/pizza.html",
+    destination: "/guides/vin-til-pizza-og-pasta",
+  },
+  {
+    source: "/pages/vin-til/bolognese.html",
+    destination: "/guides/vin-til-pizza-og-pasta",
+  },
+  {
+    source: "/pages/vin-til/brunch.html",
+    destination: "/guides/vin-til-brunch",
+  },
+  {
+    source: "/pages/vin-til/vegetarretter.html",
+    destination: "/guides/vin-til-vegetar-og-gront",
+  },
+  {
+    source: "/pages/vin-til/burger.html",
+    destination: "/guides/vin-til-burger",
+  },
+  {
+    source: "/pages/vin-til/italiensk.html",
+    destination: "/guides/vin-til-italiensk-mad",
+  },
+  {
+    source: "/pages/vin-til/spansk.html",
+    destination: "/guides/vin-til-spansk-mad",
   },
 
   // Krydret / asiatisk (samme guide)
