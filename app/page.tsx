@@ -79,6 +79,66 @@ export default async function HomePage({ searchParams }: HomeProps) {
                 Grill og BBQ
               </Link>
             </li>
+            <li>
+              <Link href="/guides/vin-til-lasagne" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til lasagne
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-laks" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til laks
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-vegetar" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til vegetar
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-flaesketesteg" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til flæskesteg
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-boeff" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til bøf
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-tacos" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til tacos
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-and" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til and
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-lam" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til lam
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-torsk" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til torsk
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-frikadeller" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til frikadeller
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-wok" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til wok
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-couscous" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til couscous
+              </Link>
+            </li>
           </ul>
         </div>
       </section>
