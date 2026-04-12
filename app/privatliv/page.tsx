@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { siteUrl } from "@/lib/site";
+import { contactEmail, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privatliv",
-  description: "Sådan behandler Vinbot personoplysninger, cookies, Google AdSense og affiliate-sporing.",
+  description: "Sådan behandler Vinbot personoplysninger, cookies, Google Analytics, Google AdSense og affiliate-sporing.",
   alternates: { canonical: `${siteUrl}/privatliv` },
 };
 
@@ -18,23 +18,23 @@ export default function PrivatlivPage() {
 
       <section className="mt-8 space-y-4 text-stone-700">
         <p>
-          <strong>Overblik:</strong> Vi bruger cookies og lignende teknologier til drift, statistik, annoncer (Google AdSense) og affiliate-sporing. Spørgsmål:{" "}
-          <a href="mailto:hej@vinbot.dk" className="text-rose-900 hover:underline">
-            hej@vinbot.dk
+          <strong>Overblik:</strong> Vi bruger cookies og lignende teknologier til drift, statistik (Google Analytics), annoncer (Google AdSense) og affiliate-sporing. Spørgsmål:{" "}
+          <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+            {contactEmail}
           </a>
           .
         </p>
         <h2 className="text-xl font-semibold text-stone-900">Dataansvarlig</h2>
         <p>
           Vinbot —{" "}
-          <a href="mailto:hej@vinbot.dk" className="text-rose-900 hover:underline">
-            hej@vinbot.dk
+          <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+            {contactEmail}
           </a>
         </p>
         <h2 className="text-xl font-semibold text-stone-900">Oplysninger vi behandler</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Tekniske data: IP, enhed, browser, besøgte sider, tidspunkter.</li>
-          <li>Cookies: drift, statistik, annoncer, affiliate.</li>
+          <li>Cookies: drift, statistik (Analytics), annoncer, affiliate.</li>
           <li>Korrespondance: e-mails, hvis du skriver til os.</li>
         </ul>
         <h2 className="text-xl font-semibold text-stone-900">Formål og grundlag</h2>
@@ -44,6 +44,10 @@ export default function PrivatlivPage() {
           <li>Annoncer (samtykke).</li>
           <li>Affiliate-sporing (samtykke/legitim interesse).</li>
         </ul>
+        <h2 className="text-xl font-semibold text-stone-900">Google Analytics</h2>
+        <p>
+          Vi bruger Google Analytics 4 til at forstå, hvordan sitet bruges (fx besøgte sider og brugsmønstre). Oplysninger behandles af Google efter deres gældende vilkår. Du kan begrænse eller blokere cookies i din browser; se også Googles egne værktøjer til annoncetilpasning.
+        </p>
         <h2 className="text-xl font-semibold text-stone-900">Google AdSense</h2>
         <p>Google kan bruge cookies til at vise personligt tilpassede annoncer, hvis du har givet samtykke.</p>
         <h2 className="text-xl font-semibold text-stone-900">Affiliate-links</h2>

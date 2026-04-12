@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { siteUrl } from "@/lib/site";
+import { contactEmail, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Betingelser",
@@ -42,8 +42,8 @@ export default function BetingelserPage() {
         <div>
           <h2 className="text-xl font-semibold text-stone-900">5. Kontakt</h2>
           <p className="mt-2">
-            <a href="mailto:hej@vinbot.dk" className="text-rose-900 hover:underline">
-              hej@vinbot.dk
+            <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+              {contactEmail}
             </a>
           </p>
         </div>

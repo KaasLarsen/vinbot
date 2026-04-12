@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
-import { AdSlot } from "@/components/ad-slot";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { siteDescription, siteName } from "@/lib/site";
 
@@ -44,10 +43,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
         <AffiliateDisclosure compact />
         <WineSearch initialQuery={q} />
       </section>
-
-      <div className="mt-12">
-        <AdSlot slot="placeholder-home-mid" className="min-h-[120px]" />
-      </div>
 
       <section className="mt-16 grid gap-8 sm:grid-cols-3">
         <Link

@@ -188,7 +188,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visibleProducts.map((p, i) => (
-              <ProductCard key={`${p.url}-${i}`} product={p} compactImage />
+              <ProductCard key={`${p.url}-${i}`} product={p} />
             ))}
           </div>
 

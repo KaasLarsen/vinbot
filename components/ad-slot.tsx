@@ -1,10 +1,15 @@
 import Script from "next/script";
 
-const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+/**
+ * AdSense er slået fra som standard. Aktivér først når Google har godkendt sitet:
+ * sæt NEXT_PUBLIC_ADSENSE_ACTIVE=true og NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-…
+ */
+const adsActive = process.env.NEXT_PUBLIC_ADSENSE_ACTIVE === "true";
+const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim();
+const adsEnabled = adsActive && Boolean(client);
 
-/** Reserveret plads til AdSense — kræver NEXT_PUBLIC_ADSENSE_CLIENT og godkendt site. */
 export function AdSenseLoader() {
-  if (!client) return null;
+  if (!adsEnabled) return null;
   return (
     <Script
       async
@@ -18,15 +23,7 @@ export function AdSenseLoader() {
 type SlotProps = { slot: string; className?: string; format?: "auto" | "rectangle" | "horizontal" | "vertical" };
 
 export function AdSlot({ slot, className = "", format = "auto" }: SlotProps) {
-  if (!client) {
-    return (
-      <div
-        className={`flex min-h-[120px] items-center justify-center rounded-2xl border border-dashed border-stone-200 bg-stone-50 text-sm text-stone-400 ${className}`}
-      >
-        Annonceplads (sæt NEXT_PUBLIC_ADSENSE_CLIENT)
-      </div>
-    );
-  }
+  if (!adsEnabled) return null;
   return (
     <div className={className}>
       <ins

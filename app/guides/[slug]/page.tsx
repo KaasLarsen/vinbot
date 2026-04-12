@@ -7,7 +7,6 @@ import { ArticleJsonLd } from "@/components/json-ld";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
-import { AdSlot } from "@/components/ad-slot";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -66,9 +65,6 @@ export default async function GuidePage({ params }: Props) {
       <div className="prose prose-stone mt-10 max-w-none">
         <AffiliateDisclosure compact />
         {content}
-      </div>
-      <div className="mt-12">
-        <AdSlot slot="placeholder-guide-below" />
       </div>
       <div className="mt-12">
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />

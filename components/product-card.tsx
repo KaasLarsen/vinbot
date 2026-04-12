@@ -1,28 +1,22 @@
 import type { ProductHit } from "@/lib/search/types";
 
-export function ProductCard({ product, compactImage }: { product: ProductHit; compactImage?: boolean }) {
+/** Fast billedstørrelse på tværs af sitet — samme ramme i søgning, DSF m.m. */
+const IMAGE_FRAME = "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
+
+export function ProductCard({ product }: { product: ProductHit }) {
   const price =
     product.price != null
       ? new Intl.NumberFormat("da-DK", { style: "currency", currency: product.currency || "DKK" }).format(product.price)
       : null;
 
-  const imageWrap = compactImage
-    ? "mx-auto block w-1/2 aspect-square bg-stone-100"
-    : "block aspect-square bg-stone-100";
-
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
-      <a href={product.url} target="_blank" rel="nofollow sponsored noopener noreferrer" className={imageWrap}>
+      <a href={product.url} target="_blank" rel="nofollow sponsored noopener noreferrer" className={IMAGE_FRAME}>
         {product.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={product.image}
-            alt=""
-            className={`h-full w-full object-contain ${compactImage ? "p-2" : "p-3"}`}
-            loading="lazy"
-          />
+          <img src={product.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
         ) : (
-          <div className="flex h-full items-center justify-center text-sm text-stone-400">Intet billede</div>
+          <div className="px-2 text-center text-xs text-stone-400">Intet billede</div>
         )}
       </a>
       <div className="flex flex-1 flex-col gap-2 p-4">

@@ -13,7 +13,6 @@ const nav: NavItem[] = [
   { href: "/druesorter", label: "Druesorter" },
   { href: "/regioner", label: "Regioner" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
-  { href: "/den-sidste-flaske", label: "Den Sidste Flaske" },
 ];
 
 function navItemActive(item: NavItem, pathname: string) {

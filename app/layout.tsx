@@ -3,9 +3,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { AdSenseLoader } from "@/components/ad-slot";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { WebSiteJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
+
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,8 +43,8 @@ export default function RootLayout({
   return (
     <html lang="da" className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}>
       <body className="min-h-full flex flex-col font-sans text-stone-900">
+        {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
         <WebSiteJsonLd url={siteUrl} />
-        <AdSenseLoader />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

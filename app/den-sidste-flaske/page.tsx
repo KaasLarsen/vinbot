@@ -4,7 +4,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { FaqJsonLd } from "@/components/json-ld";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
-import { AdSlot } from "@/components/ad-slot";
 import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -77,10 +76,6 @@ export default function DenSidsteFlaskePage() {
           .
         </p>
       </section>
-
-      <div className="mt-12">
-        <AdSlot slot="placeholder-dsf-mid" />
-      </div>
 
       <section className="mt-14 space-y-6">
         <h2 className="text-2xl font-semibold text-stone-900">Måske finder du også…</h2>
