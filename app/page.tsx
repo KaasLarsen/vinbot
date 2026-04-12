@@ -34,6 +34,51 @@ export default async function HomePage({ searchParams }: HomeProps) {
             Den Sidste Flaske — inspiration og gode køb
           </Link>
         </div>
+        <div className="mt-10 border-t border-rose-200/60 pt-8">
+          <p className="text-sm font-semibold text-stone-800">Populære emner lige nu</p>
+          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-rose-900">
+            <li>
+              <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vintemperatur og servering
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/naturvin-hvad-er-det" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Naturvin
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-dessert-og-kransekage" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Dessert og kransekage
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Bobler og champagne
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Nytår og nytårsmenu
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-begreber-i-praksis" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vinbegreber
+              </Link>
+            </li>
+            <li>
+              <Link href="/druesorter" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Druesorter
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-grill-og-bbq" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Grill og BBQ
+              </Link>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <CampaignBanner />

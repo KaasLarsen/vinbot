@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getGuide, getGuideSlugs, listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
-import { ArticleJsonLd } from "@/components/json-ld";
+import { ArticleJsonLd, FaqJsonLd } from "@/components/json-ld";
+import { guideFaqBySlug } from "@/lib/guide-faq";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
@@ -42,6 +43,8 @@ export default async function GuidePage({ params }: Props) {
     { href: `/guides/${slug}`, label: frontmatter.title },
   ];
 
+  const faqItems = guideFaqBySlug[slug];
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
       <ArticleJsonLd
@@ -51,6 +54,7 @@ export default async function GuidePage({ params }: Props) {
         datePublished={updated}
         dateModified={updated}
       />
+      {faqItems?.length ? <FaqJsonLd items={faqItems} /> : null}
       <Breadcrumbs items={crumbs} />
       <header className="mt-6 border-b border-stone-200 pb-8">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
