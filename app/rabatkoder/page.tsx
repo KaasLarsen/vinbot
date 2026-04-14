@@ -59,7 +59,7 @@ const PARTNERE: RabatPartner[] = [
       {
         title: "12% rabat",
         code: "YTAK9M8B",
-        body: "**12% rabat på produkterne** hos SPS Wine. **Rabatkoden kan ikke kombineres** med andre rabatkoder — se fulde vilkår på spswine.dk.",
+        body: "Gælder **produkterne** i shoppen. **Rabatkoden kan ikke kombineres** med andre rabatkoder — se fulde vilkår på spswine.dk.",
       },
     ],
   },
