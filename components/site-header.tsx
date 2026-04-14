@@ -12,6 +12,7 @@ const nav: NavItem[] = [
   { href: "/saeson", label: "Sæson" },
   { href: "/druesorter", label: "Druesorter" },
   { href: "/regioner", label: "Regioner" },
+  { href: "/rabatkoder", label: "Rabatkoder" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
 ];
 

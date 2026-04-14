@@ -35,6 +35,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
   {
     title: "Vin & viden",
     links: [
+      { href: "/rabatkoder", label: "Rabatkoder til vin" },
       { href: "/regioner", label: "Vinregioner og vinlande" },
       { href: "/guides/vinregion-frankrig", label: "Guide: vin i Frankrig" },
       { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og servering" },

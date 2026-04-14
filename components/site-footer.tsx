@@ -46,6 +46,9 @@ export function SiteFooter() {
             <Link href="/om-os" className="hover:text-rose-900">
               Om os
             </Link>
+            <Link href="/rabatkoder" className="hover:text-rose-900">
+              Rabatkoder
+            </Link>
             <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
               Stor guide: vin og mad
             </Link>
