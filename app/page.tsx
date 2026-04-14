@@ -37,6 +37,15 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Sommer, rosé & drinks",
+    links: [
+      { href: "/guides/vin-til-sommer", label: "Vin til sommer" },
+      { href: "/guides/rosevin-til-mad-og-sommer", label: "Rosévin til mad" },
+      { href: "/guides/vin-i-cocktails-spritz-og-drikke", label: "Vin i cocktails og spritz" },
+      { href: "/guides/saesonvin-i-danmark", label: "Sæsonvin året rundt" },
+    ],
+  },
+  {
     title: "Dansk køkken",
     links: [
       { href: "/guides/vin-til-smorrebrod", label: "Vin til smørrebrød" },

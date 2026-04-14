@@ -51,6 +51,18 @@ export default function SaesonHubPage() {
           brunch
         </Link>
         ,{" "}
+        <Link href="/guides/vin-til-sommer" className="text-rose-900 hover:underline">
+          vin til sommer
+        </Link>
+        ,{" "}
+        <Link href="/guides/rosevin-til-mad-og-sommer" className="text-rose-900 hover:underline">
+          rosévin
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-i-cocktails-spritz-og-drikke" className="text-rose-900 hover:underline">
+          vin i cocktails
+        </Link>
+        ,{" "}
         <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
           grill og BBQ
         </Link>{" "}
