@@ -15,6 +15,81 @@ export const metadata: Metadata = {
 
 type HomeProps = { searchParams?: Promise<{ q?: string }> };
 
+const popularTopicLinkClass =
+  "underline decoration-rose-300 underline-offset-4 hover:text-rose-950";
+
+const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
+  {
+    title: "Vin & viden",
+    links: [
+      { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og servering" },
+      { href: "/guides/naturvin-hvad-er-det", label: "Naturvin" },
+      { href: "/guides/vin-begreber-i-praksis", label: "Vinbegreber" },
+      { href: "/druesorter", label: "Druesorter" },
+    ],
+  },
+  {
+    title: "Fest, bobler & dessert",
+    links: [
+      { href: "/guides/bobler-champagne-cava-prosecco-og-cremant", label: "Bobler og champagne" },
+      { href: "/guides/vin-til-nytaar-og-nytaarsmenu", label: "Nytår og nytårsmenu" },
+      { href: "/guides/vin-til-dessert-og-kransekage", label: "Dessert og kransekage" },
+    ],
+  },
+  {
+    title: "Dansk køkken",
+    links: [
+      { href: "/guides/vin-til-smorrebrod", label: "Vin til smørrebrød" },
+      { href: "/guides/vin-til-julefrokost", label: "Vin til julefrokost" },
+      { href: "/guides/vin-til-sild", label: "Vin til sild" },
+      { href: "/guides/vin-til-frikadeller", label: "Vin til frikadeller" },
+      { href: "/guides/vin-til-medister", label: "Vin til medister" },
+      { href: "/guides/vin-til-flaesketesteg", label: "Vin til flæskesteg" },
+      { href: "/guides/vin-til-stegt-flaesk", label: "Vin til stegt flæsk" },
+    ],
+  },
+  {
+    title: "Fisk & skaldyr",
+    links: [
+      { href: "/guides/vin-til-laks", label: "Vin til laks" },
+      { href: "/guides/vin-til-torsk", label: "Vin til torsk" },
+      { href: "/guides/vin-til-rejer", label: "Vin til rejer" },
+      { href: "/guides/vin-til-sushi", label: "Vin til sushi" },
+    ],
+  },
+  {
+    title: "Kød & grill",
+    links: [
+      { href: "/guides/vin-til-grill-og-bbq", label: "Grill og BBQ" },
+      { href: "/guides/vin-til-boeff", label: "Vin til bøf" },
+      { href: "/guides/vin-til-tatar-og-carpaccio", label: "Vin til tatar" },
+      { href: "/guides/vin-til-lam", label: "Vin til lam" },
+      { href: "/guides/vin-til-and", label: "Vin til and" },
+      { href: "/guides/vin-til-svinekoed", label: "Vin til svinekød" },
+    ],
+  },
+  {
+    title: "Internationalt",
+    links: [
+      { href: "/guides/vin-til-thai-mad", label: "Vin til thai" },
+      { href: "/guides/vin-til-indisk-mad", label: "Vin til indisk" },
+      { href: "/guides/vin-til-wok", label: "Vin til wok" },
+      { href: "/guides/vin-til-tacos", label: "Vin til tacos" },
+      { href: "/guides/vin-til-couscous", label: "Vin til couscous" },
+      { href: "/guides/vin-til-vegetar", label: "Vin til vegetar" },
+    ],
+  },
+  {
+    title: "Gryde, pasta & ris",
+    links: [
+      { href: "/guides/vin-til-lasagne", label: "Vin til lasagne" },
+      { href: "/guides/vin-til-risotto", label: "Vin til risotto" },
+      { href: "/guides/vin-til-gryderet", label: "Vin til gryderet" },
+      { href: "/guides/vin-til-suppe", label: "Vin til suppe" },
+    ],
+  },
+];
+
 export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
@@ -38,179 +113,26 @@ export default async function HomePage({ searchParams }: HomeProps) {
           </Link>
         </div>
         <div className="mt-10 border-t border-rose-200/60 pt-8">
-          <p className="text-sm font-semibold text-stone-800">Populære emner lige nu</p>
-          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-rose-900">
-            <li>
-              <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vintemperatur og servering
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/naturvin-hvad-er-det" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Naturvin
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-dessert-og-kransekage" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Dessert og kransekage
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Bobler og champagne
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Nytår og nytårsmenu
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-begreber-i-praksis" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vinbegreber
-              </Link>
-            </li>
-            <li>
-              <Link href="/druesorter" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Druesorter
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-grill-og-bbq" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Grill og BBQ
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-lasagne" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til lasagne
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-laks" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til laks
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-vegetar" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til vegetar
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-flaesketesteg" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til flæskesteg
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-boeff" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til bøf
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-tacos" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til tacos
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-and" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til and
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-lam" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til lam
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-torsk" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til torsk
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-frikadeller" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til frikadeller
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-wok" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til wok
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-couscous" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til couscous
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-sushi" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til sushi
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-julefrokost" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til julefrokost
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-stegt-flaesk" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til stegt flæsk
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-indisk-mad" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til indisk
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-svinekoed" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til svinekød
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-rejer" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til rejer
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-suppe" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til suppe
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-sild" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til sild
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-thai-mad" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til thai
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-smorrebrod" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til smørrebrød
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-risotto" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til risotto
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-gryderet" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til gryderet
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-medister" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til medister
-              </Link>
-            </li>
-            <li>
-              <Link href="/guides/vin-til-tatar-og-carpaccio" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
-                Vin til tatar
-              </Link>
-            </li>
-          </ul>
+          <h2 className="text-sm font-semibold text-stone-800">Populære emner lige nu</h2>
+          <p className="mt-1 max-w-2xl text-sm text-stone-600">
+            Sorteret efter type — alle links er de samme som før, bare nemmere at scanne.
+          </p>
+          <div className="mt-6 space-y-7">
+            {popularTopicGroups.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-rose-900/70">{group.title}</h3>
+                <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm text-rose-900">
+                  {group.links.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className={popularTopicLinkClass}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
