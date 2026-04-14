@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listGuides } from "@/lib/content/guides";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function MadOgVinHubPage() {
           ))}
         </ul>
       </section>
+      <PartnerAdsLeaderboard className="mt-12" />
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>
         <p className="mt-4">

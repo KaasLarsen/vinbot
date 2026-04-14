@@ -36,6 +36,13 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",
   },
   {
+    title: "Weinhof 519 Alte Reben Rosé 2025",
+    blurb: "Samme Rheingau-hus som Alte Reben-hvidvinen — tør rosé med saft og syre til lækre salater, fisk og sommer på terrassen.",
+    productUrl: "https://densidsteflaske.dk/products/alte-reben-rose-weinhof-519-2024",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rose-2025-weinhof-519-rose-1224966837.png?v=1772641270",
+  },
+  {
     title: "The Guv'nor Tinto",
     blurb: "Spansk rød med kant — ligetil, frugtig og oplagt til tapas, pølser og aftener uden snobberi.",
     productUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",

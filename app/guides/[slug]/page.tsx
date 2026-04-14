@@ -8,6 +8,7 @@ import { guideFaqBySlug } from "@/lib/guide-faq";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -70,6 +71,7 @@ export default async function GuidePage({ params }: Props) {
         <AffiliateDisclosure compact />
         {content}
       </div>
+      <PartnerAdsLeaderboard className="mt-12" />
       <div className="mt-12">
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
       </div>

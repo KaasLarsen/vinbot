@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listGuides } from "@/lib/content/guides";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function HumoerHubPage() {
           </li>
         ))}
       </ul>
+      <PartnerAdsLeaderboard className="mt-12" />
       <p className="mt-10 text-stone-700">
         Kombinér med{" "}
         <Link href="/mad-og-vin" className="text-rose-900 hover:underline">

@@ -4,6 +4,7 @@ import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banners";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { siteDescription, siteName } from "@/lib/site";
@@ -179,6 +180,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
           <p className="mt-2 text-stone-600">Forår, sommer, efterår og vinter — hvad der smager af årstiden i glasset.</p>
         </Link>
       </section>
+
+      <PartnerAdsLeaderboard className="mt-16" />
     </div>
     </>
   );

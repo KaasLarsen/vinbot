@@ -3,6 +3,10 @@ import { siteName } from "@/lib/site";
 
 const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
 
+/** Partner-Ads tekstlink — Beer Me ølabonnement (intet visbanner i programmet). */
+const PARTNER_ADS_BEER_ME_SUBSCRIPTION =
+  "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=74589";
+
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-stone-200 bg-stone-50">
@@ -23,6 +27,20 @@ export function SiteFooter() {
                 Øl &amp; Vin på Facebook
               </a>
             </p>
+            <div className="mt-4 max-w-md rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
+              <p className="mt-2 leading-relaxed text-stone-700">
+                <a
+                  href={PARTNER_ADS_BEER_ME_SUBSCRIPTION}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                >
+                  Specialøl på abonnement hos Beer Me
+                </a>{" "}
+                — kuraterede månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
+              </p>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <Link href="/om-os" className="hover:text-rose-900">
