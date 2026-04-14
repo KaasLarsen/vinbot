@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Rabatkoder til vin — partnertilbud",
   description:
-    "Aktuelle rabatkoder og tilbud hos udvalgte vinforhandlere: Lauridsen Vine, DH Wines, SPS Wine m.fl. Tjek altid vilkår hos butikken før køb.",
+    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, DH Wines, SPS Wine m.fl. Affiliate-links markeres. Tjek vilkår hos butikken.",
   alternates: { canonical: `${siteUrl}/rabatkoder` },
 };
 
@@ -20,7 +21,10 @@ type RabatEntry = {
 
 type RabatPartner = {
   name: string;
+  /** Vist som “rigtig” webadresse; bruges også hvis der ikke er affiliate-link */
   shopUrl: string;
+  /** Partner-Ads klik — sæt når I har bannerid (se lib/partner-ads-links.ts) */
+  affiliateHref?: string;
   entries: RabatEntry[];
   footnote?: string;
 };
@@ -33,6 +37,41 @@ const PARTNERE: RabatPartner[] = [
       {
         title: "Nyhedsbrev",
         body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Lauridsen Vine. Tilmelding og vilkår foregår på deres webshop.",
+      },
+    ],
+  },
+  {
+    name: "Beer Me",
+    shopUrl: "https://www.beer-me.dk/",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe, "https://www.beer-me.dk/"),
+    entries: [
+      {
+        title: "Nyhedsbrev",
+        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Beer Me (vin, øl og mere på webshoppen). Tilmelding sker på deres site.",
+      },
+    ],
+    footnote:
+      "Affiliate-link via Partner-Ads. Banner 74589 bruges også til ølabonnement — hvis tracking eller landingpage afviger, skift til dedikeret klikbanner i Partner-Ads og opdater lib/partner-ads-links.ts.",
+  },
+  {
+    name: "Johnsen Wine",
+    shopUrl: "https://www.johnsenwine.dk/",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.johnsenWine, "https://www.johnsenwine.dk/"),
+    entries: [
+      {
+        title: "Nyhedsbrev",
+        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Johnsen Wine. Tilmelding og vilkår på johnsenwine.dk.",
+      },
+    ],
+  },
+  {
+    name: "Mere om Vin",
+    shopUrl: "https://mereomvin.dk/",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.mereOmVin, "https://mereomvin.dk/"),
+    entries: [
+      {
+        title: "Nyhedsbrev",
+        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Mere om Vin. Tilmelding og vilkår på mereomvin.dk.",
       },
     ],
   },
@@ -102,18 +141,22 @@ export default function RabatkoderPage() {
         <AffiliateDisclosure />
       </div>
 
+      <p className="mt-4 text-xs text-stone-500">
+        * Shop-links markeret med stjerne går via <strong className="font-medium text-stone-700">Partner-Ads</strong> og kan udløse provision til Vinbot uden merpris for dig.
+      </p>
+
       <ul className="mt-10 space-y-6">
         {PARTNERE.map((p) => (
           <li key={p.name} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <h2 className="text-xl font-semibold text-stone-900">{p.name}</h2>
               <a
-                href={p.shopUrl}
+                href={p.affiliateHref ?? p.shopUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={p.affiliateHref ? "nofollow sponsored noopener noreferrer" : "noopener noreferrer"}
                 className="shrink-0 text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
               >
-                Gå til shop →
+                Gå til shop{p.affiliateHref ? " *" : ""} →
               </a>
             </div>
             <div className="mt-4 space-y-5 border-t border-stone-100 pt-4">
