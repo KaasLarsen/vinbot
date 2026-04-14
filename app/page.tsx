@@ -140,6 +140,46 @@ export default async function HomePage({ searchParams }: HomeProps) {
                 Vin til couscous
               </Link>
             </li>
+            <li>
+              <Link href="/guides/vin-til-sushi" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til sushi
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-julefrokost" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til julefrokost
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-stegt-flaesk" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til stegt flæsk
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-indisk-mad" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til indisk
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-svinekoed" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til svinekød
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-rejer" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til rejer
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-suppe" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til suppe
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-sild" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til sild
+              </Link>
+            </li>
           </ul>
         </div>
       </section>
