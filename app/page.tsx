@@ -41,6 +41,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     links: [
       { href: "/guides/vin-til-smorrebrod", label: "Vin til smørrebrød" },
       { href: "/guides/vin-til-julefrokost", label: "Vin til julefrokost" },
+      { href: "/guides/vin-til-tarteletter", label: "Vin til tarteletter" },
       { href: "/guides/vin-til-sild", label: "Vin til sild" },
       { href: "/guides/vin-til-frikadeller", label: "Vin til frikadeller" },
       { href: "/guides/vin-til-medister", label: "Vin til medister" },
@@ -53,6 +54,8 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     links: [
       { href: "/guides/vin-til-laks", label: "Vin til laks" },
       { href: "/guides/vin-til-torsk", label: "Vin til torsk" },
+      { href: "/guides/vin-til-ceviche", label: "Vin til ceviche" },
+      { href: "/guides/vin-til-krebse", label: "Vin til krebse" },
       { href: "/guides/vin-til-rejer", label: "Vin til rejer" },
       { href: "/guides/vin-til-sushi", label: "Vin til sushi" },
     ],
@@ -62,6 +65,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     links: [
       { href: "/guides/vin-til-grill-og-bbq", label: "Grill og BBQ" },
       { href: "/guides/vin-til-boeff", label: "Vin til bøf" },
+      { href: "/guides/vin-til-vildt", label: "Vin til vildt" },
       { href: "/guides/vin-til-tatar-og-carpaccio", label: "Vin til tatar" },
       { href: "/guides/vin-til-lam", label: "Vin til lam" },
       { href: "/guides/vin-til-and", label: "Vin til and" },
@@ -72,9 +76,12 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     title: "Internationalt",
     links: [
       { href: "/guides/vin-til-thai-mad", label: "Vin til thai" },
+      { href: "/guides/vin-til-vietnamesisk-mad", label: "Vin til vietnamesisk" },
       { href: "/guides/vin-til-indisk-mad", label: "Vin til indisk" },
+      { href: "/guides/vin-til-graesk-mad", label: "Vin til græsk" },
       { href: "/guides/vin-til-wok", label: "Vin til wok" },
       { href: "/guides/vin-til-tacos", label: "Vin til tacos" },
+      { href: "/guides/vin-til-kebab-og-shawarma", label: "Vin til kebab" },
       { href: "/guides/vin-til-couscous", label: "Vin til couscous" },
       { href: "/guides/vin-til-vegetar", label: "Vin til vegetar" },
     ],
@@ -82,6 +89,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
   {
     title: "Gryde, pasta & ris",
     links: [
+      { href: "/guides/vin-til-pizza", label: "Vin til pizza" },
       { href: "/guides/vin-til-lasagne", label: "Vin til lasagne" },
       { href: "/guides/vin-til-risotto", label: "Vin til risotto" },
       { href: "/guides/vin-til-gryderet", label: "Vin til gryderet" },
@@ -115,7 +123,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
         <div className="mt-10 border-t border-rose-200/60 pt-8">
           <h2 className="text-sm font-semibold text-stone-800">Populære emner lige nu</h2>
           <p className="mt-1 max-w-2xl text-sm text-stone-600">
-            Sorteret efter type — alle links er de samme som før, bare nemmere at scanne.
+            Udvalgte emner grupperet efter type — vi udvider løbende med flere vin-til-mad-sider.
           </p>
           <div className="mt-6 space-y-7">
             {popularTopicGroups.map((group) => (
