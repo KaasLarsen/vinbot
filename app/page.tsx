@@ -40,6 +40,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
       { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og servering" },
       { href: "/guides/naturvin-hvad-er-det", label: "Naturvin" },
       { href: "/guides/vin-begreber-i-praksis", label: "Vinbegreber" },
+      { href: "/guides/koeb-vin-online-sadan-holder-du-styr-paa-det", label: "Køb vin online" },
       { href: "/druesorter", label: "Druesorter" },
     ],
   },
