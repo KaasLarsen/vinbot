@@ -14,10 +14,63 @@ const REGIONER = [
   { navn: "Alsace", q: "riesling", note: "Aromatiske hvide — ost, svinekød og asiatisk." },
 ];
 
+const LAND_GUIDES: { title: string; slug: string; teaser: string }[] = [
+  {
+    title: "Frankrig",
+    slug: "vinregion-frankrig",
+    teaser: "Champagne til Roussillon: Loire, Bordeaux, Bourgogne, Alsace, Rhône, Provence og mere.",
+  },
+  {
+    title: "Italien",
+    slug: "vinregion-italien",
+    teaser: "Piemonte, Toscana, Veneto, Syditalien, Sicilien — nebbiolo, sangiovese, aglianico, etna.",
+  },
+  {
+    title: "Spanien",
+    slug: "vinregion-spanien",
+    teaser: "Rioja, Ribera, Priorat, Galicien, sherry og cava — tempranillo, garnacha, albariño.",
+  },
+  {
+    title: "Tyskland",
+    slug: "vinregion-tyskland",
+    teaser: "Mosel, Rheingau, Pfalz, Franken — riesling og spätburgunder, Prädikat og trocken.",
+  },
+  {
+    title: "Portugal",
+    slug: "vinregion-portugal",
+    teaser: "Douro, vinho verde, Dão, Bairrada, Alentejo — touriga, baga, portvin.",
+  },
+  {
+    title: "USA",
+    slug: "vinregion-usa",
+    teaser: "Napa, Sonoma, Willamette, Washington — cabernet, pinot, zinfandel.",
+  },
+  {
+    title: "Chile & Argentina",
+    slug: "vinregion-chile-argentina",
+    teaser: "Andes, kølig kyst, Mendoza og malbec — carménère, cabernet, torrontés.",
+  },
+  {
+    title: "Australien & New Zealand",
+    slug: "vinregion-australien-new-zealand",
+    teaser: "Barossa, Margaret River, Marlborough, Central Otago — shiraz, riesling, sauvignon, pinot.",
+  },
+  {
+    title: "Sydafrika",
+    slug: "vinregion-sydafrika",
+    teaser: "Stellenbosch, Swartland, Hemel-en-Aarde — chenin, pinotage, cabernet.",
+  },
+  {
+    title: "Central- & Østeuropa + Georgien",
+    slug: "vinregion-europa-central-og-oest",
+    teaser: "Østrig, Ungarn, Schweiz, Balkan, qvevri og saperavi.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Vinregioner — klassiske områder og inspiration",
   description:
-    "Klassiske vinregioner forklaret kort: stil, madparring og forslag til, hvad du kan søge efter hos forhandlerne — suppleret med guider om mad og vin.",
+    "Vinregioner og vinlande: dybdegående guides til Frankrig, Italien, Spanien, Tyskland, Portugal, USA, Sydamerika, Oceanien, Sydafrika og Central-/Østeuropa — plus hurtige søg til klassiske navne.",
   alternates: { canonical: `${siteUrl}/regioner` },
 };
 
@@ -29,21 +82,57 @@ export default function RegionerHubPage() {
       <p className="mt-4 text-lg text-stone-700">
         Region giver ofte en stilforventning — men husk at moderne vinmageri også skaber fantastiske vine uden for de klassiske navne. Brug søgningen til at finde flasker, og læs{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
-          vin & mad-guiden
+          vin &amp; mad-guiden
         </Link>
         .
       </p>
-      <ul className="mt-10 space-y-4">
-        {REGIONER.map((r) => (
-          <li key={r.q} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-            <h2 className="text-xl font-semibold text-stone-900">{r.navn}</h2>
-            <p className="mt-2 text-stone-600">{r.note}</p>
-            <Link href={`/?q=${encodeURIComponent(r.q)}`} className="mt-3 inline-block text-rose-900 hover:underline">
-              Søg {r.navn} →
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <section className="mt-12">
+        <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Lande og vinområder — dybdeguides</h2>
+        <p className="mt-3 text-stone-700">
+          Ti lange artikler med historie, underregioner, typiske druer og praktiske søgeord — suppler{" "}
+          <Link href="/druesorter" className="text-rose-900 hover:underline">
+            druesorter
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides" className="text-rose-900 hover:underline">
+            alle guides
+          </Link>
+          .
+        </p>
+        <ul className="mt-6 space-y-4">
+          {LAND_GUIDES.map((g) => (
+            <li key={g.slug} className="rounded-2xl border border-rose-100 bg-rose-50/40 p-5 shadow-sm">
+              <h3 className="text-lg font-semibold text-stone-900">
+                <Link href={`/guides/${g.slug}`} className="text-rose-950 hover:underline">
+                  {g.title}
+                </Link>
+              </h3>
+              <p className="mt-2 text-stone-600">{g.teaser}</p>
+              <Link href={`/guides/${g.slug}`} className="mt-3 inline-block text-rose-900 hover:underline">
+                Læs guiden →
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Hurtige søg — klassiske navne</h2>
+        <p className="mt-3 text-stone-700">Spring direkte til Vinbot-søgning med et enkelt klik.</p>
+        <ul className="mt-6 space-y-4">
+          {REGIONER.map((r) => (
+            <li key={r.q} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xl font-semibold text-stone-900">{r.navn}</h3>
+              <p className="mt-2 text-stone-600">{r.note}</p>
+              <Link href={`/?q=${encodeURIComponent(r.q)}`} className="mt-3 inline-block text-rose-900 hover:underline">
+                Søg {r.navn} →
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <p className="mt-10 text-stone-700">
         Udforsk også{" "}
         <Link href="/druesorter" className="text-rose-900 hover:underline">
