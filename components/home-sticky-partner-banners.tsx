@@ -1,6 +1,10 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 /**
- * Partner-Ads skyscraper-bannere — kun forsiden, faste sider på store viewport.
- * Tracking: klik via klikbanner.php, billede via visbanner.php.
+ * Partner-Ads skyscraper-bannere — kun forsiden, fast i viewport ved scroll.
+ * Monteres i root layout (direkte under body) så position: fixed altid er mod viewport.
  */
 const PARTNER_ID = "50537";
 
@@ -8,6 +12,8 @@ const LEFT_BANNER_ID = "108308";
 const RIGHT_BANNER_ID = "94900";
 
 const linkRel = "nofollow sponsored noopener noreferrer";
+
+const railStyle = { width: "min(11rem, calc((100vw - 72rem) / 2 - 1rem))" } as const;
 
 function bannerPair(bannerId: string) {
   return {
@@ -17,13 +23,19 @@ function bannerPair(bannerId: string) {
 }
 
 export function HomeStickyPartnerBanners() {
+  const pathname = usePathname();
+  if (pathname !== "/") return null;
+
   const left = bannerPair(LEFT_BANNER_ID);
   const right = bannerPair(RIGHT_BANNER_ID);
 
   return (
     <>
-      <div className="pointer-events-none fixed left-0 top-1/2 z-30 hidden -translate-y-1/2 2xl:block 2xl:w-[min(11rem,calc((100vw-72rem)/2-1rem)))]">
-        <div className="pointer-events-auto px-2">
+      <div
+        className="pointer-events-none fixed inset-y-0 left-0 z-30 hidden 2xl:flex 2xl:items-center 2xl:justify-center 2xl:px-2"
+        style={railStyle}
+      >
+        <div className="pointer-events-auto">
           <a
             href={left.href}
             target="_blank"
@@ -42,8 +54,11 @@ export function HomeStickyPartnerBanners() {
           </a>
         </div>
       </div>
-      <div className="pointer-events-none fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 2xl:block 2xl:w-[min(11rem,calc((100vw-72rem)/2-1rem)))]">
-        <div className="pointer-events-auto px-2">
+      <div
+        className="pointer-events-none fixed inset-y-0 right-0 z-30 hidden 2xl:flex 2xl:items-center 2xl:justify-center 2xl:px-2"
+        style={railStyle}
+      >
+        <div className="pointer-events-auto">
           <a
             href={right.href}
             target="_blank"
