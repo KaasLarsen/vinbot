@@ -4,17 +4,11 @@ import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import readingTime from "reading-time";
 import { guideMdxComponents } from "@/lib/content/guide-mdx-components";
+import type { GuideFrontmatter } from "@/lib/content/guide-types";
+
+export type { GuideFrontmatter } from "@/lib/content/guide-types";
 
 const guidesDir = path.join(process.cwd(), "content/guides");
-
-export type GuideFrontmatter = {
-  title: string;
-  description: string;
-  slug: string;
-  tags: string[];
-  updated: string;
-  hub?: string;
-};
 
 export function getGuideSlugs(): string[] {
   if (!fs.existsSync(guidesDir)) return [];
@@ -32,6 +26,13 @@ export function listGuides(): GuideFrontmatter[] {
       return { ...(data as GuideFrontmatter), slug };
     })
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
+}
+
+/** Guides til mad & vin-hubben (hub + “mad” i tags). */
+export function listMadOgVinHubGuides(): GuideFrontmatter[] {
+  return listGuides().filter(
+    (g) => g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad")),
+  );
 }
 
 export function guidesByTag(tag: string): GuideFrontmatter[] {

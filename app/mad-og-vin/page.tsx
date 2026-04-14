@@ -3,8 +3,7 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
-import { listMadOgVinHubGuides } from "@/lib/guide-browse";
-import { listGuides } from "@/lib/content/guides";
+import { listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {

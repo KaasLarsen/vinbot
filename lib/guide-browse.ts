@@ -1,12 +1,4 @@
-import type { GuideFrontmatter } from "@/lib/content/guides";
-import { listGuides } from "@/lib/content/guides";
-
-/** Guides der hører til mad & vin-hubben (hub + “mad” i tags). */
-export function listMadOgVinHubGuides(): GuideFrontmatter[] {
-  return listGuides().filter(
-    (g) => g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad")),
-  );
-}
+import type { GuideFrontmatter } from "@/lib/content/guide-types";
 
 /** Til kategorisering i hub-browser (slug-baseret — ingen ekstra frontmatter). */
 export type GuideBrowseKind = "vin-til" | "druer" | "baggrund";
