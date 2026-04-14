@@ -6,6 +6,7 @@ import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
+import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -123,6 +124,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <section className="rounded-3xl bg-gradient-to-br from-rose-50 via-white to-amber-50/60 px-6 py-10 shadow-sm ring-1 ring-stone-200/80 sm:px-10 sm:py-11">
         <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">Danmarks vinguide</p>
         <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">

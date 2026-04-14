@@ -16,6 +16,9 @@ export type DsfFeaturedPick = {
   /** Fuld produktside-URL på densidsteflaske.dk */
   productUrl: string;
   imageUrl?: string;
+  /** Ca.-pris til JSON-LD — tjek altid aktuel pris på forhandlerens side */
+  listPrice?: number;
+  priceCurrency?: string;
   /** Sæt true for at linke direkte uden Partner-Ads (fx lokal test) */
   directLink?: boolean;
 };

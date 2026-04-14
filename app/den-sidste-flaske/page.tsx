@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
-import { FaqJsonLd } from "@/components/json-ld";
+import { DsfFeaturedProductsJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
@@ -42,6 +42,7 @@ export default function DenSidsteFlaskePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/den-sidste-flaske", label: "Den Sidste Flaske" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Den Sidste Flaske</h1>

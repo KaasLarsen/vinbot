@@ -1,3 +1,6 @@
+import type { DsfFeaturedPick } from "@/lib/dsf-featured";
+import { buildDsfFeaturedProductsItemList } from "@/lib/schema/dsf-affiliate-product";
+
 type ArticleJsonLdProps = {
   title: string;
   description: string;
@@ -48,5 +51,12 @@ export function WebSiteJsonLd({ url }: { url: string }) {
       "query-input": "required name=search_term_string",
     },
   };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+/** Udvalgte DSF-produkter med shipping + retur (Google Merchant Listings). Review/rating udelades med vilje (ingen fabrikerede stjerner). */
+export function DsfFeaturedProductsJsonLd({ picks }: { picks: DsfFeaturedPick[] }) {
+  if (picks.length === 0) return null;
+  const data = buildDsfFeaturedProductsItemList(picks);
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
