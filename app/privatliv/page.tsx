@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { CookieConsentReset } from "@/components/cookie-consent-reset";
 import { contactEmail, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function PrivatlivPage() {
     <div className="mx-auto max-w-3xl px-4 py-10">
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/privatliv", label: "Privatliv" }]} />
       <h1 className="mt-6 text-3xl font-semibold text-stone-900">Privatliv</h1>
-      <p className="mt-2 text-sm text-stone-500">Sidst opdateret: 11. april 2026</p>
+      <p className="mt-2 text-sm text-stone-500">Sidst opdateret: 19. april 2026</p>
 
       <section className="mt-8 space-y-4 text-stone-700">
         <p>
@@ -44,9 +45,18 @@ export default function PrivatlivPage() {
           <li>Annoncer (samtykke).</li>
           <li>Affiliate-sporing (samtykke/legitim interesse).</li>
         </ul>
+        <h2 className="text-xl font-semibold text-stone-900">Cookie-banner</h2>
+        <p>
+          Ved første besøg viser vi en besked i bunden af skærmen. <strong>Accepter</strong> giver samtykke til statistik (Google Analytics).{" "}
+          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige; så indlæses ikke Analytics.
+        </p>
+        <p className="flex flex-wrap items-center gap-3">
+          <CookieConsentReset />
+          <span className="text-sm text-stone-500">Brug knappen, hvis du vil vælge igen.</span>
+        </p>
         <h2 className="text-xl font-semibold text-stone-900">Google Analytics</h2>
         <p>
-          Vi bruger Google Analytics 4 til at forstå, hvordan sitet bruges (fx besøgte sider og brugsmønstre). Oplysninger behandles af Google efter deres gældende vilkår. Du kan begrænse eller blokere cookies i din browser; se også Googles egne værktøjer til annoncetilpasning.
+          Vi bruger Google Analytics 4 til at forstå, hvordan sitet bruges (fx besøgte sider og brugsmønstre). Oplysninger behandles af Google efter deres gældende vilkår. Analytics indlæses kun, hvis du har trykket <strong>Accepter</strong> i cookie-banneret. Du kan begrænse eller blokere cookies i din browser; se også Googles egne værktøjer til annoncetilpasning.
         </p>
         <h2 className="text-xl font-semibold text-stone-900">Google AdSense</h2>
         <p>Google kan bruge cookies til at vise personligt tilpassede annoncer, hvis du har givet samtykke.</p>

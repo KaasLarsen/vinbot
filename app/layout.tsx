@@ -4,7 +4,8 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banners";
-import { GoogleAnalytics } from "@/components/google-analytics";
+import { AnalyticsConsentGate } from "@/components/analytics-consent-gate";
+import { CookieBanner } from "@/components/cookie-banner";
 import { WebSiteJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
@@ -44,7 +45,8 @@ export default function RootLayout({
   return (
     <html lang="da" className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}>
       <body className="min-h-full flex flex-col font-sans text-stone-900">
-        {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
+        {gaMeasurementId ? <AnalyticsConsentGate measurementId={gaMeasurementId} /> : null}
+        <CookieBanner />
         <WebSiteJsonLd url={siteUrl} />
         <HomeStickyPartnerBanners />
         <SiteHeader />
