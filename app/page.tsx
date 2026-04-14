@@ -129,15 +129,26 @@ export default async function HomePage({ searchParams }: HomeProps) {
           Find vin til mad, humør og stemning
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-700">
-          Søg efter julemad, grill, romantisk aften, hygge eller en bestemt drue — og få konkrete forslag med billede og pris fra danske
+          <strong className="font-semibold text-stone-800">Det er søgefeltet herunder, der er hjertet i Vinbot:</strong> skriv julemad, grill, romantisk aften, hygge eller en drue — så får du konkrete forslag med billede og pris fra danske
           forhandlere, du kan klikke videre til.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium">
+        <div className="mt-8 rounded-2xl border border-rose-200/70 bg-white/75 p-5 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
+          <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Søg efter vin</h2>
+          <p className="mt-1 text-sm text-stone-600">Jo mere konkret du er (ret, stemning, budget), jo bedre matcher resultaterne.</p>
+          <div className="mt-4">
+            <AffiliateDisclosure compact />
+          </div>
+          <div className="mt-3">
+            <WineSearch initialQuery={q} />
+          </div>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+          <span className="w-full text-stone-500 sm:w-auto">Vil du læse først?</span>
           <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 underline decoration-rose-300 underline-offset-4">
-            Læs den store mad- og vinguide
+            Den store mad- og vinguide
           </Link>
           <Link href="/den-sidste-flaske" className="text-rose-900 underline decoration-rose-300 underline-offset-4">
-            Den Sidste Flaske — inspiration og gode køb
+            Den Sidste Flaske
           </Link>
         </div>
         <div className="mt-8 border-t border-rose-200/60 pt-6">
@@ -187,12 +198,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
       </section>
 
       <CampaignBanner />
-
-      <section className="mt-12 space-y-6">
-        <h2 className="text-2xl font-semibold text-stone-900">Søg efter vin</h2>
-        <AffiliateDisclosure compact />
-        <WineSearch initialQuery={q} />
-      </section>
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
