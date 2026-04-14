@@ -3,6 +3,12 @@ import { listGuides } from "@/lib/content/guides";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { siteUrl } from "@/lib/site";
 
+/**
+ * Sitemap-kilder (ved nyt indhold — ingen manuel URL-liste for guides):
+ * 1. Statiske App Router-sider via discoverStaticAppRoutes (ikke dynamiske guide-URL'er).
+ * 2. Alle MDX-filer i content/guides med frontmatter → /guides/{slug} via listGuides.
+ * Ny guide: tilføj .mdx og sæt updated. Ny dynamisk route-type: udvid sitemap her.
+ */
 /** Altid frisk sitemap ved crawl (korrekt efter deploy; lastModified fra fil og guide-datoer). */
 export const dynamic = "force-dynamic";
 

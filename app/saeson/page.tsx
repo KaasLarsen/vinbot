@@ -1,37 +1,46 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listGuides } from "@/lib/content/guides";
+import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sæson og vin — forår, sommer, efterår, vinter",
   description:
-    "Sæsonvin i Danmark: forår, sommer, grill og fest. Guides til påske, jul, nytår, brunch og udendørsmad.",
+    "Sæsonvin i Danmark: søg blandt guides til påske, jul, nytår, brunch, sommer og grill.",
   alternates: { canonical: `${siteUrl}/saeson` },
 };
 
 export default function SaesonHubPage() {
-  const guides = listGuides().filter((g) => g.hub === "saeson");
+  const raw = listGuides().filter((g) => g.hub === "saeson");
+  const guides = raw.length ? raw : listGuides().filter((g) => g.slug.includes("saeson"));
+  const cards = guides.map((g) => ({
+    slug: g.slug,
+    title: g.title,
+    description: g.description,
+    updated: g.updated,
+    tags: g.tags,
+  }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-5xl px-4 py-10">
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/saeson", label: "Sæson" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Sæson og vin</h1>
-      <p className="mt-4 text-lg text-stone-700">
-        Årstiden påvirker både køkkenet og lysten i glasset. Her finder du sæsonbetonet inspiration og nem adgang til relaterede guides.
+      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+        Årstiden påvirker både køkkenet og lysten i glasset. Søg nedenfor, eller gå til{" "}
+        <Link href="/guides" className="text-rose-900 hover:underline">
+          alle guides
+        </Link>
+        .
       </p>
-      <ul className="mt-10 space-y-4">
-        {(guides.length ? guides : listGuides().filter((g) => g.slug.includes("saeson"))).map((g) => (
-          <li key={g.slug} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-            <Link href={`/guides/${g.slug}`} className="text-lg font-semibold text-rose-900 hover:underline">
-              {g.title}
-            </Link>
-            <p className="mt-2 text-stone-600">{g.description}</p>
-          </li>
-        ))}
-      </ul>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-semibold text-stone-900">Sæsonguides</h2>
+        <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
+      </section>
+
       <PartnerAdsLeaderboard className="mt-12" />
       <p className="mt-10 text-stone-700">
         Se også{" "}

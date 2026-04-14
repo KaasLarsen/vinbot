@@ -21,7 +21,8 @@ const popularTopicLinkClass =
 
 /** Kompakt udvalg — den fulde liste ligger i <details> nedenunder. */
 const featuredPopularLinks: { href: string; label: string }[] = [
-  { href: "/mad-og-vin", label: "Mad & vin — alle guides" },
+  { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/guides", label: "Alle guides — søg og filtrér" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
   { href: "/guides/bobler-champagne-cava-prosecco-og-cremant", label: "Bobler" },
   { href: "/guides/vin-til-grill-og-bbq", label: "Grill" },

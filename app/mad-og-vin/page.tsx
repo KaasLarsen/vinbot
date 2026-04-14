@@ -1,52 +1,68 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listGuides } from "@/lib/content/guides";
+import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { listMadOgVinHubGuides } from "@/lib/guide-browse";
+import { listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mad og vin — guides og parring",
   description:
-    "Guides til vin og mad: julemad, nytår, tapas, ost, fisk, grill, pizza, burger, italiensk og spansk — plus vinbegreber og temperatur. Skrevet til danske borde.",
+    "Guides til vin og mad: søg og filtrér efter ret, drue eller begreb. Julemad, nytår, tapas, ost, fisk, grill, pizza, burger, italiensk og spansk — plus vinbegreber og temperatur.",
   alternates: { canonical: `${siteUrl}/mad-og-vin` },
 };
 
 export default function MadOgVinHubPage() {
-  const guides = listGuides().filter((g) => g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad")));
+  const raw = listMadOgVinHubGuides();
+  const guides = raw.length ? raw : listGuides().slice(0, 8);
+  const cards = guides.map((g) => ({
+    slug: g.slug,
+    title: g.title,
+    description: g.description,
+    updated: g.updated,
+    tags: g.tags,
+  }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-5xl px-4 py-10">
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/mad-og-vin", label: "Mad & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Mad og vin</h1>
-      <p className="mt-4 text-lg text-stone-700">
-        Vinbot samler danske guides om parring, temperatur og praktiske valg. Brug søgningen på forsiden til at gå fra idé til forslag — og læs videre her for at forstå, hvorfor visse vine fungerer til netop din ret. Start fx med{" "}
+      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+        Vinbot samler danske guides om parring, temperatur og praktiske valg.{" "}
+        <strong className="font-medium text-stone-800">Søg nedenfor</strong> eller vælg kategori — så finder du hurtigere frem, når listen vokser.
+        Brug også søgningen på forsiden til konkrete flasker med pris og billede.
+      </p>
+      <p className="mt-3 text-sm text-stone-600">
+        Startklassikere:{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           den komplette mad-guide
         </Link>
         ,{" "}
         <Link href="/guides/vin-begreber-i-praksis" className="text-rose-900 hover:underline">
           vinbegreber
+        </Link>
+        ,{" "}
+        <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="text-rose-900 hover:underline">
+          temperatur og opbevaring
         </Link>{" "}
-        eller{" "}
+        og{" "}
         <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
           vin til grill
         </Link>
+        . Hele oversigten:{" "}
+        <Link href="/guides" className="font-medium text-rose-900 hover:underline">
+          alle guides
+        </Link>
         .
       </p>
-      <section className="mt-10 space-y-6">
-        <h2 className="text-2xl font-semibold text-stone-900">Udvalgte guides</h2>
-        <ul className="space-y-4">
-          {(guides.length ? guides : listGuides().slice(0, 4)).map((g) => (
-            <li key={g.slug} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-              <Link href={`/guides/${g.slug}`} className="text-lg font-semibold text-rose-900 hover:underline">
-                {g.title}
-              </Link>
-              <p className="mt-2 text-stone-600">{g.description}</p>
-            </li>
-          ))}
-        </ul>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige guide</h2>
+        <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
       </section>
+
       <PartnerAdsLeaderboard className="mt-12" />
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>

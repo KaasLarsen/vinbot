@@ -1,36 +1,47 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listGuides } from "@/lib/content/guides";
+import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Humør og stemning — vælg vin efter lejlighed",
-  description: "Hygge, romantik, fest og sommer: vælg vin der matcher stemningen. Guides og vinsøgning.",
+  description: "Hygge, romantik, fest og sommer: søg og find guides der matcher stemningen.",
   alternates: { canonical: `${siteUrl}/humoer-og-vin` },
 };
 
 export default function HumoerHubPage() {
-  const guides = listGuides().filter((g) => g.hub === "humoer-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("humør")));
+  const raw = listGuides().filter(
+    (g) => g.hub === "humoer-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("humør")),
+  );
+  const guides = raw.length ? raw : listGuides().filter((g) => g.slug.includes("humoer"));
+  const cards = guides.map((g) => ({
+    slug: g.slug,
+    title: g.title,
+    description: g.description,
+    updated: g.updated,
+    tags: g.tags,
+  }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-5xl px-4 py-10">
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/humoer-og-vin", label: "Humør & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Humør og stemning</h1>
-      <p className="mt-4 text-lg text-stone-700">
-        Vin er socialt — samme flaske kan føles festlig, rolig eller romantisk afhængigt af kontekst. Her samler vi guides, der hjælper dig med at vælge ud fra lejlighed, lys og selskab.
+      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+        Vin er socialt — samme flaske kan føles festlig, rolig eller romantisk afhængigt af kontekst. Søg her eller se{" "}
+        <Link href="/guides" className="text-rose-900 hover:underline">
+          alle guides
+        </Link>
+        .
       </p>
-      <ul className="mt-10 space-y-4">
-        {(guides.length ? guides : listGuides().filter((g) => g.slug.includes("humoer"))).map((g) => (
-          <li key={g.slug} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-            <Link href={`/guides/${g.slug}`} className="text-lg font-semibold text-rose-900 hover:underline">
-              {g.title}
-            </Link>
-            <p className="mt-2 text-stone-600">{g.description}</p>
-          </li>
-        ))}
-      </ul>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-semibold text-stone-900">Guides efter stemning</h2>
+        <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
+      </section>
+
       <PartnerAdsLeaderboard className="mt-12" />
       <p className="mt-10 text-stone-700">
         Kombinér med{" "}
