@@ -3,6 +3,7 @@ import Link from "next/link";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
+import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banners";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { siteDescription, siteName } from "@/lib/site";
@@ -18,7 +19,9 @@ export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <>
+      <HomeStickyPartnerBanners />
+      <div className="mx-auto max-w-6xl px-4 py-10">
       <section className="rounded-3xl bg-gradient-to-br from-rose-50 via-white to-amber-50/60 px-6 py-12 shadow-sm ring-1 ring-stone-200/80 sm:px-10">
         <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">Danmarks vinguide</p>
         <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
@@ -177,5 +180,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
         </Link>
       </section>
     </div>
+    </>
   );
 }
