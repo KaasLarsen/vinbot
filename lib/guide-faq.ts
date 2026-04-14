@@ -1,5 +1,22 @@
 /** FAQ til FAQPage JSON-LD — korte, rene svar (flere sider kan tilføjes efter behov). */
 export const guideFaqBySlug: Record<string, { question: string; answer: string }[]> = {
+  "vin-til-sushi": [
+    {
+      question: "Hvilken vin passer bedst til sushi og sashimi?",
+      answer:
+        "Tør hvidvin med tydelig syre og bobler er ofte bedst: riesling, grüner veltliner, muscadet, albariño eller champagne/cremant. De matcher rå fisk og renser ganen uden tung fad eller hårde tanniner.",
+    },
+    {
+      question: "Kan man drikke rødvin til sushi?",
+      answer:
+        "Ja, primært til uramaki eller ruller med fed mayo, avocado eller sprød tempura. Vælg let rød med lav tannin, fx gamay eller kølig pinot noir, og undgå unge, kraftige røde med høj alkohol.",
+    },
+    {
+      question: "Hvorfor smager tung rødvin ofte dårligt til sushi?",
+      answer:
+        "Kraftige tanniner og høj alkohol konkurrerer med soja, wasabi og delikat fisk og kan føles bittert eller dominerende. Sushi har typisk brug for friskhed og syre frem for struktur fra grove tanniner.",
+    },
+  ],
   "opbevaring-af-vin-temperatur-og-aabnet-flaske": [
     {
       question: "Hvilken temperatur skal rødvin have?",
