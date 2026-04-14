@@ -29,4 +29,6 @@ export const PARTNER_ADS_KLIK_BANNERS = {
    * hvis klik ikke tæller eller lander forkert: opret dedikeret tekstbanner i Partner-Ads og skift id her.
    */
   beerMe: "74589",
+  /** Winther Vin — samme banner som produktfeed */
+  wintherVin: "76708",
 } as const;

@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Rabatkoder til vin — partnertilbud",
   description:
-    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, DH Wines, SPS Wine m.fl. Affiliate-links markeres. Tjek vilkår hos butikken.",
+    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.",
   alternates: { canonical: `${siteUrl}/rabatkoder` },
 };
 
@@ -74,6 +74,29 @@ const PARTNERE: RabatPartner[] = [
         body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Mere om Vin. Tilmelding og vilkår på mereomvin.dk.",
       },
     ],
+  },
+  {
+    name: "Winther Vin",
+    shopUrl: "https://winthervin.dk/",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.wintherVin, "https://winthervin.dk/"),
+    entries: [
+      {
+        title: "Nyhedsbrev",
+        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Winther Vin. Tilmelding og vilkår på winthervin.dk.",
+      },
+    ],
+  },
+  {
+    name: "Winefriends",
+    shopUrl: "https://winefriends.dk/",
+    entries: [
+      {
+        title: "Nyhedsbrev",
+        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Winefriends. Tilmelding og vilkår på winefriends.dk.",
+      },
+    ],
+    footnote:
+      "Direkte link til shop (ingen Partner-Ads-klik i koden endnu). Når I har et klikbanner-id til Winefriends, tilføj winefriends i lib/partner-ads-links.ts og affiliateHref på kortet.",
   },
   {
     name: "DH Wines",
