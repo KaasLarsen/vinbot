@@ -45,8 +45,19 @@ export function SiteHeader() {
     <header className="border-b border-stone-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-4">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="text-xl font-semibold tracking-tight text-rose-950">
-            Vinbot
+          <Link
+            href="/"
+            className="group flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-2"
+          >
+            <span className="text-xl font-semibold tracking-tight text-rose-950 group-hover:text-rose-900">
+              Vinbot
+            </span>
+            <span className="max-w-[min(100%,20rem)] text-xs font-normal leading-snug text-stone-600 sm:max-w-none sm:text-[0.8125rem]">
+              <span className="hidden sm:inline" aria-hidden>
+                —{" "}
+              </span>
+              Find den rette vin til mad, stemning og lejlighed
+            </span>
           </Link>
           <button
             type="button"
