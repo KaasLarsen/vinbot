@@ -180,6 +180,36 @@ export default async function HomePage({ searchParams }: HomeProps) {
                 Vin til sild
               </Link>
             </li>
+            <li>
+              <Link href="/guides/vin-til-thai-mad" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til thai
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-smorrebrod" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til smørrebrød
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-risotto" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til risotto
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-gryderet" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til gryderet
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-medister" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til medister
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/vin-til-tatar-og-carpaccio" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+                Vin til tatar
+              </Link>
+            </li>
           </ul>
         </div>
       </section>
