@@ -15,6 +15,7 @@ const DRUE_GRUPPER: DrueGruppe[] = [
     intro: "Frisk syre, aroma og ofte lavere tannin — oplagt til fisk, skaldyr, salat og mange lettere kødretter.",
     punkter: [
       { navn: "Albariño", q: "albariño", note: "Citrus og salt — skaldyr, tapas og let fisk.", guide: "albarino-druen" },
+      { navn: "Assyrtiko", q: "assyrtiko", note: "Mineral og syre fra Santorini — fisk, skaldyr og grillet grønt.", guide: "assyrtiko-druen" },
       { navn: "Chardonnay", q: "chardonnay", note: "Fad og krop — kylling, skaldyr og cremede saucer.", guide: "chardonnay-druen" },
       { navn: "Chenin Blanc", q: "chenin blanc", note: "Syre og alsidighed — ost, gris og både tør og halvtør stil.", guide: "chenin-blanc-druen" },
       {
@@ -22,6 +23,12 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         q: "grüner veltliner",
         note: "Hvid peber og friskhed — grønt, brunch og asiatisk-inspireret.",
         guide: "gruener-veltliner-druen",
+      },
+      {
+        navn: "Gewürztraminer",
+        q: "gewürztraminer",
+        note: "Lychee og rose — krydret mad, thai og blåskimmel.",
+        guide: "gewurztraminer-druen",
       },
       { navn: "Muscadet", q: "muscadet", note: "Høj syre og sur lie — østers, muslinger og salt fisk.", guide: "muscadet-druen" },
       { navn: "Pinot Blanc", q: "pinot blanc", note: "Ren hvid fra pinot-familien — fisk, svampe og mild ost.", guide: "pinot-blanc-druen" },
@@ -49,6 +56,12 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         q: "cabernet sauvignon",
         note: "Struktur og tanniner — okse, grill og kraftige retter.",
         guide: "cabernet-sauvignon-druen",
+      },
+      {
+        navn: "Cabernet Franc",
+        q: "cabernet franc",
+        note: "Peber og rød frugt — lam, gris og lettere grill end cabernet sauvignon.",
+        guide: "cabernet-franc-druen",
       },
       { navn: "Carménère", q: "carmenere", note: "Urter og mørke bær fra Chile — grill, burger og simrekød.", guide: "carmenere-druen" },
       { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering.", guide: "gamay-druen" },
@@ -93,7 +106,7 @@ function DrueCard({ d }: { d: Drue }) {
 export const metadata: Metadata = {
   title: "Druesorter — oversigt og vinsøgning",
   description:
-    "Alle Vinbots drueguider: hvide (riesling, chardonnay, sauvignon, muscadet, prosecco, verdejo, viognier m.fl.) og røde (pinot, cabernet, carmenère, touriga nacional, zinfandel m.fl.) — med søgning og madparring.",
+    "Alle Vinbots drueguider: hvide (riesling, assyrtiko, gewürztraminer, chardonnay, sauvignon, muscadet, prosecco m.fl.) og røde (pinot, cabernet franc, carmenère, touriga nacional m.fl.) — med søgning og madparring.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 

@@ -356,4 +356,40 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Pinot noir er ofte lettere og mere silkeagtig; pinotage har typisk mere farve, krydderi og kan virke rustik — begge kan fungere til grill, men udtrykket er forskelligt.",
     },
   ],
+  "gewurztraminer-druen": [
+    {
+      question: "Hvordan smager gewürztraminer?",
+      answer:
+        "Meget aromatisk med lychee, rose og krydderi, ofte lav syre og højere alkohol. Mange vine er halvtør eller off-dry — tjek beskrivelse eller smagsnoter.",
+    },
+    {
+      question: "Hvilken mad passer til gewürztraminer?",
+      answer:
+        "Krydret asiatisk mad med kokos eller karry, thai, mellemøstlige retter og blåskimmelost. Fedme eller lidt sødme i maden matcher ofte bedre end meget syrlige retter uden tilsvarende sødme i vinen.",
+    },
+  ],
+  "cabernet-franc-druen": [
+    {
+      question: "Hvad er forskellen på cabernet franc og cabernet sauvignon?",
+      answer:
+        "Cabernet franc er ofte lettere med rød frugt, urter og grøn peber; cabernet sauvignon er typisk mørkere, mere tanninrig og kraftigere. I Bordeaux blandes de ofte sammen.",
+    },
+    {
+      question: "Hvor kommer cabernet franc typisk fra?",
+      answer:
+        "Som ren drue især Loire (Chinon, Bourgueil) og som vigtig komponent i Bordeaux-blends. Også plantet i Canada, USA og andre kølige til tempererede områder.",
+    },
+  ],
+  "assyrtiko-druen": [
+    {
+      question: "Hvad er assyrtiko?",
+      answer:
+        "En græsk hvid drue kendt for høj syre, mineralitet og citrus — særligt fra Santorini med vulkansk jord og vindpåvirkede vinstokke.",
+    },
+    {
+      question: "Passer assyrtiko til fisk?",
+      answer:
+        "Ja — grillet fisk, skaldyr, salat med feta og let meze er klassiske matches. Syren skærer igennem fedme og salt på samme måde som andre mineralske hvide.",
+    },
+  ],
 };
