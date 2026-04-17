@@ -392,4 +392,52 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — grillet fisk, skaldyr, salat med feta og let meze er klassiske matches. Syren skærer igennem fedme og salt på samme måde som andre mineralske hvide.",
     },
   ],
+  "dolcetto-druen": [
+    {
+      question: "Hvad smager dolcetto af?",
+      answer:
+        "Kirsebær, blomme og urt med lav til mellem tannin — ofte lettere og mere drikbar ung end nebbiolo fra samme region.",
+    },
+    {
+      question: "Er dolcetto en sød vin?",
+      answer:
+        "Sjældent. Navnet henviser til sødmefulde bær på planten; de fleste vine er tørre rødvine til mad som pizza, pasta og salumi.",
+    },
+  ],
+  "montepulciano-druen": [
+    {
+      question: "Er Montepulciano d’Abruzzo det samme som Vino Nobile?",
+      answer:
+        "Nej. Vino Nobile di Montepulciano er en toscansk vin baseret på sangiovese fra byen Montepulciano. Montepulciano d’Abruzzo er lavet på druen montepulciano i Abruzzo.",
+    },
+    {
+      question: "Hvilken mad passer til montepulciano?",
+      answer:
+        "Tomatbaseret pasta, pizza, grillet kød og italiensk hverdag — ofte blødere og mere frugtforwards end stram sangiovese.",
+    },
+  ],
+  "mencia-druen": [
+    {
+      question: "Hvor dyrkes mencía?",
+      answer:
+        "Især Bierzo, Ribeira Sacra og Valdeorras i nordvestlige Spanien — ofte på skifer og bakker med frisk syre.",
+    },
+    {
+      question: "Er mencía som rioja?",
+      answer:
+        "Begge er spanske røde, men mencía er ofte mere blomstret og stram i frugten, mens klassisk rioja-tempranillo kan være bredere med mere fad og krydderi.",
+    },
+  ],
+  "sadan-laeser-du-vinflaskens-etiket": [
+    {
+      question: "Hvad skal jeg kigge efter først på etiketten?",
+      answer:
+        "Område eller appellation giver ofte mest kontekst for stil og regler. Derefter årgang, alkoholprocent og om vinen er tør eller har restsødme — især på tysk riesling og bobler.",
+    },
+    {
+      question: "Betyder 'Reserve' altid lang lagring?",
+      answer:
+        "Ikke nødvendigvis. Reserva/riserva kan være regelstyret i nogle lande, mens 'Reserve' uden beskyttet oprindelse ofte er marketing — tjek land, appellation og producent.",
+    },
+  ],
 };

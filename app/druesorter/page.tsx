@@ -64,10 +64,18 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         guide: "cabernet-franc-druen",
       },
       { navn: "Carménère", q: "carmenere", note: "Urter og mørke bær fra Chile — grill, burger og simrekød.", guide: "carmenere-druen" },
+      { navn: "Dolcetto", q: "dolcetto", note: "Let Piemonte-rød — pizza, salumi og hverdag.", guide: "dolcetto-druen" },
       { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering.", guide: "gamay-druen" },
       { navn: "Grenache / Garnacha", q: "garnacha", note: "Moden frugt — grill, middelhavsmad og BBQ.", guide: "grenache-druen" },
       { navn: "Malbec", q: "malbec", note: "Mørke bær og blid struktur — burger, grill og argentinsk-inspireret kød.", guide: "malbec-druen" },
+      { navn: "Mencía", q: "mencia", note: "Nordspansk frugt og syre — tapas, gris og lettere kød.", guide: "mencia-druen" },
       { navn: "Merlot", q: "merlot", note: "Blødere frugt og rundere mundfuld — pizza, lyst kød og hverdagssimre.", guide: "merlot-druen" },
+      {
+        navn: "Montepulciano d’Abruzzo",
+        q: "montepulciano d'abruzzo",
+        note: "Saftig rød fra Abruzzo — ikke Vino Nobile (sangiovese).",
+        guide: "montepulciano-druen",
+      },
       { navn: "Nebbiolo / Barolo", q: "barolo", note: "Tanniner og parfume — langtidssteg og kraftigere retter.", guide: "nebbiolo-druen" },
       { navn: "Pinot Noir", q: "pinot noir", note: "Let til mellem fyldig — fjerkræ, svampe og lyst kød.", guide: "pinot-noir-druen" },
       { navn: "Pinotage", q: "pinotage", note: "Sydafrikansk signatur — BBQ, braai og kraftige saucer.", guide: "pinotage-druen" },
@@ -106,7 +114,7 @@ function DrueCard({ d }: { d: Drue }) {
 export const metadata: Metadata = {
   title: "Druesorter — oversigt og vinsøgning",
   description:
-    "Alle Vinbots drueguider: hvide (riesling, assyrtiko, gewürztraminer, chardonnay, sauvignon, muscadet, prosecco m.fl.) og røde (pinot, cabernet franc, carmenère, touriga nacional m.fl.) — med søgning og madparring.",
+    "Alle Vinbots drueguider: hvide (riesling, assyrtiko, gewürztraminer m.fl.) og røde (dolcetto, montepulciano, mencía, cabernet franc, sangiovese m.fl.) — med søgning og madparring.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 
