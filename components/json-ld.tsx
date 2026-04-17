@@ -1,5 +1,6 @@
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
 import { buildDsfFeaturedProductsItemList } from "@/lib/schema/dsf-affiliate-product";
+import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
 
 type ArticleJsonLdProps = {
   title: string;
@@ -10,6 +11,7 @@ type ArticleJsonLdProps = {
 };
 
 export function ArticleJsonLd({ title, description, url, datePublished, dateModified }: ArticleJsonLdProps) {
+  const orgRef = { "@id": organizationSchemaId };
   const data = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -17,9 +19,26 @@ export function ArticleJsonLd({ title, description, url, datePublished, dateModi
     description,
     datePublished,
     dateModified,
-    author: { "@type": "Organization", name: "Vinbot" },
-    publisher: { "@type": "Organization", name: "Vinbot" },
-    mainEntityOfPage: url,
+    author: orgRef,
+    publisher: orgRef,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+type BreadcrumbItem = { name: string; url: string };
+
+export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
+  if (items.length === 0) return null;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -39,12 +58,39 @@ export function FaqJsonLd({ items }: { items: FaqItem[] }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+export function OrganizationJsonLd() {
+  const sameAs = organizationSameAs();
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationSchemaId,
+    name: siteName,
+    url: siteUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: organizationLogoUrl,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: contactEmail,
+      areaServed: "DK",
+      availableLanguage: ["Danish", "da"],
+    },
+  };
+  if (sameAs.length > 0) {
+    data.sameAs = sameAs;
+  }
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 export function WebSiteJsonLd({ url }: { url: string }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Vinbot",
+    name: siteName,
     url,
+    publisher: { "@id": organizationSchemaId },
     potentialAction: {
       "@type": "SearchAction",
       target: `${url}/?q={search_term_string}`,

@@ -25,6 +25,11 @@ export default async function handler(req, res) {
       { merchant: "SPS Wine",           url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112662&feedid=3860" },
       { merchant: "Westjysk Smag",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
       { merchant: "Winesommelier",      url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" },
+      { merchant: "Lauridsen Vine",     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=116085&feedid=4230" },
+      { merchant: "Winefriends",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
+      { merchant: "Whiskystack",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
+      { merchant: "Beer Me",            url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
+      { merchant: "Vinkøleskabet.dk",   url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0", wineFilter: false },
 
       // Daisycon – nye partnere
       { merchant: "Bottles With History", url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=20114&html_transform=none&rawdata=false&encoding=utf8&general=false" },
@@ -40,7 +45,8 @@ export default async function handler(req, res) {
     let feeds_ok = 0, feeds_failed = 0;
 
     const lists = await Promise.all(
-      FEEDS.map(async ({ merchant, url }) => {
+      FEEDS.map(async (feed) => {
+        const { merchant, url, wineFilter } = feed;
         try {
           const r = await fetch(url, { headers, redirect: "follow" });
           const buf = await r.arrayBuffer();
@@ -50,8 +56,10 @@ export default async function handler(req, res) {
             ? parseXMLProducts(text, merchant)
             : parseCSVProducts(text, merchant);
 
-          // 1) Filtrér til vin-lignende produkter (STRAMMET)
-          products = products.filter(isWineLike);
+          // 1) Filtrér til vin-lignende produkter (medmindre wineFilter: false)
+          if (wineFilter !== false) {
+            products = products.filter(isWineLike);
+          }
 
           // 2) Filtrér på pris-interval, hvis vi har noget at gå efter
           if (priceMin != null || priceMax != null) {
@@ -212,7 +220,7 @@ function isWineLike(p) {
     // Glas & udstyr
     "glas", "vinglas", "wine glass", "ølglas", "champagneglas",
     "karaffel", "karafel", "dekanter", "decanter",
-    "vinreol", "vinskab", "vinholder",
+    "vinreol", "vinskab", "vinkøleskab", "vinkoleskab", "wine cooler", "wine cellar", "vinholder",
     "oplukker", "proptrækker", "korkskruer",
     "iskøler", "vinkøler",
     "shotglas", "shotsglas",
@@ -525,8 +533,8 @@ function parseXMLProducts(xml, merchant){
   for (const b of blocks){
     const title = pickOne(b, ["name","title","g_title","produktnavn"]);
     const desc  = pickOne(b, ["description","shortdescription","longdescription","long_description","content_encoded","beskrivelse"]);
-    const category = pickOne(b, ["categorypath","category","categories","kategorinavn"]);
-    const brand = pickOne(b, ["brand","manufacturer","producer","vendor","creator","forhandler"]);
+    const category = pickOne(b, ["categorypath","category","categories","kategorinavn","g_product_type","product_type"]);
+    const brand = pickOne(b, ["brand","g_brand","manufacturer","producer","vendor","creator","forhandler"]);
 
     const priceStr = pickOne(b, [
       "nypris",

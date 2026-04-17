@@ -50,6 +50,14 @@ export default function MadOgVinHubPage() {
         <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
           vin til grill
         </Link>
+        ,{" "}
+        <Link href="/guides/koeb-vin-online-sadan-holder-du-styr-paa-det" className="text-rose-900 hover:underline">
+          køb vin online
+        </Link>{" "}
+        og{" "}
+        <Link href="/regioner" className="text-rose-900 hover:underline">
+          vinregioner
+        </Link>
         . Hele oversigten:{" "}
         <Link href="/guides" className="font-medium text-rose-900 hover:underline">
           alle guides

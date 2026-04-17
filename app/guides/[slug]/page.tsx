@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getGuide, getGuideSlugs, listGuides } from "@/lib/content/guides";
+import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
-import { ArticleJsonLd, FaqJsonLd } from "@/components/json-ld";
+import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { guideFaqBySlug } from "@/lib/guide-faq";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
@@ -20,12 +21,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const g = await getGuide(slug);
   if (!g) return {};
+  const canonical = `${siteUrl}/guides/${slug}`;
   return {
     title: g.frontmatter.title,
     description: g.frontmatter.description,
-    alternates: { canonical: `${siteUrl}/guides/${slug}` },
-    openGraph: { url: `${siteUrl}/guides/${slug}` },
+    alternates: { canonical },
+    openGraph: {
+      url: canonical,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
   };
+}
+
+function absoluteUrl(pathname: string): string {
+  if (pathname === "/") return `${siteUrl}/`;
+  return `${siteUrl}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
 }
 
 export default async function GuidePage({ params }: Props) {
@@ -35,7 +48,9 @@ export default async function GuidePage({ params }: Props) {
 
   const { frontmatter, content, readingMinutes } = data;
   const url = `${siteUrl}/guides/${slug}`;
-  const updated = frontmatter.updated || new Date().toISOString().slice(0, 10);
+  const fallbackDate = new Date().toISOString().slice(0, 10);
+  const { datePublished, dateModified } = guidePublicationAndModified(frontmatter, fallbackDate);
+  const showBothDates = datePublished !== dateModified;
 
   const hub = frontmatter.hub;
   const crumbs = [
@@ -43,6 +58,11 @@ export default async function GuidePage({ params }: Props) {
     ...(hub ? [{ href: `/${hub}`, label: hubLabel(hub) }] : []),
     { href: `/guides/${slug}`, label: frontmatter.title },
   ];
+
+  const breadcrumbLdItems = crumbs.map((c) => ({
+    name: c.label,
+    url: absoluteUrl(c.href),
+  }));
 
   const faqItems = guideFaqBySlug[slug];
 
@@ -52,16 +72,31 @@ export default async function GuidePage({ params }: Props) {
         title={frontmatter.title}
         description={frontmatter.description}
         url={url}
-        datePublished={updated}
-        dateModified={updated}
+        datePublished={datePublished}
+        dateModified={dateModified}
       />
+      <BreadcrumbJsonLd items={breadcrumbLdItems} />
       {faqItems?.length ? <FaqJsonLd items={faqItems} /> : null}
       <Breadcrumbs items={crumbs} />
       <header className="mt-6 border-b border-stone-200 pb-8">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
         <p className="mt-4 text-xl text-stone-600">{frontmatter.description}</p>
-        <p className="mt-4 text-sm text-stone-500">
-          Opdateret {updated} · ca. {readingMinutes} min læsetid ·{" "}
+        <p className="mt-3 text-sm text-stone-600">
+          Af{" "}
+          <Link href="/om-os" className="font-medium text-rose-900 hover:underline">
+            Vinbot
+          </Link>
+        </p>
+        <p className="mt-2 text-sm text-stone-500">
+          {showBothDates ? (
+            <>
+              Publiceret {datePublished} · Opdateret {dateModified} · ca. {readingMinutes} min læsetid ·{" "}
+            </>
+          ) : (
+            <>
+              Opdateret {dateModified} · ca. {readingMinutes} min læsetid ·{" "}
+            </>
+          )}
           <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-800 hover:underline">
             Se også hovedguiden om vin og mad
           </Link>

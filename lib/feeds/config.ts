@@ -1,4 +1,12 @@
-export type FeedConfig = { merchant: string; url: string };
+export type FeedConfig = {
+  merchant: string;
+  url: string;
+  /**
+   * true (standard): kun produkter der matcher `isWineLike` (typisk flasker).
+   * false: hele feedet — til udstyr/kategorier derellers filtreres fra (fx vinkøleskabe); produktlinks skal stadig være tracked i feedet (fx Adtraction).
+   */
+  wineFilter?: boolean;
+};
 
 export const FEEDS: FeedConfig[] = [
   { merchant: "Mere om Vin", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
@@ -12,6 +20,15 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "SPS Wine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112662&feedid=3860" },
   { merchant: "Westjysk Smag", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
   { merchant: "Winesommelier", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" },
+  { merchant: "Lauridsen Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=116085&feedid=4230" },
+  { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
+  { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
+  { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
+  {
+    merchant: "Vinkøleskabet.dk",
+    url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0",
+    wineFilter: false,
+  },
   {
     merchant: "Bottles With History",
     url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=20114&html_transform=none&rawdata=false&encoding=utf8&general=false",

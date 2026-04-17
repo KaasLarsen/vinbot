@@ -32,7 +32,10 @@ export default function BetingelserPage() {
           <h2 className="text-xl font-semibold text-stone-900">3. Annoncering og affiliate</h2>
           <ul className="mt-2 list-disc space-y-2 pl-6">
             <li>Annoncer kan leveres via Google AdSense.</li>
-            <li>Affiliate-links kan udløse kommission ved køb.</li>
+            <li>
+              Affiliate-links kan udløse kommission ved køb og kan formidles via tredjeparts affiliate-netværk, herunder{" "}
+              <strong>Partner-Ads</strong> og <strong>Adtraction</strong>.
+            </li>
           </ul>
         </div>
         <div>

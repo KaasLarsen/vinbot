@@ -1,6 +1,22 @@
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://vinbot.vercel.app").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://vinbot.dk").replace(/\/$/, "");
 export const siteName = "Vinbot";
 export const contactEmail = "info@vinbot.dk";
+
+/** Fast @id til Organization i JSON-LD (samme på tværs af sider). */
+export const organizationSchemaId = `${siteUrl}/#organization`;
+
+/** Google anbefaler logo ≥112px; apple-icon er 180×180. */
+export const organizationLogoUrl = `${siteUrl}/apple-icon`;
+
+/** Kommaseparerede profil-URL'er (fx SoMe), valgfrit. */
+export function organizationSameAs(): string[] {
+  const raw = process.env.NEXT_PUBLIC_ORG_SAME_AS?.trim();
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
 export const siteDescription =
   "Når du skal finde den rigtige vin: søg på tværs af danske forhandlere, og læs grundige guider om mad og vin, humør og årstid.";
 

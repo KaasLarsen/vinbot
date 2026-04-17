@@ -12,7 +12,7 @@ import {
 
 /**
  * Simpelt cookie-banner: Accepter (statistik m.m.) eller kun nødvendige.
- * GA4 indlæses først efter "Accepter" — se AnalyticsConsentGate.
+ * GA4 og AdSense indlæses først efter "Accepter" — se AnalyticsConsentGate og AdSenseConsentGate.
  */
 export function CookieBanner() {
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ export function CookieBanner() {
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
         <p className="text-sm leading-relaxed text-stone-700">
-          Vi bruger cookies til statistik (Google Analytics) og kan senere til annoncer. Ved at trykke{" "}
+          Vi bruger cookies til statistik (Google Analytics) og annoncer (Google AdSense), når det er slået til på sitet. Ved at trykke{" "}
           <strong className="font-medium text-stone-900">Accepter</strong> siger du ja til det. Læs mere under{" "}
           <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
             Privatliv

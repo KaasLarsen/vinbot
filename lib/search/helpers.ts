@@ -69,6 +69,10 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
     "decanter",
     "vinreol",
     "vinskab",
+    "vinkøleskab",
+    "vinkoleskab",
+    "wine cooler",
+    "wine cellar",
     "vinholder",
     "oplukker",
     "proptrækker",
@@ -472,8 +476,15 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
   for (const b of blocks) {
     const title = pickOne(b, ["name", "title", "g_title", "produktnavn"]);
     const desc = pickOne(b, ["description", "shortdescription", "longdescription", "long_description", "content_encoded", "beskrivelse"]);
-    const category = pickOne(b, ["categorypath", "category", "categories", "kategorinavn"]);
-    const brand = pickOne(b, ["brand", "manufacturer", "producer", "vendor", "creator", "forhandler"]);
+    const category = pickOne(b, [
+      "categorypath",
+      "category",
+      "categories",
+      "kategorinavn",
+      "g_product_type",
+      "product_type",
+    ]);
+    const brand = pickOne(b, ["brand", "g_brand", "manufacturer", "producer", "vendor", "creator", "forhandler"]);
 
     const priceStr = pickOne(b, [
       "nypris",

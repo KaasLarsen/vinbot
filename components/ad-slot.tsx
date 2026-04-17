@@ -1,29 +1,41 @@
-import Script from "next/script";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { getAdsenseClientId, isAdsenseEnabled } from "@/lib/adsense-config";
+import { useMarketingConsent } from "@/lib/use-marketing-consent";
 
 /**
  * AdSense er slået fra som standard. Aktivér først når Google har godkendt sitet:
  * sæt NEXT_PUBLIC_ADSENSE_ACTIVE=true og NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-…
+ *
+ * Indlæsning kræver både env og cookie-valget &quot;Accepter&quot; — brug AdSenseConsentGate i layout.
  */
-const adsActive = process.env.NEXT_PUBLIC_ADSENSE_ACTIVE === "true";
-const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim();
-const adsEnabled = adsActive && Boolean(client);
-
 export function AdSenseLoader() {
-  if (!adsEnabled) return null;
-  return (
-    <Script
-      async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`}
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
-    />
-  );
+  return null;
 }
 
 type SlotProps = { slot: string; className?: string; format?: "auto" | "rectangle" | "horizontal" | "vertical" };
 
 export function AdSlot({ slot, className = "", format = "auto" }: SlotProps) {
-  if (!adsEnabled) return null;
+  const allowAds = useMarketingConsent();
+  const enabled = isAdsenseEnabled();
+  const client = getAdsenseClientId();
+  const pushedRef = useRef(false);
+
+  useEffect(() => {
+    if (!enabled || !allowAds || pushedRef.current) return;
+    try {
+      const w = window as unknown as { adsbygoogle?: object[] };
+      w.adsbygoogle = w.adsbygoogle || [];
+      w.adsbygoogle.push({});
+      pushedRef.current = true;
+    } catch {
+      /* ignore */
+    }
+  }, [enabled, allowAds, slot]);
+
+  if (!enabled || !allowAds) return null;
+
   return (
     <div className={className}>
       <ins

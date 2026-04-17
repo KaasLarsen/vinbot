@@ -6,7 +6,7 @@ import { DsfFeaturedProductsJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
-import { siteUrl } from "@/lib/site";
+import { partnerAdsDsfClickUrl, siteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +20,11 @@ export const metadata: Metadata = {
 const DSF_SEARCH = "https://densidsteflaske.dk/search?q={q}&form_type=product&utf8=%E2%9C%93";
 
 export default function DenSidsteFlaskePage() {
+  const exampleQ = "champagne";
+  const dsfExampleSearchUrl = DSF_SEARCH.replace("{q}", encodeURIComponent(exampleQ));
+  /** Samme Partner-Ads-klik som DSF-produktkort (banner 68720). */
+  const dsfExampleSearchAffiliateHref = partnerAdsDsfClickUrl(dsfExampleSearchUrl);
+
   const faq = [
     {
       question: "Hvor finder jeg hele sortimentet fra Den Sidste Flaske?",
@@ -37,8 +42,6 @@ export default function DenSidsteFlaskePage() {
         "Priser og tilbud skifter hos butikkerne. Brug altid forhandlerens egen side som udgangspunkt for endelig pris, levering og årgang.",
     },
   ];
-
-  const exampleQ = "champagne";
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -60,7 +63,7 @@ export default function DenSidsteFlaskePage() {
           forhandleren.
         </p>
         <a
-          href={DSF_SEARCH.replace("{q}", encodeURIComponent(exampleQ))}
+          href={dsfExampleSearchAffiliateHref}
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
           className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"

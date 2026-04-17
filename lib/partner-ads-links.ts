@@ -17,7 +17,7 @@ export function partnerAdsKlikUrl(bannerId: string, htmlUrl?: string): string {
 
 /**
  * Klikbanner-id'er der matcher jeres feeds / eksisterende integration.
- * Verificér tracking i Partner-Ads ved tvivl — især Beer Me (74589 er også brugt til abonnement).
+ * Verificér tracking i Partner-Ads ved tvivl — Beer Me: 74589 (abonnement/footer), 74625 (shop/feed).
  */
 export const PARTNER_ADS_KLIK_BANNERS = {
   /** Mere om Vin — samme banner som produktfeed */
@@ -25,10 +25,21 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   /** Johnsen Wine (“Johnsen Vine” i feed) */
   johnsenWine: "114732",
   /**
-   * Beer Me — kendt fra footer (ølabonnement). Med htmlurl til forsiden for nyhedsbrev/butik;
-   * hvis klik ikke tæller eller lander forkert: opret dedikeret tekstbanner i Partner-Ads og skift id her.
+   * Beer Me — footer / ølabonnement (produktfeed og shop-klik bruger `beerMeShop`).
    */
   beerMe: "74589",
+  /** Beer Me — webshop / produktfeed (samme banner som feed_udlaes) */
+  beerMeShop: "74625",
+  /** Whiskystack — samme banner som produktfeed */
+  whiskystack: "105231",
   /** Winther Vin — samme banner som produktfeed */
   wintherVin: "76708",
+  /** Lauridsen Vine — samme banner som produktfeed */
+  lauridsenVine: "116085",
+  /** Winefriends — samme banner som produktfeed */
+  winefriends: "115348",
+  /** DH Wines — samme banner som produktfeed */
+  dhWines: "108173",
+  /** SPS Wine — samme banner som produktfeed */
+  spsWine: "112662",
 } as const;

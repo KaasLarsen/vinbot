@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
+import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Rabatkoder til vin — partnertilbud",
   description:
-    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.",
+    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.",
   alternates: { canonical: `${siteUrl}/rabatkoder` },
 };
 
@@ -21,10 +22,12 @@ type RabatEntry = {
 
 type RabatPartner = {
   name: string;
-  /** Vist som “rigtig” webadresse; bruges også hvis der ikke er affiliate-link */
+  /** Butikkens URL (vises ikke som link — brug affiliateHref til shop) */
   shopUrl: string;
-  /** Partner-Ads klik — sæt når I har bannerid (se lib/partner-ads-links.ts) */
-  affiliateHref?: string;
+  /** Affiliate-destination (Partner-Ads klikbanner eller Adtraction m.m.) */
+  affiliateHref: string;
+  /** Hvilket netværk der tracker klik (oplysningspligt / gennemsigtighed) */
+  affiliateVia: "partner-ads" | "adtraction";
   entries: RabatEntry[];
   footnote?: string;
 };
@@ -33,6 +36,8 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "Lauridsen Vine",
     shopUrl: "https://lauridsenvine.dk/",
+    affiliateVia: "partner-ads",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "https://lauridsenvine.dk/"),
     entries: [
       {
         title: "Nyhedsbrev",
@@ -43,19 +48,19 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "Beer Me",
     shopUrl: "https://www.beer-me.dk/",
-    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe, "https://www.beer-me.dk/"),
+    affiliateVia: "partner-ads",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMeShop, "https://www.beer-me.dk/"),
     entries: [
       {
         title: "Nyhedsbrev",
         body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Beer Me (vin, øl og mere på webshoppen). Tilmelding sker på deres site.",
       },
     ],
-    footnote:
-      "Affiliate-link via Partner-Ads. Banner 74589 bruges også til ølabonnement — hvis tracking eller landingpage afviger, skift til dedikeret klikbanner i Partner-Ads og opdater lib/partner-ads-links.ts.",
   },
   {
     name: "Johnsen Wine",
     shopUrl: "https://www.johnsenwine.dk/",
+    affiliateVia: "partner-ads",
     affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.johnsenWine, "https://www.johnsenwine.dk/"),
     entries: [
       {
@@ -67,6 +72,7 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "Mere om Vin",
     shopUrl: "https://mereomvin.dk/",
+    affiliateVia: "partner-ads",
     affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.mereOmVin, "https://mereomvin.dk/"),
     entries: [
       {
@@ -78,6 +84,7 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "Winther Vin",
     shopUrl: "https://winthervin.dk/",
+    affiliateVia: "partner-ads",
     affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.wintherVin, "https://winthervin.dk/"),
     entries: [
       {
@@ -89,18 +96,20 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "Winefriends",
     shopUrl: "https://winefriends.dk/",
+    affiliateVia: "partner-ads",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.winefriends, "https://winefriends.dk/"),
     entries: [
       {
         title: "Nyhedsbrev",
         body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Winefriends. Tilmelding og vilkår på winefriends.dk.",
       },
     ],
-    footnote:
-      "Direkte link til shop (ingen Partner-Ads-klik i koden endnu). Når I har et klikbanner-id til Winefriends, tilføj winefriends i lib/partner-ads-links.ts og affiliateHref på kortet.",
   },
   {
     name: "DH Wines",
     shopUrl: "https://dhwines.dk/",
+    affiliateVia: "partner-ads",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.dhWines, "https://dhwines.dk/"),
     entries: [
       {
         title: "100 kr. rabat",
@@ -117,6 +126,8 @@ const PARTNERE: RabatPartner[] = [
   {
     name: "SPS Wine",
     shopUrl: "https://www.spswine.dk/",
+    affiliateVia: "partner-ads",
+    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.spsWine, "https://www.spswine.dk/"),
     entries: [
       {
         title: "12% rabat",
@@ -124,6 +135,21 @@ const PARTNERE: RabatPartner[] = [
         body: "Gælder **produkterne** i shoppen. **Rabatkoden kan ikke kombineres** med andre rabatkoder — se fulde vilkår på spswine.dk.",
       },
     ],
+  },
+  {
+    name: "Vinkøleskabet.dk",
+    shopUrl: "https://www.vinkoleskabet.dk/",
+    affiliateVia: "adtraction",
+    affiliateHref: ADTRACTION_VINKOELSKABET_SHOP,
+    entries: [
+      {
+        title: "Shop — vinkøleskabe",
+        body:
+          "**Vinkøleskabet.dk** sælger vinkøleskabe og tilbehør. Priser, levering og kundeservice er på deres webshop. Nedenfor går **“Gå til shop”** via **Adtraction** — et affiliate-link: Vinbot kan modtage provision, **uden merpris for dig**.",
+      },
+    ],
+    footnote:
+      "Linket er et affiliate-link formidlet via Adtraction (affiliatenetværk). Køb og vilkår er hos Vinkøleskabet.dk; klik kan spores til provision for Vinbot — se også under Affiliate-links på siden Privatliv.",
   },
 ];
 
@@ -165,7 +191,9 @@ export default function RabatkoderPage() {
       </div>
 
       <p className="mt-4 text-xs text-stone-500">
-        * Shop-links markeret med stjerne går via <strong className="font-medium text-stone-700">Partner-Ads</strong> og kan udløse provision til Vinbot uden merpris for dig.
+        * Shop-links markeret med stjerne er <strong className="font-medium text-stone-700">affiliate-links</strong>. De går via{" "}
+        <strong className="font-medium text-stone-700">Partner-Ads</strong> eller <strong className="font-medium text-stone-700">Adtraction</strong>{" "}
+        (angivet under hver butik) og kan udløse provision til Vinbot <strong className="font-medium text-stone-700">uden merpris for dig</strong>.
       </p>
 
       <ul className="mt-10 space-y-6">
@@ -173,14 +201,19 @@ export default function RabatkoderPage() {
           <li key={p.name} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <h2 className="text-xl font-semibold text-stone-900">{p.name}</h2>
-              <a
-                href={p.affiliateHref ?? p.shopUrl}
-                target="_blank"
-                rel={p.affiliateHref ? "nofollow sponsored noopener noreferrer" : "noopener noreferrer"}
-                className="shrink-0 text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
-              >
-                Gå til shop{p.affiliateHref ? " *" : ""} →
-              </a>
+              <div className="flex shrink-0 flex-col items-end gap-1 text-right">
+                <a
+                  href={p.affiliateHref}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  className="text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                >
+                  Gå til shop * →
+                </a>
+                <span className="text-xs text-stone-500">
+                  Via {p.affiliateVia === "adtraction" ? "Adtraction" : "Partner-Ads"}
+                </span>
+              </div>
             </div>
             <div className="mt-4 space-y-5 border-t border-stone-100 pt-4">
               {p.entries.map((e, idx) => (

@@ -29,6 +29,7 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/guides/vin-til-sommer", label: "Sommer" },
   { href: "/guides/rosevin-til-mad-og-sommer", label: "Rosé" },
   { href: "/guides/vin-i-cocktails-spritz-og-drikke", label: "Vin i drinks" },
+  { href: "/vinkoleskabe", label: "Vinkøleskabe" },
 ];
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
@@ -39,6 +40,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
       { href: "/regioner", label: "Vinregioner og vinlande" },
       { href: "/guides/vinregion-frankrig", label: "Guide: vin i Frankrig" },
       { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og servering" },
+      { href: "/vinkoleskabe", label: "Vinkøleskabe — søg og guide" },
       { href: "/guides/naturvin-hvad-er-det", label: "Naturvin" },
       { href: "/guides/vin-begreber-i-praksis", label: "Vinbegreber" },
       { href: "/guides/koeb-vin-online-sadan-holder-du-styr-paa-det", label: "Køb vin online" },
@@ -208,7 +210,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
-      <section className="mt-16 grid gap-8 sm:grid-cols-3">
+      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
@@ -229,6 +231,13 @@ export default async function HomePage({ searchParams }: HomeProps) {
         >
           <h3 className="text-lg font-semibold text-stone-900">Sæson</h3>
           <p className="mt-2 text-stone-600">Forår, sommer, efterår og vinter — hvad der smager af årstiden i glasset.</p>
+        </Link>
+        <Link
+          href="/vinkoleskabe"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Vinkøleskabe</h3>
+          <p className="mt-2 text-stone-600">Søg modeller og priser — med stærkt udvalg fra blandt andre Vinkøleskabet.dk — og læs guiden til valg af størrelse og zoner.</p>
         </Link>
       </section>
 

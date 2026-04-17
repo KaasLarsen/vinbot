@@ -10,7 +10,8 @@ import {
   UA,
 } from "./helpers";
 
-async function fetchFeedProductsInner(merchant: string, url: string): Promise<FeedProduct[]> {
+async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> {
+  const { merchant, url } = feed;
   const headers = {
     "user-agent": UA,
     accept: "text/xml,application/xml,text/plain,text/csv,*/*",
@@ -20,15 +21,18 @@ async function fetchFeedProductsInner(merchant: string, url: string): Promise<Fe
   const text = decodeText(buf);
 
   let products = looksLikeXML(text) ? parseXMLProducts(text, merchant) : parseCSVProducts(text, merchant);
-  products = products.filter(isWineLike);
+  if (feed.wineFilter !== false) {
+    products = products.filter(isWineLike);
+  }
   return products;
 }
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
+  const filterKey = feed.wineFilter === false ? "all" : "wine";
   return unstable_cache(
-    () => fetchFeedProductsInner(feed.merchant, feed.url),
-    ["vinbot-feed", feed.merchant, feed.url],
+    () => fetchFeedProductsInner(feed),
+    ["vinbot-feed", feed.merchant, feed.url, filterKey],
     { revalidate: 21600, tags: ["vinbot-feeds"] },
   )();
 }
