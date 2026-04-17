@@ -35,6 +35,80 @@ export function listMadOgVinHubGuides(): GuideFrontmatter[] {
   );
 }
 
+/** Druer og vinregioner hører til andre hubber — ikke sæson + vin som emne. */
+function isGrapeOrRegionGuide(slug: string): boolean {
+  return slug.startsWith("vinregion-") || slug.endsWith("-druen");
+}
+
+/**
+ * Hvis en guide har ét af disse ord i tags (case-insensitive), vises den under /saeson.
+ * Tilføj fx "fastelavn" eller "forår" i frontmatter på nye sæsonartikler.
+ */
+const SAESON_TAG_HINTS: readonly string[] = [
+  "jul",
+  "julemad",
+  "julefrokost",
+  "nytår",
+  "nytårsmenu",
+  "påske",
+  "sæson",
+  "sommer",
+  "vinter",
+  "efterår",
+  "forår",
+  "terrasse",
+  "hygge",
+  "fest",
+  "grill",
+  "fastelavn",
+  "mortens",
+  "kransekage",
+  "sankt hans",
+];
+
+function guideMatchesSaesonTags(tags: string[] | undefined): boolean {
+  const haystack = (tags || []).map((t) => t.toLowerCase()).join("\n");
+  return SAESON_TAG_HINTS.some((hint) => haystack.includes(hint));
+}
+
+/**
+ * Danske klassikere og praktiske sider uden sæson-tags — stadig oplagt under “sæson og vin”.
+ */
+const SAESON_EXTRA_SLUGS = new Set<string>([
+  "komplet-guide-til-vin-og-mad",
+  "opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  "vin-til-stegt-flaesk",
+  "vin-til-frikadeller",
+  "vin-til-smorrebrod",
+  "vin-til-kartoffelmad",
+  "vin-til-svinekoed",
+  "vin-til-ost-og-ostebord",
+  "vin-til-vildt",
+  "vin-til-gryderet",
+  "vin-til-suppe",
+  "vin-til-torsk",
+  "vin-til-laks",
+  "vin-til-rejer",
+  "vin-til-muslinger",
+  "vin-til-kalkun",
+  "vin-til-tapas",
+  "vin-til-paella",
+  "gavevin-sadan-vaelger-du-den-rigtige-flaske",
+  "alkoholsvag-og-alkoholfri-vin",
+]);
+
+/** Guides til sæson-hubben: hub, sæson-tags, eller udvalgte “højtid + hverdag”-sider. */
+export function listSaesonHubGuides(): GuideFrontmatter[] {
+  return listGuides()
+    .filter((g) => {
+      if (isGrapeOrRegionGuide(g.slug)) return false;
+      if (g.hub === "saeson") return true;
+      if (SAESON_EXTRA_SLUGS.has(g.slug)) return true;
+      return guideMatchesSaesonTags(g.tags);
+    })
+    .sort((a, b) => (a.updated < b.updated ? 1 : -1));
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));

@@ -3,19 +3,18 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
-import { listGuides } from "@/lib/content/guides";
+import { listSaesonHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sæson og vin — forår, sommer, efterår, vinter",
   description:
-    "Sæsonvin i Danmark: søg blandt guides til påske, jul, nytår, brunch, sommer og grill.",
+    "Sæsonvin i Danmark: jul, påske, nytår, fastelavn, Mortensaften, Sankt Hans, sommer, grill, højtider og klassisk dansk mad — søg i guiderne her.",
   alternates: { canonical: `${siteUrl}/saeson` },
 };
 
 export default function SaesonHubPage() {
-  const raw = listGuides().filter((g) => g.hub === "saeson");
-  const guides = raw.length ? raw : listGuides().filter((g) => g.slug.includes("saeson"));
+  const guides = listSaesonHubGuides();
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,
@@ -29,7 +28,10 @@ export default function SaesonHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/saeson", label: "Sæson" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Sæson og vin</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">
-        Årstiden påvirker både køkkenet og lysten i glasset. Søg nedenfor, eller gå til{" "}
+        Årstiden påvirker både køkkenet og lysten i glasset. Her finder du{" "}
+        <strong className="font-medium text-stone-800">højtider</strong>,{" "}
+        <strong className="font-medium text-stone-800">grill og sommer</strong>,{" "}
+        <strong className="font-medium text-stone-800">vinter og hygge</strong> og praktiske sider om fx temperatur og gavevin. Søg nedenfor, eller gå til{" "}
         <Link href="/guides" className="text-rose-900 hover:underline">
           alle guides
         </Link>
@@ -54,6 +56,18 @@ export default function SaesonHubPage() {
         ,{" "}
         <Link href="/guides/vin-til-paaske-og-paaskefrokost" className="text-rose-900 hover:underline">
           påske og påskefrokost
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-fastelavn" className="text-rose-900 hover:underline">
+          fastelavn
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-mortensaften" className="text-rose-900 hover:underline">
+          Mortensaften
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-sankt-hans" className="text-rose-900 hover:underline">
+          Sankt Hans
         </Link>
         ,{" "}
         <Link href="/guides/vin-til-brunch" className="text-rose-900 hover:underline">

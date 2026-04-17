@@ -219,4 +219,40 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "På vinbot.dk/vinkoleskabe kan du søge på tværs af produktfeeds med billede og pris, blandt andet hos Vinkøleskabet.dk (partner). Du klikker videre til forhandleren for endelig pris, mål og levering.",
     },
   ],
+  "vin-til-fastelavn": [
+    {
+      question: "Hvilken vin passer til fastelavnsboller?",
+      answer:
+        "Tørre bobler (cava brut, crémant, prosecco extra brut) eller frisk hvid med syre (riesling tør, sauvignon, albariño) balancerer creme og sød glasur uden at blive tungt.",
+    },
+    {
+      question: "Hvad drikker man til fastelavn med børn?",
+      answer:
+        "Alkoholfri bobler, saft eller let mousserende uden alkohol er praktisk. Server voksen-vin til dem, der ønsker det, og hold mængden moderat når der er børn til stede.",
+    },
+  ],
+  "vin-til-mortensaften": [
+    {
+      question: "Hvilken vin til and og brun sauce?",
+      answer:
+        "Let til mellemfyldig rød med syre og saft: pinot noir, gamay eller lettere sangiovese. Aromatisk hvid eller tør til halvtør riesling kan også matche and, rødkål og sauce.",
+    },
+    {
+      question: "Er mortensvin det samme som julevin?",
+      answer:
+        "Mange af principperne overlapper juleand og mortensand — se også vin til and og julemad. Vælg efter hvor sød saucen er og hvor kraftig fuglen er tilberedt.",
+    },
+  ],
+  "vin-til-sankt-hans": [
+    {
+      question: "Hvilken vin til grill på Sankt Hans?",
+      answer:
+        "Tør rosé, frisk hvid og let rød (gamay, pinot, lettere grenache) er alsidigt til grill, salater og skaldyr. Bobler fungerer godt som velkomst.",
+    },
+    {
+      question: "Hvad hvis jeg ikke vil have alkohol på Sankt Hans?",
+      answer:
+        "Vælg kvalitets alkoholfri bobler eller frisk most. Vinbot har også en guide til alkoholsvag og alkoholfri vin.",
+    },
+  ],
 };
