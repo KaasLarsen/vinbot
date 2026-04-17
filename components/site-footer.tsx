@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
 import { siteName } from "@/lib/site";
 
 const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
@@ -29,7 +29,7 @@ export function SiteFooter() {
                 Øl &amp; Vin på Facebook
               </a>
             </p>
-                       <div className="mt-4 max-w-md space-y-3">
+            <div className="mt-4 max-w-md space-y-3">
               <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
                 <p className="mt-2 leading-relaxed text-stone-700">
