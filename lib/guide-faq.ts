@@ -255,4 +255,105 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Vælg kvalitets alkoholfri bobler eller frisk most. Vinbot har også en guide til alkoholsvag og alkoholfri vin.",
     },
   ],
+  "prosecco-glera-druen": [
+    {
+      question: "Er prosecco det samme som glera?",
+      answer:
+        "Glera er druen; prosecco er den beskyttede boblevintype fra udvalgte områder i Norditalien, hvor glera dominerer. På etiketten ser du ofte prosecco, mens smagen kommer fra druen og metoden.",
+    },
+    {
+      question: "Hvad betyder brut og extra dry på prosecco?",
+      answer:
+        "Brut og extra brut er de tørreste stilarter. Extra dry har ofte lidt mere restsødme end brut — tjek etiketten, hvis du vil undgå sødme.",
+    },
+    {
+      question: "Hvad er forskellen på prosecco og champagne?",
+      answer:
+        "Prosecco laves typisk med tankmetode (Charmat) og giver ofte frisk frugt og blød mousse. Champagne gærer anden gang på flasken og giver oftere brød, dybde og højere pris — begge kan være fremragende til forskellige lejligheder.",
+    },
+  ],
+  "muscadet-druen": [
+    {
+      question: "Hvad er muscadet for en drue?",
+      answer:
+        "Muscadet er vinenavnet på hvidvinet fra druen melon de Bourgogne ved Loires udløb. Den er kendt for høj syre, diskret frugt og ofte lagring på gærrester (sur lie), som giver mere fylde.",
+    },
+    {
+      question: "Passer muscadet til østers?",
+      answer:
+        "Ja — den høje syre og det neutrale udtryk matcher ofte salt skaldyr, østers og let fisk. Se også guiden om vin til fisk og skaldyr.",
+    },
+  ],
+  "verdejo-druen": [
+    {
+      question: "Hvor kommer verdejo typisk fra?",
+      answer:
+        "Rueda vest for Madrid er hovedområdet. Her får du ofte grapefrugt, urter og frisk syre — nogle vine blandes med lidt sauvignon blanc.",
+    },
+    {
+      question: "Er verdejo som albariño?",
+      answer:
+        "Begge er friske hvide, men verdejo er ofte mere urtet og indlandspræget, mens albariño mod Atlanterhavet kan føles mere salt og mineralisk.",
+    },
+  ],
+  "viognier-druen": [
+    {
+      question: "Hvordan smager viognier?",
+      answer:
+        "Aromatisk med blomst, fersken og abrikos og ofte lavere syre end sauvignon. Kan minde om fyldig hvid uden tung eg, afhængigt af vinifikation.",
+    },
+    {
+      question: "Hvilken mad passer til viognier?",
+      answer:
+        "Fjerkræ med sauce, smagfuld fisk, thai med kokos og bløde oste. Meget syrlige retter kan få vinen til at føles flad — balancer syren i maden.",
+    },
+  ],
+  "carmenere-druen": [
+    {
+      question: "Hvor dyrkes carménère i dag?",
+      answer:
+        "Druen kom oprindeligt fra Bordeaux, men er i dag særligt kendt fra Chile (fx Central Valley, Maipo, Colchagua) med urter, peber og mørke bær.",
+    },
+    {
+      question: "Hvad er forskellen på carménère og malbec?",
+      answer:
+        "Malbec kan være dybere og mere blækagtig; carménère har oftere tydelige grønne peber- og urtenoter. Begge passer til grill og kraftigt kød.",
+    },
+  ],
+  "zinfandel-druen": [
+    {
+      question: "Er zinfandel det samme som primitivo?",
+      answer:
+        "Ja, det er samme druesort. Zinfandel er klassisk i Californien; primitivo er italiensk navn, særligt i Apulien. Smagen varierer med klima og kælder.",
+    },
+    {
+      question: "Hvad er hvid zinfandel?",
+      answer:
+        "Det er en lys rosé-lignende stil med ofte mere sødme end tør provence-rosé — ikke hvidvin trods navnet.",
+    },
+  ],
+  "touriga-nacional-druen": [
+    {
+      question: "Hvad bruges touriga nacional til?",
+      answer:
+        "Den er en nøgledrue i røde vine fra Douro og Dão og indgår også i portvin. Alene eller i blend giver den mørk frugt, blomst og tanniner.",
+    },
+    {
+      question: "Hvilken mad passer til touriga nacional?",
+      answer:
+        "Lam, vildt, grill, kraftige gryderetter og modne oste. Syre og tanniner tåler fedt og urter — se guiden om Portugal-vinregion.",
+    },
+  ],
+  "pinotage-druen": [
+    {
+      question: "Hvad er pinotage?",
+      answer:
+        "En sydafrikansk krydsning af pinot noir og cinsaut. Smagen spænder fra saftig bærfrugt til røg, kaffe og modne toner med fad.",
+    },
+    {
+      question: "Er pinotage som pinot noir?",
+      answer:
+        "Pinot noir er ofte lettere og mere silkeagtig; pinotage har typisk mere farve, krydderi og kan virke rustik — begge kan fungere til grill, men udtrykket er forskelligt.",
+    },
+  ],
 };

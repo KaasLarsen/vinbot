@@ -23,10 +23,19 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         note: "Hvid peber og friskhed — grønt, brunch og asiatisk-inspireret.",
         guide: "gruener-veltliner-druen",
       },
+      { navn: "Muscadet", q: "muscadet", note: "Høj syre og sur lie — østers, muslinger og salt fisk.", guide: "muscadet-druen" },
       { navn: "Pinot Blanc", q: "pinot blanc", note: "Ren hvid fra pinot-familien — fisk, svampe og mild ost.", guide: "pinot-blanc-druen" },
       { navn: "Pinot Gris / Grigio", q: "pinot grigio", note: "Neutral til aromatisk — salat, let pasta og som rosé-alternativ.", guide: "pinot-gris-druen" },
+      {
+        navn: "Prosecco (Glera)",
+        q: "prosecco",
+        note: "Lette bobler fra Veneto — aperitif, friture og brunch.",
+        guide: "prosecco-glera-druen",
+      },
       { navn: "Riesling", q: "riesling", note: "Syre og aroma — fisk, asiatisk, brunch og mange oste.", guide: "riesling-druen" },
       { navn: "Sauvignon Blanc", q: "sauvignon blanc", note: "Urtet og frisk — grøntsager, fisk og lette saucer.", guide: "sauvignon-blanc-druen" },
+      { navn: "Verdejo", q: "verdejo", note: "Citrus og urter fra Rueda — tapas, fisk og salat.", guide: "verdejo-druen" },
+      { navn: "Viognier", q: "viognier", note: "Aromatisk og fyldig hvid — fjerkræ, sauce og smagfuld fisk.", guide: "viognier-druen" },
     ],
   },
   {
@@ -41,15 +50,24 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         note: "Struktur og tanniner — okse, grill og kraftige retter.",
         guide: "cabernet-sauvignon-druen",
       },
+      { navn: "Carménère", q: "carmenere", note: "Urter og mørke bær fra Chile — grill, burger og simrekød.", guide: "carmenere-druen" },
       { navn: "Gamay / Beaujolais", q: "gamay", note: "Saft og lav tannin — charcuteri, lettere kød og kølig servering.", guide: "gamay-druen" },
       { navn: "Grenache / Garnacha", q: "garnacha", note: "Moden frugt — grill, middelhavsmad og BBQ.", guide: "grenache-druen" },
       { navn: "Malbec", q: "malbec", note: "Mørke bær og blid struktur — burger, grill og argentinsk-inspireret kød.", guide: "malbec-druen" },
       { navn: "Merlot", q: "merlot", note: "Blødere frugt og rundere mundfuld — pizza, lyst kød og hverdagssimre.", guide: "merlot-druen" },
       { navn: "Nebbiolo / Barolo", q: "barolo", note: "Tanniner og parfume — langtidssteg og kraftigere retter.", guide: "nebbiolo-druen" },
       { navn: "Pinot Noir", q: "pinot noir", note: "Let til mellem fyldig — fjerkræ, svampe og lyst kød.", guide: "pinot-noir-druen" },
+      { navn: "Pinotage", q: "pinotage", note: "Sydafrikansk signatur — BBQ, braai og kraftige saucer.", guide: "pinotage-druen" },
       { navn: "Sangiovese / Chianti", q: "chianti", note: "Syre og tomatven — pizza, pasta og italiensk.", guide: "sangiovese-druen" },
       { navn: "Syrah / Shiraz", q: "syrah", note: "Krydderi og mørke bær — grill, lam og gryde.", guide: "syrah-druen" },
       { navn: "Tempranillo / Rioja", q: "rioja", note: "Bær og krydderi — tapas, pølser og simremad.", guide: "tempranillo-druen" },
+      {
+        navn: "Touriga Nacional",
+        q: "touriga nacional",
+        note: "Tæt frugt og tannin fra Portugal — lam, vildt og moden ost.",
+        guide: "touriga-nacional-druen",
+      },
+      { navn: "Zinfandel", q: "zinfandel", note: "Moden frugt og krydderi — BBQ, burger og røget kød.", guide: "zinfandel-druen" },
     ],
   },
 ];
@@ -75,7 +93,7 @@ function DrueCard({ d }: { d: Drue }) {
 export const metadata: Metadata = {
   title: "Druesorter — oversigt og vinsøgning",
   description:
-    "Alle Vinbots drueguider: hvide (riesling, chardonnay, sauvignon, chenin, albariño m.fl.) og røde (pinot, cabernet, gamay, nebbiolo, tempranillo m.fl.) — med søgning og madparring.",
+    "Alle Vinbots drueguider: hvide (riesling, chardonnay, sauvignon, muscadet, prosecco, verdejo, viognier m.fl.) og røde (pinot, cabernet, carmenère, touriga nacional, zinfandel m.fl.) — med søgning og madparring.",
   alternates: { canonical: `${siteUrl}/druesorter` },
 };
 
