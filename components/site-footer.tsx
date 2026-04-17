@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteName } from "@/lib/site";
 
 const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
 
 /** Partner-Ads tekstlink — Beer Me ølabonnement (intet visbanner i programmet). */
-const PARTNER_ADS_BEER_ME_SUBSCRIPTION =
-  "https://www.partner-ads.com/dk/klikbanner.php?partnerid=50537&bannerid=74589";
+const PARTNER_ADS_BEER_ME_SUBSCRIPTION = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe);
+
+const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.rareWineMembersClub);
 
 export function SiteFooter() {
   return (
@@ -27,19 +29,39 @@ export function SiteFooter() {
                 Øl &amp; Vin på Facebook
               </a>
             </p>
-            <div className="mt-4 max-w-md rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
-              <p className="mt-2 leading-relaxed text-stone-700">
-                <a
-                  href={PARTNER_ADS_BEER_ME_SUBSCRIPTION}
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
-                  className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
-                >
-                  Specialøl på abonnement hos Beer Me
-                </a>{" "}
-                — kuraterede månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
-              </p>
+                       <div className="mt-4 max-w-md space-y-3">
+              <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
+                <p className="mt-2 leading-relaxed text-stone-700">
+                  <a
+                    href={PARTNER_ADS_BEER_ME_SUBSCRIPTION}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                  >
+                    Specialøl på abonnement hos Beer Me
+                  </a>{" "}
+                  — kuraterede månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
+                </p>
+              </div>
+              <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
+                <p className="mt-2 leading-relaxed text-stone-700">
+                  <a
+                    href={PARTNER_ADS_RAREWINE_MEMBERS}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                  >
+                    RareWine Members Club
+                  </a>{" "}
+                  — medlemsklub med adgang til sjældnere vine og allocation; du tilmelder dig hos RareWine. Linket er et affiliate-spor — læs mere under{" "}
+                  <Link href="/betingelser" className="font-medium text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950">
+                    betingelser
+                  </Link>
+                  .
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-2">
