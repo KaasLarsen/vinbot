@@ -7,7 +7,10 @@ const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252"
 /** Partner-Ads tekstlink — Beer Me ølabonnement (intet visbanner i programmet). */
 const PARTNER_ADS_BEER_ME_SUBSCRIPTION = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe);
 
-const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.rareWineMembersClub);
+const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(
+  PARTNER_ADS_KLIK_BANNERS.rareWineMembersClub,
+  RAREWINE_MEMBERS_CLUB_LANDING,
+);
 
 export function SiteFooter() {
   return (
