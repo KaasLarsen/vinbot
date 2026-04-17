@@ -109,6 +109,54 @@ export function listSaesonHubGuides(): GuideFrontmatter[] {
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
 }
 
+/**
+ * Tags der matcher “humør & stemning” (lejlighed, selskab, bobler, weekend).
+ */
+const HUMOER_TAG_HINTS: readonly string[] = [
+  "humør",
+  "stemning",
+  "hygge",
+  "fest",
+  "cocktails",
+  "spritz",
+  "gave",
+  "weekend",
+  "romantik",
+  "bobler",
+];
+
+function guideMatchesHumoerTags(tags: string[] | undefined): boolean {
+  const haystack = (tags || []).map((t) => t.toLowerCase()).join("\n");
+  return HUMOER_TAG_HINTS.some((hint) => haystack.includes(hint));
+}
+
+/** Ekstra slugs: sommer/terrasse, grill og indkøb — typisk valgt ud fra stemning såvel som ret. */
+const HUMOER_EXTRA_SLUGS = new Set<string>([
+  "komplet-guide-til-vin-og-mad",
+  "vin-til-sommer",
+  "rosevin-til-mad-og-sommer",
+  "bobler-champagne-cava-prosecco-og-cremant",
+  "vin-til-nytaar-og-nytaarsmenu",
+  "vin-til-brunch",
+  "alkoholsvag-og-alkoholfri-vin",
+  "koeb-vin-online-sadan-holder-du-styr-paa-det",
+  "naturvin-hvad-er-det",
+  "vin-til-grill-og-bbq",
+  "vin-til-tapas",
+]);
+
+/** Guides til humør-hubben: hub, passende tags eller kuraterede “stemning”-emner. */
+export function listHumoerHubGuides(): GuideFrontmatter[] {
+  return listGuides()
+    .filter((g) => {
+      if (isGrapeOrRegionGuide(g.slug)) return false;
+      if (g.hub === "humoer-og-vin") return true;
+      if (HUMOER_EXTRA_SLUGS.has(g.slug)) return true;
+      return guideMatchesHumoerTags(g.tags);
+    })
+    .sort((a, b) => (a.updated < b.updated ? 1 : -1));
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));
