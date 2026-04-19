@@ -104,5 +104,7 @@ export function WebSiteJsonLd({ url }: { url: string }) {
 export function DsfFeaturedProductsJsonLd({ picks }: { picks: DsfFeaturedPick[] }) {
   if (picks.length === 0) return null;
   const data = buildDsfFeaturedProductsItemList(picks);
+  const list = data.itemListElement as unknown[];
+  if (!list.length) return null;
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }

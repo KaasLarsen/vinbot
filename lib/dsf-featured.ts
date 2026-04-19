@@ -30,6 +30,8 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1190752698.png?v=1756829918",
+    listPrice: 79,
+    priceCurrency: "DKK",
   },
   {
     title: "Weinhof 519 Alte Reben Rheingau Riesling Trocken 2025",
@@ -37,6 +39,8 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",
+    listPrice: 99,
+    priceCurrency: "DKK",
   },
   {
     title: "Weinhof 519 Alte Reben Rosé 2025",
@@ -44,6 +48,8 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/alte-reben-rose-weinhof-519-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rose-2025-weinhof-519-rose-1224966837.png?v=1772641270",
+    listPrice: 89,
+    priceCurrency: "DKK",
   },
   {
     title: "The Guv'nor Tinto",
@@ -51,5 +57,7 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-felix-solis-avantis-rodvin-1172580197.png?v=1749550958",
+    listPrice: 59,
+    priceCurrency: "DKK",
   },
 ];

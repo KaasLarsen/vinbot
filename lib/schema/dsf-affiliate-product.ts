@@ -49,6 +49,8 @@ export function dsfOfferShippingAndReturn() {
       merchantReturnDays: 30,
       returnMethod: "https://schema.org/ReturnByMail",
       merchantReturnLink: DSF_MERCHANT.refundPolicyUrl,
+      /** Påkrævet af Google Merchant Listings — tjek forhandlerens aktuelle returvilkår */
+      returnFees: "https://schema.org/ReturnShippingFees",
     },
   } as const;
 }
@@ -56,9 +58,14 @@ export function dsfOfferShippingAndReturn() {
 function offerBlock(pick: DsfFeaturedPick, position: number) {
   const affiliateUrl = pick.directLink ? pick.productUrl : partnerAdsDsfClickUrl(pick.productUrl);
   const extra = dsfOfferShippingAndReturn();
+  const currency = pick.priceCurrency ?? "DKK";
+  const priceStr =
+    pick.listPrice != null && Number.isFinite(pick.listPrice) ? String(pick.listPrice) : null;
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     url: affiliateUrl,
+    /** Produkt-snippets / Merchant Listings kræver pris + valuta på Offer */
+    ...(priceStr != null ? { price: priceStr, priceCurrency: currency } : {}),
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: {
@@ -68,10 +75,6 @@ function offerBlock(pick: DsfFeaturedPick, position: number) {
     },
     ...extra,
   };
-  if (pick.listPrice != null && Number.isFinite(pick.listPrice)) {
-    offer.price = String(pick.listPrice);
-    offer.priceCurrency = pick.priceCurrency ?? "DKK";
-  }
   const product: Record<string, unknown> = {
     "@type": "Product",
     name: pick.title,
@@ -88,11 +91,16 @@ function offerBlock(pick: DsfFeaturedPick, position: number) {
   };
 }
 
+function pickHasValidOfferPrice(p: DsfFeaturedPick): boolean {
+  return p.listPrice != null && Number.isFinite(p.listPrice) && p.listPrice > 0;
+}
+
 /** ItemList med Product — til forsiden / DSF-side. Uden review/aggregateRating (ingen fabrikerede stjerner). */
 export function buildDsfFeaturedProductsItemList(picks: DsfFeaturedPick[]) {
+  const withPrice = picks.filter(pickHasValidOfferPrice);
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: picks.map((p, i) => offerBlock(p, i + 1)),
+    itemListElement: withPrice.map((p, i) => offerBlock(p, i + 1)),
   };
 }
