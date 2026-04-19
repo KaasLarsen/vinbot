@@ -462,4 +462,55 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Prioritér frisk syre i hvidvin eller let rød uden grove tanniner: fx chardonnay med bid, middelhavshvid eller let pinot — så fed ost og olie ikke dominerer glasset.",
     },
   ],
+  "vin-til-rejer": [
+    {
+      question: "Hvilken vin passer bedst til rejer?",
+      answer:
+        "Hvidvin med tydelig syre og frisk frugt: muscadet, albariño, verdejo eller tør riesling. Bobler (cremant, cava, champagne) fungerer også til smør, citron og jomfruhummeragtige retter.",
+    },
+    {
+      question: "Kan man drikke rødvin til rejer?",
+      answer:
+        "Sjældent til klassiske kogte eller hvidløgsrejer — her vinder frisk hvid. Til retter med tomat, paprika eller kraft krydderi kan let gamay, kølig pinot noir eller lettere sangiovese fungere, stadig gerne 14–16 °C.",
+    },
+    {
+      question: "Hvorfor smager tung rødvin ofte dårligt til rejer?",
+      answer:
+        "Rejer er sarte i smagen; grove tanniner og meget høj alkohol uden frugtfriskhed kan føles bittert eller dominerende sammen med salt og fedme — syren i hvid og bobler matcher ofte bedre.",
+    },
+  ],
+  "vin-til-tacos": [
+    {
+      question: "Hvilken vin passer til tacos med kød?",
+      answer:
+        "Let rød med syre og saft: gamay, ung tempranillo eller primitivo i lettere stil. Server køligt (14–16 °C), især hvis der er chili — meget alkohol forstærker ofte varmen.",
+    },
+    {
+      question: "Hvilken vin til fisketacos?",
+      answer:
+        "Frisk hvid med syre: albariño, verdejo eller tør rosé. Lime, koriander og rå løg kræver friskhed; undgå alkoholstærk, fad-tung hvid uden bid.",
+    },
+    {
+      question: "Hvad skal man undgå til stærk salsa og chili?",
+      answer:
+        "Meget tanninrige røde og meget høj alkohol uden syre — de forstærker ofte brænden fra capsaicin. Prioritér syre og evt. off-dry hvid eller let restsødme ved meget stærk krydderi.",
+    },
+  ],
+  "vin-til-stegt-flaesk": [
+    {
+      question: "Hvilken vin passer til stegt flæsk med persillesovs?",
+      answer:
+        "Vin med frisk syre: grüner veltliner, tør riesling, sauvignon eller tør rosé med bid. Let rød med saft (gamay, pinot noir, dolcetto) kan også fungere — undgå unge tannintunge røde uden moden frugt til sød brun sovs og syrlig persillesovs.",
+    },
+    {
+      question: "Hvorfor er hvidvin ofte god til stegt flæsk?",
+      answer:
+        "Salt og fedt fra flæsket kalder på syre i vinen; cremet eller syrlig sovs gør det samme. Hvid og rosé skærer igennem fedmen uden at føles tung som meget struktur-rød ofte kan mod sur sovs.",
+    },
+    {
+      question: "Passer rødvin til stegt flæsk og kartofler?",
+      answer:
+        "Ja — vælg let til mellemfyldig rød med moden frugt og lav/mellem tannin (fx gamay, pinot noir, lettere sangiovese). Meget ung bordeaux-agtig tannin kan føles hård mod både salt og sødlig sovs.",
+    },
+  ],
 };
