@@ -31,4 +31,4 @@ Dansk, **Handlingsorienteret**, korte afsnit, **fed** til druer og begreber brug
 ## Tekniske noter
 
 - `hub: mad-og-vin` på madguides.
-- Guides indlæses automatisk; FAQ vises når `guideFaqBySlug[slug]` findes.
+- **FAQ JSON-LD:** Manuel liste i `lib/guide-faq.ts` har forrang. Alle `vin-til-*` uden manuel post får **automatisk** 3 FAQs via `getVinTilFallbackFaq` (kategoriseret: skaldyr, kød, krydret, italiensk m.m.). Til forbedrede rich results på VIP-sider: tilføj håndskrevet blok i `guide-faq.ts`.

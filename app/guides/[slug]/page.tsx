@@ -6,6 +6,7 @@ import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { guideFaqBySlug } from "@/lib/guide-faq";
+import { getVinTilFallbackFaq } from "@/lib/guide-faq-vin-til-fallback";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
@@ -64,7 +65,9 @@ export default async function GuidePage({ params }: Props) {
     url: absoluteUrl(c.href),
   }));
 
-  const faqItems = guideFaqBySlug[slug];
+  const manualFaq = guideFaqBySlug[slug];
+  const faqItems =
+    manualFaq && manualFaq.length > 0 ? manualFaq : getVinTilFallbackFaq(slug, frontmatter.title) ?? undefined;
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
