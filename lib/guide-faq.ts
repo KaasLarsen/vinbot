@@ -440,4 +440,26 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ikke nødvendigvis. Reserva/riserva kan være regelstyret i nogle lande, mens 'Reserve' uden beskyttet oprindelse ofte er marketing — tjek land, appellation og producent.",
     },
   ],
+  "vin-til-pizza-og-pasta": [
+    {
+      question: "Hvilken vin passer til pizza og pasta med tomat?",
+      answer:
+        "Røde med tydelig syre og saft passer ofte bedst: sangiovese/chianti, barbera, montepulciano d’Abruzzo eller primitivo afhængigt af hvor kraftig skorre og pålæg er. Syrlig rosé og frisk hvid fungerer til lettere pizza og til skaldyr.",
+    },
+    {
+      question: "Kan man drikke hvidvin til pasta?",
+      answer:
+        "Ja — til pesto, hvidløg, skaldyr og pasta uden tung tomatsovs. Cremede saucer kan tåle chardonnay med frisk syre eller sydlig hvid; tomatelsker oftere syrefuld rød eller rosé.",
+    },
+    {
+      question: "Hvad er den største fejl ved vin til pizza?",
+      answer:
+        "At vælge en flad, meget alkoholstærk rød uden syre til syrlig tomat og salt ost — vinen kan føles tung eller bitter uden at løfte maden.",
+    },
+    {
+      question: "Hvad med vin til pizza uden tomat (bianco)?",
+      answer:
+        "Prioritér frisk syre i hvidvin eller let rød uden grove tanniner: fx chardonnay med bid, middelhavshvid eller let pinot — så fed ost og olie ikke dominerer glasset.",
+    },
+  ],
 };

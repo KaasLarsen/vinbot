@@ -1,0 +1,34 @@
+---
+description: Redaktionel og SEO-standard for mad-parringsguides (vin-til-*.mdx)
+globs: content/guides/vin-til-*.mdx
+alwaysApply: false
+---
+
+# Mad & vin guides (`vin-til-*.mdx`)
+
+## Formål
+
+Guides skal **svare på søgehensigt** (hvilken vin til X), **binde klyngen sammen** med interne links og føles **mere nyttige end et bullet-card** — uden fabrikerede anmeldelser eller falske priser.
+
+## Minimum pr. side (mål — ikke hård grænse)
+
+- **Indhold:** Ca. **700–1200 ord** i brødtekst for “midt-trafik” emner; korte specialguider (én højtid) kan være kortere hvis de er tydeligt afgrænsede.
+- **Struktur:** Mindst **5–7 `##`-sektioner** inkl. principsnit (hvorfor X matcher Y), konkrete **druer/regioner**, **temperatur** eller servering hvis relevant, **hvad der ofte skærer**, og **Videre** med 4–8 interne links.
+- **Meta:** `description` **150–165 tegn** hvor muligt (én sætning med primær keyword-variant + én ekstra vinkel).
+- **Opdatering:** Sæt `updated` ved væsentlige ændringer; brug valgfri `published` hvis I splitter “først udgivet” fra sidste redigering (se `lib/guide-dates`).
+
+## SEO og kvalitet (EEAT-light)
+
+- **Primær keyword** i `title` / første H2 naturligt — undgå gentagelse i hver sætning.
+- **Intern linking:** Til `komplet-guide-til-vin-og-mad`, relevante `vin-til-*` (undgå kun generiske “læs mere” uden ankertekst).
+- **Overlap:** Hvis to sider ligger tæt (fx pizza vs pizza+ pasta), så **differentier** i intro: hvem er siden til, hvad den ikke dækker.
+- **FAQ JSON-LD:** For vigtige sider, tilføj post i `lib/guide-faq.ts` med **3–5 korte Q&A** (ærlige, ikke gentaget ordret fra konkurrenter).
+
+## Tone
+
+Dansk, **Handlingsorienteret**, korte afsnit, **fed** til druer og begreber brugere søger efter. Ingen unødig jargon uden forklaring.
+
+## Tekniske noter
+
+- `hub: mad-og-vin` på madguides.
+- Guides indlæses automatisk; FAQ vises når `guideFaqBySlug[slug]` findes.
