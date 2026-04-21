@@ -52,6 +52,20 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Ost-specialiseret — dyk ned i oste-parring",
+    links: [
+      { href: "/guides/vin-til-ost-og-ostebord", label: "Ost og ostebord (generel)" },
+      { href: "/guides/vin-til-blaaskimmelost", label: "Blåskimmelost" },
+      { href: "/guides/vin-til-brie-og-camembert", label: "Brie og camembert" },
+      { href: "/guides/vin-til-hard-ost", label: "Hård ost (comté, gruyère)" },
+      { href: "/guides/vin-til-parmesan", label: "Parmesan" },
+      { href: "/guides/vin-til-gedeost", label: "Gedeost (chèvre)" },
+      { href: "/guides/vin-til-feta", label: "Feta" },
+      { href: "/guides/vin-til-cheddar", label: "Cheddar" },
+      { href: "/guides/vin-til-mozzarella-og-burrata", label: "Mozzarella og burrata" },
+    ],
+  },
+  {
     title: "Drue/stil × mad — klassiske match",
     links: [
       { href: "/mad-og-vin", label: "Hub: mad og vin" },

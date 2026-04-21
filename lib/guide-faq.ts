@@ -650,6 +650,91 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — moderne 3-liters bag-in-box leverer ofte bedre kvalitet per glas end billige flasker. Plus: lufttæt pose betyder vinen holder 4–6 uger efter åbning. Se også bedste boxvin-guiden.",
     },
   ],
+  "vin-til-blaaskimmelost": [
+    {
+      question: "Hvilken vin passer bedst til blåskimmelost?",
+      answer:
+        "Sødvin er klassens bedste match. Sauternes til roquefort (ikonisk parring), tawnyport til stilton, rubinport til danablu. Tokaji Aszú og Pedro Ximénez er alternative. Sødmen balancerer ostens salt, syren skærer fedmen, rig frugt matcher intensiteten.",
+    },
+    {
+      question: "Kan man drikke tør rødvin til blåskimmel?",
+      answer:
+        "Kun specifikke stilarter — gammel Amarone della Valpolicella, moden Rioja Gran Reserva eller kraftig zinfandel med restsukker. Unge tannintunge røde bliver bitre mod blåskimmel. Klassens råd: vælg sødvin, ikke tør rød.",
+    },
+    {
+      question: "Hvad er den klassiske match til roquefort?",
+      answer:
+        "Sauternes — kombinationen er en af gastronomiens mest ikoniske parringer. Châteaux Rieussec, Suduiraut eller Guiraud i 200–500 kr-klassen. Servér ved 8–10 °C. Alternativt Barsac fra samme område eller late-harvest riesling med botrytis.",
+    },
+  ],
+  "vin-til-brie-og-camembert": [
+    {
+      question: "Hvilken vin passer bedst til brie?",
+      answer:
+        "Champagne er klassens bedste match. Blanc de blancs til ung mild brie; blanc de noirs eller vintage til moden brie de Meaux. Crémant de Loire i 100–150 kr er fremragende værdi-alternativ. Chablis AOC og let pinot noir fungerer også.",
+    },
+    {
+      question: "Kan man drikke rødvin til camembert?",
+      answer:
+        "Ja, men hold dig til lette røde. Kølig pinot noir fra bourgogne village, gamay (Beaujolais cru), eller let Chinon/Bourgueil fra Loire. Undgå unge cabernet, syrah og malbec — tanninerne er for hårde. Server rødvin kølig (14–16 °C) til brie.",
+    },
+    {
+      question: "Skal brie være kold eller stuetemperatur?",
+      answer:
+        "Stuetemperatur — tag brie ud af køleskabet 1 time før servering. Kold brie smager næsten ikke af noget; stuetemperatur (18–20 °C) giver fuld smagsprofil. Gælder også camembert og andre hvidskimmel-oste.",
+    },
+  ],
+  "vin-til-hard-ost": [
+    {
+      question: "Hvilken vin passer bedst til comté?",
+      answer:
+        "Jura vin jaune er klassens lærebogsmatch — begge kommer fra samme region og er udviklet sammen gennem århundreder. Oxidativ lagring under flor-hinde giver nøddeagtig profil der matcher comtéens umami. Alternativer: amontillado sherry, gammel Chablis grand cru.",
+    },
+    {
+      question: "Er tør sherry virkelig et godt match til hård ost?",
+      answer:
+        "Ja — amontillado og palo cortado er klassens bedste sherry-match til comté, gruyère og gammel gouda. Oxidativ lagring skaber nødde- og karamelnoter der matcher ostens proteinkrystaller. Manzanilla og fino passer specifikt til manchego.",
+    },
+    {
+      question: "Hvorfor fungerer ung rødvin dårligt til lagret hård ost?",
+      answer:
+        "Tanninerne kolliderer med ostens proteinkrystaller og kan virke bittert. Moden rødvin (10+ år) har bløde tanniner og komplekse sekundære aromaer der matcher bedre. Vælg moden Rioja Gran Reserva eller gammel Bordeaux frem for ungdommelige flasker.",
+    },
+  ],
+  "vin-til-gedeost": [
+    {
+      question: "Hvorfor er Sancerre klassens bedste match til gedeost?",
+      answer:
+        "Geografisk og smagsmæssigt perfekt. Sancerre og Crottin de Chavignol produceres i samme Loire-område og er udviklet sammen gennem århundreder. Sauvignon blancs høje syre, mineralitet og grønne aromaer matcher gedeostens mælkesyrlighed og urtede toner.",
+    },
+    {
+      question: "Kan Marlborough sauvignon blanc erstatte Sancerre?",
+      answer:
+        "Ja til moderne gedeostretter (salater, chèvre på pizza). Marlborough er mere tropisk frugt-dominerd end mineralsk Sancerre. Til traditionel chèvre frais eller Crottin de Chavignol foretrækkes Loire-sauvignon. Pris: Marlborough typisk 120–200 kr vs. Sancerre 140–250 kr.",
+    },
+    {
+      question: "Fungerer rødvin til gedeost?",
+      answer:
+        "Sjældent, men let gamay (Beaujolais cru) eller kølig pinot noir kan matche lagret gedeost. Undgå tanninrig rød til frisk gedeost — bliver bitter. Klassens standardvalg er altid hvidvin, især Loire-sauvignon eller chenin blanc.",
+    },
+  ],
+  "vin-til-feta": [
+    {
+      question: "Hvilken vin passer bedst til feta og græsk salat?",
+      answer:
+        "Assyrtiko fra Santorini er klassens absolut bedste match — både geografisk og smagsmæssigt. Vulkansk mineralitet, høj syre og saltige havsnoter komplementerer feta perfekt. 180–350 kr hos specialbutikker. Alternativ: albariño fra Rías Baixas med samme salt-mineralske profil.",
+    },
+    {
+      question: "Kan jeg drikke rødvin til feta?",
+      answer:
+        "Kun til feta i retter med tomat og kraftige urter (bagt feta, pizza med feta). Rosé fra Provence eller Tavel fungerer også til bagt feta. Ren feta og græsk salat er altid hvidvin-territorium. Undgå tannintung rødvin — dominerer fetas delikate syrlighed.",
+    },
+    {
+      question: "Er retsina et godt match til feta?",
+      answer:
+        "Traditionelt ja — retsina (fyrretræs-harpiks-vin fra Grækenland) serveres traditionelt med feta. Men moderne gastronomisk vurdering foretrækker ofte assyrtiko for bedre smagsbalance. Retsina er mere kulturel tradition end optimal gastronomi.",
+    },
+  ],
   "rosevin-til-grill": [
     {
       question: "Hvilken rosévin passer bedst til grill?",

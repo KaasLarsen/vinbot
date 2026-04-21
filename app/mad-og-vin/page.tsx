@@ -96,6 +96,24 @@ export default function MadOgVinHubPage() {
         </p>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-amber-200 bg-amber-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Ost-specialiseret: dyk ned i oste-parring</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Vi har lavet dybdeguider til de mest populære ostetyper — blåskimmel, hvidskimmel, hård ost, chèvre, feta, cheddar, mozzarella og parmesan.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/vin-til-ost-og-ostebord" className="hover:underline">Generel ost og ostebord</Link>
+          <Link href="/guides/vin-til-blaaskimmelost" className="hover:underline">Blåskimmelost</Link>
+          <Link href="/guides/vin-til-brie-og-camembert" className="hover:underline">Brie og camembert</Link>
+          <Link href="/guides/vin-til-hard-ost" className="hover:underline">Hård ost (comté, gruyère)</Link>
+          <Link href="/guides/vin-til-parmesan" className="hover:underline">Parmesan</Link>
+          <Link href="/guides/vin-til-gedeost" className="hover:underline">Gedeost (chèvre)</Link>
+          <Link href="/guides/vin-til-feta" className="hover:underline">Feta</Link>
+          <Link href="/guides/vin-til-cheddar" className="hover:underline">Cheddar</Link>
+          <Link href="/guides/vin-til-mozzarella-og-burrata" className="hover:underline">Mozzarella og burrata</Link>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-2xl border border-rose-200 bg-rose-50/60 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Nye guides: drue/stil × mad og anledning</h2>
         <p className="mt-2 text-sm text-stone-700">
