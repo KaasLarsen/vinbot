@@ -81,6 +81,59 @@ export default function VinVidenHubPage() {
         .
       </p>
 
+      <section className="mt-8 max-w-3xl space-y-4 text-stone-700">
+        <h2 className="text-2xl font-semibold text-stone-900">Hvad er vin-viden?</h2>
+        <p>
+          Vin er et af de mest studerede og mest samtalte produkter i verden — og samtidig et felt omgivet af myter, forvirring og pseudo-autoritet. Den almindelige dansker har måske lært at skelne rød fra hvid, men for de fleste stopper det der. Hvor længe kan man egentlig opbevare en åbnet flaske? Hvor mange glas får man ud af en flaske ved en middag? Hvad er forskellen på tanniner og syre? Hvorfor skal nogle vine dekanteres, og andre drikkes direkte?
+        </p>
+        <p>
+          Denne hub samler <strong>korte, konkrete, redaktionelt gennemarbejdede svar</strong> på de spørgsmål som faktisk googles i Danmark. Vi laver ikke opslagsbogs-svar der kopierer Wikipedia, og vi undgår de hule "afhænger af mange faktorer"-tekster. I stedet får du: typiske tal, konkrete eksempler, praktiske anbefalinger og de undtagelser der virkelig betyder noget. Alle guider er skrevet på dansk med danske vinhandlere, danske priser og dansk madkultur som udgangspunkt.
+        </p>
+      </section>
+
+      <section className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Hvor længe holder vinen?</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Åbnet og uåbnet, på flaske og i karaffel, i boks og på magnum. Læs om{" "}
+            <Link href="/guides/hvor-laenge-holder-rodvin" className="text-rose-900 hover:underline">rødvin</Link>,{" "}
+            <Link href="/guides/hvor-laenge-holder-uaabnet-vin" className="text-rose-900 hover:underline">uåbnet vin</Link>,{" "}
+            <Link href="/guides/hvor-laenge-holder-vin-i-karaffel" className="text-rose-900 hover:underline">karaffel</Link> og{" "}
+            <Link href="/guides/hvor-laenge-holder-boks-vin" className="text-rose-900 hover:underline">bag-in-box</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Mængder og størrelser</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Glas pr. flaske, genstande pr. glas, magnum, double-magnum og større. Læs om{" "}
+            <Link href="/guides/hvor-mange-glas-i-en-flaske-vin" className="text-rose-900 hover:underline">glas i en flaske</Link>,{" "}
+            <Link href="/guides/hvor-mange-enheder-alkohol-i-et-glas-vin" className="text-rose-900 hover:underline">genstande pr. glas</Link>,{" "}
+            <Link href="/guides/hvor-meget-alkohol-i-vin" className="text-rose-900 hover:underline">alkoholprocent</Link> og{" "}
+            <Link href="/guides/hvor-meget-fylder-en-flaske-vin" className="text-rose-900 hover:underline">flaskestørrelser</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Smagskomponenter og begreber</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Tanniner, syre, sulfit, fadlagring, malolaktisk gæring, ædelråd og appellationer. Læs om{" "}
+            <Link href="/guides/hvad-er-tanniner" className="text-rose-900 hover:underline">tanniner</Link>,{" "}
+            <Link href="/guides/hvad-er-sulfit-i-vin" className="text-rose-900 hover:underline">sulfit</Link>,{" "}
+            <Link href="/guides/hvad-er-fadlagring" className="text-rose-900 hover:underline">fadlagring</Link> og{" "}
+            <Link href="/guides/hvad-er-malolaktisk-gaering" className="text-rose-900 hover:underline">malolaktisk gæring</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Praktik i glasset</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Dekantering, vinglas, servering-temperatur, åbning af champagne. Læs om{" "}
+            <Link href="/guides/sadan-dekanterer-du-vin" className="text-rose-900 hover:underline">dekantering</Link>,{" "}
+            <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">vinglas</Link>,{" "}
+            <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">åbning af champagne</Link> og{" "}
+            <Link href="/guides/kan-vin-blive-daarlig" className="text-rose-900 hover:underline">forkert vin</Link>.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Nye long-tail svar og forklaringer</h2>
         <p className="mt-3 text-stone-700">
@@ -111,6 +164,16 @@ export default function VinVidenHubPage() {
       </section>
 
       <PartnerAdsLeaderboard className="mt-12" />
+      <section className="mt-12 max-w-3xl space-y-4 text-stone-700">
+        <h2 className="text-2xl font-semibold text-stone-900">Sådan læser vi vin-viden</h2>
+        <p>
+          Vi deler vin-viden op i fire praktiske kategorier: <strong>holdbarhed</strong> (hvor længe holder åbnet og uåbnet vin), <strong>mængder</strong> (hvor mange glas, hvor meget alkohol, hvor meget skal købes til en fest), <strong>smag og begreber</strong> (tanniner, syre, sulfit, fadlagring, malolaktisk gæring, appellationer) og <strong>praktik</strong> (dekantering, glasvalg, temperatur, åbning af champagne). De fleste danske googlespørgsmål falder ind under én af disse fire — og for hver af dem har vi et konkret, kort svar med de tal og eksempler der rent faktisk er brug for.
+        </p>
+        <p>
+          Bag hver guide ligger redaktionelt arbejde: vi henter tal fra etablerede kilder (sommelier-håndbøger, producentdata, Fødevarestyrelsen for alkoholenheder), sammenholder med hvad der faktisk er på hylderne hos danske vinhandlere, og skriver med udgangspunkt i danske spise- og drikkevaner. Vi forsøger at være den guide du selv ville have ønsket dig første gang du stod ved vinhylden — hurtig at læse, konkret i sine anbefalinger, og ærlig om hvor reglerne kan brydes.
+        </p>
+      </section>
+
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>
         <p className="mt-4">

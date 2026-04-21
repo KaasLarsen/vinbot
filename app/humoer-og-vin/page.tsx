@@ -72,6 +72,55 @@ export default function HumoerHubPage() {
         ofte hurtigere vej — men du kan sagtens starte med stemningen her og søge derefter.
       </p>
 
+      <section className="mt-8 max-w-3xl space-y-4 text-stone-700">
+        <h2 className="text-2xl font-semibold text-stone-900">Vin er mere end mad-matching</h2>
+        <p>
+          Vin bliver sjældent valgt rationelt ud fra kun én faktor. Vi vælger også efter <strong>hvad vi har lyst til</strong>, <strong>hvem vi er sammen med</strong>, og <strong>hvilken stemning vi er i</strong>. En flaske crémant føles fornem til en god nyhed; en kraftig Amarone passer til en rolig vinteraften med bog og pejs; en let kølig rosé signalerer sommer og afslapning. Denne hub handler om at vælge vin efter <em>humør og lejlighed</em>, før du bekymrer dig om præcis mad-matching.
+        </p>
+        <p>
+          Du finder guider til hyggestemning (fredagsvin, serier-vin, hjemme-aften), romantik (dater-vin, valentins-dag, jubilæum), fest (konfirmation, bryllup, runde fødselsdage, nytår), sommer-og-terrasse (haveselskab, Sankt Hans, grill, picnic) og gave (værtindegave, mandeldgave, fødselsdag, mors dag, fars dag). For hver kategori har vi konkrete prisklasser og flasketyper i tankerne — fra en hurtig 80-kroners hverdagsvin til en 400-kroners gaveflaske.
+        </p>
+      </section>
+
+      <section className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Hygge og ro</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Fredagsvin, serier-vin, bog og pejs. Moden rødvin, let crémant, enkel tør hvidvin. Læs om{" "}
+            <Link href="/guides/bedste-vin-til-hverdag" className="text-rose-900 hover:underline">bedste hverdagsvin</Link>,{" "}
+            <Link href="/guides/bedste-rodvin-under-100-kr" className="text-rose-900 hover:underline">rødvin under 100 kr</Link> og{" "}
+            <Link href="/guides/bedste-weekendvin" className="text-rose-900 hover:underline">weekendvin</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Fest og bobler</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Nytår, runde fødselsdage, bryllup, jubilæum. Champagne, crémant, prosecco, cava. Læs om{" "}
+            <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="text-rose-900 hover:underline">bobler</Link>,{" "}
+            <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="text-rose-900 hover:underline">nytår</Link> og{" "}
+            <Link href="/guides/hvor-meget-vin-til-fest" className="text-rose-900 hover:underline">vin til fest</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Sommer og terrasse</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Haveselskab, grill, picnic, afslappet sommer. Rosé, let hvid, kølet rødvin. Læs om{" "}
+            <Link href="/guides/rosevin-til-mad-og-sommer" className="text-rose-900 hover:underline">rosévin</Link>,{" "}
+            <Link href="/guides/bedste-sommervin" className="text-rose-900 hover:underline">bedste sommervin</Link> og{" "}
+            <Link href="/guides/vin-til-haveselskab" className="text-rose-900 hover:underline">haveselskab</Link>.
+          </p>
+        </div>
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h3 className="text-lg font-semibold text-stone-900">Gave og gæstfrihed</h3>
+          <p className="mt-2 text-sm text-stone-700">
+            Værtindegave, jubilæum, runde gaver. Sikker vin med pakning der ser ud som fest. Læs om{" "}
+            <Link href="/guides/bedste-vin-til-gave" className="text-rose-900 hover:underline">gavevin</Link>,{" "}
+            <Link href="/guides/bedste-vaertindegave-vin" className="text-rose-900 hover:underline">værtindegave</Link> og{" "}
+            <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">konfirmation</Link>.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Sæson og fest — maj/juni</h2>
         <p className="mt-3 text-stone-700">
