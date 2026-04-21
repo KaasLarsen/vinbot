@@ -496,6 +496,182 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Meget tanninrige røde og meget høj alkohol uden syre — de forstærker ofte brænden fra capsaicin. Prioritér syre og evt. off-dry hvid eller let restsødme ved meget stærk krydderi.",
     },
   ],
+  "bedste-rodvin": [
+    {
+      question: "Hvilken rødvin er den bedste?",
+      answer:
+        "Der findes ikke én bedste rødvin — det afhænger af smag, ret og pris. Som regel leverer Chianti Classico, Rioja Crianza, Côtes du Rhône Villages og Douro mest for pengene i 120–200 kr-klassen. Kraftige stilarter som Barolo, Amarone og klassificeret Bordeaux er til særlige anledninger.",
+    },
+    {
+      question: "Hvilken rødvin passer til de fleste måltider?",
+      answer:
+        "Mellemfyldige og saftige røde med god syre og moderat tannin er mest alsidige: sangiovese (Chianti), tempranillo (Rioja Crianza), barbera, Côtes du Rhône-blends og pinot noir. De fungerer til pasta, pizza, svin, fjerkræ og hverdagsmad.",
+    },
+    {
+      question: "Hvor meget skal en god rødvin koste?",
+      answer:
+        "Sweet spot for hverdag er 100–150 kr, hvor kvalitet og identitet stiger markant. 150–250 kr giver enkelt-producenter med karakter og moden frugt. Over 300 kr betaler du ofte for lagring og prestige.",
+    },
+    {
+      question: "Skal rødvin være stuetemperatur?",
+      answer:
+        "Nej — stuetemperatur-idealet stammer fra gamle huse med 16–18 °C. I moderne varme hjem bliver rødvin ofte for varm (22+ °C), hvor alkohol dominerer. Optimal serveringstemperatur er 14–16 °C for let rød og 16–18 °C for kraftig.",
+    },
+  ],
+  "bedste-hvidvin": [
+    {
+      question: "Hvilken hvidvin er den bedste?",
+      answer:
+        "Det afhænger af stil og ret. Frisk og syrlig: sauvignon blanc, albariño, muscadet, tør riesling. Aromatisk: off-dry riesling, gewürztraminer, viognier. Fyldig: chardonnay med fad, chenin blanc, pinot gris. Sweet spot ligger i 120–180 kr.",
+    },
+    {
+      question: "Hvad er forskellen på tør og halvtør hvidvin?",
+      answer:
+        "Tør hvidvin har ingen mærkbar restsødme (under 4 g/l). Halvtør (tysk: halbtrocken) har 4–12 g/l — mærkbar lidt sødme, god til krydret mad. Sødme afgøres af etiketten; spørg forhandleren hvis det ikke fremgår.",
+    },
+    {
+      question: "Hvilken hvidvin passer til fisk og skaldyr?",
+      answer:
+        "Muscadet sur lie, Chablis, albariño og tør riesling er klassiske matches. Syren skærer igennem fedme og salt uden at dominere delikat fisk. Tung fad-chardonnay bør undgås til let fisk.",
+    },
+    {
+      question: "Hvor længe holder en åbnet hvidvin?",
+      answer:
+        "Tommelfingerregel: let hvid 2–4 dage i køleskab; fyldig chardonnay med fad ofte 4–5 dage. Sødere hvide (riesling, sauternes) holder ofte længere. Altid på køl med god prop.",
+    },
+  ],
+  "bedste-bobler": [
+    {
+      question: "Hvilke bobler giver mest for pengene?",
+      answer:
+        "Crémant (Bourgogne, Loire, Limoux) laves efter samme metode som champagne og leverer ofte 70–80 % af champagnes kvalitet for halv pris. Cava brut reserva og Prosecco DOCG er også stærke valg i 100–200 kr.",
+    },
+    {
+      question: "Hvad er forskellen på brut, extra dry og demi-sec?",
+      answer:
+        "Brut har under 12 g/l restsukker — tør. Extra dry har 12–17 g/l — let sødligt trods navnet. Demi-sec har 32–50 g/l — tydelig sødme, god til dessert. Brut nature/zero dosage er knastør (0–3 g/l).",
+    },
+    {
+      question: "Hvilke bobler passer til hvilken mad?",
+      answer:
+        "Forret og skaldyr: brut eller extra brut. Pizza og pasta: prosecco eller frisk cava. Friture: cava brut eller crémant. Ostebord: champagne eller extra brut cava. Dessert: demi-sec eller asti.",
+    },
+    {
+      question: "Hvor kolde skal bobler serveres?",
+      answer:
+        "6–9 °C er optimalt. Champagne typisk 8–10 °C; cava og prosecco ofte 6–8 °C. For koldt skjuler aroma; for varmt bliver alkoholen dominerende.",
+    },
+  ],
+  "bedste-vin-til-gave": [
+    {
+      question: "Hvad er en sikker gavevin?",
+      answer:
+        "Klassiske kvalitetsbobler (crémant, cava gran reserva, champagne brut NV) eller respekterede rødvine (Chianti Classico, Rioja reserva) er aldrig forkert. For 300–500 kr får du champagne NV, Barolo eller moden Sancerre.",
+    },
+    {
+      question: "Hvor meget skal en god gavevin koste?",
+      answer:
+        "150–300 kr er god hverdagsgave. 300–500 kr er sikker topgave — champagne, Barolo, Sancerre. 500+ kr er særlige anledninger som jubilæer. Dyrere betyder ikke bedre: en 200 kr crémant med personlig note slår ofte en 500 kr generisk luksusflaske.",
+    },
+    {
+      question: "Skal jeg vælge flasker modtageren kender?",
+      answer:
+        "Ja, hvis du ikke kender deres smag godt. Klassiske appellationer (Rioja, Chianti, champagne) er sikrere end eksperimentelle naturvine. For vinkendere kan grower-champagne eller cru Beaujolais være mere personligt.",
+    },
+    {
+      question: "Hvor finder jeg historie bag flasken?",
+      answer:
+        "Ordentlige producent-sider og forhandlerbeskrivelser fortæller om familie-drift, vinmarker og metode. Små skrevne notekort med flaskens historie hæver gave-opfattelsen betydeligt.",
+    },
+  ],
+  "bedste-vin-til-begynder": [
+    {
+      question: "Hvilken vin skal jeg starte med som begynder?",
+      answer:
+        "Blide og frugtige stilarter: pinot noir fra kølige klimaer, gamay (Beaujolais), merlot fra Languedoc eller Chile. I hvid: albariño, pinot gris, chenin blanc fra Loire og halvtør riesling. Moscato d’Asti og prosecco er nemme bobler.",
+    },
+    {
+      question: "Hvordan lærer jeg min smag hurtigt?",
+      answer:
+        "Køb ikke én flaske ad gangen — køb 3 forskellige stilarter og sammenlign. Skriv noter: farve, frugt, syre, krop, hvad du kan lide. Små smagninger med venner er mere lærerige end middag-flasker.",
+    },
+    {
+      question: "Skal jeg undgå dyre vine som begynder?",
+      answer:
+        "Ja. Meget dyre vine kan du ikke værdsætte fuldt ud uden referencer. Start i 80–180 kr-klassen, hvor du får kvalitet uden at brænde penge på noget du ikke kan bedømme.",
+    },
+    {
+      question: "Hvilke vine bør begyndere undgå?",
+      answer:
+        "Ekstremt tannintunge unge cabernet sauvignon, naturvin i starten (for eksperimental), tør sauvignon blanc med meget høj syre, og dessertvin som hovedvin. De har hver deres tid, men ikke som introduktion.",
+    },
+  ],
+  "bedste-okologiske-vin": [
+    {
+      question: "Hvad betyder økologisk vin?",
+      answer:
+        "Økologisk vin er lavet af certificeret økologisk dyrkede druer. EU-reglerne dækker både mark og kælder. Biodynamisk (Demeter, Biodyvin) er et skridt videre med strammere regler og filosofi bag.",
+    },
+    {
+      question: "Er økologisk vin automatisk bedre?",
+      answer:
+        "Nej. Økologi er en produktionsværdi, ikke en kvalitetsgaranti. Men toppen af økologisk producenter leverer høj kvalitet, fordi engagementet er stort. Dårlig økologisk er stadig dårlig.",
+    },
+    {
+      question: "Hvor finder jeg certificeringen på etiketten?",
+      answer:
+        "Kig efter EU’s grønne økologi-blad, Demeter- eller Biodyvin-logo. ’Sans soufre ajouté’ eller ’zero SO2’ angiver ingen tilsat svovl. ’Vegan’ betyder uden animalsk klaring.",
+    },
+    {
+      question: "Hvilke regioner leverer bedst økologisk vin?",
+      answer:
+        "Loire (Frankrig), Alsace, Piemonte, Toscana, Languedoc, Østrig og dele af Californien har stor andel af økologiske og biodynamiske producenter med international anerkendelse.",
+    },
+  ],
+  "bedste-rodvin-under-100-kr": [
+    {
+      question: "Kan man få god rødvin under 100 kr?",
+      answer:
+        "Ja — fokusér på regioner der overperformer. Sicilien (Nero d’Avola), Spanien (Navarra, Campo de Borja), Portugal (Alentejo, Douro) og Sydfrankrig (Côtes du Rhône, Corbières) leverer autentisk stil under 100 kr.",
+    },
+    {
+      question: "Hvilke druer skal jeg prioritere under 100 kr?",
+      answer:
+        "Garnacha, tempranillo ung, primitivo, montepulciano, nero d’Avola og portugisiske blends. Undgå pinot noir og nebbiolo under 100 kr — de er sjældent gode i den prisklasse.",
+    },
+    {
+      question: "Hvad skal jeg undgå under 100 kr?",
+      answer:
+        "Supermarked-eksklusiv-label uden producent-info, ’reserva’ fra ukendte producenter (lagring koster penge), Bordeaux générique uden Chateau-navn, og ikke-vintage rødvin uden årgang.",
+    },
+    {
+      question: "Kan boksevin være bedre end flasker under 100 kr?",
+      answer:
+        "Ja — moderne 3-liters bag-in-box leverer ofte bedre kvalitet per glas end billige flasker. Plus: lufttæt pose betyder vinen holder 4–6 uger efter åbning. Se også bedste boxvin-guiden.",
+    },
+  ],
+  "bedste-alkoholfri-vin": [
+    {
+      question: "Smager alkoholfri vin som rigtig vin?",
+      answer:
+        "Ikke præcis, men kvaliteten er markant forbedret de sidste 5 år — særligt bobler og hvidvin. Alkoholfri rødvin er stadig kategoriens største udfordring, fordi tanninerne føles uden alkoholens krop.",
+    },
+    {
+      question: "Hvilken alkoholfri vin er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero (Tyskland) er generelt kategoriens bedste — både riesling og sparkling riesling. Torres Natureo (Spanien) og Giesen 0 % (New Zealand) er også anerkendte. Noughty fra England laver god chardonnay-stil.",
+    },
+    {
+      question: "Hvordan laves alkoholfri vin?",
+      answer:
+        "Alkoholen fjernes fra færdig vin via vakuum-destillation eller reverse osmosis. Det tager aromaer og noget krop, som bedste producenter kompenserer for med omhyggelig vinifikation.",
+    },
+    {
+      question: "Hvor mange kalorier har alkoholfri vin?",
+      answer:
+        "Cirka 1/3 af alkoholisk vin, typisk 15–25 kcal per 100 ml mod 70–85 kcal. Tjek etiket — nogle alkoholfri vine har tilsat sukker for at kompensere for tabt krop.",
+    },
+  ],
   "vin-til-stegt-flaesk": [
     {
       question: "Hvilken vin passer til stegt flæsk med persillesovs?",

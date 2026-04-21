@@ -7,6 +7,7 @@ import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { guideFaqBySlug } from "@/lib/guide-faq";
 import { getVinTilFallbackFaq } from "@/lib/guide-faq-vin-til-fallback";
+import { getBedsteFallbackFaq } from "@/lib/guide-faq-bedste-fallback";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
@@ -67,7 +68,11 @@ export default async function GuidePage({ params }: Props) {
 
   const manualFaq = guideFaqBySlug[slug];
   const faqItems =
-    manualFaq && manualFaq.length > 0 ? manualFaq : getVinTilFallbackFaq(slug, frontmatter.title) ?? undefined;
+    manualFaq && manualFaq.length > 0
+      ? manualFaq
+      : getBedsteFallbackFaq(slug, frontmatter.title) ??
+        getVinTilFallbackFaq(slug, frontmatter.title) ??
+        undefined;
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
@@ -151,6 +156,7 @@ function hubLabel(hub: string): string {
   const m: Record<string, string> = {
     "mad-og-vin": "Mad & vin",
     "humoer-og-vin": "Humør & vin",
+    "bedste-vine": "Bedste vine",
     saeson: "Sæson",
     druesorter: "Druesorter",
     regioner: "Regioner",

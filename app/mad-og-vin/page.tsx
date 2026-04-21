@@ -74,6 +74,25 @@ export default function MadOgVinHubPage() {
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>
         <p className="mt-4">
+          Leder du efter en konkret flaske?{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            Bedste vine
+          </Link>{" "}
+          samler top-lister efter pris, lejlighed og stil —{" "}
+          <Link href="/guides/bedste-rodvin" className="text-rose-900 hover:underline">
+            bedste rødvin
+          </Link>
+          ,{" "}
+          <Link href="/guides/bedste-hvidvin" className="text-rose-900 hover:underline">
+            hvidvin
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/bedste-bobler" className="text-rose-900 hover:underline">
+            bobler
+          </Link>{" "}
+          er gode startpunkter.
+        </p>
+        <p className="mt-4">
           Gå til{" "}
           <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">
             humør og stemning

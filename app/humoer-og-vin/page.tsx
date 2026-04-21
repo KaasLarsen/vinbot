@@ -57,6 +57,25 @@ export default function HumoerHubPage() {
 
       <PartnerAdsLeaderboard className="mt-12" />
       <p className="mt-10 text-stone-700">
+        Skal du købe en bestemt flaske? Se{" "}
+        <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+          bedste vine
+        </Link>{" "}
+        for top-lister efter pris og lejlighed —{" "}
+        <Link href="/guides/bedste-vin-til-gave" className="text-rose-900 hover:underline">
+          gavevin
+        </Link>
+        ,{" "}
+        <Link href="/guides/bedste-vaertindegave-vin" className="text-rose-900 hover:underline">
+          værtindegave
+        </Link>{" "}
+        og{" "}
+        <Link href="/guides/bedste-weekendvin" className="text-rose-900 hover:underline">
+          weekendvin
+        </Link>{" "}
+        rammer mange humør-lejligheder direkte.
+      </p>
+      <p className="mt-6 text-stone-700">
         Kombinér med{" "}
         <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
           mad og vin

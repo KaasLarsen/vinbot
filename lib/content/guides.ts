@@ -28,11 +28,18 @@ export function listGuides(): GuideFrontmatter[] {
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
 }
 
-/** Guides til mad & vin-hubben (hub + “mad” i tags). */
+/** Guides til mad & vin-hubben (hub + “mad” i tags). "bedste-*" hører ikke hjemme her. */
 export function listMadOgVinHubGuides(): GuideFrontmatter[] {
   return listGuides().filter(
-    (g) => g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad")),
+    (g) =>
+      !g.slug.startsWith("bedste-") &&
+      (g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad"))),
   );
+}
+
+/** Guides til /bedste-vine-hubben: hub eller slug starter med "bedste-". */
+export function listBedsteVineHubGuides(): GuideFrontmatter[] {
+  return listGuides().filter((g) => g.hub === "bedste-vine" || g.slug.startsWith("bedste-"));
 }
 
 /** Druer og vinregioner hører til andre hubber — ikke sæson + vin som emne. */
@@ -102,6 +109,7 @@ export function listSaesonHubGuides(): GuideFrontmatter[] {
   return listGuides()
     .filter((g) => {
       if (isGrapeOrRegionGuide(g.slug)) return false;
+      if (g.slug.startsWith("bedste-")) return false;
       if (g.hub === "saeson") return true;
       if (SAESON_EXTRA_SLUGS.has(g.slug)) return true;
       return guideMatchesSaesonTags(g.tags);
@@ -150,6 +158,7 @@ export function listHumoerHubGuides(): GuideFrontmatter[] {
   return listGuides()
     .filter((g) => {
       if (isGrapeOrRegionGuide(g.slug)) return false;
+      if (g.slug.startsWith("bedste-")) return false;
       if (g.hub === "humoer-og-vin") return true;
       if (HUMOER_EXTRA_SLUGS.has(g.slug)) return true;
       return guideMatchesHumoerTags(g.tags);

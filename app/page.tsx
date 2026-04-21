@@ -22,6 +22,7 @@ const popularTopicLinkClass =
 /** Kompakt udvalg — den fulde liste ligger i <details> nedenunder. */
 const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/guides", label: "Alle guides — søg og filtrér" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
   { href: "/guides/bobler-champagne-cava-prosecco-og-cremant", label: "Bobler" },
@@ -33,6 +34,20 @@ const featuredPopularLinks: { href: string; label: string }[] = [
 ];
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
+  {
+    title: "Bedste vine — top-lister",
+    links: [
+      { href: "/bedste-vine", label: "Hub: bedste vine" },
+      { href: "/guides/bedste-rodvin", label: "Bedste rødvin" },
+      { href: "/guides/bedste-hvidvin", label: "Bedste hvidvin" },
+      { href: "/guides/bedste-bobler", label: "Bedste bobler" },
+      { href: "/guides/bedste-rodvin-under-100-kr", label: "Rødvin under 100 kr" },
+      { href: "/guides/bedste-vin-til-gave", label: "Gavevin" },
+      { href: "/guides/bedste-vin-til-begynder", label: "Begyndervin" },
+      { href: "/guides/bedste-okologiske-vin", label: "Økologisk vin" },
+      { href: "/guides/bedste-alkoholfri-vin", label: "Alkoholfri vin" },
+    ],
+  },
   {
     title: "Vin & viden",
     links: [
@@ -210,13 +225,20 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
-      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >
           <h3 className="text-lg font-semibold text-stone-900">Mad & vin</h3>
           <p className="mt-2 text-stone-600">Parring til kød, fisk, ost, pasta og meget mere — med dybe guides og masser af videre læsning.</p>
+        </Link>
+        <Link
+          href="/bedste-vine"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Bedste vine</h3>
+          <p className="mt-2 text-stone-600">Top-lister efter pris, lejlighed og stil — rødvin, hvidvin, bobler, gavevin og budget-guides.</p>
         </Link>
         <Link
           href="/humoer-og-vin"

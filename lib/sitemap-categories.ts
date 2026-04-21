@@ -1,6 +1,6 @@
 import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
 
-export type GuideCategory = "mad" | "druer" | "regioner" | "andre";
+export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "andre";
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */
 const MAD_EXTRA_SLUGS = new Set<string>([
@@ -27,6 +27,7 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
 export function classifyGuide(slug: string): GuideCategory {
   if (slug.endsWith("-druen")) return "druer";
   if (slug.startsWith("vinregion-")) return "regioner";
+  if (slug.startsWith("bedste-")) return "bedste";
   if (slug.startsWith("vin-til-") || MAD_EXTRA_SLUGS.has(slug)) return "mad";
   return "andre";
 }

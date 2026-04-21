@@ -25,6 +25,7 @@ export async function GET(): Promise<Response> {
     mad: [] as Date[],
     druer: [] as Date[],
     regioner: [] as Date[],
+    bedste: [] as Date[],
     andre: [] as Date[],
   };
   for (const g of guides) {
@@ -42,6 +43,7 @@ export async function GET(): Promise<Response> {
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },
     { loc: `${base}/sitemap-regioner.xml`, lastmod: newest(byCat.regioner) },
+    { loc: `${base}/sitemap-bedste.xml`, lastmod: newest(byCat.bedste) },
     { loc: `${base}/sitemap-andre.xml`, lastmod: newest(byCat.andre) },
   ]);
 
