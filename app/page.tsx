@@ -23,6 +23,7 @@ const popularTopicLinkClass =
 const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
+  { href: "/vin-viden", label: "Vin-viden" },
   { href: "/guides", label: "Alle guides — søg og filtrér" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
   { href: "/guides/bobler-champagne-cava-prosecco-og-cremant", label: "Bobler" },
@@ -49,12 +50,26 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
-    title: "Vin & viden",
+    title: "Vin-viden — hvor længe, hvor mange, hvad er",
+    links: [
+      { href: "/vin-viden", label: "Hub: vin-viden" },
+      { href: "/guides/hvor-laenge-holder-rodvin", label: "Hvor længe holder rødvin" },
+      { href: "/guides/hvor-laenge-holder-hvidvin", label: "Hvor længe holder hvidvin" },
+      { href: "/guides/hvor-laenge-holder-bobler-og-champagne", label: "Hvor længe holder champagne" },
+      { href: "/guides/hvor-mange-glas-i-en-flaske-vin", label: "Glas i en flaske" },
+      { href: "/guides/hvor-mange-kalorier-i-vin", label: "Kalorier i vin" },
+      { href: "/guides/hvad-er-tanniner", label: "Hvad er tanniner" },
+      { href: "/guides/sadan-dekanterer-du-vin", label: "Sådan dekanterer du" },
+      { href: "/guides/sadan-serverer-du-vin", label: "Sådan serverer du" },
+    ],
+  },
+  {
+    title: "Regioner, køb & begreber",
     links: [
       { href: "/rabatkoder", label: "Rabatkoder til vin" },
       { href: "/regioner", label: "Vinregioner og vinlande" },
       { href: "/guides/vinregion-frankrig", label: "Guide: vin i Frankrig" },
-      { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og servering" },
+      { href: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske", label: "Vintemperatur og opbevaring" },
       { href: "/vinkoleskabe", label: "Vinkøleskabe — søg og guide" },
       { href: "/guides/naturvin-hvad-er-det", label: "Naturvin" },
       { href: "/guides/vin-begreber-i-praksis", label: "Vinbegreber" },
@@ -225,7 +240,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
-      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
@@ -253,6 +268,13 @@ export default async function HomePage({ searchParams }: HomeProps) {
         >
           <h3 className="text-lg font-semibold text-stone-900">Sæson</h3>
           <p className="mt-2 text-stone-600">Forår, sommer, efterår og vinter — hvad der smager af årstiden i glasset.</p>
+        </Link>
+        <Link
+          href="/vin-viden"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Vin-viden</h3>
+          <p className="mt-2 text-stone-600">Korte svar: hvor længe holder vin, hvor mange glas i en flaske, hvad er tanniner — og sådan dekanterer, serverer og smager du.</p>
         </Link>
         <Link
           href="/vinkoleskabe"

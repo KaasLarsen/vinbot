@@ -1,6 +1,17 @@
 import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
 
-export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "andre";
+export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
+
+const VIDEN_PREFIXES = [
+  "hvor-laenge-holder-",
+  "hvor-mange-",
+  "hvor-meget-vin-",
+  "hvad-er-",
+  "sadan-dekanterer-",
+  "sadan-serverer-",
+  "sadan-smager-",
+] as const;
+const VIDEN_SLUGS = new Set<string>(["kan-vin-blive-daarlig"]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */
 const MAD_EXTRA_SLUGS = new Set<string>([
@@ -28,6 +39,7 @@ export function classifyGuide(slug: string): GuideCategory {
   if (slug.endsWith("-druen")) return "druer";
   if (slug.startsWith("vinregion-")) return "regioner";
   if (slug.startsWith("bedste-")) return "bedste";
+  if (VIDEN_SLUGS.has(slug) || VIDEN_PREFIXES.some((p) => slug.startsWith(p))) return "viden";
   if (slug.startsWith("vin-til-") || MAD_EXTRA_SLUGS.has(slug)) return "mad";
   return "andre";
 }

@@ -689,4 +689,111 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — vælg let til mellemfyldig rød med moden frugt og lav/mellem tannin (fx gamay, pinot noir, lettere sangiovese). Meget ung bordeaux-agtig tannin kan føles hård mod både salt og sødlig sovs.",
     },
   ],
+  "hvor-laenge-holder-rodvin": [
+    {
+      question: "Hvor længe holder åbnet rødvin?",
+      answer:
+        "Typisk 3-5 dage i køleskabet med prop i. Lette røde (pinot noir, gamay) 2-3 dage; kraftige røde (cabernet, malbec, nebbiolo) 5-7 dage. Vakuumpumpe eller Coravin forlænger markant.",
+    },
+    {
+      question: "Hvor længe holder uåbnet rødvin?",
+      answer:
+        "Hverdagsrødvin skal drikkes inden 2-3 år. Kvalitetsvine 150-300 kr holder 3-8 år. Klassiske lagringsvine (Bordeaux, Barolo, Rioja Gran Reserva) udvikler sig 10-30 år i god kælder.",
+    },
+    {
+      question: "Hvordan ser jeg om rødvinen er blevet dårlig?",
+      answer:
+        "Tegn: eddikelugt, neglelakfjerner-lugt, brun farve på en ung vin, prop-/mug-lugt (korksmag) eller fuldstændigt flad smag uden frugt. Korket vin kan typisk reklameres hos forhandleren.",
+    },
+    {
+      question: "Skal åbnet rødvin stå i køleskabet?",
+      answer:
+        "Ja. Kulden bremser oxidationen. Tag flasken ud 15-20 minutter før næste servering, så temperaturen når 15-18 °C.",
+    },
+  ],
+  "hvor-laenge-holder-hvidvin": [
+    {
+      question: "Hvor længe holder åbnet hvidvin?",
+      answer:
+        "3-5 dage i køleskabet med prop i. Lette friske hvide (sauvignon blanc, pinot grigio) mister karakter efter 2-3 dage; fyldig fadet chardonnay kan holde 5-7 dage og er ofte bedre dag 2.",
+    },
+    {
+      question: "Hvor længe holder uåbnet hvidvin?",
+      answer:
+        "De fleste friske hvide 1-2 år. Fadet chardonnay 3-10 år. Tør riesling 2-8 år. Sød riesling Spätlese/Auslese og Sauternes 10-30 år ved korrekt opbevaring.",
+    },
+    {
+      question: "Kan hvidvin stå i køleskabet længe?",
+      answer:
+        "Uåbnet hvidvin skal ideelt opbevares ved 12-14 °C. Uger i et kølig køleskab er fint; måneder udtørrer proppen og påvirker smagen. Flyt gerne til et vinkøleskab eller køligt kammer.",
+    },
+  ],
+  "hvor-laenge-holder-bobler-og-champagne": [
+    {
+      question: "Hvor længe holder åbnet champagne?",
+      answer:
+        "1-3 dage i køleskabet med en tætsluttende champagne-lukke med metalvinger. Uden rigtig lukke mister vinen brus på få timer. Prosecco holder typisk 1-2 dage.",
+    },
+    {
+      question: "Hvor længe holder uåbnet champagne?",
+      answer:
+        "Non-vintage champagne holder 3-5 år fra køb. Årgangschampagne 10-25 år i god kælder. Prosecco skal drikkes indenfor 1-3 år; cava indenfor 2-4 år.",
+    },
+    {
+      question: "Virker en ske i flaskehalsen?",
+      answer:
+        "Nej — det er en myte. Brug i stedet en champagne-lukke med metalvinger, og hold flasken på 6-9 °C. Kulde holder CO₂ opløst i vinen og brusen intakt.",
+    },
+  ],
+  "hvor-mange-glas-i-en-flaske-vin": [
+    {
+      question: "Hvor mange glas er der i en flaske vin?",
+      answer:
+        "5-6 glas i en standardflaske (75 cl). Restaurant-portion 15 cl giver 5 glas. Hjemme-hygge 12,5 cl giver 6 glas. Champagne/bobler-portion 10 cl giver 7-8 glas.",
+    },
+    {
+      question: "Hvor meget vin per person til middag?",
+      answer:
+        "Tommelfingerregel: 1/2 flaske per voksen gæst hvis der drikkes hele aftenen. Middag med 4 personer = 2 flasker. 8 personer = 4 flasker. Tilføj 10-20 % buffer.",
+    },
+    {
+      question: "Hvor mange glas i en magnum?",
+      answer:
+        "En magnum (1,5 l) giver 10-12 glas — ideelt til 4-6 personer. Magnum modner også langsommere og bedre end standardflasker, fordi forholdet mellem luft og vin er lavere.",
+    },
+  ],
+  "hvad-er-tanniner": [
+    {
+      question: "Hvad er tanniner i vin?",
+      answer:
+        "Naturlige plantestoffer (polyfenoler) fra drueskaller, kerner, stilke og egetræsfad. De giver den snerpende, tørre fornemmelse i munden og rødvinens struktur samt aldringsevne.",
+    },
+    {
+      question: "Hvorfor har hvidvin ikke tanniner?",
+      answer:
+        "Hvidvin gæres uden skal-kontakt, så tanninerne bliver i presserester. Rødvin gæres med skaller og kerner i dage eller uger. Orange vin (hvid med skal-kontakt) har også tannin.",
+    },
+    {
+      question: "Hvilke druer har mest tannin?",
+      answer:
+        "Nebbiolo (Barolo), tannat (Madiran), cabernet sauvignon, syrah/shiraz og malbec er høj-tannin-druer. Pinot noir, gamay og grenache er lav-tannin. Tynde drueskaller giver lav tannin; tykke giver høj.",
+    },
+  ],
+  "sadan-dekanterer-du-vin": [
+    {
+      question: "Hvornår skal man dekantere vin?",
+      answer:
+        "Unge kraftige rødvine (ung cabernet, barolo, syrah, malbec) for at lufte tanninerne. Og gamle modne flasker (10+ år) for at skille bundfald fra. Lette røde, hvidvin og bobler dekanteres normalt ikke.",
+    },
+    {
+      question: "Hvor længe skal vinen luftes i karaffel?",
+      answer:
+        "Unge stramme røde: 30-60 minutter. Modne vine med bundfald: kun 5-10 minutter — de er skrøbelige. Lette delikate vine skal ikke dekanteres, det kan ødelægge subtil profil.",
+    },
+    {
+      question: "Er en karaffel bedre end en aerator?",
+      answer:
+        "Klassisk karaffel med bred bund maksimerer luftkontakten over tid — bedst til unge tanniner. Aeratorer (flaske-toppe) virker hurtigt men mindre kontrollerbart. Ingen af dem er nødvendige for lette eller modne vine.",
+    },
+  ],
 };

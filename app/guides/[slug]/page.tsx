@@ -8,6 +8,7 @@ import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld
 import { guideFaqBySlug } from "@/lib/guide-faq";
 import { getVinTilFallbackFaq } from "@/lib/guide-faq-vin-til-fallback";
 import { getBedsteFallbackFaq } from "@/lib/guide-faq-bedste-fallback";
+import { getVidenFallbackFaq } from "@/lib/guide-faq-viden-fallback";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
@@ -71,6 +72,7 @@ export default async function GuidePage({ params }: Props) {
     manualFaq && manualFaq.length > 0
       ? manualFaq
       : getBedsteFallbackFaq(slug, frontmatter.title) ??
+        getVidenFallbackFaq(slug, frontmatter.title) ??
         getVinTilFallbackFaq(slug, frontmatter.title) ??
         undefined;
 
@@ -157,6 +159,7 @@ function hubLabel(hub: string): string {
     "mad-og-vin": "Mad & vin",
     "humoer-og-vin": "Humør & vin",
     "bedste-vine": "Bedste vine",
+    "vin-viden": "Vin-viden",
     saeson: "Sæson",
     druesorter: "Druesorter",
     regioner: "Regioner",

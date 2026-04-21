@@ -107,6 +107,29 @@ export default function MadOgVinHubPage() {
           </Link>{" "}
           for ekstra inspiration og gode købsidéer.
         </p>
+        <p className="mt-4">
+          Praktiske spørgsmål om vin i hverdagen?{" "}
+          <Link href="/vin-viden" className="text-rose-900 hover:underline">
+            Vin-viden
+          </Link>{" "}
+          samler korte svar:{" "}
+          <Link href="/guides/hvor-laenge-holder-rodvin" className="text-rose-900 hover:underline">
+            hvor længe holder rødvin
+          </Link>
+          ,{" "}
+          <Link href="/guides/hvor-mange-glas-i-en-flaske-vin" className="text-rose-900 hover:underline">
+            glas i en flaske
+          </Link>
+          ,{" "}
+          <Link href="/guides/hvad-er-tanniner" className="text-rose-900 hover:underline">
+            hvad er tanniner
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/sadan-serverer-du-vin" className="text-rose-900 hover:underline">
+            sådan serverer du vin
+          </Link>
+          .
+        </p>
       </section>
     </div>
   );
