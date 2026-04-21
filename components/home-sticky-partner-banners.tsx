@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { trackAffiliateClick } from "@/lib/affiliate-track";
 
 /**
  * Partner-Ads skyscraper-bannere — kun forsiden, fixed i viewport.
@@ -79,6 +80,13 @@ export function HomeStickyPartnerBanners() {
             href={left.href}
             target="_blank"
             rel={linkRel}
+            onClick={() =>
+              trackAffiliateClick({
+                merchant: "Partner-Ads",
+                placement: "home-skyscraper-left",
+                url: left.href,
+              })
+            }
             className="block rounded-lg shadow-md ring-1 ring-stone-200/80 transition-opacity hover:opacity-95"
             aria-label="Sponsoreret partnerbanner"
           >
@@ -105,6 +113,13 @@ export function HomeStickyPartnerBanners() {
             href={right.href}
             target="_blank"
             rel={linkRel}
+            onClick={() =>
+              trackAffiliateClick({
+                merchant: "Partner-Ads",
+                placement: "home-skyscraper-right",
+                url: right.href,
+              })
+            }
             className="block rounded-lg shadow-md ring-1 ring-stone-200/80 transition-opacity hover:opacity-95"
             aria-label="Sponsoreret partnerbanner"
           >

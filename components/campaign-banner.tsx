@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { partnerAdsDsfClickUrl } from "@/lib/site";
+import { trackAffiliateClick } from "@/lib/affiliate-track";
 
 /** Forsidebutik — samme Partner-Ads-banner som øvrige DSF-produktlinks (lib/site.ts). */
 const DSF_SHOP_HOME = "https://densidsteflaske.dk/";
@@ -7,6 +10,12 @@ const DSF_SHOP_HOME = "https://densidsteflaske.dk/";
 /** Fremhævet anbefaling — neutral kundetekst */
 export function CampaignBanner() {
   const shopAffiliateHref = partnerAdsDsfClickUrl(DSF_SHOP_HOME);
+  const onClick = () =>
+    trackAffiliateClick({
+      merchant: "Den Sidste Flaske",
+      placement: "campaign-banner",
+      url: shopAffiliateHref,
+    });
 
   return (
     <section className="mt-10 rounded-2xl border border-rose-200 bg-rose-950 px-6 py-8 text-rose-50 shadow-md">
@@ -20,6 +29,7 @@ export function CampaignBanner() {
         href={shopAffiliateHref}
         target="_blank"
         rel="nofollow sponsored noopener noreferrer"
+        onClick={onClick}
         className="mt-5 inline-flex rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-rose-950 hover:bg-rose-100"
       >
         Gå til Den Sidste Flaske

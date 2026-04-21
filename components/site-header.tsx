@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { HeaderSearch } from "@/components/header-search";
 
 type NavItem = { href: string; label: string; activePrefix?: string };
 
@@ -61,6 +62,8 @@ export function SiteHeader() {
               Find den rette vin til mad, stemning og lejlighed
             </span>
           </Link>
+          <div className="flex items-center gap-2">
+            <HeaderSearch variant="desktop" />
           <button
             type="button"
             className="inline-flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-stone-800 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-800"
@@ -88,6 +91,7 @@ export function SiteHeader() {
             </svg>
             Menu
           </button>
+          </div>
         </div>
 
         <div
@@ -117,6 +121,9 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-2 pb-1 md:hidden">
+                <HeaderSearch variant="mobile" />
+              </div>
             </nav>
           </div>
         </div>

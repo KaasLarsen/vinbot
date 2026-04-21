@@ -4,7 +4,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ProductHit, SearchMeta } from "@/lib/search/types";
 import { ProductCard } from "@/components/product-card";
 
-const CHIPS: { label: string; q: string; max?: number }[] = [
+type Chip = { label: string; q: string; max?: number };
+
+const ALL_CHIPS: Chip[] = [
   { label: "Julemad", q: "julemad rødvin" },
   { label: "Nytår", q: "nytår champagne bobler" },
   { label: "Fisk", q: "fisk hvidvin" },
@@ -12,16 +14,78 @@ const CHIPS: { label: string; q: string; max?: number }[] = [
   { label: "Hygge", q: "hygge rødvin" },
   { label: "Romantisk", q: "romantisk middag pinot" },
   { label: "Grill", q: "grill malbec" },
+  { label: "Sommer", q: "rosé sommer" },
+  { label: "Påske", q: "påske hvidvin riesling" },
+  { label: "Forår", q: "forår rosé sauvignon blanc" },
+  { label: "Efterår", q: "efterår rødvin" },
   { label: "Under 150 kr", q: "vin", max: 150 },
 ];
+
+/** Vælg chips ud fra måned (0-indexed). Rækkefølgen afgør hvad brugeren ser først. */
+function seasonalChips(monthIndex: number): Chip[] {
+  const pick = (...labels: string[]) =>
+    labels
+      .map((l) => ALL_CHIPS.find((c) => c.label === l))
+      .filter((c): c is Chip => Boolean(c));
+
+  switch (monthIndex) {
+    case 0:
+    case 1:
+      return pick("Hygge", "Romantisk", "Fisk", "Tapas", "Under 150 kr");
+    case 2:
+      return pick("Forår", "Påske", "Fisk", "Romantisk", "Under 150 kr");
+    case 3:
+      return pick("Forår", "Påske", "Sommer", "Romantisk", "Fisk", "Under 150 kr");
+    case 4:
+    case 5:
+      return pick("Sommer", "Grill", "Fisk", "Romantisk", "Under 150 kr");
+    case 6:
+    case 7:
+      return pick("Sommer", "Grill", "Fisk", "Tapas", "Under 150 kr");
+    case 8:
+      return pick("Efterår", "Grill", "Hygge", "Tapas", "Under 150 kr");
+    case 9:
+      return pick("Efterår", "Hygge", "Romantisk", "Tapas", "Under 150 kr");
+    case 10:
+      return pick("Hygge", "Efterår", "Romantisk", "Julemad", "Under 150 kr");
+    case 11:
+      return pick("Julemad", "Nytår", "Hygge", "Romantisk", "Under 150 kr");
+    default:
+      return pick("Hygge", "Fisk", "Tapas", "Romantisk", "Under 150 kr");
+  }
+}
+
+function seasonalPlaceholder(monthIndex: number): string {
+  switch (monthIndex) {
+    case 2:
+    case 3:
+      return "Fx påskefrokost, rosé, lam, hvidvin…";
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+      return "Fx grill, rosé, sommer, fisk, tapas…";
+    case 8:
+    case 9:
+      return "Fx vildt, rødvin, svamperet, hygge…";
+    case 10:
+    case 11:
+      return "Fx julemad, rødvin, nytår, champagne…";
+    default:
+      return "Fx hygge, sushi, julemad, champagne…";
+  }
+}
 
 type ApiResponse = { source: string; products: ProductHit[]; meta: SearchMeta };
 
 const PAGE_MORE = 10;
 
 export function WineSearch({ initialQuery }: { initialQuery?: string }) {
-  const [q, setQ] = useState(initialQuery?.trim() || "pinot noir");
+  const [q, setQ] = useState(initialQuery?.trim() || "");
   const [max, setMax] = useState<string>("");
+  const monthIndex = useMemo(() => new Date().getMonth(), []);
+  const chips = useMemo(() => seasonalChips(monthIndex), [monthIndex]);
+  const placeholder = useMemo(() => seasonalPlaceholder(monthIndex), [monthIndex]);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -93,7 +157,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
             id="wine-q"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Fx hygge, sushi, julemad, champagne…"
+            placeholder={placeholder}
             className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
           />
         </div>
@@ -120,7 +184,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
       </form>
 
       <div className="flex flex-wrap gap-2">
-        {CHIPS.map((c) => (
+        {chips.map((c) => (
           <button
             key={c.label}
             type="button"

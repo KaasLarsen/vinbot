@@ -13,6 +13,10 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { GuideSearchCta } from "@/components/guide-search-cta";
+import { GuideProductPicks } from "@/components/guide-product-picks";
+import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
+import { deriveGuideIntent } from "@/lib/guide-intent";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -76,6 +80,11 @@ export default async function GuidePage({ params }: Props) {
         getVinTilFallbackFaq(slug, frontmatter.title) ??
         undefined;
 
+  const intent = deriveGuideIntent(slug);
+  const searchHref = intent
+    ? `/?q=${encodeURIComponent(intent.q)}${intent.max != null ? `&max=${intent.max}` : ""}`
+    : "/";
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
       <ArticleJsonLd
@@ -112,11 +121,23 @@ export default async function GuidePage({ params }: Props) {
           </Link>
         </p>
       </header>
+      {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
       <div className="prose prose-stone mt-10 max-w-none">
         <AffiliateDisclosure compact />
         {content}
       </div>
-      <PartnerAdsLeaderboard className="mt-12" />
+      {intent ? (
+        <GuideProductPicks
+          q={intent.q}
+          max={intent.max}
+          slug={slug}
+          hub={hub}
+          label={intent.label}
+          searchHref={searchHref}
+        />
+      ) : null}
+      {faqItems?.length ? <GuideFaqAccordion items={faqItems} /> : null}
+      <PartnerAdsLeaderboard className="mt-12" hub={hub} slug={slug} />
       <div className="mt-12">
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
       </div>
