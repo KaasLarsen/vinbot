@@ -73,6 +73,34 @@ export default function BedsteVineHubPage() {
         .
       </p>
 
+      <section className="mt-10 rounded-2xl border border-rose-200 bg-rose-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Nye pris-kategorier — find hver prisklasse</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Vi har lavet dybdeguider til alle de mest søgte prisklasser — rød, hvid, rosé og bobler — fra 75 kr til 500 kr.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/bedste-rodvin-under-75-kr" className="hover:underline">Rødvin under 75 kr</Link>
+          <Link href="/guides/bedste-rodvin-under-100-kr" className="hover:underline">Rødvin under 100 kr</Link>
+          <Link href="/guides/bedste-rodvin-under-150-kr" className="hover:underline">Rødvin under 150 kr</Link>
+          <Link href="/guides/bedste-rodvin-under-200-kr" className="hover:underline">Rødvin under 200 kr</Link>
+          <Link href="/guides/bedste-rodvin-under-300-kr" className="hover:underline">Rødvin under 300 kr</Link>
+          <Link href="/guides/bedste-hvidvin-under-75-kr" className="hover:underline">Hvidvin under 75 kr</Link>
+          <Link href="/guides/bedste-hvidvin-under-100-kr" className="hover:underline">Hvidvin under 100 kr</Link>
+          <Link href="/guides/bedste-hvidvin-under-150-kr" className="hover:underline">Hvidvin under 150 kr</Link>
+          <Link href="/guides/bedste-hvidvin-under-200-kr" className="hover:underline">Hvidvin under 200 kr</Link>
+          <Link href="/guides/bedste-rosevin-under-100-kr" className="hover:underline">Rosévin under 100 kr</Link>
+          <Link href="/guides/bedste-rosevin-under-150-kr" className="hover:underline">Rosévin under 150 kr</Link>
+          <Link href="/guides/bedste-rosevin-under-200-kr" className="hover:underline">Rosévin under 200 kr</Link>
+          <Link href="/guides/bedste-bobler-under-100-kr" className="hover:underline">Bobler under 100 kr</Link>
+          <Link href="/guides/bedste-bobler-under-150-kr" className="hover:underline">Bobler under 150 kr</Link>
+          <Link href="/guides/bedste-bobler-under-200-kr" className="hover:underline">Bobler under 200 kr</Link>
+          <Link href="/guides/bedste-champagne-under-300-kr" className="hover:underline">Champagne under 300 kr</Link>
+          <Link href="/guides/bedste-champagne-under-500-kr" className="hover:underline">Champagne under 500 kr</Link>
+          <Link href="/guides/bedste-vin-under-100-kr" className="hover:underline">Al vin under 100 kr</Link>
+          <Link href="/guides/bedste-vin-under-150-kr" className="hover:underline">Al vin under 150 kr</Link>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige top-liste</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />

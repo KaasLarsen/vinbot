@@ -650,6 +650,130 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — moderne 3-liters bag-in-box leverer ofte bedre kvalitet per glas end billige flasker. Plus: lufttæt pose betyder vinen holder 4–6 uger efter åbning. Se også bedste boxvin-guiden.",
     },
   ],
+  "bedste-rodvin-under-75-kr": [
+    {
+      question: "Findes der god rødvin under 75 kr?",
+      answer:
+        "Ja — men vær selektiv. Fokusér på Montepulciano d'Abruzzo, Sicilien (Nero d'Avola), Castilla-La Mancha (tempranillo/monastrell), Chile (merlot, carménère) og Pays d'Oc. Køb i 6- eller 12-flasker-kasser for at ramme 55–70 kr pr. flaske.",
+    },
+    {
+      question: "Er boksevin bedre end flasker under 75 kr?",
+      answer:
+        "Ofte ja. En 3-liters bag-in-box giver typisk 40–55 kr pr. flaske i tilsvarende kvalitet, og den holder 4–6 uger efter åbning takket være den lufttætte pose. I denne prisklasse slår de bedste bokse billige flasker i blindsmagning.",
+    },
+    {
+      question: "Hvilke druer skal jeg undgå under 75 kr?",
+      answer:
+        "Pinot noir, nebbiolo og cabernet sauvignon er sjældent gode under 75 kr — de kræver kvalitet og tid, som ikke passer med prisklassens omkostninger. Undgå også 'reserva' uden producent-info og ikke-vintage rød uden årgang.",
+    },
+  ],
+  "bedste-rodvin-under-200-kr": [
+    {
+      question: "Hvad får jeg mere i 200 kr-klassen end under 150 kr?",
+      answer:
+        "Enkelt-producenter, navngivne appellationer og længere lagring på fad. Du betaler ikke længere kun for et område men for identitet. Forvent moden frugt, nuanceret tannin og længere finish. Det er sweet spot til weekend-middage og gaver under 250 kr.",
+    },
+    {
+      question: "Hvilke regioner leverer bedst under 200 kr?",
+      answer:
+        "Rioja Reserva, Chianti Classico Riserva, Côtes du Rhône-Villages (Cairanne, Rasteau), Langhe Nebbiolo, Bordeaux Supérieur og Primitivo di Manduria. I nye verden: argentinsk malbec fra Uco Valley og chilensk carménère fra Apalta/Colchagua.",
+    },
+    {
+      question: "Kan jeg lagre rødvin under 200 kr?",
+      answer:
+        "Nogle ja. Rioja Reserva holder 5–10 år, Chianti Classico Riserva 5–8 år, Langhe Nebbiolo 3–7 år, Bordeaux Supérieur 5–10 år. Nye verden-malbec og carménère bør drikkes indenfor 3–5 år. Opbevaring ved 12–16 °C uden temperaturudsving er afgørende.",
+    },
+  ],
+  "bedste-rodvin-under-300-kr": [
+    {
+      question: "Hvad koster klassiske italienere som Barolo og Brunello?",
+      answer:
+        "Basis Barolo og Brunello di Montalcino starter typisk ved 250–300 kr fra gode producenter. Chianti Classico Gran Selezione og Amarone della Valpolicella findes også i 200–300 kr-klassen. Meget under 250 kr er sjældent ægte top-kvalitet i disse appellationer.",
+    },
+    {
+      question: "Er Napa Valley cabernet mulig under 300 kr?",
+      answer:
+        "Kun lige — 250–300 kr er nederste grænse for ægte Napa cabernet fra solide producenter. Under 250 kr er 'Napa'-label ofte generisk eller restparti. Bedre værdi i klassen: argentinsk malbec fra Uco Valley, Barossa Shiraz eller Oregon pinot noir.",
+    },
+    {
+      question: "Hvornår er 250–300 kr pengene værd?",
+      answer:
+        "Til jul, fødselsdage, værtindegaver og milepæle. Her får du lagringsdygtige vine med terroir-præg og håndværk. Til daglig drikkevin er niveauet overkill — hold dig til 100–200 kr. Men til den årlige middag eller som gave er forskellen tydelig.",
+    },
+  ],
+  "bedste-hvidvin-under-75-kr": [
+    {
+      question: "Er hvidvin under 75 kr bedre end rødvin i samme pris?",
+      answer:
+        "Ofte ja. Hvidvin kræver færre investeringer i lagring, tanniner og fad. Frisk syre og ren frugt er det primære, og det kan laves godt til lav pris. Vinho Verde, Rueda verdejo, Muscadet sur lie og grüner veltliner basis leverer konsistent kvalitet i denne pris.",
+    },
+    {
+      question: "Hvilke druer skal jeg vælge under 75 kr?",
+      answer:
+        "Verdejo (Rueda), grüner veltliner (Østrig basis), muscadet (Loire), sauvignon blanc (Pays d'Oc, Chile), og italienske alberginier som Soave. Undgå chardonnay med fad, riesling fra Mosel og Sancerre — de kræver højere pris for at være gode.",
+    },
+    {
+      question: "Kan hvidvin under 75 kr gemmes?",
+      answer:
+        "Nej. Hvidvin i denne prisklasse er designet til at drikkes ungt, typisk indenfor 1–2 år efter årgang. 2024/2025-årgange er ideelle pt. Ældre flasker mister ofte friskhed uden at udvikle kompleksitet. Prioritér seneste årgang og skruelåg for garanteret friskhed.",
+    },
+  ],
+  "bedste-bobler-under-100-kr": [
+    {
+      question: "Kan jeg få champagne under 100 kr?",
+      answer:
+        "Nej — ikke ægte champagne. Appellationen kræver minimum 15 måneder lagring på bunden, flaskegæring og dyre druer fra en begrænset region. Under 100 kr er du i prosecco- og cava-land. Ægte champagne starter typisk ved 200 kr for basis non-vintage.",
+    },
+    {
+      question: "Hvad er bedst pr. krone: prosecco eller cava under 100 kr?",
+      answer:
+        "Cava har teknisk fordel: den laves med traditionel metode (flaskegæring) ligesom champagne, mens prosecco laves i tank. Cava brut eller Cava de Guarda Superior giver ofte mere kompleksitet pr. krone, mens prosecco er friskere og mere frugtig.",
+    },
+    {
+      question: "Hvad er forskellen på 'brut' og 'extra dry' prosecco?",
+      answer:
+        "Brut har under 12 g/l restsukker (tørrest). Extra Dry har faktisk 12–17 g/l (let sødere, mest solgt). Dry har 17–32 g/l. Navnene er forvirrende — Brut er den tørreste stil. Kig efter Brut hvis du vil have ren, tør boble.",
+    },
+  ],
+  "bedste-champagne-under-300-kr": [
+    {
+      question: "Hvor lidt kan ægte champagne koste?",
+      answer:
+        "Realistisk starter ægte champagne ved 200–230 kr for basis non-vintage fra store huse som Nicolas Feuillatte, Piper-Heidsieck eller Lanson. Alt under 200 kr er typisk supermarkedsflasker, restpartier eller ikke ægte champagne-AOC.",
+    },
+    {
+      question: "Hvad er forskellen på grower-champagne og store huse?",
+      answer:
+        "Grower-champagne (RM = Récoltant-Manipulant) betyder producenten selv dyrker og laver vinen. Små producenter med enkelt-mark-fokus giver mere karakter pr. krone, mens store huse leverer konsistens. I 200–300 kr-klassen giver grower-producenter som Larmandier-Bernier ofte mere for pengene.",
+    },
+    {
+      question: "Skal jeg vælge Brut, Extra Brut eller Brut Nature?",
+      answer:
+        "Brut (under 12 g/l sukker) er standarden og passer til de fleste. Extra Brut (0–6 g/l) er tørrere, fint til fine middage og ren aperitif. Brut Nature (0 g/l, ingen dosage) er ultra-tør og kræver moden grundvin — ofte i 300 kr+ klassen.",
+    },
+    {
+      question: "Kan jeg lagre champagne under 300 kr?",
+      answer:
+        "Non-vintage champagne er designet til at drikkes relativt ungt (1–3 år efter køb). Den kan holde længere, men udvikler sig ikke markant som vintage-champagne gør. Til lagring bør du vælge vintage-champagne fra 300 kr+ klassen.",
+    },
+  ],
+  "bedste-vin-under-100-kr": [
+    {
+      question: "Hvad er bedst pr. krone under 100 kr: rød, hvid, rosé eller bobler?",
+      answer:
+        "Hvidvin og cava overperformer ofte pr. krone i denne pris, fordi de kræver mindre investering i lagring og tanniner. Rødvin under 100 kr varierer mest — vælg Sicilien, Spanien eller Portugal. Bobler: cava slår prosecco i rå kvalitet.",
+    },
+    {
+      question: "Er boksevin en god strategi under 100 kr?",
+      answer:
+        "Ja. Moderne 3-liters bag-in-box leverer ofte 40–55 kr pr. flaske-kvalitet, og posen holder vinen frisk 4–6 uger efter åbning. Især til hverdags-hvid og hverdags-rød er bokse et overlegent valg pr. krone.",
+    },
+    {
+      question: "Skal jeg foretrække skruelåg under 100 kr?",
+      answer:
+        "Ja — skruelåg er mere pålidelig end billig prop i denne pris. Risikoen for prop-smag (TCA) er stort set elimineret, og vinen kommer frisk ind i glasset. For hvidvin og rosé er skruelåg særligt anbefalet.",
+    },
+  ],
   "bedste-alkoholfri-vin": [
     {
       question: "Smager alkoholfri vin som rigtig vin?",

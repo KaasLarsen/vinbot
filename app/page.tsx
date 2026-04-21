@@ -52,6 +52,23 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Pris-kategorier — find din prisklasse",
+    links: [
+      { href: "/bedste-vine", label: "Hub: bedste vine" },
+      { href: "/guides/bedste-vin-under-100-kr", label: "Al vin under 100 kr" },
+      { href: "/guides/bedste-vin-under-150-kr", label: "Al vin under 150 kr" },
+      { href: "/guides/bedste-rodvin-under-75-kr", label: "Rødvin under 75 kr" },
+      { href: "/guides/bedste-rodvin-under-200-kr", label: "Rødvin under 200 kr" },
+      { href: "/guides/bedste-rodvin-under-300-kr", label: "Rødvin under 300 kr" },
+      { href: "/guides/bedste-hvidvin-under-75-kr", label: "Hvidvin under 75 kr" },
+      { href: "/guides/bedste-hvidvin-under-200-kr", label: "Hvidvin under 200 kr" },
+      { href: "/guides/bedste-rosevin-under-100-kr", label: "Rosévin under 100 kr" },
+      { href: "/guides/bedste-bobler-under-100-kr", label: "Bobler under 100 kr" },
+      { href: "/guides/bedste-champagne-under-300-kr", label: "Champagne under 300 kr" },
+      { href: "/guides/bedste-champagne-under-500-kr", label: "Champagne under 500 kr" },
+    ],
+  },
+  {
     title: "Vin-viden — nye long-tail svar",
     links: [
       { href: "/vin-viden", label: "Hub: vin-viden" },
