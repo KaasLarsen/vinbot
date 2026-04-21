@@ -39,6 +39,24 @@ const featuredPopularLinks: { href: string; label: string }[] = [
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
   {
+    title: "Alkoholfri & lavalkohol — voksent valg uden tømmermænd",
+    links: [
+      { href: "/guides/bedste-alkoholfri-vin", label: "Bedste alkoholfri vin (hub)" },
+      { href: "/guides/bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" },
+      { href: "/guides/bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" },
+      { href: "/guides/bedste-alkoholfri-hvidvin", label: "Bedste alkoholfri hvidvin" },
+      { href: "/guides/bedste-alkoholfri-rose", label: "Bedste alkoholfri rosé" },
+      { href: "/guides/bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" },
+      { href: "/guides/alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
+      { href: "/guides/alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" },
+      { href: "/guides/alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" },
+      { href: "/guides/alkoholfri-vin-til-dry-january", label: "Alkoholfri vin til Dry January" },
+      { href: "/guides/alkoholfri-vin-til-graviditet", label: "Alkoholfri vin under graviditet" },
+      { href: "/guides/hvordan-fremstilles-alkoholfri-vin", label: "Hvordan fremstilles alkoholfri vin" },
+      { href: "/guides/hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin", label: "Alkoholfri vs alkoholsvag" },
+    ],
+  },
+  {
     title: "Forår & sommer-fester — maj/juni",
     links: [
       { href: "/saeson", label: "Hub: sæson & fest" },

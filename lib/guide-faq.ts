@@ -1379,4 +1379,89 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Flasken. Hold proppen fast og drej flasken med den anden hånd. Det er lettere, sikrere og mere elegant end at dreje proppen. Klassikeren fra champagnehusene er at dreje flaskebunden mens muselet (trådkurven) stadig holder proppen delvist fast.",
     },
   ],
+  "bedste-alkoholfri-bobler": [
+    {
+      question: "Hvilken alkoholfri bobler er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Sparkling Riesling regnes som kategoriens benchmark — ren tysk riesling-karakter uden alkohol, klassisk brut-tørhed. Noughty Sparkling Chardonnay (UK) og Torres Natureo Sparkling (Spanien) er også stærke valg. French Bloom Le Blanc er premium-alternativet til 200-300 kr.",
+    },
+    {
+      question: "Hvordan serveres alkoholfri bobler bedst?",
+      answer:
+        "6-8 °C — lidt køligere end rigtig champagne. Brug champagneglas (flute eller tulip) for at bevare kulsyren længere. Hæld lige før servering, da alkoholfri bobler mister kulsyren hurtigere end rigtig sparkling. Åbnet flaske holder 1-2 dage i køleskab med champagne-prop.",
+    },
+    {
+      question: "Hvorfor fungerer alkoholfri bobler bedre end alkoholfri rødvin?",
+      answer:
+        "Kulsyren giver krop og friskhed uden alkoholens hjælp, og bobler maskerer mange af de tekstur-mangler som plager alkoholfri still-vin. Alkoholen bærer normalt krop og sødmefornemmelse, men kuldioxiden kompenserer i sparkling. Derfor er bobler kategoriens mest succesfulde segment.",
+    },
+  ],
+  "bedste-alkoholfri-rodvin": [
+    {
+      question: "Hvilken alkoholfri rødvin er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Pinot Noir har den mest autentiske pinot-karakter — rødt bær, let krydderi, pæn syre. Torres Natureo Red (garnacha-base) er en god letdrikkelig hverdagsstil til pizza og pasta. Giesen 0% Merlot og Vintense Zero Cabernet Sauvignon er andre solide valg. Pris 80-140 kr.",
+    },
+    {
+      question: "Hvorfor smager alkoholfri rødvin anderledes end rigtig rødvin?",
+      answer:
+        "Alkohol bærer krop, varme og sødmefornemmelse — uden den føles tanninerne ofte bare hårde, og syren kan virke skarp. De bedste producenter kompenserer ved at starte med modne, frugtige druer og blid de-alkoholisering. Forvent ikke en kopi af rigtig rødvin, men drikkeligt vinlignende alternativ.",
+    },
+    {
+      question: "Hvornår fungerer alkoholfri rødvin bedst?",
+      answer:
+        "Til pasta, pizza, grill-burger og medium-krydret mad — ikke til steak hvor du savner alkoholens krop mest. Server let afkølet ved 12-14 °C (lidt koldere end rigtig rødvin) for at dæmpe sødme og fremhæve frugt. Drik vinen ung, indenfor 1-2 år fra aftapning.",
+    },
+  ],
+  "bedste-alkoholfri-hvidvin": [
+    {
+      question: "Hvilken alkoholfri hvidvin er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Riesling fra Mosel er kategoriens reference — ægte tysk riesling-karakter, citrus, æble, mineralsk. Torres Natureo Muscat (Spanien) har aromatisk muscat-profil, og Giesen 0% Sauvignon Blanc fra Marlborough leverer klassisk NZ-stil med stikkelsbær og grønt græs. Pris 80-160 kr.",
+    },
+    {
+      question: "Hvorfor fungerer alkoholfri hvidvin bedre end alkoholfri rødvin?",
+      answer:
+        "Syre og frugt er hvidvinens primære bærere — ikke alkoholen. Når alkoholen fjernes fra en frisk riesling eller sauvignon blanc, bliver resultatet stadig frisk, mineralsk og drikkeligt. De bedste produkter er ikke langt fra rigtig letdrikkelig hvidvin, og kategorien er modnet betydeligt de sidste 5 år.",
+    },
+    {
+      question: "Hvilken mad passer alkoholfri hvidvin til?",
+      answer:
+        "Riesling 0% til sushi, thai og vietnamesisk (syren balancerer krydderi). Sauvignon Blanc 0% til salater, avocado-toast og grøn omelet. Muscat til smoothie bowls og brunch. Chardonnay 0% til kyllingesalat og ostebord. Server kølig ved 8-10 °C og drik ung, indenfor 12-18 måneder fra aftapning.",
+    },
+  ],
+  "alkoholfri-vin-til-graviditet": [
+    {
+      question: "Er alkoholfri vin sikkert under graviditet?",
+      answer:
+        "Sundhedsstyrelsen anbefaler at undgå alkohol helt under graviditet. Produkter mærket '0,0%' (under 0,05% ABV) vælges ofte for fuld tryghed, mens 'alkoholfri' (under 0,5% ABV) normalt betragtes som trygge — til sammenligning kan modne bananer og surdejsbrød indeholde 0,1-0,5% alkohol naturligt. Tal altid med jordemoder eller læge ved tvivl.",
+    },
+    {
+      question: "Hvilke alkoholfri vine er markedsført som 0,0%?",
+      answer:
+        "Leitz Eins-Zwei-Zero hele serien (riesling, pinot noir, sparkling, rosé) produceres som 0,0%. Torres Natureo-serien er også 0,0%. Giesen 0% har 0,0%-varianter. French Bloom Le Blanc er premium 0,0% sparkling. Tjek altid flaskens etiket, da batches kan variere.",
+    },
+    {
+      question: "Hvad skal jeg være opmærksom på ved alkoholfri vin i graviditet?",
+      answer:
+        "Tjek tilsat sukker (under 5 g/100 ml er fornuftigt). Alkoholfri vin kan stadig indeholde sulfit (E220-E228) som konserveringsmiddel. Læs ingredienslisten ved fødevareallergi. Undgå billige 'wine flavored drinks' uden specifik oprindelse — kvaliteten svinger. Vinbot giver produktguides, ikke medicinske råd.",
+    },
+  ],
+  "hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin": [
+    {
+      question: "Hvad er forskellen på alkoholfri og alkoholsvag vin?",
+      answer:
+        "Alkoholfri vin er under 0,5% ABV (EU-definition) og fremstilles ved at fjerne alkoholen fra færdig vin. Alkoholsvag vin er typisk under 10-11% ABV og er naturligt lav i alkohol — druerne plukkes tidligt eller gæringen stoppes. Eksempler: alkoholfri = Leitz Eins-Zwei-Zero (0,0%). Alkoholsvag = Mosel Kabinett (7-9%) eller Moscato d'Asti (5-6%).",
+    },
+    {
+      question: "Hvor mange kalorier er der i alkoholfri vs alkoholsvag vin?",
+      answer:
+        "Pr. 100 ml: rigtig vin (13%) cirka 85 kcal, alkoholsvag (8%) cirka 55 kcal, alkoholfri (0,5%) cirka 25-45 kcal. Alkoholfri er laveste, da der ingen alkohol-kalorier er. Alkoholsvag giver dog mere vin-karakter pr. kalorie, fordi den stadig er rigtig vin med alle nuancer.",
+    },
+    {
+      question: "Hvornår vælger jeg alkoholfri vs alkoholsvag vin?",
+      answer:
+        "Alkoholfri: ved køreture, graviditet/amning, Dry January, gæster uden alkohol og lavkalorie-krav. Alkoholsvag: når du stadig vil drikke rigtig vin men vil have mindre alkohol — særligt til krydret asiatisk mad (Mosel Riesling Kabinett), dessert (Moscato d'Asti) eller let sommermad (Vinho Verde).",
+    },
+  ],
 };

@@ -101,6 +101,27 @@ export default function BedsteVineHubPage() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Alkoholfri & lavalkohol — voksent valg uden alkohol</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Graviditet, Dry January, køreture eller bare et bevidst valg. Kategorien er modnet kraftigt de sidste 5 år — særligt bobler og hvidvin leverer.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-emerald-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/bedste-alkoholfri-vin" className="hover:underline">Bedste alkoholfri vin (hub)</Link>
+          <Link href="/guides/bedste-alkoholfri-bobler" className="hover:underline">Bedste alkoholfri bobler</Link>
+          <Link href="/guides/bedste-alkoholfri-rodvin" className="hover:underline">Bedste alkoholfri rødvin</Link>
+          <Link href="/guides/bedste-alkoholfri-hvidvin" className="hover:underline">Bedste alkoholfri hvidvin</Link>
+          <Link href="/guides/bedste-alkoholfri-rose" className="hover:underline">Bedste alkoholfri rosé</Link>
+          <Link href="/guides/bedste-lavalkohol-vin" className="hover:underline">Bedste lavalkohol-vin</Link>
+          <Link href="/guides/alkoholfri-vin-til-jul" className="hover:underline">Alkoholfri vin til jul</Link>
+          <Link href="/guides/alkoholfri-vin-til-fest" className="hover:underline">Alkoholfri vin til fest</Link>
+          <Link href="/guides/alkoholfri-vin-til-brunch" className="hover:underline">Alkoholfri vin til brunch</Link>
+          <Link href="/guides/alkoholfri-vin-til-dry-january" className="hover:underline">Alkoholfri vin til Dry January</Link>
+          <Link href="/guides/alkoholfri-vin-til-graviditet" className="hover:underline">Alkoholfri under graviditet</Link>
+          <Link href="/guides/hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin" className="hover:underline">Alkoholfri vs alkoholsvag</Link>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige top-liste</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />

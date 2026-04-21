@@ -69,6 +69,15 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug.startsWith("alkoholfri-vin-til-")) {
+    const occasion = slug.replace(/^alkoholfri-vin-til-/, "").replace(/-/g, " ");
+    return {
+      q: `alkoholfri vin 0% ${occasion}`.trim(),
+      max: null,
+      label: `alkoholfri vin til ${occasion}`,
+    };
+  }
+
   if (slug.startsWith("vinregion-")) {
     const region = slug.replace(/^vinregion-/, "").replace(/-/g, " ");
     return {
@@ -104,7 +113,6 @@ function categoryToSearchTerm(cat: string): string {
     "box-vin": "box vin bag in box",
     portvin: "portvin",
     dessertvin: "dessertvin sauternes",
-    "alkoholfri-vin": "alkoholfri",
     "okologiske-vin": "økologisk",
     "dansk-vin": "dansk",
     "italiensk-rodvin": "italiensk rødvin chianti barolo",
@@ -117,6 +125,13 @@ function categoryToSearchTerm(cat: string): string {
     "vin-til-hverdag": "vin hverdag",
     "weekendvin": "vin weekend",
     "sommervin": "sommer rosé hvidvin",
+    "alkoholfri-rodvin": "alkoholfri rødvin 0%",
+    "alkoholfri-hvidvin": "alkoholfri hvidvin 0%",
+    "alkoholfri-rose": "alkoholfri rosé 0%",
+    "alkoholfri-bobler": "alkoholfri bobler mousserende 0%",
+    "alkoholfri-champagne": "alkoholfri champagne bobler 0%",
+    "alkoholfri-vin": "alkoholfri vin 0%",
+    "lavalkohol-vin": "kabinett moscato vinho verde lav alkohol",
   };
   return table[cat] || cat.replace(/-/g, " ");
 }
@@ -135,12 +150,18 @@ function categoryToLabel(cat: string): string {
     "box-vin": "box-vin",
     portvin: "portvin",
     dessertvin: "dessertvin",
-    "alkoholfri-vin": "alkoholfri vin",
     "okologiske-vin": "økologisk vin",
     "dansk-vin": "dansk vin",
     "italiensk-rodvin": "italiensk rødvin",
     "fransk-rodvin": "fransk rødvin",
     "spansk-rodvin": "spansk rødvin",
+    "alkoholfri-rodvin": "alkoholfri rødvin",
+    "alkoholfri-hvidvin": "alkoholfri hvidvin",
+    "alkoholfri-rose": "alkoholfri rosé",
+    "alkoholfri-bobler": "alkoholfri bobler",
+    "alkoholfri-champagne": "alkoholfri champagne",
+    "alkoholfri-vin": "alkoholfri vin",
+    "lavalkohol-vin": "lavalkohol-vin",
   };
   return table[cat] || cat.replace(/-/g, " ");
 }

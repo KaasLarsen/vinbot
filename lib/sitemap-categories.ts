@@ -34,6 +34,7 @@ const MAD_EXTRA_PREFIXES: readonly string[] = [
   "malbec-til-",
   "sangiovese-til-",
   "syrah-til-",
+  "alkoholfri-vin-til-",
 ];
 
 /** Slugs som bevist hører til "andre" (vin i praksis, opbevaring, stemning etc.). */
