@@ -949,4 +949,123 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Rioja Alavesa er en af tre sub-zoner i Rioja og ligger i Baskerland nord for Ebro-floden. Kalkjord og køligere klima giver ofte en moderne, elegant stil. Klassiske producenter: Artadi, Contino, Remelluri og Remírez de Ganuza. De andre zoner er Rioja Alta (vest, klassisk) og Rioja Oriental (syd, kraftig).",
     },
   ],
+  "hvor-laenge-holder-uaabnet-vin": [
+    {
+      question: "Hvor længe kan uåbnet vin holde sig?",
+      answer:
+        "Hverdagsvin drikkes 1-5 år efter køb og bliver sjældent bedre med alderen. Kvalitetsvine som Rioja Reserva, Chianti Classico Riserva og Bordeaux Cru Bourgeois kan lagres 5-15 år. Top-Bordeaux, Barolo og Bourgogne Grand Cru kan lagre 15-50+ år. Rosé og prosecco bør drikkes inden for 1-2 år.",
+    },
+    {
+      question: "Bliver uåbnet vin bedre med alderen?",
+      answer:
+        "Kun en lille procentdel af al vin — typisk med høj tannin, høj syre eller høj sødme. Hverdagsvin under 150 kr bliver kun ringere med tiden. Signaler for lagringsevne: høj tannin (cabernet, nebbiolo), høj syre (riesling, nebbiolo) eller høj sødme/alkohol (Sauternes, portvin).",
+    },
+    {
+      question: "Hvordan ved jeg om en flaske er for gammel?",
+      answer:
+        "Vin har ikke lovpligtig holdbarhedsdato, så du må åbne og smage. Tegn på ældet vin: brun-oransje farve i rødvin, dyb gylden farve i hvidvin, muggen duft fra korken (korkfejl), eddike-/lak-lugt eller flad smag uden frugt.",
+    },
+  ],
+  "hvor-laenge-holder-boks-vin": [
+    {
+      question: "Hvor længe holder en åben bag-in-box vin?",
+      answer:
+        "En åbnet bag-in-box vin holder 4-6 uger i køleskab — langt længere end en åbnet flaske. Det skyldes vakuumposen inde i boksen, der trækker sig sammen når vinen tappes og forhindrer ilt i at komme ind. Efter 6-8 uger kan smagen begynde at falde, selv i BiB.",
+    },
+    {
+      question: "Hvor længe kan uåbnet bag-in-box vin holde?",
+      answer:
+        "En uåbnet BiB holder typisk 6-9 måneder efter produktion — kortere end en flaske, da plastposen ikke er 100 % iltet som glas. Tjek best-before-datoen på boksen før køb.",
+    },
+    {
+      question: "Skal bag-in-box vin stå i køleskab?",
+      answer:
+        "Efter anbrud er køleskab optimalt, også for rødvin — lad flasken varme kort op før servering. Før anbrud skal BiB bare stå køligt og mørkt (under 18 °C), ikke nødvendigvis i køleskab.",
+    },
+  ],
+  "hvor-meget-alkohol-i-vin": [
+    {
+      question: "Hvor mange procent alkohol er der i vin?",
+      answer:
+        "Almindelig vin ligger på 11-15 % alkohol (volumenprocent). Hvidvin typisk 10-13 %, rødvin 12-15 %, mousserende 11-12,5 %, dessertvin 8-13 % og hedvin som portvin og sherry 15-22 %. Alkoholindholdet står på etiketten som '% vol.' og er lovpligtigt i EU.",
+    },
+    {
+      question: "Hvorfor varierer alkoholprocenten i vin?",
+      answer:
+        "Alkohol kommer fra druens sukker, som gær omdanner. Varmt klima giver mere sukker og mere alkohol; køligt klima giver mindre. Producentens høsttidspunkt påvirker også: sent høstede, overmodne druer giver kraftig vin; tidligt høstede giver friskere stil med lavere alkohol.",
+    },
+    {
+      question: "Hvad er den højeste alkoholprocent i vin?",
+      answer:
+        "Ikke-styrkede vine topper typisk ved 15-16 % — gæren dør ved højere koncentration. Højere procenter kræver tilsat sprit (fortification), som i portvin (19-22 %), sherry (15-20 %) og madeira (17-22 %). Bemærk: høj alkohol er ikke synonym med kvalitet.",
+    },
+  ],
+  "hvor-mange-enheder-alkohol-i-et-glas-vin": [
+    {
+      question: "Hvor mange genstande er der i et glas vin?",
+      answer:
+        "En genstand i Danmark er 12 gram ren alkohol. Et normalt glas vin (12 cl ved 12 % alkohol) er ca. 1 genstand. Et stort glas (15 cl ved 13,5 %) er ca. 1,3 genstand. En hel flaske vin (75 cl ved 12,5 %) svarer til ca. 7,4 genstande.",
+    },
+    {
+      question: "Hvordan beregner man genstande i vin?",
+      answer:
+        "Formel: (ml × % alkohol × 0,789) ÷ 12 = antal genstande. Eksempel: 15 cl (150 ml) × 13 % × 0,789 ÷ 12 = ca. 1,28 genstand. Tallet 0,789 er alkoholens vægtfylde. Hurtig approksimation: cl × % ÷ 10 = ca. antal genstande.",
+    },
+    {
+      question: "Hvor mange genstande må jeg drikke?",
+      answer:
+        "Sundhedsstyrelsen anbefaler maks. 10 genstande om ugen for voksne og maks. 4 genstande på én dag — men understreger samtidig at jo mindre du drikker, jo lavere er risikoen. Gravide frarådes alkohol helt.",
+    },
+  ],
+  "hvad-er-sulfit-i-vin": [
+    {
+      question: "Hvad er sulfit i vin?",
+      answer:
+        "Sulfit (svovldioxid, SO₂) er et konserveringsmiddel der beskytter vin mod oxidation og mikrobiel aktivitet. 99 % af al vin indeholder sulfit — enten naturligt dannet under gæring (0-40 mg/L) eller tilsat af vinmageren. EU kræver at etiketten viser 'indeholder sulfit' hvis vinen har over 10 mg/L.",
+    },
+    {
+      question: "Giver sulfit hovedpine?",
+      answer:
+        "Sjældent. Hovedpine efter rødvin skyldes oftere histaminer, dehydrering eller for meget alkohol — ikke sulfit. Reel sulfit-allergi er kun dokumenteret hos 0,5-1 % af befolkningen, primært astmatikere. Tørrede abrikoser indeholder 5-10 gange mere sulfit end vin.",
+    },
+    {
+      question: "Er økologisk vin sulfit-fri?",
+      answer:
+        "Nej — men har strammere grænser: 100 mg/L for rødvin og 150 mg/L for hvidvin (mod 150 og 200 mg/L for konventionel). Biodynamisk (Demeter) er endnu strengere: 70 mg/L rød, 90 mg/L hvid. Kun 'naturvin' uden tilsat svovl nærmer sig sulfit-fri — men naturlig gæring producerer stadig små mængder.",
+    },
+  ],
+  "hvad-er-fadlagring": [
+    {
+      question: "Hvad betyder fadlagring på vin?",
+      answer:
+        "Fadlagring betyder at vinen gærer eller lagres i egetræs-tønder — typisk 225 L barriques eller større foudres. Egetræet afgiver aromaer som vanilje, kokos og krydderier og tillader langsom iltning der blødgør vinen. Nye fade giver kraftigere smagspåvirkning; brugte fade giver kun subtil ilt-effekt.",
+    },
+    {
+      question: "Hvad er forskellen på amerikansk og fransk eg?",
+      answer:
+        "Amerikansk eg (quercus alba) giver mere vanilje, kokos og dild — klassisk i Rioja, Napa Cab og zinfandel. Fransk eg (quercus robur) giver subtile krydderier som kanel og muskat, finere tannin — brugt i Bordeaux og Bourgogne. Franske fade er 2-3 gange dyrere end amerikanske.",
+    },
+    {
+      question: "Hvor længe lagres vin i fad?",
+      answer:
+        "Rødvin typisk 6-36 måneder, op til 60 måneder for top som Brunello Riserva og Rioja Gran Reserva. Hvidvin 4-18 måneder. Længere fadlagring betyder ikke altid bedre vin — balancen mellem frugt, fad og struktur er nøglen.",
+    },
+  ],
+  "hvordan-aabner-du-champagne": [
+    {
+      question: "Hvordan åbner man en champagneflaske trygt?",
+      answer:
+        "Drej flasken — ikke proppen. Hold proppen fast med én hånd og drej flaskens bund langsomt med den anden. Lad proppen komme ud med et blidt 'suk', ikke et knald. Peg aldrig flasken mod mennesker — proppen kan skyde ud ved 40-80 km/t.",
+    },
+    {
+      question: "Hvor koldt skal champagne være når man åbner det?",
+      answer:
+        "6-10 °C er ideelt. Koldere flaske har lavere tryk, hvilket gør åbning lettere og forhindrer overdreven skumning. Køl i køleskab 2-3 timer eller i en spand med is og vand i 20 minutter. Undgå fryseren — risiko for at glasset springer.",
+    },
+    {
+      question: "Skal man dreje proppen eller flasken?",
+      answer:
+        "Flasken. Hold proppen fast og drej flasken med den anden hånd. Det er lettere, sikrere og mere elegant end at dreje proppen. Klassikeren fra champagnehusene er at dreje flaskebunden mens muselet (trådkurven) stadig holder proppen delvist fast.",
+    },
+  ],
 };

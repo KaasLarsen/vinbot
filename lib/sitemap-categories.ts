@@ -3,13 +3,12 @@ import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
 export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
 
 const VIDEN_PREFIXES = [
-  "hvor-laenge-holder-",
+  "hvor-laenge-",
   "hvor-mange-",
-  "hvor-meget-vin-",
+  "hvor-meget-",
   "hvad-er-",
-  "sadan-dekanterer-",
-  "sadan-serverer-",
-  "sadan-smager-",
+  "hvordan-",
+  "sadan-",
 ] as const;
 const VIDEN_SLUGS = new Set<string>(["kan-vin-blive-daarlig"]);
 
@@ -39,6 +38,7 @@ export function classifyGuide(slug: string): GuideCategory {
   if (slug.endsWith("-druen")) return "druer";
   if (slug.startsWith("vinregion-")) return "regioner";
   if (slug.startsWith("bedste-")) return "bedste";
+  if (ANDRE_EXTRA_SLUGS.has(slug)) return "andre";
   if (VIDEN_SLUGS.has(slug) || VIDEN_PREFIXES.some((p) => slug.startsWith(p))) return "viden";
   if (slug.startsWith("vin-til-") || MAD_EXTRA_SLUGS.has(slug)) return "mad";
   return "andre";

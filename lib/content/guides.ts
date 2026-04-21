@@ -45,13 +45,12 @@ export function listBedsteVineHubGuides(): GuideFrontmatter[] {
 
 /** Slugs der hører til /vin-viden-hubben (hvor længe / hvor mange / hvad er / sådan). */
 const VIDEN_SLUG_PREFIXES: readonly string[] = [
-  "hvor-laenge-holder-",
+  "hvor-laenge-",
   "hvor-mange-",
-  "hvor-meget-vin-",
+  "hvor-meget-",
   "hvad-er-",
-  "sadan-dekanterer-",
-  "sadan-serverer-",
-  "sadan-smager-",
+  "hvordan-",
+  "sadan-",
 ];
 
 const VIDEN_EXTRA_SLUGS = new Set<string>(["kan-vin-blive-daarlig"]);

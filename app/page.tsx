@@ -52,6 +52,21 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Vin-viden — nye long-tail svar",
+    links: [
+      { href: "/vin-viden", label: "Hub: vin-viden" },
+      { href: "/guides/hvor-laenge-holder-uaabnet-vin", label: "Hvor længe holder uåbnet vin" },
+      { href: "/guides/hvor-laenge-kan-vin-lagres", label: "Hvor længe kan vin lagres" },
+      { href: "/guides/hvor-meget-alkohol-i-vin", label: "Hvor meget alkohol i vin" },
+      { href: "/guides/hvor-mange-enheder-alkohol-i-et-glas-vin", label: "Genstande pr. glas vin" },
+      { href: "/guides/hvor-meget-fylder-en-flaske-vin", label: "Flaskestørrelser" },
+      { href: "/guides/hvad-er-sulfit-i-vin", label: "Sulfit i vin" },
+      { href: "/guides/hvad-er-fadlagring", label: "Fadlagring" },
+      { href: "/guides/hvordan-aabner-du-champagne", label: "Hvordan åbner du champagne" },
+      { href: "/guides/sadan-vaelger-du-vinglas", label: "Sådan vælger du vinglas" },
+    ],
+  },
+  {
     title: "Vinregioner — dybdeguider",
     links: [
       { href: "/regioner", label: "Hub: vinregioner" },

@@ -59,6 +59,30 @@ export default function VinVidenHubPage() {
         .
       </p>
 
+      <section className="mt-10 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Nye long-tail svar og forklaringer</h2>
+        <p className="mt-3 text-stone-700">
+          Kort og konkret — de nyeste ofte-googlede spørgsmål:
+        </p>
+        <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/hvor-laenge-holder-uaabnet-vin" className="text-rose-900 hover:underline">Hvor længe holder uåbnet vin</Link>
+          <Link href="/guides/hvor-laenge-holder-vin-i-karaffel" className="text-rose-900 hover:underline">Holdbarhed i karaffel</Link>
+          <Link href="/guides/hvor-laenge-holder-boks-vin" className="text-rose-900 hover:underline">Bag-in-box — holdbarhed</Link>
+          <Link href="/guides/hvor-laenge-kan-vin-lagres" className="text-rose-900 hover:underline">Hvor længe kan vin lagres</Link>
+          <Link href="/guides/hvor-meget-alkohol-i-vin" className="text-rose-900 hover:underline">Alkoholprocent i vin</Link>
+          <Link href="/guides/hvor-mange-enheder-alkohol-i-et-glas-vin" className="text-rose-900 hover:underline">Genstande pr. glas vin</Link>
+          <Link href="/guides/hvor-meget-fylder-en-flaske-vin" className="text-rose-900 hover:underline">Flaskestørrelser</Link>
+          <Link href="/guides/hvad-er-sulfit-i-vin" className="text-rose-900 hover:underline">Sulfit i vin</Link>
+          <Link href="/guides/hvad-er-fadlagring" className="text-rose-900 hover:underline">Fadlagring</Link>
+          <Link href="/guides/hvad-er-malolaktisk-gaering" className="text-rose-900 hover:underline">Malolaktisk gæring</Link>
+          <Link href="/guides/hvad-er-botrytis-aedelraad" className="text-rose-900 hover:underline">Botrytis (ædelråd)</Link>
+          <Link href="/guides/hvad-er-appellation-og-kvalitetsmaerker" className="text-rose-900 hover:underline">Appellation & kvalitetsmærker</Link>
+          <Link href="/guides/hvad-er-pet-nat" className="text-rose-900 hover:underline">Pét-nat</Link>
+          <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">Sådan vælger du vinglas</Link>
+          <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">Hvordan åbner du champagne</Link>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Søg i vinviden-guiderne</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={2} />
