@@ -1,5 +1,6 @@
-import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
+import { listGuides, getGuideWordCount, type GuideFrontmatter } from "@/lib/content/guides";
 import { matchDrueRegionSlug } from "@/lib/guide-intent";
+import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 
 export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
 
@@ -73,4 +74,14 @@ export function classifyGuide(slug: string): GuideCategory {
 
 export function guidesByCategory(cat: GuideCategory): GuideFrontmatter[] {
   return listGuides().filter((g) => classifyGuide(g.slug) === cat);
+}
+
+/** Returner true, hvis guiden er tynd nok til at blive `noindex` og udeladt af sitemap. */
+export function isThinGuide(slug: string): boolean {
+  return getGuideWordCount(slug) < MIN_INDEXABLE_WORDS;
+}
+
+/** Guides i en kategori som også er indexerbare (ikke tynde). Brugt af sitemap-routerne. */
+export function indexableGuidesByCategory(cat: GuideCategory): GuideFrontmatter[] {
+  return guidesByCategory(cat).filter((g) => !isThinGuide(g.slug));
 }

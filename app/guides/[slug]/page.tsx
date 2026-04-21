@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getGuide, getGuideSlugs, listGuides } from "@/lib/content/guides";
+import { getGuide, getGuideSlugs, getGuideWordCount, listGuides } from "@/lib/content/guides";
+import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const g = await getGuide(slug);
   if (!g) return {};
   const canonical = `${siteUrl}/guides/${slug}`;
+  const tooThin = g.wordCount < MIN_INDEXABLE_WORDS;
   return {
     title: g.frontmatter.title,
     description: g.frontmatter.description,
@@ -41,6 +43,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
     },
+    ...(tooThin
+      ? {
+          robots: {
+            index: false,
+            follow: true,
+            googleBot: { index: false, follow: true },
+          },
+        }
+      : {}),
   };
 }
 
@@ -118,7 +129,11 @@ export default async function GuidePage({ params }: Props) {
         <p className="mt-3 text-sm text-stone-600">
           Af{" "}
           <Link href="/om-os" className="font-medium text-rose-900 hover:underline">
-            Vinbot
+            Vinbot-redaktionen
+          </Link>
+          {" "}·{" "}
+          <Link href="/redaktionel-proces" className="text-rose-900 hover:underline">
+            Sådan laver vi guides
           </Link>
         </p>
         <p className="mt-2 text-sm text-stone-500">

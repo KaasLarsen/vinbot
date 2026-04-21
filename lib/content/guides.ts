@@ -212,6 +212,7 @@ export async function getGuide(slug: string) {
   const { content: body, data } = matter(raw);
   const fm = data as GuideFrontmatter;
   const rt = readingTime(body);
+  const wordCount = rt.words;
 
   const { content } = await compileMDX({
     source: body,
@@ -219,5 +220,19 @@ export async function getGuide(slug: string) {
     components: guideMdxComponents,
   });
 
-  return { frontmatter: fm, content, readingMinutes: Math.max(1, Math.round(rt.minutes)) };
+  return {
+    frontmatter: fm,
+    content,
+    readingMinutes: Math.max(1, Math.round(rt.minutes)),
+    wordCount,
+  };
+}
+
+/** Returner ordtallet for en guide uden at kompilere MDX'en (brugt af sitemap/metadata). */
+export function getGuideWordCount(slug: string): number {
+  const full = path.join(guidesDir, `${slug}.mdx`);
+  if (!fs.existsSync(full)) return 0;
+  const raw = fs.readFileSync(full, "utf8");
+  const { content: body } = matter(raw);
+  return readingTime(body).words;
 }

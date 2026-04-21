@@ -71,6 +71,9 @@ export function SiteFooter() {
             <Link href="/om-os" className="hover:text-rose-900">
               Om os
             </Link>
+            <Link href="/redaktionel-proces" className="hover:text-rose-900">
+              Redaktionel proces
+            </Link>
             <Link href="/rabatkoder" className="hover:text-rose-900">
               Rabatkoder
             </Link>
