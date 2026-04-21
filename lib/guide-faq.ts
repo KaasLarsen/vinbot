@@ -864,4 +864,89 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, men vælg lette, lav-tannin rødvine som gamay (Beaujolais), kølig pinot noir eller Frappato — og køl dem kort til 14-16 °C. Undgå kraftig shiraz, malbec og ung cabernet, der føles klistrede i sommervarme.",
     },
   ],
+  "vinregion-bourgogne": [
+    {
+      question: "Hvad adskiller Bourgogne-vin fra andre franske vine?",
+      answer:
+        "Bourgogne bygger næsten udelukkende på to druer: pinot noir (rødvin) og chardonnay (hvidvin). Det er desuden hjemstedet for moderne terroir-tænkning — enkelte vinmarker (climats) er klassificeret fra regional og landsby op til premier cru og grand cru, og producentens håndtering af pladsen betyder alt.",
+    },
+    {
+      question: "Hvad er forskellen på premier cru og grand cru i Bourgogne?",
+      answer:
+        "Grand cru er den absolutte top med 33 specifikke vinmarker (fx Chambertin, Romanée-Conti, Montrachet). Premier cru er niveauet under med omkring 600 klassificerede marker. Begge skal stå på etiketten med markens navn. Landsby og regional ligger under — fx Gevrey-Chambertin eller blot Bourgogne Rouge.",
+    },
+    {
+      question: "Hvad er en god Bourgogne til begyndere?",
+      answer:
+        "Start med Mâcon-Villages (chardonnay, 100-180 kr) eller Bourgogne Rouge (pinot noir, 150-250 kr) fra en anerkendt producent. Beaujolais-Villages eller Chablis er også gode indgange. Undgå grand cru i starten — du lærer regionen bedst ved at prøve flere landsby- og premier cru-vine først.",
+    },
+  ],
+  "vinregion-bordeaux": [
+    {
+      question: "Hvad er forskellen på venstre og højre bred i Bordeaux?",
+      answer:
+        "Venstre bred (Médoc, Graves) har grusjord og er cabernet sauvignon-domineret — klassiske appellationer er Pauillac, Margaux og Saint-Julien. Højre bred (Saint-Émilion, Pomerol) har kalk og ler og er merlot-domineret — giver blødere, rundere vine der kan drikkes tidligere.",
+    },
+    {
+      question: "Hvad betyder klassifikationen fra 1855?",
+      answer:
+        "Klassifikationen blev lavet til Verdensudstillingen i Paris 1855 og rangerer 61 slotte i Médoc plus Haut-Brion i fem niveauer (1er til 5ème Cru). Listen er næsten uændret siden — kun Mouton Rothschild blev opgraderet til 1. Cru i 1973. De fem 1er Cru er Lafite, Latour, Margaux, Mouton og Haut-Brion.",
+    },
+    {
+      question: "Hvor længe kan Bordeaux-vin lagres?",
+      answer:
+        "Basal Bordeaux (under 200 kr) drikkes 2-8 år efter årgang. Cru Bourgeois: 5-15 år. Klassificerede châteaux: 10-30 år, ofte længere for stjerne-årgange som 1982, 2005, 2009, 2010, 2015 og 2016. Unge tannin-rige flasker bør dekanteres 30-60 minutter før servering.",
+    },
+  ],
+  "vinregion-champagne": [
+    {
+      question: "Hvad er forskellen på champagne og anden mousserende vin?",
+      answer:
+        "Kun mousserende vin fra regionen Champagne i Frankrig kan lovligt kalde sig champagne. Den skal laves med méthode champenoise (flaske-gæring) på de tre hoveddruer chardonnay, pinot noir og pinot meunier. Cava (Spanien) og crémant (Frankrig) bruger samme metode men andre druer og lavere prisniveau.",
+    },
+    {
+      question: "Hvad betyder Brut, Extra Brut og Demi-Sec?",
+      answer:
+        "Det angiver sødme via tilsat dosage. Brut Nature: 0-3 g/l (tørrest). Extra Brut: 0-6 g/l. Brut: 0-12 g/l (standard). Extra Dry: 12-17 g/l. Sec: 17-32 g/l. Demi-Sec: 32-50 g/l. Doux: over 50 g/l. Brut er langt det mest populære — Demi-Sec bruges til kage og dessert.",
+    },
+    {
+      question: "Hvad er grower champagne (RM)?",
+      answer:
+        "Grower champagne betyder at samme person både dyrker druerne og laver vinen, i modsætning til de store huse (Moët, Veuve Clicquot, Bollinger) der køber druer fra hundreder af dyrkere. Markeres med RM (Récoltant-Manipulant) på etiketten. Typisk fra én eller få landsbyer, med mere transparens om terroir og mindre produktion.",
+    },
+  ],
+  "vinregion-toscana": [
+    {
+      question: "Hvad er forskellen på Chianti og Chianti Classico?",
+      answer:
+        "Chianti Classico kommer fra den historiske kerne mellem Firenze og Siena og markeres med sort hane (Gallo Nero) på flasken. Det kræver min. 80 % sangiovese og har hierarkiet Annata, Riserva og Gran Selezione. Almindelig Chianti kommer fra et større område udenfor Classico-zonen og har oftest blødere stil.",
+    },
+    {
+      question: "Hvad er Brunello di Montalcino?",
+      answer:
+        "Brunello di Montalcino er Toscanas prestigevinland og laves af 100 % sangiovese grosso fra Montalcino i syd-Toscana. Kræver 5 års modning (2 år i fad) før salg — Riserva kræver 6 år. Kraftig, tanninrig stil med mørke kirsebær, læder og tobak. Pris typisk 400-2000 kr, kan lagres 10-25+ år.",
+    },
+    {
+      question: "Hvad er en Super Tuscan?",
+      answer:
+        "Super Tuscan er en uofficiel term for kvalitetsvine udenfor DOCG-reglerne, typisk baseret på internationale druer som cabernet sauvignon og merlot — enten alene eller blandet med sangiovese. De mest berømte kommer fra Bolgheri (Sassicaia, Ornellaia, Masseto). De startede bevægelsen i 1970'erne med bordeaux-inspireret stil.",
+    },
+  ],
+  "vinregion-rioja": [
+    {
+      question: "Hvad betyder Crianza, Reserva og Gran Reserva?",
+      answer:
+        "Klassifikation efter modningstid: Crianza kræver min. 2 år total modning (1 år i fad), Reserva min. 3 år (1 i fad), Gran Reserva min. 5 år (2 i fad). Gran Reserva laves kun i ekstraordinære årgange. Pris typisk: Crianza 100-200 kr, Reserva 150-400 kr, Gran Reserva 250-1500 kr.",
+    },
+    {
+      question: "Hvad er forskellen på Rioja og Ribera del Duero?",
+      answer:
+        "Begge baseres på tempranillo, men Rioja er elegant, syrefrisk og balanceret med lidt lavere alkohol (13-14 %), mens Ribera del Duero på 800-1000 m højde er kraftigere og mere struktureret med 14-15 % alkohol. Rioja kan lagres længere; Ribera er typisk mere tilgængelig ung.",
+    },
+    {
+      question: "Hvad er Rioja Alavesa?",
+      answer:
+        "Rioja Alavesa er en af tre sub-zoner i Rioja og ligger i Baskerland nord for Ebro-floden. Kalkjord og køligere klima giver ofte en moderne, elegant stil. Klassiske producenter: Artadi, Contino, Remelluri og Remírez de Ganuza. De andre zoner er Rioja Alta (vest, klassisk) og Rioja Oriental (syd, kraftig).",
+    },
+  ],
 };

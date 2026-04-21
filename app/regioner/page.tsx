@@ -70,35 +70,36 @@ const LAND_GUIDES_AFRIKA_OCEANIEN: LandGuide[] = [
   },
 ];
 
-type HurtigRegion = { navn: string; q: string; note: string };
+type HurtigRegion = { navn: string; q: string; note: string; slug?: string };
 
 /** Klassiske søgeord på forsiden — grupperet efter land/område. */
 const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }[] = [
   {
     titel: "Frankrig",
     punkter: [
-      { navn: "Bordeaux", q: "bordeaux", note: "Struktur og klassisk cabernet-merlot — okse og langtidsgryder." },
-      { navn: "Bourgogne", q: "bourgogne", note: "Pinot og chardonnay i høj klasse — fjerkræ, svampe og fisk." },
-      { navn: "Champagne", q: "champagne", note: "Bobler til fest, salt og fed ost." },
-      { navn: "Loire / Sancerre", q: "sancerre sauvignon", note: "Frisk sauvignon og mineralsk hvid — fisk, ged og salater." },
-      { navn: "Rhône", q: "cotes du rhone", note: "Grenache/syrah — krydret mad og gryderetter." },
-      { navn: "Alsace", q: "alsace riesling", note: "Aromatiske hvide — ost, svinekød og asiatisk." },
+      { navn: "Bordeaux", q: "bordeaux", slug: "vinregion-bordeaux", note: "Struktur og klassisk cabernet-merlot — okse og langtidsgryder." },
+      { navn: "Bourgogne", q: "bourgogne", slug: "vinregion-bourgogne", note: "Pinot og chardonnay i høj klasse — fjerkræ, svampe og fisk." },
+      { navn: "Champagne", q: "champagne", slug: "vinregion-champagne", note: "Bobler til fest, salt og fed ost." },
+      { navn: "Loire / Sancerre", q: "sancerre sauvignon", slug: "vinregion-loire", note: "Frisk sauvignon og mineralsk hvid — fisk, ged og salater." },
+      { navn: "Rhône", q: "cotes du rhone", slug: "vinregion-rhone", note: "Grenache/syrah — krydret mad og gryderetter." },
+      { navn: "Alsace", q: "alsace riesling", slug: "vinregion-alsace", note: "Aromatiske hvide — ost, svinekød og asiatisk." },
       { navn: "Provence", q: "provence rosé", note: "Tør, bleg rosé — salat, grill og middelhavsmad." },
     ],
   },
   {
     titel: "Italien",
     punkter: [
-      { navn: "Toscana / Chianti", q: "chianti", note: "Sangiovese og tomat — italiensk hverdag og weekend." },
-      { navn: "Piemonte", q: "barolo", note: "Nebbiolo — kraftige retter og tålmodighed i glasset." },
-      { navn: "Veneto", q: "valpolicella amarone", note: "Amarone, ripasso, soave — kraft og elegance nord for Toscana." },
+      { navn: "Toscana / Chianti", q: "chianti", slug: "vinregion-toscana", note: "Sangiovese og tomat — italiensk hverdag og weekend." },
+      { navn: "Piemonte", q: "barolo", slug: "vinregion-piemonte", note: "Nebbiolo — kraftige retter og tålmodighed i glasset." },
+      { navn: "Veneto", q: "valpolicella amarone", slug: "vinregion-veneto", note: "Amarone, ripasso, soave — kraft og elegance nord for Toscana." },
       { navn: "Sicilien / Etna", q: "etna nerello mascalese", note: "Mineral rød og hvid fra vulkanjord — fisk, grønt og lammekød." },
     ],
   },
   {
     titel: "Spanien & Portugal",
     punkter: [
-      { navn: "Rioja", q: "rioja", note: "Tempranillo og fad — tapas, grill og simremad." },
+      { navn: "Rioja", q: "rioja", slug: "vinregion-rioja", note: "Tempranillo og fad — tapas, grill og simremad." },
+      { navn: "Ribera del Duero", q: "ribera del duero tempranillo", slug: "vinregion-ribera-del-duero", note: "Kraftig tempranillo fra højland — lammekød og grill." },
       { navn: "Priorat", q: "priorat garnacha", note: "Kraft og mineral fra skifer — lammekød og gryde." },
       { navn: "Jerez / sherry", q: "sherry jerez", note: "Fin sherry til tapas, suppe og ost — fra tør til sød." },
       { navn: "Douro", q: "douro touriga nacional", note: "Struktureret rød og portvinens hjemstavn." },
@@ -108,7 +109,7 @@ const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }
   {
     titel: "Tyskland & Østrig",
     punkter: [
-      { navn: "Mosel", q: "mosel riesling trocken", note: "Tysk riesling med syre — asiatisk, fisk og lettere kød." },
+      { navn: "Mosel", q: "mosel riesling trocken", slug: "vinregion-mosel", note: "Tysk riesling med syre — asiatisk, fisk og lettere kød." },
       { navn: "Rheingau / Pfalz", q: "rheingau riesling", note: "Riesling og spätburgunder — alsidige til både hvid og rød." },
       { navn: "Wachau", q: "wachau gruner veltliner", note: "\u00d8strig: grüner og riesling på terrasser — alsidig hvid." },
     ],
@@ -117,7 +118,7 @@ const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }
     titel: "Nordamerika",
     punkter: [
       { navn: "Willamette Valley", q: "willamette valley pinot noir", note: "Oregon pinot — laks, svampe og fjerkræ." },
-      { navn: "Napa Valley", q: "napa valley cabernet", note: "Kraftig cabernet — grill, okse og fest." },
+      { navn: "Napa Valley", q: "napa valley cabernet", slug: "vinregion-napa-valley", note: "Kraftig cabernet — grill, okse og fest." },
       { navn: "Canada (Okanagan)", q: "okanagan pinot noir", note: "Kølig klima — pinot, chardonnay og elegant rød." },
     ],
   },
@@ -194,11 +195,26 @@ function LandCard({ g }: { g: LandGuide }) {
 function RegionMiniCard({ r }: { r: HurtigRegion }) {
   return (
     <li className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
-      <h4 className="font-semibold text-stone-900">{r.navn}</h4>
+      <h4 className="font-semibold text-stone-900">
+        {r.slug ? (
+          <Link href={`/guides/${r.slug}`} className="text-stone-900 hover:text-rose-900 hover:underline">
+            {r.navn}
+          </Link>
+        ) : (
+          r.navn
+        )}
+      </h4>
       <p className="mt-1.5 text-sm leading-relaxed text-stone-600">{r.note}</p>
-      <Link href={`/?q=${encodeURIComponent(r.q)}`} className="mt-3 inline-block text-sm font-medium text-rose-900 hover:underline">
-        Søg {r.navn} →
-      </Link>
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {r.slug ? (
+          <Link href={`/guides/${r.slug}`} className="font-medium text-rose-900 hover:underline">
+            Læs dybdeguide →
+          </Link>
+        ) : null}
+        <Link href={`/?q=${encodeURIComponent(r.q)}`} className="font-medium text-rose-900 hover:underline">
+          Søg {r.navn} →
+        </Link>
+      </div>
     </li>
   );
 }
@@ -227,6 +243,28 @@ export default function RegionerHubPage() {
       <p className="mt-3 max-w-3xl text-sm text-stone-600">
         Vi dækker de vigtigste eksport- og kvalitetslande med lange artikler. Lande som England og Grækenland har du stadig gode muligheder for at finde via søgning — se listen &quot;Flere vinlande&quot; nederst.
       </p>
+
+      <section className="mt-10 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Nye dybdeguider til de vigtigste sub-regioner</h2>
+        <p className="mt-3 text-stone-700">
+          Nye dybdegående guides til klassiske sub-regioner — ideelt når du vil forstå etiketten, ikke bare landet:
+        </p>
+        <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/vinregion-bourgogne" className="text-rose-900 hover:underline">Bourgogne — pinot & chardonnay</Link>
+          <Link href="/guides/vinregion-bordeaux" className="text-rose-900 hover:underline">Bordeaux — cabernet & merlot</Link>
+          <Link href="/guides/vinregion-rhone" className="text-rose-900 hover:underline">Rhône — syrah & grenache</Link>
+          <Link href="/guides/vinregion-loire" className="text-rose-900 hover:underline">Loire — sauvignon & chenin</Link>
+          <Link href="/guides/vinregion-alsace" className="text-rose-900 hover:underline">Alsace — riesling & gewürz</Link>
+          <Link href="/guides/vinregion-champagne" className="text-rose-900 hover:underline">Champagne — bobler</Link>
+          <Link href="/guides/vinregion-toscana" className="text-rose-900 hover:underline">Toscana — sangiovese</Link>
+          <Link href="/guides/vinregion-piemonte" className="text-rose-900 hover:underline">Piemonte — nebbiolo</Link>
+          <Link href="/guides/vinregion-veneto" className="text-rose-900 hover:underline">Veneto — Amarone & Prosecco</Link>
+          <Link href="/guides/vinregion-rioja" className="text-rose-900 hover:underline">Rioja — tempranillo</Link>
+          <Link href="/guides/vinregion-ribera-del-duero" className="text-rose-900 hover:underline">Ribera del Duero — tinto fino</Link>
+          <Link href="/guides/vinregion-napa-valley" className="text-rose-900 hover:underline">Napa Valley — cabernet</Link>
+          <Link href="/guides/vinregion-mosel" className="text-rose-900 hover:underline">Mosel — riesling</Link>
+        </div>
+      </section>
 
       <section id="europa" className="mt-14 scroll-mt-20">
         <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Europa</h2>

@@ -52,6 +52,25 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Vinregioner — dybdeguider",
+    links: [
+      { href: "/regioner", label: "Hub: vinregioner" },
+      { href: "/guides/vinregion-bourgogne", label: "Bourgogne" },
+      { href: "/guides/vinregion-bordeaux", label: "Bordeaux" },
+      { href: "/guides/vinregion-champagne", label: "Champagne" },
+      { href: "/guides/vinregion-rhone", label: "Rhône" },
+      { href: "/guides/vinregion-loire", label: "Loire" },
+      { href: "/guides/vinregion-alsace", label: "Alsace" },
+      { href: "/guides/vinregion-toscana", label: "Toscana" },
+      { href: "/guides/vinregion-piemonte", label: "Piemonte" },
+      { href: "/guides/vinregion-veneto", label: "Veneto" },
+      { href: "/guides/vinregion-rioja", label: "Rioja" },
+      { href: "/guides/vinregion-ribera-del-duero", label: "Ribera del Duero" },
+      { href: "/guides/vinregion-napa-valley", label: "Napa Valley" },
+      { href: "/guides/vinregion-mosel", label: "Mosel" },
+    ],
+  },
+  {
     title: "Bedste vine — top-lister",
     links: [
       { href: "/bedste-vine", label: "Hub: bedste vine" },
