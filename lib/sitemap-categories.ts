@@ -18,6 +18,24 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "rosevin-til-mad-og-sommer",
 ]);
 
+/** Prefixer der markerer drue/stil × mad-intersections (Spor E). */
+const MAD_EXTRA_PREFIXES: readonly string[] = [
+  "rodvin-til-",
+  "hvidvin-til-",
+  "rosevin-til-",
+  "bobler-til-",
+  "champagne-til-",
+  "prosecco-til-",
+  "cava-til-",
+  "pinot-noir-til-",
+  "chardonnay-til-",
+  "sauvignon-blanc-til-",
+  "riesling-til-",
+  "malbec-til-",
+  "sangiovese-til-",
+  "syrah-til-",
+];
+
 /** Slugs som bevist hører til "andre" (vin i praksis, opbevaring, stemning etc.). */
 const ANDRE_EXTRA_SLUGS = new Set<string>([
   "saesonvin-i-danmark",
@@ -40,7 +58,13 @@ export function classifyGuide(slug: string): GuideCategory {
   if (slug.startsWith("bedste-")) return "bedste";
   if (ANDRE_EXTRA_SLUGS.has(slug)) return "andre";
   if (VIDEN_SLUGS.has(slug) || VIDEN_PREFIXES.some((p) => slug.startsWith(p))) return "viden";
-  if (slug.startsWith("vin-til-") || MAD_EXTRA_SLUGS.has(slug)) return "mad";
+  if (
+    slug.startsWith("vin-til-") ||
+    MAD_EXTRA_SLUGS.has(slug) ||
+    MAD_EXTRA_PREFIXES.some((p) => slug.startsWith(p))
+  ) {
+    return "mad";
+  }
   return "andre";
 }
 

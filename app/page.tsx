@@ -52,6 +52,23 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     ],
   },
   {
+    title: "Drue/stil × mad — klassiske match",
+    links: [
+      { href: "/mad-og-vin", label: "Hub: mad og vin" },
+      { href: "/guides/rosevin-til-grill", label: "Rosévin til grill" },
+      { href: "/guides/champagne-til-mad", label: "Champagne til mad" },
+      { href: "/guides/bobler-til-brunch", label: "Bobler til brunch" },
+      { href: "/guides/bobler-til-fredag", label: "Bobler til fredag" },
+      { href: "/guides/rodvin-til-pizza", label: "Rødvin til pizza" },
+      { href: "/guides/hvidvin-til-sushi", label: "Hvidvin til sushi" },
+      { href: "/guides/pinot-noir-til-and", label: "Pinot noir til and" },
+      { href: "/guides/chardonnay-til-fisk", label: "Chardonnay til fisk" },
+      { href: "/guides/riesling-til-asiatisk-mad", label: "Riesling til asiatisk mad" },
+      { href: "/guides/malbec-til-boef", label: "Malbec til bøf" },
+      { href: "/guides/sangiovese-til-pasta", label: "Sangiovese til pasta" },
+    ],
+  },
+  {
     title: "Pris-kategorier — find din prisklasse",
     links: [
       { href: "/bedste-vine", label: "Hub: bedste vine" },

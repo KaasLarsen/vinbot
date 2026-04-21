@@ -650,6 +650,108 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — moderne 3-liters bag-in-box leverer ofte bedre kvalitet per glas end billige flasker. Plus: lufttæt pose betyder vinen holder 4–6 uger efter åbning. Se også bedste boxvin-guiden.",
     },
   ],
+  "rosevin-til-grill": [
+    {
+      question: "Hvilken rosévin passer bedst til grill?",
+      answer:
+        "En mellem-kraftig tør rosé fra Provence eller Tavel — frisk nok til fisk og salater, kraftig nok til grillet kød. Server 8–10 °C. Undgå søde 'blush'-roséer og de blegeste Provence-basis, der ikke kan bære grillmarinader.",
+    },
+    {
+      question: "Kan jeg bruge samme rosévin til fisk og oksekød på grillen?",
+      answer:
+        "Ja — det er netop rosévinens styrke. Vælg en mellem-kraft Provence eller en let Tavel. Begge har nok struktur til kraftigere kød og nok friskhed til laks eller kylling. En Côtes de Provence AOC i 130–180 kr-klassen dækker typisk hele grillmenuen.",
+    },
+    {
+      question: "Er Bandol rosé det værd til grill?",
+      answer:
+        "Ja, hvis du grillet kraftigt kød (lam, entrecôte, merguez). Bandol har mourvèdre-base, med mere tannin og struktur end typisk Provence-rosé. Til lettere grillret (fisk, kylling) er Bandol ofte overkill.",
+    },
+  ],
+  "champagne-til-mad": [
+    {
+      question: "Kan champagne serveres til hele måltidet?",
+      answer:
+        "Ja — champagne er en af gastronomiens mest alsidige vine. Blanc de blancs passer til fisk og skaldyr; blanc de noirs og vintage til kød og kraftigere retter. Den franske tradition serverer ofte champagne gennem hele måltidet — ikke kun som aperitif.",
+    },
+    {
+      question: "Hvilken champagne passer bedst til østers?",
+      answer:
+        "Blanc de blancs (100 % chardonnay) er det klassiske match. Den høje syre, mineralitet og kridt-toner komplementerer østerens salte friskhed. Non-vintage blanc de blancs fra Taittinger eller Nicolas Feuillatte i 250–300 kr-klassen fungerer fremragende.",
+    },
+    {
+      question: "Hvornår er champagne forkert valg til mad?",
+      answer:
+        "Til meget krydrede retter (thai, indisk curry) — her slår off-dry riesling champagne. Til stor tanninrig kødret (grillet ribeye) er klassisk rødvin bedre. Og til meget søde desserter er sødvin eller dessertvin mere passende end tør champagne.",
+    },
+  ],
+  "bobler-til-brunch": [
+    {
+      question: "Hvad er bedste boble til brunch?",
+      answer:
+        "Prosecco Extra Dry er klassens populære brunch-valg — let sødme matcher pandekager og søde morgenretter. Cava brut eller Crémant de Loire giver mere struktur pr. krone til æg og salt brunch. Champagne til speciel brunch (konfirmation, fødselsdag).",
+    },
+    {
+      question: "Hvilken boble er bedst til mimosa?",
+      answer:
+        "Prosecco Extra Dry — lidt sødme og frisk frugt matcher appelsinsaften uden at forsvinde. Undgå at bruge champagne til mimosa; den nuancerede champagne-aroma forsvinder i saften, og det er spild af pengene. 1:1 eller 2:1 bobler:saft.",
+    },
+    {
+      question: "Hvor mange flasker brunch-bobler pr. person?",
+      answer:
+        "En flaske (75 cl) giver 6–8 glas. Til 4 personer brunch: 1–2 flasker. Til 8 personer: 2–3 flasker. Med mimosa: beregn 1 flaske pr. 3 personer plus 75 cl appelsinsaft pr. flaske. Åbn flasken lige før servering for bedst boble.",
+    },
+  ],
+  "rodvin-til-pizza": [
+    {
+      question: "Hvilken rødvin passer bedst til pizza?",
+      answer:
+        "Sangiovese er klassens bedste valg — Chianti Classico eller Chianti DOCG i 100–150 kr. Syren matcher tomat, tanninerne er moderate, og vinen er designet til italiensk mad. Alternativer: Montepulciano d'Abruzzo (hverdag) og Primitivo di Manduria (kød-pizza).",
+    },
+    {
+      question: "Kan jeg drikke kraftig rødvin som cabernet til pizza?",
+      answer:
+        "Bedre at undgå. Cabernet sauvignon og malbec har hårde tanniner, der ikke harmonerer med syrligt pizzatomat. Fadet, tung rødvin begraver pizzens smag. Hold dig til italienske vine med god syre og moderate tanniner — de er bygget til italiensk mad.",
+    },
+    {
+      question: "Hvilken vin til hvid pizza (uden tomat)?",
+      answer:
+        "Hvidvin slår ofte rødvin til hvid pizza. Vermentino, Greco di Tufo, Fiano di Avellino og Soave matcher mozzarella, ricotta og artiskokker. Hvis du vil have rødvin, så vælg en let barbera eller pinot noir med lav tannin.",
+    },
+  ],
+  "riesling-til-asiatisk-mad": [
+    {
+      question: "Hvorfor er riesling bedst til asiatisk mad?",
+      answer:
+        "Riesling har laserpræcis syre, lav alkohol (9–12 %) og kan variere i sødme (fra tør til off-dry). Sødmen balancerer chili-varme; syren rydder ganen efter fed mad; aromaprofilen matcher lime og ingefær. Ingen anden drue dækker hele bredden af asiatisk mad.",
+    },
+    {
+      question: "Tør eller off-dry riesling til thai-curry?",
+      answer:
+        "Off-dry — en Mosel Kabinett (20–50 g/l restsukker) er klassens bedste match til thai grøn og rød curry. Sødmen balancerer chili-varmen, syren skærer kokosmælkens fedme. Tør riesling fungerer også, men mangler balance-elementet mod chili.",
+    },
+    {
+      question: "Kan jeg drikke rødvin til kinesisk mad?",
+      answer:
+        "Til nogle retter ja — kantonesisk and, char siu og kraftig szechuan-kød kan fungere med let pinot noir eller gamay. Men til det brede register af kinesisk mad (stir-fry, dim sum, sur-sød, noodle-supper) er off-dry riesling overlegen.",
+    },
+  ],
+  "pinot-noir-til-and": [
+    {
+      question: "Hvilken pinot noir passer bedst til andesteg?",
+      answer:
+        "Village-level Bourgogne (Gevrey-Chambertin, Vosne-Romanée) i 250–450 kr-klassen er klassens gastronomiske sweet spot. Alternativer: Oregon Willamette Valley eller tysk spätburgunder fra Baden/Pfalz i 200–350 kr — samme stil, lidt billigere.",
+    },
+    {
+      question: "Kan spätburgunder matche bourgogne pinot noir til and?",
+      answer:
+        "Ja — tyske spätburgunder fra Ahr, Baden og Pfalz har vundet markant frem de sidste 10 år. I 150–250 kr-klassen leverer de ofte bedre pr. krone end tilsvarende bourgogne. Til stegt and med frugtsauce er de fremragende.",
+    },
+    {
+      question: "Skal pinot noir dekanteres før servering til and?",
+      answer:
+        "Ung pinot noir (under 3 år) har typisk gavn af 30 minutters dekanter. Ældre bourgogne village eller premier cru kan holdes i flasken — de er mere fragile. Server ved 15–17 °C, ikke stuetemperatur.",
+    },
+  ],
   "bedste-rodvin-under-75-kr": [
     {
       question: "Findes der god rødvin under 75 kr?",

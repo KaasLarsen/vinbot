@@ -96,6 +96,27 @@ export default function MadOgVinHubPage() {
         </p>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-rose-200 bg-rose-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Nye guides: drue/stil × mad og anledning</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Start fra vinen i stedet for maden — klassiske match mellem specifikke druer/stilarter og retter/anledninger.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/rosevin-til-grill" className="hover:underline">Rosévin til grill</Link>
+          <Link href="/guides/champagne-til-mad" className="hover:underline">Champagne til mad</Link>
+          <Link href="/guides/bobler-til-brunch" className="hover:underline">Bobler til brunch</Link>
+          <Link href="/guides/bobler-til-fredag" className="hover:underline">Bobler til fredag</Link>
+          <Link href="/guides/rodvin-til-pizza" className="hover:underline">Rødvin til pizza</Link>
+          <Link href="/guides/hvidvin-til-sushi" className="hover:underline">Hvidvin til sushi</Link>
+          <Link href="/guides/pinot-noir-til-and" className="hover:underline">Pinot noir til and</Link>
+          <Link href="/guides/chardonnay-til-fisk" className="hover:underline">Chardonnay til fisk</Link>
+          <Link href="/guides/riesling-til-asiatisk-mad" className="hover:underline">Riesling til asiatisk mad</Link>
+          <Link href="/guides/sauvignon-blanc-til-salat" className="hover:underline">Sauvignon blanc til salat</Link>
+          <Link href="/guides/malbec-til-boef" className="hover:underline">Malbec til bøf</Link>
+          <Link href="/guides/sangiovese-til-pasta" className="hover:underline">Sangiovese til pasta</Link>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige guide</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
