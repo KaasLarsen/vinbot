@@ -123,6 +123,42 @@ export default function BedsteVineHubPage() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-amber-200 bg-amber-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Efter drue × prisklasse — find bedste pris pr. druesort</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Vil du indsnævre direkte på drue? Her er prisklasseguider til de mest populære druer — med regioner, producenter og faldgruber i hver prisklasse.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-amber-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/bedste-chardonnay-under-100-kr" className="hover:underline">Chardonnay under 100 kr</Link>
+          <Link href="/guides/bedste-chardonnay-under-150-kr" className="hover:underline">Chardonnay under 150 kr</Link>
+          <Link href="/guides/bedste-sauvignon-blanc-under-100-kr" className="hover:underline">Sauvignon blanc under 100 kr</Link>
+          <Link href="/guides/bedste-sauvignon-blanc-under-150-kr" className="hover:underline">Sauvignon blanc under 150 kr</Link>
+          <Link href="/guides/bedste-riesling-under-100-kr" className="hover:underline">Riesling under 100 kr</Link>
+          <Link href="/guides/bedste-riesling-under-150-kr" className="hover:underline">Riesling under 150 kr</Link>
+          <Link href="/guides/bedste-pinot-grigio-under-100-kr" className="hover:underline">Pinot grigio under 100 kr</Link>
+          <Link href="/guides/bedste-pinot-grigio-under-150-kr" className="hover:underline">Pinot grigio under 150 kr</Link>
+          <Link href="/guides/bedste-albarino-under-150-kr" className="hover:underline">Albariño under 150 kr</Link>
+          <Link href="/guides/bedste-chenin-blanc-under-150-kr" className="hover:underline">Chenin blanc under 150 kr</Link>
+          <Link href="/guides/bedste-cabernet-sauvignon-under-100-kr" className="hover:underline">Cabernet sauvignon under 100 kr</Link>
+          <Link href="/guides/bedste-cabernet-sauvignon-under-150-kr" className="hover:underline">Cabernet sauvignon under 150 kr</Link>
+          <Link href="/guides/bedste-cabernet-sauvignon-under-200-kr" className="hover:underline">Cabernet sauvignon under 200 kr</Link>
+          <Link href="/guides/bedste-merlot-under-100-kr" className="hover:underline">Merlot under 100 kr</Link>
+          <Link href="/guides/bedste-merlot-under-150-kr" className="hover:underline">Merlot under 150 kr</Link>
+          <Link href="/guides/bedste-syrah-under-100-kr" className="hover:underline">Syrah / shiraz under 100 kr</Link>
+          <Link href="/guides/bedste-syrah-under-150-kr" className="hover:underline">Syrah / shiraz under 150 kr</Link>
+          <Link href="/guides/bedste-malbec-under-100-kr" className="hover:underline">Malbec under 100 kr</Link>
+          <Link href="/guides/bedste-malbec-under-150-kr" className="hover:underline">Malbec under 150 kr</Link>
+          <Link href="/guides/bedste-tempranillo-under-100-kr" className="hover:underline">Tempranillo under 100 kr</Link>
+          <Link href="/guides/bedste-tempranillo-under-150-kr" className="hover:underline">Tempranillo under 150 kr</Link>
+          <Link href="/guides/bedste-sangiovese-under-100-kr" className="hover:underline">Sangiovese under 100 kr</Link>
+          <Link href="/guides/bedste-sangiovese-under-150-kr" className="hover:underline">Sangiovese under 150 kr</Link>
+          <Link href="/guides/bedste-pinot-noir-under-150-kr" className="hover:underline">Pinot noir under 150 kr</Link>
+          <Link href="/guides/bedste-pinot-noir-under-250-kr" className="hover:underline">Pinot noir under 250 kr</Link>
+          <Link href="/guides/bedste-grenache-under-100-kr" className="hover:underline">Grenache under 100 kr</Link>
+          <Link href="/guides/bedste-grenache-under-150-kr" className="hover:underline">Grenache under 150 kr</Link>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Alkoholfri & lavalkohol — voksent valg uden alkohol</h2>
         <p className="mt-2 text-sm text-stone-700">

@@ -1549,4 +1549,79 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Alkoholfri: ved køreture, graviditet/amning, Dry January, gæster uden alkohol og lavkalorie-krav. Alkoholsvag: når du stadig vil drikke rigtig vin men vil have mindre alkohol — særligt til krydret asiatisk mad (Mosel Riesling Kabinett), dessert (Moscato d'Asti) eller let sommermad (Vinho Verde).",
     },
   ],
+  "bedste-chardonnay-under-150-kr": [
+    {
+      question: "Hvor finder jeg bedste chardonnay under 150 kr?",
+      answer:
+        "Bedst value i 100–150 kr-klassen er Mâconnais (Bourgogne-entry), Alto Adige, Margaret River og Chile. Undgå de fleste basis-Napa-chardonnays, hvor prisen i høj grad er markedsføring. Sammenlign hos danske forhandlere via vinbot.dk for at finde bedste pris pr. producent.",
+    },
+    {
+      question: "Skal jeg vælge fadlagret eller ikke-fadlagret chardonnay?",
+      answer:
+        "Ikke-fadlagret (fx Chablis, Mâcon Villages): slank, citrus, mineral — god til skaldyr og fisk. Fadlagret (fx Meursault, Margaret River): cremet, vanille, fyldig — bedre til flødepasta, kylling og hummer. Begge stile findes under 150 kr.",
+    },
+    {
+      question: "Er chardonnay fra Australien god value?",
+      answer:
+        "Ja, især Margaret River og Adelaide Hills leverer stramme, mineralske chardonnays i 100–180 kr der konkurrerer med Bourgogne til 200+ kr. Undgå oversødet, stærkt fadpræget warm-climate shiraz-chardonnay fra storproducenter.",
+    },
+  ],
+  "bedste-pinot-noir-under-250-kr": [
+    {
+      question: "Kan man finde god pinot noir under 250 kr?",
+      answer:
+        "Ja, men druen er dyr at dyrke. Sikre valg er Pfalz og Baden spätburgunder, Alto Adige pinot nero, basis-Bourgogne (Villages-niveau) fra store huse og Oregon Willamette Valley entry-vine. Under 150 kr er chancerne markant mindre.",
+    },
+    {
+      question: "Hvad er forskellen på spätburgunder og pinot noir?",
+      answer:
+        "Det er samme drue — spätburgunder er blot det tyske navn. Tysk spätburgunder fra Pfalz, Baden og Ahr er i verdensklasse og giver ofte bedre value end sammenlignelig Bourgogne, fordi prestigeprisen er lavere.",
+    },
+    {
+      question: "Hvilke retter passer til pinot noir?",
+      answer:
+        "Fjerkræ (and, kylling, vagtel), svampe, trøffel, laks og lammekrone er klassikere. Pinot noir har lav tannin og høj syre og klarer sig derfor godt til retter hvor kraftigere rødvine ville overdøve.",
+    },
+  ],
+  "bedste-cabernet-sauvignon-under-150-kr": [
+    {
+      question: "Hvor kommer bedste cabernet sauvignon under 150 kr fra?",
+      answer:
+        "Chile (Maipo, Colchagua), Languedoc, Sydafrika (Stellenbosch) og Bordeaux Cru Bourgeois leverer bedst value. Basic AOC Bordeaux uden château-navn er ofte skuffende. Californien er sjældent god under 150 kr på grund af markedspræmie.",
+    },
+    {
+      question: "Hvad skal man spise til cabernet sauvignon?",
+      answer:
+        "Oksesteg, entrecote, lam, grillet rødt kød og simremad med mørkt kød. Hårde, modne oste (Manchego, Comté, lagret cheddar) matcher også godt. Undgå let fisk og krydret asiatisk mad, hvor tanninen bliver for kraftig.",
+    },
+  ],
+  "bedste-sangiovese-under-100-kr": [
+    {
+      question: "Er billig Chianti altid en dårlig idé?",
+      answer:
+        "Ikke nødvendigvis — men undgå generisk Chianti i kurvflaske. Sats i stedet på Chianti Classico DOCG (sort hane) selv i basic-niveau; det sikrer mindst 80 % sangiovese fra det klassiske område. Alternativt Morellino di Scansano eller Rosso di Montalcino som value-vin.",
+    },
+    {
+      question: "Kan man finde Brunello-stil under 100 kr?",
+      answer:
+        "Nej, men Rosso di Montalcino (yngre bror til Brunello) giver noget af samme stil fra 180–250 kr. Under 100 kr er Chianti Classico og Morellino di Scansano de mest sangiovese-autentiske valg.",
+    },
+  ],
+  "bedste-riesling-under-100-kr": [
+    {
+      question: "Er tysk riesling under 100 kr altid sød?",
+      answer:
+        "Nej. Tjek etiketten: \"trocken\" betyder tør, \"feinherb\"/\"halbtrocken\" halvtør, \"lieblich\" halvsød. Kabinett og Spätlese kan være både tør og sød. Alsace riesling er altid tør — et sikkert valg hvis du vil undgå restsødme.",
+    },
+    {
+      question: "Hvad passer riesling til?",
+      answer:
+        "Asiatisk mad (thai, kinesisk), sushi, svinekød med frugt, charcuteri og blåskimmelost. Tør riesling med høj syre skærer gennem fedme og sødme, og halvtør riesling matcher krydret varme retter bedre end de fleste hvidvine.",
+    },
+    {
+      question: "Hvilken region giver bedst riesling-value under 100 kr?",
+      answer:
+        "Mosel (QbA og Kabinett trocken fra anerkendte producenter), Pfalz og Rheinhessen samt entry-level Alsace. Producenter som Dr. Loosen, Selbach-Oster og Trimbach har ofte fine basis-vine i prisklassen.",
+    },
+  ],
 };

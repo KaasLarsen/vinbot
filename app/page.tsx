@@ -39,6 +39,38 @@ const featuredPopularLinks: { href: string; label: string }[] = [
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
   {
+    title: "Bedste drue × prisklasse — find bedste pris pr. druesort",
+    links: [
+      { href: "/guides/bedste-chardonnay-under-100-kr", label: "Chardonnay under 100 kr" },
+      { href: "/guides/bedste-chardonnay-under-150-kr", label: "Chardonnay under 150 kr" },
+      { href: "/guides/bedste-sauvignon-blanc-under-100-kr", label: "Sauvignon blanc under 100 kr" },
+      { href: "/guides/bedste-sauvignon-blanc-under-150-kr", label: "Sauvignon blanc under 150 kr" },
+      { href: "/guides/bedste-riesling-under-100-kr", label: "Riesling under 100 kr" },
+      { href: "/guides/bedste-riesling-under-150-kr", label: "Riesling under 150 kr" },
+      { href: "/guides/bedste-pinot-grigio-under-100-kr", label: "Pinot grigio under 100 kr" },
+      { href: "/guides/bedste-pinot-grigio-under-150-kr", label: "Pinot grigio under 150 kr" },
+      { href: "/guides/bedste-albarino-under-150-kr", label: "Albariño under 150 kr" },
+      { href: "/guides/bedste-chenin-blanc-under-150-kr", label: "Chenin blanc under 150 kr" },
+      { href: "/guides/bedste-cabernet-sauvignon-under-100-kr", label: "Cabernet sauvignon under 100 kr" },
+      { href: "/guides/bedste-cabernet-sauvignon-under-150-kr", label: "Cabernet sauvignon under 150 kr" },
+      { href: "/guides/bedste-cabernet-sauvignon-under-200-kr", label: "Cabernet sauvignon under 200 kr" },
+      { href: "/guides/bedste-merlot-under-100-kr", label: "Merlot under 100 kr" },
+      { href: "/guides/bedste-merlot-under-150-kr", label: "Merlot under 150 kr" },
+      { href: "/guides/bedste-syrah-under-100-kr", label: "Syrah / shiraz under 100 kr" },
+      { href: "/guides/bedste-syrah-under-150-kr", label: "Syrah / shiraz under 150 kr" },
+      { href: "/guides/bedste-malbec-under-100-kr", label: "Malbec under 100 kr" },
+      { href: "/guides/bedste-malbec-under-150-kr", label: "Malbec under 150 kr" },
+      { href: "/guides/bedste-tempranillo-under-100-kr", label: "Tempranillo under 100 kr" },
+      { href: "/guides/bedste-tempranillo-under-150-kr", label: "Tempranillo under 150 kr" },
+      { href: "/guides/bedste-sangiovese-under-100-kr", label: "Sangiovese under 100 kr" },
+      { href: "/guides/bedste-sangiovese-under-150-kr", label: "Sangiovese under 150 kr" },
+      { href: "/guides/bedste-pinot-noir-under-150-kr", label: "Pinot noir under 150 kr" },
+      { href: "/guides/bedste-pinot-noir-under-250-kr", label: "Pinot noir under 250 kr" },
+      { href: "/guides/bedste-grenache-under-100-kr", label: "Grenache under 100 kr" },
+      { href: "/guides/bedste-grenache-under-150-kr", label: "Grenache under 150 kr" },
+    ],
+  },
+  {
     title: "Regionalt køkken × vin — dyk ned i gastronomien",
     links: [
       { href: "/guides/vin-til-toscansk-mad", label: "Toscansk mad (sangiovese)" },
