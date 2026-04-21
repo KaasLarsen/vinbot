@@ -1447,6 +1447,91 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Tjek tilsat sukker (under 5 g/100 ml er fornuftigt). Alkoholfri vin kan stadig indeholde sulfit (E220-E228) som konserveringsmiddel. Læs ingredienslisten ved fødevareallergi. Undgå billige 'wine flavored drinks' uden specifik oprindelse — kvaliteten svinger. Vinbot giver produktguides, ikke medicinske råd.",
     },
   ],
+  "vin-til-toscansk-mad": [
+    {
+      question: "Hvilken vin passer bedst til toscansk mad?",
+      answer:
+        "Sangiovese-baserede vine: Chianti Classico til pasta og pizza, Vino Nobile di Montepulciano som mellemklasse, og Brunello di Montalcino til bistecca alla fiorentina, vildt og trøffelretter. Super Tuscans (med cabernet og merlot) fungerer til moderne internationale retter. Til fisk og skaldyr: Vernaccia di San Gimignano eller Vermentino di Bolgheri.",
+    },
+    {
+      question: "Hvad drikkes til bistecca alla fiorentina?",
+      answer:
+        "Brunello di Montalcino eller Chianti Classico Gran Selezione er klassiske valg. Syren og tanninen fra sangiovese skærer gennem det fede kød, og rettens enkelhed (bare salt, peber og olivenolie) tillader vinen at skinne. En Super Tuscan som Tignanello eller Sassicaia fungerer også til festversioner.",
+    },
+    {
+      question: "Hvad er forskellen på Chianti og Brunello?",
+      answer:
+        "Chianti Classico er minimum 80% sangiovese og lagres kortere (12 måneder basic). Brunello di Montalcino er 100% sangiovese grosso (en klon) og skal lagres minimum 5 år (2 i eg). Brunello er kraftigere, mere tannin-rig og dyrere (400-1200 kr vs 100-350 kr for Chianti Classico). Begge er fra Toscana.",
+    },
+  ],
+  "vin-til-piemonte-mad": [
+    {
+      question: "Hvilken vin passer til Piemonte-mad?",
+      answer:
+        "Nebbiolo-baserede vine (Barolo, Barbaresco) til brasato, vildt og trøffelretter. Barbera d'Asti til tajarin med ragù og hverdagspasta. Dolcetto til salumi og svinekød. Roero Arneis til agnolotti med smørsauce. Gavi til vitello tonnato og havfisk. Barolo er klassikken til bistecca og hvid trøffel.",
+    },
+    {
+      question: "Hvad drikkes til brasato al Barolo?",
+      answer:
+        "Barolo — samme vin som i opskriften. Klassikken siger at du parrer med rettens base-vin for perfekt harmoni. En Barolo Riserva (fra god årgang) eller en moden village-Barolo (Castiglione Falletto, Serralunga, La Morra) passer bedst. Barbera Superiore er et budget-alternativ (150-350 kr).",
+    },
+    {
+      question: "Er Barolo altid dyr?",
+      answer:
+        "Barolo starter ved 400-500 kr for basic-niveau og kan koste 2000+ kr for top-producenter som Conterno eller Mascarello. Et billigere alternativ er Langhe Nebbiolo DOC (180-300 kr), som bruger samme drue med kortere lagring. Barbaresco (400-1500 kr) er lidt billigere end Barolo og lidt mere elegant.",
+    },
+  ],
+  "vin-til-baskisk-mad": [
+    {
+      question: "Hvilken vin passer til baskisk mad og pintxos?",
+      answer:
+        "Txakoli er den klassiske baskiske hvidvin til pintxos, havfisk og skaldyr — lys prikkel, 9-11% ABV, hældes fra højt i glasset. Rioja Crianza eller Reserva til txuleta (baskisk oksesteak) og rabo de toro. Albariño fra Rías Baixas til bacalao og pulpo. Cava Brut er et fint alternativ til pintxos.",
+    },
+    {
+      question: "Hvad er Txakoli, og hvordan serveres det?",
+      answer:
+        "Txakoli (udtales tsja-KO-li) er en let, prikkende hvidvin fra Baskerlandet — Hondarrabi Zuri-druen, 9-11% ABV, syrerig og saltig. Serveres iskold (6-8°C) og hældes fra højt (20-30 cm) i glasset for at aktivere kulsyren og vise friskhed. Drikkes ung, indenfor 12 måneder fra aftapning. Pris: 100-200 kr.",
+    },
+    {
+      question: "Hvilken vin passer til txuleta (baskisk oksesteak)?",
+      answer:
+        "Rioja Reserva eller Gran Reserva er klassikeren — tempranillo med eg-lagring giver rigeligt struktur til den store gamle-ko-steak. Priorat (garnacha-baseret) og Toro (tempranillo) er kraftigere alternativer. Undgå tunge cabernet-baserede vine som kan dominere rettens rene kød-karakter.",
+    },
+  ],
+  "vin-til-provencalsk-mad": [
+    {
+      question: "Hvilken vin passer bedst til provencalsk mad?",
+      answer:
+        "Provence Rosé er signaturledsageren — lys lyserød, tør, citrus-jordbær — matcher ratatouille, salade niçoise, grillet fisk og sommerretter. Bandol Rouge (mourvèdre) til daube provençale, lam og vildt. Cassis Blanc til bouillabaisse og aioli. Whispering Angel, Miraval og Domaines Ott er kendte roséer; Domaine Tempier er Bandol-ikonet.",
+    },
+    {
+      question: "Hvad drikkes til bouillabaisse?",
+      answer:
+        "Cassis Blanc (hvidvin fra landsbyen Cassis nær Marseille) er den klassiske match — marsanne-clairette-base, mineralsk og havnær. Bandol Rosé fungerer også godt — mourvèdre-baseret rosé har nok struktur til safran-krydderiet og rouille-saucen. Undgå store røde der dominerer fiskesuppen.",
+    },
+    {
+      question: "Hvorfor er Provence-rosé altid så lys i farven?",
+      answer:
+        "Provence-traditionen foreskriver kort skindkontakt (4-24 timer) med druerne, så pigmentet næsten ikke overføres til saften. Lys lyserød farve er Provences kendetegn og en kvalitetsindikator — mørkere roséer er ofte fra billigere zoner eller lavere kvalitet. Grenache, cinsault og syrah er de primære druer.",
+    },
+  ],
+  "vin-til-georgisk-mad": [
+    {
+      question: "Hvilken vin passer til georgisk mad?",
+      answer:
+        "Saperavi (Georgiens signaturrødvin med rødt kødkerne) til khinkali, mtsvadi og kød-khachapuri. Rkatsiteli qvevri (orange/amber wine) til satsivi (valnøddekylling), khachapuri og pkhali. Qvevri-stil hvidvin er særligt god til urte- og nøddebaserede retter. Pheasant's Tears og Iago's Wine er kendte producenter.",
+    },
+    {
+      question: "Hvad er qvevri og orange wine?",
+      answer:
+        "Qvevri er hyppe-formede lerkander på 500-2000 liter, begravet i jorden til fermentering og lagring — UNESCO-beskyttet georgisk tradition fra 8000 år tilbage. Når hvidvin fermenteres i qvevri med druernes skind og kerner, opstår 'orange wine' eller 'amber wine' — gylden farve, tanninstruktur og nødde-honning-noter. Moderne naturvin-trenden stammer herfra.",
+    },
+    {
+      question: "Hvor finder jeg georgisk vin i Danmark?",
+      answer:
+        "Natural-wine butikker og specialhandlere som Les Caves, Vinlund, Rosforth & Rosforth fører oftest Pheasant's Tears, Iago's Wine, Okro's Wines, Lagvinari og Alaverdi Monastery. Pris: 150-450 kr for de fleste kvalitets-qvevri-vine. Online-butikker specialiseret i naturvin har også et udvalg.",
+    },
+  ],
   "hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin": [
     {
       question: "Hvad er forskellen på alkoholfri og alkoholsvag vin?",

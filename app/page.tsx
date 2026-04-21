@@ -39,6 +39,23 @@ const featuredPopularLinks: { href: string; label: string }[] = [
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
   {
+    title: "Regionalt køkken × vin — dyk ned i gastronomien",
+    links: [
+      { href: "/guides/vin-til-toscansk-mad", label: "Toscansk mad (sangiovese)" },
+      { href: "/guides/vin-til-sicilianske-retter", label: "Sicilianske retter (nero d'avola)" },
+      { href: "/guides/vin-til-piemonte-mad", label: "Piemonte-mad (barolo, barbera)" },
+      { href: "/guides/vin-til-venetiansk-mad", label: "Venetiansk mad (soave, prosecco)" },
+      { href: "/guides/vin-til-baskisk-mad", label: "Baskisk mad (txakoli, rioja)" },
+      { href: "/guides/vin-til-catalansk-mad", label: "Catalansk mad (cava, priorat)" },
+      { href: "/guides/vin-til-andalusisk-mad", label: "Andalusisk mad (sherry)" },
+      { href: "/guides/vin-til-provencalsk-mad", label: "Provencalsk mad (bandol, rosé)" },
+      { href: "/guides/vin-til-bourgogne-mad", label: "Bourgogne-mad (pinot, chablis)" },
+      { href: "/guides/vin-til-alsace-mad", label: "Alsace-mad (riesling, gewürz)" },
+      { href: "/guides/vin-til-marokkansk-mad", label: "Marokkansk mad (syrah, grenache)" },
+      { href: "/guides/vin-til-georgisk-mad", label: "Georgisk mad (saperavi, qvevri)" },
+    ],
+  },
+  {
     title: "Alkoholfri & lavalkohol — voksent valg uden tømmermænd",
     links: [
       { href: "/guides/bedste-alkoholfri-vin", label: "Bedste alkoholfri vin (hub)" },

@@ -135,6 +135,27 @@ export default function MadOgVinHubPage() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-sky-200 bg-sky-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Regionalt køkken × vin — dyk ned i gastronomien</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Start fra køkkenet i stedet for enkeltretten — klassiske match mellem hele regionale køkkener og deres signaturvin.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-sky-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/vin-til-toscansk-mad" className="hover:underline">Toscansk mad (sangiovese)</Link>
+          <Link href="/guides/vin-til-sicilianske-retter" className="hover:underline">Sicilianske retter (nero d'avola)</Link>
+          <Link href="/guides/vin-til-piemonte-mad" className="hover:underline">Piemonte-mad (barolo)</Link>
+          <Link href="/guides/vin-til-venetiansk-mad" className="hover:underline">Venetiansk mad (soave, prosecco)</Link>
+          <Link href="/guides/vin-til-baskisk-mad" className="hover:underline">Baskisk mad (txakoli, rioja)</Link>
+          <Link href="/guides/vin-til-catalansk-mad" className="hover:underline">Catalansk mad (cava, priorat)</Link>
+          <Link href="/guides/vin-til-andalusisk-mad" className="hover:underline">Andalusisk mad (sherry)</Link>
+          <Link href="/guides/vin-til-provencalsk-mad" className="hover:underline">Provencalsk mad (bandol, rosé)</Link>
+          <Link href="/guides/vin-til-bourgogne-mad" className="hover:underline">Bourgogne-mad (pinot, chablis)</Link>
+          <Link href="/guides/vin-til-alsace-mad" className="hover:underline">Alsace-mad (riesling)</Link>
+          <Link href="/guides/vin-til-marokkansk-mad" className="hover:underline">Marokkansk mad (syrah, grenache)</Link>
+          <Link href="/guides/vin-til-georgisk-mad" className="hover:underline">Georgisk mad (saperavi, qvevri)</Link>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige guide</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
