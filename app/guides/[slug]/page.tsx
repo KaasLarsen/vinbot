@@ -5,6 +5,7 @@ import { getGuide, getGuideSlugs, listGuides } from "@/lib/content/guides";
 import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
+import { classifyGuide } from "@/lib/sitemap-categories";
 import { guideFaqBySlug } from "@/lib/guide-faq";
 import { getVinTilFallbackFaq } from "@/lib/guide-faq-vin-til-fallback";
 import { getBedsteFallbackFaq } from "@/lib/guide-faq-bedste-fallback";
@@ -85,6 +86,17 @@ export default async function GuidePage({ params }: Props) {
     ? `/?q=${encodeURIComponent(intent.q)}${intent.max != null ? `&max=${intent.max}` : ""}`
     : "/";
 
+  const category = classifyGuide(slug);
+  const articleSection: Record<typeof category, string> = {
+    mad: "Mad og vin",
+    druer: "Druesorter",
+    regioner: "Vinregioner",
+    bedste: "Bedste vine",
+    viden: "Vin-viden",
+    andre: "Guides",
+  };
+  const articleImage = `${url}/opengraph-image`;
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
       <ArticleJsonLd
@@ -93,6 +105,9 @@ export default async function GuidePage({ params }: Props) {
         url={url}
         datePublished={datePublished}
         dateModified={dateModified}
+        image={articleImage}
+        keywords={frontmatter.tags}
+        articleSection={articleSection[category]}
       />
       <BreadcrumbJsonLd items={breadcrumbLdItems} />
       {faqItems?.length ? <FaqJsonLd items={faqItems} /> : null}

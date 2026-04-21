@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Om Vinbot";
+const PAGE_DESCRIPTION =
+  "Vinbot er dansk vin-inspiration: dybdegående guides, vinsøgning på tværs af forhandlere og tydelig vej videre, når du vil handle.";
+const PAGE_URL = `${siteUrl}/om-os`;
+
 export const metadata: Metadata = {
-  title: "Om Vinbot",
-  description: "Vinbot er dansk vin-inspiration: dybdegående guides, vinsøgning på tværs af forhandlere og tydelig vej videre, når du vil handle.",
-  alternates: { canonical: `${siteUrl}/om-os` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function OmOsPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Om os", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/om-os", label: "Om os" }]} />
       <h1 className="mt-6 text-3xl font-semibold text-stone-900">Om Vinbot</h1>
       <p className="mt-4 text-lg leading-relaxed text-stone-700">

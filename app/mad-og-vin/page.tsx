@@ -3,14 +3,19 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Mad og vin — guides og parring";
+const PAGE_DESCRIPTION =
+  "Guides til vin og mad: søg og filtrér efter ret, drue eller begreb. Julemad, nytår, tapas, ost, fisk, grill, pizza, burger, italiensk og spansk — plus vinbegreber og temperatur.";
+const PAGE_URL = `${siteUrl}/mad-og-vin`;
+
 export const metadata: Metadata = {
-  title: "Mad og vin — guides og parring",
-  description:
-    "Guides til vin og mad: søg og filtrér efter ret, drue eller begreb. Julemad, nytår, tapas, ost, fisk, grill, pizza, burger, italiensk og spansk — plus vinbegreber og temperatur.",
-  alternates: { canonical: `${siteUrl}/mad-og-vin` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function MadOgVinHubPage() {
@@ -24,8 +29,25 @@ export default function MadOgVinHubPage() {
     tags: g.tags,
   }));
 
+  const collectionItems = guides.map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Mad & vin", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/mad-og-vin", label: "Mad & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Mad og vin</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

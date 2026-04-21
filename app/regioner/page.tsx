@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { siteUrl } from "@/lib/site";
 
 type LandGuide = {
@@ -219,16 +220,41 @@ function RegionMiniCard({ r }: { r: HurtigRegion }) {
   );
 }
 
+const PAGE_TITLE = "Vinregioner — klassiske områder og inspiration";
+const PAGE_DESCRIPTION =
+  "Vinregioner: dybdegående guides til Frankrig, Italien, Spanien, Tyskland, Portugal, USA, Chile, Argentina, Australien, New Zealand, Sydafrika og Central- og Østeuropa — plus hurtige søg til Provence, Veneto, sherry, England, Grækenland m.m.";
+const PAGE_URL = `${siteUrl}/regioner`;
+
 export const metadata: Metadata = {
-  title: "Vinregioner — klassiske områder og inspiration",
-  description:
-    "Vinregioner: dybdegående guides til Frankrig, Italien, Spanien, Tyskland, Portugal, USA, Chile, Argentina, Australien, New Zealand, Sydafrika og Central- og Østeuropa — plus hurtige søg til Provence, Veneto, sherry, England, Grækenland m.m.",
-  alternates: { canonical: `${siteUrl}/regioner` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function RegionerHubPage() {
+  const collectionItems = [
+    ...LAND_GUIDES_EUROPA,
+    ...LAND_GUIDES_AMERIKA,
+    ...LAND_GUIDES_AFRIKA_OCEANIEN,
+  ].map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Regioner", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/regioner", label: "Regioner" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vinregioner</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

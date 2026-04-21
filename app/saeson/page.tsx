@@ -3,14 +3,19 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listSaesonHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Sæson og vin — forår, sommer, efterår, vinter";
+const PAGE_DESCRIPTION =
+  "Sæsonvin i Danmark: jul, påske, nytår, fastelavn, Mortensaften, Sankt Hans, sommer, grill, højtider og klassisk dansk mad — søg i guiderne her.";
+const PAGE_URL = `${siteUrl}/saeson`;
+
 export const metadata: Metadata = {
-  title: "Sæson og vin — forår, sommer, efterår, vinter",
-  description:
-    "Sæsonvin i Danmark: jul, påske, nytår, fastelavn, Mortensaften, Sankt Hans, sommer, grill, højtider og klassisk dansk mad — søg i guiderne her.",
-  alternates: { canonical: `${siteUrl}/saeson` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function SaesonHubPage() {
@@ -23,8 +28,25 @@ export default function SaesonHubPage() {
     tags: g.tags,
   }));
 
+  const collectionItems = guides.map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Sæson", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/saeson", label: "Sæson" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Sæson og vin</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

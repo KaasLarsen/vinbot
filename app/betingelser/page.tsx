@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Betingelser";
+const PAGE_DESCRIPTION = "Brugerbetingelser for Vinbot: indhold, ansvar, annoncer og affiliate.";
+const PAGE_URL = `${siteUrl}/betingelser`;
+
 export const metadata: Metadata = {
-  title: "Betingelser",
-  description: "Brugerbetingelser for Vinbot: indhold, ansvar, annoncer og affiliate.",
-  alternates: { canonical: `${siteUrl}/betingelser` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function BetingelserPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Betingelser", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/betingelser", label: "Betingelser" }]} />
       <h1 className="mt-6 text-3xl font-semibold text-stone-900">Betingelser</h1>
       <p className="mt-2 text-sm text-stone-500">Sidst opdateret: 11. april 2026</p>

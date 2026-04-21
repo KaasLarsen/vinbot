@@ -8,11 +8,27 @@ type ArticleJsonLdProps = {
   url: string;
   datePublished: string;
   dateModified: string;
+  image?: string;
+  keywords?: string[];
+  articleSection?: string;
+  wordCount?: number;
+  inLanguage?: string;
 };
 
-export function ArticleJsonLd({ title, description, url, datePublished, dateModified }: ArticleJsonLdProps) {
+export function ArticleJsonLd({
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  image,
+  keywords,
+  articleSection,
+  wordCount,
+  inLanguage = "da-DK",
+}: ArticleJsonLdProps) {
   const orgRef = { "@id": organizationSchemaId };
-  const data = {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
@@ -22,6 +38,70 @@ export function ArticleJsonLd({ title, description, url, datePublished, dateModi
     author: orgRef,
     publisher: orgRef,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    inLanguage,
+  };
+  if (image) data.image = image;
+  if (keywords && keywords.length > 0) data.keywords = keywords.join(", ");
+  if (articleSection) data.articleSection = articleSection;
+  if (wordCount && wordCount > 0) data.wordCount = wordCount;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+type CollectionPageJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+  inLanguage?: string;
+};
+
+export function CollectionPageJsonLd({
+  name,
+  description,
+  url,
+  items,
+  inLanguage = "da-DK",
+}: CollectionPageJsonLdProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url,
+    inLanguage,
+    isPartOf: { "@type": "WebSite", "@id": `${siteUrl}/#website` },
+    publisher: { "@id": organizationSchemaId },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: item.url,
+        name: item.name,
+      })),
+    },
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+type WebPageJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+  inLanguage?: string;
+};
+
+export function WebPageJsonLd({ name, description, url, inLanguage = "da-DK" }: WebPageJsonLdProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url,
+    inLanguage,
+    isPartOf: { "@type": "WebSite", "@id": `${siteUrl}/#website` },
+    publisher: { "@id": organizationSchemaId },
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -88,8 +168,10 @@ export function WebSiteJsonLd({ url }: { url: string }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${url}/#website`,
     name: siteName,
     url,
+    inLanguage: "da-DK",
     publisher: { "@id": organizationSchemaId },
     potentialAction: {
       "@type": "SearchAction",

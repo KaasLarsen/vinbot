@@ -5,20 +5,32 @@ import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Vinkøleskabe — søg model, størrelse og pris";
+const PAGE_DESCRIPTION =
+  "Vinkøleskabe til køkkenet og kælderen: integrerbare og fritstående modeller. Søg på tværs hos Vinkøleskabet.dk m.fl. med billede og pris — læs også guiden til valg af størrelse og temperaturzoner.";
+const PAGE_URL = `${siteUrl}/vinkoleskabe`;
+
 export const metadata: Metadata = {
-  title: "Vinkøleskabe — søg model, størrelse og pris",
-  description:
-    "Vinkøleskabe til køkkenet og kælderen: integrerbare og fritstående modeller. Søg på tværs hos Vinkøleskabet.dk m.fl. med billede og pris — læs også guiden til valg af størrelse og temperaturzoner.",
-  alternates: { canonical: `${siteUrl}/vinkoleskabe` },
-  openGraph: { url: `${siteUrl}/vinkoleskabe` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
+  openGraph: { url: PAGE_URL },
 };
 
 export default function VinkoleskabePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Vinkøleskabe", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vinkoleskabe", label: "Vinkøleskabe" }]} />
       <header className="mt-6 max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/85">Opbevaring &amp; udstyr</p>

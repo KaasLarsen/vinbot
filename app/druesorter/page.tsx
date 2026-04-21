@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { siteUrl } from "@/lib/site";
 
 type Drue = { navn: string; q: string; note: string; guide: string };
@@ -111,16 +112,39 @@ function DrueCard({ d }: { d: Drue }) {
   );
 }
 
+const PAGE_TITLE = "Druesorter — oversigt og vinsøgning";
+const PAGE_DESCRIPTION =
+  "Alle Vinbots drueguider: hvide (riesling, assyrtiko, gewürztraminer m.fl.) og røde (dolcetto, montepulciano, mencía, cabernet franc, sangiovese m.fl.) — med søgning og madparring.";
+const PAGE_URL = `${siteUrl}/druesorter`;
+
 export const metadata: Metadata = {
-  title: "Druesorter — oversigt og vinsøgning",
-  description:
-    "Alle Vinbots drueguider: hvide (riesling, assyrtiko, gewürztraminer m.fl.) og røde (dolcetto, montepulciano, mencía, cabernet franc, sangiovese m.fl.) — med søgning og madparring.",
-  alternates: { canonical: `${siteUrl}/druesorter` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function DruesorterHubPage() {
+  const collectionItems = DRUE_GRUPPER.flatMap((g) =>
+    g.punkter.map((d) => ({
+      name: d.navn,
+      url: `${siteUrl}/guides/${d.guide}`,
+    })),
+  );
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Druesorter", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/druesorter", label: "Druesorter" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Druesorter</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

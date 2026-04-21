@@ -3,14 +3,19 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listVinVidenHubGuides, listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Vin-viden — hvor længe, hvor mange, hvad er og sådan";
+const PAGE_DESCRIPTION =
+  "Korte svar på de spørgsmål folk googler om vin: hvor længe holder rødvin, hvor mange glas i en flaske, hvad er tanniner, sådan dekanterer du — samlet på ét sted.";
+const PAGE_URL = `${siteUrl}/vin-viden`;
+
 export const metadata: Metadata = {
-  title: "Vin-viden — hvor længe, hvor mange, hvad er og sådan",
-  description:
-    "Korte svar på de spørgsmål folk googler om vin: hvor længe holder rødvin, hvor mange glas i en flaske, hvad er tanniner, sådan dekanterer du — samlet på ét sted.",
-  alternates: { canonical: `${siteUrl}/vin-viden` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function VinVidenHubPage() {
@@ -24,8 +29,25 @@ export default function VinVidenHubPage() {
     tags: g.tags,
   }));
 
+  const collectionItems = guides.map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Vin-viden", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vin-viden", label: "Vin-viden" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-viden</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

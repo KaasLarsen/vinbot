@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Kontakt";
+const PAGE_DESCRIPTION =
+  "Skriv til Vinbot om feedback, presse, samarbejde eller fejl på sitet. Vi svarer på info@vinbot.dk.";
+const PAGE_URL = `${siteUrl}/kontakt`;
+
 export const metadata: Metadata = {
-  title: "Kontakt",
-  description: "Skriv til Vinbot om feedback, presse, samarbejde eller fejl på sitet. Vi svarer på info@vinbot.dk.",
-  alternates: { canonical: `${siteUrl}/kontakt` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 const mailtoHref = `mailto:${contactEmail}?subject=Kontakt%20Vinbot`;
@@ -14,6 +20,13 @@ const mailtoHref = `mailto:${contactEmail}?subject=Kontakt%20Vinbot`;
 export default function KontaktPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Kontakt", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/kontakt", label: "Kontakt" }]} />
       <h1 className="mt-6 text-3xl font-semibold tracking-tight text-stone-900">Kontakt</h1>
       <p className="mt-4 text-lg leading-relaxed text-stone-700">

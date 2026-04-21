@@ -3,14 +3,19 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listHumoerHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Humør og stemning — vælg vin efter lejlighed";
+const PAGE_DESCRIPTION =
+  "Hygge, romantik, fest, bobler, brunch, sommer og gavevin: søg i guider til stemning og lejlighed — kombinér med mad & vin når menuen er klar.";
+const PAGE_URL = `${siteUrl}/humoer-og-vin`;
+
 export const metadata: Metadata = {
-  title: "Humør og stemning — vælg vin efter lejlighed",
-  description:
-    "Hygge, romantik, fest, bobler, brunch, sommer og gavevin: søg i guider til stemning og lejlighed — kombinér med mad & vin når menuen er klar.",
-  alternates: { canonical: `${siteUrl}/humoer-og-vin` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function HumoerHubPage() {
@@ -23,8 +28,25 @@ export default function HumoerHubPage() {
     tags: g.tags,
   }));
 
+  const collectionItems = guides.map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Humør & vin", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/humoer-og-vin", label: "Humør & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Humør og stemning</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

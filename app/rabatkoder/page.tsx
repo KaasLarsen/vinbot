@@ -2,15 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Rabatkoder til vin — partnertilbud";
+const PAGE_DESCRIPTION =
+  "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.";
+const PAGE_URL = `${siteUrl}/rabatkoder`;
+
 export const metadata: Metadata = {
-  title: "Rabatkoder til vin — partnertilbud",
-  description:
-    "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.",
-  alternates: { canonical: `${siteUrl}/rabatkoder` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 type RabatEntry = {
@@ -174,6 +179,13 @@ function RichLine({ text }: { text: string }) {
 export default function RabatkoderPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Rabatkoder", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/rabatkoder", label: "Rabatkoder" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Rabatkoder og partnertilbud</h1>
       <p className="mt-4 text-lg text-stone-700">

@@ -3,14 +3,19 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listBedsteVineHubGuides, listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Bedste vine — top-lister, pris og lejlighed";
+const PAGE_DESCRIPTION =
+  "Find den bedste vin: top-lister efter pris, lejlighed, stil og region. Bedste rødvin, hvidvin, rosé, bobler og champagne — plus gaveguider og begyndervin.";
+const PAGE_URL = `${siteUrl}/bedste-vine`;
+
 export const metadata: Metadata = {
-  title: "Bedste vine — top-lister, pris og lejlighed",
-  description:
-    "Find den bedste vin: top-lister efter pris, lejlighed, stil og region. Bedste rødvin, hvidvin, rosé, bobler og champagne — plus gaveguider og begyndervin.",
-  alternates: { canonical: `${siteUrl}/bedste-vine` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function BedsteVineHubPage() {
@@ -24,8 +29,25 @@ export default function BedsteVineHubPage() {
     tags: g.tags,
   }));
 
+  const collectionItems = guides.map((g) => ({
+    name: g.title,
+    url: `${siteUrl}/guides/${g.slug}`,
+  }));
+
+  const breadcrumbItems = [
+    { name: "Forside", url: `${siteUrl}/` },
+    { name: "Bedste vine", url: PAGE_URL },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_URL}
+        items={collectionItems}
+      />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/bedste-vine", label: "Bedste vine" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Bedste vine</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">

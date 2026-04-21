@@ -2,17 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CookieConsentReset } from "@/components/cookie-consent-reset";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, siteUrl } from "@/lib/site";
 
+const PAGE_TITLE = "Privatliv";
+const PAGE_DESCRIPTION =
+  "Sådan behandler Vinbot personoplysninger, cookies, Google Analytics, Google AdSense og affiliate-sporing.";
+const PAGE_URL = `${siteUrl}/privatliv`;
+
 export const metadata: Metadata = {
-  title: "Privatliv",
-  description: "Sådan behandler Vinbot personoplysninger, cookies, Google Analytics, Google AdSense og affiliate-sporing.",
-  alternates: { canonical: `${siteUrl}/privatliv` },
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
 };
 
 export default function PrivatlivPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Forside", url: `${siteUrl}/` },
+          { name: "Privatliv", url: PAGE_URL },
+        ]}
+      />
+      <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/privatliv", label: "Privatliv" }]} />
       <h1 className="mt-6 text-3xl font-semibold text-stone-900">Privatliv</h1>
       <p className="mt-2 text-sm text-stone-500">Sidst opdateret: 11. april 2026</p>
