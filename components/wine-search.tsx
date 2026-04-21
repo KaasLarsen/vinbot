@@ -124,12 +124,30 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     if (iq) void search(iq, null);
   }, [initialQuery, search]);
 
-  const products = data?.products ?? [];
-  const total = products.length;
+  const allProducts = data?.products ?? [];
+  /** Forhandler-filter: sæt af valgte merchant-navne. Tom = vis alle. */
+  const [selectedMerchants, setSelectedMerchants] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     setMoreSteps(0);
+    setSelectedMerchants(new Set());
   }, [data]);
+
+  const merchantCounts = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const p of allProducts) {
+      m.set(p.merchant, (m.get(p.merchant) ?? 0) + 1);
+    }
+    return Array.from(m.entries()).sort((a, b) => b[1] - a[1]);
+  }, [allProducts]);
+
+  const products = useMemo(() => {
+    if (selectedMerchants.size === 0) return allProducts;
+    return allProducts.filter((p) => selectedMerchants.has(p.merchant));
+  }, [allProducts, selectedMerchants]);
+
+  const total = products.length;
+  const allTotal = allProducts.length;
 
   const visibleCount = useMemo(() => {
     if (!total) return 0;
@@ -139,6 +157,35 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
 
   const visibleProducts = useMemo(() => products.slice(0, visibleCount), [products, visibleCount]);
   const canLoadMore = total > 0 && visibleCount < total;
+
+  const toggleMerchant = (merchant: string) => {
+    setMoreSteps(0);
+    setSelectedMerchants((prev) => {
+      const next = new Set(prev);
+      if (next.has(merchant)) {
+        next.delete(merchant);
+      } else {
+        next.add(merchant);
+      }
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        try {
+          window.gtag("event", "merchant_filter_toggle", {
+            merchant,
+            active: next.has(merchant) ? 1 : 0,
+            selected_count: next.size,
+          });
+        } catch {
+          // no-op
+        }
+      }
+      return next;
+    });
+  };
+
+  const clearMerchants = () => {
+    setMoreSteps(0);
+    setSelectedMerchants(new Set());
+  };
 
   return (
     <div className="space-y-6">
@@ -206,10 +253,52 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
       {data && (
         <div className="space-y-4">
           <p className="text-sm text-stone-600">
-            {total
-              ? `Vi har fundet ${total} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`
-              : "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."}
+            {allTotal === 0
+              ? "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."
+              : selectedMerchants.size > 0
+              ? `Filtreret: ${total} af ${allTotal} foreslåede vine fra ${selectedMerchants.size} forhandler${
+                  selectedMerchants.size === 1 ? "" : "e"
+                }. Tjek altid pris og levering hos butikken.`
+              : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
           </p>
+
+          {merchantCounts.length > 1 && (
+            <div className="flex flex-col gap-2 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:p-3">
+              <span className="text-sm font-medium text-stone-700 sm:mr-1">Vis kun:</span>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={clearMerchants}
+                  aria-pressed={selectedMerchants.size === 0}
+                  className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                    selectedMerchants.size === 0
+                      ? "border-rose-900 bg-rose-900 text-white"
+                      : "border-stone-200 bg-white text-stone-800 hover:border-rose-300"
+                  }`}
+                >
+                  Alle ({allTotal})
+                </button>
+                {merchantCounts.map(([merchant, count]) => {
+                  const active = selectedMerchants.has(merchant);
+                  return (
+                    <button
+                      key={merchant}
+                      type="button"
+                      onClick={() => toggleMerchant(merchant)}
+                      aria-pressed={active}
+                      className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                        active
+                          ? "border-rose-900 bg-rose-900 text-white"
+                          : "border-stone-200 bg-white text-stone-800 hover:border-rose-300"
+                      }`}
+                    >
+                      {merchant} ({count})
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {total > 0 && (
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
@@ -255,6 +344,16 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
               <ProductCard key={`${p.url}-${i}`} product={p} />
             ))}
           </div>
+
+          {total === 0 && allTotal > 0 && (
+            <p className="text-sm text-stone-500">
+              Ingen vine fra de valgte forhandlere matchede —{" "}
+              <button type="button" onClick={clearMerchants} className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4">
+                vis alle forhandlere
+              </button>
+              .
+            </p>
+          )}
 
           {canLoadMore && (
             <div className="flex flex-col items-center gap-1 pt-2">
