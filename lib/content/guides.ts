@@ -98,6 +98,12 @@ const SAESON_TAG_HINTS: readonly string[] = [
   "mortens",
   "kransekage",
   "sankt hans",
+  "konfirmation",
+  "studenter",
+  "haveselskab",
+  "mors dag",
+  "fars dag",
+  "bryllup",
 ];
 
 function guideMatchesSaesonTags(tags: string[] | undefined): boolean {

@@ -796,4 +796,72 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Klassisk karaffel med bred bund maksimerer luftkontakten over tid — bedst til unge tanniner. Aeratorer (flaske-toppe) virker hurtigt men mindre kontrollerbart. Ingen af dem er nødvendige for lette eller modne vine.",
     },
   ],
+  "vin-til-konfirmation": [
+    {
+      question: "Hvilken vin skal man servere til konfirmation?",
+      answer:
+        "Start med bobler (cava eller crémant) til velkomst og skål. Til frokost og smørrebrød: frisk hvidvin som sauvignon blanc, riesling Kabinett eller albariño. Til aftensmaden (oksesteg, lam): mellemfyldig rødvin som Chianti Classico, Rioja Crianza eller Côtes du Rhône.",
+    },
+    {
+      question: "Hvor meget vin per gæst til konfirmation?",
+      answer:
+        "Regn med 3/4 til 1 flaske vin per voksen gæst plus 1 glas bobler til velkomst og skål. 30 voksne = ca. 25-30 flasker vin + 5-6 flasker bobler. Køb 10-20 % ekstra og få aftale om returnering af uåbnede flasker.",
+    },
+    {
+      question: "Hvad koster en god konfirmations-vin?",
+      answer:
+        "Sweet spot er 100-150 kr per flaske: crémant til bobler, Chianti Classico eller Rioja Crianza til rødvin, riesling Kabinett til hvidvin. Stramt budget: 60-90 kr med spansk cava, chilensk hvid og italiensk hverdags-rødvin.",
+    },
+  ],
+  "vin-til-studenterfest": [
+    {
+      question: "Hvilken bobler skal man drikke til studenterfest?",
+      answer:
+        "Cava Brut eller Prosecco DOC (70-110 kr) er det praktiske valg — festligt nok, billigt nok til at dele ud og lav alkohol nok til at dagen kan fortsætte. Undgå dyr champagne før klokken 14; gem den til aftenens skål.",
+    },
+    {
+      question: "Hvor meget vin per person til studenterfest?",
+      answer:
+        "Regn med 1-1,5 flaske vin per gæst plus ekstra bobler til en 8-12 timers dag. 20 gæster = 25-30 flasker. Fordeling: 40 % bobler, 40 % hvid/rosé, 20 % rødvin. Tilføj 20 % buffer — løber I tør, er festen forbi.",
+    },
+    {
+      question: "Skal jeg vælge champagne eller cava til studentervognen?",
+      answer:
+        "Cava eller prosecco. De tåler bedre at blive rystet på vognen og serveret ukolde. Lavere pris per flaske, stadig fint håndværk. Regn med 1 flaske bobler per 2-3 studenter på vognen — frys nogle ekstra i forvejen som backup-køling.",
+    },
+  ],
+  "vin-til-mors-dag": [
+    {
+      question: "Hvilken vin er bedst til mors dag?",
+      answer:
+        "Start med bobler (crémant eller rosé-champagne) til velkomst. Til brunch og laks: frisk hvidvin som Sancerre, Chablis eller tysk riesling Kabinett. Til kage: sød Moscato d'Asti. Rosé fra Provence er et stærkt alternativ hele vejen igennem.",
+    },
+    {
+      question: "Hvilken vin er god som gave til mors dag?",
+      answer:
+        "Prioriter elegance: en Provence-rosé (150-250 kr), en flot crémant (150-220 kr), en Sancerre (200-300 kr) eller en prestige-champagne (300-500 kr). Tilføj en lille ekstra som blomster eller håndskrevet note — den samlede oplevelse vejer mere end prisen.",
+    },
+    {
+      question: "Hvor meget vin til mors-dag-frokost for 4-8 personer?",
+      answer:
+        "Regn med 2-4 flasker samlet: 1 flaske bobler til velkomst, 2 flasker hvidvin eller rosé til frokost, og evt. 1 flaske dessertvin eller Moscato d'Asti til kagen. Tilføj 1 ekstra flaske per 3 gæster som buffer.",
+    },
+  ],
+  "vin-til-haveselskab": [
+    {
+      question: "Hvilken vin er bedst til haveselskab om sommeren?",
+      answer:
+        "Rosé, frisk hvidvin og bobler er de tre hjørner. Tør Provence-rosé, riesling Kabinett, albariño og cava Brut fungerer alle fremragende. Undgå kraftige rødvine og fadet chardonnay — de føles tunge i solen.",
+    },
+    {
+      question: "Hvor kold skal vinen være til haveselskab?",
+      answer:
+        "Bobler og hvidvin 6-10 °C. Rosé 8-11 °C. Rødvin 14-16 °C (kort i køleskab før servering) — kold rød er bedre end varm rød ved 25+ grader. Brug iskøler med is og vand, ikke kun is. Hold vinen i skygge — direkte sol i 1 time kan ødelægge friskheden.",
+    },
+    {
+      question: "Kan man drikke rødvin til haveselskab?",
+      answer:
+        "Ja, men vælg lette, lav-tannin rødvine som gamay (Beaujolais), kølig pinot noir eller Frappato — og køl dem kort til 14-16 °C. Undgå kraftig shiraz, malbec og ung cabernet, der føles klistrede i sommervarme.",
+    },
+  ],
 };

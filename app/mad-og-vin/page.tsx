@@ -65,6 +65,37 @@ export default function MadOgVinHubPage() {
         .
       </p>
 
+      <section className="mt-10 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Forår og sommer — konkrete lejligheder</h2>
+        <p className="mt-3 text-stone-700">
+          Skal du planlægge en fest?{" "}
+          <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
+            Vin til konfirmation
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-mors-dag" className="text-rose-900 hover:underline">
+            mors dag
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-fars-dag" className="text-rose-900 hover:underline">
+            fars dag
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-sommerbryllup" className="text-rose-900 hover:underline">
+            sommerbryllup
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/vin-til-haveselskab" className="text-rose-900 hover:underline">
+            haveselskab
+          </Link>{" "}
+          — plus{" "}
+          <Link href="/guides/bedste-sommervin" className="text-rose-900 hover:underline">
+            bedste sommervin
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige guide</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />

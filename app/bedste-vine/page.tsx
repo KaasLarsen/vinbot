@@ -62,6 +62,10 @@ export default function BedsteVineHubPage() {
         <Link href="/guides/bedste-hvidvin-under-150-kr" className="text-rose-900 hover:underline">
           hvidvin under 150 kr
         </Link>
+        . Sæson?{" "}
+        <Link href="/guides/bedste-sommervin" className="text-rose-900 hover:underline">
+          Bedste sommervin
+        </Link>
         . Hele oversigten:{" "}
         <Link href="/guides" className="font-medium text-rose-900 hover:underline">
           alle guides

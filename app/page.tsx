@@ -24,7 +24,10 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/vin-viden", label: "Vin-viden" },
+  { href: "/saeson", label: "Sæson & fest" },
   { href: "/guides", label: "Alle guides — søg og filtrér" },
+  { href: "/guides/vin-til-konfirmation", label: "Konfirmation" },
+  { href: "/guides/vin-til-studenterfest", label: "Studenterfest" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
   { href: "/guides/bobler-champagne-cava-prosecco-og-cremant", label: "Bobler" },
   { href: "/guides/vin-til-grill-og-bbq", label: "Grill" },
@@ -35,6 +38,19 @@ const featuredPopularLinks: { href: string; label: string }[] = [
 ];
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
+  {
+    title: "Forår & sommer-fester — maj/juni",
+    links: [
+      { href: "/saeson", label: "Hub: sæson & fest" },
+      { href: "/guides/vin-til-konfirmation", label: "Vin til konfirmation" },
+      { href: "/guides/vin-til-studenterfest", label: "Vin til studenterfest" },
+      { href: "/guides/vin-til-mors-dag", label: "Vin til mors dag" },
+      { href: "/guides/vin-til-fars-dag", label: "Vin til fars dag" },
+      { href: "/guides/vin-til-haveselskab", label: "Vin til haveselskab" },
+      { href: "/guides/vin-til-sommerbryllup", label: "Vin til sommerbryllup" },
+      { href: "/guides/bedste-sommervin", label: "Bedste sommervin" },
+    ],
+  },
   {
     title: "Bedste vine — top-lister",
     links: [
@@ -266,8 +282,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
           href="/saeson"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >
-          <h3 className="text-lg font-semibold text-stone-900">Sæson</h3>
-          <p className="mt-2 text-stone-600">Forår, sommer, efterår og vinter — hvad der smager af årstiden i glasset.</p>
+          <h3 className="text-lg font-semibold text-stone-900">Sæson & fest</h3>
+          <p className="mt-2 text-stone-600">Konfirmation, studenterfest, mors/fars dag, haveselskab, bryllup, jul og nytår — vin til alle årets lejligheder.</p>
         </Link>
         <Link
           href="/vin-viden"

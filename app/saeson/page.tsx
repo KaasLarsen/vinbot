@@ -38,6 +38,41 @@ export default function SaesonHubPage() {
         .
       </p>
 
+      <section className="mt-10 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Forår og sommer lige nu — maj/juni</h2>
+        <p className="mt-3 text-stone-700">
+          Sæson-højdepunkter: {" "}
+          <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
+            vin til konfirmation
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-studenterfest" className="text-rose-900 hover:underline">
+            vin til studenterfest
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-mors-dag" className="text-rose-900 hover:underline">
+            vin til mors dag
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-fars-dag" className="text-rose-900 hover:underline">
+            vin til fars dag
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-haveselskab" className="text-rose-900 hover:underline">
+            vin til haveselskab
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-sommerbryllup" className="text-rose-900 hover:underline">
+            sommerbryllup
+          </Link>{" "}
+          og {" "}
+          <Link href="/guides/bedste-sommervin" className="text-rose-900 hover:underline">
+            bedste sommervin
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Sæsonguides</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />

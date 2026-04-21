@@ -50,6 +50,37 @@ export default function HumoerHubPage() {
         ofte hurtigere vej — men du kan sagtens starte med stemningen her og søge derefter.
       </p>
 
+      <section className="mt-10 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Sæson og fest — maj/juni</h2>
+        <p className="mt-3 text-stone-700">
+          Konkrete lejligheder lige nu:{" "}
+          <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
+            konfirmation
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-studenterfest" className="text-rose-900 hover:underline">
+            studenterfest
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-haveselskab" className="text-rose-900 hover:underline">
+            haveselskab
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-sommerbryllup" className="text-rose-900 hover:underline">
+            sommerbryllup
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-mors-dag" className="text-rose-900 hover:underline">
+            mors dag
+          </Link>
+          {" "}og{" "}
+          <Link href="/guides/vin-til-fars-dag" className="text-rose-900 hover:underline">
+            fars dag
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Guides efter stemning</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
