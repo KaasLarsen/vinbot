@@ -1624,4 +1624,106 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Mosel (QbA og Kabinett trocken fra anerkendte producenter), Pfalz og Rheinhessen samt entry-level Alsace. Producenter som Dr. Loosen, Selbach-Oster og Trimbach har ofte fine basis-vine i prisklassen.",
     },
   ],
+  "chardonnay-fra-chablis": [
+    {
+      question: "Hvad adskiller Chablis fra anden chardonnay?",
+      answer:
+        "Chablis kommer fra kalkjord (Kimmeridgian med fossile østers-skaller) i nord-Bourgogne og er typisk umeret eller kun let fad-lagret. Resultatet er en stram, mineralsk stil med citrus, grønne æbler og salt finish — modsat de fad-dominerede chardonnay-stile fra fx Californien.",
+    },
+    {
+      question: "Hvad koster ordentlig Chablis?",
+      answer:
+        "Seriøs basic Chablis starter omkring 140–180 kr hos danske forhandlere. Premier Cru ligger typisk 250–400 kr, og Grand Cru starter ved 600 kr. Under 120 kr er det oftest Petit Chablis eller atypisk fad-præget Chablis.",
+    },
+    {
+      question: "Hvad passer Chablis til?",
+      answer:
+        "Skaldyr er klassikeren: østers, hummer, muslinger, krebs. Også sushi, grillet fisk, gedeost (traditionel), escargots og kylling i flødesauce. Chablis' syre og mineralitet skærer gennem skaldyrs sødme.",
+    },
+  ],
+  "pinot-noir-fra-bourgogne": [
+    {
+      question: "Hvorfor er rød Bourgogne dyrt?",
+      answer:
+        "Bourgogne har et detaljeret terroir-hierarki (Regional < Village < Premier Cru < Grand Cru) på stærkt begrænsede mængder — kun 33 røde Grand Cru-vingårde i hele regionen. Høj efterspørgsel plus lave udbytter giver høje priser, især for anerkendte domæner.",
+    },
+    {
+      question: "Hvor starter seriøs rød Bourgogne prismæssigt?",
+      answer:
+        "Bourgogne rouge under 150 kr er sjældent spændende. 200–350 kr giver solid Village-niveau fra anerkendt producent. Premier Cru starter omkring 500 kr. Hautes Côtes de Nuits og Hautes Côtes de Beaune (150–250 kr) er ofte bedste indgang.",
+    },
+    {
+      question: "Hvilke mindre kendte Bourgogne-appellationer giver bedst value?",
+      answer:
+        "Marsannay, Fixin, Monthélie, Saint-Romain og Savigny-lès-Beaune er ofte undervurderede og giver 70 % af kvaliteten til 40 % af prisen sammenlignet med Gevrey-Chambertin eller Vosne-Romanée.",
+    },
+  ],
+  "cabernet-sauvignon-fra-bordeaux": [
+    {
+      question: "Er al Bordeaux cabernet sauvignon-baseret?",
+      answer:
+        "Nej. Venstre bred (Médoc, Pessac-Léognan) er cabernet-dominerede blends. Højre bred (Saint-Émilion, Pomerol) er merlot-domineret. Når man siger 'cabernet-Bordeaux' mener man typisk Médoc eller Pessac-Léognan.",
+    },
+    {
+      question: "Hvad er Cru Bourgeois?",
+      answer:
+        "Cru Bourgeois er en Médoc-klassifikation under de klassificerede Cru Classé-chateauer. Mange Cru Bourgeois leverer utrolig value (200–400 kr) — producenter som Château Poujeaux, Sociando-Mallet og Chasse-Spleen laver ofte vine på Cru Classé-niveau.",
+    },
+    {
+      question: "Er generisk Bordeaux under 120 kr værd at købe?",
+      answer:
+        "Sjældent. Generisk AOC Bordeaux i den prisklasse er ofte tyndt, grønt og uden terroir. Det er en af vinverdenens værste værdifælder. Sats i stedet på Cru Bourgeois, Côtes de Bourg eller Castillon Côtes de Bordeaux i budget-segmentet.",
+    },
+  ],
+  "sangiovese-fra-chianti-classico": [
+    {
+      question: "Hvad er forskellen på Chianti og Chianti Classico?",
+      answer:
+        "Chianti Classico (Gallo Nero/sort hane på etiketten) er det afgrænsede, oprindelige område mellem Firenze og Siena og har strengere regler: min 80 % sangiovese og længere modning. 'Basic Chianti' dækker et langt større område og er typisk enklere og lettere.",
+    },
+    {
+      question: "Hvad er Gran Selezione?",
+      answer:
+        "Chianti Classico Gran Selezione er det højeste niveau i hierarkiet (siden 2014): 100 % enkelt-vingård, min 30 måneders lagring og strengere druerkrav. Vine som Fontodi Vigna del Sorbo og Felsina Rancia ligger her og koster typisk 400–800 kr.",
+    },
+    {
+      question: "Hvad passer Chianti Classico bedst til?",
+      answer:
+        "Klassiske italienske retter med tomat og fedt: pasta med ragù, pizza margherita, bistecca alla fiorentina, lasagne og pecorino toscano. Chianti Classicos høje syre skærer gennem tomat og fedme som ingen anden rødvin.",
+    },
+  ],
+  "nebbiolo-fra-barolo": [
+    {
+      question: "Hvor gammelt skal man drikke Barolo?",
+      answer:
+        "Unge Barolo (under 10 år fra årgang) er ofte uforløst pga. de kraftige tanniner og syre. Drik Barolo 10–25 år efter årgang for bedst oplevelse — eller dekanter yngre Barolo 2–4 timer. Riserva-niveauer kræver endnu længere lagring.",
+    },
+    {
+      question: "Hvad er MGA i Barolo?",
+      answer:
+        "MGA (Menzioni Geografiche Aggiuntive) er Barolos 170 officielle enkelt-vingårde fra 2010 — cru-systemet svarende til Bourgogne. Kendte MGA'er som Cannubi, Monprivato, Rocche di Castiglione og Brunate står på etiketten og signalerer top-terroir.",
+    },
+    {
+      question: "Hvad er forskellen på traditionel og moderne Barolo?",
+      answer:
+        "Traditionelle producenter (Bartolo Mascarello, Giuseppe Rinaldi) bruger lang maceration og store gamle fade — resultatet er stram, klassisk stil med lang lagringspotentiale. Modernister (Altare, Voerzio) bruger kortere maceration og små franske fade — giver rundere, tidligere drikkeklar stil.",
+    },
+  ],
+  "malbec-fra-mendoza": [
+    {
+      question: "Hvad gør Mendoza-malbec speciel?",
+      answer:
+        "Mendoza ligger i højt-beliggende ørken (800–1700 m over havet). De store dag-nat-temperatursvingninger giver intens frugtkoncentration med bevaret syre. Jorden er alluvial (grus, sand, ler) afstrømmet fra Andes — hvilket giver malbecen dens rundere, frugtigere stil end fransk Cahors.",
+    },
+    {
+      question: "Hvad er Uco Valley?",
+      answer:
+        "Uco Valley er Mendozas højeste sub-region (op til 1700 m). Det kolde klima giver en mere elegant, struktureret stil — Mendozas 'Bourgogne'. Producenter som Catena Zapata, Achaval-Ferrer og Clos de los Siete har top-vingårde i Uco.",
+    },
+    {
+      question: "Hvad passer malbec bedst til?",
+      answer:
+        "Argentinsk asado — grillet rødt kød — er den klassiske parring. Også entrecote, ribeye, chorizo, morcilla (blodpølse), lam med chimichurri og hamburger. Malbec er i sit hjerte BBQ-kulturens vin.",
+    },
+  ],
 };

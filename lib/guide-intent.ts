@@ -96,6 +96,50 @@ export function deriveGuideIntent(
     };
   }
 
+  const drueRegion = matchDrueRegionSlug(slug);
+  if (drueRegion) {
+    const { drue, region } = drueRegion;
+    const drueLabel = drue.replace(/-/g, " ");
+    const regionLabel = region.replace(/-/g, " ");
+    return {
+      q: `${drueLabel} ${regionLabel}`.trim(),
+      max: null,
+      label: `${drueLabel} fra ${regionLabel}`,
+    };
+  }
+
+  return null;
+}
+
+/** Kendte drue-prefixer for <drue>-fra-<region>-long-tail-sider. */
+const DRUE_PREFIXES_FOR_REGION = [
+  "chardonnay",
+  "sauvignon-blanc",
+  "riesling",
+  "pinot-grigio",
+  "albarino",
+  "chenin-blanc",
+  "cabernet-sauvignon",
+  "merlot",
+  "syrah",
+  "malbec",
+  "tempranillo",
+  "sangiovese",
+  "pinot-noir",
+  "nebbiolo",
+  "grenache",
+];
+
+export function matchDrueRegionSlug(slug: string): { drue: string; region: string } | null {
+  for (const prefix of DRUE_PREFIXES_FOR_REGION) {
+    const marker = `${prefix}-fra-`;
+    if (slug.startsWith(marker)) {
+      const region = slug.slice(marker.length);
+      if (region.length > 0) {
+        return { drue: prefix, region };
+      }
+    }
+  }
   return null;
 }
 

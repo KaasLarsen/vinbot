@@ -364,6 +364,29 @@ export default function RegionerHubPage() {
         </ul>
       </section>
 
+      <section id="drue-region" className="mt-16 scroll-mt-20 rounded-2xl border border-amber-200 bg-amber-50/60 p-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Drue × region — klassiske long-tails</h2>
+        <p className="mt-3 max-w-3xl text-stone-700">
+          29 dybdeguider om de mest ikoniske kombinationer af drue og terroir — hvor region og drue er blevet synonymer med hinanden. Med stil, klima, producenter, klassificering, pris og madparring:
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {DRUE_REGION_BY_COUNTRY.map((group) => (
+            <div key={group.country} className="rounded-xl border border-stone-200 bg-white p-4">
+              <h3 className="text-base font-semibold text-stone-900">{group.country}</h3>
+              <ul className="mt-3 flex flex-col gap-1.5 text-sm">
+                {group.items.map((item) => (
+                  <li key={item.slug}>
+                    <Link href={`/guides/${item.slug}`} className="text-rose-900 hover:underline">
+                      {item.label} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <PartnerAdsLeaderboard className="mt-16" />
 
       <p className="mt-10 text-stone-700">
@@ -384,3 +407,73 @@ export default function RegionerHubPage() {
     </div>
   );
 }
+
+type DrueRegionCountryGroup = { country: string; items: { slug: string; label: string }[] };
+
+const DRUE_REGION_BY_COUNTRY: DrueRegionCountryGroup[] = [
+  {
+    country: "Frankrig",
+    items: [
+      { slug: "chardonnay-fra-chablis", label: "Chardonnay fra Chablis" },
+      { slug: "chardonnay-fra-maconnais", label: "Chardonnay fra Mâconnais" },
+      { slug: "pinot-noir-fra-bourgogne", label: "Pinot noir fra Bourgogne" },
+      { slug: "sauvignon-blanc-fra-sancerre", label: "Sauvignon blanc fra Sancerre" },
+      { slug: "chenin-blanc-fra-vouvray", label: "Chenin blanc fra Vouvray" },
+      { slug: "riesling-fra-alsace", label: "Riesling fra Alsace" },
+      { slug: "cabernet-sauvignon-fra-bordeaux", label: "Cabernet sauvignon fra Bordeaux" },
+      { slug: "merlot-fra-pomerol", label: "Merlot fra Pomerol" },
+      { slug: "syrah-fra-nord-rhone", label: "Syrah fra Nord-Rhône" },
+      { slug: "grenache-fra-chateauneuf-du-pape", label: "Grenache fra Châteauneuf-du-Pape" },
+    ],
+  },
+  {
+    country: "Italien",
+    items: [
+      { slug: "nebbiolo-fra-barolo", label: "Nebbiolo fra Barolo" },
+      { slug: "nebbiolo-fra-barbaresco", label: "Nebbiolo fra Barbaresco" },
+      { slug: "sangiovese-fra-chianti-classico", label: "Sangiovese fra Chianti Classico" },
+      { slug: "sangiovese-fra-montalcino", label: "Sangiovese fra Montalcino (Brunello)" },
+    ],
+  },
+  {
+    country: "Spanien",
+    items: [
+      { slug: "tempranillo-fra-rioja", label: "Tempranillo fra Rioja" },
+      { slug: "tempranillo-fra-ribera-del-duero", label: "Tempranillo fra Ribera del Duero" },
+      { slug: "grenache-fra-priorat", label: "Garnacha fra Priorat" },
+      { slug: "albarino-fra-rias-baixas", label: "Albariño fra Rías Baixas" },
+    ],
+  },
+  {
+    country: "Tyskland",
+    items: [{ slug: "riesling-fra-mosel", label: "Riesling fra Mosel" }],
+  },
+  {
+    country: "USA",
+    items: [
+      { slug: "cabernet-sauvignon-fra-napa-valley", label: "Cabernet sauvignon fra Napa Valley" },
+      { slug: "pinot-noir-fra-willamette-valley", label: "Pinot noir fra Willamette Valley" },
+    ],
+  },
+  {
+    country: "Sydamerika",
+    items: [
+      { slug: "malbec-fra-mendoza", label: "Malbec fra Mendoza" },
+      { slug: "cabernet-sauvignon-fra-maipo-valley", label: "Cabernet sauvignon fra Maipo Valley" },
+    ],
+  },
+  {
+    country: "Australien & New Zealand",
+    items: [
+      { slug: "chardonnay-fra-margaret-river", label: "Chardonnay fra Margaret River" },
+      { slug: "riesling-fra-clare-valley", label: "Riesling fra Clare Valley" },
+      { slug: "syrah-fra-barossa-valley", label: "Shiraz fra Barossa Valley" },
+      { slug: "sauvignon-blanc-fra-marlborough", label: "Sauvignon blanc fra Marlborough" },
+      { slug: "pinot-noir-fra-central-otago", label: "Pinot noir fra Central Otago" },
+    ],
+  },
+  {
+    country: "Sydafrika",
+    items: [{ slug: "chenin-blanc-fra-swartland", label: "Chenin blanc fra Swartland" }],
+  },
+];

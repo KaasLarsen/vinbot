@@ -1,4 +1,5 @@
 import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
+import { matchDrueRegionSlug } from "@/lib/guide-intent";
 
 export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
 
@@ -55,6 +56,7 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
 
 export function classifyGuide(slug: string): GuideCategory {
   if (slug.endsWith("-druen")) return "druer";
+  if (matchDrueRegionSlug(slug)) return "druer";
   if (slug.startsWith("vinregion-")) return "regioner";
   if (slug.startsWith("bedste-")) return "bedste";
   if (ANDRE_EXTRA_SLUGS.has(slug)) return "andre";
