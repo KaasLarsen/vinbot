@@ -93,6 +93,11 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const [firstCount, setFirstCount] = useState<3 | 5>(3);
   /** Hvor mange gange brugeren har trykket "Se flere" (+PAGE_MORE pr. gang) */
   const [moreSteps, setMoreSteps] = useState(0);
+  /** Den aktuelle søgetekst og budget brugt i seneste søgning (ikke inputfelternes state). */
+  const [lastQuery, setLastQuery] = useState<string>("");
+  const [lastBudget, setLastBudget] = useState<number | null>(null);
+  /** Billigste vin for `lastQuery` uden budget — bruges som fallback når pris­filteret udelukker alt. */
+  const [fallbackCheapest, setFallbackCheapest] = useState<ProductHit | null>(null);
 
   const maxNum = useMemo(() => {
     const n = parseInt(max, 10);
@@ -103,6 +108,9 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     async (query: string, budget?: number | null) => {
       setLoading(true);
       setError(null);
+      setFallbackCheapest(null);
+      setLastQuery(query);
+      setLastBudget(budget ?? null);
       try {
         const params = new URLSearchParams({ q: query });
         if (budget != null && Number.isFinite(budget)) params.set("max", String(budget));
@@ -123,6 +131,35 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     const iq = initialQuery?.trim();
     if (iq) void search(iq, null);
   }, [initialQuery, search]);
+
+  /* Når prisfilter har udelukket alt, henter vi billigste match uden budget
+     og tilbyder brugeren at "vis alligevel". */
+  useEffect(() => {
+    if (!data) return;
+    if (data.products.length > 0) return;
+    if (lastBudget == null) return;
+    if (!lastQuery.trim()) return;
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const params = new URLSearchParams({ q: lastQuery });
+        const r = await fetch(`/api/search?${params.toString()}`);
+        const json = (await r.json()) as ApiResponse;
+        if (cancelled) return;
+        const cheapest = [...(json.products || [])]
+          .filter((p) => typeof p.price === "number")
+          .sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity))[0];
+        setFallbackCheapest(cheapest ?? null);
+      } catch {
+        /* stilhed er OK — fallback er bare en UX-forbedring */
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [data, lastQuery, lastBudget]);
 
   const allProducts = data?.products ?? [];
   /** Forhandler-filter: sæt af valgte merchant-navne. Tom = vis alle. */
@@ -252,15 +289,41 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
 
       {data && (
         <div className="space-y-4">
-          <p className="text-sm text-stone-600">
-            {allTotal === 0
-              ? "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."
-              : selectedMerchants.size > 0
-              ? `Filtreret: ${total} af ${allTotal} foreslåede vine fra ${selectedMerchants.size} forhandler${
-                  selectedMerchants.size === 1 ? "" : "e"
-                }. Tjek altid pris og levering hos butikken.`
-              : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
-          </p>
+          {allTotal === 0 && lastBudget != null && fallbackCheapest ? (
+            <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+              <p className="font-semibold">
+                Ingen {lastQuery ? `match på “${lastQuery}”` : "vine"} under {lastBudget} kr lige nu.
+              </p>
+              <p className="mt-1">
+                Den billigste vi har fundet uden prisfilter er{" "}
+                <span className="font-semibold">{fallbackCheapest.title}</span>
+                {typeof fallbackCheapest.price === "number" && (
+                  <> til <span className="font-semibold">{fallbackCheapest.price} kr</span></>
+                )}
+                {fallbackCheapest.merchant ? <> hos {fallbackCheapest.merchant}</> : null}.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setMax("");
+                  void search(lastQuery, null);
+                }}
+                className="mt-3 rounded-xl border border-amber-400 bg-white px-4 py-2 text-sm font-semibold text-amber-900 shadow-sm hover:border-amber-500 hover:bg-amber-100"
+              >
+                Vis alligevel alle uden prisfilter
+              </button>
+            </div>
+          ) : (
+            <p className="text-sm text-stone-600">
+              {allTotal === 0
+                ? "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."
+                : selectedMerchants.size > 0
+                ? `Filtreret: ${total} af ${allTotal} foreslåede vine fra ${selectedMerchants.size} forhandler${
+                    selectedMerchants.size === 1 ? "" : "e"
+                  }. Tjek altid pris og levering hos butikken.`
+                : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
+            </p>
+          )}
 
           {merchantCounts.length > 1 && (
             <div className="flex flex-col gap-2 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:p-3">
