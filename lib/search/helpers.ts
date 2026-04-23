@@ -250,12 +250,19 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
     "lemonade",
   ];
 
-  const hasPos = positive.some((w) => text.includes(w));
-  const hasNeg = negative.some((w) => text.includes(w));
+  /* Bruger ordgrænser for at undgå falsk-positive matches som "vin" i "vinyl",
+     "vinter", "vinylcoated" eller "wine" i andre ord. */
+  const hasWord = (word: string) => {
+    const esc = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`(?:^|[^a-zæøå])${esc}(?:[^a-zæøå]|$)`, "i").test(text);
+  };
+
+  const hasPos = positive.some(hasWord);
+  const hasNeg = negative.some(hasWord);
 
   if (hasNeg && !hasPos) return false;
 
-  if (!hasPos && !/vin|wine/.test(text)) return false;
+  if (!hasPos && !hasWord("vin") && !hasWord("wine")) return false;
 
   return true;
 }
@@ -263,7 +270,35 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
 export function expandQuery(q: string): string[] {
   const base = normalize(q);
 
-  const stopwords = new Set(["vin", "vine", "til", "for", "med", "og", "eller", "en", "et", "den", "det", "de"]);
+  const stopwords = new Set([
+    "vin",
+    "vine",
+    "til",
+    "for",
+    "med",
+    "og",
+    "eller",
+    "en",
+    "et",
+    "den",
+    "det",
+    "de",
+    /* pris/filter-ord — læses af parsePriceFilter og må ikke bruges som søgeord,
+       ellers dukker irrelevante produkter op, der bare indeholder fx "under" eller et pris-tal. */
+    "under",
+    "over",
+    "mindst",
+    "max",
+    "maksimum",
+    "maks",
+    "fra",
+    "mellem",
+    "billig",
+    "billige",
+    "budget",
+    "kr",
+    "dkk",
+  ]);
 
   const eq: Record<string, string[]> = {
     barolo: ["nebbiolo"],
@@ -287,6 +322,8 @@ export function expandQuery(q: string): string[] {
     if (!t) return;
     const n = normalize(t);
     if (stopwords.has(n)) return;
+    /* Rent numeriske tokens er typisk pris-tal (fx "80") — ikke søgeord. */
+    if (/^\d+$/.test(n)) return;
     set.add(n);
     (eq[n] || []).forEach((x) => set.add(normalize(x)));
   });
