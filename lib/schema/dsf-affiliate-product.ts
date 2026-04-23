@@ -51,6 +51,12 @@ export function dsfOfferShippingAndReturn() {
       merchantReturnLink: DSF_MERCHANT.refundPolicyUrl,
       /** Påkrævet af Google Merchant Listings — tjek forhandlerens aktuelle returvilkår */
       returnFees: "https://schema.org/ReturnShippingFees",
+      /** Google kræver eksplicit beløb når returFees === ReturnShippingFees */
+      returnShippingFeesAmount: {
+        "@type": "MonetaryAmount",
+        value: "49",
+        currency: "DKK",
+      },
     },
   } as const;
 }
