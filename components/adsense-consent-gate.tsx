@@ -1,16 +1,16 @@
-"use client";
-
 import Script from "next/script";
-import { getAdsenseClientId, isAdsenseEnabled } from "@/lib/adsense-config";
-import { useMarketingConsent } from "@/lib/use-marketing-consent";
+import { getAdsenseClientId, isAdsenseScriptEnabled } from "@/lib/adsense-config";
 
-/** Indlæser AdSense-script kun efter &quot;Accepter&quot; i cookie-banneret. */
+/**
+ * Indlæser AdSense publisher-scriptet på alle sider.
+ *
+ * Scriptet loades UDEN cookie-samtykke, så Googlebot kan verificere publisher-tagget
+ * (krav for AdSense-godkendelse). Selve annonce-visningen (`AdSlot`) er stadig
+ * samtykke-gated via `useMarketingConsent`.
+ */
 export function AdSenseConsentGate() {
-  const allowAds = useMarketingConsent();
-  const enabled = isAdsenseEnabled();
+  if (!isAdsenseScriptEnabled()) return null;
   const client = getAdsenseClientId();
-
-  if (!enabled || !allowAds) return null;
 
   return (
     <Script
