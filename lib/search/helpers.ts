@@ -157,6 +157,13 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
     "soft drink",
     "gavekort",
     "postkort",
+    "ballon",
+    "ballonbuket",
+    "ballonbuketter",
+    "balloner",
+    "balloons",
+    "balloon",
+    "balloon bouquet",
   ];
 
   if (hardNegative.some((w) => text.includes(w))) return false;
