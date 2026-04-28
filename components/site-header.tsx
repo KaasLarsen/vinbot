@@ -15,6 +15,7 @@ const nav: NavItem[] = [
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/rabatkoder", label: "Rabatkoder" },
+  { href: "/vine", label: "Vin-katalog" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
 ];
 

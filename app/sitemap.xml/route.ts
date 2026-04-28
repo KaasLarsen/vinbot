@@ -1,3 +1,4 @@
+import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
 import { classifyGuide } from "@/lib/sitemap-categories";
@@ -14,7 +15,7 @@ function newest(dates: Date[]): Date | undefined {
 
 /**
  * Sitemap-index:
- *   /sitemap.xml → peger på fem under-sitemaps opdelt efter indholdstype.
+ *   /sitemap.xml → peger på under-sitemaps opdelt efter indholdstype.
  * Submit dette i Google Search Console — hver underfil får egne indekseringsrapporter.
  */
 export async function GET(): Promise<Response> {
@@ -39,8 +40,12 @@ export async function GET(): Promise<Response> {
     discoverStaticAppRoutes().map(({ pageFile }) => fileLastModified(pageFile)),
   );
 
+  const catalog = await getCachedWineCatalog();
+  const vineLastmod = new Date(catalog.generatedAt);
+
   const xml = renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
+    { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },
     { loc: `${base}/sitemap-regioner.xml`, lastmod: newest(byCat.regioner) },

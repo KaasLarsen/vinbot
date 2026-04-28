@@ -359,6 +359,12 @@ export function normalize(s = ""): string {
     .trim();
 }
 
+/** GTIN/EAN/UPC til vin-indeksering — kun cifre, min. 8 tegn. */
+export function normalizeBarcodeDigits(raw: string | null | undefined): string | null {
+  const d = String(raw ?? "").replace(/\D/g, "");
+  return d.length >= 8 ? d : null;
+}
+
 export function toNumber(s: string | null | undefined): number | null {
   if (!s) return null;
   let str = String(s).trim();
@@ -543,6 +549,10 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
     ]);
     const brand = pickOne(b, ["brand", "g_brand", "manufacturer", "producer", "vendor", "creator", "forhandler"]);
 
+    const gtin = normalizeBarcodeDigits(pickOne(b, ["gtin", "g_gtin", "ean", "g_ean", "upc", "barcode"]));
+    const mpnRaw = pickOne(b, ["mpn", "g_mpn", "partnumber", "part_number", "sku"]);
+    const mpn = mpnRaw ? decodeHTMLEntities(mpnRaw).trim() || null : null;
+
     const priceStr = pickOne(b, [
       "nypris",
       "saleprice",
@@ -594,6 +604,8 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       desc: decodeHTMLEntities(desc),
       category: decodeHTMLEntities(category),
       brand: decodeHTMLEntities(brand),
+      gtin,
+      mpn,
       price,
       currency,
       image: image || "",
@@ -702,6 +714,8 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
 
   const ic = pick(["currency", "currency_iso", "valuta"]);
   const ib = pick(["brand", "manufacturer", "producer", "vendor", "forhandler"]);
+  const ig = pick(["gtin", "ean", "upc", "barcode", "g_gtin", "g_ean", "ggtin", "gean"]);
+  const im = pick(["mpn", "sku", "partnumber", "part_number"]);
   const out: FeedProduct[] = [];
   for (const r of rows) {
     const title = r[it] || "";
@@ -711,6 +725,8 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
     const price = toNumber(r[ip] || "");
     const currency = r[ic] || "DKK";
     const brand = r[ib] || "";
+    const gtin = ig >= 0 ? normalizeBarcodeDigits(r[ig] || "") : null;
+    const mpn = im >= 0 && r[im]?.trim() ? r[im].trim() : null;
     if (!title || !url) continue;
     out.push({
       merchant,
@@ -718,6 +734,8 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
       desc: "",
       category: "",
       brand,
+      gtin,
+      mpn,
       price,
       currency,
       image,

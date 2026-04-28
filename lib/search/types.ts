@@ -4,6 +4,10 @@ export type FeedProduct = {
   desc: string;
   category: string;
   brand: string;
+  /** Oprindelig stregkode/GTIN/EAN/UPC (kun cifre), hvis feed leverer det — bruges til vin-samlings-sider. */
+  gtin: string | null;
+  /** Producent-/modelnr. nogle feeds — sekundær nøgle. */
+  mpn: string | null;
   price: number | null;
   currency: string;
   image: string;
