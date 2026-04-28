@@ -31,9 +31,6 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
         <label htmlFor="vine-hub-q" className="block text-sm font-medium text-stone-700">
           Søg i vin-kataloget
         </label>
-        <p className="mt-1 text-xs text-stone-500">
-          Søger kun på Vinbots sammenlægning — ikke på forsøgningen på forsiden.
-        </p>
         <input
           id="vine-hub-q"
           value={q}

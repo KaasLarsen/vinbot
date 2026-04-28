@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -13,7 +12,7 @@ const PAGE_URL = `${siteUrl}/vine`;
 export const metadata: Metadata = {
   title: "Vin-katalog — sammenlign priser på tværs af forhandlere",
   description:
-    "Find samme vin hos flere danske forhandlere: pris, links og kort om smag. Adskilt fra forsøgningen — kun Vinbots vin-indeks.",
+    "Find samme vin hos flere danske forhandlere: sammenlign pris og åbn det sted, der passer dig.",
   alternates: { canonical: PAGE_URL },
 };
 
@@ -46,7 +45,7 @@ export default async function VineHubPage() {
       />
       <CollectionPageJsonLd
         name="Vin-katalog — priser på tværs af forhandlere"
-        description="Sammenlægning af vin fra affiliate-feeds. Søg her; brug forsiden til almindelig produktsøgning."
+        description="Sammenlign pris og find link til danske vinforhandlere."
         url={PAGE_URL}
         items={summaries.slice(0, 500).map((s) => ({
           name: s.displayTitle,
@@ -56,12 +55,8 @@ export default async function VineHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vine", label: "Vin-katalog" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-katalog</h1>
       <p className="mt-4 max-w-2xl text-lg text-stone-700">
-        Her grupperer vi <strong className="font-medium text-stone-800">samme vin</strong> på tværs af forhandlere, så du kan sammenligne
-        pris og åbne det sted, der passer dig. Dette er et <strong className="font-medium text-stone-800">egen indeks</strong> —{" "}
-        <Link href="/" className="text-rose-900 underline decoration-rose-300 underline-offset-4 hover:decoration-rose-900">
-          forsøgningen på forsiden
-        </Link>{" "}
-        er uændret og viser bred match fra feeds som før.
+        Her finder du <strong className="font-medium text-stone-800">samme vin</strong> på tværs af forhandlere, så du kan sammenligne pris og
+        gå direkte til butikken.
       </p>
       <p className="mt-3 text-sm text-stone-600">
         Opdateret ud fra feeds ({catalog.generatedAt.slice(0, 10)}) · {catalog.wines.length} vine · {catalog.offerCount} tilbudslinjer.
