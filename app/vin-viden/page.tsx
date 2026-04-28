@@ -55,6 +55,10 @@ export default function VinVidenHubPage() {
       </p>
       <p className="mt-3 text-sm text-stone-600">
         Start et sted:{" "}
+        <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="text-rose-900 hover:underline">
+          vintemperatur og servering (°C)
+        </Link>
+        ,{" "}
         <Link href="/guides/hvor-laenge-holder-rodvin" className="text-rose-900 hover:underline">
           hvor længe holder rødvin
         </Link>
@@ -69,6 +73,10 @@ export default function VinVidenHubPage() {
         ,{" "}
         <Link href="/guides/sadan-dekanterer-du-vin" className="text-rose-900 hover:underline">
           sådan dekanterer du
+        </Link>
+        ,{" "}
+        <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
+          alkoholfri vin — oversigt
         </Link>{" "}
         og{" "}
         <Link href="/guides/kan-vin-blive-daarlig" className="text-rose-900 hover:underline">

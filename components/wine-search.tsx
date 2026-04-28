@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ProductHit, SearchMeta } from "@/lib/search/types";
+import {
+  productMatchesWineStyle,
+  wineStyleOfProduct,
+  type WineStyleFilter,
+} from "@/lib/search/wine-style";
 import { ProductCard } from "@/components/product-card";
 
 type Chip = { label: string; q: string; max?: number };
@@ -79,6 +84,58 @@ function seasonalPlaceholder(monthIndex: number): string {
 type ApiResponse = { source: string; products: ProductHit[]; meta: SearchMeta };
 
 const PAGE_MORE = 10;
+
+function wineStyleLabel(s: WineStyleFilter): string {
+  switch (s) {
+    case "all":
+      return "alle stilarter";
+    case "red":
+      return "rødvin";
+    case "white":
+      return "hvidvin";
+    case "rose":
+      return "rosé";
+    case "sparkling":
+      return "bobler";
+    case "champagne":
+      return "champagne";
+    default:
+      return s;
+  }
+}
+
+function StyleChip({
+  label,
+  count,
+  active,
+  onClick,
+  disabled,
+}: {
+  label: string;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-pressed={active}
+      className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+        disabled
+          ? "cursor-not-allowed border-stone-100 bg-stone-50 text-stone-400"
+          : active
+            ? "border-rose-900 bg-rose-900 text-white"
+            : "border-stone-200 bg-white text-stone-800 hover:border-rose-300"
+      }`}
+    >
+      {label}
+      {count > 0 ? ` (${count})` : ""}
+    </button>
+  );
+}
 
 export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const [q, setQ] = useState(initialQuery?.trim() || "");
@@ -164,11 +221,18 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const allProducts = data?.products ?? [];
   /** Forhandler-filter: sæt af valgte merchant-navne. Tom = vis alle. */
   const [selectedMerchants, setSelectedMerchants] = useState<Set<string>>(new Set());
+  /** Stil-filter (rød/hvid/…) — kun efter der er kommet søgeresultater. */
+  const [wineStyle, setWineStyle] = useState<WineStyleFilter>("all");
 
   useEffect(() => {
     setMoreSteps(0);
     setSelectedMerchants(new Set());
+    setWineStyle("all");
   }, [data]);
+
+  useEffect(() => {
+    setMoreSteps(0);
+  }, [wineStyle]);
 
   const merchantCounts = useMemo(() => {
     const m = new Map<string, number>();
@@ -178,10 +242,34 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     return Array.from(m.entries()).sort((a, b) => b[1] - a[1]);
   }, [allProducts]);
 
-  const products = useMemo(() => {
+  /** Efter søgning: forhandler-filter, derefter stil. */
+  const merchantFiltered = useMemo(() => {
     if (selectedMerchants.size === 0) return allProducts;
     return allProducts.filter((p) => selectedMerchants.has(p.merchant));
   }, [allProducts, selectedMerchants]);
+
+  const styleCounts = useMemo(() => {
+    const counts = { red: 0, white: 0, rose: 0, sparkling: 0, champagne: 0 };
+    for (const p of merchantFiltered) {
+      const w = wineStyleOfProduct(p);
+      if (w === "champagne") counts.champagne += 1;
+      else if (w === "sparkling") counts.sparkling += 1;
+      else if (w === "rose") counts.rose += 1;
+      else if (w === "white") counts.white += 1;
+      else if (w === "red") counts.red += 1;
+    }
+    return counts;
+  }, [merchantFiltered]);
+
+  const products = useMemo(() => {
+    if (wineStyle === "all") return merchantFiltered;
+    return merchantFiltered.filter((p) => productMatchesWineStyle(p, wineStyle));
+  }, [merchantFiltered, wineStyle]);
+
+  useEffect(() => {
+    if (wineStyle === "all") return;
+    if (styleCounts[wineStyle] === 0) setWineStyle("all");
+  }, [styleCounts, wineStyle]);
 
   const total = products.length;
   const allTotal = allProducts.length;
@@ -222,6 +310,17 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const clearMerchants = () => {
     setMoreSteps(0);
     setSelectedMerchants(new Set());
+  };
+
+  const setWineStyleAndTrack = (next: WineStyleFilter) => {
+    setWineStyle(next);
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      try {
+        window.gtag("event", "wine_style_filter", { style: next });
+      } catch {
+        // no-op
+      }
+    }
   };
 
   return (
@@ -317,12 +416,67 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
             <p className="text-sm text-stone-600">
               {allTotal === 0
                 ? "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."
-                : selectedMerchants.size > 0
-                ? `Filtreret: ${total} af ${allTotal} foreslåede vine fra ${selectedMerchants.size} forhandler${
-                    selectedMerchants.size === 1 ? "" : "e"
-                  }. Tjek altid pris og levering hos butikken.`
+                : selectedMerchants.size > 0 || wineStyle !== "all"
+                ? `Filtreret: ${total} af ${merchantFiltered.length} foreslåede vine${
+                    selectedMerchants.size > 0
+                      ? ` fra ${selectedMerchants.size} forhandler${selectedMerchants.size === 1 ? "" : "e"}`
+                      : ""
+                  }${wineStyle !== "all" ? ` · stil: ${wineStyleLabel(wineStyle)}` : ""}. Tjek altid pris og levering hos butikken.`
                 : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
             </p>
+          )}
+
+          {allTotal > 0 && merchantFiltered.length > 0 && (
+            <div
+              className="flex flex-col gap-2 rounded-2xl border border-stone-200 bg-white p-3 shadow-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-2"
+              role="group"
+              aria-label="Filtrer efter vinstil efter søgning"
+            >
+              <span className="text-sm font-medium text-stone-700 sm:mr-1">Stil:</span>
+              <div className="flex flex-wrap gap-2">
+                <StyleChip
+                  label="Alle"
+                  count={merchantFiltered.length}
+                  active={wineStyle === "all"}
+                  onClick={() => setWineStyleAndTrack("all")}
+                />
+                <StyleChip
+                  label="Rødvin"
+                  count={styleCounts.red}
+                  active={wineStyle === "red"}
+                  onClick={() => setWineStyleAndTrack("red")}
+                  disabled={styleCounts.red === 0}
+                />
+                <StyleChip
+                  label="Hvidvin"
+                  count={styleCounts.white}
+                  active={wineStyle === "white"}
+                  onClick={() => setWineStyleAndTrack("white")}
+                  disabled={styleCounts.white === 0}
+                />
+                <StyleChip
+                  label="Rosé"
+                  count={styleCounts.rose}
+                  active={wineStyle === "rose"}
+                  onClick={() => setWineStyleAndTrack("rose")}
+                  disabled={styleCounts.rose === 0}
+                />
+                <StyleChip
+                  label="Bobler"
+                  count={styleCounts.sparkling}
+                  active={wineStyle === "sparkling"}
+                  onClick={() => setWineStyleAndTrack("sparkling")}
+                  disabled={styleCounts.sparkling === 0}
+                />
+                <StyleChip
+                  label="Champagne"
+                  count={styleCounts.champagne}
+                  active={wineStyle === "champagne"}
+                  onClick={() => setWineStyleAndTrack("champagne")}
+                  disabled={styleCounts.champagne === 0}
+                />
+              </div>
+            </div>
           )}
 
           {merchantCounts.length > 1 && (
@@ -408,11 +562,25 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
             ))}
           </div>
 
-          {total === 0 && allTotal > 0 && (
+          {total === 0 && allTotal > 0 && selectedMerchants.size > 0 && (
             <p className="text-sm text-stone-500">
               Ingen vine fra de valgte forhandlere matchede —{" "}
               <button type="button" onClick={clearMerchants} className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4">
                 vis alle forhandlere
+              </button>
+              .
+            </p>
+          )}
+
+          {total === 0 && merchantFiltered.length > 0 && wineStyle !== "all" && (
+            <p className="text-sm text-stone-500">
+              Ingen vine i denne stil i de viste forslag — prøv{" "}
+              <button
+                type="button"
+                onClick={() => setWineStyleAndTrack("all")}
+                className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4"
+              >
+                Alle stilarter
               </button>
               .
             </p>

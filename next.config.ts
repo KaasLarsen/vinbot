@@ -211,14 +211,14 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/humoer-stemning-og-vin",
   },
 
-  // Øvrigt: produktanbefalinger og partiale
+  // Øvrigt: produktanbefalinger og partiale (ikke meningsfulde landingsider)
   {
     source: "/pages/anbefalinger/:slug.html",
     destination: "/den-sidste-flaske",
   },
   {
     source: "/partials/partner-ads.html",
-    destination: "/den-sidste-flaske",
+    destination: "/",
   },
 
   // Druer: dedikerede guides (før catch-all til oversigt)
@@ -281,11 +281,23 @@ const legacyRedirects: { source: string; destination: string }[] = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return legacyRedirects.map((r) => ({
-      source: r.source,
-      destination: r.destination,
-      permanent: true,
-    }));
+    /** Samler www og apex — matcher `siteUrl` (JSON-LD, canonical) og forhindrer duplikerede URL’er i GSC. */
+    const hostCanonical = [
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.vinbot.dk" }],
+        destination: "https://vinbot.dk/:path*",
+        permanent: true,
+      },
+    ];
+    return [
+      ...hostCanonical,
+      ...legacyRedirects.map((r) => ({
+        source: r.source,
+        destination: r.destination,
+        permanent: true,
+      })),
+    ];
   },
 };
 

@@ -1395,6 +1395,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Kulsyren giver krop og friskhed uden alkoholens hjælp, og bobler maskerer mange af de tekstur-mangler som plager alkoholfri still-vin. Alkoholen bærer normalt krop og sødmefornemmelse, men kuldioxiden kompenserer i sparkling. Derfor er bobler kategoriens mest succesfulde segment.",
     },
+    {
+      question: "Er alkoholfri «champagne» eller premium sparkling det værd?",
+      answer:
+        "French Bloom Le Blanc og lignende premium 0% vine giver champagne-lignende oplevelse og æstetik i glasset til 200–300 kr — dyrere end cava-stil, men tættest på fest. Til hverdag og god værdi bruger mange Leitz Eins-Zwei-Zero Sparkling Riesling eller Noughty Sparkling Chardonnay.",
+    },
   ],
   "bedste-alkoholfri-rodvin": [
     {
@@ -1428,6 +1433,28 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilken mad passer alkoholfri hvidvin til?",
       answer:
         "Riesling 0% til sushi, thai og vietnamesisk (syren balancerer krydderi). Sauvignon Blanc 0% til salater, avocado-toast og grøn omelet. Muscat til smoothie bowls og brunch. Chardonnay 0% til kyllingesalat og ostebord. Server kølig ved 8-10 °C og drik ung, indenfor 12-18 måneder fra aftapning.",
+    },
+    {
+      question: "Findes der ét officielt «bedst i test» af alkoholfri hvidvin?",
+      answer:
+        "Der er ikke én dansk nationaltest alle flasker — men erfaringsmæssigt topper Leitz Eins-Zwei-Zero Riesling, Giesen 0% Sauvignon Blanc og Torres Natureo Muscat gentagne gange på restaurant og i blindsmagninger. Brug Vinbots søgning på forsiden til at sammenligne priser på samme navn på tværs af forhandlere.",
+    },
+  ],
+  "bedste-alkoholfri-rose": [
+    {
+      question: "Hvilken alkoholfri rosé er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Rosé er reference med lys farve og frisk syre. Torres Natureo Rosé har mere moden frugt og bred appeal. Noughty Rosé er lettere og økologisk. Til mousserende rosé uden alkohol: Wild Life Botanicals eller alkoholfri sparkling-varianter fra samme segment som bobler-guiden.",
+    },
+    {
+      question: "Hvorfor er alkoholfri rosé nemmere end alkoholfri rødvin?",
+      answer:
+        "Rosé har sjældent grove tanniner og bygger på syre og frugt — ligesom hvidvin. Når alkoholen fjernes, påvirkes strukturen derfor mindre dramatisk end hos kraftig rødvin, hvor tannin og alkohol normalt balancer hinanden.",
+    },
+    {
+      question: "Hvilken temperatur skal alkoholfri rosé have?",
+      answer:
+        "Som rigtig rosé: typisk 8–12 °C — lidt køligere til terrasse og grill, lidt mindre koldt til ost og kolde pålæg. Se også den generelle oversigt over rosé og hvidvin i Vinbots vintemperatur-guide.",
     },
   ],
   "alkoholfri-vin-til-graviditet": [
