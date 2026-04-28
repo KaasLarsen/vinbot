@@ -44,6 +44,8 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   spsWine: "112662",
   /** LforLiving.dk — vinglas m.m.; feed filtreres til vin/vintilbehør (smykker m.m. indgår ikke i søgning). */
   lforLiving: "47209",
+  /** Likehome.dk — vinreoler, bar m.m.; stort blandfeed filtreres til vin/vintilbehør (ikke øvrigt boligmøbler). */
+  likeHome: "64634",
   /**
    * RareWine Members Club — kun klikbanner (intet produktfeed / intet visbanner i programmet).
    * Brug altid `htmlurl`: Partner-Ads’ standard-redirect rammer `/da/members-club/`, som pt. giver 404;

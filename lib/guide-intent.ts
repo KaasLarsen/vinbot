@@ -33,7 +33,7 @@ export function deriveGuideIntent(
 
   if (slug === "sadan-vaelger-du-vinglas") {
     return {
-      q: "vinglas rødvinsglas hvidvinsglas champagneglas krystal bourgogne flute tulip",
+      q: "vinglas champagneglas rødvinsglas krystal bourgogne flute tulip vinreol vinhylder karaffel dekanter",
       max: null,
       label: "vinglas",
     };
