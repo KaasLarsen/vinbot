@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { VivinoCommunityLink } from "@/components/vivino-community-link";
 import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
 import { getWineBySlug } from "@/lib/vine/catalog";
-import { vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
+import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -20,12 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!wine) return { title: "Vin ikke fundet" };
   const url = `${siteUrl}/vine/${wine.slug}`;
   const title = `${wine.displayTitle}${wine.brand ? ` · ${wine.brand}` : ""}`;
-  const description = vinePageIntro(wine).slice(0, 158);
+  const description = vineMetaDescription(wine, 158);
+  const ogImages =
+    wine.image != null ? [{ url: `${siteUrl}/api/img?src=${encodeURIComponent(wine.image)}`, alt: wine.displayTitle }] : undefined;
+
   return {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { url, title: `${title} | Vinbot`, description },
+    openGraph: { url, title: `${title} | Vinbot`, description, ...(ogImages ? { images: ogImages } : {}) },
   };
 }
 
@@ -55,19 +60,74 @@ export default async function VineProductPage({ params }: Props) {
       <article className="mt-8">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{wine.displayTitle}</h1>
         {wine.brand ? <p className="mt-2 text-lg text-stone-700">{wine.brand}</p> : null}
+        {wine.category.trim() ? (
+          <p className="mt-2 text-sm leading-snug text-stone-600">
+            <span className="font-medium text-stone-700">Sortiment / kategori i feed:</span>{" "}
+            {wine.category.replace(/\s*[>|]\s*/g, " · ")}
+          </p>
+        ) : null}
         {wine.gtin ? (
           <p className="mt-2 text-xs text-stone-500">
             Produkt-ID (GTIN/EAN): <span className="font-mono">{wine.gtin}</span>
           </p>
         ) : null}
 
-        <div className="prose prose-stone mt-8 max-w-none">
-          <p className="text-stone-800 leading-relaxed">{vinePageIntro(wine)}</p>
-          <h2 className="text-xl font-semibold text-stone-900">Mad og smag</h2>
-          <p className="text-stone-800 leading-relaxed">{vinePagePairing(wine)}</p>
-          <p className="text-sm text-stone-600">
-            Teksten er et generelt udgangspunkt baseret på kategori og navn — ikke en individuel anmeldelse.
-          </p>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] lg:items-start">
+          <figure className="mx-auto w-full max-w-[280px] lg:mx-0">
+            {wine.image ? (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={proxyImg(wine.image)}
+                  alt={wine.displayTitle}
+                  width={560}
+                  height={560}
+                  className="aspect-square w-full rounded-2xl border border-stone-200 bg-stone-50 object-contain p-4 shadow-sm"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                <figcaption className="sr-only">Produktbillede fra forhandlerfeed</figcaption>
+              </>
+            ) : (
+              <div className="flex aspect-square w-full flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 bg-stone-50 px-6 text-center text-sm text-stone-500">
+                Intet billede i feed endnu — prøv link til butikken eller Vivino herunder.
+              </div>
+            )}
+          </figure>
+
+          <div className="min-w-0">
+            <div className="prose prose-stone max-w-none">
+              <p className="text-stone-800 leading-relaxed">{vinePageIntro(wine)}</p>
+
+              {wine.description ? (
+                <>
+                  <h2 className="mt-8 text-xl font-semibold text-stone-900">Om produktet</h2>
+                  <div className="whitespace-pre-wrap text-stone-800 leading-relaxed">{wine.description}</div>
+                  <p className="text-sm text-stone-600">
+                    Teksten kommer fra et eller flere produkt-feeds og kan afvige let mellem butikker — tjek beskrivelse på
+                    butikkens side ved tvivl.
+                  </p>
+                </>
+              ) : null}
+
+              {wine.alternateListingTitles.length > 0 ? (
+                <div className="mt-6 rounded-xl border border-stone-200 bg-stone-50/90 px-4 py-3 text-sm text-stone-700">
+                  <p className="font-medium text-stone-800">Samme vin kan findes med en anden titel i feed:</p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-stone-400">
+                    {wine.alternateListingTitles.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              <h2 className="mt-10 text-xl font-semibold text-stone-900">Mad og smag</h2>
+              <p className="text-stone-800 leading-relaxed">{vinePagePairing(wine)}</p>
+              <p className="text-sm text-stone-600">
+                Vejledende madforslag ud fra drue, navn og feed-kategori — ikke en individuel smagsanmeldelse fra Vinbot.
+              </p>
+            </div>
+          </div>
         </div>
 
         <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
@@ -98,19 +158,8 @@ export default async function VineProductPage({ params }: Props) {
           </ul>
         </section>
 
-        <section className="mt-10 rounded-2xl border border-stone-200 bg-stone-50/80 p-6">
-          <h2 className="text-lg font-semibold text-stone-900">Vivino</h2>
-          <p className="mt-2 text-sm text-stone-700 leading-relaxed">
-            Vi viser ikke importerede Vivino-stjerner her — du kan åbne Vivinos egen søgning for flere brugerbedømmelser og flaskedeftaljer.
-          </p>
-          <a
-            href={vivinoSearchUrl(wine.displayTitle)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-900 hover:border-rose-400"
-          >
-            Søg på Vivino (åbner nyt vindue)
-          </a>
+        <section className="mt-10 bg-transparent p-0">
+          <VivinoCommunityLink href={vivinoSearchUrl(wine.displayTitle)} />
         </section>
 
         <section className="mt-10">

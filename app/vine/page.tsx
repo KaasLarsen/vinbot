@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { VineFeaturedStrip, type VineFeaturedWine } from "@/components/vine-featured";
 import { VineHubSearch, type WineSummary } from "@/components/vine-hub-search";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { getCachedWineCatalog } from "@/lib/vine/catalog";
+import { vineCatalogStyleFromBlob } from "@/lib/vine/catalog-style";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_URL = `${siteUrl}/vine`;
@@ -24,14 +27,22 @@ export default async function VineHubPage() {
   const summaries: WineSummary[] = catalog.wines.map((w) => {
     const prices = w.offers.map((o) => o.price).filter((p): p is number => typeof p === "number");
     const lowestPrice = prices.length ? Math.min(...prices) : null;
+    const blob = [w.displayTitle, w.brand, w.category].filter(Boolean).join(" ");
+    const catalogStyle = vineCatalogStyleFromBlob(blob);
     return {
       slug: w.slug,
       displayTitle: w.displayTitle,
       brand: w.brand,
       merchantCount: w.offers.length,
       lowestPrice,
+      image: w.image ?? null,
+      catalogStyle,
     };
   });
+
+  const featured: VineFeaturedWine[] = summaries
+    .filter((s): s is WineSummary & { image: string } => Boolean(s.image))
+    .slice(0, 8);
 
   const breadcrumbItems = [
     { name: "Forside", url: `${siteUrl}/` },
@@ -58,9 +69,18 @@ export default async function VineHubPage() {
         Her finder du <strong className="font-medium text-stone-800">samme vin</strong> på tværs af forhandlere, så du kan sammenligne pris og
         gå direkte til butikken.
       </p>
-      <p className="mt-3 text-sm text-stone-600">
-        Opdateret ud fra feeds ({catalog.generatedAt.slice(0, 10)}) · {catalog.wines.length} vine · {catalog.offerCount} tilbudslinjer.
+      <p className="mt-3 max-w-2xl text-sm text-stone-600">
+        Opdateret ud fra feeds ({catalog.generatedAt.slice(0, 10)}) · {catalog.wines.length} vine · {catalog.offerCount}{" "}
+        tilbudslinjer.
       </p>
+      <p className="mt-2 max-w-2xl text-sm text-stone-600">
+        Mange vine står som «1 forhandler»: vi slår dem sammen når feeds har samme stregkode (GTIN) eller næsten ens navn uden
+        årgang. Når butikker skriver titler meget forskelligt og uden GTIN, bliver hver liste en række for sig.
+      </p>
+
+      <PartnerAdsLeaderboard className="mt-10" hub="vine-katalog" placement="vine-catalog-hub" />
+
+      {featured.length > 0 ? <VineFeaturedStrip wines={featured} /> : null}
 
       <section className="mt-10">
         {summaries.length === 0 ? (

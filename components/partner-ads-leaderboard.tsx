@@ -13,6 +13,8 @@ const JOHNSEN_LEADERBOARD_BANNER_ID = "114732";
 const DH_WINES_LEADERBOARD_BANNER_ID = "108173";
 /** Lauridsen Vine leaderboard (regionsfokus — stort sortiment fra Europa). */
 const LAURIDSEN_VINE_LEADERBOARD_BANNER_ID = "116085";
+/** Den Sidste Flaske — horisontalt banner (vin-katalog m.m.). */
+export const DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID = "94856";
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
@@ -52,6 +54,11 @@ const HUB_BANNER_MAP: Record<string, { bannerId: string; merchant: string; copy:
     bannerId: JOHNSEN_LEADERBOARD_BANNER_ID,
     merchant: "Johnsen Wine",
     copy: "Johnsen Wine: prøv druen hos en kurateret forhandler (affiliate)",
+  },
+  "vine-katalog": {
+    bannerId: DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
+    merchant: "Den Sidste Flaske",
+    copy: "Den Sidste Flaske: online vinhandel — se udvalget (affiliate)",
   },
 };
 

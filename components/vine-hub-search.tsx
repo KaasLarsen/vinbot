@@ -1,7 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+import type { VineCatalogStyleFilter, VineWineStyleGuess } from "@/lib/vine/catalog-style";
+
+const INITIAL_VISIBLE = 40;
+const LOAD_MORE_STEP = 40;
+
+const STYLE_CHIPS: { id: VineCatalogStyleFilter; label: string }[] = [
+  { id: "alle", label: "Alle" },
+  { id: "bobler", label: "Bobler" },
+  { id: "rose", label: "Rosé" },
+  { id: "hvid", label: "Hvid" },
+  { id: "rod", label: "Rød" },
+];
 
 export type WineSummary = {
   slug: string;
@@ -9,24 +22,43 @@ export type WineSummary = {
   brand: string;
   merchantCount: number;
   lowestPrice: number | null;
+  /** Produktbillede-URL fra feed (kan mangle). */
+  image: string | null;
+  /** Gættet stil til filter (null = kun under «Alle»). */
+  catalogStyle: VineWineStyleGuess;
 };
 
 export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
   const [q, setQ] = useState("");
+  const [styleFilter, setStyleFilter] = useState<VineCatalogStyleFilter>("alle");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const filtered = useMemo(() => {
     const t = q.trim().toLowerCase();
-    if (!t) return wines;
-    return wines.filter(
-      (w) =>
-        w.displayTitle.toLowerCase().includes(t) ||
-        w.brand.toLowerCase().includes(t) ||
-        w.slug.includes(t.replace(/\s+/g, "-")),
-    );
-  }, [q, wines]);
+    let list = wines;
+    if (t) {
+      list = wines.filter(
+        (w) =>
+          w.displayTitle.toLowerCase().includes(t) ||
+          w.brand.toLowerCase().includes(t) ||
+          w.slug.includes(t.replace(/\s+/g, "-")),
+      );
+    }
+    if (styleFilter !== "alle") {
+      list = list.filter((w) => w.catalogStyle === styleFilter);
+    }
+    return list;
+  }, [q, wines, styleFilter]);
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE);
+  }, [q, styleFilter]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = filtered.length > visible.length;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div>
         <label htmlFor="vine-hub-q" className="block text-sm font-medium text-stone-700">
           Søg i vin-kataloget
@@ -39,12 +71,38 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
           className="mt-2 w-full max-w-xl rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
         />
       </div>
+
+      <div>
+        <p className="mb-2 text-sm font-medium text-stone-700">Stil</p>
+        <div className="flex flex-wrap gap-2">
+          {STYLE_CHIPS.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => setStyleFilter(c.id)}
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+                styleFilter === c.id
+                  ? "bg-rose-900 text-white shadow-sm"
+                  : "border border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 text-xs text-stone-500">
+          Automatisk skøn ud fra titel og kategori — brug «Alle» hvis du vil se usikre tilfælde.
+        </p>
+      </div>
+
       <p className="text-sm text-stone-600">
-        Viser {filtered.length} af {wines.length} vine
-        {q.trim() ? " (filtreret)" : ""}.
+        Viser {visible.length}
+        {hasMore ? ` af ${filtered.length}` : ""} vin{filtered.length === 1 ? "" : "e"}
+        {filtered.length < wines.length ? ` (filtreret fra ${wines.length})` : ""}
+        {q.trim() || styleFilter !== "alle" ? " · søg eller vælg filter for at indsnævre" : ""}.
       </p>
       <ul className="divide-y divide-stone-200 rounded-2xl border border-stone-200 bg-white">
-        {filtered.map((w) => (
+        {visible.map((w) => (
           <li key={w.slug}>
             <Link
               href={`/vine/${w.slug}`}
@@ -62,7 +120,18 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
           </li>
         ))}
       </ul>
-      {filtered.length === 0 && <p className="text-sm text-stone-600">Ingen match — prøv færre ord.</p>}
+      {hasMore ? (
+        <div>
+          <button
+            type="button"
+            onClick={() => setVisibleCount((n) => n + LOAD_MORE_STEP)}
+            className="rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 shadow-sm transition hover:border-rose-300 hover:bg-rose-50/50"
+          >
+            Vis flere ({filtered.length - visible.length} tilbage)
+          </button>
+        </div>
+      ) : null}
+      {filtered.length === 0 && <p className="text-sm text-stone-600">Ingen match — prøv færre ord eller «Alle» under stil.</p>}
     </div>
   );
 }

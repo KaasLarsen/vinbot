@@ -3,8 +3,31 @@ import { normalize } from "./helpers";
 
 export type WineStyleFilter = "all" | "red" | "white" | "rose" | "sparkling" | "champagne";
 
-function productBlob(p: ProductHit): string {
-  return normalize([p._search, p.title, p.desc, p.category, p.brand].filter(Boolean).join(" "));
+/** Fritekst fra titel/kategori/brand — samme klassifikation som forsøgning. */
+export function wineStyleOfBlob(blob: string): "red" | "white" | "rose" | "sparkling" | "champagne" | null {
+  const t = normalize(blob);
+  if (!t || t.length < 3) return null;
+
+  if (isChampagneWine(t)) return "champagne";
+
+  if (isSparklingWine(t, false)) return "sparkling";
+
+  if (isRoseWine(t)) return "rose";
+
+  if (isPortOrHeavyDessert(t)) return "red";
+
+  if (isWhiteWine(t) && !isRedWine(t)) return "white";
+  if (isRedWine(t) && !isWhiteWine(t)) return "red";
+
+  if (isWhiteWine(t) && isRedWine(t)) {
+    if (t.includes("hvid") || t.includes("white") || t.includes("riesling") || t.includes("chardonnay")) return "white";
+    if (t.includes("rød") || t.includes("red") || t.includes("cabernet") || t.includes("pinot noir")) return "red";
+    return "red";
+  }
+
+  if (t.includes("dessertvin") || t.includes("sauternes") || t.includes("tokaj")) return "white";
+
+  return null;
 }
 
 /** True hvis tydelig champagne-**vin** (ikke glas). */
@@ -139,29 +162,7 @@ function isRedWine(t: string): boolean {
  * Returnerer null hvis vi ikke tør skønne — så vises varen **kun** under "Alle" ved stilfilter.
  */
 export function wineStyleOfProduct(p: ProductHit): "red" | "white" | "rose" | "sparkling" | "champagne" | null {
-  const t = productBlob(p);
-  if (!t || t.length < 3) return null;
-
-  if (isChampagneWine(t)) return "champagne";
-
-  if (isSparklingWine(t, false)) return "sparkling";
-
-  if (isRoseWine(t)) return "rose";
-
-  if (isPortOrHeavyDessert(t)) return "red";
-
-  if (isWhiteWine(t) && !isRedWine(t)) return "white";
-  if (isRedWine(t) && !isWhiteWine(t)) return "red";
-
-  if (isWhiteWine(t) && isRedWine(t)) {
-    if (t.includes("hvid") || t.includes("white") || t.includes("riesling") || t.includes("chardonnay")) return "white";
-    if (t.includes("rød") || t.includes("red") || t.includes("cabernet") || t.includes("pinot noir")) return "red";
-    return "red";
-  }
-
-  if (t.includes("dessertvin") || t.includes("sauternes") || t.includes("tokaj")) return "white";
-
-  return null;
+  return wineStyleOfBlob([p._search, p.title, p.desc, p.category, p.brand].filter(Boolean).join(" "));
 }
 
 function isPortOrHeavyDessert(t: string): boolean {

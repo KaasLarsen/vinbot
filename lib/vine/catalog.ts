@@ -5,6 +5,7 @@ import type { FeedProduct } from "@/lib/search/types";
 import { getCachedFeedProducts } from "@/lib/search/fetch-feed";
 import { isWineLike, normalize, productEligibleForWineSearch } from "@/lib/search/helpers";
 
+import { pickBestDescription } from "./product-text";
 import { shortHash, wineSlugFromId } from "./slug";
 import type { CanonicalWine, VineOffer, WineCatalog } from "./types";
 
@@ -13,10 +14,21 @@ function stripVintage(title: string): string {
   return title.replace(/\b(19|20)\d{2}\b/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Titlen normaliseres ud over årgang så samme vin fra forskellige feeds rammer samme hash oftere. */
+function normalizeTitleForSignature(raw: string): string {
+  let t = normalize(stripVintage(raw));
+  t = t.replace(/\b(75|37[,.]?\s*5?)\s*(cl|ml)\b/gi, " ");
+  t = t.replace(/\b0[,.]75\s*l\b/gi, " ");
+  t = t.replace(/\b750\s*ml\b/gi, " ");
+  t = t.replace(/[^\w\sæøå]/gi, " ");
+  t = t.replace(/\s+/g, " ").trim();
+  return t.slice(0, 200);
+}
+
 export function canonicalKeyForProduct(p: FeedProduct): string {
   if (p.gtin) return `gtin:${p.gtin}`;
   const brand = normalize(p.brand || "").slice(0, 120);
-  const tit = normalize(stripVintage(p.title)).slice(0, 200);
+  const tit = normalizeTitleForSignature(p.title);
   const h = shortHash(`${brand}|${tit}`, 24);
   return `sig:${h}`;
 }
@@ -52,6 +64,7 @@ function mergeOffers(offers: VineOffer[]): VineOffer[] {
 async function buildWineCatalog(): Promise<WineCatalog> {
   type Acc = {
     titles: string[];
+    descriptions: string[];
     brand: string;
     category: string;
     image: string | null;
@@ -77,6 +90,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
       if (!acc) {
         acc = {
           titles: [],
+          descriptions: [],
           brand: (p.brand || "").trim(),
           category: (p.category || "").trim(),
           image: p.image?.trim() || null,
@@ -109,6 +123,11 @@ async function buildWineCatalog(): Promise<WineCatalog> {
     const brand = acc.brand || "";
     const slug = wineSlugFromId(key, displayTitle, brand);
     const offers = mergeOffers(acc.offers);
+    const description = pickBestDescription(acc.descriptions);
+    const alternateListingTitles = [...new Set(acc.titles.map((t) => t.trim()).filter(Boolean))]
+      .filter((t) => t !== displayTitle)
+      .sort((a, b) => a.length - b.length || a.localeCompare(b, "da"))
+      .slice(0, 8);
 
     wines.push({
       id: key,
@@ -116,6 +135,8 @@ async function buildWineCatalog(): Promise<WineCatalog> {
       displayTitle,
       brand,
       category: acc.category,
+      description,
+      alternateListingTitles,
       image: acc.image,
       gtin: acc.gtin,
       offers,
@@ -123,7 +144,11 @@ async function buildWineCatalog(): Promise<WineCatalog> {
     });
   }
 
-  wines.sort((a, b) => a.displayTitle.localeCompare(b.displayTitle, "da", { sensitivity: "base" }));
+  wines.sort((a, b) => {
+    const d = b.offers.length - a.offers.length;
+    if (d !== 0) return d;
+    return a.displayTitle.localeCompare(b.displayTitle, "da", { sensitivity: "base" });
+  });
 
   return {
     wines,
@@ -132,7 +157,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v1"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v5"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });

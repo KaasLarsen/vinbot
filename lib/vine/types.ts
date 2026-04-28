@@ -4,7 +4,8 @@
  * ID-strategi (MVP): primært GTIN/EAN når feeds leverer det; ellers stabil signatur-hash
  * af (brand + titel uden årgang). Kan udvides med manuel merge senere.
  *
- * Ratings: ingen kopierede Vivino-tal på sitet — kun valgfrit link til Vivinos søgning
+ * Ratings: Vivino-score hentes ikke til Vinbots HTML — Vivino tilbyder ikke et stabilt offentligt syndikerings-API.
+ * Vi linker til Vivinos egen side/søgning; dér ses den aktuelle bruger-score.
  * (ingen licenskrav til deres logo/tal). Redaktionelle stjerner kan tilføjes i CMS senere.
  */
 
@@ -26,6 +27,10 @@ export type CanonicalWine = {
   displayTitle: string;
   brand: string;
   category: string;
+  /** Længste rensede beskrivelse fra et produktfeed (hvis nogen leverer desc). */
+  description: string | null;
+  /** Andre listetitler end displayTitle — giver kontekst når butikker formulerer forskelligt. */
+  alternateListingTitles: string[];
   image: string | null;
   gtin: string | null;
   offers: VineOffer[];
