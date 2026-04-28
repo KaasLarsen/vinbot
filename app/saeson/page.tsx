@@ -118,6 +118,10 @@ export default function SaesonHubPage() {
         <h2 className="text-xl font-semibold text-stone-900">Lige nu: forår og tidlig sommer</h2>
         <p className="mt-3 text-stone-700">
           Sæson-højdepunkter: {" "}
+          <Link href="/guides/vin-til-pinse-og-kristi-himmelfart" className="text-rose-900 hover:underline">
+            pinse og Kristi Himmelfart
+          </Link>
+          ,{" "}
           <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
             vin til konfirmation
           </Link>
@@ -181,6 +185,10 @@ export default function SaesonHubPage() {
         ,{" "}
         <Link href="/guides/vin-til-paaske-og-paaskefrokost" className="text-rose-900 hover:underline">
           påske og påskefrokost
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-til-pinse-og-kristi-himmelfart" className="text-rose-900 hover:underline">
+          pinse og Kristi Himmelfart
         </Link>
         ,{" "}
         <Link href="/guides/vin-til-fastelavn" className="text-rose-900 hover:underline">

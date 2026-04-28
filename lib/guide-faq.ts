@@ -243,6 +243,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Mange af principperne overlapper juleand og mortensand — se også vin til and og julemad. Vælg efter hvor sød saucen er og hvor kraftig fuglen er tilberedt.",
     },
   ],
+  "vin-til-pinse-og-kristi-himmelfart": [
+    {
+      question: "Hvilken vin til Kristi Himmelfart og pinse?",
+      answer:
+        "Tør bobler (cava, crémant, prosecco) til velkomst, tør rosé og syrefast hvid (sauvignon, albariño, riesling tør) til frokost og koldt bord, og kølig let rød (gamay, pinot) til grill om aftenen. Vælg lavere alkohol hvis dagen er lang.",
+    },
+    {
+      question: "Passer rosé til pinsefrokost?",
+      answer:
+        "Ja — tør rosé med høj syre er alsidig til blandet frokost med salat, fisk og pålæg. Vælg dybere rosé eller let rød hvis menuen er kraftig grill eller sød sauce.",
+    },
+    {
+      question: "Hvad med Grundlovsdag samme uge?",
+      answer:
+        "Ofte have, grill og afslappet selskab — samme vine som sommer og piknik: rosé, frisk hvid og let rød. Se Vinbots guide til piknik og grill hvis menuen er uformel.",
+    },
+  ],
   "vin-til-sankt-hans": [
     {
       question: "Hvilken vin til grill på Sankt Hans?",

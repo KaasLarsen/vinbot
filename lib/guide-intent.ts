@@ -68,6 +68,15 @@ export function deriveGuideIntent(
     };
   }
 
+  /** Pinse/kristi himmelfart: slug alene matcher ikke vin-feed; brug sommer-/bobler-hints. */
+  if (slug === "vin-til-pinse-og-kristi-himmelfart") {
+    return {
+      q: "cava crémant rosé sauvignon blanc albariño sommer bobler",
+      max: null,
+      label: "vin til pinse og Kristi Himmelfart",
+    };
+  }
+
   if (slug.startsWith("vin-til-")) {
     const food = slug.replace(/^vin-til-/, "").replace(/-/g, " ");
     return {
