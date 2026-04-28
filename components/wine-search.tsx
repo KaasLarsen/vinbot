@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ProductHit, SearchMeta } from "@/lib/search/types";
 import {
@@ -85,6 +86,12 @@ type ApiResponse = { source: string; products: ProductHit[]; meta: SearchMeta };
 
 const PAGE_MORE = 10;
 
+/** Når feed ikke rammer brugerens ord (fx “morsdag”), vis stadig relevant guide. */
+const GUIDE_FALLBACKS: { pattern: RegExp; href: string; title: string }[] = [
+  { pattern: /mors\s*dag|morsdag|mors-dag/i, href: "/guides/vin-til-mors-dag", title: "Vin til Mors dag" },
+  { pattern: /fars\s*dag|farsdag|fars-dag/i, href: "/guides/vin-til-fars-dag", title: "Vin til Fars dag" },
+];
+
 function wineStyleLabel(s: WineStyleFilter): string {
   switch (s) {
     case "all":
@@ -152,6 +159,11 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const [moreSteps, setMoreSteps] = useState(0);
   /** Den aktuelle søgetekst og budget brugt i seneste søgning (ikke inputfelternes state). */
   const [lastQuery, setLastQuery] = useState<string>("");
+  const guideFallback = useMemo(() => {
+    const t = lastQuery.trim();
+    if (!t) return null;
+    return GUIDE_FALLBACKS.find((g) => g.pattern.test(t)) ?? null;
+  }, [lastQuery]);
   const [lastBudget, setLastBudget] = useState<number | null>(null);
   /** Billigste vin for `lastQuery` uden budget — bruges som fallback når pris­filteret udelukker alt. */
   const [fallbackCheapest, setFallbackCheapest] = useState<ProductHit | null>(null);
@@ -412,11 +424,44 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
                 Vis alligevel alle uden prisfilter
               </button>
             </div>
+          ) : allTotal === 0 ? (
+            <div className="space-y-2 text-sm text-stone-600">
+              <p>
+                Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”.
+              </p>
+              {guideFallback ? (
+                <p>
+                  Relateret:{" "}
+                  <Link
+                    href={guideFallback.href}
+                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:decoration-rose-900"
+                  >
+                    {guideFallback.title}
+                  </Link>
+                  . Eller se{" "}
+                  <Link
+                    href="/guides"
+                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:decoration-rose-900"
+                  >
+                    alle guider
+                  </Link>
+                  .
+                </p>
+              ) : (
+                <p>
+                  <Link
+                    href="/guides"
+                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:decoration-rose-900"
+                  >
+                    Guider om vin og mad
+                  </Link>{" "}
+                  kan hjælpe med lejlighed og menu — uden at matche direkte mod flaskerne her.
+                </p>
+              )}
+            </div>
           ) : (
             <p className="text-sm text-stone-600">
-              {allTotal === 0
-                ? "Ingen vine matchede lige nu — prøv fx “rødvin”, “champagne” eller en drue du kender."
-                : selectedMerchants.size > 0 || wineStyle !== "all"
+              {selectedMerchants.size > 0 || wineStyle !== "all"
                 ? `Filtreret: ${total} af ${merchantFiltered.length} foreslåede vine${
                     selectedMerchants.size > 0
                       ? ` fra ${selectedMerchants.size} forhandler${selectedMerchants.size === 1 ? "" : "e"}`

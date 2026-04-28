@@ -87,6 +87,14 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("champagne", "cava", "prosecco", "crémant", "cremant", "mousserende");
   }
 
+  /* Danske mærkdage — forekommer sjældent i produkttekst; udvider så feed-matchen giver mening. */
+  if (/(morsdag|mors\s*dag|mors-dag)/.test(txt)) {
+    add("champagne", "cava", "rosé", "rose", "prosecco", "crémant", "cremant", "pinot noir", "chardonnay", "riesling");
+  }
+  if (/(farsdag|fars\s*dag|fars-dag)/.test(txt)) {
+    add("shiraz", "malbec", "rioja", "cabernet sauvignon", "syrah", "zinfandel", "bobler", "champagne");
+  }
+
   if (/(afslappet|casual|fredag|hverdag|let)/.test(txt)) {
     add("beaujolais", "pinot grigio", "vinho verde", "riesling", "merlot");
   }
