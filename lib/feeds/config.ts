@@ -3,9 +3,18 @@ export type FeedConfig = {
   url: string;
   /**
    * true (standard): kun produkter der matcher `isWineLike` (typisk flasker).
-   * false: hele feedet — til udstyr/kategorier derellers filtreres fra (fx vinkøleskabe); produktlinks skal stadig være tracked i feedet (fx Adtraction).
+   * false: hele feedet — til udstyr/kategorier der ellers filtreres fra (fx vinkøleskabe); produktlinks skal stadig være tracked i feedet (fx Adtraction).
    */
   wineFilter?: boolean;
+  /**
+   * Når `wineFilter: false` og listen er sat: kun produkter hvor titel+beskrivelse+kategori+brand (normaliseret)
+   * indeholder mindst ét af ordene — typisk vin + tilbehør (glas, karaffel, proptrækker m.m.).
+   */
+  vinAdjacentIncludeAny?: string[];
+  /**
+   * Valgfrit: kassér rækker der matcher mindst ét af disse ord (efter include), fx smykker eller ikke-vins glas.
+   */
+  vinAdjacentExcludeAny?: string[];
 };
 
 export const FEEDS: FeedConfig[] = [
@@ -25,6 +34,43 @@ export const FEEDS: FeedConfig[] = [
     merchant: "LforLiving.dk",
     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=47209&feedid=664",
     wineFilter: false,
+    vinAdjacentIncludeAny: [
+      "vinglas",
+      "champagneglas",
+      "rødvinsglas",
+      "hvidvinsglas",
+      "roséglas",
+      "karaffel",
+      "dekanter",
+      "decanter",
+      "proptrækker",
+      "korkskrue",
+      "oplukker til vin",
+      "vinæske",
+      "vinæser",
+      "vinskænk",
+      "vinkøler",
+      "vinholder",
+      "aerator",
+      "champagnekøler",
+      "vin tilbehør",
+      "matrivo glas",
+    ],
+    vinAdjacentExcludeAny: [
+      "ørering",
+      "smykker",
+      "armbånd",
+      "halskæde",
+      "cocktailglas",
+      "highball",
+      "whiskyglas",
+      "whiskeyglas",
+      "ølglas",
+      "snapseglas",
+      "martiniglas",
+      "krus",
+      "kop til",
+    ],
   },
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },

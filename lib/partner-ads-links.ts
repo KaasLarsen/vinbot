@@ -42,7 +42,7 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */
   spsWine: "112662",
-  /** LforLiving.dk — vinglas m.m. (banner 47209; feed indeholder også andre varetyper). */
+  /** LforLiving.dk — vinglas m.m.; feed filtreres til vin/vintilbehør (smykker m.m. indgår ikke i søgning). */
   lforLiving: "47209",
   /**
    * RareWine Members Club — kun klikbanner (intet produktfeed / intet visbanner i programmet).
