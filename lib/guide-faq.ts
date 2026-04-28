@@ -1141,6 +1141,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Klassisk karaffel med bred bund maksimerer luftkontakten over tid — bedst til unge tanniner. Aeratorer (flaske-toppe) virker hurtigt men mindre kontrollerbart. Ingen af dem er nødvendige for lette eller modne vine.",
     },
   ],
+  "sadan-vaelger-du-vinglas": [
+    {
+      question: "Skal man have forskellige glas til rød og hvid?",
+      answer:
+        "Det giver mening hvis du drikker meget af begge dele: hvid profitterer fra smal næse og mindre volumen der holder temperaturen; kraftig rød profitterer fra en bred skål der åbner aroma. Til hverdag rækker et ordentligt universalglas til det meste.",
+    },
+    {
+      question: "Er champagneglas (flute) et must til bobler?",
+      answer:
+        "Flute bevarer brus og ser festlig ud; tulip eller hvidvinsglas giver mere aroma — mange foretrækker tulip til kvalitets-champagne og crémant. Coupé er udelukket æstetik; bobler tabes hurtigere.",
+    },
+    {
+      question: "Er dyre krystalklas altid bedre?",
+      answer:
+        "Kvalitetsglas er typisk tyndere i læben, lettere og mere ensartet — det påvirker mundfølelse og oplevet præcision. Meget dyre brands giver ofte marginal extra; start med tynde, neutrale glas og udvid først når du ved hvilken stil du drikker mest.",
+    },
+  ],
   "vin-til-konfirmation": [
     {
       question: "Hvilken vin skal man servere til konfirmation?",

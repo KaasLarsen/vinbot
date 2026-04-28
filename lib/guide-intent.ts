@@ -31,6 +31,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "sadan-vaelger-du-vinglas") {
+    return {
+      q: "vinglas rødvinsglas hvidvinsglas champagneglas krystal bourgogne flute tulip",
+      max: null,
+      label: "vinglas",
+    };
+  }
+
   const m = slug.match(/^bedste-(.+?)-under-(\d+)-kr$/);
   if (m) {
     const cat = m[1];

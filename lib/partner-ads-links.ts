@@ -42,6 +42,8 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */
   spsWine: "112662",
+  /** LforLiving.dk — vinglas m.m. (banner 47209; feed indeholder også andre varetyper). */
+  lforLiving: "47209",
   /**
    * RareWine Members Club — kun klikbanner (intet produktfeed / intet visbanner i programmet).
    * Brug altid `htmlurl`: Partner-Ads’ standard-redirect rammer `/da/members-club/`, som pt. giver 404;

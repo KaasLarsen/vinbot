@@ -21,6 +21,11 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Westjysk Smag", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=91648&feedid=2398" },
   { merchant: "Winesommelier", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=114219&feedid=4021" },
   { merchant: "Lauridsen Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=116085&feedid=4230" },
+  {
+    merchant: "LforLiving.dk",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=47209&feedid=664",
+    wineFilter: false,
+  },
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
   { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },

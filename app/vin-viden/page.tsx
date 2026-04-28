@@ -67,6 +67,10 @@ export default function VinVidenHubPage() {
           glas i en flaske
         </Link>
         ,{" "}
+        <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">
+          sådan vælger du vinglas
+        </Link>
+        ,{" "}
         <Link href="/guides/hvad-er-tanniner" className="text-rose-900 hover:underline">
           hvad er tanniner
         </Link>
