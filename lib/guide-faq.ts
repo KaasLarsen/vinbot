@@ -1457,6 +1457,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Som rigtig rosé: typisk 8–12 °C — lidt køligere til terrasse og grill, lidt mindre koldt til ost og kolde pålæg. Se også den generelle oversigt over rosé og hvidvin i Vinbots vintemperatur-guide.",
     },
   ],
+  "hvad-er-ingrediensliste-paa-vin-eu": [
+    {
+      question: "Skal ingrediensliste og næringsdeklaration stå på selve vinflasken?",
+      answer:
+        "Energiværdi (kJ/kcal pr. 100 ml) og allergener skal kunne ses direkte på etiketten i samme synsfelt som øvrige obligatoriske oplysninger. Den fulde ingrediensliste og den fulde næringstabel kan i mange tilfælde vises digitalt via QR-kode eller tilsvarende link, forudsat det er tydeligt markeret og let at finde.",
+    },
+    {
+      question: "Hvornår gælder de nye EU-regler for vin?",
+      answer:
+        "Hoveddatoen er 8. december 2023. Vine der allerede var produceret og sat på markedet under de gamle regler, må sælges med ældre etiketter indtil lagrene er brugt op — derfor vil butikshylder i en periode blande flasker med og uden QR/fuld moderne mærkning.",
+    },
+    {
+      question: "Hvorfor står der stadig «indeholder sulfit» på flasken?",
+      answer:
+        "Sulfit er fortsat et allergen, der skal kunne ses tydeligt. De nye regler ændrer ikke, at allergener er vigtige for forbrugeren — de suppleres med ingrediensliste og næringsdata ifølge forordning (EU) 2021/2117.",
+    },
+  ],
   "alkoholfri-vin-til-graviditet": [
     {
       question: "Er alkoholfri vin sikkert under graviditet?",
