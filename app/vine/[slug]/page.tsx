@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
+import { VineRelatedWines } from "@/components/vine-related";
 import { BreadcrumbJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
-import { getWineBySlug } from "@/lib/vine/catalog";
+import { getCachedWineCatalog, getWineBySlug } from "@/lib/vine/catalog";
+import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 
@@ -36,8 +38,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VineProductPage({ params }: Props) {
   const { slug } = await params;
-  const wine = await getWineBySlug(slug);
+  const catalog = await getCachedWineCatalog();
+  const wine = catalog.wines.find((w) => w.slug === slug) ?? null;
   if (!wine) notFound();
+  const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
 
   const url = `${siteUrl}/vine/${wine.slug}`;
   const breadcrumbItems = [
@@ -160,6 +164,8 @@ export default async function VineProductPage({ params }: Props) {
             ))}
           </ul>
         </section>
+
+        <VineRelatedWines wines={relatedWines} />
 
         <section className="mt-10 bg-transparent p-0">
           <VivinoCommunityLink href={vivinoSearchUrl(wine.displayTitle)} />
