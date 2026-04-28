@@ -922,6 +922,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Brut har under 12 g/l restsukker (tørrest). Extra Dry har faktisk 12–17 g/l (let sødere, mest solgt). Dry har 17–32 g/l. Navnene er forvirrende — Brut er den tørreste stil. Kig efter Brut hvis du vil have ren, tør boble.",
     },
   ],
+  "bedste-cava-under-150-kr": [
+    {
+      question: "Hvad er den bedste cava under 150 kr?",
+      answer:
+        "Kig efter Reserva eller Gran Reserva fra solide huse som Juvé y Camps, Codorníu prestige-linjer, Segura Viudas Reserva eller Raventós i Blanc i tilbudssegmentet. Traditionel metode og lang lagring på bærmen giver mere brioche og finesse end billigste brut.",
+    },
+    {
+      question: "Er cava bedre end prosecco under 150 kr?",
+      answer:
+        "Ofte ja til mad og ost: cava er typisk flaskegæret som champagne og får mere tekstur og toast. Prosecco DOC fra tank kan være mere frisk og frugtig — bedst til let aperitif. Smag og præference varierer.",
+    },
+    {
+      question: "Hvilken temperatur skal cava serveres ved?",
+      answer:
+        "Typisk 6–9 °C afhængigt af stil — lidt varmere til aromatiske Gran Reserva så du ikke kvæler duften. Se Vinbots samlede oversigt over bobler og champagne.",
+    },
+  ],
   "bedste-champagne-under-300-kr": [
     {
       question: "Hvor lidt kan ægte champagne koste?",
