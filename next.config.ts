@@ -281,23 +281,17 @@ const legacyRedirects: { source: string; destination: string }[] = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    /** Samler www og apex — matcher `siteUrl` (JSON-LD, canonical) og forhindrer duplikerede URL’er i GSC. */
-    const hostCanonical = [
-      {
-        source: "/:path*",
-        has: [{ type: "host" as const, value: "www.vinbot.dk" }],
-        destination: "https://vinbot.dk/:path*",
-        permanent: true,
-      },
-    ];
-    return [
-      ...hostCanonical,
-      ...legacyRedirects.map((r) => ({
-        source: r.source,
-        destination: r.destination,
-        permanent: true,
-      })),
-    ];
+    /**
+     * Undlad www→apex redirect her: på Vercel er apex→www ofte aktiveret som standard,
+     * og begge kombineret giver redirect-loop (browser/curl ERR_TOO_MANY_REDIRECTS).
+     * Canonical og JSON-LD bruger stadig `siteUrl` (https://vinbot.dk); foretræk at samle
+     * host ét sted under Vercel → Domains (fx kun apex eller kun www).
+     */
+    return legacyRedirects.map((r) => ({
+      source: r.source,
+      destination: r.destination,
+      permanent: true,
+    }));
   },
 };
 
