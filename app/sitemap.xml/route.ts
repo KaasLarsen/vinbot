@@ -1,9 +1,14 @@
+import { unstable_cache } from "next/cache";
+
 import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
 import { classifyGuide } from "@/lib/sitemap-categories";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderIndex, sitemapResponseInit } from "@/lib/sitemap-xml";
+
+/** Undgår timeout ved kolde starts (tungere end undersitemaps: guides + disk-scan + vin-katalog). */
+export const maxDuration = 60;
 
 /** Opdater ved hvert crawl (korrekt efter deploy + nye guides). */
 export const dynamic = "force-dynamic";
@@ -13,12 +18,7 @@ function newest(dates: Date[]): Date | undefined {
   return dates.reduce((a, b) => (a.getTime() >= b.getTime() ? a : b));
 }
 
-/**
- * Sitemap-index:
- *   /sitemap.xml → peger på under-sitemaps opdelt efter indholdstype.
- * Submit dette i Google Search Console — hver underfil får egne indekseringsrapporter.
- */
-export async function GET(): Promise<Response> {
+async function buildSitemapIndexXml(): Promise<string> {
   const base = siteUrl.replace(/\/$/, "");
 
   const guides = listGuides();
@@ -43,7 +43,7 @@ export async function GET(): Promise<Response> {
   const catalog = await getCachedWineCatalog();
   const vineLastmod = new Date(catalog.generatedAt);
 
-  const xml = renderIndex([
+  return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
@@ -53,6 +53,23 @@ export async function GET(): Promise<Response> {
     { loc: `${base}/sitemap-viden.xml`, lastmod: newest(byCat.viden) },
     { loc: `${base}/sitemap-andre.xml`, lastmod: newest(byCat.andre) },
   ]);
+}
 
+/**
+ * Cache kort — indekset er et let XML-dokument, men **generering** kan være langsom (I/O).
+ * Undersitemaps som `sitemap-vine.xml` kalder kun ét dataset og rammer sjældnere timeout i GSC.
+ */
+const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v1"], {
+  revalidate: 300,
+  tags: ["sitemap-index", "vinbot-feeds"],
+});
+
+/**
+ * Sitemap-index:
+ *   /sitemap.xml → peger på under-sitemaps opdelt efter indholdstype.
+ * Submit dette i Google Search Console — hver underfil får egne indekseringsrapporter.
+ */
+export async function GET(): Promise<Response> {
+  const xml = await getCachedSitemapIndexXml();
   return new Response(xml, sitemapResponseInit);
 }

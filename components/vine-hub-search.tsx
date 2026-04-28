@@ -73,7 +73,7 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
       </div>
 
       <div>
-        <p className="mb-2 text-sm font-medium text-stone-700">Stil</p>
+        <p className="mb-2 text-sm font-medium text-stone-700">Type</p>
         <div className="flex flex-wrap gap-2">
           {STYLE_CHIPS.map((c) => (
             <button
@@ -90,17 +90,21 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
             </button>
           ))}
         </div>
-        <p className="mt-2 text-xs text-stone-500">
-          Automatisk skøn ud fra titel og kategori — brug «Alle» hvis du vil se usikre tilfælde.
-        </p>
       </div>
 
-      <p className="text-sm text-stone-600">
-        Viser {visible.length}
-        {hasMore ? ` af ${filtered.length}` : ""} vin{filtered.length === 1 ? "" : "e"}
-        {filtered.length < wines.length ? ` (filtreret fra ${wines.length})` : ""}
-        {q.trim() || styleFilter !== "alle" ? " · søg eller vælg filter for at indsnævre" : ""}.
-      </p>
+      {filtered.length > 0 ? (
+        <p className="text-sm text-stone-600">
+          {hasMore ? (
+            <>
+              Viser {visible.length.toLocaleString("da-DK")} af {filtered.length.toLocaleString("da-DK")} vine
+            </>
+          ) : q.trim() || styleFilter !== "alle" ? (
+            <>{filtered.length.toLocaleString("da-DK")} vine matcher dit valg</>
+          ) : (
+            <>{filtered.length.toLocaleString("da-DK")} vine</>
+          )}
+        </p>
+      ) : null}
       <ul className="divide-y divide-stone-200 rounded-2xl border border-stone-200 bg-white">
         {visible.map((w) => (
           <li key={w.slug}>
@@ -131,7 +135,9 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
           </button>
         </div>
       ) : null}
-      {filtered.length === 0 && <p className="text-sm text-stone-600">Ingen match — prøv færre ord eller «Alle» under stil.</p>}
+      {filtered.length === 0 && (
+        <p className="text-sm text-stone-600">Ingen match — prøv et andet søgeord eller vælg «Alle» ved typen.</p>
+      )}
     </div>
   );
 }

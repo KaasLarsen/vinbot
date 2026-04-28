@@ -5,7 +5,7 @@ import type { FeedProduct } from "@/lib/search/types";
 import { getCachedFeedProducts } from "@/lib/search/fetch-feed";
 import { isWineLike, normalize, productEligibleForWineSearch } from "@/lib/search/helpers";
 
-import { pickBestDescription } from "./product-text";
+import { combineRichDescriptions } from "./product-text";
 import { shortHash, wineSlugFromId } from "./slug";
 import type { CanonicalWine, VineOffer, WineCatalog } from "./types";
 
@@ -100,6 +100,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
         clusters.set(key, acc);
       }
       acc.titles.push(p.title);
+      if (p.desc?.trim()) acc.descriptions.push(p.desc);
       if (!acc.brand && p.brand) acc.brand = p.brand.trim();
       if (!acc.category && p.category) acc.category = p.category.trim();
       if (!acc.gtin && p.gtin) acc.gtin = p.gtin;
@@ -123,7 +124,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
     const brand = acc.brand || "";
     const slug = wineSlugFromId(key, displayTitle, brand);
     const offers = mergeOffers(acc.offers);
-    const description = pickBestDescription(acc.descriptions);
+    const description = combineRichDescriptions(acc.descriptions);
     const alternateListingTitles = [...new Set(acc.titles.map((t) => t.trim()).filter(Boolean))]
       .filter((t) => t !== displayTitle)
       .sort((a, b) => a.length - b.length || a.localeCompare(b, "da"))
@@ -157,7 +158,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v5"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v6"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });

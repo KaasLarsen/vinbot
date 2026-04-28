@@ -50,7 +50,7 @@ export default async function VineHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <BreadcrumbJsonLd
         items={breadcrumbItems.map((b) => ({ name: b.name, url: b.url }))}
       />
@@ -65,17 +65,12 @@ export default async function VineHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vine", label: "Vin-katalog" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-katalog</h1>
-      <p className="mt-4 max-w-2xl text-lg text-stone-700">
-        Her finder du <strong className="font-medium text-stone-800">samme vin</strong> på tværs af forhandlere, så du kan sammenligne pris og
-        gå direkte til butikken.
+      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
+        Sammenlign priser og find link videre til danske vinforhandlere — ét samlet overblik.
       </p>
-      <p className="mt-3 max-w-2xl text-sm text-stone-600">
-        Opdateret ud fra feeds ({catalog.generatedAt.slice(0, 10)}) · {catalog.wines.length} vine · {catalog.offerCount}{" "}
-        tilbudslinjer.
-      </p>
-      <p className="mt-2 max-w-2xl text-sm text-stone-600">
-        Mange vine står som «1 forhandler»: vi slår dem sammen når feeds har samme stregkode (GTIN) eller næsten ens navn uden
-        årgang. Når butikker skriver titler meget forskelligt og uden GTIN, bliver hver liste en række for sig.
+      <p className="mt-4 text-sm text-stone-500">
+        Opdateret {new Date(catalog.generatedAt).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" })} ·{" "}
+        {catalog.wines.length.toLocaleString("da-DK")} vine
       </p>
 
       <PartnerAdsLeaderboard className="mt-10" hub="vine-katalog" placement="vine-catalog-hub" />

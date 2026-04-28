@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
-import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { BreadcrumbJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
 import { getWineBySlug } from "@/lib/vine/catalog";
@@ -46,9 +46,13 @@ export default async function VineProductPage({ params }: Props) {
     { name: wine.displayTitle, url },
   ];
 
+  const imageAbsolute =
+    wine.image != null ? `${siteUrl}/api/img?src=${encodeURIComponent(wine.image)}` : null;
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <WineProductJsonLd wine={wine} pageUrl={url} imageAbsoluteUrl={imageAbsolute} />
       <Breadcrumbs
         items={[
           { href: "/", label: "Forside" },
@@ -62,7 +66,7 @@ export default async function VineProductPage({ params }: Props) {
         {wine.brand ? <p className="mt-2 text-lg text-stone-700">{wine.brand}</p> : null}
         {wine.category.trim() ? (
           <p className="mt-2 text-sm leading-snug text-stone-600">
-            <span className="font-medium text-stone-700">Sortiment / kategori i feed:</span>{" "}
+            <span className="font-medium text-stone-700">Kategori:</span>{" "}
             {wine.category.replace(/\s*[>|]\s*/g, " · ")}
           </p>
         ) : null}
@@ -86,11 +90,11 @@ export default async function VineProductPage({ params }: Props) {
                   loading="eager"
                   fetchPriority="high"
                 />
-                <figcaption className="sr-only">Produktbillede fra forhandlerfeed</figcaption>
+                <figcaption className="sr-only">Produktbillede</figcaption>
               </>
             ) : (
               <div className="flex aspect-square w-full flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 bg-stone-50 px-6 text-center text-sm text-stone-500">
-                Intet billede i feed endnu — prøv link til butikken eller Vivino herunder.
+                Intet produktbillede — se tilbud fra butikkerne herunder.
               </div>
             )}
           </figure>
@@ -104,15 +108,14 @@ export default async function VineProductPage({ params }: Props) {
                   <h2 className="mt-8 text-xl font-semibold text-stone-900">Om produktet</h2>
                   <div className="whitespace-pre-wrap text-stone-800 leading-relaxed">{wine.description}</div>
                   <p className="text-sm text-stone-600">
-                    Teksten kommer fra et eller flere produkt-feeds og kan afvige let mellem butikker — tjek beskrivelse på
-                    butikkens side ved tvivl.
+                    Produktoplysninger kan variere fra butik til butik — se altid den aktuelle beskrivelse hos forhandleren.
                   </p>
                 </>
               ) : null}
 
               {wine.alternateListingTitles.length > 0 ? (
                 <div className="mt-6 rounded-xl border border-stone-200 bg-stone-50/90 px-4 py-3 text-sm text-stone-700">
-                  <p className="font-medium text-stone-800">Samme vin kan findes med en anden titel i feed:</p>
+                  <p className="font-medium text-stone-800">Også solgt som</p>
                   <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-stone-400">
                     {wine.alternateListingTitles.map((t) => (
                       <li key={t}>{t}</li>
@@ -124,7 +127,7 @@ export default async function VineProductPage({ params }: Props) {
               <h2 className="mt-10 text-xl font-semibold text-stone-900">Mad og smag</h2>
               <p className="text-stone-800 leading-relaxed">{vinePagePairing(wine)}</p>
               <p className="text-sm text-stone-600">
-                Vejledende madforslag ud fra drue, navn og feed-kategori — ikke en individuel smagsanmeldelse fra Vinbot.
+                Vejledende forslag ud fra navn og type — ikke en smagsanmeldelse fra Vinbot.
               </p>
             </div>
           </div>
@@ -142,7 +145,7 @@ export default async function VineProductPage({ params }: Props) {
                       ca. {o.price} {o.currency === "DKK" ? "kr" : o.currency}
                     </span>
                   ) : (
-                    <span className="ml-2 text-stone-500">Pris ikke angivet i feed</span>
+                    <span className="ml-2 text-stone-500">Pris ikke angivet</span>
                   )}
                 </div>
                 <a

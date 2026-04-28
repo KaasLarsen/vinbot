@@ -24,29 +24,37 @@ export function vinePageIntro(w: CanonicalWine): string {
       ? ` Fra omkring ${lowest.price} ${lowest.currency === "DKK" || !lowest.currency ? "kr" : lowest.currency} hos ${lowest.merchant}.`
       : "";
 
-  const cat = (w.category || "").trim();
-  const catBit =
-    cat && cat.length > 2 && cat.length < 180
-      ? ` I feeds er produktet ofte klassificeret som: ${cat.replace(/\s*[>|]\s*/g, " · ")}.`
-      : "";
-
-  const headline = `${vintagePhrase}${w.displayTitle}${w.brand ? ` (${w.brand})` : ""}`;
+  const headline = `${vintagePhrase}${w.displayTitle}${w.brand ? ` — ${w.brand}` : ""}`;
 
   if (n === 1) {
     const m = w.offers[0].merchant;
-    return `${headline} er i øjeblikket listet hos ${m} i Vinbots vin-indeks.${priceBit}${catBit} Priser og lager kan skifte — tjek altid hos butikken.`;
+    return `${headline}. Kan findes hos ${m}.${priceBit} Priser og lager kan ændre sig — tjek hos butikken.`;
   }
-  return `${headline} findes i Vinbots indeks hos ${n} forhandlere.${priceBit}${catBit} Sammenlign pris og åbn den butik, der passer dig.`;
+  return `${headline}. Kan købes hos ${n} butikker.${priceBit} Sammenlign pris nedenfor og gå videre til den forhandler, du foretrækker.`;
 }
 
 /** Dru-/stil-specifik tekst ud fra titel og kategori; ellers farve-kaskade. */
 export function vinePagePairing(w: CanonicalWine): string {
+  const title = (w.displayTitle || "").toLowerCase();
   const blob = `${w.displayTitle} ${w.category}`;
+
+  /** Port før druer og bobler — undgår falske bobler fra shop-kategori «Vin og champagne». */
+  if (
+    /\bportvin\b|\btawny\b|\bruby port\b|\bvintage port\b|\blbv\b|late bottled|colheita\b|\b10 års\b|\b20 års\b|\b30 års\b|\b40 års\b/i.test(title) ||
+    /\bport\b/i.test(title)
+  ) {
+    return "Portvin er ofte koncentreret og sødmefuld — klassisk til modne oste, nødder, chokolade og som afslutningsglas.";
+  }
+
   const g = grapePairingLine(blob);
   if (g) return g;
 
   const cat = blob.toLowerCase();
-  if (/boble|champagne|sparkling|cava|prosecco|mousserende|cremant/i.test(cat)) {
+  /** Kræv bobler/champagne i titel eller tydeligt boble-signal — ikke kun «Vin og champagne» i kategori-sti. */
+  const bubblesInTitle =
+    /\b(champagne|cava|prosecco|crémant|cremant|franciacorta|sekt|asti spumante|cuvée brut|extra brut|blanc de)\b/i.test(title) ||
+    /\bmousserende\b|\bcava\b|\bprosecco\b|\bchampagne\b/i.test(title);
+  if (bubblesInTitle || /\bboble|\bmousse|\bsparkling wine\b/i.test(title)) {
     return "Bobler passer ofte til appetitvækkere, skaldyr og lette forretter — og som velkomstdrink til selskab.";
   }
   if (/rosé|rose/i.test(cat)) {

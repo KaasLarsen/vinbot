@@ -1,4 +1,6 @@
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
+import type { CanonicalWine } from "@/lib/vine/types";
+import { vineMetaDescription } from "@/lib/vine/copy";
 import { buildDsfFeaturedProductsItemList } from "@/lib/schema/dsf-affiliate-product";
 import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
 
@@ -179,6 +181,68 @@ export function WebSiteJsonLd({ url }: { url: string }) {
       "query-input": "required name=search_term_string",
     },
   };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+/**
+ * Produkt-snippets til vin-katalog (`/vine/[slug]`).
+ * Understøtter bl.a. Product Rich Results — se Googles krav til tilbud og felter:
+ * https://developers.google.com/search/docs/appearance/structured-data/product
+ */
+export function WineProductJsonLd({
+  wine,
+  pageUrl,
+  imageAbsoluteUrl,
+}: {
+  wine: CanonicalWine;
+  pageUrl: string;
+  imageAbsoluteUrl?: string | null;
+}) {
+  const description =
+    wine.description?.trim().slice(0, 5000) || vineMetaDescription(wine, 500);
+
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: wine.displayTitle,
+    description,
+    url: pageUrl,
+  };
+
+  if (wine.brand?.trim()) {
+    data.brand = { "@type": "Brand", name: wine.brand.trim() };
+  }
+
+  const gtinDigits = (wine.gtin || "").replace(/\D/g, "");
+  if (gtinDigits.length === 13) data.gtin13 = gtinDigits;
+  else if (gtinDigits.length === 12) data.gtin12 = gtinDigits;
+  else if (gtinDigits.length === 8) data.gtin8 = gtinDigits;
+  else if (wine.gtin?.trim()) data.sku = wine.gtin.trim();
+
+  if (wine.category?.trim()) {
+    data.category = wine.category.replace(/\s*[>|]\s*/g, " › ").slice(0, 256);
+  }
+
+  if (imageAbsoluteUrl) {
+    data.image = [imageAbsoluteUrl];
+  }
+
+  const pricedOffers = wine.offers.filter((o) => typeof o.price === "number");
+  if (pricedOffers.length > 0) {
+    data.offers = pricedOffers.map((o) => ({
+      "@type": "Offer",
+      url: o.url,
+      price: o.price,
+      priceCurrency: o.currency || "DKK",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: o.merchant,
+      },
+    }));
+  }
+
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 

@@ -14,14 +14,33 @@ export function stripHtmlForDisplay(raw: string): string {
   return s;
 }
 
-/** Vælg den længste ikke-tomme beskrivelse (typisk mest detaljer fra feed). */
-export function pickBestDescription(candidates: string[], maxLen = 1800): string | null {
-  const cleaned = candidates
-    .map((c) => stripHtmlForDisplay(c))
-    .filter((c) => c.length >= 12);
-  if (!cleaned.length) return null;
-  cleaned.sort((a, b) => b.length - a.length);
-  const best = cleaned[0];
-  if (best.length <= maxLen) return best;
-  return `${best.slice(0, maxLen).trim()}…`;
+/**
+ * Slår tekster fra flere butiks-feeds sammen til ét afsnit (uden åbenlys dublet).
+ * Gør tynde produktsider tykkere når samme vin har lidt forskellig beskrivelse pr. merchant.
+ */
+export function combineRichDescriptions(candidates: string[], maxLen = 2800): string | null {
+  const blocks = [...new Set(candidates.map(stripHtmlForDisplay).filter((c) => c.length >= 16))];
+  if (!blocks.length) return null;
+  blocks.sort((a, b) => b.length - a.length);
+
+  let text = blocks[0];
+  for (let i = 1; i < blocks.length && text.length < maxLen; i++) {
+    const next = blocks[i];
+    const probe = next.slice(0, Math.min(70, next.length)).toLowerCase();
+    if (probe.length >= 24 && text.toLowerCase().includes(probe)) continue;
+
+    const merged = `${text}\n\n${next}`;
+    if (merged.length <= maxLen) {
+      text = merged;
+      continue;
+    }
+    const room = maxLen - text.length - 2;
+    if (room > 140) {
+      text = `${text}\n\n${next.slice(0, room).trim()}…`;
+    }
+    break;
+  }
+
+  if (text.length > maxLen) return `${text.slice(0, maxLen - 1).trim()}…`;
+  return text;
 }
