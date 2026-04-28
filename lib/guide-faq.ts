@@ -562,6 +562,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "6–9 °C er optimalt. Champagne typisk 8–10 °C; cava og prosecco ofte 6–8 °C. For koldt skjuler aroma; for varmt bliver alkoholen dominerende.",
     },
   ],
+  "bedste-vin-smagekasser": [
+    {
+      question: "Er en vin-smagekasse et godt gavekøb?",
+      answer:
+        "Ofte ja — en kurateret kasse signalerer gennemtænkning og giver typisk variation uden at du skal samle flasker selv. Tjek at temaet passer modtageren (fx bobler vs rødvin) og at indhold og årgange er beskrevet tydeligt.",
+    },
+    {
+      question: "Hvad er forskellen på en smagekasse og en almindelig kasse vin?",
+      answer:
+        "En smagekasse er samlet til smagning eller tema — variation og oplevelse. En almindelig kasse er ofte samme vin i flere flasker med volumenrabat. Begge kan være gode værdier; sammenlign pris pr. flaske og formål.",
+    },
+    {
+      question: "Hvordan sammenligner jeg pris på smagskasser?",
+      answer:
+        "Del bundlinje med antal normale flasker (typisk 75 cl) og sammenlign med enkeltflaskernes listepris samme sted. Tag højde for levering, gaveindpakning og om der er små formater eller prøver i kassen.",
+    },
+  ],
   "bedste-vin-til-gave": [
     {
       question: "Hvad er en sikker gavevin?",

@@ -189,6 +189,8 @@ function categoryToSearchTerm(cat: string): string {
     "alkoholfri-champagne": "alkoholfri champagne bobler 0%",
     "alkoholfri-vin": "alkoholfri vin 0%",
     "lavalkohol-vin": "kabinett moscato vinho verde lav alkohol",
+    "vin-smagekasser":
+      "smagekasse vin smagskasse gave pakke smagsprøve",
   };
   return table[cat] || cat.replace(/-/g, " ");
 }
@@ -232,6 +234,7 @@ function categoryToLabel(cat: string): string {
     "alkoholfri-champagne": "alkoholfri champagne",
     "alkoholfri-vin": "alkoholfri vin",
     "lavalkohol-vin": "lavalkohol-vin",
+    "vin-smagekasser": "vin-smagekasser",
   };
   return table[cat] || cat.replace(/-/g, " ");
 }
