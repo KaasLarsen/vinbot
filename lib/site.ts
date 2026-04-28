@@ -1,4 +1,5 @@
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://vinbot.dk").replace(/\/$/, "");
+/** Primær host skal matche Vercel “primary domain”. Apex (vinbot.dk) 307’er til www — undgå apex i sitemap/canonical hvis jeres setup er www-first. */
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.vinbot.dk").replace(/\/$/, "");
 export const siteName = "Vinbot";
 export const contactEmail = "info@vinbot.dk";
 

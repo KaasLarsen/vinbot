@@ -284,8 +284,9 @@ const nextConfig: NextConfig = {
     /**
      * Undlad www→apex redirect her: på Vercel er apex→www ofte aktiveret som standard,
      * og begge kombineret giver redirect-loop (browser/curl ERR_TOO_MANY_REDIRECTS).
-     * Canonical og JSON-LD bruger stadig `siteUrl` (https://vinbot.dk); foretræk at samle
-     * host ét sted under Vercel → Domains (fx kun apex eller kun www).
+     * Canonical og JSON-LD bruger `siteUrl`; sæt NEXT_PUBLIC_SITE_URL til samme host som
+     * Vercel primary domain (typisk https://www.vinbot.dk), så sitemap/canonical ikke peger på apex,
+     * som alligevel 307’er til www.
      */
     return legacyRedirects.map((r) => ({
       source: r.source,
