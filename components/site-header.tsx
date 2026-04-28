@@ -15,7 +15,7 @@ const nav: NavItem[] = [
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/rabatkoder", label: "Rabatkoder" },
-  { href: "/vine", label: "Vin-katalog" },
+  { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
 ];
 
@@ -64,6 +64,16 @@ export function SiteHeader() {
             </span>
           </Link>
           <div className="flex items-center gap-2">
+            <Link
+              href="/vine"
+              className={`hidden rounded-lg px-3 py-2 text-sm font-medium transition sm:inline-flex ${
+                navItemActive({ href: "/vine", label: "Vin-katalog", activePrefix: "/vine" }, pathname)
+                  ? "bg-rose-50 text-rose-950"
+                  : "text-stone-800 hover:bg-stone-50 hover:text-rose-900"
+              }`}
+            >
+              Vin-katalog
+            </Link>
             <HeaderSearch variant="desktop" />
           <button
             type="button"
