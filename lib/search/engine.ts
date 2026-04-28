@@ -1,6 +1,6 @@
 import { FEEDS } from "@/lib/feeds/config";
 import type { ProductHit, SearchResult } from "./types";
-import { expandQuery, normalizeUrl, parsePriceFilter, proxyImg, score } from "./helpers";
+import { expandQuery, normalizeUrl, parsePriceFilter, productEligibleForWineSearch, proxyImg, score } from "./helpers";
 import { getCachedFeedProducts } from "./fetch-feed";
 
 export async function runSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
@@ -31,7 +31,11 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
           return [];
         }
 
-        const matches = products.filter((p) => terms.some((t) => (p._search || "").includes(t)));
+        const matches = products.filter(
+          (p) =>
+            productEligibleForWineSearch(p) &&
+            terms.some((t) => (p._search || "").includes(t)),
+        );
 
         if (!matches.length) {
           feeds_ok++;
