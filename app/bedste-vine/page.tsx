@@ -115,6 +115,7 @@ export default function BedsteVineHubPage() {
           <Link href="/guides/bedste-rosevin-under-200-kr" className="hover:underline">Rosévin under 200 kr</Link>
           <Link href="/guides/bedste-bobler-under-100-kr" className="hover:underline">Bobler under 100 kr</Link>
           <Link href="/guides/bedste-bobler-under-150-kr" className="hover:underline">Bobler under 150 kr</Link>
+          <Link href="/guides/bedste-cava-under-150-kr" className="hover:underline">Cava under 150 kr</Link>
           <Link href="/guides/bedste-bobler-under-200-kr" className="hover:underline">Bobler under 200 kr</Link>
           <Link href="/guides/bedste-champagne-under-300-kr" className="hover:underline">Champagne under 300 kr</Link>
           <Link href="/guides/bedste-champagne-under-500-kr" className="hover:underline">Champagne under 500 kr</Link>
