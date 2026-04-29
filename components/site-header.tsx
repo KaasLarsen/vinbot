@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import { HeaderSearch } from "@/components/header-search";
+import { VinbotLogo } from "@/components/vinbot-logo";
 
 type NavItem = { href: string; label: string; activePrefix?: string };
 
@@ -51,17 +52,20 @@ export function SiteHeader() {
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="group flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-2"
+            className="group flex min-w-0 items-center gap-3 sm:gap-3"
           >
-            <span className="text-xl font-semibold tracking-tight text-rose-950 group-hover:text-rose-900">
-              Vinbot
-            </span>
-            <span className="max-w-[min(100%,20rem)] text-xs font-normal leading-snug text-stone-600 sm:max-w-none sm:text-[0.8125rem]">
-              <span className="hidden sm:inline" aria-hidden>
-                —{" "}
+            <VinbotLogo className="h-8 w-8 shrink-0 text-rose-950 transition-colors group-hover:text-rose-900" />
+            <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
+              <span className="text-xl font-semibold tracking-tight text-rose-950 transition-colors group-hover:text-rose-900">
+                Vinbot
               </span>
-              Find den rette vin til mad, stemning og lejlighed
-            </span>
+              <span className="max-w-[min(100%,20rem)] text-xs font-normal leading-snug text-stone-600 sm:max-w-none sm:text-[0.8125rem]">
+                <span className="hidden sm:inline" aria-hidden>
+                  —{" "}
+                </span>
+                Find den rette vin til mad, stemning og lejlighed
+              </span>
+            </div>
           </Link>
           <div className="flex items-center gap-2">
             <Link
