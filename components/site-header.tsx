@@ -54,10 +54,12 @@ export function SiteHeader() {
             href="/"
             className="group flex min-w-0 items-center gap-3 sm:gap-3"
           >
-            <VinbotLogo className="h-8 w-8 shrink-0 text-rose-950 transition-colors group-hover:text-rose-900" />
             <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
-              <span className="text-xl font-semibold tracking-tight text-rose-950 transition-colors group-hover:text-rose-900">
-                Vinbot
+              <span className="inline-flex items-center gap-2">
+                <span className="text-xl font-semibold tracking-tight text-rose-950 transition-colors group-hover:text-rose-900">
+                  Vinbot
+                </span>
+                <VinbotLogo className="h-8 w-8 shrink-0 text-rose-950 transition-colors group-hover:text-rose-900" />
               </span>
               <span className="max-w-[min(100%,20rem)] text-xs font-normal leading-snug text-stone-600 sm:max-w-none sm:text-[0.8125rem]">
                 <span className="hidden sm:inline" aria-hidden>

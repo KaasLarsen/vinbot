@@ -17,6 +17,8 @@ export function VinbotLogo({ className }: { className?: string }) {
         {/* Øjne */}
         <circle cx="9.35" cy="15.25" r="1.15" fill="currentColor" stroke="none" />
         <circle cx="12.65" cy="15.25" r="1.15" fill="currentColor" stroke="none" />
+        {/* Smil */}
+        <path d="M8.85 17.5q2.15-1.05 4.3 0" />
         {/* Arm → glas */}
         <path d="M17 15.85 Q19 14.75 21.4 14.6" />
         {/* Vinglas (kop + stilk + fod) */}
