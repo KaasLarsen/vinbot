@@ -63,6 +63,10 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
         <label htmlFor="vine-hub-q" className="block text-sm font-medium text-stone-700">
           Søg i vin-kataloget
         </label>
+        <p className="mt-1 max-w-2xl text-xs leading-relaxed text-stone-600">
+          Søgningen kører kun mod Vinbots indekserede vinprofiler (titler og brands fra feeds). Den finder ikke alt på nettet —
+          kun det vi har kunnet matche på tværs af listninger.
+        </p>
         <input
           id="vine-hub-q"
           value={q}
@@ -90,6 +94,10 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
             </button>
           ))}
         </div>
+        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-stone-600">
+          Typefiltrene er et groft stilskøn ud fra titel og kategori (bobler, rosé, hvid, rød). Brug «Alle», hvis du vil undgå at
+          filtrere — eller kombiner med søgefeltet for mere præcis navigation.
+        </p>
       </div>
 
       {filtered.length > 0 ? (

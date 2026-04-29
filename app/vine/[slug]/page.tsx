@@ -5,11 +5,15 @@ import { notFound } from "next/navigation";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
+import { VineProfileEditorial, VineProfileFaq } from "@/components/vine-profile-editorial";
+import { VineProfileGuideLinks } from "@/components/vine-profile-guide-links";
+import { VineStructuralSection } from "@/components/vine-profile-structural";
 import { VineRelatedWines } from "@/components/vine-related";
-import { BreadcrumbJsonLd, WineProductJsonLd } from "@/components/json-ld";
+import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
 import { getCachedWineCatalog, getWineBySlug } from "@/lib/vine/catalog";
+import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
 import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
@@ -42,6 +46,7 @@ export default async function VineProductPage({ params }: Props) {
   const wine = catalog.wines.find((w) => w.slug === slug) ?? null;
   if (!wine) notFound();
   const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
+  const faqItems = vineProductFaqItems(wine);
 
   const url = `${siteUrl}/vine/${wine.slug}`;
   const breadcrumbItems = [
@@ -57,6 +62,7 @@ export default async function VineProductPage({ params }: Props) {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <WineProductJsonLd wine={wine} pageUrl={url} imageAbsoluteUrl={imageAbsolute} />
+      <FaqJsonLd items={faqItems} />
       <Breadcrumbs
         items={[
           { href: "/", label: "Forside" },
@@ -79,6 +85,16 @@ export default async function VineProductPage({ params }: Props) {
             Produkt-ID (GTIN/EAN): <span className="font-mono">{wine.gtin}</span>
           </p>
         ) : null}
+        <p className="mt-2 text-xs text-stone-500">
+          Sidst synkroniseret i Vinbots indeks:{" "}
+          <time dateTime={catalog.generatedAt}>
+            {new Date(catalog.generatedAt).toLocaleString("da-DK", {
+              dateStyle: "long",
+              timeStyle: "short",
+            })}
+          </time>
+          .
+        </p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] lg:items-start">
           <figure className="mx-auto w-full max-w-[280px] lg:mx-0">
@@ -107,6 +123,8 @@ export default async function VineProductPage({ params }: Props) {
             <div className="prose prose-stone max-w-none">
               <p className="text-stone-800 leading-relaxed">{vinePageIntro(wine)}</p>
 
+              <VineProfileEditorial wine={wine} />
+
               {wine.description ? (
                 <>
                   <h2 className="mt-8 text-xl font-semibold text-stone-900">Om produktet</h2>
@@ -134,11 +152,18 @@ export default async function VineProductPage({ params }: Props) {
                 Vejledende forslag ud fra navn og type — ikke en smagsanmeldelse fra Vinbot.
               </p>
             </div>
+
+            <VineStructuralSection wine={wine} />
+
+            <VineProfileGuideLinks wine={wine} />
           </div>
         </div>
 
         <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-stone-900">Hvor kan du købe den?</h2>
+          <div className="mt-4 border-b border-stone-100 pb-4">
+            <AffiliateDisclosure compact />
+          </div>
           <ul className="mt-4 divide-y divide-stone-100">
             {wine.offers.map((o) => (
               <li key={`${o.merchant}-${o.url}`} className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -166,6 +191,8 @@ export default async function VineProductPage({ params }: Props) {
         </section>
 
         <VineRelatedWines wines={relatedWines} />
+
+        <VineProfileFaq items={faqItems} />
 
         <section className="mt-10 bg-transparent p-0">
           <VivinoCommunityLink href={vivinoSearchUrl(wine.displayTitle)} />

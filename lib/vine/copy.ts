@@ -1,14 +1,19 @@
 import type { CanonicalWine } from "./types";
+import { vineMetaSupplementSentence } from "./editorial-product-copy";
 import { extractVintageYear } from "./product-text";
 
-/** Kort SEO/meta — foretrækker feed-beskrivelse når den findes. */
+/** Kort SEO/meta — foretrækker feed-beskrivelse når den findes; ellers intro + redaktionelt supplement for mere varierede snippets. */
 export function vineMetaDescription(w: CanonicalWine, maxLen = 158): string {
   if (w.description) {
     const oneLine = w.description.replace(/\s+/g, " ").trim();
     if (oneLine.length <= maxLen) return oneLine;
     return `${oneLine.slice(0, maxLen - 1).trim()}…`;
   }
-  return vinePageIntro(w).slice(0, maxLen);
+  const intro = vinePageIntro(w).replace(/\s+/g, " ").trim();
+  const extra = vineMetaSupplementSentence(w);
+  const combined = `${intro} ${extra}`;
+  if (combined.length <= maxLen) return combined;
+  return `${combined.slice(0, maxLen - 1).trim()}…`;
 }
 
 export function vinePageIntro(w: CanonicalWine): string {
