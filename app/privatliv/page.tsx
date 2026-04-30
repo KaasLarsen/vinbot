@@ -60,8 +60,8 @@ export default function PrivatlivPage() {
         </ul>
         <h2 className="text-xl font-semibold text-stone-900">Cookie-banner</h2>
         <p>
-          Ved første besøg viser vi en besked i bunden af skærmen. <strong>Accepter</strong> giver samtykke til statistik (Google Analytics) og til annoncer (Google AdSense), når AdSense er aktiveret på sitet.{" "}
-          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige; så indlæses hverken Analytics eller AdSense.
+          Ved første besøg viser vi en besked i bunden af skærmen. <strong>Accepter</strong> giver samtykke til statistik (Google Analytics) og til cookie-baseret annoncering via Google AdSense, når vi har aktiveret annoncefelter på sitet.{" "}
+          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige; så indlæses ikke Google Analytics, og vi viser ikke AdSense-annoncer (felter).
         </p>
         <p className="flex flex-wrap items-center gap-3">
           <CookieConsentReset />
@@ -73,7 +73,8 @@ export default function PrivatlivPage() {
         </p>
         <h2 className="text-xl font-semibold text-stone-900">Google AdSense</h2>
         <p>
-          Når AdSense er aktiveret, kan Google bruge cookies til at vise annoncer — herunder personligt tilpassede, hvis du har givet samtykke. AdSense-scriptet indlæses kun, hvis du har trykket <strong>Accepter</strong> i cookie-banneret.
+          Vi kan indlæse Googles AdSense <strong>publisher-script</strong> på siderne, når sitet er konfigureret til det — det kan være nødvendigt, så Google kan kontrollere og godkende sitet.{" "}
+          <strong>Selve annoncefelterne</strong> vises kun, hvis du har trykket <strong>Accepter</strong> i cookie-banneret, og vi har slået annoncer til i opsætningen. Når annoncer vises, kan Google bruge cookies til at levere annoncer — herunder personligt tilpassede, når du har givet samtykke.
         </p>
         <h2 className="text-xl font-semibold text-stone-900">Affiliate-links</h2>
         <p>

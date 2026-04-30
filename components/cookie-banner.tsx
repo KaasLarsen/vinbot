@@ -11,8 +11,9 @@ import {
 } from "@/lib/cookie-consent";
 
 /**
- * Simpelt cookie-banner: Accepter (statistik m.m.) eller kun nødvendige.
- * GA4 og AdSense indlæses først efter "Accepter" — se AnalyticsConsentGate og AdSenseConsentGate.
+ * Simpelt cookie-banner: Accepter (statistik + markedsføring) eller kun nødvendige.
+ * GA4 og faktiske AdSense-annoncer (AdSlot) følger samtykke — se AnalyticsConsentGate og ad-slot.
+ * Publisher-scriptet til AdSense kan stadig loades i layout (AdSenseConsentGate) så Google kan verificere sitet.
  */
 export function CookieBanner() {
   const [open, setOpen] = useState(false);
