@@ -15,6 +15,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { GuideCatalogSearchBar } from "@/components/guide-catalog-search-bar";
 import { GuideSearchCta } from "@/components/guide-search-cta";
 import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
@@ -123,7 +124,8 @@ export default async function GuidePage({ params }: Props) {
       <BreadcrumbJsonLd items={breadcrumbLdItems} />
       {faqItems?.length ? <FaqJsonLd items={faqItems} /> : null}
       <Breadcrumbs items={crumbs} />
-      <header className="mt-6 border-b border-stone-200 pb-8">
+      <GuideCatalogSearchBar className="mt-6" />
+      <header className="mt-8 border-b border-stone-200 pb-8">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
         <p className="mt-4 text-xl text-stone-600">{frontmatter.description}</p>
         <p className="mt-3 text-sm text-stone-600">

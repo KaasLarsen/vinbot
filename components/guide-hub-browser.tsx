@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { GuideBrowseKind, GuideCardData } from "@/lib/guide-browse";
 import { classifyGuideSlug, guideMatchesSearch, kindFilterLabel, topTagsForGuides } from "@/lib/guide-browse";
 
@@ -12,6 +12,8 @@ type Props = {
   /** Vis populære tags som chips (min. antal forekomster i datasættet). */
   showTagChips?: boolean;
   tagMinCount?: number;
+  /** Fra `/guides?q=` — synkroniserer søgefelt ved load og deep links */
+  initialQuery?: string;
 };
 
 export function GuideHubBrowser({
@@ -19,8 +21,13 @@ export function GuideHubBrowser({
   showKindTabs = true,
   showTagChips = true,
   tagMinCount = 2,
+  initialQuery = "",
 }: Props) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery.trim());
+
+  useEffect(() => {
+    setQuery(initialQuery.trim());
+  }, [initialQuery]);
   const [kind, setKind] = useState<GuideBrowseKind | "alle">("alle");
   const [activeTag, setActiveTag] = useState<string | null>(null);
 

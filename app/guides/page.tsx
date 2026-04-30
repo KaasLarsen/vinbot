@@ -11,13 +11,16 @@ const PAGE_DESCRIPTION =
   "Find vin til mad, druesorter og begreber: søg på tværs af alle Vinbot-guides, eller filtrér efter vin til retter, druer og overblik.";
 const PAGE_URL = `${siteUrl}/guides`;
 
+type PageProps = { searchParams?: Promise<{ q?: string }> };
+
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: PAGE_URL },
 };
 
-export default function GuidesIndexPage() {
+export default async function GuidesIndexPage({ searchParams }: PageProps) {
+  const qParam = ((await searchParams)?.q ?? "").trim();
   const guides = listGuides();
   const cards = guides.map((g) => ({
     slug: g.slug,
@@ -74,7 +77,7 @@ export default function GuidesIndexPage() {
       </p>
 
       <section className="mt-10">
-        <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
+        <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} initialQuery={qParam} />
       </section>
     </div>
   );

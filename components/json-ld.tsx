@@ -2,6 +2,7 @@ import type { DsfFeaturedPick } from "@/lib/dsf-featured";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { vineMetaDescription } from "@/lib/vine/copy";
 import { buildDsfFeaturedProductsItemList } from "@/lib/schema/dsf-affiliate-product";
+import { productJsonLdGtinFields } from "@/lib/gtin-validation";
 import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
 
 type ArticleJsonLdProps = {
@@ -213,11 +214,7 @@ export function WineProductJsonLd({
     data.brand = { "@type": "Brand", name: wine.brand.trim() };
   }
 
-  const gtinDigits = (wine.gtin || "").replace(/\D/g, "");
-  if (gtinDigits.length === 13) data.gtin13 = gtinDigits;
-  else if (gtinDigits.length === 12) data.gtin12 = gtinDigits;
-  else if (gtinDigits.length === 8) data.gtin8 = gtinDigits;
-  else if (wine.gtin?.trim()) data.sku = wine.gtin.trim();
+  Object.assign(data, productJsonLdGtinFields(wine.gtin));
 
   if (wine.category?.trim()) {
     data.category = wine.category.replace(/\s*[>|]\s*/g, " › ").slice(0, 256);
