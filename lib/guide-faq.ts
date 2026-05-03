@@ -43,6 +43,60 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Tommelfingerregel: let hvid og rosé 2–4 dage i køleskab; fyldig hvid ofte op til 4–5 dage; let rød 2–4 dage; tung ung rød ofte 4–6 dage eller mere; bobler 1–3 dage med god prop. Smag og lugt afgør altid.",
     },
+    {
+      question: "Hvilken temperatur skal rosé og rosevin have?",
+      answer:
+        "Typisk 8–12 °C: lys, tør rosé ofte 8–11 °C; mørkere eller mere frugtrig rosé ofte 9–12 °C. Er rosé hovedvin til maden, må den gerne være lidt mindre iskold end ved ren velkomst.",
+    },
+    {
+      question: "Hvad er serveringstemperatur for champagne?",
+      answer:
+        "Champagne og lignende kvalitetsbobler oftest omkring 8–10 °C. Hellere lidt for kold end lunken ved fest — brug spand med is og vand.",
+    },
+    {
+      question: "Hvor mange grader skal rødvin ca. have?",
+      answer:
+        "De fleste rødvine 15–18 °C afhængigt af krop; let rød 14–16 °C; meget kraftig rød ofte 16–18 °C. Afkøl kort i køleskab hvis rummet er over ca. 22 °C.",
+    },
+    {
+      question: "Hvilken temperatur skal amarone og meget kraftig rød have?",
+      answer:
+        "Ofte 16–18 °C. For varm alkohol dominerer; afkøl flasken kort og luft gerne unge, tanninrige vine lidt før mad.",
+    },
+  ],
+  "vin-til-nytaar-og-nytaarsmenu": [
+    {
+      question: "Hvilken vin til nytår og nytårsaften?",
+      answer:
+        "Bobler eller syrlig hvid til velkomst og snack; til menu ofte en alsidig hvid til fisk/forret og mellemfyldig rød til kød med sovs; bobler igen til midnat. Sørg for at dessertvin er mindst lige så sød som desserten.",
+    },
+    {
+      question: "Hvad med champagne til nytår?",
+      answer:
+        "En tør brut eller brut nature med god syre passer til de fleste menuer bedre end meget søde bobler — medmindre du bevidst matcher sød dessert. Se også bobler-guiden og temperatur-guiden for °C.",
+    },
+    {
+      question: "Hvor meget vin skal jeg købe til nytår?",
+      answer:
+        "Ofte omkring ½–1 flaske vin pr. voksen til mad og ekstra bobler til midnat — mere ved let mad og lang aften. Én flaske bobler giver typisk 4–5 glas afhængigt af hældning.",
+    },
+  ],
+  "vin-til-tapas": [
+    {
+      question: "Hvad er god vin til tapas?",
+      answer:
+        "Brut nature cava, albariño eller fino/manzanilla sherry er blandt de mest alsidige ét-flaske-valg. To flasker — bobler eller syrlig hvid plus rosé eller ung rød — dækker ofte bordet bedre end én meget tung rød.",
+    },
+    {
+      question: "Kan man drikke rødvin til tapas?",
+      answer:
+        "Ja: vælg ung, frugtrettet rød med moderat tannin og server lidt kølig (ca. 14–16 °C). Undgå én ekstremt tanninrigid flaske til hele bordet hvis der også er meget fisk og grønt.",
+    },
+    {
+      question: "Passer rosé til tapas?",
+      answer:
+        "Ja — især spanske eller mere frugt-dyb rosé til chorizo, ost og grøntsager. Kombinér evt. med bobler eller sherry til de salteste og fede bidder.",
+    },
   ],
   "komplet-guide-til-vin-og-mad": [
     {
