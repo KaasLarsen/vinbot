@@ -26,6 +26,14 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
   },
   {
+    source: "/pages/blog/serveringstemperatur-vin.html",
+    destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  },
+  {
+    source: "/pages/blog/hvordan-opbevarer-du-vin-korrekt.html",
+    destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  },
+  {
     source: "/pages/blog/champagne-vs-cava-vs-prosecco.html",
     destination: "/guides/bobler-champagne-cava-prosecco-og-cremant",
   },
@@ -84,6 +92,34 @@ const legacyRedirects: { source: string; destination: string }[] = [
   {
     source: "/pages/blog/oekologisk-vs-konventionel-vin.html",
     destination: "/guides/naturvin-hvad-er-det",
+  },
+  {
+    source: "/pages/blog/hvordan-dekanterer-man-vin.html",
+    destination: "/guides/sadan-dekanterer-du-vin",
+  },
+  {
+    source: "/pages/blog/hvad-er-orangevin.html",
+    destination: "/guides/hvad-er-orange-vin",
+  },
+  {
+    source: "/pages/blog/guide-til-rosevin.html",
+    destination: "/guides/rosevin-til-mad-og-sommer",
+  },
+  {
+    source: "/pages/blog/vin-til-grill.html",
+    destination: "/guides/vin-til-grill-og-bbq",
+  },
+  {
+    source: "/pages/blog/guide-til-vin-til-hverdagsmad.html",
+    destination: "/guides/komplet-guide-til-vin-og-mad",
+  },
+  {
+    source: "/pages/blog/vinapps-og-vinbot.html",
+    destination: "/om-os",
+  },
+  {
+    source: "/pages/blog/index.html",
+    destination: "/mad-og-vin",
   },
 
   // Vin til jul / påske / nytår / fest
@@ -209,6 +245,36 @@ const legacyRedirects: { source: string; destination: string }[] = [
   {
     source: "/pages/vin-til/romantisk-middag.html",
     destination: "/guides/humoer-stemning-og-vin",
+  },
+
+  /** Legacy vin-til der ellers rammer catch-all → mad-pillar (SEO-konsolidering). */
+  {
+    source: "/pages/vin-til/julemad.html",
+    destination: "/guides/vin-til-julemad-den-store-guide",
+  },
+  {
+    source: "/pages/vin-til/pasta-tomat.html",
+    destination: "/guides/vin-til-pizza-og-pasta",
+  },
+  {
+    source: "/pages/vin-til/and.html",
+    destination: "/guides/vin-til-and",
+  },
+  {
+    source: "/pages/vin-til/picnic.html",
+    destination: "/guides/komplet-guide-til-vin-og-mad",
+  },
+  {
+    source: "/pages/vin-til/ostebord-hvide-oste.html",
+    destination: "/guides/vin-til-ost-og-ostebord",
+  },
+  {
+    source: "/pages/vin-til/okseboef.html",
+    destination: "/guides/vin-til-boeff",
+  },
+  {
+    source: "/pages/vin-til/index.html",
+    destination: "/guides/komplet-guide-til-vin-og-mad",
   },
 
   // Øvrigt: produktanbefalinger og partiale (ikke meningsfulde landingsider)
