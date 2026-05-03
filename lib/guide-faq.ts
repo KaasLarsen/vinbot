@@ -98,6 +98,57 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — især spanske eller mere frugt-dyb rosé til chorizo, ost og grøntsager. Kombinér evt. med bobler eller sherry til de salteste og fede bidder.",
     },
   ],
+  "vin-til-krydret-og-staerk-mad": [
+    {
+      question: "Hvilken vin passer til asiatisk mad?",
+      answer:
+        "Vin med tydelig syre og ofte lidt restsødme eller moden frugt: bobler, halvtør riesling, gewürztraminer, aromatic whites eller let afkølet gamay/tempranillo. Undgå meget høj alkohol og tanninrigid ung rød til masser af chili.",
+    },
+    {
+      question: "Hvad er bedste vin til tacos?",
+      answer:
+        "Syrlig rosé, albariño, sauvignon eller lette røde som gamay og ung tempranillo — se også vin til tacos-guiden. Tung ung cabernet til milde fyld er sjældent førstevalg.",
+    },
+    {
+      question: "Hvorfor smager vin bitter til chili?",
+      answer:
+        "Capsaicin forstærker alkohol og tanniner; knastør rød uden frugt føles ofte strammere. Køligere servering, lavere alkohol og mere syre eller mild sødme balancerer bedre.",
+    },
+  ],
+  "vin-til-paaske-og-paaskefrokost": [
+    {
+      question: "Hvilken vin til påskefrokost?",
+      answer:
+        "Bobler eller syrlig hvid til sild, pålæg og æg; til lam og kød mellemfyldig rød med frugt; til kransekage sødere bobler eller dessertvin der matcher sukkerniveauet.",
+    },
+    {
+      question: "Hvad drikker man til påske?",
+      answer:
+        "Typisk crémant, cava eller champagne til frokostbordet, hvid eller rosé til lettere retter, og pinot noir, gamay eller rhône-lignende rød til lam — plus dessertvin til sødt tilbehør.",
+    },
+    {
+      question: "Passer rødvin til påskens pålæg?",
+      answer:
+        "Salt pålæg og fisk fylder først: start med bobler eller hvid. Gem rødvin til lam og oste senere — så undgår du tannin mod salt fisk.",
+    },
+  ],
+  "vin-til-dessert-og-kransekage": [
+    {
+      question: "Hvilken vin til kransekage?",
+      answer:
+        "Halvsød eller sødere bobler (fx demi-sec champagne), moscato d'Asti eller sød riesling i Auslese/Spätlese-stil — mat eller overstig kagens sødme så vinen ikke smager sur.",
+    },
+    {
+      question: "Kan man drikke brut champagne til kransekage?",
+      answer:
+        "Sjældent ideelt: kagen er sødere end vinen, så brut kan smage sur og tom. Brug demi-sec eller dessertvin til kagelinjen.",
+    },
+    {
+      question: "Hvad er god vin til chokoladedessert?",
+      answer:
+        "Mørk chokolade: ruby eller vintage port, PX-sherry eller recioto. Lettere chokolade: tawny port eller halvsød rød i moden stil — match intensitet og sødme.",
+    },
+  ],
   "komplet-guide-til-vin-og-mad": [
     {
       question: "Hvad er de vigtigste principper for vin og mad?",
@@ -232,6 +283,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan man drikke rødvin til ost?",
       answer:
         "Ja — pinot noir, gamay og sangiovese med moden frugt er ofte nemmere end ung cabernet. Match styrken: kraftig ost kræver kraftigere vin eller sødme.",
+    },
+    {
+      question: "Hvilken vin til ostebord med blandet udvalg?",
+      answer:
+        "Planlæg to til tre flasker: bobler eller syrlig hvid til milde oste, amontillado eller moden hvid til lagrede oste, og port eller sauternes til blåskimmel — én tung tannin-rød til alt rammer sjældent godt.",
+    },
+    {
+      question: "Hvad er god vin til dansk ostebord?",
+      answer:
+        "Cava eller crémant til første oste, albariño eller sauvignon til mild ost, rioja reserva eller sherry til Vesterhavsost og lagret ost, og LBV-port eller sød hvid til danablu.",
     },
   ],
   "vin-til-pizza": [
