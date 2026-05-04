@@ -277,6 +277,69 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/komplet-guide-til-vin-og-mad",
   },
 
+  /**
+   * Forkerte `/guides/`-slugs (interne links eller gamle URL’er → 404 i Search Console).
+   * Hold destinations til eksisterende guides med samme tema.
+   */
+  { source: "/guides/vin-til-flaeskesteg", destination: "/guides/vin-til-flaesketesteg" },
+  { source: "/guides/vin-til-risalamande", destination: "/guides/vin-til-julemad-den-store-guide" },
+  {
+    source: "/guides/chenin-blanc-til-flaeskesteg",
+    destination: "/guides/vin-til-flaesketesteg",
+  },
+  { source: "/guides/vin-til-asiatisk-mad", destination: "/guides/riesling-til-asiatisk-mad" },
+  { source: "/guides/vin-til-oest", destination: "/guides/vin-til-ost-og-ostebord" },
+  { source: "/guides/orange-wine-guide", destination: "/guides/hvad-er-orange-vin" },
+  { source: "/guides/grenache-rose", destination: "/guides/rosevin-til-mad-og-sommer" },
+  { source: "/guides/sangiovese-til-pizza", destination: "/guides/vin-til-pizza-og-pasta" },
+  {
+    source: "/guides/bedste-shiraz-under-100-kr",
+    destination: "/guides/bedste-rodvin-under-100-kr",
+  },
+  {
+    source: "/guides/bedste-shiraz-under-150-kr",
+    destination: "/guides/bedste-rodvin-under-150-kr",
+  },
+  {
+    source: "/guides/bedste-chianti-under-100-kr",
+    destination: "/guides/bedste-italiensk-rodvin",
+  },
+  {
+    source: "/guides/bedste-chianti-under-150-kr",
+    destination: "/guides/bedste-italiensk-rodvin",
+  },
+  { source: "/guides/bedste-cava", destination: "/guides/bedste-cava-under-150-kr" },
+  {
+    source: "/guides/bedste-provence-rose",
+    destination: "/guides/rosevin-til-mad-og-sommer",
+  },
+  { source: "/guides/hvad-er-sherry", destination: "/guides/hvad-er-sherry-vin" },
+  { source: "/guides/vin-til-jamon-og-skinke", destination: "/guides/vin-til-tapas" },
+  {
+    source: "/guides/vin-til-pasta-ragu",
+    destination: "/guides/vin-til-pizza-og-pasta",
+  },
+  { source: "/guides/dessertvin-typer-og-stil", destination: "/guides/bedste-dessertvin" },
+  {
+    source: "/guides/prosecco-til-aperitif",
+    destination: "/guides/bobler-champagne-cava-prosecco-og-cremant",
+  },
+  { source: "/guides/mourvedre-druen", destination: "/guides/grenache-druen" },
+  {
+    source: "/guides/shiraz-fra-barossa-valley",
+    destination: "/guides/syrah-fra-barossa-valley",
+  },
+  {
+    source: "/guides/syrah-fra-rhone-nord",
+    destination: "/guides/syrah-fra-nord-rhone",
+  },
+  { source: "/guides/syrah-til-grill", destination: "/guides/vin-til-grill-og-bbq" },
+  { source: "/guides/grenache-til-lam", destination: "/guides/vin-til-lam" },
+  {
+    source: "/guides/bedste-chenin-blanc-under-100-kr",
+    destination: "/guides/bedste-chenin-blanc-under-150-kr",
+  },
+
   // Øvrigt: produktanbefalinger og partiale (ikke meningsfulde landingsider)
   {
     source: "/pages/anbefalinger/:slug.html",
