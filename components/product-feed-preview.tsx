@@ -6,12 +6,21 @@ export async function ProductFeedPreview({
   maxPrice,
   title,
   merchant,
+  maxItems = 9,
+  placement = "product-feed-preview",
+  gridClassName = "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
 }: {
   query: string;
   maxPrice?: number | null;
   title?: string;
   /** Filtrér til én forhandler (eksakt match på feed-navn, fx "Lauridsen Vine"). */
   merchant?: string | null;
+  /** Max antal kort (standard 9). */
+  maxItems?: number;
+  /** GA4 affiliate_click placement på produktlinks. */
+  placement?: string;
+  /** CSS grid-klasser (fx 4 kolonner på forsiden). */
+  gridClassName?: string;
 }) {
   const { products } = await runSearch(query, maxPrice ?? null);
 
@@ -35,9 +44,9 @@ export async function ProductFeedPreview({
   return (
     <section className="space-y-4">
       {title && <h2 className="text-xl font-semibold text-stone-900">{title}</h2>}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.slice(0, 9).map((p, i) => (
-          <ProductCard key={`${p.url}-${i}`} product={p} placement="product-feed-preview" />
+      <div className={gridClassName}>
+        {filtered.slice(0, maxItems).map((p, i) => (
+          <ProductCard key={`${p.url}-${i}`} product={p} placement={placement} />
         ))}
       </div>
     </section>

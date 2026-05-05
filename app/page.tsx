@@ -5,6 +5,7 @@ import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
+import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
@@ -439,6 +440,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <CampaignBanner />
 
       <FeaturedAffiliateStores />
+
+      <LauridsenHomeFeedHighlight />
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
