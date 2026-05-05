@@ -90,7 +90,7 @@ export default async function VineHubPage() {
         </p>
       </section>
 
-      <PartnerAdsLeaderboard className="mt-10" hub="vine-katalog" placement="vine-catalog-hub" />
+      <PartnerAdsLeaderboard className="mt-10" hub="vine-katalog" slug="vine-katalog-hub" placement="vine-catalog-hub" />
 
       {featured.length > 0 ? <VineFeaturedStrip wines={featured} /> : null}
 

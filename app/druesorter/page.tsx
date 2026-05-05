@@ -329,7 +329,7 @@ export default function DruesorterHubPage() {
         </div>
       </section>
 
-      <PartnerAdsLeaderboard className="mt-16" />
+      <PartnerAdsLeaderboard className="mt-16" hub="druesorter" slug="druesorter-hub" />
 
       <p className="mt-10 text-sm text-stone-500">
         Tip: på forsiden kan du også skrive druenavnet direkte i søgefeltet — URL&apos;en her er en genvej til det samme.

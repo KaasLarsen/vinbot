@@ -157,7 +157,7 @@ export default function HumoerHubPage() {
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-12" />
+      <PartnerAdsLeaderboard className="mt-12" hub="humoer-og-vin" slug="humoer-hub" />
       <p className="mt-10 text-stone-700">
         Skal du købe en bestemt flaske? Se{" "}
         <Link href="/bedste-vine" className="text-rose-900 hover:underline">

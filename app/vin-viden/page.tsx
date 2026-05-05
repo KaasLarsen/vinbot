@@ -175,7 +175,7 @@ export default function VinVidenHubPage() {
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={2} />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-12" />
+      <PartnerAdsLeaderboard className="mt-12" hub="vin-viden" slug="vin-viden-hub" />
       <section className="mt-12 max-w-3xl space-y-4 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Sådan læser vi vin-viden</h2>
         <p>

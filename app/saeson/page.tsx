@@ -172,7 +172,7 @@ export default function SaesonHubPage() {
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-12" />
+      <PartnerAdsLeaderboard className="mt-12" hub="saeson" slug="saeson-hub" />
       <p className="mt-10 text-stone-700">
         Se også{" "}
         <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">

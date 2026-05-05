@@ -387,7 +387,7 @@ export default function RegionerHubPage() {
         </div>
       </section>
 
-      <PartnerAdsLeaderboard className="mt-16" />
+      <PartnerAdsLeaderboard className="mt-16" hub="regioner" slug="regioner-hub" />
 
       <p className="mt-10 text-stone-700">
         Udforsk også{" "}

@@ -113,7 +113,7 @@ export default function VinkoleskabePage() {
         </p>
       </section>
 
-      <PartnerAdsLeaderboard className="mt-14" />
+      <PartnerAdsLeaderboard className="mt-14" hub="mad-og-vin" slug="vinkoleskabe-hub" />
     </div>
   );
 }

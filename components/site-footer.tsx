@@ -77,6 +77,12 @@ export function SiteFooter() {
             <Link href="/rabatkoder" className="hover:text-rose-900">
               Rabatkoder
             </Link>
+            <Link href="/lauridsen-vine" className="hover:text-rose-900">
+              Lauridsen Vine (affiliate)
+            </Link>
+            <Link href="/den-sidste-flaske" className="hover:text-rose-900">
+              Den Sidste Flaske
+            </Link>
             <Link href="/vine" className="hover:text-rose-900">
               Vin-katalog
             </Link>

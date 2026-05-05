@@ -183,7 +183,7 @@ export default function MadOgVinHubPage() {
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-12" />
+      <PartnerAdsLeaderboard className="mt-12" hub="mad-og-vin" slug="mad-og-vin-hub" />
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>
         <p className="mt-4">
