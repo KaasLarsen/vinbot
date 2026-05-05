@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "vercel:secrets": "bash scripts/push-vercel-secrets.sh"
+    "vercel:secrets": "bash scripts/push-vercel-secrets.sh",
+    "gsc:vin-til-gap": "node scripts/vin-til-gsc-gap.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
