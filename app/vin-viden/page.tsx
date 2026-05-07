@@ -121,7 +121,9 @@ export default function VinVidenHubPage() {
             <Link href="/guides/hvor-mange-glas-i-en-flaske-vin" className="text-rose-900 hover:underline">glas i en flaske</Link>,{" "}
             <Link href="/guides/hvor-mange-enheder-alkohol-i-et-glas-vin" className="text-rose-900 hover:underline">genstande pr. glas</Link>,{" "}
             <Link href="/guides/hvor-meget-alkohol-i-vin" className="text-rose-900 hover:underline">alkoholprocent</Link> og{" "}
-            <Link href="/guides/hvor-meget-fylder-en-flaske-vin" className="text-rose-900 hover:underline">flaskestørrelser</Link>.
+            <Link href="/guides/hvor-meget-fylder-en-flaske-vin" className="text-rose-900 hover:underline">flaskestørrelser</Link>
+            . Til fest med mange gæster:{" "}
+            <Link href="/fest-og-vin" className="text-rose-900 hover:underline">vin til fest og selskab</Link>.
           </p>
         </div>
         <div className="rounded-lg border border-stone-200 bg-white p-5">
@@ -192,6 +194,10 @@ export default function VinVidenHubPage() {
           Skal vinen matches til en ret? Se{" "}
           <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
             mad og vin
+          </Link>
+          . Planlægger du fest med mange gæster? Se{" "}
+          <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+            fest og selskab
           </Link>
           . Leder du efter en konkret flaske? Gå til{" "}
           <Link href="/bedste-vine" className="text-rose-900 hover:underline">

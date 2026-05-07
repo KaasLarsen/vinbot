@@ -61,10 +61,14 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
         ,{" "}
         <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">
           humør &amp; stemning
-        </Link>{" "}
-        og{" "}
+        </Link>
+        ,{" "}
         <Link href="/saeson" className="text-rose-900 hover:underline">
           sæson
+        </Link>{" "}
+        og{" "}
+        <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+          fest og selskab
         </Link>{" "}
         for kuraterede udvalg.
       </p>

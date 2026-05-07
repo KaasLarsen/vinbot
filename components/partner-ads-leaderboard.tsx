@@ -52,6 +52,7 @@ const HUB_ROTATIONS: Record<string, BannerChoice[]> = {
   "vin-viden": [JOHNSEN, LAURIDSEN, DH],
   regioner: [LAURIDSEN, DH, JOHNSEN],
   saeson: [WINTHER, LAURIDSEN, DH],
+  "fest-og-vin": [WINTHER, LAURIDSEN, JOHNSEN],
   "humoer-og-vin": [WINTHER, LAURIDSEN],
   druesorter: [JOHNSEN, LAURIDSEN, WINTHER],
   "vine-katalog": [DSF, LAURIDSEN],

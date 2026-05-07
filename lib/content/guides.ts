@@ -203,6 +203,42 @@ export function listHumoerHubGuides(): GuideFrontmatter[] {
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
 }
 
+/** Kurateret rækkefølge — kun slug der findes på disk vises (ukendte slug springes over). */
+const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
+  "hvor-meget-vin-til-fest",
+  "hvor-meget-vin-til-bryllup",
+  "vin-til-konfirmation",
+  "vin-til-sommerbryllup",
+  "vin-til-studenterfest",
+  "vin-til-haveselskab",
+  "humoer-stemning-og-vin",
+  "sadan-serverer-du-vin",
+  "bobler-champagne-cava-prosecco-og-cremant",
+  "bedste-bobler",
+  "bedste-bobler-under-200-kr",
+  "bedste-champagne-under-300-kr",
+  "bobler-til-brunch",
+  "bedste-vin-til-gave",
+  "gavevin-sadan-vaelger-du-den-rigtige-flaske",
+  "bedste-vaertindegave-vin",
+  "vin-til-dessert-og-kransekage",
+  "vin-til-nytaar-og-nytaarsmenu",
+  "alkoholfri-vin-til-fest",
+  "hvor-mange-glas-i-en-flaske-vin",
+  "hvor-mange-enheder-alkohol-i-et-glas-vin",
+];
+
+/** Hub «Vin til fest og selskab»: mængder, begivenheder, bobler, gaver og planlægning. */
+export function listFestOgVinHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of FEST_OG_VIN_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));

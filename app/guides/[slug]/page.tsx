@@ -185,7 +185,11 @@ export default async function GuidePage({ params }: Props) {
           ,{" "}
           <a href="/humoer-og-vin" className="text-rose-900 hover:underline">
             humør og stemning
-          </a>{" "}
+          </a>
+          ,{" "}
+          <a href="/fest-og-vin" className="text-rose-900 hover:underline">
+            fest og selskab
+          </a>
           og{" "}
           <a href="/saeson" className="text-rose-900 hover:underline">
             sæson
@@ -216,6 +220,7 @@ function hubLabel(hub: string): string {
     "bedste-vine": "Bedste vine",
     "vin-viden": "Vin-viden",
     saeson: "Sæson",
+    "fest-og-vin": "Fest og selskab",
     druesorter: "Druesorter",
     regioner: "Regioner",
   };

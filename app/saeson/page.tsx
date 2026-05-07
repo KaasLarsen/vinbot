@@ -68,6 +68,14 @@ export default function SaesonHubPage() {
         <p>
           Sæsonguiderne her er skrevet med udgangspunkt i hvordan danskere faktisk drikker vin: hvad er der i butikkerne, hvad passer til den mad der serveres, og hvad gør en flaske fra 100 kr bedst mulig. Vi dækker både de klassiske danske højtider (jul, påske, nytår, Mortensaften, fastelavn) og de bredere sæsonskift (forår, sommer, efterår, vinter) med konkrete vinforslag til både hverdag og fest.
         </p>
+        <p>
+          Skal du{" "}
+          <strong className="font-medium text-stone-800">planlægge mængde og indkøb</strong> til konfirmation, bryllup eller stor fest — med flasker per gæst, bobler og budget — så er{" "}
+          <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+            hubben om vin til fest og selskab
+          </Link>{" "}
+          et godt startsted ved siden af sæsonperspektivet her.
+        </p>
       </section>
 
       <section className="mt-8 grid gap-4 md:grid-cols-2">
@@ -221,6 +229,10 @@ export default function SaesonHubPage() {
         ,{" "}
         <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
           grill og BBQ
+        </Link>
+        ,{" "}
+        <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+          fest og selskab
         </Link>{" "}
         og{" "}
         <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">

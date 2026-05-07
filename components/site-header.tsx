@@ -12,6 +12,7 @@ const nav: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/humoer-og-vin", label: "Humør & stemning" },
   { href: "/saeson", label: "Sæson" },
+  { href: "/fest-og-vin", label: "Fest & selskab" },
   { href: "/druesorter", label: "Druesorter" },
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },

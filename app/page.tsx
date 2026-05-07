@@ -26,7 +26,8 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/vin-viden", label: "Vin-viden" },
-  { href: "/saeson", label: "Sæson & fest" },
+  { href: "/fest-og-vin", label: "Fest & selskab" },
+  { href: "/saeson", label: "Sæson & højtider" },
   { href: "/guides", label: "Alle guides — søg og filtrér" },
   { href: "/guides/vin-til-konfirmation", label: "Konfirmation" },
   { href: "/guides/vin-til-studenterfest", label: "Studenterfest" },
@@ -144,7 +145,8 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
   {
     title: "Forår & sommer-fester — maj/juni",
     links: [
-      { href: "/saeson", label: "Hub: sæson & fest" },
+      { href: "/fest-og-vin", label: "Fest & selskab (hub)" },
+      { href: "/saeson", label: "Hub: sæson & højtider" },
       { href: "/guides/vin-til-konfirmation", label: "Vin til konfirmation" },
       { href: "/guides/vin-til-studenterfest", label: "Vin til studenterfest" },
       { href: "/guides/vin-til-mors-dag", label: "Vin til mors dag" },
@@ -445,7 +447,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
       <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
-      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
@@ -468,11 +470,22 @@ export default async function HomePage({ searchParams }: HomeProps) {
           <p className="mt-2 text-stone-600">Hygge, fest, romantik og hverdag — sådan vælger du stil, bobler og stemning.</p>
         </Link>
         <Link
+          href="/fest-og-vin"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Fest &amp; selskab</h3>
+          <p className="mt-2 text-stone-600">
+            Hvor meget vin per gæst, konfirmation og bryllup, bobler til velkomst, gaver og alkoholfri til blandet selskab.
+          </p>
+        </Link>
+        <Link
           href="/saeson"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >
-          <h3 className="text-lg font-semibold text-stone-900">Sæson & fest</h3>
-          <p className="mt-2 text-stone-600">Konfirmation, studenterfest, mors/fars dag, haveselskab, bryllup, jul og nytår — vin til alle årets lejligheder.</p>
+          <h3 className="text-lg font-semibold text-stone-900">Sæson &amp; højtider</h3>
+          <p className="mt-2 text-stone-600">
+            Jul, påske, nytår, grill, sommer og klassisk dansk mad — vin til årets gang og vejr.
+          </p>
         </Link>
         <Link
           href="/vin-viden"
