@@ -12,7 +12,11 @@ const VIDEN_PREFIXES = [
   "hvordan-",
   "sadan-",
 ] as const;
-const VIDEN_SLUGS = new Set<string>(["kan-vin-blive-daarlig"]);
+const VIDEN_SLUGS = new Set<string>([
+  "kan-vin-blive-daarlig",
+  "vivino-app-til-vin-anmeldelser",
+  "hvilken-vin-til-madlavning-sovs",
+]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */
 const MAD_EXTRA_SLUGS = new Set<string>([
@@ -48,6 +52,7 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
   "sadan-laeser-du-vinflaskens-etiket",
   "vin-begreber-i-praksis",
   "koeb-vin-online-sadan-holder-du-styr-paa-det",
+  "vin-graensehandel-for-danskere",
   "gavevin-sadan-vaelger-du-den-rigtige-flaske",
   "alkoholsvag-og-alkoholfri-vin",
   "bobler-champagne-cava-prosecco-og-cremant",

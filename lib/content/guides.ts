@@ -53,7 +53,10 @@ const VIDEN_SLUG_PREFIXES: readonly string[] = [
   "sadan-",
 ];
 
-const VIDEN_EXTRA_SLUGS = new Set<string>(["kan-vin-blive-daarlig"]);
+const VIDEN_EXTRA_SLUGS = new Set<string>([
+  "kan-vin-blive-daarlig",
+  "hvilken-vin-til-madlavning-sovs",
+]);
 
 function isVidenGuide(slug: string): boolean {
   return VIDEN_EXTRA_SLUGS.has(slug) || VIDEN_SLUG_PREFIXES.some((p) => slug.startsWith(p));

@@ -39,6 +39,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hvilken-vin-til-madlavning-sovs") {
+    return {
+      q: "merlot gamay rhône chianti sauvignon blanc riesling madlavning sovs",
+      max: 100,
+      label: "vin til madlavning og sovs",
+    };
+  }
+
   const m = slug.match(/^bedste-(.+?)-under-(\d+)-kr$/);
   if (m) {
     const cat = m[1];

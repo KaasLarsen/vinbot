@@ -17,6 +17,28 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Kraftige tanniner og høj alkohol konkurrerer med soja, wasabi og delikat fisk og kan føles bittert eller dominerende. Sushi har typisk brug for friskhed og syre frem for struktur fra grove tanniner.",
     },
   ],
+  "vin-til-svinekoed": [
+    {
+      question: "Hvilken vin til svinemørbrad eller mørbrad?",
+      answer:
+        "Mager udgæring som mørbrad ligner kylling i vinlogik: chardonnay med friskhed (Chablis, Mâcon), grüner veltliner, chenin sec, tør rosé eller let pinot noir/gamay køligt serveret. Tung ung cabernet overdøver ofte kødet.",
+    },
+    {
+      question: "Passer rødvin til svinekød?",
+      answer:
+        "Ja til nakke, grill og BBQ: gamay, sangiovese, grenache-blends, primitivo eller zinfandel til sød marinade. Til magert snit og citron-urter er let rød eller syrlig hvid ofte bedre end meget tanninrigid rød.",
+    },
+    {
+      question: "Hvilken vin til dansk flæskesteg og brun sovs?",
+      answer:
+        "Se vin til flæskesteg-guiden: typisk mellemfyldig rød med syre og moden frugt — pinot noir, gamay, sangiovese eller lignende — så salt og sød sovs ikke får vinen til at føles tom eller bitter.",
+    },
+    {
+      question: "Hvilken vin til glaseret skinke?",
+      answer:
+        "Honning- eller sirupglaseret skinke er salt kød med sød overflade — vælg vin med god syre og moden frugt: gamay, pinot noir, lettere Rhône eller sangiovese; halvtør riesling eller fyldig aromatisk hvid kan også passe. Meget unge, grove tanniner kan blive hårde mod sød glasur.",
+    },
+  ],
   "opbevaring-af-vin-temperatur-og-aabnet-flaske": [
     {
       question: "Hvilken temperatur skal rødvin have?",
@@ -97,6 +119,21 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Ja — især spanske eller mere frugt-dyb rosé til chorizo, ost og grøntsager. Kombinér evt. med bobler eller sherry til de salteste og fede bidder.",
     },
+    {
+      question: "Er cava eller bobler godt til tapas?",
+      answer:
+        "Ja — brut nature cava, cremant eller champagne med syre renser ganen mellem salt skinke, ost og oliven og er et af de mest fleksible ét-flaske-valg til blandet tapas.",
+    },
+    {
+      question: "Hvilken spansk vin til tapas?",
+      answer:
+        "Region-match fungerer ofte: ung Rioja eller anden tempranillo let afkølet, grenache-baseret rød eller rosé fra nordøst, albariño eller verdejo til fisk og skaldyr, samt fino eller manzanilla sherry til salt og nødder.",
+    },
+    {
+      question: "Hvilken hvidvin til tapas med ost?",
+      answer:
+        "Salt og fed ost: albariño, verdejo eller syrlig hvid rioja; til milde oste også let sherry eller bobler. Meget blød, lavsyret hvid kan virke flad mod salt.",
+    },
   ],
   "vin-til-krydret-og-staerk-mad": [
     {
@@ -115,6 +152,62 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Capsaicin forstærker alkohol og tanniner; knastør rød uden frugt føles ofte strammere. Køligere servering, lavere alkohol og mere syre eller mild sødme balancerer bedre.",
     },
   ],
+  "vin-til-kylling-og-lyst-koed": [
+    {
+      question: "Hvilken rødvin passer til kylling?",
+      answer:
+        "Pinot noir, gamay fra Beaujolais eller lettere sangiovese/chianti med moderat tannin — serveret lidt køligt ved behov. Undgå unge, meget kraftige tanninrige røde til magert kyllingebryst uden kraftig sauce.",
+    },
+    {
+      question: "Hvilken hvidvin til kylling?",
+      answer:
+        "Klassisk ovnstegt med fløde eller ost: moden eller fadlagret chardonnay. Med citron og urter: chablis, sauvignon blanc eller grüner veltliner. Bobler fungerer også til fest og til lettere tilberedning.",
+    },
+    {
+      question: "Hvad drikker man til grillkylling?",
+      answer:
+        "Rosé med syre, Beaujolais-Villages eller pinot gris til mild grill; ved BBQ-glaze, røg og krydderi kan primitivo, zinfandel eller rhône-lignende rød med moden frugt fungere bedre end knastør hvid.",
+    },
+    {
+      question: "Hvilken vin til kylling i karry eller risotto?",
+      answer:
+        "Til krydderi, kokos og varme i karry og lign.: halvtør eller feinherb riesling, gewürztraminer eller aromatisk gris/pinot gris. Til ristaffel og mild curry hjælper restsødme eller moden frugt. Risotto med parmesan vil typisk have tør hvid eller lettere rød i panden — se vin til risotto.",
+    },
+  ],
+  "vin-til-koldskaal": [
+    {
+      question: "Hvilken vin til koldskål?",
+      answer:
+        "Bobler eller halvsøde hvide med restsødme passer bedst til vanilje og kammerjunkere end knastør brut: fx moscato d'Asti, asti, demi-sec bobler eller halvtør riesling/vouvray demi-sec — koldt serveret.",
+    },
+    {
+      question: "Hvorfor smager brut champagne sur til koldskål?",
+      answer:
+        "Skålen har typisk mere sødme og cremet vanilje end man husker; en meget tør vin kan opleves skarp. Vælg lidt sødme eller frugtrig mousserende, eller spæd med et dessertglas halvsødt.",
+    },
+    {
+      question: "Kan man drikke rødvin til koldskål?",
+      answer:
+        "Sjældent førstevalg — der er ikke proteinfedme der blødgør tanniner. Hold dig til frisk hvid med lidt sødme eller mousserende.",
+    },
+  ],
+  "vin-til-laks": [
+    {
+      question: "Hvilken vin til grillet laks?",
+      answer:
+        "Tør riesling, mineral sauvignon (Sancerre), fyldig rosé fra Provence eller Bandol, fadlagret chardonnay med friskhed eller let pinot noir — grill intensiverer smagen, så undgå helt flade hvide uden syre.",
+    },
+    {
+      question: "Passer rosé til laks?",
+      answer:
+        "Ja — især dybere tør rosé med struktur til grillet eller marineret laks; lys provence-rosé fungerer til lettere tilberedning.",
+    },
+    {
+      question: "Hvilken vin til røget laks?",
+      answer:
+        "Syrlig hvid med røg-tolerance: muscadet, assyrtiko, alsace riesling eller champagne brut NV; undgå meget sød vin til salt røg.",
+    },
+  ],
   "vin-til-paaske-og-paaskefrokost": [
     {
       question: "Hvilken vin til påskefrokost?",
@@ -130,6 +223,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Passer rødvin til påskens pålæg?",
       answer:
         "Salt pålæg og fisk fylder først: start med bobler eller hvid. Gem rødvin til lam og oste senere — så undgår du tannin mod salt fisk.",
+    },
+  ],
+  "vin-til-salat": [
+    {
+      question: "Hvilken vin til sommersalat?",
+      answer:
+        "Dressingen bestemmer: syrlig vinaigrette kræver sauvignon, verdejo, pinot grigio eller tør rosé med bid; fed avocado eller ost kan bære lettere rød som gamay.",
+    },
+    {
+      question: "Hvilken vin til cæsarsalat?",
+      answer:
+        "Chardonnay med syre, crémant eller kropsrig tør rosé til parmesan, ansjos og bacon — undgå blød lavsyret hvid alene mod syrlig dressing.",
+    },
+    {
+      question: "Kan man drikke rødvin til salat?",
+      answer:
+        "Ja hvis salaten har bacon, tun, grillkylling eller ost der giver fedme — vælg let gamay eller pinot og undgå grove tanniner til ren citron-salat.",
     },
   ],
   "vin-til-dessert-og-kransekage": [
@@ -165,6 +275,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Brug søgningen på forsiden for forslag fra danske forhandlere, og dyk ned i Vinbots korte guides (fx pizza, sushi, grill) samt vinregionerne for lande og zoner. Tjek altid pris, årgang og levering hos forhandleren.",
     },
+    {
+      question: "Hvad er en vin til mad guide?",
+      answer:
+        "En samlet forklaring på hvordan syre, sødme, tanniner og alkohol spiller sammen med fedme og krydderi — plus henvisning til konkrete guides og søgning. Vinbots komplet guide til vin og mad er skrevet til netop det overblik.",
+    },
   ],
   "vin-begreber-i-praksis": [
     {
@@ -198,6 +313,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvordan påvirker varme og frost forsendelse af vin?",
       answer:
         "Sommer: undgå at lade kassen stå i varm bil; vælg kølig levering eller pakkeshop. Vinter: hård frost kan skade flasker — gode forhandlere udskyder forsendelse. Bestil i god tid før jul og påske.",
+    },
+    {
+      question: "Hvor finder jeg vin på tilbud eller rødvin tilbud?",
+      answer:
+        "Brug Vinbots søgning på konkret vin eller område og sammenlign listepriser på tværs af danske forhandlere; tilføj nyhedsbreve fra få udvalgte butikker for kampagner. Budgetguides som bedste rødvin under 100 kr forklarer typiske kasse-rabatter.",
+    },
+    {
+      question: "Er den billigste rødvin på tilbud altid den bedste handel?",
+      answer:
+        "Ikke nødvendigvis — lav pris kan skyldes årgang, restparti eller kort holdbarhed. Tjek årgang, beskrivelse og om vinen passer til dit formål (hverdag vs gave); mistænkeligt lave priser på dyre navne kræver ekstra verifikation.",
     },
   ],
   "bobler-champagne-cava-prosecco-og-cremant": [
@@ -250,6 +375,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Mange naturvine er følsomme over for varme og ilt. Køl efter åbning og drik ofte inden for kortere tid end konventionelle vine; se guiden om opbevaring og temperatur.",
     },
+    {
+      question: "Hvilken mad passer til naturvin?",
+      answer:
+        "Start som ved al vin med salt, fedme og syre — funky eller oxidative naturvine trives ofte til charcuteri, ost, delevenlig bistro-mad og surdejspizza. Meget udadvendte flasker har typisk brug for mere direkte smag i tallerkenen end fine saucer; se naturvin-guidens afsnit om mad.",
+    },
   ],
   "vin-til-grill-og-bbq": [
     {
@@ -266,6 +396,43 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvad drikker man til kylling og grøntsager på grill?",
       answer:
         "Rosé, grenache, pinot noir eller fyldig hvid (viognier, moden chardonnay) til marinader med citron, urter eller yoghurt — ofte nemmere end tung rød.",
+    },
+    {
+      question: "Hvilken vin til grillmad?",
+      answer:
+        "Start med alsidige vine med syre og moden frugt: tør rosé, gamay, grenache-blends eller afkølet tempranillo til blandet grill; zinfandel, shiraz eller primitivo til sød BBQ og marinade. To flasker dækker ofte fisk og kød bedre end én ekstrem tung rød.",
+    },
+    {
+      question: "Vin til grillbøf med BBQ?",
+      answer:
+        "Sød marinade kræver frugtrig rød med moderat tannin: zinfandel, australsk shiraz, primitivo eller malbec. Mager bøf uden sød sauce kan tåle mere syre — fx rhône-blend eller moden rioja.",
+    },
+    {
+      question: "Hvilken vin til grillpølser?",
+      answer:
+        "Saftige hverdagsrøde med lav bitterhed: primitivo, dolcetto, Chianti, dornfelder eller grenache-blend — gerne lidt køligt serveret. Ved sødt tilbehør eller BBQ-dyp vælg mere frugt som ved grill og BBQ-guidens sauce-afsnit.",
+    },
+    {
+      question: "Hvilken vin til grillede grøntsager?",
+      answer:
+        "Tør rosé, gamay, sauvignon blanc eller chenin til grøntsagsspyd og halloumi — se vin til grillet grønt for konkrete par til aubergine, squash og urter.",
+    },
+  ],
+  "vin-til-oksekoed": [
+    {
+      question: "Hvilken vin passer til oksekød?",
+      answer:
+        "Som udgangspunkt rødvin med struktur og mørk frugt: cabernet sauvignon, bordeaux-lignende blends, malbec, syrah/shiraz eller moden tempranillo. Magert okse kan også fungere med pinot noir, gamay eller sangiovese med god syre.",
+    },
+    {
+      question: "Er vin til oksekød og vin til bøf det samme?",
+      answer:
+        "Ofte ja til stege- og grillretter — oksekød og bøf deler tannin-logikken. Til simreretter, rig tomatsovs eller sød fond er guiden til oksekød i sauce og gryderet mere præcis end en ren bøf-guide.",
+    },
+    {
+      question: "Hvilken temperatur skal rødvin til oksekød have?",
+      answer:
+        "Mellemfyldig til kraftig rød typisk 16–18 °C; lettere rød til magert kød omkring 14–16 °C. Undgå kamvarmt og undgå iskoldt til fede snit.",
     },
   ],
   "vin-til-ost-og-ostebord": [
@@ -317,6 +484,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — tørre bobler med syre (cremant, cava, prosecco extra brut, lambrusco secco) skærer igennem salt ost og matcher tomat; de er særligt oplagt til sprød bund og hygge.",
     },
   ],
+  "vin-til-lasagne": [
+    {
+      question: "Hvilken rødvin til pasta bolognese?",
+      answer:
+        "Italiensk hverdagsrød med god syre: Chianti Classico og anden sangiovese, barbera eller montepulciano d'Abruzzo. Syren skærer tomatsauce og fed ost; undgå flad, meget alkoholstærk rød uden friskhed.",
+    },
+    {
+      question: "Er vin til lasagne og bolognese det samme?",
+      answer:
+        "Ofte ja i praksis — begge har tomat, kød og umami. Lasagne tilføjer bechamel og mere ost, hvilket kan favorisere lidt mere struktur; samme druer og stilarter virker typisk.",
+    },
+    {
+      question: "Kan man drikke hvidvin til lasagne?",
+      answer:
+        "Sjældent førstevalg til klassisk kød-tomat-béchamel, men fyldig hvid med syre kan fungere til lettere vegetarlasagne eller hvid lasagne — ellers foretrækkes syrlig rød eller rosé til blandet bord.",
+    },
+  ],
   "vinkoleskabe-sadan-vaelger-du": [
     {
       question: "Skal jeg vælge integrerbart eller fritstående vinkøleskab?",
@@ -332,6 +516,32 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvor finder jeg vinkøleskabe med pris og billede?",
       answer:
         "På vinbot.dk/vinkoleskabe kan du søge på tværs af produktfeeds med billede og pris, blandt andet hos Vinkøleskabet.dk (partner). Du klikker videre til forhandleren for endelig pris, mål og levering.",
+    },
+  ],
+  "vin-til-boeff": [
+    {
+      question: "Hvilken vin til bearnaise eller bearnaisesovs?",
+      answer:
+        "Bearnaise er fed og syrlig — vælg enten fyldig hvid med syre og fad (moden chardonnay, rhône-hvid, moden hvid Rioja) eller struktureret rød med tannin og syre (modent Bordeaux-blend, Rioja Reserva eller barolo/nebbiolo med luft). Meget blød lavsyret rød forsvinder ofte i saucen.",
+    },
+    {
+      question: "Hvilken vin til rødvinssauce på tallerkenen?",
+      answer:
+        "Moden frugt og god syre i glasset: Rhône-syrah, Ribera del Duero, Chianti Classico eller lignende mellemfyldig rød. Det matcher den reducerede sauce bedre end knastør tannin uden frugt. Til vin der skal i sovsen under madlavning, se madlavningsguiden.",
+    },
+  ],
+  "vin-til-flaesketesteg": [
+    {
+      question: "Hvilken vin til brun sovs?",
+      answer:
+        "Brun sovs kræver typisk mellemfyldig rød med moden frugt og syre — gamay, pinot noir, sangiovese, grenache-blends eller Rioja — så salt, sødme og umami ikke gør vinen bitter eller tom. Undgå unge tanninbomber uden frugt. Pinot gris, gewürztraminer eller moden chardonnay kan fungere som hvid linje.",
+    },
+  ],
+  "vin-til-gryderet": [
+    {
+      question: "Hvilken vin til morkelsovs eller kantarelsovs?",
+      answer:
+        "Luksus-svampe kalder på pinot noir, moden gamay eller tilgængelig nebbiolo/barolo-stil med luft; fadlagret chardonnay med syre til cremet svampesauce. Undgå knastør rød uden moden frugt når saucen er koncentreret og sød. Til port eller vin i panden, se madlavningsguiden og port-guiden.",
     },
   ],
   "vin-til-fastelavn": [
@@ -610,6 +820,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Rejer er sarte i smagen; grove tanniner og meget høj alkohol uden frugtfriskhed kan føles bittert eller dominerende sammen med salt og fedme — syren i hvid og bobler matcher ofte bedre.",
     },
+    {
+      question: "Hvilken vin til stjerneskud eller rejemad?",
+      answer:
+        "Samme som klassisk rejemad: muscadet, chablis, Sancerre eller cremant/champagne til citron og mayo — høj syre og mineralitet. Se også vin til smørrebrød for brød-formatet.",
+    },
   ],
   "vin-til-tacos": [
     {
@@ -712,6 +927,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "bedste-vin-til-gave": [
+    {
+      question: "Hvad koster en god flaske vin?",
+      answer:
+        "I Danmark er ca. 70–120 kr et realistisk udgangspunkt for en præsentabel værtsgave på kampagnepris; 120–200 kr giver ofte tydelig kvalitet og oprindelse; 200–400 kr til champagne NV eller klassiske ikoner; derover til særlige lejligheder. Sammenlign altid samme vin på tværs af forhandlere via Vinbot før du betaler fuld pris.",
+    },
     {
       question: "Hvad er en sikker gavevin?",
       answer:
@@ -901,21 +1121,128 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis du grillet kraftigt kød (lam, entrecôte, merguez). Bandol har mourvèdre-base, med mere tannin og struktur end typisk Provence-rosé. Til lettere grillret (fisk, kylling) er Bandol ofte overkill.",
     },
   ],
+  "rosevin-til-mad-og-sommer": [
+    {
+      question: "Hvad er god mad til rosévin?",
+      answer:
+        "Nem sommermad med salt og friskhed: tapas, terrasse-hapsere, grillkylling, salat, laks, rejer og pizza. Vælg tør syrlig rosé til let fisk og salat; mørkere rosado eller Tavel til grill og krydderi.",
+    },
+    {
+      question: "Rosé til tapas — hvilken flaske?",
+      answer:
+        "Ofte tør Provence- eller Languedoc-rosé med høj syre som én-flaske-løsning; ved meget kød og chorizo kan dybere spansk rosado eller rhône-rosé fungere bedre.",
+    },
+    {
+      question: "Rosévin til grillmad og grillkylling?",
+      answer:
+        "Grill og marinade elsker ofte mere frugt og krop: tavel, rosado eller kraftigere provence; til mager urte-kylling kan lys tør rosé stadig være rigtig.",
+    },
+    {
+      question: "Hvilke hapsere til rosé på terrassen?",
+      answer:
+        "Saltede mandler, chips, oliven, skinke, melon med parmaskinke, bruschetta — roséens syre skærer fedme; undgå søde blush-roséer til klart salt mad.",
+    },
+    {
+      question: "Rosévin til laks?",
+      answer:
+        "Tør mineral rosé fra Provence eller Loire til ovnbagt og koldrøget laks; ved grillet laks kan rosé med lidt mere krop være god.",
+    },
+    {
+      question: "Rosé til salat eller cæsarsalat?",
+      answer:
+        "Vælg tør rosé med tydelig syre til sur dressing; til cæsar med bacon og ost kan mellemkraftig rosé eller let rød også passe.",
+    },
+    {
+      question: "Rosé til rejer og skaldyr?",
+      answer:
+        "Lys tør rosé med syre til kolde rejer og sommerskaldyr; lidt fyldigere rosé til varme hvidløgs- eller krydrede retter.",
+    },
+    {
+      question: "Rosé til pizza?",
+      answer:
+        "Ofte bedre end tung rød i sommervarme: italiensk rosato, tør sydfransk rosé eller lambrusco rosato secco til tomat og ost.",
+    },
+    {
+      question: "Rosé til krydret eller asiatisk mad?",
+      answer:
+        "Frugtrig rosé med lav bitterhed og moderat alkohol; lidt restsødme kan hjælpe til chili — meget tør hård rosé til stærk chili kan føles skarp.",
+    },
+    {
+      question: "Hvilken rosé er bedst til mad?",
+      answer:
+        "Til lettere sommermad og salat: tør rosé med bid. Til grill og fed ost: mørkere mad-rosé som Tavel, Bandol eller spansk rosado — se rosé til grill-guiden.",
+    },
+    {
+      question: "Vin til jordbær med fløde?",
+      answer:
+        "Halvsøde eller frugtrige bobler (fx moscato d'Asti, asti, demi-sec), mild halvsød hvid eller aromatisk rosé — knastør brut kan smage sur mod søde bær og fløde; samme princip som vin til koldskål.",
+    },
+    {
+      question: "Er Provence-rosé altid rigtig til grill?",
+      answer:
+        "Den lyse tørre Provence-stil er alsidig til fisk og grønt, men kan virke for slank til sød BBQ og grove pølser — vælg dybere rosé eller let afkølet rød når menuen er tung.",
+    },
+  ],
   "champagne-til-mad": [
+    {
+      question: "Hvorfor smager brut Champagne sur til kransekage?",
+      answer:
+        "Kagen er typisk sødere end vinen; restsødme i glasset virker mindre ved dessert. Brut champagne kan derfor opleves skarp og tom — vælg demi-sec, doux eller anden sød boble til kagelinjen, og behold brut til maden.",
+    },
+    {
+      question: "Champagne til nytår — hvilken flaske hvornår?",
+      answer:
+        "Brut eller brut nature til velkomst, snacks og de fleste salte/forrets-retter; blanc de blancs til østers og fisk; blanc de noirs eller vintage til kylling og kraftigere hovedret; demi-sec eller dessertbobler til kransekage — se også vin til nytår-menu.",
+    },
+    {
+      question: "Mad til champagne-smagning — hvad serverer man?",
+      answer:
+        "Små saltede bidder: chips, nødder, skinke, oliven, butterdej-snacks eller ost — champagnens syre skærer fedme og løfter salt.",
+    },
+    {
+      question: "Passer champagne til sushi?",
+      answer:
+        "Ofte ja: bobler og høj syre renser ganen og matcher fed fisk; vælg en elegant brut frem for tung toast-domineret stil til delikat fisk.",
+    },
+    {
+      question: "Hvilken champagne til østers?",
+      answer:
+        "Blanc de blancs med mineralitet og syre er klassikeren; mange brut NV med god finesse fungerer også.",
+    },
+    {
+      question: "Champagne til caviar eller stenbiderrogn?",
+      answer:
+        "Det salte og cremede elsker stram syre og struktur — blanc de blancs eller fin brut NV; samme logik til stenbiderrogn i sæson.",
+    },
+    {
+      question: "Champagne til hummer og skaldyr?",
+      answer:
+        "Blanc de blancs eller fyldigere champagne med fad/discipline til smør og fond; brut rosé kan også fungere til kraftigere skaldyrsretter.",
+    },
+    {
+      question: "Champagne til tapas?",
+      answer:
+        "Versatile brut eller blanc de blancs til blandet bord med salt og fedme; meget krydret eller sød sauce kan kræve frugtrigere stil.",
+    },
+    {
+      question: "Passer champagne til chips?",
+      answer:
+        "Ja — salt og fedme i chips eller pommes frites matcher bobler og syre godt i casual og gourmet-format.",
+    },
+    {
+      question: "Champagne til kylling?",
+      answer:
+        "Blanc de noirs eller mere kropsrig champagne passer ofte til ovnstegt eller paneret kylling og cremet sauce; blanc de blancs til lettere fjerkræ.",
+    },
     {
       question: "Kan champagne serveres til hele måltidet?",
       answer:
-        "Ja — champagne er en af gastronomiens mest alsidige vine. Blanc de blancs passer til fisk og skaldyr; blanc de noirs og vintage til kød og kraftigere retter. Den franske tradition serverer ofte champagne gennem hele måltidet — ikke kun som aperitif.",
-    },
-    {
-      question: "Hvilken champagne passer bedst til østers?",
-      answer:
-        "Blanc de blancs (100 % chardonnay) er det klassiske match. Den høje syre, mineralitet og kridt-toner komplementerer østerens salte friskhed. Non-vintage blanc de blancs fra Taittinger eller Nicolas Feuillatte i 250–300 kr-klassen fungerer fremragende.",
+        "Ja — Frankrig gør det tit med logiske skift: brut til salt og fedme, sødere boble til dessert om nødvendigt.",
     },
     {
       question: "Hvornår er champagne forkert valg til mad?",
       answer:
-        "Til meget krydrede retter (thai, indisk curry) — her slår off-dry riesling champagne. Til stor tanninrig kødret (grillet ribeye) er klassisk rødvin bedre. Og til meget søde desserter er sødvin eller dessertvin mere passende end tør champagne.",
+        "Massiv chili og krydderi, eller ekstremt tunge tannin-kød uden pause til lys vin — samt sød dessert med knastør brut uden at skifte flaske eller dosage.",
     },
   ],
   "bobler-til-brunch": [
@@ -1071,6 +1398,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Brut har under 12 g/l restsukker (tørrest). Extra Dry har faktisk 12–17 g/l (let sødere, mest solgt). Dry har 17–32 g/l. Navnene er forvirrende — Brut er den tørreste stil. Kig efter Brut hvis du vil have ren, tør boble.",
     },
   ],
+  "bedste-box-vin": [
+    {
+      question: "Hvad er papvin?",
+      answer:
+        "Papvin er almindelig dansk betegnelse for bag-in-box: vin i en pose med taphane i en karton, typisk 3 liter. Samme format som boxvin — god til lav pris pr. liter og lang holdbarhed efter åbning.",
+    },
+    {
+      question: "Hvor finder jeg bedste papvin tilbud?",
+      answer:
+        "Sammenlign konkrete mærker og årgange på tværs af forhandlere via Vinbot og hold øje med kasse-kampagner; box holder sig uåbnet længe, så du kan hamstre ved reelle tilbud uden at skynde dig at drikke alt på én gang.",
+    },
+    {
+      question: "Er papvin dårligere end flaskevin?",
+      answer:
+        "Ikke i samme prisleje — moderne box kan matche eller slå glasflasker pr. liter i hverdagssegmentet. Prestige- og lagringsvine findes sjældent i box; til fest og gave er glas ofte bedre.",
+    },
+  ],
   "bedste-cava-under-150-kr": [
     {
       question: "Hvad er den bedste cava under 150 kr?",
@@ -1148,6 +1492,26 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Cirka 1/3 af alkoholisk vin, typisk 15–25 kcal per 100 ml mod 70–85 kcal. Tjek etiket — nogle alkoholfri vine har tilsat sukker for at kompensere for tabt krop.",
     },
+    {
+      question: "Hvad er god alkoholfri vin til mad?",
+      answer:
+        "Vælg produkter med klar syre og frugt — bobler og friske hvide bærer måltidet bedst; alkoholfri rød kræver oftere fed sauce eller ost. Brug samme logik som ved rigtig vin og tilpas til retten; se oversigten i bedste alkoholfri vin samt de dedikerede guides til hvid og bobler.",
+    },
+    {
+      question: "Findes der alkoholfri vin bedst i test?",
+      answer:
+        "Der er ikke ét officielt dansk test-resultat der dækker hele hylden — men Leitz Eins-Zwei-Zero, Giesen 0 %, Torres Natureo, Noughty og French Bloom går igen som reference i handler og blindsmagninger netop fordi de har syre og vin-præg frem for ren sukker. Brug Vinbots søgning til at sammenligne priser på samme navn.",
+    },
+    {
+      question: "Hvilken alkoholfri vin til julemad og flæskesteg?",
+      answer:
+        "Bobler og friske hvide til julefrokost og fisk; til hovedret typisk alkoholfri pinot-lignende til and og blødere garnacha-rød til flæsk og brun sovs — suppler med mousserende hvis rødvinen opleves tynd. Konkrete mærker og menu: alkoholfri vin til jul-guiden og vin til julemad om sovs og sødme.",
+    },
+    {
+      question: "Hvilken alkoholfri vin til tapas?",
+      answer:
+        "Rosé uden alkohol dækker ofte både skinke, ost og grønt; alkoholfri bobler passer til oliven, fritter og skaldyr og renser ganen mellem småretter. Se bedste alkoholfri rosé og bobler-guiden for konkrete flasker.",
+    },
   ],
   "vin-til-stegt-flaesk": [
     {
@@ -1164,6 +1528,18 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Passer rødvin til stegt flæsk og kartofler?",
       answer:
         "Ja — vælg let til mellemfyldig rød med moden frugt og lav/mellem tannin (fx gamay, pinot noir, lettere sangiovese). Meget ung bordeaux-agtig tannin kan føles hård mod både salt og sødlig sovs.",
+    },
+  ],
+  "hvor-laenge-holder-aabnet-vin": [
+    {
+      question: "Hvor længe kan åbnet vin holde sig?",
+      answer:
+        "Med prop i køleskab: ofte 2-4 dage for let hvid og rosé, 4-6 for fyldig hvid, 2-4 for let rød, 4-7 for kraftig ung rød, 1-3 for champagne og bobler med god prop. Boxvin kan holde uger i posen. Se pillar-guiden og de dedikerede artikler for rød, hvid og bobler.",
+    },
+    {
+      question: "Skal åbnet rødvin stå i køleskabet?",
+      answer:
+        "Ja. Kulden bremser oxidation. Tag flasken ud 15-20 minutter før næste servering hvis du vil have den lidt mindre kold.",
     },
   ],
   "hvor-laenge-holder-rodvin": [
@@ -1254,6 +1630,43 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilke druer har mest tannin?",
       answer:
         "Nebbiolo (Barolo), tannat (Madiran), cabernet sauvignon, syrah/shiraz og malbec er høj-tannin-druer. Pinot noir, gamay og grenache er lav-tannin. Tynde drueskaller giver lav tannin; tykke giver høj.",
+    },
+  ],
+  "sadan-bruger-du-vin-til-sauce-og-simren": [
+    {
+      question: "Hvilken hvidvin til madlavning?",
+      answer:
+        "Vælg tør hvid med ren syre og klare smagsnoter: billig sauvignon blanc, tør riesling, pinot grigio eller unoaked chardonnay til risotto, fiskefond og flødesauce. Undgå gule madlavningsflasker der smager salt og bittert ved reduktion — brug rigtig vin eller rest fra glasset.",
+    },
+    {
+      question: "Skal madlavningsvin være dyr?",
+      answer:
+        "Nej — den skal være drikkelig nok til ikke at give fejlsmag, men prestige er spildt i gryden. Brug hyldevin du kan tåle en slurk af, eller restvin fra køleskab der stadig dufter frisk.",
+    },
+    {
+      question: "Hvilken rødvin i simreret og kødsovs?",
+      answer:
+        "Ung chianti, montepulciano, enkel côtes du rhône eller moden rioja til lang simring — tanniner blødgøres over tid. Meget stram ung bordeaux i korte saucer kan kræve længere kogning eller spædning.",
+    },
+    {
+      question: "Kan man bruge alkoholfri vin til madlavning?",
+      answer:
+        "Ja til deglasering og saucer — der er næsten ingen alkohol at dampe væk, men smagen kan være tynd; kompenser med fond, løg, tomat eller lidt syre. Druemost alene giver ofte for meget sødme uden vinens bid. Vælg en alkoholfri der smager ren fra glasset, eller se Vinbots guides til alkoholfri hvid og rød.",
+    },
+    {
+      question: "Hvilken rødvin til rødvinssauce?",
+      answer:
+        "Brug drikkelig hyldevin med ren frugt og ikke overdrevet fad: ung sangiovese/Chianti, Côtes du Rhône, Rioja Joven eller Crianza, gamay eller montepulciano. Syre holder sovsen frisk; meget stram ung cabernet kan kræve længere simring eller spædning. Dyrt behøves sjældent til lang reduktion.",
+    },
+    {
+      question: "Hvad kan erstatte hvidvin i sovs?",
+      answer:
+        "Citronsaft eller lys eddike spædet med vand, fond eller bouillon giver syren vin ville bidrage med — start med det halve og smag. Undgå mørk balsamico i lyse saucer medmindre opskriften vil have den. Ekstra fond og smør kan bygge dybde uden vin.",
+    },
+    {
+      question: "Ruby eller tawny portvin til svampesovs?",
+      answer:
+        "Ruby, reserve ruby eller LBV giver mørk bærfrugt og frisk kraft i kød- eller viltsauce med svamp. Tawny giver mere nød og karamel og passer ofte bedre til cremet eller langt reduceret sauce. Brug små mængder og smag til — se også bedste portvin og madlavningsguiden.",
     },
   ],
   "sadan-dekanterer-du-vin": [
@@ -1545,6 +1958,28 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Rødvin typisk 6-36 måneder, op til 60 måneder for top som Brunello Riserva og Rioja Gran Reserva. Hvidvin 4-18 måneder. Længere fadlagring betyder ikke altid bedre vin — balancen mellem frugt, fad og struktur er nøglen.",
     },
   ],
+  "hvilken-vin-til-madlavning-sovs": [
+    {
+      question: "Hvilken vin skal i sovsen?",
+      answer:
+        "Brug vin du kan drikke fra glasset uden fejl: til rødvinssauce typisk merlot, gamay, sangiovese eller Rhône-blend med moden frugt; til lyse saucer og risotto tør sauvignon blanc, pinot grigio eller tør riesling med god syre. Undgå defekt vin og meget grove tanniner i korte reduktioner.",
+    },
+    {
+      question: "Hvilken rødvin til rødvinssauce?",
+      answer:
+        "Vælg rød med frugt og moderat tannin: pinot noir, merlot, gamay eller ung til mellem Rhône og chianti frem for ekstremt unge tanninbomber uden frugt. Dyrt prestige er sjældent nødvendigt til lang reduktion.",
+    },
+    {
+      question: "Hvad kan erstatte hvidvin i sovs?",
+      answer:
+        "Lys eddike eller citronsaft spædet med vand eller bouillon for syren — start med det halve og smag. Alkoholfri hvidvin kan deglacere panden men kan kræve ekstra fond for dybde.",
+    },
+    {
+      question: "Hvilken vin til bearnaise?",
+      answer:
+        "Til den færdige sauce på tallerkenen: fyldig fadlagret chardonnay med syre, eller struktureret rød med tannin og syre som Bordeaux-blend med alder eller luftet nebbiolo/barolo-stil til bøffen — se vin til bøf-guiden.",
+    },
+  ],
   "hvordan-aabner-du-champagne": [
     {
       question: "Hvordan åbner man en champagneflaske trygt?",
@@ -1583,6 +2018,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "French Bloom Le Blanc og lignende premium 0% vine giver champagne-lignende oplevelse og æstetik i glasset til 200–300 kr — dyrere end cava-stil, men tættest på fest. Til hverdag og god værdi bruger mange Leitz Eins-Zwei-Zero Sparkling Riesling eller Noughty Sparkling Chardonnay.",
     },
+    {
+      question: "Hvad med alkoholfri mousserende til nytår og fælles skål?",
+      answer:
+        "Bobler uden alkohol er det nemmeste valg når alle skal have noget festligt i glasset — også gæster der kører eller ikke drikker. Kulsyren giver krop og ceremoni tættere på rigtig vin end mange still-vine; server iskoldt og brug champagneglas. Se bobler-guidens afsnit om nytår og anledninger.",
+    },
+    {
+      question: "Passer alkoholfri bobler til kransekage?",
+      answer:
+        "Ja — vælg helst tør til halvtør sparkling med syre (fx Leitz eller Noughty) så mandel og marcipan ikke overdøver vinen; lidt mere restsødme (fx Torres Natureo Sparkling) kan være nemmere til meget sød glasur. Se principper i vin til dessert og kransekage.",
+    },
   ],
   "bedste-alkoholfri-rodvin": [
     {
@@ -1599,6 +2044,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvornår fungerer alkoholfri rødvin bedst?",
       answer:
         "Til pasta, pizza, grill-burger og medium-krydret mad — ikke til steak hvor du savner alkoholens krop mest. Server let afkølet ved 12-14 °C (lidt koldere end rigtig rødvin) for at dæmpe sødme og fremhæve frugt. Drik vinen ung, indenfor 1-2 år fra aftapning.",
+    },
+    {
+      question: "Findes der alkoholfri rødvin med tyngde til julemad?",
+      answer:
+        "Helt samme tyngde som rigtig rød får du ikke — men Torres Natureo Red og Vintense Zero Cabernet er blandt de mest fyldige bredt tilgængelige valg til flæsk og mørk sauce; Leitz Pinot Noir 0 % til and på krydderi. Suppler med alkoholfri bobler mellem bidderne; se alkoholfri vin til jul.",
     },
   ],
   "bedste-alkoholfri-hvidvin": [
@@ -1622,6 +2072,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Der er ikke én dansk nationaltest alle flasker — men erfaringsmæssigt topper Leitz Eins-Zwei-Zero Riesling, Giesen 0% Sauvignon Blanc og Torres Natureo Muscat gentagne gange på restaurant og i blindsmagninger. Brug Vinbots søgning på forsiden til at sammenligne priser på samme navn på tværs af forhandlere.",
     },
+    {
+      question: "Hvilken alkoholfri vin passer til fisk?",
+      answer:
+        "Tænk som ved rigtig hvidvin: riesling eller sauvignon til let fisk og citrus, chardonnay-stil til smør og cremede saucer, og alkoholfri bobler til skaldyrsforret. Leitz Riesling og Giesen Sauvignon til sushi og sashimi er klassiske — se alkoholfri hvidvin-guidens mad-afsnit.",
+    },
+    {
+      question: "Hvilken alkoholfri hvidvin smager mest af rigtig vin?",
+      answer:
+        "Riesling og sauvignon uden alkohol har oftest mest «bid» og mindst juice-præg fordi syren bærer smagen — typisk Leitz Eins-Zwei-Zero Riesling og Giesen 0 % Sauvignon Blanc. Undgå anonym bulk og meget højt sukker hvis du vil væk fra saft-fornemmelse.",
+    },
   ],
   "bedste-alkoholfri-rose": [
     {
@@ -1638,6 +2098,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilken temperatur skal alkoholfri rosé have?",
       answer:
         "Som rigtig rosé: typisk 8–12 °C — lidt køligere til terrasse og grill, lidt mindre koldt til ost og kolde pålæg. Se også den generelle oversigt over rosé og hvidvin i Vinbots vintemperatur-guide.",
+    },
+    {
+      question: "Hvilken alkoholfri rosé til terrassen?",
+      answer:
+        "Leitz Eins-Zwei-Zero Rosé giver tør, lys provence-lignende profil; Torres Natureo Rosé mere moden frugt — begge serveret velafkølet maj–juli til have, altan og grill. Kombinér gerne med alkoholfri bobler til tapas med mange små retter.",
     },
   ],
   "hvad-er-ingrediensliste-paa-vin-eu": [
@@ -1657,6 +2122,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Sulfit er fortsat et allergen, der skal kunne ses tydeligt. De nye regler ændrer ikke, at allergener er vigtige for forbrugeren — de suppleres med ingrediensliste og næringsdata ifølge forordning (EU) 2021/2117.",
     },
   ],
+  "hvad-er-orange-vin": [
+    {
+      question: "Hvad er mad til orangevin?",
+      answer:
+        "Orangevin har tannin som rødvin og syre som hvid — den matcher ofte krydret asiatisk mad, fermenterede retter, svampe og ost. Til sushi og sashimi vælg vine med klar syre og ikke ekstrem oxidation; til vegetarmad fungerer ristede grøntsager, kål og nødder godt. Se orange vin-guiden og vin til vegetar for konkrete retter.",
+    },
+    {
+      question: "Passer orangevin til sushi?",
+      answer:
+        "Ja for mange — strukturen klæder soja, ingefær og fed fisk bedre end tilpas delikat dampet fisk uden tilbehør. Foretræk friskere orange udtryk frem for dybt oxidative flasker; suppler med vin til sushi-guiden for klassiske hvid- og boble-valg.",
+    },
+    {
+      question: "Hvad er orange vin?",
+      answer:
+        "Det er typisk hvidvin lavet med lang skalkontakt under gæring: gylden-orange farve, mere tannin og ofte tør smag. Den er beslægtet med naturvin i markedet, men ikke alle orangevine er naturvine — se guiden om fremstilling og regioner.",
+    },
+  ],
   "alkoholfri-vin-til-graviditet": [
     {
       question: "Er alkoholfri vin sikkert under graviditet?",
@@ -1672,6 +2154,18 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvad skal jeg være opmærksom på ved alkoholfri vin i graviditet?",
       answer:
         "Tjek tilsat sukker (under 5 g/100 ml er fornuftigt). Alkoholfri vin kan stadig indeholde sulfit (E220-E228) som konserveringsmiddel. Læs ingredienslisten ved fødevareallergi. Undgå billige 'wine flavored drinks' uden specifik oprindelse — kvaliteten svinger. Vinbot giver produktguides, ikke medicinske råd.",
+    },
+  ],
+  "alkoholfri-vin-til-jul": [
+    {
+      question: "Hvilken alkoholfri vin parrer med julemad?",
+      answer:
+        "Bobler og friske hvide til julefrokost og fisk; alkoholfri pinot-lignende til and og blødere rød (fx garnacha) til flæskesteg og brun sovs — suppler med mousserende hvis rødvinen virker tynd. Se alkoholfri vin til jul for konkrete mærker og julemad-guiden om sovs.",
+    },
+    {
+      question: "Kan alkoholfri vin til jul også bruges til nytår og kransekage?",
+      answer:
+        "Ja — alkoholfri sparkling til velkomst, midnatsskål og dessert er kategoriens stærkeste kort; til kransekage og marcipan vælg helst tør til halvtør bobler med syre eller lidt restsødme hvis kagen er meget sød. Se bobler-guiden om kransekage.",
     },
   ],
   "vin-til-toscansk-mad": [
@@ -1706,6 +2200,30 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Er Barolo altid dyr?",
       answer:
         "Barolo starter ved 400-500 kr for basic-niveau og kan koste 2000+ kr for top-producenter som Conterno eller Mascarello. Et billigere alternativ er Langhe Nebbiolo DOC (180-300 kr), som bruger samme drue med kortere lagring. Barbaresco (400-1500 kr) er lidt billigere end Barolo og lidt mere elegant.",
+    },
+  ],
+  "vin-graensehandel-for-danskere": [
+    {
+      question: "Er vin ved grænsehandel billigere end i Danmark?",
+      answer:
+        "Det kan være det på udvalgte mærker og ved kampagner, men sammenlign årgang, literpris og transport før du kører. Brug Vinbot på danske listepriser til benchmark på konkrete vine.",
+    },
+    {
+      question: "Skal jeg bekymre mig om moms ved grænsehandel?",
+      answer:
+        "Privat indkøb til eget forbrug i EU følger gældende danske og EU-regler om blandt andet personlige grænsebeløb — regler kan ændre sig. Læs Skattestyrelsens aktuelle vejledning ved store mængder eller erhverv.",
+    },
+  ],
+  "vivino-app-til-vin-anmeldelser": [
+    {
+      question: "Hvad er Vivino-app til vin?",
+      answer:
+        "Vivino er en crowdsourcet vin-app med brugerbedømmelser og etiket-søgning. Nyttig til hurtig orientering i butikken, men ikke samme som professionelle blindtests.",
+    },
+    {
+      question: "Kan jeg stole på Vivino-ratings?",
+      answer:
+        "Brug dem som signal og læs kommentarerne — globale brugere har forskellig smag, og årgange blandes ofte. Sammenlign danske priser på samme vin separat via Vinbot.",
     },
   ],
   "vin-til-baskisk-mad": [
@@ -1808,6 +2326,28 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilke retter passer til pinot noir?",
       answer:
         "Fjerkræ (and, kylling, vagtel), svampe, trøffel, laks og lammekrone er klassikere. Pinot noir har lav tannin og høj syre og klarer sig derfor godt til retter hvor kraftigere rødvine ville overdøve.",
+    },
+  ],
+  "bedste-portvin": [
+    {
+      question: "Hvilken portvin til risalamande?",
+      answer:
+        "Vælg sød og koncentreret port: tawny 10 eller 20 år, LBV eller ruby reserve fra et pålideligt hus matcher kirsebærsovs og marcipan — vintage port kan også fungere til fest, men kræver oftere luft og er mindre praktisk til hverdag. Se bedste portvin om risalamande og julemad-guiden for hele menuen.",
+    },
+    {
+      question: "Portvin til ost eller blåskimmel — hvad er bedst?",
+      answer:
+        "Salt fad ost og sød port er klassikeren: LBV eller tawny 10 til blåskimmel (Roquefort, Stilton). Til bredere ostebord kan tawny være mest alsidig; se port-guidens afsnit om ost og dessert.",
+    },
+    {
+      question: "Passer portvin til chokolade?",
+      answer:
+        "Ja — tawny eller LBV til mørk chokolade og chokoladekage; vintage til særlige flasker. Mælkechokolade klæder ofte tawny 10 bedre end knastør ruby. Se bedste portvin om chokolade og dessert-guiden for sødmeprincipper.",
+    },
+    {
+      question: "Hvilken portvin til svampesovs?",
+      answer:
+        "Et lille nip ruby, reserve ruby eller LBV giver mørk frugt i kraftig svampesovs eller viltsauce; tawny tilføjer nød og karamel og passer ofte til cremet eller langt reduceret sauce. Smag med lidt ad gangen — og drik typisk pinot, gamay eller syrlig hvid til måltidet, ikke nødvendigvis port i glasset.",
     },
   ],
   "bedste-cabernet-sauvignon-under-150-kr": [
