@@ -15,7 +15,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "htt
 export const metadata: Metadata = {
   title: "Lauridsen Vine — shop og inspiration | Vinbot",
   description:
-    "Lauridsen Vine hos Vinbot: link til webshoppen (affiliate), nyhedsbrevs-rabat og udvalgte flasker fra feedet — før du handler, sammenlign gerne på forsøg.",
+    "Lauridsen Vine er en dansk vinwebshop med stærkt europæisk udvalg. Inspiration fra Vinbot: link til shoppen (affiliate), rabat via nyhedsbrev og flasker du også kan finde via vores vinsøgning.",
   alternates: { canonical: `${siteUrl}/lauridsen-vine` },
 };
 
@@ -24,7 +24,7 @@ export default function LauridsenVinePage() {
     {
       question: "Hvorfor linker Vinbot til Lauridsen Vine?",
       answer:
-        "Vi samarbejder via Partner Ads: når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Vi linker kun, fordi sortimentet er relevant for læsere der søger vin fra mange europæiske regioner.",
+        "Vi samarbejder via Partner Ads: når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Vi linker, fordi sortimentet supplerer det, vores læsere søger efter: klassiske regioner, brede prislejer og et godt sted at browse videre efter en guide.",
     },
     {
       question: "Kan jeg få rabat?",
@@ -34,28 +34,61 @@ export default function LauridsenVinePage() {
     {
       question: "Er priserne på Vinbot altid aktuelle?",
       answer:
-        "Nej. Forslagene nedenfor kommer fra vores produktfeed og kan være forsinkede. Tjek altid pris, årgang og lager på lauridsenvine.dk.",
+        "Nej. Priser og årgange kan skifte hurtigt hos forhandleren. Brug altid lauridsenvine.dk som kilde til endelig pris, lager og levering — også for produkterne vi viser her.",
     },
   ];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-4xl px-4 py-10">
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/lauridsen-vine", label: "Lauridsen Vine" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Lauridsen Vine</h1>
-      <p className="mt-4 text-lg text-stone-700">
-        Stort sortiment med fokus på europæiske vine — et godt sted at browse, når du har læst en af vores{" "}
+      <p className="mt-4 text-lg leading-relaxed text-stone-700">
+        Lauridsen Vine er en dansk vinhandler med et bredt europæisk sortiment — fra hverdagsvine til flasker du gemmer til weekend eller gæster. Mange læsere bruger dem som et naturligt næste skridt efter en af vores{" "}
         <Link href="/regioner" className="text-rose-900 hover:underline">
           regionguides
+        </Link>
+        , eller når de vil dykke ned i Bourgogne, Italien, Tyskland og de øvrige klassikere uden at starte fra nul.
+      </p>
+      <p className="mt-4 text-stone-700 leading-relaxed">
+        Her på Vinbot sælger vi ikke vin selv — vi hjælper dig med at orientere dig og sammenligne idéer. Brug{" "}
+        <Link href="/" className="font-medium text-rose-900 hover:underline">
+          vinsøgningen på forsiden
         </Link>{" "}
-        eller sammenligner priser i søgefeltet på forsiden.
+        på tværs af flere forhandlere; på denne side er fokus kun på udvalg hos Lauridsen.
       </p>
 
-      <AffiliateDisclosure />
+      <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+        <h2 className="text-lg font-semibold text-stone-900">Hvornår er Lauridsen et godt match?</h2>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-stone-700">
+          <li>Du vil browse bredt i europæiske regioner og druer — ikke kun ét tema.</li>
+          <li>Du vil kombinere inspiration fra Vinbot med en shop, der har mange flasker på hylden.</li>
+          <li>Du vil holde øje med nyhedsbrev og kampagner (se også vores side med rabatkoder).</li>
+        </ul>
+        <p className="mt-4 text-sm text-stone-600">
+          Til mad og stemning:{" "}
+          <Link href="/guides/komplet-guide-til-vin-og-mad" className="font-medium text-rose-900 hover:underline">
+            vin og mad-guiden
+          </Link>
+          ,{" "}
+          <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="font-medium text-rose-900 hover:underline">
+            bobler
+          </Link>{" "}
+          og{" "}
+          <Link href="/mad-og-vin" className="font-medium text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          .
+        </p>
+      </section>
+
+      <div className="mt-8">
+        <AffiliateDisclosure />
+      </div>
 
       <section className="mt-10 space-y-4 text-stone-800">
         <h2 className="text-2xl font-semibold text-stone-900">Gå til butikken</h2>
-        <p>Åbner Lauridsen Vine i et nyt vindue med korrekt affiliate-sporing.</p>
+        <p>Åbner Lauridsen Vine i et nyt vindue — du handler og betaler altid hos dem.</p>
         <a
           href={SHOP_HREF}
           target="_blank"
@@ -70,18 +103,38 @@ export default function LauridsenVinePage() {
           </Link>
           {" · "}
           <Link href="/" className="text-rose-900 hover:underline">
-            Tilbage til søgning
+            Tilbage til vinsøgning
           </Link>
         </p>
       </section>
 
-      <section className="mt-14 space-y-8">
-        <h2 className="text-2xl font-semibold text-stone-900">Eksempler fra feedet (kun Lauridsen)</h2>
-        <p className="text-stone-700">
-          Udvalgte flasker der matcher vores indeksering — brug søgning på forsiden for at sammenligne på tværs af forhandlere.
-        </p>
-        <ProductFeedPreview query="bourgogne bordeaux riesling" title="Regionklassikere hos Lauridsen" merchant={LAURIDSEN_MERCHANT} />
-        <ProductFeedPreview query="champagne cava crémant" title="Bobler hos Lauridsen" merchant={LAURIDSEN_MERCHANT} />
+      <section className="mt-14 space-y-10">
+        <div>
+          <h2 className="text-2xl font-semibold text-stone-900">Udvalgte flasker hos Lauridsen</h2>
+          <p className="mt-2 max-w-3xl text-stone-700">
+            Et smagsprøve på udvalget med billede og pris — udvalget kan variere fra dag til dag. Vil du sammenligne på tværs af butikker, brug{" "}
+            <Link href="/" className="font-medium text-rose-900 hover:underline">
+              vinsøgningen på forsiden
+            </Link>
+            .
+          </p>
+        </div>
+        <ProductFeedPreview
+          queries={[
+            "bourgogne bordeaux champagne pinot chardonnay riesling",
+            "rioja barolo chianti tempranillo sangiovese",
+            "sauvignon mosel alsace sancerre chenin",
+          ]}
+          title="Klassikere og vine til bordet"
+          merchant={LAURIDSEN_MERCHANT}
+          placement="lauridsen-page-table"
+        />
+        <ProductFeedPreview
+          queries={["champagne cava crémant prosecco brut bobler", "sparkling franciacorta"]}
+          title="Bobler og mousserende"
+          merchant={LAURIDSEN_MERCHANT}
+          placement="lauridsen-page-bubbles"
+        />
       </section>
 
       <section className="mt-14 rounded-2xl border border-stone-200 bg-stone-50 p-6">
@@ -103,6 +156,10 @@ export default function LauridsenVinePage() {
         {" · "}
         <Link href="/den-sidste-flaske" className="text-rose-900 hover:underline">
           Den Sidste Flaske
+        </Link>
+        {" · "}
+        <Link href="/rabatkoder" className="text-rose-900 hover:underline">
+          Rabatkoder
         </Link>
         {" · "}
         <Link href="/" className="text-rose-900 hover:underline">

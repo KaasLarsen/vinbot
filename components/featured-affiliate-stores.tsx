@@ -51,12 +51,12 @@ export function FeaturedAffiliateStores() {
       <h2 id="featured-stores-heading" className="mt-2 text-2xl font-semibold tracking-tight text-stone-900">
         Udvalgte forhandlere
       </h2>
-      <p className="mt-2 max-w-3xl text-sm text-stone-600">
-        Når du handler via disse links, kan Vinbot modtage provision — uden merpris for dig. Se{" "}
+      <p className="mt-2 max-w-3xl text-xs text-stone-600">
+        Shop-links er markeret som <span className="font-medium text-stone-700">affiliate</span>. Se hvordan det er beskrevet under{" "}
         <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
           privatliv
         </Link>{" "}
-        og{" "}
+        — rabatter og nyhedsbreve under{" "}
         <Link href="/rabatkoder" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
           rabatkoder
         </Link>
