@@ -64,8 +64,8 @@ export function VineHubSearch({ wines }: { wines: WineSummary[] }) {
           Søg i vin-kataloget
         </label>
         <p className="mt-1 max-w-2xl text-xs leading-relaxed text-stone-600">
-          Søgningen kører kun mod Vinbots indekserede vinprofiler (titler og brands fra feeds). Den finder ikke alt på nettet —
-          kun det vi har kunnet matche på tværs af listninger.
+          Søgningen kører kun mod Vinbots samlede katalog (titler og producenter fra de medtagne webshops). Den finder ikke alt på nettet —
+          kun det vi har kunnet samle på tværs af butikkerne herinde.
         </p>
         <input
           id="vine-hub-q"

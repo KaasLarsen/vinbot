@@ -16,7 +16,7 @@ const PAGE_URL = `${siteUrl}/vine`;
 export const metadata: Metadata = {
   title: "Vin-katalog — sammenlign priser på tværs af forhandlere",
   description:
-    "Vinbots vin-katalog samler vin fra danske netbutiks-feeds, så du kan sammenligne priser og åbne den shop, du vil handle hos — med redaktionel kontekst om Vinbots rolle som mellemled og journalistiske kerne på vinbot.dk (guides til mad og vin). Priser og tilbud kan ændre sig; dobbelttjek altid hos forhandleren.",
+    "Vinbots vin-katalog samler vin fra udvalgte danske netbutikker, så du kan sammenligne priser og åbne den shop, du vil handle hos — med redaktionel kontekst om Vinbots rolle som mellemled og journalistiske kerne på vinbot.dk (guides til mad og vin). Priser og tilbud kan ændre sig; dobbelttjek altid hos forhandleren.",
   alternates: { canonical: PAGE_URL },
 };
 
@@ -57,7 +57,7 @@ export default async function VineHubPage() {
       />
       <CollectionPageJsonLd
         name="Vin-katalog — priser på tværs af forhandlere"
-        description="Vinbots vin-katalog samler vin fra udvalgte danske netbutiks-feeds til prissammenligning og kontekst om Vinbots rolle som mellemled — ikke webshop; guides til mad og vin findes separat på vinbot.dk."
+        description="Vinbots vin-katalog samler vin fra udvalgte danske netbutikker til prissammenligning og kontekst om Vinbots rolle som mellemled — ikke webshop; guides til mad og vin findes separat på vinbot.dk."
         url={PAGE_URL}
         items={summaries.slice(0, 500).map((s) => ({
           name: s.displayTitle,
@@ -77,8 +77,8 @@ export default async function VineHubPage() {
       <section className="mt-10 max-w-3xl space-y-4 border-l-4 border-rose-200 pl-5 text-[0.9375rem] leading-relaxed text-stone-700">
         <h2 className="text-lg font-semibold text-stone-900">Sådan skal du læse vin-kataloget</h2>
         <p>
-          Vin-kataloget er et praktisk indeks oven på åbne produkt-feeds fra udvalgte danske vinforhandlere — ikke et selvstændigt magasin og ikke Vinbots egen webshop.
-          Vi forsøger at koble samme vin på tværs af listninger (GTIN eller stabil titel-match), så du slipper for at kopiere titler mellem faner.
+          Vin-kataloget er et praktisk indeks over udvalgte danske vinforhandlere på nettet — ikke et selvstændigt magasin og ikke Vinbots egen webshop.
+          Vi forsøger at samme flaske under ét sted i overblikket, også når den findes hos flere butikker (fx via stregkode eller et stabilt match på navn), så du slipper for at kopiere titler mellem faner.
           Vinbots journalistiske hjerte findes primært i de dedikerede guides om mad og vin — du finder dem via menuen eller på forsiden.
         </p>
         <p>
