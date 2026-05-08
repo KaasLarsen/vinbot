@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Vin-viden — hvor længe, hvor mange, hvad er og sådan";
 const PAGE_DESCRIPTION =
-  "Korte svar på de spørgsmål folk googler om vin: hvor længe holder rødvin, hvor mange glas i en flaske, hvad er tanniner, sådan dekanterer du — samlet på ét sted.";
+  "Korte svar på det folk googler om vin: rødvin temperatur og vintemperatur i °C, hvor længe holder rødvin, glas pr. flaske, tanniner, dekantering — samlet på ét sted.";
 const PAGE_URL = `${siteUrl}/vin-viden`;
 
 export const metadata: Metadata = {
@@ -51,12 +51,16 @@ export default function VinVidenHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vin-viden", label: "Vin-viden" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-viden</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">
-        Korte, konkrete svar på de spørgsmål folk typisk googler om vin: <strong className="font-medium text-stone-800">hvor længe holder</strong> åbnet og uåbnet vin, <strong className="font-medium text-stone-800">hvor mange glas</strong> i en flaske, <strong className="font-medium text-stone-800">hvad er</strong> tanniner, syre og terroir — og <strong className="font-medium text-stone-800">sådan gør du</strong> det praktiske (dekantering, servering, smagning).
+        Korte, konkrete svar på det folk typisk googler om vin:{" "}
+        <strong className="font-medium text-stone-800">rødvin temperatur og vintemperatur i °C</strong>,{" "}
+        <strong className="font-medium text-stone-800">hvor længe holder</strong> åbnet og uåbnet vin,{" "}
+        <strong className="font-medium text-stone-800">hvor mange glas</strong> i en flaske, <strong className="font-medium text-stone-800">hvad er</strong> tanniner, syre og terroir — og{" "}
+        <strong className="font-medium text-stone-800">sådan gør du</strong> det praktiske (dekantering, servering, smagning).
       </p>
       <p className="mt-3 text-sm text-stone-600">
         Start et sted:{" "}
         <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="text-rose-900 hover:underline">
-          vintemperatur og servering (°C)
+          rødvin temperatur og vintemperatur (°C)
         </Link>
         ,{" "}
         <Link href="/guides/hvor-laenge-holder-rodvin" className="text-rose-900 hover:underline">

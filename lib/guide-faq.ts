@@ -41,6 +41,21 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "opbevaring-af-vin-temperatur-og-aabnet-flaske": [
     {
+      question: "Hvor kold skal rødvin være?",
+      answer:
+        "Ikke som hvidvin — typisk 14–18 °C: let rød 14–16 °C, mellemfyldig og kraftig rød ofte 15–18 °C. Er rummet over ca. 22 °C, afkøl flasken 30–45 minutter i køleskab eller brug vinkøler; «stuetemperatur» i gamle bøger var køligere end moderne boliger.",
+    },
+    {
+      question: "Hvilken temperatur skal hvidvin have?",
+      answer:
+        "Let hvid og aromatiske hvide typisk 8–12 °C; fyldig chardonnay ofte 10–14 °C så fad og frugt ikke forsvinder i kulden. Tag flasken ud af køleskabet 10–15 minutter før servering hvis den er iskold.",
+    },
+    {
+      question: "Hvad er optimal temperatur for rødvin?",
+      answer:
+        "Zonen hvor syre, frugt og alkohol balancerer — for de fleste røde omkring 15–18 °C afhængigt af krop og tanniner. For varm smager vinen sprittet; for kold kan aroma lukke sig og tanniner føles strammere.",
+    },
+    {
       question: "Hvilken temperatur skal rødvin have?",
       answer:
         "De fleste rødvine smager bedst omkring 15–18 °C afhængigt af krop og tanniner. Let rød kan med fordel serveres 14–16 °C; kraftig rød ofte 16–18 °C. Afkøl flasken kort, hvis rummet er over ca. 22 °C.",
