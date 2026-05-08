@@ -26,3 +26,17 @@ export function isAdsenseEnabled(): boolean {
 export function getAdsenseClientId(): string {
   return process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() || "";
 }
+
+/** Publisher-ID til ads.txt (`pub-…`), udledt fra `ca-pub-…` eller fallback som matcher .env.example. */
+export function getAdsensePublisherIdForAdsTxt(): string {
+  const client = getAdsenseClientId();
+  const m = client.match(/ca-pub-(\d+)/i);
+  if (m?.[1]) return `pub-${m[1]}`;
+  return "pub-7373148222153531";
+}
+
+/** Én linje pr. Google-spec + afsluttende linjeskift (til GET /ads.txt). */
+export function getAdsenseAdsTxtBody(): string {
+  const pub = getAdsensePublisherIdForAdsTxt();
+  return `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`;
+}
