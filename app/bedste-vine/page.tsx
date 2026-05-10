@@ -4,7 +4,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { listBedsteVineHubGuides, listGuides } from "@/lib/content/guides";
+import { filterIndexableGuides, listBedsteVineHubGuides, listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Bedste vine — top-lister, pris og lejlighed";
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 export default function BedsteVineHubPage() {
-  const raw = listBedsteVineHubGuides();
-  const guides = raw.length ? raw : listGuides().slice(0, 8);
+  const raw = filterIndexableGuides(listBedsteVineHubGuides());
+  const guides = raw.length ? raw : filterIndexableGuides(listGuides()).slice(0, 8);
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,

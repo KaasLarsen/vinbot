@@ -5,6 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import readingTime from "reading-time";
 import { guideMdxComponents } from "@/lib/content/guide-mdx-components";
 import type { GuideFrontmatter } from "@/lib/content/guide-types";
+import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 
 export type { GuideFrontmatter } from "@/lib/content/guide-types";
 
@@ -16,6 +17,16 @@ export function getGuideSlugs(): string[] {
     .readdirSync(guidesDir)
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => f.replace(/\.mdx$/, ""));
+}
+
+/** Sandt når guiden er under MIN_INDEXABLE_WORDS (noindex + typisk udeladt af hub-lister). */
+export function isThinGuide(slug: string): boolean {
+  return getGuideWordCount(slug) < MIN_INDEXABLE_WORDS;
+}
+
+/** Kun guides der opfylder minimumslængde — bruges på hubs og «læs også» for at reducere crawl af tynde URL’er. */
+export function filterIndexableGuides(guides: GuideFrontmatter[]): GuideFrontmatter[] {
+  return guides.filter((g) => !isThinGuide(g.slug));
 }
 
 export function listGuides(): GuideFrontmatter[] {

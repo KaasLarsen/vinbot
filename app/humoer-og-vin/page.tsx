@@ -4,7 +4,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { listHumoerHubGuides } from "@/lib/content/guides";
+import { filterIndexableGuides, listHumoerHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Humør og stemning — vælg vin efter lejlighed";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function HumoerHubPage() {
-  const guides = listHumoerHubGuides();
+  const guides = filterIndexableGuides(listHumoerHubGuides());
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,

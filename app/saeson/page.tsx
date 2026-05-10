@@ -4,7 +4,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { listSaesonHubGuides } from "@/lib/content/guides";
+import { filterIndexableGuides, listSaesonHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Sæson og vin — forår, sommer, efterår, vinter";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function SaesonHubPage() {
-  const guides = listSaesonHubGuides();
+  const guides = filterIndexableGuides(listSaesonHubGuides());
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,

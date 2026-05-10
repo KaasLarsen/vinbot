@@ -4,7 +4,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { listVinVidenHubGuides, listGuides } from "@/lib/content/guides";
+import { filterIndexableGuides, listGuides, listVinVidenHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Vin-viden — hvor længe, hvor mange, hvad er og sådan";
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 export default function VinVidenHubPage() {
-  const raw = listVinVidenHubGuides();
-  const guides = raw.length ? raw : listGuides().slice(0, 8);
+  const raw = filterIndexableGuides(listVinVidenHubGuides());
+  const guides = raw.length ? raw : filterIndexableGuides(listGuides()).slice(0, 8);
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getGuide, getGuideSlugs, getGuideWordCount, listGuides } from "@/lib/content/guides";
-import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
+import { getGuide, getGuideSlugs } from "@/lib/content/guides";
+import { MIN_INDEXABLE_WORDS, MIN_WORDS_FOR_FALLBACK_FAQ } from "@/lib/content/thresholds";
 import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
@@ -67,7 +67,7 @@ export default async function GuidePage({ params }: Props) {
   const data = await getGuide(slug);
   if (!data) notFound();
 
-  const { frontmatter, content, readingMinutes } = data;
+  const { frontmatter, content, readingMinutes, wordCount } = data;
   const url = `${siteUrl}/guides/${slug}`;
   const fallbackDate = new Date().toISOString().slice(0, 10);
   const { datePublished, dateModified } = guidePublicationAndModified(frontmatter, fallbackDate);
@@ -89,10 +89,12 @@ export default async function GuidePage({ params }: Props) {
   const faqItems =
     manualFaq && manualFaq.length > 0
       ? manualFaq
-      : getBedsteFallbackFaq(slug, frontmatter.title) ??
-        getVidenFallbackFaq(slug, frontmatter.title) ??
-        getVinTilFallbackFaq(slug, frontmatter.title) ??
-        undefined;
+      : wordCount >= MIN_WORDS_FOR_FALLBACK_FAQ
+        ? getBedsteFallbackFaq(slug, frontmatter.title) ??
+          getVidenFallbackFaq(slug, frontmatter.title) ??
+          getVinTilFallbackFaq(slug, frontmatter.title) ??
+          undefined
+        : undefined;
 
   const intent = deriveGuideIntent(slug);
   const searchHref = intent
@@ -175,40 +177,6 @@ export default async function GuidePage({ params }: Props) {
       <div className="mt-12">
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
       </div>
-      <section className="mt-10 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-700">
-        <p className="font-semibold text-stone-900">Læs også</p>
-        <p className="mt-2">
-          Udforsk{" "}
-          <a href="/mad-og-vin" className="text-rose-900 hover:underline">
-            mad og vin
-          </a>
-          ,{" "}
-          <a href="/humoer-og-vin" className="text-rose-900 hover:underline">
-            humør og stemning
-          </a>
-          ,{" "}
-          <a href="/fest-og-vin" className="text-rose-900 hover:underline">
-            fest og selskab
-          </a>
-          og{" "}
-          <a href="/saeson" className="text-rose-900 hover:underline">
-            sæson
-          </a>
-          — eller spring direkte til en af de andre guides herunder.
-        </p>
-        <ul className="mt-3 list-disc pl-5">
-          {listGuides()
-            .filter((x) => x.slug !== slug)
-            .slice(0, 6)
-            .map((g) => (
-              <li key={g.slug}>
-                <Link href={`/guides/${g.slug}`} className="text-rose-900 hover:underline">
-                  {g.title}
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </section>
     </article>
   );
 }

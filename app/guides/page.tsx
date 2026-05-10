@@ -3,7 +3,8 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { listGuides } from "@/lib/content/guides";
+import { filterIndexableGuides, listGuides } from "@/lib/content/guides";
+import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Alle vin-guides — søg og filtrér";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function GuidesIndexPage({ searchParams }: PageProps) {
   const qParam = ((await searchParams)?.q ?? "").trim();
-  const guides = listGuides();
+  const guides = filterIndexableGuides(listGuides());
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,
@@ -78,6 +79,9 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
           komplet guide til vin og mad
         </Link>
         .
+      </p>
+      <p className="mt-2 text-sm text-stone-600">
+        Korte referenceartikler (under ca. {MIN_INDEXABLE_WORDS} ord) vises ikke her — de findes stadig via direkte link og søgning på sitet.
       </p>
 
       <section className="mt-10">

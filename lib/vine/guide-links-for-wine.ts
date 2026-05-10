@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 
-import { listGuides } from "@/lib/content/guides";
+import { isThinGuide, listGuides } from "@/lib/content/guides";
 import { normalize } from "@/lib/search/helpers";
 import type { GuideFrontmatter } from "@/lib/content/guide-types";
 
@@ -62,6 +62,7 @@ export async function relatedGuidesForWineProfile(wine: CanonicalWine, limit = 3
     if (picked.length >= limit) break;
     if (score < MIN_SCORE) break;
     if (seen.has(g.slug)) continue;
+    if (isThinGuide(g.slug)) continue;
     seen.add(g.slug);
     picked.push({
       title: g.title,
