@@ -3,6 +3,16 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.vinbot.
 export const siteName = "Vinbot";
 export const contactEmail = "info@vinbot.dk";
 
+/** Mob.nr. til hobbyprojektet — `tel:` uden mellemrum. */
+export const contactPhoneDisplay = "27 29 91 06";
+export const contactPhoneTelHref = "tel:+4527299106";
+
+/**
+ * Dato vist på privatliv, betingelser og cookiepolitik — bump ved meningsfulde ændringer
+ * (fx efter deploy af nye tekster).
+ */
+export const legalPagesUpdatedDisplay = "10. maj 2026";
+
 /** Fast @id til Organization i JSON-LD (samme på tværs af sider). */
 export const organizationSchemaId = `${siteUrl}/#organization`;
 

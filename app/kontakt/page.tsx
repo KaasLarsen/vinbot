@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { contactEmail, siteUrl } from "@/lib/site";
+import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Kontakt";
 const PAGE_DESCRIPTION =
-  "Skriv til Vinbot om feedback, presse, samarbejde eller fejl på sitet. Vi svarer på info@vinbot.dk.";
+  "Kontakt Vinbot på info@vinbot.dk eller telefon. Feedback, fejl, presse og spørgsmål om cookies og persondata.";
 const PAGE_URL = `${siteUrl}/kontakt`;
 
 export const metadata: Metadata = {
@@ -34,9 +34,9 @@ export default function KontaktPage() {
       </p>
 
       <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-rose-900/90">Skriv til os</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-rose-900/90">Skriv eller ring</h2>
         <p className="mt-3 text-stone-700">
-          Brug e-mailen herunder — gerne med en kort overskrift i emnefeltet, så vi nemmere kan finde din besked.
+          Foretrækker du mail, er e-mail den nemmeste kanal — gerne med en kort overskrift i emnefeltet. Du kan også ringe eller sende SMS til mobilnummeret herunder.
         </p>
         <a
           href={mailtoHref}
@@ -44,8 +44,11 @@ export default function KontaktPage() {
         >
           {contactEmail}
         </a>
-        <p className="mt-4 text-sm text-stone-500">
-          Vi har ikke telefon eller chat på Vinbot; e-mail er den eneste officielle kanal.
+        <p className="mt-5 text-stone-700">
+          Mobil:{" "}
+          <a href={contactPhoneTelHref} className="font-semibold text-rose-900 hover:underline">
+            {contactPhoneDisplay}
+          </a>
         </p>
       </section>
 
@@ -62,11 +65,15 @@ export default function KontaktPage() {
             <strong>Presse og samarbejde</strong> — kort om dig eller jeres medie/projekt og hvad I ønsker.
           </li>
           <li>
-            <strong>Spørgsmål om persondata eller cookies</strong> — du kan også læse vores{" "}
+            <strong>Spørgsmål om persondata eller cookies</strong> — se også{" "}
             <Link href="/privatliv" className="text-rose-900 hover:underline">
-              privatlivspolitik
+              Privatliv
             </Link>{" "}
-            først.
+            og{" "}
+            <Link href="/cookiepolitik" className="text-rose-900 hover:underline">
+              Cookiepolitik
+            </Link>
+            .
           </li>
         </ul>
       </section>

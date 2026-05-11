@@ -42,6 +42,10 @@ export function CookieBanner() {
         <p className="text-sm leading-relaxed text-stone-700">
           Vi bruger cookies til statistik (Google Analytics) og annoncer (Google AdSense), når det er slået til på sitet. Ved at trykke{" "}
           <strong className="font-medium text-stone-900">Accepter</strong> siger du ja til det. Læs mere under{" "}
+          <Link href="/cookiepolitik" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
+            Cookiepolitik
+          </Link>{" "}
+          og{" "}
           <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
             Privatliv
           </Link>

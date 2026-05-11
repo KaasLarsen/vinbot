@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { contactEmail, siteUrl } from "@/lib/site";
+import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Om Vinbot — dansk vininspiration med uafhængig redaktion";
 const PAGE_DESCRIPTION =
@@ -129,8 +129,8 @@ export default function OmOsPage() {
         <h2 className="text-xl font-semibold text-stone-900">Hvad tjener Vinbot penge på?</h2>
         <p className="leading-relaxed">
           Vi finansierer driften via to kilder: <strong>affiliate-samarbejder</strong> (hvor vi modtager
-          provision, når du klikker dig videre og handler hos en forhandler, fx via Partner-Ads eller
-          Adtraction) og <strong>annoncer</strong> (fx Google AdSense). Din pris ændres ikke, når du bruger
+          provision, når du klikker dig videre og handler hos en forhandler, fx via Partner-Ads,
+          Adtraction eller Daisycon) og <strong>annoncer</strong> (fx Google AdSense). Din pris ændres ikke, når du bruger
           et affiliate-link.
         </p>
         <p className="leading-relaxed">
@@ -155,7 +155,8 @@ export default function OmOsPage() {
       <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">Alkohol og ansvar</h2>
         <p className="leading-relaxed">
-          Vinbot henvender sig til voksne (18+). Alkohol skal nydes ansvarligt, og vores anbefalinger
+          Vinbot henvender sig til voksne, der må købe alkohol efter gældende regler. Vinbot <strong>sælger ikke alkohol</strong> — køb sker hos{" "}
+          <strong>forhandlere via links</strong> fra siden; deres alderskontrol og handelsbetingelser gælder. Alkohol skal nydes ansvarligt, og vores anbefalinger
           erstatter ikke sundhedsrådgivning. Har du spørgsmål til alkohol i relation til graviditet,
           medicinering eller egen adfærd, så tal med en fagperson eller brug{" "}
           <a href="https://www.sst.dk" className="text-rose-900 hover:underline" rel="noopener">
@@ -176,6 +177,10 @@ export default function OmOsPage() {
           <a href={`mailto:${contactEmail}`} className="font-medium text-rose-900 hover:underline">
             {contactEmail}
           </a>
+          , eller ring/SMS{" "}
+          <a href={contactPhoneTelHref} className="font-medium text-rose-900 hover:underline">
+            {contactPhoneDisplay}
+          </a>
           . Se også:
         </p>
         <ul className="mt-3 ml-5 list-disc space-y-1.5 leading-relaxed">
@@ -192,6 +197,11 @@ export default function OmOsPage() {
           <li>
             <Link href="/privatliv" className="text-rose-900 hover:underline">
               Privatlivspolitik
+            </Link>
+          </li>
+          <li>
+            <Link href="/cookiepolitik" className="text-rose-900 hover:underline">
+              Cookiepolitik
             </Link>
           </li>
           <li>

@@ -281,7 +281,8 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
 }
 
 export function expandQuery(q: string): string[] {
-  const base = normalize(q);
+  /* Fx "culottesteg & cuvette" → undgå løst & som søgeord; behand som mellemrum. */
+  const base = normalize(q.replace(/\s*&\s*/g, " "));
 
   const stopwords = new Set([
     "vin",

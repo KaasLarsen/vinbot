@@ -204,7 +204,8 @@ export default function RabatkoderPage() {
 
       <p className="mt-4 text-xs text-stone-500">
         * Shop-links markeret med stjerne er <strong className="font-medium text-stone-700">affiliate-links</strong>. De går via{" "}
-        <strong className="font-medium text-stone-700">Partner-Ads</strong> eller <strong className="font-medium text-stone-700">Adtraction</strong>{" "}
+        <strong className="font-medium text-stone-700">Partner-Ads</strong>, <strong className="font-medium text-stone-700">Adtraction</strong> eller{" "}
+        <strong className="font-medium text-stone-700">Daisycon</strong>{" "}
         (angivet under hver butik) og kan udløse provision til Vinbot <strong className="font-medium text-stone-700">uden merpris for dig</strong>.
       </p>
 

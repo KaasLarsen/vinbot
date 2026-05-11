@@ -95,6 +95,9 @@ export function SiteFooter() {
             <Link href="/privatliv" className="hover:text-rose-900">
               Privatliv
             </Link>
+            <Link href="/cookiepolitik" className="hover:text-rose-900">
+              Cookiepolitik
+            </Link>
             <Link href="/betingelser" className="hover:text-rose-900">
               Betingelser
             </Link>

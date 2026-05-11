@@ -23,7 +23,11 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("champagne", "cava", "prosecco", "cremant", "crémant", "sparkling", "mousserende");
   }
 
-  if (/(bøf|bof|boef|oksekød|oksekoed|oksekod|steak|entrecote|entrecôte|ribeye|rib-eye)/.test(txt)) {
+  if (
+    /(bøf|bof|boef|oksekød|oksekoed|oksekod|steak|entrecote|entrecôte|ribeye|rib-eye|culotte|culottesteg|cuvette)/.test(
+      txt,
+    )
+  ) {
     add("cabernet sauvignon", "malbec", "barolo", "bordeaux", "syrah", "shiraz", "rioja");
   }
 

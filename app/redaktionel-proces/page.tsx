@@ -118,7 +118,7 @@ export default function RedaktionelProcesPage() {
       <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">5. Affiliate, annoncer og interessekonflikter</h2>
         <p className="leading-relaxed">
-          Vinbot finansieres delvist via affiliate-samarbejder (fx Partner-Ads og Adtraction) og annoncer (fx
+          Vinbot finansieres delvist via affiliate-samarbejder (fx Partner-Ads, Adtraction og Daisycon) og annoncer (fx
           Google AdSense). Hvis du klikker på et affiliate-link og køber, kan vi modtage provision — uden at
           det ændrer din pris hos forhandleren.
         </p>
