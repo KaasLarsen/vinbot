@@ -67,43 +67,56 @@ export function SiteFooter() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <Link href="/om-os" className="hover:text-rose-900">
-              Om os
-            </Link>
-            <Link href="/redaktionel-proces" className="hover:text-rose-900">
-              Redaktionel proces
-            </Link>
-            <Link href="/rabatkoder" className="hover:text-rose-900">
-              Rabatkoder
-            </Link>
-            <Link href="/lauridsen-vine" className="hover:text-rose-900">
-              Lauridsen Vine (affiliate)
-            </Link>
-            <Link href="/den-sidste-flaske" className="hover:text-rose-900">
-              Den Sidste Flaske
-            </Link>
-            <Link href="/vine" className="hover:text-rose-900">
-              Vin-katalog
-            </Link>
-            <Link href="/vinkoleskabe" className="hover:text-rose-900">
-              Vinkøleskabe
-            </Link>
-            <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
-              Stor guide: vin og mad
-            </Link>
-            <Link href="/privatliv" className="hover:text-rose-900">
-              Privatliv
-            </Link>
-            <Link href="/cookiepolitik" className="hover:text-rose-900">
-              Cookiepolitik
-            </Link>
-            <Link href="/betingelser" className="hover:text-rose-900">
-              Betingelser
-            </Link>
-            <Link href="/kontakt" className="hover:text-rose-900">
-              Kontakt
-            </Link>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:min-w-0 lg:max-w-xl lg:shrink-0">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vin &amp; inspiration</p>
+              <nav className="mt-3 flex flex-col gap-2" aria-label="Vin, guides og partnere">
+                <Link href="/om-os" className="hover:text-rose-900">
+                  Om os
+                </Link>
+                <Link href="/guides" className="hover:text-rose-900">
+                  Alle guider
+                </Link>
+                <Link href="/rabatkoder" className="hover:text-rose-900">
+                  Rabatkoder
+                </Link>
+                <Link href="/lauridsen-vine" className="hover:text-rose-900">
+                  Lauridsen Vine (affiliate)
+                </Link>
+                <Link href="/den-sidste-flaske" className="hover:text-rose-900">
+                  Den Sidste Flaske
+                </Link>
+                <Link href="/vine" className="hover:text-rose-900">
+                  Vin-katalog
+                </Link>
+                <Link href="/vinkoleskabe" className="hover:text-rose-900">
+                  Vinkøleskabe
+                </Link>
+                <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
+                  Stor guide: vin og mad
+                </Link>
+              </nav>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vilkår &amp; kontakt</p>
+              <nav className="mt-3 flex flex-col gap-2" aria-label="Privatliv, vilkår og kontakt">
+                <Link href="/redaktionel-proces" className="hover:text-rose-900">
+                  Redaktionel proces
+                </Link>
+                <Link href="/privatliv" className="hover:text-rose-900">
+                  Privatliv
+                </Link>
+                <Link href="/cookiepolitik" className="hover:text-rose-900">
+                  Cookiepolitik
+                </Link>
+                <Link href="/betingelser" className="hover:text-rose-900">
+                  Betingelser
+                </Link>
+                <Link href="/kontakt" className="hover:text-rose-900">
+                  Kontakt
+                </Link>
+              </nav>
+            </div>
           </div>
         </div>
         <p className="mt-8 text-xs text-stone-500">© {new Date().getFullYear()} {siteName}</p>
