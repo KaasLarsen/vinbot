@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
@@ -11,6 +12,10 @@ type Store = {
   name: string;
   blurb: string;
   href: string;
+  /** Lokalt logo (kopieret fra forhandlerens officielle site). */
+  logoSrc: string;
+  logoW: number;
+  logoH: number;
   readMoreHref?: string;
   readMoreLabel?: string;
 };
@@ -21,6 +26,9 @@ const STORES: Store[] = [
     name: "Lauridsen Vine",
     blurb: "Stort europæisk sortiment — særligt stærkt til regioner og klassikere.",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "https://lauridsenvine.dk/"),
+    logoSrc: "/images/merchants/lauridsen-vine.png",
+    logoW: 400,
+    logoH: 120,
     readMoreHref: "/lauridsen-vine",
     readMoreLabel: "Læs om Vinbot × Lauridsen",
   },
@@ -29,18 +37,27 @@ const STORES: Store[] = [
     name: "Winther Vin",
     blurb: "Bland selv, mange kampagner — godt til pris og fest.",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.wintherVin, "https://winthervin.dk/"),
+    logoSrc: "/images/merchants/winther-vin.jpg",
+    logoW: 270,
+    logoH: 90,
   },
   {
     id: "dh",
     name: "DH Wines",
     blurb: "Håndplukket udvalg til mad og hverdag.",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.dhWines, "https://dhwines.dk/"),
+    logoSrc: "/images/merchants/dh-wines.png",
+    logoW: 400,
+    logoH: 120,
   },
   {
     id: "johnsen",
     name: "Johnsen Wine",
     blurb: "Kurateret sortiment når du vil dykke dybere.",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.johnsenWine, "https://www.johnsenwine.dk/"),
+    logoSrc: "/images/merchants/johnsen-wine.png",
+    logoW: 320,
+    logoH: 80,
   },
 ];
 
@@ -68,7 +85,17 @@ export function FeaturedAffiliateStores() {
             key={s.id}
             className="flex flex-col rounded-xl border border-stone-200/90 bg-white/90 p-4 shadow-sm transition hover:border-rose-200/80 hover:shadow"
           >
-            <p className="text-base font-semibold text-stone-900">{s.name}</p>
+            <div className="flex min-h-[3.25rem] items-center justify-start border-b border-stone-100 pb-3">
+              <Image
+                src={s.logoSrc}
+                alt={`${s.name} logo`}
+                width={s.logoW}
+                height={s.logoH}
+                className="h-10 w-auto max-w-[200px] object-contain object-left"
+                sizes="200px"
+              />
+            </div>
+            <p className="mt-3 text-base font-semibold text-stone-900">{s.name}</p>
             <p className="mt-2 flex-1 text-sm text-stone-600">{s.blurb}</p>
             <a
               href={s.href}
