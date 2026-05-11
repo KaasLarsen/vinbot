@@ -40,6 +40,8 @@ const STORES: Store[] = [
     logoSrc: "/images/merchants/winther-vin.jpg",
     logoW: 270,
     logoH: 90,
+    readMoreHref: "/winther-vin",
+    readMoreLabel: "Læs om Vinbot × Winther Vin",
   },
   {
     id: "dh",
@@ -49,6 +51,8 @@ const STORES: Store[] = [
     logoSrc: "/images/merchants/dh-wines.png",
     logoW: 400,
     logoH: 120,
+    readMoreHref: "/dh-wines",
+    readMoreLabel: "Læs om Vinbot × DH Wines",
   },
   {
     id: "johnsen",
@@ -58,6 +62,8 @@ const STORES: Store[] = [
     logoSrc: "/images/merchants/johnsen-wine.png",
     logoW: 320,
     logoH: 80,
+    readMoreHref: "/johnsen-wine",
+    readMoreLabel: "Læs om Vinbot × Johnsen Wine",
   },
 ];
 

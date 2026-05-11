@@ -80,9 +80,18 @@ export function SiteFooter() {
                 <Link href="/rabatkoder" className="hover:text-rose-900">
                   Rabatkoder
                 </Link>
-                <Link href="/lauridsen-vine" className="hover:text-rose-900">
-                  Lauridsen Vine (affiliate)
-                </Link>
+            <Link href="/lauridsen-vine" className="hover:text-rose-900">
+              Lauridsen Vine (affiliate)
+            </Link>
+            <Link href="/winther-vin" className="hover:text-rose-900">
+              Winther Vin (affiliate)
+            </Link>
+            <Link href="/dh-wines" className="hover:text-rose-900">
+              DH Wines (affiliate)
+            </Link>
+            <Link href="/johnsen-wine" className="hover:text-rose-900">
+              Johnsen Wine (affiliate)
+            </Link>
                 <Link href="/den-sidste-flaske" className="hover:text-rose-900">
                   Den Sidste Flaske
                 </Link>

@@ -150,6 +150,18 @@ export default function LauridsenVinePage() {
       </section>
 
       <p className="mt-10 text-sm text-stone-600">
+        <Link href="/winther-vin" className="text-rose-900 hover:underline">
+          Winther Vin
+        </Link>
+        {" · "}
+        <Link href="/dh-wines" className="text-rose-900 hover:underline">
+          DH Wines
+        </Link>
+        {" · "}
+        <Link href="/johnsen-wine" className="text-rose-900 hover:underline">
+          Johnsen Wine
+        </Link>
+        {" · "}
         <Link href="/regioner" className="text-rose-900 hover:underline">
           Vinregioner
         </Link>
