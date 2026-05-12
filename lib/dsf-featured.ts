@@ -65,7 +65,7 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     blurb: "Mousserende aperitivo på flaske — klar til is, skål og let snacking på terrassen.",
     productUrl: "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
     listPrice: 99,
     priceCurrency: "DKK",
   },

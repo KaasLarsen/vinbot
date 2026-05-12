@@ -278,13 +278,13 @@ const PAGES: readonly DsfPopularWinePage[] = [
       "Mousserende aperitivo på flaske — klar bittersød citrus til is, Balkon-aftener og let snacking. Vinbot forklarer servering og køberlink til Den Sidste Flaske (affiliate).",
     productPageUrl: "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
     imageUrl:
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
     additionalGalleryImageUrls: [
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834451.jpg?v=1774340257",
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228841027.png?v=1774347490",
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947311.png?v=1776598030",
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947310.png?v=1776597974",
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947309.png?v=1776597998",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-nv-spritz-roll-mousserende-1228834451.jpg?v=1774340257",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-nv-spritz-roll-mousserende-1228841027.png?v=1774347490",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-spritz-roll-mousserende-1232947311.png?v=1776598030",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-spritz-roll-mousserende-1232947310.png?v=1776597974",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-spritz-roll-mousserende-1232947309.png?v=1776597998",
     ],
     imageAside: {
       heading: "Et hurtigt overblik",
