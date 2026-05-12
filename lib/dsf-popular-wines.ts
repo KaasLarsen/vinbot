@@ -135,6 +135,210 @@ const PAGES: readonly DsfPopularWinePage[] = [
       { slug: "vin-til-gulasch" },
     ],
   },
+  {
+    slug: "weinhof-519-alte-reben-rheingau-riesling-trocken",
+    displayTitle: "Weinhof 519 · Alte Reben Rheingau Riesling (tør)",
+    metaDescription:
+      "Tør riesling fra gamle vinstokke i Rheingau — citrus, mineralsk bid og struktur til mad med syre eller fedme. Vinbot guider til servering og køb hos Den Sidste Flaske (affiliate).",
+    productPageUrl: "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",
+    additionalGalleryImageUrls: [
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2025-weinhof-519-hvidvin-1216556813.jpg?v=1769428113",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2025-weinhof-519-hvidvin-1216556815.jpg?v=1769428113",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1151335698.jpg?v=1769522692",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1151335700.jpg?v=1769522692",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1151335701.jpg?v=1769522692",
+    ],
+    imageAside: {
+      heading: "Et hurtigt overblik",
+      bullets: [
+        "Hus og idé: Weinhof 519 med fokus på gamle vinmarker — «Alte Reben» betyder ældre vinstokke, der ofte giver mere koncentration og tekstur end unge planter.",
+        "Område: Rheingau i Tyskland — klassisk riesling-terroir langs Main/Rhinen med kultur for både tør og sødmefuld stil.",
+        "Stil: trocken markerer tør vin; du får typisk citrus, limezest og et mineralsk eller næsten «saltet» eftertryk.",
+        "Alkohol og krop: Rheingauer tørriesling kan føles slank men fyldig i midten; tjek flaske-etiket hos Den Sidste Flaske for præcis procent.",
+        "Temperatur: 8–10 °C ved meget krydret eller fed mad; op mod 11 °C hvis du vil have nedtonet aggressiv syre i forret.",
+        "Vejledende pris: ca. 119 kr. ved sidste tjek på produktet — aktuel pris og leveringsdato står på forhandlerens side.",
+      ],
+      footnote:
+        "Butik-side og url kan vise ny årgang (fx 2025) mens link-stien stadig hedde «2022» — bekræft altid flaskens årgang, når du lægger i kurven.",
+    },
+    listPrice: 119,
+    priceCurrency: "DKK",
+    structuredDescriptionSnippet:
+      "Tysk Rheingau riesling trocken fra gamle stokke: stram syre, frugtklarhed og finesse — nem at matche til fisk, asiatiske retter eller modnet ost.",
+    bodyParagraphs: [
+      "Når vinelskere siger Rheingau, mener de ofte struktureret riesling med både højde og jordbund: her vokser druen ikke som industri-juice, men med et præg af kølig klimaprofil omkring floden. Weinhofs «Alte Reben» sigter bevidst på koncentration fra lavere udbytte på ældre rødder.",
+      "I glasset finder du først citrus og lyse æbler, derefter krydrede eller mineralske lag som bliver tydeligere ved kølig servering — præcis det som gør god tørriesling til en slags gastronomisk multitool: syren klipper igennem smør, mayonnaise og fisk-fedme uden slåskampe.",
+      "Vin med skarp syre kræver respekt for salt og syre på tallerkenen: overstimuler ikke smagsløgene med mega-chili uden fed modvægt, medmindre du søger en bevidst kontrast. Til asiatiske saucer eller syrlige dipping er riesling ofte førstevalget i den tyske gastronomi.",
+      "Den her flaske er også en klassisk til «jeg ved ikke hvad vi spiser». Har du grillede tigerrejer, kartoffeltærte eller en skål med ramen med citrongræs og ingefær — er sandsynligheden høj for at vinen føles hjemme. Er du i tvivl om sødmeforhold på en helt ny vin, nip altid før du bygger sauce rundt om den.",
+      "Årgang kan skifte mellem stabilt tør profileret og mere aromatisk ungdomsfase; lad butikteksten være pejlemærke for alkohol og restsukker på netop den kolli du har i kurven.",
+    ],
+    foodPairing: {
+      heading: "Mad og lejligheder der spiller",
+      lead:
+        "Tænk syrebehov eller retter hvor citrus allerede er en del af billedet: fisk og skaldyr, asiatisk sur-sødt, eller retter hvor cremet eller fedt skal brydes:",
+      dishes: [
+        "Fisk og skaldyr: grillede eller dampede rejer, muslinger i hvidvin, ørred med citronsmørsauce.",
+        "Asiatisk: thai eller vietnamesisk salat med lime, ramen med lettere krydderi og urter.",
+        "Centraleuropæisk comfort: kartoffeltærte eller flæskeærter med krydderkål (uden overdreven chili).",
+        "Ost og snack: ged, cremet gedebrie eller modnet hård ost på groft brød — lad voksagtige blåost være en bevidst næste runde, ikke første skridt til test af vinen.",
+        "Festmenu-light: første ret med fisk eller røgede østers; opkvikkende vin før tunge røde overtager ved hovedretten.",
+      ],
+      lessIdeal:
+        "Meget tannintunge bordeaux eller mørk chokoladedessert overdøver ofte strukturen eller får syren til at føles hård. Til kraftig mole eller chili uden fed modvægt: find mere krop eller sødmefuld frugt i guiderne nederst.",
+    },
+    specs: [
+      { label: "Område", value: "Rheingau, Tyskland" },
+      { label: "Druetype", value: "Riesling" },
+      { label: "Stil", value: "Tør (Qualitätswein trocken)" },
+      { label: "Producent", value: "Weinhof 519" },
+      { label: "Årgang/url", value: "Bekræft årgang på Den Sidste Flaske — produktets titel kan være nyere end webadressen." },
+    ],
+    guideRefs: [
+      { slug: "riesling-druen" },
+      { slug: "vinregion-tyskland" },
+      { slug: "riesling-fra-mosel", anchorText: "Riesling fra Mosel (til sammenligning nord for Rheingau)" },
+      { slug: "bedste-riesling-under-150-kr" },
+      { slug: "riesling-til-asiatisk-mad" },
+      { slug: "vin-til-sushi" },
+      { slug: "komplet-guide-til-vin-og-mad", anchorText: "Komplet guide til vin og mad" },
+    ],
+  },
+  {
+    slug: "the-guvnor-tinto",
+    displayTitle: "The Guv'nor Tinto",
+    metaDescription:
+      "Spansk hus-rød med frugt, bløde tanniner og masser kult: tapasvenlig label og smag til grill, ost og aftener uden prestige-pris — købt hos Den Sidste Flaske via Vinbot (affiliate).",
+    productPageUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-felix-solis-avantis-rodvin-1172580197.png?v=1749550958",
+    additionalGalleryImageUrls: [
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-the-guv-nor-rodvin-1228680623.jpg?v=1774261089",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-the-guv-nor-rodvin-1228680624.jpg?v=1774261117",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-the-guv-nor-rodvin-1228714503.png?v=1774282750",
+    ],
+    imageAside: {
+      heading: "Et hurtigt overblik",
+      bullets: [
+        "Stil og brand: Felix Solis' «The Guv'nor»-linje sigter på uformel spanskrød til hverdag — ikke finevins-snobberi, men saft.",
+        "Område: typisk hus fra varmt spansk klima (Felix Solis) med konsistent vin til hverdagsbudget.",
+        "Smag du forventer: mørk bærfrugt, lidt fadpræg afhængigt af årgang og blend, og bløde tanniner frem for pencilspidse bordeauxstrukturer.",
+        "Alkohol: som regel middel til høj — lad vinen derfor helst ikke serveres for varmt.",
+        "Temperatur: 15–17 °C i almindelig stue eller en anelse køligere hvis tallerkenen er meget salt eller stegt.",
+        "Vejledende pris: ca. 109 kr. ved sidste tjek på produktet hos Den Sidste Flaske.",
+      ],
+      footnote:
+        "Vinhuset blender spanske druer; præcis sammensætning kan variere år til år — læs etiket på den flaske du modtager.",
+    },
+    listPrice: 109,
+    priceCurrency: "DKK",
+    structuredDescriptionSnippet:
+      "Uformel spanskrød: saftighed, bløde tanniner og oplagt til tapas, gris fra grill eller en skål blandet charcuteri.",
+    bodyParagraphs: [
+      "The Guv'nor er blevet genkendelig på hylderne fordi navn og design signaler klar uformel stemning — ikke som en stram Bordeaux-forelæsning, men saft før weekend og grill starter.",
+      "I glasset ligger DNA'et gerne på mørk bærprofil fra varmt klima suppleret med mild krydderbuket — tænk chokolade-chili i baggrunden eller varm frugtstuvning frem for røgslør fra peated whisky. Lav syre relativt til mange nordlige vine: derfor fungerer vinen ikke som kniv mod meget fet fisk, men udmerket mod saltet kødpålæg eller simrede retter.",
+      "Vin med det her pris- og smagsforhold passer dem der gerne fylder karaffel til venner uden at træde ind i den snævre «smag mig med spyt»-stemning. Åbn før du ved om det bliver taco eller tortilla — sandsynligheden for katastrofal parring er lav, så længe maden ikke er ren rå syre eller meget lys fisk.",
+      "Lagring eller decanter kræves næppe: et par minutters luft eller at skænke i brede glas hjælper unge tanniner med at glide. Ønsker du alligevel struktur ud af glasset på næsten ingen tid, lad den stå åben ved siden af gryden mens du hakker hvidløg.",
+    ],
+    foodPairing: {
+      heading: "Mad og lejligheder der spiller",
+      lead:
+        "Spansk vinkel: salt, krydret eller grillet — alt der smager lidt ekstra af sol og røget paprika:",
+      dishes: [
+        "Tapas og salt: Patatas bravas med mild alioli, tortilla, chorizo, manchego og olivenmix.",
+        "Grill og pande: kyllingelår med paprika, krydret pølse eller nakkekoteletter med grillsauce.",
+        "Simret: okse- eller lammegryde med kartofler, eller fyldigt bønneret med ost og mildt krydderi.",
+        "Snack-aften: tacos med ost og kødsfyld, eller nachos med cheddar og mådehold jalapeños.",
+        "Ost og brød: idiazabal eller anden firmet spansk eller mellemeuropæisk hård ost.",
+      ],
+      lessIdeal:
+        "Ultra-delikat rå fisk eller ceviche uden krydderfølge kan virke matsmækkende; meget krydret vindaloo uden yoghurtbalance kan føles dobbelt-skarpt mod alkohol. Se guider til tapas eller spansk mad nederst for finjusteringer.",
+    },
+    specs: [
+      { label: "Land", value: "Spanien" },
+      { label: "Producent", value: "Felix Solis Avantis (The Guv'nor)" },
+      { label: "Stilprofil", value: "Mellemdyb rødvins-hverdag, frugtbetonet" },
+      { label: "Sammensætning", value: "Se flaskens bagside hos Den Sidste Flaske — typisk blandet blå druer fra varmt klima." },
+    ],
+    guideRefs: [
+      { slug: "vin-til-tapas" },
+      { slug: "vin-til-spansk-mad" },
+      { slug: "bedste-spansk-rodvin" },
+      { slug: "tempranillo-druen", anchorText: "Tempranillo og spansk blend (som ofte fylder flasker i den klasse)" },
+      { slug: "bedste-tempranillo-under-150-kr" },
+      { slug: "vin-til-grill-og-bbq" },
+      { slug: "vin-til-nachos" },
+    ],
+  },
+  {
+    slug: "spritz-roll-aperitivo-originale",
+    displayTitle: "Spritz & Roll Aperitivo Originale",
+    metaDescription:
+      "Mousserende aperitivo på flaske — klar bittersød citrus til is, Balkon-aftener og let snacking. Vinbot forklarer servering og køberlink til Den Sidste Flaske (affiliate).",
+    productPageUrl: "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
+    additionalGalleryImageUrls: [
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834451.jpg?v=1774340257",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228841027.png?v=1774347490",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947311.png?v=1776598030",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947310.png?v=1776597974",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-spritz-roll-mousserende-1232947309.png?v=1776597998",
+    ],
+    imageAside: {
+      heading: "Et hurtigt overblik",
+      bullets: [
+        "Koncept: færdig mousserende aperitivo-profil med spritz/aromatiker-karakter på flaske — mindre bararbejde til dig.",
+        "Kategori på DSF: klassificeret som mousserende (ikke stille hvid eller ren spiritus); se etikette for alkoholprocent på netop dit batch.",
+        "Servering: iskoldt glas eller højt kop med masser af isterninger til varme aftener eller som velkomstdrink.",
+        "CO₂ og sødme: bittersødt balancepunkt klassisk for aperitivo — passer derfor til salt snack frem for sødt dessertfad.",
+        "Lejlighed: altan, park, før grillen tænder, eller som «nummer ét» inden middagen lander på bordet.",
+        "Vejledende pris: ca. 99 kr. på produktet ved sidste tjek hos Den Sidste Flaske.",
+      ],
+      footnote:
+        "Muselet og flasketryk gælder mousserende drik — opbevar køligt og åbn trygt ud fra anvisning på etikette.",
+    },
+    listPrice: 99,
+    priceCurrency: "DKK",
+    structuredDescriptionSnippet:
+      "Færdiglavede mousserende aperitivo med spritz-tone: bittersødt, perlende og gjort til is, salt snack og aftensol.",
+    bodyParagraphs: [
+      "Aperitivokulturen på den italienske Piazza handler om bittersødmefuld orange, sodavandsfriskhed og alkoholniveau hvor tonguetwister om druesorter kan vente til næste kapitel i samtalen. Spritz & Roll samler tanken på flaske: du åbner, hælder, propper en skive appelsin eller urter ved om du vil pynte instagram-momentet.",
+      "Vinbot ser produktet først og fremmest som oplevelsesvare: ikke en vin du skænker i små snobbede Zalto-glas for at filosofere ti minutter — mere som første lys i sommeraftener eller en hurtig toast når naboen kommer spontant og bringer bland-selv-chips.",
+      "Perlende stil balancerer automatisk salt og krydderi i munden; derfor er kombinationen klassisk ved saltede peanuts, pesto-dip eller grillet brød med olivenolie hvor vinens sødmefølelse opfattes rund uden dessertdimension.",
+      "Alkohol og sukker står på forhandlerens faktabox — kombinationen med stærk sol og tom mave kræver sund fornuft og vand ved siden. Er du sensitiv over for bittertoner, kan du fortynde med et skvæt neutral danskvand uden at skamme dig.",
+    ],
+    foodPairing: {
+      heading: "Mad og lejligheder der spiller",
+      lead:
+        "Let salt, krydderi-blød eller grøntsagsfrisk — eller helt uden mad som ren velkomsthilsen:",
+      dishes: [
+        "Salt snack: oliven, blandingsnødder, focaccia med rosemary, parmesanflager.",
+        "Grønt og fisk: tigermuslinger dampet i citrus, grillede asparager med citron eller let marinerede rejer.",
+        "Fingerfood: bruschetta, pesto-mozzarella-skiver eller grillede kartofler med mayonnaise let drysset med krydderurter.",
+        "Grill-intro: før hovedrets rødvine åbnes — eller som eneste boble til grillede vegetartærter på sommeraftener.",
+        "Selskabssituationer: havefest, sankthans før flammerne eller fredags-hygge før takeout dukker op.",
+      ],
+      lessIdeal:
+        "Komplekse rødvin-retter eller meget tannintunge måltider overskygger perlende smag og bitterbalancen — åbn rosé eller en mere struktureret boble til hovedretten og behold Spritz-roll som start. Se spritz- og boble-guider nederst.",
+    },
+    specs: [
+      { label: "Type", value: "Mousserende aperitivo (forhandlerklassifikation på DSF)" },
+      { label: "Produkt", value: "Spritz & Roll — Aperitivo Originale (NV)" },
+      { label: "Alkohol", value: "Læs præcis procent på etikette hos Den Sidste Flaske" },
+      { label: "Servering", value: "Iskold; glas eller kop med is efter temperament" },
+    ],
+    guideRefs: [
+      { slug: "vin-i-cocktails-spritz-og-drikke" },
+      { slug: "bobler-til-fredag" },
+      { slug: "bobler-til-brunch" },
+      { slug: "bedste-bobler-under-100-kr" },
+      { slug: "bedste-bobler-under-150-kr" },
+      { slug: "bobler-champagne-cava-prosecco-og-cremant", anchorText: "Bobler: Champagne, Cava, Prosecco og Crémant" },
+      { slug: "komplet-guide-til-vin-og-mad", anchorText: "Komplet guide til vin og mad" },
+    ],
+  },
 ];
 
 function normalizedProductKey(url: string): string {

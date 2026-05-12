@@ -39,7 +39,7 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",
-    listPrice: 99,
+    listPrice: 119,
     priceCurrency: "DKK",
   },
   {
@@ -57,7 +57,16 @@ export const dsfFeaturedPicks: DsfFeaturedPick[] = [
     productUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-felix-solis-avantis-rodvin-1172580197.png?v=1749550958",
-    listPrice: 59,
+    listPrice: 109,
+    priceCurrency: "DKK",
+  },
+  {
+    title: "Spritz & Roll Aperitivo Originale",
+    blurb: "Mousserende aperitivo på flaske — klar til is, skål og let snacking på terrassen.",
+    productUrl: "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperetivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
+    listPrice: 99,
     priceCurrency: "DKK",
   },
 ];
