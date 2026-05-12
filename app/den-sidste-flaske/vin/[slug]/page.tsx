@@ -35,8 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!wine) return { title: "Vin ikke fundet | Vinbot" };
   const url = `${siteUrl}/den-sidste-flaske/vin/${wine.slug}`;
   const title = `${wine.displayTitle} | Den Sidste Flaske · Vinbot`;
+  const ogCandidates = [...(wine.imageUrl != null ? [wine.imageUrl] : []), ...(wine.additionalGalleryImageUrls ?? [])];
   const ogImages =
-    wine.imageUrl != null ? [{ url: wine.imageUrl, alt: wine.displayTitle }] : undefined;
+    ogCandidates.length > 0
+      ? ogCandidates.slice(0, 6).map((u) => ({
+          url: u,
+          alt: wine.displayTitle,
+        }))
+      : undefined;
   return {
     title,
     description: wine.metaDescription,
@@ -123,6 +129,7 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
         pick={featuredPick}
         vinbotPageUrl={pageUrl}
         description={descriptionForLd.trim() || wine.metaDescription}
+        additionalGalleryImageUrls={wine.additionalGalleryImageUrls}
       />
       <FaqJsonLd items={faqItems} />
       <BreadcrumbJsonLd items={breadcrumbItems} />
@@ -152,6 +159,28 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={wine.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
               </DsfAffiliateOutboundLink>
+            ) : null}
+            {(wine.additionalGalleryImageUrls ?? []).length > 0 ? (
+              <div className="space-y-2">
+                <p className="text-center text-xs font-medium text-stone-600 lg:text-left">Flere vinkler (Den Sidste Flaske)</p>
+                <div className="grid grid-cols-2 gap-2" aria-label="Yderligere produktfotos">
+                  {(wine.additionalGalleryImageUrls ?? []).map((src, i) => (
+                    <DsfAffiliateOutboundLink
+                      key={src}
+                      productUrl={wine.productPageUrl}
+                      placement={`dsf-vin-detail-gallery-${i}`}
+                      slug={wine.slug}
+                      className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-stone-200/90 bg-white p-2 shadow-sm transition hover:shadow-md"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt="" className="max-h-[7.75rem] max-w-full object-contain" loading="lazy" sizes="140px" />
+                    </DsfAffiliateOutboundLink>
+                  ))}
+                </div>
+                <p className="text-center text-[11px] leading-snug text-stone-500 lg:text-left">
+                  Klik fører til butik via affiliate-link — billeder leveres af forhandleren.
+                </p>
+              </div>
             ) : null}
             {wine.imageAside ? (
               <section aria-labelledby="dsf-wine-aside-heading" className="rounded-2xl border border-stone-200/90 bg-stone-50/90 p-4 shadow-sm">

@@ -74,6 +74,8 @@ export function buildDsfAffiliateProductNode(
   options?: {
     canonicalPageUrl?: string;
     description?: string;
+    /** Flere Shopify-billeder (fx vinkler fra forhandler — undgå gif/spinner-url’er her). */
+    additionalImageUrls?: readonly string[];
   },
 ): Record<string, unknown> | null {
   if (!pickHasValidOfferPrice(pick)) return null;
@@ -104,7 +106,10 @@ export function buildDsfAffiliateProductNode(
     brand: { "@type": "Brand", name: DSF_MERCHANT.name },
     offers: offer,
   };
-  if (pick.imageUrl) product.image = pick.imageUrl;
+  const imgs = [...(pick.imageUrl ? [pick.imageUrl] : []), ...(options?.additionalImageUrls ?? [])].map((u) => u.trim()).filter(Boolean);
+  const unique = [...new Set(imgs)];
+  if (unique.length === 1) product.image = unique[0];
+  else if (unique.length > 1) product.image = unique;
   return product;
 }
 

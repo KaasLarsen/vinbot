@@ -34,6 +34,11 @@ export type DsfPopularWinePage = {
   /** Rå eller ren DSF-produkt-URL — normaliseres via sanitizeDsfProductUrl ved lookup. */
   productPageUrl: string;
   imageUrl?: string;
+  /**
+   * Yderligere produktfotos (Shopify CDN) — vises under hovedbilledet og i Product JSON-LD.
+   * Hent fx fra `GET /products/handle.js` på DSF (`media`/`images`). Undlad gif/spinner-url’er.
+   */
+  additionalGalleryImageUrls?: readonly string[];
   /** Kort blok under flaskebilledet (snapshots + evt. fodnote). */
   imageAside?: DsfPopularWineAside;
   /** Ca.-pris til JSON-LD — kontrollér altid hos Den Sidste Flaske før publicering. */
@@ -57,6 +62,13 @@ const PAGES: readonly DsfPopularWinePage[] = [
     productPageUrl: "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1190752698.png?v=1756829918",
+    additionalGalleryImageUrls: [
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1197387200.png?v=1760365120",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1197387202.png?v=1760623344",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1197387203.png?v=1760365126",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1197387204.png?v=1760365130",
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1197387205.png?v=1760623344",
+    ],
     imageAside: {
       heading: "Et hurtigt overblik",
       bullets: [

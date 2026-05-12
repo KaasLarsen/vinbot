@@ -260,12 +260,18 @@ export function DsfPopularWineDetailProductJsonLd({
   pick,
   vinbotPageUrl,
   description,
+  additionalGalleryImageUrls,
 }: {
   pick: DsfFeaturedPick;
   vinbotPageUrl: string;
   description: string;
+  additionalGalleryImageUrls?: readonly string[];
 }) {
-  const node = buildDsfAffiliateProductNode(pick, { canonicalPageUrl: vinbotPageUrl, description });
+  const node = buildDsfAffiliateProductNode(pick, {
+    canonicalPageUrl: vinbotPageUrl,
+    description,
+    additionalImageUrls: additionalGalleryImageUrls,
+  });
   if (!node) return null;
   const data = { "@context": "https://schema.org", ...node };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
