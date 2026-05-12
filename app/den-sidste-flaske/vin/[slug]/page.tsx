@@ -67,6 +67,14 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
 
   const guideBySlug = new Map(listGuides().map((g) => [g.slug, g]));
 
+  const asideLdParts = wine.imageAside
+    ? [
+        wine.imageAside.heading,
+        ...(wine.imageAside.bullets ?? []),
+        wine.imageAside.footnote ?? "",
+      ]
+    : [];
+
   const foodLdParts = wine.foodPairing
     ? [
         wine.foodPairing.heading,
@@ -75,7 +83,12 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
         wine.foodPairing.lessIdeal ?? "",
       ]
     : [];
-  const descriptionForLd = [...wine.bodyParagraphs, ...foodLdParts, ...(wine.specs?.map((s) => `${s.label}: ${s.value}`) ?? [])]
+  const descriptionForLd = [
+    ...wine.bodyParagraphs,
+    ...asideLdParts,
+    ...foodLdParts,
+    ...(wine.specs?.map((s) => `${s.label}: ${s.value}`) ?? []),
+  ]
     .join(" ")
     .slice(0, 5000);
 
@@ -128,17 +141,59 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
         <AffiliateDisclosure />
 
         <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-start">
-          <div className="mx-auto shrink-0 lg:mx-0">
+          <div className="mx-auto flex w-full max-w-[21rem] shrink-0 flex-col gap-6 lg:mx-0">
             {wine.imageUrl ? (
               <DsfAffiliateOutboundLink
                 productUrl={wine.productPageUrl}
                 placement="dsf-vin-detail-hero"
                 slug={wine.slug}
-                className={`block rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm transition hover:shadow-md ${"mx-auto flex size-72 items-center justify-center overflow-hidden bg-stone-50 sm:size-80"}`}
+                className={`block rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm transition hover:shadow-md ${"flex size-72 items-center justify-center overflow-hidden bg-stone-50 sm:size-80"}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={wine.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
               </DsfAffiliateOutboundLink>
+            ) : null}
+            {wine.imageAside ? (
+              <section aria-labelledby="dsf-wine-aside-heading" className="rounded-2xl border border-stone-200/90 bg-stone-50/90 p-4 shadow-sm">
+                <h2 id="dsf-wine-aside-heading" className="text-base font-semibold text-stone-900">
+                  {wine.imageAside.heading}
+                </h2>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-stone-800 marker:text-stone-400">
+                  {wine.imageAside.bullets.map((line, i) => (
+                    <li key={i}>{line}</li>
+                  ))}
+                </ul>
+                {wine.imageAside.footnote ? (
+                  <p className="mt-3 border-t border-stone-200/80 pt-3 text-xs leading-snug text-stone-600">
+                    {wine.imageAside.footnote}
+                  </p>
+                ) : null}
+              </section>
+            ) : null}
+            {wine.imageUrl || wine.imageAside ? (
+              <div className="rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm">
+                <p className="text-sm font-medium text-stone-900">Videre på Vinbot eller i butikken</p>
+                <ul className="mt-3 space-y-2 text-sm text-stone-700">
+                  <li>
+                    <DsfAffiliateOutboundLink
+                      productUrl={wine.productPageUrl}
+                      placement="dsf-vin-detail-aside-buy"
+                      slug={wine.slug}
+                      className="text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950"
+                    >
+                      Gå til produktet hos Den Sidste Flaske (affiliate) →
+                    </DsfAffiliateOutboundLink>
+                  </li>
+                  <li>
+                    <Link
+                      href="/den-sidste-flaske"
+                      className="text-stone-800 underline decoration-stone-300 underline-offset-4 hover:text-stone-950"
+                    >
+                      Se flere flasker på Den Sidste Flaske-hubben →
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             ) : null}
           </div>
           <div className="min-w-0 flex-1 space-y-6">

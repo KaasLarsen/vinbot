@@ -9,6 +9,14 @@ export type DsfPopularWineGuideRef = {
 
 export type DsfPopularWineSpec = { label: string; value: string };
 
+/** Indhold direkte under produktfoto (venstre kolonne) — lukker «hullet» ved siden af brødteksten. */
+export type DsfPopularWineAside = {
+  heading: string;
+  readonly bullets: readonly string[];
+  /** Valgfrit lille fodnotefelt — fx alkohol- eller link-disclaimer. */
+  footnote?: string;
+};
+
 /** Valgfri mad- og lejlighedssektion — konkrete forslag der gør siden «spillende». */
 export type DsfPopularWineFoodPairing = {
   heading: string;
@@ -26,6 +34,8 @@ export type DsfPopularWinePage = {
   /** Rå eller ren DSF-produkt-URL — normaliseres via sanitizeDsfProductUrl ved lookup. */
   productPageUrl: string;
   imageUrl?: string;
+  /** Kort blok under flaskebilledet (snapshots + evt. fodnote). */
+  imageAside?: DsfPopularWineAside;
   /** Ca.-pris til JSON-LD — kontrollér altid hos Den Sidste Flaske før publicering. */
   listPrice?: number;
   priceCurrency?: string;
@@ -47,6 +57,19 @@ const PAGES: readonly DsfPopularWinePage[] = [
     productPageUrl: "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1190752698.png?v=1756829918",
+    imageAside: {
+      heading: "Et hurtigt overblik",
+      bullets: [
+        "Type og stemning: fyldig, varm-frugtet rød fra Salento til hverdagslys og italiensk vinkel.",
+        "Druerne: hovedsageligt primitivo med tydelig susumaniello-andel — cirka 70/30 ifølge forhandleren.",
+        "Struktur: blødere midte end stram klasse‑Bordeaux; syre hjælper med ost og tomat.",
+        "Træ og lagring: omkring seks måneder på fad ifølge forhandleren — mere krydderi end tung cremet fad.",
+        "Temperatur: sigt efter omkring 16–18 °C; lad vinen lufte et kvarter, inden I smager.",
+        "Vejledende pris: ca. 79 kr. i Vinbots udpluk ved sidste tjek — se altid aktuel pris og årgang hos Den Sidste Flaske før du handler.",
+      ],
+      footnote:
+        "Angivelser om blandingsforhold, lagring og pris kan ændre sig fra batch til batch og fra dag til dag på shoppen.",
+    },
     listPrice: 79,
     priceCurrency: "DKK",
     structuredDescriptionSnippet:
