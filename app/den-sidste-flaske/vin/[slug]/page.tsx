@@ -66,7 +66,16 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
   ];
 
   const guideBySlug = new Map(listGuides().map((g) => [g.slug, g]));
-  const descriptionForLd = [...wine.bodyParagraphs, ...(wine.specs?.map((s) => `${s.label}: ${s.value}`) ?? [])]
+
+  const foodLdParts = wine.foodPairing
+    ? [
+        wine.foodPairing.heading,
+        wine.foodPairing.lead ?? "",
+        ...(wine.foodPairing.dishes ?? []),
+        wine.foodPairing.lessIdeal ?? "",
+      ]
+    : [];
+  const descriptionForLd = [...wine.bodyParagraphs, ...foodLdParts, ...(wine.specs?.map((s) => `${s.label}: ${s.value}`) ?? [])]
     .join(" ")
     .slice(0, 5000);
 
@@ -85,6 +94,11 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
       question: "Hvorfor passer der både 2024 og 2025 i beskrivelser om den samme vin?",
       answer:
         "Webshop-url’er erstatter ikke altid automatisk vinens aktuelle årgang på forsiden eller i titler. Årgangen på flasken finder du på produktsiden hos Den Sidste Flaske; bestiller du derefter ved du præcis, hvad du får leveret.",
+    },
+    {
+      question: "Til hvilken slags mad passer vinen?",
+      answer:
+        "Vi har opsummeret konkrete idéer i sektionen «Mad og lejligheder der spiller» på denne side. Som tommelfingerregel passer varmt, frugtrig italiensk hverdagsmad med tomat, ost eller grillet kød godt — se også de linkede vin-og-mad-guider nederst.",
     },
   ];
 
@@ -145,6 +159,23 @@ export default async function DsfPopularWineDetailPage({ params }: Props) {
                 <p key={idx}>{para}</p>
               ))}
             </div>
+
+            {wine.foodPairing ? (
+              <section aria-labelledby="dsf-pop-food-heading" className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+                <h2 id="dsf-pop-food-heading" className="text-lg font-semibold text-stone-900">
+                  {wine.foodPairing.heading}
+                </h2>
+                {wine.foodPairing.lead ? <p className="mt-3 text-base leading-relaxed text-stone-800">{wine.foodPairing.lead}</p> : null}
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-stone-800 marker:text-stone-400">
+                  {wine.foodPairing.dishes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                {wine.foodPairing.lessIdeal ? (
+                  <p className="mt-5 text-sm leading-relaxed text-stone-600">{wine.foodPairing.lessIdeal}</p>
+                ) : null}
+              </section>
+            ) : null}
 
             <section aria-labelledby="dsf-pop-spec-heading" className="rounded-2xl border border-stone-200 bg-stone-50/80 p-5">
               <h2 id="dsf-pop-spec-heading" className="text-lg font-semibold text-stone-900">
