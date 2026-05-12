@@ -340,6 +340,12 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/bedste-chenin-blanc-under-150-kr",
   },
 
+  // SEO: bred forespørgsel «alkoholfri vin» → kanonisk hub (undgår kun sporadisk traffik på blandede sider)
+  { source: "/alkoholfri-vin", destination: "/guides/bedste-alkoholfri-vin" },
+  { source: "/alkoholfri-vin/", destination: "/guides/bedste-alkoholfri-vin" },
+  { source: "/guides/alkoholfri-vin", destination: "/guides/bedste-alkoholfri-vin" },
+  { source: "/guides/alkoholfri-vin/", destination: "/guides/bedste-alkoholfri-vin" },
+
   // Øvrigt: produktanbefalinger og partiale (ikke meningsfulde landingsider)
   {
     source: "/pages/anbefalinger/:slug.html",

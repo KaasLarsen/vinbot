@@ -171,11 +171,15 @@ export function OrganizationJsonLd() {
 }
 
 export function WebSiteJsonLd({ url }: { url: string }) {
+  const domain = url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${url}/#website`,
+    /** Primært brandsnavn til Googles site name (vis ved resultatets domænelinje hvor understøttet). */
     name: siteName,
+    /** Binder domænestreng til brand og mindsker kun-domænenavvisning ved tvetydige signaler. */
+    alternateName: [`${siteName}.dk`, domain, `www.${domain}`],
     url,
     inLanguage: "da-DK",
     publisher: { "@id": organizationSchemaId },

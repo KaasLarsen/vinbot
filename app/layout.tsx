@@ -24,6 +24,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  /** Bruges bl.a. af browsere/Google som foretrukket visningsnavn fremfor rå domæne (små bogstaver). */
+  applicationName: siteName,
   title: {
     default: `${siteName} – vin til mad, humør og stemning`,
     template: `%s | ${siteName}`,
