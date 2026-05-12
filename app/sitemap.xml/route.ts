@@ -1,5 +1,7 @@
 import { unstable_cache } from "next/cache";
 
+import path from "path";
+
 import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
@@ -43,9 +45,15 @@ async function buildSitemapIndexXml(): Promise<string> {
   const catalog = await getCachedWineCatalog();
   const vineLastmod = new Date(catalog.generatedAt);
 
+  const dsfVinLastmod = newest([
+    fileLastModified(path.join(process.cwd(), "lib/dsf-popular-wines.ts")),
+    fileLastModified(path.join(process.cwd(), "app/den-sidste-flaske/vin/[slug]/page.tsx")),
+  ]);
+
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
+    { loc: `${base}/sitemap-dsf-vin.xml`, lastmod: dsfVinLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },
     { loc: `${base}/sitemap-regioner.xml`, lastmod: newest(byCat.regioner) },

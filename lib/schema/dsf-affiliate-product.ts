@@ -61,17 +61,31 @@ export function dsfOfferShippingAndReturn() {
   } as const;
 }
 
-function offerBlock(pick: DsfFeaturedPick, position: number) {
+function pickHasValidOfferPrice(p: DsfFeaturedPick): boolean {
+  return p.listPrice != null && Number.isFinite(p.listPrice) && p.listPrice > 0;
+}
+
+/**
+ * Produktgraf til strukturerede data — med affiliate som `offers.url`.
+ * Til ItemList-cards peger Product.url på butikkens side; på Vinbot-detaljesider sættes `canonicalPageUrl`.
+ */
+export function buildDsfAffiliateProductNode(
+  pick: DsfFeaturedPick,
+  options?: {
+    canonicalPageUrl?: string;
+    description?: string;
+  },
+): Record<string, unknown> | null {
+  if (!pickHasValidOfferPrice(pick)) return null;
   const affiliateUrl = pick.directLink ? pick.productUrl : partnerAdsDsfClickUrl(pick.productUrl);
   const extra = dsfOfferShippingAndReturn();
   const currency = pick.priceCurrency ?? "DKK";
-  const priceStr =
-    pick.listPrice != null && Number.isFinite(pick.listPrice) ? String(pick.listPrice) : null;
+  const priceStr = String(pick.listPrice);
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     url: affiliateUrl,
-    /** Produkt-snippets / Merchant Listings kræver pris + valuta på Offer */
-    ...(priceStr != null ? { price: priceStr, priceCurrency: currency } : {}),
+    price: priceStr,
+    priceCurrency: currency,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: {
@@ -81,32 +95,37 @@ function offerBlock(pick: DsfFeaturedPick, position: number) {
     },
     ...extra,
   };
+  const desc = (options?.description ?? pick.blurb)?.trim().slice(0, 5000);
   const product: Record<string, unknown> = {
     "@type": "Product",
     name: pick.title,
-    url: pick.productUrl,
-    description: pick.blurb ?? undefined,
+    url: options?.canonicalPageUrl ?? pick.productUrl,
+    ...(desc ? { description: desc } : {}),
     brand: { "@type": "Brand", name: DSF_MERCHANT.name },
     offers: offer,
   };
   if (pick.imageUrl) product.image = pick.imageUrl;
-  return {
-    "@type": "ListItem",
-    position,
-    item: product,
-  };
-}
-
-function pickHasValidOfferPrice(p: DsfFeaturedPick): boolean {
-  return p.listPrice != null && Number.isFinite(p.listPrice) && p.listPrice > 0;
+  return product;
 }
 
 /** ItemList med Product — til forsiden / DSF-side. Uden review/aggregateRating (ingen fabrikerede stjerner). */
 export function buildDsfFeaturedProductsItemList(picks: DsfFeaturedPick[]) {
   const withPrice = picks.filter(pickHasValidOfferPrice);
+  const itemListElement = withPrice
+    .map((p, i) => {
+      const item = buildDsfAffiliateProductNode(p);
+      if (!item) return null;
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        item,
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => x != null);
+
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: withPrice.map((p, i) => offerBlock(p, i + 1)),
+    itemListElement,
   };
 }

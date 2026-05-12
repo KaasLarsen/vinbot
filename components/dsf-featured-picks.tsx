@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { partnerAdsDsfClickUrl } from "@/lib/site";
+
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
+import { dsfPopularWineDetailSlugForProductUrl } from "@/lib/dsf-popular-wines";
+import { sanitizeDsfProductUrl } from "@/lib/dsf-product-url";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { partnerAdsDsfClickUrl } from "@/lib/site";
 
 const IMAGE_FRAME =
   "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
@@ -47,13 +50,16 @@ export function DsfFeaturedPicks({
       </div>
       <ul className={gridClass}>
         {picks.map((pick) => {
-          const href = pick.directLink ? pick.productUrl : partnerAdsDsfClickUrl(pick.productUrl);
+          const href = pick.directLink
+            ? pick.productUrl.trim()
+            : partnerAdsDsfClickUrl(sanitizeDsfProductUrl(pick.productUrl));
           const onClick = () =>
             trackAffiliateClick({
               merchant: "Den Sidste Flaske",
               placement: variant === "home" ? "home-dsf-featured" : "hub-dsf-featured",
               url: href,
             });
+          const detailSlug = pick.directLink ? undefined : dsfPopularWineDetailSlugForProductUrl(pick.productUrl);
           return (
             <li key={pick.productUrl}>
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
@@ -73,6 +79,16 @@ export function DsfFeaturedPicks({
                     </a>
                   </h3>
                   {pick.blurb ? <p className="line-clamp-3 text-sm text-stone-600">{pick.blurb}</p> : null}
+                  {detailSlug ? (
+                    <p className="text-sm">
+                      <Link
+                        href={`/den-sidste-flaske/vin/${detailSlug}`}
+                        className="font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-900"
+                      >
+                        Læs Vinbots side om vinen →
+                      </Link>
+                    </p>
+                  ) : null}
                   <a
                     href={href}
                     target="_blank"

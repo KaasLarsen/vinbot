@@ -1,7 +1,10 @@
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { vineMetaDescription } from "@/lib/vine/copy";
-import { buildDsfFeaturedProductsItemList } from "@/lib/schema/dsf-affiliate-product";
+import {
+  buildDsfAffiliateProductNode,
+  buildDsfFeaturedProductsItemList,
+} from "@/lib/schema/dsf-affiliate-product";
 import { productJsonLdGtinFields } from "@/lib/gtin-validation";
 import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
 
@@ -249,5 +252,21 @@ export function DsfFeaturedProductsJsonLd({ picks }: { picks: DsfFeaturedPick[] 
   const data = buildDsfFeaturedProductsItemList(picks);
   const list = data.itemListElement as unknown[];
   if (!list.length) return null;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+/** Én affiliate-DSF-produktgraf til `/den-sidste-flaske/vin/[slug]` — uden ratings. */
+export function DsfPopularWineDetailProductJsonLd({
+  pick,
+  vinbotPageUrl,
+  description,
+}: {
+  pick: DsfFeaturedPick;
+  vinbotPageUrl: string;
+  description: string;
+}) {
+  const node = buildDsfAffiliateProductNode(pick, { canonicalPageUrl: vinbotPageUrl, description });
+  if (!node) return null;
+  const data = { "@context": "https://schema.org", ...node };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
