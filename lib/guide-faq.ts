@@ -516,6 +516,33 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Sjældent førstevalg til klassisk kød-tomat-béchamel, men fyldig hvid med syre kan fungere til lettere vegetarlasagne eller hvid lasagne — ellers foretrækkes syrlig rød eller rosé til blandet bord.",
     },
   ],
+  "vin-trends-og-forbrug-i-danmark": [
+    {
+      question: "Hvad er de største vintrends i Danmark lige nu?",
+      answer:
+        "Mange oplever samtidig større udvalg af alkoholfri og mousserende 0 %, interesse for lavalkohol som alternativ til dealkoholiseret vin, og nysgerrighed på natur og økologi som smagsvalg — suppleret af prisbevidste søgninger i faste prisbånd. Vinbots oversigt binder tendenser til konkrete guides og til søgning på tværs af forhandlere.",
+    },
+    {
+      question: "Hvorfor tales der så meget om alkoholfri vin?",
+      answer:
+        "Fordi kategorien både rammer sundhed, bilkørsel, graviditet og sociale situationer hvor man vil skåle uden promille — og fordi kvaliteten på bobler og friske hvide er løftet markant. Start i bedste alkoholfri vin-hubben og underguiderne til hvid og bobler.",
+    },
+    {
+      question: "Er naturvin bare en trend?",
+      answer:
+        "Naturvin er både kulturarv og moderne restaurantscene — som trend handler det om at folk vil smage jord og proces tydeligere. Læs hvad naturvin er og hvordan den adskiller sig fra klassisk vin, før du køber på etiket alene.",
+    },
+    {
+      question: "Hvordan påvirker sæson mit vinkøb?",
+      answer:
+        "Årstid styrer ofte mad og stemning, og dermed hvad der føles rigtigt i glasset — uden at være en regel. Se sæsonvin i Danmark for forår, sommer, efterår og vinter med links til madguider.",
+    },
+    {
+      question: "Hvor finder jeg bedste vin til mit budget?",
+      answer:
+        "Brug bedste vine-hubben med priskategorier og drue-guider, eller søg på forsiden efter stil og pris på tværs af danske forhandlere — så sammenligner du konkrete tilbud på samme eller lignende vine.",
+    },
+  ],
   "vinkoleskabe-sadan-vaelger-du": [
     {
       question: "Skal jeg vælge integrerbart eller fritstående vinkøleskab?",

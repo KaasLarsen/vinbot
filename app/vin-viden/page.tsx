@@ -85,6 +85,10 @@ export default function VinVidenHubPage() {
         ,{" "}
         <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
           alkoholfri vin — oversigt
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">
+          vin-trends og forbrug i Danmark
         </Link>{" "}
         og{" "}
         <Link href="/guides/kan-vin-blive-daarlig" className="text-rose-900 hover:underline">
@@ -173,6 +177,7 @@ export default function VinVidenHubPage() {
           <Link href="/guides/hvad-er-pet-nat" className="text-rose-900 hover:underline">Pét-nat</Link>
           <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">Sådan vælger du vinglas</Link>
           <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">Hvordan åbner du champagne</Link>
+          <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">Vin-trends og forbrug i Danmark</Link>
         </div>
       </section>
 
