@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 
 /**
- * Partner-Ads skyscraper-bannere — kun forsiden, fixed i viewport.
+ * Partner-Ads skyscraper-bannere — alle sider med root-layout, fixed i viewport.
+ * Kun synlige fra 2xl og opefter (bred skærm), så indholdskolonnen ikke kollapser.
  * Let scroll-parallakse: venstre/højre rykker modsat, så de følger scroll uden at føles “limet”.
  */
 const PARTNER_ID = "50537";
@@ -57,11 +58,8 @@ function useHomeSkyscraperParallax(enabled: boolean) {
 }
 
 export function HomeStickyPartnerBanners() {
-  const pathname = usePathname();
-  const onHome = pathname === "/";
-  const parallax = useHomeSkyscraperParallax(onHome);
-
-  if (!onHome) return null;
+  const pathname = usePathname() || "/";
+  const parallax = useHomeSkyscraperParallax(true);
 
   const left = bannerPair(LEFT_BANNER_ID);
   const right = bannerPair(RIGHT_BANNER_ID);
@@ -83,7 +81,8 @@ export function HomeStickyPartnerBanners() {
             onClick={() =>
               trackAffiliateClick({
                 merchant: "Partner-Ads",
-                placement: "home-skyscraper-left",
+                placement: "skyscraper-left",
+                slug: pathname,
                 url: left.href,
               })
             }
@@ -116,7 +115,8 @@ export function HomeStickyPartnerBanners() {
             onClick={() =>
               trackAffiliateClick({
                 merchant: "Partner-Ads",
-                placement: "home-skyscraper-right",
+                placement: "skyscraper-right",
+                slug: pathname,
                 url: right.href,
               })
             }
