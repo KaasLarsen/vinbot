@@ -133,6 +133,22 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "afkoelt-roedvin") {
+    return {
+      q: "gamay beaujolais pinot noir lettere rødvin",
+      max: null,
+      label: "afkølet let rødvin",
+    };
+  }
+
+  if (slug === "vin-gode-koeb-regioner") {
+    return {
+      q: "portugal vinho verde douro etna sicilien",
+      max: 200,
+      label: "value-vin og regioner",
+    };
+  }
+
   return null;
 }
 

@@ -269,6 +269,13 @@ export default function RegionerHubPage() {
       <p className="mt-3 max-w-3xl text-sm text-stone-600">
         Vi dækker de vigtigste eksport- og kvalitetslande med lange artikler. Lande som England og Grækenland har du stadig gode muligheder for at finde via søgning — se listen &quot;Flere vinlande&quot; nederst.
       </p>
+      <p className="mt-3 max-w-3xl text-sm text-stone-600">
+        Leder du efter <strong className="font-medium text-stone-800">stærk værdi for pengene</strong> frem for prestige-navne? Se den korte guide{" "}
+        <Link href="/guides/vin-gode-koeb-regioner" className="text-rose-900 hover:underline">
+          vin med høj værdi — udvalgte regioner
+        </Link>{" "}
+        med springpunkter til Portugal, Sicilien, Østrig, Grækenland og Sydafrika.
+      </p>
 
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Nye dybdeguider til de vigtigste sub-regioner</h2>

@@ -12,7 +12,9 @@ const VIDEN_PREFIXES = [
   "sadan-",
 ] as const;
 const VIDEN_SLUGS = new Set<string>([
+  "afkoelt-roedvin",
   "kan-vin-blive-daarlig",
+  "vin-gode-koeb-regioner",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);

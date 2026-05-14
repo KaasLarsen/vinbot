@@ -93,6 +93,10 @@ export default function VinVidenHubPage() {
         ,{" "}
         <Link href="/guides/vin-tilbud-og-foer-pris" className="text-rose-900 hover:underline">
           tilbud og før-pris på vin
+        </Link>
+        ,{" "}
+        <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">
+          afkølet rødvin
         </Link>{" "}
         og{" "}
         <Link href="/guides/kan-vin-blive-daarlig" className="text-rose-900 hover:underline">
@@ -183,6 +187,8 @@ export default function VinVidenHubPage() {
           <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">Hvordan åbner du champagne</Link>
           <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">Vin-trends og forbrug i Danmark</Link>
           <Link href="/guides/vin-tilbud-og-foer-pris" className="text-rose-900 hover:underline">Tilbud og før-pris på vin</Link>
+          <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">Afkølet rødvin (chillable reds)</Link>
+          <Link href="/guides/vin-gode-koeb-regioner" className="text-rose-900 hover:underline">Gode køb — udvalgte regioner</Link>
         </div>
       </section>
 

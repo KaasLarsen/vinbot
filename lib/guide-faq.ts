@@ -1,5 +1,54 @@
 /** FAQ til FAQPage JSON-LD — korte, rene svar (flere sider kan tilføjes efter behov). */
 export const guideFaqBySlug: Record<string, { question: string; answer: string }[]> = {
+  "afkoelt-roedvin": [
+    {
+      question: "Hvor kold må rødvin være?",
+      answer:
+        "De fleste røde smager bedst omkring 15–18 °C afhængigt af krop og tanniner. Let rød (gamay, ung pinot) kan med fordel drikkes ved 13–16 °C — især hvis rummet er varmt. Meget kraftige, tanninrige røde tåler sjældent iskold servering.",
+    },
+    {
+      question: "Hvor længe skal rødvin i køleskabet for at blive afkølet?",
+      answer:
+        "Fra stuetemperatur: typisk 20–40 minutter i køleskab til let rød (mål ca. 14–15 °C). Smag undervejs; for kold vin lukker aroma. Brug gerne et køkkentermometer mod flasken.",
+    },
+    {
+      question: "Hvilke rødvine kan man drikke afkølet?",
+      answer:
+        "Lette røde med god syre og lav til moderat tannin: gamay/Beaujolais, mange pinot noir, ung grenache-baseret Rhône, lettere valpolicella. Undgå at is-afkøle unge, meget tanninrige vine som ung bordeaux-stil — de bliver ofte hårde.",
+    },
+    {
+      question: "Hvad er chillable reds?",
+      answer:
+        "Et engelsk udtryk for lette rødvine, der smager friskere med kort afkøling — samme idé som «afkølet rødvin» på dansk. Det handler ikke om iskold cabernet, men om gamay, pinot og lignende ved ca. 13–16 °C.",
+    },
+    {
+      question: "Passer afkølet rødvin til mad?",
+      answer:
+        "Ja — særligt til grill, burger, krydret mad og sommer, hvor en varm, alkoholtung rød kan føles tung. Se Vinbots madguider for konkrete parringer og brug søgningen på gamay eller pinot noir for flasker.",
+    },
+  ],
+  "vin-gode-koeb-regioner": [
+    {
+      question: "Hvilke vinlande giver mest for pengene?",
+      answer:
+        "Der findes ikke ét svar for alle smag — men Portugal, dele af Italien (fx Sicilien), Sydafrika og Grækenland leverer ofte stærk kvalitet pr. krone sammenlignet med de mest hypede prestige-navne. Læs lande-guiden og brug Vinbot-søgning med konkrete regioner.",
+    },
+    {
+      question: "Hvorfor er portugisiske vine ofte billigere?",
+      answer:
+        "Kombinationen af hjemmemarked, mange lokale druer og effektiv produktion giver ofte lavere priser i butikken for tilsvarende koncentration. Kvalitet varierer stadig — vælg DOC/IPR og kendte underregioner som i Vinbots Portugal-guide.",
+    },
+    {
+      question: "Hvad betyder smart value i vin?",
+      answer:
+        "Vin med høj oplevelsesværdi i forhold til pris — ikke nødvendigvis den billigste flaske. Det kan være mindre kendte appellationer, «nabo»-regioner eller unge årgange fra seriøse producenter.",
+    },
+    {
+      question: "Hvordan finder jeg value-vin på Vinbot?",
+      answer:
+        "Læs regionguiden for det land, du er nysgerrig på, og søg derefter med fx vinho verde, douro, etna eller assyrtiko. Supplér med bedste-lister under «Bedste vine» for dit budget.",
+    },
+  ],
   "vin-til-sushi": [
     {
       question: "Hvilken vin passer bedst til sushi og sashimi?",

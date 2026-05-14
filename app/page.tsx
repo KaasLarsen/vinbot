@@ -38,6 +38,13 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/guides/rosevin-til-mad-og-sommer", label: "Rosé" },
   { href: "/guides/vin-i-cocktails-spritz-og-drikke", label: "Vin i drinks" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
+  { href: "/guides/afkoelt-roedvin", label: "Afkølet rødvin" },
+  { href: "/guides/vin-gode-koeb-regioner", label: "Gode køb — regioner" },
+  { href: "/guides/bedste-lavalkohol-vin", label: "Lav alkohol" },
+  { href: "/guides/bobler-til-fredag", label: "Bobler til hverdag" },
+  { href: "/?q=gamay", label: "Søg: gamay" },
+  { href: "/?q=vinho%20verde", label: "Søg: vinho verde" },
+  { href: "/?q=cremant", label: "Søg: crémant" },
 ];
 
 const popularTopicGroups: { title: string; links: { href: string; label: string }[] }[] = [
