@@ -90,6 +90,12 @@ const PAGE_MORE = 10;
 const GUIDE_FALLBACKS: { pattern: RegExp; href: string; title: string }[] = [
   { pattern: /mors\s*dag|morsdag|mors-dag/i, href: "/guides/vin-til-mors-dag", title: "Vin til Mors dag" },
   { pattern: /fars\s*dag|farsdag|fars-dag/i, href: "/guides/vin-til-fars-dag", title: "Vin til Fars dag" },
+  {
+    pattern:
+      /balkan|serbien|kroatien|montenegro|bosnien|makedonien|bulgarien|slovenien|rumænien|rumanien|transsylvan|østeuropæisk|oesteuropeisk|central\s*europa/i,
+    href: "/guides/vinregion-europa-central-og-oest",
+    title: "Vinregioner i Central- og Østeuropa (inkl. Balkan)",
+  },
 ];
 
 function wineStyleLabel(s: WineStyleFilter): string {

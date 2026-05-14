@@ -107,5 +107,31 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("rosé", "rose", "riesling", "sauvignon blanc", "prosecco");
   }
 
+  /** Geografisk — danske feeds skriver sjældent «Balkan» på etiket, men ofte land. */
+  if (
+    /(balkan|serbien|serbian|srbij|kroatien|croatia|hrvatsk|montenegro|crna gora|bosnien|bosnia|makedonien|macedon|north macedonia|bulgarien|bulgaria|slovenien|slovenia|rumænien|romania|transsylvan|ungarn|hungary|magyar)/i.test(
+      txt,
+    )
+  ) {
+    add(
+      "serbien",
+      "kroatien",
+      "montenegro",
+      "makedonien",
+      "bosnien",
+      "slovenien",
+      "bulgarien",
+      "rumænien",
+      "ungarn",
+      "østrig",
+      "oestrig",
+      "vranec",
+      "prokupac",
+      "saperavi",
+      "furmint",
+      "tokaj",
+    );
+  }
+
   return out;
 }
