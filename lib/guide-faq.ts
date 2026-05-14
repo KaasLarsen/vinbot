@@ -332,12 +332,39 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor finder jeg vin på tilbud eller rødvin tilbud?",
       answer:
-        "Brug Vinbots søgning på konkret vin eller område og sammenlign listepriser på tværs af danske forhandlere; tilføj nyhedsbreve fra få udvalgte butikker for kampagner. Budgetguides som bedste rødvin under 100 kr forklarer typiske kasse-rabatter.",
+        "Brug Vinbots søgning på konkret vin eller område og sammenlign listepriser på tværs af danske forhandlere; tilføj nyhedsbreve fra få udvalgte butikker for kampagner. Læs også guiden om tilbud og før-pris for at forstå rabat-procenter. Budgetguides som bedste rødvin under 100 kr forklarer typiske kasse-rabatter.",
     },
     {
       question: "Er den billigste rødvin på tilbud altid den bedste handel?",
       answer:
         "Ikke nødvendigvis — lav pris kan skyldes årgang, restparti eller kort holdbarhed. Tjek årgang, beskrivelse og om vinen passer til dit formål (hverdag vs gave); mistænkeligt lave priser på dyre navne kræver ekstra verifikation.",
+    },
+  ],
+  "vin-tilbud-og-foer-pris": [
+    {
+      question: "Er «før pris» altid den pris, vinen har kostet før?",
+      answer:
+        "Ikke nødvendigvis. «Før» kan være butikkens tidligere pris i en periode, en vejledende listepris fra importør eller andet — det varierer. Sammenlign derfor konkrete slutpriser på samme vin og årgang på tværs af forhandlere, fx med Vinbots søgning på forsiden.",
+    },
+    {
+      question: "Hvorfor er rabat-procenten stor ét sted og lille et andet for samme vin?",
+      answer:
+        "Fordi referenceprisen («før») kan være sat forskelligt. Procenten siger mere om markedsføring end om absolut besparelse — kig på den pris du betaler inkl. fragt og vilkår.",
+    },
+    {
+      question: "Gælder rabatkoder på allerede nedsatte vine?",
+      answer:
+        "Det afhænger af butikkens betingelser — nogle koder udelukker allerede nedsatte varer. Læs det med småt på forhandlerens side; Vinbots rabatkoder-side samler kendte koder med link til shop.",
+    },
+    {
+      question: "Kan Vinbot garantere den billigste pris i Danmark?",
+      answer:
+        "Nej. Vinbot viser priser fra tilkoblede feeds og partnere som hurtigt overblik; priser og kampagner ændrer sig, og ikke alle forhandlere er med. Tjek altid butikkens egen kasse før køb.",
+    },
+    {
+      question: "Hvor får jeg mere praktisk tjekliste til netkøb?",
+      answer:
+        "Se guiden «køb vin online» på Vinbot for levering, årgang, minimumskøb og opbevaring — den supplerer tilbuds-guiden med bredere shopping-råd.",
     },
   ],
   "bobler-champagne-cava-prosecco-og-cremant": [

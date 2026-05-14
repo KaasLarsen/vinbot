@@ -260,7 +260,11 @@ export default function RabatkoderPage() {
           <Link href="/guides/koeb-vin-online-sadan-holder-du-styr-paa-det" className="font-medium text-rose-900 hover:underline">
             køb vin online
           </Link>
-          . Søg priser på tværs på{" "}
+          . Sådan læser du{" "}
+          <Link href="/guides/vin-tilbud-og-foer-pris" className="font-medium text-rose-900 hover:underline">
+            tilbud og «før pris»
+          </Link>{" "}
+          med sund fornuft. Søg priser på tværs på{" "}
           <Link href="/" className="font-medium text-rose-900 hover:underline">
             forsiden
           </Link>
