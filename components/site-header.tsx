@@ -6,13 +6,18 @@ import { useEffect, useId, useState } from "react";
 import { HeaderSearch } from "@/components/header-search";
 import { VinbotLogo } from "@/components/vinbot-logo";
 
-type NavItem = { href: string; label: string; activePrefix?: string };
+type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
 
 const nav: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/humoer-og-vin", label: "Humør & stemning" },
   { href: "/saeson", label: "Sæson" },
   { href: "/fest-og-vin", label: "Fest & selskab" },
+  {
+    href: "/guides/bedste-alkoholfri-vin",
+    label: "Alkoholfri",
+    activePrefixes: ["/guides/bedste-alkoholfri", "/guides/alkoholfri-vin-til-"],
+  },
   { href: "/druesorter", label: "Druesorter" },
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
@@ -23,8 +28,13 @@ const nav: NavItem[] = [
 
 function navItemActive(item: NavItem, pathname: string) {
   if (pathname === item.href) return true;
-  if (item.activePrefix) {
-    return pathname === item.activePrefix || pathname.startsWith(`${item.activePrefix}/`);
+  const prefixes = item.activePrefixes?.length
+    ? item.activePrefixes
+    : item.activePrefix
+      ? [item.activePrefix]
+      : [];
+  for (const p of prefixes) {
+    if (pathname === p || pathname.startsWith(`${p}/`)) return true;
   }
   return item.href !== "/" && pathname.startsWith(`${item.href}/`);
 }
