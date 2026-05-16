@@ -1,5 +1,27 @@
 /** FAQ til FAQPage JSON-LD — korte, rene svar (flere sider kan tilføjes efter behov). */
 export const guideFaqBySlug: Record<string, { question: string; answer: string }[]> = {
+  "vin-til-pakkeleg": [
+    {
+      question: "Hvilken vin skal man købe til pakkeleg?",
+      answer:
+        "Vælg noget festligt og tilgængeligt: prosecco, cava brut eller frugtig gamay/Beaujolais. Hold dig til gruppens max-pris (ofte omkring 50 kr). Bobler er ofte det sikreste valg, fordi de føles som gave, også når budgettet er lavt.",
+    },
+    {
+      question: "Hvad koster god vin til pakkeleg?",
+      answer:
+        "Mange grupper sætter loft omkring 50 kr pr. flaske. Prosecco, cava og Beaujolais kan findes i den prisklasse på tilbud — sammenlign forhandlere på Vinbot med max-pris i søgningen.",
+    },
+    {
+      question: "Er bobler bedre end rødvin til pakkeleg?",
+      answer:
+        "Ofte ja: bobler signalerer fest, tåler at stå lidt varmt, og passer til mange. Let rød (gamay) er et godt alternativ, hvis gruppen foretrækker rødvin.",
+    },
+    {
+      question: "Kan man give alkoholfri vin i pakkeleg?",
+      answer:
+        "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
+    },
+  ],
   "bobler-til-takeaway-og-fastfood": [
     {
       question: "Hvilken vin til pizza takeaway?",
@@ -25,6 +47,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan man drikke champagne til takeaway?",
       answer:
         "Ægte champagne kan passe til fin takeaway, men er sjældent nødvendig. Prosecco og cava giver samme «skære-fedt»-effekt til færre penge; vælg tør brut frem for sød stil til salt mad.",
+    },
+  ],
+  "bedste-gamay-under-150-kr": [
+    {
+      question: "Hvad er den bedste gamay under 150 kr?",
+      answer:
+        "Kig efter Beaujolais-Villages og entry-level Cru (fx Fleurie, Régnié, Brouilly) fra seriøse producenter. Du får mere struktur end basis-Beaujolais under 100 kr. Sammenlign priser på Vinbot med max 150 kr.",
+    },
+    {
+      question: "Hvad er forskellen på gamay under 100 og 150 kr?",
+      answer:
+        "Under 100 kr er det typisk basis-Beaujolais eller Villages. Under 150 kr åbner Cru og bedre producenter — mere længde, tydeligere terroir, stadig frisk stil. Server let afkølet.",
+    },
+    {
+      question: "Hvilken Beaujolais Cru passer til hverdagsmad?",
+      answer:
+        "Fleurie og Régnié er ofte bløde og madvenlige; Morgon giver mere krop til grill og svampe. Alle kan serveres 14–16 °C afhængigt af struktur.",
     },
   ],
   "bedste-gamay-under-100-kr": [

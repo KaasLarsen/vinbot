@@ -157,6 +157,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "vin-til-pakkeleg") {
+    return {
+      q: "prosecco cava beaujolais bobler gave",
+      max: 50,
+      label: "vin til pakkeleg under 50 kr",
+    };
+  }
+
   return null;
 }
 

@@ -126,6 +126,16 @@ export default function FestOgVinHubPage() {
               </Link>
             </li>
             <li>
+              <Link href="/guides/vin-til-pakkeleg" className="text-rose-900 hover:underline">
+                Vin til pakkeleg (ca. 50 kr)
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/bobler-til-takeaway-og-fastfood" className="text-rose-900 hover:underline">
+                Bobler til takeaway
+              </Link>
+            </li>
+            <li>
               <Link href="/guides/bedste-bobler" className="text-rose-900 hover:underline">
                 Bedste bobler
               </Link>

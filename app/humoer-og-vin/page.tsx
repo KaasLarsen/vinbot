@@ -87,6 +87,9 @@ export default function HumoerHubPage() {
           <h3 className="text-lg font-semibold text-stone-900">Hygge og ro</h3>
           <p className="mt-2 text-sm text-stone-700">
             Fredagsvin, serier-vin, bog og pejs. Moden rødvin, let crémant, enkel tør hvidvin. Læs om{" "}
+            <Link href="/guides/bobler-til-fredag" className="text-rose-900 hover:underline">bobler til fredag</Link>,{" "}
+            <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">afkølet rødvin</Link>,{" "}
+            <Link href="/guides/bedste-lavalkohol-vin" className="text-rose-900 hover:underline">lavalkohol-vin</Link>,{" "}
             <Link href="/guides/bedste-vin-til-hverdag" className="text-rose-900 hover:underline">bedste hverdagsvin</Link>,{" "}
             <Link href="/guides/bedste-rodvin-under-100-kr" className="text-rose-900 hover:underline">rødvin under 100 kr</Link> og{" "}
             <Link href="/guides/bedste-weekendvin" className="text-rose-900 hover:underline">weekendvin</Link>.
