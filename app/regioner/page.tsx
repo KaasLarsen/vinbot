@@ -273,8 +273,16 @@ export default function RegionerHubPage() {
         Leder du efter <strong className="font-medium text-stone-800">stærk værdi for pengene</strong> frem for prestige-navne? Se den korte guide{" "}
         <Link href="/guides/vin-gode-koeb-regioner" className="text-rose-900 hover:underline">
           vin med høj værdi — udvalgte regioner
+        </Link>
+        ,{" "}
+        <Link href="/guides/vin-swap-underdog-regioner" className="text-rose-900 hover:underline">
+          vin-swap med konkrete søgeord
         </Link>{" "}
-        med springpunkter til Portugal, Sicilien, Østrig, Grækenland og Sydafrika.
+        og{" "}
+        <Link href="/guides/etna-vin-vulkanvin-sicilien" className="text-rose-900 hover:underline">
+          Etna / vulkanvin fra Sicilien
+        </Link>{" "}
+        — springpunkter til Portugal, Sicilien, Østrig, Grækenland og Sydafrika.
       </p>
 
       <section className="mt-10 rounded-lg bg-rose-50 p-6">

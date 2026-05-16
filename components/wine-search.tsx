@@ -87,6 +87,59 @@ type ApiResponse = { source: string; products: ProductHit[]; meta: SearchMeta };
 const PAGE_MORE = 10;
 
 /** Når feed ikke rammer brugerens ord (fx “morsdag”), vis stadig relevant guide. */
+type ValueSearchTip = {
+  pattern: RegExp;
+  message: string;
+  guideHref: string;
+  guideLabel: string;
+  altQueries: { label: string; q: string }[];
+};
+
+/** Diskret value-tip når brugeren søger dyre prestige-navne. */
+const VALUE_SEARCH_TIPS: ValueSearchTip[] = [
+  {
+    pattern: /bourgogne|burgundy|pinot\s*noir.*bourgogne/i,
+    message:
+      "Bourgogne er ofte dyrt — mange søger i stedet elegant rød med syre fra Etna eller Beaujolais.",
+    guideHref: "/guides/vin-swap-underdog-regioner",
+    guideLabel: "Vin-swap: underdog-regioner",
+    altQueries: [
+      { label: "Etna nerello", q: "etna nerello mascalese" },
+      { label: "Gamay Morgon", q: "gamay morgon" },
+    ],
+  },
+  {
+    pattern: /chablis|premier\s*cru.*chablis/i,
+    message: "Chablis-lignende behov? Prøv mineralsk hvid fra Østrig eller Soave.",
+    guideHref: "/guides/vin-swap-underdog-regioner",
+    guideLabel: "Alternativer til Chablis",
+    altQueries: [
+      { label: "Grüner Wachau", q: "wachau gruner veltliner" },
+      { label: "Soave classico", q: "soave classico" },
+    ],
+  },
+  {
+    pattern: /barolo|barbaresco|nebbiolo.*piemonte/i,
+    message: "Tung nebbiolo-stil kan ofte dækkes billigere med Etna Rosso eller aglianico.",
+    guideHref: "/guides/etna-vin-vulkanvin-sicilien",
+    guideLabel: "Etna og vulkanvin",
+    altQueries: [
+      { label: "Etna rosso", q: "etna rosso nerello" },
+      { label: "Aglianico", q: "aglianico vulture" },
+    ],
+  },
+  {
+    pattern: /bordeaux|pauillac|margaux|saint\s*emilion/i,
+    message: "Klassisk Bordeaux-struktur findes også i value-regioner — se swap-guiden.",
+    guideHref: "/guides/vin-gode-koeb-regioner",
+    guideLabel: "Gode køb — regioner",
+    altQueries: [
+      { label: "Douro rød", q: "douro touriga nacional" },
+      { label: "Priorat", q: "priorat garnacha" },
+    ],
+  },
+];
+
 const GUIDE_FALLBACKS: { pattern: RegExp; href: string; title: string }[] = [
   { pattern: /mors\s*dag|morsdag|mors-dag/i, href: "/guides/vin-til-mors-dag", title: "Vin til Mors dag" },
   { pattern: /fars\s*dag|farsdag|fars-dag/i, href: "/guides/vin-til-fars-dag", title: "Vin til Fars dag" },
@@ -170,6 +223,11 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     if (!t) return null;
     return GUIDE_FALLBACKS.find((g) => g.pattern.test(t)) ?? null;
   }, [lastQuery]);
+  const valueSearchTip = useMemo(() => {
+    const t = q.trim();
+    if (!t) return null;
+    return VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ?? null;
+  }, [q]);
   const [lastBudget, setLastBudget] = useState<number | null>(null);
   /** Billigste vin for `lastQuery` uden budget — bruges som fallback når pris­filteret udelukker alt. */
   const [fallbackCheapest, setFallbackCheapest] = useState<ProductHit | null>(null);
@@ -383,6 +441,39 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
           {loading ? "Søger…" : "Søg vin"}
         </button>
       </form>
+
+      {valueSearchTip ? (
+        <div
+          className="rounded-lg border border-rose-100 bg-rose-50/80 px-4 py-3 text-sm text-stone-700"
+          role="note"
+        >
+          <p>
+            <span className="font-medium text-stone-900">Vinbot-tip:</span> {valueSearchTip.message}{" "}
+            <Link
+              href={valueSearchTip.guideHref}
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:decoration-rose-900"
+            >
+              {valueSearchTip.guideLabel}
+            </Link>
+            .
+          </p>
+          <p className="mt-2 flex flex-wrap gap-2">
+            {valueSearchTip.altQueries.map((alt) => (
+              <button
+                key={alt.q}
+                type="button"
+                onClick={() => {
+                  setQ(alt.q);
+                  void search(alt.q, maxNum);
+                }}
+                className="rounded-full border border-rose-200 bg-white px-3 py-1 text-xs font-medium text-rose-900 hover:border-rose-400"
+              >
+                {alt.label}
+              </button>
+            ))}
+          </p>
+        </div>
+      ) : null}
 
       <div className="flex flex-wrap gap-2">
         {chips.map((c) => (

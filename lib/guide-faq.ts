@@ -22,6 +22,55 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "vin-swap-underdog-regioner": [
+    {
+      question: "Hvad er et billigt alternativ til Bourgogne-pinot?",
+      answer:
+        "Søg stilarter med elegant rød og syre: Etna Nerello Mascalese, gamay fra Beaujolais eller lettere pinot fra andre regioner. Det smager ikke identisk med Bourgogne, men dækker ofte samme behov til lavere pris. Se swap-guiden og søg på Vinbot.",
+    },
+    {
+      question: "Hvilken vin ligner Chablis til lavere pris?",
+      answer:
+        "Prøv grüner veltliner fra Østrig (Wachau), soave classico eller albariño — mineralsk, sprød hvid til fisk og skaldyr. Sammenlign priser på Vinbot med søgeord som gruner veltliner eller soave.",
+    },
+    {
+      question: "Hvad kan jeg købe i stedet for dyr Rioja?",
+      answer:
+        "Portugisiske røde fra Douro eller Dão med touriga nacional eller baga giver ofte god struktur og frugt for pengene. Læs Portugal-guiden og søg douro eller dao på Vinbot.",
+    },
+    {
+      question: "Er Etna-vin det samme som Bourgogne?",
+      answer:
+        "Nej — men mange beskriver Etna Rosso som en elegant, syrlig rød med mineralitet, der kan minde om pinot-stil. Det er et populært underdog-valg, når Bourgogne er for dyrt.",
+    },
+    {
+      question: "Hvilken billig vin ligner champagne?",
+      answer:
+        "Cava reserva, crémant eller kvalitets-prosecco brut giver bobler til fest og hverdag uden champagne-pris. Søg cava eller cremant på Vinbot med evt. max-pris.",
+    },
+  ],
+  "etna-vin-vulkanvin-sicilien": [
+    {
+      question: "Hvad er Etna-vin?",
+      answer:
+        "Vin fra vulkanområdet Etna på Sicilien, typisk på druerne Nerello Mascalese (rød) og Carricante (hvid). Vinene er ofte elegante, syrlige og mineralske — særligt rød Etna sammenlignes med pinot-lignende stilarter.",
+    },
+    {
+      question: "Hvad er Nerello Mascalese?",
+      answer:
+        "Siciliens signatur-rød drue på Etna. Den giver ofte lys rødvin med kirsebær, urter og vulkan-mineralitet. Søg etna nerello mascalese på Vinbot for flasker og priser.",
+    },
+    {
+      question: "Skal Etna Rosso serveres afkølet?",
+      answer:
+        "Ofte ja — omkring 14–16 °C, som mange lette røde. For kold bliver vinen lukket; for varm dominerer alkoholen. Se guiden om afkølet rødvin for metode.",
+    },
+    {
+      question: "Hvad koster Etna-vin i Danmark?",
+      answer:
+        "Basis-Etna Rosso findes ofte omkring 100–180 kr; top-mark og contrada-vine kan koste mere. Sammenlign forhandlere på Vinbot for bedste pris på samme producent.",
+    },
+  ],
   "bobler-til-takeaway-og-fastfood": [
     {
       question: "Hvilken vin til pizza takeaway?",

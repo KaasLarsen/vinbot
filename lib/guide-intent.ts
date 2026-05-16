@@ -165,6 +165,22 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "vin-swap-underdog-regioner") {
+    return {
+      q: "etna nerello mascalese gamay douro touriga gruner veltliner",
+      max: 150,
+      label: "underdog-regioner og value-swap",
+    };
+  }
+
+  if (slug === "etna-vin-vulkanvin-sicilien") {
+    return {
+      q: "etna nerello mascalese carricante sicilia",
+      max: null,
+      label: "Etna og vulkanvin fra Sicilien",
+    };
+  }
+
   return null;
 }
 

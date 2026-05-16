@@ -15,6 +15,7 @@ const VIDEN_SLUGS = new Set<string>([
   "afkoelt-roedvin",
   "kan-vin-blive-daarlig",
   "vin-gode-koeb-regioner",
+  "vin-swap-underdog-regioner",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);
@@ -24,6 +25,9 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "komplet-guide-til-vin-og-mad",
   "rosevin-til-mad-og-sommer",
 ]);
+
+/** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */
+const REGIONER_EXTRA_SLUGS = new Set<string>(["etna-vin-vulkanvin-sicilien"]);
 
 /** Prefixer der markerer drue/stil × mad-intersections (Spor E). */
 const MAD_EXTRA_PREFIXES: readonly string[] = [
@@ -64,7 +68,7 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
 export function classifyGuide(slug: string): GuideCategory {
   if (slug.endsWith("-druen")) return "druer";
   if (matchDrueRegionSlug(slug)) return "druer";
-  if (slug.startsWith("vinregion-")) return "regioner";
+  if (slug.startsWith("vinregion-") || REGIONER_EXTRA_SLUGS.has(slug)) return "regioner";
   if (slug.startsWith("bedste-")) return "bedste";
   if (ANDRE_EXTRA_SLUGS.has(slug)) return "andre";
   if (VIDEN_SLUGS.has(slug) || VIDEN_PREFIXES.some((p) => slug.startsWith(p))) return "viden";
