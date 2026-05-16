@@ -161,6 +161,7 @@ export default function BedsteVineHubPage() {
           <Link href="/guides/bedste-pinot-noir-under-150-kr" className="hover:underline">Pinot noir under 150 kr</Link>
           <Link href="/guides/bedste-pinot-noir-under-250-kr" className="hover:underline">Pinot noir under 250 kr</Link>
           <Link href="/guides/bedste-grenache-under-100-kr" className="hover:underline">Grenache under 100 kr</Link>
+          <Link href="/guides/bedste-gamay-under-100-kr" className="hover:underline">Gamay under 100 kr</Link>
           <Link href="/guides/bedste-grenache-under-150-kr" className="hover:underline">Grenache under 150 kr</Link>
         </div>
       </section>

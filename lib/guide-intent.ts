@@ -149,6 +149,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "bobler-til-takeaway-og-fastfood") {
+    return {
+      q: "prosecco cava brut takeaway pizza burger",
+      max: 100,
+      label: "bobler til takeaway",
+    };
+  }
+
   return null;
 }
 

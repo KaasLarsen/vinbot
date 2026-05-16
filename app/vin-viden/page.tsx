@@ -189,6 +189,7 @@ export default function VinVidenHubPage() {
           <Link href="/guides/vin-tilbud-og-foer-pris" className="text-rose-900 hover:underline">Tilbud og før-pris på vin</Link>
           <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">Afkølet rødvin (chillable reds)</Link>
           <Link href="/guides/vin-gode-koeb-regioner" className="text-rose-900 hover:underline">Gode køb — udvalgte regioner</Link>
+          <Link href="/guides/bobler-til-takeaway-og-fastfood" className="text-rose-900 hover:underline">Bobler til takeaway</Link>
         </div>
       </section>
 

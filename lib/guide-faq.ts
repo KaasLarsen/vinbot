@@ -1,5 +1,54 @@
 /** FAQ til FAQPage JSON-LD — korte, rene svar (flere sider kan tilføjes efter behov). */
 export const guideFaqBySlug: Record<string, { question: string; answer: string }[]> = {
+  "bobler-til-takeaway-og-fastfood": [
+    {
+      question: "Hvilken vin til pizza takeaway?",
+      answer:
+        "Tør prosecco Extra Dry eller Brut og cava brut er ofte bedst: syre og kulsyre skærer ost og tomat uden tung tannin. Undgå meget søde bobler til salt pizza. Se guiden om bobler til takeaway og vin til pizza for flere nuancer.",
+    },
+    {
+      question: "Passer bobler til burger og pommes?",
+      answer:
+        "Ja — cava brut eller crémant fungerer ofte bedre end tung rødvin, fordi bobler skærer fedt og salt fra dressing og friture. Server køligt, 6–9 °C.",
+    },
+    {
+      question: "Prosecco eller cava til fastfood?",
+      answer:
+        "Prosecco Extra Dry matcher ofte pizza og mildere retter; cava brut tåler typisk mere salt (burger, nuggets, tapas). Begge findes under 100 kr — sammenlign på Vinbot.",
+    },
+    {
+      question: "Hvilken temperatur skal bobler have til takeaway?",
+      answer:
+        "Omkring 6–9 °C: køleskab i et par timer eller is-spand kort før servering. For varm boble smager flad; for kold kan aroma lukke sig — smag efter 10 minutter i glasset.",
+    },
+    {
+      question: "Kan man drikke champagne til takeaway?",
+      answer:
+        "Ægte champagne kan passe til fin takeaway, men er sjældent nødvendig. Prosecco og cava giver samme «skære-fedt»-effekt til færre penge; vælg tør brut frem for sød stil til salt mad.",
+    },
+  ],
+  "bedste-gamay-under-100-kr": [
+    {
+      question: "Hvad er den bedste gamay under 100 kr?",
+      answer:
+        "Der er ikke én flaske til alle — kig efter Beaujolais-Villages fra kendt producent, frisk årgang og tydelig syre. Beaujolais basis er billigere; Villages giver ofte mest for pengene. Sammenlign priser på Vinbot med søgning på gamay og beaujolais.",
+    },
+    {
+      question: "Hvilken Beaujolais skal man vælge til hverdagen?",
+      answer:
+        "Beaujolais-Villages til mad med tomat og ost; simpel Beaujolais til tapas og lette retter. Nouveau kun når den er ung og frisk. Server let afkølet, 13–15 °C.",
+    },
+    {
+      question: "Er gamay det samme som Beaujolais?",
+      answer:
+        "Gamay er druen; Beaujolais er den mest kendte region i Frankrig, hvor den dyrkes. På etiketten står ofte Beaujolais, ikke ordet gamay alene.",
+    },
+    {
+      question: "Skal gamay serveres afkølet?",
+      answer:
+        "Ja, de fleste gamay under 100 kr smager bedre ved 13–15 °C — kort tur i køleskab fra stuetemperatur. Se guiden om afkølet rødvin for metode og undtagelser.",
+    },
+  ],
   "afkoelt-roedvin": [
     {
       question: "Hvor kold må rødvin være?",
@@ -25,6 +74,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Passer afkølet rødvin til mad?",
       answer:
         "Ja — særligt til grill, burger, krydret mad og sommer, hvor en varm, alkoholtung rød kan føles tung. Se Vinbots madguider for konkrete parringer og brug søgningen på gamay eller pinot noir for flasker.",
+    },
+    {
+      question: "Kan man have rødvin i køleskabet?",
+      answer:
+        "Ja, kort afkøling af let rød (gamay, pinot) i køleskab 20–40 minutter før servering er normal praksis — især i varme rum. Lang lagring af uåbnet rød i almindeligt køleskab er dog ikke ideel til modning; det handler om servering, ikke kælder.",
+    },
+    {
+      question: "Hvilken temperatur skal Beaujolais have?",
+      answer:
+        "Typisk 13–15 °C for Villages og basis-Beaujolais; seriøsere cru (Morgon, Moulin-à-Vent) ofte 14–16 °C. For kold lukker frugten; ved stuetemperatur over ca. 22 °C kan vinen smage sprittet.",
     },
   ],
   "vin-gode-koeb-regioner": [

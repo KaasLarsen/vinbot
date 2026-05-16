@@ -42,7 +42,10 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/guides/vin-gode-koeb-regioner", label: "Gode køb — regioner" },
   { href: "/guides/bedste-lavalkohol-vin", label: "Lav alkohol" },
   { href: "/guides/bobler-til-fredag", label: "Bobler til hverdag" },
+  { href: "/guides/bobler-til-takeaway-og-fastfood", label: "Bobler & takeaway" },
+  { href: "/guides/bedste-gamay-under-100-kr", label: "Gamay under 100 kr" },
   { href: "/?q=gamay", label: "Søg: gamay" },
+  { href: "/?q=beaujolais", label: "Søg: beaujolais" },
   { href: "/?q=vinho%20verde", label: "Søg: vinho verde" },
   { href: "/?q=cremant", label: "Søg: crémant" },
 ];
@@ -111,6 +114,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
       { href: "/guides/bedste-pinot-noir-under-150-kr", label: "Pinot noir under 150 kr" },
       { href: "/guides/bedste-pinot-noir-under-250-kr", label: "Pinot noir under 250 kr" },
       { href: "/guides/bedste-grenache-under-100-kr", label: "Grenache under 100 kr" },
+      { href: "/guides/bedste-gamay-under-100-kr", label: "Gamay under 100 kr" },
       { href: "/guides/bedste-grenache-under-150-kr", label: "Grenache under 150 kr" },
     ],
   },
