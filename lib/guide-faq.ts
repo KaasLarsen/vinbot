@@ -22,6 +22,28 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "vin-tiktok-trends-spicy-sauvy-og-vineddike": [
+    {
+      question: "Hvad er Spicy Sauvy B?",
+      answer:
+        "Et TikTok-trick hvor frosne skiver jalapeño lægges i kold sauvignon blanc. Det kan fremhæve grønne og citrusnoter i vinen — men det er et eksperiment, ikke standard servering. Se Vinbots guide for regler og hvilken sauvignon du skal søge.",
+    },
+    {
+      question: "Kan man putte jalapeño i rødvin?",
+      answer:
+        "Det frarådes typisk. Tanniner og chili kolliderer ofte og smager bittert og ubehageligt. Brug chili i maden og drik let hvid eller afkølet gamay/pinot til stærk mad i stedet.",
+    },
+    {
+      question: "Hvordan laver man vineddike af restvin?",
+      answer:
+        "Hæld flad, åben vin i et rent glas, tilsæt æblecidereddike med moder, dæk med stof og lad stå flere uger ved stuetemperatur til det smager som eddike. Brug kun vin der ikke er muggen. Fuld overblik i guiden om TikTok-trends.",
+    },
+    {
+      question: "Hvilken vin skal man købe til Spicy Sauvy B?",
+      answer:
+        "Frugtig, syrlig sauvignon blanc — ofte Marlborough eller lignende New World — gerne under 100 kr. Søg sauvignon blanc marlborough på Vinbot og sammenlign priser.",
+    },
+  ],
   "hverdags-bobler": [
     {
       question: "Hvilken bobler passer til pizza og takeaway?",

@@ -189,6 +189,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "vin-tiktok-trends-spicy-sauvy-og-vineddike") {
+    return {
+      q: "sauvignon blanc marlborough hvidvin",
+      max: 100,
+      label: "sauvignon til Spicy Sauvy B",
+    };
+  }
+
   if (slug === "hverdags-bobler") {
     return {
       q: "prosecco cava cremant brut bobler",

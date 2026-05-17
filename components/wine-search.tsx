@@ -95,6 +95,32 @@ type ValueSearchTip = {
   altQueries: { label: string; q: string }[];
 };
 
+/** Diskret tip ved TikTok vinhacks / køkken-trends. */
+const TIKTOK_KITCHEN_TIPS: ValueSearchTip[] = [
+  {
+    pattern: /jalapeño|jalapeno|spicy\s*sauvy|sauvy\s*b/i,
+    message:
+      "Spicy Sauvy B: frossen jalapeño i kold sauvignon kan virke — aldrig i tung rød. Læs reglerne og søg frugtig sauvignon.",
+    guideHref: "/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike",
+    guideLabel: "Spicy Sauvy B forklaret",
+    altQueries: [
+      { label: "Sauvignon Marlborough", q: "sauvignon blanc marlborough" },
+      { label: "Under 100 kr", q: "sauvignon blanc" },
+    ],
+  },
+  {
+    pattern: /vineddike|vin\s*eddike|restvin|rest\s*vin.*eddike|hjemmelavet\s*eddike/i,
+    message:
+      "Lav gourmet-vineddike af flad restvin i stedet for at hælde ud — guiden forklarer moder, tid og sikkerhed.",
+    guideHref: "/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike",
+    guideLabel: "Hjemmelavet vineddike",
+    altQueries: [
+      { label: "Billig hvid til køkken", q: "chardonnay sauvignon hvidvin" },
+      { label: "Åbnet vin holdbarhed", q: "hvidvin" },
+    ],
+  },
+];
+
 /** Diskret tip ved afkølet rød / stuetemperatur (tjekkes før bobler-tips). */
 const CHILLABLE_SEARCH_TIPS: ValueSearchTip[] = [
   {
@@ -317,6 +343,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     if (!t) return null;
     return (
       MINDFUL_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
+      TIKTOK_KITCHEN_TIPS.find((tip) => tip.pattern.test(t)) ??
       CHILLABLE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       BUBBLE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??

@@ -17,6 +17,7 @@ const VIDEN_SLUGS = new Set<string>([
   "vin-gode-koeb-regioner",
   "vin-swap-underdog-regioner",
   "mindful-drikke-low-no-alkohol",
+  "vin-tiktok-trends-spicy-sauvy-og-vineddike",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);

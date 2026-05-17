@@ -191,6 +191,7 @@ export default function VinVidenHubPage() {
           <Link href="/guides/vin-gode-koeb-regioner" className="text-rose-900 hover:underline">Gode køb — udvalgte regioner</Link>
           <Link href="/guides/vin-swap-underdog-regioner" className="text-rose-900 hover:underline">Vin-swap — underdog-regioner</Link>
           <Link href="/guides/etna-vin-vulkanvin-sicilien" className="text-rose-900 hover:underline">Etna og vulkanvin</Link>
+          <Link href="/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike" className="text-rose-900 hover:underline">TikTok: Spicy Sauvy B & vineddike</Link>
           <Link href="/guides/mindful-drikke-low-no-alkohol" className="text-rose-900 hover:underline">Mindful drinking — low & no</Link>
           <Link href="/guides/bobler-til-takeaway-og-fastfood" className="text-rose-900 hover:underline">Bobler til takeaway</Link>
         </div>
