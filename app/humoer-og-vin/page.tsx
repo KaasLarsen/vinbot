@@ -89,6 +89,7 @@ export default function HumoerHubPage() {
             Fredagsvin, serier-vin, bog og pejs. Moden rødvin, let crémant, enkel tør hvidvin. Læs om{" "}
             <Link href="/guides/bobler-til-fredag" className="text-rose-900 hover:underline">bobler til fredag</Link>,{" "}
             <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">afkølet rødvin</Link>,{" "}
+            <Link href="/guides/mindful-drikke-low-no-alkohol" className="text-rose-900 hover:underline">mindful drinking</Link>,{" "}
             <Link href="/guides/bedste-lavalkohol-vin" className="text-rose-900 hover:underline">lavalkohol-vin</Link>,{" "}
             <Link href="/guides/bedste-vin-til-hverdag" className="text-rose-900 hover:underline">bedste hverdagsvin</Link>,{" "}
             <Link href="/guides/bedste-rodvin-under-100-kr" className="text-rose-900 hover:underline">rødvin under 100 kr</Link> og{" "}

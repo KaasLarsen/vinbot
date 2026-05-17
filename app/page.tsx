@@ -44,7 +44,11 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/guides/etna-vin-vulkanvin-sicilien", label: "Etna / vulkanvin" },
   { href: "/?q=etna%20nerello%20mascalese", label: "Søg: Etna" },
   { href: "/?q=dao%20vinho%20tinto", label: "Søg: Dão" },
+  { href: "/guides/mindful-drikke-low-no-alkohol", label: "Mindful drinking" },
   { href: "/guides/bedste-lavalkohol-vin", label: "Lav alkohol" },
+  { href: "/?q=riesling%20kabinett%20vinho%20verde", label: "Søg: frisk i morgen" },
+  { href: "/?q=alkoholfri%20bobler%20leitz", label: "Søg: kørsel-vin" },
+  { href: "/?q=lavalkohol%20halvtør%20hvidvin", label: "Søg: mindful tirsdag" },
   { href: "/guides/bobler-til-fredag", label: "Bobler til hverdag" },
   { href: "/guides/bobler-til-takeaway-og-fastfood", label: "Bobler & takeaway" },
   { href: "/guides/vin-til-pakkeleg", label: "Vin til pakkeleg" },
@@ -144,6 +148,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
   {
     title: "Alkoholfri & lavalkohol — voksent valg uden tømmermænd",
     links: [
+      { href: "/guides/mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no (overblik)" },
       { href: "/guides/bedste-alkoholfri-vin", label: "Bedste alkoholfri vin (hub)" },
       { href: "/guides/bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" },
       { href: "/guides/bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" },

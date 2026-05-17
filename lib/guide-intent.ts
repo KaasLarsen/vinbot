@@ -181,6 +181,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "mindful-drikke-low-no-alkohol") {
+    return {
+      q: "alkoholfri leitz riesling kabinett vinho verde lavalkohol",
+      max: 150,
+      label: "mindful drinking — low og no alkohol",
+    };
+  }
+
   return null;
 }
 

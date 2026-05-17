@@ -16,6 +16,7 @@ const VIDEN_SLUGS = new Set<string>([
   "kan-vin-blive-daarlig",
   "vin-gode-koeb-regioner",
   "vin-swap-underdog-regioner",
+  "mindful-drikke-low-no-alkohol",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);

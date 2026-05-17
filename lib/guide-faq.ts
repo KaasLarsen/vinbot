@@ -22,6 +22,33 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "mindful-drikke-low-no-alkohol": [
+    {
+      question: "Hvad er mindful drinking?",
+      answer:
+        "At vælge bevidst hvor meget og hvilken type alkohol du drikker — ofte med fokus på smag, mad og socialt ritual frem for promille alene. Det kan være alkoholfri vin, lavalkohol-vin (7–11 %) eller helt andre komplekse drikke til maden.",
+    },
+    {
+      question: "Hvad er forskellen på alkoholfri og lavalkohol-vin?",
+      answer:
+        "Alkoholfri er typisk under 0,5 % ABV (ofte dealkoholiseret efter gæring). Lavalkohol er ægte vin med naturligt eller reduceret alkoholindhold, ofte 7–11 %. Lavalkohol smager mere som klassisk vin; alkoholfri kræver ofte bobler eller høj syre for at fungere godt.",
+    },
+    {
+      question: "Hvilken alkoholfri vin smager mest af rigtig vin?",
+      answer:
+        "Mange peger på bobler og syrlige hvide: fx Leitz Eins-Zwei-Zero, Torres Natureo eller kvalitets-alkoholfri mousserende. Søg konkrete mærker på Vinbot og sammenlign priser — undgå generisk sød «vinagtig» juice.",
+    },
+    {
+      question: "Kan gravide drikke alkoholfri vin?",
+      answer:
+        "Sundhedsstyrelsen anbefaler at undgå alkohol under graviditet. Alkoholfri vin (0–0,5 %) er et andet valg end alkoholholdig vin — mange vælger 0,0 %-produkter. Det er ikke medicinsk rådgivning; se guiden om alkoholfri vin under graviditet og tal med jordemoder eller læge.",
+    },
+    {
+      question: "Hvilken vin har naturligt lav alkohol?",
+      answer:
+        "Tysk riesling (Kabinett), vinho verde, moscato d'Asti, txakoli og mange lette bobler. Søg fx riesling kabinett eller vinho verde på Vinbot — se også guiden om bedste lavalkohol-vin.",
+    },
+  ],
   "vin-swap-underdog-regioner": [
     {
       question: "Hvad er et billigt alternativ til Bourgogne-pinot?",

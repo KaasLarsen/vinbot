@@ -95,6 +95,43 @@ type ValueSearchTip = {
   altQueries: { label: string; q: string }[];
 };
 
+/** Diskret tip ved mindful / høj-alkohol-søgning (tjekkes før value-tips). */
+const MINDFUL_SEARCH_TIPS: ValueSearchTip[] = [
+  {
+    pattern: /amarone|15\s*%|14[,.]5\s*%|høj\s*alkohol|tung\s*rød|kraftig\s*rød|zinfandel|primitivo/i,
+    message:
+      "Tunge vine på 14–15 % kan føles sløve efter to glas — mange skifter til lavalkohol-riesling, vinho verde eller afkølet gamay til samme aften.",
+    guideHref: "/guides/mindful-drikke-low-no-alkohol",
+    guideLabel: "Mindful drinking — low & no",
+    altQueries: [
+      { label: "Riesling Kabinett", q: "riesling kabinett mosel" },
+      { label: "Vinho verde", q: "vinho verde" },
+    ],
+  },
+  {
+    pattern: /alkoholfri|0\s*%|0,0|uden\s*alkohol|no\s*alc|dealkohol/i,
+    message:
+      "Søg på mærker med struktur — Leitz, Natureo, Noughty — ikke kun «alkoholfri», som også rammer søde juice-drikke.",
+    guideHref: "/guides/bedste-alkoholfri-vin",
+    guideLabel: "Bedste alkoholfri vin",
+    altQueries: [
+      { label: "Alkoholfri bobler", q: "alkoholfri bobler leitz" },
+      { label: "0 % hvid", q: "alkoholfri riesling leitz" },
+    ],
+  },
+  {
+    pattern: /lavalkohol|lav\s*alkohol|low\s*alc|mindful|sober\s*curious/i,
+    message:
+      "Lavalkohol er ægte vin med naturligt lavere ABV — ofte bedre end at gætte på alkoholprocent i feedet.",
+    guideHref: "/guides/bedste-lavalkohol-vin",
+    guideLabel: "Bedste lavalkohol-vin",
+    altQueries: [
+      { label: "Kabinett", q: "riesling kabinett" },
+      { label: "Moscato d'Asti", q: "moscato asti" },
+    ],
+  },
+];
+
 /** Diskret value-tip når brugeren søger dyre prestige-navne. */
 const VALUE_SEARCH_TIPS: ValueSearchTip[] = [
   {
@@ -226,7 +263,11 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
   const valueSearchTip = useMemo(() => {
     const t = q.trim();
     if (!t) return null;
-    return VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ?? null;
+    return (
+      MINDFUL_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
+      VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
+      null
+    );
   }, [q]);
   const [lastBudget, setLastBudget] = useState<number | null>(null);
   /** Billigste vin for `lastQuery` uden budget — bruges som fallback når pris­filteret udelukker alt. */
