@@ -215,7 +215,12 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Passer afkølet rødvin til mad?",
       answer:
-        "Ja — særligt til grill, burger, krydret mad og sommer, hvor en varm, alkoholtung rød kan føles tung. Se Vinbots madguider for konkrete parringer og brug søgningen på gamay eller pinot noir for flasker.",
+        "Ja — særligt til sushi, pizza, charcuteri, tapas, burger og krydret mad, hvor en varm, tanninrød ville overdøve retten. Se guiden om afkølet rødvin med madtabel og søg gamay eller pinot noir på Vinbot.",
+    },
+    {
+      question: "Er afkølet rødvin bedre end rosé om sommeren?",
+      answer:
+        "Det er smag og stemning: rosé er koldere og lettere; afkølet gamay eller pinot giver mere «rød» dybde med stadig friskhed. Mange vælger afkølet rød som alternativ, når rosé føles ensartet.",
     },
     {
       question: "Kan man have rødvin i køleskabet?",

@@ -95,6 +95,32 @@ type ValueSearchTip = {
   altQueries: { label: string; q: string }[];
 };
 
+/** Diskret tip ved afkølet rød / stuetemperatur (tjekkes før bobler-tips). */
+const CHILLABLE_SEARCH_TIPS: ValueSearchTip[] = [
+  {
+    pattern: /stuetemperatur|room\s*temp|cabernet.*rød|ung\s*bordeaux|amarone|tung\s*rødvin/i,
+    message:
+      "I en varm stue (22 °C+) smager mange røde bedre med kort afkøling — vælg let gamay, pinot eller frappato, ikke tung cabernet.",
+    guideHref: "/guides/afkoelt-roedvin",
+    guideLabel: "Afkølet rødvin",
+    altQueries: [
+      { label: "Gamay", q: "gamay beaujolais" },
+      { label: "Pinot noir", q: "pinot noir" },
+    ],
+  },
+  {
+    pattern: /afkølet|afkolet|chillable|køleskab.*rød|rød.*køleskab/i,
+    message:
+      "Let rød: 20–30 min i køleskab til ca. 13–15 °C. Se guiden for druer og madparring.",
+    guideHref: "/guides/afkoelt-roedvin",
+    guideLabel: "Sådan afkøler du rødvin",
+    altQueries: [
+      { label: "Terrasse-rød", q: "gamay pinot noir frappato" },
+      { label: "Under 150 kr", q: "gamay beaujolais" },
+    ],
+  },
+];
+
 /** Diskret tip ved champagne / hverdagsbobler (tjekkes før value-tips). */
 const BUBBLE_SEARCH_TIPS: ValueSearchTip[] = [
   {
@@ -291,6 +317,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     if (!t) return null;
     return (
       MINDFUL_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
+      CHILLABLE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       BUBBLE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       null

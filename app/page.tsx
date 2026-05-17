@@ -39,6 +39,8 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/guides/vin-i-cocktails-spritz-og-drikke", label: "Vin i drinks" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/guides/afkoelt-roedvin", label: "Afkølet rødvin" },
+  { href: "/?q=gamay%20beaujolais%20pinot%20noir", label: "Søg: ind i køleskabet" },
+  { href: "/?q=gamay%20pinot%20noir%20frappato&max=150", label: "Søg: terrasse-rød" },
   { href: "/guides/vin-gode-koeb-regioner", label: "Gode køb — regioner" },
   { href: "/guides/vin-swap-underdog-regioner", label: "Vin-swap — underdog" },
   { href: "/guides/etna-vin-vulkanvin-sicilien", label: "Etna / vulkanvin" },
