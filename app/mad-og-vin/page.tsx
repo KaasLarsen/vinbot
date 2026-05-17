@@ -145,6 +145,7 @@ export default function MadOgVinHubPage() {
           <Link href="/guides/rosevin-til-grill" className="hover:underline">Rosévin til grill</Link>
           <Link href="/guides/champagne-til-mad" className="hover:underline">Champagne til mad</Link>
           <Link href="/guides/bobler-til-brunch" className="hover:underline">Bobler til brunch</Link>
+          <Link href="/guides/hverdags-bobler" className="hover:underline">Hverdags-bobler</Link>
           <Link href="/guides/bobler-til-fredag" className="hover:underline">Bobler til fredag</Link>
           <Link href="/guides/bobler-til-takeaway-og-fastfood" className="hover:underline">Bobler til takeaway</Link>
           <Link href="/guides/bedste-bobler-under-100-kr" className="hover:underline">Bedste bobler under 100 kr</Link>

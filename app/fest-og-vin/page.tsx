@@ -121,6 +121,10 @@ export default function FestOgVinHubPage() {
           <h2 className="text-lg font-semibold text-stone-900">Bobler og champagne</h2>
           <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-stone-700">
             <li>
+              <Link href="/guides/hverdags-bobler" className="text-rose-900 hover:underline">
+                Hverdags-bobler (tirsdag & takeaway)
+              </Link>
+              ,{" "}
               <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="text-rose-900 hover:underline">
                 Bobler: champagne, cava, crémant, prosecco
               </Link>

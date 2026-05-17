@@ -189,6 +189,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hverdags-bobler") {
+    return {
+      q: "prosecco cava cremant brut bobler",
+      max: 100,
+      label: "hverdagsbobler under 100 kr",
+    };
+  }
+
   return null;
 }
 

@@ -95,6 +95,32 @@ type ValueSearchTip = {
   altQueries: { label: string; q: string }[];
 };
 
+/** Diskret tip ved champagne / hverdagsbobler (tjekkes før value-tips). */
+const BUBBLE_SEARCH_TIPS: ValueSearchTip[] = [
+  {
+    pattern: /champagne|champagn|dom\s*perignon|veuve|moët|moet/i,
+    message:
+      "Crémant og kvalitets-cava giver ofte samme fest og flaskegæring til en brøkdel af champagne-prisen — perfekt til hverdag.",
+    guideHref: "/guides/hverdags-bobler",
+    guideLabel: "Hverdags-bobler",
+    altQueries: [
+      { label: "Crémant", q: "cremant brut alsace" },
+      { label: "Cava reserva", q: "cava reserva brut" },
+    ],
+  },
+  {
+    pattern: /takeaway.*boble|boble.*takeaway|bobler.*pizza|bobler.*burger|fastfood.*vin/i,
+    message:
+      "Mousserende til takeaway: syre og kul skærer salt og friture — cava eller prosecco brut er ofte det rigtige.",
+    guideHref: "/guides/bobler-til-takeaway-og-fastfood",
+    guideLabel: "Bobler til takeaway",
+    altQueries: [
+      { label: "Cava brut", q: "cava brut" },
+      { label: "Prosecco", q: "prosecco extra dry" },
+    ],
+  },
+];
+
 /** Diskret tip ved mindful / høj-alkohol-søgning (tjekkes før value-tips). */
 const MINDFUL_SEARCH_TIPS: ValueSearchTip[] = [
   {
@@ -265,6 +291,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
     if (!t) return null;
     return (
       MINDFUL_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
+      BUBBLE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       VALUE_SEARCH_TIPS.find((tip) => tip.pattern.test(t)) ??
       null
     );

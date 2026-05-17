@@ -22,6 +22,33 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "hverdags-bobler": [
+    {
+      question: "Hvilken bobler passer til pizza og takeaway?",
+      answer:
+        "Ofte prosecco Extra Dry eller Brut, eller tør cava — syre og kul skærer ost og fedt. Se guiden om bobler til takeaway og søg prosecco eller cava på Vinbot med evt. max-pris.",
+    },
+    {
+      question: "Er crémant det samme som champagne?",
+      answer:
+        "Nej — men crémant er også flaskegæret mousserende vin fra andre regioner (fx Alsace, Loire) og giver ofte lignende fest og brioche til lavere pris end champagne.",
+    },
+    {
+      question: "Hvad er hverdagsbobler?",
+      answer:
+        "Mousserende vin til hverdag — tirsdag, fredag, takeaway — uden at det skal være nytår eller bryllup. Typisk prosecco, cava eller crémant under 100–150 kr.",
+    },
+    {
+      question: "Hvilken bobler til chips og salt snacks?",
+      answer:
+        "Tør cava brut eller crémant — salt elsker syre. Undgå meget søde bobler til salt mad.",
+    },
+    {
+      question: "Hvad er pet-nat?",
+      answer:
+        "Pétillant naturel — naturligt mousserende vin, ofte med kapsel og uklarhed. Uformelt og trendy til hygge; søg pet nat på Vinbot og læs guiden om pet-nat.",
+    },
+  ],
   "mindful-drikke-low-no-alkohol": [
     {
       question: "Hvad er mindful drinking?",

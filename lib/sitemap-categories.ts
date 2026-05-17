@@ -25,6 +25,7 @@ const VIDEN_SLUGS = new Set<string>([
 const MAD_EXTRA_SLUGS = new Set<string>([
   "komplet-guide-til-vin-og-mad",
   "rosevin-til-mad-og-sommer",
+  "hverdags-bobler",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */
