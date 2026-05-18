@@ -115,4 +115,8 @@ export const FEEDS: FeedConfig[] = [
     merchant: "Wine Store",
     url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=1&language_code=da&locale_id=11&type=xml&program_id=20108&html_transform=none&rawdata=false&encoding=utf8&general=false",
   },
+  {
+    merchant: "Havnens Vin",
+    url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=21457&html_transform=none&rawdata=false&encoding=utf8&general=false",
+  },
 ];

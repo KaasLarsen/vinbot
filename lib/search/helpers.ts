@@ -528,6 +528,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
   const txt = xml.replace(/<([a-z0-9]+):/gi, "<$1_").replace(/<\/([a-z0-9]+):/gi, "</$1_");
 
   let blocks = splitBlocks(txt, "product");
+  if (!blocks.length) blocks = splitBlocks(txt, "product_info");
   if (!blocks.length) blocks = splitBlocks(txt, "item");
   if (!blocks.length) blocks = splitBlocks(txt, "produkt");
   if (!blocks.length)

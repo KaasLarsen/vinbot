@@ -158,7 +158,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v6"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v7"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });
