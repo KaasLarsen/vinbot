@@ -92,6 +92,9 @@ export function SiteFooter() {
             <Link href="/johnsen-wine" className="hover:text-rose-900">
               Johnsen Wine (affiliate)
             </Link>
+            <Link href="/havnens-vin" className="hover:text-rose-900">
+              Havnens Vin (affiliate)
+            </Link>
                 <Link href="/den-sidste-flaske" className="hover:text-rose-900">
                   Den Sidste Flaske
                 </Link>

@@ -44,6 +44,9 @@ async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> 
   return products;
 }
 
+/** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
+const FEED_PRODUCTS_CACHE_VERSION = "v2";
+
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
   const filterKey =
@@ -56,7 +59,7 @@ export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> 
         ].join("|");
   return unstable_cache(
     () => fetchFeedProductsInner(feed),
-    ["vinbot-feed", feed.merchant, feed.url, filterKey],
+    ["vinbot-feed", FEED_PRODUCTS_CACHE_VERSION, feed.merchant, feed.url, filterKey],
     { revalidate: 21600, tags: ["vinbot-feeds"] },
   )();
 }
