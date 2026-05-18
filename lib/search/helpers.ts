@@ -488,6 +488,59 @@ function extractCurrency(s: string): string | null {
   return null;
 }
 
+function looksLikeHttpUrl(s: string): boolean {
+  const t = (s || "").trim();
+  return /^https?:\/\//i.test(t) && !/[<>]/.test(t);
+}
+
+/** Daisycon m.fl.: `<images><image><location>…</location><size>large</size></image></images>`. */
+function pickProductImageFromBlock(block: string): string {
+  const flatTags = [
+    "default_image",
+    "imageurl",
+    "image_url",
+    "largeimage",
+    "large_image",
+    "g_image_link",
+    "picture",
+    "picture_url",
+    "img",
+    "imgurl",
+    "thumbnail",
+    "thumb",
+    "smallimage",
+    "billedurl",
+    "location",
+  ];
+  for (const tag of flatTags) {
+    const v = pickTag(block, tag);
+    if (looksLikeHttpUrl(v)) return v.trim();
+  }
+
+  const imagesMatch = block.match(/<images\b[^>]*>([\s\S]*?)<\/images>/i);
+  if (imagesMatch) {
+    const candidates: { size: string; url: string }[] = [];
+    for (const part of splitBlocks(imagesMatch[1], "image")) {
+      const url = pickTag(part, "location") || pickTag(part, "url");
+      if (!looksLikeHttpUrl(url)) continue;
+      candidates.push({ size: pickTag(part, "size").toLowerCase(), url: url.trim() });
+    }
+    for (const pref of ["large", "medium", "small", "default"]) {
+      const hit = candidates.find((c) => c.size.includes(pref));
+      if (hit) return hit.url;
+    }
+    if (candidates[0]) return candidates[0].url;
+  }
+
+  const fallback = pickFirstMatch(block, [
+    /<additionalimage>([\s\S]*?)<\/additionalimage>/i,
+    /<media_content[^>]+url=["']([^"']+)["']/i,
+  ]);
+  if (looksLikeHttpUrl(fallback)) return fallback.trim();
+
+  return "";
+}
+
 function splitBlocks(xml: string, tag: string): string[] {
   return xml
     .split(new RegExp(`<${tag}\\b[^>]*>`, "i"))
@@ -597,30 +650,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
 
     const url = pickOne(b, ["deeplink", "link", "producturl", "url", "g_link", "vareurl"]);
 
-    let image = pickOne(b, [
-      "default_image",
-      "imageurl",
-      "image_url",
-      "image",
-      "largeimage",
-      "large_image",
-      "g_image_link",
-      "picture",
-      "picture_url",
-      "img",
-      "imgurl",
-      "thumbnail",
-      "thumb",
-      "smallimage",
-      "enclosure url",
-      "billedurl",
-    ]);
-    if (!image)
-      image = pickFirstMatch(b, [
-        /<images>[\s\S]*?<image>([\s\S]*?)<\/image>[\s\S]*?<\/images>/i,
-        /<additionalimage>([\s\S]*?)<\/additionalimage>/i,
-        /<media_content[^>]+url=["']([^"']+)["']/i,
-      ]);
+    let image = pickProductImageFromBlock(b);
     if (image && image.includes("|")) image = image.split("|")[0].trim();
 
     if (!title || !url) continue;
