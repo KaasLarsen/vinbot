@@ -48,6 +48,7 @@ const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/?q=dao%20vinho%20tinto", label: "Søg: Dão" },
   { href: "/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike", label: "Spicy Sauvy B & vineddike" },
   { href: "/?q=sauvignon%20blanc%20marlborough&max=100", label: "Søg: Spicy Sauvy B" },
+  { href: "/guides/sauvignon-blanc-til-salat", label: "Salat-vin (eller eddike bagefter)" },
   { href: "/guides/mindful-drikke-low-no-alkohol", label: "Mindful drinking" },
   { href: "/guides/bedste-lavalkohol-vin", label: "Lav alkohol" },
   { href: "/?q=riesling%20kabinett%20vinho%20verde", label: "Søg: frisk i morgen" },

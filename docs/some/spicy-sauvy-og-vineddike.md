@@ -56,6 +56,23 @@ Zero-waste vineddike — sådan. Fuld opskrift og hvilken restvin der passer →
 - **Fraråd:** chili i rødvin; is i champagne som «tip».
 - **Disclosure:** 21+, drik ansvarligt; eddike-projekt = hygiejne.
 
+### Outreach-skabelon (dansk mad-TikTok/IG)
+
+**Emne:** Kort samarbejde — Spicy Sauvy B eller hjemmelavet vineddike + Vinbot
+
+Hej [navn] — vi så din [ret/salat/zero-waste]-content og tænkte på et kort samarbejde:
+
+- **Format A:** Du tester **Spicy Sauvy B** (frossen jalapeño + kold sauvignon) med ærlig reaktion.
+- **Format B:** Du viser **vineddike fra restvin** + dressing på salat.
+
+Du linker til vores guide (regler + sikkerhed) og til Vinbot-søgning, så følgerne kan finde **billig sauvignon** eller **hvid til køkken**. Vi leverer ikke vin — kun sammenligning af priser hos danske forhandlere.
+
+Interesseret? Vi kan sende talking points fra `docs/some/spicy-sauvy-og-vineddike.md`.
+
+**To spor til bio-link:**
+- Guide: `/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike`
+- Søg: `/?q=sauvignon%20blanc%20marlborough&max=100`
+
 ---
 
 ## Copy-paste kommentar (pin)
