@@ -125,6 +125,7 @@ export default function VinVidenHubPage() {
           <p className="mt-2 text-sm text-stone-700">
             Åbnet og uåbnet, på flaske og i karaffel, i boks og på magnum. Læs om{" "}
             <Link href="/guides/hvor-laenge-holder-rodvin" className="text-rose-900 hover:underline">rødvin</Link>,{" "}
+            <Link href="/guides/kan-roedvin-blive-for-gammel" className="text-rose-900 hover:underline">kan rødvin blive for gammel</Link>,{" "}
             <Link href="/guides/hvor-laenge-holder-uaabnet-vin" className="text-rose-900 hover:underline">uåbnet vin</Link>,{" "}
             <Link href="/guides/hvor-laenge-holder-vin-i-karaffel" className="text-rose-900 hover:underline">karaffel</Link> og{" "}
             <Link href="/guides/hvor-laenge-holder-boks-vin" className="text-rose-900 hover:underline">bag-in-box</Link>.
@@ -185,6 +186,8 @@ export default function VinVidenHubPage() {
           <Link href="/guides/hvad-er-pet-nat" className="text-rose-900 hover:underline">Pét-nat</Link>
           <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">Sådan vælger du vinglas</Link>
           <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">Hvordan åbner du champagne</Link>
+          <Link href="/guides/hvordan-aabner-du-vin-uden-proptreakker" className="text-rose-900 hover:underline">Åbne vin uden proptrækker</Link>
+          <Link href="/guides/kan-roedvin-blive-for-gammel" className="text-rose-900 hover:underline">Kan rødvin blive for gammel?</Link>
           <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">Vin-trends og forbrug i Danmark</Link>
           <Link href="/guides/vin-tilbud-og-foer-pris" className="text-rose-900 hover:underline">Tilbud og før-pris på vin</Link>
           <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">Afkølet rødvin (chillable reds)</Link>

@@ -21,6 +21,8 @@ const VIDEN_SLUGS = new Set<string>([
   "orangevin-for-begyndere",
   "vin-marketing-tricks-forbruger-guide",
   "hurtig-koeling-vin-is-salt-10-minutter",
+  "hvordan-aabner-du-vin-uden-proptreakker",
+  "kan-roedvin-blive-for-gammel",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);

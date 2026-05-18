@@ -70,6 +70,30 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Salt sænker frysepunktet så is smelter og trækker varme hurtigere ud af flasken. Det giver iskold vin på få minutter uden at glemme flasken i fryseren.",
     },
   ],
+  "hvordan-aabner-du-vin-uden-proptreakker": [
+    {
+      question: "Hvordan åbner man vin uden proptrækker?",
+      answer:
+        "Sko-metoden mod en væg (flasken lodret i skoen), to skruer + tang i proppen, eller varm halsen i lunkent vand hvis proppen sidder fast. Undgå kniv i proppen.",
+    },
+    {
+      question: "Virker sko-metoden på alle vine?",
+      answer:
+        "Ja på de fleste stillerøde og hvide med naturprop. Ikke på mousserende — brug champagne-metoden. Skruelåg drejes med hånden eller gummibånd om låget.",
+    },
+  ],
+  "kan-roedvin-blive-for-gammel": [
+    {
+      question: "Kan rødvin blive for gammel?",
+      answer:
+        "Ja — den bliver flad, brunlig eller eddike-agtig. Hverdagsrød drikkes bedst inden 1–3 år; lagringsvine kan holde længe i god kælder. Det er sjældent farligt, bare kedeligt.",
+    },
+    {
+      question: "Hvordan ved jeg om rødvinen er for gammel?",
+      answer:
+        "Tegn: eddikelugt, brun farve på ung vin, ingen frugt. Modnet prestige-rød kan ligne det — prøv karaffel 20–30 min før du kasserer.",
+    },
+  ],
   "vin-tiktok-trends-spicy-sauvy-og-vineddike": [
     {
       question: "Hvad er Spicy Sauvy B?",

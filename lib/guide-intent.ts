@@ -221,6 +221,22 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hvordan-aabner-du-vin-uden-proptreakker") {
+    return {
+      q: "rødvin hvidvin skruelåg",
+      max: 150,
+      label: "vin til hverdag og sommerhus",
+    };
+  }
+
+  if (slug === "kan-roedvin-blive-for-gammel") {
+    return {
+      q: "rioja reserva barolo chianti",
+      max: 200,
+      label: "rødvin til lagring eller hverdag",
+    };
+  }
+
   if (slug === "vin-tiktok-trends-spicy-sauvy-og-vineddike") {
     return {
       q: "sauvignon blanc marlborough hvidvin",

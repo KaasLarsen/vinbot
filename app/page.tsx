@@ -252,6 +252,8 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
       { href: "/guides/hvad-er-sulfit-i-vin", label: "Sulfit i vin" },
       { href: "/guides/hvad-er-fadlagring", label: "Fadlagring" },
       { href: "/guides/hvordan-aabner-du-champagne", label: "Hvordan åbner du champagne" },
+      { href: "/guides/hvordan-aabner-du-vin-uden-proptreakker", label: "Vin uden proptrækker" },
+      { href: "/guides/kan-roedvin-blive-for-gammel", label: "Kan rødvin blive for gammel?" },
       { href: "/guides/sadan-vaelger-du-vinglas", label: "Sådan vælger du vinglas" },
     ],
   },
@@ -293,6 +295,8 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
     links: [
       { href: "/vin-viden", label: "Hub: vin-viden" },
       { href: "/guides/hvor-laenge-holder-rodvin", label: "Hvor længe holder rødvin" },
+      { href: "/guides/hvor-laenge-holder-aabnet-vin", label: "Hvor længe holder åbnet vin" },
+      { href: "/guides/kan-roedvin-blive-for-gammel", label: "Kan rødvin blive for gammel?" },
       { href: "/guides/hvor-laenge-holder-hvidvin", label: "Hvor længe holder hvidvin" },
       { href: "/guides/hvor-laenge-holder-bobler-og-champagne", label: "Hvor længe holder champagne" },
       { href: "/guides/hvor-mange-glas-i-en-flaske-vin", label: "Glas i en flaske" },
