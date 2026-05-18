@@ -18,6 +18,9 @@ const VIDEN_SLUGS = new Set<string>([
   "vin-swap-underdog-regioner",
   "mindful-drikke-low-no-alkohol",
   "vin-tiktok-trends-spicy-sauvy-og-vineddike",
+  "orangevin-for-begyndere",
+  "vin-marketing-tricks-forbruger-guide",
+  "hurtig-koeling-vin-is-salt-10-minutter",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
 ]);
@@ -27,6 +30,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "komplet-guide-til-vin-og-mad",
   "rosevin-til-mad-og-sommer",
   "hverdags-bobler",
+  "vin-til-asiatisk-takeaway-dumplings-sushi-ramen",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */

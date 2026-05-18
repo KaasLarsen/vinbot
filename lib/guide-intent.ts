@@ -189,6 +189,38 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "orangevin-for-begyndere") {
+    return {
+      q: "orange wine ramato naturvin skin contact",
+      max: 200,
+      label: "orangevin for begyndere",
+    };
+  }
+
+  if (slug === "vin-til-asiatisk-takeaway-dumplings-sushi-ramen") {
+    return {
+      q: "asiatisk riesling gewurztraminer gruner veltliner sushi",
+      max: 150,
+      label: "vin til asiatisk takeaway",
+    };
+  }
+
+  if (slug === "vin-marketing-tricks-forbruger-guide") {
+    return {
+      q: "rioja reserva cotes du rhone douro",
+      max: 150,
+      label: "vin uden marketing-hype",
+    };
+  }
+
+  if (slug === "hurtig-koeling-vin-is-salt-10-minutter") {
+    return {
+      q: "prosecco cava sauvignon blanc bobler",
+      max: 150,
+      label: "vin til hurtig afkøling",
+    };
+  }
+
   if (slug === "vin-tiktok-trends-spicy-sauvy-og-vineddike") {
     return {
       q: "sauvignon blanc marlborough hvidvin",

@@ -22,6 +22,54 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "orangevin-for-begyndere": [
+    {
+      question: "Hvad er orangevin for begyndere?",
+      answer:
+        "Start med kort skal-kontakt (ramato, let orange) eller beskrivelser som frisk og klar — undgå meget funky naturvin første gang. Søg ramato eller orange wine på Vinbot under 200 kr.",
+    },
+    {
+      question: "Hvorfor smager min orangevin af æblemost eller stald?",
+      answer:
+        "Ofte oxidation eller vild naturvin-stil — ikke fejl, men ikke alle kan lide det uden mad. Server køligere og par med krydret eller umami-retter, eller vælg en renere stil næste gang.",
+    },
+  ],
+  "vin-til-asiatisk-takeaway-dumplings-sushi-ramen": [
+    {
+      question: "Hvilken vin passer til sushi og dumplings?",
+      answer:
+        "Tør riesling, albariño, cava eller kølig pinot — undgå tung tannin-rød til soja og fisk. Søg sushi eller riesling på Vinbot og sammenlign priser.",
+    },
+    {
+      question: "Hvilken vin til rød karry?",
+      answer:
+        "Halvtør eller off-dry riesling, gewürztraminer eller mousserende med lidt sødme — ikke ung stram cabernet. Se guiden om asiatisk takeaway og krydret mad.",
+    },
+  ],
+  "vin-marketing-tricks-forbruger-guide": [
+    {
+      question: "Er Reserve på etiketten altid bedre vin?",
+      answer:
+        "Nej. I Rioja og Italien kan Reserva/Riserva være lovpligtig lagring; i mange andre lande er Reserve ofte marketing. Læs appellation og producent — sammenlign pris på Vinbot.",
+    },
+    {
+      question: "Betyder guldmedalje på flasken at vinen er god?",
+      answer:
+        "Ikke altid — tjek hvilken konkurrence og årgang. Brug medaljer som hint, ikke som eneste bevis, og sammenlign med andre vine i samme prisklasse.",
+    },
+  ],
+  "hurtig-koeling-vin-is-salt-10-minutter": [
+    {
+      question: "Hvordan køler man vin hurtigt før gæster?",
+      answer:
+        "Is + koldt vand + groft salt i spand eller vinkøler — flasken dækket helt — i 8–12 minutter for hvid og bobler. Hurtigere og sikrere end fryseren.",
+    },
+    {
+      question: "Hvorfor salt i isbad til vin?",
+      answer:
+        "Salt sænker frysepunktet så is smelter og trækker varme hurtigere ud af flasken. Det giver iskold vin på få minutter uden at glemme flasken i fryseren.",
+    },
+  ],
   "vin-tiktok-trends-spicy-sauvy-og-vineddike": [
     {
       question: "Hvad er Spicy Sauvy B?",
