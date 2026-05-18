@@ -231,6 +231,22 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
     "blanc",
     "rosé",
     "rose",
+    "volnay",
+    "alvarinho",
+    "fino",
+    "brut",
+    "valdobbiadene",
+    "gewürztraminer",
+    "gewurztraminer",
+    "grüner veltliner",
+    "gruner veltliner",
+    "chablis",
+    "macon",
+    "mâcon",
+    "chateauneuf",
+    "hermitage",
+    "bandol",
+    "priorat",
   ];
 
   const negative = [
@@ -274,6 +290,11 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
   const hasNeg = negative.some(hasWord);
 
   if (hasNeg && !hasPos) return false;
+
+  /* Daisycon m.fl.: titel er ofte «Producent, Appellation, 75 cl.» uden ordet «vin». */
+  const wineBottleSize =
+    /\b(37[,.]5|75)\s*cl\b/i.test(text) || /\b0[,.]75\s*l\b/i.test(text) || /\b750\s*ml\b/i.test(text);
+  if (wineBottleSize && !hasNeg) return true;
 
   if (!hasPos && !hasWord("vin") && !hasWord("wine")) return false;
 
@@ -541,7 +562,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
   for (const b of blocks) {
     const title = pickOne(b, ["name", "title", "g_title", "produktnavn"]);
     const desc = pickOne(b, ["description", "shortdescription", "longdescription", "long_description", "content_encoded", "beskrivelse"]);
-    const category = pickOne(b, [
+    const categoryRaw = pickOne(b, [
       "categorypath",
       "category",
       "categories",
@@ -549,6 +570,10 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       "g_product_type",
       "product_type",
     ]);
+    const wineMeta = [pickOne(b, ["wine_type"]), pickOne(b, ["wine_grape"]), pickOne(b, ["wine_region"]), pickOne(b, ["wine_country"])]
+      .filter(Boolean)
+      .join(" ");
+    const category = [categoryRaw, wineMeta].filter(Boolean).join(" ").trim();
     const brand = pickOne(b, ["brand", "g_brand", "manufacturer", "producer", "vendor", "creator", "forhandler"]);
 
     const gtin = normalizeBarcodeDigits(pickOne(b, ["gtin", "g_gtin", "ean", "g_ean", "upc", "barcode"]));
