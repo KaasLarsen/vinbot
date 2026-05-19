@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -405,7 +406,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
-      <section className="rounded-3xl bg-gradient-to-br from-rose-50 via-white to-amber-50/60 px-6 py-10 shadow-sm ring-1 ring-stone-200/80 sm:px-10 sm:py-11">
+      <HomeHeroSearchSection>
         <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">Danmarks vinguide</p>
         <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
           Find vin til mad, humør og stemning
@@ -414,7 +415,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
           <strong className="font-semibold text-stone-800">Det er søgefeltet herunder, der er hjertet i Vinbot:</strong> skriv julemad, grill, romantisk aften, hygge eller en drue — så får du konkrete forslag med billede og pris fra danske
           forhandlere, du kan klikke videre til.
         </p>
-        <div className="mt-8 rounded-2xl border border-rose-200/70 bg-white/75 p-5 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
+        <div className="mt-8 rounded-2xl border border-rose-200/70 bg-white/85 p-5 shadow-md ring-1 ring-stone-200/60 backdrop-blur-sm sm:p-6">
           <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Søg efter vin</h2>
           <p className="mt-1 text-sm text-stone-600">Jo mere konkret du er (ret, stemning, budget), jo bedre matcher resultaterne.</p>
           <div className="mt-4">
@@ -477,7 +478,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
             </div>
           </details>
         </div>
-      </section>
+      </HomeHeroSearchSection>
 
       <CampaignBanner />
 
