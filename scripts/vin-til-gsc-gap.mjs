@@ -56,6 +56,7 @@ function detectQueryColumnIndex(headerCells) {
   const lowered = headerCells.map((h) => h.toLowerCase().trim());
   const candidates = [
     "top queries",
+    "mest anvendte forespørgsler",
     "query",
     "forespørgsel",
     "forespoergsel",
@@ -75,7 +76,12 @@ function detectMetricIndices(headerCells) {
   const idx = (needle) => lowered.findIndex((h) => h === needle || h.includes(needle));
   return {
     clicks: idx("clicks") >= 0 ? idx("clicks") : idx("klik"),
-    impressions: idx("impressions") >= 0 ? idx("impressions") : idx("visninger"),
+    impressions:
+      idx("impressions") >= 0
+        ? idx("impressions")
+        : idx("eksponeringer") >= 0
+          ? idx("eksponeringer")
+          : idx("visninger"),
   };
 }
 
