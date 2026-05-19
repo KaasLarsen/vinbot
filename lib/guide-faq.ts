@@ -94,6 +94,71 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Tegn: eddikelugt, brun farve på ung vin, ingen frugt. Modnet prestige-rød kan ligne det — prøv karaffel 20–30 min før du kasserer.",
     },
   ],
+  "hovedpine-af-roedvin": [
+    {
+      question: "Hvorfor får jeg hovedpine af rødvin?",
+      answer:
+        "Sjældent sulfit — oftere histaminer, tanniner, alkohol og dehydrering. Tung, moden rødvin med høj alkohol rammer mange hårdere end let hvidvin eller afkølet gamay. Se Vinbots guide for konkrete alternativer.",
+    },
+    {
+      question: "Giver sulfit hovedpine af rødvin?",
+      answer:
+        "Næsten aldrig. Hvidvin har typisk højere tilladt sulfit end rødvin. Kan du drikke bobler og hvid uden problemer, er sulfit usandsynlig som årsag til rødvin-hovedpine.",
+    },
+    {
+      question: "Hvilken vin giver færre hovedpine?",
+      answer:
+        "Mange tåler bedre gamay, pinot noir, riesling Kabinett, vinho verde og tør cava — samt lavalkohol og alkoholfri alternativer. Undgå ofte tung Amarone, ung shiraz og Port sent om aftenen.",
+    },
+  ],
+  "bedste-vin-i-netto-under-70-kr": [
+    {
+      question: "Hvad er bedste vin i Netto under 70 kr?",
+      answer:
+        "Typisk primitivo, montepulciano d'Abruzzo, ung tempranillo, vinho verde og tør prosecco/cava brut — vælg DOC/oprindelse frem for vage «Premium Reserva»-navne. Sammenlign samme stil online på Vinbot.",
+    },
+    {
+      question: "Er Netto-vin dårlig?",
+      answer:
+        "Ikke nødvendigvis — det er hverdagsvin til ung, frugtig drikke, ikke lagring. Kvaliteten afhænger af producent og stil; samme budget rækker langt med Sydeuropa og Portugal.",
+    },
+  ],
+  "vin-brevkassen": [
+    {
+      question: "Hvor længe kan en åbnet flaske vin holde sig?",
+      answer:
+        "Typisk 2–7 dage i køleskab med prop — kortere for let hvid, længere for struktureret rød. Bobler: brug prop eller forsegler. Fuld svar i Vinbots guide om åbnet vin.",
+    },
+    {
+      question: "Hvordan åbner man vin uden proptrækker?",
+      answer:
+        "Sko-metode, gaffel, skruelåg, nøgle i prop — eller køb en billig proptrækker til sommerhuset. Vinbots brevkasse linker til trin-for-trin guiden.",
+    },
+  ],
+  "vin-til-svigerforaeldre-besog": [
+    {
+      question: "Hvilken vin skal man købe når svigerforældre kommer?",
+      answer:
+        "Crémant eller cava til velkomst (120–150 kr), derefter klassisk madvin: chianti, Rioja Crianza/Reserva, grüner veltliner til fisk — 120–200 kr rækker langt. Undgå tung rød til let mad.",
+    },
+    {
+      question: "Hvor meget skal man bruge på vin til svigerforældre?",
+      answer:
+        "120–200 kr pr. flaske er rigeligt for god impression. To flasker (hvid + rød eller bobler + rød) slår én dyr prestige-flaske for de fleste middage.",
+    },
+  ],
+  "vin-og-overgangsalder-histamin": [
+    {
+      question: "Kan man drikke rødvin i overgangsalderen?",
+      answer:
+        "Mange kan — men oplever at tung rød giver hovedpine, hedeture eller dårlig søvn. Let rød afkølet, hvidvin, lavalkohol eller alkoholfri bobler fungerer ofte bedre. Ikke medicinsk rådgivning — tal med læge ved vedvarende symptomer.",
+    },
+    {
+      question: "Hvilken vin har mindst histamin?",
+      answer:
+        "Der findes ingen garanti, men mange vælger frisk hvid (riesling Kabinett, albariño, grüner veltliner), vinho verde og let rød som gamay afkølet frem for moden, tung rødvin.",
+    },
+  ],
   "vin-tiktok-trends-spicy-sauvy-og-vineddike": [
     {
       question: "Hvad er Spicy Sauvy B?",

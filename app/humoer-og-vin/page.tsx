@@ -118,6 +118,7 @@ export default function HumoerHubPage() {
           <h3 className="text-lg font-semibold text-stone-900">Gave og gæstfrihed</h3>
           <p className="mt-2 text-sm text-stone-700">
             Værtindegave, jubilæum, runde gaver. Sikker vin med pakning der ser ud som fest. Læs om{" "}
+            <Link href="/guides/vin-til-svigerforaeldre-besog" className="text-rose-900 hover:underline">svigerforældre på besøg</Link>,{" "}
             <Link href="/guides/bedste-vin-til-gave" className="text-rose-900 hover:underline">gavevin</Link>,{" "}
             <Link href="/guides/bedste-vaertindegave-vin" className="text-rose-900 hover:underline">værtindegave</Link> og{" "}
             <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">konfirmation</Link>.

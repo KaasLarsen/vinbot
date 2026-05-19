@@ -165,6 +165,25 @@ export default function VinVidenHubPage() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-lg border border-rose-200 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-stone-900">Vin-brevkassen</h2>
+        <p className="mt-3 text-stone-700">
+          Hurtige svar på det danskerne googler mest — holdbarhed, hovedpine, proptrækker og supermarked.{" "}
+          <Link href="/guides/vin-brevkassen" className="font-medium text-rose-900 hover:underline">
+            Se hele brevkassen
+          </Link>
+          .
+        </p>
+        <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/hovedpine-af-roedvin" className="text-rose-900 hover:underline">Hovedpine af rødvin</Link>
+          <Link href="/guides/vin-og-overgangsalder-histamin" className="text-rose-900 hover:underline">Vin og overgangsalder</Link>
+          <Link href="/guides/bedste-vin-i-netto-under-70-kr" className="text-rose-900 hover:underline">Netto-vin under 70 kr</Link>
+          <Link href="/guides/hvordan-aabner-du-vin-uden-proptreakker" className="text-rose-900 hover:underline">Åbne vin uden proptrækker</Link>
+          <Link href="/guides/kan-roedvin-blive-for-gammel" className="text-rose-900 hover:underline">Kan rødvin blive for gammel?</Link>
+          <Link href="/guides/hurtig-koeling-vin-is-salt-10-minutter" className="text-rose-900 hover:underline">Hurtig-køling (is + salt)</Link>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Nye long-tail svar og forklaringer</h2>
         <p className="mt-3 text-stone-700">

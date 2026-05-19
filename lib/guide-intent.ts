@@ -253,6 +253,38 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hovedpine-af-roedvin") {
+    return {
+      q: "gamay pinot noir riesling kabinett vinho verde",
+      max: 150,
+      label: "lettere vine med færre hovedpine-triggere",
+    };
+  }
+
+  if (slug === "bedste-vin-i-netto-under-70-kr") {
+    return {
+      q: "primitivo tempranillo cava prosecco vinho verde",
+      max: 70,
+      label: "supermarkedsvin under 70 kr",
+    };
+  }
+
+  if (slug === "vin-til-svigerforaeldre-besog") {
+    return {
+      q: "crémant rioja chianti gruner veltliner",
+      max: 200,
+      label: "vin til gæster og svigerforældre",
+    };
+  }
+
+  if (slug === "vin-og-overgangsalder-histamin") {
+    return {
+      q: "riesling kabinett gruner veltliner vinho verde alkoholfri",
+      max: 150,
+      label: "let vin og lav histamin-stil",
+    };
+  }
+
   return null;
 }
 
