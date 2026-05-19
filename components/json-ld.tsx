@@ -5,7 +5,10 @@ import {
   buildDsfAffiliateProductNode,
   buildDsfFeaturedProductsItemList,
 } from "@/lib/schema/dsf-affiliate-product";
-import { productJsonLdGtinFields } from "@/lib/gtin-validation";
+import {
+  productJsonLdIdentifierFields,
+  resolveProductBrandForJsonLd,
+} from "@/lib/schema/product-identifiers";
 import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
 
 type ArticleJsonLdProps = {
@@ -217,11 +220,22 @@ export function WineProductJsonLd({
     url: pageUrl,
   };
 
-  if (wine.brand?.trim()) {
-    data.brand = { "@type": "Brand", name: wine.brand.trim() };
+  const brandName = resolveProductBrandForJsonLd({
+    brand: wine.brand,
+    titles: [wine.displayTitle, ...wine.alternateListingTitles],
+  });
+  if (brandName) {
+    data.brand = { "@type": "Brand", name: brandName };
   }
 
-  Object.assign(data, productJsonLdGtinFields(wine.gtin));
+  Object.assign(
+    data,
+    productJsonLdIdentifierFields({
+      gtin: wine.gtin,
+      mpn: wine.mpn,
+      sku: wine.slug,
+    }),
+  );
 
   if (wine.category?.trim()) {
     data.category = wine.category.replace(/\s*[>|]\s*/g, " › ").slice(0, 256);

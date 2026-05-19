@@ -5,9 +5,20 @@ import type { FeedProduct } from "@/lib/search/types";
 import { getCachedFeedProducts } from "@/lib/search/fetch-feed";
 import { isWineLike, normalize, productEligibleForWineSearch } from "@/lib/search/helpers";
 
+import { inferWineProducerBrand } from "@/lib/schema/product-identifiers";
+
 import { combineRichDescriptions } from "./product-text";
 import { shortHash, wineSlugFromId } from "./slug";
 import type { CanonicalWine, VineOffer, WineCatalog } from "./types";
+
+function resolveClusterBrand(acc: { brand: string; titles: string[] }): string {
+  if (acc.brand.trim()) return acc.brand.trim();
+  for (const title of acc.titles) {
+    const inferred = inferWineProducerBrand(title);
+    if (inferred) return inferred;
+  }
+  return "";
+}
 
 /** Årgang i titel fjernes til signatur-match på tværs af butikker. */
 function stripVintage(title: string): string {
@@ -69,6 +80,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
     category: string;
     image: string | null;
     gtin: string | null;
+    mpn: string | null;
     offers: VineOffer[];
   };
 
@@ -95,6 +107,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
           category: (p.category || "").trim(),
           image: p.image?.trim() || null,
           gtin: p.gtin,
+          mpn: p.mpn,
           offers: [],
         };
         clusters.set(key, acc);
@@ -121,7 +134,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
 
   for (const [key, acc] of clusters) {
     const displayTitle = pickDisplayTitle(acc.titles);
-    const brand = acc.brand || "";
+    const brand = resolveClusterBrand(acc);
     const slug = wineSlugFromId(key, displayTitle, brand);
     const offers = mergeOffers(acc.offers);
     const description = combineRichDescriptions(acc.descriptions);
@@ -140,6 +153,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
       alternateListingTitles,
       image: acc.image,
       gtin: acc.gtin,
+      mpn: acc.mpn,
       offers,
       updated: now,
     });
@@ -158,7 +172,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v10"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v11"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });

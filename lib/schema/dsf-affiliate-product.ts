@@ -1,4 +1,9 @@
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
+import {
+  productJsonLdIdentifierFields,
+  resolveProductBrandForJsonLd,
+  shopifyProductSlugFromUrl,
+} from "@/lib/schema/product-identifiers";
 import { partnerAdsDsfClickUrl } from "@/lib/site";
 
 /** Offentlige policies hos Den Sidste Flaske. Opdater URL-felter ved behov. */
@@ -98,12 +103,15 @@ export function buildDsfAffiliateProductNode(
     ...extra,
   };
   const desc = (options?.description ?? pick.blurb)?.trim().slice(0, 5000);
+  const brandName =
+    resolveProductBrandForJsonLd({ titles: [pick.title] }) ?? pick.title.split(/\s[-|–—]\s/)[0]?.trim().slice(0, 64);
   const product: Record<string, unknown> = {
     "@type": "Product",
     name: pick.title,
     url: options?.canonicalPageUrl ?? pick.productUrl,
     ...(desc ? { description: desc } : {}),
-    brand: { "@type": "Brand", name: DSF_MERCHANT.name },
+    ...(brandName ? { brand: { "@type": "Brand", name: brandName } } : {}),
+    ...productJsonLdIdentifierFields({ sku: shopifyProductSlugFromUrl(pick.productUrl) ?? undefined }),
     offers: offer,
   };
   const imgs = [...(pick.imageUrl ? [pick.imageUrl] : []), ...(options?.additionalImageUrls ?? [])].map((u) => u.trim()).filter(Boolean);

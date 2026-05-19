@@ -33,6 +33,8 @@ export type CanonicalWine = {
   alternateListingTitles: string[];
   image: string | null;
   gtin: string | null;
+  /** Model-/SKU fra feeds når GTIN mangler — til Product JSON-LD. */
+  mpn: string | null;
   offers: VineOffer[];
   /** Seneste pris-opdatering (server). */
   updated: string;
