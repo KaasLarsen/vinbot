@@ -147,6 +147,35 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "120–200 kr pr. flaske er rigeligt for god impression. To flasker (hvid + rød eller bobler + rød) slår én dyr prestige-flaske for de fleste middage.",
     },
   ],
+  "bedste-alkoholfri-champagne": [
+    {
+      question: "Findes der rigtig alkoholfri champagne?",
+      answer:
+        "Nej — champagne kræver alkohol i AOC-reglerne. Det du køber, er premium alkoholfri mousserende (de-alkoholiseret sparkling) med champagne-lignende stil og flaske, fx French Bloom eller Oddbird.",
+    },
+    {
+      question: "Hvilken alkoholfri champagne er bedst?",
+      answer:
+        "French Bloom Le Blanc regnes som premium-reference til fest og nytår. Oddbird Blanc de Blancs og Noughty Sparkling Chardonnay er stærke alternativer til lavere pris. Til hverdagspris: Leitz Eins-Zwei-Zero Sparkling Riesling.",
+    },
+    {
+      question: "Hvilken temperatur skal alkoholfri champagne have?",
+      answer:
+        "8–10 °C — som rigtig champagne. Server i flute eller tulip, hæld lige før servering, og brug champagne-prop på resten i køleskab 1–2 dage.",
+    },
+  ],
+  "vin-til-asiatisk-mad": [
+    {
+      question: "Hvilken vin passer til asiatisk mad?",
+      answer:
+        "Typisk syre og ofte lidt restsødme: off-dry riesling, gewürztraminer, grüner veltliner og tør bobler. Undgå tung tannin-rød til soja og stærk karry — se Vinbots guide med links til thai, sushi og kinesisk.",
+    },
+    {
+      question: "Kan man drikke rødvin til asiatisk mad?",
+      answer:
+        "Sjældent til stærk thai eller karry — tannin og chili kolliderer. Mild wok, koreansk BBQ eller char siu kan tage afkølet gamay eller pinot. Ellers vælg hvid, rosé eller bobler.",
+    },
+  ],
   "vin-og-overgangsalder-histamin": [
     {
       question: "Kan man drikke rødvin i overgangsalderen?",

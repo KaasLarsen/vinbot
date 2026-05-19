@@ -168,6 +168,7 @@ const popularTopicGroups: { title: string; links: { href: string; label: string 
       { href: "/guides/mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no (overblik)" },
       { href: "/guides/bedste-alkoholfri-vin", label: "Bedste alkoholfri vin (hub)" },
       { href: "/guides/bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" },
+      { href: "/guides/bedste-alkoholfri-champagne", label: "Bedste alkoholfri champagne" },
       { href: "/guides/bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" },
       { href: "/guides/bedste-alkoholfri-hvidvin", label: "Bedste alkoholfri hvidvin" },
       { href: "/guides/bedste-alkoholfri-rose", label: "Bedste alkoholfri rosé" },

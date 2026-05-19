@@ -285,6 +285,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "vin-til-asiatisk-mad") {
+    return {
+      q: "riesling gewurztraminer gruner veltliner albarino cava",
+      max: 150,
+      label: "vin til asiatisk mad",
+    };
+  }
+
   return null;
 }
 

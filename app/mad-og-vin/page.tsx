@@ -145,6 +145,7 @@ export default function MadOgVinHubPage() {
           <Link href="/guides/rosevin-til-grill" className="hover:underline">Rosévin til grill</Link>
           <Link href="/guides/champagne-til-mad" className="hover:underline">Champagne til mad</Link>
           <Link href="/guides/bobler-til-brunch" className="hover:underline">Bobler til brunch</Link>
+          <Link href="/guides/vin-til-asiatisk-mad" className="hover:underline">Asiatisk mad (oversigt)</Link>
           <Link href="/guides/vin-til-asiatisk-takeaway-dumplings-sushi-ramen" className="hover:underline">Asiatisk takeaway</Link>
           <Link href="/guides/hverdags-bobler" className="hover:underline">Hverdags-bobler</Link>
           <Link href="/guides/bobler-til-fredag" className="hover:underline">Bobler til fredag</Link>
