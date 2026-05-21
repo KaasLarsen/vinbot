@@ -87,6 +87,30 @@ export default function MadOgVinHubPage() {
         .
       </p>
 
+      <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Opskrifter med vin</h2>
+        <p className="mt-2 text-sm text-stone-700">
+          Fulde opskrifter hvor vin er en del af retten — adskilt fra vores parrings-guides. Vin i gryden, plus anbefalinger til glasset.
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/opskrifter" className="font-medium hover:underline">
+            Alle opskrifter
+          </Link>
+          <Link href="/opskrifter/coq-au-vin" className="hover:underline">
+            Coq au vin
+          </Link>
+          <Link href="/opskrifter/boeuf-bourguignon" className="hover:underline">
+            Boeuf bourguignon
+          </Link>
+          <Link href="/opskrifter/risotto-med-hvidvin" className="hover:underline">
+            Risotto med hvidvin
+          </Link>
+          <Link href="/opskrifter/roedvinssauce-til-boef" className="hover:underline">
+            Rødvinssauce til bøf
+          </Link>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Forår og sommer — konkrete lejligheder</h2>
         <p className="mt-3 text-stone-700">

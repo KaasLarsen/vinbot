@@ -31,6 +31,11 @@ const heroEditorialLinks: { href: string; label: string; blurb: string }[] = [
     blurb: "Parring til kød, fisk, ost og regional mad",
   },
   {
+    href: "/opskrifter",
+    label: "Opskrifter med vin",
+    blurb: "Coq au vin, bourguignon og risotto — vin i gryden",
+  },
+  {
     href: "/vin-viden",
     label: "Vin-viden",
     blurb: "Temperatur, holdbarhed og brevkasse-svar",

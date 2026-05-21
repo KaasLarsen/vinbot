@@ -5,6 +5,7 @@ import path from "path";
 import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
+import { getAllRecipes } from "@/lib/content/recipes";
 import { classifyGuide } from "@/lib/sitemap-categories";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderIndex, sitemapResponseInit } from "@/lib/sitemap-xml";
@@ -45,6 +46,13 @@ async function buildSitemapIndexXml(): Promise<string> {
   const catalog = await getCachedWineCatalog();
   const vineLastmod = new Date(catalog.generatedAt);
 
+  const recipesLastmod = newest(
+    getAllRecipes().map((r) => {
+      const d = r.updated ? new Date(r.updated) : new Date(r.fallbackDate);
+      return Number.isNaN(d.getTime()) ? new Date() : d;
+    }),
+  );
+
   const dsfVinLastmod = newest([
     fileLastModified(path.join(process.cwd(), "lib/dsf-popular-wines.ts")),
     fileLastModified(path.join(process.cwd(), "app/den-sidste-flaske/vin/[slug]/page.tsx")),
@@ -53,6 +61,7 @@ async function buildSitemapIndexXml(): Promise<string> {
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
+    { loc: `${base}/sitemap-opskrifter.xml`, lastmod: recipesLastmod },
     { loc: `${base}/sitemap-dsf-vin.xml`, lastmod: dsfVinLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },

@@ -34,6 +34,71 @@ type ArticleJsonLdProps = {
   inLanguage?: string;
 };
 
+type RecipeJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  image?: string;
+  prepTime?: string;
+  cookTime?: string;
+  recipeYield?: string;
+  recipeCategory?: string;
+  recipeIngredient: string[];
+  recipeInstructions: string[];
+  keywords?: string[];
+};
+
+export function RecipeJsonLd({
+  name,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  image,
+  prepTime,
+  cookTime,
+  recipeYield,
+  recipeCategory,
+  recipeIngredient,
+  recipeInstructions,
+  keywords,
+}: RecipeJsonLdProps) {
+  const orgRef = { "@id": organizationSchemaId };
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name,
+    description,
+    datePublished,
+    dateModified,
+    author: {
+      "@type": "Organization",
+      "@id": editorialTeamSchemaId,
+      name: editorialTeamName,
+      url: `${siteUrl}/om-os`,
+      description: editorialTeamDescription,
+      parentOrganization: orgRef,
+    },
+    publisher: orgRef,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    inLanguage: "da-DK",
+    recipeIngredient,
+    recipeInstructions: recipeInstructions.map((text) => ({
+      "@type": "HowToStep",
+      text,
+    })),
+  };
+  if (image) data.image = image;
+  if (prepTime) data.prepTime = prepTime;
+  if (cookTime) data.cookTime = cookTime;
+  if (recipeYield) data.recipeYield = recipeYield;
+  if (recipeCategory) data.recipeCategory = recipeCategory;
+  if (keywords && keywords.length > 0) data.keywords = keywords.join(", ");
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 export function ArticleJsonLd({
   title,
   description,
