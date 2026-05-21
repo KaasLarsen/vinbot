@@ -108,6 +108,15 @@ export default function MadOgVinHubPage() {
           <Link href="/opskrifter/roedvinssauce-til-boef" className="hover:underline">
             Rødvinssauce til bøf
           </Link>
+          <Link href="/opskrifter/flaesketesteg-med-rodvin-i-brun-sovs" className="hover:underline">
+            Flæskesteg med rødvin i brun sovs
+          </Link>
+          <Link href="/opskrifter/frikadeller-i-hvidvinsauce" className="hover:underline">
+            Frikadeller i hvidvinsauce
+          </Link>
+          <Link href="/opskrifter/andesteg-med-port-og-hvidvin" className="hover:underline">
+            Andesteg med port og hvidvin
+          </Link>
         </div>
       </section>
 
