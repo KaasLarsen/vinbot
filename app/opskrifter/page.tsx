@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
+import { RecipeHubBrowser } from "@/components/recipe-hub-browser";
 import { getAllRecipes } from "@/lib/content/recipes";
-import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
 const PAGE_DESCRIPTION =
-  "Fulde opskrifter hvor vin er en del af retten: coq au vin, bourguignon, risotto og mere. Med vin i gryden og anbefalinger til glasset.";
+  "20+ opskrifter hvor vin er en del af retten: coq au vin, flæskesteg, paella, fondue og mere. Filtrér efter rød/hvidvin, køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
+
+type PageProps = { searchParams?: Promise<{ q?: string }> };
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -17,8 +19,20 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_URL },
 };
 
-export default function OpskrifterHubPage() {
+export default async function OpskrifterHubPage({ searchParams }: PageProps) {
+  const qParam = ((await searchParams)?.q ?? "").trim();
   const recipes = getAllRecipes();
+  const cards = recipes.map((r) => ({
+    slug: r.slug,
+    title: r.title,
+    description: r.description,
+    updated: r.updated,
+    tags: r.tags,
+    prepTime: r.prepTime,
+    cookTime: r.cookTime,
+    servings: r.servings,
+    difficulty: r.difficulty,
+  }));
 
   const collectionItems = recipes.map((r) => ({
     name: r.title,
@@ -49,17 +63,17 @@ export default function OpskrifterHubPage() {
       />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Opskrifter med vin</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">
-        Her finder du klassiske retter hvor <strong className="font-medium text-stone-800">vin er en del af opskriften</strong> — ikke
-        kun i glasset. Hver opskrift linker til vores parrings-guides og til{" "}
-        <Link href="/guides/sadan-bruger-du-vin-til-sauce-og-simren" className="text-rose-900 hover:underline">
-          madlavning med vin
-        </Link>
-        .
+        Klassiske retter hvor <strong className="font-medium text-stone-800">vin er en del af opskriften</strong> — ikke
+        kun i glasset. Filtrér efter vin-type, køkken og tid, eller søg direkte.
       </p>
       <p className="mt-3 text-sm text-stone-600">
-        Leder du efter «hvad drikker jeg til retten?» i stedet for selve opskriften? Start på{" "}
+        Leder du efter parring i stedet for opskriften? Se{" "}
         <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
           mad &amp; vin
+        </Link>
+        ,{" "}
+        <Link href="/guides/sadan-bruger-du-vin-til-sauce-og-simren" className="text-rose-900 hover:underline">
+          madlavning med vin
         </Link>{" "}
         eller{" "}
         <Link href="/guides" className="text-rose-900 hover:underline">
@@ -68,29 +82,9 @@ export default function OpskrifterHubPage() {
         .
       </p>
 
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-        {recipes.map((r) => {
-          const prep = formatIsoDuration(r.prepTime);
-          const cook = formatIsoDuration(r.cookTime);
-          const diff = difficultyLabel(r.difficulty);
-          return (
-            <li key={r.slug}>
-              <Link
-                href={`/opskrifter/${r.slug}`}
-                className="block rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-rose-200 hover:shadow-md"
-              >
-                <h2 className="text-lg font-semibold text-stone-900">{r.title}</h2>
-                <p className="mt-2 text-sm text-stone-600 line-clamp-2">{r.description}</p>
-                <p className="mt-3 text-xs text-stone-500">
-                  {[r.servings ? `${r.servings} pers.` : null, prep ? `forberedelse ${prep}` : null, cook ? `tilberedning ${cook}` : null, diff]
-                    .filter(Boolean)
-                    .join(" · ")}
-                </p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="mt-10">
+        <RecipeHubBrowser recipes={cards} initialQuery={qParam} />
+      </div>
     </div>
   );
 }
