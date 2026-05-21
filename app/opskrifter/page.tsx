@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { filterIndexableRecipes, getAllRecipes } from "@/lib/content/recipes";
+import { getAllRecipes } from "@/lib/content/recipes";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
 import { siteUrl } from "@/lib/site";
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default function OpskrifterHubPage() {
-  const recipes = filterIndexableRecipes(getAllRecipes());
+  const recipes = getAllRecipes();
 
   const collectionItems = recipes.map((r) => ({
     name: r.title,
