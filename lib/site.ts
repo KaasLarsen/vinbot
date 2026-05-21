@@ -1,6 +1,10 @@
 /** Primær host skal matche Vercel “primary domain”. Apex (vinbot.dk) 307’er til www — undgå apex i sitemap/canonical hvis jeres setup er www-first. */
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.vinbot.dk").replace(/\/$/, "");
 export const siteName = "Vinbot";
+/** Redaktionelt byline på guides — ikke personligt navn. */
+export const editorialTeamName = "Vinbot-redaktionen";
+export const editorialTeamDescription =
+  "Vinbots redaktionelle team skriver og opdaterer vinguides på dansk — madparring, druer, regioner og praktisk vin-viden.";
 export const contactEmail = "info@vinbot.dk";
 
 /** Mob.nr. til hobbyprojektet — `tel:` uden mellemrum. */
@@ -15,6 +19,8 @@ export const legalPagesUpdatedDisplay = "10. maj 2026";
 
 /** Fast @id til Organization i JSON-LD (samme på tværs af sider). */
 export const organizationSchemaId = `${siteUrl}/#organization`;
+/** Forfatter-entity for artikler (underordnet Vinbot som udgiver). */
+export const editorialTeamSchemaId = `${siteUrl}/#editorial-team`;
 
 /** Google anbefaler logo ≥112px; apple-icon er 180×180. */
 export const organizationLogoUrl = `${siteUrl}/apple-icon`;

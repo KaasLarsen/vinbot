@@ -92,11 +92,11 @@ export default function OmOsPage() {
       <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">Hvem står bag?</h2>
         <p className="leading-relaxed">
-          Vinbot drives af en lille dansk redaktion med vinfagligt grundlag (vinkursusbaggrund og mange års
-          drikkelæring) og en solid teknisk baggrund (næste-generations web-udvikling, data og søgeteknik).
-          Vi arbejder i krydsfeltet mellem <strong>vinglæde</strong> og <strong>gennemsigtigt
-          værktøj</strong> — og vi prioriterer kvalitet over volumen, også når det betyder at sider skal
-          genskrives, samles eller fjernes.
+          <strong>Vinbot-redaktionen</strong> er et lille redaktionelt team med vinfagligt grundlag (vinkursus og
+          mange års drikkelæring) og teknisk baggrund (web, data og søg). Vi arbejder i krydsfeltet mellem{" "}
+          <strong>vinglæde</strong> og <strong>gennemsigtigt værktøj</strong> — og prioriterer kvalitet over volumen,
+          også når det betyder at sider skal genskrives, samles eller fjernes. Vi offentliggør ikke personlige
+          forfatterprofiler; indholdet står som redaktionelt fællesarbejde under dette navn.
         </p>
         <p className="leading-relaxed">
           Spørgsmål, rettelser eller presse? Skriv til os på{" "}

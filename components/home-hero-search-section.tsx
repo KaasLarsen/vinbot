@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 const HERO_IMAGE = "/images/hero/hero-vin-atmosphere.jpg";
 
-/** Atmosfærisk vin-baggrund med gradient-overlay — søgefeltet forbliver visuelt centrum. */
+/** Atmosfærisk vin-baggrund med gradient-overlay — redaktionelle indgange før vinsøgning. */
 export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
   return (
     <section className="relative overflow-hidden rounded-3xl shadow-sm ring-1 ring-stone-200/80">

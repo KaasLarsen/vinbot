@@ -21,6 +21,7 @@ import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideLauridsenRegionCta } from "@/components/guide-lauridsen-region-cta";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { deriveGuideIntent } from "@/lib/guide-intent";
+import { editorialTeamName } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -134,7 +135,7 @@ export default async function GuidePage({ params }: Props) {
         <p className="mt-3 text-sm text-stone-600">
           Af{" "}
           <Link href="/om-os" className="font-medium text-rose-900 hover:underline">
-            Vinbot-redaktionen
+            {editorialTeamName}
           </Link>
           {" "}·{" "}
           <Link href="/redaktionel-proces" className="text-rose-900 hover:underline">

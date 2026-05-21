@@ -9,7 +9,17 @@ import {
   productJsonLdIdentifierFields,
   resolveProductBrandForJsonLd,
 } from "@/lib/schema/product-identifiers";
-import { contactEmail, organizationLogoUrl, organizationSameAs, organizationSchemaId, siteName, siteUrl } from "@/lib/site";
+import {
+  contactEmail,
+  editorialTeamDescription,
+  editorialTeamName,
+  editorialTeamSchemaId,
+  organizationLogoUrl,
+  organizationSameAs,
+  organizationSchemaId,
+  siteName,
+  siteUrl,
+} from "@/lib/site";
 
 type ArticleJsonLdProps = {
   title: string;
@@ -44,7 +54,14 @@ export function ArticleJsonLd({
     description,
     datePublished,
     dateModified,
-    author: orgRef,
+    author: {
+      "@type": "Organization",
+      "@id": editorialTeamSchemaId,
+      name: editorialTeamName,
+      url: `${siteUrl}/om-os`,
+      description: editorialTeamDescription,
+      parentOrganization: orgRef,
+    },
     publisher: orgRef,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     inLanguage,
@@ -170,6 +187,13 @@ export function OrganizationJsonLd() {
   if (sameAs.length > 0) {
     data.sameAs = sameAs;
   }
+  data.subOrganization = {
+    "@type": "Organization",
+    "@id": editorialTeamSchemaId,
+    name: editorialTeamName,
+    url: `${siteUrl}/om-os`,
+    description: editorialTeamDescription,
+  };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
