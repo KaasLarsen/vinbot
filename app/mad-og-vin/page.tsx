@@ -126,6 +126,15 @@ export default function MadOgVinHubPage() {
           <Link href="/opskrifter/chili-con-carne-med-rodvin" className="hover:underline">
             Chili con carne med rødvin
           </Link>
+          <Link href="/opskrifter/muslinger-i-hvidvin" className="hover:underline">
+            Muslinger i hvidvin
+          </Link>
+          <Link href="/opskrifter/kalv-i-hvidvinsauce" className="hover:underline">
+            Kalv i hvidvinsauce
+          </Link>
+          <Link href="/opskrifter/daube-provencale-med-rodvin" className="hover:underline">
+            Daube provençale
+          </Link>
         </div>
       </section>
 
