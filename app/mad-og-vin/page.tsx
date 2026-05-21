@@ -135,6 +135,15 @@ export default function MadOgVinHubPage() {
           <Link href="/opskrifter/daube-provencale-med-rodvin" className="hover:underline">
             Daube provençale
           </Link>
+          <Link href="/opskrifter/forloren-hare-med-rodvin" className="hover:underline">
+            Forloren hare med rødvin
+          </Link>
+          <Link href="/opskrifter/ratatouille-med-hvidvin" className="hover:underline">
+            Ratatouille med hvidvin
+          </Link>
+          <Link href="/opskrifter/paerer-i-rodvin" className="hover:underline">
+            Pærer i rødvin
+          </Link>
         </div>
       </section>
 
