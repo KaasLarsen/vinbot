@@ -72,7 +72,10 @@ const DRUE_REGION_CLUSTERS: DrueRegionCluster[] = [
   {
     drueSlug: "merlot",
     title: "Merlot",
-    items: [{ slug: "merlot-fra-pomerol", label: "Merlot fra Pomerol" }],
+    items: [
+      { slug: "merlot-fra-pomerol", label: "Merlot fra Pomerol" },
+      { slug: "merlot-fra-saint-emilion", label: "Merlot fra Saint-Émilion" },
+    ],
   },
   {
     drueSlug: "syrah",
@@ -118,6 +121,26 @@ const DRUE_REGION_CLUSTERS: DrueRegionCluster[] = [
       { slug: "grenache-fra-chateauneuf-du-pape", label: "Grenache fra Châteauneuf-du-Pape" },
       { slug: "grenache-fra-priorat", label: "Garnacha fra Priorat" },
     ],
+  },
+  {
+    drueSlug: "gamay",
+    title: "Gamay / Beaujolais",
+    items: [{ slug: "gamay-fra-beaujolais", label: "Gamay fra Beaujolais" }],
+  },
+  {
+    drueSlug: "gewurztraminer",
+    title: "Gewürztraminer",
+    items: [{ slug: "gewurztraminer-fra-alsace", label: "Gewürztraminer fra Alsace" }],
+  },
+  {
+    drueSlug: "pinot-grigio",
+    title: "Pinot grigio / gris",
+    items: [{ slug: "pinot-grigio-fra-alto-adige", label: "Pinot grigio fra Alto Adige" }],
+  },
+  {
+    drueSlug: "barbera",
+    title: "Barbera",
+    items: [{ slug: "barbera-fra-asti", label: "Barbera fra Asti" }],
   },
 ];
 
@@ -308,7 +331,7 @@ export default function DruesorterHubPage() {
       <section id="drue-region" className="mt-16 scroll-mt-20 rounded-2xl border border-rose-200 bg-rose-50/60 p-6">
         <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Drue × region — klassiske long-tails</h2>
         <p className="mt-2 max-w-3xl text-stone-700">
-          Nogle drue-region-kombinationer er blevet synonymer med hinanden — chardonnay fra Chablis, pinot noir fra Bourgogne, nebbiolo fra Barolo. 29 dybdeguider med stil, producenter, klassificeringer, pris og madparring:
+          Nogle drue-region-kombinationer er blevet synonymer med hinanden — chardonnay fra Chablis, pinot noir fra Bourgogne, nebbiolo fra Barolo. 34 dybdeguider med stil, producenter, klassificeringer, pris og madparring:
         </p>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
