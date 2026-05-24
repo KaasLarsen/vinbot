@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
 const PAGE_DESCRIPTION =
-  "35+ opskrifter hvor vin er en del af retten: coq au vin, ragù, rejer i hvidvin, hakkebøf og mere. Filtrér efter rød/hvidvin, køkken og tid.";
+  "40+ opskrifter hvor vin er en del af retten: coq au vin, torsk i hvidvin, sauerbraten, stegt flæsk og mere. Filtrér efter rød/hvidvin, køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };
