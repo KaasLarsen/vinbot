@@ -1,6 +1,6 @@
 import { createWineDetailRoute } from "@/lib/wine-detail-pages/create-route";
 
-const route = createWineDetailRoute("den-sidste-flaske");
+const route = createWineDetailRoute("winther-vin");
 
 export const revalidate = 21600;
 export const generateStaticParams = route.generateStaticParams;

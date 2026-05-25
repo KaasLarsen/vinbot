@@ -20,6 +20,8 @@ export function partnerAdsKlikUrl(bannerId: string, htmlUrl?: string): string {
  * Verificér tracking i Partner-Ads ved tvivl — Beer Me: 74589 (abonnement/footer), 74625 (shop/feed).
  */
 export const PARTNER_ADS_KLIK_BANNERS = {
+  /** Den Sidste Flaske — kuraterede enkeltvin-sider og hub */
+  denSidsteFlaske: "68720",
   /** Mere om Vin — samme banner som produktfeed */
   mereOmVin: "87611",
   /** Johnsen Wine (“Johnsen Vine” i feed) */

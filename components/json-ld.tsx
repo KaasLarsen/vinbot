@@ -1,10 +1,14 @@
 import type { DsfFeaturedPick } from "@/lib/dsf-featured";
+import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
+import type { WineDetailFeaturedPick } from "@/lib/wine-detail-pages/types";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { vineMetaDescription } from "@/lib/vine/copy";
 import {
   buildDsfAffiliateProductNode,
   buildDsfFeaturedProductsItemList,
+  buildMerchantFeaturedProductsItemList,
 } from "@/lib/schema/dsf-affiliate-product";
+import { buildMerchantAffiliateProductNode } from "@/lib/schema/merchant-affiliate-product";
 import {
   productJsonLdIdentifierFields,
   resolveProductBrandForJsonLd,
@@ -362,6 +366,44 @@ export function DsfFeaturedProductsJsonLd({ picks }: { picks: DsfFeaturedPick[] 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+export function MerchantFeaturedProductsJsonLd({
+  merchantId,
+  picks,
+}: {
+  merchantId: MerchantWineId;
+  picks: WineDetailFeaturedPick[];
+}) {
+  if (picks.length === 0) return null;
+  const data = buildMerchantFeaturedProductsItemList(merchantId, picks);
+  const list = data.itemListElement as unknown[];
+  if (!list.length) return null;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+/** Én affiliate-produktgraf til `{forhandler}/vin/[slug]` — uden ratings. */
+export function WineDetailProductJsonLd({
+  merchantId,
+  pick,
+  vinbotPageUrl,
+  description,
+  additionalGalleryImageUrls,
+}: {
+  merchantId: MerchantWineId;
+  pick: WineDetailFeaturedPick;
+  vinbotPageUrl: string;
+  description: string;
+  additionalGalleryImageUrls?: readonly string[];
+}) {
+  const node = buildMerchantAffiliateProductNode(merchantId, pick, {
+    canonicalPageUrl: vinbotPageUrl,
+    description,
+    additionalImageUrls: additionalGalleryImageUrls,
+  });
+  if (!node) return null;
+  const data = { "@context": "https://schema.org", ...node };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 /** Én affiliate-DSF-produktgraf til `/den-sidste-flaske/vin/[slug]` — uden ratings. */
 export function DsfPopularWineDetailProductJsonLd({
   pick,
@@ -374,12 +416,13 @@ export function DsfPopularWineDetailProductJsonLd({
   description: string;
   additionalGalleryImageUrls?: readonly string[];
 }) {
-  const node = buildDsfAffiliateProductNode(pick, {
-    canonicalPageUrl: vinbotPageUrl,
-    description,
-    additionalImageUrls: additionalGalleryImageUrls,
-  });
-  if (!node) return null;
-  const data = { "@context": "https://schema.org", ...node };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <WineDetailProductJsonLd
+      merchantId="den-sidste-flaske"
+      pick={{ ...pick, merchantId: "den-sidste-flaske" }}
+      vinbotPageUrl={vinbotPageUrl}
+      description={description}
+      additionalGalleryImageUrls={additionalGalleryImageUrls}
+    />
+  );
 }

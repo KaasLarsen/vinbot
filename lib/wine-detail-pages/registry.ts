@@ -1,0 +1,118 @@
+import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
+import { getMerchantWineConfig } from "@/lib/wine-detail-pages/merchants";
+import { DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-existing";
+import { DEN_SIDSTE_FLASKE_PILOT_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-pilot";
+import { LAURIDSEN_VINE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/lauridsen-vine";
+import { WINTHER_VIN_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/winther-vin";
+import { DH_WINES_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/dh-wines";
+import { JOHNSEN_WINE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine";
+import type { WineDetailFeaturedPick, WineDetailPage, WineDetailGuideRef, WineDetailSpec, WineDetailAside, WineDetailFoodPairing } from "@/lib/wine-detail-pages/types";
+
+const ALL_PAGES: readonly WineDetailPage[] = [
+  ...DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES,
+  ...DEN_SIDSTE_FLASKE_PILOT_PAGES,
+  ...LAURIDSEN_VINE_WINE_DETAIL_PAGES,
+  ...WINTHER_VIN_WINE_DETAIL_PAGES,
+  ...DH_WINES_WINE_DETAIL_PAGES,
+  ...JOHNSEN_WINE_WINE_DETAIL_PAGES,
+];
+
+function normalizedProductKey(merchantId: MerchantWineId, url: string): string {
+  return getMerchantWineConfig(merchantId).sanitizeProductUrl(url);
+}
+
+export function listAllWineDetailPages(): readonly WineDetailPage[] {
+  return ALL_PAGES;
+}
+
+export function listWineDetailSlugsForMerchant(merchantId: MerchantWineId): string[] {
+  return ALL_PAGES.filter((p) => p.merchantId === merchantId).map((p) => p.slug);
+}
+
+export function getWineDetailPage(merchantId: MerchantWineId, slug: string): WineDetailPage | undefined {
+  return ALL_PAGES.find((p) => p.merchantId === merchantId && p.slug === slug);
+}
+
+/** Alle kuraterede sider for én forhandler — til relaterede flasker på detail-siden. */
+export function listWineDetailPagesForMerchant(merchantId: MerchantWineId): readonly WineDetailPage[] {
+  return ALL_PAGES.filter((p) => p.merchantId === merchantId);
+}
+
+export function wineDetailPageUrl(page: WineDetailPage): string {
+  return getMerchantWineConfig(page.merchantId).hubPath + `/vin/${page.slug}`;
+}
+
+/** Til featured-kort og krydslinks — match på sanitiseret produkt-URL inden for samme forhandler. */
+export function wineDetailSlugForProductUrl(merchantId: MerchantWineId, productUrl: string): string | undefined {
+  const key = normalizedProductKey(merchantId, productUrl);
+  for (const page of ALL_PAGES) {
+    if (page.merchantId !== merchantId) continue;
+    if (normalizedProductKey(merchantId, page.productPageUrl) === key) return page.slug;
+  }
+  return undefined;
+}
+
+/** Match kurateret side ud fra vilkårlig butiks-URL (typisk fra katalog-tilbud). */
+export function findWineDetailPageByProductUrl(productUrl: string): WineDetailPage | undefined {
+  for (const page of ALL_PAGES) {
+    try {
+      if (normalizedProductKey(page.merchantId, page.productPageUrl) === normalizedProductKey(page.merchantId, productUrl)) {
+        return page;
+      }
+    } catch {
+      continue;
+    }
+  }
+  return undefined;
+}
+
+/** Kuraterede sider der linker til en given guide via `guideRefs`. */
+export function listWineDetailPagesForGuide(guideSlug: string, limit = 3): WineDetailPage[] {
+  return ALL_PAGES.filter((p) => p.guideRefs.some((r) => r.slug === guideSlug)).slice(0, limit);
+}
+
+export function wineDetailPageToFeaturedPick(page: WineDetailPage): WineDetailFeaturedPick {
+  const cfg = getMerchantWineConfig(page.merchantId);
+  return {
+    merchantId: page.merchantId,
+    title: page.displayTitle,
+    blurb: page.structuredDescriptionSnippet ?? page.metaDescription.slice(0, 240),
+    productUrl: cfg.sanitizeProductUrl(page.productPageUrl),
+    imageUrl: page.imageUrl,
+    listPrice: page.listPrice,
+    priceCurrency: page.priceCurrency ?? "DKK",
+  };
+}
+
+/** Sitemap: alle `{merchant}/vin/{slug}`-stier. */
+export function listAllWineDetailSitemapEntries(): { path: string; merchantId: MerchantWineId; slug: string }[] {
+  return ALL_PAGES.map((p) => ({
+    merchantId: p.merchantId,
+    slug: p.slug,
+    path: wineDetailPageUrl(p),
+  }));
+}
+
+// --- Backward-compatible DSF aliases (overgangsfase) ---
+
+export function listDsfPopularWineSlugs(): string[] {
+  return listWineDetailSlugsForMerchant("den-sidste-flaske");
+}
+
+export function getDsfPopularWineBySlug(slug: string): WineDetailPage | undefined {
+  return getWineDetailPage("den-sidste-flaske", slug);
+}
+
+export function dsfPopularWineDetailSlugForProductUrl(productUrl: string): string | undefined {
+  return wineDetailSlugForProductUrl("den-sidste-flaske", productUrl);
+}
+
+export function popularWineToFeaturedPick(page: WineDetailPage): WineDetailFeaturedPick {
+  return wineDetailPageToFeaturedPick(page);
+}
+
+export type { WineDetailPage as DsfPopularWinePage };
+export type { WineDetailGuideRef as DsfPopularWineGuideRef };
+export type { WineDetailSpec as DsfPopularWineSpec };
+export type { WineDetailAside as DsfPopularWineAside };
+export type { WineDetailFoodPairing as DsfPopularWineFoodPairing };

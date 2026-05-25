@@ -8,6 +8,7 @@ import { VivinoCommunityLink } from "@/components/vivino-community-link";
 import { VineProfileEditorial, VineProfileFaq } from "@/components/vine-profile-editorial";
 import { VineProfileGuideLinks } from "@/components/vine-profile-guide-links";
 import { VineStructuralSection } from "@/components/vine-profile-structural";
+import { VineCuratedDetailCta } from "@/components/vine-curated-detail-cta";
 import { VineRelatedWines } from "@/components/vine-related";
 import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
@@ -156,6 +157,8 @@ export default async function VineProductPage({ params }: Props) {
             <VineStructuralSection wine={wine} />
 
             <VineProfileGuideLinks wine={wine} />
+
+            <VineCuratedDetailCta wine={wine} />
           </div>
         </div>
 

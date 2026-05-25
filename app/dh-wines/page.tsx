@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
-import { FaqJsonLd } from "@/components/json-ld";
+import { FaqJsonLd, MerchantFeaturedProductsJsonLd } from "@/components/json-ld";
+import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
+import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default function DhWinesPage() {
+  const featuredPicks = getFeaturedPicksForMerchant("dh-wines");
   const faq = [
     {
       question: "Hvorfor linker Vinbot til DH Wines?",
@@ -41,6 +44,7 @@ export default function DhWinesPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <FaqJsonLd items={faq} />
+      <MerchantFeaturedProductsJsonLd merchantId="dh-wines" picks={featuredPicks} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/dh-wines", label: "DH Wines" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">DH Wines</h1>
       <p className="mt-4 text-lg leading-relaxed text-stone-700">
@@ -101,6 +105,8 @@ export default function DhWinesPage() {
           </Link>
         </p>
       </section>
+
+      <MerchantFeaturedPicks merchantId="dh-wines" picks={featuredPicks} />
 
       <section className="mt-14 space-y-10">
         <div>

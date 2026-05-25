@@ -53,16 +53,21 @@ async function buildSitemapIndexXml(): Promise<string> {
     }),
   );
 
-  const dsfVinLastmod = newest([
-    fileLastModified(path.join(process.cwd(), "lib/dsf-popular-wines.ts")),
-    fileLastModified(path.join(process.cwd(), "app/den-sidste-flaske/vin/[slug]/page.tsx")),
+  const wineDetailLastmod = newest([
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/registry.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-existing.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-pilot.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/lauridsen-vine.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine.ts")),
   ]);
 
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-opskrifter.xml`, lastmod: recipesLastmod },
-    { loc: `${base}/sitemap-dsf-vin.xml`, lastmod: dsfVinLastmod },
+    { loc: `${base}/sitemap-wine-detail.xml`, lastmod: wineDetailLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },
     { loc: `${base}/sitemap-regioner.xml`, lastmod: newest(byCat.regioner) },
