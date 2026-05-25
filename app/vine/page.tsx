@@ -7,7 +7,7 @@ import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { VineFeaturedStrip, type VineFeaturedWine } from "@/components/vine-featured";
 import { VineHubSearch, type WineSummary } from "@/components/vine-hub-search";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { getCachedWineCatalog } from "@/lib/vine/catalog";
+import { loadWineCatalog } from "@/lib/vine/catalog";
 import { vineCatalogStyleFromBlob } from "@/lib/vine/catalog-style";
 import { siteUrl } from "@/lib/site";
 
@@ -21,9 +21,10 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 21600;
+export const maxDuration = 60;
 
 export default async function VineHubPage() {
-  const catalog = await getCachedWineCatalog();
+  const catalog = await loadWineCatalog();
 
   const summaries: WineSummary[] = catalog.wines.map((w) => {
     const prices = w.offers.map((o) => o.price).filter((p): p is number => typeof p === "number");

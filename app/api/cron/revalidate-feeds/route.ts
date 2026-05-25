@@ -1,11 +1,16 @@
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
+import { warmWineCatalog } from "@/lib/vine/catalog";
+
 /**
  * Beskytter feed-cache revalidering.
  * - På Vercel: sæt CRON_SECRET — Vercel Cron sender `Authorization: Bearer <CRON_SECRET>`.
  * - Lokalt (uden VERCEL): tilladt uden secret så I kan køre `curl localhost:3000/...` under udvikling.
+ * - Opvarmer vin-katalog efter revalidate så cold-start ikke giver 5xx ved mass-crawl.
  */
+export const maxDuration = 60;
+
 export async function GET(req: NextRequest) {
   const secret = process.env.CRON_SECRET?.trim();
   const onVercel = Boolean(process.env.VERCEL);
@@ -25,5 +30,11 @@ export async function GET(req: NextRequest) {
   }
 
   revalidateTag("vinbot-feeds", "max");
-  return NextResponse.json({ revalidated: true, tag: "vinbot-feeds" });
+  const catalog = await warmWineCatalog();
+  return NextResponse.json({
+    revalidated: true,
+    tag: "vinbot-feeds",
+    catalogWines: catalog.wines.length,
+    catalogGeneratedAt: catalog.generatedAt,
+  });
 }

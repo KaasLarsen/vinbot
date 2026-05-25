@@ -1,4 +1,5 @@
 import { unstable_cache } from "next/cache";
+import { cache } from "react";
 
 import { FEEDS } from "@/lib/feeds/config";
 import type { FeedProduct } from "@/lib/search/types";
@@ -86,13 +87,17 @@ async function buildWineCatalog(): Promise<WineCatalog> {
 
   const clusters = new Map<string, Acc>();
 
-  for (const feed of FEEDS) {
-    let products: FeedProduct[];
-    try {
-      products = await getCachedFeedProducts(feed);
-    } catch {
-      continue;
-    }
+  const feedProducts = await Promise.all(
+    FEEDS.map(async (feed) => {
+      try {
+        return await getCachedFeedProducts(feed);
+      } catch {
+        return [] as FeedProduct[];
+      }
+    }),
+  );
+
+  for (const products of feedProducts) {
     for (const p of products) {
       if (!productEligibleForWineSearch(p)) continue;
       if (!isWineLike(p)) continue;
@@ -172,12 +177,20 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v11"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v12"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });
 
-export async function getWineBySlug(slug: string): Promise<CanonicalWine | null> {
-  const { wines } = await getCachedWineCatalog();
-  return wines.find((w) => w.slug === slug) ?? null;
+/** Per-request dedupe mellem `generateMetadata` og side-komponent. */
+export const loadWineCatalog = cache(getCachedWineCatalog);
+
+/** Opvarm Data Cache efter cron-revalidate — undgår cold-start 5xx ved mass-crawl. */
+export async function warmWineCatalog(): Promise<WineCatalog> {
+  return getCachedWineCatalog();
 }
+
+export const getWineBySlug = cache(async (slug: string): Promise<CanonicalWine | null> => {
+  const { wines } = await loadWineCatalog();
+  return wines.find((w) => w.slug === slug) ?? null;
+});

@@ -3,6 +3,7 @@ import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 /**
  * Kun vin-katalog-hub — individuelle `/vine/[slug]` er noindex (feed roterer).

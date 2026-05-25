@@ -13,7 +13,7 @@ import { VineRelatedWines } from "@/components/vine-related";
 import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
-import { getCachedWineCatalog, getWineBySlug } from "@/lib/vine/catalog";
+import { getWineBySlug, loadWineCatalog } from "@/lib/vine/catalog";
 import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
 import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
@@ -22,11 +22,12 @@ import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 type Props = { params: Promise<{ slug: string }> };
 
 export const revalidate = 21600;
+export const maxDuration = 60;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const wine = await getWineBySlug(slug);
-  if (!wine) return { title: "Vin ikke fundet" };
+  if (!wine) notFound();
   const url = `${siteUrl}/vine/${wine.slug}`;
   const title = `${wine.displayTitle}${wine.brand ? ` · ${wine.brand}` : ""}`;
   const description = vineMetaDescription(wine, 158);
@@ -48,9 +49,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VineProductPage({ params }: Props) {
   const { slug } = await params;
-  const catalog = await getCachedWineCatalog();
-  const wine = catalog.wines.find((w) => w.slug === slug) ?? null;
+  const wine = await getWineBySlug(slug);
   if (!wine) notFound();
+  const catalog = await loadWineCatalog();
   const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
   const faqItems = vineProductFaqItems(wine);
 
