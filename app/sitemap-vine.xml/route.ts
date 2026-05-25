@@ -4,19 +4,23 @@ import { renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Kun vin-katalog-hub — individuelle `/vine/[slug]` er noindex (feed roterer).
+ * Undgår at GSC indekserer tusindvis af midlertidige produkt-URL’er.
+ */
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");
   const catalog = await getCachedWineCatalog();
   const lastmod = new Date(catalog.generatedAt);
 
-  const xml = renderUrlset(
-    catalog.wines.map((w) => ({
-      loc: `${base}/vine/${w.slug}`,
+  const xml = renderUrlset([
+    {
+      loc: `${base}/vine`,
       lastmod,
       changefreq: "weekly" as const,
-      priority: 0.7,
-    })),
-  );
+      priority: 0.55,
+    },
+  ]);
 
   return new Response(xml, sitemapResponseInit);
 }

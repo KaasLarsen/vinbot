@@ -347,6 +347,10 @@ const legacyRedirects: { source: string; destination: string }[] = [
     source: "/guides/bedste-chenin-blanc-under-100-kr",
     destination: "/guides/bedste-chenin-blanc-under-150-kr",
   },
+  {
+    source: "/guides/chenin-blanc-fra-savennieres",
+    destination: "/guides/chenin-blanc-fra-vouvray",
+  },
 
   // SEO: bred forespørgsel «alkoholfri vin» → kanonisk hub (undgår kun sporadisk traffik på blandede sider)
   { source: "/alkoholfri-vin", destination: "/guides/bedste-alkoholfri-vin" },
@@ -422,6 +426,19 @@ const legacyRedirects: { source: string; destination: string }[] = [
   },
 ];
 
+/** Spejl `/pages/...` til root-niveau (gammelt statisk site uden `/pages/` i URL). */
+const rootLegacyMirrorPrefixes = ["/pages/vin-til/", "/pages/druer/", "/pages/blog/"] as const;
+
+const rootLegacyHubRedirects: { source: string; destination: string }[] = [
+  { source: "/druer", destination: "/druesorter" },
+  { source: "/druer/", destination: "/druesorter" },
+  { source: "/vin-til", destination: "/guides/komplet-guide-til-vin-og-mad" },
+  { source: "/vin-til/", destination: "/guides/komplet-guide-til-vin-og-mad" },
+  { source: "/anbefalinger", destination: "/den-sidste-flaske" },
+  { source: "/anbefalinger/", destination: "/den-sidste-flaske" },
+  { source: "/pages/index.html", destination: "/" },
+];
+
 const nextConfig: NextConfig = {
   async redirects() {
     /**
@@ -431,7 +448,14 @@ const nextConfig: NextConfig = {
      * Vercel primary domain (typisk https://www.vinbot.dk), så sitemap/canonical ikke peger på apex,
      * som alligevel 307’er til www.
      */
-    return legacyRedirects.map((r) => ({
+    const mirroredFromPages = legacyRedirects
+      .filter((r) => rootLegacyMirrorPrefixes.some((prefix) => r.source.startsWith(prefix)))
+      .map((r) => ({
+        source: r.source.replace(/^\/pages/, ""),
+        destination: r.destination,
+      }));
+
+    return [...legacyRedirects, ...mirroredFromPages, ...rootLegacyHubRedirects].map((r) => ({
       source: r.source,
       destination: r.destination,
       permanent: true,

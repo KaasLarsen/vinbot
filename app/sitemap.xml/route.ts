@@ -2,7 +2,6 @@ import { unstable_cache } from "next/cache";
 
 import path from "path";
 
-import { getCachedWineCatalog } from "@/lib/vine/catalog";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
 import { getAllRecipes } from "@/lib/content/recipes";
@@ -43,9 +42,6 @@ async function buildSitemapIndexXml(): Promise<string> {
     discoverStaticAppRoutes().map(({ pageFile }) => fileLastModified(pageFile)),
   );
 
-  const catalog = await getCachedWineCatalog();
-  const vineLastmod = new Date(catalog.generatedAt);
-
   const recipesLastmod = newest(
     getAllRecipes().map((r) => {
       const d = r.updated ? new Date(r.updated) : new Date(r.fallbackDate);
@@ -75,7 +71,6 @@ async function buildSitemapIndexXml(): Promise<string> {
 
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
-    { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-opskrifter.xml`, lastmod: recipesLastmod },
     { loc: `${base}/sitemap-wine-detail.xml`, lastmod: wineDetailLastmod },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
