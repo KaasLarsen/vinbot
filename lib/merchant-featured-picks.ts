@@ -65,6 +65,26 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 119,
     priceCurrency: "DKK",
   },
+  {
+    merchantId: "den-sidste-flaske",
+    title: "Saint-Amour Beaujolais 2022",
+    blurb: "Gamay fra Beaujolais cru — saft, syre og blød struktur til kylling og charcuteri.",
+    productUrl: "https://densidsteflaske.dk/products/saint-amour-beaujolais-2022",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/saint-amour-beaujolais-2022-den-sidste-flaske-1150005030.png?v=1742557488",
+    listPrice: 159,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "den-sidste-flaske",
+    title: "Corte Antica Barbera d'Asti 2022",
+    blurb: "Barbera med syre og mørk frugt — piemontesisk hverdagsrød til pasta og pizza.",
+    productUrl: "https://densidsteflaske.dk/products/corte-antica-barbera-dasti",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/corte-antica-barbera-d-asti-den-sidste-flaske-1224924399.png?v=1772623389",
+    listPrice: 145,
+    priceCurrency: "DKK",
+  },
   // Lauridsen Vine
   {
     merchantId: "lauridsen-vine",
@@ -81,6 +101,25 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     blurb: "Let, elegant pinot fra Bourgogne — hverdagsrød til kylling, svinekød og blød ost.",
     productUrl: "https://lauridsenvine.dk/products/mommessin-bourgogne-pinot-noir",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/pinot.webp?v=1765398614",
+    listPrice: 209,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "lauridsen-vine",
+    title: "Immortalis Albariño",
+    blurb: "Albariño med citrus og syre — sprød hvidvin til fisk, skaldyr og sommerretter.",
+    productUrl: "https://lauridsenvine.dk/products/immortalis-albarino-2021",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/3064936-2022.w1200.webp?v=1693494754",
+    listPrice: 199,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "lauridsen-vine",
+    title: "Serendipia Cava Reserva Brut",
+    blurb: "Cava reserva brut — tør perlende vin til tapas, forret og fest.",
+    productUrl: "https://lauridsenvine.dk/products/serendipia-cava-reserva-brut",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/cava.webp?v=1765533144",
     listPrice: 209,
     priceCurrency: "DKK",
   },
@@ -104,6 +143,25 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 159,
     priceCurrency: "DKK",
   },
+  {
+    merchantId: "winther-vin",
+    title: "Tenuta Garetto Barbera d'Asti",
+    blurb: "Barbera d'Asti med syre og mørk frugt — piemontesisk hverdagsrød til pasta.",
+    productUrl: "https://winthervin.dk/shop/tenuta-garetto-rosina-barbera-dasti-2019-75-cl/",
+    imageUrl: "https://winthervin.dk/wp-content/uploads/2023/02/Design-uden-navn-19.png",
+    listPrice: 149,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "winther-vin",
+    title: "Marcel Deiss Gewürztraminer Alsace",
+    blurb: "Aromatisk gewürztraminer til asiatisk mad, krydderi og modne oste.",
+    productUrl: "https://winthervin.dk/shop/marcel-deiss-gewurztraminer-2015-alsace-aoc/",
+    imageUrl:
+      "https://winthervin.dk/wp-content/uploads/2021/03/MArcel_deiss_gewurztraminer_winthervin.png",
+    listPrice: 319,
+    priceCurrency: "DKK",
+  },
   // DH Wines
   {
     merchantId: "dh-wines",
@@ -125,6 +183,26 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 179,
     priceCurrency: "DKK",
   },
+  {
+    merchantId: "dh-wines",
+    title: "Mauro Sebaste Barbera Nizza 2020",
+    blurb: "Premium barbera fra Nizza DOCG — dybde og syre til pasta og kød.",
+    productUrl: "https://dhwines.dk/products/mauro-sebaste-barbera-nizza-costemonhisio-2020",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/mauro-sebaste-barbera-nizza-costemonhisio-2020-226696.jpg?v=1779432681",
+    listPrice: 224,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "dh-wines",
+    title: "Mille Vite Langhe Nebbiolo 2021",
+    blurb: "Langhe nebbiolo med kirsebær og struktur — piemontesisk rød til pasta og svampe.",
+    productUrl: "https://dhwines.dk/products/mille-vite-langhe-nebbiolo-doc-2021",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0816/5435/0170/products/mille-vite-langhe-nebbiolo-doc-2021-739801.jpg?v=1779432607",
+    listPrice: 206,
+    priceCurrency: "DKK",
+  },
   // Johnsen Wine
   {
     merchantId: "johnsen-wine",
@@ -142,6 +220,24 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     productUrl: "https://www.johnsenwine.dk/produkt/parcela-cara-norte-ribera-del-duero-bodegas-montebaco-2021/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/montebaco.png",
     listPrice: 195,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "johnsen-wine",
+    title: "Pesquera Crianza Ribera del Duero 2021",
+    blurb: "Klassisk Ribera crianza — tempranillo med struktur til steg og gryde.",
+    productUrl: "https://www.johnsenwine.dk/produkt/2021-pesquera-crianza-ribera-del-duero/",
+    imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/57601321.jpeg",
+    listPrice: 200,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "johnsen-wine",
+    title: "Telmo Rodriguez Gazur Ribera del Duero 2022",
+    blurb: "Frugtig Ribera-tempranillo til tapas, grill og spansk hverdag.",
+    productUrl: "https://www.johnsenwine.dk/produkt/2022-gazur-ribera-del-duero-telmo-rodriguez/",
+    imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/56471322.jpeg",
+    listPrice: 170,
     priceCurrency: "DKK",
   },
 ];

@@ -18,6 +18,11 @@ export async function GET(): Promise<Response> {
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin.ts")),
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines.ts")),
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch2.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-batch2.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/lauridsen-vine-batch2.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin-batch2.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines-batch2.ts")),
   );
 
   const urls: SitemapUrl[] = listAllWineDetailSitemapEntries().map(({ path: p }) => ({
