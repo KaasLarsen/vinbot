@@ -85,6 +85,26 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 145,
     priceCurrency: "DKK",
   },
+  {
+    merchantId: "den-sidste-flaske",
+    title: "Domaine le Bihan Sancerre Romain Blanc 2023",
+    blurb: "Sancerre sauvignon med citrus og mineralsk syre — Loire-klassiker til fisk og salat.",
+    productUrl: "https://densidsteflaske.dk/products/domaine-le-bihan-sancerre-romain-blanc",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/domaine-le-bihan-sancerre-romain-blanc-2023-domaine-le-bihan-hvidvin-1219425087.png?v=1770286630",
+    listPrice: 255,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "den-sidste-flaske",
+    title: "Cave de Tain Crozes-Hermitage 2021",
+    blurb: "Nord-rhône syrah med bær og peber — rød til lam, gryderetter og grill.",
+    productUrl: "https://densidsteflaske.dk/products/cave-de-tain-crozes-hermitage-2021",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/cave-de-tain-crozes-hermitage-selection-premiere-2021-pris-cave-de-tain-rodvin-1199458184.png?v=1761301120",
+    listPrice: 149,
+    priceCurrency: "DKK",
+  },
   // Lauridsen Vine
   {
     merchantId: "lauridsen-vine",
@@ -121,6 +141,25 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     productUrl: "https://lauridsenvine.dk/products/serendipia-cava-reserva-brut",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/cava.webp?v=1765533144",
     listPrice: 209,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "lauridsen-vine",
+    title: "Immortalis Priorat",
+    blurb: "Priorat med koncentreret bær og mineralitet — spansk rød til lam og grill.",
+    productUrl: "https://lauridsenvine.dk/products/immortalis-priorat",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0712/8101/7152/products/Immortalispriorat_720x_e5607652-8d64-4772-9afe-7cbfeebb4323.jpg?v=1680090044",
+    listPrice: 149,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "lauridsen-vine",
+    title: "Châteauneuf-du-Pape Le Parvis",
+    blurb: "Rhône-klassiker med krydret bær og varme — til lam og gryderetter.",
+    productUrl: "https://lauridsenvine.dk/products/chateauneuf-du-pape-le-parvis",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/pape.webp?v=1765466791",
+    listPrice: 389,
     priceCurrency: "DKK",
   },
   // Winther Vin
@@ -160,6 +199,24 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     imageUrl:
       "https://winthervin.dk/wp-content/uploads/2021/03/MArcel_deiss_gewurztraminer_winthervin.png",
     listPrice: 319,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "winther-vin",
+    title: "Marlborough Sun Sauvignon Blanc 2023",
+    blurb: "NZ sauvignon med tropisk frugt og syre — sommer-hvid til fisk og salat.",
+    productUrl: "https://winthervin.dk/shop/marlborough-sun-sauvignon-blanc-2022-75-cl/",
+    imageUrl: "https://winthervin.dk/wp-content/uploads/2023/04/Design-uden-navn-15.png",
+    listPrice: 159,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "winther-vin",
+    title: "Opi Malbec Reserve 2021",
+    blurb: "Argentinsk malbec med mørk frugt — oplagt til grill og burger.",
+    productUrl: "https://winthervin.dk/shop/opi-malbec-reserve-2019/",
+    imageUrl: "https://winthervin.dk/wp-content/uploads/2021/02/Design-uden-navn-8.png",
+    listPrice: 199,
     priceCurrency: "DKK",
   },
   // DH Wines
@@ -203,6 +260,26 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 206,
     priceCurrency: "DKK",
   },
+  {
+    merchantId: "dh-wines",
+    title: "Kaiken Malbec Estate 2022 Mendoza",
+    blurb: "Mendoza malbec med mørk frugt — budgetvenlig rød til grill og burger.",
+    productUrl: "https://dhwines.dk/products/malbec-kaiken-estate-2022-mendoza",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Kaiken-Estate-Malbec.jpg?v=1752578663",
+    listPrice: 109,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "dh-wines",
+    title: "Viña Salceda Crianza Rioja 2021",
+    blurb: "Rioja crianza med tempranillo — moden frugt til tapas og steg.",
+    productUrl: "https://dhwines.dk/products/vina-salceda-crianza-2021-rioja",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Vina-Salceda-Ceianza.jpg?v=1755360233",
+    listPrice: 129,
+    priceCurrency: "DKK",
+  },
   // Johnsen Wine
   {
     merchantId: "johnsen-wine",
@@ -238,6 +315,25 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     productUrl: "https://www.johnsenwine.dk/produkt/2022-gazur-ribera-del-duero-telmo-rodriguez/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/56471322.jpeg",
     listPrice: 170,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "johnsen-wine",
+    title: "Château de la Roulerie Chenin Blanc 2024",
+    blurb: "Loire chenin med syre og honning — alsidig hvid til ost og gris.",
+    productUrl: "https://www.johnsenwine.dk/produkt/2024-chenin-blanc-chateau-de-la-roulerie/",
+    imageUrl:
+      "https://www.johnsenwine.dk/wp-content/uploads/2025/06/0130392_Roulerie_CHENIN_BLANC_OeKO.jpg",
+    listPrice: 199,
+    priceCurrency: "DKK",
+  },
+  {
+    merchantId: "johnsen-wine",
+    title: "Rio Cassero Brunello di Montalcino 2020",
+    blurb: "Brunello med sangiovese grosso — struktur til pasta, lam og ost.",
+    productUrl: "https://www.johnsenwine.dk/produkt/2020-rio-cassero-brunello-di-montalcino/",
+    imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/02/a_0_0_341_0_0-2.jpeg",
+    listPrice: 249,
     priceCurrency: "DKK",
   },
 ];

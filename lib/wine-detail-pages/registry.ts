@@ -3,28 +3,38 @@ import { getMerchantWineConfig } from "@/lib/wine-detail-pages/merchants";
 import { DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-existing";
 import { DEN_SIDSTE_FLASKE_PILOT_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-pilot";
 import { DEN_SIDSTE_FLASKE_BATCH2_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-batch2";
+import { DEN_SIDSTE_FLASKE_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/den-sidste-flaske-batch3";
 import { LAURIDSEN_VINE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/lauridsen-vine";
 import { LAURIDSEN_VINE_BATCH2_PAGES } from "@/lib/wine-detail-pages/pages/lauridsen-vine-batch2";
+import { LAURIDSEN_VINE_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/lauridsen-vine-batch3";
 import { WINTHER_VIN_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/winther-vin";
 import { WINTHER_VIN_BATCH2_PAGES } from "@/lib/wine-detail-pages/pages/winther-vin-batch2";
+import { WINTHER_VIN_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/winther-vin-batch3";
 import { DH_WINES_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/dh-wines";
 import { DH_WINES_BATCH2_PAGES } from "@/lib/wine-detail-pages/pages/dh-wines-batch2";
+import { DH_WINES_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/dh-wines-batch3";
 import { JOHNSEN_WINE_WINE_DETAIL_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine";
 import { JOHNSEN_WINE_BATCH2_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine-batch2";
+import { JOHNSEN_WINE_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine-batch3";
 import type { WineDetailFeaturedPick, WineDetailPage, WineDetailGuideRef, WineDetailSpec, WineDetailAside, WineDetailFoodPairing } from "@/lib/wine-detail-pages/types";
 
 const ALL_PAGES: readonly WineDetailPage[] = [
   ...DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES,
   ...DEN_SIDSTE_FLASKE_PILOT_PAGES,
   ...DEN_SIDSTE_FLASKE_BATCH2_PAGES,
+  ...DEN_SIDSTE_FLASKE_BATCH3_PAGES,
   ...LAURIDSEN_VINE_WINE_DETAIL_PAGES,
   ...LAURIDSEN_VINE_BATCH2_PAGES,
+  ...LAURIDSEN_VINE_BATCH3_PAGES,
   ...WINTHER_VIN_WINE_DETAIL_PAGES,
   ...WINTHER_VIN_BATCH2_PAGES,
+  ...WINTHER_VIN_BATCH3_PAGES,
   ...DH_WINES_WINE_DETAIL_PAGES,
   ...DH_WINES_BATCH2_PAGES,
+  ...DH_WINES_BATCH3_PAGES,
   ...JOHNSEN_WINE_WINE_DETAIL_PAGES,
   ...JOHNSEN_WINE_BATCH2_PAGES,
+  ...JOHNSEN_WINE_BATCH3_PAGES,
 ];
 
 function normalizedProductKey(merchantId: MerchantWineId, url: string): string {
