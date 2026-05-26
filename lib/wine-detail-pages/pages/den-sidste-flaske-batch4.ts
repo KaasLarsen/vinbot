@@ -71,7 +71,7 @@ export const DEN_SIDSTE_FLASKE_BATCH4_PAGES: readonly WineDetailPage[] = [
     displayTitle: "August Kesseler · The Daily August Pinot Noir 2023",
     metaDescription:
       "Tysk pinot noir fra August Kesseler — rød kirsebær, blød struktur og madvenlig frugt til kylling, svinekød og ost. Vinbot guider til Den Sidste Flaske (affiliate).",
-    productPageUrl: "https://densidesteflaske.dk/products/august-kesseler-the-daily-august-pinot-noir-2023",
+    productPageUrl: "https://densidsteflaske.dk/products/august-kesseler-the-daily-august-pinot-noir-2023",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/august-kesseler-the-daily-august-pinot-noir-2023-august-kesseler-rodvin-55958493528388.png?v=1713514207",
     imageAside: {
