@@ -47,8 +47,10 @@ type RecipeJsonLdProps = {
   image?: string;
   prepTime?: string;
   cookTime?: string;
+  totalTime?: string;
   recipeYield?: string;
   recipeCategory?: string;
+  recipeCuisine?: string;
   recipeIngredient: string[];
   recipeInstructions: string[];
   keywords?: string[];
@@ -63,8 +65,10 @@ export function RecipeJsonLd({
   image,
   prepTime,
   cookTime,
+  totalTime,
   recipeYield,
   recipeCategory,
+  recipeCuisine,
   recipeIngredient,
   recipeInstructions,
   keywords,
@@ -89,16 +93,19 @@ export function RecipeJsonLd({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     inLanguage: "da-DK",
     recipeIngredient,
-    recipeInstructions: recipeInstructions.map((text) => ({
+    recipeInstructions: recipeInstructions.map((text, index) => ({
       "@type": "HowToStep",
+      name: `Trin ${index + 1}`,
       text,
     })),
   };
-  if (image) data.image = image;
+  if (image) data.image = [image];
   if (prepTime) data.prepTime = prepTime;
   if (cookTime) data.cookTime = cookTime;
+  if (totalTime) data.totalTime = totalTime;
   if (recipeYield) data.recipeYield = recipeYield;
   if (recipeCategory) data.recipeCategory = recipeCategory;
+  if (recipeCuisine) data.recipeCuisine = recipeCuisine;
   if (keywords && keywords.length > 0) data.keywords = keywords.join(", ");
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }

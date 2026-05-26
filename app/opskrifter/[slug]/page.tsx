@@ -17,6 +17,13 @@ import {
 import { recipePublicationAndModified } from "@/lib/recipe-dates";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
 import { editorialTeamName, siteUrl } from "@/lib/site";
+import {
+  getRecipeImageAbsoluteUrl,
+  recipeCategoryForSchema,
+  recipeCuisineForSchema,
+  recipeTotalTimeIso,
+} from "@/lib/recipe-images";
+import { RecipeHeroImage } from "@/components/recipe-hero-image";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return {};
   const canonical = `${siteUrl}/opskrifter/${slug}`;
   const tooThin = data.wordCount < MIN_INDEXABLE_RECIPE_WORDS;
+  const imageUrl = getRecipeImageAbsoluteUrl(slug, siteUrl);
   return {
     title: data.frontmatter.title,
     description: data.frontmatter.description,
@@ -37,9 +45,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       url: canonical,
       type: "article",
+      title: data.frontmatter.title,
+      description: data.frontmatter.description,
+      images: [{ url: imageUrl, width: 1200, height: 900, alt: data.frontmatter.title }],
     },
     twitter: {
       card: "summary_large_image",
+      images: [imageUrl],
     },
     ...(tooThin
       ? {
@@ -70,6 +82,10 @@ export default async function RecipePage({ params }: Props) {
     frontmatter.fallbackDate,
   );
   const showBothDates = datePublished !== dateModified;
+  const imageUrl = getRecipeImageAbsoluteUrl(slug, siteUrl);
+  const recipeCategory = recipeCategoryForSchema(frontmatter.tags);
+  const recipeCuisine = recipeCuisineForSchema(frontmatter.tags);
+  const totalTime = recipeTotalTimeIso(frontmatter.prepTime, frontmatter.cookTime);
 
   const crumbs = [
     { href: "/", label: "Forside" },
@@ -101,10 +117,13 @@ export default async function RecipePage({ params }: Props) {
         url={url}
         datePublished={datePublished}
         dateModified={dateModified}
+        image={imageUrl}
         prepTime={frontmatter.prepTime}
         cookTime={frontmatter.cookTime}
+        totalTime={totalTime}
         recipeYield={frontmatter.servings ? `${frontmatter.servings} portioner` : undefined}
-        recipeCategory="Hovedret"
+        recipeCategory={recipeCategory}
+        recipeCuisine={recipeCuisine}
         recipeIngredient={frontmatter.ingredients}
         recipeInstructions={frontmatter.instructions}
         keywords={frontmatter.tags}
@@ -140,6 +159,8 @@ export default async function RecipePage({ params }: Props) {
           )}
         </p>
       </header>
+
+      <RecipeHeroImage slug={slug} title={frontmatter.title} />
 
       <div className="mt-8">
         <RecipeWineBox wineInRecipe={frontmatter.wineInRecipe} wineToDrink={frontmatter.wineToDrink} />

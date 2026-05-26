@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { getRecipeImageAlt, getRecipeImagePath } from "@/lib/recipe-images";
 import type {
   RecipeCardData,
   RecipeCuisineFilter,
@@ -223,8 +225,18 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
               <li key={r.slug}>
                 <Link
                   href={`/opskrifter/${r.slug}`}
-                  className="block h-full rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+                  className="group block h-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:border-rose-200 hover:shadow-md"
                 >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
+                    <Image
+                      src={getRecipeImagePath(r.slug)}
+                      alt={getRecipeImageAlt(r.title)}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 384px"
+                      className="object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <div className="p-5">
                   <div className="flex flex-wrap gap-2">
                     <span className="rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900">
                       {wineBadgeLabel(wineType)}
@@ -246,6 +258,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
                       .filter(Boolean)
                       .join(" · ")}
                   </p>
+                  </div>
                 </Link>
               </li>
             );
