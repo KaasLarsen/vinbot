@@ -3,13 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
-
-/**
- * Partner-Ads skyscraper-bannere — alle sider med root-layout, fixed i viewport.
- * Kun synlige fra 2xl og opefter (bred skærm), så indholdskolonnen ikke kollapser.
- * Let scroll-parallakse: venstre/højre rykker modsat, så de følger scroll uden at føles “limet”.
- */
-const PARTNER_ID = "50537";
+import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
 const LEFT_BANNER_ID = "108308";
 const RIGHT_BANNER_ID = "94900";
@@ -24,8 +18,8 @@ const PARALLAX_CAP = 42;
 
 function bannerPair(bannerId: string) {
   return {
-    href: `https://www.partner-ads.com/dk/klikbanner.php?partnerid=${PARTNER_ID}&bannerid=${bannerId}`,
-    src: `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ID}&bannerid=${bannerId}`,
+    href: partnerAdsKlikUrl(bannerId),
+    src: `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${bannerId}`,
   };
 }
 

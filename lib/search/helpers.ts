@@ -1,4 +1,5 @@
 import type { FeedProduct, ProductHit } from "./types";
+import { ensurePartnerAdsKlikUid } from "@/lib/partner-ads-links";
 import { intentTermsFromQuery } from "./intents";
 
 export const UA =
@@ -666,7 +667,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       price,
       currency,
       image: image || "",
-      url,
+      url: ensurePartnerAdsKlikUid(url),
       _search: normalize([title, desc, category, brand, merchant].filter(Boolean).join(" ")),
     });
   }
@@ -796,7 +797,7 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
       price,
       currency,
       image,
-      url,
+      url: ensurePartnerAdsKlikUid(url),
       _search: normalize([title, brand, merchant].filter(Boolean).join(" ")),
     });
   }

@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
-
-/** Horisontalt Partner-Ads banner — hub bestemmer rotationspulje; slug gør valget stabilt side-for-side. */
-const PARTNER_ID = "50537";
+import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
 export const WINTHER_VIN_LEADERBOARD_BANNER_ID = "76692";
 const JOHNSEN_LEADERBOARD_BANNER_ID = "114732";
@@ -98,8 +96,8 @@ export function PartnerAdsLeaderboard({
   const copy = mapped.copy;
   const placementLabel = placement ?? `partner-leaderboard-${hub || "default"}`;
 
-  const href = `https://www.partner-ads.com/dk/klikbanner.php?partnerid=${PARTNER_ID}&bannerid=${finalBannerId}`;
-  const src = `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ID}&bannerid=${finalBannerId}`;
+  const href = partnerAdsKlikUrl(finalBannerId);
+  const src = `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${finalBannerId}`;
 
   return (
     <aside className={className} aria-label="Sponsoreret reklame">

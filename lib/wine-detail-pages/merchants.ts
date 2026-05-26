@@ -1,4 +1,4 @@
-import { PARTNER_ADS_KLIK_BANNERS } from "@/lib/partner-ads-links";
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { sanitizeProductUrlForHost } from "@/lib/wine-detail-pages/sanitize-product-url";
 
 export type MerchantWineId =
@@ -69,11 +69,7 @@ export function getMerchantWineConfig(id: MerchantWineId): MerchantWineConfig {
 export function merchantPartnerAdsClickUrl(merchantId: MerchantWineId, productPageUrl: string): string {
   const cfg = getMerchantWineConfig(merchantId);
   const clean = cfg.sanitizeProductUrl(productPageUrl);
-  const u = new URL("https://www.partner-ads.com/dk/klikbanner.php");
-  u.searchParams.set("partnerid", "50537");
-  u.searchParams.set("bannerid", cfg.partnerAdsBannerId);
-  u.searchParams.set("htmlurl", clean);
-  return u.toString();
+  return partnerAdsKlikUrl(cfg.partnerAdsBannerId, clean);
 }
 
 export function wineDetailPagePath(merchantId: MerchantWineId, slug: string): string {
