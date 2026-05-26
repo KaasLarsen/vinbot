@@ -10,15 +10,30 @@ import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-hig
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
-import { siteName, editorialTeamName } from "@/lib/site";
+import { editorialTeamName, siteName, siteUrl } from "@/lib/site";
 
-export const metadata: Metadata = {
+const homeMetadata: Metadata = {
   title: `${siteName} – vinguides til mad, druer og sæson`,
   description:
     "Hundredvis af redaktionelle vinguides på dansk — madparring, druer, regioner og praktisk vin-viden. Plus vinsøgning på tværs af danske forhandlere.",
 };
 
 type HomeProps = { searchParams?: Promise<{ q?: string }> };
+
+export async function generateMetadata({ searchParams }: HomeProps): Promise<Metadata> {
+  const q = ((await searchParams)?.q ?? "").trim();
+  if (!q) return homeMetadata;
+
+  return {
+    ...homeMetadata,
+    alternates: { canonical: siteUrl },
+    robots: {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    },
+  };
+}
 
 const popularTopicLinkClass =
   "underline decoration-rose-300 underline-offset-4 hover:text-rose-950";

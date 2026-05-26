@@ -14,11 +14,25 @@ const PAGE_URL = `${siteUrl}/guides`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };
 
-export const metadata: Metadata = {
+const guidesIndexMetadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: PAGE_URL },
 };
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const q = ((await searchParams)?.q ?? "").trim();
+  if (!q) return guidesIndexMetadata;
+
+  return {
+    ...guidesIndexMetadata,
+    robots: {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    },
+  };
+}
 
 export default async function GuidesIndexPage({ searchParams }: PageProps) {
   const qParam = ((await searchParams)?.q ?? "").trim();
