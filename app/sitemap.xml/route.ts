@@ -67,6 +67,21 @@ async function buildSitemapIndexXml(): Promise<string> {
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin-batch3.ts")),
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines-batch3.ts")),
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch3.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-batch4.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/lauridsen-vine-batch4.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin-batch4.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines-batch4.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch4.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-batch5.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/lauridsen-vine-batch5.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin-batch5.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines-batch5.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch5.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-batch6.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/lauridsen-vine-batch6.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/winther-vin-batch6.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/dh-wines-batch6.ts")),
+    fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch6.ts")),
   ]);
 
   return renderIndex([
