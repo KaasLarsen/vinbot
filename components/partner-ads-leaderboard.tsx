@@ -10,6 +10,12 @@ const DH_WINES_LEADERBOARD_BANNER_ID = "108173";
 const LAURIDSEN_VINE_LEADERBOARD_BANNER_ID = "116085";
 export const DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID = "94856";
 
+/** visbanner.php returnerer `ugyldig.gif` for mange feed-banner-id'er — vis tekst-fallback i stedet. */
+const LEADERBOARD_VISBANNER_OK = new Set([
+  WINTHER_VIN_LEADERBOARD_BANNER_ID,
+  DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
+]);
+
 const linkRel = "nofollow sponsored noopener noreferrer";
 
 type BannerChoice = { bannerId: string; merchant: string; copy: string };
@@ -53,7 +59,7 @@ const HUB_ROTATIONS: Record<string, BannerChoice[]> = {
   "fest-og-vin": [WINTHER, LAURIDSEN, JOHNSEN],
   "humoer-og-vin": [WINTHER, LAURIDSEN],
   druesorter: [JOHNSEN, LAURIDSEN, WINTHER],
-  "vine-katalog": [DSF, LAURIDSEN],
+  "vine-katalog": [DSF, WINTHER],
 };
 
 /** Deterministisk indeks ud fra slug (samme guide → samme banner ved reload). */
@@ -98,6 +104,7 @@ export function PartnerAdsLeaderboard({
 
   const href = partnerAdsKlikUrl(finalBannerId);
   const src = `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${finalBannerId}`;
+  const showBannerImage = LEADERBOARD_VISBANNER_OK.has(finalBannerId) && !imgFailed;
 
   return (
     <aside className={className} aria-label="Sponsoreret reklame">
@@ -111,7 +118,7 @@ export function PartnerAdsLeaderboard({
           }
           className="inline-block max-w-full rounded-xl shadow-sm ring-1 ring-stone-200/90 transition hover:opacity-95"
         >
-          {!imgFailed ? (
+          {showBannerImage ? (
             // eslint-disable-next-line @next/next/no-img-element -- Partner-Ads banner (ofte blokeret af adblock → fallback nedenfor)
             <img
               src={src}
@@ -120,6 +127,10 @@ export function PartnerAdsLeaderboard({
               width={728}
               height={90}
               onError={() => setImgFailed(true)}
+              onLoad={(e) => {
+                const img = e.currentTarget;
+                if (img.naturalWidth < 120 || img.naturalHeight < 40) setImgFailed(true);
+              }}
             />
           ) : (
             <span className="flex min-h-[4.5rem] max-w-4xl items-center justify-center bg-rose-950 px-6 py-4 text-center text-sm font-semibold text-white sm:text-base">
