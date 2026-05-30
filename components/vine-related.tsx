@@ -4,17 +4,25 @@ import { proxyImg } from "@/lib/search/helpers";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { lowestShelfPrice } from "@/lib/vine/related-wines";
 
-export function VineRelatedWines({ wines }: { wines: CanonicalWine[] }) {
+type VineRelatedWinesProps = {
+  wines: CanonicalWine[];
+  heading?: string;
+  lead?: string;
+};
+
+export function VineRelatedWines({
+  wines,
+  heading = "Relaterede vine",
+  lead = "Udvalgt ud fra lignende type, kategori i forhandlernes sortimenter og omtrent samme prisleje som denne vin.",
+}: VineRelatedWinesProps) {
   if (wines.length === 0) return null;
 
   return (
     <section className="mt-10" aria-labelledby="vine-related-heading">
       <h2 id="vine-related-heading" className="text-xl font-semibold text-stone-900">
-        Relaterede vine
+        {heading}
       </h2>
-      <p className="mt-1 text-sm text-stone-600">
-        Udvalgt ud fra lignende type, kategori i forhandlernes sortimenter og omtrent samme prisleje som denne vin.
-      </p>
+      <p className="mt-1 text-sm text-stone-600">{lead}</p>
       <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
         {wines.map((w) => {
           const from = lowestShelfPrice(w);
