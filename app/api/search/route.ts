@@ -16,7 +16,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       source: "error" as const,
       products: [],
-      meta: { feeds_total: 0, feeds_ok: 0, feeds_failed: 0, priceMin: null, priceMax: null },
+      meta: {
+        feeds_total: 0,
+        feeds_ok: 0,
+        feeds_failed: 0,
+        priceMin: null,
+        priceMax: null,
+        matched_before_cap: 0,
+        results_capped: false,
+      },
     });
   }
 }

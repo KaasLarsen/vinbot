@@ -171,6 +171,19 @@ function isPortOrHeavyDessert(t: string): boolean {
   return false;
 }
 
+/** Eksplicit farve/stil i søgefeltet — bruges til at filtrere feeds før tekst-match. */
+export function wineStyleIntentFromQuery(q = ""): WineStyleFilter | null {
+  const t = normalize(q);
+  if (/\b(champagne)\b/.test(t) && !/\b(rodvin|hvidvin|rose|rosevin)\b/.test(t)) return "champagne";
+  if (/\b(bobler|mousserende|prosecco|cava|cremant|crémant|sparkling)\b/.test(t) && !/\b(rodvin|hvidvin)\b/.test(t)) {
+    return "sparkling";
+  }
+  if (/\b(rodvin|rod\s*vin)\b/.test(t)) return "red";
+  if (/\b(hvidvin|hvid\s*vin|white\s*wine)\b/.test(t)) return "white";
+  if (/\b(rosevin|rosévin|rosé|rose)\b/.test(t) && !/\b(prosecco)\b/.test(t)) return "rose";
+  return null;
+}
+
 export function productMatchesWineStyle(p: ProductHit, style: WineStyleFilter): boolean {
   if (style === "all") return true;
   const w = wineStyleOfProduct(p);

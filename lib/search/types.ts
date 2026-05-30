@@ -23,6 +23,9 @@ export type SearchMeta = {
   feeds_failed: number;
   priceMin: number | null;
   priceMax: number | null;
+  /** Antal match før `.slice(0, 48)` — til “48+” i UI. */
+  matched_before_cap: number;
+  results_capped: boolean;
 };
 
 export type SearchResult = {

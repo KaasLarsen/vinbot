@@ -2,6 +2,9 @@ import { FEEDS } from "@/lib/feeds/config";
 import type { ProductHit, SearchResult } from "./types";
 import { expandQuery, normalizeUrl, parsePriceFilter, productEligibleForWineSearch, proxyImg, score } from "./helpers";
 import { getCachedFeedProducts } from "./fetch-feed";
+import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
+
+const RESULT_CAP = 48;
 
 export async function runSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
   const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
@@ -9,6 +12,7 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
   const priceMax = priceFilter.max;
 
   const terms = expandQuery(qRaw);
+  const styleIntent = wineStyleIntentFromQuery(qRaw);
   let feeds_ok = 0;
   let feeds_failed = 0;
 
@@ -31,11 +35,11 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
           return [];
         }
 
-        const matches = products.filter(
-          (p) =>
-            productEligibleForWineSearch(p) &&
-            terms.some((t) => (p._search || "").includes(t)),
-        );
+        const matches = products.filter((p) => {
+          if (!productEligibleForWineSearch(p)) return false;
+          if (styleIntent && !productMatchesWineStyle(p, styleIntent)) return false;
+          return terms.some((t) => (p._search || "").includes(t));
+        });
 
         if (!matches.length) {
           feeds_ok++;
@@ -59,13 +63,15 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
 
   let items = lists.flat();
 
-  items = items
-    .sort((a, b) => {
-      const sa = score(a, terms);
-      const sb = score(b, terms);
-      return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
-    })
-    .slice(0, 48);
+  items = items.sort((a, b) => {
+    const sa = score(a, terms);
+    const sb = score(b, terms);
+    return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
+  });
+
+  const matched_before_cap = items.length;
+  const results_capped = matched_before_cap > RESULT_CAP;
+  items = items.slice(0, RESULT_CAP);
 
   const meta = {
     feeds_total: FEEDS.length,
@@ -73,6 +79,8 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
     feeds_failed,
     priceMin,
     priceMax,
+    matched_before_cap,
+    results_capped,
   };
 
   if (items.length) return { source: "feed", products: items, meta };

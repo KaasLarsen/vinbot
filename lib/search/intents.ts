@@ -20,7 +20,13 @@ export function intentTermsFromQuery(q = ""): string[] {
   }
 
   if (/(nytår|nytaar|nytarsaften|nytaarsaften|nytårsaften)/.test(txt)) {
-    add("champagne", "cava", "prosecco", "cremant", "crémant", "sparkling", "mousserende");
+    if (/(rødvin|rodvin|rød\s*vin|rod\s*vin)/.test(txt)) {
+      add("pinot noir", "rioja", "barolo", "beaujolais", "gamay", "cotes du rhone", "cabernet sauvignon");
+    } else if (/(hvidvin|hvid\s*vin|white\s*wine)/.test(txt)) {
+      add("chardonnay", "riesling", "sauvignon blanc", "chablis", "crémant", "cremant", "hvidvin");
+    } else {
+      add("champagne", "cava", "prosecco", "cremant", "crémant", "sparkling", "mousserende");
+    }
   }
 
   if (

@@ -15,6 +15,7 @@ type Chip = { label: string; q: string; max?: number };
 const ALL_CHIPS: Chip[] = [
   { label: "Julemad", q: "julemad rødvin" },
   { label: "Nytår", q: "nytår champagne bobler" },
+  { label: "Nytår rød", q: "rødvin til nytårsaften" },
   { label: "Fisk", q: "fisk hvidvin" },
   { label: "Tapas", q: "tapas rioja" },
   { label: "Hygge", q: "hygge rødvin" },
@@ -686,7 +687,9 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
                       ? ` fra ${selectedMerchants.size} forhandler${selectedMerchants.size === 1 ? "" : "e"}`
                       : ""
                   }${wineStyle !== "all" ? ` · stil: ${wineStyleLabel(wineStyle)}` : ""}. Tjek altid pris og levering hos butikken.`
-                : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
+                : data.meta?.results_capped
+                  ? `Vi har fundet ${allTotal}+ foreslåede vine på tværs af forhandlere (viser de ${allTotal} bedste match) — tjek altid pris og levering hos butikken.`
+                  : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
             </p>
           )}
 
