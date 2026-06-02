@@ -148,10 +148,10 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
         "Stil: kirsebær, hindbær, rose og silkebløde tanniner med frisk syre.",
         "Temperatur: 16–18 °C; tyve minutters luft anbefales.",
         "Madmatch: pasta med kød, svamperisotto, lam og modne oste.",
-        "Vejledende pris: ca. 139 kr. ved sidste tjek hos Den Sidste Flaske.",
+        "Pris: ca. 139 kr/enkelt · 65 kr/fl (6 stk.) · 59 kr/fl (12 stk.) ved sidste tjek.",
       ],
       footnote:
-        "Produkt-URL ender på «2021» mens butikken viser 2022 — bekræft årgang på etiketten ved køb.",
+        "Produkt-URL ender på «2021» mens butikken viser 2022 — bekræft årgang og kassepris i kurven hos Den Sidste Flaske.",
     },
     listPrice: 139,
     priceCurrency: "DKK",
@@ -164,7 +164,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
     bodyParagraphs: [
       "Nebbiolo er druen bag barolo — men Langhe Nebbiolo giver ofte samme signatur (kirsebær, rose, tørre urter, tannin) i en mere tilgængelig og ung stil. La Farghetta fra Castiglione Falletto er et stærkt eksempel på det segment hos Den Sidste Flaske.",
       "I glasset møder du typisk rubinrød farve, duft af røde bær, blomster og et strejf af krydderi og skovbund. Smagen er mellemfyldig med frisk syre og fine tanniner — mindre «tannin-bombe» end ung barolo, men stadig struktur til mad.",
-      "139 kr. er et tydeligt value-for-money-niveau til seriøs nebbiolo på etiketten — oplagt til dem, der vil smake druen før de investerer i barolo, eller vil have piemontesisk rød til lasagne, tagliatelle al ragù og svamperisotto.",
+      "Enkeltflaske ligger omkring 139 kr., men kassepris kan komme ned omkring 59 kr. pr. flaske ved 12 stk. — stærkt value-for-money til seriøs nebbiolo, oplagt før barolo-investering eller til lasagne, ragù og svamperisotto.",
       "Luft i glasset hjælper: tyve minutter kan blødgøre tanniner og åbne florale noter. Server 16–18 °C — for varm nebbiolo kan føles flad og alkohol-tung.",
       "Sammenlignet med barolo er langhe nebbiolo ofte friskere og mere direkte frugtet — mindre lagringskrav, mere hverdagsvenlig. Sammenlignet med barbera er nebbiolo lysere, mere parfumeret og mere tannin-struktureret.",
       "Bekræft pris, årgang og lager på Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
