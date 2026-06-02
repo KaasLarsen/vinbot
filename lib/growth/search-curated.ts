@@ -69,6 +69,8 @@ function dsfPicks(): MerchantFeaturedPick[] {
   return MERCHANT_FEATURED_PICKS.filter((p) => p.merchantId === "den-sidste-flaske");
 }
 
+const MIN_CURATED_MATCH_SCORE = 4;
+
 function queryTokens(q: string): string[] {
   return q
     .toLowerCase()
@@ -76,26 +78,55 @@ function queryTokens(q: string): string[] {
     .filter((w) => w.length > 2);
 }
 
-function pageSearchHaystack(page: WineDetailPage): string {
+/** Titler, meta og specs — ikke brødtekst (undgår «sammenlignet med nebbiolo»). */
+function pageStrongHaystack(page: WineDetailPage): string {
   return [
     page.displayTitle,
     page.metaDescription,
     page.structuredDescriptionSnippet ?? "",
-    ...page.bodyParagraphs,
     ...page.specs.map((s) => `${s.label} ${s.value}`),
   ]
     .join(" ")
     .toLowerCase();
 }
 
+function pageBodyHaystack(page: WineDetailPage): string {
+  return page.bodyParagraphs.join(" ").toLowerCase();
+}
+
 function pageMatchScore(page: WineDetailPage, tokens: string[]): number {
   if (tokens.length === 0) return 0;
-  const hay = pageSearchHaystack(page);
+  const strong = pageStrongHaystack(page);
+  const body = pageBodyHaystack(page);
   let score = 0;
   for (const tok of tokens) {
-    if (hay.includes(tok)) score += tok.length >= 6 ? 3 : 1;
+    const w = tok.length >= 6 ? 2 : 1;
+    if (strong.includes(tok)) score += 10 * w;
+    else if (body.includes(tok)) score += 1;
   }
   return score;
+}
+
+function grapeTokensFromQuery(q: string, tokens: string[]): string[] {
+  const t = q.toLowerCase();
+  return Object.keys(GRAPE_AND_STYLE_GUIDES).filter((key) => t.includes(key) || tokens.includes(key));
+}
+
+/** Ved druesøgning: kun flasker hvor druen står i titel/specs — ikke kun i brødtekst. */
+function pageMatchesGrapeFocus(page: WineDetailPage, grapeTokens: string[]): boolean {
+  if (grapeTokens.length === 0) return true;
+  const strong = pageStrongHaystack(page);
+  return grapeTokens.some((g) => strong.includes(g));
+}
+
+function isSpecificGuideSearch(guideSlugs: string[]): boolean {
+  return guideSlugs.some((s) => s !== "komplet-guide-til-vin-og-mad");
+}
+
+function guideSlugsForCuratedPicks(q: string): string[] {
+  const slugs = guideSlugsForSearchQuery(q);
+  const specific = slugs.filter((s) => s !== "komplet-guide-til-vin-og-mad");
+  return specific.length > 0 ? specific : slugs;
 }
 
 function matchesFeaturedPick(pick: MerchantFeaturedPick, tokens: string[]): boolean {
@@ -110,51 +141,72 @@ function withinBudget(pick: MerchantFeaturedPick, max: number | null): boolean {
   return pick.listPrice <= max;
 }
 
-function sortPicksDsfFirst(pages: MerchantFeaturedPick[]): MerchantFeaturedPick[] {
-  return [...pages].sort((a, b) => {
-    if (a.merchantId === "den-sidste-flaske" && b.merchantId !== "den-sidste-flaske") return -1;
-    if (b.merchantId === "den-sidste-flaske" && a.merchantId !== "den-sidste-flaske") return 1;
-    return 0;
-  });
+function sortScoredPicks(
+  items: { pick: MerchantFeaturedPick; score: number }[],
+): MerchantFeaturedPick[] {
+  return [...items]
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (a.pick.merchantId === "den-sidste-flaske" && b.pick.merchantId !== "den-sidste-flaske") return -1;
+      if (b.pick.merchantId === "den-sidste-flaske" && a.pick.merchantId !== "den-sidste-flaske") return 1;
+      return 0;
+    })
+    .map((x) => x.pick);
 }
 
-function picksFromGuides(guideSlugs: string[], limit: number, max: number | null): MerchantFeaturedPick[] {
+function picksFromGuides(
+  guideSlugs: string[],
+  tokens: string[],
+  grapeTokens: string[],
+  limit: number,
+  max: number | null,
+): MerchantFeaturedPick[] {
   const seen = new Set<string>();
-  const pages: MerchantFeaturedPick[] = [];
+  const scored: { pick: MerchantFeaturedPick; score: number }[] = [];
 
   for (const guideSlug of guideSlugs) {
-    for (const page of listWineDetailPagesForGuide(guideSlug, limit)) {
+    for (const page of listWineDetailPagesForGuide(guideSlug, limit * 2)) {
       const key = `${page.merchantId}:${page.slug}`;
       if (seen.has(key)) continue;
+      if (!pageMatchesGrapeFocus(page, grapeTokens)) continue;
+      const score = pageMatchScore(page, tokens);
+      if (grapeTokens.length === 0 && score < MIN_CURATED_MATCH_SCORE) continue;
       seen.add(key);
       const pick = wineDetailPageToFeaturedPick(page);
       if (!withinBudget(pick, max)) continue;
-      pages.push(pick);
+      scored.push({ pick, score: Math.max(score, 6) });
     }
   }
 
-  return sortPicksDsfFirst(pages).slice(0, limit);
+  return sortScoredPicks(scored).slice(0, limit);
 }
 
-function picksFromPageTextMatch(tokens: string[], limit: number, max: number | null): MerchantFeaturedPick[] {
+function picksFromPageTextMatch(
+  tokens: string[],
+  grapeTokens: string[],
+  limit: number,
+  max: number | null,
+): MerchantFeaturedPick[] {
   const scored = listAllWineDetailPages()
+    .filter((page) => pageMatchesGrapeFocus(page, grapeTokens))
     .map((page) => ({ page, score: pageMatchScore(page, tokens) }))
-    .filter((x) => x.score > 0)
+    .filter((x) => x.score >= MIN_CURATED_MATCH_SCORE)
     .sort((a, b) => b.score - a.score);
 
-  const out: MerchantFeaturedPick[] = [];
-  for (const { page } of scored) {
+  const out: { pick: MerchantFeaturedPick; score: number }[] = [];
+  for (const { page, score } of scored) {
     const pick = wineDetailPageToFeaturedPick(page);
     if (!withinBudget(pick, max)) continue;
-    out.push(pick);
+    out.push({ pick, score });
     if (out.length >= limit) break;
   }
-  return sortPicksDsfFirst(out);
+  return sortScoredPicks(out);
 }
 
-function fallbackDsfPicks(tokens: string[], max: number | null, limit: number): MerchantFeaturedPick[] {
+function fallbackDsfPicks(tokens: string[], max: number | null, limit: number, onlyIfMatch: boolean): MerchantFeaturedPick[] {
   const all = dsfPicks();
   const matched = all.filter((p) => matchesFeaturedPick(p, tokens) && withinBudget(p, max));
+  if (onlyIfMatch) return matched.slice(0, limit);
   const pool = matched.length > 0 ? matched : all.filter((p) => withinBudget(p, max));
 
   const seen = new Set<string>();
@@ -188,25 +240,28 @@ function mergePicks(primary: MerchantFeaturedPick[], extra: MerchantFeaturedPick
   return merged.slice(0, limit);
 }
 
-/** Kuraterede enkeltvin-forslag til søgning (alle forhandlere — DSF først). */
+/** Kuraterede enkeltvin-forslag til søgning (relevans først; DSF kun ved ægte match). */
 export function listCuratedPicksForSearchQuery(q: string, max: number | null = null, limit = 3): MerchantFeaturedPick[] {
   const trimmed = q.trim();
-  if (!trimmed) return fallbackDsfPicks([], max, limit);
+  if (!trimmed) return fallbackDsfPicks([], max, limit, false);
 
   const tokens = queryTokens(trimmed);
-  const guideSlugs = guideSlugsForSearchQuery(trimmed);
+  const grapeTokens = grapeTokensFromQuery(trimmed, tokens);
+  const guideSlugs = guideSlugsForCuratedPicks(trimmed);
+  const specific = isSpecificGuideSearch(guideSlugs);
 
-  const fromText = picksFromPageTextMatch(tokens, limit, max);
-  const fromGuides = picksFromGuides(guideSlugs, limit, max);
-  const merged = mergePicks(
-    mergePicks(fromText, fromGuides, limit),
-    fallbackDsfPicks(tokens, max, limit),
-    limit,
-  );
+  const fromText = picksFromPageTextMatch(tokens, grapeTokens, limit, max);
+  const fromGuides = picksFromGuides(guideSlugs, tokens, grapeTokens, limit, max);
+  const merged = mergePicks(fromText, fromGuides, limit);
+
+  if (merged.length < limit) {
+    const dsfFill = fallbackDsfPicks(tokens, max, limit - merged.length, specific);
+    return mergePicks(merged, dsfFill, limit);
+  }
 
   if (merged.length > 0) return merged;
 
-  return fallbackDsfPicks(tokens, max, limit);
+  return fallbackDsfPicks(tokens, max, limit, false);
 }
 
 export function detailSlugForCuratedPick(pick: MerchantFeaturedPick): string | undefined {
@@ -215,7 +270,14 @@ export function detailSlugForCuratedPick(pick: MerchantFeaturedPick): string | u
 
 /** Om mindst én kurateret pick matcher søgningen men ikke nødvendigvis DSF. */
 export function hasRelevantCuratedPicksForQuery(q: string, max: number | null = null): boolean {
-  const tokens = queryTokens(q.trim());
-  if (tokens.length === 0) return false;
-  return listAllWineDetailPages().some((p) => pageMatchScore(p, tokens) > 0 && withinBudget(wineDetailPageToFeaturedPick(p), max));
+  const trimmed = q.trim();
+  if (!trimmed) return false;
+  const tokens = queryTokens(trimmed);
+  const grapeTokens = grapeTokensFromQuery(trimmed, tokens);
+  return listAllWineDetailPages().some(
+    (p) =>
+      pageMatchesGrapeFocus(p, grapeTokens) &&
+      pageMatchScore(p, tokens) >= MIN_CURATED_MATCH_SCORE &&
+      withinBudget(wineDetailPageToFeaturedPick(p), max),
+  );
 }
