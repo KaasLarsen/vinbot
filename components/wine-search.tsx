@@ -30,7 +30,65 @@ const ALL_CHIPS: WineSearchChip[] = [
   { label: "Forår", q: "forår rosé sauvignon blanc" },
   { label: "Efterår", q: "efterår rødvin" },
   { label: "Under 150 kr", q: "vin", max: 150 },
+  { label: "Nebbiolo", q: "nebbiolo" },
+  { label: "Riesling", q: "riesling hvidvin" },
+  { label: "Chianti", q: "chianti sangiovese" },
+  { label: "Pinot noir", q: "pinot noir" },
+  { label: "Sauvignon", q: "sauvignon blanc" },
+  { label: "Champagne", q: "champagne bobler" },
+  { label: "Rødvin til pasta", q: "rødvin pasta italien" },
+  { label: "Gryderet", q: "gryderet pinot noir merlot" },
 ];
+
+/** Druer og klassikere — blandes ind i forslag under søgefeltet. */
+const QUICK_GRAPE_CHIPS: WineSearchChip[] = [
+  { label: "Nebbiolo", q: "nebbiolo" },
+  { label: "Riesling", q: "riesling hvidvin" },
+  { label: "Sauvignon", q: "sauvignon blanc" },
+  { label: "Pinot noir", q: "pinot noir" },
+  { label: "Chianti", q: "chianti sangiovese" },
+  { label: "Champagne", q: "champagne bobler" },
+];
+
+function mergeSearchSuggestions(seasonal: WineSearchChip[], max = 8): WineSearchChip[] {
+  const seen = new Set<string>();
+  const out: WineSearchChip[] = [];
+  for (const c of [...seasonal, ...QUICK_GRAPE_CHIPS]) {
+    if (seen.has(c.label)) continue;
+    seen.add(c.label);
+    out.push(c);
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
+function SearchSuggestionButtons({
+  chips,
+  onPick,
+}: {
+  chips: WineSearchChip[];
+  onPick: (chip: WineSearchChip) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2" role="list" aria-label="Søgeforslag">
+      {chips.map((c) => (
+        <button
+          key={c.label}
+          type="button"
+          role="listitem"
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={() => onPick(c)}
+          className="rounded-full border border-stone-200 bg-white px-3 py-1.5 text-sm font-medium text-stone-800 shadow-sm transition hover:border-rose-400 hover:bg-rose-50 hover:text-rose-950"
+        >
+          {c.label}
+          {c.max != null ? (
+            <span className="text-stone-500"> · max {c.max} kr</span>
+          ) : null}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function trackWineSearch(query: string, hasMax: boolean) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
@@ -70,9 +128,9 @@ function seasonalChips(monthIndex: number): WineSearchChip[] {
     case 9:
       return pick("Efterår", "Hygge", "Romantisk", "Tapas", "Under 150 kr");
     case 10:
-      return pick("Hygge", "Efterår", "Romantisk", "Julemad", "Under 150 kr");
+      return pick("Hygge", "Efterår", "Romantisk", "Julemad", "Nebbiolo", "Under 150 kr");
     case 11:
-      return pick("Julemad", "Nytår bobler", "Nytår", "Gave under 200 kr", "Under 150 kr");
+      return pick("Julemad", "Nytår bobler", "Nytår", "Gave under 200 kr", "Champagne", "Under 150 kr");
     default:
       return pick("Hygge", "Fisk", "Tapas", "Romantisk", "Under 150 kr");
   }
@@ -355,8 +413,9 @@ export function WineSearch({
   const monthIndex = useMemo(() => new Date().getMonth(), []);
   const chips = useMemo(() => {
     if (variant === "compact" && intentChips?.length) return intentChips.slice(0, 3);
-    return seasonalChips(monthIndex);
+    return mergeSearchSuggestions(seasonalChips(monthIndex));
   }, [monthIndex, variant, intentChips]);
+  const [queryFocused, setQueryFocused] = useState(false);
   const placeholder = useMemo(() => seasonalPlaceholder(monthIndex), [monthIndex]);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -414,6 +473,17 @@ export function WineSearch({
       }
     },
     [],
+  );
+
+  const runChipSearch = useCallback(
+    (chip: WineSearchChip) => {
+      setQ(chip.q);
+      if (chip.max != null) setMax(String(chip.max));
+      else setMax("");
+      trackWineSearch(chip.q, chip.max != null);
+      void search(chip.q, chip.max ?? null);
+    },
+    [search],
   );
 
   useEffect(() => {
@@ -577,9 +647,24 @@ export function WineSearch({
             id="wine-q"
             value={q}
             onChange={(e) => setQ(e.target.value)}
+            onFocus={() => setQueryFocused(true)}
+            onBlur={() => window.setTimeout(() => setQueryFocused(false), 120)}
             placeholder={placeholder}
+            autoComplete="off"
+            aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
             className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
           />
+          {chips.length > 0 && queryFocused && !q.trim() ? (
+            <div
+              id="wine-search-suggestions"
+              className="mt-2 rounded-xl border border-rose-200 bg-rose-50/70 p-3 shadow-sm"
+            >
+              <p className="text-xs font-medium text-stone-700">Populære søgninger — klik for at starte</p>
+              <div className="mt-2">
+                <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
+              </div>
+            </div>
+          ) : null}
         </div>
         <div className="w-full sm:w-40">
           <label htmlFor="wine-max" className="block text-sm font-medium text-stone-700">
@@ -603,6 +688,17 @@ export function WineSearch({
         </button>
       </form>
 
+      {chips.length > 0 && (!queryFocused || q.trim()) ? (
+        <div className="rounded-xl border border-stone-200/80 bg-stone-50/60 px-3 py-3 sm:px-4">
+          <p className="text-sm text-stone-600">
+            <span className="font-medium text-stone-800">Prøv et forslag</span> — klik søger med det samme
+          </p>
+          <div className="mt-2">
+            <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
+          </div>
+        </div>
+      ) : null}
+
       {valueSearchTip ? (
         <div
           className="rounded-lg border border-rose-100 bg-rose-50/80 px-4 py-3 text-sm text-stone-700"
@@ -623,11 +719,8 @@ export function WineSearch({
               <button
                 key={alt.q}
                 type="button"
-                onClick={() => {
-                  setQ(alt.q);
-                  trackWineSearch(alt.q, maxNum != null);
-                  void search(alt.q, maxNum);
-                }}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => runChipSearch({ label: alt.label, q: alt.q })}
                 className="rounded-full border border-rose-200 bg-white px-3 py-1 text-xs font-medium text-rose-900 hover:border-rose-400"
               >
                 {alt.label}
@@ -636,25 +729,6 @@ export function WineSearch({
           </p>
         </div>
       ) : null}
-
-      <div className="flex flex-wrap gap-2">
-        {chips.map((c) => (
-          <button
-            key={c.label}
-            type="button"
-            onClick={() => {
-              setQ(c.q);
-              if (c.max) setMax(String(c.max));
-              else setMax("");
-              trackWineSearch(c.q, c.max != null);
-              void search(c.q, c.max ?? null);
-            }}
-            className="rounded-full border border-stone-200 bg-white px-3 py-1.5 text-sm font-medium text-stone-800 shadow-sm hover:border-rose-300 hover:bg-rose-50"
-          >
-            {c.label}
-          </button>
-        ))}
-      </div>
 
       {error && <p className="text-sm text-red-700">{error}</p>}
 
