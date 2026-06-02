@@ -131,4 +131,72 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
       { slug: "komplet-guide-til-vin-og-mad" },
     ],
   },
+  {
+    merchantId: "den-sidste-flaske",
+    slug: "langhe-nebbiolo-la-farghetta-2021",
+    displayTitle: "La Farghetta · Langhe Nebbiolo 2022",
+    metaDescription:
+      "Langhe nebbiolo fra Castiglione Falletto med kirsebær, rose og fine tanniner — piemontesisk rød til pasta, lam og lasagne. Vinbot guider til Den Sidste Flaske (affiliate).",
+    productPageUrl: "https://densidsteflaske.dk/products/langhe-nebbiolo-la-farghetta-2021",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/langhe-nebbiolo-la-farghetta-2021-billede-forkert-label-producent-la-farghetta-rodvin-1195661990.png?v=1759313920",
+    imageAside: {
+      heading: "Et hurtigt overblik",
+      bullets: [
+        "Appellation: Langhe Nebbiolo — nebbiolo fra Barolo-land uden barolo-pris.",
+        "Producent: La Farghetta — hus fra Castiglione Falletto i Langhe.",
+        "Stil: kirsebær, hindbær, rose og silkebløde tanniner med frisk syre.",
+        "Temperatur: 16–18 °C; tyve minutters luft anbefales.",
+        "Madmatch: pasta med kød, svamperisotto, lam og modne oste.",
+        "Vejledende pris: ca. 139 kr. ved sidste tjek hos Den Sidste Flaske.",
+      ],
+      footnote:
+        "Produkt-URL ender på «2021» mens butikken viser 2022 — bekræft årgang på etiketten ved køb.",
+    },
+    listPrice: 139,
+    priceCurrency: "DKK",
+    structuredDescriptionSnippet:
+      "Langhe nebbiolo med kirsebær og struktur — tilgængelig piemontesisk rød til pasta, lam og italiensk hverdag.",
+    bodyParagraphs: [
+      "Nebbiolo er druen bag barolo — men Langhe Nebbiolo giver ofte samme signatur (kirsebær, rose, tørre urter, tannin) i en mere tilgængelig og ung stil. La Farghetta fra Castiglione Falletto er et stærkt eksempel på det segment hos Den Sidste Flaske.",
+      "I glasset møder du typisk rubinrød farve, duft af røde bær, blomster og et strejf af krydderi og skovbund. Smagen er mellemfyldig med frisk syre og fine tanniner — mindre «tannin-bombe» end ung barolo, men stadig struktur til mad.",
+      "139 kr. er et tydeligt value-for-money-niveau til seriøs nebbiolo på etiketten — oplagt til dem, der vil smake druen før de investerer i barolo, eller vil have piemontesisk rød til lasagne, tagliatelle al ragù og svamperisotto.",
+      "Luft i glasset hjælper: tyve minutter kan blødgøre tanniner og åbne florale noter. Server 16–18 °C — for varm nebbiolo kan føles flad og alkohol-tung.",
+      "Sammenlignet med barolo er langhe nebbiolo ofte friskere og mere direkte frugtet — mindre lagringskrav, mere hverdagsvenlig. Sammenlignet med barbera er nebbiolo lysere, mere parfumeret og mere tannin-struktureret.",
+      "Bekræft pris, årgang og lager på Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
+    ],
+    foodPairing: {
+      heading: "Mad og lejligheder der spiller",
+      lead: "Italiensk klassik med tomat, svampe og kød — nebbiolo trives:",
+      dishes: [
+        "Pasta: tagliatelle al ragù, lasagne, bolognese, risotto med svampe.",
+        "Kød: lammekoteletter, kalv, okse med urter, vildt med måde.",
+        "Ost: parmesan, pecorino, modne hårde oste.",
+        "Gryde: osso buco-inspirerede retter, braiseret kød med svampe.",
+        "Pizza: margherita med salt topping, quattro formaggi.",
+        "Weekend: italiensk gæstemenu uden barolo-budget.",
+      ],
+      lessIdeal:
+        "Meget stærk chili eller søde desserter. Se guider til dessertvin nederst.",
+    },
+    specs: [
+      { label: "Område", value: "Langhe, Piemonte (Italien)" },
+      { label: "Appellation", value: "Langhe Nebbiolo" },
+      { label: "Druetype", value: "Nebbiolo (100 %)" },
+      { label: "Producent", value: "La Farghetta" },
+      { label: "Årgang", value: "2022 (bekræft på etiket)" },
+      { label: "Alkohol", value: "Ca. 13,5 %" },
+    ],
+    guideRefs: [
+      { slug: "nebbiolo-druen" },
+      { slug: "nebbiolo-fra-barolo", anchorText: "Nebbiolo fra Barolo (tungere sammenligning)" },
+      { slug: "vinregion-piemonte" },
+      { slug: "vinregion-italien" },
+      { slug: "vin-til-lasagne" },
+      { slug: "vin-til-pasta" },
+      { slug: "vin-til-italiensk-mad" },
+      { slug: "vin-til-lammekoteletter" },
+      { slug: "komplet-guide-til-vin-og-mad" },
+    ],
+  },
 ];
