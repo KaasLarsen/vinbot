@@ -658,14 +658,6 @@ export function WineSearch({
 
       {error && <p className="text-sm text-red-700">{error}</p>}
 
-      {lastQuery.trim() && !loading ? (
-        <SearchCuratedWineStrip
-          query={lastQuery}
-          maxBudget={lastBudget}
-          prominent={!data || allTotal === 0}
-        />
-      ) : null}
-
       {data && (
         <div className="space-y-4">
           {allTotal === 0 && lastBudget != null && fallbackCheapest ? (
@@ -916,6 +908,14 @@ export function WineSearch({
               </p>
             </div>
           )}
+
+          {lastQuery.trim() && !loading ? (
+            <SearchCuratedWineStrip
+              query={lastQuery}
+              maxBudget={lastBudget}
+              prominent={allTotal === 0}
+            />
+          ) : null}
         </div>
       )}
     </div>
