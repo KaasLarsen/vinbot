@@ -9,7 +9,7 @@ import {
   type WineStyleFilter,
 } from "@/lib/search/wine-style";
 import { ProductCard } from "@/components/product-card";
-import { SearchCuratedDsfStrip } from "@/components/search-curated-dsf-strip";
+import { SearchCuratedWineStrip } from "@/components/search-curated-dsf-strip";
 
 export type WineSearchChip = { label: string; q: string; max?: number };
 
@@ -658,6 +658,14 @@ export function WineSearch({
 
       {error && <p className="text-sm text-red-700">{error}</p>}
 
+      {lastQuery.trim() && !loading ? (
+        <SearchCuratedWineStrip
+          query={lastQuery}
+          maxBudget={lastBudget}
+          prominent={!data || allTotal === 0}
+        />
+      ) : null}
+
       {data && (
         <div className="space-y-4">
           {allTotal === 0 && lastBudget != null && fallbackCheapest ? (
@@ -686,9 +694,6 @@ export function WineSearch({
             </div>
           ) : allTotal === 0 ? (
             <div className="space-y-4 text-sm text-stone-600">
-              {lastQuery.trim() ? (
-                <SearchCuratedDsfStrip query={lastQuery} maxBudget={lastBudget} prominent />
-              ) : null}
               <p>
                 Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”.
               </p>
@@ -871,10 +876,6 @@ export function WineSearch({
               <ProductCard key={`${p.url}-${i}`} product={p} placement={productCardPlacement} />
             ))}
           </div>
-
-          {lastQuery.trim() && allTotal > 0 ? (
-            <SearchCuratedDsfStrip query={lastQuery} maxBudget={lastBudget} />
-          ) : null}
 
           {total === 0 && allTotal > 0 && selectedMerchants.size > 0 && (
             <p className="text-sm text-stone-500">

@@ -26,7 +26,8 @@ Kendte placements i koden:
 |-----------|-----------|
 | `guide-picks` | Produktkort på guides |
 | `recipe-picks` | Produktkort på opskrifter |
-| `search-dsf-curated` | «Har du set hos Den Sidste Flaske?» under søgning |
+| `search-curated-wine` | Kuraterede enkeltvin under søgning (alle forhandlere, DSF først) |
+| `search-dsf-curated` | (ældre navn — samme som search-curated-wine) |
 | `guide-inline-search` | Produktkort i inline-søgning på udvalgte guides |
 | `product-card` / `home-search` | Forside-/søgekort (feed) |
 | `partner-leaderboard-*` | Horisontalt banner |
