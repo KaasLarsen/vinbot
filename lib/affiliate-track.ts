@@ -8,7 +8,7 @@
 
 type AffiliateEventParams = {
   merchant: string;
-  /** Placering: fx guide-picks, home-search, partner-leaderboard-{hub}, home-featured-store-* , home-lauridsen-feed, guide-region-lauridsen-cta, product-feed-preview. */
+  /** Placering: fx guide-picks, home-search, search-dsf-curated, guide-inline-search, partner-leaderboard-{hub}, home-featured-store-*, product-feed-preview. */
   placement: string;
   slug?: string;
   hub?: string;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { InlineProductPicks } from "@/components/inline-product-picks";
 import { RecipeCuratedWineLinks } from "@/components/recipe-curated-wine-links";
 import type { RecipeWineToDrink } from "@/lib/content/recipe-types";
@@ -33,6 +34,14 @@ export function RecipeShopSection({ recipeSlug, tags = [], relatedGuides, wineTo
         max_items={3}
       />
       <RecipeCuratedWineLinks recipeSlug={recipeSlug} tags={tags} relatedGuides={relatedGuides} />
+      <p className="text-center text-sm text-stone-600">
+        <Link
+          href={searchHref}
+          className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+        >
+          Sammenlign flere i vinsøgningen →
+        </Link>
+      </p>
     </div>
   );
 }

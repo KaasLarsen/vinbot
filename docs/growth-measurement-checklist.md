@@ -15,9 +15,10 @@ Brug denne tjekliste hver 14. dag. Formålet er at skelne **trafik**, **affiliat
 
 ## Google Analytics 4
 
-1. **Rapporter → Engagement → Events** → `affiliate_click`.
-2. Tilføj dimension **`placement`** (og evt. `merchant`, `slug`, `hub`).
-3. Notér top 10 `placement` efter antal events (7 og 30 dage).
+1. **Rapporter → Engagement → Events** → `wine_search` (antal søgninger) og `affiliate_click` (klik til shop).
+2. For søgning: dimension **`query`** på `wine_search`; notér antal events pr. uge.
+3. Tilføj dimension **`placement`** (og evt. `merchant`, `slug`, `hub`) på `affiliate_click`.
+4. Notér top 10 `placement` efter antal events (7 og 30 dage).
 
 Kendte placements i koden:
 
@@ -25,14 +26,16 @@ Kendte placements i koden:
 |-----------|-----------|
 | `guide-picks` | Produktkort på guides |
 | `recipe-picks` | Produktkort på opskrifter |
-| `product-card` | Forside-/søgekort |
+| `search-dsf-curated` | «Har du set hos Den Sidste Flaske?» under søgning |
+| `guide-inline-search` | Produktkort i inline-søgning på udvalgte guides |
+| `product-card` / `home-search` | Forside-/søgekort (feed) |
 | `partner-leaderboard-*` | Horisontalt banner |
 | `merchant-hub-shop` | «Besøg shop» på forhandler-hub |
 | `footer-affiliate` | Footer-links til partnere |
 | `rabatkoder-shop` | «Gå til shop» på /rabatkoder |
 | `home-featured-store-*` | Udvalgte forhandlere på forsiden |
 
-4. Kryds med **Landing page** (hvilken URL brugeren var på ved klik — hvis konfigureret).
+5. Kryds med **Landing page** (hvilken URL brugeren var på ved klik — hvis konfigureret).
 
 ## Google Search Console
 

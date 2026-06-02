@@ -570,6 +570,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
         </div>
       </HomeHeroSearchSection>
 
+      {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
+
       <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <Link
           href="/mad-og-vin"
@@ -631,8 +633,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <FeaturedAffiliateStores />
 
       <LauridsenHomeFeedHighlight />
-
-      <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
 
       <PartnerAdsLeaderboard className="mt-16" hub="bedste-vine" slug="home" />
     </div>

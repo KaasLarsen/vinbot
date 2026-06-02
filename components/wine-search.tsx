@@ -9,15 +9,19 @@ import {
   type WineStyleFilter,
 } from "@/lib/search/wine-style";
 import { ProductCard } from "@/components/product-card";
+import { SearchCuratedDsfStrip } from "@/components/search-curated-dsf-strip";
 
-type Chip = { label: string; q: string; max?: number };
+export type WineSearchChip = { label: string; q: string; max?: number };
 
-const ALL_CHIPS: Chip[] = [
+const ALL_CHIPS: WineSearchChip[] = [
   { label: "Julemad", q: "julemad rødvin" },
   { label: "Nytår", q: "nytår champagne bobler" },
   { label: "Nytår rød", q: "rødvin til nytårsaften" },
+  { label: "Nytår bobler", q: "nytår champagne bobler cava" },
   { label: "Fisk", q: "fisk hvidvin" },
   { label: "Tapas", q: "tapas rioja" },
+  { label: "Tapas rød", q: "tapas rioja spanien" },
+  { label: "Gave under 200 kr", q: "gavevin", max: 200 },
   { label: "Hygge", q: "hygge rødvin" },
   { label: "Romantisk", q: "romantisk middag pinot" },
   { label: "Grill", q: "grill malbec" },
@@ -28,12 +32,24 @@ const ALL_CHIPS: Chip[] = [
   { label: "Under 150 kr", q: "vin", max: 150 },
 ];
 
+function trackWineSearch(query: string, hasMax: boolean) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  try {
+    window.gtag("event", "wine_search", {
+      query: query.slice(0, 120),
+      has_max: hasMax ? 1 : 0,
+    });
+  } catch {
+    // no-op
+  }
+}
+
 /** Vælg chips ud fra måned (0-indexed). Rækkefølgen afgør hvad brugeren ser først. */
-function seasonalChips(monthIndex: number): Chip[] {
+function seasonalChips(monthIndex: number): WineSearchChip[] {
   const pick = (...labels: string[]) =>
     labels
       .map((l) => ALL_CHIPS.find((c) => c.label === l))
-      .filter((c): c is Chip => Boolean(c));
+      .filter((c): c is WineSearchChip => Boolean(c));
 
   switch (monthIndex) {
     case 0:
@@ -56,7 +72,7 @@ function seasonalChips(monthIndex: number): Chip[] {
     case 10:
       return pick("Hygge", "Efterår", "Romantisk", "Julemad", "Under 150 kr");
     case 11:
-      return pick("Julemad", "Nytår", "Hygge", "Romantisk", "Under 150 kr");
+      return pick("Julemad", "Nytår bobler", "Nytår", "Gave under 200 kr", "Under 150 kr");
     default:
       return pick("Hygge", "Fisk", "Tapas", "Romantisk", "Under 150 kr");
   }
@@ -319,11 +335,28 @@ function StyleChip({
   );
 }
 
-export function WineSearch({ initialQuery }: { initialQuery?: string }) {
+export function WineSearch({
+  initialQuery,
+  initialMax,
+  productCardPlacement = "home-search",
+  variant = "default",
+  intentChips,
+}: {
+  initialQuery?: string;
+  initialMax?: number;
+  productCardPlacement?: string;
+  variant?: "default" | "compact";
+  intentChips?: WineSearchChip[];
+}) {
   const [q, setQ] = useState(initialQuery?.trim() || "");
-  const [max, setMax] = useState<string>("");
+  const [max, setMax] = useState(
+    initialMax != null && Number.isFinite(initialMax) ? String(initialMax) : "",
+  );
   const monthIndex = useMemo(() => new Date().getMonth(), []);
-  const chips = useMemo(() => seasonalChips(monthIndex), [monthIndex]);
+  const chips = useMemo(() => {
+    if (variant === "compact" && intentChips?.length) return intentChips.slice(0, 3);
+    return seasonalChips(monthIndex);
+  }, [monthIndex, variant, intentChips]);
   const placeholder = useMemo(() => seasonalPlaceholder(monthIndex), [monthIndex]);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -385,8 +418,12 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
 
   useEffect(() => {
     const iq = initialQuery?.trim();
-    if (iq) void search(iq, null);
-  }, [initialQuery, search]);
+    if (iq) {
+      const budget = initialMax != null && Number.isFinite(initialMax) ? initialMax : null;
+      trackWineSearch(iq, budget != null);
+      void search(iq, budget);
+    }
+  }, [initialQuery, initialMax, search]);
 
   /* Når prisfilter har udelukket alt, henter vi billigste match uden budget
      og tilbyder brugeren at "vis alligevel". */
@@ -528,6 +565,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
         className="flex flex-col gap-3 sm:flex-row sm:items-end"
         onSubmit={(e) => {
           e.preventDefault();
+          trackWineSearch(q, maxNum != null);
           void search(q, maxNum);
         }}
       >
@@ -587,6 +625,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
                 type="button"
                 onClick={() => {
                   setQ(alt.q);
+                  trackWineSearch(alt.q, maxNum != null);
                   void search(alt.q, maxNum);
                 }}
                 className="rounded-full border border-rose-200 bg-white px-3 py-1 text-xs font-medium text-rose-900 hover:border-rose-400"
@@ -607,6 +646,7 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
               setQ(c.q);
               if (c.max) setMax(String(c.max));
               else setMax("");
+              trackWineSearch(c.q, c.max != null);
               void search(c.q, c.max ?? null);
             }}
             className="rounded-full border border-stone-200 bg-white px-3 py-1.5 text-sm font-medium text-stone-800 shadow-sm hover:border-rose-300 hover:bg-rose-50"
@@ -645,7 +685,10 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
               </button>
             </div>
           ) : allTotal === 0 ? (
-            <div className="space-y-2 text-sm text-stone-600">
+            <div className="space-y-4 text-sm text-stone-600">
+              {lastQuery.trim() ? (
+                <SearchCuratedDsfStrip query={lastQuery} maxBudget={lastBudget} prominent />
+              ) : null}
               <p>
                 Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”.
               </p>
@@ -825,9 +868,13 @@ export function WineSearch({ initialQuery }: { initialQuery?: string }) {
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visibleProducts.map((p, i) => (
-              <ProductCard key={`${p.url}-${i}`} product={p} />
+              <ProductCard key={`${p.url}-${i}`} product={p} placement={productCardPlacement} />
             ))}
           </div>
+
+          {lastQuery.trim() && allTotal > 0 ? (
+            <SearchCuratedDsfStrip query={lastQuery} maxBudget={lastBudget} />
+          ) : null}
 
           {total === 0 && allTotal > 0 && selectedMerchants.size > 0 && (
             <p className="text-sm text-stone-500">

@@ -21,6 +21,8 @@ import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideLauridsenRegionCta } from "@/components/guide-lauridsen-region-cta";
 import { GuideWineDetailLinks } from "@/components/guide-wine-detail-links";
 import { GuideRecipeCrosslinks } from "@/components/guide-recipe-crosslinks";
+import { GuideInlineSearch } from "@/components/guide-inline-search";
+import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
@@ -160,6 +162,7 @@ export default async function GuidePage({ params }: Props) {
         </p>
       </header>
       {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
+      {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
       <div className="prose prose-stone mt-10 max-w-none">
         <AffiliateDisclosure compact />
         {content}
