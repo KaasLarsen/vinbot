@@ -10,7 +10,9 @@ import { CookieBanner } from "@/components/cookie-banner";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "";
+/** Offentligt GA4-ID — env overstyrer; fallback så analytics virker hvis Vercel-env mangler ved build. */
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-JB0QD6J59G";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

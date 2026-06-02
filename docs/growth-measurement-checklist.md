@@ -15,6 +15,15 @@ Brug denne tjekliste hver 14. dag. Formålet er at skelne **trafik**, **affiliat
 
 ## Google Analytics 4
 
+**Måle-ID:** `G-JB0QD6J59G` (også i Vercel som `NEXT_PUBLIC_GA_MEASUREMENT_ID`).
+
+**Hvis GA4 siger «ingen data endnu»:**
+
+1. Besøg **www.vinbot.dk** (ikke kun preview-URL) og tryk **Accepter** i cookie-banneret — GA4 indlæses **kun** efter samtykke.
+2. Tjek **Rapporter → Realtid** (ikke kun «Start»-oversigten) — der kan gå 1–2 minutter før første hit.
+3. I browser: DevTools → Network → filtrér `collect` eller `gtag/js` — skal ses efter Accepter.
+4. Vercel → Environment Variables → `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-JB0QD6J59G` på **Production** → **Redeploy** (NEXT_PUBLIC indbygges ved build).
+
 1. **Rapporter → Engagement → Events** → `wine_search` (antal søgninger) og `affiliate_click` (klik til shop).
 2. For søgning: dimension **`query`** på `wine_search`; notér antal events pr. uge.
 3. Tilføj dimension **`placement`** (og evt. `merchant`, `slug`, `hub`) på `affiliate_click`.
