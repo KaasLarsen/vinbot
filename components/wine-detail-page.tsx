@@ -14,6 +14,7 @@ import {
 } from "@/lib/wine-detail-pages/registry";
 import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
+import { WinePickPrices } from "@/components/wine-pick-prices";
 import { siteUrl } from "@/lib/site";
 
 export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
@@ -112,6 +113,15 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
         <p className="mt-3 text-lg text-stone-700">{wine.metaDescription}</p>
 
         <AffiliateDisclosure />
+
+        {wine.listPrice != null || (wine.volumePrices?.length ?? 0) > 0 ? (
+          <div className="mt-6 rounded-2xl border border-stone-200/90 bg-stone-50/80 p-4">
+            <p className="text-sm font-medium text-stone-900">Vejledende priser hos {cfg.displayName}</p>
+            <div className="mt-2">
+              <WinePickPrices pick={wine} />
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-start">
           <div className="mx-auto flex w-full max-w-[21rem] shrink-0 flex-col gap-6 lg:mx-0">

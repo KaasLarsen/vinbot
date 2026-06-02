@@ -131,6 +131,7 @@ export function wineDetailPageToFeaturedPick(page: WineDetailPage): WineDetailFe
     imageUrl: page.imageUrl,
     listPrice: page.listPrice,
     priceCurrency: page.priceCurrency ?? "DKK",
+    volumePrices: page.volumePrices,
   };
 }
 

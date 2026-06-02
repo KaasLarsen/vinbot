@@ -155,6 +155,10 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
     },
     listPrice: 139,
     priceCurrency: "DKK",
+    volumePrices: [
+      { bottles: 6, pricePerBottle: 65 },
+      { bottles: 12, pricePerBottle: 59 },
+    ],
     structuredDescriptionSnippet:
       "Langhe nebbiolo med kirsebær og struktur — tilgængelig piemontesisk rød til pasta, lam og italiensk hverdag.",
     bodyParagraphs: [

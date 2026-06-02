@@ -8,6 +8,12 @@ export type WineDetailGuideRef = {
 
 export type WineDetailSpec = { label: string; value: string };
 
+/** Pris pr. flaske ved kasse/køb af N flasker (fx DSF 6/12). */
+export type WineDetailVolumePrice = {
+  bottles: number;
+  pricePerBottle: number;
+};
+
 /** Indhold direkte under produktfoto (venstre kolonne). */
 export type WineDetailAside = {
   heading: string;
@@ -34,6 +40,8 @@ export type WineDetailPage = {
   imageAside?: WineDetailAside;
   listPrice?: number;
   priceCurrency?: string;
+  /** Valgfri kassepriser — vises som «X kr/fl» ved 6, 12 osv. */
+  volumePrices?: readonly WineDetailVolumePrice[];
   structuredDescriptionSnippet?: string;
   bodyParagraphs: string[];
   foodPairing?: WineDetailFoodPairing;
@@ -49,5 +57,6 @@ export type WineDetailFeaturedPick = {
   imageUrl?: string;
   listPrice?: number;
   priceCurrency?: string;
+  volumePrices?: readonly WineDetailVolumePrice[];
   directLink?: boolean;
 };

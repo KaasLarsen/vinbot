@@ -7,6 +7,7 @@ import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-o
 import { listCuratedPicksForSearchQuery, detailSlugForCuratedPick } from "@/lib/growth/search-curated";
 import { getMerchantWineConfig } from "@/lib/wine-detail-pages/merchants";
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
+import { WinePickPrices } from "@/components/wine-pick-prices";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 
 const IMAGE_FRAME =
@@ -110,7 +111,7 @@ function CuratedPickCard({ pick, query }: { pick: ReturnType<typeof listCuratedP
           <p className="text-[10px] font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
           <h3 className="line-clamp-2 text-sm font-semibold text-stone-900">{pick.title}</h3>
           {pick.blurb ? <p className="line-clamp-2 text-xs text-stone-600">{pick.blurb}</p> : null}
-          {price ? <p className="text-sm font-semibold text-stone-800">{price}</p> : null}
+          <WinePickPrices pick={pick} />
           {detailSlug ? (
             <Link
               href={`${cfg.hubPath}/vin/${detailSlug}`}

@@ -5,6 +5,7 @@ import {
   wineDetailPageToFeaturedPick,
   wineDetailSlugForProductUrl,
 } from "@/lib/wine-detail-pages/registry";
+import { lowestPricePerBottle } from "@/lib/wine-pick-prices";
 import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
 
 const DSF_DEFAULT_URLS = [
@@ -137,8 +138,9 @@ function matchesFeaturedPick(pick: MerchantFeaturedPick, tokens: string[]): bool
 
 function withinBudget(pick: MerchantFeaturedPick, max: number | null): boolean {
   if (max == null) return true;
-  if (pick.listPrice == null) return true;
-  return pick.listPrice <= max;
+  const price = lowestPricePerBottle(pick);
+  if (price == null) return true;
+  return price <= max;
 }
 
 function sortScoredPicks(
