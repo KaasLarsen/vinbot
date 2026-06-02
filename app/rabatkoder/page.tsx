@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { RabatkodeShopLink } from "@/components/rabatkode-shop-link";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
@@ -215,14 +216,13 @@ export default function RabatkoderPage() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <h2 className="text-xl font-semibold text-stone-900">{p.name}</h2>
               <div className="flex shrink-0 flex-col items-end gap-1 text-right">
-                <a
+                <RabatkodeShopLink
                   href={p.affiliateHref}
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
+                  merchant={p.name}
                   className="text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
                 >
                   Gå til shop * →
-                </a>
+                </RabatkodeShopLink>
                 <span className="text-xs text-stone-500">
                   Via {p.affiliateVia === "adtraction" ? "Adtraction" : "Partner-Ads"}
                 </span>

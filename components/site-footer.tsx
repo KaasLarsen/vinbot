@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterAffiliatePromos } from "@/components/footer-affiliate-promos";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
 import { siteName } from "@/lib/site";
 
@@ -32,40 +33,7 @@ export function SiteFooter() {
                 Øl &amp; Vin på Facebook
               </a>
             </p>
-            <div className="mt-4 max-w-md space-y-3">
-              <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
-                <p className="mt-2 leading-relaxed text-stone-700">
-                  <a
-                    href={PARTNER_ADS_BEER_ME_SUBSCRIPTION}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
-                  >
-                    Specialøl på abonnement hos Beer Me
-                  </a>{" "}
-                  — kuraterede månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
-                </p>
-              </div>
-              <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
-                <p className="mt-2 leading-relaxed text-stone-700">
-                  <a
-                    href={PARTNER_ADS_RAREWINE_MEMBERS}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
-                  >
-                    RareWine Members Club
-                  </a>{" "}
-                  — medlemsklub med adgang til sjældnere vine og allocation; du tilmelder dig hos RareWine. Linket er et affiliate-spor — læs mere under{" "}
-                  <Link href="/betingelser" className="font-medium text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950">
-                    betingelser
-                  </Link>
-                  .
-                </p>
-              </div>
-            </div>
+            <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} rareWineHref={PARTNER_ADS_RAREWINE_MEMBERS} />
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:min-w-0 lg:max-w-xl lg:shrink-0">
             <div>

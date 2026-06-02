@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { FaqJsonLd, MerchantFeaturedProductsJsonLd } from "@/components/json-ld";
 import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
+import { MerchantHubShopLink } from "@/components/merchant-hub-shop-link";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
@@ -92,14 +93,14 @@ export default function WintherVinPage() {
       <section className="mt-10 space-y-4 text-stone-800">
         <h2 className="text-2xl font-semibold text-stone-900">Gå til butikken</h2>
         <p>Åbner Winther Vin i et nyt vindue — du handler og betaler altid hos dem.</p>
-        <a
+        <MerchantHubShopLink
           href={SHOP_HREF}
-          target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          merchant={MERCHANT_FEED}
+          slug="winther-vin"
           className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
         >
           Besøg Winther Vin
-        </a>
+        </MerchantHubShopLink>
         <p className="text-sm text-stone-600">
           <Link href="/rabatkoder" className="text-rose-900 hover:underline">
             Rabatkoder og nyhedsbrev

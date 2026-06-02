@@ -62,6 +62,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
       { slug: "bedste-italiensk-rodvin" },
       { slug: "rodvin-til-pizza" },
       { slug: "vin-til-pizza" },
+      { slug: "vin-til-tapas" },
       { slug: "vin-til-grill-og-bbq" },
       { slug: "komplet-guide-til-vin-og-mad" },
     ],

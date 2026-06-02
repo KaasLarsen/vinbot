@@ -124,6 +124,7 @@ export const DEN_SIDSTE_FLASKE_BATCH5_PAGES: readonly WineDetailPage[] = [
       { slug: "vinregion-champagne" },
       { slug: "bedste-champagne-under-500-kr" },
       { slug: "champagne-til-mad" },
+      { slug: "vin-til-nytaar-og-nytaarsmenu" },
       { slug: "bobler-til-fredag" },
       { slug: "vin-til-fisk-og-skaldyr" },
       { slug: "komplet-guide-til-vin-og-mad" },

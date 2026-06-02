@@ -9,6 +9,7 @@ import { RecipeIngredients } from "@/components/recipe-ingredients";
 import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
 import { RecipeSteps } from "@/components/recipe-steps";
 import { RecipeWineBox } from "@/components/recipe-wine-box";
+import { RecipeShopSection } from "@/components/recipe-shop-section";
 import {
   getAllRecipeSlugs,
   getRecipe,
@@ -164,6 +165,12 @@ export default async function RecipePage({ params }: Props) {
 
       <div className="mt-8">
         <RecipeWineBox wineInRecipe={frontmatter.wineInRecipe} wineToDrink={frontmatter.wineToDrink} />
+        <RecipeShopSection
+          recipeSlug={slug}
+          tags={frontmatter.tags}
+          relatedGuides={frontmatter.relatedGuides}
+          wineToDrink={frontmatter.wineToDrink}
+        />
       </div>
 
       <div className="mt-10 space-y-10">

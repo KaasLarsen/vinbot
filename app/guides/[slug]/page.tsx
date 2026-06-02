@@ -20,6 +20,7 @@ import { GuideSearchCta } from "@/components/guide-search-cta";
 import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideLauridsenRegionCta } from "@/components/guide-lauridsen-region-cta";
 import { GuideWineDetailLinks } from "@/components/guide-wine-detail-links";
+import { GuideRecipeCrosslinks } from "@/components/guide-recipe-crosslinks";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
@@ -175,6 +176,7 @@ export default async function GuidePage({ params }: Props) {
       ) : null}
       {intent && hub === "regioner" ? <GuideLauridsenRegionCta slug={slug} /> : null}
       <GuideWineDetailLinks guideSlug={slug} />
+      <GuideRecipeCrosslinks guideSlug={slug} />
       {faqItems?.length ? <GuideFaqAccordion items={faqItems} /> : null}
       <PartnerAdsLeaderboard className="mt-12" hub={hub} slug={slug} />
       <div className="mt-12">

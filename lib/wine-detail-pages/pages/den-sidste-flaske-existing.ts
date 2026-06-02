@@ -283,6 +283,8 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     ],
     guideRefs: [
       { slug: "vin-i-cocktails-spritz-og-drikke" },
+      { slug: "vin-til-tapas" },
+      { slug: "vin-til-nytaar-og-nytaarsmenu" },
       { slug: "bobler-til-fredag" },
       { slug: "bobler-til-brunch" },
       { slug: "bedste-bobler-under-100-kr" },
