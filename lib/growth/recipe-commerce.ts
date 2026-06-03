@@ -15,6 +15,21 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "risotto-med-rodvin-barolo": ["vin-til-risotto", "vin-til-italiensk-mad"],
   "figner-og-dadler-i-rodvin": ["vin-til-tapas", "vin-til-dessert"],
   "roedvinsgele-til-charcuteri": ["vin-til-ost-og-ostebord", "vin-til-tapas"],
+  "lasagne-med-rodvin": ["vin-til-lasagne", "vin-til-pizza-og-pasta", "vin-til-italiensk-mad"],
+  "peberboef-med-rodvinsauce": ["vin-til-oksekoed", "vin-til-boeff", "vin-til-gryderet"],
+  "roedkaal-med-rodvin": ["vin-til-julefrokost", "vin-til-flaesketesteg", "vin-til-and"],
+  "bolognese-med-rodvin": ["sangiovese-til-pasta", "vin-til-lasagne", "vin-til-pizza-og-pasta"],
+  "kyllingefilet-i-rodvin-med-svampe": ["vin-til-kylling-og-lyst-koed", "vin-til-gryderet"],
+  "groenlangkaal-med-hvidvin": ["vin-til-julefrokost", "vin-til-flaesketesteg"],
+  "oksesuppe-med-rodvin": ["vin-til-gryderet", "vin-til-oksekoed", "vin-til-suppe"],
+  "tarteletter-i-hvidvin": ["vin-til-tarteletter", "vin-til-kylling-og-lyst-koed"],
+  "tomatsauce-med-rodvin-til-pizza": ["vin-til-pizza-og-pasta", "rodvin-til-pizza", "sangiovese-til-pasta"],
+  "kartoffelgratin-med-hvidvin": ["vin-til-kartoffelmad", "vin-til-julefrokost", "vin-til-vegetar-og-gront"],
+  "porchetta-med-hvidvin": ["vin-til-italiensk-mad", "vin-til-grill-og-bbq", "vin-til-svinekoed"],
+  "wok-kylling-med-hvidvin": ["vin-til-wok", "vin-til-kylling-og-lyst-koed", "vin-til-krydret-og-staerk-mad"],
+  "fiskefrikadeller-i-hvidvinsauce": ["vin-til-fisk-og-skaldyr", "vin-til-julefrokost"],
+  "cote-de-boeuf-med-rodvin": ["vin-til-boeff", "vin-til-oksekoed", "vin-til-grill-og-bbq"],
+  "paella-med-rodvin": ["vin-til-spansk-mad", "vin-til-risotto", "vin-til-grill-og-bbq"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
@@ -26,6 +41,9 @@ function guidesFromTags(tags: string[]): string[] {
   if (t.has("rødvin") || t.has("rodvin")) out.push("vin-til-gryderet");
   if (t.has("hvidvin")) out.push("vin-til-fisk-og-skaldyr");
   if (t.has("dessert")) out.push("vin-til-dessert");
+  if (t.has("julemad")) out.push("vin-til-julefrokost");
+  if (t.has("pasta")) out.push("vin-til-lasagne", "vin-til-pizza-og-pasta");
+  if (t.has("hverdag") || t.has("dansk")) out.push("vin-til-oksekoed");
   if (out.length === 0) out.push("komplet-guide-til-vin-og-mad");
   return out;
 }
