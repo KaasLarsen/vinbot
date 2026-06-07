@@ -1,38 +1,37 @@
 # Opskrifter — udvidelse (30 nye)
 
-**Status:** 15 / 30 færdige (ikke pushet til remote).
+**Status:** 30 / 30 færdige.
 
-## Færdige
+## Færdige (udvidelses-batch)
 
 | # | Slug | Guide-klynge |
 |---|------|----------------|
-| 1 | `lasagne-med-rodvin` | vin-til-lasagne, pizza |
-| 2 | `peberboef-med-rodvinsauce` | oksekød, bøf |
-| 3 | `roedkaal-med-rodvin` | julefrokost |
-| 4 | `bolognese-med-rodvin` | sangiovese-til-pasta |
-| 5 | `kyllingefilet-i-rodvin-med-svampe` | kylling |
-| 6 | `groenlangkaal-med-hvidvin` | julefrokost |
-| 7 | `oksesuppe-med-rodvin` | gryderet, suppe |
-| 8 | `tarteletter-i-hvidvin` | tarteletter, kylling |
-| 9 | `tomatsauce-med-rodvin-til-pizza` | pizza, pasta |
-| 10 | `kartoffelgratin-med-hvidvin` | kartoffelmad, tilbehør |
-| 11 | `porchetta-med-hvidvin` | italiensk, grill |
-| 12 | `wok-kylling-med-hvidvin` | wok, asiatisk |
-| 13 | `fiskefrikadeller-i-hvidvinsauce` | fisk, julefrokost |
-| 14 | `cote-de-boeuf-med-rodvin` | bøf, grill |
-| 15 | `paella-med-rodvin` | spansk mad, ris |
+| 1–15 | (se commit `0cd0971`) | lasagne, bøf, julemad, pasta … |
+| 16 | `svinekam-med-rodvin` | svinekød, grill |
+| 17 | `gravad-laks-med-hvidvin` | fisk, julefrokost |
+| 18 | `kyllingesuppe-med-hvidvin` | suppe, kylling |
+| 19 | `lammekoteletter-i-rodvin` | lam |
+| 20 | `svinefilet-i-rodvinssauce` | svinekød |
+| 21 | `stuvet-kylling-med-hvidvin` | kylling, gryderet |
+| 22 | `pasta-puttanesca-med-rodvin` | pasta, italiensk |
+| 23 | `rodspette-med-hvidvin` | fisk |
+| 24 | `champignonsuppe-med-hvidvin` | suppe, vegetar |
+| 25 | `braiseret-kylling-med-rodvin` | gryderet, fransk |
+| 26 | `entrecote-med-rodvinsmarinade` | bøf, grill |
+| 27 | `fennikelkylling-med-hvidvin` | kylling, italiensk |
+| 28 | `svineribs-med-rodvin` | bbq |
+| 29 | `sellerisuppe-med-hvidvin` | suppe |
+| 30 | `oksesteg-med-rodvin` | oksekød, fest |
 
-## Planlagt batch 6+ (udkast)
+## AdSense / kvalitet (parallel)
 
-16. `svinekam-med-rodvin` — grill, fest  
-17. `gravad-laks-med-hvidvin` — dansk, fisk  
-18. `gulasch-med-rodvin` — gryderet  
-… (12 flere)
+- 5 tynde guides under 400 ord udvidet (brevkasse, køling, barbera, gewürz, pinot grigio)
+- Ved genansøgning: brug `/opskrifter` eller `/mad-og-vin` som primær URL
 
-## Ved 30 stk
+## Deploy
 
 - Kør `node scripts/verify-recipe-images.mjs`
-- Én commit + push til `main`
-- GSC: genindsend `sitemap-opskrifter.xml` + Tier 1 URL’er
+- Push til `main`
+- GSC: genindsend `sitemap-opskrifter.xml`
 
-Sidst opdateret: 2026-06-02
+Sidst opdateret: 2026-06-07

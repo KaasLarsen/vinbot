@@ -30,6 +30,21 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "fiskefrikadeller-i-hvidvinsauce": ["vin-til-fisk-og-skaldyr", "vin-til-julefrokost"],
   "cote-de-boeuf-med-rodvin": ["vin-til-boeff", "vin-til-oksekoed", "vin-til-grill-og-bbq"],
   "paella-med-rodvin": ["vin-til-spansk-mad", "vin-til-risotto", "vin-til-grill-og-bbq"],
+  "svinekam-med-rodvin": ["vin-til-svinekoed", "vin-til-grill-og-bbq", "vin-til-julefrokost"],
+  "gravad-laks-med-hvidvin": ["vin-til-fisk-og-skaldyr", "vin-til-julefrokost", "vin-til-nytaar-og-nytaarsmenu"],
+  "kyllingesuppe-med-hvidvin": ["vin-til-suppe", "vin-til-kylling-og-lyst-koed"],
+  "lammekoteletter-i-rodvin": ["vin-til-lam", "vin-til-grill-og-bbq"],
+  "svinefilet-i-rodvinssauce": ["vin-til-svinekoed", "vin-til-oksekoed"],
+  "stuvet-kylling-med-hvidvin": ["vin-til-kylling-og-lyst-koed", "vin-til-gryderet"],
+  "pasta-puttanesca-med-rodvin": ["sangiovese-til-pasta", "vin-til-pizza-og-pasta", "vin-til-italiensk-mad"],
+  "rodspette-med-hvidvin": ["vin-til-fisk-og-skaldyr"],
+  "champignonsuppe-med-hvidvin": ["vin-til-suppe", "vin-til-vegetar-og-gront"],
+  "braiseret-kylling-med-rodvin": ["vin-til-gryderet", "vin-til-kylling-og-lyst-koed", "vin-til-fransk-mad"],
+  "entrecote-med-rodvinsmarinade": ["vin-til-boeff", "vin-til-grill-og-bbq", "vin-til-oksekoed"],
+  "fennikelkylling-med-hvidvin": ["vin-til-kylling-og-lyst-koed", "vin-til-italiensk-mad"],
+  "svineribs-med-rodvin": ["vin-til-grill-og-bbq", "vin-til-svinekoed"],
+  "sellerisuppe-med-hvidvin": ["vin-til-suppe", "vin-til-vegetar-og-gront"],
+  "oksesteg-med-rodvin": ["vin-til-oksekoed", "vin-til-boeff", "vin-til-julefrokost"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
