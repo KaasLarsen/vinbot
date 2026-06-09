@@ -94,9 +94,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
     { slug: "lammekoteletter-i-rodvin", label: "Lammekoteletter i rødvin" },
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
+    { slug: "pulled-pork-med-rodvin", label: "Pulled pork med rødvin" },
   ],
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
+    { slug: "kartoffelmos-med-hvidvin", label: "Kartoffelmos med hvidvin" },
   ],
   "vin-til-italiensk-mad": [
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
@@ -226,6 +228,81 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
     { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
+  ],
+  "vin-til-poelser-og-kartoffel": [
+    { slug: "poelser-i-rodvinsglace", label: "Pølser i rødvinsglace" },
+  ],
+  "vin-til-roedgroed": [
+    { slug: "roedgroed-med-portvin", label: "Rødgrød med portvin" },
+  ],
+  "vin-til-kalkun": [
+    { slug: "kalkunsteg-med-hvidvin", label: "Kalkunsteg med hvidvin" },
+  ],
+  "vin-til-hummer": [
+    { slug: "hummer-i-hvidvinsauce", label: "Hummer i hvidvinsauce" },
+  ],
+  "vin-til-paaske-og-paaskefrokost": [
+    { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
+  ],
+  "vin-til-mexicansk-mad": [
+    { slug: "enchiladas-med-rodvin", label: "Enchiladas med rødvin" },
+  ],
+  "vin-til-thai-mad": [
+    { slug: "thai-gron-karry-med-hvidvin", label: "Thai grøn karry med hvidvin" },
+  ],
+  "vin-til-brittisk-mad": [
+    { slug: "shepherd-pie-med-rodvin", label: "Shepherd's pie med rødvin" },
+  ],
+  "vin-til-vietnamesisk-mad": [
+    { slug: "bun-cha-med-hvidvin", label: "Bun cha med hvidvin" },
+  ],
+  "vin-til-kinesisk-mad": [
+    { slug: "kung-pao-kylling-med-hvidvin", label: "Kung pao kylling med hvidvin" },
+  ],
+  "vin-til-spareribs": [
+    { slug: "pulled-pork-med-rodvin", label: "Pulled pork med rødvin" },
+  ],
+  "vin-til-aebleskiver": [
+    { slug: "aebleskiver-med-hvidvin", label: "Æbleskiver med hvidvin" },
+  ],
+  "vin-til-frikadeller": [
+    { slug: "karbonader-i-hvidvinsauce", label: "Karbonader i hvidvinsauce" },
+  ],
+  "vin-til-torsk": [
+    { slug: "torsk-i-rodvinsauce", label: "Torsk i rødvinsauce" },
+  ],
+  "vin-til-moussaka": [
+    { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
+  ],
+  "vin-til-carbonara": [
+    { slug: "carbonara-med-hvidvin", label: "Carbonara med hvidvin" },
+  ],
+  "vin-til-risotto": [
+    { slug: "risotto-med-hvidvin", label: "Risotto med hvidvin" },
+  ],
+  "vin-til-paella": [
+    { slug: "paella-med-rodvin", label: "Paella med rødvin" },
+  ],
+  "vin-til-chili-con-carne": [
+    { slug: "chili-con-carne-med-rodvin", label: "Chili con carne med rødvin" },
+  ],
+  "vin-til-medister": [
+    { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
+  ],
+  "vin-til-gulasch": [
+    { slug: "gullasch-med-rodvin", label: "Gullasch med rødvin" },
+  ],
+  "vin-til-muslinger": [
+    { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
+  ],
+  "vin-til-blaeksprutte": [
+    { slug: "blaeksprutte-i-rodvin", label: "Blæksprutte i rødvin" },
+  ],
+  "vin-til-fondue": [
+    { slug: "fondue-med-hvidvin", label: "Fondue med hvidvin" },
+  ],
+  "vin-til-shakshuka": [
+    { slug: "shakshuka-med-hvidvin", label: "Shakshuka med hvidvin" },
   ],
 
 };
