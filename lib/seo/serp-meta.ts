@@ -236,6 +236,108 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rødvin under 75 kr til hverdag: Rhône Villages, Chile-entry og spansk blend med moden frugt. Regioner og flasker der holder i glasset.",
   },
+
+  // Bølge 4 — GSC lav CTR + mad/bedste-hubs (jun 2026)
+  "vin-til-graesk-mad": {
+    title: "Vin til græsk mad og meze",
+    description:
+      "Bedste vin til græsk mad: assyrtiko, rosé og let rød til souvlaki, feta og grill. Syre til olivenolie og urter — dansk guide med flasker.",
+  },
+  "vin-til-fisk-og-skaldyr": {
+    title: "Vin til fisk og skaldyr",
+    description:
+      "Hvilken vin til fisk? Tør hvidvin, bobler og let rosé til laks, tun og hummer. Syre, mineralitet og serveringstemperatur — med konkrete flasker.",
+  },
+  "vin-til-grill-og-bbq": {
+    title: "Vin til grill og BBQ",
+    description:
+      "Vin til grill: syrah, malbec og afkølet gamay til kød, spareribs og burger. Kraftig rød eller rosé — match fedme og røg fra grillen.",
+  },
+  "vin-til-asiatisk-mad": {
+    title: "Vin til asiatisk mad",
+    description:
+      "Vin til asiatisk mad: tør riesling, gewürztraminer og bobler til wok, sushi og karry. Syre og lav tannin når soja og chili dominerer.",
+  },
+  "bedste-rodvin": {
+    title: "Bedste rødvin: pinot, malbec og cabernet",
+    description:
+      "Bedste rødvin til din smag og budget: sangiovese, pinot noir, malbec og syrah. Druesorter, regioner og madparring — fra hverdag til gæster.",
+  },
+  "bedste-bobler": {
+    title: "Bedste bobler: champagne, cava og crémant",
+    description:
+      "Bedste bobler efter pris og stil: cava, crémant, prosecco og champagne. Brut, extra dry og rosé — til fest, brunch og mad.",
+  },
+  "bedste-sommervin": {
+    title: "Bedste sommervin: rosé og frisk hvid",
+    description:
+      "Bedste sommervin til terrasse: Provence-rosé, sauvignon og afkølet rød. Top-liste med pris, regioner og servering til varme aftener.",
+  },
+  "rosevin-til-mad-og-sommer": {
+    title: "Rosévin til mad og sommer",
+    description:
+      "Rosé til grill, salat og tapas: tør Provence-stil og spansk rosado. Servering, temperatur og madparring — dansk sommerguide.",
+  },
+  "bedste-champagne-under-500-kr": {
+    title: "Bedste champagne under 500 kr",
+    description:
+      "Champagne under 500 kr: NV fra etablerede huse og seriøs årgang-entry. Hvad du får for pengene — og hvornår crémant er smartere.",
+  },
+  "bedste-cava-under-150-kr": {
+    title: "Bedste cava under 150 kr",
+    description:
+      "Cava under 150 kr: reserva og long lees aging med mere fad og brød. Spansk mousserende til fest og mad — bedre end billig prosecco.",
+  },
+  "bobler-champagne-cava-prosecco-og-cremant": {
+    title: "Bobler: champagne, cava og prosecco",
+    description:
+      "Forskellen på champagne, cava, prosecco og crémant. Stil, pris og madparring — så du vælger den rigtige boble til fest og hverdag.",
+  },
+  "afkoelt-roedvin": {
+    title: "Afkølet rødvin: gamay og pinot køligt",
+    description:
+      "Afkølet rødvin smager bedre om sommeren: gamay, pinot og let grenache ved 12–14 °C. Hvilke rødvine du skal køle — og hvilke du ikke skal.",
+  },
+  "vin-til-julemad-den-store-guide": {
+    title: "Vin til julemad: and, flæsk og risalamande",
+    description:
+      "Vin til julemad: rød til and og flæskesteg, hvid til fisk, bobler til velkomst. Komplet guide til julefrokost og juleaften i Danmark.",
+  },
+  "komplet-guide-til-vin-og-mad": {
+    title: "Vin og mad: komplet parringsguide",
+    description:
+      "Den store danske guide til vin og mad: rød og hvid til kød, fisk, ost og grønt. Temperatur, syre, tanniner og praktiske regler der virker.",
+  },
+  "kan-vin-blive-daarlig": {
+    title: "Kan vin blive dårlig? Tegn og holdbarhed",
+    description:
+      "Kan vin blive sur? Ja — efter åbning, varme eller korkfejl. Sådan spotter du oxideret, korket og gammel vin — og hvornår den stadig kan drikkes.",
+  },
+  "hvor-laenge-holder-rodvin": {
+    title: "Hvor længe holder rødvin åbnet?",
+    description:
+      "Åbnet rødvin holder 3–5 dage på køl. Uåbnet hverdags-rød 2–5 år. Tabel, vakuum og hvornår du skal drikke flasken før den falder.",
+  },
+  "bedste-vin-til-gave": {
+    title: "Bedste vin til gave",
+    description:
+      "Vin til gave: bobler til fest, seriøs rød til kødelskeren, hvid til fisk. Budget, personlighed og hvornår magnum eller årgang giver mening.",
+  },
+  "vin-til-brunch": {
+    title: "Vin til brunch: bobler og frisk hvid",
+    description:
+      "Vin til brunch: prosecco, crémant og let hvid til æg, laks og avokado. Mimosa, temperatur og mængder — plus alkoholfri alternativ.",
+  },
+  "hvor-meget-vin-til-fest": {
+    title: "Hvor meget vin til fest per gæst?",
+    description:
+      "Regn med ½–1 flaske vin per voksen til middag og fest. Fordeling af rød, hvid og bobler — og hvornår du skal have ekstra til skål.",
+  },
+  "hvor-laenge-kan-vin-lagres": {
+    title: "Hvor længe kan vin lagres?",
+    description:
+      "Hverdagsvin drikkes inden for få år. Lagringsvine 10–50+ år i køl, mørkt og liggende. Tabel pr. stil — og hvornår flasken er klar nu.",
+  },
 };
 
 /** Unik SERP-tekst for bedste-*-under-* (erstatter copy-paste-frontmatter). */
