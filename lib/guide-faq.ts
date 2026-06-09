@@ -2379,6 +2379,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Nej — det er en myte. Brug i stedet en champagne-lukke med metalvinger, og hold flasken på 6-9 °C. Kulde holder CO₂ opløst i vinen og brusen intakt.",
     },
   ],
+  "hvor-laenge-holder-vin-i-karaffel": [
+    {
+      question: "Hvor længe holder vin i karaffel?",
+      answer:
+        "Typisk 2–6 timer afhængigt af stil og rumtemperatur — let hvid og rosé kortere; ung rød ofte 4–8 timer. Dekanteret ung rød kan falde hurtigere end udekanted i flaske. Server inden for samme aften for bedst smag.",
+    },
+    {
+      question: "Skal rødvin i karaffel stå varmere end i flasken?",
+      answer:
+        "Ja — karaffel giver mere ilt og ofte lidt højere temperatur. Ung tannintung rød kan have gavn af 30–60 min dekantering; ældre skrøbelig rød kun kort luftning.",
+    },
+    {
+      question: "Kan hvidvin stå i karaffel?",
+      answer:
+        "Sjældent — hvid drikkes typisk direkte fra flaske køligt. Karaffel bruges næsten kun til rødvin og nogle orangevine.",
+    },
+  ],
   "hvor-mange-glas-i-en-flaske-vin": [
     {
       question: "Hvor mange glas er der i en flaske vin?",

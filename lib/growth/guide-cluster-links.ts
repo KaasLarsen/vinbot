@@ -1,6 +1,6 @@
 export type GuideClusterLink = { slug: string; label: string };
 
-export type GuideClusterTone = "emerald" | "rose";
+export type GuideClusterTone = "emerald" | "rose" | "amber";
 
 export type GuideClusterBlock = {
   clusterTitle: string;
@@ -99,6 +99,44 @@ function madBlock(
   ...groups: GuideClusterLink[][]
 ): GuideClusterBlock {
   return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "rose" };
+}
+
+const VIN_VIDEN_PILLAR: GuideClusterLink = {
+  slug: "opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  label: "Rødvin temperatur og opbevaring",
+};
+
+const VIDEN_HOLD: GuideClusterLink[] = [
+  { slug: "hvor-laenge-holder-rodvin", label: "Hvor længe holder rødvin" },
+  { slug: "hvor-laenge-holder-hvidvin", label: "Hvor længe holder hvidvin" },
+  { slug: "hvor-laenge-holder-uaabnet-vin", label: "Hvor længe holder uåbnet vin" },
+  { slug: "hvor-laenge-holder-aabnet-vin", label: "Hvor længe holder åbnet vin" },
+  { slug: "hvor-laenge-holder-boks-vin", label: "Hvor længe holder papvin" },
+  { slug: "hvor-laenge-holder-vin-i-karaffel", label: "Holdbarhed i karaffel" },
+  { slug: "hvor-laenge-kan-vin-lagres", label: "Hvor længe kan vin lagres" },
+  { slug: "kan-vin-blive-daarlig", label: "Kan vin blive dårlig" },
+];
+
+const VIDEN_MAENGDER: GuideClusterLink[] = [
+  { slug: "hvor-mange-enheder-alkohol-i-et-glas-vin", label: "Genstande pr. glas vin" },
+  { slug: "hvor-meget-fylder-en-flaske-vin", label: "Hvor meget fylder en flaske" },
+  { slug: "hvor-mange-glas-i-en-flaske-vin", label: "Glas pr. flaske" },
+  { slug: "hvor-meget-alkohol-i-vin", label: "Alkoholprocent i vin" },
+  { slug: "hvor-mange-kalorier-i-vin", label: "Kalorier i vin" },
+];
+
+const VIDEN_FEST: GuideClusterLink[] = [
+  { slug: "hvor-meget-vin-til-bryllup", label: "Hvor meget vin til bryllup" },
+  { slug: "hvor-meget-vin-til-fest", label: "Hvor meget vin til fest" },
+];
+
+function videnBlock(
+  exclude: string[],
+  title: string,
+  intro: string,
+  ...groups: GuideClusterLink[][]
+): GuideClusterBlock {
+  return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
 }
 
 /** Synlige klynge-links på guide-sider — styrker intern linking. */
@@ -277,15 +315,6 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
     [HUB],
   ),
-  "hovedpine-af-roedvin": alkoholfriBlock(
-    [],
-    "Alternativ til rødvin",
-    "Oplever du hovedpine af tung rød? Prøv lavalkohol, rosé afkølet eller alkoholfri bobler.",
-    [HUB],
-    [{ slug: "bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" }],
-    [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
-    [{ slug: "mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no" }],
-  ),
   "vin-og-overgangsalder-histamin": alkoholfriBlock(
     [],
     "Alkoholfri og lavalkohol",
@@ -293,14 +322,6 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [HUB],
     [{ slug: "bedste-alkoholfri-hvidvin", label: "Bedste alkoholfri hvidvin" }],
     [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
-    [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
-  ),
-  "hvor-mange-kalorier-i-vin": alkoholfriBlock(
-    [],
-    "Færre kalorier i glasset",
-    "Alkoholfri vin har typisk færre kalorier end fuld styrke — se overblikket.",
-    [HUB],
-    [{ slug: "bedste-alkoholfri-hvidvin", label: "Alkoholfri hvidvin" }],
     [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
   ),
   "vin-trends-og-forbrug-i-danmark": alkoholfriBlock(
@@ -325,14 +346,6 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Champagne, cava og prosecco har 0 %-pendanter — se de bedste mousserende uden alkohol.",
     [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
     [{ slug: "bedste-alkoholfri-champagne", label: "Alkoholfri champagne og sparkling" }],
-    [HUB],
-  ),
-  "hvor-meget-vin-til-bryllup": alkoholfriBlock(
-    [],
-    "Alkoholfri til bryllup",
-    "Planlæg 0 % bobler og hvid til gæster der ikke drikker — typisk 10–20 % af flaskerne.",
-    [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
-    [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
     [HUB],
   ),
   "vin-til-studenterfest": alkoholfriBlock(
@@ -460,4 +473,146 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "vin-til-grill-og-bbq", label: "Vin til grill" }],
     [{ slug: "bedste-sommervin", label: "Bedste sommervin" }],
   ),
+
+  // Vin-viden-klynge (holdbarhed, mængder, temperatur)
+  "opbevaring-af-vin-temperatur-og-aabnet-flaske": videnBlock(
+    ["opbevaring-af-vin-temperatur-og-aabnet-flaske"],
+    "Vin-viden — holdbarhed og mængder",
+    "Temperatur hænger sammen med holdbarhed — se også genstande, flaskestørrelser og lagring.",
+    VIDEN_HOLD.slice(0, 5),
+    VIDEN_MAENGDER.slice(0, 4),
+  ),
+  "hvor-mange-enheder-alkohol-i-et-glas-vin": videnBlock(
+    ["hvor-mange-enheder-alkohol-i-et-glas-vin"],
+    "Vin-viden — mængder og holdbarhed",
+    "Genstande og ml hænger sammen med glasstørrelse og flaske — flere praktiske svar.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_MAENGDER.filter((l) => l.slug !== "hvor-mange-enheder-alkohol-i-et-glas-vin"),
+    VIDEN_HOLD.slice(0, 3),
+  ),
+  "hvor-meget-fylder-en-flaske-vin": videnBlock(
+    ["hvor-meget-fylder-en-flaske-vin"],
+    "Vin-viden — flaske og glas",
+    "750 ml, magnum og glas pr. flaske — se også genstande og alkoholprocent.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_MAENGDER.filter((l) => !["hvor-meget-fylder-en-flaske-vin"].includes(l.slug)),
+    VIDEN_HOLD.slice(0, 2),
+  ),
+  "hvor-laenge-holder-boks-vin": videnBlock(
+    ["hvor-laenge-holder-boks-vin"],
+    "Vin-viden — holdbarhed",
+    "Papvin holder længere åbnet — sammenlign med flaske, karaffel og lagring.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_HOLD.filter((l) => l.slug !== "hvor-laenge-holder-boks-vin").slice(0, 5),
+    VIDEN_MAENGDER.slice(0, 2),
+  ),
+  "hvor-laenge-holder-uaabnet-vin": videnBlock(
+    ["hvor-laenge-holder-uaabnet-vin"],
+    "Vin-viden — uåbnet og lagring",
+    "Hverdagsvin vs. lagringsvine — se også rødvin, boks og om vin kan blive dårlig.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_HOLD.filter((l) => l.slug !== "hvor-laenge-holder-uaabnet-vin").slice(0, 5),
+    [{ slug: "hvor-laenge-kan-vin-lagres", label: "Hvor længe kan vin lagres" }],
+  ),
+  "hvor-laenge-holder-aabnet-vin": videnBlock(
+    ["hvor-laenge-holder-aabnet-vin"],
+    "Vin-viden — åbnet vin",
+    "Køleskab og prop forlænger glasset — se rødvin, hvidvin og bobler hver for sig.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "hvor-laenge-holder-rodvin", label: "Hvor længe holder rødvin" },
+      { slug: "hvor-laenge-holder-hvidvin", label: "Hvor længe holder hvidvin" },
+      { slug: "hvor-laenge-holder-boks-vin", label: "Hvor længe holder papvin" },
+      { slug: "hvor-laenge-holder-vin-i-karaffel", label: "Holdbarhed i karaffel" },
+    ],
+  ),
+  "hvor-laenge-holder-rodvin": videnBlock(
+    ["hvor-laenge-holder-rodvin"],
+    "Vin-viden — rødvin holdbarhed",
+    "Åbnet og uåbnet rødvin — temperatur, lagring og tegn på dårlig flaske.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_HOLD.filter((l) => l.slug !== "hvor-laenge-holder-rodvin").slice(0, 4),
+    VIDEN_MAENGDER.slice(0, 2),
+  ),
+  "hvor-laenge-kan-vin-lagres": videnBlock(
+    ["hvor-laenge-kan-vin-lagres"],
+    "Vin-viden — lagring",
+    "Hvornår hverdagsvin skal drikkes — og hvornår lagring giver mening.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "hvor-laenge-holder-uaabnet-vin", label: "Hvor længe holder uåbnet vin" },
+      { slug: "kan-roedvin-blive-for-gammel", label: "Kan rødvin blive for gammel" },
+      { slug: "kan-vin-blive-daarlig", label: "Kan vin blive dårlig" },
+    ],
+  ),
+  "kan-vin-blive-daarlig": videnBlock(
+    ["kan-vin-blive-daarlig"],
+    "Vin-viden — fejl og holdbarhed",
+    "Kork, oxidation og opbevaring — se også temperatur og lagring.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_HOLD.filter((l) => l.slug !== "kan-vin-blive-daarlig").slice(0, 4),
+  ),
+  "hvor-mange-kalorier-i-vin": [
+    alkoholfriBlock(
+      [],
+      "Færre kalorier i glasset",
+      "Alkoholfri vin har typisk færre kalorier end fuld styrke — se overblikket.",
+      [HUB],
+      [{ slug: "bedste-alkoholfri-hvidvin", label: "Alkoholfri hvidvin" }],
+      [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
+    ),
+    videnBlock(
+      ["hvor-mange-kalorier-i-vin"],
+      "Vin-viden — kalorier og alkohol",
+      "Kalorier følger alkohol og sukker — se genstande, glas og flaskestørrelser.",
+      [VIN_VIDEN_PILLAR],
+      VIDEN_MAENGDER.filter((l) => l.slug !== "hvor-mange-kalorier-i-vin"),
+    ),
+  ],
+  "hvor-meget-vin-til-fest": videnBlock(
+    ["hvor-meget-vin-til-fest"],
+    "Vin-viden — mængder til fest",
+    "½–1 flaske per gæst — se bryllup, genstande og glas pr. flaske.",
+    [VIN_VIDEN_PILLAR],
+    VIDEN_FEST.filter((l) => l.slug !== "hvor-meget-vin-til-fest"),
+    VIDEN_MAENGDER.slice(0, 3),
+  ),
+  "hvor-meget-vin-til-bryllup": [
+    alkoholfriBlock(
+      [],
+      "Alkoholfri til bryllup",
+      "Planlæg 0 % bobler og hvid til gæster der ikke drikker — typisk 10–20 % af flaskerne.",
+      [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
+      [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
+      [HUB],
+    ),
+    videnBlock(
+      ["hvor-meget-vin-til-bryllup"],
+      "Vin-viden — mængder til fest",
+      "Flasker per gæst hænger sammen med genstande og glas — flere praktiske beregninger.",
+      [VIN_VIDEN_PILLAR],
+      VIDEN_FEST.filter((l) => l.slug !== "hvor-meget-vin-til-bryllup"),
+      VIDEN_MAENGDER.slice(0, 3),
+    ),
+  ],
+  "hovedpine-af-roedvin": [
+    alkoholfriBlock(
+      [],
+      "Alternativ til rødvin",
+      "Oplever du hovedpine af tung rød? Prøv lavalkohol, rosé afkølet eller alkoholfri bobler.",
+      [HUB],
+      [{ slug: "bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" }],
+      [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
+      [{ slug: "mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no" }],
+    ),
+    videnBlock(
+      [],
+      "Vin-viden — temperatur og sulfit",
+      "Histamin, temperatur og opbevaring påvirker oplevelsen — praktiske svar.",
+      [VIN_VIDEN_PILLAR],
+      [{ slug: "vin-og-overgangsalder-histamin", label: "Vin og histamin" }],
+      [{ slug: "hvad-er-sulfit-i-vin", label: "Hvad er sulfit i vin" }],
+      [{ slug: "afkoelt-roedvin", label: "Afkølet rødvin" }],
+    ),
+  ],
 };

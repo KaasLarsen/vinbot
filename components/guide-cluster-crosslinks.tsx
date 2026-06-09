@@ -13,6 +13,11 @@ const TONE_STYLES = {
     link: "text-rose-900 decoration-rose-200 hover:text-rose-950",
     footer: "text-rose-900",
   },
+  amber: {
+    section: "border-amber-200/80 bg-amber-50/50",
+    link: "text-amber-950 decoration-amber-200 hover:text-stone-950",
+    footer: "text-amber-950",
+  },
 } as const;
 
 function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideSlug: string }) {
@@ -58,6 +63,13 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
             className={`font-medium hover:underline ${styles.footer}`}
           >
             Se den komplette vin-og-mad-guide
+          </Link>
+        </p>
+      ) : null}
+      {tone === "amber" ? (
+        <p className="mt-4 text-sm text-stone-600">
+          <Link href="/vin-viden" className={`font-medium hover:underline ${styles.footer}`}>
+            Se hele vin-viden-hubben
           </Link>
         </p>
       ) : null}

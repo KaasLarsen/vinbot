@@ -1,13 +1,24 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-/** Gør pathname tilgængelig i `not-found.tsx` under `/vine/[slug]`. */
+/** Apex → www (canonical host) + pathname til `not-found.tsx` under `/vine/[slug]`. */
 export function middleware(request: NextRequest) {
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", request.nextUrl.pathname);
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  const host = request.headers.get("host")?.split(":")[0] ?? "";
+  if (host === "vinbot.dk") {
+    const url = request.nextUrl.clone();
+    url.hostname = "www.vinbot.dk";
+    return NextResponse.redirect(url, 308);
+  }
+
+  if (request.nextUrl.pathname.startsWith("/vine/")) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-pathname", request.nextUrl.pathname);
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: "/vine/:path*",
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };

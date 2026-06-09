@@ -7,9 +7,9 @@ import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { filterIndexableGuides, listGuides, listVinVidenHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 
-const PAGE_TITLE = "Vin-viden — hvor længe, hvor mange, hvad er og sådan";
+const PAGE_TITLE = "Vin-viden: temperatur, genstande og holdbarhed";
 const PAGE_DESCRIPTION =
-  "Korte svar på det folk googler om vin: rødvin temperatur og vintemperatur i °C, hvor længe holder rødvin, glas pr. flaske, tanniner, dekantering — samlet på ét sted.";
+  "Svar på de mest googlede vin-spørgsmål: rødvin temperatur i °C, genstande pr. glas, 750 ml per flaske, hvor længe holder åbnet vin og papvin — med FAQ og tal.";
 const PAGE_URL = `${siteUrl}/vin-viden`;
 
 export const metadata: Metadata = {
