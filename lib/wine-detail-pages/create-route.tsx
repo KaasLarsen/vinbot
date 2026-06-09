@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { WineDetailPageView } from "@/components/wine-detail-page";
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
 import { getMerchantWineConfig, wineDetailPagePath } from "@/lib/wine-detail-pages/merchants";
+import { isIndexableWineDetailPage } from "@/lib/wine-detail-pages/indexability";
 import { getWineDetailPage, listWineDetailSlugsForMerchant } from "@/lib/wine-detail-pages/registry";
 import { siteUrl } from "@/lib/site";
 
@@ -28,6 +29,7 @@ export function createWineDetailRoute(merchantId: MerchantWineId) {
       ogCandidates.length > 0
         ? ogCandidates.slice(0, 6).map((u) => ({ url: u, alt: wine.displayTitle }))
         : undefined;
+    const indexable = isIndexableWineDetailPage(wine);
     return {
       title,
       description: wine.metaDescription,
@@ -38,6 +40,15 @@ export function createWineDetailRoute(merchantId: MerchantWineId) {
         description: wine.metaDescription,
         ...(ogImages ? { images: ogImages } : {}),
       },
+      ...(!indexable
+        ? {
+            robots: {
+              index: false,
+              follow: true,
+              googleBot: { index: false, follow: true },
+            },
+          }
+        : {}),
     };
   }
 

@@ -31,6 +31,7 @@ import { JOHNSEN_WINE_BATCH3_PAGES } from "@/lib/wine-detail-pages/pages/johnsen
 import { JOHNSEN_WINE_BATCH4_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine-batch4";
 import { JOHNSEN_WINE_BATCH5_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine-batch5";
 import { JOHNSEN_WINE_BATCH6_PAGES } from "@/lib/wine-detail-pages/pages/johnsen-wine-batch6";
+import { isIndexableWineDetailPage } from "@/lib/wine-detail-pages/indexability";
 import type { WineDetailFeaturedPick, WineDetailPage, WineDetailGuideRef, WineDetailSpec, WineDetailAside, WineDetailFoodPairing } from "@/lib/wine-detail-pages/types";
 
 const ALL_PAGES: readonly WineDetailPage[] = [
@@ -135,9 +136,9 @@ export function wineDetailPageToFeaturedPick(page: WineDetailPage): WineDetailFe
   };
 }
 
-/** Sitemap: alle `{merchant}/vin/{slug}`-stier. */
+/** Sitemap: indexerbare `{merchant}/vin/{slug}`-stier (≥ MIN_INDEXABLE_WORDS redaktionelt indhold). */
 export function listAllWineDetailSitemapEntries(): { path: string; merchantId: MerchantWineId; slug: string }[] {
-  return ALL_PAGES.map((p) => ({
+  return ALL_PAGES.filter(isIndexableWineDetailPage).map((p) => ({
     merchantId: p.merchantId,
     slug: p.slug,
     path: wineDetailPageUrl(p),
