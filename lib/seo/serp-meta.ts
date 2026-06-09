@@ -90,9 +90,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 2 — GSC lav CTR (jun 2026)
   "bedste-alkoholfri-vin": {
-    title: "Bedste alkoholfri vin i Danmark (0 %)",
+    title: "Alkoholfri vin bedst i test 2026",
     description:
-      "Alkoholfri vin bedst i test: Leitz, Giesen, Torres og Noughty. Bobler, hvid, rosé og rød — prislejer, madparring og hvad du bør undgå i 0 %-klassen.",
+      "Sammenligning: Leitz, French Bloom, Giesen, Torres og Noughty. Top 10 alkoholfri bobler, hvid, rosé og rød med pris og madparring — dansk guide.",
   },
   "bedste-alkoholfri-champagne": {
     title: "Bedste alkoholfri champagne (0 %)",

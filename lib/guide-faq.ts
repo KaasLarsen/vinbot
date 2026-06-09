@@ -2024,6 +2024,21 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Rosé uden alkohol dækker ofte både skinke, ost og grønt; alkoholfri bobler passer til oliven, fritter og skaldyr og renser ganen mellem småretter. Se bedste alkoholfri rosé og bobler-guiden for konkrete flasker.",
     },
+    {
+      question: "Hvilken alkoholfri vin er bedst i test i 2026?",
+      answer:
+        "Leitz Eins-Zwei-Zero (bobler og riesling) topper de fleste sammenligninger fordi syren og frugten minder om rigtig vin. French Bloom og Oddbird er bedste premium-bobler; Torres Natureo er stærkest budget-valg. Se sammenligningstabellen øverst i bedste alkoholfri vin.",
+    },
+    {
+      question: "Hvilken alkoholfri hvidvin smager mindst af saft?",
+      answer:
+        "Tør riesling og sauvignon uden alkohol — især Leitz Eins-Zwei-Zero Riesling og Giesen 0 % Sauvignon — har naturlig syre der maskerer fraværet af alkohol. Undgå flasker med over 40 g/L restsukker på etiketten.",
+    },
+    {
+      question: "Kan alkoholfri vin bruges til madlavning?",
+      answer:
+        "Ja, til sauce og reduktion — men smagen kan blive sødere og tyndere end med rigtig vin. Brug tør hvid eller bobler til fisk og flødesaucer; til rødsovs er rigtig vin stadig bedst, medmindre hele måltidet skal være 0 %.",
+    },
   ],
   "vin-til-stegt-flaesk": [
     {

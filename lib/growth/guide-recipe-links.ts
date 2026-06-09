@@ -64,6 +64,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "gravad-laks-med-hvidvin", label: "Gravad laks med hvidvin" },
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
+    { slug: "risalamande-med-hvidvin", label: "Risalamande med hvidvin" },
+    { slug: "aeblekage-hvidvin-karamel", label: "Æblekage med hvidvin-karamel" },
+    { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
   ],
   "vin-til-fisk-og-skaldyr": [
     { slug: "gravad-laks-med-hvidvin", label: "Gravad laks med hvidvin" },
@@ -105,6 +108,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-wok": [
     { slug: "wok-kylling-med-hvidvin", label: "Wok-kylling med hvidvin" },
+    { slug: "wok-rejer-hvidvin", label: "Wok-rejer med hvidvin" },
   ],
   "vin-til-oksekoed": [
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
@@ -116,6 +120,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-lam": [
     { slug: "lammekoteletter-i-rodvin", label: "Lammekoteletter i rødvin" },
     { slug: "braiseret-lammeskank-med-rodvin", label: "Braiseret lammeskank" },
+    { slug: "lammegryde-mynte-hvidvin", label: "Lammegryde med mynte og hvidvin" },
   ],
   "vin-til-svinekoed": [
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
@@ -144,5 +149,55 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
     { slug: "sellerisuppe-med-hvidvin", label: "Sellerisuppe med hvidvin" },
     { slug: "ratatouille-med-hvidvin", label: "Ratatouille med hvidvin" },
+    { slug: "vegetar-gryderet-rodvin", label: "Vegetar-gryderet med rødvin" },
+    { slug: "shakshuka-med-hvidvin", label: "Shakshuka med hvidvin" },
   ],
+  "vin-til-nachos": [
+    { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
+  ],
+  "vin-til-kebab-og-shawarma": [
+    { slug: "shawarma-kylling-med-hvidvin", label: "Shawarma-kylling med hvidvin" },
+    { slug: "kebab-spyd-med-rodvin", label: "Kebab-spyd med rødvin" },
+  ],
+  "vin-til-burger": [
+    { slug: "burger-med-rodvinsglace", label: "Burger med rødvinsglace" },
+  ],
+  "vin-til-pho": [
+    { slug: "pho-kylling-med-hvidvin", label: "Pho med kylling og hvidvin" },
+  ],
+  "vin-til-ramen": [
+    { slug: "ramen-kylling-med-hvidvin", label: "Ramen med kylling og hvidvin" },
+  ],
+  "vin-til-tacos": [
+    { slug: "tacos-med-rodvin-okse", label: "Tacos med okse og rødvin" },
+  ],
+  "vin-til-karryretter": [
+    { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
+  ],
+  "vin-til-ceviche": [
+    { slug: "ceviche-med-hvidvin", label: "Ceviche med hvidvin" },
+  ],
+  "vin-til-quiche": [
+    { slug: "quiche-med-hvidvin", label: "Quiche med hvidvin" },
+  ],
+  "vin-til-sild": [
+    { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
+  ],
+  "vin-til-falafel-og-hummus": [
+    { slug: "falafel-tallerken-med-hvidvin", label: "Falafel-tallerken med hvidvin" },
+  ],
+  "vin-til-asiatisk-mad": [
+    { slug: "pad-thai-med-hvidvin", label: "Pad thai med hvidvin" },
+    { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
+    { slug: "couscous-kylling-med-hvidvin", label: "Couscous med kylling og hvidvin" },
+    { slug: "pho-kylling-med-hvidvin", label: "Pho med kylling og hvidvin" },
+    { slug: "ramen-kylling-med-hvidvin", label: "Ramen med kylling og hvidvin" },
+  ],
+  "vin-til-laks": [
+    { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
+  ],
+  "vin-til-sushi": [
+    { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
+  ],
+
 };
