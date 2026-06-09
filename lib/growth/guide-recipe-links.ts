@@ -51,7 +51,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ragu-med-rodvin", label: "Ragù med rødvin" },
   ],
   "vin-til-pizza": [
-    { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin (samme sovs-logik)" },
+    { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin til pizza" },
+    { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
+    { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
   ],
   "vin-til-julefrokost": [
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
@@ -74,6 +76,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "fiskefrikadeller-i-hvidvinsauce", label: "Fiskefrikadeller i hvidvinsauce" },
     { slug: "fisk-i-hvidvinsauce", label: "Fisk i hvidvinsauce" },
     { slug: "torsk-i-hvidvin", label: "Torsk i hvidvin" },
+    { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
+    { slug: "bouillabaisse-med-hvidvin", label: "Bouillabaisse med hvidvin" },
   ],
   "vin-til-boeff": [
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
@@ -182,6 +186,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-sild": [
     { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
+    { slug: "stegte-sild-i-hvidvin", label: "Stegte sild i hvidvin" },
   ],
   "vin-til-falafel-og-hummus": [
     { slug: "falafel-tallerken-med-hvidvin", label: "Falafel-tallerken med hvidvin" },
@@ -198,6 +203,29 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-sushi": [
     { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
+  ],
+  "vin-til-stegt-flaesk": [
+    { slug: "stegt-flaesk-i-hvidvinsauce", label: "Stegt flæsk i hvidvinsauce" },
+  ],
+  "vin-til-smorrebrod": [
+    { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
+    { slug: "stegte-sild-i-hvidvin", label: "Stegte sild i hvidvin" },
+    { slug: "aebleflaesk-med-hvidvin", label: "Æbleflæsk med hvidvin" },
+    { slug: "frikadeller-i-hvidvinsauce", label: "Frikadeller i hvidvinsauce" },
+  ],
+  "vin-til-flaesketesteg": [
+    { slug: "flaesketesteg-med-rodvin-i-brun-sovs", label: "Flæskesteg med rødvin i brun sovs" },
+    { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
+  ],
+  "vin-til-graesk-mad": [
+    { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
+    { slug: "paella-med-hvidvin", label: "Paella med hvidvin" },
+    { slug: "chorizo-i-rodvin", label: "Chorizo al vino (tapas-stil)" },
+  ],
+  "vin-til-mortensaften": [
+    { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
+    { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
+    { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
   ],
 
 };

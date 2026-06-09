@@ -1951,6 +1951,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "bedste-champagne-under-300-kr": [
     {
+      question: "Kan man få god champagne under 300 kr?",
+      answer:
+        "Ja — basis brut NV fra seriøse huse og grower-champagne findes 200–280 kr i DK. Forvent frisk, tør stil — ikke prestige-årgange eller lang lagring på bunden.",
+    },
+    {
       question: "Hvor lidt kan ægte champagne koste?",
       answer:
         "Realistisk starter ægte champagne ved 200–230 kr for basis non-vintage fra store huse som Nicolas Feuillatte, Piper-Heidsieck eller Lanson. Alt under 200 kr er typisk supermarkedsflasker, restpartier eller ikke ægte champagne-AOC.",
@@ -2077,6 +2082,194 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan man drikke rødvin til ceviche?",
       answer:
         "Sjældent en god idé — tannin og ceviche-syre kolliderer. Hvis du vil have rød: meget let, afkølet gamay eller pinot noir uden fad, serveret køligt (12–14 °C).",
+    },
+  ],
+  "vin-til-graesk-mad": [
+    {
+      question: "Hvilken vin til græsk mad?",
+      answer:
+        "Tør hvid med syre og salt: assyrtiko, albariño, vermentino eller sauvignon. Til grill og souvlaki: let rosé eller ung xinomavro/agiorgitiko. Meze og salat: bobler (brut cava) eller kølig rosé.",
+    },
+    {
+      question: "Hvilken vin til moussaka og souvlaki?",
+      answer:
+        "Moussaka med aubergine og ost: mellemfyldig rød med moden frugt (agiorgitiko, ung nebbiolo, gamay). Souvlaki og gyros: rosé, assyrtiko eller let rød serveret 14–16 °C.",
+    },
+    {
+      question: "Passer rosé til græsk meze?",
+      answer:
+        "Ja — tør provence- eller spanske rosado-stil er klassisk til tzatziki, feta, oliven og grillet fisk. Syre og salt i maden matcher rosé bedre end tung rød.",
+    },
+    {
+      question: "Skal jeg købe græsk vin til græsk mad?",
+      answer:
+        "Ikke nødvendigt — assyrtiko og xinomavro er ideelle, men albariño og vermentino rammer samme profil. Køb græsk flaske når du vil have autenticitet; ellers vælg mineralsk hvid og let rosé.",
+    },
+  ],
+  "kan-vin-blive-daarlig": [
+    {
+      question: "Kan vin blive dårlig?",
+      answer:
+        "Ja — via korkfejl (TCA), for meget ilt (oxidation), eddike (VA) eller dårlig opbevaring. Det er sjældent farligt at smage, men smagen kan være ubehagelig. Kassér ved mug, eddike eller neglelak-lugt.",
+    },
+    {
+      question: "Hvordan smager korket vin?",
+      answer:
+        "Fugtigt papir, våd hund, muggen kælder — ikke «sur drue». Typisk 2–5 % af naturkork-flasker. Reklamér hos forhandleren; TCA er ikke farligt, men vinen er ubrugelig.",
+    },
+    {
+      question: "Kan man drikke gammel åbnet vin?",
+      answer:
+        "Ofte ja til madlavning eller samme aften, hvis den bare er flad. Undgå ved eddike-, prop- eller brunfarvet ung vin. Åbnet hvid/rosé holder typisk 2–4 dage på køl med prop.",
+    },
+    {
+      question: "Er sur vin farlig?",
+      answer:
+        "Nej — «sur» vin er normalt oxideret eller eddike-agtig, ikke bakteriefarlig på samme måde som fordærvet mad. Smag forsigtigt; ved tvivl brug til sauce eller kassér.",
+    },
+  ],
+  "bedste-rosevin": [
+    {
+      question: "Hvad er den bedste rosévin?",
+      answer:
+        "Tør provence- eller languedoc-rosé med syre og salt, seriøs spanske rosado fra Navarra/Rioja, eller mousserende rosé (brut). Undgå sød «blush» — moderne rosé skal være tør og frisk.",
+    },
+    {
+      question: "Hvilken rosé er bedst til sommer?",
+      answer:
+        "Let provence-stil, côtes de provence eller dansk sommer-rosé med 11–12,5 % alkohol. Server 8–10 °C til salat, grill og tapas.",
+    },
+    {
+      question: "Er Provence-rosé den bedste?",
+      answer:
+        "Ofte benchmark for tør, elegant stil — men Spanien, Italien (rosato) og Tavel kan matche til lavere pris. Smag på syre og friskhed, ikke kun farve.",
+    },
+    {
+      question: "Hvad koster god rosé i Danmark?",
+      answer:
+        "Seriøs tør rosé starter omkring 60–90 kr i supermarked; 100–150 kr giver ofte mere kompleksitet. Bobler af rosé ligger typisk 80–120 kr for cava/prosecco brut.",
+    },
+  ],
+  "hvor-mange-kalorier-i-vin": [
+    {
+      question: "Hvor mange kalorier er der i et glas vin?",
+      answer:
+        "Ca. 80–120 kcal per glas (12,5 cl) for tør vin ved 12–13 % alkohol. Bobler ofte 80–95 kcal. Dessertvin og port kan være 150–200+ kcal per glas pga. sukker.",
+    },
+    {
+      question: "Hvor mange kalorier i en flaske rødvin?",
+      answer:
+        "Ca. 600–750 kcal per 75 cl tør rødvin (12,5 %). Højere alkohol (14–15 %) og restsødme øger kalorierne — det er alkohol og sukker, ikke farven, der tæller.",
+    },
+    {
+      question: "Har rosé færre kalorier end rødvin?",
+      answer:
+        "Sjældent markant — tør rosé og tør rød ligger ofte ens. Let bobler kan have lidt færre kcal ved lavere alkohol. Sammenlign etiketten på alkohol % og restsukker.",
+    },
+    {
+      question: "Hvilken vin har færrest kalorier?",
+      answer:
+        "Tør hvid eller brut bobler med 11–12 % alkohol og lav restsukker. Undgå dessertvin, sød moscatel og tunge 15 %-røde hvis kalorier er prioritet.",
+    },
+  ],
+  "hvor-meget-vin-til-bryllup": [
+    {
+      question: "Hvor meget vin skal man regne med til bryllup?",
+      answer:
+        "Ca. 1 flaske vin per voksen drikkende gæst til middag + fest, plus 20–30 flasker bobler til velkomst og skål. Kort reception uden middag: ca. ½ flaske per gæst.",
+    },
+    {
+      question: "Hvor mange flasker vin til 100 gæster?",
+      answer:
+        "Ved 85 drikkende voksne: ca. 85 flasker vin fordelt på rød/hvid/rosé efter menu + 20–30 flasker bobler. Køb 10 % ekstra til uforudsete skål.",
+    },
+    {
+      question: "Hvor mange flasker bobler til bryllup?",
+      answer:
+        "Regn 1 flaske bobler per 4–6 gæster til velkomst, og ekstra til skåltaler og dessert. 100 gæster: typisk 20–35 flasker afhængigt af program.",
+    },
+    {
+      question: "Skal man have alkoholfri vin til bryllup?",
+      answer:
+        "Ja — regn med 10–20 % af gæsterne vil have 0 %. Alkoholfri bobler og hvid giver inklusion uden at halvere det samlede vinbudget.",
+    },
+  ],
+  "hvor-meget-vin-til-fest": [
+    {
+      question: "Hvor meget vin per gæst til fest?",
+      answer:
+        "½–1 flaske per voksen til middag-fest; 1–1½ ved lang aften med dans. Kun snacks: ⅓–½ flaske. Tilføj bobler til skål separat.",
+    },
+    {
+      question: "Hvor mange flasker vin til 20 personer?",
+      answer:
+        "10–20 flasker til middag (afhængigt af varighed og om gæsterne også drikker øl/cocktails). Fordel ca. 50 % rød, 35 % hvid, 15 % rosé til blandet bord — justér efter menu.",
+    },
+    {
+      question: "Hvor mange flasker bobler til fest?",
+      answer:
+        "1 flaske per 4–6 gæster til velkomst; mere hvis I skåler ofte. Bobler går hurtigere end stillvin — køb gerne 20 % ekstra.",
+    },
+  ],
+  "vin-til-burger": [
+    {
+      question: "Hvilken vin til burger?",
+      answer:
+        "Frugtig rød med moderat tannin: zinfandel, syrah, gamay eller pinot noir. Rosé og kraftig hvid (chardonnay, viognier) til BBQ og ost. Server rød 14–16 °C.",
+    },
+    {
+      question: "Hvilken rødvin til cheeseburger?",
+      answer:
+        "Zinfandel, primitivo eller ung syrah — moden frugt skærer igennem ost og bacon uden hård tannin. Undgå ung, tannintung cabernet til sød bun og cheddar.",
+    },
+    {
+      question: "Passer rosé til burger?",
+      answer:
+        "Ja — tør rosé er undervurderet til burger: syre mod fedme, frugt mod BBQ-sauce. Især til kyllingeburger og vegetar med feta.",
+    },
+  ],
+  "vin-til-julefrokost": [
+    {
+      question: "Hvilken vin til julefrokost?",
+      answer:
+        "Bobler til velkomst, hvid/riesling til fisk og tarteletter, rød til flæskesteg og medister, sød/dessertvin til risalamande. Regn 1–1½ flaske per gæst over lang frokost.",
+    },
+    {
+      question: "Hvilken rødvin til flæskesteg på julefrokost?",
+      answer:
+        "Mellemfyldig rød med syre: gamay, pinot noir, ung rioja eller merlot. Undgå unge, tannintunge bordeaux til sød rødkål og fed flæsk.",
+    },
+    {
+      question: "Hvilken bobler til julefrokost?",
+      answer:
+        "Brut cava, crémant eller prosecco til velkomst og skål — ikke extra dry hvis I vil have tør stil. Alkoholfri bobler til blandet selskab.",
+    },
+    {
+      question: "Hvor meget vin til julefrokost per person?",
+      answer:
+        "Ca. 1–1½ flaske stillvin + ½ flaske bobler per voksen over 4–6 timer. Køb ekstra hvid til fisk og rød til kød — dansk julefrokost skifter ret hele tiden.",
+    },
+  ],
+  "bedste-sommervin": [
+    {
+      question: "Hvad er den bedste sommervin?",
+      answer:
+        "Tør rosé, let hvid (sauvignon, albariño, vermentino) og brut bobler — alle serveret køligt (8–12 °C). Let rød som gamay eller pinot til grill, afkølet til 14 °C.",
+    },
+    {
+      question: "Hvilken vin til grill om sommeren?",
+      answer:
+        "Rosé til kylling og salat, zinfandel/syrah til burger og pølser, assyrtiko eller sauvignon til fisk. Undgå tunge 15 %-røde i solen.",
+    },
+    {
+      question: "Rosé eller hvidvin om sommeren?",
+      answer:
+        "Rosé er mest alsidig til dansk sommermad (grill, salat, tapas). Hvid vinder til ren fisk og skaldyr. Mange vælger begge — rosé til frokost, hvid til fisk om aftenen.",
+    },
+    {
+      question: "Hvilken temperatur skal sommervin have?",
+      answer:
+        "Hvid og rosé 8–12 °C, bobler 6–8 °C, let rød 12–16 °C. For varm vin smager alkohol og fedme dominerer i varmen.",
     },
   ],
   "vin-til-smorrebrod": [

@@ -120,9 +120,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bobler til kransekage: demi-sec, moscato og sød riesling. Vin til dessert skal matche kagens sødme — ellers smager glasset surt.",
   },
   "hvor-meget-vin-til-bryllup": {
-    title: "Hvor meget vin til bryllup per gæst?",
+    title: "Hvor meget vin til bryllup? Flasker per gæst",
     description:
-      "Regn med ca. ½–1 flaske per voksen til fest med middag. Fordeling af rød, hvid og bobler — og hvornår du skal have alkoholfri med til bordet.",
+      "1 flaske vin per drikkende gæst + bobler til skål. Beregning til 50, 100 og 150 gæster — fordeling af rød, hvid og rosé.",
   },
   "vivino-app-til-vin-anmeldelser": {
     title: "Vivino-app: ratings og priser i DK",
@@ -239,9 +239,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 4 — GSC lav CTR + mad/bedste-hubs (jun 2026)
   "vin-til-graesk-mad": {
-    title: "Vin til græsk mad og meze",
+    title: "Vin til græsk mad: moussaka, meze og grill",
     description:
-      "Bedste vin til græsk mad: assyrtiko, rosé og let rød til souvlaki, feta og grill. Syre til olivenolie og urter — dansk guide med flasker.",
+      "Hvilken vin til græsk mad? Assyrtiko til fisk, rosé til meze, agiorgitiko til moussaka. Souvlaki, tzatziki og horiatiki — konkrete flasketyper.",
   },
   "vin-til-fisk-og-skaldyr": {
     title: "Vin til fisk og skaldyr",
@@ -337,6 +337,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Hvor længe kan vin lagres?",
     description:
       "Hverdagsvin drikkes inden for få år. Lagringsvine 10–50+ år i køl, mørkt og liggende. Tabel pr. stil — og hvornår flasken er klar nu.",
+  },
+  "vin-til-julefrokost": {
+    title: "Vin til julefrokost: flæsk, fisk og risalamande",
+    description:
+      "Vin til dansk julefrokost: bobler til start, hvid til fisk, rød til flæskesteg og medister. Mængde per gæst og klassiske flasketyper.",
   },
 };
 
