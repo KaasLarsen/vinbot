@@ -22,6 +22,14 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
   },
   {
+    source: "/blog/guide-til-vintemperaturer.html",
+    destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  },
+  {
+    source: "/blog/guide-til-vintemperaturer",
+    destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  },
+  {
     source: "/guides/serveringstemperatur-vin",
     destination: "/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske",
   },

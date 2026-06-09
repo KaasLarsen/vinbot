@@ -26,6 +26,7 @@ import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
+import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -39,13 +40,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!g) return {};
   const canonical = `${siteUrl}/guides/${slug}`;
   const tooThin = g.wordCount < MIN_INDEXABLE_WORDS;
+  const serpTitle = buildGuideSerpTitle(g.frontmatter.title, slug);
+  const serpDescription = buildGuideSerpDescription(g.frontmatter.description, slug, g.frontmatter.title);
   return {
-    title: g.frontmatter.title,
-    description: g.frontmatter.description,
+    title: serpTitle,
+    description: serpDescription,
     alternates: { canonical },
     openGraph: {
       url: canonical,
       type: "article",
+      title: serpTitle,
+      description: serpDescription,
     },
     twitter: {
       card: "summary_large_image",

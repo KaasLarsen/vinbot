@@ -25,6 +25,7 @@ import {
   recipeTotalTimeIso,
 } from "@/lib/recipe-images";
 import { RecipeHeroImage } from "@/components/recipe-hero-image";
+import { buildRecipeSerpDescription, buildRecipeSerpTitle } from "@/lib/seo/serp-meta";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -39,15 +40,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${siteUrl}/opskrifter/${slug}`;
   const tooThin = data.wordCount < MIN_INDEXABLE_RECIPE_WORDS;
   const imageUrl = getRecipeImageAbsoluteUrl(slug, siteUrl);
+  const serpTitle = buildRecipeSerpTitle(data.frontmatter.title);
+  const serpDescription = buildRecipeSerpDescription(data.frontmatter.description, data.frontmatter.title);
   return {
-    title: data.frontmatter.title,
-    description: data.frontmatter.description,
+    title: serpTitle,
+    description: serpDescription,
     alternates: { canonical },
     openGraph: {
       url: canonical,
       type: "article",
-      title: data.frontmatter.title,
-      description: data.frontmatter.description,
+      title: serpTitle,
+      description: serpDescription,
       images: [{ url: imageUrl, width: 1200, height: 900, alt: data.frontmatter.title }],
     },
     twitter: {

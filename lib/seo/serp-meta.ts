@@ -1,0 +1,230 @@
+/** Maks. tegn Google typisk viser i SERP-snippet (dansk). */
+export const SERP_DESCRIPTION_MAX = 155;
+
+/** Primær titel i SERP inkl. «| Vinbot» (~10 tegn). */
+export const SERP_TITLE_BUDGET = 52;
+
+const GENERIC_BEDSTE_DESC =
+  /Bedste .+ under \d+ kr:\s*hvor finder du reel kvalitet,\s*hvilke producenter er sikre valg og hvad du skal undgå/i;
+
+/**
+ * Målrettet SERP for GSC-top med høj eksponering og lav CTR (maj 2026).
+ * Fuldt H1 på siden ændres ikke — kun metadata.
+ */
+const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
+  "hvor-mange-enheder-alkohol-i-et-glas-vin": {
+    title: "Hvor mange genstande i et glas vin?",
+    description:
+      "125 ml rødvin (13 %) ≈ 1,5 genstande. 1 genstand = 12 g alkohol. Tabel for hvidvin, dessertvin og boks — dansk beregning du kan bruge med det samme.",
+  },
+  "hvor-meget-fylder-en-flaske-vin": {
+    title: "Hvor meget fylder en flaske vin? (75 cl)",
+    description:
+      "Standardflaske = 750 ml (75 cl). Piccolo, magnum og jeroboam i tabel. Hvor mange glas per flaske — og hvornår størrelsen giver bedre smag.",
+  },
+  "hvor-laenge-holder-boks-vin": {
+    title: "Hvor længe holder papvin uåbnet og åben?",
+    description:
+      "Bag-in-box holder 4–6 uger åben i køleskab. Uåbnet papvin typisk 6–12 mdr. Tabel, opbevaring og hvornår boks-vin smager bedst.",
+  },
+  "hvor-laenge-holder-uaabnet-vin": {
+    title: "Hvor længe holder uåbnet vin?",
+    description:
+      "Uåbnet hverdagsvin: drik inden for 1–5 år. Lagringsvine 10–50+ år. Tabel for rød, hvid, rosé og bobler — og hvornår flasken er for gammel.",
+  },
+  "hvor-laenge-holder-aabnet-vin": {
+    title: "Hvor længe holder åbnet vin i køleskab?",
+    description:
+      "Åbnet rødvin 3–5 dage, hvidvin 3–7 dage, bobler 1–3 dage. Vakuum, køl og genlukning forlænger. Tabel pr. vintype og hvornår du skal smide den.",
+  },
+  "hvor-meget-alkohol-i-vin": {
+    title: "Hvor meget alkohol er der i vin? (%)",
+    description:
+      "Vin er typisk 11–15 % alkohol. Hvidvin 10–13 %, rødvin 12–15 %, port 19–22 %. Tabel pr. vintype og hvad ABV betyder på etiketten.",
+  },
+  "opbevaring-af-vin-temperatur-og-aabnet-flaske": {
+    title: "Rødvin temperatur i °C — komplet tabel",
+    description:
+      "Rødvin 14–18 °C, hvidvin 8–12 °C, bobler 6–8 °C. Vintemperatur-guide med tabeller for rosé, riesling og port. Opbevaring af åbnet vin.",
+  },
+  "bedste-alkoholfri-hvidvin": {
+    title: "Bedste alkoholfri hvidvin i Danmark (0 %)",
+    description:
+      "Alkoholfri hvidvin bedst i test: Leitz, Giesen og sauvignon med bid — ikke saft. Ca. 80–160 kr. Til sushi, salat og fisk. Server 8–10 °C.",
+  },
+  "bedste-alkoholfri-bobler": {
+    title: "Bedste alkoholfri bobler og champagne (0 %)",
+    description:
+      "Alkoholfri mousserende til nytår og fest: Noughty, Leitz, French Bloom. Bedst i test i DK — 6–8 °C. Hvorfor bobler slår still-vin i 0%-klassen.",
+  },
+  "bedste-alkoholfri-rose": {
+    title: "Bedste alkoholfri rosévin (0 %) til sommer",
+    description:
+      "Alkoholfri rosé bedst i test: Leitz, Torres, Noughty til terrasse og tapas. Server velafkølet — dansk guide med pris og mærker du finder i butikken.",
+  },
+  "bedste-alkoholfri-rodvin": {
+    title: "Bedste alkoholfri rødvin i Danmark",
+    description:
+      "Alkoholfri rødvin bedst i test: Leitz pinot, Torres til pizza og grill. Hvorfor 0 % rød er svær — og hvornår rosé eller bobler er bedre valg.",
+  },
+  "vin-til-ost-og-ostebord": {
+    title: "Vin til ostebord: port, sherry og bobler",
+    description:
+      "Vin til ost: bobler til milde oste, sherry til lagrede, port til blåskimmel. Dansk osteboard-guide med syre, fad og serveringstemperatur.",
+  },
+  "vin-til-laks": {
+    title: "Vin til laks og grillet laks",
+    description:
+      "Bedste vin til laks: tør riesling, chardonnay med syre og let rosé. Røget, grill, dild og sauce — konkrete flasketyper du kan købe i DK.",
+  },
+  "vin-til-kylling-og-lyst-koed": {
+    title: "Vin til kylling: hvid, rosé og let rød",
+    description:
+      "Vin til kylling efter sauce: chardonnay til fløde, pinot til grill, riesling til karry. Kylling, kalkun og kalv — flasker der passer i danske butikker.",
+  },
+  "vin-til-sushi": {
+    title: "Vin til sushi: riesling, bobler og grüner",
+    description:
+      "Bedste vin til sushi og sashimi: tør riesling, muscadet, champagne og grüner veltliner. Syre, temperatur og parring til nigiri og maki.",
+  },
+};
+
+/** Unik SERP-tekst for bedste-*-under-* (erstatter copy-paste-frontmatter). */
+const BEDSTE_SERP_BY_SLUG: Record<string, string> = {
+  "bedste-albarino-under-150-kr":
+    "Albariño under 150 kr: Rías Baixas og Minho med salt og citrus til skaldyr. Danske producenter, regioner og typiske fejl i prisklassen.",
+  "bedste-cabernet-sauvignon-under-100-kr":
+    "Cabernet under 100 kr: Haut-Médoc, Castillon og Maipo slår smarte blend-navne. Hvor du får mest struktur for pengene — og hvad du skal undgå.",
+  "bedste-cabernet-sauvignon-under-150-kr":
+    "Cabernet 100–150 kr: junior-Médoc og seriøs Chile-Reserva med tydelig frugt. Regioner, producenter og faldgruber forklaret på dansk.",
+  "bedste-cabernet-sauvignon-under-200-kr":
+    "Cabernet under 200 kr: Cru Bourgeois, modne årgange og seriøse Napa-entry. Sådan vælger du uden at betale for prestige-marketing.",
+  "bedste-chardonnay-under-100-kr":
+    "Chardonnay under 100 kr: Mâcon, Limoux og unwooded Australien slår fad-tung supermarkeds-hvid. Friske flasker til fisk og hverdag.",
+  "bedste-chardonnay-under-150-kr":
+    "Chardonnay 100–150 kr: Petit Chablis, Saint-Véran og Oregon-entry. Stål eller fad — sådan finder du den rigtige stil til maden.",
+  "bedste-chenin-blanc-under-150-kr":
+    "Chenin under 150 kr: Loire og Swartland med sec, demi-sec eller moelleux. Tjek sødme på etiketten — og undgå fejlkøb til mad.",
+  "bedste-grenache-under-100-kr":
+    "Grenache under 100 kr: Rhône Villages, Borja og Fitou til gryde og grill. Varm frugt uden Châteauneuf-pris — producenter og faldgruber.",
+  "bedste-grenache-under-150-kr":
+    "Grenache 100–150 kr: Gigondas, Vacqueyras og Montsant med mere peber og urter. Upgrade fra hverdagsflasken uden prestige-etiket.",
+  "bedste-malbec-under-100-kr":
+    "Malbec under 100 kr: Mendoza Luján og Uco til bøf og burger. Mørk frugt, blød struktur — undgå «premium» uden subregion.",
+  "bedste-malbec-under-150-kr":
+    "Malbec 100–150 kr: Reserva Mendoza eller pebret Cahors til grill. Sammenlign stilarter, producenter og årgang før du køber.",
+  "bedste-merlot-under-100-kr":
+    "Merlot under 100 kr: Côtes de Bourg og blød Chile-merlot til pasta og svinekød. Venlig frugt uden tung tannin-stress.",
+  "bedste-merlot-under-150-kr":
+    "Merlot 100–150 kr: Saint-Émilion Grand Cru og Pomerol-satellitter med mere lag. Regioner, flasker og faldgruber på dansk.",
+  "bedste-pinot-grigio-under-100-kr":
+    "Pinot grigio under 100 kr: Alto Adige og Friuli slår generisk norditaliensk bulk. Frisk aperitivo-hvid til fisk og salat.",
+  "bedste-pinot-grigio-under-150-kr":
+    "Pinot grigio 100–150 kr: mere tekstur fra Alto Adige, Friuli eller Oregon pinot gris. Sådan vælger du mellem let og struktureret.",
+  "bedste-pinot-noir-under-150-kr":
+    "Pinot noir 100–150 kr: Oregon, Marlborough og Bourgogne Chalonnaise til kylling og svampe. Madpinot uden Côte de Nuits-pris.",
+  "bedste-pinot-noir-under-250-kr":
+    "Pinot noir under 250 kr: Villages, Premier Cru og Oregon single-vineyard. Lagring, årgang og opbevaring forklaret for danske købere.",
+  "bedste-riesling-under-100-kr":
+    "Riesling under 100 kr: tør Mosel, Nahe og Pfalz til asiatisk mad og fisk. Tjek trocken på etiketten — undgå halvtør overraskelse.",
+  "bedste-riesling-under-150-kr":
+    "Riesling 100–150 kr: Gutswein, Alsace og Clare Valley med mineral og frugt. Tør, feinherb eller sød — vælg bevidst til retten.",
+  "bedste-sangiovese-under-100-kr":
+    "Sangiovese under 100 kr: Chianti Classico og Rosso di Montalcino til pasta og pizza. Syre og kirsebær uden Riserva-pris.",
+  "bedste-sangiovese-under-150-kr":
+    "Sangiovese 100–150 kr: Riserva Chianti og Rosso med mere fad og struktur. Italiensk hverdagsrød til gæster — producenter og tips.",
+  "bedste-sauvignon-blanc-under-100-kr":
+    "Sauvignon under 100 kr: Touraine, Pays d'Oc og Marlborough entry til salat og fisk. Frisk hvid — drik ung for max aromatik.",
+  "bedste-sauvignon-blanc-under-150-kr":
+    "Sauvignon 100–150 kr: Sancerre village eller seriøs Marlborough. Loire sten vs. NZ tropisk frugt — samme pris, to stilarter.",
+  "bedste-syrah-under-100-kr":
+    "Syrah under 100 kr: Côtes du Rhône og Crozes til grill og gryde. Peber og frugt uden overmoden shiraz-bombe fra varme år.",
+  "bedste-syrah-under-150-kr":
+    "Syrah 100–150 kr: Saint-Joseph, Cornas-junior eller Swartland med mere struktur. Nord-Rhône peber vs. Barossa frugt — vælg til mad.",
+  "bedste-tempranillo-under-100-kr":
+    "Tempranillo under 100 kr: Rioja Crianza og Ribera Roble til tapas og lam. Moden frugt nu — spar Reserva til 150 kr+.",
+  "bedste-tempranillo-under-150-kr":
+    "Tempranillo 100–150 kr: Rioja Reserva og seriøs Ribera med tydelig fad. Ældring, producenter og faldgruber på dansk.",
+};
+
+export function truncateMetaDescription(text: string, max = SERP_DESCRIPTION_MAX): string {
+  const cleaned = text.replace(/\s+/g, " ").trim();
+  if (cleaned.length <= max) return cleaned;
+  const slice = cleaned.slice(0, max - 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  const cut = lastSpace > max * 0.6 ? slice.slice(0, lastSpace) : slice;
+  return `${cut.trim()}…`;
+}
+
+function bedsteSerpFromSlug(slug: string, title: string): string | null {
+  if (BEDSTE_SERP_BY_SLUG[slug]) return BEDSTE_SERP_BY_SLUG[slug];
+  const m = slug.match(/^bedste-(.+)-under-(\d+)-kr$/);
+  if (!m) return null;
+  const grape = m[1].replace(/-/g, " ");
+  const price = m[2];
+  return truncateMetaDescription(
+    `${title.split(":")[0].trim()}: dansk guide til regioner, producenter og faldgruber omkring ${price} kr — uden marketing-fælder.`,
+  );
+}
+
+/**
+ * Meta description til Google — unik, inden for ~155 tegn.
+ */
+export function buildGuideSerpDescription(description: string, slug: string, title: string): string {
+  const override = GUIDE_SERP_OVERRIDES[slug]?.description;
+  if (override) return truncateMetaDescription(override);
+
+  const cleaned = description.replace(/\s+/g, " ").trim();
+
+  if (GENERIC_BEDSTE_DESC.test(cleaned) || slug.startsWith("bedste-") && slug.includes("-under-")) {
+    const custom = bedsteSerpFromSlug(slug, title);
+    if (custom) return truncateMetaDescription(custom);
+  }
+
+  if (cleaned.length > SERP_DESCRIPTION_MAX) {
+    const sentences = cleaned.split(/(?<=[.!?])\s+/).filter(Boolean);
+    if (sentences.length >= 2) {
+      const two = `${sentences[0]} ${sentences[1]}`;
+      if (two.length <= SERP_DESCRIPTION_MAX + 10) return truncateMetaDescription(two);
+    }
+  }
+
+  return truncateMetaDescription(cleaned);
+}
+
+/**
+ * Kortere titel til SERP — fuld titel bruges stadig som H1 på siden.
+ */
+export function buildGuideSerpTitle(title: string, slug: string): string {
+  const override = GUIDE_SERP_OVERRIDES[slug]?.title;
+  if (override) return override.length <= SERP_TITLE_BUDGET ? override : truncateMetaDescription(override, SERP_TITLE_BUDGET).replace(/…$/, "");
+
+  const base = title.split(":")[0]?.trim() || title;
+  if (base.length <= SERP_TITLE_BUDGET) return base;
+
+  if (slug.startsWith("bedste-") && slug.includes("-under-")) {
+    const m = slug.match(/^bedste-(.+)-under-(\d+)-kr$/);
+    if (m) {
+      const grape = m[1].replace(/-/g, " ");
+      return `Bedste ${grape} under ${m[2]} kr`;
+    }
+  }
+
+  if (slug.startsWith("vin-til-")) {
+    return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
+  }
+
+  return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
+}
+
+export function buildRecipeSerpDescription(description: string, title: string): string {
+  const cleaned = description.replace(/\s+/g, " ").trim();
+  if (cleaned.length <= SERP_DESCRIPTION_MAX) return cleaned;
+  return truncateMetaDescription(cleaned);
+}
+
+export function buildRecipeSerpTitle(title: string): string {
+  const base = title.trim();
+  if (base.length <= SERP_TITLE_BUDGET) return base;
+  return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
+}

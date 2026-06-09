@@ -11,10 +11,16 @@ import { partnerAdsDsfClickUrl, siteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Den Sidste Flaske — inspiration og gode køb | Vinbot",
+  title: "Den Sidste Flaske — restpartier og vin tilbud",
   description:
-    "Kurateret side om Den Sidste Flaske: idéer til flasker, link til butikken og inspiration fra andre anbefalede forhandlere.",
+    "Den Sidste Flaske: restpartier, sjældne årgange og daglige tilbud på vin. Kurateret inspiration fra Vinbot med direkte link til butikken og sammenligning.",
   alternates: { canonical: `${siteUrl}/den-sidste-flaske` },
+  openGraph: {
+    url: `${siteUrl}/den-sidste-flaske`,
+    title: "Den Sidste Flaske — restpartier og vin tilbud",
+    description:
+      "Den Sidste Flaske: restpartier, sjældne årgange og daglige tilbud på vin. Kurateret inspiration fra Vinbot med direkte link til butikken.",
+  },
 };
 
 const DSF_SEARCH = "https://densidsteflaske.dk/search?q={q}&form_type=product&utf8=%E2%9C%93";

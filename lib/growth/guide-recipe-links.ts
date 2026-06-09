@@ -53,9 +53,6 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-pizza": [
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin (samme sovs-logik)" },
   ],
-  "rodvin-til-pizza": [
-    { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
-  ],
   "vin-til-julefrokost": [
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
     { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
