@@ -1895,6 +1895,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "bedste-bobler-under-100-kr": [
     {
+      question: "Hvad er de bedste bobler under 100 kr?",
+      answer:
+        "Cava brut (traditionel metode), crémant fra Alsace eller Bourgogne, og seriøs prosecco DOC brut — ikke extra dry hvis du vil have tør stil. Undgå billig «champagne-look» uden appellation.",
+    },
+    {
       question: "Kan jeg få champagne under 100 kr?",
       answer:
         "Nej — ikke ægte champagne. Appellationen kræver minimum 15 måneder lagring på bunden, flaskegæring og dyre druer fra en begrænset region. Under 100 kr er du i prosecco- og cava-land. Ægte champagne starter typisk ved 200 kr for basis non-vintage.",
@@ -2040,7 +2045,63 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, til sauce og reduktion — men smagen kan blive sødere og tyndere end med rigtig vin. Brug tør hvid eller bobler til fisk og flødesaucer; til rødsovs er rigtig vin stadig bedst, medmindre hele måltidet skal være 0 %.",
     },
   ],
+  "vin-til-tarteletter": [
+    {
+      question: "Hvilken vin til tarteletter med høns i asparges?",
+      answer:
+        "Frisk hvidvin med syre: aligoté, uwooded chardonnay, pinot blanc eller let muscadet. Bobler (crémant, cava brut) fungerer også til butterdej og cremet fyld. Undgå tung, fad-drevet chardonnay.",
+    },
+    {
+      question: "Passer bobler til tarteletter?",
+      answer:
+        "Ja — tør crémant eller cava er klassisk til dansk koldtbord og tarteletter. Syren skærer igennem smør og sauce uden at overdøve kylling og asparges.",
+    },
+    {
+      question: "Hvilken vin til tarteletter med rejer?",
+      answer:
+        "Muscadet, albariño eller let chablis-stil. Rejer kræver mineralsk hvid med salt og syre — samme logik som til andre skaldyrsretter på koldtbordet.",
+    },
+  ],
+  "vin-til-ceviche": [
+    {
+      question: "Hvilken vin til ceviche?",
+      answer:
+        "Albariño, txakoli, sauvignon blanc, muscadet eller tør riesling — mineralsk hvid med frisk syre der matcher lime uden at blive skarp. Bobler (brut cava) kan også fungere.",
+    },
+    {
+      question: "Hvorfor er ceviche svær at parre med vin?",
+      answer:
+        "Rå fisk marineret i lime giver massiv syre. Vinen skal have mindst lige så meget syre og gerne salt/mineralitet — ellers smager glasset fladt eller surt sammen med retten.",
+    },
+    {
+      question: "Kan man drikke rødvin til ceviche?",
+      answer:
+        "Sjældent en god idé — tannin og ceviche-syre kolliderer. Hvis du vil have rød: meget let, afkølet gamay eller pinot noir uden fad, serveret køligt (12–14 °C).",
+    },
+  ],
+  "vin-til-smorrebrod": [
+    {
+      question: "Hvilken vin til smørrebrød med sild?",
+      answer:
+        "Tør hvidvin eller bobler med syre: riesling, albariño, muscadet eller crémant. Syren balancerer sildens salt og eddike — let rød med lav tannin kan også fungere afkølet.",
+    },
+    {
+      question: "Hvilken vin til roastbeef på rugbrød?",
+      answer:
+        "Let til mellemfyldig rød: gamay, pinot noir eller ung bordeaux. Server 14–16 °C. Meget ung, tannintung rød kan føles hård mod remoulade og salt.",
+    },
+    {
+      question: "Vin eller akvavit til smørrebrød?",
+      answer:
+        "Akvavit er dansk klassiker til sild og karry — især kold. Vin giver mere finesse til fisk og lyse pålæg; mange vælger begge dele på et langt smørrebrødsbord.",
+    },
+  ],
   "vin-til-stegt-flaesk": [
+    {
+      question: "Hvilken vin til stegt flæsk?",
+      answer:
+        "Grüner veltliner, tør riesling, sauvignon eller let rosé til persillesovs og salt flæsk. Let rød (gamay, pinot) kan fungere — undgå unge, tannintunge røde til sød sovs.",
+    },
     {
       question: "Hvilken vin passer til stegt flæsk med persillesovs?",
       answer:
@@ -2249,6 +2310,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-studenterfest": [
     {
+      question: "Hvilken vin til studenterfest?",
+      answer:
+        "Bobler til skål (cava eller prosecco brut), frisk hvid og rosé til dagtimer, let rød til aften. Regn 1–1,5 flaske per gæst over en lang dag — og overvej alkoholfri bobler til blandet selskab.",
+    },
+    {
       question: "Hvilken bobler skal man drikke til studenterfest?",
       answer:
         "Cava Brut eller Prosecco DOC (70-110 kr) er det praktiske valg — festligt nok, billigt nok til at dele ud og lav alkohol nok til at dagen kan fortsætte. Undgå dyr champagne før klokken 14; gem den til aftenens skål.",
@@ -2402,6 +2468,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "hvor-laenge-holder-boks-vin": [
     {
+      question: "Hvor længe kan papvin holde sig uåbnet?",
+      answer:
+        "Uåbnet papvin (bag-in-box) holder typisk 6–12 måneder — tjek best-before på kartonen. Kvalitets-BiB med god pose holder længere end billig bulk. Opbevar køligt og mørkt under 18 °C.",
+    },
+    {
       question: "Hvor længe holder en åben bag-in-box vin?",
       answer:
         "En åbnet bag-in-box vin holder 4-6 uger i køleskab — langt længere end en åbnet flaske. Det skyldes vakuumposen inde i boksen, der trækker sig sammen når vinen tappes og forhindrer ilt i at komme ind. Efter 6-8 uger kan smagen begynde at falde, selv i BiB.",
@@ -2415,6 +2486,45 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Skal bag-in-box vin stå i køleskab?",
       answer:
         "Efter anbrud er køleskab optimalt, også for rødvin — lad flasken varme kort op før servering. Før anbrud skal BiB bare stå køligt og mørkt (under 18 °C), ikke nødvendigvis i køleskab.",
+    },
+  ],
+  "hvor-meget-fylder-en-flaske-vin": [
+    {
+      question: "Hvor meget fylder en standardflaske vin?",
+      answer:
+        "En standardflaske vin er 75 cl — det svarer til 750 ml eller 0,75 liter. Det er EU-standard siden 1975 og svarer til cirka fem glas à 15 cl eller seks glas à 12,5 cl.",
+    },
+    {
+      question: "Hvor mange ml er en flaske vin?",
+      answer:
+        "750 ml (75 cl). Halvflaske er 375 ml, magnum er 1,5 liter (to standardflasker), og jeroboam er 3 liter (fire standardflasker).",
+    },
+    {
+      question: "Hvor mange glas vin er der i en flaske?",
+      answer:
+        "Ca. 5 serveringsglas à 15 cl eller 6 mindre glas à 12,5 cl. Restaurantstandard er ofte 12–15 cl per glas — så én flaske dækker typisk 4–6 personer til én runde.",
+    },
+    {
+      question: "Hvad er en magnum og en halvflaske?",
+      answer:
+        "Halvflaske (demi) = 37,5 cl. Magnum = 1,5 L (to flasker). Større formater som jeroboam (3 L) og Nebuchadnezzar (15 L) bruges til fest og lagring — magnum modnes ofte mere harmonisk end standardflaske.",
+    },
+  ],
+  "hvor-laenge-kan-vin-lagres": [
+    {
+      question: "Hvor længe kan vin lagres?",
+      answer:
+        "Hverdagsvin: drik inden for 1–3 år. Kvalitetsrød (Rioja Reserva, Bordeaux entry) 5–15 år. Topvine (Barolo, Grand Cru) 20–50+ år. Hvid og rosé drikkes typisk ungt — undtagen Riesling og prestige-hvid.",
+    },
+    {
+      question: "Bliver hverdagsvin bedre med årene?",
+      answer:
+        "Nej — de fleste flasker under 150 kr er lavet til at drikkes unge. De mister frugt uden at vinde kompleksitet. Lagring giver kun mening ved høj syre, tannin eller sødme.",
+    },
+    {
+      question: "Hvordan opbevarer jeg vin til lagring?",
+      answer:
+        "Konstant 10–14 °C, mørkt, liggende så korken holder sig våd, uden vibration. Køleskab eller vinkælder — ikke over radiator eller i vinduet. Se også guiden om opbevaring og temperatur.",
     },
   ],
   "hvor-meget-alkohol-i-vin": [
@@ -2436,9 +2546,19 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "hvor-mange-enheder-alkohol-i-et-glas-vin": [
     {
+      question: "Hvor mange ml er et glas vin?",
+      answer:
+        "Et standardglas er typisk 125 ml (12,5 cl) i Danmark — restaurantstandard er ofte 12–15 cl. Et stort glas kan være 15–20 cl. Tjek størrelsen hvis du beregner genstande præcist.",
+    },
+    {
       question: "Hvor mange genstande er der i et glas vin?",
       answer:
         "En genstand i Danmark er 12 gram ren alkohol. Et normalt glas vin (12 cl ved 12 % alkohol) er ca. 1 genstand. Et stort glas (15 cl ved 13,5 %) er ca. 1,3 genstand. En hel flaske vin (75 cl ved 12,5 %) svarer til ca. 7,4 genstande.",
+    },
+    {
+      question: "Hvor mange genstande er der i 125 ml rødvin?",
+      answer:
+        "Ca. 1,3–1,5 genstand ved 13 % alkohol og 125 ml. Formel: (ml × % × 0,789) ÷ 12. Et restaurantglas rødvin er ofte tæt på 1½ genstand.",
     },
     {
       question: "Hvordan beregner man genstande i vin?",
@@ -2748,9 +2868,19 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Vivino er en crowdsourcet vin-app med brugerbedømmelser og etiket-søgning. Nyttig til hurtig orientering i butikken, men ikke samme som professionelle blindtests.",
     },
     {
+      question: "Hvordan bruger jeg Vivino i supermarkedet?",
+      answer:
+        "Scan etiketten eller søg på navn — appen viser gennemsnitsscore og korte noter. Tjek at årgang på flasken matcher den du læser om, og sammenlign pris i butikken med andre forhandlere via Vinbot.",
+    },
+    {
       question: "Kan jeg stole på Vivino-ratings?",
       answer:
         "Brug dem som signal og læs kommentarerne — globale brugere har forskellig smag, og årgange blandes ofte. Sammenlign danske priser på samme vin separat via Vinbot.",
+    },
+    {
+      question: "Er Vivino gratis?",
+      answer:
+        "Ja — grundfunktionen med scanning og ratings er gratis. Premium giver bl.a. flere anbefalinger og rabatter i udvalgte markeder; til daglig indkøb i DK er gratis versionen nok for de fleste.",
     },
   ],
   "vin-til-baskisk-mad": [
