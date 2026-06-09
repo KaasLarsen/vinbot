@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/** Batch 111→125: 15 nye opskrifter + guide-recipe-links. */
+/** Batch 111→125: 15 nye opskrifter + guide-recipe-links.
+ *  Billeder: generér madfotos (ikke create-recipe-placeholder-images) og kopiér til public/images/recipes/. */
 import fs from "node:fs";
 import path from "node:path";
 import {

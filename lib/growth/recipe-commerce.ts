@@ -45,6 +45,21 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "svineribs-med-rodvin": ["vin-til-grill-og-bbq", "vin-til-svinekoed"],
   "sellerisuppe-med-hvidvin": ["vin-til-suppe", "vin-til-vegetar-og-gront"],
   "oksesteg-med-rodvin": ["vin-til-oksekoed", "vin-til-boeff", "vin-til-julefrokost"],
+  "poelser-i-rodvinsglace": ["vin-til-poelser-og-kartoffel", "vin-til-kartoffelmad"],
+  "roedgroed-med-portvin": ["vin-til-roedgroed", "vin-til-dessert-og-kransekage"],
+  "kalkunsteg-med-hvidvin": ["vin-til-kalkun", "vin-til-julemad-den-store-guide", "vin-til-kylling-og-lyst-koed"],
+  "hummer-i-hvidvinsauce": ["vin-til-hummer", "vin-til-fisk-og-skaldyr"],
+  "lammesteg-med-rodvin-rosmarin": ["vin-til-paaske-og-paaskefrokost", "vin-til-lam", "vin-til-gryderet"],
+  "kartoffelmos-med-hvidvin": ["vin-til-kartoffelmad", "vin-til-poelser-og-kartoffel"],
+  "enchiladas-med-rodvin": ["vin-til-mexicansk-mad", "vin-til-tacos", "vin-til-nachos"],
+  "thai-gron-karry-med-hvidvin": ["vin-til-thai-mad", "vin-til-krydret-og-staerk-mad", "vin-til-karryretter"],
+  "shepherd-pie-med-rodvin": ["vin-til-brittisk-mad", "vin-til-lam", "vin-til-gryderet"],
+  "bun-cha-med-hvidvin": ["vin-til-vietnamesisk-mad", "vin-til-asiatisk-mad", "vin-til-pho"],
+  "kung-pao-kylling-med-hvidvin": ["vin-til-kinesisk-mad", "vin-til-krydret-og-staerk-mad", "vin-til-wok"],
+  "pulled-pork-med-rodvin": ["vin-til-grill-og-bbq", "vin-til-spareribs", "vin-til-svinekoed"],
+  "aebleskiver-med-hvidvin": ["vin-til-aebleskiver", "vin-til-fastelavn", "vin-til-julemad-den-store-guide"],
+  "karbonader-i-hvidvinsauce": ["vin-til-frikadeller", "vin-til-smorrebrod"],
+  "torsk-i-rodvinsauce": ["vin-til-torsk", "vin-til-fisk-og-skaldyr"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
