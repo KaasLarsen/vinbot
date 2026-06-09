@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 /**
+ * DEPRECATED — kør ikke igen uden omskrivning.
+ * Indsatte identiske skabelonafsnit på ~198 guides (AdSense «scaled content»-risiko).
+ * Brug i stedet: node scripts/diversify-guide-templates.mjs (fjerner boilerplate).
+ *
  * Udvider guides med 400–600 ord med kontekstuelt afsnit (mål: ≥620 ord).
  * Kør: node scripts/expand-guides-400-600.mjs
  * Dry-run: node scripts/expand-guides-400-600.mjs --dry-run
