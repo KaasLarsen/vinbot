@@ -174,6 +174,68 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til georgisk mad: amber wine, orange vin og kraftig hvid til khachapuri og grill. Lav tannin-rød til krydret kød og saucer.",
   },
+
+  // Bølge 3 — GSC lav CTR (jun 2026)
+  "vin-til-stegt-flaesk": {
+    title: "Vin til stegt flæsk og persillesovs",
+    description:
+      "Bedste vin til stegt flæsk: grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner til brun sovs.",
+  },
+  "vin-til-tarteletter": {
+    title: "Vin til tarteletter med kylling",
+    description:
+      "Hvilken vin til tarteletter? Chardonnay, aligoté og bobler til kylling i asparges og cremet fyld. Syre til sauce og butterdej.",
+  },
+  "bedste-hvidvin": {
+    title: "Bedste hvidvin: sauvignon, chardonnay, riesling",
+    description:
+      "Bedste hvidvin i DK: frisk sauvignon, chardonnay og riesling med prisguide. Druesorter, regioner og madparring — fra hverdag til fest.",
+  },
+  "bedste-rosevin": {
+    title: "Bedste rosévin: Provence, rosado og bobler",
+    description:
+      "Bedste rosévin til sommer: tør Provence-stil, spansk rosado og mousserende rosé. Prisguide, servering og madparring på dansk.",
+  },
+  "bedste-hvidvin-under-75-kr": {
+    title: "Bedste hvidvin under 75 kr",
+    description:
+      "Hvidvin under 75 kr der smager: Verdejo, grüner og Muscadet fra rigtige regioner — ikke vandig supermarkeds-bulk. Tilbud og faldgruber.",
+  },
+  "bedste-rosevin-under-200-kr": {
+    title: "Bedste rosévin under 200 kr",
+    description:
+      "Premium rosé under 200 kr: Provence, Tavel og Bandol med karakter. Enkelt-producenter og gastronomisk rosé — ikke bare lyserød saft.",
+  },
+  "bedste-rodvin-under-200-kr": {
+    title: "Bedste rødvin under 200 kr",
+    description:
+      "Rødvin under 200 kr med identitet: Rioja Reserva, Chianti Classico og Rhône Villages. Moden frugt og struktur — ikke smarte blend-navne.",
+  },
+  "vin-til-fars-dag": {
+    title: "Vin til fars dag 5. juni: grill og bøf",
+    description:
+      "Vin til fars dag: cabernet og malbec til grill og bøf, pinot til kylling. Gaveidéer og menu-match til dansk fars-dag-middag.",
+  },
+  "bedste-box-vin": {
+    title: "Bedste box-vin og papvin i Danmark",
+    description:
+      "Bedste bag-in-box: kvalitets-papvin til hverdag og fest. Holdbarhed, pris per glas og producenter der slår billig bulk-boks.",
+  },
+  "bedste-champagne-under-300-kr": {
+    title: "Bedste champagne under 300 kr",
+    description:
+      "Champagne under 300 kr: entry fra mindre huse og grower-champagne. Hvad du får for pengene — og hvornår cava eller crémant er smartere.",
+  },
+  "vin-til-nytaar-og-nytaarsmenu": {
+    title: "Vin til nytår og nytårsmenu",
+    description:
+      "Vin til nytår: bobler til skål, hvid til fisk og rød til hovedret. Kransekage, tapas og menu-match — plus alkoholfri alternativ.",
+  },
+  "bedste-rodvin-under-75-kr": {
+    title: "Bedste rødvin under 75 kr",
+    description:
+      "Rødvin under 75 kr til hverdag: Rhône Villages, Chile-entry og spansk blend med moden frugt. Regioner og flasker der holder i glasset.",
+  },
 };
 
 /** Unik SERP-tekst for bedste-*-under-* (erstatter copy-paste-frontmatter). */

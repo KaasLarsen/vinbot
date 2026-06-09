@@ -160,7 +160,7 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "the-guvnor-tinto",
     displayTitle: "The Guv'nor Tinto",
     metaDescription:
-      "Spansk hus-rød med frugt, bløde tanniner og masser kult: tapasvenlig label og smag til grill, ost og aftener uden prestige-pris — købt hos Den Sidste Flaske via Vinbot (affiliate).",
+      "The Guv'nor rødvin: spansk husvin til tapas og grill. Ca. 109 kr hos Den Sidste Flaske — mørk frugt og bløde tanniner. Se pris og køb via Vinbot.",
     productPageUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-felix-solis-avantis-rodvin-1172580197.png?v=1749550958",
@@ -227,7 +227,7 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "spritz-roll-aperitivo-originale",
     displayTitle: "Spritz & Roll Aperitivo Originale",
     metaDescription:
-      "Mousserende aperitivo på flaske — klar bittersød citrus til is, Balkon-aftener og let snacking. Vinbot forklarer servering og køberlink til Den Sidste Flaske (affiliate).",
+      "Spritz & Roll Aperitivo: færdig spritz på flaske til is og aperitivo. Bittersød citrus og perlende — køb hos Den Sidste Flaske via Vinbot.",
     productPageUrl: "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/spritz-roll-aperitivo-originale-nv-spritz-roll-mousserende-1228834449.png?v=1774340289",
