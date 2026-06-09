@@ -87,6 +87,93 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Bedste vin til sushi og sashimi: tør riesling, muscadet, champagne og grüner veltliner. Syre, temperatur og parring til nigiri og maki.",
   },
+
+  // Bølge 2 — GSC lav CTR (jun 2026)
+  "bedste-alkoholfri-vin": {
+    title: "Bedste alkoholfri vin i Danmark (0 %)",
+    description:
+      "Alkoholfri vin bedst i test: Leitz, Giesen, Torres og Noughty. Bobler, hvid, rosé og rød — prislejer, madparring og hvad du bør undgå i 0 %-klassen.",
+  },
+  "bedste-alkoholfri-champagne": {
+    title: "Bedste alkoholfri champagne (0 %)",
+    description:
+      "God alkoholfri champagne: French Bloom, Noughty, Leitz og Oddbird. Premium 0 % mousserende til nytår og kransekage — fest uden promille.",
+  },
+  "alkoholsvag-og-alkoholfri-vin": {
+    title: "Alkoholsvag og alkoholfri vin — forskellen",
+    description:
+      "Alkoholfri (0,5 %) vs. lavalkohol (5–11 %): de-alkoholiseret, most og vinho verde. Hvad smagen kan, og hvordan du parrer med mad.",
+  },
+  "vin-til-boeff": {
+    title: "Vin til bøf: cabernet, malbec og syrah",
+    description:
+      "Hvilken vin til bøf? Cabernet og malbec til steg og grill, pinot til tyndt kød. Bearnaise, rødvinssauce og sauce på tallerkenen — konkret guide.",
+  },
+  "vin-til-krydret-og-staerk-mad": {
+    title: "Vin til krydret mad og asiatisk",
+    description:
+      "Vin til thai, indisk og stærk mad: tør riesling, gewürztraminer og lavalkohol-bobler. Syre og mild sødme slår tung tannin når chili dominerer.",
+  },
+  "vin-til-dessert-og-kransekage": {
+    title: "Vin til kransekage og dessert",
+    description:
+      "Bobler til kransekage: demi-sec, moscato og sød riesling. Vin til dessert skal matche kagens sødme — ellers smager glasset surt.",
+  },
+  "hvor-meget-vin-til-bryllup": {
+    title: "Hvor meget vin til bryllup per gæst?",
+    description:
+      "Regn med ca. ½–1 flaske per voksen til fest med middag. Fordeling af rød, hvid og bobler — og hvornår du skal have alkoholfri med til bordet.",
+  },
+  "vivino-app-til-vin-anmeldelser": {
+    title: "Vivino-app: ratings og priser i DK",
+    description:
+      "Sådan bruger du Vivino smart: hvad ratings kan og ikke kan, og hvordan du tjekker pris i supermarkedet. Vinbot supplerer med madparring og guides.",
+  },
+  "hvor-mange-kalorier-i-vin": {
+    title: "Hvor mange kalorier i et glas vin?",
+    description:
+      "Ca. 80–120 kcal per glas (12,5 cl) og 600–700 per flaske. Tabel for rødvin, hvidvin, bobler og sød vin — plus alkoholfri alternativ.",
+  },
+  "bedste-hvidvin-under-200-kr": {
+    title: "Bedste hvidvin under 200 kr i Danmark",
+    description:
+      "Fransk og italiensk hvidvin under 200 kr: Chablis-entry, Loire og Alto Adige. Regioner, producenter og flasker der slår supermarkedets blend-navne.",
+  },
+  "bedste-fransk-rodvin": {
+    title: "Bedste fransk rødvin til hverdag",
+    description:
+      "Fransk rødvin under budget: Côtes du Rhône, Languedoc og Bordeaux entry. Regioner, stilarter og flasker du finder i danske butikker nu.",
+  },
+  "vin-til-burger": {
+    title: "Vin til burger: zinfandel, syrah og rosé",
+    description:
+      "Vin til burger med cheddar, bacon og BBQ: syre mod fedme, kraftig rød eller frisk rosé. Okse, ost og vegetar-bøf — flasker til hverdag.",
+  },
+  "vin-til-smorrebrod": {
+    title: "Vin til smørrebrød: sild, lever og roastbeef",
+    description:
+      "Vin til dansk smørrebrød: bobler og syre til sild og fisk, let rød til kød og paté. Uden at overdøve remoulade og salt pålæg.",
+  },
+  "rodvin-til-pizza": {
+    title: "Rødvin til pizza: sangiovese og barbera",
+    description:
+      "Bedste rødvin til pizza: sangiovese, barbera og montepulciano til margherita, pepperoni og salami. Italiensk match med syre og lav tannin.",
+  },
+  "hvor-laenge-holder-hvidvin": {
+    title: "Hvor længe holder hvidvin åbnet?",
+    description:
+      "Åbnet hvidvin holder 3–7 dage på køl. Uåbnet hverdags-hvid 1–3 år. Tabel, vakuum og hvornår du skal drikke flasken før den falder.",
+  },
+  "bobler-til-brunch": {
+    title: "Bobler til brunch: mimosa og spritz",
+    description:
+      "Hvilken boble til brunch? Prosecco, cava og crémant til æg, laks og morgenretter. Mimosa, temperatur og praktiske mængder per gæst.",
+  },
+  "vin-til-georgisk-mad": {
+    title: "Vin til georgisk mad og khachapuri",
+    description:
+      "Vin til georgisk mad: amber wine, orange vin og kraftig hvid til khachapuri og grill. Lav tannin-rød til krydret kød og saucer.",
+  },
 };
 
 /** Unik SERP-tekst for bedste-*-under-* (erstatter copy-paste-frontmatter). */
