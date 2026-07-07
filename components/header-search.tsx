@@ -57,12 +57,14 @@ function useDebouncedValue<T>(value: T, ms: number): T {
  * Kompakt søgning i header med forslag i dropdown — navigerer til guide/opskrift/hub,
  * ikke til forsidenavnets vin-feed (medmindre brugeren vælger det eksplicit).
  */
-export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "mobile" }) {
+export function HeaderSearch() {
   const router = useRouter();
   const formId = useId();
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  const [expanded, setExpanded] = useState(false);
   const [mode, setMode] = useState<SearchMode>("vin");
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -120,14 +122,35 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
 
   useEffect(() => {
     function onDocPointer(e: MouseEvent) {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+      if (!rootRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+        if (!q.trim()) setExpanded(false);
+      }
     }
     document.addEventListener("mousedown", onDocPointer);
     return () => document.removeEventListener("mousedown", onDocPointer);
-  }, []);
+  }, [q]);
 
-  const isMobile = variant === "mobile";
-  const inputId = `${formId}-${isMobile ? "m" : "d"}`;
+  useEffect(() => {
+    if (!expanded) return;
+    const t = window.setTimeout(() => inputRef.current?.focus(), 50);
+    return () => window.clearTimeout(t);
+  }, [expanded]);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setExpanded(false);
+        setQ("");
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [expanded]);
+
+  const inputId = `${formId}-header`;
 
   function navigateTo(s: NavSearchSuggestion) {
     setOpen(false);
@@ -170,18 +193,10 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
       ? "Søg ret, drue, opskrift…"
       : "Søg guide, begreb, region…";
 
-  const shell = isMobile
-    ? "mt-3 flex w-full flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-sm"
-    : "hidden rounded-xl border border-stone-200 bg-white px-2 py-1.5 shadow-sm md:flex md:max-w-[min(100%,28rem)] md:flex-row md:flex-wrap md:items-center md:gap-2";
-
-  const showPanel = open && (loading || suggestions.length > 0 || debouncedQ.trim().length > 0);
+  const showPanel = expanded && open && (loading || suggestions.length > 0 || debouncedQ.trim().length > 0);
 
   const panel = showPanel ? (
-    <div
-      className={`z-50 overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 ${
-        isMobile ? "mt-2 w-full" : "absolute left-0 right-0 mt-1 min-w-[20rem]"
-      }`}
-    >
+    <div className="absolute right-0 z-50 mt-1 min-w-[20rem] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 sm:min-w-[24rem]">
       <ul id={listId} role="listbox" className="max-h-[min(70vh,20rem)] overflow-y-auto py-1">
         {loading && suggestions.length === 0 ? (
           <li className="px-3 py-2.5 text-sm text-stone-500">Henter forslag…</li>
@@ -235,12 +250,34 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
   ) : null;
 
   return (
-    <div ref={rootRef} className={`${isMobile ? "w-full" : "relative md:min-w-[16rem] md:flex-1"}`}>
+    <div ref={rootRef} className="relative">
+      {!expanded ? (
+        <button
+          type="button"
+          aria-label="Åbn søgning"
+          aria-expanded={false}
+          onClick={() => setExpanded(true)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 hover:text-rose-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-800"
+        >
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.5-3.5" />
+          </svg>
+        </button>
+      ) : (
       <form
         role="search"
         aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
         onSubmit={submit}
-        className={shell}
+        className="relative flex w-[min(100vw-2rem,28rem)] flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:w-[28rem] sm:flex-row sm:flex-wrap sm:items-center"
       >
         <div
           className="flex shrink-0 rounded-lg border border-stone-200 bg-stone-100 p-0.5"
@@ -296,6 +333,7 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
             <path d="M20 20l-3.5-3.5" />
           </svg>
           <input
+            ref={inputRef}
             id={inputId}
             type="search"
             value={q}
@@ -324,6 +362,8 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
               } else if (e.key === "Escape") {
                 setOpen(false);
                 setActiveIndex(-1);
+                setExpanded(false);
+                setQ("");
               }
             }}
             placeholder={placeholder}
@@ -336,7 +376,22 @@ export function HeaderSearch({ variant = "desktop" }: { variant?: "desktop" | "m
             Søg
           </button>
         </div>
+        <button
+          type="button"
+          aria-label="Luk søgning"
+          onClick={() => {
+            setOpen(false);
+            setExpanded(false);
+            setQ("");
+          }}
+          className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:static sm:ml-auto sm:h-8 sm:w-8 sm:shrink-0 sm:rounded-lg"
+        >
+          <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
       </form>
+      )}
 
       {panel}
     </div>

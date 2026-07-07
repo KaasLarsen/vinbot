@@ -403,7 +403,7 @@ export function WineSearch({
   initialQuery?: string;
   initialMax?: number;
   productCardPlacement?: string;
-  variant?: "default" | "compact";
+  variant?: "default" | "compact" | "hero";
   intentChips?: WineSearchChip[];
 }) {
   const [q, setQ] = useState(initialQuery?.trim() || "");
@@ -629,10 +629,16 @@ export function WineSearch({
     }
   };
 
+  const isHero = variant === "hero";
+
   return (
-    <div className="space-y-6">
+    <div className={isHero ? "space-y-4" : "space-y-6"}>
       <form
-        className="flex flex-col gap-3 sm:flex-row sm:items-end"
+        className={
+          isHero
+            ? "flex flex-col gap-3"
+            : "flex flex-col gap-3 sm:flex-row sm:items-end"
+        }
         onSubmit={(e) => {
           e.preventDefault();
           trackWineSearch(q, maxNum != null);
@@ -640,7 +646,10 @@ export function WineSearch({
         }}
       >
         <div className="flex-1">
-          <label htmlFor="wine-q" className="block text-sm font-medium text-stone-700">
+          <label
+            htmlFor="wine-q"
+            className={isHero ? "sr-only" : "block text-sm font-medium text-stone-700"}
+          >
             Hvad leder du efter?
           </label>
           <input
@@ -652,40 +661,65 @@ export function WineSearch({
             placeholder={placeholder}
             autoComplete="off"
             aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
-            className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
+            className={
+              isHero
+                ? "w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-lg text-stone-900 shadow-sm outline-none placeholder:text-stone-400 focus:border-rose-800 focus:ring-4 focus:ring-rose-900/15 sm:py-5 sm:text-xl"
+                : "mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
+            }
           />
           {chips.length > 0 && queryFocused && !q.trim() ? (
             <div
               id="wine-search-suggestions"
-              className="mt-2 rounded-xl border border-rose-200 bg-rose-50/70 p-3 shadow-sm"
+              className={`mt-2 rounded-xl border border-rose-200 bg-rose-50/70 p-3 shadow-sm${isHero ? " sm:p-4" : ""}`}
             >
-              <p className="text-xs font-medium text-stone-700">Populære søgninger — klik for at starte</p>
+              <p className="text-xs font-medium text-stone-700 sm:text-sm">
+                Populære søgninger — klik for at starte
+              </p>
               <div className="mt-2">
                 <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
               </div>
             </div>
           ) : null}
         </div>
-        <div className="w-full sm:w-40">
-          <label htmlFor="wine-max" className="block text-sm font-medium text-stone-700">
-            Max pris (valgfri)
-          </label>
-          <input
-            id="wine-max"
-            inputMode="numeric"
-            value={max}
-            onChange={(e) => setMax(e.target.value.replace(/[^\d]/g, ""))}
-            placeholder="Fx150"
-            className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none focus:border-rose-900 focus:ring-2"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="rounded-xl bg-rose-900 px-6 py-3 font-semibold text-white shadow-sm hover:bg-rose-950 disabled:opacity-60"
+        <div
+          className={
+            isHero
+              ? "flex flex-col gap-3 sm:flex-row sm:items-center"
+              : "w-full sm:w-40"
+          }
         >
-          {loading ? "Søger…" : "Søg vin"}
-        </button>
+          <div className={isHero ? "flex-1 sm:max-w-[9rem]" : undefined}>
+            <label
+              htmlFor="wine-max"
+              className={isHero ? "sr-only" : "block text-sm font-medium text-stone-700"}
+            >
+              Max pris (valgfri)
+            </label>
+            <input
+              id="wine-max"
+              inputMode="numeric"
+              value={max}
+              onChange={(e) => setMax(e.target.value.replace(/[^\d]/g, ""))}
+              placeholder={isHero ? "Max kr" : "Fx150"}
+              className={
+                isHero
+                  ? "w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-base text-stone-900 outline-none focus:border-rose-800 focus:bg-white focus:ring-2 focus:ring-rose-900/15"
+                  : "mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none focus:border-rose-900 focus:ring-2"
+              }
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className={
+              isHero
+                ? "w-full rounded-2xl bg-rose-900 px-8 py-4 text-lg font-semibold text-white shadow-md transition hover:bg-rose-950 disabled:opacity-60 sm:w-auto sm:shrink-0"
+                : "rounded-xl bg-rose-900 px-6 py-3 font-semibold text-white shadow-sm hover:bg-rose-950 disabled:opacity-60"
+            }
+          >
+            {loading ? "Søger…" : "Søg vin"}
+          </button>
+        </div>
       </form>
 
       {chips.length > 0 && (!queryFocused || q.trim()) ? (

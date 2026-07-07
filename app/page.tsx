@@ -38,43 +38,15 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
 const popularTopicLinkClass =
   "underline decoration-rose-300 underline-offset-4 hover:text-rose-950";
 
-/** Redaktionelle indgange i hero — før vinsøgning. */
-const heroEditorialLinks: { href: string; label: string; blurb: string }[] = [
-  {
-    href: "/mad-og-vin",
-    label: "Mad & vin",
-    blurb: "Parring til kød, fisk, ost og regional mad",
-  },
-  {
-    href: "/opskrifter",
-    label: "Opskrifter med vin",
-    blurb: "Coq au vin, bourguignon og risotto — vin i gryden",
-  },
-  {
-    href: "/vin-viden",
-    label: "Vin-viden",
-    blurb: "Temperatur, holdbarhed og brevkasse-svar",
-  },
-  {
-    href: "/bedste-vine",
-    label: "Bedste vine",
-    blurb: "Top-lister efter pris, stil og lejlighed",
-  },
-  {
-    href: "/guides/komplet-guide-til-vin-og-mad",
-    label: "Den store mad-guide",
-    blurb: "Grundregler og klassiske match",
-  },
-  {
-    href: "/guides/bedste-alkoholfri-vin",
-    label: "Alkoholfri vin",
-    blurb: "0 % og lavalkohol — bobler, hvid og rød",
-  },
-  {
-    href: "/guides/vin-brevkassen",
-    label: "Vin-brevkassen",
-    blurb: "Hurtige svar på det danskerne googler",
-  },
+/** Redaktionelle indgange under søgning. */
+const heroEditorialLinks: { href: string; label: string }[] = [
+  { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/opskrifter", label: "Opskrifter med vin" },
+  { href: "/vin-viden", label: "Vin-viden" },
+  { href: "/bedste-vine", label: "Bedste vine" },
+  { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
+  { href: "/guides/bedste-alkoholfri-vin", label: "Alkoholfri vin" },
+  { href: "/guides/vin-brevkassen", label: "Vin-brevkassen" },
 ];
 
 /** Kompakt udvalg — den fulde liste ligger i <details> nedenunder. */
@@ -468,62 +440,55 @@ export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-5 sm:py-8">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
-        <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">Danmarks vinguide</p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
-          Guides til mad, druer og sæson
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-700">
-          Vinbot er først og fremmest en <strong className="font-semibold text-stone-800">redaktionel vinguide</strong>{" "}
-          med hundredvis af artikler om parring, druer, regioner og praktisk vin-viden — skrevet af{" "}
+        <div className="mx-auto max-w-3xl text-center sm:text-left">
+          <p className="text-sm font-semibold uppercase tracking-wider text-rose-900">
+            Vinsøgning · sammenlign priser
+          </p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
+            Find vin på sekunder
+          </h1>
+          <p className="mt-2 text-base leading-relaxed text-stone-700 sm:text-lg">
+            Skriv ret, drue, stemning eller budget — vi finder flasker hos danske forhandlere.
+          </p>
+        </div>
+
+        <div className="relative z-10 mx-auto mt-5 max-w-3xl sm:mt-6">
+          <div className="rounded-2xl border border-white/90 bg-white/95 p-4 shadow-xl shadow-rose-950/10 ring-2 ring-rose-200/60 backdrop-blur-sm sm:p-6">
+            <WineSearch initialQuery={q} variant="hero" />
+            <div className="mt-4 border-t border-stone-100 pt-3">
+              <AffiliateDisclosure compact />
+            </div>
+          </div>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-stone-600 sm:mt-10">
+          Vinbot er også en{" "}
+          <Link href="/guides" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
+            redaktionel vinguide
+          </Link>{" "}
+          med hundredvis af artikler om parring, druer og regioner — skrevet af{" "}
           <Link href="/om-os" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
             {editorialTeamName}
           </Link>
-          . Når du ved, hvad du leder efter, kan du{" "}
-          <strong className="font-semibold text-stone-800">søge flasker og priser</strong> hos danske forhandlere
-          nedenfor.
+          .
         </p>
 
-        <div className="mt-8">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500">Start her</h2>
-          <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6">
+          <h2 className="text-sm font-medium text-stone-800">Guides og inspiration</h2>
+          <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
             {heroEditorialLinks.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-xl border border-white/80 bg-white/75 p-4 shadow-sm ring-1 ring-stone-200/60 backdrop-blur-sm transition hover:border-rose-200 hover:bg-white/90 hover:shadow-md"
-                >
-                  <span className="font-semibold text-stone-900">{item.label}</span>
-                  <span className="mt-1 block text-sm leading-snug text-stone-600">{item.blurb}</span>
+                <Link href={item.href} className={popularTopicLinkClass}>
+                  {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-stone-600">
-            <Link href="/guides" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
-              Se alle guides
-            </Link>
-            {" · "}
-            <Link href="/redaktionel-proces" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
-              Sådan laver vi indhold
-            </Link>
-          </p>
         </div>
 
-        <div className="mt-10 rounded-2xl border border-rose-200/70 bg-white/85 p-5 shadow-md ring-1 ring-stone-200/60 backdrop-blur-sm sm:p-6">
-          <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Find vin hos forhandlere</h2>
-          <p className="mt-1 text-sm text-stone-600">
-            Sammenlign pris på tværs af shops — skriv ret, drue, stemning eller budget.
-          </p>
-          <div className="mt-4">
-            <AffiliateDisclosure compact />
-          </div>
-          <div className="mt-3">
-            <WineSearch initialQuery={q} />
-          </div>
-        </div>
         <div className="mt-8 border-t border-rose-200/60 pt-6">
           <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500">Hurtige emner</h2>
           <p className="mt-2 max-w-2xl text-sm text-stone-600">

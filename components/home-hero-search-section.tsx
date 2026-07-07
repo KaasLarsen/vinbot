@@ -19,7 +19,7 @@ export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
         <div className="absolute inset-0 bg-gradient-to-br from-stone-50/92 via-rose-50/88 to-amber-50/85 sm:from-stone-50/88 sm:via-rose-50/82 sm:to-white/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/40" />
       </div>
-      <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-11">{children}</div>
+      <div className="relative z-10 px-5 py-7 sm:px-10 sm:py-9">{children}</div>
     </section>
   );
 }
