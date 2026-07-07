@@ -440,31 +440,27 @@ export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-5 sm:py-8">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
-        <div className="mx-auto max-w-3xl text-center sm:text-left">
-          <p className="text-sm font-semibold uppercase tracking-wider text-rose-900">
-            Vinsøgning · sammenlign priser
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
-            Find vin på sekunder
-          </h1>
-          <p className="mt-2 text-base leading-relaxed text-stone-700 sm:text-lg">
-            Skriv ret, drue, stemning eller budget — vi finder flasker hos danske forhandlere.
-          </p>
-        </div>
+        <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">
+          Vinsøgning · sammenlign priser
+        </p>
+        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
+          Find vin på sekunder
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
+          Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
+        </p>
 
-        <div className="relative z-10 mx-auto mt-5 max-w-3xl sm:mt-6">
-          <div className="rounded-2xl border border-white/90 bg-white/95 p-4 shadow-xl shadow-rose-950/10 ring-2 ring-rose-200/60 backdrop-blur-sm sm:p-6">
-            <WineSearch initialQuery={q} variant="hero" />
-            <div className="mt-4 border-t border-stone-100 pt-3">
-              <AffiliateDisclosure compact />
-            </div>
+        <div className="mt-8 rounded-2xl border border-rose-200/70 bg-white/90 p-5 shadow-md ring-1 ring-stone-200/60 backdrop-blur-sm sm:p-8">
+          <WineSearch initialQuery={q} />
+          <div className="mt-5 border-t border-stone-100 pt-4">
+            <AffiliateDisclosure compact />
           </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-stone-600 sm:mt-10">
+        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-stone-600">
           Vinbot er også en{" "}
           <Link href="/guides" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
             redaktionel vinguide
