@@ -18,6 +18,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "oksesuppe-med-rodvin", label: "Oksesuppe med rødvin" },
     { slug: "braiseret-kylling-med-rodvin", label: "Braiseret kylling med rødvin" },
     { slug: "stuvet-kylling-med-hvidvin", label: "Stuvet kylling med hvidvin" },
+    { slug: "cassoulet-med-rodvin", label: "Cassoulet med rødvin" },
   ],
   "vin-til-suppe": [
     { slug: "oksesuppe-med-rodvin", label: "Oksesuppe med rødvin" },
@@ -26,6 +27,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kyllingesuppe-med-hvidvin", label: "Kyllingesuppe med hvidvin" },
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
     { slug: "sellerisuppe-med-hvidvin", label: "Sellerisuppe med hvidvin" },
+    { slug: "caldeirada-med-hvidvin", label: "Caldeirada med hvidvin" },
   ],
   "vin-til-tarteletter": [
     { slug: "tarteletter-i-hvidvin", label: "Tarteletter i hvidvin" },
@@ -78,6 +80,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "torsk-i-hvidvin", label: "Torsk i hvidvin" },
     { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
     { slug: "bouillabaisse-med-hvidvin", label: "Bouillabaisse med hvidvin" },
+    { slug: "caldeirada-med-hvidvin", label: "Caldeirada med hvidvin" },
   ],
   "vin-til-boeff": [
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
@@ -303,6 +306,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-shakshuka": [
     { slug: "shakshuka-med-hvidvin", label: "Shakshuka med hvidvin" },
+  ],
+  "vin-til-dessert-og-kransekage": [
+    { slug: "paerer-i-rodvin", label: "Pærer i rødvin" },
+    { slug: "aebletaerte-med-calvados-og-hvidvin", label: "Æbletærte med calvados og hvidvin" },
+    { slug: "aeblekage-hvidvin-karamel", label: "Æblekage med hvidvin-karamel" },
   ],
 
 };

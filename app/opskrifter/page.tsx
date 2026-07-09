@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
 const PAGE_DESCRIPTION =
-  "49+ opskrifter hvor vin er en del af retten: boeuf bourguignon, coq au vin, svinekæber i rødvinssky, chorizo al vino, estofado, risotto al Barolo, torsk i hvidvin, sauerbraten, stegt flæsk og mere. Filtrér efter rød/hvidvin, køkken og tid.";
+  "128+ opskrifter hvor vin er en del af retten: boeuf bourguignon, coq au vin, caldeirada, cassoulet, æbletærte med calvados, svinekæber i rødvinssky, chorizo al vino, estofado, risotto al Barolo, torsk i hvidvin, sauerbraten, stegt flæsk og mere. Filtrér efter rød/hvidvin, køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };
