@@ -66,7 +66,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="border-b border-stone-200/80 bg-white/90 backdrop-blur">
+    <header className="relative z-50 border-b border-stone-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="group flex min-w-0 items-center gap-2.5">
