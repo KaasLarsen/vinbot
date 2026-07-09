@@ -7,6 +7,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "spansk-koedboller-i-rodvinsauce", label: "Almóndigas i rødvinsauce" },
     { slug: "syltede-roedloeg-med-hvidvin", label: "Syltede rødløg med hvidvin" },
     { slug: "roedvinsgele-til-charcuteri", label: "Rødvinsgelé til charcuteri" },
+    { slug: "chimichurri-med-rodvin", label: "Chimichurri med rødvin" },
+    { slug: "romesco-med-rodvin", label: "Romesco med rødvin" },
+    { slug: "hummus-med-hvidvin", label: "Hummus med hvidvin" },
+    { slug: "aioli-med-hvidvin", label: "Aioli med hvidvin" },
+    { slug: "marinerede-oliven-med-hvidvin", label: "Marinerede oliven med hvidvin" },
   ],
   "vin-til-gryderet": [
     { slug: "coq-au-vin", label: "Coq au vin" },
@@ -37,6 +42,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin" },
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
     { slug: "bolognese-med-rodvin", label: "Bolognese med rødvin" },
+    { slug: "pesto-med-hvidvin", label: "Pesto med hvidvin" },
+    { slug: "pesto-pasta-hvidvin", label: "Pesto-pasta med hvidvin" },
   ],
   "rodvin-til-pizza": [
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin til pizza" },
@@ -81,6 +88,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
     { slug: "bouillabaisse-med-hvidvin", label: "Bouillabaisse med hvidvin" },
     { slug: "caldeirada-med-hvidvin", label: "Caldeirada med hvidvin" },
+    { slug: "aioli-med-hvidvin", label: "Aioli med hvidvin" },
   ],
   "vin-til-boeff": [
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
@@ -98,6 +106,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "lammekoteletter-i-rodvin", label: "Lammekoteletter i rødvin" },
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
     { slug: "pulled-pork-med-rodvin", label: "Pulled pork med rødvin" },
+    { slug: "chimichurri-med-rodvin", label: "Chimichurri med rødvin" },
+    { slug: "romesco-med-rodvin", label: "Romesco med rødvin" },
   ],
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
@@ -109,6 +119,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "porchetta-med-hvidvin", label: "Porchetta med hvidvin" },
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
     { slug: "bolognese-med-rodvin", label: "Bolognese med rødvin" },
+    { slug: "pesto-med-hvidvin", label: "Pesto med hvidvin" },
   ],
   "vin-til-spansk-mad": [
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
@@ -160,6 +171,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ratatouille-med-hvidvin", label: "Ratatouille med hvidvin" },
     { slug: "vegetar-gryderet-rodvin", label: "Vegetar-gryderet med rødvin" },
     { slug: "shakshuka-med-hvidvin", label: "Shakshuka med hvidvin" },
+    { slug: "hummus-med-hvidvin", label: "Hummus med hvidvin" },
+    { slug: "romesco-med-rodvin", label: "Romesco med rødvin" },
+    { slug: "marinerede-oliven-med-hvidvin", label: "Marinerede oliven med hvidvin" },
   ],
   "vin-til-nachos": [
     { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
