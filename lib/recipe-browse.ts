@@ -19,10 +19,17 @@ export type RecipeDifficultyFilter = "alle" | RecipeDifficulty;
 export type RecipeTimeFilter = "alle" | "hurtig" | "mellem" | "lang";
 
 const WINE_LABELS: Record<RecipeWineFilter, string> = {
-  alle: "Alle vine",
-  rod: "Rødvin i retten",
-  hvid: "Hvidvin i retten",
-  port: "Port / blandet",
+  alle: "Alle opskrifter",
+  rod: "Rødvin",
+  hvid: "Hvidvin",
+  port: "Port",
+};
+
+const WINE_CHIP_LABELS: Record<RecipeWineFilter, string> = {
+  alle: "Alle",
+  rod: "Rødvin",
+  hvid: "Hvidvin",
+  port: "Port",
 };
 
 const CUISINE_LABELS: Record<RecipeCuisineFilter, string> = {
@@ -51,6 +58,10 @@ const DIFFICULTY_LABELS: Record<RecipeDifficultyFilter, string> = {
 
 export function wineFilterLabel(w: RecipeWineFilter): string {
   return WINE_LABELS[w];
+}
+
+export function wineChipLabel(w: RecipeWineFilter): string {
+  return WINE_CHIP_LABELS[w];
 }
 
 export function cuisineFilterLabel(c: RecipeCuisineFilter): string {
@@ -99,7 +110,17 @@ export function recipeMatchesSearch(r: RecipeCardData, q: string): boolean {
 
 /** Emne-tags til chips — springer generiske meta-tags over. */
 export function topTagsForRecipes(recipes: RecipeCardData[], minCount = 2, max = 14): { tag: string; count: number }[] {
-  const skip = new Set(["opskrift", "rødvin", "hvidvin", "portvin"]);
+  const skip = new Set([
+    "opskrift",
+    "rødvin",
+    "hvidvin",
+    "portvin",
+    "dansk",
+    "fransk",
+    "italiensk",
+    "spansk",
+    "schweizisk",
+  ]);
   const counts = new Map<string, number>();
   for (const r of recipes) {
     for (const raw of r.tags || []) {

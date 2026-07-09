@@ -23,6 +23,7 @@ import {
   timeFilterLabel,
   topTagsForRecipes,
   wineBadgeLabel,
+  wineChipLabel,
   wineFilterLabel,
 } from "@/lib/recipe-browse";
 import { difficultyLabel, formatTotalTime } from "@/lib/recipe-format";
@@ -31,6 +32,9 @@ type Props = {
   recipes: RecipeCardData[];
   initialQuery?: string;
 };
+
+const SELECT_CLASS =
+  "w-full appearance-none rounded-xl border border-stone-200 bg-white px-3 py-2.5 pr-9 text-sm text-stone-900 shadow-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200";
 
 function FilterChip({
   active,
@@ -47,12 +51,54 @@ function FilterChip({
       onClick={onClick}
       className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
         active
-          ? "border-rose-800 bg-rose-900 text-white"
+          ? "border-rose-800 bg-rose-900 text-white shadow-sm"
           : "border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50"
       }`}
     >
       {children}
     </button>
+  );
+}
+
+function FilterSelect<T extends string>({
+  id,
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  value: T;
+  options: { value: T; label: string }[];
+  onChange: (value: T) => void;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-xs font-medium text-stone-600">
+        {label}
+      </label>
+      <div className="relative">
+        <select
+          id={id}
+          value={value}
+          onChange={(e) => onChange(e.target.value as T)}
+          className={SELECT_CLASS}
+        >
+          {options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+        <span
+          className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-stone-400"
+          aria-hidden
+        >
+          ▾
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -68,7 +114,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
     setQuery(initialQuery.trim());
   }, [initialQuery]);
 
-  const tagOptions = useMemo(() => topTagsForRecipes(recipes, 2), [recipes]);
+  const tagOptions = useMemo(() => topTagsForRecipes(recipes, 2, 10), [recipes]);
   const wineCounts = useMemo(() => countRecipesByWine(recipes), [recipes]);
   const cuisineCounts = useMemo(() => countRecipesByCuisine(recipes), [recipes]);
 
@@ -84,7 +130,39 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
   }, [recipes, wine, cuisine, difficulty, time, activeTag, query]);
 
   const hasActiveFilters =
-    wine !== "alle" || cuisine !== "alle" || difficulty !== "alle" || time !== "alle" || activeTag != null || query.trim().length > 0;
+    wine !== "alle" ||
+    cuisine !== "alle" ||
+    difficulty !== "alle" ||
+    time !== "alle" ||
+    activeTag != null ||
+    query.trim().length > 0;
+
+  const cuisineOptions = useMemo(
+    () =>
+      (["alle", "dansk", "fransk", "italiensk", "spansk", "schweizisk", "andet"] as const).map((c) => ({
+        value: c,
+        label: c === "alle" ? cuisineFilterLabel(c) : `${cuisineFilterLabel(c)} (${cuisineCounts[c]})`,
+      })),
+    [cuisineCounts],
+  );
+
+  const difficultyOptions = useMemo(
+    () =>
+      (["alle", "easy", "medium", "hard"] as const).map((d) => ({
+        value: d,
+        label: difficultyFilterLabel(d),
+      })),
+    [],
+  );
+
+  const timeOptions = useMemo(
+    () =>
+      (["alle", "hurtig", "mellem", "lang"] as const).map((t) => ({
+        value: t,
+        label: timeFilterLabel(t),
+      })),
+    [],
+  );
 
   function clearFilters() {
     setQuery("");
@@ -117,98 +195,122 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
         </p>
       </div>
 
-      <div>
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Vin i retten</p>
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Vin i retten">
-          {(["alle", "rod", "hvid", "port"] as const).map((w) => (
-            <FilterChip key={w} active={wine === w} onClick={() => setWine(w)}>
-              {wineFilterLabel(w)}
-              <span className={`ml-1 tabular-nums ${wine === w ? "text-rose-200" : "text-stone-400"}`}>
-                ({wineCounts[w]})
-              </span>
-            </FilterChip>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Køkken</p>
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Køkken">
-          {(["alle", "dansk", "fransk", "italiensk", "spansk", "schweizisk", "andet"] as const).map((c) => (
-            <FilterChip key={c} active={cuisine === c} onClick={() => setCuisine(c)}>
-              {cuisineFilterLabel(c)}
-              <span className={`ml-1 tabular-nums ${cuisine === c ? "text-rose-200" : "text-stone-400"}`}>
-                ({cuisineCounts[c]})
-              </span>
-            </FilterChip>
-          ))}
-        </div>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
+      <section
+        className="rounded-2xl border border-stone-200 bg-stone-50/70 p-4 sm:p-5"
+        aria-label="Filtrér opskrifter"
+      >
         <div>
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Sværhedsgrad</p>
-          <div className="flex flex-wrap gap-2">
-            {(["alle", "easy", "medium", "hard"] as const).map((d) => (
-              <FilterChip key={d} active={difficulty === d} onClick={() => setDifficulty(d)}>
-                {difficultyFilterLabel(d)}
+          <p className="text-sm font-medium text-stone-700">Vin i retten</p>
+          <div className="mt-2 flex flex-wrap gap-2" role="tablist" aria-label="Vin i retten">
+            {(["alle", "rod", "hvid", "port"] as const).map((w) => (
+              <FilterChip key={w} active={wine === w} onClick={() => setWine(w)}>
+                {wineChipLabel(w)}
+                <span className={`ml-1 tabular-nums ${wine === w ? "text-rose-200" : "text-stone-400"}`}>
+                  ({wineCounts[w]})
+                </span>
               </FilterChip>
             ))}
           </div>
         </div>
-        <div>
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Tid i gryden</p>
-          <div className="flex flex-wrap gap-2">
-            {(["alle", "hurtig", "mellem", "lang"] as const).map((t) => (
-              <FilterChip key={t} active={time === t} onClick={() => setTime(t)}>
-                {timeFilterLabel(t)}
-              </FilterChip>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {tagOptions.length > 0 ? (
-        <div>
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Emner</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <FilterSelect
+            id="recipe-filter-cuisine"
+            label="Køkken"
+            value={cuisine}
+            options={cuisineOptions}
+            onChange={setCuisine}
+          />
+          <FilterSelect
+            id="recipe-filter-difficulty"
+            label="Sværhedsgrad"
+            value={difficulty}
+            options={difficultyOptions}
+            onChange={setDifficulty}
+          />
+          <FilterSelect
+            id="recipe-filter-time"
+            label="Tid i gryden"
+            value={time}
+            options={timeOptions}
+            onChange={setTime}
+          />
+        </div>
+
+        {tagOptions.length > 0 ? (
+          <details className="group mt-4 border-t border-stone-200/80 pt-4">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium text-stone-700 marker:content-none hover:text-rose-900 [&::-webkit-details-marker]:hidden">
+              <span>Emner og ingredienser</span>
+              <span className="shrink-0 text-xs font-normal text-stone-500">
+                {activeTag ? `Valgt: ${activeTag}` : `${tagOptions.length} emner`}
+                <span className="ml-2 text-stone-400 group-open:rotate-180 inline-block transition-transform" aria-hidden>
+                  ▾
+                </span>
+              </span>
+            </summary>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <FilterChip active={activeTag === null} onClick={() => setActiveTag(null)}>
+                Alle emner
+              </FilterChip>
+              {tagOptions.map(({ tag, count }) => (
+                <FilterChip
+                  key={tag}
+                  active={activeTag === tag}
+                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                >
+                  <span className="capitalize">{tag}</span>
+                  <span className={`ml-1 tabular-nums ${activeTag === tag ? "text-rose-200" : "text-stone-400"}`}>
+                    ({count})
+                  </span>
+                </FilterChip>
+              ))}
+            </div>
+          </details>
+        ) : null}
+
+        {hasActiveFilters ? (
+          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-stone-200/80 pt-4">
+            <span className="text-xs font-medium uppercase tracking-wide text-stone-500">Aktive filtre</span>
+            {query.trim() ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
+                Søgning: «{query.trim()}»
+              </span>
+            ) : null}
+            {wine !== "alle" ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
+                {wineFilterLabel(wine)}
+              </span>
+            ) : null}
+            {cuisine !== "alle" ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
+                {cuisineFilterLabel(cuisine)}
+              </span>
+            ) : null}
+            {difficulty !== "alle" ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
+                {difficultyFilterLabel(difficulty)}
+              </span>
+            ) : null}
+            {time !== "alle" ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
+                {timeFilterLabel(time)}
+              </span>
+            ) : null}
+            {activeTag ? (
+              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium capitalize text-stone-700 ring-1 ring-stone-200">
+                {activeTag}
+              </span>
+            ) : null}
             <button
               type="button"
-              onClick={() => setActiveTag(null)}
-              className={`rounded-full border px-2.5 py-1 text-xs font-medium transition ${
-                activeTag === null
-                  ? "border-stone-600 bg-stone-800 text-white"
-                  : "border-stone-200 bg-stone-50 text-stone-600 hover:bg-stone-100"
-              }`}
+              onClick={clearFilters}
+              className="ml-auto text-sm font-medium text-rose-900 hover:underline"
             >
-              Alle emner
+              Nulstil
             </button>
-            {tagOptions.map(({ tag, count }) => (
-              <button
-                key={tag}
-                type="button"
-                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                className={`rounded-full border px-2.5 py-1 text-xs font-medium capitalize transition ${
-                  activeTag === tag
-                    ? "border-rose-700 bg-rose-50 text-rose-950"
-                    : "border-stone-200 bg-white text-stone-600 hover:border-stone-300"
-                }`}
-              >
-                {tag}
-                <span className="ml-0.5 text-stone-400">({count})</span>
-              </button>
-            ))}
           </div>
-        </div>
-      ) : null}
-
-      {hasActiveFilters ? (
-        <p className="text-sm text-stone-600">
-          <button type="button" onClick={clearFilters} className="font-medium text-rose-900 hover:underline">
-            Nulstil filtre
-          </button>
-        </p>
-      ) : null}
+        ) : null}
+      </section>
 
       {filtered.length === 0 ? (
         <p className="rounded-xl border border-dashed border-stone-200 bg-stone-50 px-4 py-8 text-center text-stone-600">
@@ -237,27 +339,27 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
                     />
                   </div>
                   <div className="p-5">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900">
-                      {wineBadgeLabel(wineType)}
-                    </span>
-                    {cuisineType !== "andet" ? (
-                      <span className="rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-700">
-                        {cuisineFilterLabel(cuisineType)}
+                    <div className="flex flex-wrap gap-2">
+                      <span className="rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900">
+                        {wineBadgeLabel(wineType)}
                       </span>
-                    ) : null}
-                  </div>
-                  <h2 className="mt-3 text-lg font-semibold text-stone-900">{r.title}</h2>
-                  <p className="mt-2 line-clamp-2 text-sm text-stone-600">{r.description}</p>
-                  <p className="mt-3 text-xs text-stone-500">
-                    {[
-                      r.servings ? `${r.servings} pers.` : null,
-                      totalTime ? `ca. ${totalTime}` : null,
-                      diff,
-                    ]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </p>
+                      {cuisineType !== "andet" ? (
+                        <span className="rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-700">
+                          {cuisineFilterLabel(cuisineType)}
+                        </span>
+                      ) : null}
+                    </div>
+                    <h2 className="mt-3 text-lg font-semibold text-stone-900">{r.title}</h2>
+                    <p className="mt-2 line-clamp-2 text-sm text-stone-600">{r.description}</p>
+                    <p className="mt-3 text-xs text-stone-500">
+                      {[
+                        r.servings ? `${r.servings} pers.` : null,
+                        totalTime ? `ca. ${totalTime}` : null,
+                        diff,
+                      ]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </p>
                   </div>
                 </Link>
               </li>
