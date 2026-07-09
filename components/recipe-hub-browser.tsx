@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getRecipeImageAlt, getRecipeImagePath } from "@/lib/recipe-images";
 import type {
   RecipeCardData,
@@ -23,7 +23,6 @@ import {
   timeFilterLabel,
   topTagsForRecipes,
   wineBadgeLabel,
-  wineChipLabel,
   wineFilterLabel,
 } from "@/lib/recipe-browse";
 import { difficultyLabel, formatTotalTime } from "@/lib/recipe-format";
@@ -34,31 +33,7 @@ type Props = {
 };
 
 const SELECT_CLASS =
-  "w-full appearance-none rounded-xl border border-stone-200 bg-white px-3 py-2.5 pr-9 text-sm text-stone-900 shadow-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200";
-
-function FilterChip({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
-        active
-          ? "border-rose-800 bg-rose-900 text-white shadow-sm"
-          : "border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50"
-      }`}
-    >
-      {children}
-    </button>
-  );
-}
+  "w-full min-w-0 appearance-none rounded-xl border border-stone-200 bg-white px-3 py-2.5 pr-9 text-sm text-stone-900 shadow-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200";
 
 function FilterSelect<T extends string>({
   id,
@@ -74,7 +49,7 @@ function FilterSelect<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <div>
+    <div className="min-w-[9.5rem] flex-1">
       <label htmlFor={id} className="mb-1.5 block text-xs font-medium text-stone-600">
         {label}
       </label>
@@ -146,6 +121,15 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
     [cuisineCounts],
   );
 
+  const wineOptions = useMemo(
+    () =>
+      (["alle", "rod", "hvid", "port"] as const).map((w) => ({
+        value: w,
+        label: w === "alle" ? wineFilterLabel(w) : `${wineFilterLabel(w)} (${wineCounts[w]})`,
+      })),
+    [wineCounts],
+  );
+
   const difficultyOptions = useMemo(
     () =>
       (["alle", "easy", "medium", "hard"] as const).map((d) => ({
@@ -162,6 +146,17 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
         label: timeFilterLabel(t),
       })),
     [],
+  );
+
+  const tagSelectOptions = useMemo(
+    () => [
+      { value: "alle", label: "Alle emner" },
+      ...tagOptions.map(({ tag, count }) => ({
+        value: tag,
+        label: `${tag.charAt(0).toUpperCase()}${tag.slice(1)} (${count})`,
+      })),
+    ],
+    [tagOptions],
   );
 
   function clearFilters() {
@@ -195,122 +190,54 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
         </p>
       </div>
 
-      <section
-        className="rounded-2xl border border-stone-200 bg-stone-50/70 p-4 sm:p-5"
-        aria-label="Filtrér opskrifter"
-      >
-        <div>
-          <p className="text-sm font-medium text-stone-700">Vin i retten</p>
-          <div className="mt-2 flex flex-wrap gap-2" role="tablist" aria-label="Vin i retten">
-            {(["alle", "rod", "hvid", "port"] as const).map((w) => (
-              <FilterChip key={w} active={wine === w} onClick={() => setWine(w)}>
-                {wineChipLabel(w)}
-                <span className={`ml-1 tabular-nums ${wine === w ? "text-rose-200" : "text-stone-400"}`}>
-                  ({wineCounts[w]})
-                </span>
-              </FilterChip>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <FilterSelect
-            id="recipe-filter-cuisine"
-            label="Køkken"
-            value={cuisine}
-            options={cuisineOptions}
-            onChange={setCuisine}
-          />
-          <FilterSelect
-            id="recipe-filter-difficulty"
-            label="Sværhedsgrad"
-            value={difficulty}
-            options={difficultyOptions}
-            onChange={setDifficulty}
-          />
-          <FilterSelect
-            id="recipe-filter-time"
-            label="Tid i gryden"
-            value={time}
-            options={timeOptions}
-            onChange={setTime}
-          />
-        </div>
-
+      <div className="flex flex-wrap items-end gap-3" aria-label="Filtrér opskrifter">
+        <FilterSelect
+          id="recipe-filter-wine"
+          label="Vin i retten"
+          value={wine}
+          options={wineOptions}
+          onChange={setWine}
+        />
+        <FilterSelect
+          id="recipe-filter-cuisine"
+          label="Køkken"
+          value={cuisine}
+          options={cuisineOptions}
+          onChange={setCuisine}
+        />
+        <FilterSelect
+          id="recipe-filter-difficulty"
+          label="Sværhedsgrad"
+          value={difficulty}
+          options={difficultyOptions}
+          onChange={setDifficulty}
+        />
+        <FilterSelect
+          id="recipe-filter-time"
+          label="Tid i gryden"
+          value={time}
+          options={timeOptions}
+          onChange={setTime}
+        />
         {tagOptions.length > 0 ? (
-          <details className="group mt-4 border-t border-stone-200/80 pt-4">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium text-stone-700 marker:content-none hover:text-rose-900 [&::-webkit-details-marker]:hidden">
-              <span>Emner og ingredienser</span>
-              <span className="shrink-0 text-xs font-normal text-stone-500">
-                {activeTag ? `Valgt: ${activeTag}` : `${tagOptions.length} emner`}
-                <span className="ml-2 text-stone-400 group-open:rotate-180 inline-block transition-transform" aria-hidden>
-                  ▾
-                </span>
-              </span>
-            </summary>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <FilterChip active={activeTag === null} onClick={() => setActiveTag(null)}>
-                Alle emner
-              </FilterChip>
-              {tagOptions.map(({ tag, count }) => (
-                <FilterChip
-                  key={tag}
-                  active={activeTag === tag}
-                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                >
-                  <span className="capitalize">{tag}</span>
-                  <span className={`ml-1 tabular-nums ${activeTag === tag ? "text-rose-200" : "text-stone-400"}`}>
-                    ({count})
-                  </span>
-                </FilterChip>
-              ))}
-            </div>
-          </details>
+          <FilterSelect
+            id="recipe-filter-tag"
+            label="Emne"
+            value={activeTag ?? "alle"}
+            options={tagSelectOptions}
+            onChange={(value) => setActiveTag(value === "alle" ? null : value)}
+          />
         ) : null}
-
         {hasActiveFilters ? (
-          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-stone-200/80 pt-4">
-            <span className="text-xs font-medium uppercase tracking-wide text-stone-500">Aktive filtre</span>
-            {query.trim() ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
-                Søgning: «{query.trim()}»
-              </span>
-            ) : null}
-            {wine !== "alle" ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
-                {wineFilterLabel(wine)}
-              </span>
-            ) : null}
-            {cuisine !== "alle" ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
-                {cuisineFilterLabel(cuisine)}
-              </span>
-            ) : null}
-            {difficulty !== "alle" ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
-                {difficultyFilterLabel(difficulty)}
-              </span>
-            ) : null}
-            {time !== "alle" ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-stone-700 ring-1 ring-stone-200">
-                {timeFilterLabel(time)}
-              </span>
-            ) : null}
-            {activeTag ? (
-              <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium capitalize text-stone-700 ring-1 ring-stone-200">
-                {activeTag}
-              </span>
-            ) : null}
-            <button
-              type="button"
-              onClick={clearFilters}
-              className="ml-auto text-sm font-medium text-rose-900 hover:underline"
-            >
-              Nulstil
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="shrink-0 rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-sm font-medium text-rose-900 shadow-sm transition hover:border-rose-300 hover:bg-rose-50"
+          >
+            Nulstil
+          </button>
         ) : null}
-      </section>
+      </div>
 
       {filtered.length === 0 ? (
         <p className="rounded-xl border border-dashed border-stone-200 bg-stone-50 px-4 py-8 text-center text-stone-600">
