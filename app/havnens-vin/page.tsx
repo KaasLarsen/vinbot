@@ -41,7 +41,7 @@ export default function HavnensVinPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/havnens-vin", label: "Havnens Vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Havnens Vin</h1>

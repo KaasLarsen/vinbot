@@ -44,7 +44,7 @@ export default function JohnsenWinePage() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <FaqJsonLd items={faq} />
       <MerchantFeaturedProductsJsonLd merchantId="johnsen-wine" picks={featuredPicks} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/johnsen-wine", label: "Johnsen Wine" }]} />

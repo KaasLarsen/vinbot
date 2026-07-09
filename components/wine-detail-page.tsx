@@ -90,7 +90,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
       : relatedFromRegistry.slice(0, 4).map((p) => wineDetailPageToFeaturedPick(p));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <WineDetailProductJsonLd
         merchantId={wine.merchantId}
         pick={featuredPick}

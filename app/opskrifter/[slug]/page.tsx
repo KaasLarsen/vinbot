@@ -114,7 +114,7 @@ export default async function RecipePage({ params }: Props) {
   ].filter(Boolean);
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-10">
+    <article className="mx-auto max-w-6xl px-4 py-10">
       <RecipeJsonLd
         name={frontmatter.title}
         description={frontmatter.description}

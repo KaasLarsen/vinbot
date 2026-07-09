@@ -56,7 +56,7 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
   ];
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}

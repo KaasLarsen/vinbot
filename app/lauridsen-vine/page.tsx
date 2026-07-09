@@ -43,7 +43,7 @@ export default function LauridsenVinePage() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <FaqJsonLd items={faq} />
       <MerchantFeaturedProductsJsonLd merchantId="lauridsen-vine" picks={featuredPicks} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/lauridsen-vine", label: "Lauridsen Vine" }]} />

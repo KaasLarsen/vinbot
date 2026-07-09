@@ -50,7 +50,7 @@ export default function DenSidsteFlaskePage() {
   ];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/den-sidste-flaske", label: "Den Sidste Flaske" }]} />

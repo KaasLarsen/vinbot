@@ -39,7 +39,7 @@ export default function FestOgVinHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} items={collectionItems} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/fest-og-vin", label: "Fest og selskab" }]} />

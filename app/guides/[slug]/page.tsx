@@ -124,7 +124,7 @@ export default async function GuidePage({ params }: Props) {
   const articleImage = `${url}/opengraph-image`;
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-10">
+    <article className="mx-auto max-w-6xl px-4 py-10">
       <ArticleJsonLd
         title={frontmatter.title}
         description={frontmatter.description}
