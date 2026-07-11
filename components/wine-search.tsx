@@ -10,6 +10,7 @@ import {
 } from "@/lib/search/wine-style";
 import { ProductCard } from "@/components/product-card";
 import { SearchCuratedWineStrip } from "@/components/search-curated-dsf-strip";
+import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
 
 export type WineSearchChip = { label: string; q: string; max?: number };
 
@@ -983,7 +984,7 @@ export function WineSearch({
             </div>
           )}
 
-          {lastQuery.trim() && !loading ? (
+          {lastQuery.trim() && !loading && !wineFormatIntentFromQuery(lastQuery) ? (
             <SearchCuratedWineStrip
               query={lastQuery}
               maxBudget={lastBudget}

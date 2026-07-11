@@ -40,7 +40,11 @@ export function GuideInlineSearch({ slug, intent }: Props) {
         Søg flasker til guiden
       </h2>
       <p className="mt-1 text-sm text-stone-600">
-        Sammenlign pris på tværs af danske forhandlere — plus kuraterede flasker fra Den Sidste Flaske.
+        {/box|bib|papvin|bag/.test(intent.q) ? (
+          <>Sammenlign bag-in-box på tværs af danske forhandlere — kun ægte papvin/boxvine.</>
+        ) : (
+          <>Sammenlign pris på tværs af danske forhandlere — plus kuraterede flasker fra Den Sidste Flaske.</>
+        )}
       </p>
       <div className="mt-4">
         <WineSearch

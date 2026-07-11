@@ -6,6 +6,7 @@ import {
   wineDetailSlugForProductUrl,
 } from "@/lib/wine-detail-pages/registry";
 import { lowestPricePerBottle } from "@/lib/wine-pick-prices";
+import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
 import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
 
 const DSF_DEFAULT_URLS = [
@@ -246,6 +247,9 @@ function mergePicks(primary: MerchantFeaturedPick[], extra: MerchantFeaturedPick
 export function listCuratedPicksForSearchQuery(q: string, max: number | null = null, limit = 3): MerchantFeaturedPick[] {
   const trimmed = q.trim();
   if (!trimmed) return fallbackDsfPicks([], max, limit, false);
+
+  /* BiB-søgninger: kun rigtige boxvine fra feed — ikke DSF-flasker som fallback. */
+  if (wineFormatIntentFromQuery(trimmed)) return [];
 
   const tokens = queryTokens(trimmed);
   const grapeTokens = grapeTokensFromQuery(trimmed, tokens);

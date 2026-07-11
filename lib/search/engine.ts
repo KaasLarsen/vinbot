@@ -2,7 +2,7 @@ import { FEEDS } from "@/lib/feeds/config";
 import type { ProductHit, SearchResult } from "./types";
 import { expandQuery, normalizeUrl, parsePriceFilter, productEligibleForWineSearch, proxyImg, score } from "./helpers";
 import { getCachedFeedProducts } from "./fetch-feed";
-import { productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
+import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
 
 const RESULT_CAP = 48;
@@ -41,8 +41,13 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
           if (!productEligibleForWineSearch(p)) return false;
           if (styleIntent && !productMatchesWineStyle(p, styleIntent)) return false;
           if (formatIntent && !productMatchesWineFormat(p, formatIntent)) return false;
-          if (formatIntent) {
-            return terms.some((t) => (p._search || "").includes(t)) || productIsBagInBox(p);
+          if (formatIntent === "bag-in-box") {
+            const brandTerms = brandTermsBeyondFormat(terms);
+            const hay = p._search || "";
+            if (brandTerms.length > 0) {
+              return brandTerms.some((t) => hay.includes(t));
+            }
+            return terms.some((t) => hay.includes(t)) || productIsBagInBox(p);
           }
           return terms.some((t) => (p._search || "").includes(t));
         });

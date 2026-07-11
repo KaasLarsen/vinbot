@@ -3,6 +3,23 @@ import { normalize } from "./helpers";
 
 export type WineFormatFilter = "bag-in-box";
 
+/** Søgetermer der kun beskriver format — ikke mærke/region. */
+export const BIB_FORMAT_TERMS = new Set([
+  "bib",
+  "bag-in-box",
+  "papvin",
+  "boxvin",
+  "box",
+  "bag",
+  "boks",
+  "liter",
+  "liters",
+]);
+
+export function brandTermsBeyondFormat(terms: string[]): string[] {
+  return terms.filter((t) => t.length > 2 && !BIB_FORMAT_TERMS.has(t));
+}
+
 function productText(p: Pick<ProductHit, "_search" | "title" | "desc" | "category">): string {
   return normalize([p.title, p.desc, p.category, p._search].filter(Boolean).join(" "));
 }
