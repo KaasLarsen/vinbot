@@ -9,6 +9,7 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "vin-til-pizza",
   "bedste-vin-til-gave",
   "bobler-champagne-cava-prosecco-og-cremant",
+  "bedste-box-vin",
 ]);
 
 export function guideHasInlineSearch(slug: string): boolean {

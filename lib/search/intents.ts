@@ -139,5 +139,9 @@ export function intentTermsFromQuery(q = ""): string[] {
     );
   }
 
+  if (/(bag[\s-]?in[\s-]?box|bib|papvin|boxvin|boks[\s-]?vin)/.test(txt)) {
+    add("bib", "bag-in-box", "papvin");
+  }
+
   return out;
 }

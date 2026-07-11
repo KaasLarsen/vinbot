@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react";
+import { GuideMdxShopPicks } from "@/components/guide-mdx-shop-picks";
 
 export const guideMdxComponents = {
+  GuideMdxShopPicks,
   a: (props: ComponentProps<"a">) => (
     <a {...props} className="text-rose-800 underline decoration-rose-300 underline-offset-2 hover:text-rose-950" />
   ),

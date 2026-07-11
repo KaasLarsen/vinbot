@@ -17,6 +17,10 @@ function intentChipsForGuide(intent: GuideIntent): WineSearchChip[] {
     chips.push({ label: "Bobler", q: "nytår champagne bobler cava" });
   } else if (/fisk|hvidvin|riesling/.test(q)) {
     chips.push({ label: "Hvid til fisk", q: "fisk hvidvin riesling" });
+  } else if (/box|bib|papvin|bag/.test(q)) {
+    chips.push({ label: "Rosé box", q: "bag-in-box rosato bib" });
+    chips.push({ label: "Hvid box", q: "bag-in-box pecorino bib" });
+    chips.push({ label: "Alle boxvine", q: "bag-in-box bib" });
   } else {
     chips.push({ label: "Under 150 kr", q: intent.q, max: 150 });
   }

@@ -2,6 +2,7 @@ import { FEEDS } from "@/lib/feeds/config";
 import type { ProductHit, SearchResult } from "./types";
 import { expandQuery, normalizeUrl, parsePriceFilter, productEligibleForWineSearch, proxyImg, score } from "./helpers";
 import { getCachedFeedProducts } from "./fetch-feed";
+import { productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
 
 const RESULT_CAP = 48;
@@ -13,6 +14,7 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
 
   const terms = expandQuery(qRaw);
   const styleIntent = wineStyleIntentFromQuery(qRaw);
+  const formatIntent = wineFormatIntentFromQuery(qRaw);
   let feeds_ok = 0;
   let feeds_failed = 0;
 
@@ -38,6 +40,10 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
         const matches = products.filter((p) => {
           if (!productEligibleForWineSearch(p)) return false;
           if (styleIntent && !productMatchesWineStyle(p, styleIntent)) return false;
+          if (formatIntent && !productMatchesWineFormat(p, formatIntent)) return false;
+          if (formatIntent) {
+            return terms.some((t) => (p._search || "").includes(t)) || productIsBagInBox(p);
+          }
           return terms.some((t) => (p._search || "").includes(t));
         });
 
@@ -64,8 +70,10 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
   let items = lists.flat();
 
   items = items.sort((a, b) => {
-    const sa = score(a, terms);
-    const sb = score(b, terms);
+    const bibBoost = (p: ProductHit) =>
+      formatIntent === "bag-in-box" && productIsBagInBox(p) ? 30 : 0;
+    const sa = score(a, terms) + bibBoost(a);
+    const sb = score(b, terms) + bibBoost(b);
     return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
   });
 

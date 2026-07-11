@@ -181,6 +181,7 @@ export default async function GuidePage({ params }: Props) {
           hub={hub}
           label={intent.label}
           searchHref={searchHref}
+          heading={slug === "bedste-box-vin" ? "Flere boxvine fra forhandlere" : "Se 3 forslag fra danske forhandlere"}
         />
       ) : null}
       {intent && hub === "regioner" ? <GuideLauridsenRegionCta slug={slug} /> : null}

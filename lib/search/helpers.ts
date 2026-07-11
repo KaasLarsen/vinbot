@@ -304,7 +304,20 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
 
 export function expandQuery(q: string): string[] {
   /* Fx "culottesteg & cuvette" → undgå løst & som søgeord; behand som mellemrum. */
-  const base = normalize(q.replace(/\s*&\s*/g, " "));
+  const raw = q.replace(/\s*&\s*/g, " ");
+  const lower = raw.toLowerCase();
+
+  const set = new Set<string>();
+
+  if (/bag[\s-]?in[\s-]?box/.test(lower)) set.add("bag-in-box");
+  if (/\bbib\b/i.test(raw)) set.add("bib");
+  if (/papvin|boxvin|boks[\s-]?vin/.test(lower)) {
+    set.add("papvin");
+    set.add("bib");
+    set.add("bag-in-box");
+  }
+
+  const base = normalize(raw);
 
   const stopwords = new Set([
     "vin",
@@ -319,6 +332,7 @@ export function expandQuery(q: string): string[] {
     "den",
     "det",
     "de",
+    "in",
     /* pris/filter-ord — læses af parsePriceFilter og må ikke bruges som søgeord,
        ellers dukker irrelevante produkter op, der bare indeholder fx "under" eller et pris-tal. */
     "under",
@@ -351,8 +365,6 @@ export function expandQuery(q: string): string[] {
     cabernet: ["cab", "cabernet sauvignon"],
     "cabernet sauvignon": ["cab", "cabernet"],
   };
-
-  const set = new Set<string>();
 
   base.split(/\s+/).forEach((t) => {
     if (!t) return;

@@ -47,6 +47,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "bedste-box-vin") {
+    return {
+      q: "bag-in-box bib",
+      max: null,
+      label: "boxvin og papvin",
+    };
+  }
+
   const m = slug.match(/^bedste-(.+?)-under-(\d+)-kr$/);
   if (m) {
     const cat = m[1];

@@ -1924,7 +1924,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor finder jeg bedste papvin tilbud?",
       answer:
-        "Sammenlign konkrete mærker og årgange på tværs af forhandlere via Vinbot og hold øje med kasse-kampagner; box holder sig uåbnet længe, så du kan hamstre ved reelle tilbud uden at skynde dig at drikke alt på én gang.",
+        "Sammenlign konkrete bokse på tværs af forhandlere via Vinbots søgning efter bag-in-box og bib — hold øje med kasse-kampagner; box holder sig uåbnet længe, så du kan hamstre ved reelle tilbud uden at skynde dig at drikke alt på én gang.",
     },
     {
       question: "Er papvin dårligere end flaskevin?",
