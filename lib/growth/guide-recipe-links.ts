@@ -126,6 +126,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "chimichurri-med-rodvin", label: "Chimichurri med rødvin" },
     { slug: "romesco-med-rodvin", label: "Romesco med rødvin" },
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
+    { slug: "souvlaki-med-hvidvin", label: "Souvlaki med hvidvin" },
   ],
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
@@ -195,6 +196,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tarteletter-i-hvidvin", label: "Tarteletter i hvidvin" },
     { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
     { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
+    { slug: "souvlaki-med-hvidvin", label: "Souvlaki med hvidvin" },
   ],
   "vin-til-vegetar-og-gront": [
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
@@ -275,6 +277,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
     { slug: "paella-med-hvidvin", label: "Paella med hvidvin" },
     { slug: "chorizo-i-rodvin", label: "Chorizo al vino (tapas-stil)" },
+    { slug: "souvlaki-med-hvidvin", label: "Souvlaki med hvidvin" },
   ],
   "vin-til-mortensaften": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -377,6 +380,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tiramisu-med-marsala-og-hvidvin", label: "Tiramisu med marsala og hvidvin" },
     { slug: "creme-brulee-med-hvidvin", label: "Crème brûlée med hvidvin" },
     { slug: "panna-cotta-med-hvidvin", label: "Panna cotta med hvidvin" },
+    { slug: "crepes-suzette-med-hvidvin", label: "Crêpes Suzette med hvidvin" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -389,6 +393,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "asparges-i-hvidvinsauce", label: "Asparges i hvidvinsauce" },
     { slug: "canard-a-l-orange-med-rodvin", label: "Canard à l'orange med rødvin" },
     { slug: "blanquette-de-veau-med-hvidvin", label: "Blanquette de veau med hvidvin" },
+    { slug: "crepes-suzette-med-hvidvin", label: "Crêpes Suzette med hvidvin" },
   ],
   "vin-til-amerikansk-comfort-mad": [
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
@@ -414,6 +419,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-marokkansk-mad": [
     { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
     { slug: "lammetagine-med-rodvin", label: "Lammetagine med rødvin" },
+  ],
+  "vin-til-oktoberfest-mad": [
+    { slug: "wiener-schnitzel-med-hvidvin", label: "Wiener schnitzel med hvidvin" },
+  ],
+  "vin-til-alsace-mad": [
+    { slug: "wiener-schnitzel-med-hvidvin", label: "Wiener schnitzel med hvidvin" },
+  ],
+  "vin-til-crepes-og-pandekager": [
+    { slug: "crepes-suzette-med-hvidvin", label: "Crêpes Suzette med hvidvin" },
   ],
 
 };
