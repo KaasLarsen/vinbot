@@ -55,29 +55,6 @@ export function getRecipeMetaList(): RecipeMeta[] {
   return getAllRecipes().map(({ content: _c, ...meta }) => meta);
 }
 
-/** Antal ord i brødtekst (uden frontmatter-lister) til indexering. */
-export function countRecipeBodyWords(content: string): number {
-  const text = content
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`[^`]+`/g, " ")
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/[#*_>-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  if (!text) return 0;
-  return text.split(" ").filter(Boolean).length;
-}
-
-export const MIN_INDEXABLE_RECIPE_WORDS = 400;
-
-export function isRecipeIndexable(doc: RecipeDoc): boolean {
-  return countRecipeBodyWords(doc.content) >= MIN_INDEXABLE_RECIPE_WORDS;
-}
-
-export function filterIndexableRecipes(docs: RecipeDoc[]): RecipeDoc[] {
-  return docs.filter(isRecipeIndexable);
-}
-
 export async function getRecipe(slug: string) {
   const doc = getRecipeBySlug(slug);
   if (!doc) return null;

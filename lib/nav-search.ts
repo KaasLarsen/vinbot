@@ -1,5 +1,5 @@
 import { filterIndexableGuides, listGuides } from "@/lib/content/guides";
-import { filterIndexableRecipes, getAllRecipes } from "@/lib/content/recipes";
+import { getAllRecipes } from "@/lib/content/recipes";
 import { guideMatchesSearch } from "@/lib/guide-browse";
 
 export type NavSearchKind = "guide" | "recipe" | "hub" | "quick";
@@ -131,7 +131,7 @@ export function searchNavSuggestions(q: string, mode: "vin" | "guides", limit = 
   }
 
   if (mode === "vin") {
-    for (const r of filterIndexableRecipes(getAllRecipes())) {
+    for (const r of getAllRecipes()) {
       const s = recipeScore(r.title, r.slug, r.description, trimmed);
       if (s > 0) {
         out.push({

@@ -10,11 +10,7 @@ import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
 import { RecipeSteps } from "@/components/recipe-steps";
 import { RecipeWineBox } from "@/components/recipe-wine-box";
 import { RecipeShopSection } from "@/components/recipe-shop-section";
-import {
-  getAllRecipeSlugs,
-  getRecipe,
-  MIN_INDEXABLE_RECIPE_WORDS,
-} from "@/lib/content/recipes";
+import { getAllRecipeSlugs, getRecipe } from "@/lib/content/recipes";
 import { recipePublicationAndModified } from "@/lib/recipe-dates";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
 import { editorialTeamName, siteUrl } from "@/lib/site";
@@ -38,7 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getRecipe(slug);
   if (!data) return {};
   const canonical = `${siteUrl}/opskrifter/${slug}`;
-  const tooThin = data.wordCount < MIN_INDEXABLE_RECIPE_WORDS;
   const imageUrl = getRecipeImageAbsoluteUrl(slug, siteUrl);
   const serpTitle = buildRecipeSerpTitle(data.frontmatter.title);
   const serpDescription = buildRecipeSerpDescription(data.frontmatter.description, data.frontmatter.title);
@@ -57,15 +52,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       images: [imageUrl],
     },
-    ...(tooThin
-      ? {
-          robots: {
-            index: false,
-            follow: true,
-            googleBot: { index: false, follow: true },
-          },
-        }
-      : {}),
   };
 }
 

@@ -1,12 +1,12 @@
 import { siteUrl } from "@/lib/site";
-import { filterIndexableRecipes, getAllRecipes } from "@/lib/content/recipes";
+import { getAllRecipes } from "@/lib/content/recipes";
 import { renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");
-  const recipes = filterIndexableRecipes(getAllRecipes());
+  const recipes = getAllRecipes();
 
   const xml = renderUrlset([
     {
