@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
 const PAGE_DESCRIPTION =
-  "161+ opskrifter hvor vin er en del af retten: bøftatar, vindaloo, fish and chips, blanquette, crème brûlée, tiramisu, carpaccio, sangria, feijoada, bigos, brisket, boeuf bourguignon, zabaglione, kamskjell, wellington og mere. Filtrér efter rød/hvidvin, køkken og tid.";
+  "164+ opskrifter hvor vin er en del af retten: tikka masala, panna cotta, marokkansk tagine, bøftatar, vindaloo, fish and chips, blanquette, crème brûlée, tiramisu, feijoada, bigos, brisket og mere. Filtrér efter rød/hvidvin, køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };

@@ -29,6 +29,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "lammetagine-med-rodvin", label: "Lammetagine med rødvin" },
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
     { slug: "bigos-med-rodvin", label: "Bigos med rødvin" },
+    { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
   ],
   "vin-til-suppe": [
     { slug: "oksesuppe-med-rodvin", label: "Oksesuppe med rødvin" },
@@ -141,6 +142,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "minestrone-med-rodvin", label: "Minestrone med rødvin" },
     { slug: "carpaccio-med-hvidvindressing", label: "Carpaccio med hvidvindressing" },
     { slug: "tiramisu-med-marsala-og-hvidvin", label: "Tiramisu med marsala og hvidvin" },
+    { slug: "panna-cotta-med-hvidvin", label: "Panna cotta med hvidvin" },
   ],
   "vin-til-spansk-mad": [
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
@@ -191,6 +193,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "citronkylling-i-hvidvin", label: "Citronkylling i hvidvin" },
     { slug: "wok-kylling-med-hvidvin", label: "Wok-kylling med hvidvin" },
     { slug: "tarteletter-i-hvidvin", label: "Tarteletter i hvidvin" },
+    { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
+    { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
   ],
   "vin-til-vegetar-og-gront": [
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
@@ -226,6 +230,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-karryretter": [
     { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
     { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
+    { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
   ],
   "vin-til-ceviche": [
     { slug: "ceviche-med-hvidvin", label: "Ceviche med hvidvin" },
@@ -371,6 +376,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "zabaglione-med-hvidvin", label: "Zabaglione med hvidvin" },
     { slug: "tiramisu-med-marsala-og-hvidvin", label: "Tiramisu med marsala og hvidvin" },
     { slug: "creme-brulee-med-hvidvin", label: "Crème brûlée med hvidvin" },
+    { slug: "panna-cotta-med-hvidvin", label: "Panna cotta med hvidvin" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -400,9 +406,14 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-indisk-mad": [
     { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
     { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
+    { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
   ],
   "vin-til-fisk-og-chips": [
     { slug: "fish-and-chips-med-hvidvin", label: "Fish and chips med hvidvin" },
+  ],
+  "vin-til-marokkansk-mad": [
+    { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
+    { slug: "lammetagine-med-rodvin", label: "Lammetagine med rødvin" },
   ],
 
 };
