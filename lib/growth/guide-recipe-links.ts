@@ -225,6 +225,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-karryretter": [
     { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
+    { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
   ],
   "vin-til-ceviche": [
     { slug: "ceviche-med-hvidvin", label: "Ceviche med hvidvin" },
@@ -299,6 +300,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-brittisk-mad": [
     { slug: "shepherd-pie-med-rodvin", label: "Shepherd's pie med rødvin" },
     { slug: "okse-wellington-med-rodvinssauce", label: "Okse-wellington med rødvinssauce" },
+    { slug: "fish-and-chips-med-hvidvin", label: "Fish and chips med hvidvin" },
   ],
   "vin-til-vietnamesisk-mad": [
     { slug: "bun-cha-med-hvidvin", label: "Bun cha med hvidvin" },
@@ -368,6 +370,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "aeblekage-hvidvin-karamel", label: "Æblekage med hvidvin-karamel" },
     { slug: "zabaglione-med-hvidvin", label: "Zabaglione med hvidvin" },
     { slug: "tiramisu-med-marsala-og-hvidvin", label: "Tiramisu med marsala og hvidvin" },
+    { slug: "creme-brulee-med-hvidvin", label: "Crème brûlée med hvidvin" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -379,18 +382,27 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "asparges-i-hvidvinsauce", label: "Asparges i hvidvinsauce" },
     { slug: "canard-a-l-orange-med-rodvin", label: "Canard à l'orange med rødvin" },
+    { slug: "blanquette-de-veau-med-hvidvin", label: "Blanquette de veau med hvidvin" },
   ],
   "vin-til-amerikansk-comfort-mad": [
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
   ],
   "vin-til-tatar-og-carpaccio": [
     { slug: "carpaccio-med-hvidvindressing", label: "Carpaccio med hvidvindressing" },
+    { slug: "boeftatar-med-hvidvin", label: "Bøftatar med hvidvin" },
   ],
   "vin-til-asparges": [
     { slug: "asparges-i-hvidvinsauce", label: "Asparges i hvidvinsauce" },
   ],
   "vin-i-cocktails-spritz-og-drikke": [
     { slug: "sangria-med-rodvin", label: "Sangria med rødvin" },
+  ],
+  "vin-til-indisk-mad": [
+    { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
+    { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
+  ],
+  "vin-til-fisk-og-chips": [
+    { slug: "fish-and-chips-med-hvidvin", label: "Fish and chips med hvidvin" },
   ],
 
 };

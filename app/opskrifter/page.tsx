@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
 const PAGE_DESCRIPTION =
-  "156+ opskrifter hvor vin er en del af retten: tiramisu, carpaccio, sangria, asparges, canard à l'orange, feijoada, bigos, brisket, bearnaise, østers gratin, boeuf bourguignon, zabaglione, kamskjell, wellington, lammetagine, gullaschsuppe, chimichurri, caldeirada, cassoulet, chorizo al vino, estofado, risotto al Barolo, torsk i hvidvin og mere. Filtrér efter rød/hvidvin, køkken og tid.";
+  "161+ opskrifter hvor vin er en del af retten: bøftatar, vindaloo, fish and chips, blanquette, crème brûlée, tiramisu, carpaccio, sangria, feijoada, bigos, brisket, boeuf bourguignon, zabaglione, kamskjell, wellington og mere. Filtrér efter rød/hvidvin, køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };
