@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
+import { HomeQuickTopicsSection } from "@/components/home-quick-topics-section";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -34,9 +35,6 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
     },
   };
 }
-
-const popularTopicLinkClass =
-  "underline decoration-rose-300 underline-offset-4 hover:text-rose-950";
 
 /** Redaktionelle indgange under søgning. */
 const heroEditorialLinks: { href: string; label: string }[] = [
@@ -443,93 +441,30 @@ export default async function HomePage({ searchParams }: HomeProps) {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
-        <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/80">
+        <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
           Vinsøgning · sammenlign priser
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
+        <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
           Find vin på sekunder
         </h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
+        <p className="mt-3 max-w-lg text-base leading-relaxed text-stone-700 sm:max-w-xl">
           Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
         </p>
 
-        <div className="mt-8 rounded-2xl border border-rose-200/70 bg-white/90 p-5 shadow-md ring-1 ring-stone-200/60 backdrop-blur-sm sm:p-8">
+        <div className="mt-5 rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:mt-6 sm:p-6">
           <WineSearch initialQuery={q} />
-          <div className="mt-5 border-t border-stone-100 pt-4">
+          <div className="mt-4 border-t border-stone-100 pt-3">
             <AffiliateDisclosure compact />
           </div>
         </div>
-
-        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-stone-600">
-          Vinbot er også en{" "}
-          <Link href="/guides" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
-            redaktionel vinguide
-          </Link>{" "}
-          med hundredvis af artikler om parring, druer og regioner — skrevet af{" "}
-          <Link href="/om-os" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
-            {editorialTeamName}
-          </Link>
-          .
-        </p>
-
-        <div className="mt-6">
-          <h2 className="text-sm font-medium text-stone-800">Guides og inspiration</h2>
-          <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
-            {heroEditorialLinks.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={popularTopicLinkClass}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-8 border-t border-rose-200/60 pt-6">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500">Hurtige emner</h2>
-          <p className="mt-2 max-w-2xl text-sm text-stone-600">
-            Spring til det mest brugte — eller fold listen ud for alle kategorier og vin-til-mad-sider.
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-rose-900">
-            {featuredPopularLinks.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={popularTopicLinkClass}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <details className="group mt-5 rounded-2xl border border-rose-200/50 bg-white/50 px-4 py-3 ring-1 ring-stone-100/80">
-            <summary className="cursor-pointer list-none text-sm font-medium text-rose-900 marker:content-none [&::-webkit-details-marker]:hidden">
-              <span className="underline decoration-rose-300 decoration-dotted underline-offset-4 group-open:decoration-solid">
-                Vis alle emner efter kategori
-              </span>
-              <span className="ml-1.5 tabular-nums text-stone-400 group-open:hidden" aria-hidden>
-                {"\u25BC"}
-              </span>
-              <span className="ml-1.5 hidden tabular-nums text-stone-400 group-open:inline" aria-hidden>
-                {"\u25B2"}
-              </span>
-            </summary>
-            <div className="mt-4 space-y-5 border-t border-rose-100/80 pt-4">
-              {popularTopicGroups.map((group) => (
-                <div key={group.title}>
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-rose-900/70">{group.title}</h3>
-                  <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-rose-900">
-                    {group.links.map((item) => (
-                      <li key={item.href}>
-                        <Link href={item.href} className={popularTopicLinkClass}>
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </details>
-        </div>
       </HomeHeroSearchSection>
+
+      <HomeQuickTopicsSection
+        editorialLinks={heroEditorialLinks}
+        featuredLinks={featuredPopularLinks}
+        topicGroups={popularTopicGroups}
+        editorialTeamName={editorialTeamName}
+      />
 
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
 

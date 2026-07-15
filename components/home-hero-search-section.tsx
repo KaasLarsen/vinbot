@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 
 const HERO_IMAGE = "/images/hero/hero-vin-atmosphere.jpg";
 
-/** Atmosfærisk vin-baggrund med gradient-overlay — redaktionelle indgange før vinsøgning. */
+/** Kompakt vinsøgnings-hero — rosé/bokeh til højre, læsbar tekst til venstre. */
 export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
   return (
-    <section className="relative overflow-hidden rounded-3xl shadow-sm ring-1 ring-stone-200/80">
+    <section className="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-rose-900/10">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Image
           src={HERO_IMAGE}
@@ -14,12 +14,13 @@ export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
           fill
           priority
           sizes="(max-width: 768px) 100vw, 1152px"
-          className="object-cover object-center scale-105"
+          className="object-cover object-[72%_center] sm:object-[85%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-50/92 via-rose-50/88 to-amber-50/85 sm:from-stone-50/88 sm:via-rose-50/82 sm:to-white/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/78 to-white/15 sm:from-white/92 sm:via-white/55 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rose-950/8 via-transparent to-amber-900/15" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-rose-950/20 to-transparent sm:h-32" />
       </div>
-      <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-11">{children}</div>
+      <div className="relative z-10 px-5 py-7 sm:px-8 sm:py-8">{children}</div>
     </section>
   );
 }
