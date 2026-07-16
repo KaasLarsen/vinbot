@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "chateau-de-la-roulerie-chenin-blanc-2024",
     displayTitle: "Château de la Roulerie · Chenin Blanc 2024",
     metaDescription:
-      "Loire chenin blanc med syre, honning og mineralitet — alsidig hvid til ost, gris og både tør og halvtør mad. Vinbot guider til Johnsen Wine (affiliate).",
+      "Loire chenin blanc med syre, honning og mineralitet — alsidig hvid til ost, gris og både tør og halvtør mad. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2024-chenin-blanc-chateau-de-la-roulerie/",
     imageUrl:
       "https://www.johnsenwine.dk/wp-content/uploads/2025/06/0130392_Roulerie_CHENIN_BLANC_OeKO.jpg",
@@ -32,7 +32,7 @@ export const JOHNSEN_WINE_BATCH3_PAGES: readonly WineDetailPage[] = [
       "2024-årgangen er frisk nok til fisk og salat, men chenin bærer også fyldigere retter bedre end mange «rene» hvidvine — gris, kylling i sauce og oste med karakter er klassiske partnere.",
       "Sammenlignet med sauvignon er chenin ofte mere honning og mindre «græs» — blødere midte, stadig med syre. Sammenlignet med chardonnay er den ofte lettere og mere mineralsk uden tung fad.",
       "199 kr. er et fornuftigt niveau til seriøs Loire-hvid — god flaske til dem, der vil udforske chenin uden at springe direkte til prestige-Vouvray.",
-      "Tjek pris og lager på johnsenwine.dk. Vinbot er affiliate.",
+      "Tjek pris og lager på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const JOHNSEN_WINE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "rio-cassero-brunello-montalcino-2020",
     displayTitle: "Rio Cassero · Brunello di Montalcino 2020",
     metaDescription:
-      "Brunello di Montalcino med sangiovese grosso — kirsebær, struktur og lagringspotentiale til pasta, lam og ost. Vinbot guider til Johnsen Wine (affiliate).",
+      "Brunello di Montalcino med sangiovese grosso — kirsebær, struktur og lagringspotentiale til pasta, lam og ost. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2020-rio-cassero-brunello-di-montalcino/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/02/a_0_0_341_0_0-2.jpeg",
     imageAside: {
@@ -95,7 +95,7 @@ export const JOHNSEN_WINE_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Montalcino og Toscanas sol giver moden frugt i balance med syre og tannin. Ung Brunello kan være stram; med mad og luft åbner den ofte til kirsebær, læder, tobak og urter.",
       "249 kr. er et stærkt prisleje til ægte Brunello på etiketten — god flaske til dem, der vil smage Montalcino uden at betale top-producent-priser.",
       "Sammenlignet med Chianti Classico er Brunello ofte tungere og mere struktureret — samme druefamilie, højere ambitionsniveau. Begge elsker pasta og lam; Brunello er valget til festmiddag.",
-      "Bekræft lager og pris på johnsenwine.dk. Vinbot er affiliate.",
+      "Bekræft lager og pris på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -6,7 +6,7 @@ export const WINTHER_VIN_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "portinho-do-covo-branco-2022",
     displayTitle: "Portinho do Covo · Branco 2022",
     metaDescription:
-      "Portugisisk hvidvin fra Alentejo-kysten med citrus, frugt og frisk syre — hvid til fisk, skaldyr og portugisisk mad. Vinbot guider til Winther Vin (affiliate).",
+      "Portugisisk hvidvin fra Alentejo-kysten med citrus, frugt og frisk syre — hvid til fisk, skaldyr og portugisisk mad. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/portinho-do-covo-branco-2022/",
     imageUrl:
       "https://winthervin.dk/wp-content/uploads/2024/02/portinho_do_covo_blanco_portugal_winthervin.png",
@@ -32,7 +32,7 @@ export const WINTHER_VIN_BATCH6_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk citrus, grønt æble, måske fersken og et strejf af salt/mineral fra kyst-nærhed. Server kølig til fisk og skaldyr.",
       "Sammenlignet med spansk albariño er portugisisk kyst-hvid ofte lidt blødere og mere frugtbaseret — samme mad-logik, anderledes terroir. Begge elsker grillede rejer.",
       "Winther har mange nyt world-flasker; Portinho do Covo er et stærkt match til jeres Portugal-guides og drue×region-SEO med konkret dansk forhandler.",
-      "Bekræft pris og lager på winthervin.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const WINTHER_VIN_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "casal-branco-lobo-e-falcao-reserva-2020",
     displayTitle: "Casal Branco · Lobo e Falcão Reserva 2020",
     metaDescription:
-      "Portugisisk rød reserva med mørk bærfrugt, struktur og moden frugt — rød til grill, lam og portugisisk mad. Vinbot guider til Winther Vin (affiliate).",
+      "Portugisisk rød reserva med mørk bærfrugt, struktur og moden frugt — rød til grill, lam og portugisisk mad. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/casal-branco-lobo-e-falcao-wolf-falcon-reserva-2020/",
     imageUrl:
       "https://winthervin.dk/wp-content/uploads/2024/01/Loboefalcao_reserva_portugal_winthervin.png",
@@ -96,7 +96,7 @@ export const WINTHER_VIN_BATCH6_PAGES: readonly WineDetailPage[] = [
       "169 kr. er et fornuftigt niveau til portugisisk reserva — god flaske til dem, der vil smake Portugal med struktur uden Douro-top-priser.",
       "I glasset møder du typisk mørk bærfrugt, krydderi, måske et strejf af egetræ og tanniner, der matcher kød med salt og fedme. 2020 har moden frugt uden at være gammel.",
       "Sammenlignet med Winthers Portinho hvid er Lobo e Falcão naturligvis rød og struktureret — begge er portugisiske; hvid til fisk, reserva til grill og lam.",
-      "Tjek lager og pris på winthervin.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

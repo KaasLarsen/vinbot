@@ -129,9 +129,8 @@ export default function OmOsPage() {
         <h2 className="text-xl font-semibold text-stone-900">Hvad tjener Vinbot penge på?</h2>
         <p className="leading-relaxed">
           Vi finansierer driften via to kilder: <strong>affiliate-samarbejder</strong> (hvor vi modtager
-          provision, når du klikker dig videre og handler hos en forhandler, fx via Partner-Ads,
-          Adtraction eller Daisycon) og <strong>annoncer</strong> (fx Google AdSense). Din pris ændres ikke, når du bruger
-          et affiliate-link.
+          provision, når du klikker dig videre og handler hos en forhandler) og <strong>annoncer</strong> (fx Google AdSense). Din pris ændres ikke, når du bruger
+          et annoncelink.
         </p>
         <p className="leading-relaxed">
           Vi skelner altid tydeligt mellem redaktionelt indhold og annoncering:

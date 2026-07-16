@@ -18,7 +18,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "htt
 export const metadata: Metadata = {
   title: "Lauridsen Vine — shop og inspiration | Vinbot",
   description:
-    "Lauridsen Vine er en dansk vinwebshop med stærkt europæisk udvalg. Inspiration fra Vinbot: link til shoppen (affiliate), rabat via nyhedsbrev og flasker du også kan finde via vores vinsøgning.",
+    "Lauridsen Vine er en dansk vinwebshop med stærkt europæisk udvalg. Inspiration fra Vinbot: link til shoppen, rabat via nyhedsbrev og flasker du også kan finde via vores vinsøgning.",
   alternates: { canonical: `${siteUrl}/lauridsen-vine` },
 };
 
@@ -28,7 +28,7 @@ export default function LauridsenVinePage() {
     {
       question: "Hvorfor linker Vinbot til Lauridsen Vine?",
       answer:
-        "Vi samarbejder via Partner Ads: når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Vi linker, fordi sortimentet supplerer det, vores læsere søger efter: klassiske regioner, brede prislejer og et godt sted at browse videre efter en guide.",
+        "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Vi linker, fordi sortimentet supplerer det, vores læsere søger efter: klassiske regioner, brede prislejer og et godt sted at browse videre efter en guide.",
     },
     {
       question: "Kan jeg få rabat?",

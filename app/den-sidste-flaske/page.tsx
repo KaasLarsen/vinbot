@@ -11,15 +11,15 @@ import { partnerAdsDsfClickUrl, siteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Den Sidste Flaske — restpartier og vin tilbud",
+  title: "Den Sidste Flaske — vin tilbud og shop online",
   description:
-    "Den Sidste Flaske: restpartier, sjældne årgange og daglige tilbud på vin. Kurateret inspiration fra Vinbot med direkte link til butikken og sammenligning.",
+    "Gå til Den Sidste Flaske (densidsteflaske.dk): restpartier, daglige tilbud og sjældne flasker. Vinbot guider dig med kuraterede anbefalinger — klik videre til shoppen.",
   alternates: { canonical: `${siteUrl}/den-sidste-flaske` },
   openGraph: {
     url: `${siteUrl}/den-sidste-flaske`,
-    title: "Den Sidste Flaske — restpartier og vin tilbud",
+    title: "Den Sidste Flaske — vin tilbud og shop online",
     description:
-      "Den Sidste Flaske: restpartier, sjældne årgange og daglige tilbud på vin. Kurateret inspiration fra Vinbot med direkte link til butikken.",
+      "Gå til Den Sidste Flaske (densidsteflaske.dk): restpartier, daglige tilbud og sjældne flasker. Kurateret inspiration fra Vinbot med direkte link til shoppen.",
   },
 };
 
@@ -32,6 +32,11 @@ export default function DenSidsteFlaskePage() {
   const dsfExampleSearchAffiliateHref = partnerAdsDsfClickUrl(dsfExampleSearchUrl);
 
   const faq = [
+    {
+      question: "Hvad er Den Sidste Flaske?",
+      answer:
+        "Den Sidste Flaske (densidsteflaske.dk) er en dansk vinwebshop med restpartier, limited releases og daglige tilbud. Vinbot linker videre til deres shop, når du vil købe — vi sælger ikke selv vin.",
+    },
     {
       question: "Hvor finder jeg hele sortimentet fra Den Sidste Flaske?",
       answer:
@@ -56,8 +61,9 @@ export default function DenSidsteFlaskePage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/den-sidste-flaske", label: "Den Sidste Flaske" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Den Sidste Flaske</h1>
       <p className="mt-4 text-lg text-stone-700">
-        Vi anbefaler Den Sidste Flaske som en af landets stærkeste destinationer for vin. Her på Vinbot får du inspiration, læsning og
-        konkrete idéer — og du hopper nemt videre til deres butik, når du er klar til at købe.
+        <strong className="font-medium text-stone-800">Den Sidste Flaske</strong> (densidsteflaske.dk) er en af
+        landets stærkeste vin-shops med restpartier, daglige tilbud og sjældne flasker. Her på Vinbot får du
+        inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.
       </p>
 
       <AffiliateDisclosure />

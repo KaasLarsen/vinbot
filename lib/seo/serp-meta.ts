@@ -13,9 +13,9 @@ const GENERIC_BEDSTE_DESC =
  */
 const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
-    title: "Hvor mange genstande i et glas vin?",
+    title: "Hvor mange ml i et glas vin? Enheder",
     description:
-      "125 ml rødvin (13 %) ≈ 1,5 genstande. 1 genstand = 12 g alkohol. Tabel for hvidvin, dessertvin og boks — dansk beregning du kan bruge med det samme.",
+      "125 ml rødvin (13 %) ≈ 1,5 genstande. 1 genstand = 12 g alkohol. Tabel for ml, cl, hvidvin og hel flaske — dansk beregning til promille og sundhed.",
   },
   "hvor-meget-fylder-en-flaske-vin": {
     title: "Hvor meget fylder en flaske vin? (75 cl)",
@@ -48,24 +48,24 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Rødvin 14–18 °C, hvidvin 8–12 °C, bobler 6–8 °C. Vintemperatur-guide med tabeller for rosé, riesling og port. Opbevaring af åbnet vin.",
   },
   "bedste-alkoholfri-hvidvin": {
-    title: "Bedste alkoholfri hvidvin i Danmark (0 %)",
+    title: "Alkoholfri hvidvin bedst i test 2026",
     description:
-      "Alkoholfri hvidvin bedst i test: Leitz, Giesen og sauvignon med bid — ikke saft. Ca. 80–160 kr. Til sushi, salat og fisk. Server 8–10 °C.",
+      "God alkoholfri hvidvin: Leitz, Giesen og sauvignon med bid — ikke saft. Bedst i test i DK, ca. 80–160 kr. Til sushi, salat og fisk. Server 8–10 °C.",
   },
   "bedste-alkoholfri-bobler": {
-    title: "Bedste alkoholfri bobler og champagne (0 %)",
+    title: "Alkoholfri bobler bedst i test 2026",
     description:
-      "Alkoholfri mousserende til nytår og fest: Noughty, Leitz, French Bloom. Bedst i test i DK — 6–8 °C. Hvorfor bobler slår still-vin i 0%-klassen.",
+      "Bedste alkoholfri bobler og champagne: Noughty, Leitz, French Bloom. God alkoholfri mousserende til nytår, brunch og fest — server 6–8 °C.",
   },
   "bedste-alkoholfri-rose": {
-    title: "Bedste alkoholfri rosévin (0 %) til sommer",
+    title: "Alkoholfri rosévin bedst i test 2026",
     description:
-      "Alkoholfri rosé bedst i test: Leitz, Torres, Noughty til terrasse og tapas. Server velafkølet — dansk guide med pris og mærker du finder i butikken.",
+      "God alkoholfri rosé: Leitz, Torres og Noughty til terrasse, grill og tapas. Alkoholfri rosévin bedst i test i Danmark — server velafkølet.",
   },
   "bedste-alkoholfri-rodvin": {
-    title: "Bedste alkoholfri rødvin i Danmark",
+    title: "Alkoholfri rødvin bedst i test 2026",
     description:
-      "Alkoholfri rødvin bedst i test: Leitz pinot, Torres til pizza og grill. Hvorfor 0 % rød er svær — og hvornår rosé eller bobler er bedre valg.",
+      "Bedste alkoholfri rødvin: Leitz pinot og Torres til pizza og grill. God alkoholfri rød er svær — hvornår rosé eller bobler er bedre valg i DK.",
   },
   "vin-til-ost-og-ostebord": {
     title: "Vin til ostebord: port, sherry og bobler",
@@ -254,9 +254,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til grill: syrah, malbec og afkølet gamay til kød, spareribs og burger. Kraftig rød eller rosé — match fedme og røg fra grillen.",
   },
   "vin-til-asiatisk-mad": {
-    title: "Vin til asiatisk mad",
+    title: "Vin til asiatisk mad: riesling og gewürz",
     description:
-      "Vin til asiatisk mad: tør riesling, gewürztraminer og bobler til wok, sushi og karry. Syre og lav tannin når soja og chili dominerer.",
+      "Vin til asiatisk mad og takeaway: tør riesling, gewürztraminer og bobler til wok, sushi og karry. Syre slår tung tannin når soja og chili dominerer.",
   },
   "bedste-rodvin": {
     title: "Bedste rødvin: pinot, malbec og cabernet",
@@ -342,6 +342,87 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Vin til julefrokost: flæsk, fisk og risalamande",
     description:
       "Vin til dansk julefrokost: bobler til start, hvid til fisk, rød til flæskesteg og medister. Mængde per gæst og klassiske flasketyper.",
+  },
+
+  // Bølge 5 — GSC vinbot-15 (jul 2026): lav CTR, brand og striking distance
+  "vin-til-pizza": {
+    title: "Vin til pizza: sangiovese, barbera og bobler",
+    description:
+      "Hvilken vin til pizza? Sangiovese og barbera til margherita og pepperoni, bobler til fredag. Syre til tomat og saft til ost — dansk parringsguide.",
+  },
+  "vin-til-oksekoed": {
+    title: "Vin til oksekød: cabernet, malbec og syrah",
+    description:
+      "Hvilken vin til oksekød? Cabernet og malbec til steg og grill, pinot til tyndt kød. Okse, entrecôte og simreret — konkrete flasketyper i DK.",
+  },
+  "vin-til-kalkun": {
+    title: "Vin til kalkun: hvid, rosé og let rød",
+    description:
+      "Vin til kalkunsteg og julemad: chardonnay, pinot noir og bobler til hvidt kød. Syre til sauce og urter — servering og flasker du finder i butikken.",
+  },
+  "hvad-er-fadlagring": {
+    title: "Hvad er fadlagring af vin?",
+    description:
+      "Fadlagring giver vanilje, krydderi og blødere tannin fra egetræsfade. Hvor længe, hvilke vine og smagsforskellen på fad vs. ståltank — kort forklaret.",
+  },
+  "vin-til-tatar-og-carpaccio": {
+    title: "Vin til tatar og carpaccio",
+    description:
+      "Vin til oksetatar og carpaccio: let rød som pinot noir, gamay eller rosé med syre. Undgå tung cabernet — match råt kød, citron og parmesan.",
+  },
+  "vin-til-rejer": {
+    title: "Vin til rejer og skaldyr",
+    description:
+      "Vin til rejer: tør hvidvin, albariño og bobler med syre og salt. Grillede rejer, gambas og skaldyrspasta — servering og flasker til dansk sommer.",
+  },
+};
+
+/** Opskrift → målrettet SERP (GSC striking distance, jul 2026). */
+const RECIPE_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
+  "coq-au-vin": {
+    title: "Coq au vin opskrift — kylling i rødvin",
+    description:
+      "Klassisk coq au vin med kylling braiseret i pinot noir eller gamay. Opskrift til 4 personer — vin i gryde og glas, step-by-step på dansk.",
+  },
+  "gullasch-med-rodvin": {
+    title: "Gullasch opskrift med rødvin",
+    description:
+      "Ungarsk gullasch med oksekød, paprika og rødvin i saucen. Opskrift til 6 — krydret gryderet med syre og frugt fra vinen. Vin til glasset inkl.",
+  },
+  "ratatouille-med-hvidvin": {
+    title: "Ratatouille opskrift med hvidvin",
+    description:
+      "Provence-ratatouille braiseret i hvidvin med aubergine, squash og tomater. Vegetar opskrift til 4 — vin i gryden giver syre og dybde.",
+  },
+  "tomatsuppe-med-hvidvin": {
+    title: "Tomatsuppe med hvidvin — opskrift",
+    description:
+      "Cremet tomatsuppe simret med hvidvin, basilikum og fløde. Vegetar opskrift til 4 personer — vinen løfter syren mod tomaternes sødme.",
+  },
+  "spansk-koedboller-i-rodvinsauce": {
+    title: "Almóndigas opskrift — kødboller i rødvin",
+    description:
+      "Spanske kødboller (almóndigas) simret i mørk rødvins- eller sherrysauce. Tapas-opskrift til 4–6 med vin i saucen — server med brød.",
+  },
+  "chorizo-i-rodvin": {
+    title: "Chorizo al vino — opskrift med rødvin",
+    description:
+      "Chorizo stegt og glaceret i rødvin med hvidløg — klassisk tapas. Hurtig opskrift med vin i gryden og tips til rødvin i glasset.",
+  },
+  "rodvinsmarinade-til-oksekod": {
+    title: "Rødvinsmarinade opskrift til oksekød",
+    description:
+      "Klassisk rødvinsmarinade med hvidløg og timian til entrecôte og grill. 250 ml rødvin mørner kødet — natten over i køleskab.",
+  },
+  "kylling-piccata-med-hvidvin": {
+    title: "Kylling piccata opskrift med hvidvin",
+    description:
+      "Italiensk piccata: paneret kylling i citron-hvidvinsauce med kapers. Opskrift til 4 personer — vin deglacerer panden.",
+  },
+  "pasta-amatriciana-med-rodvin": {
+    title: "Pasta amatriciana opskrift med rødvin",
+    description:
+      "Amatriciana med guanciale, tomater og rødvin i saucen. Klassisk italiensk pasta til 4 — pecorino og ung sangiovese.",
   },
 };
 
@@ -473,13 +554,19 @@ export function buildGuideSerpTitle(title: string, slug: string): string {
   return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
 }
 
-export function buildRecipeSerpDescription(description: string, title: string): string {
+export function buildRecipeSerpDescription(description: string, slug: string, title: string): string {
+  const override = RECIPE_SERP_OVERRIDES[slug]?.description;
+  if (override) return truncateMetaDescription(override);
+
   const cleaned = description.replace(/\s+/g, " ").trim();
   if (cleaned.length <= SERP_DESCRIPTION_MAX) return cleaned;
   return truncateMetaDescription(cleaned);
 }
 
-export function buildRecipeSerpTitle(title: string): string {
+export function buildRecipeSerpTitle(title: string, slug: string): string {
+  const override = RECIPE_SERP_OVERRIDES[slug]?.title;
+  if (override) return override.length <= SERP_TITLE_BUDGET ? override : truncateMetaDescription(override, SERP_TITLE_BUDGET).replace(/…$/, "");
+
   const base = title.trim();
   if (base.length <= SERP_TITLE_BUDGET) return base;
   return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");

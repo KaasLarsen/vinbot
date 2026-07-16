@@ -19,7 +19,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.johnsenWine, "https
 export const metadata: Metadata = {
   title: "Johnsen Wine — shop og inspiration | Vinbot",
   description:
-    "Johnsen Wine: vinforhandler med fokus på kurateret sortiment og personlig service. Link til shoppen fra Vinbot (affiliate), nyhedsbrev-rabatter og produkter du også finder i vores vinsøgning.",
+    "Johnsen Wine: vinforhandler med fokus på kurateret sortiment og personlig service. Link til shoppen fra Vinbot, nyhedsbrev-rabatter og produkter du også finder i vores vinsøgning.",
   alternates: { canonical: `${siteUrl}/johnsen-wine` },
 };
 
@@ -29,7 +29,7 @@ export default function JohnsenWinePage() {
     {
       question: "Hvorfor linker Vinbot til Johnsen Wine?",
       answer:
-        "Vi samarbejder via Partner-Ads: provision kan tilfalde Vinbot ved køb efter klik — typisk uden merpris for dig. Johnsen Wine passer til læsere, der vil dykke ned i et kurateret udvalg og handle hos en etableret forhandler med stærkt fokus på vinoplevelse.",
+        "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Johnsen Wine passer til læsere, der vil dykke ned i et kurateret udvalg og handle hos en etableret forhandler med stærkt fokus på vinoplevelse.",
     },
     {
       question: "Kan jeg få rabat?",

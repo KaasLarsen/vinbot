@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "ondarre-rioja-reserva-2020",
     displayTitle: "Bodegas Ondarre · Rioja Reserva 2020",
     metaDescription:
-      "Klassisk rioja reserva med tempranillo — moden frugt, blød fad og madvenlig rød til steg, lam og tapas. Vinbot guider til Johnsen Wine (affiliate).",
+      "Klassisk rioja reserva med tempranillo — moden frugt, blød fad og madvenlig rød til steg, lam og tapas. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2020-rioja-reserva-bodegas-ondarre/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2025/12/57501320-1-1.jpeg",
     imageAside: {
@@ -31,7 +31,7 @@ export const JOHNSEN_WINE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
       "2020-årgangen er i det vindue, hvor frugt og struktur ofte mødes behageligt: ikke for ung og stram, ikke for gammel og tør. God flaske til dansk vintermad med steg, gryderetter og ost — eller til tapas-bord med chorizo og manchego.",
       "Servering: 16–18 °C. Meget varm rioja kan virke alkohol-tung; lidt køligere servering hjælper ved salte retter. Karaffel er valgfri — reserva har ofte allerede fået tid til at integrere fad.",
       "Prislejet hos Johnsen Wine gør flasken til et stærkt bud på «bedste bang for buck» i klassisk spansk rød. Du får appellation, lagring og madmatch uden prestige-markup.",
-      "Tjek lager og pris på johnsenwine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -69,7 +69,7 @@ export const JOHNSEN_WINE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "montebaco-parcela-cara-norte-2021",
     displayTitle: "Bodegas Montebaco · Parcela Cara Norte Ribera del Duero 2021",
     metaDescription:
-      "100 % tempranillo fra høj mark i Ribera del Duero — mørk frugt, struktur og spansk rød til grill og okse. Vinbot guider til Johnsen Wine (affiliate).",
+      "100 % tempranillo fra høj mark i Ribera del Duero — mørk frugt, struktur og spansk rød til grill og okse. Vinbot guider til Johnsen Wine.",
     productPageUrl:
       "https://www.johnsenwine.dk/produkt/parcela-cara-norte-ribera-del-duero-bodegas-montebaco-2021/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/montebaco.png",

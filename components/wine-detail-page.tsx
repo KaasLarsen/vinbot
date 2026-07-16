@@ -57,7 +57,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
   const faqItems = [
     {
       question: `Hvor køber jeg ${wine.displayTitle.split("—")[0]?.trim() ?? "vinen"}?`,
-      answer: `Du handler hos ${cfg.displayName}. Knappen «Se vinen hos ${cfg.displayName}» åbner butikken i et nyt vindue via vores Partner-Ads-affiliatelink.`,
+      answer: `Du handler hos ${cfg.displayName}. Knappen «Se vinen hos ${cfg.displayName}» åbner butikken i et nyt vindue.`,
     },
     {
       question: "Er prisen på Vinbot altid den samme som hos forhandleren?",
@@ -158,7 +158,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
                   ))}
                 </div>
                 <p className="text-center text-[11px] leading-snug text-stone-500 lg:text-left">
-                  Klik fører til butik via affiliate-link — billeder leveres af forhandleren.
+                  Klik fører til butikken — billeder leveres af forhandleren.
                 </p>
               </div>
             ) : null}
@@ -191,7 +191,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
                       slug={wine.slug}
                       className="text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950"
                     >
-                      Gå til produktet hos {cfg.displayName} (affiliate) →
+                      Gå til produktet hos {cfg.displayName} →
                     </MerchantAffiliateOutboundLink>
                   </li>
                   <li>
@@ -208,7 +208,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
           </div>
           <div className="min-w-0 flex-1 space-y-6">
             <p className="text-sm leading-relaxed text-stone-700">
-              Redaktionel anbefaling: du køber hos {cfg.displayName} — og støtter Vinbot gratis for dig selv via affiliatelinket.
+              Redaktionel anbefaling: du køber hos {cfg.displayName} — pris og lager tjekkes altid hos forhandleren.
             </p>
             <MerchantAffiliateOutboundLink
               merchantId={wine.merchantId}
@@ -267,7 +267,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
               Andre vine hos {cfg.displayName}
             </h2>
             <p className="mt-2 text-stone-700">
-              Flasker fra vores øvrige udpluk — også med affiliate-links til samme shop.
+              Flasker fra vores øvrige udpluk hos samme shop.
             </p>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {relatedCards.map((pick) => {

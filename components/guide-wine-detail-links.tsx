@@ -14,7 +14,7 @@ export function GuideWineDetailLinks({ guideSlug }: { guideSlug: string }) {
         Eksempel-flasker hos forhandlere
       </h2>
       <p className="mt-2 text-sm text-stone-700">
-        Kuraterede enkeltvin-sider på Vinbot — med madmatch og affiliatelink til butikken. Pris og lager tjekkes altid hos forhandleren.
+        Kuraterede enkeltvin-sider på Vinbot — med madmatch og link til butikken. Pris og lager tjekkes altid hos forhandleren.
       </p>
       <ul className="mt-4 space-y-3">
         {pages.map((page) => {

@@ -6,7 +6,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "boccantino-negroamaro-salento-2025",
     displayTitle: "Boccantino · Negroamaro Salento 2025",
     metaDescription:
-      "100 % negroamaro fra Salento med mørk bærfrugt, blid varme og madvenlig struktur — italiensk rød til pizza, pasta og grill. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "100 % negroamaro fra Salento med mørk bærfrugt, blid varme og madvenlig struktur — italiensk rød til pizza, pasta og grill. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/boccantino-negroamaro-salento-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/boccantino-negroamaro-salento-2024-boccantino-rodvin-1153025204.png?v=1743421240",
@@ -33,7 +33,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "115 kr. lander i budget-segmentet hos Den Sidste Flaske — stærkt prisleje til seriøs syditaliensk rød, oplagt til grill, burger og gæster, der vil have vin med smag uden prestige-pris.",
       "I glasset møder du typisk mørk kirsebær, blomme, et strejf af lakrids og urter. Strukturen er blødere end barolo — madvenlig og direkte.",
       "Sammenlignet med Boccantinos primitivo/susumaniello-blend er ren negroamaro ofte mere ensartet og mørk — mindre friskhed fra susumaniello, mere varm syditaliensk frugt. Begge elsker pizza.",
-      "Bekræft pris, årgang og lager på Den Sidste Flaske. Vinbot er affiliate.",
+      "Bekræft pris, årgang og lager på Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -72,7 +72,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "chateau-belle-vue-haut-medoc-2018",
     displayTitle: "Château Belle-Vue · Haut-Médoc 2018",
     metaDescription:
-      "Bordeaux fra Haut-Médoc med mørk bærfrugt, struktur og klassisk cabernet-blend — rød til okse, lam og moden ost. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Bordeaux fra Haut-Médoc med mørk bærfrugt, struktur og klassisk cabernet-blend — rød til okse, lam og moden ost. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/chateau-belle-vue-haut-medoc-2018",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/chateau-belle-vue-haut-medoc-2018-chateau-belle-vue-rodvin-1212754448.png?v=1766413236",
@@ -98,7 +98,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "199 kr. er et stærkt prisleje til Haut-Médoc på etiketten — god flaske til dem, der vil smake venstre-bred Bordeaux uden at investere i first growth-priser.",
       "I glasset møder du typisk mørk kirsebær, blomme, ceder, måske grøn peberfrugt og et strejf af jord. Tanninerne matcher kød med salt og fedme.",
       "Sammenlignet med Californisk cabernet er Médoc ofte mere jordnær og struktureret — mindre direkte solmodnet frugt, mere klassisk balance. Begge elsker okse; Bordeaux er ofte valget til gryderetter.",
-      "Bekræft pris og lager på Den Sidste Flaske. Vinbot er affiliate.",
+      "Bekræft pris og lager på Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -136,7 +136,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "langhe-nebbiolo-la-farghetta-2021",
     displayTitle: "La Farghetta · Langhe Nebbiolo 2022",
     metaDescription:
-      "Langhe nebbiolo fra Castiglione Falletto med kirsebær, rose og fine tanniner — piemontesisk rød til pasta, lam og lasagne. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Langhe nebbiolo fra Castiglione Falletto med kirsebær, rose og fine tanniner — piemontesisk rød til pasta, lam og lasagne. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/langhe-nebbiolo-la-farghetta-2021",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/langhe-nebbiolo-la-farghetta-2021-billede-forkert-label-producent-la-farghetta-rodvin-1195661990.png?v=1759313920",
@@ -167,7 +167,7 @@ export const DEN_SIDSTE_FLASKE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "Enkeltflaske ligger omkring 139 kr., men kassepris kan komme ned omkring 59 kr. pr. flaske ved 12 stk. — stærkt value-for-money til seriøs nebbiolo, oplagt før barolo-investering eller til lasagne, ragù og svamperisotto.",
       "Luft i glasset hjælper: tyve minutter kan blødgøre tanniner og åbne florale noter. Server 16–18 °C — for varm nebbiolo kan føles flad og alkohol-tung.",
       "Sammenlignet med barolo er langhe nebbiolo ofte friskere og mere direkte frugtet — mindre lagringskrav, mere hverdagsvenlig. Sammenlignet med barbera er nebbiolo lysere, mere parfumeret og mere tannin-struktureret.",
-      "Bekræft pris, årgang og lager på Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
+      "Bekræft pris, årgang og lager på Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

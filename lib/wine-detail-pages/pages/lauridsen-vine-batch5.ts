@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "camparnaud-prestige-provence-rose-2022",
     displayTitle: "Camparnaud · Prestige Provence Rosé 2022",
     metaDescription:
-      "Provence-rosé med bærfrugt, frisk syre og sommerprofil — til grill, salat og terrasse. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Provence-rosé med bærfrugt, frisk syre og sommerprofil — til grill, salat og terrasse. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/camparnaud-prestige-provence-rose-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/camparnaud_provence_prestige_1.webp?v=1764343882",
@@ -32,7 +32,7 @@ export const LAURIDSEN_VINE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "175 kr. er et fornuftigt niveau til Provence på etiketten — god flaske til sommer, brunch og gæster, der vil have rosé med smag frem for farve alene.",
       "I glasset møder du typisk jordbær, hindbær, citrus og urter. Server kølig — for varmt mister friskhed, for koldt lukker aroma.",
       "Sammenlignet med Languedoc-rosé er Provence ofte mere elegant og mindre alkohol-tung — finere afslutning, mere «Middelhav». Begge fungerer til grill; Provence er ofte valget til salat og apéro.",
-      "Bekræft pris og lager på lauridsenvine.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const LAURIDSEN_VINE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "ferraton-cotes-du-rhone-samorens",
     displayTitle: "Ferraton Père & Fils · Côtes du Rhône Samorëns",
     metaDescription:
-      "Côtes du Rhône med syrah og grenache — krydret bærfrugt og madvenlig rød til gryderetter, lam og grill. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Côtes du Rhône med syrah og grenache — krydret bærfrugt og madvenlig rød til gryderetter, lam og grill. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/ferraton-pere-fils-cotes-du-rhone-rouge-samorens",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/coterhone.webp?v=1765395358",
     imageAside: {
@@ -95,7 +95,7 @@ export const LAURIDSEN_VINE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "139 kr. gør flasken til et stærkt bud på «Rhône til mad» — god sammenligning mod Lauridsens Châteauneuf, hvis du vil mærke forskellen mellem appellation og hverdags-Côtes du Rhône.",
       "Syrah tilføjer peber og struktur; grenache giver blød frugt og varme. Sammen elsker de lam, gryderetter og grill — klassisk sydfransk logik.",
       "Sammenlignet med nord-rhône syrah alene er Côtes du Rhône ofte blødere og mere «sol» i frugten — mindre peber-kant, mere krydderi. Begge fungerer til kød; Côtes du Rhône er ofte hverdagsvalget.",
-      "Tjek lager og pris på lauridsenvine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "immortalis-albarino",
     displayTitle: "Immortalis · Albariño",
     metaDescription:
-      "Albariño fra Rías Baixas — citrus, mineralsk friskhed og syre til fisk, skaldyr og let mad. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Albariño fra Rías Baixas — citrus, mineralsk friskhed og syre til fisk, skaldyr og let mad. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/immortalis-albarino-2021",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/3064936-2022.w1200.webp?v=1693494754",
@@ -69,7 +69,7 @@ export const LAURIDSEN_VINE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "serendipia-cava-reserva-brut",
     displayTitle: "Serendipia · Cava Reserva Brut",
     metaDescription:
-      "Cava reserva brut — bobler med struktur til tapas, forret og fest. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Cava reserva brut — bobler med struktur til tapas, forret og fest. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/serendipia-cava-reserva-brut",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/cava.webp?v=1765533144",
     imageAside: {

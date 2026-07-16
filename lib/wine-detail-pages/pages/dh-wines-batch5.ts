@@ -6,7 +6,7 @@ export const DH_WINES_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "kuentz-bas-gewurztraminer-mosaik-alsace-2023",
     displayTitle: "Kuentz-Bas · Gewurztraminer Mosaik Alsace 2023",
     metaDescription:
-      "Alsace gewurztraminer med rose, litchi og krydderi — hvid til asiatisk mad, ost og stærk mad. Vinbot guider til DH Wines (affiliate).",
+      "Alsace gewurztraminer med rose, litchi og krydderi — hvid til asiatisk mad, ost og stærk mad. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/kuentz-bas-gewurztraminer-mosaik-alsace-2023",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Kuentz-Mosaik.jpg?v=1779175829",
@@ -70,7 +70,7 @@ export const DH_WINES_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "antinori-villa-antinori-rosso-toscana-2023",
     displayTitle: "Antinori · Villa Antinori Rosso Toscana IGT 2023",
     metaDescription:
-      "Toscanansk rødblend fra Antinori med sangiovese — kirsebær, urter og madvenlig struktur til pasta og kød. Vinbot guider til DH Wines (affiliate).",
+      "Toscanansk rødblend fra Antinori med sangiovese — kirsebær, urter og madvenlig struktur til pasta og kød. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/antinori-villa-antinori-rosso-toscana-igt-2023",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Villa-Antinori.jpg?v=1779355586",
@@ -96,7 +96,7 @@ export const DH_WINES_BATCH5_PAGES: readonly WineDetailPage[] = [
       "179 kr. er et stærkt prisleje til Antinori på etiketten — god flaske til dem, der vil smake «ægte italiensk producent» uden at betale for Tignanello.",
       "Sangiovese dominerer typisk med syre til tomat; lokale druer og måske international blend tilføjer fylde. Resultatet er vin, der elsker italiensk mad og dansk hverdags-pasta.",
       "Sammenlignet med Chianti Classico er Villa Antinori ofte blødere og mere frugtbaseret — bredere IGT-profil. Begge fungerer til pizza; Antinori er ofte valget til gæster, der kender navnet.",
-      "Tjek pris og lager på dhwines.dk. Vinbot er affiliate.",
+      "Tjek pris og lager på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

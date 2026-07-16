@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "tesoro-sangiovese",
     displayTitle: "Tesoro · Sangiovese",
     metaDescription:
-      "Italiensk sangiovese med kirsebær, urter og madvenlig syre — budget-rød til pasta, pizza og hverdagsmad. Vinbot guider til Johnsen Wine (affiliate).",
+      "Italiensk sangiovese med kirsebær, urter og madvenlig syre — budget-rød til pasta, pizza og hverdagsmad. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/tesoro-sangiovese/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2026/01/a_0_0_341_0_0-3.jpeg",
@@ -32,7 +32,7 @@ export const JOHNSEN_WINE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk rød kirsebær, urter og frisk syre. Strukturen er blid — oplagt til pizza, pasta og gryderetter, ikke til tun bøf alene.",
       "Sammenlignet med Chianti Classico Riserva er Tesoro naturligvis enklere og billigere — samme drue-familie, lavere ambitionsniveau. Begge elsker pasta; Tesoro er hverdagsvalget.",
       "Johnsens sortiment har mange budget-flasker; Tesoro er et stærkt match til jeres sangiovese-guides og drue×region-SEO med konkret dansk forhandler.",
-      "Bekræft pris og lager på johnsenwine.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const JOHNSEN_WINE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "frederic-esmonin-bourgogne-rouge-2024",
     displayTitle: "Domaine Frédéric Esmonin · Bourgogne Rouge 2024",
     metaDescription:
-      "Bourgogne rouge med pinot noir, rød kirsebær og elegance — rød til kylling, svinekød og blødere oste. Vinbot guider til Johnsen Wine (affiliate).",
+      "Bourgogne rouge med pinot noir, rød kirsebær og elegance — rød til kylling, svinekød og blødere oste. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2024-bourgogne-rouge-domaine-frederic-esmonin/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2025/06/roed-bourgogne-0x2e-w610-0x2e-h610-0x2e-fill-1737123486636.jpeg?media=1772381215",
@@ -96,7 +96,7 @@ export const JOHNSEN_WINE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk rød kirsebær, jordbær, urter og blid tannin. Server ikke for varmt — pinot mister friskhed, hvis glasset bliver lunkent.",
       "Sammenlignet med tysk spätburgunder er Bourgogne-pinot ofte mere jordnær og mineralsk — mindre direkte frugt, mere finesse. Begge elsker kylling; Bourgogne er valget til ost og svamp.",
       "Johnsens sortiment har flere seriøse flasker; Esmonin Bourgogne er et stærkt match til jeres Bourgogne- og pinot-guides med konkret dansk forhandler.",
-      "Bekræft pris og lager på johnsenwine.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

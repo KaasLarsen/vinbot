@@ -52,19 +52,19 @@ export function SiteFooter() {
                   Rabatkoder
                 </Link>
             <Link href="/lauridsen-vine" className="hover:text-rose-900">
-              Lauridsen Vine (affiliate)
+              Lauridsen Vine
             </Link>
             <Link href="/winther-vin" className="hover:text-rose-900">
-              Winther Vin (affiliate)
+              Winther Vin
             </Link>
             <Link href="/dh-wines" className="hover:text-rose-900">
-              DH Wines (affiliate)
+              DH Wines
             </Link>
             <Link href="/johnsen-wine" className="hover:text-rose-900">
-              Johnsen Wine (affiliate)
+              Johnsen Wine
             </Link>
             <Link href="/havnens-vin" className="hover:text-rose-900">
-              Havnens Vin (affiliate)
+              Havnens Vin
             </Link>
                 <Link href="/den-sidste-flaske" className="hover:text-rose-900">
                   Den Sidste Flaske

@@ -1,6 +1,16 @@
 import { ProductCard } from "@/components/product-card";
 import { runSearch } from "@/lib/search/engine";
+import { runWineCoolerSearch } from "@/lib/search/wine-cooler-engine";
 import type { ProductHit } from "@/lib/search/types";
+
+async function runScopedSearch(
+  q: string,
+  maxPrice: number | null,
+  searchScope: "wine" | "wine-cooler",
+) {
+  if (searchScope === "wine-cooler") return runWineCoolerSearch(q, maxPrice);
+  return runSearch(q, maxPrice);
+}
 
 function merchantMatches(product: ProductHit, merchant?: string | null) {
   if (!merchant?.trim()) return true;
@@ -13,12 +23,13 @@ async function mergeSearchQueries(
   maxPrice: number | null,
   merchant: string | null | undefined,
   maxItems: number,
+  searchScope: "wine" | "wine-cooler",
 ): Promise<ProductHit[]> {
   const seen = new Set<string>();
   const out: ProductHit[] = [];
   for (const q of queries) {
     if (out.length >= maxItems) break;
-    const { products } = await runSearch(q.trim(), maxPrice);
+    const { products } = await runScopedSearch(q.trim(), maxPrice, searchScope);
     const filtered = products.filter((p) => merchantMatches(p, merchant));
     for (const p of filtered) {
       const key = p.url.trim().toLowerCase();
@@ -40,6 +51,8 @@ export async function ProductFeedPreview({
   maxItems = 9,
   placement = "product-feed-preview",
   gridClassName = "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
+  searchScope = "wine",
+  emptyLabel = "vine",
 }: {
   /** Én søgestreng (klassisk brug). */
   query?: string;
@@ -55,6 +68,9 @@ export async function ProductFeedPreview({
   placement?: string;
   /** CSS grid-klasser (fx 4 kolonner på forsiden). */
   gridClassName?: string;
+  /** Vinsøgning (standard) eller kun vinkøleskabe fra Vinkøleskabet.dk. */
+  searchScope?: "wine" | "wine-cooler";
+  emptyLabel?: string;
 }) {
   const nonEmptyQueries = queries?.map((s) => s.trim()).filter(Boolean);
   const mergedQueries =
@@ -70,9 +86,11 @@ export async function ProductFeedPreview({
   }
 
   const filtered =
-    mergedQueries.length === 1 ?
-      (await runSearch(mergedQueries[0], maxPrice ?? null)).products.filter((p) => merchantMatches(p, merchant))
-    : await mergeSearchQueries(mergedQueries, maxPrice ?? null, merchant, maxItems);
+    mergedQueries.length === 1
+      ? (await runScopedSearch(mergedQueries[0], maxPrice ?? null, searchScope)).products.filter((p) =>
+          merchantMatches(p, merchant),
+        )
+      : await mergeSearchQueries(mergedQueries, maxPrice ?? null, merchant, maxItems, searchScope);
 
   const sliced = filtered.slice(0, maxItems);
 
@@ -81,7 +99,7 @@ export async function ProductFeedPreview({
       <section className="rounded-2xl border border-stone-200 bg-stone-50 p-6 text-stone-600">
         <p className="font-medium text-stone-800">{title || "Forslag til vine"}</p>
         <p className="mt-2 text-sm">
-          Ingen matchende vine lige nu
+          Ingen matchende {emptyLabel} lige nu
           {merchant?.trim() ? ` hos ${merchant.trim()}` : ""} — prøv et andet søgeord eller kig forbi igen lidt senere.
         </p>
       </section>

@@ -6,7 +6,7 @@ export const DH_WINES_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "marchese-antinori-chianti-classico-riserva-2022",
     displayTitle: "Marchese Antinori · Chianti Classico Riserva 2022",
     metaDescription:
-      "Chianti Classico Riserva fra Antinori med kirsebær, urter og struktur — toscansk rød til pasta, okse og moden ost. Vinbot guider til DH Wines (affiliate).",
+      "Chianti Classico Riserva fra Antinori med kirsebær, urter og struktur — toscansk rød til pasta, okse og moden ost. Vinbot guider til DH Wines.",
     productPageUrl:
       "https://dhwines.dk/products/marchese-antinori-chianti-classico-riserva-d-o-c-g-tenuta-tignanello-2022",
     imageUrl:
@@ -33,7 +33,7 @@ export const DH_WINES_BATCH6_PAGES: readonly WineDetailPage[] = [
       "405 kr. er fest- og gæste-niveau — oplagt til dem, der kender Villa Antinori og vil et trin op til ægte Chianti Classico Riserva på etiketten.",
       "I glasset møder du typisk kirsebær, blomme, tørre urter, måske læder og et strejf af krydderi. Tanninerne matcher okse og moden ost — ikke let fisk.",
       "Sammenlignet med DH's Villa Antinori Rosso IGT er Chianti Classico Riserva ofte strammere og mere terroir-drevet — højere sangiovese-ambitionsniveau. Begge er Antinori; Riserva er valget til gæstemenu.",
-      "Bekræft pris og lager på dhwines.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -71,7 +71,7 @@ export const DH_WINES_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "son-prim-merlot-2022",
     displayTitle: "Son Prim · Merlot 2022",
     metaDescription:
-      "Merlot fra Mallorca med moden bærfrugt, blid struktur og middelhavskarakter — rød til lam, grill og ost. Vinbot guider til DH Wines (affiliate).",
+      "Merlot fra Mallorca med moden bærfrugt, blid struktur og middelhavskarakter — rød til lam, grill og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/son-prim-merlot-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Son-Prim-Merlot.jpg?v=1779173626",
@@ -97,7 +97,7 @@ export const DH_WINES_BATCH6_PAGES: readonly WineDetailPage[] = [
       "199 kr. er et fornuftigt niveau til seriøs mallorquinsk merlot — god flaske til dem, der vil udforske Spanien udover Rioja og Priorat.",
       "I glasset møder du typisk moden kirsebær, blomme, måske chokolade og et strejf af urter. Merlotens blødhed gør flasken tilgængelig — stadig med nok struktur til kød.",
       "Sammenlignet med Bordeaux-merlot er mallorquinsk merlot ofte mere direkte frugtet og varm — mindre jord, mere sol. Begge elsker lam; Son Prim er valget til grill og nyt world-nysgerrighed.",
-      "Tjek lager og pris på dhwines.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

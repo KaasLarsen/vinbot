@@ -6,7 +6,7 @@ export const WINTHER_VIN_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "marlborough-sun-sauvignon-blanc-2023",
     displayTitle: "Marlborough Sun · Sauvignon Blanc 2023",
     metaDescription:
-      "Marlborough sauvignon blanc med tropisk frugt, urter og frisk syre — New Zealand-klassiker til fisk, salat og sommer. Vinbot guider til Winther Vin (affiliate).",
+      "Marlborough sauvignon blanc med tropisk frugt, urter og frisk syre — New Zealand-klassiker til fisk, salat og sommer. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/marlborough-sun-sauvignon-blanc-2022-75-cl/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2023/04/Design-uden-navn-15.png",
     imageAside: {
@@ -69,7 +69,7 @@ export const WINTHER_VIN_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "opi-malbec-reserve-2021",
     displayTitle: "Opi · Malbec Reserve 2021",
     metaDescription:
-      "Argentinsk malbec med mørk bærfrugt, blød struktur og moden frugt — Mendoza-klassiker til grill, okse og burger. Vinbot guider til Winther Vin (affiliate).",
+      "Argentinsk malbec med mørk bærfrugt, blød struktur og moden frugt — Mendoza-klassiker til grill, okse og burger. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/opi-malbec-reserve-2019/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2021/02/Design-uden-navn-8.png",
     imageAside: {
@@ -94,7 +94,7 @@ export const WINTHER_VIN_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Andes og højder giver typisk god frugtmodning med bevarede syre — i bedste fald balance mellem saft og kraft. Tænk blomme, mørke kirsebær, måske chokolade og et strejf af vanilje fra fad.",
       "2021-årgangen er et solidt udgangspunkt til hverdagsmad: klar til okse, lam og simrede retter uden at kræve lang decantering. Meget varm servering kan fremhæve alkohol — 16–18 °C er ofte bedst.",
       "Sammenlignet med cabernet sauvignon er malbec ofte blødere og mere direkte frugtet — mindre tannin-knæk, mere «glidende» ved mad. God flaske til dem, der vil have rød uden snobberi.",
-      "Tjek lager og pris på winthervin.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

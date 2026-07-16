@@ -6,6 +6,41 @@ import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wi
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
 
 const RESULT_CAP = 48;
+const DIVERSIFY_PREFIX = 12;
+const DIVERSIFY_MAX_PER_MERCHANT = 2;
+
+function diversifyTopByMerchant(items: ProductHit[], prefixCount: number, maxPerMerchant: number): ProductHit[] {
+  if (items.length <= 1) return items;
+  const prefix = items.slice(0, Math.min(prefixCount, items.length));
+  const rest = items.slice(prefix.length);
+
+  const picked = new Set<number>();
+  const counts = new Map<string, number>();
+  const out: ProductHit[] = [];
+
+  // Pass 1: pick in-order, respecting maxPerMerchant.
+  for (let i = 0; i < prefix.length; i++) {
+    const p = prefix[i];
+    const m = p.merchant || "";
+    const c = counts.get(m) ?? 0;
+    if (c >= maxPerMerchant) continue;
+    counts.set(m, c + 1);
+    picked.add(i);
+    out.push(p);
+  }
+
+  // Pass 2: if we couldn't fill the prefix, relax constraint (keep original ranking).
+  if (out.length < prefix.length) {
+    for (let i = 0; i < prefix.length; i++) {
+      if (picked.has(i)) continue;
+      out.push(prefix[i]);
+      picked.add(i);
+      if (out.length >= prefix.length) break;
+    }
+  }
+
+  return [...out, ...rest];
+}
 
 export async function runSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
   const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
@@ -81,6 +116,8 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
     const sb = score(b, terms) + bibBoost(b);
     return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
   });
+
+  items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX, DIVERSIFY_MAX_PER_MERCHANT);
 
   const matched_before_cap = items.length;
   const results_capped = matched_before_cap > RESULT_CAP;

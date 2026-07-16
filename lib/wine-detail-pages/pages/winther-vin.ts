@@ -6,7 +6,7 @@ export const WINTHER_VIN_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "lenhardt-mehringer-riesling-feinherb-2022",
     displayTitle: "Weingut Lenhardt · Mehringer Riesling Feinherb 2022",
     metaDescription:
-      "Halvtør mosel-riesling med saft og syre — feinherb til asiatisk mad, fisk og retter med krydderi. Vinbot guider til Winther Vin (affiliate).",
+      "Halvtør mosel-riesling med saft og syre — feinherb til asiatisk mad, fisk og retter med krydderi. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/weingut-lenhardt-mehringer-riesling-feinherb-2022/",
     imageUrl:
       "https://winthervin.dk/wp-content/uploads/2023/12/Weingut_Lenhardt_Mehringer_Riesling_Feinherb_winthervin.png",
@@ -32,7 +32,7 @@ export const WINTHER_VIN_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
       "Det er en flaske til det, mange faktisk spiser: wok, thai, vietnamesiske salater, grillet fisk med soja og citrongræs. Knastør hvidvin kan her føles hård; tung chardonnay for fed; feinherb riesling lander ofte i midten.",
       "Servering: 8–10 °C. Meget koldere, og aroma lukker; varmere, og sødmen bliver mere tydelig. Har du en ret med stærk chili, kan en anelse køligere servering faktisk hjælpe mod brænding — kombineret med fed i maden.",
       "Winther Vin fremhæver ofte kvalitet i dette prisleje. Det er stadig hverdagsbudget for mange — men med et terroir-præg, der mærkes, hvis du sammenligner med generisk «riesling» uden oprindelse.",
-      "Bekræft årgang og pris på winthervin.dk. Vinbot er affiliate; shoppen er facit.",
+      "Bekræft årgang og pris på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const WINTHER_VIN_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "chateau-de-colombe-cotes-de-bordeaux-2021",
     displayTitle: "Château de Colombe · Castillon Côtes de Bordeaux 2021",
     metaDescription:
-      "Merlot-dominant bordeaux fra Castillon — moden frugt, blød struktur og madvenlig rød til steg og gryde. Vinbot guider til Winther Vin (affiliate).",
+      "Merlot-dominant bordeaux fra Castillon — moden frugt, blød struktur og madvenlig rød til steg og gryde. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/chateau-de-colombe-sainte-castillon-cotes-de-bordeaux-2021/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2023/05/Design-uden-navn-4.png",
     imageAside: {

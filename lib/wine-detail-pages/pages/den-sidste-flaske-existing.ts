@@ -7,7 +7,7 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "primitivo-susumaniello-salento-boccantino",
     displayTitle: "Primitivo & Susumaniello — Boccantino (Salento)",
     metaDescription:
-      "Salento-rød med primitivo og susumaniello: varm bærfrugt, mild krydrethed og blød struktur. Vinbots guide til mad, servering og flasken hos Den Sidste Flaske (affiliate).",
+      "Salento-rød med primitivo og susumaniello: varm bærfrugt, mild krydrethed og blød struktur. Vinbots guide til mad, servering og flasken hos Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/primitivo-susumaniello-salento-boccantino-2024-boccantino-rodvin-1190752698.png?v=1756829918",
@@ -89,7 +89,7 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "weinhof-519-alte-reben-rheingau-riesling-trocken",
     displayTitle: "Weinhof 519 · Alte Reben Rheingau Riesling (tør)",
     metaDescription:
-      "Tør riesling fra gamle vinstokke i Rheingau — citrus, mineralsk bid og struktur til mad med syre eller fedme. Vinbot guider til servering og køb hos Den Sidste Flaske (affiliate).",
+      "Tør riesling fra gamle vinstokke i Rheingau — citrus, mineralsk bid og struktur til mad med syre eller fedme. Vinbot guider til servering og køb hos Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",

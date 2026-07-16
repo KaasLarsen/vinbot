@@ -151,11 +151,9 @@ const PARTNERE: RabatPartner[] = [
       {
         title: "Shop — vinkøleskabe",
         body:
-          "**Vinkøleskabet.dk** sælger vinkøleskabe og tilbehør. Priser, levering og kundeservice er på deres webshop. Nedenfor går **“Gå til shop”** via **Adtraction** — et affiliate-link: Vinbot kan modtage provision, **uden merpris for dig**.",
+          "**Vinkøleskabet.dk** sælger vinkøleskabe og tilbehør. Priser, levering og kundeservice er på deres webshop.",
       },
     ],
-    footnote:
-      "Linket er et affiliate-link formidlet via Adtraction (affiliatenetværk). Køb og vilkår er hos Vinkøleskabet.dk; klik kan spores til provision for Vinbot — se også under Affiliate-links på siden Privatliv.",
   },
 ];
 
@@ -204,10 +202,7 @@ export default function RabatkoderPage() {
       </div>
 
       <p className="mt-4 text-xs text-stone-500">
-        * Shop-links markeret med stjerne er <strong className="font-medium text-stone-700">affiliate-links</strong>. De går via{" "}
-        <strong className="font-medium text-stone-700">Partner-Ads</strong>, <strong className="font-medium text-stone-700">Adtraction</strong> eller{" "}
-        <strong className="font-medium text-stone-700">Daisycon</strong>{" "}
-        (angivet under hver butik) og kan udløse provision til Vinbot <strong className="font-medium text-stone-700">uden merpris for dig</strong>.
+        * Shop-links markeret med stjerne er annoncelinks — Vinbot kan modtage provision <strong className="font-medium text-stone-700">uden merpris for dig</strong>.
       </p>
 
       <ul className="mt-10 space-y-6">
@@ -223,9 +218,6 @@ export default function RabatkoderPage() {
                 >
                   Gå til shop * →
                 </RabatkodeShopLink>
-                <span className="text-xs text-stone-500">
-                  Via {p.affiliateVia === "adtraction" ? "Adtraction" : "Partner-Ads"}
-                </span>
               </div>
             </div>
             <div className="mt-4 space-y-5 border-t border-stone-100 pt-4">

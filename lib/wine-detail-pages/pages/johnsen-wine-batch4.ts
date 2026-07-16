@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "dr-loosen-riesling-l-2024",
     displayTitle: "Dr. Loosen · Riesling L 2024",
     metaDescription:
-      "Mosel-riesling fra Dr. Loosen med syre, citrus og mineralsk friskhed — tysk hvid til asiatisk mad, fisk og ost. Vinbot guider til Johnsen Wine (affiliate).",
+      "Mosel-riesling fra Dr. Loosen med syre, citrus og mineralsk friskhed — tysk hvid til asiatisk mad, fisk og ost. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2024-riesling-l-dr-loosen/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2026/05/loosen.jpg?media=1772381215",
@@ -32,7 +32,7 @@ export const JOHNSEN_WINE_BATCH4_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk citrus, grønt æble, stikkelsbær og en mineralsk, næsten «elektrisk» syre, der skærer i fedme og løfter asiatisk krydderi. Det er ikke sød dessert-riesling — tjek etiket for præcis tørhed.",
       "Sammenlignet med halvtør Rheinhessen-riesling er Mosel ofte strammere og mere mineralsk — mindre blid sødme, mere kant. Begge fungerer til mad; Mosel er ofte førstevalg til pho og sushi.",
       "Johnsens sortiment har mange seriøse flasker; Dr. Loosen L er et stærkt match til jeres riesling-guides og drue×region-SEO — konkret flaske, dansk forhandler, affiliate-link.",
-      "Bekræft pris og lager på johnsenwine.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const JOHNSEN_WINE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "domaine-bernard-fleuriet-sancerre-2024",
     displayTitle: "Domaine Bernard Fleuriet · Sancerre 2024",
     metaDescription:
-      "Sancerre sauvignon blanc med citrus, urter og mineralsk syre — Loire-klassiker til fisk, skaldyr og salat. Vinbot guider til Johnsen Wine (affiliate).",
+      "Sancerre sauvignon blanc med citrus, urter og mineralsk syre — Loire-klassiker til fisk, skaldyr og salat. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2024-sancerre-dom-bernard-fleuriet/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2026/03/fleuriet.jpg?media=1772381215",
@@ -96,7 +96,7 @@ export const JOHNSEN_WINE_BATCH4_PAGES: readonly WineDetailPage[] = [
       "Loire-kalk og kølig klima giver typisk strammere sauvignon end Marlborough. Tænk grapefrugt, stikkelsbær, frisk græs og måske et strejf af hvid peber. Server for varmt, og vinen kan virke flad.",
       "240 kr. er et fornuftigt niveau til seriøs Sancerre — god sammenligning mod DSF's Domaine le Bihan Sancerre, hvis du vil sammenligne forhandlere og producenter.",
       "Sammenlignet med New Zealand sauvignon er Sancerre ofte mere mineralsk og mindre «passionsfrugt». Begge er gode til fisk; Sancerre er ofte det mere elegante valg til klassisk fransk-inspireret mad.",
-      "Tjek lager og pris på johnsenwine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

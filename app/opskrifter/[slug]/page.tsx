@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return {};
   const canonical = `${siteUrl}/opskrifter/${slug}`;
   const imageUrl = getRecipeImageAbsoluteUrl(slug, siteUrl);
-  const serpTitle = buildRecipeSerpTitle(data.frontmatter.title);
-  const serpDescription = buildRecipeSerpDescription(data.frontmatter.description, data.frontmatter.title);
+  const serpTitle = buildRecipeSerpTitle(data.frontmatter.title, slug);
+  const serpDescription = buildRecipeSerpDescription(data.frontmatter.description, slug, data.frontmatter.title);
   return {
     title: serpTitle,
     description: serpDescription,

@@ -18,7 +18,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.dhWines, "https://d
 export const metadata: Metadata = {
   title: "DH Wines — shop og inspiration | Vinbot",
   description:
-    "DH Wines: dansk vinwebshop med håndplukket udvalg til mad og hverdag. Link til shoppen fra Vinbot (affiliate), rabatter via nyhedsbrev og vine fra vores vinsøgning.",
+    "DH Wines: dansk vinwebshop med håndplukket udvalg til mad og hverdag. Link til shoppen fra Vinbot, rabatter via nyhedsbrev og vine fra vores vinsøgning.",
   alternates: { canonical: `${siteUrl}/dh-wines` },
 };
 
@@ -28,7 +28,7 @@ export default function DhWinesPage() {
     {
       question: "Hvorfor linker Vinbot til DH Wines?",
       answer:
-        "Vi samarbejder via Partner-Ads: provision kan tilfalde Vinbot efter klik — typisk uden merpris for dig. DH Wines passer til læsere, der vil have et kurateret udvalg med fokus på madvenlige og hverdagsvenlige flasker.",
+        "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. DH Wines passer til læsere, der vil have et kurateret udvalg med fokus på madvenlige og hverdagsvenlige flasker.",
     },
     {
       question: "Kan jeg få rabat?",

@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "geil-spatburgunder-2023",
     displayTitle: "GEIL · Spätburgunder 2023",
     metaDescription:
-      "Tysk pinot noir fra GEIL med rød kirsebær og blid struktur — hverdags-rød til kylling, svinekød og ost. Vinbot guider til Johnsen Wine (affiliate).",
+      "Tysk pinot noir fra GEIL med rød kirsebær og blid struktur — hverdags-rød til kylling, svinekød og ost. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/geil-spatburgunder-2023/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2026/03/geilspat.jpeg?media=1772381215",
@@ -32,7 +32,7 @@ export const JOHNSEN_WINE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "115 kr. er et stærkt prisleje til seriøs spätburgunder — god sammenligning mod DSF's August Kesseler pinot, hvis du vil mærke forskel på producent og pris.",
       "I glasset møder du typisk rød kirsebær, jordbær og blid krydderi — ikke barolos tannin, men nok struktur til mad. Server ikke for varmt.",
       "Sammenlignet med Bourgogne-pinot er tysk spätburgunder ofte mere direkte frugt og blødere — mindre jord, mere kirsebær. Begge elsker kylling.",
-      "Tjek lager og pris på johnsenwine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const JOHNSEN_WINE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "porrera-priorat-2020",
     displayTitle: "Celler Cooperatiu Porrera · Priorat 2020",
     metaDescription:
-      "Priorat med garnacha og koncentreret bærfrugt — spansk rød til lam, grill og moden ost. Vinbot guider til Johnsen Wine (affiliate).",
+      "Priorat med garnacha og koncentreret bærfrugt — spansk rød til lam, grill og moden ost. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/porrera-priorat-2020-celler-cooperatiu-porrera/",
     imageUrl:
       "https://usercontent.one/wp/www.johnsenwine.dk/wp-content/uploads/2026/03/porrera.jpg?media=1772381215",
@@ -96,7 +96,7 @@ export const JOHNSEN_WINE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "269 kr. er et stærkt prisleje til ægte Priorat på etiketten — god flaske til dem, der vil smake regionen uden top-producent-priser.",
       "Garnacha og lokale druer giver typisk mørk bærfrugt, mineralitet og struktur — vin til kød med krydderi, salt og fedme, ikke til salat.",
       "Sammenlignet med Lauridsens Immortalis Priorat er kooperativ-flasken ofte mere jordnær og direkte — samme region, forskellig producent-fortælling. Begge elsker lam og grill.",
-      "Bekræft lager og pris på johnsenwine.dk. Vinbot er affiliate.",
+      "Bekræft lager og pris på johnsenwine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

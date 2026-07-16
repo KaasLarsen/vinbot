@@ -6,7 +6,7 @@ export const DH_WINES_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "badenhorst-raaigras-grenache-2023",
     displayTitle: "A.A. Badenhorst · Raaigras Grenache 2023",
     metaDescription:
-      "Sydafrikansk grenache fra gamle vinstokke — bærfrugt, krydderi og elegance til lam, grill og ost. Vinbot guider til DH Wines (affiliate).",
+      "Sydafrikansk grenache fra gamle vinstokke — bærfrugt, krydderi og elegance til lam, grill og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/a-a-badenhorst-family-wines-raaigras-grenache-2023",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Badenhorst-Grenache.jpg?v=1752578663",
@@ -70,7 +70,7 @@ export const DH_WINES_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "jean-marc-brocard-petit-chablis-2024",
     displayTitle: "Domaine Jean-Marc Brocard · Petit Chablis 2024",
     metaDescription:
-      "Petit Chablis med citrus, mineralsk syre og frisk chardonnay — hvid til fisk, skaldyr og ost. Vinbot guider til DH Wines (affiliate).",
+      "Petit Chablis med citrus, mineralsk syre og frisk chardonnay — hvid til fisk, skaldyr og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/domaine-jean-marc-brocard-petit-chablis-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/JMB-Petit-Chablis-2024.jpg?v=1755360233",
@@ -96,7 +96,7 @@ export const DH_WINES_BATCH4_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du citrus, grønt æble, måske stikkelsbær og en «skarp» mineralsk afslutning, der skærer i fedme og salt. Server for varmt, og syren kan virke flad; for koldt, og aroma lukker sig.",
       "209 kr. er et stærkt prisleje til ægte Chablis på etiketten — god sammenligning mod Lauridsens Chablis 1er Cru, hvis du vil mærke forskellen mellem entry og prestige.",
       "Sammenlignet med californisk chardonnay er Chablis knastør og mineralsk — mindst frugtbombe, mere syre og salt. Begge er chardonnay; Chablis er valget til fisk, californisk til cremede saucer.",
-      "Tjek pris og lager på dhwines.dk. Vinbot er affiliate.",
+      "Tjek pris og lager på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

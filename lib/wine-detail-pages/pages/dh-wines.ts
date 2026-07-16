@@ -6,7 +6,7 @@ export const DH_WINES_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "gagliole-chianti-classico-riserva-2019",
     displayTitle: "Gagliole · Chianti Classico Riserva DOCG 2019",
     metaDescription:
-      "Struktureret chianti classico riserva med sangiovese-dybde — til pasta, bøf og modne oste. Vinbot guider til DH Wines (affiliate).",
+      "Struktureret chianti classico riserva med sangiovese-dybde — til pasta, bøf og modne oste. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/gagliole-chianti-classico-riserva-docg-2019",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/products/gagliole-chianti-classico-riserva-docg-2019-738488.jpg?v=1779432197",
@@ -32,7 +32,7 @@ export const DH_WINES_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
       "Gagliole er et navn, mange italienske entusiaster nikker genkendende til. Flasken her er til den aften, hvor pastaen har mere end tomatsauce fra dåse — eller hvor der kommer bøf, lammekoteletter eller en skål med pecorino efter hovedretten.",
       "Som med de fleste unge til mellemgamle sangiovese-vine gør luft en forskel: hæld i karaffel eller lad flasken stå åben, mens du laver mad. Det er ikke obligatorisk, men det kan flytte vinen fra «stram» til «behagelig» på tyve minutter.",
       "Prislejet ligger over entry-chianti, men under mange «super-toscanere». Det er sweet spot for dem, der vil have Classico-autenticitet uden at betale for berømthed alene.",
-      "Tjek lager og pris på dhwines.dk. Vinbot er affiliate; DH Wines er facit.",
+      "Tjek lager og pris på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const DH_WINES_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "borgo-scopeto-chianti-classico-riserva",
     displayTitle: "Borgo Scopeto · Chianti Classico Riserva",
     metaDescription:
-      "Chianti classico riserva med kirsebær, urter og sangiovese-struktur — til simrede retter og ost. Vinbot guider til DH Wines (affiliate).",
+      "Chianti classico riserva med kirsebær, urter og sangiovese-struktur — til simrede retter og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/borgo-scopeto-2019-chianti-classico-riserva",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/products/borgo-scopeto-2019-chianti-classico-riserva-608783.jpg?v=1779431866",

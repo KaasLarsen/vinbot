@@ -6,7 +6,7 @@ export const DEN_SIDSTE_FLASKE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "fratelli-aresca-nizza-docg-2021",
     displayTitle: "Fratelli Aresca · Nizza DOCG 2021",
     metaDescription:
-      "Barbera fra Nizza DOCG med dybde, syre og struktur — piemontesisk rød til pasta, bøf og ost. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Barbera fra Nizza DOCG med dybde, syre og struktur — piemontesisk rød til pasta, bøf og ost. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/fratelli-aresca-nizza-docg-2021",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/fratelli-aresca-nizza-docg-2021-aresca-rodvin-1234500049.png?v=1777292170",
@@ -32,7 +32,7 @@ export const DEN_SIDSTE_FLASKE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk mørk kirsebær, blomme og et strejf af krydderi og urter. Syren matcher tomat; strukturen matcher kød — klassisk piemontesisk logik.",
       "199 kr. er et stærkt prisleje til Nizza på etiketten — god flaske til dem, der allerede kan lide barbera d'Asti og vil et trin op.",
       "Sammenlignet med Chianti er Nizza ofte mørkere og mere koncentreret — samme italienske madkultur, højere barbera-ambitionsniveau. Begge elsker pasta; Nizza er valget til kødsovs med dybde.",
-      "Bekræft pris og lager på Den Sidste Flaske. Vinbot er affiliate.",
+      "Bekræft pris og lager på Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const DEN_SIDSTE_FLASKE_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "auguste-lavoisier-blanc-de-blanc-grand-cru",
     displayTitle: "Auguste Lavoisier · Blanc de Blancs Grand Cru NV",
     metaDescription:
-      "Champagne blanc de blancs fra Grand Cru med citrus, brioche og fine bobler — fest og madparring. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Champagne blanc de blancs fra Grand Cru med citrus, brioche og fine bobler — fest og madparring. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/champagne-auguste-lavoisier-blanc-de-blanc-grand-cru-nv",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/champagne-auguste-lavoisier-blanc-de-blanc-grand-cru-nv-den-sidste-flaske-1211254114.png?v=1765797889",

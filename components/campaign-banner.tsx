@@ -43,7 +43,7 @@ export function CampaignBanner() {
             <Link href="/den-sidste-flaske" className="font-medium text-white underline decoration-rose-300/70 underline-offset-2 hover:decoration-white">
               Inspiration og købstips på Vinbot
             </Link>
-            <span className="text-rose-200/75"> · Butik-linket er affiliate via Partner-Ads (åbner i nyt vindue).</span>
+            <span className="text-rose-200/75"> · Åbner i nyt vindue.</span>
           </p>
         </div>
 

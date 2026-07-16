@@ -6,7 +6,7 @@ export const WINTHER_VIN_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "tenuta-garetto-barbera-dasti",
     displayTitle: "Tenuta Garetto · Rosina Barbera d'Asti",
     metaDescription:
-      "Barbera d'Asti med syre og mørk frugt — piemontesisk hverdagsrød til pasta og pizza. Vinbot guider til Winther Vin (affiliate).",
+      "Barbera d'Asti med syre og mørk frugt — piemontesisk hverdagsrød til pasta og pizza. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/tenuta-garetto-rosina-barbera-dasti-2019-75-cl/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2023/02/Design-uden-navn-19.png",
     imageAside: {
@@ -68,7 +68,7 @@ export const WINTHER_VIN_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "marcel-deiss-gewurztraminer-alsace",
     displayTitle: "Marcel Deiss · Gewürztraminer Alsace",
     metaDescription:
-      "Gewürztraminer fra Alsace — aromatisk, krydret hvidvin til asiatisk mad og stærke oste. Vinbot guider til Winther Vin (affiliate).",
+      "Gewürztraminer fra Alsace — aromatisk, krydret hvidvin til asiatisk mad og stærke oste. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/marcel-deiss-gewurztraminer-2015-alsace-aoc/",
     imageUrl:
       "https://winthervin.dk/wp-content/uploads/2021/03/MArcel_deiss_gewurztraminer_winthervin.png",

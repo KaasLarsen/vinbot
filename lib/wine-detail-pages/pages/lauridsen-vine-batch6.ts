@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "bardolino-chiaretto-doc-classico-rose",
     displayTitle: "Bardolino Chiaretto · DOC Classico Rosé",
     metaDescription:
-      "Italiensk rosé fra Gardasøen med bærfrugt, frisk syre og sommerprofil — til grill, salat og let fisk. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Italiensk rosé fra Gardasøen med bærfrugt, frisk syre og sommerprofil — til grill, salat og let fisk. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/bardolino-chiaretto-doc-classico-rose",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/BardolinoChiarettoDOCClassico.jpg?v=1682688501",
@@ -32,7 +32,7 @@ export const LAURIDSEN_VINE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk jordbær, hindbær, citrus og et strejf af urter. Server kølig — chiaretto er bedst, når friskhed er tydelig.",
       "Sammenlignet med Provence-rosé er chiaretto ofte mere bær-drevet og lidt fyldigere i midten — samme sommer-logik, anderledes terroir. Begge fungerer til grill og apéro.",
       "Lauridsens sortiment har mange italienske flasker; chiaretto er et stærkt match til jeres rosé-guides og dem, der vil udforske italiensk sommervin ud over pinot grigio.",
-      "Bekræft pris og lager på lauridsenvine.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const LAURIDSEN_VINE_BATCH6_PAGES: readonly WineDetailPage[] = [
     slug: "sartori-den-hvide-amarone",
     displayTitle: "Sartori · «Den hvide Amarone»",
     metaDescription:
-      "Hvidvin fra Veneto med appassimento-karakter — fylde, frugt og kompleksitet til ost, fisk i sauce og fest. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Hvidvin fra Veneto med appassimento-karakter — fylde, frugt og kompleksitet til ost, fisk i sauce og fest. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/sartori-marani-2021",
     imageAside: {
       heading: "Et hurtigt overblik",
@@ -96,7 +96,7 @@ export const LAURIDSEN_VINE_BATCH6_PAGES: readonly WineDetailPage[] = [
       "119 kr. er et stærkt prisleje til en vin med tydelig producentfortælling — god flaske til ost, fisk i sauce og gæster, der vil have hvidvin med karakter.",
       "I glasset møder du typisk moden frugt, honning, måske nødder og et strejf af krydderi. Det er hvidvin til mad med fylde — ikke til salat alene.",
       "Sammenlignet med Lauridsens Sartori ripasso er den hvide amarone naturligvis lysere og friskere — men begge har Sartori-fortællingen og Veneto-karakter. Ripasso til pasta; hvid amarone til fisk i sauce og ost.",
-      "Tjek lager og pris på lauridsenvine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

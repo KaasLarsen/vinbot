@@ -6,7 +6,7 @@ export const DEN_SIDSTE_FLASKE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "georg-steinmetz-riesling-halbtrocken-2024",
     displayTitle: "Georg Steinmetz · Riesling halbtrocken Rheinhessen 2024",
     metaDescription:
-      "Halvtør riesling fra Rheinhessen med syre, frugt og let sødme — alsidig tysk hvid til asiatisk mad, fisk og ost. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Halvtør riesling fra Rheinhessen med syre, frugt og let sødme — alsidig tysk hvid til asiatisk mad, fisk og ost. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/georg-steinmetz-riesling-halbtrocken-rheinhessen",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/georg-steinmetz-riesling-halbtrocken-rheinhessen-2024-georg-steinmetz-hvidvin-1240148600.png?v=1779449111",
@@ -70,7 +70,7 @@ export const DEN_SIDSTE_FLASKE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "august-kesseler-daily-august-pinot-noir-2023",
     displayTitle: "August Kesseler · The Daily August Pinot Noir 2023",
     metaDescription:
-      "Tysk pinot noir fra August Kesseler — rød kirsebær, blød struktur og madvenlig frugt til kylling, svinekød og ost. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Tysk pinot noir fra August Kesseler — rød kirsebær, blød struktur og madvenlig frugt til kylling, svinekød og ost. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/august-kesseler-the-daily-august-pinot-noir-2023",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/august-kesseler-the-daily-august-pinot-noir-2023-august-kesseler-rodvin-55958493528388.png?v=1713514207",
@@ -96,7 +96,7 @@ export const DEN_SIDSTE_FLASKE_BATCH4_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk rød kirsebær, jordbær, måske et strejf af skovbund og blid krydderi. Det er ikke den mest komplekse pinot på markedet — pointen er tilgængelighed og madmatch.",
       "149 kr. er et fornuftigt niveau til tysk pinot fra et anerkendt hus — god flaske til dem, der vil udforske spätburgunder uden at springe direkte til dyre Rheingau- eller Ahr-flasker.",
       "Sammenlignet med Bourgogne-pinot er tysk pinot ofte mere direkte frugt og blødere — mindre jord og mineral, mere kirsebær. Begge elsker kylling; tysk pinot er ofte det mere budgetvenlige valg.",
-      "Tjek pris og lager hos Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
+      "Tjek pris og lager hos Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

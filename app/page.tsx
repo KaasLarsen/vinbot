@@ -520,7 +520,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >
           <h3 className="text-lg font-semibold text-stone-900">Vinkøleskabe</h3>
-          <p className="mt-2 text-stone-600">Søg modeller og priser — med stærkt udvalg fra blandt andre Vinkøleskabet.dk — og læs guiden til valg af størrelse og zoner.</p>
+          <p className="mt-2 text-stone-600">Søg vinkøleskabe hos Vinkøleskabet.dk med billede og pris — plus købsguide til størrelse, zoner og placering.</p>
         </Link>
       </section>
 

@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "j-moreau-chablis-1er-cru-vaillons",
     displayTitle: "J. Moreau & Fils · Chablis 1er Cru Vaillons",
     metaDescription:
-      "Premier cru chablis fra Vaillons — mineralsk syre, citrus og Bourgogne-finesse til fisk, skaldyr og lyse retter. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Premier cru chablis fra Vaillons — mineralsk syre, citrus og Bourgogne-finesse til fisk, skaldyr og lyse retter. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/j-moreau-fils-chablis-1er-cru-vaillons",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/chablis.webp?v=1765394986",
     imageAside: {
@@ -67,7 +67,7 @@ export const LAURIDSEN_VINE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     slug: "mommessin-bourgogne-pinot-noir",
     displayTitle: "Mommessin · Bourgogne Pinot Noir",
     metaDescription:
-      "Let, elegant pinot noir fra Bourgogne — rød frugt, bløde tanniner og madvenlig balance. Vinbot guider til servering og køb hos Lauridsen Vine (affiliate).",
+      "Let, elegant pinot noir fra Bourgogne — rød frugt, bløde tanniner og madvenlig balance. Vinbot guider til servering og køb hos Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/mommessin-bourgogne-pinot-noir",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/pinot.webp?v=1765398614",
     imageAside: {

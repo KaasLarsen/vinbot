@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "american-wings-chardonnay-2023",
     displayTitle: "American Wings · Chardonnay 2023",
     metaDescription:
-      "Californisk chardonnay med tropisk frugt og blid cremethed — hverdags-hvid til pasta, kylling og terrasse. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Californisk chardonnay med tropisk frugt og blid cremethed — hverdags-hvid til pasta, kylling og terrasse. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/american-wings-chardonnay-2023",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/americanwing.webp?v=1769788248",
     imageAside: {
@@ -69,7 +69,7 @@ export const LAURIDSEN_VINE_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "sartori-valpolicella-ripasso-classico-superiore",
     displayTitle: "Sartori · Valpolicella Ripasso Classico Superiore",
     metaDescription:
-      "Ripasso fra Veneto med mørk bærfrugt, blid struktur og italiensk varme — rød til pasta, pizza og gryderetter. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Ripasso fra Veneto med mørk bærfrugt, blid struktur og italiensk varme — rød til pasta, pizza og gryderetter. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/sartori-regolo-valpolicella-ripasso-classico-superiore",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/Santori.webp?v=1765399809",
     imageAside: {
@@ -94,7 +94,7 @@ export const LAURIDSEN_VINE_BATCH4_PAGES: readonly WineDetailPage[] = [
       "Corvina og lokale veneto-druer giver typisk kirsebær, blomme og et strejf af krydderi og syltet frugt i baggrunden. Ripasso-teknikken tilføjer fylde og en anelse sødme i frugten, som elsker italiensk mad.",
       "189 kr. er et fornuftigt niveau til seriøs ripasso på etiketten — god flaske til dem, der vil udforske norditaliensk rød uden at springe direkte til amarone eller barolo.",
       "Sammenlignet med Chianti er ripasso ofte mørkere og mere koncentreret — mindre syre-kant, mere frugtfylde. Begge elsker pasta; ripasso er ofte valget til kødsovs med dybde.",
-      "Tjek lager og pris på lauridsenvine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

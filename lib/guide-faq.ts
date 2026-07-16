@@ -1027,7 +1027,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor finder jeg vinkøleskabe med pris og billede?",
       answer:
-        "På vinbot.dk/vinkoleskabe kan du søge på tværs af produktfeeds med billede og pris, blandt andet hos Vinkøleskabet.dk (partner). Du klikker videre til forhandleren for endelig pris, mål og levering.",
+        "På vinbot.dk/vinkoleskabe søger du direkte i Vinkøleskabet.dks vinkøleskabe med billede og pris — kun skabe og vinlagring, ikke tilbehør. Du klikker videre til forhandleren for endelig pris, mål og levering.",
     },
   ],
   "vin-til-boeff": [

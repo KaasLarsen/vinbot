@@ -23,27 +23,27 @@ type BannerChoice = { bannerId: string; merchant: string; copy: string };
 const WINTHER: BannerChoice = {
   bannerId: WINTHER_VIN_LEADERBOARD_BANNER_ID,
   merchant: "Winther Vin",
-  copy: "Winther Vin: bland fra hele webshoppen og få rabat — shop her (affiliate)",
+  copy: "Winther Vin: bland fra hele webshoppen og få rabat — shop her",
 };
 const JOHNSEN: BannerChoice = {
   bannerId: JOHNSEN_LEADERBOARD_BANNER_ID,
   merchant: "Johnsen Wine",
-  copy: "Johnsen Wine: kurateret sortiment til vin-interesserede — se her (affiliate)",
+  copy: "Johnsen Wine: kurateret sortiment til vin-interesserede — se her",
 };
 const DH: BannerChoice = {
   bannerId: DH_WINES_LEADERBOARD_BANNER_ID,
   merchant: "DH Wines",
-  copy: "DH Wines: håndplukket sortiment til mad og hverdag — se udvalget (affiliate)",
+  copy: "DH Wines: håndplukket sortiment til mad og hverdag — se udvalget",
 };
 const LAURIDSEN: BannerChoice = {
   bannerId: LAURIDSEN_VINE_LEADERBOARD_BANNER_ID,
   merchant: "Lauridsen Vine",
-  copy: "Lauridsen Vine: stort europæisk sortiment — udforsk regionerne (affiliate)",
+  copy: "Lauridsen Vine: stort europæisk sortiment — udforsk regionerne",
 };
 const DSF: BannerChoice = {
   bannerId: DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
   merchant: "Den Sidste Flaske",
-  copy: "Den Sidste Flaske: online vinhandel — se udvalget (affiliate)",
+  copy: "Den Sidste Flaske: online vinhandel — se udvalget",
 };
 
 /**

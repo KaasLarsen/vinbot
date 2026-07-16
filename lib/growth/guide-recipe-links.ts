@@ -47,6 +47,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "vol-au-vent-med-hvidvin", label: "Vol-au-vent med hvidvin" },
   ],
   "vin-til-pizza-og-pasta": [
+    { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin" },
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
@@ -106,6 +107,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "oesters-gratineret-med-hvidvin", label: "Østers gratineret med hvidvin" },
   ],
   "vin-til-boeff": [
+    { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
@@ -115,6 +117,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
   ],
   "vin-til-grill-og-bbq": [
+    { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "svineribs-med-rodvin", label: "Svineribs med rødvin" },
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
@@ -133,6 +136,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kartoffelmos-med-hvidvin", label: "Kartoffelmos med hvidvin" },
   ],
   "vin-til-italiensk-mad": [
+    { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
+    { slug: "kylling-piccata-med-hvidvin", label: "Kylling piccata med hvidvin" },
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
     { slug: "fennikelkylling-med-hvidvin", label: "Fennikelkylling med hvidvin" },
     { slug: "porchetta-med-hvidvin", label: "Porchetta med hvidvin" },
@@ -156,6 +161,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "wok-rejer-hvidvin", label: "Wok-rejer med hvidvin" },
   ],
   "vin-til-oksekoed": [
+    { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
@@ -179,12 +185,14 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinebryst-braiseret-i-rodvin", label: "Svinebryst braiseret i rødvin" },
   ],
   "sangiovese-til-pasta": [
+    { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
     { slug: "bolognese-med-rodvin", label: "Bolognese med rødvin" },
     { slug: "ragu-med-rodvin", label: "Ragù med rødvin" },
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin" },
   ],
   "vin-til-kylling-og-lyst-koed": [
+    { slug: "kylling-piccata-med-hvidvin", label: "Kylling piccata med hvidvin" },
     { slug: "braiseret-kylling-med-rodvin", label: "Braiseret kylling med rødvin" },
     { slug: "fennikelkylling-med-hvidvin", label: "Fennikelkylling med hvidvin" },
     { slug: "stuvet-kylling-med-hvidvin", label: "Stuvet kylling med hvidvin" },

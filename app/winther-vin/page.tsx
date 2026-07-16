@@ -18,7 +18,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.wintherVin, "https:
 export const metadata: Metadata = {
   title: "Winther Vin — shop og inspiration | Vinbot",
   description:
-    "Winther Vin: dansk vinwebshop med fokus på kvalitet, kampagner og mulighed for at blande kassen. Link til shoppen fra Vinbot (affiliate), nyhedsbrev og vine fra vores vinsøgning.",
+    "Winther Vin: dansk vinwebshop med fokus på kvalitet, kampagner og mulighed for at blande kassen. Link til shoppen fra Vinbot, nyhedsbrev og vine fra vores vinsøgning.",
   alternates: { canonical: `${siteUrl}/winther-vin` },
 };
 
@@ -28,7 +28,7 @@ export default function WintherVinPage() {
     {
       question: "Hvorfor linker Vinbot til Winther Vin?",
       answer:
-        "Vi samarbejder via Partner-Ads: når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Winther Vin matcher læsere, der vil browse kampagner, smagskasser og et bredt sortiment med jævnlige tilbud.",
+        "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Winther Vin matcher læsere, der vil browse kampagner, smagskasser og et bredt sortiment med jævnlige tilbud.",
     },
     {
       question: "Kan jeg få rabat?",

@@ -6,9 +6,9 @@ import { RecipeHubBrowser } from "@/components/recipe-hub-browser";
 import { getAllRecipes } from "@/lib/content/recipes";
 import { siteUrl } from "@/lib/site";
 
-const PAGE_TITLE = "Opskrifter med vin — klassiske retter";
+const PAGE_TITLE = "Opskrifter med vin — coq au vin og gryderet";
 const PAGE_DESCRIPTION =
-  "167+ opskrifter hvor vin er en del af retten: wiener schnitzel, souvlaki, crêpes Suzette, tikka masala, panna cotta, marokkansk tagine, bøftatar, vindaloo, fish and chips, blanquette og mere. Filtrér efter rød/hvidvin, køkken og tid.";
+  "170+ opskrifter med rød- og hvidvin i gryden: coq au vin, amatriciana, piccata, gullasch, risotto, tapas og sauce. Step-by-step med vin i både ret og glas — filtrér efter køkken og tid.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };

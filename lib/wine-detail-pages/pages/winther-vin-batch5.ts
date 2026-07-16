@@ -6,7 +6,7 @@ export const WINTHER_VIN_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "earthquake-cabernet-sauvignon-2020",
     displayTitle: "Earthquake · Cabernet Sauvignon 2020",
     metaDescription:
-      "Californisk cabernet sauvignon med mørk frugt, struktur og kraft — til grill, okse og burger. Vinbot guider til Winther Vin (affiliate).",
+      "Californisk cabernet sauvignon med mørk frugt, struktur og kraft — til grill, okse og burger. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/earthquake-cabernet-sauvignon-2020/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2020/02/earthquake_cab_sauv_winthervin.png",
     imageAside: {
@@ -31,7 +31,7 @@ export const WINTHER_VIN_BATCH5_PAGES: readonly WineDetailPage[] = [
       "319 kr. lander i premium-californien-segmentet hos Winther — oplagt til grillfest, oksesteg og gæster, der forstår, at cabernet kan bære struktur.",
       "I glasset møder du typisk mørk kirsebær, blomme, måske chokolade og vanilje fra fad. Ung cabernet kan være stram — luft og mad hjælper.",
       "Sammenlignet med Bordeaux-cabernet er Californien ofte mere direkte frugtet og kraftig — mindre jord og mineral, mere sol. Begge elsker okse; Californien er ofte valget til grill.",
-      "Bekræft pris og lager på winthervin.dk. Vinbot er affiliate.",
+      "Bekræft pris og lager på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -69,7 +69,7 @@ export const WINTHER_VIN_BATCH5_PAGES: readonly WineDetailPage[] = [
     slug: "la-cetto-nebbiolo-private-reserve-2019",
     displayTitle: "L.A. Cetto · Nebbiolo Private Reserve 2019",
     metaDescription:
-      "Nebbiolo fra Valle de Guadalupe med kirsebær, urter og struktur — alternativ til Barolo til pasta og kød. Vinbot guider til Winther Vin (affiliate).",
+      "Nebbiolo fra Valle de Guadalupe med kirsebær, urter og struktur — alternativ til Barolo til pasta og kød. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/l-a-cetto-nebbiolo-private-reserve-2019/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2021/06/Design-uden-navn-4.png",
     imageAside: {
@@ -94,7 +94,7 @@ export const WINTHER_VIN_BATCH5_PAGES: readonly WineDetailPage[] = [
       "199 kr. er et fornuftigt niveau til seriøs nebbiolo uden Barolo-etiket — god flaske til pasta, lam og gryderetter, hvor struktur og syre matcher tomat og kød.",
       "Sammenlignet med Barolo er mexicansk nebbiolo ofte blødere og mere direkte frugtet — mindre lagringskrav, mere hverdagsvenlig. Begge elsker italiensk-inspireret mad.",
       "Winthers sortiment har mange nyt world-flasker; Cetto Nebbiolo er et stærkt match til nebbiolo-druen-guiden og dem, der vil have SEO-værdi på «nebbiolo uden Barolo».",
-      "Tjek lager og pris på winthervin.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

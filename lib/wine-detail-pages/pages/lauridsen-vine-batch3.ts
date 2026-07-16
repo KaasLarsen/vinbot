@@ -6,7 +6,7 @@ export const LAURIDSEN_VINE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "immortalis-priorat",
     displayTitle: "Immortalis · Priorat",
     metaDescription:
-      "Priorat med garnacha og syrah — koncentreret bærfrugt, mineralitet og struktur til lam, grill og moden ost. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Priorat med garnacha og syrah — koncentreret bærfrugt, mineralitet og struktur til lam, grill og moden ost. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/immortalis-priorat",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0712/8101/7152/products/Immortalispriorat_720x_e5607652-8d64-4772-9afe-7cbfeebb4323.jpg?v=1680090044",
@@ -69,7 +69,7 @@ export const LAURIDSEN_VINE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "chateauneuf-du-pape-le-parvis",
     displayTitle: "Châteauneuf-du-Pape · Le Parvis",
     metaDescription:
-      "Châteauneuf-du-Pape med grenache og syrah — krydret bærfrugt, varme og struktur til lam, gryderetter og moden ost. Vinbot guider til Lauridsen Vine (affiliate).",
+      "Châteauneuf-du-Pape med grenache og syrah — krydret bærfrugt, varme og struktur til lam, gryderetter og moden ost. Vinbot guider til Lauridsen Vine.",
     productPageUrl: "https://lauridsenvine.dk/products/chateauneuf-du-pape-le-parvis",
     imageUrl: "https://cdn.shopify.com/s/files/1/0712/8101/7152/files/pape.webp?v=1765466791",
     imageAside: {
@@ -94,7 +94,7 @@ export const LAURIDSEN_VINE_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Galets roulés — de runde sten i vinmarkerne — og mistral-vinden præger ofte fortællingen om Châteauneuf. I glasset møder du typisk modne kirsebær, blomme, lakrids, urter og en varm, rund midte, der elsker salt kød og simrede retter.",
       "389 kr. er investering i en appellation med historie og regler — ikke bare et producentnavn. Flasken passer til gæster, der kender Rhône, og til dem, der vil lære om området via en konkret etiket.",
       "Sammenlignet med nord-rhône syrah alene er Châteauneuf ofte blødere og mere «sol» i frugten — mindre peber-kant, mere krydderi og varme. Begge fungerer til lam; Châteauneuf er ofte det mere festlige valg.",
-      "Tjek lager og pris på lauridsenvine.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på lauridsenvine.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -6,7 +6,7 @@ export const WINTHER_VIN_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "chateau-de-la-negly-asterides-rose-2023",
     displayTitle: "Château de la Négly · Astérides Rosé 2023",
     metaDescription:
-      "Provence-inspireret rosé fra Languedoc med bærfrugt, frisk syre og sommerprofil — til grill, salat og terrasse. Vinbot guider til Winther Vin (affiliate).",
+      "Provence-inspireret rosé fra Languedoc med bærfrugt, frisk syre og sommerprofil — til grill, salat og terrasse. Vinbot guider til Winther Vin.",
     productPageUrl: "https://winthervin.dk/shop/chateau-de-la-negly-asterides-rose-2023/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2024/09/lanegly_winthervin.png",
     imageAside: {
@@ -69,7 +69,7 @@ export const WINTHER_VIN_BATCH4_PAGES: readonly WineDetailPage[] = [
     slug: "il-poeta-barolo-2019",
     displayTitle: "Il Poeta · Barolo 2019",
     metaDescription:
-      "Barolo med nebbiolo — kirsebær, tørre urter og struktur til pasta, lam og ost. Piemontes klassiker hos Winther Vin. Vinbot guider (affiliate).",
+      "Barolo med nebbiolo — kirsebær, tørre urter og struktur til pasta, lam og ost. Piemontes klassiker hos Winther Vin. Vinbot guider.",
     productPageUrl: "https://winthervin.dk/shop/il-poeta-barolo-2019/",
     imageUrl: "https://winthervin.dk/wp-content/uploads/2021/12/il_poeta_barolo_2016_winthervin.png",
     imageAside: {
@@ -94,7 +94,7 @@ export const WINTHER_VIN_BATCH4_PAGES: readonly WineDetailPage[] = [
       "2019 er et godt udgangspunkt til bordet: frugt og struktur i balance, klar til pasta med kød, lam og simrede retter. Ung barolo kan være stram; med mad og luft åbner den ofte til kirsebær, læder, tobak og urter.",
       "399 kr. er investering i ægte barolo — god flaske til dem, der vil smake Piemonte uden at betale top-producent-priser. Det er vin til festmiddag og gæster, der vil lære nebbiolo via en konkret etiket.",
       "Sammenlignet med Chianti Classico er barolo tungere og mere struktureret — samme druefamilie i bred forstand, højere ambitionsniveau. Begge elsker pasta; barolo er valget til lang middag med rød kød.",
-      "Tjek lager og pris på winthervin.dk. Vinbot er affiliate.",
+      "Tjek lager og pris på winthervin.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -17,7 +17,7 @@ const SHOP_HREF = HAVNENS_VIN_SHOP_HREF;
 export const metadata: Metadata = {
   title: "Havnens Vin — shop og inspiration | Vinbot",
   description:
-    "Havnens Vin: dansk vin- og spiritusforhandler med bredt sortiment. Link til shoppen fra Vinbot (affiliate via Daisycon), og vine du finder i vores søgning og vin-katalog.",
+    "Havnens Vin: dansk vin- og spiritusforhandler med bredt sortiment. Link til shoppen fra Vinbot, og vine du finder i vores søgning og vin-katalog.",
   alternates: { canonical: `${siteUrl}/havnens-vin` },
 };
 
@@ -26,7 +26,7 @@ export default function HavnensVinPage() {
     {
       question: "Hvorfor linker Vinbot til Havnens Vin?",
       answer:
-        "Vi samarbejder via Daisycon: provision kan tilfalde Vinbot ved køb efter klik — typisk uden merpris for dig. Havnens Vin passer til læsere, der vil handle hos en etableret dansk forhandler med både hverdagsvine og mere sjældne flasker.",
+        "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Havnens Vin passer til læsere, der vil handle hos en etableret dansk forhandler med både hverdagsvine og mere sjældne flasker.",
     },
     {
       question: "Kan jeg se Havnens Vin i Vinbots vin-katalog?",
@@ -112,7 +112,7 @@ export default function HavnensVinPage() {
         <div>
           <h2 className="text-2xl font-semibold text-stone-900">Udvalgte vine hos Havnens Vin</h2>
           <p className="mt-2 max-w-3xl text-stone-700">
-            Fra vores Daisycon-feed (vist som «Havnens Vin» i data). Udvalget varierer — sammenlign gerne i{" "}
+            Udvalgte flasker fra Havnens Vin i vores søgning. Udvalget varierer — sammenlign gerne i{" "}
             <Link href="/vine" className="font-medium text-rose-900 hover:underline">
               vin-kataloget
             </Link>

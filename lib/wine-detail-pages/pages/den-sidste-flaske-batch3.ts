@@ -6,7 +6,7 @@ export const DEN_SIDSTE_FLASKE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "domaine-le-bihan-sancerre-romain-blanc-2023",
     displayTitle: "Domaine le Bihan · Sancerre Romain Blanc 2023",
     metaDescription:
-      "Sancerre sauvignon blanc med citrus, urter og mineralsk syre — klassisk Loire-hvid til fisk, skaldyr og salat. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Sancerre sauvignon blanc med citrus, urter og mineralsk syre — klassisk Loire-hvid til fisk, skaldyr og salat. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/domaine-le-bihan-sancerre-romain-blanc",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/domaine-le-bihan-sancerre-romain-blanc-2023-domaine-le-bihan-hvidvin-1219425087.png?v=1770286630",
@@ -70,7 +70,7 @@ export const DEN_SIDSTE_FLASKE_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "cave-de-tain-crozes-hermitage-2021",
     displayTitle: "Cave de Tain · Crozes-Hermitage Sélection Première 2021",
     metaDescription:
-      "Syrah fra Crozes-Hermitage med mørk bærfrugt, peber og struktur — nord-rhône rød til lam, gryderetter og grill. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Syrah fra Crozes-Hermitage med mørk bærfrugt, peber og struktur — nord-rhône rød til lam, gryderetter og grill. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/cave-de-tain-crozes-hermitage-2021",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/cave-de-tain-crozes-hermitage-selection-premiere-2021-pris-cave-de-tain-rodvin-1199458184.png?v=1761301120",
@@ -96,7 +96,7 @@ export const DEN_SIDSTE_FLASKE_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Syrah her giver typisk mørk kirsebær og blomme, sort peber, måske oliven og et strejf af røget eller kød-agtig karakter i baggrunden. Det er vin med struktur nok til kød, men ikke nødvendigvis den tunge, alkohol-tunge stil fra varme regioner.",
       "2021-årgangen er et godt udgangspunkt til mad: frugt og tannin i balance, klar til lam, okse i sauce eller simrede retter med urter. Lidt luft i karaffel kan blødgøre unge tanniner — men mange drikker den direkte fra flasken til hverdagsmad.",
       "Sammenlignet med sydfransk grenache-dominerede blends er nord-rhône syrah ofte mere pebret og «vertikal» i smagen — mindre sød frugt, mere krydderi. God flaske, når du vil have Rhône-karakter uden Châteauneuf-pris.",
-      "Tjek pris og lager hos Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
+      "Tjek pris og lager hos Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

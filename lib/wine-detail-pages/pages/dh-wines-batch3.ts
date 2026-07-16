@@ -6,7 +6,7 @@ export const DH_WINES_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "malbec-kaiken-estate-2022-mendoza",
     displayTitle: "Kaiken · Malbec Estate 2022 Mendoza",
     metaDescription:
-      "Argentinsk malbec fra Mendoza med mørk bærfrugt og blød struktur — hverdags-rød til grill, burger og pasta. Vinbot guider til DH Wines (affiliate).",
+      "Argentinsk malbec fra Mendoza med mørk bærfrugt og blød struktur — hverdags-rød til grill, burger og pasta. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/malbec-kaiken-estate-2022-mendoza",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Kaiken-Estate-Malbec.jpg?v=1752578663",
@@ -32,7 +32,7 @@ export const DH_WINES_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Mørk kirsebær, blomme og måske et strejf af chokolade er klassiske markører. Fad kan tilføje vanilje, men i den her prisklasse er pointen ofte ren frugt og balance.",
       "109 kr. gør flasken til et stærkt bud på «malbec til mad» uden at tømme lommen. God sammenligning mod dyrere reserve-flasker, når du vil teste, om malbec overhovedet passer til din smag.",
       "Sammenlignet med Rioja får du mere direkte frugt og blødere tanninprofil — mindre fad og krydderi, mere saft. Begge fungerer til grill; malbec er ofte det blødere valg.",
-      "Tjek pris og lager på dhwines.dk. Vinbot er affiliate.",
+      "Tjek pris og lager på dhwines.dk. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
@@ -70,7 +70,7 @@ export const DH_WINES_BATCH3_PAGES: readonly WineDetailPage[] = [
     slug: "vina-salceda-crianza-2021-rioja",
     displayTitle: "Viña Salceda · Crianza Rioja 2021",
     metaDescription:
-      "Rioja crianza med tempranillo — moden bærfrugt, blid fad og madvenlig spansk rød til tapas, steg og ost. Vinbot guider til DH Wines (affiliate).",
+      "Rioja crianza med tempranillo — moden bærfrugt, blid fad og madvenlig spansk rød til tapas, steg og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/vina-salceda-crianza-2021-rioja",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/Vina-Salceda-Ceianza.jpg?v=1755360233",

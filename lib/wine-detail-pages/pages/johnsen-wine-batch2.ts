@@ -6,7 +6,7 @@ export const JOHNSEN_WINE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "pesquera-crianza-ribera-2021",
     displayTitle: "Pesquera · Crianza Ribera del Duero 2021",
     metaDescription:
-      "Tempranillo crianza fra Ribera del Duero — mørk frugt, struktur og madvenlig spansk rød. Vinbot guider til Johnsen Wine (affiliate).",
+      "Tempranillo crianza fra Ribera del Duero — mørk frugt, struktur og madvenlig spansk rød. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2021-pesquera-crianza-ribera-del-duero/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/57601321.jpeg",
     imageAside: {
@@ -69,7 +69,7 @@ export const JOHNSEN_WINE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "gazur-ribera-del-duero-2022",
     displayTitle: "Telmo Rodriguez · Gazur Ribera del Duero 2022",
     metaDescription:
-      "Gazur fra Ribera del Duero — ung, frugtig tempranillo til tapas og hverdagsmad. Vinbot guider til Johnsen Wine (affiliate).",
+      "Gazur fra Ribera del Duero — ung, frugtig tempranillo til tapas og hverdagsmad. Vinbot guider til Johnsen Wine.",
     productPageUrl: "https://www.johnsenwine.dk/produkt/2022-gazur-ribera-del-duero-telmo-rodriguez/",
     imageUrl: "https://www.johnsenwine.dk/wp-content/uploads/2026/01/56471322.jpeg",
     imageAside: {
@@ -93,7 +93,7 @@ export const JOHNSEN_WINE_BATCH2_PAGES: readonly WineDetailPage[] = [
       "Smagsmæssigt lander Gazur typisk med mørk bærfrugt, mild krydderi og struktur nok til mad — men sjældent den tunge fad-dominans, du finder i dyr reserva. God flaske til tapas, grill og aftener med spansk vinkel.",
       "2022-årgangen er ung nok til at frugten står frem; kort luft kan runde kanterne af. Det er ikke vin til timelang decanting — det er vin til at åbne, når gæsterne kommer.",
       "Sammenlignet med jeres Ondarre Rioja Reserva-side er Gazur ofte friskere og mindre fad-præget — mere «nu» end «lagret». Begge er tempranillo; Ribera vs Rioja giver forskellig tyngde.",
-      "Johnsen Wine er facit for pris og lager. Vinbot er affiliate.",
+      "Johnsen Wine er facit for pris og lager. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

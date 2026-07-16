@@ -6,7 +6,7 @@ export const DH_WINES_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "mauro-sebaste-barbera-nizza-2020",
     displayTitle: "Mauro Sebaste · Barbera d'Asti Superiore Nizza",
     metaDescription:
-      "Barbera fra Nizza DOCG — Piemontes premium barbera med dybde og syre til pasta, bøf og ost. Vinbot guider til DH Wines (affiliate).",
+      "Barbera fra Nizza DOCG — Piemontes premium barbera med dybde og syre til pasta, bøf og ost. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/mauro-sebaste-barbera-nizza-costemonhisio-2020",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/files/mauro-sebaste-barbera-nizza-costemonhisio-2020-226696.jpg?v=1779432681",
@@ -70,7 +70,7 @@ export const DH_WINES_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "mille-vite-langhe-nebbiolo-2021",
     displayTitle: "Mille Vite · Langhe Nebbiolo DOC 2021",
     metaDescription:
-      "Langhe nebbiolo — kirsebær, rose og tanniner til pasta, svampe og kød. Vinbot guider til DH Wines (affiliate).",
+      "Langhe nebbiolo — kirsebær, rose og tanniner til pasta, svampe og kød. Vinbot guider til DH Wines.",
     productPageUrl: "https://dhwines.dk/products/mille-vite-langhe-nebbiolo-doc-2021",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0816/5435/0170/products/mille-vite-langhe-nebbiolo-doc-2021-739801.jpg?v=1779432607",

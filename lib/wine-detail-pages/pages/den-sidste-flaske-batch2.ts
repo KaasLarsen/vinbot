@@ -6,7 +6,7 @@ export const DEN_SIDSTE_FLASKE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "saint-amour-beaujolais-2022",
     displayTitle: "Saint-Amour Beaujolais 2022",
     metaDescription:
-      "Gamay fra Saint-Amour i Beaujolais — saftig rød frugt, bløde tanniner og friskhed til kylling, charcuteri og lettere retter. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Gamay fra Saint-Amour i Beaujolais — saftig rød frugt, bløde tanniner og friskhed til kylling, charcuteri og lettere retter. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/saint-amour-beaujolais-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/saint-amour-beaujolais-2022-den-sidste-flaske-1150005030.png?v=1742557488",
@@ -73,7 +73,7 @@ export const DEN_SIDSTE_FLASKE_BATCH2_PAGES: readonly WineDetailPage[] = [
     slug: "corte-antica-barbera-dasti",
     displayTitle: "Corte Antica · Barbera d'Asti 2022",
     metaDescription:
-      "Barbera d'Asti med syre og mørk bærfrugt — italiensk hverdagsrød til pasta, pizza og gryderetter. Vinbot guider til Den Sidste Flaske (affiliate).",
+      "Barbera d'Asti med syre og mørk bærfrugt — italiensk hverdagsrød til pasta, pizza og gryderetter. Vinbot guider til Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/corte-antica-barbera-dasti",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/corte-antica-barbera-d-asti-den-sidste-flaske-1224924399.png?v=1772623389",
@@ -99,7 +99,7 @@ export const DEN_SIDSTE_FLASKE_BATCH2_PAGES: readonly WineDetailPage[] = [
       "Barberas syre er det, italienske hverdagskøkkener har brugt i generationer: den skærer i fedme, løfter tomatsauce og gør lasagne mindre tung. Har du kun én rød til pizza og bolognese, er barbera ofte et sikkert bud.",
       "Temperatur: 16–18 °C. For varm barbera kan føles flad og alkohol-præget; lidt køligere servering hjælper syren frem ved salte retter.",
       "Sammenlignet med sangiovese/chianti er barbera ofte mørkere i frugten og mere direkte syre-fokuseret — mindre «tørre urter», mere saft. Begge fungerer til italiensk mad; barbera er ofte det friskere valg.",
-      "Tjek pris og lager hos Den Sidste Flaske. Vinbot er affiliate; forhandleren facit.",
+      "Tjek pris og lager hos Den Sidste Flaske. Pris og lager tjekkes altid hos forhandleren.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
