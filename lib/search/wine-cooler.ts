@@ -8,61 +8,68 @@ export function foldDa(s = ""): string {
   return normalize(s).replace(/ø/g, "o").replace(/å/g, "a").replace(/æ/g, "ae");
 }
 
-/** Produkter der er rigtige vinkøleskabe / vinlagringsskabe — ikke tilbehør, øl eller reoler. */
-const COOLER_MARKERS: readonly string[] = [
-  "vinkoleskab",
-  "vinkoleskabe",
-  "vinlagringsskab",
-  "vinlagring",
-  "winekeeper",
-  "winecave",
-  "wineexpert",
-  "winestore",
-  "integrerbart vinkoleskab",
-  "integrerbar vinkoleskab",
-  "fritstaende vinkoleskab",
-  "indbygning vinkoleskab",
-  "indbygbar vinkoleskab",
-  "wine - built-in",
-  "wine built-in",
+/**
+ * Vinkøleskabet.dks feed bruger Google product_type — kun disse er rigtige skabe.
+ * Tilbehør (hylder, drypbakker, vinmærkater) har fx «Wine - Accessories» eller «Wine - Wine cooler shelves».
+ */
+const COOLER_CATEGORY_MARKERS: readonly string[] = [
+  "wine - built-in (under counter)",
+  "wine - built-in (column)",
+  "wine - ageing cabinets",
+  "wine - free-standing",
 ];
 
-/** Titler der alene er tilbehør/reservedele — selv i Vinkøleskabet-feedet. */
-const ACCESSORY_TITLE_PREFIX =
-  /^(hylde|metalhylde|hyldefront|multifunktionshylde|ventilationsrist|kulfilter|dorklaes|dorlas)\b/;
+const NOT_COOLER_CATEGORY_MARKERS: readonly string[] = [
+  "wine - accessories",
+  "wine - wine cooler shelves",
+  "wine - wine rack",
+  "beer -",
+  "spare parts",
+  "kitchen - accessories",
+  "outdoor kitchen",
+];
 
-const EXCLUDE_IN_TITLE: readonly string[] = [
+/** Reservetitel-match hvis feed mangler kategori (burde ikke ske for Vinkøleskabet). */
+const COOLER_TITLE_PREFIX =
+  /^(vinkoleskab|vinkoleskabe|integrerbar|integrerbart|vinlagringsskab|vinlagring|fritstaende vinkoleskab|indbygbar vinkoleskab|indbygning vinkoleskab)\b/;
+
+/** Titler der altid er tilbehør — også når de nævner «vinkøleskab» eller WineCave i titlen. */
+const ACCESSORY_TITLE_MARKERS: readonly string[] = [
+  "drypbakke",
+  "flaskekoler",
+  "teleskopfod",
+  "teleskopfodder",
+  "vinmaerkat",
+  "hylde ",
+  "hylde\"",
+  "hylde'",
+  "metalhylde",
+  "hyldefront",
+  "multifunktionshylde",
+  "ventilationsrist",
+  "proptrækker",
+  "vinreol",
+  "vinaeske",
+  "duftsaet",
+  "folieskaerer",
+  "rengoringskugler",
+  "reservedel",
   "olkoleskab",
   "beerserver",
   "drikkekoleskab",
-  "proptrækker",
-  "proptræk",
-  "vinreol",
-  "vinaeske",
-  "vinmaerkat",
-  "duftsaet",
-  "champagnesabel",
-  "folieskaerer",
-  "rengoringskugler",
-  "isspand",
-  "gaveaeske",
-  "kapselaabner",
-  "vinset i bambus",
-  "le nez du vin",
 ];
 
 export function productIsWineCooler(p: Pick<FeedProduct, "title" | "desc" | "category">): boolean {
   const title = foldDa(p.title || "");
-  const hay = foldDa(`${p.title || ""} ${p.desc || ""} ${p.category || ""}`);
+  const category = foldDa(p.category || "");
 
   if (!title) return false;
-  if (ACCESSORY_TITLE_PREFIX.test(title)) return false;
 
-  for (const bad of EXCLUDE_IN_TITLE) {
-    if (title.includes(bad) && !COOLER_MARKERS.some((m) => hay.includes(m))) return false;
-  }
+  if (ACCESSORY_TITLE_MARKERS.some((m) => title.includes(m))) return false;
+  if (NOT_COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return false;
+  if (COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return true;
 
-  return COOLER_MARKERS.some((m) => hay.includes(m));
+  return COOLER_TITLE_PREFIX.test(title);
 }
 
 /** Udvid søgeord med almindelige stavevarianter og mærker. */
