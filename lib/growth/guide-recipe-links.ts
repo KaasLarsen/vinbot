@@ -30,6 +30,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
     { slug: "bigos-med-rodvin", label: "Bigos med rødvin" },
     { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
+    { slug: "morbradgryde-med-hvidvin", label: "Mørbradgryde med hvidvin" },
+    { slug: "biksemad-med-rodvin", label: "Biksemad med rødvin" },
   ],
   "vin-til-suppe": [
     { slug: "oksesuppe-med-rodvin", label: "Oksesuppe med rødvin" },
@@ -90,6 +92,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "risalamande-med-hvidvin", label: "Risalamande med hvidvin" },
     { slug: "aeblekage-hvidvin-karamel", label: "Æblekage med hvidvin-karamel" },
     { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
+    { slug: "brune-kartoffler-med-rodvin", label: "Brune kartoffler med rødvin" },
   ],
   "vin-til-fisk-og-skaldyr": [
     { slug: "gravad-laks-med-hvidvin", label: "Gravad laks med hvidvin" },
@@ -135,6 +138,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
     { slug: "kartoffelmos-med-hvidvin", label: "Kartoffelmos med hvidvin" },
     { slug: "kartoffelsalat-med-hvidvin", label: "Kartoffelsalat med hvidvin" },
+    { slug: "brune-kartoffler-med-rodvin", label: "Brune kartoffler med rødvin" },
   ],
   "vin-til-italiensk-mad": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -171,6 +175,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "okse-wellington-med-rodvinssauce", label: "Okse-wellington med rødvinssauce" },
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
+    { slug: "biksemad-med-rodvin", label: "Biksemad med rødvin" },
   ],
   "vin-til-lam": [
     { slug: "lammekoteletter-i-rodvin", label: "Lammekoteletter i rødvin" },
@@ -184,6 +189,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinefilet-i-rodvinssauce", label: "Svinefilet i rødvinsauce" },
     { slug: "porchetta-med-hvidvin", label: "Porchetta med hvidvin" },
     { slug: "svinebryst-braiseret-i-rodvin", label: "Svinebryst braiseret i rødvin" },
+    { slug: "morbradgryde-med-hvidvin", label: "Mørbradgryde med hvidvin" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -271,12 +277,22 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-stegt-flaesk": [
     { slug: "stegt-flaesk-i-hvidvinsauce", label: "Stegt flæsk i hvidvinsauce" },
+    { slug: "persillesovs-med-hvidvin", label: "Persillesovs med hvidvin" },
   ],
   "vin-til-smorrebrod": [
     { slug: "sild-i-hvidvinseddike", label: "Sild i hvidvinseddike" },
     { slug: "stegte-sild-i-hvidvin", label: "Stegte sild i hvidvin" },
     { slug: "aebleflaesk-med-hvidvin", label: "Æbleflæsk med hvidvin" },
     { slug: "frikadeller-i-hvidvinsauce", label: "Frikadeller i hvidvinsauce" },
+    { slug: "rejesalat-med-hvidvin", label: "Rejesalat med hvidvin" },
+  ],
+  "vin-til-rejer": [
+    { slug: "rejesalat-med-hvidvin", label: "Rejesalat med hvidvin" },
+    { slug: "rejer-i-hvidvin", label: "Rejer i hvidvin" },
+    { slug: "wok-rejer-hvidvin", label: "Wok-rejer med hvidvin" },
+  ],
+  "vin-til-koldskaal": [
+    { slug: "koldskal-med-hvidvin", label: "Koldskål med hvidvin" },
   ],
   "vin-til-flaesketesteg": [
     { slug: "flaesketesteg-med-rodvin-i-brun-sovs", label: "Flæskesteg med rødvin i brun sovs" },
@@ -292,6 +308,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
     { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
+    { slug: "brune-kartoffler-med-rodvin", label: "Brune kartoffler med rødvin" },
   ],
   "vin-til-poelser-og-kartoffel": [
     { slug: "poelser-i-rodvinsglace", label: "Pølser i rødvinsglace" },
