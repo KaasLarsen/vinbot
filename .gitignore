@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# marketing videoer (deles på sociale medier — ikke på sitet)
+marketing/*.mp4
