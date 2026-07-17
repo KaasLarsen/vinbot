@@ -95,7 +95,7 @@ export const WINTHER_VIN_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
       "2021-årgangen er typisk en vin, du åbner til aftensmaden samme uge. Frugten er moden nok til at være behagelig; tanninerne er sjældent hårde nok til at kræve årevis på kælderen. Et kvarters luft kan stadig hjælpe, hvis du serverer til salt steg.",
       "Bordeaux til mad handler om balance: for ung og tannin-tung ved fed sovs føles hård; for blød og frugtsød uden mad bliver det kedeligt. Castillon-klassen sigter mod midten — madvin til dansk køkken med kartofler, brun sauce og grøntsager.",
       "Sammenlignet med italiensk sangiovese får du mere mørk frugt og blødere tanninprofil; sammenlignet med ny verden-cabernet er det ofte mere afdæmpet og mindre alkohol-tungt. God flaske, når gæsterne forventer «rødvin der smager af noget», uden snobberi.",
-      "Tjek lager og pris på winthervin.dk. Vinbot linker affiliate; du køber hos Winther.",
+      "Tjek lager og pris på winthervin.dk — du køber hos Winther.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -32,7 +32,7 @@ export const DH_WINES_BATCH5_PAGES: readonly WineDetailPage[] = [
       "199 kr. er et fornuftigt niveau til alsace gewurz på etiketten — god flaske til dem, der vil udforske druen uden at gætte på ukendte etiketter.",
       "I glasset møder du typisk rose, litchi, honning og krydderi. Gewurz kan have let sødme — match med madens styrke, ikke med sød dessert.",
       "Sammenlignet med riesling er gewurz ofte mere aromatisk og blødere — mindre syre-knæk, mere parfume. Begge fungerer til asiatisk mad; gewurz er ofte valget til stærkere krydderi.",
-      "Bekræft lager og pris på dhwines.dk. Vinbot linker affiliate.",
+      "Bekræft lager og pris på dhwines.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

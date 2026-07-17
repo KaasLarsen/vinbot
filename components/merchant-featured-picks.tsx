@@ -43,14 +43,14 @@ export function MerchantFeaturedPicks({
         <p className="mt-2 text-stone-700">
           {variant === "home" ? (
             <>
-              Et kort redaktionelt udpluk — du handler på deres site. Links er affiliate.{" "}
+              Et kort redaktionelt udpluk — du handler på deres site.{" "}
               <Link href={cfg.hubPath} className="text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
                 Mere om butikken
               </Link>
               .
             </>
           ) : (
-            "Et lille udpluk vi gerne fremhæver — du handler altid på deres site. Links er affiliate."
+            "Et lille udpluk vi gerne fremhæver — du handler altid på deres site."
           )}
         </p>
       </div>

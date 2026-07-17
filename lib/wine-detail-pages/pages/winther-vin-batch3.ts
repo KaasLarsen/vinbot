@@ -31,7 +31,7 @@ export const WINTHER_VIN_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Wairau og Awatere-dalene i Marlborough giver ofte passionsfrugt, stikkelsbær og frisk græs i glasset. Server for varmt, og syren kan virke hård; for koldt, og den aromatiske frugt lukker sig.",
       "Sammenlignet med Sancerre er Marlborough mere «tropisk» og mindre mineralsk — begge er gode til fisk; Marlborough er ofte førstevalg til sommer og salat med dressing.",
       "159 kr. er et fornuftigt niveau til hverdags-NZ — du betaler primært for frugt og friskhed, ikke for lang lagring eller fad.",
-      "Bekræft årgang og pris på winthervin.dk. Vinbot linker affiliate.",
+      "Bekræft årgang og pris på winthervin.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

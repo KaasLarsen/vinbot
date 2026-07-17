@@ -32,7 +32,7 @@ export const LAURIDSEN_VINE_BATCH2_PAGES: readonly WineDetailPage[] = [
       "Galicien og Atlanterhavet præger ofte smagsbilledet: tænk limezest, grønt æble, måske et strejf af hvide blomster og salt i afslutningen. Server for varmt, og syren kan virke hård; for koldt, og aroma lukker sig.",
       "Sammenlignet med pinot grigio fra norditalien er albariño ofte mere aromatisk og «sydlig» i frugten — stadig lean, men med mere parfume. Begge er gode til fisk; albariño er ofte førstevalg til skaldyr med citron.",
       "8–11 °C er et fint interval. Har du kun køleskab, lad flasken stå fem minutter på bordet før skænkning, så du ikke dræber aroma helt.",
-      "Bekræft pris og årgang på lauridsenvine.dk. Vinbot linker affiliate.",
+      "Bekræft pris og årgang på lauridsenvine.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

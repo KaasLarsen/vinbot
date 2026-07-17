@@ -32,7 +32,7 @@ export const DH_WINES_BATCH4_PAGES: readonly WineDetailPage[] = [
       "Swartlands granit og sol modnes druerne, mens hele klaser og skånsom vinifikation ofte bevarer friskhed. Resultatet er rødvin med både parfume og madmatch — lam, grill og oste med karakter.",
       "499 kr. er premium-segment — investering i en producent og mark med historie. God flaske til gæster, der kender Rhône og Priorat, og vil udforske sydafrika på seriøst niveau.",
       "Sammenlignet med Priorat er Swartland-grenache ofte lettere og mere krydret — mindre alkohol-tung, mere parfume. Begge elsker lam; Badenhorst er ofte det mere elegante valg.",
-      "Bekræft lager og pris på dhwines.dk. Vinbot linker affiliate.",
+      "Bekræft lager og pris på dhwines.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -24,7 +24,7 @@ export function RecipeCuratedWineLinks({ recipeSlug, tags = [], relatedGuides = 
         Kuraterede flasker med shop-link
       </h2>
       <p className="mt-1 text-sm text-stone-600">
-        Udvalgte enkeltvin-sider på Vinbot med affiliatelink til forhandleren — tjek altid pris og lager hos butikken.
+        Udvalgte enkeltvin-sider på Vinbot — tjek altid pris og lager hos butikken.
       </p>
       <ul className="mt-4 space-y-3">
         {pages.map((page) => {

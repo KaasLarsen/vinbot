@@ -31,7 +31,7 @@ export const WINTHER_VIN_BATCH4_PAGES: readonly WineDetailPage[] = [
       "I glasset møder du typisk jordbær, hindbær, måske et strejf af citrus og urter. Server for varmt, og vinen mister friskhed; for koldt, og aroma lukker sig — 8–11 °C er ofte sweet spot.",
       "Rosé til grill er undervurderet: salt, fedme og let røg kan løftes af syre og bærfrugt, når rødvin bliver for tungt i varmen. Astérides er oplagt til den type bord.",
       "Sammenlignet med sød rosé er tør Languedoc-rosé mere madvenlig — mindre sukker, mere syre. Sammenlignet med hvidvin har rosé ofte mere bær og struktur til grillet kød.",
-      "Bekræft årgang og pris på winthervin.dk. Vinbot linker affiliate.",
+      "Bekræft årgang og pris på winthervin.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

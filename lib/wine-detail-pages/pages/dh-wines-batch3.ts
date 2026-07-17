@@ -96,7 +96,7 @@ export const DH_WINES_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Tempranillo er druen, der binder spansk madkultur sammen — fra chorizo til lammekoteletter. Crianza-krav sikrer minimum lagring, så du får integration frem for rå egetræ.",
       "129 kr. er et stærkt prisleje til Rioja med appellation på etiketten — god flaske til dem, der vil lære regionen via en konkret producent frem for generisk «spansk rød».",
       "Sammenlignet med Ribera del Duero er Rioja ofte blødere og mere fad-integreret i crianza-stilen — mindre stram tannin, mere moden frugt. Begge elsker lam og tapas.",
-      "Bekræft lager og pris på dhwines.dk. Vinbot linker affiliate.",
+      "Bekræft lager og pris på dhwines.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

@@ -31,7 +31,7 @@ export const LAURIDSEN_VINE_BATCH4_PAGES: readonly WineDetailPage[] = [
       "Det er ikke vin til at analysere i timevis — pointen er glidende madmatch og en profil, mange gæster genkender med det samme. Server lidt køligere end stuetemperatur, men ikke iskold, hvis du vil mærke teksturen.",
       "89 kr. gør flasken til et stærkt bud på «hvidvin til hverdagen» — god sammenligning mod Lauridsens Chablis 1er Cru, hvis du vil mærke forskellen mellem budget-californisk og seriøs Bourgogne-hvid.",
       "Sammenlignet med sauvignon blanc er chardonnay ofte blødere og mere rund — mindre syre-knæk, mere frugt og tekstur. Begge fungerer til kylling; chardonnay er ofte valget til cremede saucer.",
-      "Bekræft pris og lager på lauridsenvine.dk. Vinbot linker affiliate.",
+      "Bekræft pris og lager på lauridsenvine.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

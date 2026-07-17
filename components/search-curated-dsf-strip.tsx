@@ -45,7 +45,7 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
             : "Kuraterede flasker med shop-link"}
       </h2>
       <p className="mt-1 text-sm text-stone-600">
-        Vinbot har egne sider om udvalgte flasker med affiliatelink. De kommer ikke med i søgeresultaterne fra produktfeed
+        Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne fra produktfeed
         ovenfor{hasDsf ? " — inkl. Den Sidste Flaske, som ikke er i feedet" : ""}.
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,8 +61,6 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
         <Link href="/vine" className="font-medium text-rose-900 hover:underline">
           Vin-katalog
         </Link>
-        {" · "}
-        Annoncelinks — vi kan modtage provision.
       </p>
     </section>
   );

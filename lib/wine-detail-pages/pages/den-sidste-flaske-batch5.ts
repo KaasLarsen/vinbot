@@ -96,7 +96,7 @@ export const DEN_SIDSTE_FLASKE_BATCH5_PAGES: readonly WineDetailPage[] = [
       "499 kr. er fest-niveau — oplagt til nytår, konfirmation, velkomst og gæster, der forstår forskellen på champagne og generisk cava. Server kølig, men ikke iskold.",
       "Blanc de blancs er ofte det smarte valg til fisk, skaldyr og retter med citron — syre og bobler skærer i fedme og salt. Det er også den stil, mange vælger til hele middagen, når menuen er let.",
       "Sammenlignet med prosecco er champagne mere kompleks og lang i eftersmagen — finere bobler, mere lagringskarakter. Begge er bobler; champagne er valget til fest og madparring på højere niveau.",
-      "Tjek lager og pris hos Den Sidste Flaske. Vinbot linker affiliate.",
+      "Tjek lager og pris hos Den Sidste Flaske.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",

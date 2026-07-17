@@ -32,7 +32,7 @@ export const LAURIDSEN_VINE_BATCH3_PAGES: readonly WineDetailPage[] = [
       "Garnacha (garnacha) giver typisk moden kirsebær og blomme; syrah tilføjer peber og dybde. Sammen giver det vin til kød med krydderi, salt og fedme — ikke til salat og let fisk.",
       "Skifer og sol giver ofte en «mineral» kant i afslutningen, som adskiller Priorat fra blødere, jordnære spanske røde. Det er vin, der tåler grill og simrede retter — og ofte bliver bedre ved mad end alene.",
       "Sammenlignet med Rioja er Priorat mere frugtkoncentreret og mindre fad-fokuseret i mange udgaver — mere «terrassernes kraft» end vanilje og læder. Begge er gode til spansk mad; Priorat er ofte valget til kraftigere retter.",
-      "Bekræft pris og lager på lauridsenvine.dk. Vinbot linker affiliate.",
+      "Bekræft pris og lager på lauridsenvine.dk.",
     ],
     foodPairing: {
       heading: "Mad og lejligheder der spiller",
