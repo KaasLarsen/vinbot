@@ -8,7 +8,13 @@ export type FeedProduct = {
   gtin: string | null;
   /** Producent-/modelnr. nogle feeds — sekundær nøgle. */
   mpn: string | null;
+  /** Nuværende/kampagnepris — alias for salePrice (bagudkompatibilitet med søgning). */
   price: number | null;
+  salePrice: number | null;
+  /** Før-pris / listepris fra feed, hvis tilgængelig. */
+  referencePrice: number | null;
+  /** Beregnet rabat i procent når referencePrice > salePrice (min. 5 %). */
+  discountPercent: number | null;
   currency: string;
   image: string;
   url: string;
@@ -16,6 +22,11 @@ export type FeedProduct = {
 };
 
 export type ProductHit = Omit<FeedProduct, "image"> & { image: string | null };
+
+export type DealHit = ProductHit & {
+  referencePrice: number;
+  discountPercent: number;
+};
 
 export type SearchMeta = {
   feeds_total: number;

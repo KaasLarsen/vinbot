@@ -95,6 +95,10 @@ export default function VinVidenHubPage() {
           tilbud og før-pris på vin
         </Link>
         ,{" "}
+        <Link href="/tilbud" className="text-rose-900 hover:underline">
+          tilbudsoverblik
+        </Link>
+        ,{" "}
         <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">
           afkølet rødvin
         </Link>{" "}

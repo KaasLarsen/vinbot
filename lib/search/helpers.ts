@@ -494,6 +494,63 @@ function cleanPrice(s: string): string {
   return (s || "").replace(/[A-Z]{3}/gi, "").replace(/kr\./gi, "kr").trim();
 }
 
+/** Feltnavne for salgspris vs referencepris i affiliate-feeds. */
+export const SALE_PRICE_TAGS = [
+  "nypris",
+  "saleprice",
+  "ourprice",
+  "current_price",
+  "price_inc_vat",
+  "price_with_vat",
+  "g_price",
+  "pris",
+  "price",
+] as const;
+
+export const REFERENCE_PRICE_TAGS = [
+  "glpris",
+  "gl_pris",
+  "price_old",
+  "oldprice",
+  "original_price",
+  "list_price",
+  "vejl_pris",
+  "for_pris",
+  "foer_pris",
+  "normalprice",
+  "regular_price",
+  "gammelpris",
+  "gammel_pris",
+] as const;
+
+export function computeDiscountPercent(sale: number | null, reference: number | null): number | null {
+  if (sale == null || reference == null || reference <= sale) return null;
+  const pct = Math.round(((reference - sale) / reference) * 100);
+  return pct >= 5 ? pct : null;
+}
+
+export function parseBlockPrices(
+  pick: (tags: readonly string[]) => string,
+): { salePrice: number | null; referencePrice: number | null; discountPercent: number | null } {
+  const salePrice = toNumber(cleanPrice(pick(SALE_PRICE_TAGS)));
+  const referencePrice = toNumber(cleanPrice(pick(REFERENCE_PRICE_TAGS)));
+  const discountPercent = computeDiscountPercent(salePrice, referencePrice);
+  return { salePrice, referencePrice, discountPercent };
+}
+
+function buildFeedProductPrices(
+  salePrice: number | null,
+  referencePrice: number | null,
+): Pick<FeedProduct, "price" | "salePrice" | "referencePrice" | "discountPercent"> {
+  const discountPercent = computeDiscountPercent(salePrice, referencePrice);
+  return {
+    price: salePrice,
+    salePrice,
+    referencePrice,
+    discountPercent,
+  };
+}
+
 function extractCurrency(s: string): string | null {
   const m = (s || "").match(/\b([A-Z]{3})\b/);
   if (m) return m[1];
@@ -646,20 +703,12 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
     const mpnRaw = pickOne(b, ["mpn", "g_mpn", "partnumber", "part_number", "sku"]);
     const mpn = mpnRaw ? decodeHTMLEntities(mpnRaw).trim() || null : null;
 
-    const priceStr = pickOne(b, [
-      "nypris",
-      "saleprice",
-      "ourprice",
-      "current_price",
-      "price_inc_vat",
-      "price_with_vat",
-      "g_price",
-      "pris",
-      "price",
-      "price_old",
-    ]);
-    const price = toNumber(cleanPrice(priceStr));
-    const currency = pickOne(b, ["currency", "currency_iso"]) || extractCurrency(priceStr) || "DKK";
+    const priceStr = pickOne(b, [...SALE_PRICE_TAGS]);
+    const refStr = pickOne(b, [...REFERENCE_PRICE_TAGS]);
+    const salePrice = toNumber(cleanPrice(priceStr));
+    const referencePrice = toNumber(cleanPrice(refStr));
+    const prices = buildFeedProductPrices(salePrice, referencePrice);
+    const currency = pickOne(b, ["currency", "currency_iso"]) || extractCurrency(priceStr) || extractCurrency(refStr) || "DKK";
 
     const url = pickOne(b, ["deeplink", "link", "producturl", "url", "g_link", "vareurl"]);
 
@@ -676,7 +725,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       brand: decodeHTMLEntities(brand),
       gtin,
       mpn,
-      price,
+      ...prices,
       currency,
       image: image || "",
       url: ensurePartnerAdsKlikUid(url),
@@ -769,18 +818,8 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
     "billedurl",
   ]);
 
-  const ip = pick([
-    "nypris",
-    "saleprice",
-    "ourprice",
-    "current_price",
-    "price_inc_vat",
-    "pricewithvat",
-    "g:price",
-    "pris",
-    "price",
-    "price_old",
-  ]);
+  const ipSale = pick([...SALE_PRICE_TAGS]);
+  const ipRef = pick([...REFERENCE_PRICE_TAGS]);
 
   const ic = pick(["currency", "currency_iso", "valuta"]);
   const ib = pick(["brand", "manufacturer", "producer", "vendor", "forhandler"]);
@@ -792,7 +831,9 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
     const url = r[iu] || "";
     let image = r[ii] || "";
     if (image && image.includes("|")) image = image.split("|")[0].trim();
-    const price = toNumber(r[ip] || "");
+    const salePrice = toNumber(r[ipSale] || "");
+    const referencePrice = ipRef >= 0 ? toNumber(r[ipRef] || "") : null;
+    const prices = buildFeedProductPrices(salePrice, referencePrice);
     const currency = r[ic] || "DKK";
     const brand = r[ib] || "";
     const gtin = ig >= 0 ? normalizeBarcodeDigits(r[ig] || "") : null;
@@ -806,7 +847,7 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
       brand,
       gtin,
       mpn,
-      price,
+      ...prices,
       currency,
       image,
       url: ensurePartnerAdsKlikUid(url),

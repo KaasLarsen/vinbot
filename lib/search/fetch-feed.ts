@@ -45,7 +45,7 @@ async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> 
 }
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v4";
+const FEED_PRODUCTS_CACHE_VERSION = "v6-glpris";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {

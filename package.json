@@ -13,7 +13,8 @@
     "vercel:secrets": "bash scripts/push-vercel-secrets.sh",
     "gsc:vin-til-gap": "node scripts/vin-til-gsc-gap.mjs",
     "audit:guides": "node scripts/audit-guide-word-counts.mjs",
-    "audit:guides:thin": "node scripts/audit-guide-word-counts.mjs --list-lt400"
+    "audit:guides:thin": "node scripts/audit-guide-word-counts.mjs --list-lt400",
+    "audit:feed-deals": "node scripts/audit-feed-deals.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

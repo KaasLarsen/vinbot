@@ -9,6 +9,7 @@ import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
+import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { editorialTeamName, siteName, siteUrl } from "@/lib/site";
@@ -42,6 +43,7 @@ const heroEditorialLinks: { href: string; label: string }[] = [
   { href: "/opskrifter", label: "Opskrifter med vin" },
   { href: "/vin-viden", label: "Vin-viden" },
   { href: "/bedste-vine", label: "Bedste vine" },
+  { href: "/tilbud", label: "Vin tilbud" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Den store mad-guide" },
   { href: "/guides/bedste-alkoholfri-vin", label: "Alkoholfri vin" },
   { href: "/guides/vin-brevkassen", label: "Vin-brevkassen" },
@@ -51,6 +53,7 @@ const heroEditorialLinks: { href: string; label: string }[] = [
 const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
+  { href: "/tilbud", label: "Vin tilbud" },
   { href: "/vin-viden", label: "Vin-viden" },
   { href: "/fest-og-vin", label: "Fest & selskab" },
   { href: "/saeson", label: "Sæson & højtider" },
@@ -467,6 +470,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
       />
 
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
+      {!q?.trim() ? <HomeDealsStrip /> : null}
 
       <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <Link
@@ -482,6 +486,13 @@ export default async function HomePage({ searchParams }: HomeProps) {
         >
           <h3 className="text-lg font-semibold text-stone-900">Bedste vine</h3>
           <p className="mt-2 text-stone-600">Top-lister efter pris, lejlighed og stil — rødvin, hvidvin, bobler, gavevin og budget-guides.</p>
+        </Link>
+        <Link
+          href="/tilbud"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Vin tilbud</h3>
+          <p className="mt-2 text-stone-600">Nedsatte vine og prisforskelle på tværs af forhandlere — opdateres automatisk fra feeds.</p>
         </Link>
         <Link
           href="/humoer-og-vin"
