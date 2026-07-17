@@ -6,39 +6,41 @@ import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wi
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
 
 const RESULT_CAP = 48;
+/** Antal top-resultater vi forsøger at diversificere (dækker 3/5 første visning + "Se flere"). */
 const DIVERSIFY_PREFIX = 12;
-const DIVERSIFY_MAX_PER_MERCHANT = 2;
+/** Foretræk forskellige butikker i top; hæves kun hvis der ikke er nok butikker. */
+const DIVERSIFY_PREFERRED_MAX_PER_MERCHANT = 1;
+/** Hård grænse: undgå 3 fra samme butik når alternativer findes. */
+const DIVERSIFY_ABSOLUTE_MAX_PER_MERCHANT = 2;
 
-function diversifyTopByMerchant(items: ProductHit[], prefixCount: number, maxPerMerchant: number): ProductHit[] {
+function diversifyTopByMerchant(items: ProductHit[], prefixCount: number): ProductHit[] {
   if (items.length <= 1) return items;
-  const prefix = items.slice(0, Math.min(prefixCount, items.length));
-  const rest = items.slice(prefix.length);
 
+  const target = Math.min(prefixCount, items.length);
   const picked = new Set<number>();
   const counts = new Map<string, number>();
   const out: ProductHit[] = [];
 
-  // Pass 1: pick in-order, respecting maxPerMerchant.
-  for (let i = 0; i < prefix.length; i++) {
-    const p = prefix[i];
-    const m = p.merchant || "";
-    const c = counts.get(m) ?? 0;
-    if (c >= maxPerMerchant) continue;
-    counts.set(m, c + 1);
-    picked.add(i);
-    out.push(p);
-  }
-
-  // Pass 2: if we couldn't fill the prefix, relax constraint (keep original ranking).
-  if (out.length < prefix.length) {
-    for (let i = 0; i < prefix.length; i++) {
+  const fill = (maxPerMerchant: number) => {
+    for (let i = 0; i < items.length && out.length < target; i++) {
       if (picked.has(i)) continue;
-      out.push(prefix[i]);
+      const m = items[i].merchant || "";
+      const countForMerchant = counts.get(m) ?? 0;
+      if (countForMerchant >= maxPerMerchant) continue;
+      counts.set(m, countForMerchant + 1);
       picked.add(i);
-      if (out.length >= prefix.length) break;
+      out.push(items[i]);
     }
-  }
+  };
 
+  // Pass 1: én pr. butik når muligt (bevarer score-rækkefølge ved at scanne hele listen).
+  fill(DIVERSIFY_PREFERRED_MAX_PER_MERCHANT);
+  // Pass 2: tillad én ekstra pr. butik før vi giver op på diversitet.
+  if (out.length < target) fill(DIVERSIFY_ABSOLUTE_MAX_PER_MERCHANT);
+  // Pass 3: kun når få butikker matcher — fyld resten i ren relevans-rækkefølge.
+  if (out.length < target) fill(Number.POSITIVE_INFINITY);
+
+  const rest = items.filter((_, i) => !picked.has(i));
   return [...out, ...rest];
 }
 
@@ -117,7 +119,7 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
     return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
   });
 
-  items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX, DIVERSIFY_MAX_PER_MERCHANT);
+  items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
 
   const matched_before_cap = items.length;
   const results_capped = matched_before_cap > RESULT_CAP;
