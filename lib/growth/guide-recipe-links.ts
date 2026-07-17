@@ -134,6 +134,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
     { slug: "kartoffelmos-med-hvidvin", label: "Kartoffelmos med hvidvin" },
+    { slug: "kartoffelsalat-med-hvidvin", label: "Kartoffelsalat med hvidvin" },
   ],
   "vin-til-italiensk-mad": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -294,6 +295,10 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-poelser-og-kartoffel": [
     { slug: "poelser-i-rodvinsglace", label: "Pølser i rødvinsglace" },
+    { slug: "kartoffelsalat-med-hvidvin", label: "Kartoffelsalat med hvidvin" },
+  ],
+  "vin-til-salat": [
+    { slug: "kartoffelsalat-med-hvidvin", label: "Kartoffelsalat med hvidvin" },
   ],
   "vin-til-roedgroed": [
     { slug: "roedgroed-med-portvin", label: "Rødgrød med portvin" },

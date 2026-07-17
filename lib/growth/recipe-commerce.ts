@@ -54,6 +54,7 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "hummer-i-hvidvinsauce": ["vin-til-hummer", "vin-til-fisk-og-skaldyr"],
   "lammesteg-med-rodvin-rosmarin": ["vin-til-paaske-og-paaskefrokost", "vin-til-lam", "vin-til-gryderet"],
   "kartoffelmos-med-hvidvin": ["vin-til-kartoffelmad", "vin-til-poelser-og-kartoffel"],
+  "kartoffelsalat-med-hvidvin": ["vin-til-salat", "vin-til-kartoffelmad", "vin-til-poelser-og-kartoffel", "vin-til-sommer"],
   "enchiladas-med-rodvin": ["vin-til-mexicansk-mad", "vin-til-tacos", "vin-til-nachos"],
   "thai-gron-karry-med-hvidvin": ["vin-til-thai-mad", "vin-til-krydret-og-staerk-mad", "vin-til-karryretter"],
   "shepherd-pie-med-rodvin": ["vin-til-brittisk-mad", "vin-til-lam", "vin-til-gryderet"],
