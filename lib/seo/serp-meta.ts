@@ -134,6 +134,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til gazpacho: tør rosé, albariño og manzanilla til kold tomat. Sommer, tapas og hvad der skærer med eddike og hvidløg.",
   },
+  "vin-til-dyreryg": {
+    title: "Vin til dyreryg: pinot og Beaujolais",
+    description:
+      "Vin til dyreryg: pinot noir, cru Beaujolais og nebbiolo til magert vildt. Sauce, bær og temperatur — uden at overdøve kødet.",
+  },
+  "vin-til-kalvemoerbrad": {
+    title: "Vin til kalvemørbrad: pinot og chardonnay",
+    description:
+      "Vin til kalvemørbrad: pinot noir, Beaujolais og fad-chardonnay. Fløde, svampe og citronsauce — elegant gæstemiddag.",
+  },
+  "vin-til-svinemoerbrad": {
+    title: "Vin til svinemørbrad: pinot og riesling",
+    description:
+      "Vin til svinemørbrad og svinefilet: pinot, Beaujolais og riesling. Fløde, æble og sennep — hvad der skærer forklaret.",
+  },
+  "vin-til-ribeye": {
+    title: "Vin til ribeye: malbec og cabernet",
+    description:
+      "Vin til ribeye og entrecôte: malbec, cabernet og syrah til fedt og skorpe. Grill vs. pande — forskellen fra oksefilet.",
+  },
+  "vin-til-roastbeef": {
+    title: "Vin til roastbeef: kold og varm",
+    description:
+      "Vin til roastbeef: Beaujolais og pinot til koldt smørrebrød, malbec/cabernet til varm stege. Peberrod og remoulade.",
+  },
   "vin-til-krydret-og-staerk-mad": {
     title: "Vin til krydret mad og asiatisk",
     description:

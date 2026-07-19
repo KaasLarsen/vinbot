@@ -141,6 +141,29 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "thai-gron-karry-med-hvidvin", label: "Thai grøn karry med hvidvin" },
     { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
   ],
+  "vin-til-dyreryg": [
+    { slug: "fasan-med-rodvin", label: "Fasan med rødvin" },
+    { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+  ],
+  "vin-til-kalvemoerbrad": [
+    { slug: "kalv-i-hvidvinsauce", label: "Kalv i hvidvinsauce" },
+    { slug: "blanquette-de-veau-med-hvidvin", label: "Blanquette de veau" },
+    { slug: "ossobuco-med-hvidvin", label: "Ossobuco med hvidvin" },
+  ],
+  "vin-til-svinemoerbrad": [
+    { slug: "svinefilet-i-rodvinssauce", label: "Svinefilet i rødvinssauce" },
+    { slug: "karbonader-i-hvidvinsauce", label: "Karbonader i hvidvinsauce" },
+    { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
+  ],
+  "vin-til-ribeye": [
+    { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
+    { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
+    { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+  ],
+  "vin-til-roastbeef": [
+    { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
+    { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+  ],
   "vin-til-grill-og-bbq": [
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "svineribs-med-rodvin", label: "Svineribs med rødvin" },

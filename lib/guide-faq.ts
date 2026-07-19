@@ -1112,6 +1112,56 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — manzanilla eller fino er klassisk spansk match til hvidløg, olie og kold tomat. Server koldt i små glas ved siden af skålen.",
     },
   ],
+  "vin-til-dyreryg": [
+    {
+      question: "Hvilken vin til dyreryg?",
+      answer:
+        "Pinot noir, cru Beaujolais eller nebbiolo med luft — elegant rød med syre til magert vildt. Undgå ung cabernet; den kan smage tør uden fedt.",
+    },
+    {
+      question: "Er dyreryg det samme som rådyr?",
+      answer:
+        "Dyreryg er typisk ryg/filet fra rådyr, dådyr eller kronhjort. Samme vinlogik: pinot og silkeagtig tannin. Se også guiden til vildt generelt.",
+    },
+  ],
+  "vin-til-kalvemoerbrad": [
+    {
+      question: "Hvilken vin til kalvemørbrad?",
+      answer:
+        "Pinot noir, Beaujolais eller barbera til stegt kalv. Til fløde- og svampesauce fungerer også fad-chardonnay med syre. Undgå tung cabernet.",
+    },
+  ],
+  "vin-til-svinemoerbrad": [
+    {
+      question: "Hvilken vin til svinemørbrad?",
+      answer:
+        "Pinot noir, Beaujolais eller Chianti til rødvinssauce; riesling eller chardonnay til fløde, æble og sennep. Magert svin tåler ikke peber-tung shiraz.",
+    },
+  ],
+  "vin-til-ribeye": [
+    {
+      question: "Hvilken vin til ribeye?",
+      answer:
+        "Malbec, cabernet sauvignon, syrah eller Ribera del Duero — struktureret rød der matcher fedt og skorpe. Let pinot er ofte for tynd til ribeye.",
+    },
+    {
+      question: "Hvad er forskellen på vin til ribeye og oksefilet?",
+      answer:
+        "Ribeye har mere fedt og tåler cabernet/malbec. Oksefilet er magert og passer bedre til pinot, Chianti og Rioja. Se de to separate guides.",
+    },
+  ],
+  "vin-til-roastbeef": [
+    {
+      question: "Hvilken vin til kold roastbeef på smørrebrød?",
+      answer:
+        "Beaujolais, pinot noir, tør rosé eller cava — peberrod og remoulade kræver syre og frugt, ikke ung cabernet.",
+    },
+    {
+      question: "Hvilken vin til varm roastbeef?",
+      answer:
+        "Malbec, Rioja Reserva, cabernet-entry eller syrah — samme retning som til ribeye, tilpasset jus og tilbehør.",
+    },
+  ],
   "vin-til-flaesketesteg": [
     {
       question: "Hvilken vin til brun sovs?",
