@@ -1042,6 +1042,76 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Moden frugt og god syre i glasset: Rhône-syrah, Ribera del Duero, Chianti Classico eller lignende mellemfyldig rød. Det matcher den reducerede sauce bedre end knastør tannin uden frugt. Til vin der skal i sovsen under madlavning, se madlavningsguiden.",
     },
   ],
+  "vin-til-oksefilet": [
+    {
+      question: "Hvilken vin til oksefilet uden sauce?",
+      answer:
+        "Vælg elegant rød med moderat tannin: pinot noir, Chianti Classico, Rioja Crianza eller cru Beaujolais. Magert kød tåler ikke ung, stram cabernet — den kan smage bitter uden fedt at binde til.",
+    },
+    {
+      question: "Kan man drikke hvidvin til oksefilet?",
+      answer:
+        "Sjældent som førstevalg. Moden fad-chardonnay kan fungere til filet med bearnaise eller smørsauce. Til ren filet er rød med syre og blød frugt mere pålidelig.",
+    },
+    {
+      question: "Hvad er forskellen på vin til oksefilet og peberbøf?",
+      answer:
+        "Oksefilet er magert og fin — elegant pinot/Chianti. Peberbøf styres af peber- og flødesauce — syrah, malbec og frugtig rød med mere krop. Se de to separate guides for konkrete flasketyper.",
+    },
+  ],
+  "vin-til-peberboef": [
+    {
+      question: "Hvilken vin til peberbøf med fløde og cognac?",
+      answer:
+        "Syrah, malbec, zinfandel/primitivo eller GSM med moden frugt og pebernoter. Fløde og cognac tåler lidt fad (Rioja Reserva, blød cabernet) — hold syre, så saucen ikke bliver klæg.",
+    },
+    {
+      question: "Kan pinot noir bruges til peberbøf?",
+      answer:
+        "Kun hvis peberen er mild og saucen let. Klassisk peberbøf overdøver ofte let pinot — vælg hellere Crozes-Hermitage, Mendoza-malbec eller Côtes du Rhône.",
+    },
+  ],
+  "vin-til-pulled-pork": [
+    {
+      question: "Hvilken vin til pulled pork med BBQ-sauce?",
+      answer:
+        "Frugtig rød: zinfandel, primitivo, malbec eller syrah/GSM. Sød glaze kræver frugt i glasset — undgå knastør, tannin-tung cabernet.",
+    },
+    {
+      question: "Kan man servere hvidvin til pulled pork?",
+      answer:
+        "Ja ved mild sauce og syrlig coleslaw: riesling feinherb eller gewürztraminer. Til sticky, røget BBQ er rød eller kraftig rosé mere sikkert.",
+    },
+  ],
+  "vin-til-butter-chicken": [
+    {
+      question: "Hvilken vin til butter chicken?",
+      answer:
+        "Gewürztraminer, riesling (tør til feinherb), viognier eller tør rosé. Hold alkoholen moderat — høj alkohol forstærker chili i saucen.",
+    },
+    {
+      question: "Hvilken vin til boller i karry?",
+      answer:
+        "Riesling feinherb/kabinett eller gewürztraminer — syre og lidt sødme til æble, banan og sød karry. Undgå tannin-tung rød.",
+    },
+    {
+      question: "Hvilken vin til kylling i karry?",
+      answer:
+        "Samme logik som butter chicken: aromatisk hvid med syre. Ved stærkere curry: mere restsødme og lavere alkohol. Se også guiden til indisk mad.",
+    },
+  ],
+  "vin-til-gazpacho": [
+    {
+      question: "Hvilken vin til gazpacho?",
+      answer:
+        "Tør rosé, albariño, verdejo, sauvignon blanc eller manzanilla/fino sherry — iskoldt. Undgå kraftig rødvin; tannin og varm frugt skærer med rå tomat og eddike.",
+    },
+    {
+      question: "Passer sherry til gazpacho?",
+      answer:
+        "Ja — manzanilla eller fino er klassisk spansk match til hvidløg, olie og kold tomat. Server koldt i små glas ved siden af skålen.",
+    },
+  ],
   "vin-til-flaesketesteg": [
     {
       question: "Hvilken vin til brun sovs?",

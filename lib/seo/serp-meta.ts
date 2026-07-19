@@ -109,6 +109,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hvilken vin til bøf? Cabernet og malbec til steg og grill, pinot til tyndt kød. Bearnaise, rødvinssauce og sauce på tallerkenen — konkret guide.",
   },
+  "vin-til-oksefilet": {
+    title: "Vin til oksefilet: pinot og Chianti",
+    description:
+      "Vin til oksefilet og mørbrad: pinot noir, Chianti og Rioja til magert kød. Sauce, grill og temperatur — uden at overdøve filetten.",
+  },
+  "vin-til-peberboef": {
+    title: "Vin til peberbøf: syrah og malbec",
+    description:
+      "Vin til peberbøf og peppersauce: syrah, malbec og frugtig rød. Cognac, fløde og peber — flasker der står saucen.",
+  },
+  "vin-til-pulled-pork": {
+    title: "Vin til pulled pork: BBQ og røg",
+    description:
+      "Vin til pulled pork: zinfandel, primitivo og malbec til BBQ-sauce og røg. Hvid og rosé når menuen er mild — dansk guide.",
+  },
+  "vin-til-butter-chicken": {
+    title: "Vin til butter chicken og karry",
+    description:
+      "Vin til butter chicken, kylling curry og boller i karry: riesling, gewürztraminer og rosé. Chili, fløde og tomat forklaret.",
+  },
+  "vin-til-gazpacho": {
+    title: "Vin til gazpacho: rosé og albariño",
+    description:
+      "Vin til gazpacho: tør rosé, albariño og manzanilla til kold tomat. Sommer, tapas og hvad der skærer med eddike og hvidløg.",
+  },
   "vin-til-krydret-og-staerk-mad": {
     title: "Vin til krydret mad og asiatisk",
     description:
