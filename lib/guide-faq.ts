@@ -1162,6 +1162,41 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Malbec, Rioja Reserva, cabernet-entry eller syrah — samme retning som til ribeye, tilpasset jus og tilbehør.",
     },
   ],
+  "vin-til-boef-stroganoff": [
+    {
+      question: "Hvilken vin til bøf stroganoff?",
+      answer:
+        "Pinot noir, Beaujolais eller blød merlot — fløde og svampe tåler ikke tung cabernet. Fad-chardonnay virker til meget cremet version.",
+    },
+  ],
+  "vin-til-bearnaise": [
+    {
+      question: "Hvilken vin til bearnaise?",
+      answer:
+        "Fyldig chardonnay med syre og fad, eller struktureret rød (Bordeaux, Rioja Reserva, malbec). Blød lavsyret rød forsvinder i smørsaucen.",
+    },
+  ],
+  "vin-til-chokolademousse": [
+    {
+      question: "Hvilken vin til chokolademousse?",
+      answer:
+        "Port, banyuls, maury eller sød riesling — vinen skal være mindst lige så sød som moussen. Tør champagne smager surt til mørk chokolade.",
+    },
+  ],
+  "vin-til-tunboef": [
+    {
+      question: "Hvilken vin til tunbøf?",
+      answer:
+        "Pinot noir, Beaujolais eller let syrah til grillet tun. Undgå tung cabernet — den tørrer den rå midte. Riesling til soya og chili.",
+    },
+  ],
+  "vin-til-stjerneskud": [
+    {
+      question: "Hvilken vin til stjerneskud?",
+      answer:
+        "Riesling, albariño eller cava — syre skærer mayo, rejer og stegt filet. Undgå tannin-rød til remoulade.",
+    },
+  ],
   "vin-til-flaesketesteg": [
     {
       question: "Hvilken vin til brun sovs?",

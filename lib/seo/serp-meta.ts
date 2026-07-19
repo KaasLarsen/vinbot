@@ -159,6 +159,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til roastbeef: Beaujolais og pinot til koldt smørrebrød, malbec/cabernet til varm stege. Peberrod og remoulade.",
   },
+  "vin-til-boef-stroganoff": {
+    title: "Vin til bøf stroganoff: pinot og fløde",
+    description:
+      "Vin til bøf stroganoff: pinot, Beaujolais og chardonnay til fløde og svampe. Undgå tung tannin — dansk flaskeguide.",
+  },
+  "vin-til-bearnaise": {
+    title: "Vin til bearnaise: chardonnay og Bordeaux",
+    description:
+      "Vin til bearnaise: fad-chardonnay eller struktureret rød. Estragon, smør og syre — hvad der skærer med saucen.",
+  },
+  "vin-til-chokolademousse": {
+    title: "Vin til chokolademousse: port og banyuls",
+    description:
+      "Vin til chokolademousse: port, banyuls og sød riesling. Match sødme til kakao — ellers smager vinen sur.",
+  },
+  "vin-til-tunboef": {
+    title: "Vin til tunbøf: pinot og Beaujolais",
+    description:
+      "Vin til tunbøf: pinot noir, Beaujolais og let syrah. Grill, sesame og soya — undgå tung cabernet.",
+  },
+  "vin-til-stjerneskud": {
+    title: "Vin til stjerneskud: riesling og cava",
+    description:
+      "Vin til stjerneskud: riesling, albariño og cava til fisk, rejer og remoulade. Dansk smørrebrød-klassiker.",
+  },
   "vin-til-krydret-og-staerk-mad": {
     title: "Vin til krydret mad og asiatisk",
     description:

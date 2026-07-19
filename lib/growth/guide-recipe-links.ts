@@ -164,6 +164,19 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
   ],
+  "vin-til-boef-stroganoff": [
+    { slug: "boef-stroganoff-med-hvidvin", label: "Bøf stroganoff med hvidvin" },
+    { slug: "svampesovs-med-hvidvin", label: "Svampesovs med hvidvin" },
+  ],
+  "vin-til-bearnaise": [
+    { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
+    { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+  ],
+  "vin-til-stjerneskud": [
+    { slug: "rejer-i-hvidvin", label: "Rejer i hvidvin" },
+    { slug: "fiskefilet-citron-hvidvin", label: "Fiskefilet med citron og hvidvin" },
+    { slug: "fiskefrikadeller-i-hvidvinsauce", label: "Fiskefrikadeller i hvidvinsauce" },
+  ],
   "vin-til-grill-og-bbq": [
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "svineribs-med-rodvin", label: "Svineribs med rødvin" },
