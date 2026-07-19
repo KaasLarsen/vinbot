@@ -123,6 +123,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
     { slug: "svineribs-med-rodvin", label: "Svineribs med rødvin" },
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
+    { slug: "grillet-kylling-med-hvidvin", label: "Grillet kylling med hvidvin" },
+    { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
     { slug: "porchetta-med-hvidvin", label: "Porchetta med hvidvin" },
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
@@ -458,6 +460,33 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-crepes-og-pandekager": [
     { slug: "crepes-suzette-med-hvidvin", label: "Crêpes Suzette med hvidvin" },
+  ],
+  "vin-til-sommer": [
+    { slug: "grillet-kylling-med-hvidvin", label: "Grillet kylling med hvidvin" },
+    { slug: "kold-pastasalat-med-hvidvin", label: "Kold pastasalat med hvidvin" },
+    { slug: "piknik-sandwich-med-hvidvin-dressing", label: "Piknik-sandwich med hvidvin-dressing" },
+    { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
+    { slug: "sommerfrugt-i-hvidvin", label: "Sommerfrugt i hvidvin" },
+  ],
+  "vin-til-piknik": [
+    { slug: "piknik-sandwich-med-hvidvin-dressing", label: "Piknik-sandwich med hvidvin-dressing" },
+    { slug: "kartoffelsalat-med-hvidvin", label: "Kartoffelsalat med hvidvin" },
+    { slug: "sommerfrugt-i-hvidvin", label: "Sommerfrugt i hvidvin" },
+  ],
+  "vin-til-haveselskab": [
+    { slug: "grillet-kylling-med-hvidvin", label: "Grillet kylling med hvidvin" },
+    { slug: "kold-pastasalat-med-hvidvin", label: "Kold pastasalat med hvidvin" },
+    { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
+    { slug: "sommerfrugt-i-hvidvin", label: "Sommerfrugt i hvidvin" },
+  ],
+  "bedste-sommervin": [
+    { slug: "grillet-kylling-med-hvidvin", label: "Grillet kylling med hvidvin" },
+    { slug: "kold-pastasalat-med-hvidvin", label: "Kold pastasalat med hvidvin" },
+    { slug: "sommerfrugt-i-hvidvin", label: "Sommerfrugt i hvidvin" },
+  ],
+  "vin-til-grillet-gront": [
+    { slug: "ratatouille-med-hvidvin", label: "Ratatouille med hvidvin" },
+    { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
   ],
 
 };

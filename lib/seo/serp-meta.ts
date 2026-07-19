@@ -298,6 +298,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Afkølet rødvin smager bedre om sommeren: gamay, pinot og let grenache ved 12–14 °C. Hvilke rødvine du skal køle — og hvilke du ikke skal.",
   },
+  "vin-til-sommer": {
+    title: "Vin til sommer: terrasse, grill og strand",
+    description:
+      "Sommervin i Danmark: rosé, frisk hvid og afkølet rød til grill, picnic og bål. Temperatur, alkohol i varmen og konkrete flasketyper du kan købe nu.",
+  },
+  "vin-til-piknik": {
+    title: "Vin til piknik: rosé, cava og skruelåg",
+    description:
+      "Vin til piknik og udendørs: tør rosé, grüner og cava i køletaske. Sandwich, ost, temperatur og transport — undgå tunge røde i solen.",
+  },
+  "vin-til-haveselskab": {
+    title: "Vin til haveselskab: rosé og bobler",
+    description:
+      "Vin til haveselskab: 40 % rosé, 40 % hvid, 20 % bobler. Mængde per gæst, iskøler og madmatch til grill, tapas og kage i sommerhaven.",
+  },
   "vin-til-julemad-den-store-guide": {
     title: "Vin til julemad: and, flæsk og risalamande",
     description:
