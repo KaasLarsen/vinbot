@@ -151,13 +151,7 @@ export function detectMerchantIntent(qRaw: string): MerchantIntent | null {
   if (!normTokens.length) return null;
 
   const index = aliasIndex();
-  let best: MatchHit | null = null;
-
-  const consider = (hit: MatchHit) => {
-    if (!best || hit.score > best.score || (hit.score === best.score && hit.phrase.length > best.phrase.length)) {
-      best = hit;
-    }
-  };
+  const candidates: MatchHit[] = [];
 
   for (const entry of index) {
     const n = entry.tokens.length;
@@ -172,7 +166,7 @@ export function detectMerchantIntent(qRaw: string): MerchantIntent | null {
         }
       }
       if (ok) {
-        consider({
+        candidates.push({
           merchant: entry.merchant,
           phrase: entry.phrase,
           start: i,
@@ -193,7 +187,7 @@ export function detectMerchantIntent(qRaw: string): MerchantIntent | null {
         if (tok === alias) continue; // allerede fanget som exact
         const dist = levenshtein(tok, alias);
         if (dist > 0 && dist <= maxDist) {
-          consider({
+          candidates.push({
             merchant: entry.merchant,
             phrase: entry.phrase,
             start: i,
@@ -205,11 +199,16 @@ export function detectMerchantIntent(qRaw: string): MerchantIntent | null {
     }
   }
 
-  if (!best) return null;
+  if (!candidates.length) return null;
 
-  const remainingTokens = tokens.filter((_, i) => i < best!.start || i >= best!.start + best!.length);
+  candidates.sort(
+    (a, b) => b.score - a.score || b.phrase.length - a.phrase.length || a.merchant.localeCompare(b.merchant, "da"),
+  );
+  const matched = candidates[0];
+
+  const remainingTokens = tokens.filter((_, i) => i < matched.start || i >= matched.start + matched.length);
   return {
-    merchant: best.merchant,
+    merchant: matched.merchant,
     remainingQuery: remainingTokens.join(" ").trim(),
   };
 }
