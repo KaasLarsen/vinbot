@@ -29,6 +29,24 @@ export function feedTier(feed: Pick<FeedConfig, "tier">): FeedTier {
   return feed.tier === "free" ? "free" : "paid";
 }
 
+/** Stramt filter til store Partner-Ads-feeds — kun vinkøleskabe, ikke vinkølere/isbøtter. */
+export const WINE_COOLER_ONLY_INCLUDE: string[] = [
+  "vinkøleskab",
+  "vinkoleskab",
+  "vinlagringsskab",
+  "wine cooler",
+];
+export const WINE_COOLER_ONLY_EXCLUDE: string[] = [
+  "vinkøler",
+  "vinkoler",
+  "flaskekøler",
+  "tæppe",
+  "taeppe",
+  "sofa",
+  "spisebord",
+  "kontorstol",
+];
+
 /** Fælles nøgleord for vin + tilbehør i blandfeeds (glas, karaffel, servering). */
 const VIN_ADJ_GLASS_AND_TOOLS: string[] = [
   "vinglas",
@@ -123,17 +141,22 @@ export const FEEDS: FeedConfig[] = [
     merchant: "Erling Christensen Møbler",
     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=70740&feedid=1505",
     wineFilter: false,
-    vinAdjacentIncludeAny: ["vinkøleskab", "vinkoleskab", "vinlagringsskab", "wine cooler"],
-    vinAdjacentExcludeAny: [
-      "vinkøler",
-      "vinkoler",
-      "flaskekøler",
-      "tæppe",
-      "taeppe",
-      "sofa",
-      "spisebord",
-      "kontorstol",
-    ],
+    vinAdjacentIncludeAny: WINE_COOLER_ONLY_INCLUDE,
+    vinAdjacentExcludeAny: WINE_COOLER_ONLY_EXCLUDE,
+  },
+  {
+    merchant: "Homeshop.dk",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=67428&feedid=1383",
+    wineFilter: false,
+    vinAdjacentIncludeAny: WINE_COOLER_ONLY_INCLUDE,
+    vinAdjacentExcludeAny: WINE_COOLER_ONLY_EXCLUDE,
+  },
+  {
+    merchant: "Kai Berntsen ApS",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=66637&feedid=1348",
+    wineFilter: false,
+    vinAdjacentIncludeAny: WINE_COOLER_ONLY_INCLUDE,
+    vinAdjacentExcludeAny: WINE_COOLER_ONLY_EXCLUDE,
   },
   {
     merchant: "Bottles With History",

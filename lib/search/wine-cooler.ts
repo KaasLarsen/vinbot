@@ -3,11 +3,15 @@ import { normalize } from "./helpers";
 
 export const VINKOLESKABET_MERCHANT = "Vinkøleskabet.dk";
 export const ERLING_CHRISTENSEN_MERCHANT = "Erling Christensen Møbler";
+export const HOMESHOP_MERCHANT = "Homeshop.dk";
+export const KAI_BERNTSEN_MERCHANT = "Kai Berntsen ApS";
 
 /** Feeds der indgår i vinkøleskab-søgning (ikke almindelig vinsøgning). */
 export const WINE_COOLER_MERCHANTS: readonly string[] = [
   VINKOLESKABET_MERCHANT,
   ERLING_CHRISTENSEN_MERCHANT,
+  HOMESHOP_MERCHANT,
+  KAI_BERNTSEN_MERCHANT,
 ];
 
 /** Danske bogstaver ø/å/æ → ascii så «vinkøleskab» og «vinkoleskab» matcher. */
