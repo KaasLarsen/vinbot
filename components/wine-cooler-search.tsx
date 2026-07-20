@@ -180,8 +180,8 @@ export function WineCoolerSearch({
           ) : (
             <p className="text-sm text-stone-600">
               {data.meta?.results_capped
-                ? `${total}+ vinkøleskabe fra Vinkøleskabet.dk (viser de ${total} bedste match). Tjek mål, levering og garanti hos forhandleren.`
-                : `${total} vinkøleskabe fra Vinkøleskabet.dk — sorteret efter bedste match. Tjek mål, levering og garanti hos forhandleren.`}
+                ? `${total}+ vinkøleskabe fra danske forhandlere (viser de ${total} bedste match). Tjek mål, levering og garanti hos forhandleren.`
+                : `${total} vinkøleskabe fra danske forhandlere — sorteret efter bedste match. Tjek mål, levering og garanti hos forhandleren.`}
               {lastQuery ? <> Søgning: «{lastQuery}».</> : null}
             </p>
           )}

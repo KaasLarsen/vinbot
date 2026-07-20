@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Vinkøleskabe — den ultimative guide til køb og valg";
 const PAGE_DESCRIPTION =
-  "Find det rigtige vinkøleskab: integrerbart eller fritstående, størrelse, zoner og pris. Søg live i udvalget hos Vinkøleskabet.dk med billede og pris — plus købsguide til køkken, kælder og samling.";
+  "Find det rigtige vinkøleskab: integrerbart eller fritstående, størrelse, zoner og pris. Søg live hos Vinkøleskabet.dk og Erling Christensen Møbler med billede og pris — plus købsguide til køkken, kælder og samling.";
 const PAGE_URL = `${siteUrl}/vinkoleskabe`;
 
 const FAQ = [
@@ -32,7 +32,7 @@ const FAQ = [
   {
     question: "Hvor finder jeg vinkøleskabe med pris og billede?",
     answer:
-      "På denne side søger du direkte i Vinkøleskabet.dks sortiment via vores produktfeed. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
+      "På denne side søger du direkte i sortimentet fra Vinkøleskabet.dk og Erling Christensen Møbler via vores produktfeeds. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
   },
 ];
 
@@ -68,8 +68,9 @@ export default function VinkoleskabePage() {
           videre til køb, når du er klar.
         </p>
         <p className="mt-3 text-stone-700">
-          Sortimentet kommer fra <strong className="font-medium text-stone-800">Vinkøleskabet.dk</strong> — fra kompakte fritstående skabe til
-          integrerbare WineKeeper- og WineCave-modeller og store vinlagringsskabe.
+          Sortimentet kommer fra <strong className="font-medium text-stone-800">Vinkøleskabet.dk</strong> og{" "}
+          <strong className="font-medium text-stone-800">Erling Christensen Møbler</strong> — fra kompakte fritstående skabe til
+          integrerbare WineKeeper- og WineCave-modeller, Scandomestic og store vinlagringsskabe.
         </p>
         <p className="mt-3 text-sm text-stone-700">
           <a
@@ -120,8 +121,9 @@ export default function VinkoleskabePage() {
       <section className="mt-14 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100 sm:p-8">
         <h2 className="text-2xl font-semibold text-stone-900">Søg vinkøleskab</h2>
         <p className="mt-2 max-w-2xl text-sm text-stone-600">
-          Kun <strong className="font-medium text-stone-800">vinkøleskabe og vinlagringsskabe</strong> — ikke glas, proptrækkere eller
-          tilbehør. Resultaterne kommer fra Vinkøleskabet.dks feed; klik videre for mål, levering og aktuel pris.
+          Kun <strong className="font-medium text-stone-800">vinkøleskabe og vinlagringsskabe</strong> — ikke glas, proptrækkere,
+          isbøtter eller øvrigt inventar. Resultaterne kommer fra Vinkøleskabet.dk og Erling Christensen Møbler; klik videre for mål,
+          levering og aktuel pris.
         </p>
         <div className="mt-4">
           <AffiliateDisclosure compact />

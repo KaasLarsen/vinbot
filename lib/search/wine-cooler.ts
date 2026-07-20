@@ -2,6 +2,13 @@ import type { FeedProduct } from "./types";
 import { normalize } from "./helpers";
 
 export const VINKOLESKABET_MERCHANT = "Vinkøleskabet.dk";
+export const ERLING_CHRISTENSEN_MERCHANT = "Erling Christensen Møbler";
+
+/** Feeds der indgår i vinkøleskab-søgning (ikke almindelig vinsøgning). */
+export const WINE_COOLER_MERCHANTS: readonly string[] = [
+  VINKOLESKABET_MERCHANT,
+  ERLING_CHRISTENSEN_MERCHANT,
+];
 
 /** Danske bogstaver ø/å/æ → ascii så «vinkøleskab» og «vinkoleskab» matcher. */
 export function foldDa(s = ""): string {
@@ -17,6 +24,9 @@ const COOLER_CATEGORY_MARKERS: readonly string[] = [
   "wine - built-in (column)",
   "wine - ageing cabinets",
   "wine - free-standing",
+  /** Danske shop-kategorier (fx Erling Christensen). */
+  "vinkoleskabe",
+  "vinkoleskab",
 ];
 
 const NOT_COOLER_CATEGORY_MARKERS: readonly string[] = [
@@ -27,11 +37,16 @@ const NOT_COOLER_CATEGORY_MARKERS: readonly string[] = [
   "spare parts",
   "kitchen - accessories",
   "outdoor kitchen",
+  "vinglas",
+  "grej til hjemmebaren",
 ];
 
 /** Reservetitel-match hvis feed mangler kategori (burde ikke ske for Vinkøleskabet). */
 const COOLER_TITLE_PREFIX =
   /^(vinkoleskab|vinkoleskabe|integrerbar|integrerbart|vinlagringsskab|vinlagring|fritstaende vinkoleskab|indbygbar vinkoleskab|indbygning vinkoleskab)\b/;
+
+/** Titel indeholder rigtigt skab (ikke isbøtte/vinkøler). */
+const COOLER_TITLE_WORD = /\b(vinkoleskab|vinkoleskabe|vinlagringsskab|wine\s*cooler)\b/;
 
 /** Titler der altid er tilbehør — også når de nævner «vinkøleskab» eller WineCave i titlen. */
 const ACCESSORY_TITLE_MARKERS: readonly string[] = [
@@ -59,6 +74,10 @@ const ACCESSORY_TITLE_MARKERS: readonly string[] = [
   "drikkekoleskab",
 ];
 
+/**
+ * Kun dedikerede vinkøleskabe / vinlagringsskabe.
+ * Afviser isbøtter («vinkøler»), hylder og øvrigt tilbehør.
+ */
 export function productIsWineCooler(p: Pick<FeedProduct, "title" | "desc" | "category">): boolean {
   const title = foldDa(p.title || "");
   const category = foldDa(p.category || "");
@@ -66,9 +85,15 @@ export function productIsWineCooler(p: Pick<FeedProduct, "title" | "desc" | "cat
   if (!title) return false;
 
   if (ACCESSORY_TITLE_MARKERS.some((m) => title.includes(m))) return false;
+  /** Ren vinkøler/isbøtte uden «vinkøleskab» i titel. */
+  if (/\bvinkoler\b/.test(title) && !COOLER_TITLE_WORD.test(title)) return false;
   if (NOT_COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return false;
-  if (COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return true;
-
+  if (COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) {
+    if (category.includes("vinkoleskab") || COOLER_TITLE_WORD.test(title) || COOLER_TITLE_PREFIX.test(title)) {
+      return true;
+    }
+  }
+  if (COOLER_TITLE_WORD.test(title)) return true;
   return COOLER_TITLE_PREFIX.test(title);
 }
 
@@ -88,6 +113,7 @@ export function expandWineCoolerQuery(qRaw: string): string[] {
     fritstaende: ["fritstaende"],
     winekeeper: ["wine keeper"],
     mquvee: ["mquvee"],
+    scandomestic: ["scandomestic"],
     zone: ["zoner", "temperaturzone", "temperaturzoner"],
     zoner: ["zone", "temperaturzoner"],
     flasker: ["flasker", "flaske"],

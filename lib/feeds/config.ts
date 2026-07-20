@@ -115,6 +115,26 @@ export const FEEDS: FeedConfig[] = [
     url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0",
     wineFilter: false,
   },
+  /**
+   * Stort møbel-feed — kun rigtige vinkøleskabe (ikke vinkølere/isbøtter, ikke øvrigt inventar).
+   * Stramt include; wine-cooler-søgning filtrerer yderligere med productIsWineCooler.
+   */
+  {
+    merchant: "Erling Christensen Møbler",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=70740&feedid=1505",
+    wineFilter: false,
+    vinAdjacentIncludeAny: ["vinkøleskab", "vinkoleskab", "vinlagringsskab", "wine cooler"],
+    vinAdjacentExcludeAny: [
+      "vinkøler",
+      "vinkoler",
+      "flaskekøler",
+      "tæppe",
+      "taeppe",
+      "sofa",
+      "spisebord",
+      "kontorstol",
+    ],
+  },
   {
     merchant: "Bottles With History",
     url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=20114&html_transform=none&rawdata=false&encoding=utf8&general=false",
