@@ -1,6 +1,14 @@
+/** Betalende/affiliate-partnere vs. gratis butikker (lavere søgeprio, ingen commission). */
+export type FeedTier = "paid" | "free";
+
 export type FeedConfig = {
   merchant: string;
   url: string;
+  /**
+   * `paid` (standard): affiliate/betalende partner.
+   * `free`: gratis listning — med i søgning, men lavere prioritet end betalende.
+   */
+  tier?: FeedTier;
   /**
    * true (standard): kun produkter der matcher `isWineLike` (typisk flasker).
    * false: hele feedet — til udstyr/kategorier der ellers filtreres fra (fx vinkøleskabe); produktlinks skal stadig være tracked i feedet (fx Adtraction).
@@ -16,6 +24,10 @@ export type FeedConfig = {
    */
   vinAdjacentExcludeAny?: string[];
 };
+
+export function feedTier(feed: Pick<FeedConfig, "tier">): FeedTier {
+  return feed.tier === "free" ? "free" : "paid";
+}
 
 /** Fælles nøgleord for vin + tilbehør i blandfeeds (glas, karaffel, servering). */
 const VIN_ADJ_GLASS_AND_TOOLS: string[] = [
@@ -118,5 +130,10 @@ export const FEEDS: FeedConfig[] = [
   {
     merchant: "Havnens Vin",
     url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=21457&html_transform=none&rawdata=false&encoding=utf8&general=false",
+  },
+  {
+    merchant: "Vinpalle",
+    url: "https://www.vinpalle.dk/google-shopping-feed",
+    tier: "free",
   },
 ];

@@ -1,5 +1,6 @@
 "use client";
 
+import { productOutboundRel } from "@/lib/feeds/outbound-link";
 import type { ProductHit } from "@/lib/search/types";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 
@@ -19,6 +20,9 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
         )
       : null;
 
+  const linkRel = productOutboundRel(product.tier);
+  const isFree = product.tier === "free";
+
   const onClick = () =>
     trackAffiliateClick({ merchant: product.merchant, placement, url: product.url });
 
@@ -33,7 +37,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
         <a
           href={product.url}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={linkRel}
           onClick={onClick}
           className={IMAGE_FRAME}
         >
@@ -46,9 +50,16 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
         </a>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
+          {isFree ? (
+            <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
+              Gratis butik
+            </span>
+          ) : null}
+        </div>
         <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-          <a href={product.url} target="_blank" rel="nofollow sponsored noopener noreferrer" onClick={onClick} className="hover:underline">
+          <a href={product.url} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
             {product.title}
           </a>
         </h3>
@@ -63,7 +74,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
         <a
           href={product.url}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={linkRel}
           onClick={onClick}
           className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
         >

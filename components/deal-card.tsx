@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { productOutboundRel } from "@/lib/feeds/outbound-link";
 import type { TilbudCardItem } from "@/lib/deals/types";
 
 const IMAGE_FRAME_DEFAULT =
@@ -30,6 +31,18 @@ export function DealCard({
 
   const saleLabel = formatPrice(deal.salePrice);
   const refLabel = deal.referencePrice != null ? formatPrice(deal.referencePrice) : null;
+  const linkRel = productOutboundRel(deal.tier);
+  const isFree = deal.tier === "free";
+  const merchantLine = (
+    <div className="flex flex-wrap items-center gap-2">
+      <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{deal.merchant}</p>
+      {isFree ? (
+        <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
+          Gratis butik
+        </span>
+      ) : null}
+    </div>
+  );
 
   const badge = (
     <span
@@ -49,7 +62,7 @@ export function DealCard({
           <a
             href={deal.url}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onClick}
             className={IMAGE_FRAME_FEATURED}
           >
@@ -62,12 +75,12 @@ export function DealCard({
           </a>
         </div>
         <div className="flex flex-1 flex-col gap-2 border-t border-rose-100/80 p-5 sm:border-l sm:border-t-0">
-          <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{deal.merchant}</p>
+          {merchantLine}
           <h3 className="line-clamp-2 text-lg font-semibold leading-snug text-stone-900">
             <a
               href={deal.url}
               target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
+              rel={linkRel}
               onClick={onClick}
               className="hover:underline"
             >
@@ -87,7 +100,7 @@ export function DealCard({
             <a
               href={deal.url}
               target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
+              rel={linkRel}
               onClick={onClick}
               className="inline-flex items-center justify-center rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
             >
@@ -118,7 +131,7 @@ export function DealCard({
         <a
           href={deal.url}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={linkRel}
           onClick={onClick}
           className={imageFrame}
         >
@@ -131,12 +144,12 @@ export function DealCard({
         </a>
       </div>
       <div className={`flex flex-1 flex-col ${padding}`}>
-        <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{deal.merchant}</p>
+        {merchantLine}
         <h3 className={`leading-snug text-stone-900 ${titleClass}`}>
           <a
             href={deal.url}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onClick}
             className="hover:underline"
           >
@@ -164,7 +177,7 @@ export function DealCard({
           <a
             href={deal.url}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onClick}
             className={`inline-flex flex-1 items-center justify-center rounded-xl bg-rose-900 font-medium text-white hover:bg-rose-950 ${
               variant === "compact" ? "px-3 py-2 text-xs" : "px-4 py-2.5 text-sm"

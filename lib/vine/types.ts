@@ -11,6 +11,8 @@
 
 export type VineOffer = {
   merchant: string;
+  /** `paid` = affiliate; `free` = gratis listning. */
+  tier: "paid" | "free";
   price: number | null;
   currency: string;
   url: string;

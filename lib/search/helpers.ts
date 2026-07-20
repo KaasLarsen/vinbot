@@ -494,9 +494,11 @@ function cleanPrice(s: string): string {
   return (s || "").replace(/[A-Z]{3}/gi, "").replace(/kr\./gi, "kr").trim();
 }
 
-/** Feltnavne for salgspris vs referencepris i affiliate-feeds. */
+/** Feltnavne for salgspris vs referencepris i affiliate-feeds / Google Shopping. */
 export const SALE_PRICE_TAGS = [
   "nypris",
+  "g_sale_price",
+  "sale_price",
   "saleprice",
   "ourprice",
   "current_price",
@@ -521,6 +523,8 @@ export const REFERENCE_PRICE_TAGS = [
   "regular_price",
   "gammelpris",
   "gammel_pris",
+  /** Google Shopping: listepris når `g_sale_price` er sat (ellers samme som salgspris → ingen rabat %). */
+  "g_price",
 ] as const;
 
 export function computeDiscountPercent(sale: number | null, reference: number | null): number | null {
@@ -719,6 +723,7 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
 
     out.push({
       merchant,
+      tier: "paid",
       title: decodeHTMLEntities(title),
       desc: decodeHTMLEntities(desc),
       category: decodeHTMLEntities(category),
@@ -841,6 +846,7 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
     if (!title || !url) continue;
     out.push({
       merchant,
+      tier: "paid",
       title,
       desc: "",
       category: "",

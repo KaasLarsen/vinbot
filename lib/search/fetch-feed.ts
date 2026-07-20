@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import type { FeedConfig } from "@/lib/feeds/config";
+import { feedTier, type FeedConfig } from "@/lib/feeds/config";
 import type { FeedProduct } from "./types";
 import {
   decodeText,
@@ -27,6 +27,7 @@ function filterVinAdjacentCatalog(feed: FeedConfig, products: FeedProduct[]): Fe
 
 async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> {
   const { merchant, url } = feed;
+  const tier = feedTier(feed);
   const headers = {
     "user-agent": UA,
     accept: "text/xml,application/xml,text/plain,text/csv,*/*",
@@ -36,6 +37,7 @@ async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> 
   const text = decodeText(buf);
 
   let products = looksLikeXML(text) ? parseXMLProducts(text, merchant) : parseCSVProducts(text, merchant);
+  products = products.map((p) => ({ ...p, tier }));
   if (feed.wineFilter !== false) {
     products = products.filter(isWineLike);
   } else {
@@ -45,7 +47,7 @@ async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> 
 }
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v6-glpris";
+const FEED_PRODUCTS_CACHE_VERSION = "v7-vinpalle-free";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
@@ -59,7 +61,7 @@ export function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> 
         ].join("|");
   return unstable_cache(
     () => fetchFeedProductsInner(feed),
-    ["vinbot-feed", FEED_PRODUCTS_CACHE_VERSION, feed.merchant, feed.url, filterKey],
+    ["vinbot-feed", FEED_PRODUCTS_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
     { revalidate: 21600, tags: ["vinbot-feeds"] },
   )();
 }

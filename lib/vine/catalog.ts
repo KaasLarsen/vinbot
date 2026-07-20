@@ -69,7 +69,8 @@ function mergeOffers(offers: VineOffer[]): VineOffer[] {
   return [...byMerchant.values()].sort((a, b) => {
     const xa = a.price ?? 9e9;
     const xb = b.price ?? 9e9;
-    return xa - xb || a.merchant.localeCompare(b.merchant, "da");
+    // Samme pris: betalende partnere før gratis butikker.
+    return xa - xb || (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) || a.merchant.localeCompare(b.merchant, "da");
   });
 }
 
@@ -126,6 +127,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
 
       acc.offers.push({
         merchant: p.merchant,
+        tier: p.tier,
         price: p.price,
         currency: p.currency || "DKK",
         url: p.url,
@@ -177,7 +179,7 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v12"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v13"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });

@@ -178,6 +178,11 @@ export default async function VineProductPage({ params }: Props) {
               <li key={`${o.merchant}-${o.url}`} className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <span className="font-medium text-stone-900">{o.merchant}</span>
+                  {o.tier === "free" ? (
+                    <span className="ml-2 rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
+                      Gratis butik
+                    </span>
+                  ) : null}
                   {typeof o.price === "number" ? (
                     <span className="ml-2 text-stone-700">
                       ca. {o.price} {o.currency === "DKK" ? "kr" : o.currency}
@@ -189,7 +194,7 @@ export default async function VineProductPage({ params }: Props) {
                 <a
                   href={o.url}
                   target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
+                  rel={o.tier === "free" ? "nofollow noopener noreferrer" : "nofollow sponsored noopener noreferrer"}
                   className="inline-flex shrink-0 rounded-xl bg-rose-900 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-950"
                 >
                   Til butikken

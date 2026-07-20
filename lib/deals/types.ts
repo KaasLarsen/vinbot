@@ -7,6 +7,8 @@ export type TilbudCardItem = {
   title: string;
   brand: string;
   merchant: string;
+  /** Gratis butik = ingen affiliate. */
+  tier?: "paid" | "free";
   image: string | null;
   url: string;
   salePrice: number;
@@ -20,6 +22,7 @@ export type TilbudCardItem = {
 
 export function feedDealToCard(deal: {
   merchant: string;
+  tier?: "paid" | "free";
   title: string;
   brand: string;
   image: string | null;
@@ -34,6 +37,7 @@ export function feedDealToCard(deal: {
     title: deal.title,
     brand: deal.brand,
     merchant: deal.merchant,
+    tier: deal.tier ?? "paid",
     image: deal.image,
     url: deal.url,
     salePrice: deal.salePrice ?? deal.referencePrice,
@@ -49,6 +53,7 @@ export function crossMerchantDealToCard(deal: CrossMerchantDeal): TilbudCardItem
     title: deal.wine.displayTitle,
     brand: deal.wine.brand,
     merchant: deal.lowestOffer.merchant,
+    tier: deal.lowestOffer.tier,
     image: deal.wine.image,
     url: deal.lowestOffer.url,
     salePrice: deal.lowestOffer.price ?? deal.highestOffer.price ?? 0,

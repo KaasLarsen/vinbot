@@ -84,6 +84,7 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
   let items = lists.flat();
   items.sort(
     (a, b) =>
+      (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) ||
       b.discountPercent - a.discountPercent ||
       (a.salePrice ?? 9e9) - (b.salePrice ?? 9e9) ||
       (a.image ? 0 : 1) - (b.image ? 0 : 1),
@@ -95,7 +96,7 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
 
 const getCachedFeedDeals = unstable_cache(
   (optsJson: string) => buildFeedDeals(JSON.parse(optsJson) as ListFeedDealsOptions),
-  ["vinbot-feed-deals-v1"],
+  ["vinbot-feed-deals-v2"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 

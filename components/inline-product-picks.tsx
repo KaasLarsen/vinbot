@@ -142,12 +142,14 @@ function InlineProductCard({
     });
   };
 
+  const linkRel = product.tier === "free" ? "nofollow noopener noreferrer" : "nofollow sponsored noopener noreferrer";
+
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
       <a
         href={product.url}
         target="_blank"
-        rel="nofollow sponsored noopener noreferrer"
+        rel={linkRel}
         onClick={onClick}
         className="mx-auto mt-3 flex size-28 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-32"
       >
@@ -159,12 +161,19 @@ function InlineProductCard({
         )}
       </a>
       <div className="flex flex-1 flex-col gap-1.5 p-3">
-        <p className="text-[10px] font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
+        <div className="flex flex-wrap items-center gap-1.5">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
+          {product.tier === "free" ? (
+            <span className="rounded bg-stone-100 px-1 py-0.5 text-[9px] font-medium uppercase tracking-wide text-stone-600">
+              Gratis
+            </span>
+          ) : null}
+        </div>
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-stone-900">
           <a
             href={product.url}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onClick}
             className="hover:underline"
           >
@@ -175,7 +184,7 @@ function InlineProductCard({
         <a
           href={product.url}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={linkRel}
           onClick={onClick}
           className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-3 py-2 text-xs font-medium text-white hover:bg-rose-950"
         >

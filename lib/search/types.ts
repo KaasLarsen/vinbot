@@ -1,5 +1,9 @@
+import type { FeedTier } from "@/lib/feeds/config";
+
 export type FeedProduct = {
   merchant: string;
+  /** `paid` = affiliate/betalende; `free` = gratis listning med lavere søgeprio. */
+  tier: FeedTier;
   title: string;
   desc: string;
   category: string;

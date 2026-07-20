@@ -12,6 +12,8 @@ const DIVERSIFY_PREFIX = 12;
 const DIVERSIFY_PREFERRED_MAX_PER_MERCHANT = 1;
 /** Hård grænse: undgå 3 fra samme butik når alternativer findes. */
 const DIVERSIFY_ABSOLUTE_MAX_PER_MERCHANT = 2;
+/** Gratis butikker skal matche tydeligt bedre for at overhale betalende partnere. */
+const FREE_TIER_SCORE_PENALTY = 8;
 
 function diversifyTopByMerchant(items: ProductHit[], prefixCount: number): ProductHit[] {
   if (items.length <= 1) return items;
@@ -114,9 +116,15 @@ export async function runSearch(qRaw: string, budgetMaxParam: number | null): Pr
   items = items.sort((a, b) => {
     const bibBoost = (p: ProductHit) =>
       formatIntent === "bag-in-box" && productIsBagInBox(p) ? 30 : 0;
-    const sa = score(a, terms) + bibBoost(a);
-    const sb = score(b, terms) + bibBoost(b);
-    return sb - sa || (a.image ? 0 : 1) - (b.image ? 0 : 1) || (a.price ?? 9e9) - (b.price ?? 9e9);
+    const tierPenalty = (p: ProductHit) => (p.tier === "free" ? FREE_TIER_SCORE_PENALTY : 0);
+    const sa = score(a, terms) + bibBoost(a) - tierPenalty(a);
+    const sb = score(b, terms) + bibBoost(b) - tierPenalty(b);
+    return (
+      sb - sa ||
+      (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) ||
+      (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+      (a.price ?? 9e9) - (b.price ?? 9e9)
+    );
   });
 
   items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
