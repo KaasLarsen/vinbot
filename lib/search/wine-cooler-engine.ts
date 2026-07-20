@@ -64,6 +64,8 @@ export async function runWineCoolerSearch(qRaw: string, budgetMaxParam: number |
       priceMax,
       matched_before_cap,
       results_capped,
+      merchant_browse: null,
+      merchant_browse_tier: null,
     };
 
     if (items.length) return { source: "feed", products: items, meta };
@@ -82,6 +84,8 @@ export async function runWineCoolerSearch(qRaw: string, budgetMaxParam: number |
         priceMax: priceFilter.max,
         matched_before_cap: 0,
         results_capped: false,
+        merchant_browse: null,
+        merchant_browse_tier: null,
       },
     };
   }

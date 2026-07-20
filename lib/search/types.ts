@@ -38,9 +38,13 @@ export type SearchMeta = {
   feeds_failed: number;
   priceMin: number | null;
   priceMax: number | null;
-  /** Antal match før `.slice(0, 48)` — til “48+” i UI. */
+  /** Antal match før `.slice` — til “48+” / “120+” i UI. */
   matched_before_cap: number;
   results_capped: boolean;
+  /** Sat når søgningen er butiks-browse (sortiment hos én forhandler). */
+  merchant_browse: string | null;
+  /** Tier for den browsede butik — til «Gratis butik» i UI. */
+  merchant_browse_tier: FeedTier | null;
 };
 
 export type SearchResult = {

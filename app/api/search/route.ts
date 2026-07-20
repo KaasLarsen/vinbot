@@ -24,6 +24,8 @@ export async function GET(req: NextRequest) {
         priceMax: null,
         matched_before_cap: 0,
         results_capped: false,
+        merchant_browse: null,
+        merchant_browse_tier: null,
       },
     });
   }

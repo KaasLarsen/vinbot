@@ -154,7 +154,7 @@ function seasonalPlaceholder(monthIndex: number): string {
     case 11:
       return "Fx julemad, rødvin, nytår, champagne…";
     default:
-      return "Fx hygge, sushi, julemad, champagne…";
+      return "Fx butik, pinot, hygge, champagne…";
   }
 }
 
@@ -533,8 +533,10 @@ export function WineSearch({
 
   useEffect(() => {
     setMoreSteps(0);
-    setSelectedMerchants(new Set());
     setWineStyle("all");
+    const browse = data?.meta?.merchant_browse;
+    if (browse) setSelectedMerchants(new Set([browse]));
+    else setSelectedMerchants(new Set());
   }, [data]);
 
   useEffect(() => {
@@ -580,6 +582,9 @@ export function WineSearch({
 
   const total = products.length;
   const allTotal = allProducts.length;
+  const merchantBrowse = data?.meta?.merchant_browse ?? null;
+  const merchantBrowseTier = data?.meta?.merchant_browse_tier ?? null;
+  const isMerchantBrowse = Boolean(merchantBrowse);
 
   const visibleCount = useMemo(() => {
     if (!total) return 0;
@@ -735,6 +740,17 @@ export function WineSearch({
 
       {data && (
         <div className="space-y-4">
+          {isMerchantBrowse && merchantBrowse ? (
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-lg font-semibold text-stone-900">Sortiment hos {merchantBrowse}</h2>
+              {merchantBrowseTier === "free" ? (
+                <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
+                  Gratis butik
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+
           {allTotal === 0 && lastBudget != null && fallbackCheapest ? (
             <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
               <p className="font-semibold">
@@ -762,7 +778,9 @@ export function WineSearch({
           ) : allTotal === 0 ? (
             <div className="space-y-4 text-sm text-stone-600">
               <p>
-                Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”.
+                {isMerchantBrowse && merchantBrowse
+                  ? `Ingen vine matchede i sortimentet hos ${merchantBrowse} lige nu. Prøv et andet søgeord (fx en drue) eller fjern prisfilteret.`
+                  : "Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”."}
               </p>
               {guideFallback ? (
                 <p>
@@ -796,15 +814,21 @@ export function WineSearch({
             </div>
           ) : (
             <p className="text-sm text-stone-600">
-              {selectedMerchants.size > 0 || wineStyle !== "all"
-                ? `Filtreret: ${total} af ${merchantFiltered.length} foreslåede vine${
-                    selectedMerchants.size > 0
-                      ? ` fra ${selectedMerchants.size} forhandler${selectedMerchants.size === 1 ? "" : "e"}`
-                      : ""
-                  }${wineStyle !== "all" ? ` · stil: ${wineStyleLabel(wineStyle)}` : ""}. Tjek altid pris og levering hos butikken.`
-                : data.meta?.results_capped
-                  ? `Vi har fundet ${allTotal}+ foreslåede vine på tværs af forhandlere (viser de ${allTotal} bedste match) — tjek altid pris og levering hos butikken.`
-                  : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
+              {isMerchantBrowse && merchantBrowse
+                ? wineStyle !== "all"
+                  ? `Filtreret: ${total} af ${merchantFiltered.length} vine hos ${merchantBrowse} · stil: ${wineStyleLabel(wineStyle)}. Tjek altid pris og levering hos butikken.`
+                  : data.meta?.results_capped
+                    ? `Viser ${allTotal}+ vine fra ${merchantBrowse} (sorteret efter pris). Brug stil-filteret for at indsnævre — tjek altid pris og levering hos butikken.`
+                    : `Viser ${allTotal} vine fra ${merchantBrowse}. Brug stil- og prisfilter for at indsnævre — tjek altid pris og levering hos butikken.`
+                : selectedMerchants.size > 0 || wineStyle !== "all"
+                  ? `Filtreret: ${total} af ${merchantFiltered.length} foreslåede vine${
+                      selectedMerchants.size > 0
+                        ? ` fra ${selectedMerchants.size} forhandler${selectedMerchants.size === 1 ? "" : "e"}`
+                        : ""
+                    }${wineStyle !== "all" ? ` · stil: ${wineStyleLabel(wineStyle)}` : ""}. Tjek altid pris og levering hos butikken.`
+                  : data.meta?.results_capped
+                    ? `Vi har fundet ${allTotal}+ foreslåede vine på tværs af forhandlere (viser de ${allTotal} bedste match) — tjek altid pris og levering hos butikken.`
+                    : `Vi har fundet ${allTotal} foreslåede vine på tværs af forhandlere — vist efter bedste match. Tjek altid pris og levering hos butikken.`}
             </p>
           )}
 
