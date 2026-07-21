@@ -9,6 +9,12 @@
 export const MIN_INDEXABLE_WORDS = 400;
 
 /**
+ * Kuraterede forhandler-vinsider (`/{forhandler}/vin/...`) — lavere end guides, fordi
+ * de er stabile, håndplukkede URL'er med madmatch og specs (ikke roterende feed-skabeloner).
+ */
+export const MIN_INDEXABLE_WORDS_WINE_DETAIL = 300;
+
+/**
  * Genereret FAQ (fallback fra lib/guide-faq-*-fallback.ts) sendes kun til JSON-LD og accordion,
  * når brødteksten er lang nok — undgår hundredvis af næsten identiske FAQ-sider på tynde artikler.
  */

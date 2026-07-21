@@ -1,4 +1,4 @@
-import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
+import { MIN_INDEXABLE_WORDS_WINE_DETAIL } from "@/lib/content/thresholds";
 import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
 
 /** Redaktionelt ordantal på kurateret vinside (ekskl. specs og pris). */
@@ -17,7 +17,7 @@ export function wineDetailEditorialWordCount(page: WineDetailPage): number {
   return parts.join(" ").split(/\s+/).filter(Boolean).length;
 }
 
-/** Samme tærskel som guides — tynde affiliate-sider noindex, men stadig tilgængelige. */
+/** Kuraterede vinsider under MIN_INDEXABLE_WORDS_WINE_DETAIL er noindex, men stadig tilgængelige. */
 export function isIndexableWineDetailPage(page: WineDetailPage): boolean {
-  return wineDetailEditorialWordCount(page) >= MIN_INDEXABLE_WORDS;
+  return wineDetailEditorialWordCount(page) >= MIN_INDEXABLE_WORDS_WINE_DETAIL;
 }

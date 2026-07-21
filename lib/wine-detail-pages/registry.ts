@@ -136,7 +136,7 @@ export function wineDetailPageToFeaturedPick(page: WineDetailPage): WineDetailFe
   };
 }
 
-/** Sitemap: indexerbare `{merchant}/vin/{slug}`-stier (≥ MIN_INDEXABLE_WORDS redaktionelt indhold). */
+/** Sitemap: indexerbare `{merchant}/vin/{slug}`-stier (≥ MIN_INDEXABLE_WORDS_WINE_DETAIL redaktionelt indhold). */
 export function listAllWineDetailSitemapEntries(): { path: string; merchantId: MerchantWineId; slug: string }[] {
   return ALL_PAGES.filter(isIndexableWineDetailPage).map((p) => ({
     merchantId: p.merchantId,
