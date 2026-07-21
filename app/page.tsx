@@ -447,7 +447,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
         <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
-          Vinsøgning · sammenlign priser
+          Vinsøgning · danske forhandlere
         </p>
         <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
           Find vin på sekunder
