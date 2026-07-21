@@ -46,7 +46,7 @@ export function SiteFooter() {
                   Alle guider
                 </Link>
                 <Link href="/opskrifter" className="hover:text-rose-900">
-                  Opskrifter med vin
+                  Opskrifter
                 </Link>
                 <Link href="/rabatkoder" className="hover:text-rose-900">
                   Rabatkoder

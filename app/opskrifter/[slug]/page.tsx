@@ -22,6 +22,7 @@ import {
 } from "@/lib/recipe-images";
 import { RecipeHeroImage } from "@/components/recipe-hero-image";
 import { buildRecipeSerpDescription, buildRecipeSerpTitle } from "@/lib/seo/serp-meta";
+import { recipeRoleLabel } from "@/lib/content/recipe-types";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -92,7 +93,10 @@ export default async function RecipePage({ params }: Props) {
   const prep = formatIsoDuration(frontmatter.prepTime);
   const cook = formatIsoDuration(frontmatter.cookTime);
   const diff = difficultyLabel(frontmatter.difficulty);
+  const role = frontmatter.recipeRole;
+  const isPairing = role === "pairing";
   const metaParts = [
+    recipeRoleLabel(role),
     frontmatter.servings ? `${frontmatter.servings} portioner` : null,
     prep ? `forberedelse ${prep}` : null,
     cook ? `tilberedning ${cook}` : null,
@@ -122,7 +126,16 @@ export default async function RecipePage({ params }: Props) {
       <Breadcrumbs items={crumbs} />
 
       <header className="mt-8 border-b border-stone-200 pb-8">
-        <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
+        <p
+          className={
+            isPairing
+              ? "text-xs font-semibold uppercase tracking-wider text-emerald-800"
+              : "text-xs font-semibold uppercase tracking-wider text-amber-800"
+          }
+        >
+          {recipeRoleLabel(role)}
+        </p>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
         <p className="mt-4 text-xl text-stone-600">{frontmatter.description}</p>
         <p className="mt-3 text-sm text-stone-600">
           Af{" "}
@@ -153,12 +166,22 @@ export default async function RecipePage({ params }: Props) {
       <RecipeHeroImage slug={slug} title={frontmatter.title} />
 
       <div className="mt-8">
-        <RecipeWineBox wineInRecipe={frontmatter.wineInRecipe} wineToDrink={frontmatter.wineToDrink} />
+        <RecipeWineBox
+          wineInRecipe={frontmatter.wineInRecipe}
+          wineToDrink={frontmatter.wineToDrink}
+          variant={role}
+        />
         <RecipeShopSection
           recipeSlug={slug}
           tags={frontmatter.tags}
           relatedGuides={frontmatter.relatedGuides}
           wineToDrink={frontmatter.wineToDrink}
+          maxItems={isPairing ? 5 : 3}
+          heading={
+            isPairing
+              ? "Anbefalet vin til retten — 3–5 flasker fra forhandlere"
+              : "Køb vin til retten — direkte fra forhandlere"
+          }
         />
       </div>
 

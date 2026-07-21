@@ -40,7 +40,7 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
 /** Redaktionelle indgange under søgning. */
 const heroEditorialLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
-  { href: "/opskrifter", label: "Opskrifter med vin" },
+  { href: "/opskrifter", label: "Opskrifter" },
   { href: "/vin-viden", label: "Vin-viden" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/tilbud", label: "Vin tilbud" },

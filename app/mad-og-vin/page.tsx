@@ -88,13 +88,22 @@ export default function MadOgVinHubPage() {
       </p>
 
       <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6">
-        <h2 className="text-xl font-semibold text-stone-900">Opskrifter med vin</h2>
+        <h2 className="text-xl font-semibold text-stone-900">Opskrifter</h2>
         <p className="mt-2 text-sm text-stone-700">
-          Fulde opskrifter hvor vin er en del af retten — adskilt fra vores parrings-guides. Vin i gryden, plus anbefalinger til glasset.
+          Fulde opskrifter i ét univers:{" "}
+          <strong className="font-medium text-stone-800">vin i retten</strong> (madlavning med vin) og{" "}
+          <strong className="font-medium text-stone-800">vin til maden</strong> (opskrift + anbefalet vin til
+          glasset) — adskilt fra parrings-guides herover.
         </p>
         <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="/opskrifter" className="font-medium hover:underline">
             Alle opskrifter
+          </Link>
+          <Link href="/opskrifter/pizza-margherita" className="hover:underline">
+            Pizza margherita + vin
+          </Link>
+          <Link href="/opskrifter/klassisk-burger" className="hover:underline">
+            Klassisk burger + vin
           </Link>
           <Link href="/opskrifter/coq-au-vin" className="hover:underline">
             Coq au vin
