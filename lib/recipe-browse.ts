@@ -1,4 +1,5 @@
-import type { RecipeDifficulty } from "@/lib/content/recipe-types";
+import type { RecipeDifficulty, RecipeRole } from "@/lib/content/recipe-types";
+import { recipeRoleLabel } from "@/lib/content/recipe-types";
 import { recipeTotalMinutes } from "@/lib/recipe-format";
 
 export type RecipeCardData = {
@@ -11,15 +12,23 @@ export type RecipeCardData = {
   cookTime?: string;
   servings?: number;
   difficulty?: RecipeDifficulty;
+  recipeRole: RecipeRole;
 };
 
+export type RecipeRoleFilter = "alle" | RecipeRole;
 export type RecipeWineFilter = "alle" | "rod" | "hvid" | "port";
 export type RecipeCuisineFilter = "alle" | "dansk" | "fransk" | "italiensk" | "spansk" | "schweizisk" | "andet";
 export type RecipeDifficultyFilter = "alle" | RecipeDifficulty;
 export type RecipeTimeFilter = "alle" | "hurtig" | "mellem" | "lang";
 
+const ROLE_LABELS: Record<RecipeRoleFilter, string> = {
+  alle: "Alle",
+  cooking: recipeRoleLabel("cooking"),
+  pairing: recipeRoleLabel("pairing"),
+};
+
 const WINE_LABELS: Record<RecipeWineFilter, string> = {
-  alle: "Alle opskrifter",
+  alle: "Alle vintyper",
   rod: "Rødvin",
   hvid: "Hvidvin",
   port: "Port",
@@ -55,6 +64,10 @@ const DIFFICULTY_LABELS: Record<RecipeDifficultyFilter, string> = {
   medium: "Mellem",
   hard: "Svær",
 };
+
+export function roleFilterLabel(r: RecipeRoleFilter): string {
+  return ROLE_LABELS[r];
+}
 
 export function wineFilterLabel(w: RecipeWineFilter): string {
   return WINE_LABELS[w];
@@ -120,6 +133,8 @@ export function topTagsForRecipes(recipes: RecipeCardData[], minCount = 2, max =
     "italiensk",
     "spansk",
     "schweizisk",
+    "parring",
+    "vin-til-maden",
   ]);
   const counts = new Map<string, number>();
   for (const r of recipes) {
@@ -134,6 +149,14 @@ export function topTagsForRecipes(recipes: RecipeCardData[], minCount = 2, max =
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "da"))
     .slice(0, max)
     .map(([tag, count]) => ({ tag, count }));
+}
+
+export function countRecipesByRole(recipes: RecipeCardData[]): Record<RecipeRoleFilter, number> {
+  const c: Record<RecipeRoleFilter, number> = { alle: recipes.length, cooking: 0, pairing: 0 };
+  for (const r of recipes) {
+    c[r.recipeRole]++;
+  }
+  return c;
 }
 
 export function countRecipesByWine(recipes: RecipeCardData[]): Record<RecipeWineFilter, number> {
@@ -164,3 +187,5 @@ export function wineBadgeLabel(wine: Exclude<RecipeWineFilter, "alle">): string 
   const map = { rod: "Rødvin", hvid: "Hvidvin", port: "Port" } as const;
   return map[wine];
 }
+
+export { recipeRoleLabel };

@@ -8,6 +8,7 @@ import type {
   RecipeCardData,
   RecipeCuisineFilter,
   RecipeDifficultyFilter,
+  RecipeRoleFilter,
   RecipeTimeFilter,
   RecipeWineFilter,
 } from "@/lib/recipe-browse";
@@ -16,10 +17,13 @@ import {
   classifyRecipeTime,
   classifyRecipeWine,
   countRecipesByCuisine,
+  countRecipesByRole,
   countRecipesByWine,
   cuisineFilterLabel,
   difficultyFilterLabel,
   recipeMatchesSearch,
+  recipeRoleLabel,
+  roleFilterLabel,
   timeFilterLabel,
   topTagsForRecipes,
   wineBadgeLabel,
@@ -34,6 +38,9 @@ type Props = {
 
 const SELECT_CLASS =
   "w-full min-w-0 appearance-none rounded-xl border border-stone-200 bg-white px-3 py-2.5 pr-9 text-sm text-stone-900 shadow-sm focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200";
+
+const ROLE_CHIP_CLASS =
+  "rounded-xl border px-3.5 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200";
 
 function FilterSelect<T extends string>({
   id,
@@ -79,6 +86,7 @@ function FilterSelect<T extends string>({
 
 export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
   const [query, setQuery] = useState(initialQuery.trim());
+  const [role, setRole] = useState<RecipeRoleFilter>("alle");
   const [wine, setWine] = useState<RecipeWineFilter>("alle");
   const [cuisine, setCuisine] = useState<RecipeCuisineFilter>("alle");
   const [difficulty, setDifficulty] = useState<RecipeDifficultyFilter>("alle");
@@ -90,11 +98,13 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
   }, [initialQuery]);
 
   const tagOptions = useMemo(() => topTagsForRecipes(recipes, 2, 10), [recipes]);
+  const roleCounts = useMemo(() => countRecipesByRole(recipes), [recipes]);
   const wineCounts = useMemo(() => countRecipesByWine(recipes), [recipes]);
   const cuisineCounts = useMemo(() => countRecipesByCuisine(recipes), [recipes]);
 
   const filtered = useMemo(() => {
     return recipes.filter((r) => {
+      if (role !== "alle" && r.recipeRole !== role) return false;
       if (wine !== "alle" && classifyRecipeWine(r.tags) !== wine) return false;
       if (cuisine !== "alle" && classifyRecipeCuisine(r.tags) !== cuisine) return false;
       if (difficulty !== "alle" && r.difficulty !== difficulty) return false;
@@ -102,9 +112,10 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
       if (activeTag && !(r.tags || []).some((t) => t.toLowerCase() === activeTag)) return false;
       return recipeMatchesSearch(r, query);
     });
-  }, [recipes, wine, cuisine, difficulty, time, activeTag, query]);
+  }, [recipes, role, wine, cuisine, difficulty, time, activeTag, query]);
 
   const hasActiveFilters =
+    role !== "alle" ||
     wine !== "alle" ||
     cuisine !== "alle" ||
     difficulty !== "alle" ||
@@ -159,8 +170,18 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
     [tagOptions],
   );
 
+  const roleOptions = useMemo(
+    () =>
+      (["alle", "cooking", "pairing"] as const).map((r) => ({
+        value: r,
+        label: `${roleFilterLabel(r)} (${roleCounts[r]})`,
+      })),
+    [roleCounts],
+  );
+
   function clearFilters() {
     setQuery("");
+    setRole("alle");
     setWine("alle");
     setCuisine("alle");
     setDifficulty("alle");
@@ -190,10 +211,31 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
         </p>
       </div>
 
+      <div role="group" aria-label="Opskriftstype" className="flex flex-wrap gap-2">
+        {roleOptions.map((o) => {
+          const active = role === o.value;
+          return (
+            <button
+              key={o.value}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setRole(o.value)}
+              className={
+                active
+                  ? `${ROLE_CHIP_CLASS} border-rose-300 bg-rose-50 text-rose-950`
+                  : `${ROLE_CHIP_CLASS} border-stone-200 bg-white text-stone-700 hover:border-rose-200 hover:bg-rose-50/50`
+              }
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+
       <div className="flex flex-wrap items-end gap-3" aria-label="Filtrér opskrifter">
         <FilterSelect
           id="recipe-filter-wine"
-          label="Vin i retten"
+          label="Vintype"
           value={wine}
           options={wineOptions}
           onChange={setWine}
@@ -214,7 +256,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
         />
         <FilterSelect
           id="recipe-filter-time"
-          label="Tid i gryden"
+          label="Tid"
           value={time}
           options={timeOptions}
           onChange={setTime}
@@ -250,6 +292,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
             const cuisineType = classifyRecipeCuisine(r.tags);
             const totalTime = formatTotalTime(r.prepTime, r.cookTime);
             const diff = difficultyLabel(r.difficulty);
+            const isPairing = r.recipeRole === "pairing";
             return (
               <li key={r.slug}>
                 <Link
@@ -267,6 +310,15 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
                   </div>
                   <div className="p-5">
                     <div className="flex flex-wrap gap-2">
+                      <span
+                        className={
+                          isPairing
+                            ? "rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-900"
+                            : "rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900"
+                        }
+                      >
+                        {recipeRoleLabel(r.recipeRole)}
+                      </span>
                       <span className="rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900">
                         {wineBadgeLabel(wineType)}
                       </span>

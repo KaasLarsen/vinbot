@@ -6,9 +6,9 @@ import { RecipeHubBrowser } from "@/components/recipe-hub-browser";
 import { getAllRecipes } from "@/lib/content/recipes";
 import { siteUrl } from "@/lib/site";
 
-const PAGE_TITLE = "Opskrifter med vin — coq au vin og gryderet";
+const PAGE_TITLE = "Opskrifter med vin — i gryden og til glasset";
 const PAGE_DESCRIPTION =
-  "170+ opskrifter med rød- og hvidvin i gryden: coq au vin, amatriciana, piccata, gullasch, risotto, tapas og sauce. Step-by-step med vin i både ret og glas — filtrér efter køkken og tid.";
+  "Opskrifter med vin: klassikere hvor vin er i retten, plus mad hvor vi anbefaler vin til glasset. Filtrér efter type, køkken og tid — coq au vin, pizza, burger og mere.";
 const PAGE_URL = `${siteUrl}/opskrifter`;
 
 type PageProps = { searchParams?: Promise<{ q?: string }> };
@@ -32,6 +32,7 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
     cookTime: r.cookTime,
     servings: r.servings,
     difficulty: r.difficulty,
+    recipeRole: r.recipeRole,
   }));
 
   const collectionItems = recipes.map((r) => ({
@@ -61,13 +62,15 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
           { href: "/opskrifter", label: "Opskrifter" },
         ]}
       />
-      <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Opskrifter med vin</h1>
+      <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Opskrifter</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">
-        Klassiske retter hvor <strong className="font-medium text-stone-800">vin er en del af opskriften</strong> — ikke
-        kun i glasset. Filtrér efter vin-type, køkken og tid, eller søg direkte.
+        Ét opskrift-univers med to roller:{" "}
+        <strong className="font-medium text-stone-800">vin i retten</strong> (madlavning med vin) og{" "}
+        <strong className="font-medium text-stone-800">vin til maden</strong> (opskrift + anbefalet vin til
+        glasset). Filtrér efter type, vintype, køkken og tid — eller søg direkte.
       </p>
       <p className="mt-3 text-sm text-stone-600">
-        Leder du efter parring i stedet for opskriften? Se{" "}
+        Leder du efter dybere parrings-guides i stedet for en fuld opskrift? Se{" "}
         <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
           mad &amp; vin
         </Link>

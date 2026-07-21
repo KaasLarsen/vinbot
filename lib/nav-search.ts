@@ -14,7 +14,7 @@ export type NavSearchSuggestion = {
 
 const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   { label: "Mad & vin", href: "/mad-og-vin", keywords: ["mad", "vin", "parring", "match"] },
-  { label: "Opskrifter med vin", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon"] },
+  { label: "Opskrifter", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon", "parring", "pizza", "burger"] },
   { label: "Bedste vine", href: "/bedste-vine", keywords: ["bedste", "køb", "pris", "anbefaling"] },
   { label: "Vin-viden", href: "/vin-viden", keywords: ["viden", "temperatur", "opbevaring", "glas"] },
   { label: "Alle guides", href: "/guides", keywords: ["guide", "guides", "artikel"] },
@@ -26,7 +26,7 @@ const QUICK_PICKS: NavSearchSuggestion[] = [
   { href: "/guides/vin-til-pizza-og-pasta", label: "Vin til pizza og pasta", kind: "quick", score: 0 },
   { href: "/guides/vin-til-fisk-og-skaldyr", label: "Vin til fisk og skaldyr", kind: "quick", score: 0 },
   { href: "/guides/bedste-vin-under-150-kr", label: "Bedste vin under 150 kr", kind: "quick", score: 0 },
-  { href: "/opskrifter", label: "Opskrifter med vin i gryden", kind: "quick", score: 0 },
+  { href: "/opskrifter", label: "Opskrifter — vin i retten og til maden", kind: "quick", score: 0 },
   { href: "/guides/pinot-noir-druen", label: "Pinot noir-druen", kind: "quick", score: 0 },
   { href: "/guides/riesling-druen", label: "Riesling-druen", kind: "quick", score: 0 },
   { href: "/mad-og-vin", label: "Mad & vin — overblik", kind: "quick", score: 0 },

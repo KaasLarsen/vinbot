@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeQuickTopicsSection } from "@/components/home-quick-topics-section";
+import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -40,7 +41,7 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
 /** Redaktionelle indgange under søgning. */
 const heroEditorialLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
-  { href: "/opskrifter", label: "Opskrifter med vin" },
+  { href: "/opskrifter", label: "Opskrifter" },
   { href: "/vin-viden", label: "Vin-viden" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/tilbud", label: "Vin tilbud" },
@@ -52,6 +53,7 @@ const heroEditorialLinks: { href: string; label: string }[] = [
 /** Kompakt udvalg — den fulde liste ligger i <details> nedenunder. */
 const featuredPopularLinks: { href: string; label: string }[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/opskrifter", label: "Opskrifter" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/tilbud", label: "Vin tilbud" },
   { href: "/vin-viden", label: "Vin-viden" },
@@ -445,7 +447,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
         <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
-          Vinsøgning · sammenlign priser
+          Vinsøgning · danske forhandlere
         </p>
         <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
           Find vin på sekunder
@@ -469,6 +471,8 @@ export default async function HomePage({ searchParams }: HomeProps) {
         editorialTeamName={editorialTeamName}
       />
 
+      {!q?.trim() ? <HomeRecipesStrip /> : null}
+
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
       {!q?.trim() ? <HomeDealsStrip /> : null}
 
@@ -479,6 +483,15 @@ export default async function HomePage({ searchParams }: HomeProps) {
         >
           <h3 className="text-lg font-semibold text-stone-900">Mad & vin</h3>
           <p className="mt-2 text-stone-600">Parring til kød, fisk, ost, pasta og meget mere — med dybe guides og masser af videre læsning.</p>
+        </Link>
+        <Link
+          href="/opskrifter"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Opskrifter</h3>
+          <p className="mt-2 text-stone-600">
+            Vin i gryden eller vin til glasset — fulde opskrifter med anbefalet vin og shop-forslag.
+          </p>
         </Link>
         <Link
           href="/bedste-vine"

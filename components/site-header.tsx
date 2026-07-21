@@ -10,6 +10,7 @@ type NavItem = { href: string; label: string; activePrefix?: string; activePrefi
 
 const nav: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/opskrifter", label: "Opskrifter", activePrefix: "/opskrifter" },
   { href: "/humoer-og-vin", label: "Humør & stemning" },
   { href: "/saeson", label: "Sæson" },
   { href: "/fest-og-vin", label: "Fest & selskab" },

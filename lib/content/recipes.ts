@@ -4,7 +4,12 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { guideMdxComponents } from "@/lib/content/guide-mdx-components";
-import type { RecipeDoc, RecipeFrontmatter, RecipeMeta } from "@/lib/content/recipe-types";
+import {
+  resolveRecipeRole,
+  type RecipeDoc,
+  type RecipeFrontmatter,
+  type RecipeMeta,
+} from "@/lib/content/recipe-types";
 
 const RECIPES_DIR = path.join(process.cwd(), "content", "recipes");
 
@@ -26,8 +31,10 @@ function parseRecipeFile(filePath: string): RecipeDoc {
   const { data, content } = matter(raw);
   const fm = data as RecipeFrontmatter;
   const fallbackDate = fileFallbackDate(filePath);
+  const recipeRole = resolveRecipeRole(fm);
   return {
     ...fm,
+    recipeRole,
     fallbackDate,
     content: content.trim(),
   };
@@ -69,7 +76,7 @@ export async function getRecipe(slug: string) {
   });
 
   return {
-    frontmatter: doc as RecipeFrontmatter & { fallbackDate: string },
+    frontmatter: doc as RecipeFrontmatter & { fallbackDate: string; recipeRole: typeof doc.recipeRole },
     content,
     readingMinutes: Math.max(1, Math.round(rt.minutes)),
     wordCount,

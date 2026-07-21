@@ -14,10 +14,20 @@ type Props = {
   tags?: string[];
   relatedGuides?: string[];
   wineToDrink: RecipeWineToDrink;
+  /** pairing viser op til 5 vine (Jyskvin-mønster); cooking holder 3 */
+  maxItems?: number;
+  heading?: string;
 };
 
 /** Produkt-picks + kuraterede enkeltvin under opskriftens vinforslag. */
-export function RecipeShopSection({ recipeSlug, tags = [], relatedGuides, wineToDrink }: Props) {
+export function RecipeShopSection({
+  recipeSlug,
+  tags = [],
+  relatedGuides,
+  wineToDrink,
+  maxItems = 3,
+  heading = "Køb vin til retten — direkte fra forhandlere",
+}: Props) {
   const searchHref = buildSearchHref(wineToDrink.searchQuery, wineToDrink.searchMax);
 
   return (
@@ -30,8 +40,8 @@ export function RecipeShopSection({ recipeSlug, tags = [], relatedGuides, wineTo
         placement="recipe-picks"
         label={wineToDrink.label}
         searchHref={searchHref}
-        heading="Køb vin til retten — direkte fra forhandlere"
-        max_items={3}
+        heading={heading}
+        max_items={maxItems}
       />
       <RecipeCuratedWineLinks recipeSlug={recipeSlug} tags={tags} relatedGuides={relatedGuides} />
       <p className="text-center text-sm text-stone-600">
