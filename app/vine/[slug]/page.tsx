@@ -18,6 +18,7 @@ import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
 import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
+import { PageShell } from "@/components/page-shell";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -66,7 +67,7 @@ export default async function VineProductPage({ params }: Props) {
     wine.image != null ? `${siteUrl}/api/img?src=${encodeURIComponent(wine.image)}` : null;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <WineProductJsonLd wine={wine} pageUrl={url} imageAbsoluteUrl={imageAbsolute} />
       <FaqJsonLd items={faqItems} />
@@ -222,6 +223,6 @@ export default async function VineProductPage({ params }: Props) {
           </Link>
         </p>
       </article>
-    </div>
+    </PageShell>
   );
 }

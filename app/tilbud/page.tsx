@@ -10,6 +10,7 @@ import { listCrossMerchantDeals } from "@/lib/deals/cross-merchant";
 import { listDealMerchants, listFeedDeals } from "@/lib/deals/engine";
 import { crossMerchantDealToCard, feedDealToCard, type TilbudCardItem } from "@/lib/deals/types";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vin tilbud — overblik over nedsatte vine og prisforskelle";
 const PAGE_DESCRIPTION =
@@ -29,7 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 21600;
+/** Feed-/katalog-build er for tung til SSG inden for Vercels page-timeout — render on request. */
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const MERCHANT_DEAL_LINKS = [
@@ -104,7 +106,7 @@ export default async function TilbudHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -215,6 +217,6 @@ export default async function TilbudHubPage() {
       <div className="mt-8">
         <AffiliateDisclosure />
       </div>
-    </div>
+    </PageShell>
   );
 }

@@ -50,7 +50,7 @@ export async function ProductFeedPreview({
   merchant,
   maxItems = 9,
   placement = "product-feed-preview",
-  gridClassName = "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
+  gridClassName = "grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5",
   searchScope = "wine",
   emptyLabel = "vine",
 }: {

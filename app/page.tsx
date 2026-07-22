@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeQuickTopicsSection } from "@/components/home-quick-topics-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
+import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -14,6 +15,7 @@ import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { editorialTeamName, siteName, siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const homeMetadata: Metadata = {
   title: `${siteName} – vinguides til mad, druer og sæson`,
@@ -443,7 +445,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
         <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
@@ -472,6 +474,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
       />
 
       {!q?.trim() ? <HomeRecipesStrip /> : null}
+      {!q?.trim() ? <HomeWinesStrip /> : null}
 
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
       {!q?.trim() ? <HomeDealsStrip /> : null}
@@ -555,6 +558,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <LauridsenHomeFeedHighlight />
 
       <PartnerAdsLeaderboard className="mt-16" hub="bedste-vine" slug="home" />
-    </div>
+    </PageShell>
   );
 }

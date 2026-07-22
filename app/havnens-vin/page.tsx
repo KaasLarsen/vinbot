@@ -7,6 +7,7 @@ import { MerchantHubShopLink } from "@/components/merchant-hub-shop-link";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { HAVNENS_VIN_SHOP_HREF } from "@/lib/daisycon-links";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 export const dynamic = "force-dynamic";
 
@@ -41,7 +42,7 @@ export default function HavnensVinPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/havnens-vin", label: "Havnens Vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Havnens Vin</h1>
@@ -160,6 +161,6 @@ export default function HavnensVinPage() {
           Forsiden
         </Link>
       </p>
-    </div>
+    </PageShell>
   );
 }

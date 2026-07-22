@@ -7,6 +7,7 @@ import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Rabatkoder til vin — partnertilbud";
 const PAGE_DESCRIPTION =
@@ -177,7 +178,7 @@ function RichLine({ text }: { text: string }) {
 
 export default function RabatkoderPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },
@@ -263,6 +264,6 @@ export default function RabatkoderPage() {
           .
         </p>
       </section>
-    </div>
+    </PageShell>
   );
 }

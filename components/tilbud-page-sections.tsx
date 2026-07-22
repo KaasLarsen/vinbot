@@ -236,7 +236,7 @@ function TilbudBrowseAll({
       </p>
 
       {filtered.length > 0 ? (
-        <ul className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {filtered.map((deal) => (
             <li key={deal.id}>
               <DealCard deal={deal} placement="tilbud-browse" />

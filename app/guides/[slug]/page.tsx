@@ -28,6 +28,7 @@ import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
+import { PageShell } from "@/components/page-shell";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -124,7 +125,7 @@ export default async function GuidePage({ params }: Props) {
   const articleImage = `${url}/opengraph-image`;
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell as="article" className="py-10">
       <ArticleJsonLd
         title={frontmatter.title}
         description={frontmatter.description}
@@ -193,7 +194,7 @@ export default async function GuidePage({ params }: Props) {
       <div className="mt-12">
         <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
       </div>
-    </article>
+    </PageShell>
   );
 }
 

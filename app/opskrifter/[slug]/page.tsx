@@ -23,6 +23,7 @@ import {
 import { RecipeHeroImage } from "@/components/recipe-hero-image";
 import { buildRecipeSerpDescription, buildRecipeSerpTitle } from "@/lib/seo/serp-meta";
 import { recipeRoleLabel } from "@/lib/content/recipe-types";
+import { PageShell } from "@/components/page-shell";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -104,7 +105,7 @@ export default async function RecipePage({ params }: Props) {
   ].filter(Boolean);
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell as="article" className="py-10">
       <RecipeJsonLd
         name={frontmatter.title}
         description={frontmatter.description}
@@ -200,6 +201,6 @@ export default async function RecipePage({ params }: Props) {
       ) : null}
 
       <PartnerAdsLeaderboard className="mt-12" hub="mad-og-vin" slug={slug} />
-    </article>
+    </PageShell>
   );
 }

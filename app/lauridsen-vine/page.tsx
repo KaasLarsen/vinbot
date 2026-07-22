@@ -9,6 +9,7 @@ import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +44,7 @@ export default function LauridsenVinePage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <FaqJsonLd items={faq} />
       <MerchantFeaturedProductsJsonLd merchantId="lauridsen-vine" picks={featuredPicks} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/lauridsen-vine", label: "Lauridsen Vine" }]} />
@@ -185,6 +186,6 @@ export default function LauridsenVinePage() {
           Forsiden
         </Link>
       </p>
-    </div>
+    </PageShell>
   );
 }

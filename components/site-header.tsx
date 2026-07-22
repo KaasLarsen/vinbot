@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { HeaderSearch } from "@/components/header-search";
 import { VinbotLogo } from "@/components/vinbot-logo";
+import { PageShell } from "@/components/page-shell";
 
 type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
 
@@ -69,7 +70,7 @@ export function SiteHeader() {
 
   return (
     <header className="relative z-50 border-b border-stone-200/80 bg-white/90 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-4 py-3">
+      <PageShell className="py-3">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="group flex min-w-0 items-center gap-2.5">
             <VinbotLogo className="h-8 w-8 shrink-0 text-rose-950 transition-colors group-hover:text-rose-900" />
@@ -137,7 +138,7 @@ export function SiteHeader() {
             </div>
           </div>
         </div>
-      </div>
+      </PageShell>
     </header>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FooterAffiliatePromos } from "@/components/footer-affiliate-promos";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
 import { siteName } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
 
@@ -16,7 +17,7 @@ const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-stone-200 bg-stone-50">
-      <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-stone-600">
+      <PageShell className="py-10 text-sm text-stone-600">
         <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
           <div>
             <p className="font-semibold text-stone-900">{siteName}</p>
@@ -106,7 +107,7 @@ export function SiteFooter() {
           </div>
         </div>
         <p className="mt-8 text-xs text-stone-500">© {new Date().getFullYear()} {siteName}</p>
-      </div>
+      </PageShell>
     </footer>
   );
 }

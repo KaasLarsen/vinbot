@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 type LandGuide = {
   title: string;
@@ -247,7 +248,7 @@ export default function RegionerHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -419,7 +420,7 @@ export default function RegionerHubPage() {
         </Link>
         .
       </p>
-    </div>
+    </PageShell>
   );
 }
 

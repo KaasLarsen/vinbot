@@ -10,6 +10,7 @@ import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { loadWineCatalog } from "@/lib/vine/catalog";
 import { vineCatalogStyleFromBlob } from "@/lib/vine/catalog-style";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_URL = `${siteUrl}/vine`;
 
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_URL },
 };
 
-export const revalidate = 21600;
+/** Katalog-build er for tung til SSG inden for Vercels page-timeout — render on request. */
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 export default async function VineHubPage() {
@@ -52,7 +54,7 @@ export default async function VineHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={breadcrumbItems.map((b) => ({ name: b.name, url: b.url }))}
       />
@@ -106,6 +108,6 @@ export default async function VineHubPage() {
       <section className="mt-12">
         <AffiliateDisclosure />
       </section>
-    </div>
+    </PageShell>
   );
 }

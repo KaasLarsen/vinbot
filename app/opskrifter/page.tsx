@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { RecipeHubBrowser } from "@/components/recipe-hub-browser";
 import { getAllRecipes } from "@/lib/content/recipes";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Opskrifter med vin — i gryden og til glasset";
 const PAGE_DESCRIPTION =
@@ -47,7 +48,7 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -88,6 +89,6 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
       <div className="mt-10">
         <RecipeHubBrowser recipes={cards} initialQuery={qParam} />
       </div>
-    </div>
+    </PageShell>
   );
 }

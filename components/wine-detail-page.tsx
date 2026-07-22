@@ -16,6 +16,7 @@ import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { WinePickPrices } from "@/components/wine-pick-prices";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
   const cfg = getMerchantWineConfig(wine.merchantId);
@@ -90,7 +91,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
       : relatedFromRegistry.slice(0, 4).map((p) => wineDetailPageToFeaturedPick(p));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <WineDetailProductJsonLd
         merchantId={wine.merchantId}
         pick={featuredPick}
@@ -342,6 +343,6 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
           </ul>
         </section>
       </article>
-    </div>
+    </PageShell>
   );
 }

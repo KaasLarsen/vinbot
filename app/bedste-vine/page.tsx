@@ -6,6 +6,7 @@ import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { filterIndexableGuides, listBedsteVineHubGuides, listGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Bedste vine — top-lister, pris og lejlighed";
 const PAGE_DESCRIPTION =
@@ -40,7 +41,7 @@ export default function BedsteVineHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -217,6 +218,6 @@ export default function BedsteVineHubPage() {
           .
         </p>
       </section>
-    </div>
+    </PageShell>
   );
 }

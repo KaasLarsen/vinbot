@@ -448,6 +448,8 @@ const rootLegacyHubRedirects: { source: string; destination: string }[] = [
 ];
 
 const nextConfig: NextConfig = {
+  /** /vine, /tilbud og feed-tunge sider overstiger ofte default 60s under SSG på Vercel. */
+  staticPageGenerationTimeout: 180,
   async redirects() {
     /**
      * Undlad www→apex redirect her: på Vercel er apex→www ofte aktiveret som standard,

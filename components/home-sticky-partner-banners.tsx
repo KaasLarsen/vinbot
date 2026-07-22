@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { CONTENT_MAX_REM } from "@/components/page-shell";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
@@ -10,7 +11,9 @@ const RIGHT_BANNER_ID = "94900";
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
-const railStyle = { width: "min(11rem, calc((100vw - 72rem) / 2 - 1rem))" } as const;
+const railStyle = {
+  width: `min(11rem, calc((100vw - ${CONTENT_MAX_REM}rem) / 2 - 1rem))`,
+} as const;
 
 /** px pr. scroll — hold lav for diskret effekt */
 const PARALLAX_FACTOR = 0.068;
