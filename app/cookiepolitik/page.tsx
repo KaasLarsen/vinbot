@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CookieConsentReset } from "@/components/cookie-consent-reset";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, legalPagesUpdatedDisplay, siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Cookiepolitik";
 const PAGE_DESCRIPTION =
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function CookiepolitikPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },
@@ -98,6 +99,6 @@ export default function CookiepolitikPage() {
           </Link>
         </p>
       </section>
-    </div>
+    </PageShell>
   );
 }

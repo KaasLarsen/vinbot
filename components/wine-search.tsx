@@ -962,7 +962,7 @@ export function WineSearch({
             </p>
           )}
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
             {visibleProducts.map((p, i) => (
               <ProductCard key={`${p.url}-${i}`} product={p} placement={productCardPlacement} />
             ))}

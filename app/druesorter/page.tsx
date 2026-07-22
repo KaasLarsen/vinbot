@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 type Drue = { navn: string; q: string; note: string; guide: string };
 
@@ -272,7 +273,7 @@ export default function DruesorterHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -357,6 +358,6 @@ export default function DruesorterHubPage() {
       <p className="mt-10 text-sm text-stone-500">
         Tip: på forsiden kan du også skrive druenavnet direkte i søgefeltet — URL&apos;en her er en genvej til det samme.
       </p>
-    </div>
+    </PageShell>
   );
 }

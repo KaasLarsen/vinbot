@@ -10,6 +10,7 @@ import { listCrossMerchantDeals } from "@/lib/deals/cross-merchant";
 import { listDealMerchants, listFeedDeals } from "@/lib/deals/engine";
 import { crossMerchantDealToCard, feedDealToCard, type TilbudCardItem } from "@/lib/deals/types";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vin tilbud — overblik over nedsatte vine og prisforskelle";
 const PAGE_DESCRIPTION =
@@ -104,7 +105,7 @@ export default async function TilbudHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -215,6 +216,6 @@ export default async function TilbudHubPage() {
       <div className="mt-8">
         <AffiliateDisclosure />
       </div>
-    </div>
+    </PageShell>
   );
 }

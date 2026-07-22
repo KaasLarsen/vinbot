@@ -6,6 +6,7 @@ import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { filterIndexableGuides, listFestOgVinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vin til fest og selskab — mængde, bryllup og konfirmation";
 const PAGE_DESCRIPTION =
@@ -39,7 +40,7 @@ export default function FestOgVinHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} items={collectionItems} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/fest-og-vin", label: "Fest og selskab" }]} />
@@ -270,6 +271,6 @@ export default function FestOgVinHubPage() {
         </Link>
         .
       </p>
-    </div>
+    </PageShell>
   );
 }

@@ -13,7 +13,7 @@ export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
           alt=""
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 1152px"
+          sizes="(max-width: 768px) 100vw, 1440px"
           className="object-cover object-[72%_center] sm:object-[85%_center]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/78 to-white/15 sm:from-white/92 sm:via-white/55 sm:to-transparent" />

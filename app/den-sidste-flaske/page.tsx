@@ -7,6 +7,7 @@ import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { partnerAdsDsfClickUrl, siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 export const dynamic = "force-dynamic";
 
@@ -55,7 +56,7 @@ export default function DenSidsteFlaskePage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <FaqJsonLd items={faq} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/den-sidste-flaske", label: "Den Sidste Flaske" }]} />
@@ -133,6 +134,6 @@ export default function DenSidsteFlaskePage() {
           Forsiden
         </Link>
       </p>
-    </div>
+    </PageShell>
   );
 }

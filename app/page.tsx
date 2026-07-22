@@ -14,6 +14,7 @@ import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { editorialTeamName, siteName, siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const homeMetadata: Metadata = {
   title: `${siteName} – vinguides til mad, druer og sæson`,
@@ -443,7 +444,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
   const q = (await searchParams)?.q;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <HomeHeroSearchSection>
         <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
@@ -555,6 +556,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
       <LauridsenHomeFeedHighlight />
 
       <PartnerAdsLeaderboard className="mt-16" hub="bedste-vine" slug="home" />
-    </div>
+    </PageShell>
   );
 }

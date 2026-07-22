@@ -7,6 +7,7 @@ import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vinkøleskabe — den ultimative guide til køb og valg";
 const PAGE_DESCRIPTION =
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function VinkoleskabePage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },
@@ -235,6 +236,6 @@ export default function VinkoleskabePage() {
           ))}
         </dl>
       </section>
-    </div>
+    </PageShell>
   );
 }

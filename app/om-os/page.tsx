@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Om Vinbot — dansk vininspiration med uafhængig redaktion";
 const PAGE_DESCRIPTION =
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function OmOsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },
@@ -210,6 +211,6 @@ export default function OmOsPage() {
           </li>
         </ul>
       </section>
-    </div>
+    </PageShell>
   );
 }

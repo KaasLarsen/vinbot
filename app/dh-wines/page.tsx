@@ -9,6 +9,7 @@ import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +44,7 @@ export default function DhWinesPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <FaqJsonLd items={faq} />
       <MerchantFeaturedProductsJsonLd merchantId="dh-wines" picks={featuredPicks} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/dh-wines", label: "DH Wines" }]} />
@@ -167,6 +168,6 @@ export default function DhWinesPage() {
           Forsiden
         </Link>
       </p>
-    </div>
+    </PageShell>
   );
 }

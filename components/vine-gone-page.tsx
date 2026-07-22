@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VineRelatedWines } from "@/components/vine-related";
 import type { CanonicalWine } from "@/lib/vine/types";
+import { PageShell } from "@/components/page-shell";
 
 type Props = {
   slug: string;
@@ -14,7 +15,7 @@ export function VineGonePage({ slug, hintLabel, suggestions }: Props) {
   const displayHint = hintLabel?.trim() || slug.replace(/-/g, " ");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <Breadcrumbs
         items={[
           { href: "/", label: "Forside" },
@@ -70,6 +71,6 @@ export function VineGonePage({ slug, hintLabel, suggestions }: Props) {
           </p>
         </section>
       )}
-    </div>
+    </PageShell>
   );
 }

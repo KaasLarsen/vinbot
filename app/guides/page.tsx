@@ -6,6 +6,7 @@ import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { filterIndexableGuides, listGuides } from "@/lib/content/guides";
 import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 import { siteUrl } from "@/lib/site";
+import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Alle vin-guides — søg og filtrér";
 const PAGE_DESCRIPTION =
@@ -56,7 +57,7 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <CollectionPageJsonLd
         name={PAGE_TITLE}
@@ -101,6 +102,6 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
       <section className="mt-10">
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} initialQuery={qParam} />
       </section>
-    </div>
+    </PageShell>
   );
 }
