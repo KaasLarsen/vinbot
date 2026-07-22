@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeQuickTopicsSection } from "@/components/home-quick-topics-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
+import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { WineSearch } from "@/components/wine-search";
 import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -473,6 +474,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
       />
 
       {!q?.trim() ? <HomeRecipesStrip /> : null}
+      {!q?.trim() ? <HomeWinesStrip /> : null}
 
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
       {!q?.trim() ? <HomeDealsStrip /> : null}
