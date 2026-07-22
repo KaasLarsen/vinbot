@@ -30,7 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 21600;
+/** Feed-/katalog-build er for tung til SSG inden for Vercels page-timeout — render on request. */
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const MERCHANT_DEAL_LINKS = [

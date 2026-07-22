@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   openGraph: { url: PAGE_URL },
 };
 
+/** Feed-preview under SSG overstiger ofte Vercels page-timeout. */
+export const dynamic = "force-dynamic";
+
 export default function VinkoleskabePage() {
   return (
     <PageShell className="py-10">
