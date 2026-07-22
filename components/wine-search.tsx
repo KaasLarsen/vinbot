@@ -8,7 +8,9 @@ import {
   wineStyleOfProduct,
   type WineStyleFilter,
 } from "@/lib/search/wine-style";
+import { parseBarcodeQuery } from "@/lib/search/helpers";
 import { ProductCard } from "@/components/product-card";
+import { BarcodeScanner, type BarcodeScannerErrorKind } from "@/components/barcode-scanner";
 import { SearchCuratedWineStrip } from "@/components/search-curated-dsf-strip";
 import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
 
@@ -101,6 +103,45 @@ function trackWineSearch(query: string, hasMax: boolean) {
   } catch {
     // no-op
   }
+}
+
+type BarcodeScanEventStatus = "success" | "no_match" | "permission_denied" | "unsupported" | "other";
+
+function trackWineBarcodeScan(status: BarcodeScanEventStatus, code?: string) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  try {
+    window.gtag("event", "wine_barcode_scan", {
+      status,
+      code: code ? code.slice(0, 20) : "",
+    });
+  } catch {
+    // no-op
+  }
+}
+
+function BarcodeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+      <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+      <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+      <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+      <path d="M7 8v8" />
+      <path d="M10 8v8" />
+      <path d="M13 8v8" />
+      <path d="M16 8v8" />
+      <path d="M18 8v8" />
+    </svg>
+  );
 }
 
 /** Vælg chips ud fra måned (0-indexed). Rækkefølgen afgør hvad brugeren ser først. */
@@ -421,6 +462,7 @@ export function WineSearch({
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [scannerOpen, setScannerOpen] = useState(false);
   /** Antal bedste match der vises først: 3 eller 5 */
   const [firstCount, setFirstCount] = useState<3 | 5>(3);
   /** Hvor mange gange brugeren har trykket "Se flere" (+PAGE_MORE pr. gang) */
@@ -454,7 +496,7 @@ export function WineSearch({
   }, [max]);
 
   const search = useCallback(
-    async (query: string, budget?: number | null) => {
+    async (query: string, budget?: number | null, opts?: { fromBarcode?: boolean }) => {
       setLoading(true);
       setError(null);
       setFallbackCheapest(null);
@@ -466,15 +508,38 @@ export function WineSearch({
         const r = await fetch(`/api/search?${params.toString()}`);
         const json = (await r.json()) as ApiResponse;
         setData(json);
+        if (opts?.fromBarcode) {
+          trackWineBarcodeScan(
+            (json.products?.length ?? 0) > 0 ? "success" : "no_match",
+            query,
+          );
+        }
       } catch {
         setError("Kunne ikke hente resultater. Prøv igen.");
         setData(null);
+        if (opts?.fromBarcode) trackWineBarcodeScan("other", query);
       } finally {
         setLoading(false);
       }
     },
     [],
   );
+
+  const onBarcodeDetected = useCallback(
+    (code: string) => {
+      setScannerOpen(false);
+      setQ(code);
+      trackWineSearch(code, maxNum != null);
+      void search(code, maxNum, { fromBarcode: true });
+    },
+    [maxNum, search],
+  );
+
+  const onBarcodeScannerError = useCallback((kind: BarcodeScannerErrorKind) => {
+    trackWineBarcodeScan(kind);
+  }, []);
+
+  const lastQueryIsBarcode = useMemo(() => Boolean(parseBarcodeQuery(lastQuery)), [lastQuery]);
 
   const runChipSearch = useCallback(
     (chip: WineSearchChip) => {
@@ -637,6 +702,12 @@ export function WineSearch({
 
   return (
     <div className="space-y-6">
+      <BarcodeScanner
+        open={scannerOpen}
+        onClose={() => setScannerOpen(false)}
+        onDetected={onBarcodeDetected}
+        onError={onBarcodeScannerError}
+      />
       <form
         className="flex flex-col gap-3 sm:flex-row sm:items-end"
         onSubmit={(e) => {
@@ -649,17 +720,28 @@ export function WineSearch({
           <label htmlFor="wine-q" className="block text-sm font-medium text-stone-700">
             Hvad leder du efter?
           </label>
-          <input
-            id="wine-q"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            onFocus={() => setQueryFocused(true)}
-            onBlur={() => window.setTimeout(() => setQueryFocused(false), 120)}
-            placeholder={placeholder}
-            autoComplete="off"
-            aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
-            className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
-          />
+          <div className="relative mt-1">
+            <input
+              id="wine-q"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              onFocus={() => setQueryFocused(true)}
+              onBlur={() => window.setTimeout(() => setQueryFocused(false), 120)}
+              placeholder={placeholder}
+              autoComplete="off"
+              aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
+              className="w-full rounded-xl border border-stone-300 bg-white py-3 pl-4 pr-12 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
+            />
+            <button
+              type="button"
+              onClick={() => setScannerOpen(true)}
+              className="absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 hover:text-rose-900"
+              aria-label="Scan stregkode med kamera"
+              title="Scan stregkode"
+            >
+              <BarcodeIcon className="h-5 w-5" />
+            </button>
+          </div>
           {chips.length > 0 && queryFocused && !q.trim() ? (
             <div
               id="wine-search-suggestions"
@@ -778,11 +860,17 @@ export function WineSearch({
           ) : allTotal === 0 ? (
             <div className="space-y-4 text-sm text-stone-600">
               <p>
-                {isMerchantBrowse && merchantBrowse
-                  ? `Ingen vine matchede i sortimentet hos ${merchantBrowse} lige nu. Prøv et andet søgeord (fx en drue) eller fjern prisfilteret.`
-                  : "Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”."}
+                {lastQueryIsBarcode
+                  ? `Vi har ikke denne vin i vores feeds endnu (EAN ${lastQuery}). Prøv at søge på navn, producent eller drue i stedet.`
+                  : isMerchantBrowse && merchantBrowse
+                    ? `Ingen vine matchede i sortimentet hos ${merchantBrowse} lige nu. Prøv et andet søgeord (fx en drue) eller fjern prisfilteret.`
+                    : "Ingen vine matchede lige nu — forhandlernes tekster indeholder sjældent fx “morsdag”. Prøv en drue, et land eller ord som “rosé”, “champagne” eller “pinot”."}
               </p>
-              {guideFallback ? (
+              {lastQueryIsBarcode ? (
+                <p>
+                  Tip: Brug scan-ikonet igen, eller indtast EAN manuelt — vi matcher kun vine, hvor forhandlerne leverer stregkode.
+                </p>
+              ) : guideFallback ? (
                 <p>
                   Relateret:{" "}
                   <Link

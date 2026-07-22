@@ -1,6 +1,15 @@
 import { FEEDS, feedTier } from "@/lib/feeds/config";
 import type { ProductHit, SearchMeta, SearchResult } from "./types";
-import { expandQuery, normalizeUrl, parsePriceFilter, productEligibleForWineSearch, proxyImg, score } from "./helpers";
+import {
+  expandQuery,
+  normalizeUrl,
+  parseBarcodeQuery,
+  parsePriceFilter,
+  productEligibleForWineSearch,
+  productGtinMatchesQuery,
+  proxyImg,
+  score,
+} from "./helpers";
 import { getCachedFeedProducts } from "./fetch-feed";
 import { detectMerchantIntent } from "./merchant-intent";
 import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
@@ -185,7 +194,71 @@ async function runMerchantBrowse(
   return { source: "fallback", products: [], meta };
 }
 
+async function runGtinSearch(barcode: string, budgetMaxParam: number | null): Promise<SearchResult> {
+  const priceFilter = parsePriceFilter("", budgetMaxParam);
+  const priceMin = priceFilter.min;
+  const priceMax = priceFilter.max;
+  let feeds_ok = 0;
+  let feeds_failed = 0;
+
+  const lists = await Promise.all(
+    FEEDS.map(async (feed) => {
+      try {
+        let products = await getCachedFeedProducts(feed);
+        products = applyPriceFilter(products, priceMin, priceMax);
+
+        const matches = products.filter(
+          (p) => productEligibleForWineSearch(p) && productGtinMatchesQuery(p.gtin, barcode),
+        );
+
+        feeds_ok++;
+        return matches.length ? toHits(matches) : [];
+      } catch (err) {
+        feeds_failed++;
+        console.error(`[search] gtin feed FAILED for ${feed.merchant}:`, err instanceof Error ? err.message : err);
+        return [];
+      }
+    }),
+  );
+
+  let items = lists.flat();
+
+  items = items.sort((a, b) => {
+    const tierPenalty = (p: ProductHit) => (p.tier === "free" ? FREE_TIER_SCORE_PENALTY : 0);
+    return (
+      tierPenalty(a) - tierPenalty(b) ||
+      (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) ||
+      (a.price ?? 9e9) - (b.price ?? 9e9) ||
+      (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+      a.title.localeCompare(b.title, "da")
+    );
+  });
+
+  items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
+
+  const matched_before_cap = items.length;
+  const results_capped = matched_before_cap > RESULT_CAP;
+  items = items.slice(0, RESULT_CAP);
+
+  const meta = emptyMeta({
+    feeds_ok,
+    feeds_failed,
+    priceMin,
+    priceMax,
+    matched_before_cap,
+    results_capped,
+  });
+
+  if (items.length) return { source: "feed", products: items, meta };
+  return { source: "fallback", products: [], meta };
+}
+
 export async function runSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
+  const barcode = parseBarcodeQuery(qRaw);
+  if (barcode) {
+    return runGtinSearch(barcode, budgetMaxParam);
+  }
+
   const merchantIntent = detectMerchantIntent(qRaw);
   if (merchantIntent) {
     return runMerchantBrowse(qRaw, budgetMaxParam, merchantIntent.merchant, merchantIntent.remainingQuery);

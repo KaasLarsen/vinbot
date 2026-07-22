@@ -400,6 +400,45 @@ export function normalizeBarcodeDigits(raw: string | null | undefined): string |
   return d.length >= 8 ? d : null;
 }
 
+/**
+ * Hvis hele query’en er en stregkode (cifre, evt. mellemrum/bindestreger), returnér normaliserede cifre.
+ * Ellers null — så almindelig tekstsøgning kører.
+ */
+export function parseBarcodeQuery(qRaw: string): string | null {
+  const trimmed = (qRaw || "").trim();
+  if (!trimmed) return null;
+  // Kun cifre, mellemrum og bindestreger — ellers er det en tekstquery.
+  if (/[^\d\s\-]/.test(trimmed)) return null;
+  return normalizeBarcodeDigits(trimmed);
+}
+
+/** Lookup-nøgler der dækker UPC-A (12) ↔ EAN-13 (13 med leading 0) og zero-padding. */
+export function barcodeLookupKeys(digits: string): Set<string> {
+  const keys = new Set<string>([digits]);
+  if (digits.length === 12) keys.add(`0${digits}`);
+  if (digits.length === 13 && digits.startsWith("0")) keys.add(digits.slice(1));
+  if (digits.length < 13) keys.add(digits.padStart(13, "0"));
+  if (digits.length === 14 && digits.startsWith("0")) {
+    const trimmed = digits.replace(/^0+/, "") || digits;
+    if (trimmed.length >= 8) keys.add(trimmed);
+    if (trimmed.length === 12) keys.add(`0${trimmed}`);
+    if (trimmed.length < 13) keys.add(trimmed.padStart(13, "0"));
+  }
+  return keys;
+}
+
+export function productGtinMatchesQuery(productGtin: string | null, queryDigits: string): boolean {
+  if (!productGtin) return false;
+  if (productGtin === queryDigits) return true;
+  const qKeys = barcodeLookupKeys(queryDigits);
+  if (qKeys.has(productGtin)) return true;
+  const pKeys = barcodeLookupKeys(productGtin);
+  for (const k of qKeys) {
+    if (pKeys.has(k)) return true;
+  }
+  return false;
+}
+
 export function toNumber(s: string | null | undefined): number | null {
   if (!s) return null;
   let str = String(s).trim();
