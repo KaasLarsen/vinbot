@@ -64,6 +64,18 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */
   spsWine: "112662",
+  /** Vinea — samme banner som produktfeed */
+  vinea: "111911",
+  /** Barlife — samme banner som produktfeed */
+  barlife: "46609",
+  /** D’Wine — samme banner som produktfeed */
+  dWine: "92927",
+  /** Gourmetshoppen — samme banner som produktfeed */
+  gourmetshoppen: "80950",
+  /** Westjysk Smag — samme banner som produktfeed */
+  westjyskSmag: "91648",
+  /** Winesommelier — samme banner som produktfeed */
+  winesommelier: "114219",
   /** LforLiving.dk — vinglas m.m.; feed filtreres til vin/vintilbehør (smykker m.m. indgår ikke i søgning). */
   lforLiving: "47209",
   /** Likehome.dk — vinreoler, bar m.m.; stort blandfeed filtreres til vin/vintilbehør (ikke øvrigt boligmøbler). */

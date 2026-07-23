@@ -86,6 +86,12 @@ export function SiteFooter() {
               <Link href="/den-sidste-flaske" className="hover:text-rose-900">
                 Den Sidste Flaske
               </Link>
+              <Link href="/sps-wine" className="hover:text-rose-900">
+                SPS Wine
+              </Link>
+              <Link href="/vinforhandlere" className="font-medium text-stone-800 hover:text-rose-900">
+                Alle vinforhandlere
+              </Link>
             </nav>
           </div>
           <div>

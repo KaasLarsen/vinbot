@@ -3,10 +3,10 @@ import { MerchantHubRoute, merchantHubMetadata } from "@/lib/merchant-hubs/route
 
 export const dynamic = "force-dynamic";
 
-const SLUG = "den-sidste-flaske" as const;
+const SLUG = "winesommelier" as const;
 
 export const metadata: Metadata = merchantHubMetadata(SLUG);
 
-export default function DenSidsteFlaskePage() {
+export default function WinesommelierPage() {
   return <MerchantHubRoute slug={SLUG} />;
 }
