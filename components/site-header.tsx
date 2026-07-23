@@ -72,7 +72,17 @@ export function SiteHeader() {
     <header className="relative z-50 border-b border-stone-200/80 bg-white/90 backdrop-blur">
       <PageShell className="py-3">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="group flex min-w-0 items-center gap-2.5">
+          <Link
+            href="/"
+            aria-label="Vinbot — gå til forsiden"
+            className="group flex min-w-0 cursor-pointer items-center gap-2.5"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <VinbotLogo className="h-8 w-8 shrink-0 text-rose-950 transition-colors group-hover:text-rose-900" />
             <span className="text-xl font-semibold tracking-tight text-rose-950 transition-colors group-hover:text-rose-900">
               Vinbot
