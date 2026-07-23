@@ -11,7 +11,7 @@ type Props = {
 
 export function FooterAffiliatePromos({ beerMeHref, rareWineHref }: Props) {
   return (
-    <div className="mt-4 max-w-md space-y-3">
+    <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
       <div className="rounded-xl border border-stone-200/90 bg-white px-4 py-3 shadow-sm">
         <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Anbefaling · affiliate</p>
         <p className="mt-2 leading-relaxed text-stone-700">

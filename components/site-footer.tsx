@@ -19,7 +19,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-stone-200 bg-stone-50">
       <PageShell className="py-10 text-sm text-stone-600">
-        <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-semibold text-stone-900">{siteName}</p>
             <p className="mt-2 max-w-md leading-relaxed">
@@ -35,79 +35,82 @@ export function SiteFooter() {
                 Øl &amp; Vin på Facebook
               </a>
             </p>
-            <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} rareWineHref={PARTNER_ADS_RAREWINE_MEMBERS} />
           </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:min-w-0 lg:max-w-xl lg:shrink-0">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vin &amp; inspiration</p>
-              <nav className="mt-3 flex flex-col gap-2" aria-label="Vin, guides og partnere">
-                <Link href="/om-os" className="hover:text-rose-900">
-                  Om os
-                </Link>
-                <Link href="/guides" className="hover:text-rose-900">
-                  Alle guider
-                </Link>
-                <Link href="/opskrifter" className="hover:text-rose-900">
-                  Opskrifter
-                </Link>
-                <Link href="/rabatkoder" className="hover:text-rose-900">
-                  Rabatkoder
-                </Link>
-                <Link href="/tilbud" className="hover:text-rose-900">
-                  Vin tilbud
-                </Link>
-            <Link href="/lauridsen-vine" className="hover:text-rose-900">
-              Lauridsen Vine
-            </Link>
-            <Link href="/winther-vin" className="hover:text-rose-900">
-              Winther Vin
-            </Link>
-            <Link href="/dh-wines" className="hover:text-rose-900">
-              DH Wines
-            </Link>
-            <Link href="/johnsen-wine" className="hover:text-rose-900">
-              Johnsen Wine
-            </Link>
-            <Link href="/havnens-vin" className="hover:text-rose-900">
-              Havnens Vin
-            </Link>
-                <Link href="/den-sidste-flaske" className="hover:text-rose-900">
-                  Den Sidste Flaske
-                </Link>
-                <Link href="/vine" className="hover:text-rose-900">
-                  Vin-katalog
-                </Link>
-                <Link href="/vinkoleskabe" className="hover:text-rose-900">
-                  Vinkøleskabe
-                </Link>
-                <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
-                  Stor guide: vin og mad
-                </Link>
-              </nav>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vilkår &amp; kontakt</p>
-              <nav className="mt-3 flex flex-col gap-2" aria-label="Privatliv, vilkår og kontakt">
-                <Link href="/redaktionel-proces" className="hover:text-rose-900">
-                  Redaktionel proces
-                </Link>
-                <Link href="/privatliv" className="hover:text-rose-900">
-                  Privatliv
-                </Link>
-                <Link href="/cookiepolitik" className="hover:text-rose-900">
-                  Cookiepolitik
-                </Link>
-                <Link href="/betingelser" className="hover:text-rose-900">
-                  Betingelser
-                </Link>
-                <Link href="/kontakt" className="hover:text-rose-900">
-                  Kontakt
-                </Link>
-                <RetailerSignupCta />
-              </nav>
-            </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Udforsk</p>
+            <nav className="mt-3 flex flex-col gap-2" aria-label="Guides, opskrifter og katalog">
+              <Link href="/om-os" className="hover:text-rose-900">
+                Om os
+              </Link>
+              <Link href="/guides" className="hover:text-rose-900">
+                Alle guider
+              </Link>
+              <Link href="/opskrifter" className="hover:text-rose-900">
+                Opskrifter
+              </Link>
+              <Link href="/rabatkoder" className="hover:text-rose-900">
+                Rabatkoder
+              </Link>
+              <Link href="/tilbud" className="hover:text-rose-900">
+                Vin tilbud
+              </Link>
+              <Link href="/vine" className="hover:text-rose-900">
+                Vin-katalog
+              </Link>
+              <Link href="/vinkoleskabe" className="hover:text-rose-900">
+                Vinkøleskabe
+              </Link>
+              <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
+                Stor guide: vin og mad
+              </Link>
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vinforhandlere</p>
+            <nav className="mt-3 flex flex-col gap-2" aria-label="Vinforhandlere">
+              <Link href="/lauridsen-vine" className="hover:text-rose-900">
+                Lauridsen Vine
+              </Link>
+              <Link href="/winther-vin" className="hover:text-rose-900">
+                Winther Vin
+              </Link>
+              <Link href="/dh-wines" className="hover:text-rose-900">
+                DH Wines
+              </Link>
+              <Link href="/johnsen-wine" className="hover:text-rose-900">
+                Johnsen Wine
+              </Link>
+              <Link href="/havnens-vin" className="hover:text-rose-900">
+                Havnens Vin
+              </Link>
+              <Link href="/den-sidste-flaske" className="hover:text-rose-900">
+                Den Sidste Flaske
+              </Link>
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Vilkår &amp; kontakt</p>
+            <nav className="mt-3 flex flex-col gap-2" aria-label="Privatliv, vilkår og kontakt">
+              <Link href="/redaktionel-proces" className="hover:text-rose-900">
+                Redaktionel proces
+              </Link>
+              <Link href="/privatliv" className="hover:text-rose-900">
+                Privatliv
+              </Link>
+              <Link href="/cookiepolitik" className="hover:text-rose-900">
+                Cookiepolitik
+              </Link>
+              <Link href="/betingelser" className="hover:text-rose-900">
+                Betingelser
+              </Link>
+              <Link href="/kontakt" className="hover:text-rose-900">
+                Kontakt
+              </Link>
+              <RetailerSignupCta />
+            </nav>
           </div>
         </div>
+        <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} rareWineHref={PARTNER_ADS_RAREWINE_MEMBERS} />
         <p className="mt-8 text-xs text-stone-500">© {new Date().getFullYear()} {siteName}</p>
       </PageShell>
     </footer>
