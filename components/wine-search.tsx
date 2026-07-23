@@ -441,12 +441,18 @@ export function WineSearch({
   productCardPlacement = "home-search",
   variant = "default",
   intentChips,
+  controlsClassName,
+  resultsClassName,
 }: {
   initialQuery?: string;
   initialMax?: number;
   productCardPlacement?: string;
   variant?: "default" | "compact";
   intentChips?: WineSearchChip[];
+  /** Begrænser kun søgeformular + forslag (fx kompakt hero) — resultater beholder fuld bredde. */
+  controlsClassName?: string;
+  /** Valgfri wrapper omkring søgeresultater (fx hvid flade i hero). */
+  resultsClassName?: string;
 }) {
   const [q, setQ] = useState(initialQuery?.trim() || "");
   const [max, setMax] = useState(
@@ -708,120 +714,124 @@ export function WineSearch({
         onDetected={onBarcodeDetected}
         onError={onBarcodeScannerError}
       />
-      <form
-        className="flex flex-col gap-3 sm:flex-row sm:items-end"
-        onSubmit={(e) => {
-          e.preventDefault();
-          trackWineSearch(q, maxNum != null);
-          void search(q, maxNum);
-        }}
-      >
-        <div className="flex-1">
-          <label htmlFor="wine-q" className="block text-sm font-medium text-stone-700">
-            Hvad leder du efter?
-          </label>
-          <div className="relative mt-1">
-            <input
-              id="wine-q"
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              onFocus={() => setQueryFocused(true)}
-              onBlur={() => window.setTimeout(() => setQueryFocused(false), 120)}
-              placeholder={placeholder}
-              autoComplete="off"
-              aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
-              className="w-full rounded-xl border border-stone-300 bg-white py-3 pl-4 pr-12 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
-            />
-            <button
-              type="button"
-              onClick={() => setScannerOpen(true)}
-              className="absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 hover:text-rose-900"
-              aria-label="Scan stregkode med kamera"
-              title="Scan stregkode"
-            >
-              <BarcodeIcon className="h-5 w-5" />
-            </button>
-          </div>
-          {chips.length > 0 && queryFocused && !q.trim() ? (
-            <div
-              id="wine-search-suggestions"
-              className="mt-2 rounded-xl border border-rose-200 bg-rose-50/70 p-3 shadow-sm"
-            >
-              <p className="text-xs font-medium text-stone-700">Populære søgninger — klik for at starte</p>
-              <div className="mt-2">
-                <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
-              </div>
-            </div>
-          ) : null}
-        </div>
-        <div className="w-full sm:w-40">
-          <label htmlFor="wine-max" className="block text-sm font-medium text-stone-700">
-            Max pris (valgfri)
-          </label>
-          <input
-            id="wine-max"
-            inputMode="numeric"
-            value={max}
-            onChange={(e) => setMax(e.target.value.replace(/[^\d]/g, ""))}
-            placeholder="Fx150"
-            className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none focus:border-rose-900 focus:ring-2"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="rounded-xl bg-rose-900 px-6 py-3 font-semibold text-white shadow-sm hover:bg-rose-950 disabled:opacity-60"
+      <div className={["space-y-3", controlsClassName].filter(Boolean).join(" ")}>
+        <form
+          className="flex flex-col gap-3 sm:flex-row sm:items-end"
+          onSubmit={(e) => {
+            e.preventDefault();
+            trackWineSearch(q, maxNum != null);
+            void search(q, maxNum);
+          }}
         >
-          {loading ? "Søger…" : "Søg vin"}
-        </button>
-      </form>
-
-      {chips.length > 0 && (!queryFocused || q.trim()) ? (
-        <div className="rounded-xl border border-stone-200/80 bg-stone-50/60 px-3 py-3 sm:px-4">
-          <p className="text-sm text-stone-600">
-            <span className="font-medium text-stone-800">Prøv et forslag</span> — klik søger med det samme
-          </p>
-          <div className="mt-2">
-            <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
-          </div>
-        </div>
-      ) : null}
-
-      {valueSearchTip ? (
-        <div
-          className="rounded-lg border border-rose-100 bg-rose-50/80 px-4 py-3 text-sm text-stone-700"
-          role="note"
-        >
-          <p>
-            <span className="font-medium text-stone-900">Vinbot-tip:</span> {valueSearchTip.message}{" "}
-            <Link
-              href={valueSearchTip.guideHref}
-              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:decoration-rose-900"
-            >
-              {valueSearchTip.guideLabel}
-            </Link>
-            .
-          </p>
-          <p className="mt-2 flex flex-wrap gap-2">
-            {valueSearchTip.altQueries.map((alt) => (
+          <div className="flex-1">
+            <label htmlFor="wine-q" className="block text-sm font-medium text-stone-700">
+              Hvad leder du efter?
+            </label>
+            <div className="relative mt-1">
+              <input
+                id="wine-q"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                onFocus={() => setQueryFocused(true)}
+                onBlur={() => window.setTimeout(() => setQueryFocused(false), 120)}
+                placeholder={placeholder}
+                autoComplete="off"
+                aria-describedby={chips.length > 0 ? "wine-search-suggestions" : undefined}
+                className="w-full rounded-xl border border-stone-300 bg-white py-3 pl-4 pr-12 text-stone-900 shadow-sm outline-none ring-rose-900/20 focus:border-rose-900 focus:ring-2"
+              />
               <button
-                key={alt.q}
                 type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => runChipSearch({ label: alt.label, q: alt.q })}
-                className="rounded-full border border-rose-200 bg-white px-3 py-1 text-xs font-medium text-rose-900 hover:border-rose-400"
+                onClick={() => setScannerOpen(true)}
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 hover:text-rose-900"
+                aria-label="Scan stregkode med kamera"
+                title="Scan stregkode"
               >
-                {alt.label}
+                <BarcodeIcon className="h-5 w-5" />
               </button>
-            ))}
-          </p>
-        </div>
-      ) : null}
+            </div>
+            {chips.length > 0 && queryFocused && !q.trim() ? (
+              <div
+                id="wine-search-suggestions"
+                className="mt-2 rounded-xl border border-rose-200 bg-rose-50/70 p-3 shadow-sm"
+              >
+                <p className="text-xs font-medium text-stone-700">Populære søgninger — klik for at starte</p>
+                <div className="mt-2">
+                  <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
+                </div>
+              </div>
+            ) : null}
+          </div>
+          <div className="w-full sm:w-40">
+            <label htmlFor="wine-max" className="block text-sm font-medium text-stone-700">
+              Max pris (valgfri)
+            </label>
+            <input
+              id="wine-max"
+              inputMode="numeric"
+              value={max}
+              onChange={(e) => setMax(e.target.value.replace(/[^\d]/g, ""))}
+              placeholder="Fx150"
+              className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none focus:border-rose-900 focus:ring-2"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="rounded-xl bg-rose-900 px-6 py-3 font-semibold text-white shadow-sm hover:bg-rose-950 disabled:opacity-60"
+          >
+            {loading ? "Søger…" : "Søg vin"}
+          </button>
+        </form>
 
-      {error && <p className="text-sm text-red-700">{error}</p>}
+        {chips.length > 0 && (!queryFocused || q.trim()) ? (
+          <div className="rounded-xl border border-stone-200/80 bg-stone-50/60 px-3 py-3 sm:px-4">
+            <p className="text-sm text-stone-600">
+              <span className="font-medium text-stone-800">Prøv et forslag</span> — klik søger med det samme
+            </p>
+            <div className="mt-2">
+              <SearchSuggestionButtons chips={chips} onPick={runChipSearch} />
+            </div>
+          </div>
+        ) : null}
+
+        {valueSearchTip ? (
+          <div
+            className="rounded-lg border border-rose-100 bg-rose-50/80 px-4 py-3 text-sm text-stone-700"
+            role="note"
+          >
+            <p>
+              <span className="font-medium text-stone-900">Vinbot-tip:</span> {valueSearchTip.message}{" "}
+              <Link
+                href={valueSearchTip.guideHref}
+                className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:decoration-rose-900"
+              >
+                {valueSearchTip.guideLabel}
+              </Link>
+              .
+            </p>
+            <p className="mt-2 flex flex-wrap gap-2">
+              {valueSearchTip.altQueries.map((alt) => (
+                <button
+                  key={alt.q}
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => runChipSearch({ label: alt.label, q: alt.q })}
+                  className="rounded-full border border-rose-200 bg-white px-3 py-1 text-xs font-medium text-rose-900 hover:border-rose-400"
+                >
+                  {alt.label}
+                </button>
+              ))}
+            </p>
+          </div>
+        ) : null}
+
+        {error && <p className="text-sm text-red-700">{error}</p>}
+      </div>
 
       {data && (
-        <div className="space-y-4">
+        <div
+          className={["space-y-4", resultsClassName].filter(Boolean).join(" ")}
+        >
           {isMerchantBrowse && merchantBrowse ? (
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-lg font-semibold text-stone-900">Sortiment hos {merchantBrowse}</h2>
