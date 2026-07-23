@@ -18,32 +18,54 @@ const LEADERBOARD_VISBANNER_OK = new Set([
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
-type BannerChoice = { bannerId: string; merchant: string; copy: string };
+type BannerChoice = {
+  bannerId: string;
+  merchant: string;
+  copy: string;
+  logoSrc?: string;
+  logoW?: number;
+  logoH?: number;
+};
 
 const WINTHER: BannerChoice = {
   bannerId: WINTHER_VIN_LEADERBOARD_BANNER_ID,
   merchant: "Winther Vin",
   copy: "Winther Vin: bland fra hele webshoppen og få rabat — shop her",
+  logoSrc: "/images/merchants/winther-vin.jpg",
+  logoW: 270,
+  logoH: 90,
 };
 const JOHNSEN: BannerChoice = {
   bannerId: JOHNSEN_LEADERBOARD_BANNER_ID,
   merchant: "Johnsen Wine",
   copy: "Johnsen Wine: kurateret sortiment til vin-interesserede — se her",
+  logoSrc: "/images/merchants/johnsen-wine.png",
+  logoW: 320,
+  logoH: 80,
 };
 const DH: BannerChoice = {
   bannerId: DH_WINES_LEADERBOARD_BANNER_ID,
   merchant: "DH Wines",
   copy: "DH Wines: håndplukket sortiment til mad og hverdag — se udvalget",
+  logoSrc: "/images/merchants/dh-wines.png",
+  logoW: 400,
+  logoH: 120,
 };
 const LAURIDSEN: BannerChoice = {
   bannerId: LAURIDSEN_VINE_LEADERBOARD_BANNER_ID,
   merchant: "Lauridsen Vine",
   copy: "Lauridsen Vine: stort europæisk sortiment — udforsk regionerne",
+  logoSrc: "/images/merchants/lauridsen-vine.png",
+  logoW: 400,
+  logoH: 51,
 };
 const DSF: BannerChoice = {
   bannerId: DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
   merchant: "Den Sidste Flaske",
   copy: "Den Sidste Flaske: online vinhandel — se udvalget",
+  logoSrc: "/images/merchants/den-sidste-flaske.png",
+  logoW: 225,
+  logoH: 225,
 };
 
 /**
@@ -100,6 +122,9 @@ export function PartnerAdsLeaderboard({
   const finalBannerId = bannerId ?? mapped.bannerId;
   const merchant = mapped.merchant;
   const copy = mapped.copy;
+  const logoSrc = mapped.logoSrc;
+  const logoW = mapped.logoW ?? 160;
+  const logoH = mapped.logoH ?? 48;
   const placementLabel = placement ?? `partner-leaderboard-${hub || "default"}`;
 
   const href = partnerAdsKlikUrl(finalBannerId);
@@ -116,7 +141,7 @@ export function PartnerAdsLeaderboard({
           onClick={() =>
             trackAffiliateClick({ merchant, placement: placementLabel, slug, hub, url: href })
           }
-          className="inline-block max-w-full rounded-xl shadow-sm ring-1 ring-stone-200/90 transition hover:opacity-95"
+          className="inline-block max-w-full overflow-hidden rounded-xl shadow-md ring-1 ring-stone-200/80 transition hover:shadow-lg hover:ring-rose-200/70"
         >
           {showBannerImage ? (
             // eslint-disable-next-line @next/next/no-img-element -- Partner-Ads banner (ofte blokeret af adblock → fallback nedenfor)
@@ -133,8 +158,22 @@ export function PartnerAdsLeaderboard({
               }}
             />
           ) : (
-            <span className="flex min-h-[4.5rem] max-w-4xl items-center justify-center bg-rose-950 px-6 py-4 text-center text-sm font-semibold text-white sm:text-base">
-              {copy}
+            <span className="flex min-h-[4.5rem] w-full max-w-4xl items-center gap-4 bg-gradient-to-r from-rose-950 via-rose-900 to-rose-950 px-5 py-4 sm:gap-5 sm:px-6">
+              {logoSrc ? (
+                <span className="flex h-12 shrink-0 items-center justify-center rounded-md bg-white px-3 py-2 shadow-sm">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- lokal merchant-logo i affiliate-fallback */}
+                  <img
+                    src={logoSrc}
+                    alt=""
+                    width={logoW}
+                    height={logoH}
+                    className="h-7 w-auto max-w-[7.5rem] object-contain"
+                  />
+                </span>
+              ) : null}
+              <span className="min-w-0 text-left text-sm font-semibold leading-snug text-white sm:text-base">
+                {copy}
+              </span>
             </span>
           )}
         </a>
