@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { TilbudPageSections } from "@/components/tilbud-page-sections";
@@ -214,9 +213,6 @@ export default async function TilbudHubPage() {
         </p>
       </section>
 
-      <div className="mt-8">
-        <AffiliateDisclosure />
-      </div>
     </PageShell>
   );
 }

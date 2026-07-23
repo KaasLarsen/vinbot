@@ -13,7 +13,6 @@ import { getBedsteFallbackFaq } from "@/lib/guide-faq-bedste-fallback";
 import { getVidenFallbackFaq } from "@/lib/guide-faq-viden-fallback";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { GuideCatalogSearchBar } from "@/components/guide-catalog-search-bar";
 import { GuideSearchCta } from "@/components/guide-search-cta";
@@ -171,7 +170,6 @@ export default async function GuidePage({ params }: Props) {
       {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
       {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
       <div className="prose prose-stone mt-10 max-w-none">
-        <AffiliateDisclosure compact />
         {content}
       </div>
       {intent ? (

@@ -5,7 +5,6 @@ import { HomeQuickTopicsSection } from "@/components/home-quick-topics-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { WineSearch } from "@/components/wine-search";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
@@ -460,9 +459,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
 
         <div className="mt-5 rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:mt-6 sm:p-6">
           <WineSearch initialQuery={q} />
-          <div className="mt-4 border-t border-stone-100 pt-3">
-            <AffiliateDisclosure compact />
-          </div>
         </div>
       </HomeHeroSearchSection>
 

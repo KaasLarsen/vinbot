@@ -3,7 +3,6 @@ import Link from "next/link";
 import { WineCoolerSearch } from "@/components/wine-cooler-search";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { siteUrl } from "@/lib/site";
@@ -90,10 +89,6 @@ export default function VinkoleskabePage() {
         </p>
       </header>
 
-      <div className="mt-8">
-        <AffiliateDisclosure />
-      </div>
-
       <section className="mt-10 grid gap-4 sm:grid-cols-3">
         {[
           {
@@ -131,9 +126,6 @@ export default function VinkoleskabePage() {
           isbøtter eller øvrigt inventar. Resultaterne kommer fra Vinkøleskabet.dk, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS; klik videre for mål,
           levering og aktuel pris.
         </p>
-        <div className="mt-4">
-          <AffiliateDisclosure compact />
-        </div>
         <div className="mt-6">
           <WineCoolerSearch initialQuery="vinkøleskab" />
         </div>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-outbound-link";
 import { BreadcrumbJsonLd, FaqJsonLd, WineDetailProductJsonLd } from "@/components/json-ld";
@@ -112,8 +111,6 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
       <article className="mt-8">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{wine.displayTitle}</h1>
         <p className="mt-3 text-lg text-stone-700">{wine.metaDescription}</p>
-
-        <AffiliateDisclosure />
 
         {wine.listPrice != null || (wine.volumePrices?.length ?? 0) > 0 ? (
           <div className="mt-6 rounded-2xl border border-stone-200/90 bg-stone-50/80 p-4">

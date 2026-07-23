@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, RecipeJsonLd } from "@/components/json-ld";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
@@ -192,7 +191,6 @@ export default async function RecipePage({ params }: Props) {
       </div>
 
       <div className="prose prose-stone mt-10 max-w-none">
-        <AffiliateDisclosure compact />
         {content}
       </div>
 
