@@ -29,20 +29,23 @@ export async function POST(req: Request) {
     );
   }
 
-  const { storeName, feedUrl, hasAffiliate, affiliateNetwork } = parsed.data;
+  const { storeName, feedUrl, email, hasAffiliate, affiliateNetwork, wantsCpc } = parsed.data;
   const from =
     process.env.RESEND_FROM?.trim() || `${siteName} <onboarding@resend.dev>`;
 
   const affiliateLine = hasAffiliate
     ? `Affiliate-netværk: ${affiliateNetwork}`
     : "Affiliate-netværk: Nej";
+  const cpcLine = wantsCpc ? "CPC-aftale ønskes: Ja" : "CPC-aftale ønskes: Nej";
 
   const text = [
     `Ny forhandler-ansøgning fra ${siteName}`,
     "",
     `Butiksnavn: ${storeName}`,
+    `E-mail: ${email}`,
     `Produkt feed URL: ${feedUrl}`,
     affiliateLine,
+    cpcLine,
   ].join("\n");
 
   try {
@@ -50,6 +53,7 @@ export async function POST(req: Request) {
     const { error } = await resend.emails.send({
       from,
       to: contactEmail,
+      replyTo: email,
       subject: `Ny forhandler-ansøgning: ${storeName}`,
       text,
     });

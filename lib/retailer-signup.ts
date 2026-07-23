@@ -1,8 +1,10 @@
 export type RetailerSignupPayload = {
   storeName: string;
   feedUrl: string;
+  email: string;
   hasAffiliate: boolean;
   affiliateNetwork?: string;
+  wantsCpc: boolean;
 };
 
 export type RetailerSignupValidationError = {
@@ -19,6 +21,11 @@ function isHttpUrl(value: string): boolean {
   }
 }
 
+function isEmail(value: string): boolean {
+  // Simpel, pragmatisk check — ikke RFC-komplet.
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 export function parseRetailerSignupBody(raw: unknown): {
   data?: RetailerSignupPayload;
   error?: RetailerSignupValidationError;
@@ -30,7 +37,9 @@ export function parseRetailerSignupBody(raw: unknown): {
   const body = raw as Record<string, unknown>;
   const storeName = typeof body.storeName === "string" ? body.storeName.trim() : "";
   const feedUrl = typeof body.feedUrl === "string" ? body.feedUrl.trim() : "";
+  const email = typeof body.email === "string" ? body.email.trim() : "";
   const hasAffiliate = body.hasAffiliate === true;
+  const wantsCpc = body.wantsCpc === true;
   const affiliateNetwork =
     typeof body.affiliateNetwork === "string" ? body.affiliateNetwork.trim() : "";
 
@@ -45,11 +54,17 @@ export function parseRetailerSignupBody(raw: unknown): {
       error: { field: "feedUrl", message: "Angiv en gyldig URL (http eller https)." },
     };
   }
+  if (!email) {
+    return { error: { field: "email", message: "E-mail er påkrævet." } };
+  }
+  if (!isEmail(email)) {
+    return { error: { field: "email", message: "Angiv en gyldig e-mailadresse." } };
+  }
   if (hasAffiliate && !affiliateNetwork) {
     return {
       error: {
         field: "affiliateNetwork",
-        message: "Angiv hvilket affiliate-netværk I bruger.",
+        message: "Angiv hvilket affiliate-netværk I samarbejder via.",
       },
     };
   }
@@ -58,7 +73,9 @@ export function parseRetailerSignupBody(raw: unknown): {
     data: {
       storeName,
       feedUrl,
+      email,
       hasAffiliate,
+      wantsCpc: hasAffiliate ? false : wantsCpc,
       ...(hasAffiliate ? { affiliateNetwork } : {}),
     },
   };

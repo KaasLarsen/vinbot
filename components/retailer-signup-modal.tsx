@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import type { FormEvent } from "react";
 
@@ -17,8 +18,10 @@ export function RetailerSignupModal({ open, onClose }: Props) {
   const titleId = useId();
   const [storeName, setStoreName] = useState("");
   const [feedUrl, setFeedUrl] = useState("");
+  const [email, setEmail] = useState("");
   const [hasAffiliate, setHasAffiliate] = useState<"yes" | "no" | "">("");
   const [affiliateNetwork, setAffiliateNetwork] = useState("");
+  const [wantsCpc, setWantsCpc] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -43,8 +46,10 @@ export function RetailerSignupModal({ open, onClose }: Props) {
     if (!open) return;
     setStoreName("");
     setFeedUrl("");
+    setEmail("");
     setHasAffiliate("");
     setAffiliateNetwork("");
+    setWantsCpc(false);
     setStatus("idle");
     setErrorMessage(null);
   }, [open]);
@@ -63,12 +68,16 @@ export function RetailerSignupModal({ open, onClose }: Props) {
       setErrorMessage("Produkt feed URL er påkrævet.");
       return;
     }
+    if (!email.trim()) {
+      setErrorMessage("E-mail er påkrævet.");
+      return;
+    }
     if (hasAffiliate === "") {
-      setErrorMessage("Vælg om I er på et affiliate-netværk.");
+      setErrorMessage("Vælg om I samarbejder via et affiliate-netværk.");
       return;
     }
     if (hasAffiliate === "yes" && !affiliateNetwork.trim()) {
-      setErrorMessage("Angiv hvilket affiliate-netværk I bruger.");
+      setErrorMessage("Angiv hvilket affiliate-netværk I samarbejder via.");
       return;
     }
 
@@ -80,8 +89,10 @@ export function RetailerSignupModal({ open, onClose }: Props) {
         body: JSON.stringify({
           storeName: storeName.trim(),
           feedUrl: feedUrl.trim(),
+          email: email.trim(),
           hasAffiliate: hasAffiliate === "yes",
           affiliateNetwork: hasAffiliate === "yes" ? affiliateNetwork.trim() : undefined,
+          wantsCpc: hasAffiliate === "no" ? wantsCpc : false,
         }),
       });
       const json = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -114,7 +125,14 @@ export function RetailerSignupModal({ open, onClose }: Props) {
               Bliv forhandler på Vinbot
             </h2>
             <p className="mt-1 text-sm text-stone-600">
-              Fortæl os om jeres butik og produktfeed — vi vender tilbage.
+              Fortæl os om jeres butik og produktfeed — vi vender tilbage.{" "}
+              <Link
+                href="/forhandlere"
+                onClick={onClose}
+                className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950"
+              >
+                Læs mere
+              </Link>
             </p>
           </div>
           <button
@@ -168,10 +186,24 @@ export function RetailerSignupModal({ open, onClose }: Props) {
               />
             </label>
 
+            <label className="block text-sm font-medium text-stone-800">
+              E-mail <span className="text-rose-800">*</span>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={inputClassName}
+                autoComplete="email"
+                required
+              />
+            </label>
+
             <fieldset>
               <legend className="text-sm font-medium text-stone-800">
-                Er I på et affiliate-netværk? <span className="text-rose-800">*</span>
+                Samarbejder I via et affiliate-netværk? <span className="text-rose-800">*</span>
               </legend>
+              <p className="mt-1 text-xs text-stone-500">Fx Awin, Adtraction eller Partner-Ads</p>
               <div className="mt-2 flex gap-4">
                 <label className="inline-flex items-center gap-2 text-sm text-stone-700">
                   <input
@@ -179,7 +211,10 @@ export function RetailerSignupModal({ open, onClose }: Props) {
                     name="hasAffiliate"
                     value="yes"
                     checked={hasAffiliate === "yes"}
-                    onChange={() => setHasAffiliate("yes")}
+                    onChange={() => {
+                      setHasAffiliate("yes");
+                      setWantsCpc(false);
+                    }}
                     className="accent-rose-900"
                   />
                   Ja
@@ -210,6 +245,21 @@ export function RetailerSignupModal({ open, onClose }: Props) {
                   placeholder="Awin, Adtraction…"
                   required
                 />
+              </label>
+            ) : null}
+
+            {hasAffiliate === "no" ? (
+              <label className="inline-flex items-start gap-2.5 text-sm text-stone-700">
+                <input
+                  type="checkbox"
+                  name="wantsCpc"
+                  checked={wantsCpc}
+                  onChange={(e) => setWantsCpc(e.target.checked)}
+                  className="mt-0.5 accent-rose-900"
+                />
+                <span>
+                  Jeg ønsker en CPC-aftale med vinbot.dk (betalende partner uden affiliate)
+                </span>
               </label>
             ) : null}
 
