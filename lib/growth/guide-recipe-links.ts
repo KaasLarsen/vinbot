@@ -49,6 +49,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "vol-au-vent-med-hvidvin", label: "Vol-au-vent med hvidvin" },
   ],
   "vin-til-pizza-og-pasta": [
+    { slug: "klassisk-lasagne", label: "Klassisk lasagne (vin til glasset)" },
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin" },
@@ -70,6 +71,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "okse-wellington-med-rodvinssauce", label: "Okse-wellington med rødvinssauce" },
   ],
   "vin-til-lasagne": [
+    { slug: "klassisk-lasagne", label: "Klassisk lasagne (vin til glasset)" },
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin i kødsovs" },
     { slug: "ragu-med-rodvin", label: "Ragù med rødvin" },
   ],
@@ -136,6 +138,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinebryst-braiseret-i-rodvin", label: "Svinebryst braiseret i rødvin" },
   ],
   "vin-til-butter-chicken": [
+    { slug: "butter-chicken", label: "Butter chicken (vin til glasset)" },
+    { slug: "butter-chicken-med-hvidvin", label: "Butter chicken med hvidvin" },
     { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
     { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
     { slug: "thai-gron-karry-med-hvidvin", label: "Thai grøn karry med hvidvin" },
@@ -156,6 +160,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
   ],
   "vin-til-ribeye": [
+    { slug: "ribeye", label: "Ribeye (vin til glasset)" },
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -289,6 +294,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
   ],
   "vin-til-kebab-og-shawarma": [
+    { slug: "shawarma-tallerken", label: "Shawarma-tallerken (vin til glasset)" },
     { slug: "shawarma-kylling-med-hvidvin", label: "Shawarma-kylling med hvidvin" },
     { slug: "kebab-spyd-med-rodvin", label: "Kebab-spyd med rødvin" },
   ],
@@ -302,6 +308,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ramen-kylling-med-hvidvin", label: "Ramen med kylling og hvidvin" },
   ],
   "vin-til-tacos": [
+    { slug: "tacos-med-oksekoed", label: "Tacos med oksekød (vin til glasset)" },
     { slug: "tacos-med-rodvin-okse", label: "Tacos med okse og rødvin" },
   ],
   "vin-til-karryretter": [
@@ -320,6 +327,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "stegte-sild-i-hvidvin", label: "Stegte sild i hvidvin" },
   ],
   "vin-til-falafel-og-hummus": [
+    { slug: "falafel-tallerken", label: "Falafel-tallerken (vin til glasset)" },
     { slug: "falafel-tallerken-med-hvidvin", label: "Falafel-tallerken med hvidvin" },
   ],
   "vin-til-asiatisk-mad": [
@@ -336,6 +344,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
   ],
   "vin-til-stegt-flaesk": [
+    { slug: "stegt-flaesk-med-persillesovs", label: "Stegt flæsk med persillesovs (vin til glasset)" },
     { slug: "stegt-flaesk-i-hvidvinsauce", label: "Stegt flæsk i hvidvinsauce" },
     { slug: "persillesovs-med-hvidvin", label: "Persillesovs med hvidvin" },
   ],
@@ -414,6 +423,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "aebleskiver-med-hvidvin", label: "Æbleskiver med hvidvin" },
   ],
   "vin-til-frikadeller": [
+    { slug: "frikadeller-med-kartofler", label: "Frikadeller med kartofler (vin til glasset)" },
+    { slug: "frikadeller-i-hvidvinsauce", label: "Frikadeller i hvidvinsauce" },
     { slug: "karbonader-i-hvidvinsauce", label: "Karbonader i hvidvinsauce" },
   ],
   "vin-til-torsk": [
@@ -437,6 +448,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "chili-con-carne-med-rodvin", label: "Chili con carne med rødvin" },
   ],
   "vin-til-medister": [
+    { slug: "medister-med-kartofler", label: "Medister med kartofler (vin til glasset)" },
     { slug: "medister-i-rodvinssauce", label: "Medister i rødvinsauce" },
   ],
   "vin-til-gulasch": [
@@ -504,6 +516,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
   ],
   "vin-til-fisk-og-chips": [
+    { slug: "fish-and-chips", label: "Fish and chips (vin til glasset)" },
     { slug: "fish-and-chips-med-hvidvin", label: "Fish and chips med hvidvin" },
   ],
   "vin-til-marokkansk-mad": [

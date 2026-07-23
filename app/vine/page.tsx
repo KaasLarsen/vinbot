@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { VineFeaturedStrip, type VineFeaturedWine } from "@/components/vine-featured";
@@ -105,9 +104,6 @@ export default async function VineHubPage() {
         )}
       </section>
 
-      <section className="mt-12">
-        <AffiliateDisclosure />
-      </section>
     </PageShell>
   );
 }

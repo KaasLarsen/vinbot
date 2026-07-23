@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { FaqJsonLd } from "@/components/json-ld";
 import { MerchantHubShopLink } from "@/components/merchant-hub-shop-link";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
@@ -82,10 +81,6 @@ export default function HavnensVinPage() {
           </Link>
         </p>
       </section>
-
-      <div className="mt-8">
-        <AffiliateDisclosure />
-      </div>
 
       <section className="mt-10 space-y-4 text-stone-800">
         <h2 className="text-2xl font-semibold text-stone-900">Gå til butikken</h2>

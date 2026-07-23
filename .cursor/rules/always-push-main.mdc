@@ -1,0 +1,12 @@
+---
+description: Altid commit og push til main for production-deploy
+alwaysApply: true
+---
+
+# Altid push til main
+
+Efter færdige ændringer: commit og push direkte til `main`, så Vercel production opdateres.
+
+- Efterlad ikke arbejde kun på feature branches.
+- Når brugeren siger "push": commit relevante ændringer hvis nødvendigt, sørg for at `main` har alt, og push `main` til origin.
+- Feature branches er OK midlertidigt under arbejde, men afslut altid med merge/push til `main`.

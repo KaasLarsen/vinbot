@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RabatkodeShopLink } from "@/components/rabatkode-shop-link";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
@@ -197,10 +196,6 @@ export default function RabatkoderPage() {
       <p className="mt-3 text-sm text-stone-600">
         <strong className="font-medium text-stone-800">Vigtigt:</strong> Tilbud og koder kan ændre sig eller udløbe. Læs altid de aktuelle betingelser på forhandlerens egen side før du betaler.
       </p>
-
-      <div className="mt-8">
-        <AffiliateDisclosure />
-      </div>
 
       <p className="mt-4 text-xs text-stone-500">
         * Shop-links markeret med stjerne er annoncelinks — Vinbot kan modtage provision <strong className="font-medium text-stone-700">uden merpris for dig</strong>.

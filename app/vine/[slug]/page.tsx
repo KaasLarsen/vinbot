@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
 import { VineProfileEditorial, VineProfileFaq } from "@/components/vine-profile-editorial";
@@ -171,9 +170,6 @@ export default async function VineProductPage({ params }: Props) {
 
         <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-stone-900">Hvor kan du købe den?</h2>
-          <div className="mt-4 border-b border-stone-100 pb-4">
-            <AffiliateDisclosure compact />
-          </div>
           <ul className="mt-4 divide-y divide-stone-100">
             {wine.offers.map((o) => (
               <li key={`${o.merchant}-${o.url}`} className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -211,10 +207,6 @@ export default async function VineProductPage({ params }: Props) {
 
         <section className="mt-10 bg-transparent p-0">
           <VivinoCommunityLink href={vivinoSearchUrl(wine.displayTitle)} />
-        </section>
-
-        <section className="mt-10">
-          <AffiliateDisclosure />
         </section>
 
         <p className="mt-8 text-sm text-stone-500">

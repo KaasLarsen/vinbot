@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { AffiliateDisclosure } from "@/components/affiliate-disclosure";
 import { DsfFeaturedProductsJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
@@ -66,8 +65,6 @@ export default function DenSidsteFlaskePage() {
         landets stærkeste vin-shops med restpartier, daglige tilbud og sjældne flasker. Her på Vinbot får du
         inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.
       </p>
-
-      <AffiliateDisclosure />
 
       <section className="mt-10 space-y-4 text-stone-800">
         <h2 className="text-2xl font-semibold text-stone-900">Gå direkte til butikken</h2>
