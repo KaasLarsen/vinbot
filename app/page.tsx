@@ -58,7 +58,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
         <div className="mt-5 sm:mt-6">
           <WineSearch
             initialQuery={q}
-            controlsClassName="max-w-md rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-xl sm:p-5"
+            controlsClassName="max-w-lg rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-2xl sm:p-5"
             resultsClassName="rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-6"
           />
         </div>
