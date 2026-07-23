@@ -139,13 +139,6 @@ export default async function HomePage({ searchParams }: HomeProps) {
           <h3 className="text-lg font-semibold text-stone-900">Vin-viden</h3>
           <p className="mt-2 text-stone-600">Korte svar: hvor længe holder vin, hvor mange glas i en flaske, hvad er tanniner — og sådan dekanterer, serverer og smager du.</p>
         </Link>
-        <Link
-          href="/vinkoleskabe"
-          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
-        >
-          <h3 className="text-lg font-semibold text-stone-900">Vinkøleskabe</h3>
-          <p className="mt-2 text-stone-600">Søg vinkøleskabe hos Vinkøleskabet.dk med billede og pris — plus købsguide til størrelse, zoner og placering.</p>
-        </Link>
         </div>
       </section>
 
