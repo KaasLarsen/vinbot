@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { FooterAffiliatePromos } from "@/components/footer-affiliate-promos";
+import { PageShell } from "@/components/page-shell";
+import { RetailerSignupCta } from "@/components/retailer-signup-cta";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
 import { siteName } from "@/lib/site";
-import { PageShell } from "@/components/page-shell";
 
 const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
 
@@ -102,6 +103,7 @@ export function SiteFooter() {
                 <Link href="/kontakt" className="hover:text-rose-900">
                   Kontakt
                 </Link>
+                <RetailerSignupCta />
               </nav>
             </div>
           </div>
