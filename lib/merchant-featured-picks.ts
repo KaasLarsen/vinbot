@@ -85,26 +85,6 @@ export const MERCHANT_FEATURED_PICKS: MerchantFeaturedPick[] = [
     listPrice: 145,
     priceCurrency: "DKK",
   },
-  {
-    merchantId: "den-sidste-flaske",
-    title: "Domaine le Bihan Sancerre Romain Blanc 2023",
-    blurb: "Sancerre sauvignon med citrus og mineralsk syre — Loire-klassiker til fisk og salat.",
-    productUrl: "https://densidsteflaske.dk/products/domaine-le-bihan-sancerre-romain-blanc",
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/domaine-le-bihan-sancerre-romain-blanc-2023-domaine-le-bihan-hvidvin-1219425087.png?v=1770286630",
-    listPrice: 255,
-    priceCurrency: "DKK",
-  },
-  {
-    merchantId: "den-sidste-flaske",
-    title: "Cave de Tain Crozes-Hermitage 2021",
-    blurb: "Nord-rhône syrah med bær og peber — rød til lam, gryderetter og grill.",
-    productUrl: "https://densidsteflaske.dk/products/cave-de-tain-crozes-hermitage-2021",
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/cave-de-tain-crozes-hermitage-selection-premiere-2021-pris-cave-de-tain-rodvin-1199458184.png?v=1761301120",
-    listPrice: 149,
-    priceCurrency: "DKK",
-  },
   // Lauridsen Vine
   {
     merchantId: "lauridsen-vine",

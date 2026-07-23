@@ -7,8 +7,8 @@ import { crossMerchantDealToCard, feedDealToCard } from "@/lib/deals/types";
 
 export async function HomeDealsStrip() {
   const [feedDealsRaw, crossDealsRaw] = await Promise.all([
-    listFeedDeals({ limit: 6, minDiscount: 15 }),
-    listCrossMerchantDeals({ limit: 6, minSavingsPercent: 20 }),
+    listFeedDeals({ limit: 8, minDiscount: 15 }),
+    listCrossMerchantDeals({ limit: 8, minSavingsPercent: 20 }),
   ]);
 
   const cards = [
@@ -16,7 +16,7 @@ export async function HomeDealsStrip() {
     ...crossDealsRaw.map(crossMerchantDealToCard),
   ]
     .sort((a, b) => b.discountPercent - a.discountPercent)
-    .slice(0, 6);
+    .slice(0, 8);
 
   if (cards.length === 0) return null;
 

@@ -30,7 +30,7 @@ export function MerchantFeaturedPicks({
   const cfg = getMerchantWineConfig(merchantId);
   const headingId = variant === "home" ? `home-${merchantId}-featured-heading` : `${merchantId}-featured-heading`;
   const gridClass =
-    variant === "home" ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5" : "grid gap-6 sm:grid-cols-2";
+    variant === "home" ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-4" : "grid gap-6 sm:grid-cols-2";
 
   return (
     <section className="mt-14 space-y-6" aria-labelledby={headingId}>

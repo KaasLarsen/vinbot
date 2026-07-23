@@ -61,13 +61,22 @@ export default async function HomePage({ searchParams }: HomeProps) {
       </HomeHeroSearchSection>
 
 
-      {!q?.trim() ? <HomeRecipesStrip /> : null}
       {!q?.trim() ? <HomeWinesStrip /> : null}
+      {!q?.trim() ? <HomeRecipesStrip /> : null}
 
       {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
       {!q?.trim() ? <HomeDealsStrip /> : null}
 
-      <section className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <section className="mt-16" aria-labelledby="home-topics-heading">
+        <div>
+          <h2 id="home-topics-heading" className="text-xl font-semibold tracking-tight text-stone-900">
+            Udforsk emner
+          </h2>
+          <p className="mt-1 text-sm text-stone-600">
+            Mad, fest, sæson og vin-viden — spring direkte ind i det, der interesserer dig.
+          </p>
+        </div>
+        <div className="mt-5 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
@@ -137,6 +146,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
           <h3 className="text-lg font-semibold text-stone-900">Vinkøleskabe</h3>
           <p className="mt-2 text-stone-600">Søg vinkøleskabe hos Vinkøleskabet.dk med billede og pris — plus købsguide til størrelse, zoner og placering.</p>
         </Link>
+        </div>
       </section>
 
       <CampaignBanner />
