@@ -70,6 +70,11 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "koldskal-med-hvidvin": ["vin-til-koldskaal", "vin-til-sommer", "vin-til-dessert-og-kransekage"],
   "morbradgryde-med-hvidvin": ["vin-til-svinekoed", "vin-til-gryderet"],
   "biksemad-med-rodvin": ["vin-til-oksekoed", "vin-til-gryderet"],
+  "gyros-tallerken": ["vin-til-graesk-mad", "vin-til-svinekoed", "vin-til-grill-og-bbq"],
+  "pad-thai": ["vin-til-thai-mad", "riesling-til-asiatisk-mad", "vin-til-asiatisk-mad"],
+  "andesteg": ["vin-til-and", "pinot-noir-til-and", "vin-til-julemad-den-store-guide"],
+  "ossobuco": ["vin-til-italiensk-mad", "vin-til-gryderet", "vin-til-kalvemoerbrad"],
+  "ceviche": ["vin-til-ceviche", "vin-til-fisk-og-skaldyr", "vin-til-peruviansk-mad"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
