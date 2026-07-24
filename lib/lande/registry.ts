@@ -271,6 +271,50 @@ export const LANDE: LandConfig[] = [
     ],
   },
   {
+    slug: "schweiz",
+    displayName: "Schweiz",
+    continent: "europa",
+    teaser: "Valais, Vaud og Genève — chasselas, pinot noir og alpine hvide.",
+    title: "Vin fra Schweiz — chasselas, regioner og forslag | Vinbot",
+    description:
+      "Schweizisk vin: Valais, Vaud, chasselas og pinot noir. Kendetegn og søg hos danske forhandlere.",
+    introParagraphs: [
+      "Schweiz er et alpint vinland med stejl dyrkning og ofte høje omkostninger — derfor ser du færre flasker på danske hylder end fra nabolandene. Når de er der, er de typisk rene, præcise og madvenlige.",
+      "Chasselas (ofte som Fendant i Valais) er den lokale hvids signatur; pinot noir og merlot præger mange røde.",
+    ],
+    kendetegn: [
+      "Køligt, alpint klima — elegance og syre frem for tung frugt.",
+      "Chasselas: let, mineralsk hvid — god til fisk, ost og fondue-agtige retter.",
+      "Små mængder og høj produktionspris — ofte premium-prisleje.",
+      "Valais er det største område; Vaud (Lavaux) er UNESCO-terrasser ved Genèvesøen.",
+    ],
+    searchTerms: ["schweiz", "switzerland", "swiss", "schweizisk", "schweiziske", "suisse"],
+    primaryQuery: "schweiz chasselas",
+    wineSuggestions: [
+      { title: "Chasselas / Fendant", q: "chasselas fendant" },
+      { title: "Schweizisk pinot noir", q: "schweiz pinot noir" },
+      { title: "Valais", q: "valais wine" },
+    ],
+    regions: [
+      { name: "Valais", q: "valais chasselas", note: "Største kanton — Fendant, pinot og lokale specialty-druer." },
+      { name: "Vaud / Lavaux", q: "vaud lavaux", note: "Terrasser ved Genèvesøen — mineralsk chasselas." },
+      { name: "Ticino", q: "ticino merlot", note: "Italiensktalende syd — merlot i kølig stil." },
+    ],
+    deepGuideSlug: "vinregion-europa-central-og-oest",
+    faq: [
+      {
+        question: "Hvorfor er schweizisk vin dyr?",
+        answer:
+          "Stejl dyrkning, høje lønninger og lille eksport betyder, at meget drikkes hjemme. Når flaskerne når Danmark, ligger de ofte i det øvre prisleje — vælg bevidst til mad eller nysgerrighed.",
+      },
+      {
+        question: "Hvad er Fendant?",
+        answer:
+          "Fendant er navnet på chasselas fra Valais — en let, tør hvidvin. God til ost, fisk og lettere schweiziske/alpine retter.",
+      },
+    ],
+  },
+  {
     slug: "ungarn",
     displayName: "Ungarn",
     continent: "europa",
@@ -480,6 +524,56 @@ export const LANDE: LandConfig[] = [
         question: "Er amerikansk vin altid kraftig?",
         answer:
           "Californisk cabernet og chardonnay kan være det, men Oregon pinot og kølige kystzoner er mere elegante. Læs region, ikke kun «USA».",
+      },
+    ],
+  },
+  {
+    slug: "canada",
+    displayName: "Canada",
+    continent: "amerika",
+    teaser: "Okanagan og Niagara — kølig pinot, chardonnay og icewine.",
+    title: "Vin fra Canada — Okanagan, icewine og forslag | Vinbot",
+    description:
+      "Canadisk vin: Okanagan Valley, Niagara og icewine. Kendetegn og søg hos danske forhandlere.",
+    introParagraphs: [
+      "Canada er et køligt vinland med to hovedscener: Okanagan i British Columbia (pinot, chardonnay, elegante røde) og Niagara i Ontario (især icewine og kølige hvide).",
+      "Icewine er det internationale ikon — men still wines fra Okanagan er ofte det mest spændende til hverdagsmad.",
+    ],
+    kendetegn: [
+      "Køligt klima — høj syre, ren frugt, lavere alkohol end solrige New World-lande.",
+      "Okanagan: ørkenagtig dal med sø-påvirkning — pinot noir, chardonnay, syrah i kølig stil.",
+      "Niagara: icewine (vidal, riesling) og friske hvide.",
+      "Stilmæssigt tættere på Oregon/Tyskland end på Californien.",
+    ],
+    searchTerms: ["canada", "canadian", "canadisk", "canadiske"],
+    primaryQuery: "okanagan pinot noir",
+    wineSuggestions: [
+      { title: "Okanagan pinot", q: "okanagan pinot noir" },
+      { title: "Canadisk chardonnay", q: "okanagan chardonnay" },
+      { title: "Icewine", q: "icewine canada" },
+    ],
+    regions: [
+      {
+        name: "Okanagan Valley",
+        q: "okanagan pinot noir",
+        note: "British Columbia — pinot, chardonnay og elegant rød.",
+      },
+      {
+        name: "Niagara Peninsula",
+        q: "niagara icewine",
+        note: "Ontario — icewine, riesling og kølige hvide.",
+      },
+    ],
+    faq: [
+      {
+        question: "Er canadisk vin kun icewine?",
+        answer:
+          "Icewine er det mest kendte eksportprodukt, men Okanagan og Niagara laver også stærke tørre vine — især pinot noir og chardonnay i kølig stil.",
+      },
+      {
+        question: "Hvornår vælger jeg canadisk vin?",
+        answer:
+          "Når du vil have kølig elegance (laks, svampe, fjerkræ) eller en sød icewine til dessert og blåost.",
       },
     ],
   },

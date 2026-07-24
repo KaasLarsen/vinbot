@@ -72,7 +72,7 @@ const LAND_GUIDES_AFRIKA_OCEANIEN: LandGuide[] = [
   },
 ];
 
-type HurtigRegion = { navn: string; q: string; note: string; slug?: string };
+type HurtigRegion = { navn: string; q: string; note: string; slug?: string; landSlug?: string };
 
 /** Klassiske søgeord på forsiden — grupperet efter land/område. */
 const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }[] = [
@@ -121,7 +121,7 @@ const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }
     punkter: [
       { navn: "Willamette Valley", q: "willamette valley pinot noir", note: "Oregon pinot — laks, svampe og fjerkræ." },
       { navn: "Napa Valley", q: "napa valley cabernet", slug: "vinregion-napa-valley", note: "Kraftig cabernet — grill, okse og fest." },
-      { navn: "Canada (Okanagan)", q: "okanagan pinot noir", note: "Kølig klima — pinot, chardonnay og elegant rød." },
+      { navn: "Canada (Okanagan)", q: "okanagan pinot noir", note: "Kølig klima — pinot, chardonnay og elegant rød.", landSlug: "canada" },
     ],
   },
   {
@@ -151,6 +151,12 @@ const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }
 
 /** Vinlande uden separat dybdeguide — men med landeside + søgning. */
 const FLERE_VINLANDE: (HurtigRegion & { landSlug?: string })[] = [
+  {
+    navn: "Schweiz",
+    q: "schweiz chasselas",
+    note: "Alpine hvide og pinot — Valais, Vaud og ofte premium-prisleje.",
+    landSlug: "schweiz",
+  },
   {
     navn: "England",
     q: "english sparkling wine",
