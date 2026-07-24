@@ -8,6 +8,7 @@ export {
   getLandeByContinent,
   getRelatedLande,
   searchQueryForGuideSlug,
+  matchLandeFromQuery,
 } from "@/lib/lande/registry";
 export type {
   LandConfig,

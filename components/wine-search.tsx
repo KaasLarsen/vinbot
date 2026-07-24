@@ -13,6 +13,7 @@ import { ProductCard } from "@/components/product-card";
 import { BarcodeScanner, type BarcodeScannerErrorKind } from "@/components/barcode-scanner";
 import { SearchCuratedWineStrip } from "@/components/search-curated-dsf-strip";
 import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
+import { matchLandeFromQuery } from "@/lib/lande/registry";
 
 export type WineSearchChip = { label: string; q: string; max?: number };
 
@@ -480,6 +481,11 @@ export function WineSearch({
     if (!t) return null;
     return GUIDE_FALLBACKS.find((g) => g.pattern.test(t)) ?? null;
   }, [lastQuery]);
+  const matchedLande = useMemo(() => {
+    const t = lastQuery.trim();
+    if (!t) return [];
+    return matchLandeFromQuery(t).slice(0, 2);
+  }, [lastQuery]);
   const valueSearchTip = useMemo(() => {
     const t = q.trim();
     if (!t) return null;
@@ -840,6 +846,33 @@ export function WineSearch({
                   Gratis butik
                 </span>
               ) : null}
+            </div>
+          ) : null}
+
+          {matchedLande.length > 0 ? (
+            <div className="space-y-2" role="navigation" aria-label="Relaterede vinlande">
+              {matchedLande.map((land) => (
+                <Link
+                  key={land.slug}
+                  href={`/lande/${land.slug}`}
+                  className="flex flex-col gap-1 rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50/90 via-white to-amber-50/50 p-4 shadow-sm transition hover:border-rose-300 hover:shadow-md sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+                >
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/80">
+                      Vinland
+                    </p>
+                    <p className="mt-0.5 text-base font-semibold text-stone-900">
+                      Læs om vin fra {land.displayName}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-stone-600 line-clamp-2">
+                      {land.teaser}
+                    </p>
+                  </div>
+                  <span className="shrink-0 text-sm font-semibold text-rose-900 sm:whitespace-nowrap">
+                    Se landesiden →
+                  </span>
+                </Link>
+              ))}
             </div>
           ) : null}
 

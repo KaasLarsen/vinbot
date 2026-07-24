@@ -1032,6 +1032,36 @@ export function countryIntentTermsFromQuery(q: string): string[] {
   return Array.from(out);
 }
 
+/**
+ * Find landesider der matcher søgeordet (til UI-kort over vinsøgning).
+ * Længere term-matches først (fx «new zealand» før «zealand» hvis begge fandtes).
+ */
+export function matchLandeFromQuery(q: string): LandConfig[] {
+  const txt = q.toLowerCase().trim();
+  if (!txt) return [];
+
+  const scored: { land: LandConfig; score: number }[] = [];
+  for (const land of LANDE) {
+    let best = 0;
+    for (const term of land.searchTerms) {
+      const t = term.toLowerCase();
+      const hit = t.includes(" ")
+        ? txt.includes(t)
+        : new RegExp(`\\b${escapeRegExp(t)}\\b`, "i").test(txt);
+      if (hit) best = Math.max(best, t.length);
+    }
+    // Match også visningsnavn (fx «New Zealand» / «Østrig»)
+    const name = land.displayName.toLowerCase();
+    if (txt.includes(name) || new RegExp(`\\b${escapeRegExp(name)}\\b`, "i").test(txt)) {
+      best = Math.max(best, name.length);
+    }
+    if (best > 0) scored.push({ land, score: best });
+  }
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.map((s) => s.land);
+}
+
 /** Guide-slug → bedre søgestreng til live picks. */
 export function searchQueryForGuideSlug(guideSlug: string): string | null {
   const land = LANDE.find((l) => l.deepGuideSlug === guideSlug);
