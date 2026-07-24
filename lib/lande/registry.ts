@@ -277,16 +277,19 @@ export const LANDE: LandConfig[] = [
     teaser: "Valais, Vaud og Genève — chasselas, pinot noir og alpine hvide.",
     title: "Vin fra Schweiz — chasselas, regioner og forslag | Vinbot",
     description:
-      "Schweizisk vin: Valais, Vaud, chasselas og pinot noir. Kendetegn og søg hos danske forhandlere.",
+      "Schweizisk vin: Valais, Vaud, chasselas, pinot noir og Ticino-merlot. Kendetegn, regioner, madparring og søg hos danske forhandlere.",
     introParagraphs: [
-      "Schweiz er et alpint vinland med stejl dyrkning og ofte høje omkostninger — derfor ser du færre flasker på danske hylder end fra nabolandene. Når de er der, er de typisk rene, præcise og madvenlige.",
-      "Chasselas (ofte som Fendant i Valais) er den lokale hvids signatur; pinot noir og merlot præger mange røde.",
+      "Schweiz er et alpint vinland med stejl dyrkning og ofte høje omkostninger — derfor ser du færre flasker på danske hylder end fra Frankrig, Italien eller Østrig. Når de dukker op hos specialforhandlere, er de typisk rene, præcise og mere madvenlige end mange forventer.",
+      "Chasselas (ofte solgt som Fendant i Valais) er den lokale hvids signatur: let, mineralsk og uden tung fad. Pinot noir præger mange røde i nord og vest; i det italiensktalende Ticino er merlot den klare hovedrolle.",
+      "Prislejet ligger ofte i det øvre segment. Brug schweizisk vin bevidst — til ostebord, fisk eller når du vil smage noget, der ikke ligner de klassiske eksportlande. Start med chasselas eller en kølig pinot, før du går efter de dyreste kultflasker.",
     ],
     kendetegn: [
-      "Køligt, alpint klima — elegance og syre frem for tung frugt.",
-      "Chasselas: let, mineralsk hvid — god til fisk, ost og fondue-agtige retter.",
-      "Små mængder og høj produktionspris — ofte premium-prisleje.",
+      "Køligt, alpint klima — elegance og syre frem for tung, solmoden frugt.",
+      "Chasselas / Fendant: let, mineralsk hvid — god til fisk, ost og fondue-agtige retter.",
+      "Små mængder og høj produktionspris — meget drikkes i Schweiz, lidt eksporteres.",
       "Valais er det største område; Vaud (Lavaux) er UNESCO-terrasser ved Genèvesøen.",
+      "Ticino giver merlot i køligere, mere struktureret stil end mange nye verdens-merlot’er.",
+      "Lokale specialty-druer (fx petite arvine, amigne) dukker op hos nysgerrige importører.",
     ],
     searchTerms: ["schweiz", "switzerland", "swiss", "schweizisk", "schweiziske", "suisse"],
     primaryQuery: "schweiz chasselas",
@@ -294,11 +297,30 @@ export const LANDE: LandConfig[] = [
       { title: "Chasselas / Fendant", q: "chasselas fendant" },
       { title: "Schweizisk pinot noir", q: "schweiz pinot noir" },
       { title: "Valais", q: "valais wine" },
+      { title: "Ticino merlot", q: "ticino merlot" },
+      { title: "Petite arvine", q: "petite arvine" },
     ],
     regions: [
-      { name: "Valais", q: "valais chasselas", note: "Største kanton — Fendant, pinot og lokale specialty-druer." },
-      { name: "Vaud / Lavaux", q: "vaud lavaux", note: "Terrasser ved Genèvesøen — mineralsk chasselas." },
-      { name: "Ticino", q: "ticino merlot", note: "Italiensktalende syd — merlot i kølig stil." },
+      {
+        name: "Valais",
+        q: "valais chasselas",
+        note: "Største kanton langs Rhône — Fendant, pinot noir og lokale specialty-druer som petite arvine.",
+      },
+      {
+        name: "Vaud / Lavaux",
+        q: "vaud lavaux",
+        note: "Terrasser ved Genèvesøen (UNESCO) — mineralsk chasselas med sø-påvirkning.",
+      },
+      {
+        name: "Genève",
+        q: "geneve wine",
+        note: "Bredere sortiment tæt på byen — gamay, chasselas og internationale druer.",
+      },
+      {
+        name: "Ticino",
+        q: "ticino merlot",
+        note: "Italiensktalende syd — merlot i kølig, struktureret stil til kød og pasta.",
+      },
     ],
     deepGuideSlug: "vinregion-europa-central-og-oest",
     faq: [
@@ -311,6 +333,16 @@ export const LANDE: LandConfig[] = [
         question: "Hvad er Fendant?",
         answer:
           "Fendant er navnet på chasselas fra Valais — en let, tør hvidvin. God til ost, fisk og lettere schweiziske/alpine retter.",
+      },
+      {
+        question: "Hvad skal jeg starte med fra Schweiz?",
+        answer:
+          "Chasselas/Fendant til fisk og ost, eller en pinot noir fra Valais/Vaud til fjerkræ og svampe. Ticino-merlot er et godt næste skridt, hvis du vil have mere krop.",
+      },
+      {
+        question: "Findes schweizisk vin hos danske forhandlere?",
+        answer:
+          "Ja, men sortimentet er smalt og skifter. Brug vinsøgningen med ord som chasselas, Valais eller schweiz — og sammenlign pris med østrigsk eller tysk kvalitet i samme leje.",
       },
     ],
   },
@@ -389,16 +421,21 @@ export const LANDE: LandConfig[] = [
     displayName: "Grækenland",
     continent: "europa",
     teaser: "Assyrtiko, moschofilero og ø-røde — salt fisk, grønt og græsk middagsmad.",
-    title: "Vin fra Grækenland — assyrtiko og forslag | Vinbot",
+    title: "Vin fra Grækenland — assyrtiko, regioner og forslag | Vinbot",
     description:
-      "Græsk vin: Santorini assyrtiko, moschofilero og ø-røde. Kendetegn og søg hos danske forhandlere.",
+      "Græsk vin: Santorini assyrtiko, Naoussa xinomavro, moschofilero og ø-røde. Kendetegn, madparring og søg hos danske forhandlere.",
     introParagraphs: [
-      "Grækenland har fået et kvalitetsløft: mineralsk assyrtiko fra Santorini er den klare stjerne, men der er mere at hente på øerne og fastlandet.",
+      "Grækenland har fået et tydeligt kvalitetsløft de seneste år. Det er ikke længere kun «ferievin»: mineralsk assyrtiko fra Santorini er den internationale stjerne, og flere lokale druer dukker op hos danske forhandlere.",
+      "Klimaet er middelhavsk, men højde, vind og vulkansk jord giver friskhed. På øerne er stil ofte salt, citrusagtig og tør; på fastlandet (fx Naoussa i nord) finder du mere strukturerede røde som xinomavro.",
+      "Til græsk mad er valget ofte ligetil: fisk, salat og citron kalder på assyrtiko; grill, lam og krydrede retter på xinomavro eller en frisk rosé fra Peloponnes. Moschofilero er det aromatiske, lettere hvide valg.",
     ],
     kendetegn: [
-      "Assyrtiko: høj syre, mineralitet, salt finish — ideel til fisk.",
-      "Middelhavsklima med kølige nætter på højde og øer.",
-      "Lokale druer frem for internationale kopi-stilarter.",
+      "Assyrtiko: høj syre, mineralitet, salt finish — ideel til fisk og skaldyr.",
+      "Lokale druer frem for rene internationale kopi-stilarter.",
+      "Santorini: vulkanjord og vind — koncentreret, tør hvid med lang finish.",
+      "Xinomavro (nord): struktur, syre og alderingspotentiale — tænk «græsk nebbiolo-agtig».",
+      "Moschofilero: blomstret, let hvid — god til mezze og sommer.",
+      "God værdi uden for de dyreste Santorini-etiketter — kig Peloponnes og fastlandet.",
     ],
     searchTerms: ["graekenland", "grækenland", "greece", "greek", "græsk", "graesk"],
     primaryQuery: "assyrtiko santorini",
@@ -406,15 +443,51 @@ export const LANDE: LandConfig[] = [
       { title: "Assyrtiko", q: "assyrtiko" },
       { title: "Santorini", q: "santorini" },
       { title: "Moschofilero", q: "moschofilero" },
+      { title: "Xinomavro", q: "xinomavro" },
+      { title: "Agiorgitiko", q: "agiorgitiko" },
     ],
     regions: [
-      { name: "Santorini", q: "assyrtiko santorini", note: "Vulkanjord og saltsprøjt — fisk og skaldyr." },
+      {
+        name: "Santorini",
+        q: "assyrtiko santorini",
+        note: "Vulkanjord og saltsprøjt — den klare top for assyrtiko til fisk og skaldyr.",
+      },
+      {
+        name: "Naoussa / Makedonien",
+        q: "xinomavro naoussa",
+        note: "Xinomavro med struktur og syre — lam, grill og simrede retter.",
+      },
+      {
+        name: "Peloponnes",
+        q: "agiorgitiko nemea",
+        note: "Agiorgitiko og moschofilero — frugtige røde og aromatiske hvide til hverdag.",
+      },
+      {
+        name: "Kreta",
+        q: "crete wine",
+        note: "Ø-vin med både friske hvide og mørkere røde — madvenlig middelhavsstil.",
+      },
     ],
     faq: [
       {
         question: "Hvad drikker jeg til græsk mad?",
         answer:
-          "Fisk og salat: assyrtiko. Krydrede retter og grill: xinomavro eller en frisk rosé fra Peloponnes.",
+          "Fisk, salat og citron: assyrtiko. Mezze og sommer: moschofilero eller tør rosé. Grill, lam og krydderier: xinomavro eller agiorgitiko.",
+      },
+      {
+        question: "Er al assyrtiko fra Santorini?",
+        answer:
+          "Nej. Santorini er det mest berømte udtryk, men assyrtiko dyrkes også andre steder. Santorini er typisk mere mineralsk og koncentreret — og ofte dyrere.",
+      },
+      {
+        question: "Er græsk vin kun til ferieminder?",
+        answer:
+          "Ikke længere. Moderne græsk vin er præcis, tør og drue-drevet. Start med assyrtiko eller xinomavro, hvis du vil se, hvor langt kvaliteten er kommet.",
+      },
+      {
+        question: "Hvad ligner xinomavro?",
+        answer:
+          "Mange sammenligner den med nebbiolo: høj syre, tannin og rød frugt. Den er mere mad end «blød sofa-rød» — giv den luft og server til kraftigere retter.",
       },
     ],
   },
@@ -423,31 +496,67 @@ export const LANDE: LandConfig[] = [
     displayName: "England",
     continent: "europa",
     teaser: "Køligt klima og mousserende i vækst — god til skaldyr, ost og lette forretter.",
-    title: "Vin fra England — sparkling og forslag | Vinbot",
+    title: "Vin fra England — sparkling, regioner og forslag | Vinbot",
     description:
-      "Engelsk vin: især mousserende sparkling wine. Kendetegn og søg hos danske forhandlere.",
+      "Engelsk vin: sparkling wine fra Sussex og Kent, champagne-metode og kølig stil. Kendetegn, madparring og søg hos danske forhandlere.",
     introParagraphs: [
-      "England har haft medvind på mousserende vin — køligt klima og kridtholdig jord minder om Champagne. Still wine findes også, men boblerne er hovedattraktionen.",
+      "England har haft medvind på mousserende vin. Køligt klima, kridtholdig jord i sydøst og samme klassiske druer som Champagne (chardonnay, pinot noir, pinot meunier) giver bobler med høj syre og elegant frugt.",
+      "Still wine findes også — især hvide og pinot — men sparkling er det, de fleste danske forhandlere importerer, og det, der får anmelderroser. Forvent premium-pris: engelsk sparkling konkurrerer ofte med champagne mere end med cava.",
+      "Vælg engelsk sparkling til skaldyr, røget laks, blød ost eller som gave, når du vil have noget genkendeligt «champagne-agtigt» med britisk præg. Til hverdagsbobler er crémant og cava stadig bedre værdi.",
     ],
     kendetegn: [
-      "Fokus på sparkling: chardonnay, pinot noir, pinot meunier.",
-      "Høj syre og elegant, kølig frugt.",
-      "Ofte premium-pris — vælg bevidst til fest eller gave.",
+      "Fokus på sparkling: chardonnay, pinot noir, pinot meunier — ofte traditionel metode.",
+      "Høj syre, fine bobler og kølig citrus/æble-frugt.",
+      "Kridt og køligt klima i Sussex/Kent minder om Champagne-forhold.",
+      "Ofte premium-pris — vælg bevidst til fest, gave eller smagning.",
+      "Still wines er niche i DK; boblerne er hovedattraktionen.",
+      "Brut og blanc de blancs er de mest almindelige stilarter på hylden.",
     ],
     searchTerms: ["england", "english", "engelsk", "britisk", "britiske"],
     primaryQuery: "english sparkling",
     wineSuggestions: [
       { title: "English sparkling", q: "english sparkling wine" },
       { title: "Engelsk champagne-metode", q: "english sparkling brut" },
+      { title: "Blanc de blancs", q: "english blanc de blancs" },
+      { title: "Engelsk rosé sparkling", q: "english sparkling rose" },
     ],
     regions: [
-      { name: "Sussex / Kent", q: "english sparkling", note: "Kerneområde for britisk mousserende." },
+      {
+        name: "Sussex",
+        q: "sussex sparkling",
+        note: "Et af kerneområderne for britisk mousserende — kridt, kølighed og klassiske druer.",
+      },
+      {
+        name: "Kent",
+        q: "kent english sparkling",
+        note: "Sydøstengland — mange nye vineyards med fokus på sparkling.",
+      },
+      {
+        name: "Hampshire / øvrige syd",
+        q: "english sparkling wine",
+        note: "Flere counties i syd bidrager — stil er typisk mere region «England» end ét navn.",
+      },
     ],
     faq: [
       {
         question: "Kan engelsk sparkling erstatte champagne?",
         answer:
           "Stilmæssigt ofte ja — samme druer og metode. Prisen er dog typisk i det øvre leje, så sammenlign med crémant og cava, hvis budgettet er stramt.",
+      },
+      {
+        question: "Hvorfor smager engelsk sparkling som champagne?",
+        answer:
+          "Klima, jord (ofte kridt) og traditionel metode med de samme tre druer. Resultatet er høj syre og fine bobler — ikke den søde «party-prosecco»-profil.",
+      },
+      {
+        question: "Findes der engelsk still wine værd at købe?",
+        answer:
+          "Ja, men udvalget i Danmark er lille. Hvis du ser en engelsk chardonnay eller pinot, er det typisk kølig og elegant — men sparkling er det sikreste udgangspunkt.",
+      },
+      {
+        question: "Hvornår er engelsk sparkling pengene værd?",
+        answer:
+          "Til fest, gave eller når du vil smage noget tæt på champagne uden at gå efter et fransk prestige-label. Til ugentlig boble er billigere alternativer oftere smartere.",
       },
     ],
   },
@@ -534,16 +643,19 @@ export const LANDE: LandConfig[] = [
     teaser: "Okanagan og Niagara — kølig pinot, chardonnay og icewine.",
     title: "Vin fra Canada — Okanagan, icewine og forslag | Vinbot",
     description:
-      "Canadisk vin: Okanagan Valley, Niagara og icewine. Kendetegn og søg hos danske forhandlere.",
+      "Canadisk vin: Okanagan Valley, Niagara Peninsula, pinot noir, chardonnay og icewine. Kendetegn, madparring og søg hos danske forhandlere.",
     introParagraphs: [
-      "Canada er et køligt vinland med to hovedscener: Okanagan i British Columbia (pinot, chardonnay, elegante røde) og Niagara i Ontario (især icewine og kølige hvide).",
-      "Icewine er det internationale ikon — men still wines fra Okanagan er ofte det mest spændende til hverdagsmad.",
+      "Canada er et køligt vinland med to hovedscener: Okanagan Valley i British Columbia og Niagara Peninsula i Ontario. Klimaet giver høj syre, ren frugt og lavere alkohol end solrige New World-lande — stilmæssigt tættere på Oregon eller Tyskland end på Californien.",
+      "Icewine er det internationale ikon (ofte vidal eller riesling), men still wines fra Okanagan er ofte det mest spændende til hverdagsmad: pinot noir, chardonnay og enkelte kølige syrah’er. Niagara leverer både icewine og friske hvide.",
+      "I danske butikker er udvalget begrænset, men når flaskerne er der, er de værd at prøve — især hvis du kan lide elegant pinot eller vil have en sød dessertvin med syre, der ikke bare er «klam sød».",
     ],
     kendetegn: [
-      "Køligt klima — høj syre, ren frugt, lavere alkohol end solrige New World-lande.",
+      "Køligt klima — høj syre, ren frugt, lavere alkohol end varme New World-lande.",
       "Okanagan: ørkenagtig dal med sø-påvirkning — pinot noir, chardonnay, syrah i kølig stil.",
-      "Niagara: icewine (vidal, riesling) og friske hvide.",
-      "Stilmæssigt tættere på Oregon/Tyskland end på Californien.",
+      "Niagara: icewine (vidal, riesling) plus friske hvide og enkelte røde.",
+      "Stilmæssigt tættere på Oregon/Tyskland end på Napa.",
+      "Icewine: intens sødme balanceret af syre — dessert, blåost, foie-agtige retter.",
+      "Sortimentet i DK er smalt — søg på Okanagan, Niagara eller icewine.",
     ],
     searchTerms: ["canada", "canadian", "canadisk", "canadiske"],
     primaryQuery: "okanagan pinot noir",
@@ -551,17 +663,24 @@ export const LANDE: LandConfig[] = [
       { title: "Okanagan pinot", q: "okanagan pinot noir" },
       { title: "Canadisk chardonnay", q: "okanagan chardonnay" },
       { title: "Icewine", q: "icewine canada" },
+      { title: "Niagara riesling", q: "niagara riesling" },
+      { title: "Canadisk syrah", q: "okanagan syrah" },
     ],
     regions: [
       {
         name: "Okanagan Valley",
         q: "okanagan pinot noir",
-        note: "British Columbia — pinot, chardonnay og elegant rød.",
+        note: "British Columbia — pinot, chardonnay og elegant rød; den vigtigste still-wine scene.",
       },
       {
         name: "Niagara Peninsula",
         q: "niagara icewine",
-        note: "Ontario — icewine, riesling og kølige hvide.",
+        note: "Ontario — icewine, riesling og kølige hvide tæt på søen.",
+      },
+      {
+        name: "Prince Edward County",
+        q: "prince edward county pinot",
+        note: "Ontario — kølig pinot og chardonnay; mere niche i eksport.",
       },
     ],
     faq: [
@@ -574,6 +693,16 @@ export const LANDE: LandConfig[] = [
         question: "Hvornår vælger jeg canadisk vin?",
         answer:
           "Når du vil have kølig elegance (laks, svampe, fjerkræ) eller en sød icewine til dessert og blåost.",
+      },
+      {
+        question: "Hvad er forskellen på Okanagan og Niagara?",
+        answer:
+          "Okanagan er bedst kendt for tørre vine i elegant stil. Niagara er især stærk på icewine og friske hvide — begge er kølige, men fokus er forskelligt.",
+      },
+      {
+        question: "Hvordan serverer jeg icewine?",
+        answer:
+          "Koldt, i små glas, til dessert eller kraftig ost. Syren holder sødmen i skak — det er derfor icewine ofte fungerer bedre end mange søde vine uden friskhed.",
       },
     ],
   },
