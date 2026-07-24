@@ -21,6 +21,7 @@ const nav: NavItem[] = [
     activePrefixes: ["/guides/bedste-alkoholfri", "/guides/alkoholfri-vin-til-"],
   },
   { href: "/druesorter", label: "Druesorter" },
+  { href: "/lande", label: "Vinlande", activePrefix: "/lande" },
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/rabatkoder", label: "Rabatkoder" },

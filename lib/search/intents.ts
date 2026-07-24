@@ -1,3 +1,5 @@
+import { countryIntentTermsFromQuery } from "@/lib/lande/registry";
+
 /** Mad, humør, stemning og sæson → søgetermer der matcher vin i feeds */
 
 export function intentTermsFromQuery(q = ""): string[] {
@@ -5,6 +7,9 @@ export function intentTermsFromQuery(q = ""): string[] {
   const out: string[] = [];
 
   const add = (...terms: string[]) => out.push(...terms);
+
+  /* Land-synonymer (frankrig↔france, spanien↔spain, …) */
+  countryIntentTermsFromQuery(q).forEach((t) => add(t));
 
   if (/(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost)/.test(txt)) {
     add(

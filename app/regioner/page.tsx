@@ -149,56 +149,90 @@ const REGION_GRUPPER: { titel: string; intro?: string; punkter: HurtigRegion[] }
   },
 ];
 
-/** Vinlande uden egen dybdeguide på Vinbot endnu — start med søgning og læs evt. nabolandes guide. */
-const FLERE_VINLANDE: HurtigRegion[] = [
+/** Vinlande uden separat dybdeguide — men med landeside + søgning. */
+const FLERE_VINLANDE: (HurtigRegion & { landSlug?: string })[] = [
   {
     navn: "England",
     q: "english sparkling wine",
     note: "Køligt klima og mousserende i vækst — god til skaldyr, ost og lette forretter.",
+    landSlug: "england",
   },
   {
     navn: "Grækenland",
     q: "assyrtiko santorini",
     note: "Assyrtiko, moschofilero og ø-røde — salt fisk, grønt og græsk middagsmad.",
+    landSlug: "graekenland",
   },
   {
     navn: "Uruguay",
     q: "tannat uruguay",
     note: "Tannat og atlantisk klima — grill, okse og kraftige saucer.",
+    landSlug: "uruguay",
   },
   {
     navn: "Kroatien",
     q: "plavac mali croatia",
     note: "Dalmatiske kyster — kraftige røde og friske hvide til fisk og lam.",
+    landSlug: "kroatien",
   },
   {
     navn: "Israel",
     q: "israeli cabernet galilee",
     note: "Middelhavsklima og moderne teknik — strukturerede røde og aromatiske hvide.",
+    landSlug: "israel",
   },
 ];
 
 function LandCard({ g }: { g: LandGuide }) {
+  const landSlug = landSlugFromGuideSlug(g.slug);
+  const href = landSlug ? `/lande/${landSlug}` : `/guides/${g.slug}`;
   return (
     <li className="flex flex-col rounded-2xl border border-rose-100 bg-rose-50/50 p-5 shadow-sm ring-1 ring-rose-100/60">
       <h3 className="text-lg font-semibold text-stone-900">
-        <Link href={`/guides/${g.slug}`} className="text-rose-950 hover:underline">
+        <Link href={href} className="text-rose-950 hover:underline">
           {g.title}
         </Link>
       </h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{g.teaser}</p>
-      <Link href={`/guides/${g.slug}`} className="mt-4 text-sm font-medium text-rose-900 hover:underline">
-        Læs guiden →
-      </Link>
+      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        <Link href={href} className="font-medium text-rose-900 hover:underline">
+          {landSlug ? "Se landesiden →" : "Læs guiden →"}
+        </Link>
+        {landSlug ? (
+          <Link href={`/guides/${g.slug}`} className="font-medium text-rose-900 hover:underline">
+            Dybdeguide →
+          </Link>
+        ) : null}
+      </div>
     </li>
   );
 }
 
-function RegionMiniCard({ r }: { r: HurtigRegion }) {
+function landSlugFromGuideSlug(guideSlug: string): string | null {
+  const map: Record<string, string> = {
+    "vinregion-frankrig": "frankrig",
+    "vinregion-italien": "italien",
+    "vinregion-spanien": "spanien",
+    "vinregion-tyskland": "tyskland",
+    "vinregion-portugal": "portugal",
+    "vinregion-usa": "usa",
+    "vinregion-chile-argentina": "chile",
+    "vinregion-australien-new-zealand": "australien",
+    "vinregion-sydafrika": "sydafrika",
+    "vinregion-europa-central-og-oest": "oestrig",
+  };
+  return map[guideSlug] ?? null;
+}
+
+function RegionMiniCard({ r }: { r: HurtigRegion & { landSlug?: string } }) {
   return (
     <li className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
       <h4 className="font-semibold text-stone-900">
-        {r.slug ? (
+        {r.landSlug ? (
+          <Link href={`/lande/${r.landSlug}`} className="text-stone-900 hover:text-rose-900 hover:underline">
+            {r.navn}
+          </Link>
+        ) : r.slug ? (
           <Link href={`/guides/${r.slug}`} className="text-stone-900 hover:text-rose-900 hover:underline">
             {r.navn}
           </Link>
@@ -208,6 +242,11 @@ function RegionMiniCard({ r }: { r: HurtigRegion }) {
       </h4>
       <p className="mt-1.5 text-sm leading-relaxed text-stone-600">{r.note}</p>
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {r.landSlug ? (
+          <Link href={`/lande/${r.landSlug}`} className="font-medium text-rose-900 hover:underline">
+            Landeside →
+          </Link>
+        ) : null}
         {r.slug ? (
           <Link href={`/guides/${r.slug}`} className="font-medium text-rose-900 hover:underline">
             Læs dybdeguide →
@@ -237,10 +276,13 @@ export default function RegionerHubPage() {
     ...LAND_GUIDES_EUROPA,
     ...LAND_GUIDES_AMERIKA,
     ...LAND_GUIDES_AFRIKA_OCEANIEN,
-  ].map((g) => ({
-    name: g.title,
-    url: `${siteUrl}/guides/${g.slug}`,
-  }));
+  ].map((g) => {
+    const landSlug = landSlugFromGuideSlug(g.slug);
+    return {
+      name: g.title,
+      url: landSlug ? `${siteUrl}/lande/${landSlug}` : `${siteUrl}/guides/${g.slug}`,
+    };
+  });
 
   const breadcrumbItems = [
     { name: "Forside", url: `${siteUrl}/` },
@@ -260,7 +302,10 @@ export default function RegionerHubPage() {
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vinregioner</h1>
       <p className="mt-4 max-w-3xl text-lg text-stone-700">
         Region giver ofte en stilforventning — men husk at moderne vinmageri også skaber fantastiske vine uden for de klassiske navne. Start med{" "}
-        <strong className="font-medium text-stone-800">lande-guiden</strong> for overblik, brug{" "}
+        <Link href="/lande" className="font-medium text-rose-900 hover:underline">
+          vinlande
+        </Link>{" "}
+        for overblik og kendetegn, brug{" "}
         <strong className="font-medium text-stone-800">hurtige søg</strong> når du vil direkte til flasker, og læs{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           vin &amp; mad-guiden
@@ -369,9 +414,13 @@ export default function RegionerHubPage() {
       </section>
 
       <section id="flere-vinlande" className="mt-16 scroll-mt-20">
-        <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Flere vinlande (søg)</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Flere vinlande</h2>
         <p className="mt-3 max-w-3xl text-stone-700">
-          Disse lande har ikke en separat Vinbot-artikel endnu, men du finder ofte flasker via søgning. Vi udvider løbende — skriv endelig, hvis du savner en bestemt guide.
+          Se også vores{" "}
+          <Link href="/lande" className="text-rose-900 hover:underline">
+            vinlande-oversigt
+          </Link>{" "}
+          med kendetegn og vinforslag — eller søg direkte herunder.
         </p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {FLERE_VINLANDE.map((r) => (

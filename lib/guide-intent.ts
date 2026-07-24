@@ -10,6 +10,8 @@
  * - Kendte drue-slugs (`<drue>-druen`) → druenavn som `q`.
  */
 
+import { searchQueryForGuideSlug } from "@/lib/lande/registry";
+
 export type GuideIntent = {
   q: string;
   /** Øvre grænse i DKK (inklusive). Null = ingen max. */
@@ -112,9 +114,10 @@ export function deriveGuideIntent(
   }
 
   if (slug.startsWith("vinregion-")) {
+    const fromLand = searchQueryForGuideSlug(slug);
     const region = slug.replace(/^vinregion-/, "").replace(/-/g, " ");
     return {
-      q: region,
+      q: fromLand || region,
       max: null,
       label: `vin fra ${region}`,
     };

@@ -45,6 +45,12 @@ export function SiteFooter() {
               <Link href="/guides" className="hover:text-rose-900">
                 Alle guider
               </Link>
+              <Link href="/lande" className="hover:text-rose-900">
+                Vinlande
+              </Link>
+              <Link href="/regioner" className="hover:text-rose-900">
+                Regioner
+              </Link>
               <Link href="/opskrifter" className="hover:text-rose-900">
                 Opskrifter
               </Link>

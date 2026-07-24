@@ -1,5 +1,6 @@
 import type { FeedProduct, ProductHit } from "./types";
 import { ensurePartnerAdsKlikUid } from "@/lib/partner-ads-links";
+import { buildCountrySynonymMap } from "@/lib/lande/registry";
 import { intentTermsFromQuery } from "./intents";
 
 export const UA =
@@ -364,6 +365,7 @@ export function expandQuery(q: string): string[] {
     cab: ["cabernet", "cabernet sauvignon"],
     cabernet: ["cab", "cabernet sauvignon"],
     "cabernet sauvignon": ["cab", "cabernet"],
+    ...buildCountrySynonymMapNormalized(),
   };
 
   base.split(/\s+/).forEach((t) => {
@@ -383,6 +385,19 @@ export function expandQuery(q: string): string[] {
   if (!set.size) set.add("vin");
 
   return Array.from(set);
+}
+
+/** Land-synonymer med normaliserede nøgler (æ→ae osv.). */
+function buildCountrySynonymMapNormalized(): Record<string, string[]> {
+  const raw = buildCountrySynonymMap();
+  const out: Record<string, string[]> = {};
+  for (const [key, vals] of Object.entries(raw)) {
+    const nk = normalize(key);
+    const merged = new Set([...(out[nk] || []), ...vals.map((v) => normalize(v))]);
+    merged.delete(nk);
+    out[nk] = Array.from(merged);
+  }
+  return out;
 }
 
 export function normalize(s = ""): string {
