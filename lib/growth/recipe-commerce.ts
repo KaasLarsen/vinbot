@@ -75,6 +75,9 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "andesteg": ["vin-til-and", "pinot-noir-til-and", "vin-til-julemad-den-store-guide"],
   "ossobuco": ["vin-til-italiensk-mad", "vin-til-gryderet", "vin-til-kalvemoerbrad"],
   "ceviche": ["vin-til-ceviche", "vin-til-fisk-og-skaldyr", "vin-til-peruviansk-mad"],
+  "caprese": ["vin-til-salat", "sauvignon-blanc-til-salat", "vin-til-sommer", "rosevin-til-mad-og-sommer"],
+  "salade-nicoise": ["vin-til-salat", "rosevin-til-mad-og-sommer", "vin-til-fisk-og-skaldyr", "vin-til-sommer"],
+  "grillet-laks": ["vin-til-grillet-fisk", "vin-til-laks", "vin-til-grill-og-bbq", "vin-til-sommer"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
