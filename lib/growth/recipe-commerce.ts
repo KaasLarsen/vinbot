@@ -92,6 +92,9 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "risalamande": ["vin-til-dessert-og-kransekage", "vin-til-julemad-den-store-guide", "vin-til-julefrokost", "bedste-portvin"],
   "gaesesteg": ["vin-til-gaas", "vin-til-mortensaften", "vin-til-julemad-den-store-guide", "vin-til-and"],
   "kalkunsteg": ["vin-til-kalkun", "vin-til-julemad-den-store-guide", "vin-til-kylling-og-lyst-koed", "vin-til-and"],
+  "karrysild": ["vin-til-sild", "vin-til-julefrokost", "vin-til-smorrebrod"],
+  "sennepssild": ["vin-til-sild", "vin-til-julefrokost", "vin-til-smorrebrod"],
+  "marinerede-sild": ["vin-til-sild", "vin-til-julefrokost", "vin-til-smorrebrod", "vin-til-fisk-og-skaldyr"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
