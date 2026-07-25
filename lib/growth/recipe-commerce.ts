@@ -85,6 +85,10 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "blamuslinger": ["vin-til-muslinger", "vin-til-fisk-og-skaldyr", "vin-til-sommer", "vin-til-tapas"],
   "panzanella": ["vin-til-italiensk-mad", "vin-til-salat", "vin-til-sommer", "sauvignon-blanc-til-salat"],
   "kartoffelsalat": ["vin-til-kartoffelmad", "vin-til-poelser-og-kartoffel", "vin-til-salat", "vin-til-sommer"],
+  "flaesketesteg": ["vin-til-flaesketesteg", "vin-til-julemad-den-store-guide", "vin-til-svinekoed", "vin-til-julefrokost"],
+  "brune-kartoffler": ["vin-til-kartoffelmad", "vin-til-julemad-den-store-guide", "vin-til-flaesketesteg", "vin-til-and"],
+  "roedkaal": ["vin-til-julemad-den-store-guide", "vin-til-flaesketesteg", "vin-til-and", "vin-til-julefrokost"],
+  "juleand": ["vin-til-and", "pinot-noir-til-and", "vin-til-julemad-den-store-guide", "vin-til-julefrokost"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
