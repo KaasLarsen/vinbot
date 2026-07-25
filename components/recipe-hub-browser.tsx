@@ -286,7 +286,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
           Ingen opskrifter matcher filtrene. Prøv at fjerne et filter eller søg på noget andet.
         </p>
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((r) => {
             const wineType = classifyRecipeWine(r.tags);
             const cuisineType = classifyRecipeCuisine(r.tags);
