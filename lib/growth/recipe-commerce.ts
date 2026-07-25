@@ -78,6 +78,9 @@ const RECIPE_GUIDE_SLUGS: Record<string, readonly string[]> = {
   "caprese": ["vin-til-salat", "sauvignon-blanc-til-salat", "vin-til-sommer", "rosevin-til-mad-og-sommer"],
   "salade-nicoise": ["vin-til-salat", "rosevin-til-mad-og-sommer", "vin-til-fisk-og-skaldyr", "vin-til-sommer"],
   "grillet-laks": ["vin-til-grillet-fisk", "vin-til-laks", "vin-til-grill-og-bbq", "vin-til-sommer"],
+  "gazpacho": ["vin-til-gazpacho", "vin-til-sommer", "vin-til-tapas", "rosevin-til-mad-og-sommer"],
+  "graesk-salat": ["vin-til-graesk-mad", "vin-til-salat", "vin-til-sommer", "rosevin-til-mad-og-sommer"],
+  "grillet-halloumi": ["vin-til-grillet-gront", "vin-til-grill-og-bbq", "vin-til-vegetar-og-gront", "rosevin-til-grill"],
 };
 
 function guidesFromTags(tags: string[]): string[] {
