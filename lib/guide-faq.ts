@@ -3576,6 +3576,57 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Et lille nip ruby, reserve ruby eller LBV giver mørk frugt i kraftig svampesovs eller viltsauce; tawny tilføjer nød og karamel og passer ofte til cremet eller langt reduceret sauce. Smag med lidt ad gangen — og drik typisk pinot, gamay eller syrlig hvid til måltidet, ikke nødvendigvis port i glasset.",
     },
   ],
+  "hvad-er-portvin": [
+    {
+      question: "Hvad er portvin?",
+      answer:
+        "Portvin er fortificeret vin fra Douro i Portugal: gæringen stoppes med brændevin, så der bliver restsukker og typisk 19–22 % alkohol. Det er ikke almindelig rød bordvin.",
+    },
+    {
+      question: "Hvad er forskellen på portvin og sherry?",
+      answer:
+        "Port er typisk sød og fra Douro med stoppet gæring. Sherry er fra Jerez og spænder fra knastør fino til meget sød PX, ofte med flor og solera. De smager og bruges forskelligt.",
+    },
+    {
+      question: "Hvilken portvin skal begyndere starte med?",
+      answer:
+        "Ruby eller LBV for frugt, eller tawny 10 year for nødder og karamel. Vintage kan vente, til I vil samle eller fejre noget særligt.",
+    },
+  ],
+  "sadan-serverer-du-portvin": [
+    {
+      question: "Ved hvilken temperatur serverer man portvin?",
+      answer:
+        "De fleste stilarter omkring 14–17 °C — lidt køligere end en varm stue. White port serveres koldere (ca. 8–12 °C). For varm port smager af alkohol.",
+    },
+    {
+      question: "Hvor stort et glas portvin?",
+      answer:
+        "Små glas og 6–10 cl pr. skænk. Store rødvinsglas frister til for store portioner af en vin med høj alkohol.",
+    },
+    {
+      question: "Skal vintage port dekanteres?",
+      answer:
+        "Ofte ja, hvis der er bundfald — hæld forsigtigt eller brug karaffel. Tawny og de fleste ruby behøver sjældent dekantering.",
+    },
+  ],
+  "hvor-laenge-holder-portvin": [
+    {
+      question: "Hvor længe holder åbnet portvin?",
+      answer:
+        "Ruby typisk 1–2 uger i køleskab, LBV op til et par uger, tawny ofte flere uger. Vintage bør drikkes inden for få dage efter åbning. Smag altid — flad eller eddikeagtig tone betyder stop.",
+    },
+    {
+      question: "Skal åbnet portvin i køleskab?",
+      answer:
+        "Ja. Prop og køl forlænger holdbarheden markant, også for «rød» port. Lad den ikke stå åben på køkkenbordet.",
+    },
+    {
+      question: "Hvor længe holder uåbnet portvin?",
+      answer:
+        "Ruby, LBV og tawny klarer typisk flere år køligt og mørkt. Vintage kan udvikle sig i årtier under gode forhold. Undgå varme og sol.",
+    },
+  ],
   "bedste-cabernet-sauvignon-under-150-kr": [
     {
       question: "Hvor kommer bedste cabernet sauvignon under 150 kr fra?",
