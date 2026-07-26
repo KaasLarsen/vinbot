@@ -1211,6 +1211,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Luksus-svampe kalder på pinot noir, moden gamay eller tilgængelig nebbiolo/barolo-stil med luft; fadlagret chardonnay med syre til cremet svampesauce. Undgå knastør rød uden moden frugt når saucen er koncentreret og sød. Til port eller vin i panden, se madlavningsguiden og port-guiden.",
     },
   ],
+  "vin-til-svampe": [
+    {
+      question: "Hvilken vin passer til stegte champignon?",
+      answer:
+        "Pinot noir eller gamay (Beaujolais) er sikre: silke, rød bær og syre til smørfedme. Tør rosé eller grüner veltliner fungerer til lettere, urteprægede pander. Undgå unge, grove cabernet-tanniner.",
+    },
+    {
+      question: "Hvilken vin til cremet svampesovs?",
+      answer:
+        "Vælg vin med tydelig syre: Chablis eller anden mineralsk chardonnay, tør chenin, eller let pinot/gamay. Fløden kræver friskhed i glasset — ikke fadbombe uden syre.",
+    },
+    {
+      question: "Kan man drikke hvidvin til svampe?",
+      answer:
+        "Ja — især til cremede saucer og vegetariske retter. Mineralsk chardonnay, soave classico og tør riesling er gode. Til stegte skovsvampe med kød er pinot ofte førstevalg.",
+    },
+  ],
+  "vin-til-efterarsmad": [
+    {
+      question: "Hvilken vin skal man drikke om efteråret?",
+      answer:
+        "Mellemfyldig rød med saft (pinot, gamay, sangiovese, Côtes du Rhône, rioja) og fadlagret hvid til cremede retter. Match maden: svampe, gryde og vildt tåler mere struktur end sommermad.",
+    },
+    {
+      question: "Er efterårsvin det samme som julevin?",
+      answer:
+        "Delvist overlap, men efterår handler mere om hverdagsgryde og svampe. Jul har egen menu (and, flæsk, risalamande) — se vin til julemad, når december nærmer sig.",
+    },
+    {
+      question: "Skal rødvin serveres kold om efteråret?",
+      answer:
+        "Lidt køligere end stuetemperatur (ca. 14–16 °C for pinot/gamay) holder frugten frisk indendørs. Se også guiden om afkølet rødvin.",
+    },
+  ],
+  "vin-til-bolognese": [
+    {
+      question: "Hvilken vin til pasta bolognese?",
+      answer:
+        "Italiensk hverdagsrød med god syre: Chianti/sangiovese, barbera eller montepulciano d'Abruzzo. Syren skærer tomat og fedme; undgå unge tanninbomber og meget sød Amarone til hverdags-ragu.",
+    },
+    {
+      question: "Er vin til bolognese og lasagne det samme?",
+      answer:
+        "Druerne overlapper, men lasagne har mere ost og bechamel. Til tallerkenpasta med ragu er barbera og chianti annata ofte nok; lasagne kan tåle lidt mere struktur — se den separate lasagne-guide.",
+    },
+    {
+      question: "Hvilken vin skal i bolognese-sovsen?",
+      answer:
+        "En tør, simpel rød du også vil drikke — gerne samme stil som til bordet. Undgå dårlig «madlavningsvin»; kvaliteten i gryden smager man.",
+    },
+  ],
+  "vin-til-romantisk-middag": [
+    {
+      question: "Hvilken vin til romantisk middag hjemme?",
+      answer:
+        "Start med tørre bobler (crémant, cava, prosecco brut), derefter pinot noir, chianti eller en syrefast hvid alt efter menuen. Hold mængden nede — én flaske til mad plus evt. velkomstbobler er ofte nok til to.",
+    },
+    {
+      question: "Er champagne nødvendig til date-night?",
+      answer:
+        "Nej. God crémant eller cava giver samme toast-følelse til lavere pris. Champagne er fint, hvis I begge værdsætter det — stemningen kommer mere af tempo og mad end af etiketten.",
+    },
+    {
+      question: "Hvilken rødvin til romantisk okse eller pasta?",
+      answer:
+        "Pinot eller rioja til okse med sauce; chianti eller barbera til tomatpasta. Undgå den hårdeste, varmeste tanninvin, medmindre I begge elsker den stil.",
+    },
+  ],
   "vin-til-fastelavn": [
     {
       question: "Hvilken vin passer til fastelavnsboller?",
