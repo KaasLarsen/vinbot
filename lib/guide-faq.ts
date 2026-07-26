@@ -844,6 +844,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Vinen skal have nok sødme — ellers smager den skarp. Mange vælger moscato, sød riesling eller portvin. Læs også guiden om dessert og kransekage for principper og bobler til kage.",
     },
   ],
+  "vin-til-juleaften": [
+    {
+      question: "Hvilken vin skal man have til juleaften?",
+      answer:
+        "En praktisk plan: bobler til velkomst, pinot noir eller gamay (eller chianti/rioja) til and eller flæskesteg, og sød vin eller kaffe til risalamande. De fleste familier klarer sig med 2–3 flasker plus reserve.",
+    },
+    {
+      question: "Hvor mange flasker vin til juleaften for 6 personer?",
+      answer:
+        "Ca. 1 flaske bobler, 2 flasker rød til hovedretten og evt. ½–1 flaske dessertvin. Tilpas hvis børnene er mange, eller hvis I også drikker snaps og øl.",
+    },
+    {
+      question: "Er den store julemad-guide det samme som vin til juleaften?",
+      answer:
+        "Nej. Den store guide dækker hele julen (frokost, tilbehør, avec). Vin til juleaften er den korte aftenplan til 24. december.",
+    },
+  ],
+  "vin-til-glogg": [
+    {
+      question: "Hvilken vin skal man bruge til hjemmelavet gløgg?",
+      answer:
+        "En frugtig, blød hverdagsrød — Côtes du Rhône, Languedoc, garnacha eller montepulciano under ca. 120 kr. Undgå dyre Bourgogne og unge, stramme cabernet; varmen og krydderiet skjuler finesse.",
+    },
+    {
+      question: "Kan man drikke gløgg før juleand?",
+      answer:
+        "Et lille glas som velkomst går an, men stop i god tid. Sødme og krydderi sløver ganen før pinot til anden. Skift til vand, inden hovedretten kommer.",
+    },
+    {
+      question: "Er færdig gløgg eller hjemmelavet bedst?",
+      answer:
+        "Begge virker. Færdig gløgg er ofte meget sød — smag til med tør rød. Hjemmelavet giver kontrol over sødme og alkohol. Brug aldrig din bedste gaveflaske i gryden.",
+    },
+  ],
+  "vin-til-juleand": [
+    {
+      question: "Hvilken vin til juleand med rødkål?",
+      answer:
+        "Pinot noir eller cru Beaujolais/gamay er klassikeren: syre til fed and og frugt til sur-sød rødkål. Chianti Classico og Rioja reserva er gode alternativer til brun sovs.",
+    },
+    {
+      question: "Er vin til juleand det samme som vin til and?",
+      answer:
+        "Overlappende druer, men juleand-guiden fokuserer på helstegt and med dansk tilbehør til juleaften. Den generelle and-guide dækker også confit, à l'orange og asiatisk.",
+    },
+    {
+      question: "Kan man servere hvidvin til juleand?",
+      answer:
+        "Muligt med fyldig Alsace pinot gris eller halvtør riesling, men de fleste juleborde forventer rød. Vælg hvid kun hvis I bevidst vil den stil.",
+    },
+  ],
+  "vin-til-risalamande": [
+    {
+      question: "Hvilken vin til risalamande med kirsebærsovs?",
+      answer:
+        "Vælg sød vin: moscato d'Asti, sød riesling, recioto eller port. Tør rød fra hovedretten smager typisk bitter og tynd til sovsen.",
+    },
+    {
+      question: "Kan man bruge champagne til risalamande?",
+      answer:
+        "Kun hvis den er demi-sec eller sødere. Brut champagne taber til kirsebærsodmen og smager sur. Ellers vælg moscato eller skip vin til fordel for kaffe.",
+    },
+    {
+      question: "Er portvin godt til risalamande?",
+      answer:
+        "Ja — ruby eller tawny i små glas er klassisk avec. Recioto spejler kirsebær endnu tættere, hvis I vil have sød rødvin i stedet for port.",
+    },
+  ],
   "naturvin-hvad-er-det": [
     {
       question: "Er naturvin det samme som økologisk vin?",
