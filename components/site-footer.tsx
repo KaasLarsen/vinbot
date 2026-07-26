@@ -42,6 +42,9 @@ export function SiteFooter() {
               <Link href="/om-os" className="hover:text-rose-900">
                 Om os
               </Link>
+              <Link href="/saadan-bruger-du-vinbot" className="hover:text-rose-900">
+                Sådan bruger du Vinbot
+              </Link>
               <Link href="/guides" className="hover:text-rose-900">
                 Alle guider
               </Link>

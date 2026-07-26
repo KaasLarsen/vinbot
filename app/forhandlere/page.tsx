@@ -84,6 +84,43 @@ export default function ForhandlerePage() {
         </ul>
       </section>
 
+      <section className="mt-10 space-y-4 text-stone-700">
+        <h2 className="text-xl font-semibold text-stone-900">Hvad skal produktfeedet indeholde?</h2>
+        <p className="leading-relaxed">
+          Uanset om I vælger gratis listing, affiliate eller CPC, skal vi kunne hente jeres produkter via
+          et feed (XML eller CSV). Jo mere komplet feedet er, desto bedre matcher I i søgning, katalog og
+          stregkode.
+        </p>
+        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
+          <li>
+            <strong>Produktnavn, pris, produkt-URL og billede</strong> — minimum for at komme med i
+            vinsøgningen.
+          </li>
+          <li>
+            <strong>EAN/GTIN</strong> — nødvendigt for stregkodesøgning og stærkere match i{" "}
+            <Link href="/vine" className="text-rose-900 hover:underline">
+              vin-kataloget
+            </Link>
+            .
+          </li>
+          <li>
+            <strong>Før- og salgspris</strong> — hvis I vil indgå i «nedsat i shop» på{" "}
+            <Link href="/tilbud" className="text-rose-900 hover:underline">
+              /tilbud
+            </Link>
+            .
+          </li>
+          <li>
+            <strong>Format og kanal</strong> — typisk via Partner-Ads, Adtraction, Daisycon eller en
+            direkte feed-URL, I angiver i ansøgningen.
+          </li>
+        </ul>
+        <p className="leading-relaxed">
+          Gratis butikker indgår i søgningen, men prioriteres ikke på guides og hub-sider — se forskellen
+          under gratis listing vs. partner ovenfor.
+        </p>
+      </section>
+
       <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-rose-900/90">Ansøg her</h2>
         <p className="mt-3 text-stone-700">

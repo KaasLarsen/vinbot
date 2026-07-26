@@ -88,6 +88,13 @@ export default function OmOsPage() {
             — typisk starter vores læsere her i ugen før en fest eller et udvalgt måltid.
           </li>
         </ul>
+        <p className="leading-relaxed">
+          Trin-for-trin til søgning, stregkode, tilbud og katalog:{" "}
+          <Link href="/saadan-bruger-du-vinbot" className="font-medium text-rose-900 hover:underline">
+            Sådan bruger du Vinbot
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="mt-10 space-y-4 text-stone-700">
@@ -187,6 +194,11 @@ export default function OmOsPage() {
           <li>
             <Link href="/kontakt" className="text-rose-900 hover:underline">
               Kontakt
+            </Link>
+          </li>
+          <li>
+            <Link href="/saadan-bruger-du-vinbot" className="text-rose-900 hover:underline">
+              Sådan bruger du Vinbot
             </Link>
           </li>
           <li>
