@@ -3627,6 +3627,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ruby, LBV og tawny klarer typisk flere år køligt og mørkt. Vintage kan udvikle sig i årtier under gode forhold. Undgå varme og sol.",
     },
   ],
+  "tawny-portvin": [
+    {
+      question: "Hvad er tawny portvin?",
+      answer:
+        "Tawny er port lagret længe i små fade, så farven bliver gylden og smagen får nødder, karamel og tørret frugt. 10 year er det mest praktiske køb for de fleste.",
+    },
+    {
+      question: "Tawny 10 eller 20 year — hvad skal jeg vælge?",
+      answer:
+        "10 year er sweet spot til hverdag og ost. 20 year giver tydeligt mere dybde til gaver og særlige aftener, men koster markant mere.",
+    },
+    {
+      question: "Er tawny bedre end ruby til ost?",
+      answer:
+        "Ofte ja til hård lagret ost og blandede ostebord. Til kraftig blåskimmel kan LBV eller ruby reserve også være førstevalg — se portvin til ost.",
+    },
+  ],
+  "ruby-portvin": [
+    {
+      question: "Hvad er ruby portvin?",
+      answer:
+        "Ruby er ung, frugtig port med rubinrød farve og bærsmag. Den er kortere fadlagret end tawny og passer til chokolade, punch og hverdags-avec.",
+    },
+    {
+      question: "Hvad er forskellen på ruby og tawny?",
+      answer:
+        "Ruby smager af frisk bær; tawny af nødder og karamel efter længere fadlagring. Ruby holder kortere efter åbning end tawny.",
+    },
+    {
+      question: "Skal jeg købe ruby reserve i stedet for basic ruby?",
+      answer:
+        "Til avec og chokolade er reserve ofte værd løftet. Basic ruby er fin til punch og madlavning.",
+    },
+  ],
+  "portvin-til-ost": [
+    {
+      question: "Hvilken portvin til blåskimmel?",
+      answer:
+        "LBV, ruby reserve eller tawny 10. Salt og sødme balancerer hinanden. Vintage er festvalg, ikke nødvendigt til hverdag.",
+    },
+    {
+      question: "Hvilken portvin til cheddar?",
+      answer:
+        "Tawny 10–20 year matcher lagret cheddar bedre end ung ruby. Små glas — osten skal kunne smages.",
+    },
+    {
+      question: "Skal hele ostebordet have port?",
+      answer:
+        "Nej. Brug bobler eller hvid til milde oste og gem port til blåskimmel og hård, salt ost.",
+    },
+  ],
+  "portvin-til-chokolade": [
+    {
+      question: "Hvilken portvin til mørk chokolade?",
+      answer:
+        "Ruby reserve eller LBV til bitter kakao; tawny 10 hvis der er nødder eller karamel. Vinen skal være mindst lige så sød som desserten.",
+    },
+    {
+      question: "Passer tawny til mælkechokolade?",
+      answer:
+        "Ja — tawny 10 er ofte bedre end frugtig ruby til mildere, mælkefed chokolade.",
+    },
+    {
+      question: "Kan man bruge champagne til chokolade?",
+      answer:
+        "Kun demi-sec eller sødere. Brut til mørk chokolade smager typisk surt — vælg port, banyuls eller moscato i stedet.",
+    },
+  ],
   "bedste-cabernet-sauvignon-under-150-kr": [
     {
       question: "Hvor kommer bedste cabernet sauvignon under 150 kr fra?",
