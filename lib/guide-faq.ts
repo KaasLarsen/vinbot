@@ -2563,6 +2563,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Hvid og rosé 8–12 °C, bobler 6–8 °C, let rød 12–16 °C. For varm vin smager alkohol og fedme dominerer i varmen.",
     },
   ],
+  "bedste-vintervin": [
+    {
+      question: "Hvad er den bedste vintervin?",
+      answer:
+        "Mellemfyldig rød med syre — pinot, gamay, chianti, Côtes du Rhône og rioja — til gryde, svampe og vildt. Fadlagret hvid til cremede retter. Gem den tungeste struktur til kraftig mad, ikke til alt.",
+    },
+    {
+      question: "Er vintervin det samme som julevin?",
+      answer:
+        "Vintervin dækker hele den kolde sæson. Julevin er den konkrete indkøbsliste til and, flæsk, bobler og risalamande — se bedste julevin, når december nærmer sig.",
+    },
+    {
+      question: "Skal man kun drikke rødvin om vinteren?",
+      answer:
+        "Nej. Fadlagret chardonnay, chenin og riesling passer til creme og kål. Bobler hører til vinterfester. Vælg efter maden, ikke kun efter termometeret.",
+    },
+  ],
+  "bedste-julevin": [
+    {
+      question: "Hvad er den bedste julevin?",
+      answer:
+        "Der er ikke én flaske: bobler til velkomst, pinot eller gamay (eller chianti/rioja) til and eller flæsk, og sød vin som moscato eller port til risalamande. Køb efter rolle og prisbånd.",
+    },
+    {
+      question: "Hvilken rødvin til julemad under 200 kr?",
+      answer:
+        "Cru Beaujolais, god Spätburgunder, Chianti Classico og Rioja crianza/reserva ligger ofte i det bånd og matcher rødkål og brun sovs bedre end unge tanninbomber.",
+    },
+    {
+      question: "Skal julevin være dyr champagne?",
+      answer:
+        "Nej. Crémant eller cava til velkomst er ofte nok; gem champagne til dem, der vil have den oplevelse. Til desserten skal du alligevel have sødme — ikke kun brut.",
+    },
+  ],
+  "bedste-champagne-til-nytaar": [
+    {
+      question: "Hvilken champagne til nytår?",
+      answer:
+        "Brut eller brut nature NV til midnatstoast. Crémant eller cava er fine til velkomst, så champagnen rækker. Demi-sec eller moscato til kransekage — ikke den samme brut.",
+    },
+    {
+      question: "Hvor mange flasker champagne til nytårsaften?",
+      answer:
+        "Regn ca. 1 flaske til 4–5 glas. Til 6 voksne med velkomst og midnat: mindst 2–3 flasker bobler i alt, evt. blandet crémant + champagne.",
+    },
+    {
+      question: "Er dyr champagne nødvendig til nytår?",
+      answer:
+        "Nej. En solid NV brut i midterklassen eller god crémant giver ritualet. Prestige cuvée er valgfrit, hvis I aktivt vil den smagsoplevelse.",
+    },
+  ],
+  "vin-til-nytarsaften": [
+    {
+      question: "Hvilken vin til nytårsaften?",
+      answer:
+        "Bobler til velkomst og midnat, syrefast hvid til fiskeforret, mellemfyldig rød til hovedret, og demi-sec eller sød vin til kransekage. Se den korte flaskeplan på siden.",
+    },
+    {
+      question: "Er vin til nytårsaften det samme som nytårsmenu-guiden?",
+      answer:
+        "Nytårsaften-guiden er den korte aftenplan. Den lange nytårsmenu-guide går dybere i retter, temperatur og drinks — brug begge efter behov.",
+    },
+    {
+      question: "Hvad drikker man præcis til midnat?",
+      answer:
+        "Tørre bobler — champagne brut, crémant eller cava — serveret køligt. Gem søde bobler til desserten.",
+    },
+  ],
   "vin-til-smorrebrod": [
     {
       question: "Hvilken vin til smørrebrød med sild?",
