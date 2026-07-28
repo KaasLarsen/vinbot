@@ -1,12 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { DealCarousel } from "@/components/deal-carousel";
 import { DealCard } from "@/components/deal-card";
 import type { TilbudCardItem } from "@/lib/deals/types";
 
 type DealTab = "alle" | "feed" | "cross";
+
+const INITIAL_VISIBLE = 12;
+const LOAD_MORE_STEP = 12;
 
 const PRICE_OPTIONS = [
   { value: "", label: "Alle priser" },
@@ -94,6 +97,7 @@ function TilbudBrowseAll({
   const [merchant, setMerchant] = useState("");
   const [priceMax, setPriceMax] = useState("");
   const [bigDiscountOnly, setBigDiscountOnly] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const allDeals = useMemo(() => {
     const seen = new Set<string>();
@@ -125,6 +129,13 @@ function TilbudBrowseAll({
       );
     });
   }, [allDeals, tab, merchant, priceMax, bigDiscountOnly, q]);
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE);
+  }, [q, tab, merchant, priceMax, bigDiscountOnly]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = filtered.length > visible.length;
 
   const tabs: { id: DealTab; label: string; count: number }[] = [
     { id: "alle", label: "Alle", count: allDeals.length },
@@ -232,17 +243,30 @@ function TilbudBrowseAll({
       <p className="mt-5 text-sm text-stone-600">
         {filtered.length === 0
           ? "Ingen tilbud matcher — prøv at fjerne filtre eller søg bredere."
-          : `${filtered.length} tilbud matcher · priser fra affiliate-feeds`}
+          : `Viser ${visible.length} af ${filtered.length} tilbud · priser fra affiliate-feeds`}
       </p>
 
       {filtered.length > 0 ? (
-        <ul className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {filtered.map((deal) => (
-            <li key={deal.id}>
-              <DealCard deal={deal} placement="tilbud-browse" />
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {visible.map((deal) => (
+              <li key={deal.id}>
+                <DealCard deal={deal} placement="tilbud-browse" />
+              </li>
+            ))}
+          </ul>
+          {hasMore ? (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setVisibleCount((n) => n + LOAD_MORE_STEP)}
+                className="rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm hover:border-rose-400 hover:bg-rose-50"
+              >
+                Vis flere ({filtered.length - visible.length} tilbage)
+              </button>
+            </div>
+          ) : null}
+        </>
       ) : null}
     </section>
   );

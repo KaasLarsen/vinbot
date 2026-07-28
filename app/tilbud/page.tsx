@@ -13,7 +13,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vin tilbud — overblik over nedsatte vine og prisforskelle";
 const PAGE_DESCRIPTION =
-  "Find vin på tilbud fra danske netbutikker: nedsatte flasker med før-pris og vine hvor én forhandler er markant billigere. Opdateres automatisk — sammenlign altid slutpris hos butikken.";
+  "Sammenlign vin på tilbud fra danske netbutikker: nedsatte vine med før-pris, rødvin tilbud og prisforskelle på tværs. Opdateres ca. hver 6. time — tjek altid slutpris hos butikken.";
 const PAGE_URL = `${siteUrl}/tilbud`;
 
 export const metadata: Metadata = {
@@ -59,6 +59,16 @@ const TILBUD_FAQ = [
     question: "Er rabatprocenten altid reel?",
     answer:
       "Procenten bygger på før-pris og salgspris i feedet. Før-pris følger butikkens egne regler — sammenlign derfor altid den konkrete slutpris med andre steder. Læs guiden om tilbud og før-pris for flere tips.",
+  },
+  {
+    question: "Hvor kan jeg finde rødvin på tilbud?",
+    answer:
+      "Rødvin på tilbud dukker ofte op både som nedsættelse i shop og som prisforskel på tværs af forhandlere. Brug søgningen på denne side til at filtrere på producent eller butik, eller browse i vin-kataloget for at sammenligne samme flaske hos flere shops.",
+  },
+  {
+    question: "Hvad er forskellen på vin-tilbud og rabatkoder?",
+    answer:
+      "Vin-tilbud er nedsatte priser på konkrete flasker i butikkens feed — ofte med før-pris og kampagnepris. Rabatkoder giver en ekstra procent eller fordel i kassen på hele eller dele af sortimentet. Begge kan kombineres, men det afhænger af butikkens regler — tjek altid vilkår hos forhandleren.",
   },
 ] as const;
 
@@ -150,26 +160,124 @@ export default async function TilbudHubPage() {
         <h2 className="text-2xl text-stone-900">Sådan finder du de bedste vin-tilbud online</h2>
         <p className="text-stone-700 leading-relaxed">
           Danske vin-shops kører løbende kampagner med procent-rabat, kassepriser og tidsbegrænsede tilbud. Problemet er
-          sjældent mangel på tilbud — det er at finde ud af, om prisen faktisk er god. Vinbot samler data fra
-          forhandlernes produktfeeds, så du kan se både <strong>nedsættelser hos én butik</strong> og{" "}
-          <strong>prisforskelle på samme flaske</strong> hos flere shops i ét overblik.
+          sjældent mangel på tilbud — det er at finde ud af, om prisen faktisk er god. Når du søger efter{" "}
+          <strong>vin på tilbud</strong>, møder du hurtigt mange forskellige tilbudstyper: alt fra «30 % på udvalgte
+          vine» til kassepriser, medlemsrabatter og nyhedsbreve med ekstra fordele.
         </p>
+        <p className="text-stone-700 leading-relaxed">
+          Vinbot samler data fra forhandlernes produktfeeds, så du kan se både <strong>nedsættelser hos én butik</strong>{" "}
+          og <strong>prisforskelle på samme flaske</strong> hos flere shops i ét overblik. I stedet for at hoppe mellem
+          ti forskellige hjemmesider kan du starte her, filtrere på pris og forhandler, og derefter tjekke den endelige
+          slutpris — inklusive fragt og eventuelle rabatkoder — hos den butik, du vælger.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Målet er ikke at vise «så mange tilbud som muligt», men at gøre det nemmere at spotte{" "}
+          <strong>nedsatte vine</strong>, hvor rabatten er tydelig, og vine, hvor én forhandler lige nu er markant
+          billigere end de andre i vores katalog.
+        </p>
+
         <h3 className="text-xl text-stone-900">To typer tilbud på denne side</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Alle tilbud på Vinbot falder i én af to kategorier. Det er vigtigt at kende forskellen, fordi de svarer på to
+          forskellige spørgsmål: «Er denne flaske nedsat hos butikken?» og «Er den billigst lige nu på tværs af flere
+          shops?»
+        </p>
         <ul className="text-stone-700">
           <li>
             <strong>Nedsat i shop</strong> — flasker med både salgspris og før-pris i feedet (typisk «nypris» og
-            «glpris» hos Partner-Ads-forhandlere).
+            «glpris» hos Partner-Ads-forhandlere). Her ser du den procentvise rabat, butikken selv fremhæver, og du
+            kan hurtigt finde fx <strong>rødvin tilbud</strong> eller hvidvin på kampagnepris hos en bestemt forhandler.
           </li>
           <li>
             <strong>Billigst på tværs</strong> — samme vin grupperet i{" "}
-            <Link href="/vine">vin-kataloget</Link>, hvor én forhandler er markant billigere end andre lige nu.
+            <Link href="/vine">vin-kataloget</Link>, hvor én forhandler er markant billigere end andre lige nu. Det er
+            nyttigt, når du allerede ved, hvilken flaske du vil have, og bare vil finde den laveste pris blandt de
+            butikker, Vinbot dækker.
           </li>
         </ul>
+
+        <h3 className="text-xl text-stone-900">Hvorfor det er svært at finde gode vin-tilbud</h3>
         <p className="text-stone-700 leading-relaxed">
-          Brug sektionerne ovenfor til at browse hurtigt, eller scroll ned til søgning og filtrering. Vil du forstå
-          før-pris og procenter bedre, læs{" "}
-          <Link href="/guides/vin-tilbud-og-foer-pris">guiden til tilbud og før-pris</Link>. Rabatkoder og
-          nyhedsbreve findes på <Link href="/rabatkoder">rabatkoder</Link>.
+          Vinmarkedet online er fragmenteret. Hver butik har sit eget sortiment, sine egne kampagner og sin egen måde at
+          vise før-pris på. En flaske kan være «nedsat» hos én shop, mens den sælges til normalpris hos en anden — eller
+          omvendt. Tidsbegrænsede tilbud og kassepriser skifter ofte, og nyhedsbreve kan give ekstra rabat, som ikke
+          altid fremgår tydeligt i et produktfeed.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Derudover varierer kvaliteten af tilbud. En høj rabatprocent betyder ikke automatisk, at flasken er billigere
+          end et andet sted — før-prisen kan være sat højt i en kort periode, eller kampagnen kan gælde en ældre årgang.
+          Derfor er det værd at <strong>sammenligne vinpriser</strong> på tværs, ikke kun kigge på procenten i én butik.
+        </p>
+
+        <h3 className="text-xl text-stone-900">Sådan vurderer du om rabatten er reel</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Start med at se på slutprisen for den flaske, du vil købe — ikke kun rabatprocenten. Tjek om før-prisen i
+          feedet virker rimelig i forhold til, hvad du ellers har set for samme vin. Sammenlign med andre forhandlere i{" "}
+          <Link href="/vine">vin-kataloget</Link>, og husk fragt: en lav flaskepris kan ædes op af leveringsomkostninger,
+          især ved små ordrer.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Vinbots procent bygger på de priser, forhandleren sender i sit feed. Reglerne for før-pris følger butikkens
+          egne vilkår — vi kan ikke garantere, at en «før-pris» har været gældende i en bestemt periode. Læs mere i{" "}
+          <Link href="/guides/vin-tilbud-og-foer-pris">guiden til tilbud og før-pris</Link>, og brug altid butikkens
+          checkout som den endelige sandhed, før du bestiller.
+        </p>
+
+        <h3 className="text-xl text-stone-900">Populære vin-typer på tilbud</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Tilbud skifter med sæson og lager, men visse kategorier dukker ofte op. <strong>Rødvin på tilbud</strong> er
+          hyppigt i kampagner — især populære regioner og hverdagsvine til mad. Hvidvin og rosé ses ofte i sommer- og
+          grillkampagner. Bobler og champagne kan være på tilbud omkring højtider og weekend — se også guiden om{" "}
+          <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant">bobler, champagne og alternativer</Link>.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Gavevine og flasker til selskab kan også være nedsat, men her gælder det ekstra meget at sammenligne kvalitet
+          og pris — ikke kun rabatten. Guider som{" "}
+          <Link href="/guides/gavevin-sadan-vaelger-du-den-rigtige-flaske">gavevin — sådan vælger du den rigtige flaske</Link>{" "}
+          og <Link href="/guides/koeb-vin-online-sadan-holder-du-styr-paa-det">køb vin online</Link> kan hjælpe med at
+          sætte pris og tilbud i perspektiv, før du klikker videre til butikken.
+        </p>
+
+        <h3 className="text-xl text-stone-900">Danske vinbutikker med tilbud</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Vinbot henter tilbud fra en række danske netbutikker via affiliate-feeds. Blandt de forhandlere, vi ofte ser
+          kampagner fra, er fx{" "}
+          <Link href="/den-sidste-flaske">Den Sidste Flaske</Link>,{" "}
+          <Link href="/winther-vin">Winther Vin</Link>,{" "}
+          <Link href="/lauridsen-vine">Lauridsen Vine</Link> og{" "}
+          <Link href="/dh-wines">DH Wines</Link>. Hver shop har sit eget fokus — fra dagstilbud og restpartier til
+          bredere sortimenter med løbende nedsættelser.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Du kan filtrere tilbud på denne side efter forhandler, eller gå til{" "}
+          <Link href="/vinforhandlere">oversigten over vinforhandlere</Link> for at se alle shops, Vinbot dækker, og
+          hoppe direkte til den butik, du foretrækker.
+        </p>
+
+        <h3 className="text-xl text-stone-900">Sådan bruger du Vinbots tilbudsside</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Øverst på siden finder du udvalgte højdepunkter og carouseller: største rabatter i shop, billigst på tværs af
+          butikker og gode fund under 150 kr. De giver et hurtigt overblik uden at du skal søge. Længere nede under{" "}
+          <strong>Søg og filtrér alle tilbud</strong> kan du søge på vin, producent eller butik, vælge prisloft, skifte
+          mellem «nedsat i shop» og «billigst på tværs», og markere store rabatter på 25 % eller mere.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Listen viser 12 tilbud ad gangen — klik «Vis flere» for at se resten. Når du har fundet en interessant flaske,
+          går du videre til forhandlerens side via linket på kortet og tjekker lager, levering og endelig pris der.
+        </p>
+
+        <h3 className="text-xl text-stone-900">Rabatkoder og nyhedsbreve</h3>
+        <p className="text-stone-700 leading-relaxed">
+          Mange vinbutikker tilbyder rabatkoder til nye kunder, medlemmer eller nyhedsbrevstilmeldinger. De kan give
+          ekstra fordel oven i kampagnepriser, men reglerne varierer. På{" "}
+          <Link href="/rabatkoder">rabatkoder-siden</Link> samler vi koder og tips til udvalgte forhandlere, så du kan
+          se, om der er noget ekstra at hente, før du gennemfører købet.
+        </p>
+        <p className="text-stone-700 leading-relaxed">
+          Husk: et godt vin-tilbud handler om den pris, du reelt betaler — ikke kun om den største procent i feedet.
+          Brug sektionerne ovenfor til at browse hurtigt, filtrér nede i søgningen, og læs{" "}
+          <Link href="/guides/vin-tilbud-og-foer-pris">guiden til tilbud og før-pris</Link>, når du vil forstå tallene
+          bedre. Så er du bedre rustet til at finde vine på tilbud, der faktisk giver mening for dig.
         </p>
       </section>
 
