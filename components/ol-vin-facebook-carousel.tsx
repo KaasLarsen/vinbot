@@ -73,9 +73,9 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
             href={facebookOlVinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#166fe5]"
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#1877F2]/30 bg-[#1877F2]/5 px-3 py-1.5 text-xs font-medium text-[#1877F2] transition hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10"
           >
-            <FacebookIcon className="size-4" />
+            <FacebookIcon className="size-3.5" />
             Følg siden
           </a>
           {withImages.length > 1 ? (
