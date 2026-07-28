@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
 };
 
-/** Feed-/katalog-build er for tung til SSG inden for Vercels page-timeout — render on request. */
-export const dynamic = "force-dynamic";
+/** Feed-/katalog-build er for tung til SSG inden for Vercels page-timeout — cache HTML i 6 timer. */
+export const revalidate = 21600;
 export const maxDuration = 60;
 
 const MERCHANT_DEAL_LINKS = [
@@ -85,14 +85,14 @@ function pickTopFeed(feedDeals: TilbudCardItem[]): TilbudCardItem[] {
   return [...feedDeals]
     .filter((d) => d.discountPercent >= 15)
     .sort((a, b) => b.discountPercent - a.discountPercent)
-    .slice(0, 24);
+    .slice(0, 12);
 }
 
 function pickBudget(feedDeals: TilbudCardItem[]): TilbudCardItem[] {
   return [...feedDeals]
     .filter((d) => d.salePrice <= 150 && d.discountPercent >= 10)
     .sort((a, b) => b.discountPercent - a.discountPercent || a.salePrice - b.salePrice)
-    .slice(0, 24);
+    .slice(0, 12);
 }
 
 export default async function TilbudHubPage() {
@@ -111,7 +111,7 @@ export default async function TilbudHubPage() {
   const featured = pickFeatured(feedDeals);
   const topFeedDeals = pickTopFeed(feedDeals);
   const budgetDeals = pickBudget(feedDeals);
-  const crossCarousel = [...crossDeals].sort((a, b) => b.discountPercent - a.discountPercent).slice(0, 24);
+  const crossCarousel = [...crossDeals].sort((a, b) => b.discountPercent - a.discountPercent).slice(0, 12);
 
   const breadcrumbItems = [
     { name: "Forside", url: `${siteUrl}/` },

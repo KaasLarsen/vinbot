@@ -68,7 +68,7 @@ export function DealCard({
           >
             {deal.image ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={deal.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+              <img src={deal.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" decoding="async" />
             ) : (
               <div className="px-2 text-center text-xs text-stone-400">Intet billede</div>
             )}
@@ -137,7 +137,7 @@ export function DealCard({
         >
           {deal.image ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={deal.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+            <img src={deal.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" decoding="async" />
           ) : (
             <div className="px-2 text-center text-xs text-stone-400">Intet billede</div>
           )}

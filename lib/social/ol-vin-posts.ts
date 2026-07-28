@@ -47,7 +47,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). The Guv'nor Rosé — frisk spansk rosé med jordbær, ribs og citrus. Perfekt til terrasse, tapas og fisk.",
     date: "2026-07-17",
     orderHref: olVinOrderLink(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, GUVNOR_ROSE_PRODUCT, "olvin-fb-guvnor-rose"),
-    image: "/images/ol-vin/post-guvnor-rose-bottle.png",
+    image: "/images/ol-vin/post-guvnor-rose-bottle.webp",
     merchant: "Den Sidste Flaske",
   },
   {
@@ -57,7 +57,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 119 kr.). Frisk, sprød og tør Riesling med citrus, grønne æbler og mineralitet — perfekt til fisk, skaldyr og terrassen.",
     date: "2026-07-17",
     orderHref: olVinOrderLink(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, RIESLING_PRODUCT, "olvin-fb-riesling-jul17"),
-    image: "/images/ol-vin/post-riesling-bottle.png",
+    image: "/images/ol-vin/post-riesling-bottle.webp",
     merchant: "Den Sidste Flaske",
   },
   {
@@ -67,7 +67,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). Boccantino Primitivo & Susumaniello — fyldig, blød og frugtig italiensk rødvin.",
     date: "2026-07-17",
     orderHref: olVinOrderLink(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, BOCCANTINO_PRODUCT, "olvin-fb-boccantino-jul17"),
-    image: "/images/ol-vin/post-boccantino-bottle.png",
+    image: "/images/ol-vin/post-boccantino-bottle.webp",
     merchant: "Den Sidste Flaske",
   },
   {
@@ -103,7 +103,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
       "Langhe Nebbiolo La Farghetta 2021 fra Piemonte. Vinen kan også købes hos vores partner Den Sidste Flaske — autentisk Nebbiolo med kirsebær, rose og klassisk struktur.",
     date: "2026-06-02",
     orderHref: olVinOrderLink(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, NEBBIOLO_PRODUCT, "olvin-fb-nebbiolo-jun2"),
-    image: "/images/ol-vin/post-nebbiolo-bottle.png",
+    image: "/images/ol-vin/post-nebbiolo-bottle.webp",
     merchant: "Den Sidste Flaske",
   },
 ];

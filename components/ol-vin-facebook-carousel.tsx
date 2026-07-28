@@ -50,8 +50,15 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
           {post.imageFit === "cover" ? (
             <Image src={post.image} alt="" fill className="object-cover" sizes="144px" />
           ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={post.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+            <Image
+              src={post.image}
+              alt=""
+              width={200}
+              height={320}
+              className="max-h-full max-w-full object-contain p-2"
+              sizes="144px"
+              loading="lazy"
+            />
           )}
         </a>
       </div>
