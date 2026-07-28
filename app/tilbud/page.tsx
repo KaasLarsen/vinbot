@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
-import { TilbudFacebookCta } from "@/components/tilbud-facebook-cta";
+import { OlVinFacebookCarousel } from "@/components/ol-vin-facebook-carousel";
 import { TilbudPageSections } from "@/components/tilbud-page-sections";
 import { BreadcrumbJsonLd, CollectionPageJsonLd, FaqJsonLd } from "@/components/json-ld";
 import { listCrossMerchantDeals } from "@/lib/deals/cross-merchant";
 import { listDealMerchants, listFeedDeals } from "@/lib/deals/engine";
 import { crossMerchantDealToCard, feedDealToCard, type TilbudCardItem } from "@/lib/deals/types";
+import { OL_VIN_FACEBOOK_POSTS } from "@/lib/social/ol-vin-posts";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -136,29 +137,30 @@ export default async function TilbudHubPage() {
 
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/tilbud", label: "Vin tilbud" }]} />
 
-      <header className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
-        <div className="min-w-0 max-w-3xl">
-          <p className="text-sm font-medium uppercase tracking-wide text-rose-800/90">Opdateres ca. hver 6. time</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-stone-900">Vin tilbud</h1>
-          <p className="mt-4 text-lg leading-relaxed text-stone-700">
-            Overblik over <strong className="font-medium text-stone-800">vin på tilbud</strong> fra danske netbutikker —
-            både nedsatte flasker med før-pris og vine, hvor prisen varierer markant mellem forhandlere.
-          </p>
-        </div>
-        <TilbudFacebookCta className="w-full sm:w-auto lg:mt-1" />
+      <header className="mt-6 max-w-3xl">
+        <p className="text-sm font-medium uppercase tracking-wide text-rose-800/90">Opdateres ca. hver 6. time</p>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-stone-900">Vin tilbud</h1>
+        <p className="mt-4 text-lg leading-relaxed text-stone-700">
+          Overblik over <strong className="font-medium text-stone-800">vin på tilbud</strong> fra danske netbutikker —
+          både nedsatte flasker med før-pris og vine, hvor prisen varierer markant mellem forhandlere.
+        </p>
       </header>
 
       <PartnerAdsLeaderboard className="mt-8" />
 
-      <TilbudPageSections
-        featured={featured}
-        topFeedDeals={topFeedDeals}
-        crossDealsCarousel={crossCarousel}
-        budgetDeals={budgetDeals}
-        feedDeals={feedDeals}
-        crossDeals={crossDeals}
-        merchants={allMerchants}
-      />
+      <OlVinFacebookCarousel posts={OL_VIN_FACEBOOK_POSTS} />
+
+      <div className="mt-14">
+        <TilbudPageSections
+          featured={featured}
+          topFeedDeals={topFeedDeals}
+          crossDealsCarousel={crossCarousel}
+          budgetDeals={budgetDeals}
+          feedDeals={feedDeals}
+          crossDeals={crossDeals}
+          merchants={allMerchants}
+        />
+      </div>
 
       <section
         className="mt-16 rounded-2xl border border-stone-200 bg-stone-50/80 p-6 sm:p-8"
