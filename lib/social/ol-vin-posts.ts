@@ -30,6 +30,8 @@ const GUVNOR_ROSE_PRODUCT = "https://densidsteflaske.dk/products/the-guv-nor-ros
 
 const IMMORTALIS_PRIORAT_PRODUCT = "https://lauridsenvine.dk/products/immortalis-priorat";
 
+const NEBBIOLO_PRODUCT = "https://densidsteflaske.dk/products/langhe-nebbiolo-la-farghetta-2021";
+
 export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
   {
     id: "2026-07-17-guvnor-rose",
@@ -77,6 +79,15 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     date: "2026-06-16",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, IMMORTALIS_PRIORAT_PRODUCT),
     image: "/images/ol-vin/post-immortalis-priorat.jpg",
+  },
+  {
+    id: "2026-06-02-nebbiolo",
+    title: "Konkurrence – vind 2 flasker fantastisk Nebbiolo!",
+    excerpt:
+      "Langhe Nebbiolo La Farghetta 2021 fra Piemonte. Vinen kan også købes hos vores partner Den Sidste Flaske — autentisk Nebbiolo med kirsebær, rose og klassisk struktur.",
+    date: "2026-06-02",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, NEBBIOLO_PRODUCT),
+    image: "/images/ol-vin/post-nebbiolo-bottle.png",
   },
 ];
 
