@@ -243,7 +243,7 @@ function TilbudBrowseAll({
       <p className="mt-5 text-sm text-stone-600">
         {filtered.length === 0
           ? "Ingen tilbud matcher — prøv at fjerne filtre eller søg bredere."
-          : `Viser ${visible.length} af ${filtered.length} tilbud · priser fra affiliate-feeds`}
+          : `${visible.length} af ${filtered.length} tilbud matcher · priser fra danske netbutikker`}
       </p>
 
       {filtered.length > 0 ? (
