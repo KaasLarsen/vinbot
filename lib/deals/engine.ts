@@ -96,12 +96,16 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
 
 const getCachedFeedDeals = unstable_cache(
   (optsJson: string) => buildFeedDeals(JSON.parse(optsJson) as ListFeedDealsOptions),
-  ["vinbot-feed-deals-v2"],
+  ["vinbot-feed-deals-v3"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 
 export async function listFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[]> {
-  return getCachedFeedDeals(JSON.stringify(opts));
+  try {
+    return await getCachedFeedDeals(JSON.stringify(opts));
+  } catch {
+    return buildFeedDeals(opts);
+  }
 }
 
 /** Unikke forhandlere med mindst ét feed-tilbud. */

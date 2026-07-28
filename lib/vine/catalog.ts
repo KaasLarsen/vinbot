@@ -179,13 +179,19 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v13"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v14"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });
 
 /** Per-request dedupe mellem `generateMetadata` og side-komponent. */
-export const loadWineCatalog = cache(getCachedWineCatalog);
+export const loadWineCatalog = cache(async (): Promise<WineCatalog> => {
+  try {
+    return await getCachedWineCatalog();
+  } catch {
+    return buildWineCatalog();
+  }
+});
 
 /** Opvarm Data Cache efter cron-revalidate — undgår cold-start 5xx ved mass-crawl. */
 export async function warmWineCatalog(): Promise<WineCatalog> {
