@@ -325,8 +325,8 @@ export default async function TilbudHubPage() {
       <section className="mt-8 rounded-2xl border border-amber-200/80 bg-amber-50/50 p-5 text-sm leading-relaxed text-stone-700">
         <p>
           <strong className="font-medium text-stone-900">Forbehold:</strong> Tilbud kan udløbe mellem opdateringer.
-          Før-pris i feeds følger butikkens egne regler — sammenlign altid den konkrete slutpris inkl. fragt. Vinbot
-          sælger ikke vin; links kan være affiliate.
+          Før-pris følger butikkens egne regler — sammenlign altid den konkrete slutpris inkl. fragt. Vinbot sælger ikke
+          vin.
         </p>
       </section>
 
