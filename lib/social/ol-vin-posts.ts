@@ -28,6 +28,8 @@ const RIESLING_PRODUCT = "https://densidsteflaske.dk/products/alte-reben-rieslin
 
 const GUVNOR_ROSE_PRODUCT = "https://densidsteflaske.dk/products/the-guv-nor-rose";
 
+const IMMORTALIS_PRIORAT_PRODUCT = "https://lauridsenvine.dk/products/immortalis-priorat";
+
 export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
   {
     id: "2026-07-17-guvnor-rose",
@@ -66,6 +68,15 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     image: "/images/ol-vin/post-vinbot-og.jpg",
     ctaLabel: "Besøg Vinbot",
     imageFit: "cover",
+  },
+  {
+    id: "2026-06-16-immortalis-priorat",
+    title: "Denne vin skal bare prøves!",
+    excerpt:
+      "Immortalis Priorat — fyldig spansk rødvin med mørke bær og krydderier. Nu kun 149 kr. (før 199 kr.). Bonus: 10% rabat ved tilmelding til Lauridsen Vines nyhedsbrev.",
+    date: "2026-06-16",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, IMMORTALIS_PRIORAT_PRODUCT),
+    image: "/images/ol-vin/post-immortalis-priorat.jpg",
   },
 ];
 
