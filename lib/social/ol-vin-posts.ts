@@ -3,7 +3,7 @@ import { facebookOlVinUrl } from "@/lib/site";
 
 /**
  * Kuraterede opslag fra Øl & Vin på Facebook.
- * Tilføj nye øverst. Brug gerne screenshot af vin/billede + kort tekst fra opslaget.
+ * Tilføj nye øverst. Brug produktbillede (fx fra butikken) under /public/images/ol-vin/.
  */
 export type OlVinFacebookPost = {
   id: string;

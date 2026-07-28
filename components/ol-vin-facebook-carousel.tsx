@@ -137,7 +137,7 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
           {withImages.map((post) => (
             <article
               key={post.id}
-              className="flex w-[min(100%,20rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm sm:w-[20rem]"
+              className="flex w-[min(100%,17.5rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm sm:w-[17.5rem]"
             >
               <div className="flex items-center gap-3 px-4 pt-4">
                 <span className="relative size-10 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100">
@@ -156,9 +156,15 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
                 href={post.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative mt-3 aspect-[4/5] bg-stone-100"
+                className="mx-4 mt-3 flex h-36 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:h-40"
               >
-                <Image src={post.image} alt="" fill className="object-cover" sizes="320px" />
+                <Image
+                  src={post.image}
+                  alt=""
+                  width={160}
+                  height={160}
+                  className="max-h-full max-w-full object-contain p-2"
+                />
               </a>
               <div className="flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
                 <a
