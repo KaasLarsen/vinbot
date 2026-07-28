@@ -20,10 +20,45 @@ function formatDaDate(iso: string): string {
   return d.toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" });
 }
 
+function SectionHeader({ showFollow }: { showFollow: boolean }) {
+  return (
+    <div className="flex flex-wrap items-end justify-between gap-3">
+      <div className="min-w-0 flex-1">
+        <p className="flex items-center gap-2 text-sm font-medium text-[#1877F2]">
+          <FacebookIcon className="size-4" />
+          Øl &amp; Vin
+        </p>
+        <h2
+          id="ol-vin-facebook-heading"
+          className="mt-1 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl"
+        >
+          Følg os på Facebook via Øl &amp; Vin
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-stone-600">
+          Få vin-tilbud og tips direkte i dit Facebook-feed.
+        </p>
+      </div>
+      {showFollow ? (
+        <a
+          href={facebookOlVinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#166fe5]"
+        >
+          <FacebookIcon className="size-4" />
+          Følg siden
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
 export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+
+  const withImages = posts.filter((p) => Boolean(p.image));
 
   const updateArrows = useCallback(() => {
     const el = trackRef.current;
@@ -43,9 +78,35 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
 
   useEffect(() => {
     updateArrows();
-  }, [posts, updateArrows]);
+  }, [withImages, updateArrows]);
 
-  if (posts.length === 0) return null;
+  if (withImages.length === 0) {
+    return (
+      <section className="mt-12" aria-labelledby="ol-vin-facebook-heading">
+        <SectionHeader showFollow={false} />
+        <a
+          href={facebookOlVinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 flex flex-col items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#1877F2]/35 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
+        >
+          <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#1877F2] text-white shadow-sm">
+            <FacebookIcon className="size-8" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-lg font-semibold text-stone-900">Se de seneste opslag på Øl &amp; Vin</span>
+            <span className="mt-1 block text-sm leading-relaxed text-stone-600">
+              Åbn Facebook-siden for tilbud, tips og udvalgte flasker — direkte i dit feed, når du følger med.
+            </span>
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white">
+            Åbn Facebook
+            <span aria-hidden>→</span>
+          </span>
+        </a>
+      </section>
+    );
+  }
 
   return (
     <section className="mt-12" aria-labelledby="ol-vin-facebook-heading">
@@ -107,7 +168,7 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
         onScroll={updateArrows}
         className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
       >
-        {posts.map((post) => (
+        {withImages.map((post) => (
           <a
             key={post.id}
             href={post.href}
@@ -115,16 +176,8 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
             rel="noopener noreferrer"
             className="group flex w-[min(100%,18rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:border-[#1877F2]/35 hover:shadow-md sm:w-[18rem]"
           >
-            <div className="relative aspect-[16/10] bg-gradient-to-br from-[#1877F2]/15 via-stone-100 to-rose-50">
-              {post.image ? (
-                <Image src={post.image} alt="" fill className="object-cover" sizes="288px" />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex size-14 items-center justify-center rounded-2xl bg-[#1877F2] text-white shadow-md">
-                    <FacebookIcon className="size-8" />
-                  </span>
-                </div>
-              )}
+            <div className="relative aspect-[4/5] bg-stone-100">
+              <Image src={post.image} alt="" fill className="object-cover" sizes="288px" />
             </div>
             <div className="flex flex-1 flex-col p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-stone-500">{formatDaDate(post.date)}</p>
