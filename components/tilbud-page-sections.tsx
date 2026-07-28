@@ -43,7 +43,7 @@ export function TilbudPageSections({
           <h2 id="tilbud-featured-heading" className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">
             I fokus lige nu
           </h2>
-          <p className="mt-1 text-sm text-stone-600">De stærkeste rabatter vi ser i feeds lige nu — opdateres ca. hver 6. time.</p>
+          <p className="mt-1 text-sm text-stone-600">De stærkeste rabatter vi har fundet lige nu — opdateres ca. hver 6. time.</p>
           <ul className="mt-5 grid gap-5 lg:grid-cols-2">
             {featured.map((deal) => (
               <li key={deal.id}>
