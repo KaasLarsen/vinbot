@@ -1,12 +1,10 @@
 "use client";
 
-import { Suspense, type ReactNode } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState, type ReactNode } from "react";
 
-function HomeFeedStripsGateInner({ children }: { children: ReactNode }) {
-  const q = useSearchParams().get("q");
-  if (q?.trim()) return null;
-  return <>{children}</>;
+function hasUrlQuery(): boolean {
+  if (typeof window === "undefined") return false;
+  return Boolean(new URLSearchParams(window.location.search).get("q")?.trim());
 }
 
 /**
@@ -14,9 +12,12 @@ function HomeFeedStripsGateInner({ children }: { children: ReactNode }) {
  * Synkront script i page.tsx sætter data-vinbot-home-q før paint, så der ikke flashes indhold.
  */
 export function HomeFeedStripsGate({ children }: { children: ReactNode }) {
-  return (
-    <Suspense fallback={null}>
-      <HomeFeedStripsGateInner>{children}</HomeFeedStripsGateInner>
-    </Suspense>
-  );
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    setHide(hasUrlQuery());
+  }, []);
+
+  if (hide) return null;
+  return <>{children}</>;
 }

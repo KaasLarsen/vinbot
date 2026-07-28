@@ -18,6 +18,7 @@ import { PageShell } from "@/components/page-shell";
 
 /** Samme interval som feed-cache — HTML caches på CDN, data opdateres i baggrunden. */
 export const revalidate = 21600;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: `${siteName} – vinguides til mad, druer og sæson`,

@@ -1,7 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { WineSearch } from "@/components/wine-search";
 
@@ -10,35 +9,30 @@ type HomeWineSearchProps = {
   resultsClassName?: string;
 };
 
-function HomeWineSearchInner({ controlsClassName, resultsClassName }: HomeWineSearchProps) {
-  const params = useSearchParams();
+function readUrlSearch(): { q?: string; initialMax?: number } {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
   const q = params.get("q") ?? undefined;
   const maxRaw = params.get("max");
   const parsedMax = maxRaw != null ? parseInt(maxRaw, 10) : Number.NaN;
   const initialMax = Number.isFinite(parsedMax) ? parsedMax : undefined;
-
-  return (
-    <WineSearch
-      initialQuery={q}
-      initialMax={initialMax}
-      controlsClassName={controlsClassName}
-      resultsClassName={resultsClassName}
-    />
-  );
+  return { q, initialMax };
 }
 
 /** Læser ?q= og ?max= på klienten så forsiden kan caches statisk uden searchParams på serveren. */
-export function HomeWineSearch(props: HomeWineSearchProps) {
+export function HomeWineSearch({ controlsClassName, resultsClassName }: HomeWineSearchProps) {
+  const [urlSearch, setUrlSearch] = useState<{ q?: string; initialMax?: number }>({});
+
+  useEffect(() => {
+    setUrlSearch(readUrlSearch());
+  }, []);
+
   return (
-    <Suspense
-      fallback={
-        <WineSearch
-          controlsClassName={props.controlsClassName}
-          resultsClassName={props.resultsClassName}
-        />
-      }
-    >
-      <HomeWineSearchInner {...props} />
-    </Suspense>
+    <WineSearch
+      initialQuery={urlSearch.q}
+      initialMax={urlSearch.initialMax}
+      controlsClassName={controlsClassName}
+      resultsClassName={resultsClassName}
+    />
   );
 }
