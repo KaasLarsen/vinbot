@@ -22,7 +22,18 @@ const BOCCANTINO_PRODUCT =
 
 const RIESLING_PRODUCT = "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022";
 
+const GUVNOR_ROSE_PRODUCT = "https://densidsteflaske.dk/products/the-guv-nor-rose";
+
 export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
+  {
+    id: "2026-07-17-guvnor-rose",
+    title: "Prisvindende rosé til en vild pris!",
+    excerpt:
+      "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). The Guv'nor Rosé — frisk spansk rosé med jordbær, ribs og citrus. Perfekt til terrasse, tapas og fisk.",
+    date: "2026-07-17",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, GUVNOR_ROSE_PRODUCT),
+    image: "/images/ol-vin/post-guvnor-rose-bottle.png",
+  },
   {
     id: "2026-07-17-riesling",
     title: "Fantastisk tysk Riesling til en vanvittig pris!",
