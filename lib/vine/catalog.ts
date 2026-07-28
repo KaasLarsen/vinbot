@@ -185,8 +185,8 @@ async function buildWineCatalogForCache(): Promise<WineCatalog> {
     ...catalog,
     wines: catalog.wines.map((w) => ({
       ...w,
-      description: w.description.slice(0, 400),
-      alternateListingTitles: w.alternateListingTitles.slice(0, 4),
+      description: (w.description ?? "").slice(0, 400) || null,
+      alternateListingTitles: (w.alternateListingTitles ?? []).slice(0, 4),
     })),
   };
 }
