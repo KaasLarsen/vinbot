@@ -14,7 +14,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Privatliv";
 const PAGE_DESCRIPTION =
-  "Sådan behandler Vinbot personoplysninger: hobbyprojekt uden CVR, Vercel-hosting, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon).";
+  "Sådan behandler Vinbot personoplysninger: hobbyprojekt uden CVR, Vercel-hosting, nyhedsbrev, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon).";
 const PAGE_URL = `${siteUrl}/privatliv`;
 
 export const metadata: Metadata = {
@@ -69,7 +69,7 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Hosting og behandlere</h2>
         <p>
-          Websitet hostes hos <strong>Vercel</strong>. Ved besøg kan tekniske oplysninger (herunder IP-adresse, browser og forespørgselsmetadata) behandles af Vercel og af os til drift og sikkerhed. Google (Analytics, AdSense) og affiliate-netværk behandler data efter deres vilkår, når de respektive tjenester er aktiveret efter dit samtykke.
+          Websitet hostes hos <strong>Vercel</strong>. Ved besøg kan tekniske oplysninger (herunder IP-adresse, browser og forespørgselsmetadata) behandles af Vercel og af os til drift og sikkerhed. Google (Analytics, AdSense) og affiliate-netværk behandler data efter deres vilkår, når de respektive tjenester er aktiveret efter dit samtykke. Til nyhedsbrev bruger vi <strong>Resend</strong> som databehandler til lagring af tilmeldte e-mailadresser og afsendelse af mails.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Oplysninger vi behandler</h2>
@@ -77,14 +77,31 @@ export default function PrivatlivPage() {
           <li>Tekniske data i forbindelse med besøg: IP, enhed, browser, tidspunkt, besøgte sider (i det omfang drift og statistik kræver det).</li>
           <li>Cookies og tilsvarende teknologier som beskrevet under Cookiepolitik.</li>
           <li>Korrespondance: e-mails, hvis du skriver til os.</li>
+          <li>
+            Nyhedsbrev: din e-mailadresse og tidspunkt for tilmelding, når du aktivt tilmelder dig via formularen på sitet
+            (samtykke-checkbox).
+          </li>
         </ul>
         <p className="text-sm text-stone-600">
-          Vi kører ikke login, nyhedsbrev eller andre tjenester, der kræver en separat konto på Vinbot.
+          Vi kører ikke login eller brugerkonti på Vinbot. Nyhedsbrev kræver kun din e-mail — ikke en separat konto.
+        </p>
+
+        <h2 className="text-xl font-semibold text-stone-900">Nyhedsbrev</h2>
+        <p>
+          Hvis du tilmelder dig nyhedsbrevet, bruger vi din e-mail til at sende tilbud, tips og nyheder om Vinbot og
+          relevante vinforhandlere. Retsgrundlaget er dit <strong>samtykke</strong>. Du kan trække samtykket tilbage når
+          som helst via afmeldingslinket i vores mails eller ved at skrive til{" "}
+          <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+            {contactEmail}
+          </a>
+          . Vi opbevarer din e-mail, så længe du er tilmeldt, og sletter eller anonymiserer den ved afmelding (med forbehold
+          for tekniske logge i en kort periode).
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Formål og grundlag</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Drift og sikkerhed (berettiget interesse / nødvendighed for tjenesten).</li>
+          <li>Nyhedsbrev med tilbud og nyheder (samtykke ved tilmelding).</li>
           <li>Statistik og forbedring af sitet (samtykke, når du har trykket Accepter).</li>
           <li>Annoncer via Google AdSense (samtykke, når du har trykket Accepter).</li>
           <li>Affiliate-sporing via Partner-Ads, Adtraction og Daisycon (samtykke, når du har trykket Accepter).</li>

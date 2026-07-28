@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { OlVinFacebookCarousel } from "@/components/ol-vin-facebook-carousel";
 import { TilbudPageSections } from "@/components/tilbud-page-sections";
@@ -145,6 +146,10 @@ export default async function TilbudHubPage() {
           både nedsatte flasker med før-pris og vine, hvor prisen varierer markant mellem forhandlere.
         </p>
       </header>
+
+      <div className="mt-8 max-w-lg rounded-2xl border border-stone-200 bg-stone-50/80 p-5 sm:p-6">
+        <NewsletterSignupForm variant="section" />
+      </div>
 
       <PartnerAdsLeaderboard className="mt-8" />
 

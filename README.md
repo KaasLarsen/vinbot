@@ -26,7 +26,8 @@ Se [`.env.example`](.env.example) for alle felter. Vigtigste:
 | `NEXT_PUBLIC_ADSENSE_CLIENT` / `NEXT_PUBLIC_ADSENSE_ACTIVE` | AdSense |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 |
 | `CRON_SECRET` | Auth til Vercel cron (`/api/cron/revalidate-feeds`) |
-| `RESEND_API_KEY` / `RESEND_FROM` | Forhandler-tilmelding via e-mail |
+| `RESEND_API_KEY` / `RESEND_FROM` | Forhandler-tilmelding + nyhedsbrev (Contacts) |
+| `RESEND_NEWSLETTER_SEGMENT_ID` / `RESEND_NEWSLETTER_TOPIC_ID` | Valgfrit — ellers auto find/opret «Vinbot nyhedsbrev» |
 
 Sæt de samme værdier i Vercel (Production + Preview) ved deploy.
 
