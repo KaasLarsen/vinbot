@@ -9,6 +9,9 @@ export const editorialTeamDescription =
   "Vinbots redaktionelle team skriver og opdaterer vinguides på dansk — madparring, druer, regioner og praktisk vin-viden.";
 export const contactEmail = "info@vinbot.dk";
 
+/** Øl & Vin — Facebook-side med tilbud og tips. */
+export const facebookOlVinUrl = "https://www.facebook.com/profile.php?id=61554449533252";
+
 /** Mob.nr. til hobbyprojektet — `tel:` uden mellemrum. */
 export const contactPhoneDisplay = "27 29 91 06";
 export const contactPhoneTelHref = "tel:+4527299106";

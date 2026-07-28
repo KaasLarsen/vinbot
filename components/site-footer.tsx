@@ -3,9 +3,7 @@ import { FooterAffiliatePromos } from "@/components/footer-affiliate-promos";
 import { PageShell } from "@/components/page-shell";
 import { RetailerSignupCta } from "@/components/retailer-signup-cta";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
-import { siteName } from "@/lib/site";
-
-const FACEBOOK_OL_VIN = "https://www.facebook.com/profile.php?id=61554449533252";
+import { facebookOlVinUrl, siteName } from "@/lib/site";
 
 /** Partner-Ads tekstlink — Beer Me ølabonnement (intet visbanner i programmet). */
 const PARTNER_ADS_BEER_ME_SUBSCRIPTION = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe);
@@ -27,7 +25,7 @@ export function SiteFooter() {
             </p>
             <p className="mt-3">
               <a
-                href={FACEBOOK_OL_VIN}
+                href={facebookOlVinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition hover:text-rose-900 hover:decoration-rose-300"
