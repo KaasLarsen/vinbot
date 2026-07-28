@@ -156,14 +156,14 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
                 href={post.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-4 mt-3 flex h-36 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:h-40"
+                className="relative mx-4 mt-3 block h-36 overflow-hidden rounded-xl bg-stone-100 sm:h-40"
               >
                 <Image
                   src={post.image}
                   alt=""
-                  width={160}
-                  height={160}
-                  className="max-h-full max-w-full object-contain p-2"
+                  fill
+                  className={post.imageFit === "cover" ? "object-cover" : "object-contain p-2"}
+                  sizes="280px"
                 />
               </a>
               <div className="flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
@@ -181,7 +181,7 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
                   rel="noopener noreferrer"
                   className="rounded-lg bg-rose-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-rose-950"
                 >
-                  Bestil her
+                  {post.ctaLabel ?? "Bestil her"}
                 </a>
               </div>
             </article>

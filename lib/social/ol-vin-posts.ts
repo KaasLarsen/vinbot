@@ -15,6 +15,10 @@ export type OlVinFacebookPost = {
   href: string;
   /** Billede fra opslaget under /public */
   image: string;
+  /** CTA-knaptekst (standard: Bestil her) */
+  ctaLabel?: string;
+  /** object-fit for billedet (standard: contain til flaskebilleder) */
+  imageFit?: "contain" | "cover";
 };
 
 const BOCCANTINO_PRODUCT =
@@ -51,6 +55,17 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     date: "2026-07-17",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, BOCCANTINO_PRODUCT),
     image: "/images/ol-vin/post-boccantino-bottle.png",
+  },
+  {
+    id: "2026-07-01-vinbot",
+    title: "Er du i tvivl om, hvilken vin du skal vælge?",
+    excerpt:
+      "På Vinbot.dk kan du blive inspireret og finde den rigtige vin — til bøffen, sushi, terrassen eller festen. Korte guider om druer, regioner og meget mere.",
+    date: "2026-07-01",
+    href: "https://www.vinbot.dk/",
+    image: "/images/ol-vin/post-vinbot-og.jpg",
+    ctaLabel: "Besøg Vinbot",
+    imageFit: "cover",
   },
 ];
 
