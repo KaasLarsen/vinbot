@@ -1,6 +1,8 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import { siteUrl } from "@/lib/site";
+
 /** Apex → www (canonical host) + pathname til `not-found.tsx` under `/vine/[slug]`. */
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
@@ -14,6 +16,13 @@ export function middleware(request: NextRequest) {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set("x-pathname", request.nextUrl.pathname);
     return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
+  if (request.nextUrl.pathname === "/" && request.nextUrl.searchParams.get("q")?.trim()) {
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", "noindex, follow");
+    response.headers.set("Link", `<${siteUrl}>; rel="canonical"`);
+    return response;
   }
 
   return NextResponse.next();

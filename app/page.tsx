@@ -3,7 +3,8 @@ import Link from "next/link";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
-import { WineSearch } from "@/components/wine-search";
+import { HomeWineSearch } from "@/components/home-wine-search";
+import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
@@ -12,35 +13,21 @@ import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
-import { siteName, siteUrl } from "@/lib/site";
+import { siteName } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
-const homeMetadata: Metadata = {
+/** Samme interval som feed-cache — HTML caches på CDN, data opdateres i baggrunden. */
+export const revalidate = 21600;
+
+export const metadata: Metadata = {
   title: `${siteName} – vinguides til mad, druer og sæson`,
   description:
     "Hundredvis af redaktionelle vinguides på dansk — madparring, druer, regioner og praktisk vin-viden. Plus vinsøgning på tværs af danske forhandlere.",
 };
 
-type HomeProps = { searchParams?: Promise<{ q?: string }> };
+const HOME_QUERY_BOOTSTRAP = `(function(){try{var q=new URLSearchParams(location.search).get("q");if(q&&q.trim())document.documentElement.setAttribute("data-vinbot-home-q","")}catch(e){}})();`;
 
-export async function generateMetadata({ searchParams }: HomeProps): Promise<Metadata> {
-  const q = ((await searchParams)?.q ?? "").trim();
-  if (!q) return homeMetadata;
-
-  return {
-    ...homeMetadata,
-    alternates: { canonical: siteUrl },
-    robots: {
-      index: false,
-      follow: true,
-      googleBot: { index: false, follow: true },
-    },
-  };
-}
-
-export default async function HomePage({ searchParams }: HomeProps) {
-  const q = (await searchParams)?.q;
-
+export default function HomePage() {
   return (
     <PageShell className="py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
@@ -56,20 +43,23 @@ export default async function HomePage({ searchParams }: HomeProps) {
         </p>
 
         <div className="mt-5 sm:mt-6">
-          <WineSearch
-            initialQuery={q}
+          <HomeWineSearch
             controlsClassName="max-w-lg rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-2xl sm:p-5"
             resultsClassName="rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-6"
           />
         </div>
       </HomeHeroSearchSection>
 
+      <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />
 
-      {!q?.trim() ? <HomeWinesStrip /> : null}
-      {!q?.trim() ? <HomeRecipesStrip /> : null}
-
-      {!q?.trim() ? <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" /> : null}
-      {!q?.trim() ? <HomeDealsStrip /> : null}
+      <HomeFeedStripsGate>
+        <div data-home-feed-strips>
+          <HomeWinesStrip />
+          <HomeRecipesStrip />
+          <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
+          <HomeDealsStrip />
+        </div>
+      </HomeFeedStripsGate>
 
       <section className="mt-16" aria-labelledby="home-topics-heading">
         <div>
