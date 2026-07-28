@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { OlVinFacebookPost } from "@/lib/social/ol-vin-posts";
 import { facebookOlVinUrl } from "@/lib/site";
@@ -23,31 +22,7 @@ function formatDaDate(iso: string): string {
 }
 
 export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] }) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(true);
-
   const withImages = posts.filter((p) => Boolean(p.image));
-
-  const updateArrows = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    setCanPrev(scrollLeft > 8);
-    setCanNext(scrollLeft + clientWidth < scrollWidth - 8);
-  }, []);
-
-  const scroll = (dir: -1 | 1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const step = Math.max(el.clientWidth * 0.85, 280);
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
-    window.setTimeout(updateArrows, 320);
-  };
-
-  useEffect(() => {
-    updateArrows();
-  }, [withImages, updateArrows]);
 
   return (
     <section className="mt-12" aria-labelledby="ol-vin-facebook-heading">
@@ -68,43 +43,15 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
             {withImages.length > 0 ? " — her er udvalgte opslag fra siden." : "."}
           </p>
         </div>
-        <div className="flex shrink-0 flex-wrap items-center gap-2">
-          <a
-            href={facebookOlVinUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-[#1877F2]/30 bg-[#1877F2]/5 px-3 py-1.5 text-xs font-medium text-[#1877F2] transition hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10"
-          >
-            <FacebookIcon className="size-3.5" />
-            Følg siden
-          </a>
-          {withImages.length > 1 ? (
-            <div className="flex gap-1.5">
-              <button
-                type="button"
-                onClick={() => scroll(-1)}
-                disabled={!canPrev}
-                aria-label="Scroll tilbage"
-                className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
-              >
-                <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={() => scroll(1)}
-                disabled={!canNext}
-                aria-label="Scroll frem"
-                className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
-              >
-                <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
-          ) : null}
-        </div>
+        <a
+          href={facebookOlVinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#1877F2]/30 bg-[#1877F2]/5 px-3 py-1.5 text-xs font-medium text-[#1877F2] transition hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10"
+        >
+          <FacebookIcon className="size-3.5" />
+          Følg siden
+        </a>
       </div>
 
       {withImages.length === 0 ? (
@@ -129,15 +76,11 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
           </span>
         </a>
       ) : (
-        <div
-          ref={trackRef}
-          onScroll={updateArrows}
-          className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
-        >
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {withImages.map((post) => (
             <article
               key={post.id}
-              className="flex w-[min(100%,17.5rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm sm:w-[17.5rem]"
+              className="flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
             >
               <div className="flex items-center gap-3 px-4 pt-4">
                 <span className="relative size-10 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100">
@@ -163,10 +106,10 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
                   alt=""
                   fill
                   className={post.imageFit === "cover" ? "object-cover" : "object-contain p-2"}
-                  sizes="280px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 />
               </a>
-              <div className="flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
+              <div className="mt-auto flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
                 <a
                   href={facebookOlVinUrl}
                   target="_blank"
