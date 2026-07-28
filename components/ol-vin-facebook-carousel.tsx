@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { trackAffiliateClick } from "@/lib/affiliate-track";
 import type { OlVinFacebookPost } from "@/lib/social/ol-vin-posts";
 import { facebookOlVinUrl } from "@/lib/site";
 
@@ -24,6 +25,14 @@ function formatDaDate(iso: string): string {
 }
 
 function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
+  const onOrderClick = () =>
+    trackAffiliateClick({
+      merchant: post.merchant ?? "Øl & Vin",
+      placement: "tilbud-ol-vin-facebook",
+      slug: post.id,
+      url: post.orderHref,
+    });
+
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:border-stone-300 hover:shadow-md">
       <div className="relative">
@@ -32,9 +41,10 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
           Opslag
         </span>
         <a
-          href={post.href}
+          href={post.orderHref}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="nofollow sponsored noopener noreferrer"
+          onClick={onOrderClick}
           className={`${IMAGE_FRAME}${post.imageFit === "cover" ? " relative" : ""}`}
         >
           {post.imageFit === "cover" ? (
@@ -49,16 +59,23 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
         <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">Øl &amp; Vin</p>
         <p className="text-xs text-stone-500">{formatDaDate(post.date)}</p>
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-stone-900">
-          <a href={post.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          <a
+            href={post.orderHref}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            onClick={onOrderClick}
+            className="hover:underline"
+          >
             {post.title}
           </a>
         </h3>
         <p className="line-clamp-2 text-xs leading-relaxed text-stone-600">{post.excerpt}</p>
         <div className="mt-auto flex flex-col gap-2 pt-1 sm:flex-row">
           <a
-            href={post.href}
+            href={post.orderHref}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow sponsored noopener noreferrer"
+            onClick={onOrderClick}
             className="inline-flex flex-1 items-center justify-center rounded-xl bg-rose-900 px-3 py-2 text-xs font-medium text-white hover:bg-rose-950"
           >
             {post.ctaLabel ?? "Bestil her"}

@@ -24,11 +24,15 @@ export function ensurePartnerAdsKlikUid(href: string): string {
  * Standard klik-URL til Partner-Ads. Brug `htmlurl` kun når banner-typen understøtter dyb link (tjek i Partner-Ads).
  * Feed-URL'er (feed_udlaes.php) må ikke bruges som brugerlinks.
  */
-export function partnerAdsKlikUrl(bannerId: string, htmlUrl?: string): string {
+export function partnerAdsKlikUrl(
+  bannerId: string,
+  htmlUrl?: string,
+  uid: string = PARTNER_ADS_UID,
+): string {
   const u = new URL("https://www.partner-ads.com/dk/klikbanner.php");
   u.searchParams.set("partnerid", PARTNER_ADS_PARTNER_ID);
   u.searchParams.set("bannerid", bannerId.trim());
-  u.searchParams.set("uid", PARTNER_ADS_UID);
+  u.searchParams.set("uid", uid.trim() || PARTNER_ADS_UID);
   if (htmlUrl?.trim()) {
     u.searchParams.set("htmlurl", htmlUrl.trim());
   }
