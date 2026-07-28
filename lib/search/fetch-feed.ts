@@ -46,8 +46,22 @@ async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> 
   return products;
 }
 
+/** Fjern tunge felter så Data Cache holder sig under Next.js 2MB-grænsen. */
+function slimFeedProductsForCache(products: FeedProduct[]): FeedProduct[] {
+  return products.map((p) => ({
+    ...p,
+    desc: "",
+    _search: (p._search || "").slice(0, 240),
+  }));
+}
+
+async function fetchFeedProductsForCache(feed: FeedConfig): Promise<FeedProduct[]> {
+  const products = await fetchFeedProductsInner(feed);
+  return slimFeedProductsForCache(products);
+}
+
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v10-cache-fallback";
+const FEED_PRODUCTS_CACHE_VERSION = "v11-slim-cache";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
@@ -61,12 +75,11 @@ export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProdu
         ].join("|");
   try {
     return await unstable_cache(
-      () => fetchFeedProductsInner(feed),
+      () => fetchFeedProductsForCache(feed),
       ["vinbot-feed", FEED_PRODUCTS_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
       { revalidate: 21600, tags: ["vinbot-feeds"] },
     )();
   } catch {
-    // Next.js Data Cache afviser entries over 2MB — hent direkte så tilbud ikke dør.
     return fetchFeedProductsInner(feed);
   }
 }

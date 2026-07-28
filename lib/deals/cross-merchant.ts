@@ -73,7 +73,7 @@ async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {})
 
 const getCachedCrossMerchantDeals = unstable_cache(
   (optsJson: string) => buildCrossMerchantDeals(JSON.parse(optsJson) as ListCrossMerchantDealsOptions),
-  ["vinbot-cross-merchant-deals-v2"],
+  ["vinbot-cross-merchant-deals-v3"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 
@@ -81,8 +81,10 @@ export async function listCrossMerchantDeals(
   opts: ListCrossMerchantDealsOptions = {},
 ): Promise<CrossMerchantDeal[]> {
   try {
-    return await getCachedCrossMerchantDeals(JSON.stringify(opts));
+    const cached = await getCachedCrossMerchantDeals(JSON.stringify(opts));
+    if (cached.length > 0) return cached;
   } catch {
-    return buildCrossMerchantDeals(opts);
+    // fall through
   }
+  return buildCrossMerchantDeals(opts);
 }

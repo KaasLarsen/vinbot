@@ -179,7 +179,19 @@ async function buildWineCatalog(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wine-catalog-v14"], {
+async function buildWineCatalogForCache(): Promise<WineCatalog> {
+  const catalog = await buildWineCatalog();
+  return {
+    ...catalog,
+    wines: catalog.wines.map((w) => ({
+      ...w,
+      description: w.description.slice(0, 400),
+      alternateListingTitles: w.alternateListingTitles.slice(0, 4),
+    })),
+  };
+}
+
+export const getCachedWineCatalog = unstable_cache(buildWineCatalogForCache, ["vinbot-wine-catalog-v15-slim"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });
@@ -187,15 +199,17 @@ export const getCachedWineCatalog = unstable_cache(buildWineCatalog, ["vinbot-wi
 /** Per-request dedupe mellem `generateMetadata` og side-komponent. */
 export const loadWineCatalog = cache(async (): Promise<WineCatalog> => {
   try {
-    return await getCachedWineCatalog();
+    const cached = await getCachedWineCatalog();
+    if (cached.wines.length > 0) return cached;
   } catch {
-    return buildWineCatalog();
+    // fall through
   }
+  return buildWineCatalog();
 });
 
 /** Opvarm Data Cache efter cron-revalidate — undgår cold-start 5xx ved mass-crawl. */
 export async function warmWineCatalog(): Promise<WineCatalog> {
-  return getCachedWineCatalog();
+  return loadWineCatalog();
 }
 
 export const getWineBySlug = cache(async (slug: string): Promise<CanonicalWine | null> => {
