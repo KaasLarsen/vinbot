@@ -47,9 +47,9 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
           href={facebookOlVinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#1877F2]/30 bg-[#1877F2]/5 px-3 py-1.5 text-xs font-medium text-[#1877F2] transition hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10"
+          className="inline-flex shrink-0 items-center gap-1 text-sm text-stone-500 transition hover:text-[#1877F2]"
         >
-          <FacebookIcon className="size-3.5" />
+          <FacebookIcon className="size-3.5 opacity-70" />
           Følg siden
         </a>
       </div>
@@ -99,15 +99,22 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
                 href={post.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative mx-4 mt-3 block h-36 overflow-hidden rounded-xl bg-stone-100 sm:h-40"
+                className={`mx-4 mt-3 flex h-36 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:h-40${post.imageFit === "cover" ? " relative" : ""}`}
               >
-                <Image
-                  src={post.image}
-                  alt=""
-                  fill
-                  className={post.imageFit === "cover" ? "object-cover" : "object-contain p-2"}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                />
+                {post.imageFit === "cover" ? (
+                  <Image
+                    src={post.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  />
+                ) : (
+                  <span className="relative flex h-full w-full items-center justify-center p-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={post.image} alt="" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  </span>
+                )}
               </a>
               <div className="mt-auto flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
                 <a
