@@ -6,6 +6,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { OlVinFacebookPost } from "@/lib/social/ol-vin-posts";
 import { facebookOlVinUrl } from "@/lib/site";
 
+const AVATAR_SRC = "/images/ol-vin/ol-vin-avatar.png";
+
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" aria-hidden fill="currentColor">
@@ -18,39 +20,6 @@ function formatDaDate(iso: string): string {
   const d = new Date(`${iso}T12:00:00`);
   if (Number.isNaN(d.getTime())) return iso;
   return d.toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" });
-}
-
-function SectionHeader({ showFollow }: { showFollow: boolean }) {
-  return (
-    <div className="flex flex-wrap items-end justify-between gap-3">
-      <div className="min-w-0 flex-1">
-        <p className="flex items-center gap-2 text-sm font-medium text-[#1877F2]">
-          <FacebookIcon className="size-4" />
-          Øl &amp; Vin
-        </p>
-        <h2
-          id="ol-vin-facebook-heading"
-          className="mt-1 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl"
-        >
-          Følg os på Facebook via Øl &amp; Vin
-        </h2>
-        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-stone-600">
-          Få vin-tilbud og tips direkte i dit Facebook-feed.
-        </p>
-      </div>
-      {showFollow ? (
-        <a
-          href={facebookOlVinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#166fe5]"
-        >
-          <FacebookIcon className="size-4" />
-          Følg siden
-        </a>
-      ) : null}
-    </div>
-  );
 }
 
 export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] }) {
@@ -80,34 +49,6 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
     updateArrows();
   }, [withImages, updateArrows]);
 
-  if (withImages.length === 0) {
-    return (
-      <section className="mt-12" aria-labelledby="ol-vin-facebook-heading">
-        <SectionHeader showFollow={false} />
-        <a
-          href={facebookOlVinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5 flex flex-col items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#1877F2]/35 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
-        >
-          <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#1877F2] text-white shadow-sm">
-            <FacebookIcon className="size-8" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-lg font-semibold text-stone-900">Se de seneste opslag på Øl &amp; Vin</span>
-            <span className="mt-1 block text-sm leading-relaxed text-stone-600">
-              Åbn Facebook-siden for tilbud, tips og udvalgte flasker — direkte i dit feed, når du følger med.
-            </span>
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white">
-            Åbn Facebook
-            <span aria-hidden>→</span>
-          </span>
-        </a>
-      </section>
-    );
-  }
-
   return (
     <section className="mt-12" aria-labelledby="ol-vin-facebook-heading">
       <div className="flex flex-wrap items-end justify-between gap-3">
@@ -123,7 +64,8 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
             Følg os på Facebook via Øl &amp; Vin
           </h2>
           <p className="mt-1 max-w-2xl text-sm leading-relaxed text-stone-600">
-            Få vin-tilbud og tips direkte i dit Facebook-feed — her er udvalgte opslag fra siden.
+            Få vin-tilbud og tips direkte i dit Facebook-feed
+            {withImages.length > 0 ? " — her er udvalgte opslag fra siden." : "."}
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2">
@@ -136,60 +78,110 @@ export function OlVinFacebookCarousel({ posts }: { posts: OlVinFacebookPost[] })
             <FacebookIcon className="size-4" />
             Følg siden
           </a>
-          <div className="flex gap-1.5">
-            <button
-              type="button"
-              onClick={() => scroll(-1)}
-              disabled={!canPrev}
-              aria-label="Scroll tilbage"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
-            >
-              <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll(1)}
-              disabled={!canNext}
-              aria-label="Scroll frem"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
-            >
-              <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
+          {withImages.length > 1 ? (
+            <div className="flex gap-1.5">
+              <button
+                type="button"
+                onClick={() => scroll(-1)}
+                disabled={!canPrev}
+                aria-label="Scroll tilbage"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
+              >
+                <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll(1)}
+                disabled={!canNext}
+                aria-label="Scroll frem"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-700 shadow-sm transition hover:border-stone-300 hover:bg-stone-50 disabled:pointer-events-none disabled:opacity-35"
+              >
+                <svg aria-hidden className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
 
-      <div
-        ref={trackRef}
-        onScroll={updateArrows}
-        className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
-      >
-        {withImages.map((post) => (
-          <a
-            key={post.id}
-            href={post.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex w-[min(100%,18rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:border-[#1877F2]/35 hover:shadow-md sm:w-[18rem]"
-          >
-            <div className="relative aspect-[4/5] bg-stone-100">
-              <Image src={post.image} alt="" fill className="object-cover" sizes="288px" />
-            </div>
-            <div className="flex flex-1 flex-col p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-stone-500">{formatDaDate(post.date)}</p>
-              <h3 className="mt-1.5 text-base font-semibold text-stone-900 group-hover:text-[#1877F2]">{post.title}</h3>
-              <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-stone-600">{post.excerpt}</p>
-              <span className="mt-3 text-sm font-medium text-[#1877F2]">
-                Se opslag <span aria-hidden>→</span>
-              </span>
-            </div>
-          </a>
-        ))}
-      </div>
+      {withImages.length === 0 ? (
+        <a
+          href={facebookOlVinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 flex flex-col items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#1877F2]/35 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
+        >
+          <span className="relative size-14 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100">
+            <Image src={AVATAR_SRC} alt="" fill className="object-cover" sizes="56px" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-lg font-semibold text-stone-900">Se de seneste opslag på Øl &amp; Vin</span>
+            <span className="mt-1 block text-sm leading-relaxed text-stone-600">
+              Åbn Facebook-siden for tilbud, tips og udvalgte flasker — direkte i dit feed, når du følger med.
+            </span>
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-xl bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white">
+            Åbn Facebook
+            <span aria-hidden>→</span>
+          </span>
+        </a>
+      ) : (
+        <div
+          ref={trackRef}
+          onScroll={updateArrows}
+          className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
+        >
+          {withImages.map((post) => (
+            <article
+              key={post.id}
+              className="flex w-[min(100%,20rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm sm:w-[20rem]"
+            >
+              <div className="flex items-center gap-3 px-4 pt-4">
+                <span className="relative size-10 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100">
+                  <Image src={AVATAR_SRC} alt="" fill className="object-cover" sizes="40px" />
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-stone-900">Øl &amp; Vin</p>
+                  <p className="text-xs text-stone-500">{formatDaDate(post.date)} · Facebook</p>
+                </div>
+              </div>
+              <div className="px-4 pt-3">
+                <h3 className="text-[15px] font-semibold leading-snug text-stone-900">{post.title}</h3>
+                <p className="mt-1.5 line-clamp-3 text-sm leading-relaxed text-stone-600">{post.excerpt}</p>
+              </div>
+              <a
+                href={post.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative mt-3 aspect-[4/5] bg-stone-100"
+              >
+                <Image src={post.image} alt="" fill className="object-cover" sizes="320px" />
+              </a>
+              <div className="flex items-center justify-between gap-3 border-t border-stone-100 px-4 py-3">
+                <a
+                  href={facebookOlVinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-[#1877F2] hover:underline"
+                >
+                  Se på Facebook
+                </a>
+                <a
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg bg-rose-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-rose-950"
+                >
+                  Bestil her
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

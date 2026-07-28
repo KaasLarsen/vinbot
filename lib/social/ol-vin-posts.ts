@@ -1,11 +1,9 @@
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { facebookOlVinUrl } from "@/lib/site";
 
 /**
  * Kuraterede opslag fra Øl & Vin på Facebook.
- *
- * Sådan tilføjer du et opslag:
- * 1. Gem screenshot/billede i /public/images/ol-vin/ (fx tilbud-1.jpg)
- * 2. Tilføj objekt øverst i listen med title, excerpt, date, image og gerne direkte href til opslaget
+ * Tilføj nye øverst. Brug gerne screenshot af vin/billede + kort tekst fra opslaget.
  */
 export type OlVinFacebookPost = {
   id: string;
@@ -13,12 +11,25 @@ export type OlVinFacebookPost = {
   excerpt: string;
   /** ISO-dato YYYY-MM-DD */
   date: string;
+  /** Link når man klikker (typisk Partner-Ads / produkt) */
   href: string;
-  /** Påkrævet for at vise kortet — lokal sti under /public */
+  /** Billede fra opslaget under /public */
   image: string;
 };
 
-/** Tom indtil I lægger rigtige opslags-billeder ind. */
-export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [];
+const BOCCANTINO_PRODUCT =
+  "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024";
+
+export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
+  {
+    id: "2026-07-17-boccantino",
+    title: "Måske den bedste rødvin, du kan købe til 55 kr.!",
+    excerpt:
+      "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). Boccantino Primitivo & Susumaniello — fyldig, blød og frugtig italiensk rødvin.",
+    date: "2026-07-17",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, BOCCANTINO_PRODUCT),
+    image: "/images/ol-vin/post-boccantino-bottle.png",
+  },
+];
 
 export { facebookOlVinUrl };
