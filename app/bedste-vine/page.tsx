@@ -180,7 +180,9 @@ export default function BedsteVineHubPage() {
           <Link href="/guides/bedste-alkoholfri-rodvin" className="hover:underline">Bedste alkoholfri rødvin</Link>
           <Link href="/guides/bedste-alkoholfri-hvidvin" className="hover:underline">Bedste alkoholfri hvidvin</Link>
           <Link href="/guides/bedste-alkoholfri-rose" className="hover:underline">Bedste alkoholfri rosé</Link>
+          <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="hover:underline">Alkoholfri under 100 kr</Link>
           <Link href="/guides/bedste-lavalkohol-vin" className="hover:underline">Bedste lavalkohol-vin</Link>
+          <Link href="/guides/alkoholfri-vin-til-grill" className="hover:underline">Alkoholfri vin til grill</Link>
           <Link href="/guides/alkoholfri-vin-til-jul" className="hover:underline">Alkoholfri vin til jul</Link>
           <Link href="/guides/alkoholfri-vin-til-fest" className="hover:underline">Alkoholfri vin til fest</Link>
           <Link href="/guides/alkoholfri-vin-til-brunch" className="hover:underline">Alkoholfri vin til brunch</Link>

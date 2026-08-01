@@ -3372,6 +3372,40 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Tjek tilsat sukker (under 5 g/100 ml er fornuftigt). Alkoholfri vin kan stadig indeholde sulfit (E220-E228) som konserveringsmiddel. Læs ingredienslisten ved fødevareallergi. Undgå billige 'wine flavored drinks' uden specifik oprindelse — kvaliteten svinger. Vinbot giver produktguides, ikke medicinske råd.",
     },
   ],
+  "bedste-alkoholfri-vin-under-100-kr": [
+    {
+      question: "Findes der god alkoholfri vin under 100 kr?",
+      answer:
+        "Ja — især bobler og frisk hvid. Torres Natureo (sparkling, blanco, rosé, rød) ligger typisk 65–100 kr. Leitz Eins-Zwei-Zero sparkling og riesling lander ofte under 100 kr på tilbud og er blandt de bedste handler i kategorien.",
+    },
+    {
+      question: "Hvilken billig alkoholfri vin smager mindst af saft?",
+      answer:
+        "Vælg produkter med klar syre: Torres Natureo Sparkling, Leitz sparkling/riesling på tilbud, eller Natureo Blanco. Undgå anonyme «festdrik»-flasker uden vintype. Rød under 100 kr er sværest — Natureo Red er det mest realistiske budgetvalg til pizza og grill.",
+    },
+    {
+      question: "Hvor køber man billig alkoholfri vin i Danmark?",
+      answer:
+        "Vinhandlere online har bredest udvalg (Leitz, Torres, Noughty). Supermarkeder fører ofte Torres og udvalgte private labels — tjek at det er de-alkoholiseret vin (max 0,5 %), ikke juice. Sammenlign priser på Vinbot.",
+    },
+  ],
+  "alkoholfri-vin-til-grill": [
+    {
+      question: "Hvilken alkoholfri vin til grill?",
+      answer:
+        "Start med alkoholfri rosé eller bobler — syre og kulsyre klarer røg, fedme og marinade bedst. Til pølser og pizza: blød rød som Torres Natureo Red. Til fisk på grill: riesling eller sauvignon 0 %. Server alt køligt.",
+    },
+    {
+      question: "Virker alkoholfri rødvin til grillbøf?",
+      answer:
+        "Delvist. 0 % rød mangler ofte krop til ung cabernet-stil bøf. Brug blød garnacha/pinot-stil til pølser og kylling, og hav bobler klar til kraftig BBQ-glaze. Mange foretrækker rosé eller bobler som hovedglas til blandet grill.",
+    },
+    {
+      question: "Hvilken temperatur skal alkoholfri vin have til grill?",
+      answer:
+        "Bobler 6–8 °C, rosé og hvid 8–10 °C, rød ca. 12–14 °C. Alkoholfri tåler varme dårligere end alkoholisk vin — hold flaskerne i is eller køleskab, ikke i solen.",
+    },
+  ],
   "alkoholfri-vin-til-jul": [
     {
       question: "Hvilken alkoholfri vin parrer med julemad?",

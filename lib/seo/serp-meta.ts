@@ -141,6 +141,16 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Mindful drinking på dansk: alkoholfri 0 % og lavalkohol 7–11 % der smager voksent. Mærker til fest, kørsel og hverdag — dansk guide.",
   },
+  "bedste-alkoholfri-vin-under-100-kr": {
+    title: "Alkoholfri vin under 100 kr (0 %)",
+    description:
+      "Billig alkoholfri vin under 100 kr: Torres Natureo, Leitz på tilbud — bobler, hvid, rosé og rød der ikke smager af saft. Køb i DK.",
+  },
+  "alkoholfri-vin-til-grill": {
+    title: "Alkoholfri vin til grill: rosé & bobler",
+    description:
+      "Alkoholfri vin til grill 0 %: rosé, bobler og blød rød til kylling, pølser og BBQ. Mærker, temperatur og hvad der virker i DK.",
+  },
   "vin-til-boeff": {
     title: "Vin til bøf: cabernet, malbec og syrah",
     description:

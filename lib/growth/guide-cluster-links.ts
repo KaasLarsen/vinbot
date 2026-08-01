@@ -24,10 +24,18 @@ const BY_TYPE: GuideClusterLink[] = [
 
 const OCCASION: GuideClusterLink[] = [
   { slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" },
+  { slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" },
   { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
   { slug: "alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" },
   { slug: "alkoholfri-vin-til-dry-january", label: "Alkoholfri vin til Dry January" },
   { slug: "alkoholfri-vin-til-graviditet", label: "Alkoholfri vin under graviditet" },
+];
+
+const BUDGET: GuideClusterLink[] = [
+  {
+    slug: "bedste-alkoholfri-vin-under-100-kr",
+    label: "Alkoholfri vin under 100 kr",
+  },
 ];
 
 const VIDEN: GuideClusterLink[] = [
@@ -146,8 +154,28 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Alkoholfri vin — hele klyngen",
     "Vælg efter type, anledning eller baggrund — alle guider hænger sammen om 0 % og lavalkohol.",
     BY_TYPE,
+    BUDGET,
     OCCASION,
     VIDEN,
+  ),
+  "bedste-alkoholfri-vin-under-100-kr": alkoholfriBlock(
+    ["bedste-alkoholfri-vin-under-100-kr"],
+    "Alkoholfri vin — relaterede guider",
+    "Billige 0 %-valg under 100 kr — suppler med type- og grill-guides.",
+    [HUB],
+    BY_TYPE.slice(0, 4),
+    BUDGET,
+    [{ slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" }],
+    OCCASION.slice(0, 2),
+  ),
+  "alkoholfri-vin-til-grill": alkoholfriBlock(
+    ["alkoholfri-vin-til-grill"],
+    "Alkoholfri vin — relaterede guider",
+    "Rosé, bobler og blød rød til grill — også budget under 100 kr.",
+    [HUB],
+    BY_TYPE.slice(0, 4),
+    BUDGET,
+    OCCASION.filter((l) => l.slug !== "alkoholfri-vin-til-grill").slice(0, 3),
   ),
   "bedste-alkoholfri-hvidvin": alkoholfriBlock(
     ["bedste-alkoholfri-hvidvin"],
