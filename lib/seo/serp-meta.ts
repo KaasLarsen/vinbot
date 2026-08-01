@@ -48,24 +48,24 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Rødvin 14–18 °C, hvidvin 8–12 °C, bobler 6–8 °C. Vintemperatur-guide med tabeller for rosé, riesling og port. Opbevaring af åbnet vin.",
   },
   "bedste-alkoholfri-hvidvin": {
-    title: "Alkoholfri hvidvin bedst i test 2026",
+    title: "Alkoholfri hvidvin 0 % — ikke saft (2026)",
     description:
-      "God alkoholfri hvidvin: Leitz, Giesen og sauvignon med bid — ikke saft. Bedst i test i DK, ca. 80–160 kr. Til sushi, salat og fisk. Server 8–10 °C.",
+      "Alkoholfri hvidvin 0 %: Leitz, Giesen og sauvignon med bid — ikke saft. Ca. 80–160 kr i DK. Til sushi, salat og fisk. Server 8–10 °C.",
   },
   "bedste-alkoholfri-bobler": {
-    title: "Alkoholfri bobler bedst i test 2026",
+    title: "Alkoholfri bobler 0 % til fest 2026",
     description:
-      "Bedste alkoholfri bobler og champagne: Noughty, Leitz, French Bloom. God alkoholfri mousserende til nytår, brunch og fest — server 6–8 °C.",
+      "Alkoholfri bobler 0 %: Noughty, Leitz, French Bloom. Bedst til nytår, brunch og fest — ca. 90–200 kr. Server 6–8 °C.",
   },
   "bedste-alkoholfri-rose": {
-    title: "Alkoholfri rosévin bedst i test 2026",
+    title: "Alkoholfri rosé 0 % til grill & tapas",
     description:
-      "God alkoholfri rosé: Leitz, Torres og Noughty til terrasse, grill og tapas. Alkoholfri rosévin bedst i test i Danmark — server velafkølet.",
+      "Alkoholfri rosé 0 %: Leitz, Torres og Noughty til terrasse, grill og tapas. Ca. 80–150 kr — køb i DK. Server velafkølet.",
   },
   "bedste-alkoholfri-rodvin": {
-    title: "Alkoholfri rødvin bedst i test 2026",
+    title: "Alkoholfri rødvin 0 %: hvad virker i DK",
     description:
-      "Bedste alkoholfri rødvin: Leitz pinot og Torres til pizza og grill. God alkoholfri rød er svær — hvornår rosé eller bobler er bedre valg i DK.",
+      "Alkoholfri rødvin 0 %: Leitz pinot og Torres til pizza og grill. Ærligt: rød er sværest uden alkohol — hvornår bobler eller rosé vinder i DK.",
   },
   "vin-til-ost-og-ostebord": {
     title: "Vin til ostebord: port, sherry og bobler",
@@ -90,19 +90,56 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 2 — GSC lav CTR (jun 2026)
   "bedste-alkoholfri-vin": {
-    title: "Alkoholfri vin bedst i test 2026",
+    title: "Alkoholfri vin 0 %: top 10 i DK 2026",
     description:
-      "Sammenligning: Leitz, French Bloom, Giesen, Torres og Noughty. Top 10 alkoholfri bobler, hvid, rosé og rød med pris og madparring — dansk guide.",
+      "Top 10 alkoholfri vin 0 % i DK 2026: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris og madparring.",
   },
   "bedste-alkoholfri-champagne": {
-    title: "Bedste alkoholfri champagne (0 %)",
+    title: "Alkoholfri champagne 0 % — bedst 2026",
     description:
-      "God alkoholfri champagne: French Bloom, Noughty, Leitz og Oddbird. Premium 0 % mousserende til nytår og kransekage — fest uden promille.",
+      "Alkoholfri champagne 0 %: French Bloom, Noughty, Leitz og Oddbird. Premium sparkling til nytår og kransekage — fest uden promille.",
   },
   "alkoholsvag-og-alkoholfri-vin": {
-    title: "Alkoholsvag og alkoholfri vin — forskellen",
+    title: "Alkoholfri vs alkoholsvag vin — forskel",
     description:
-      "Alkoholfri (0,5 %) vs. lavalkohol (5–11 %): de-alkoholiseret, most og vinho verde. Hvad smagen kan, og hvordan du parrer med mad.",
+      "Alkoholfri (max 0,5 %) vs alkoholsvag (5–11 %): de-alkoholiseret, most og vinho verde. Hvad smagen kan — og hvordan du parrer mad.",
+  },
+
+  // Bølge 3 — alkoholfri lejlighed + lavalkohol (aug 2026, GSC høj imp / lav CTR)
+  "alkoholfri-vin-til-fest": {
+    title: "Alkoholfri vin til fest: bobler & middag",
+    description:
+      "Alkoholfri vin til fest 0 %: velkomstbobler, middagsvin og mærker til konfirmation, fødselsdag og bryllup. Hvor meget per gæst i DK.",
+  },
+  "alkoholfri-vin-til-jul": {
+    title: "Alkoholfri vin til jul og julefrokost",
+    description:
+      "Alkoholfri vin til jul 0 %: bobler til skål, hvid/rød til and og flæskesteg. Julefrokost og nytår uden alkohol — mærker du finder i DK.",
+  },
+  "alkoholfri-vin-til-brunch": {
+    title: "Alkoholfri vin til brunch: bobler & mimosa",
+    description:
+      "Alkoholfri brunch-vin 0 %: bobler, mimosa-alternativer og let hvid til æg, laks og avocado. Mærker og temperatur til weekend-bordet.",
+  },
+  "alkoholfri-vin-til-dry-january": {
+    title: "Alkoholfri vin til Dry January 2026",
+    description:
+      "Alkoholfri vin til Dry January: Leitz, Noughty og flere 0 %-valg der holder en hel måned. Rutiner, fest-strategi og flasker i DK.",
+  },
+  "alkoholfri-vin-til-graviditet": {
+    title: "Alkoholfri vin under graviditet (0 %)",
+    description:
+      "Alkoholfri vin under graviditet: hvad 0 % på etiketten betyder, trygge mærker og Sundhedsstyrelsens anbefaling. Nøgtern guide — ikke lægeråd.",
+  },
+  "bedste-lavalkohol-vin": {
+    title: "Bedste lavalkohol-vin under 11 % ABV",
+    description:
+      "Bedste lavalkohol-vin 5–11 % ABV: kabinett, Moscato d’Asti og lette stilarter med karakter — ikke 0 %. Pris og madparring i DK.",
+  },
+  "mindful-drikke-low-no-alkohol": {
+    title: "Mindful drinking: 0 % og lavalkohol",
+    description:
+      "Mindful drinking på dansk: alkoholfri 0 % og lavalkohol 7–11 % der smager voksent. Mærker til fest, kørsel og hverdag — dansk guide.",
   },
   "vin-til-boeff": {
     title: "Vin til bøf: cabernet, malbec og syrah",
