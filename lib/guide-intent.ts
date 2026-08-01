@@ -113,6 +113,38 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "leitz-eins-zwei-zero") {
+    return {
+      q: "leitz eins zwei zero alkoholfri",
+      max: null,
+      label: "Leitz Eins-Zwei-Zero",
+    };
+  }
+
+  if (slug === "bedste-alkoholfri-maerker-2026") {
+    return {
+      q: "alkoholfri leitz torres noughty french bloom",
+      max: null,
+      label: "alkoholfri mærker",
+    };
+  }
+
+  if (slug === "alkoholfri-vin-i-netto-foetex") {
+    return {
+      q: "alkoholfri torres natureo leitz",
+      max: 120,
+      label: "alkoholfri vin til supermarked-pris",
+    };
+  }
+
+  if (slug === "smager-alkoholfri-vin-godt") {
+    return {
+      q: "alkoholfri leitz bobler riesling 0%",
+      max: null,
+      label: "alkoholfri vin der smager af vin",
+    };
+  }
+
   if (slug.startsWith("vinregion-")) {
     const fromLand = searchQueryForGuideSlug(slug);
     const region = slug.replace(/^vinregion-/, "").replace(/-/g, " ");

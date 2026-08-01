@@ -3406,6 +3406,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Bobler 6–8 °C, rosé og hvid 8–10 °C, rød ca. 12–14 °C. Alkoholfri tåler varme dårligere end alkoholisk vin — hold flaskerne i is eller køleskab, ikke i solen.",
     },
   ],
+  "bedste-alkoholfri-maerker-2026": [
+    {
+      question: "Hvilket alkoholfri vin-mærke er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero er det hyppigste benchmark i DK for bobler og hvid. Torres Natureo er bedst til budget og tilgængelighed. French Bloom og Oddbird er premium sparkling. Vælg efter behov — se mærkeguiden for 2026.",
+    },
+    {
+      question: "Er Torres Natureo lige så god som Leitz?",
+      answer:
+        "Nej, ikke samme profil: Leitz er tørrere og mere «vinagtig»; Natureo er blødere, frugtigere og billigere. Til hverdag og pizza er Natureo ofte nok; til at overbevise en vinsnob start med Leitz sparkling eller riesling.",
+    },
+    {
+      question: "Hvilket alkoholfri mærke til gave?",
+      answer:
+        "French Bloom Le Blanc eller Oddbird Sparkling føles mest premium. Leitz sparkling i gaveæske er et stærkt midpris-valg. Undgå anonyme festdrikke uden producentnavn.",
+    },
+  ],
+  "leitz-eins-zwei-zero": [
+    {
+      question: "Hvad er Leitz Eins-Zwei-Zero?",
+      answer:
+        "En alkoholfri serie fra Weingut Leitz: sparkling riesling, still riesling, rosé og pinot noir (0 %). Vinen laves først, derefter de-alkoholiseres den. Serien er et af de mest anbefalede 0 %-mærker i Danmark.",
+    },
+    {
+      question: "Hvilken Leitz alkoholfri er bedst?",
+      answer:
+        "Sparkling Riesling er den sikreste allrounder. Still Riesling er bedst til fisk og salat. Pinot Noir er blandt de bedste 0 %-røde, men forvent ikke klassisk pinot-krop. Rosé er tør og god til grill.",
+    },
+    {
+      question: "Hvad koster Leitz Eins-Zwei-Zero i Danmark?",
+      answer:
+        "Typisk ca. 75–120 kr for sparkling, riesling og rosé; pinot ofte 110–150 kr. På tilbud lander sparkling/riesling ofte under 100 kr. Sammenlign priser på Vinbot.",
+    },
+  ],
+  "alkoholfri-vin-i-netto-foetex": [
+    {
+      question: "Kan man købe alkoholfri vin i Netto og Føtex?",
+      answer:
+        "Ja — sortimentet skifter, men Torres Natureo og andre 0 %-linjer dukker ofte op. Føtex/Bilka har typisk bredere hylde end Netto. Tjek producent og vintype; undgå anonyme «festdrikke».",
+    },
+    {
+      question: "Hvilken alkoholfri vin skal jeg købe i supermarkedet?",
+      answer:
+        "Torres Natureo Sparkling eller Blanco/Rosé er det sikreste budgetvalg. Ser du Leitz eller Noughty på kampagne, er det ofte et løft. Sammenlign samme navn online på Vinbot hvis du skal bruge flere flasker.",
+    },
+    {
+      question: "Er Netto alkoholfri vin god nok til fest?",
+      answer:
+        "Til lille selskab kan Natureo bobler + hvid fungere. Til større fest: køb mindst to stilarter, eller supplér online med Leitz. Se også guiden om alkoholfri vin til fest.",
+    },
+  ],
+  "smager-alkoholfri-vin-godt": [
+    {
+      question: "Smager alkoholfri vin som rigtig vin?",
+      answer:
+        "Ikke præcis — alkoholen giver krop og varme. Men bobler og syrlige hvide (især Leitz) kan smage overbevisende af vin. Rød er sværere. Undgå saft-agtige produkter uden vintype.",
+    },
+    {
+      question: "Hvorfor smager noget alkoholfri vin af saft?",
+      answer:
+        "Ofte for meget sødme, for lidt syre, dårlig basevin — eller flasken er for varm. Start med tør bobler eller riesling, server køligt, og vælg kendte mærker som Leitz eller Torres Natureo.",
+    },
+    {
+      question: "Hvilken alkoholfri vin skal jeg smage først?",
+      answer:
+        "Leitz Eins-Zwei-Zero Sparkling eller Riesling. Alternativt Torres Natureo Sparkling under 100 kr. Døm ikke hele kategorien på én billig rød.",
+    },
+  ],
   "alkoholfri-vin-til-jul": [
     {
       question: "Hvilken alkoholfri vin parrer med julemad?",

@@ -36,9 +36,22 @@ const BUDGET: GuideClusterLink[] = [
     slug: "bedste-alkoholfri-vin-under-100-kr",
     label: "Alkoholfri vin under 100 kr",
   },
+  {
+    slug: "alkoholfri-vin-i-netto-foetex",
+    label: "Alkoholfri vin i Netto og Føtex",
+  },
+];
+
+const BRANDS: GuideClusterLink[] = [
+  {
+    slug: "bedste-alkoholfri-maerker-2026",
+    label: "Bedste alkoholfri mærker 2026",
+  },
+  { slug: "leitz-eins-zwei-zero", label: "Leitz Eins-Zwei-Zero" },
 ];
 
 const VIDEN: GuideClusterLink[] = [
+  { slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" },
   { slug: "hvordan-fremstilles-alkoholfri-vin", label: "Hvordan fremstilles alkoholfri vin" },
   { slug: "alkoholsvag-og-alkoholfri-vin", label: "Alkoholsvag og alkoholfri vin" },
   {
@@ -154,9 +167,49 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Alkoholfri vin — hele klyngen",
     "Vælg efter type, anledning eller baggrund — alle guider hænger sammen om 0 % og lavalkohol.",
     BY_TYPE,
+    BRANDS,
     BUDGET,
     OCCASION,
     VIDEN,
+  ),
+  "bedste-alkoholfri-maerker-2026": alkoholfriBlock(
+    ["bedste-alkoholfri-maerker-2026"],
+    "Alkoholfri vin — relaterede guider",
+    "Mærker side om side — dyk ned i Leitz, budget og type-guides.",
+    [HUB],
+    BRANDS,
+    BY_TYPE.slice(0, 4),
+    BUDGET,
+    VIDEN.slice(0, 3),
+  ),
+  "leitz-eins-zwei-zero": alkoholfriBlock(
+    ["leitz-eins-zwei-zero"],
+    "Alkoholfri vin — relaterede guider",
+    "Leitz som benchmark — sammenlign mærker, typer og budget.",
+    [HUB],
+    BRANDS,
+    BY_TYPE.slice(0, 4),
+    BUDGET,
+    [{ slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" }],
+  ),
+  "alkoholfri-vin-i-netto-foetex": alkoholfriBlock(
+    ["alkoholfri-vin-i-netto-foetex"],
+    "Alkoholfri vin — relaterede guider",
+    "Supermarked vs online — find samme stil billigere og bedre.",
+    [HUB],
+    BUDGET,
+    BRANDS,
+    BY_TYPE.slice(0, 3),
+    [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
+  ),
+  "smager-alkoholfri-vin-godt": alkoholfriBlock(
+    ["smager-alkoholfri-vin-godt"],
+    "Alkoholfri vin — relaterede guider",
+    "Ærlige forventninger — så de flasker der faktisk smager af vin.",
+    [HUB],
+    BRANDS,
+    BY_TYPE.slice(0, 3),
+    VIDEN.filter((l) => l.slug !== "smager-alkoholfri-vin-godt").slice(0, 3),
   ),
   "bedste-alkoholfri-vin-under-100-kr": alkoholfriBlock(
     ["bedste-alkoholfri-vin-under-100-kr"],
@@ -165,6 +218,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [HUB],
     BY_TYPE.slice(0, 4),
     BUDGET,
+    BRANDS,
     [{ slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" }],
     OCCASION.slice(0, 2),
   ),

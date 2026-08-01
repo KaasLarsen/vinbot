@@ -151,6 +151,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Alkoholfri vin til grill 0 %: rosé, bobler og blød rød til kylling, pølser og BBQ. Mærker, temperatur og hvad der virker i DK.",
   },
+  "bedste-alkoholfri-maerker-2026": {
+    title: "Bedste alkoholfri mærker 2026",
+    description:
+      "Leitz, Torres Natureo, Noughty, French Bloom, Giesen og Oddbird: hvilke 0 %-mærker der vinder bobler, hvid, rosé og rød i DK.",
+  },
+  "leitz-eins-zwei-zero": {
+    title: "Leitz Eins-Zwei-Zero: alkoholfri guide",
+    description:
+      "Leitz 0 %: sparkling riesling, still riesling, rosé og pinot. Pris i DK, madparring og hvorfor Leitz er benchmark — ikke saft.",
+  },
+  "alkoholfri-vin-i-netto-foetex": {
+    title: "Alkoholfri vin i Netto og Føtex",
+    description:
+      "Alkoholfri vin i Netto, Føtex og Bilka: Torres Natureo vs private label, hvad du skal undgå — og samme stil online på Vinbot.",
+  },
+  "smager-alkoholfri-vin-godt": {
+    title: "Smager alkoholfri vin godt? Ærligt svar",
+    description:
+      "Smager alkoholfri vin godt? Bobler og hvid oftere ja, rød sjældnere. Hvad der afgør smagen, hvilke mærker der hjælper — ærlig DK-guide.",
+  },
   "vin-til-boeff": {
     title: "Vin til bøf: cabernet, malbec og syrah",
     description:
