@@ -119,11 +119,15 @@ export default function AlkoholfriVinHubPage() {
             <li>
               <Link href="/guides/leitz-eins-zwei-zero" className="text-rose-900 hover:underline">
                 Leitz Eins-Zwei-Zero
-              </Link>{" "}
-              — kategoriens benchmark
-            </li>
-            <li>
-              Torres Natureo, Noughty, French Bloom, Giesen — se mærkeguiden
+              </Link>
+              ,{" "}
+              <Link href="/guides/torres-natureo" className="text-rose-900 hover:underline">
+                Torres Natureo
+              </Link>
+              ,{" "}
+              <Link href="/guides/noughty-alkoholfri-vin" className="text-rose-900 hover:underline">
+                Noughty
+              </Link>
             </li>
           </ul>
         </div>
@@ -155,6 +159,10 @@ export default function AlkoholfriVinHubPage() {
                 Fest
               </Link>
               ,{" "}
+              <Link href="/guides/alkoholfri-vin-til-konfirmation" className="text-rose-900 hover:underline">
+                konfirmation
+              </Link>
+              ,{" "}
               <Link href="/guides/alkoholfri-vin-til-grill" className="text-rose-900 hover:underline">
                 grill
               </Link>
@@ -184,6 +192,11 @@ export default function AlkoholfriVinHubPage() {
             <li>
               <Link href="/guides/smager-alkoholfri-vin-godt" className="text-rose-900 hover:underline">
                 Smager alkoholfri vin godt?
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/kalorier-i-alkoholfri-vin" className="text-rose-900 hover:underline">
+                Kalorier i alkoholfri vin
               </Link>
             </li>
             <li>

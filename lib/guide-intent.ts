@@ -145,6 +145,30 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "torres-natureo") {
+    return {
+      q: "torres natureo alkoholfri",
+      max: 120,
+      label: "Torres Natureo",
+    };
+  }
+
+  if (slug === "noughty-alkoholfri-vin") {
+    return {
+      q: "noughty alkoholfri sparkling",
+      max: null,
+      label: "Noughty alkoholfri",
+    };
+  }
+
+  if (slug === "kalorier-i-alkoholfri-vin") {
+    return {
+      q: "alkoholfri leitz noughty 0%",
+      max: null,
+      label: "alkoholfri vin",
+    };
+  }
+
   if (slug.startsWith("vinregion-")) {
     const fromLand = searchQueryForGuideSlug(slug);
     const region = slug.replace(/^vinregion-/, "").replace(/-/g, " ");

@@ -24,6 +24,7 @@ const BY_TYPE: GuideClusterLink[] = [
 
 const OCCASION: GuideClusterLink[] = [
   { slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" },
+  { slug: "alkoholfri-vin-til-konfirmation", label: "Alkoholfri vin til konfirmation" },
   { slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" },
   { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
   { slug: "alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" },
@@ -48,10 +49,13 @@ const BRANDS: GuideClusterLink[] = [
     label: "Bedste alkoholfri mærker 2026",
   },
   { slug: "leitz-eins-zwei-zero", label: "Leitz Eins-Zwei-Zero" },
+  { slug: "torres-natureo", label: "Torres Natureo" },
+  { slug: "noughty-alkoholfri-vin", label: "Noughty alkoholfri vin" },
 ];
 
 const VIDEN: GuideClusterLink[] = [
   { slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" },
+  { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
   { slug: "hvordan-fremstilles-alkoholfri-vin", label: "Hvordan fremstilles alkoholfri vin" },
   { slug: "alkoholsvag-og-alkoholfri-vin", label: "Alkoholsvag og alkoholfri vin" },
   {
@@ -191,6 +195,44 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     BY_TYPE.slice(0, 4),
     BUDGET,
     [{ slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" }],
+  ),
+  "torres-natureo": alkoholfriBlock(
+    ["torres-natureo"],
+    "Alkoholfri vin — relaterede guider",
+    "Natureo til budget og hylden — sammenlign med Leitz og Noughty.",
+    [HUB],
+    BRANDS,
+    BUDGET,
+    BY_TYPE.slice(0, 4),
+    OCCASION.slice(0, 2),
+  ),
+  "noughty-alkoholfri-vin": alkoholfriBlock(
+    ["noughty-alkoholfri-vin"],
+    "Alkoholfri vin — relaterede guider",
+    "Noughty til brunch og skål — se også kalorier og bobler.",
+    [HUB],
+    BRANDS,
+    BY_TYPE.slice(0, 2),
+    [{ slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" }],
+    OCCASION.slice(0, 3),
+  ),
+  "kalorier-i-alkoholfri-vin": alkoholfriBlock(
+    ["kalorier-i-alkoholfri-vin"],
+    "Alkoholfri vin — relaterede guider",
+    "Kcal-tal og ærlige forventninger — vælg tør bobler og kendte mærker.",
+    [HUB],
+    BRANDS,
+    VIDEN.filter((l) => l.slug !== "kalorier-i-alkoholfri-vin").slice(0, 3),
+  ),
+  "alkoholfri-vin-til-konfirmation": alkoholfriBlock(
+    ["alkoholfri-vin-til-konfirmation"],
+    "Alkoholfri vin — relaterede guider",
+    "Konfirmation med 0 % — bobler, mængde og mærker til blandet selskab.",
+    [HUB],
+    OCCASION.filter((l) => l.slug !== "alkoholfri-vin-til-konfirmation").slice(0, 3),
+    BRANDS,
+    BY_TYPE.slice(0, 3),
+    BUDGET,
   ),
   "alkoholfri-vin-i-netto-foetex": alkoholfriBlock(
     ["alkoholfri-vin-i-netto-foetex"],

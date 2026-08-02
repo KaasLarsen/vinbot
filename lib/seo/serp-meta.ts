@@ -171,6 +171,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Smager alkoholfri vin godt? Bobler og hvid oftere ja, rød sjældnere. Hvad der afgør smagen, hvilke mærker der hjælper — ærlig DK-guide.",
   },
+  "torres-natureo": {
+    title: "Torres Natureo: alkoholfri guide",
+    description:
+      "Torres Natureo 0 %: sparkling, blanco, rosé og red. Pris i DK, vs Leitz, Netto/Føtex — spansk alkoholfri til hverdag og budget.",
+  },
+  "noughty-alkoholfri-vin": {
+    title: "Noughty alkoholfri vin: bobler & øko",
+    description:
+      "Noughty 0 %: Sparkling Chardonnay, still og rosé. Økologisk, pris i DK, vs Leitz og Torres — til brunch, skål og fest.",
+  },
+  "kalorier-i-alkoholfri-vin": {
+    title: "Kalorier i alkoholfri vin (kcal)",
+    description:
+      "Kalorier i alkoholfri vin: typisk 15–25 kcal/100 ml vs 70–85 i almindelig vin. Tabel, sukker og hvad etiketten skal tjekkes for.",
+  },
+  "alkoholfri-vin-til-konfirmation": {
+    title: "Alkoholfri vin til konfirmation",
+    description:
+      "Alkoholfri vin til konfirmation: bobler, middagsvin, mængde pr. gæst og mærker (Leitz, Torres, Noughty). Blandede selskaber i DK.",
+  },
   "vin-til-boeff": {
     title: "Vin til bøf: cabernet, malbec og syrah",
     description:

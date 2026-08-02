@@ -184,8 +184,12 @@ export default function BedsteVineHubPage() {
           <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="hover:underline">Alkoholfri under 100 kr</Link>
           <Link href="/guides/bedste-alkoholfri-maerker-2026" className="hover:underline">Bedste alkoholfri mærker 2026</Link>
           <Link href="/guides/leitz-eins-zwei-zero" className="hover:underline">Leitz Eins-Zwei-Zero</Link>
+          <Link href="/guides/torres-natureo" className="hover:underline">Torres Natureo</Link>
+          <Link href="/guides/noughty-alkoholfri-vin" className="hover:underline">Noughty alkoholfri</Link>
           <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="hover:underline">Alkoholfri i Netto &amp; Føtex</Link>
           <Link href="/guides/smager-alkoholfri-vin-godt" className="hover:underline">Smager alkoholfri vin godt?</Link>
+          <Link href="/guides/kalorier-i-alkoholfri-vin" className="hover:underline">Kalorier i alkoholfri vin</Link>
+          <Link href="/guides/alkoholfri-vin-til-konfirmation" className="hover:underline">Alkoholfri til konfirmation</Link>
           <Link href="/guides/bedste-lavalkohol-vin" className="hover:underline">Bedste lavalkohol-vin</Link>
           <Link href="/guides/alkoholfri-vin-til-grill" className="hover:underline">Alkoholfri vin til grill</Link>
           <Link href="/guides/alkoholfri-vin-til-jul" className="hover:underline">Alkoholfri vin til jul</Link>

@@ -3474,6 +3474,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Leitz Eins-Zwei-Zero Sparkling eller Riesling. Alternativt Torres Natureo Sparkling under 100 kr. Døm ikke hele kategorien på én billig rød.",
     },
   ],
+  "torres-natureo": [
+    {
+      question: "Er Torres Natureo god alkoholfri vin?",
+      answer:
+        "Ja til hverdag og budget: Natureo Sparkling, blanco/rosé og Red er blandt de mest tilgængelige 0 %-valg i DK. Profilen er blødere end Leitz — vælg Natureo til pizza og Netto-hylden, Leitz når du vil have mere syre og «vin».",
+    },
+    {
+      question: "Hvad koster Torres Natureo?",
+      answer:
+        "Typisk ca. 65–100 kr i Danmark. Ofte billigere end Leitz og Noughty. Sammenlign priser på Vinbot og tjek Netto/Føtex-kampagner.",
+    },
+    {
+      question: "Hvilken Torres Natureo skal jeg købe først?",
+      answer:
+        "Sparkling til skål og fest. Red til pizza/pasta. Blanco eller rosé til let mad og grill. Undgå at dømme serien på én varm flaske.",
+    },
+  ],
+  "noughty-alkoholfri-vin": [
+    {
+      question: "Hvad er Noughty alkoholfri vin?",
+      answer:
+        "Noughty er et økologisk 0 %-brand med fokus på Sparkling Chardonnay, still chardonnay og rosé. Profilen er elegant midpris — mellem Torres Natureo og premium French Bloom.",
+    },
+    {
+      question: "Er Noughty bedre end Leitz?",
+      answer:
+        "Ikke nødvendigvis — de har forskellige stilarter. Leitz er tørrere riesling-syre; Noughty er mere chardonnay-elegance og øko. Mange køber Noughty til brunch og Leitz når de vil overbevise en vinsnob.",
+    },
+    {
+      question: "Har Noughty få kalorier?",
+      answer:
+        "Noughty kommunikerer ofte lavt kcal pr. 100 ml, men tjek altid etiketten for sukker. Se guiden om kalorier i alkoholfri vin for typiske tal.",
+    },
+  ],
+  "kalorier-i-alkoholfri-vin": [
+    {
+      question: "Hvor mange kalorier er der i alkoholfri vin?",
+      answer:
+        "Ofte ca. 15–25 kcal pr. 100 ml (ca. 20–35 pr. 12,5 cl-glas) — typisk omkring en tredjedel af alkoholisk vin. Sukker kan hæve tallet; læs etiketten.",
+    },
+    {
+      question: "Er alkoholfri vin godt til vægttab?",
+      answer:
+        "Det er ikke medicinsk rådgivning. Alkoholfri fjerner alkoholkalorier, men sød 0 % kan stadig give kulhydrater. Vælg tør stil og sammenlign med sodavand hvis kalorier er fokus.",
+    },
+    {
+      question: "Har bobler færre kalorier end rød alkoholfri?",
+      answer:
+        "Tør alkoholfri bobler ligger ofte i den lave ende. Rød kan have mere frugtsødme afhængigt af produkt. Tjek kcal og sukker pr. 100 ml på flasken.",
+    },
+  ],
+  "alkoholfri-vin-til-konfirmation": [
+    {
+      question: "Hvilken alkoholfri vin til konfirmation?",
+      answer:
+        "Start med bobler til velkomst (Leitz, Noughty eller Torres Natureo Sparkling), plus hvid til forret og rosé eller blød rød til hovedret. Server i samme glas som resten af bordet.",
+    },
+    {
+      question: "Hvor mange alkoholfri flasker til konfirmation?",
+      answer:
+        "Regn med ca. 15–30 % af gæsterne og ca. ½ flaske pr. alkoholfri voksen til middag plus velkomstbobler. Til 50 gæster er 8–10 flasker 0 % ofte et fornuftigt udgangspunkt.",
+    },
+    {
+      question: "Kan unge under 18 få alkoholfri vin til konfirmation?",
+      answer:
+        "Alkoholfri vin (max 0,5 %) er et voksent alternativ til sodavand — mange værter serverer bobler til skål for hele bordet. Vælg tør stil med syre, ikke sukkersød festdrik.",
+    },
+  ],
   "alkoholfri-vin-til-jul": [
     {
       question: "Hvilken alkoholfri vin parrer med julemad?",

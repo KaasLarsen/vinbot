@@ -194,6 +194,11 @@ export default function FestOgVinHubPage() {
               </Link>
             </li>
             <li>
+              <Link href="/guides/alkoholfri-vin-til-konfirmation" className="text-rose-900 hover:underline">
+                Alkoholfri vin til konfirmation
+              </Link>
+            </li>
+            <li>
               <Link href="/guides/humoer-stemning-og-vin" className="text-rose-900 hover:underline">
                 Humør, stemning og vin
               </Link>
