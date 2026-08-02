@@ -26,7 +26,14 @@ Guides skal **svare på søgehensigt** (hvilken vin til X), **binde klyngen samm
 
 ## Tone
 
-Dansk, **Handlingsorienteret**, korte afsnit, **fed** til druer og begreber brugere søger efter. Ingen unødig jargon uden forklaring.
+Dansk, handlingsorienteret, korte afsnit. Ingen unødig jargon uden forklaring.
+
+## Scannbarhed (bold + links)
+
+- **Bold-budget:** max **1–3 fedte ord/fraser pr. afsnit** — typisk druer, stil eller det konkrete valg. Undgå at fedte næsten hvert substantiv (gør teksten umulig at skimme).
+- **Korte sektioner:** ét job pr. `##`; foretræk bullets/tabeller frem for lange prose-vægge når det passer (se nyere alkoholfri-guider).
+- **«Læs mere» / klynge-links:** som **punktliste** (eller kort «Relateret»-sektion), ikke lange middot-kæder midt i et afsnit.
+- **Afslutning:** brug konsekvent `## Læs mere i klyngen` (liste) + `## Søg …` med ét søgelink.
 
 ## Tekniske noter
 

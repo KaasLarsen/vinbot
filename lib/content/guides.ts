@@ -3,7 +3,9 @@ import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import readingTime from "reading-time";
-import { guideMdxComponents } from "@/lib/content/guide-mdx-components";
+import remarkGfm from "remark-gfm";
+import { createGuideMdxComponents } from "@/lib/content/guide-mdx-components";
+import { extractGuideToc } from "@/lib/content/guide-headings";
 import type { GuideFrontmatter } from "@/lib/content/guide-types";
 import { MIN_INDEXABLE_WORDS } from "@/lib/content/thresholds";
 
@@ -307,16 +309,24 @@ export async function getGuide(slug: string) {
   const fm = data as GuideFrontmatter;
   const rt = readingTime(body);
   const wordCount = rt.words;
+  const toc = extractGuideToc(body);
+  const headingIds = toc.map((item) => item.id);
 
   const { content } = await compileMDX({
     source: body,
-    options: { parseFrontmatter: false },
-    components: guideMdxComponents,
+    options: {
+      parseFrontmatter: false,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
+    components: createGuideMdxComponents(headingIds),
   });
 
   return {
     frontmatter: fm,
     content,
+    toc,
     readingMinutes: Math.max(1, Math.round(rt.minutes)),
     wordCount,
   };

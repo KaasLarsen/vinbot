@@ -28,6 +28,8 @@ import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
+import { GuideToc } from "@/components/guide-toc";
+import { GUIDE_TOC_MIN_HEADINGS } from "@/lib/content/guide-headings";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -78,7 +80,7 @@ export default async function GuidePage({ params }: Props) {
   const data = await getGuide(slug);
   if (!data) notFound();
 
-  const { frontmatter, content, readingMinutes, wordCount } = data;
+  const { frontmatter, content, toc, readingMinutes, wordCount } = data;
   const url = `${siteUrl}/guides/${slug}`;
   const fallbackDate = new Date().toISOString().slice(0, 10);
   const { datePublished, dateModified } = guidePublicationAndModified(frontmatter, fallbackDate);
@@ -169,8 +171,17 @@ export default async function GuidePage({ params }: Props) {
       </header>
       {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
       {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
-      <div className="prose prose-stone mt-10 max-w-none">
-        {content}
+      <div className="mx-auto mt-10 max-w-3xl">
+        <GuideToc items={toc} />
+        <div
+          className={
+            toc.length >= GUIDE_TOC_MIN_HEADINGS
+              ? "prose prose-stone mt-8 max-w-none"
+              : "prose prose-stone max-w-none"
+          }
+        >
+          {content}
+        </div>
       </div>
       {intent ? (
         <GuideProductPicks
