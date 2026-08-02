@@ -85,7 +85,12 @@ export default function VinVidenHubPage() {
         </Link>
         ,{" "}
         <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
-          alkoholfri vin — oversigt
+          alkoholfri vin
+        </Link>
+        {" "}
+        — eller hele{" "}
+        <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
+          alkoholfri-hubben
         </Link>
         ,{" "}
         <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">

@@ -253,6 +253,43 @@ export function listFestOgVinHubGuides(): GuideFrontmatter[] {
   return out;
 }
 
+/** Kurateret rækkefølge til /alkoholfri-vin-hubben. */
+const ALKOHOLFRI_HUB_SLUGS: readonly string[] = [
+  "bedste-alkoholfri-vin",
+  "bedste-alkoholfri-bobler",
+  "bedste-alkoholfri-hvidvin",
+  "bedste-alkoholfri-rose",
+  "bedste-alkoholfri-rodvin",
+  "bedste-alkoholfri-champagne",
+  "bedste-alkoholfri-maerker-2026",
+  "leitz-eins-zwei-zero",
+  "bedste-alkoholfri-vin-under-100-kr",
+  "alkoholfri-vin-i-netto-foetex",
+  "alkoholfri-vin-til-fest",
+  "alkoholfri-vin-til-grill",
+  "alkoholfri-vin-til-brunch",
+  "alkoholfri-vin-til-jul",
+  "alkoholfri-vin-til-dry-january",
+  "alkoholfri-vin-til-graviditet",
+  "smager-alkoholfri-vin-godt",
+  "hvordan-fremstilles-alkoholfri-vin",
+  "hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin",
+  "alkoholsvag-og-alkoholfri-vin",
+  "bedste-lavalkohol-vin",
+  "mindful-drikke-low-no-alkohol",
+];
+
+/** Hub «Alkoholfri vin»: typer, mærker, køb, anledning og viden om 0 %. */
+export function listAlkoholfriHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of ALKOHOLFRI_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));

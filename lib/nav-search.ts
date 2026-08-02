@@ -16,6 +16,11 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   { label: "Mad & vin", href: "/mad-og-vin", keywords: ["mad", "vin", "parring", "match"] },
   { label: "Opskrifter", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon", "parring", "pizza", "burger"] },
   { label: "Bedste vine", href: "/bedste-vine", keywords: ["bedste", "køb", "pris", "anbefaling"] },
+  {
+    label: "Alkoholfri vin",
+    href: "/alkoholfri-vin",
+    keywords: ["alkoholfri", "0%", "0 %", "uden alkohol", "leitz", "noughty", "lavalkohol"],
+  },
   { label: "Vin-viden", href: "/vin-viden", keywords: ["viden", "temperatur", "opbevaring", "glas"] },
   { label: "Alle guides", href: "/guides", keywords: ["guide", "guides", "artikel"] },
 ];

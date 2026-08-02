@@ -204,6 +204,7 @@ function hubLabel(hub: string): string {
     "vin-viden": "Vin-viden",
     saeson: "Sæson",
     "fest-og-vin": "Fest og selskab",
+    "alkoholfri-vin": "Alkoholfri vin",
     druesorter: "Druesorter",
     regioner: "Regioner",
   };

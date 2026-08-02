@@ -119,6 +119,15 @@ export default function HomePage() {
           </p>
         </Link>
         <Link
+          href="/alkoholfri-vin"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Alkoholfri vin</h3>
+          <p className="mt-2 text-stone-600">
+            0 % bobler, hvid, rosé og rød — mærker, under 100 kr, Netto/Føtex, fest og ærlige smagsguides.
+          </p>
+        </Link>
+        <Link
           href="/saeson"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >

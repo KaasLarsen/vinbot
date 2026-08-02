@@ -78,10 +78,10 @@ export default function BedsteVineHubPage() {
           begyndervin
         </Link>
         .{" "}
-        <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
+        <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
           Alkoholfri vin
         </Link>{" "}
-        (0 %) med hub til bobler og hvid. Budget?{" "}
+        (0 %) — hub til bobler, hvid, mærker og køb. Budget?{" "}
         <Link href="/guides/bedste-rodvin-under-100-kr" className="text-rose-900 hover:underline">
           Rødvin under 100 kr
         </Link>{" "}
@@ -174,7 +174,8 @@ export default function BedsteVineHubPage() {
           Graviditet, Dry January, køreture eller bare et bevidst valg. Kategorien er modnet kraftigt de sidste 5 år — særligt bobler og hvidvin leverer.
         </p>
         <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-emerald-900 sm:grid-cols-2 lg:grid-cols-3">
-          <Link href="/guides/bedste-alkoholfri-vin" className="hover:underline">Alkoholfri vin — samlet hub</Link>
+          <Link href="/alkoholfri-vin" className="hover:underline">Alkoholfri vin — hub</Link>
+          <Link href="/guides/bedste-alkoholfri-vin" className="hover:underline">Bedste alkoholfri vin</Link>
           <Link href="/guides/bedste-alkoholfri-bobler" className="hover:underline">Bedste alkoholfri bobler</Link>
           <Link href="/guides/bedste-alkoholfri-champagne" className="hover:underline">Bedste alkoholfri champagne</Link>
           <Link href="/guides/bedste-alkoholfri-rodvin" className="hover:underline">Bedste alkoholfri rødvin</Link>

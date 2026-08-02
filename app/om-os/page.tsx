@@ -170,7 +170,7 @@ export default function OmOsPage() {
             Sundhedsstyrelsens retningslinjer
           </a>
           . Vi dækker også bevidst{" "}
-          <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
+          <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
             alkoholfri og lavalkohol-vin
           </Link>
           , fordi voksne alkoholreducerede valg fortjener den samme omhyggelighed som traditionel vin.

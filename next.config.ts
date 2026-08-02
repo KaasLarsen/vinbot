@@ -360,11 +360,9 @@ const legacyRedirects: { source: string; destination: string }[] = [
     destination: "/guides/chenin-blanc-fra-vouvray",
   },
 
-  // SEO: bred forespørgsel «alkoholfri vin» → kanonisk hub (undgår kun sporadisk traffik på blandede sider)
-  { source: "/alkoholfri-vin", destination: "/guides/bedste-alkoholfri-vin" },
-  { source: "/alkoholfri-vin/", destination: "/guides/bedste-alkoholfri-vin" },
-  { source: "/guides/alkoholfri-vin", destination: "/guides/bedste-alkoholfri-vin" },
-  { source: "/guides/alkoholfri-vin/", destination: "/guides/bedste-alkoholfri-vin" },
+  // SEO: /guides/alkoholfri-vin → hub; /alkoholfri-vin er kanonisk CollectionPage-hub
+  { source: "/guides/alkoholfri-vin", destination: "/alkoholfri-vin" },
+  { source: "/guides/alkoholfri-vin/", destination: "/alkoholfri-vin" },
 
   // Øvrigt: produktanbefalinger og partiale (ikke meningsfulde landingsider)
   {

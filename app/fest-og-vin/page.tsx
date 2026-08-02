@@ -184,6 +184,11 @@ export default function FestOgVinHubPage() {
           <h2 className="text-lg font-semibold text-stone-900">Alkoholfri og blandet selskab</h2>
           <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-stone-700">
             <li>
+              <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
+                Alkoholfri vin — hub
+              </Link>
+            </li>
+            <li>
               <Link href="/guides/alkoholfri-vin-til-fest" className="text-rose-900 hover:underline">
                 Alkoholfri vin til fest
               </Link>
