@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { WineCoolerSearch } from "@/components/wine-cooler-search";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
+import { PriceRunnerProductWidget } from "@/components/pricerunner-product-widget";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
@@ -129,6 +130,29 @@ export default function VinkoleskabePage() {
         <div className="mt-6">
           <WineCoolerSearch initialQuery="vinkøleskab" />
         </div>
+      </section>
+
+      <section className="mt-14 max-w-3xl">
+        <h2 className="text-2xl font-semibold text-stone-900">Populære modeller — sammenlign priser</h2>
+        <p className="mt-2 text-stone-700 leading-relaxed">
+          Ud over vores partnerfeeds kan du sammenligne aktuelle tilbud på tværs af flere danske butikker via{" "}
+          <strong className="font-medium text-stone-800">PriceRunner</strong> — kompakt fritstående, to zoner og større kapacitet.
+        </p>
+        <PriceRunnerProductWidget
+          productKey="witt-ef4352i-1b15"
+          heading="Kompakt fritstående — Witt EF4352I (15 flasker)"
+          className="mt-6"
+        />
+        <PriceRunnerProductWidget
+          productKey="witt-wf50128i-2b77"
+          heading="To zoner — Witt WF50128I (77 flasker)"
+          className="mt-8"
+        />
+        <PriceRunnerProductWidget
+          productKey="witt-classic-ef5483i"
+          heading="Integrerbar/klassisk — Witt Classic EF5483I (48 flasker)"
+          className="mt-8"
+        />
       </section>
 
       <section className="mt-14 space-y-14">

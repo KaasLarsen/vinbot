@@ -1,11 +1,13 @@
 import type { ComponentProps } from "react";
 import { GuideMdxShopPicks } from "@/components/guide-mdx-shop-picks";
+import { PriceRunnerProduct } from "@/components/pricerunner-product";
 
 export function createGuideMdxComponents(headingIds: string[] = []) {
   let h2Index = 0;
 
   return {
     GuideMdxShopPicks,
+    PriceRunnerProduct,
     a: (props: ComponentProps<"a">) => (
       <a
         {...props}

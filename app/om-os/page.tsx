@@ -138,7 +138,8 @@ export default function OmOsPage() {
         <p className="leading-relaxed">
           Vi finansierer driften via to kilder: <strong>affiliate-samarbejder</strong> (hvor vi modtager
           provision, når du klikker dig videre og handler hos en forhandler) og <strong>annoncer</strong> (fx Google AdSense). Din pris ændres ikke, når du bruger
-          et annoncelink.
+          et annoncelink. Affiliate sker blandt andet via <strong>Partner-Ads</strong>, <strong>Adtraction</strong>,{" "}
+          <strong>Daisycon</strong> og <strong>PriceRunner</strong> (prissammenlignings-widgets på udstyr og tilbehør).
         </p>
         <p className="leading-relaxed">
           Vi skelner altid tydeligt mellem redaktionelt indhold og annoncering:
@@ -154,7 +155,8 @@ export default function OmOsPage() {
             kriterier (relevans, pris, tilgængelighed) — ikke på betaling per flaske.
           </li>
           <li>
-            <strong>Annoncer</strong> er tydeligt markeret (leaderboards, produktzoner, Google AdSense).
+            <strong>Annoncer</strong> er tydeligt markeret (leaderboards, produktzoner, Google AdSense, og
+            PriceRunner-widgets mærket &quot;Annonce i samarbejde med PriceRunner&quot;).
           </li>
         </ul>
       </section>

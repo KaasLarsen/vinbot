@@ -8,7 +8,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Cookiepolitik";
 const PAGE_DESCRIPTION =
-  "Sådan bruger Vinbot cookies: nødvendige, statistik (Google Analytics), annoncer (Google AdSense) og affiliate via Partner-Ads, Adtraction og Daisycon.";
+  "Sådan bruger Vinbot cookies: nødvendige, statistik (Google Analytics), annoncer (Google AdSense) og affiliate via Partner-Ads, Adtraction, Daisycon og PriceRunner.";
 const PAGE_URL = `${siteUrl}/cookiepolitik`;
 
 export const metadata: Metadata = {
@@ -36,7 +36,8 @@ export default function CookiepolitikPage() {
           <strong>Kort:</strong> Vi bruger <strong>nødvendige cookies</strong> til drift og sprog/valg, og — hvis du trykker{" "}
           <strong>Accepter</strong> i banneret — cookies til <strong>statistik (Google Analytics 4)</strong>,{" "}
           <strong>annoncer (Google AdSense)</strong> og <strong>affiliate-sporing</strong> via netværkene{" "}
-          <strong>Partner-Ads</strong>, <strong>Adtraction</strong> og <strong>Daisycon</strong>. Den fulde ramme for personoplysninger findes på{" "}
+          <strong>Partner-Ads</strong>, <strong>Adtraction</strong>, <strong>Daisycon</strong> og{" "}
+          <strong>PriceRunner</strong>. Den fulde ramme for personoplysninger findes på{" "}
           <Link href="/privatliv" className="text-rose-900 hover:underline">
             Privatliv
           </Link>
@@ -58,8 +59,10 @@ export default function CookiepolitikPage() {
             <strong>Google AdSense:</strong> annoncefelter vises kun efter <strong>Accepter</strong> og når annoncer er slået til i opsætningen. Googles annoncenetværk kan sætte cookies til målretning i overensstemmelse med dit valg.
           </li>
           <li>
-            <strong>Affiliate:</strong> når du klikker videre til en forhandler, kan <strong>Partner-Ads</strong>, <strong>Adtraction</strong> eller{" "}
-            <strong>Daisycon</strong> sætte cookies eller bruge tilsvarende teknologi for at tilskrive et eventuelt salg til Vinbot — uden merpris for dig.
+            <strong>Affiliate:</strong> når du klikker videre til en forhandler, kan <strong>Partner-Ads</strong>,{" "}
+            <strong>Adtraction</strong>, <strong>Daisycon</strong> eller <strong>PriceRunner</strong> sætte cookies
+            eller bruge tilsvarende teknologi for at tilskrive et eventuelt salg til Vinbot — uden merpris for dig.
+            PriceRunner-widgets indlæses kun efter <strong>Accepter</strong>.
           </li>
         </ul>
 
