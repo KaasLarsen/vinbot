@@ -1,7 +1,7 @@
-# Valgfri CLI-deploy via secrets. Primær deploy er Vercel Git-integration (vercel[bot]).
-# Secrets (valgfrit): npm run vercel:secrets
+# CLI-deploy via GitHub secrets (backup hvis Vercel Git-integration ikke trigger).
+# Secrets: npm run vercel:secrets
 #
-# Vercel UI for vinbot-thisone: Root Directory skal vaere TOM (ikke "legacy").
+# Vercel UI for projekt "vinbot": Root Directory skal vaere TOM (ikke "legacy").
 
 name: Deploy production to Vercel
 
@@ -32,20 +32,19 @@ jobs:
         run: |
           if [ -z "${{ secrets.VERCEL_TOKEN }}" ] || [ -z "${{ secrets.VERCEL_ORG_ID }}" ] || [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
             echo "has_secrets=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Skipper CLI-deploy — mangler VERCEL_* secrets. Produktion deploys via Vercel Git-integration."
+            echo "::error::Mangler VERCEL_TOKEN, VERCEL_ORG_ID eller VERCEL_PROJECT_ID. Kør: npm run vercel:secrets"
+            exit 1
           else
             echo "has_secrets=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Setup Node
-        if: steps.secrets.outputs.has_secrets == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
 
       - name: Deploy til Vercel
-        if: steps.secrets.outputs.has_secrets == 'true'
         run: npx vercel@latest deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

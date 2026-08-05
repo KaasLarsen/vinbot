@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Kør på din maskine (én gang) efter du har oprettet projektet "vinbot-thisone" på Vercel.
+# Kør på din maskine (én gang) efter du har oprettet projektet "vinbot" på Vercel.
 #
 # Forudsætninger:
 #   brew install gh && gh auth login
@@ -7,7 +7,7 @@
 # Værdier fra Vercel:
 #   VERCEL_TOKEN       → https://vercel.com/account/tokens
 #   VERCEL_ORG_ID      → Team Settings → General (Team ID) — ofte slug som dennis-projects-78a79d5b
-#   VERCEL_PROJECT_ID  → vinbot-thisone → Project Settings → General → Project ID
+#   VERCEL_PROJECT_ID  → vinbot → Project Settings → General → Project ID
 #
 # Vercel UI (kan ikke sættes fra script): Project → Settings → Git → connect KaasLarsen/vinbot, branch main.
 # Root Directory skal være TOM. Tilføj domæner under Settings → Domains.
@@ -46,6 +46,6 @@ printf '%s' "$VERCEL_ORG_ID" | gh secret set VERCEL_ORG_ID -R "$REPO"
 printf '%s' "$VERCEL_PROJECT_ID" | gh secret set VERCEL_PROJECT_ID -R "$REPO"
 
 echo ""
-echo "Færdig. GitHub Actions har nu secrets til projektet vinbot-thisone."
+echo "Færdig. GitHub Actions har nu secrets til projektet vinbot."
 echo "Trig et deploy med: gh workflow run 'Deploy production to Vercel' -R $REPO"
 echo "eller: git commit --allow-empty -m 'chore: trigger vercel' && git push"
