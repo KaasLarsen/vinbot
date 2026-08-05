@@ -4059,12 +4059,19 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvilken vin til gullasch?",
       answer:
-        "Gamay, tempranillo (Rioja Crianza) eller ung syrah med moden frugt og syre. Undgå ung cabernet med hård tannin mod paprika og tomater. Brug samme stil i gryden og glasset.",
+        "Gamay, tempranillo (Rioja Crianza) eller ung syrah med moden frugt og syre. Se guiden vin til gulasch — samme ret og samme vinvalg. Brug samme stil i gryden og glasset.",
+    },
+  ],
+  "vin-til-gulasch": [
+    {
+      question: "Hvilken vin til gullasch og gulasch?",
+      answer:
+        "Gamay, primitivo, mellemfyldig syrah eller côtes du rhône med moden frugt. Paprika og løg kræver saft — undgå stram ung cabernet uden frugtmodenhed.",
     },
     {
-      question: "Skal gullasch have rødvin i gryden?",
+      question: "Skal gulasch have rødvin i gryden?",
       answer:
-        "Klassisk ungarsk gullasch kan simre med rødvin for dybde og syre. Brug vin du ville drikke — gamay eller tempranillo på hverdagsniveau er ideelt.",
+        "Klassisk gulasch kan simre med rødvin for dybde. Brug gamay eller tempranillo du ville drikke — se opskriften gullasch med rødvin.",
     },
   ],
   "vin-til-tatar-og-carpaccio": [

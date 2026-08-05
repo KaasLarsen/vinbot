@@ -28,6 +28,7 @@ import { deriveGuideIntent } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
+import { GuideOgHero } from "@/components/guide-og-hero";
 import { GuideToc } from "@/components/guide-toc";
 import { GUIDE_TOC_MIN_HEADINGS } from "@/lib/content/guide-headings";
 
@@ -45,6 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tooThin = g.wordCount < MIN_INDEXABLE_WORDS;
   const serpTitle = buildGuideSerpTitle(g.frontmatter.title, slug);
   const serpDescription = buildGuideSerpDescription(g.frontmatter.description, slug, g.frontmatter.title);
+  const ogImageUrl = `${canonical}/opengraph-image`;
   return {
     title: serpTitle,
     description: serpDescription,
@@ -54,9 +56,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       title: serpTitle,
       description: serpDescription,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: serpTitle }],
     },
     twitter: {
       card: "summary_large_image",
+      images: [ogImageUrl],
     },
     ...(tooThin
       ? {
@@ -169,6 +173,7 @@ export default async function GuidePage({ params }: Props) {
           </Link>
         </p>
       </header>
+      <GuideOgHero slug={slug} title={frontmatter.title} />
       {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
       {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
       <div className="mx-auto mt-10 max-w-3xl">

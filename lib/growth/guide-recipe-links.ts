@@ -474,6 +474,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "andeconfit-med-rodvin", label: "Andeconfit med rødvin" },
     { slug: "canard-a-l-orange-med-rodvin", label: "Canard à l'orange med rødvin" },
   ],
+  "vin-til-gas": [
+    { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
+    { slug: "andeconfit-med-rodvin", label: "Andeconfit med rødvin" },
+    { slug: "canard-a-l-orange-med-rodvin", label: "Canard à l'orange med rødvin" },
+  ],
   "vin-til-dessert-og-kransekage": [
     { slug: "paerer-i-rodvin", label: "Pærer i rødvin" },
     { slug: "aebletaerte-med-calvados-og-hvidvin", label: "Æbletærte med calvados og hvidvin" },

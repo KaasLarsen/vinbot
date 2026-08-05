@@ -589,10 +589,10 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hvilken vin til gås? Fedt kød kræver syre: pinot noir, gamay, tør riesling eller crémant. Julemenu og gåsesteg med tilbehør — servering i DK.",
   },
-  "vin-til-gullasch": {
-    title: "Vin til gullasch: ung rød med syre og paprika",
+  "vin-til-gulasch": {
+    title: "Vin til gullasch og gulasch: ung rød med syre",
     description:
-      "Vin til ungarsk gullasch: gamay, tempranillo eller ung syrah til paprika og rødvin i gryden. Samme flaske i sauce og glas — dansk guide.",
+      "Vin til gullasch/gulasch: gamay, tempranillo eller ung syrah til paprika og rødvin i gryden. Samme flaske i sauce og glas — dansk guide.",
   },
 };
 

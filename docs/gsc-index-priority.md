@@ -39,7 +39,7 @@ Brug **URL-inspektion → Anmod om indeksering** på URL'erne nedenfor (priorite
 ## Tier 4 — nye guides (GSC-huller)
 
 - https://www.vinbot.dk/guides/vin-til-gas
-- https://www.vinbot.dk/guides/vin-til-gullasch
+- https://www.vinbot.dk/guides/vin-til-gulasch
 
 ## Tier 5 — hub-linking fra vindere
 

@@ -100,7 +100,7 @@ const MAD_FISK: GuideClusterLink[] = [
 
 const MAD_KOED: GuideClusterLink[] = [
   { slug: "vin-til-boeff", label: "Vin til bøf og oksekød" },
-  { slug: "vin-til-gullasch", label: "Vin til gullasch" },
+  { slug: "vin-til-gulasch", label: "Vin til gulasch" },
   { slug: "vin-til-kylling-og-lyst-koed", label: "Vin til kylling" },
   { slug: "vin-til-grill-og-bbq", label: "Vin til grill og BBQ" },
   { slug: "rodvin-til-pizza", label: "Rødvin til pizza" },

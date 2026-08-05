@@ -20,6 +20,8 @@ function hubLabel(hub: string): string {
     "alkoholfri-vin": "Alkoholfri vin",
     druesorter: "Druesorter",
     regioner: "Regioner",
+    "vin-viden": "Vin-viden",
+    "bedste-vine": "Bedste vine",
   };
   return m[hub] || hub;
 }

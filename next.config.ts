@@ -436,6 +436,7 @@ const legacyRedirects: { source: string; destination: string }[] = [
 const rootLegacyMirrorPrefixes = ["/pages/vin-til/", "/pages/druer/", "/pages/blog/"] as const;
 
 const rootLegacyHubRedirects: { source: string; destination: string }[] = [
+  { source: "/guides/vin-til-gullasch", destination: "/guides/vin-til-gulasch" },
   { source: "/druer", destination: "/druesorter" },
   { source: "/druer/", destination: "/druesorter" },
   { source: "/vin-til", destination: "/guides/komplet-guide-til-vin-og-mad" },
