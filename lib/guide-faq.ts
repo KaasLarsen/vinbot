@@ -2448,6 +2448,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ca. 80–120 kcal per glas (12,5 cl) for tør vin ved 12–13 % alkohol. Bobler ofte 80–95 kcal. Dessertvin og port kan være 150–200+ kcal per glas pga. sukker.",
     },
     {
+      question: "Hvor mange kalorier i en flaske hvidvin?",
+      answer:
+        "Ca. 550–650 kcal per 75 cl tør hvidvin ved 12 % alkohol. Kraftig chardonnay ved 14 % kan nå 700+ kcal. Alkoholfri hvidvin typisk 120–240 kcal per flaske.",
+    },
+    {
       question: "Hvor mange kalorier i en flaske rødvin?",
       answer:
         "Ca. 600–750 kcal per 75 cl tør rødvin (12,5 %). Højere alkohol (14–15 %) og restsødme øger kalorierne — det er alkohol og sukker, ikke farven, der tæller.",
@@ -2669,12 +2674,22 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Ja — vælg let til mellemfyldig rød med moden frugt og lav/mellem tannin (fx gamay, pinot noir, lettere sangiovese). Meget ung bordeaux-agtig tannin kan føles hård mod både salt og sødlig sovs.",
     },
+    {
+      question: "Hvilken vin til flæskesteg?",
+      answer:
+        "Samme som stegt flæsk med persillesovs: grüner veltliner, tør riesling, sauvignon eller let rosé. Let rød (gamay, pinot) ved 14–16 °C. Syre mod salt, fedme og persillesovs er nøglen.",
+    },
   ],
   "hvor-laenge-holder-aabnet-vin": [
     {
       question: "Hvor længe kan åbnet vin holde sig?",
       answer:
         "Med prop i køleskab: ofte 2-4 dage for let hvid og rosé, 4-6 for fyldig hvid, 2-4 for let rød, 4-7 for kraftig ung rød, 1-3 for champagne og bobler med god prop. Boxvin kan holde uger i posen. Se pillar-guiden og de dedikerede artikler for rød, hvid og bobler.",
+    },
+    {
+      question: "Hvor længe holder åbnet vin i køleskabet?",
+      answer:
+        "Typisk 3–7 dage for hvidvin, 3–5 for let rød og 1–3 for bobler. Kulde bremser oxidation — også for rødvin efter åbning. Vakuumprop eller mindre flaske forlænger.",
     },
     {
       question: "Skal åbnet rødvin stå i køleskabet?",
@@ -2719,6 +2734,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan hvidvin stå i køleskabet længe?",
       answer:
         "Uåbnet hvidvin skal ideelt opbevares ved 12-14 °C. Uger i et kølig køleskab er fint; måneder udtørrer proppen og påvirker smagen. Flyt gerne til et vinkøleskab eller køligt kammer.",
+    },
+    {
+      question: "Hvor længe holder hvidvin efter åbning?",
+      answer:
+        "3–7 dage med prop i køleskab. Let sauvignon og pinot grigio ofte 2–4 dage; fad-chardonnay kan holde 5–7 og er ofte bedre dag 2. Smag på eddike-lugt før du serverer.",
     },
   ],
   "hvor-laenge-holder-bobler-og-champagne": [
@@ -3103,6 +3123,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Almindelig vin ligger på 11-15 % alkohol (volumenprocent). Hvidvin typisk 10-13 %, rødvin 12-15 %, mousserende 11-12,5 %, dessertvin 8-13 % og hedvin som portvin og sherry 15-22 %. Alkoholindholdet står på etiketten som '% vol.' og er lovpligtigt i EU.",
     },
     {
+      question: "Hvad er hvidvin alkoholprocent?",
+      answer:
+        "Tør hvidvin er typisk 10–13 % ABV. Lette vine (Mosel, Vinho Verde) 9–11 %; fyldig chardonnay fra varme regioner 13–14 %. Tjek % vol. på etiketten — det er det officielle tal.",
+    },
+    {
       question: "Hvorfor varierer alkoholprocenten i vin?",
       answer:
         "Alkohol kommer fra druens sukker, som gær omdanner. Varmt klima giver mere sukker og mere alkohol; køligt klima giver mindre. Producentens høsttidspunkt påvirker også: sent høstede, overmodne druer giver kraftig vin; tidligt høstede giver friskere stil med lavere alkohol.",
@@ -3319,6 +3344,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilken alkoholfri rosé til terrassen?",
       answer:
         "Leitz Eins-Zwei-Zero Rosé giver tør, lys provence-lignende profil; Torres Natureo Rosé mere moden frugt — begge serveret velafkølet maj–juli til have, altan og grill. Kombinér gerne med alkoholfri bobler til tapas med mange små retter.",
+    },
+    {
+      question: "Hvilken alkoholfri rosevin er bedst?",
+      answer:
+        "Alkoholfri rosevin 0 %: Leitz Eins-Zwei-Zero Rosé og Torres Natureo Rosé topper ofte i danske butikker. Søg «rosevin uden alkohol» — samme kategori som alkoholfri rosé med max 0,5 % ABV.",
     },
   ],
   "hvad-er-ingrediensliste-paa-vin-eu": [
@@ -4006,6 +4036,47 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvad passer malbec bedst til?",
       answer:
         "Argentinsk asado — grillet rødt kød — er den klassiske parring. Også entrecote, ribeye, chorizo, morcilla (blodpølse), lam med chimichurri og hamburger. Malbec er i sit hjerte BBQ-kulturens vin.",
+    },
+  ],
+  "vin-til-gas": [
+    {
+      question: "Hvilken vin til gås?",
+      answer:
+        "Pinot noir, gamay (Beaujolais) eller tør riesling med syre til fedt kød. Crémant eller champagne til forret og skål. Undgå ung, tannin-tung cabernet mod sødt tilbehør som rødkål.",
+    },
+    {
+      question: "Hvilken vin til gåsesteg?",
+      answer:
+        "Samme som gås: pinot eller gamay ved 14–16 °C, eller tør riesling/gewürztraminer til æble- og frugttilbehør. Syre mod fedme er vigtigere end kraftig tannin.",
+    },
+    {
+      question: "Kan jeg bruge vin til and til gås?",
+      answer:
+        "Ja — and og gås deler fedt kød og juletilbehør. Se også vin til juleand og vin til and for flere flasketyper og temperatur.",
+    },
+  ],
+  "vin-til-gullasch": [
+    {
+      question: "Hvilken vin til gullasch?",
+      answer:
+        "Gamay, tempranillo (Rioja Crianza) eller ung syrah med moden frugt og syre. Undgå ung cabernet med hård tannin mod paprika og tomater. Brug samme stil i gryden og glasset.",
+    },
+    {
+      question: "Skal gullasch have rødvin i gryden?",
+      answer:
+        "Klassisk ungarsk gullasch kan simre med rødvin for dybde og syre. Brug vin du ville drikke — gamay eller tempranillo på hverdagsniveau er ideelt.",
+    },
+  ],
+  "vin-til-tatar-og-carpaccio": [
+    {
+      question: "Hvilken vin til carpaccio?",
+      answer:
+        "Let rød med lav tannin: gamay, pinot noir eller rosé med syre. Champagne brut eller crémant til citron og parmesan. Server kølig — undgå ung cabernet.",
+    },
+    {
+      question: "Hvilken vin til bøftatar?",
+      answer:
+        "Beaujolais (Morgon, Fleurie), tysk pinot noir eller frappato. Høj syre, frisk frugt, lav tannin — match råt kød, capers og æggeblomme.",
     },
   ],
 };

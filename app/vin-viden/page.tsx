@@ -60,6 +60,26 @@ export default function VinVidenHubPage() {
       </p>
       <p className="mt-3 text-sm text-stone-600">
         Start et sted:{" "}
+        <Link href="/guides/hvor-mange-enheder-alkohol-i-et-glas-vin" className="text-rose-900 hover:underline">
+          ml og genstande i et glas
+        </Link>
+        ,{" "}
+        <Link href="/guides/hvor-mange-kalorier-i-vin" className="text-rose-900 hover:underline">
+          kalorier i vin
+        </Link>
+        ,{" "}
+        <Link href="/guides/hvor-meget-alkohol-i-vin" className="text-rose-900 hover:underline">
+          alkoholprocent
+        </Link>
+        ,{" "}
+        <Link href="/guides/hvor-laenge-holder-aabnet-vin" className="text-rose-900 hover:underline">
+          hvor længe holder åbnet vin
+        </Link>
+        ,{" "}
+        <Link href="/guides/hvor-laenge-holder-hvidvin" className="text-rose-900 hover:underline">
+          hvor længe holder hvidvin
+        </Link>
+        ,{" "}
         <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="text-rose-900 hover:underline">
           rødvin temperatur og vintemperatur (°C)
         </Link>

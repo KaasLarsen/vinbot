@@ -552,6 +552,48 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til rejer: tør hvidvin, albariño og bobler med syre og salt. Grillede rejer, gambas og skaldyrspasta — servering og flasker til dansk sommer.",
   },
+
+  // Bølge 6 — GSC vinbot aug 2026: vin-viden lav CTR + alkoholfri rosé + mad striking distance
+  "hvor-mange-kalorier-i-vin": {
+    title: "Kalorier i vin: glas og flaske (tabel)",
+    description:
+      "80–120 kcal per glas (12,5 cl), 600–700 per flaske tør vin. Tabel for hvidvin, rødvin, bobler og alkoholfri — hvad alkohol % gør med kalorierne.",
+  },
+  "hvor-laenge-holder-hvidvin": {
+    title: "Hvor længe holder hvidvin åbnet?",
+    description:
+      "Åbnet hvidvin 3–7 dage på køl med prop. Uåbnet hverdags-hvid 1–3 år. Tabel for sauvignon, chardonnay og dessertvin — og hvornår du skal smide flasken.",
+  },
+  "vin-til-stegt-flaesk": {
+    title: "Vin til flæskesteg og persillesovs",
+    description:
+      "Hvilken vin til flæskesteg? Grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner. Dansk parring til stegt flæsk.",
+  },
+  "vin-til-tatar-og-carpaccio": {
+    title: "Vin til carpaccio og bøftatar",
+    description:
+      "Vin til carpaccio: kølig gamay, pinot noir eller rosé med syre. Lav tannin til råt kød, citron og parmesan — undgå ung cabernet.",
+  },
+  "vin-til-smorrebrod": {
+    title: "Vin til smørrebrød: sild, lever og roastbeef",
+    description:
+      "Hvilken vin til smørrebrød? Bobler og syre til sild og fisk, let rød til kød og paté. Dansk frokost og julefrokost — konkrete flasketyper.",
+  },
+  "vin-til-svinekoed": {
+    title: "Vin til svinekød: pinot, gamay og sangiovese",
+    description:
+      "Vin til svinekød og flæsk: let rød med syre til fedme og salt. Steg, kotelet og gryderet — pinot, gamay og chianti i danske butikker.",
+  },
+  "vin-til-gas": {
+    title: "Vin til gås og gåsesteg: pinot og riesling",
+    description:
+      "Hvilken vin til gås? Fedt kød kræver syre: pinot noir, gamay, tør riesling eller crémant. Julemenu og gåsesteg med tilbehør — servering i DK.",
+  },
+  "vin-til-gullasch": {
+    title: "Vin til gullasch: ung rød med syre og paprika",
+    description:
+      "Vin til ungarsk gullasch: gamay, tempranillo eller ung syrah til paprika og rødvin i gryden. Samme flaske i sauce og glas — dansk guide.",
+  },
 };
 
 /** Opskrift → målrettet SERP (GSC striking distance, jul 2026). */
