@@ -3,15 +3,8 @@ import Link from "next/link";
 import { proxyImg } from "@/lib/search/helpers";
 import { getWineBySlug } from "@/lib/vine/catalog";
 import { vineCatalogStyleFromBlob, type VineWineStyleGuess } from "@/lib/vine/catalog-style";
+import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
 import type { CanonicalWine } from "@/lib/vine/types";
-
-/** Kurateret mix: rød, hvid, bobler + pinot — opdater listen når feeds skifter. */
-const FEATURED_SLUGS = [
-  "susana-balbo-benmarco-malbec-2019-d83affb5",
-  "rapaura-springs-rapaura-springs-sauvignon-blanc-4daa24a0",
-  "laurent-perrier-champagne-laurent-perrier-cuvee-0c705d33",
-  "hamilton-russell-hamilton-russell-pinot-noir-202-feeca1a9",
-] as const;
 
 const STYLE_BADGE: Record<NonNullable<VineWineStyleGuess>, string> = {
   bobler: "Bobler",
@@ -26,7 +19,7 @@ function lowestPrice(wine: CanonicalWine): number | null {
 }
 
 export async function HomeWinesStrip() {
-  const resolved = await Promise.all(FEATURED_SLUGS.map((slug) => getWineBySlug(slug)));
+  const resolved = await Promise.all(FEATURED_WINE_SLUGS.map((slug) => getWineBySlug(slug)));
   const wines = resolved.filter((w): w is CanonicalWine & { image: string } => Boolean(w?.image));
 
   if (wines.length === 0) return null;
@@ -39,7 +32,7 @@ export async function HomeWinesStrip() {
             Udvalgte vine
           </h2>
           <p className="mt-1 text-sm text-stone-600">
-            Kuraterede flasker fra Vinbots katalog — sammenlign priser hos danske forhandlere.
+            Gode flasker, vi har udvalgt fra stærke danske forhandlere.
           </p>
         </div>
         <Link href="/vine" className="text-sm font-medium text-rose-900 hover:underline">

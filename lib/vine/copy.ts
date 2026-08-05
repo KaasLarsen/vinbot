@@ -33,9 +33,9 @@ export function vinePageIntro(w: CanonicalWine): string {
 
   if (n === 1) {
     const m = w.offers[0].merchant;
-    return `${headline}. Kan findes hos ${m}.${priceBit} Priser og lager kan ændre sig — tjek hos butikken.`;
+    return `${headline}. Udvalgt hos ${m}.${priceBit} Priser og lager kan ændre sig — tjek hos butikken.`;
   }
-  return `${headline}. Kan købes hos ${n} butikker.${priceBit} Sammenlign pris nedenfor og gå videre til den forhandler, du foretrækker.`;
+  return `${headline}. Findes hos ${n} udvalgte forhandlere.${priceBit} Vælg den butik, du foretrækker, herunder.`;
 }
 
 /** Dru-/stil-specifik tekst ud fra titel og kategori; ellers farve-kaskade. */

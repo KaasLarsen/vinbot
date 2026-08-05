@@ -14,9 +14,9 @@ import { PageShell } from "@/components/page-shell";
 const PAGE_URL = `${siteUrl}/vine`;
 
 export const metadata: Metadata = {
-  title: "Vin-katalog — sammenlign priser på tværs af forhandlere",
+  title: "Vin-katalog — udvalgte vine fra gode forhandlere",
   description:
-    "Vinbots vin-katalog samler vin fra udvalgte danske netbutikker, så du kan sammenligne priser og åbne den shop, du vil handle hos — med redaktionel kontekst om Vinbots rolle som mellemled og journalistiske kerne på vinbot.dk (guides til mad og vin). Priser og tilbud kan ændre sig; dobbelttjek altid hos forhandleren.",
+    "Vinbots vin-katalog samler gode flasker fra udvalgte danske netbutikker — så du kan finde vin, du har lyst til, og åbne den shop, du vil handle hos. Med redaktionel kontekst om Vinbots rolle som mellemled og journalistiske kerne på vinbot.dk. Priser og tilbud kan ændre sig; dobbelttjek altid hos forhandleren.",
   alternates: { canonical: PAGE_URL },
 };
 
@@ -58,8 +58,8 @@ export default async function VineHubPage() {
         items={breadcrumbItems.map((b) => ({ name: b.name, url: b.url }))}
       />
       <CollectionPageJsonLd
-        name="Vin-katalog — priser på tværs af forhandlere"
-        description="Vinbots vin-katalog samler vin fra udvalgte danske netbutikker til prissammenligning og kontekst om Vinbots rolle som mellemled — ikke webshop; guides til mad og vin findes separat på vinbot.dk."
+        name="Vin-katalog — udvalgte vine fra gode forhandlere"
+        description="Vinbots vin-katalog samler gode flasker fra udvalgte danske netbutikker — med kontekst om Vinbots rolle som mellemled — ikke webshop; guides til mad og vin findes separat på vinbot.dk."
         url={PAGE_URL}
         items={summaries.slice(0, 500).map((s) => ({
           name: s.displayTitle,
@@ -69,7 +69,7 @@ export default async function VineHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vine", label: "Vin-katalog" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-katalog</h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
-        Sammenlign priser og find link videre til danske vinforhandlere — ét samlet overblik.
+        Gode vine fra udvalgte danske forhandlere — ét samlet overblik, før du går videre til butikken.
       </p>
       <p className="mt-4 text-sm text-stone-500">
         Opdateret {new Date(catalog.generatedAt).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" })} ·{" "}

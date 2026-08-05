@@ -35,13 +35,13 @@ function openingParagraph(w: CanonicalWine, variant: number): string {
 
   switch (variant % 4) {
     case 0:
-      return `Vinbots vinprofiler samler den samme vin, når den findes hos flere forhandlere, så du kan sammenligne udgangspriser og åbne den shop, du foretrækker. Denne side handler om ${who}${year ? ` — med årgang ${year}` : ""}, og den er baseret på offentlige produktdata fra ${mp}.`;
+      return `Vinbots vinprofiler fremhæver gode flasker fra udvalgte danske forhandlere — med kontekst om vinen, før du går videre til butikken. Denne side handler om ${who}${year ? ` — med årgang ${year}` : ""}, og den er baseret på offentlige produktdata fra ${mp}.`;
     case 1:
-      return `Denne vinprofil er en oversigt: Vi forsøger at koble samme flaske på tværs af danske netbutikker, når feeds matcher hinanden via GTIN eller stabil titel-match. Her drejer det sig om ${who}${year ? ` (${year})` : ""}. Aktuelle tilbud og tekster kommer fra ${mp}.`;
+      return `Denne vinprofil er et redaktionelt overblik: Vi samler den samme flaske under ét sted, når den findes hos vores udvalgte forhandlere (via GTIN eller stabil titel-match). Her drejer det sig om ${who}${year ? ` (${year})` : ""}. Aktuelle priser og tekster kommer fra ${mp}.`;
     case 2:
-      return `Vinbot er ikke vinhandler — vi hjælper dig med at finde flasken og hoppe videre til forhandlerens egen side med pris og vilkår for dét øjeblik, du klikker. Profilen om ${who} viser, hvad ${mp} aktuelt har registreret om produktet.`;
+      return `Vinbot er ikke vinhandler — vi udvælger og præsenterer vine fra gode forhandlere, så du kan læse om flasken og hoppe videre til shoppens egen side. Profilen om ${who} viser, hvad ${mp} aktuelt har registreret om produktet.`;
     default:
-      return `Formålet med vinprofiler er mindre jagt på rabatkoder og mere tryg navigation: ét sted med kontekst om flasken, før du beslutter dig. Denne tekst omhandler ${who}${brand ? ` fra ${brand}` : ""}, og tilbudstabellen under er samlet på tværs af ${mp}.`;
+      return `Formålet med vinprofiler er tryg navigation: ét sted med kontekst om flasken fra vores udvalg af forhandlere. Denne tekst omhandler ${who}${brand ? ` fra ${brand}` : ""}, og listen herunder er samlet fra ${mp}.`;
   }
 }
 
@@ -102,7 +102,7 @@ export function vineProductFaqItems(w: CanonicalWine): VineProductFaqItem[] {
       question: "Hvorfor er den samme vin listet flere steder?",
       answer:
         w.offers.length > 1
-          ? `Fordi Vinbot forsøger at genkende samme produkt på tværs af netbutikker (GTIN eller samme vin-signatur). Her har vi fundet ${w.offers.length} aktuelle tilbud, du kan sammenligne.`
+          ? `Fordi Vinbot forsøger at genkende samme produkt på tværs af udvalgte netbutikker (GTIN eller samme vin-signatur). Her har vi fundet ${w.offers.length} aktuelle listninger hos vores forhandlere.`
           : `Her er registreret ét aktuelt tilbud i Vinbots indeks — flere kan dukke op senere, når feeds opdateres.`,
     },
     {
@@ -113,7 +113,7 @@ export function vineProductFaqItems(w: CanonicalWine): VineProductFaqItem[] {
     {
       question: "Hvad er Vinbots journalistiske rolle udover vinprofiler?",
       answer:
-        "Vinbot publicerer også selvstændige guides om mad og vin (find dem via «Guides» i menuen). Vinprofiler og prissammenligning er et supplement til den redaktionelle kerne — ikke en erstatning.",
+        "Vinbot publicerer også selvstændige guides om mad og vin (find dem via «Guides» i menuen). Vinprofiler med udvalgte flasker fra gode forhandlere er et supplement til den redaktionelle kerne — ikke en erstatning.",
     },
   ];
 }
@@ -128,7 +128,7 @@ export function vineMetaSupplementSentence(w: CanonicalWine): string {
       : "Uafhængig vinprofil og prislinks på Vinbot.";
   const variants = [
     `${hint} Vinbot sælger ikke vin — du handler hos forhandleren.`,
-    `${hint} Sammenlign tilbud og læs mere på butikkernes egne sider.`,
+    `${hint} Se udvalget hos forhandlerne og læs mere på deres egne sider.`,
     `${hint} Redaktionel kontekst og madmatch er vejledende.`,
   ];
   return variants[h % variants.length];

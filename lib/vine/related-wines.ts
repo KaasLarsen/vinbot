@@ -77,6 +77,8 @@ export type PickRelatedWinesOptions = {
 /**
  * Finder andre vine i kataloget ud fra stil (rød/hvid/rosé/bobler), overlappende kategori/ «sti»,
  * samme producent og pris i nærheden af denne vins laveste tilbudspris.
+ *
+ * Scorer kun en begrænset kandidatpulje (stil + prisbånd) så store kataloger ikke blokerer side-render.
  */
 export function pickRelatedWines(
   current: CanonicalWine,
@@ -84,10 +86,40 @@ export function pickRelatedWines(
   opts: PickRelatedWinesOptions = {},
 ): CanonicalWine[] {
   const limit = opts.limit ?? 8;
-  const others = wines.filter((w) => w.id !== current.id);
-  if (others.length === 0) return [];
+  const styleC = vineCatalogStyleFromBlob(wineBlob(current));
+  const priceC = lowestShelfPrice(current);
+  const segsC = categorySegments(current.category);
+  const leafC = segsC.length ? segsC[segsC.length - 1] : "";
 
-  const ranked = others
+  const candidates: CanonicalWine[] = [];
+  for (const w of wines) {
+    if (w.id === current.id) continue;
+    const styleO = vineCatalogStyleFromBlob(wineBlob(w));
+    if (styleC && styleO && styleC !== styleO) continue;
+
+    if (priceC != null) {
+      const priceO = lowestShelfPrice(w);
+      if (priceO != null) {
+        const ratio = Math.abs(priceO - priceC) / priceC;
+        if (ratio > 0.85) continue;
+      }
+    }
+
+    if (leafC) {
+      const segsO = categorySegments(w.category);
+      const leafO = segsO.length ? segsO[segsO.length - 1] : "";
+      // Prefer same leaf category when we already have enough same-style candidates
+      if (candidates.length >= 120 && leafO && leafO !== leafC) continue;
+    }
+
+    candidates.push(w);
+    if (candidates.length >= 280) break;
+  }
+
+  const pool = candidates.length >= 8 ? candidates : wines.filter((w) => w.id !== current.id);
+  if (pool.length === 0) return [];
+
+  const ranked = pool
     .map((w) => ({ w, s: scoreRelated(current, w) }))
     .sort((a, b) => b.s - a.s || b.w.offers.length - a.w.offers.length);
 

@@ -212,7 +212,11 @@ export async function warmWineCatalog(): Promise<WineCatalog> {
   return loadWineCatalog();
 }
 
-export const getWineBySlug = cache(async (slug: string): Promise<CanonicalWine | null> => {
+const winesBySlug = cache(async (): Promise<Map<string, CanonicalWine>> => {
   const { wines } = await loadWineCatalog();
-  return wines.find((w) => w.slug === slug) ?? null;
+  return new Map(wines.map((w) => [w.slug, w]));
+});
+
+export const getWineBySlug = cache(async (slug: string): Promise<CanonicalWine | null> => {
+  return (await winesBySlug()).get(slug) ?? null;
 });

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
@@ -17,6 +18,7 @@ import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
 import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
+import type { CanonicalWine } from "@/lib/vine/types";
 import { PageShell } from "@/components/page-shell";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -47,12 +49,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+async function VineRelatedSection({ wine }: { wine: CanonicalWine }) {
+  const catalog = await loadWineCatalog();
+  const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
+  return <VineRelatedWines wines={relatedWines} />;
+}
+
+function RelatedFallback() {
+  return (
+    <div className="mt-10 h-40 animate-pulse rounded-2xl bg-stone-50" aria-hidden />
+  );
+}
+
 export default async function VineProductPage({ params }: Props) {
   const { slug } = await params;
   const wine = await getWineBySlug(slug);
   if (!wine) notFound();
   const catalog = await loadWineCatalog();
-  const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
   const faqItems = vineProductFaqItems(wine);
 
   const url = `${siteUrl}/vine/${wine.slug}`;
@@ -162,7 +175,9 @@ export default async function VineProductPage({ params }: Props) {
 
             <VineStructuralSection wine={wine} />
 
-            <VineProfileGuideLinks wine={wine} />
+            <Suspense fallback={<RelatedFallback />}>
+              <VineProfileGuideLinks wine={wine} />
+            </Suspense>
 
             <VineCuratedDetailCta wine={wine} />
           </div>
@@ -201,7 +216,9 @@ export default async function VineProductPage({ params }: Props) {
           </ul>
         </section>
 
-        <VineRelatedWines wines={relatedWines} />
+        <Suspense fallback={<RelatedFallback />}>
+          <VineRelatedSection wine={wine} />
+        </Suspense>
 
         <VineProfileFaq items={faqItems} />
 
