@@ -10,6 +10,7 @@ import { PageShell } from "@/components/page-shell";
 type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
 
 const nav: NavItem[] = [
+  { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/opskrifter", label: "Opskrifter", activePrefix: "/opskrifter" },
   { href: "/humoer-og-vin", label: "Humør & stemning" },
@@ -38,7 +39,6 @@ const nav: NavItem[] = [
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/rabatkoder", label: "Rabatkoder" },
   { href: "/tilbud", label: "Vin tilbud" },
-  { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
   { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
 ];
 
@@ -138,7 +138,7 @@ export function SiteHeader() {
                 <nav
                   id={panelId}
                   aria-label="Hovedmenu"
-                  className="absolute right-0 top-full z-40 mt-1.5 min-w-[12rem] rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
+                  className="absolute right-0 top-full z-40 mt-1.5 max-h-[min(70vh,calc(100dvh-4.5rem))] min-w-[12rem] overflow-y-auto overscroll-contain rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
                 >
                   <ul>
                     {nav.map((item) => (
