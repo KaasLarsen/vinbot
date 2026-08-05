@@ -292,9 +292,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Sådan bruger du Vivino smart: hvad ratings kan og ikke kan, og hvordan du tjekker pris i supermarkedet. Vinbot supplerer med madparring og guides.",
   },
   "hvor-mange-kalorier-i-vin": {
-    title: "Hvor mange kalorier i et glas vin?",
+    title: "Kalorier i vin: glas og flaske (tabel)",
     description:
-      "Ca. 80–120 kcal per glas (12,5 cl) og 600–700 per flaske. Tabel for rødvin, hvidvin, bobler og sød vin — plus alkoholfri alternativ.",
+      "80–120 kcal per glas (12,5 cl), 600–700 per flaske tør vin. Tabel for hvidvin, rødvin, bobler og alkoholfri — hvad alkohol % gør med kalorierne.",
   },
   "bedste-hvidvin-under-200-kr": {
     title: "Bedste hvidvin under 200 kr i Danmark",
@@ -314,7 +314,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "vin-til-smorrebrod": {
     title: "Vin til smørrebrød: sild, lever og roastbeef",
     description:
-      "Vin til dansk smørrebrød: bobler og syre til sild og fisk, let rød til kød og paté. Uden at overdøve remoulade og salt pålæg.",
+      "Hvilken vin til smørrebrød? Bobler og syre til sild og fisk, let rød til kød og paté. Dansk frokost og julefrokost — konkrete flasketyper.",
   },
   "rodvin-til-pizza": {
     title: "Rødvin til pizza: sangiovese og barbera",
@@ -324,7 +324,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "hvor-laenge-holder-hvidvin": {
     title: "Hvor længe holder hvidvin åbnet?",
     description:
-      "Åbnet hvidvin holder 3–7 dage på køl. Uåbnet hverdags-hvid 1–3 år. Tabel, vakuum og hvornår du skal drikke flasken før den falder.",
+      "Åbnet hvidvin 3–7 dage på køl med prop. Uåbnet hverdags-hvid 1–3 år. Tabel for sauvignon, chardonnay og dessertvin — og hvornår du skal smide flasken.",
   },
   "bobler-til-brunch": {
     title: "Bobler til brunch: mimosa og spritz",
@@ -339,9 +339,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 3 — GSC lav CTR (jun 2026)
   "vin-til-stegt-flaesk": {
-    title: "Vin til stegt flæsk og persillesovs",
+    title: "Vin til flæskesteg og persillesovs",
     description:
-      "Bedste vin til stegt flæsk: grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner til brun sovs.",
+      "Hvilken vin til flæskesteg? Grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner. Dansk parring til stegt flæsk.",
   },
   "vin-til-tarteletter": {
     title: "Vin til tarteletter med kylling",
@@ -543,9 +543,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Fadlagring giver vanilje, krydderi og blødere tannin fra egetræsfade. Hvor længe, hvilke vine og smagsforskellen på fad vs. ståltank — kort forklaret.",
   },
   "vin-til-tatar-og-carpaccio": {
-    title: "Vin til tatar og carpaccio",
+    title: "Vin til carpaccio og bøftatar",
     description:
-      "Vin til oksetatar og carpaccio: let rød som pinot noir, gamay eller rosé med syre. Undgå tung cabernet — match råt kød, citron og parmesan.",
+      "Vin til carpaccio: kølig gamay, pinot noir eller rosé med syre. Lav tannin til råt kød, citron og parmesan — undgå ung cabernet.",
   },
   "vin-til-rejer": {
     title: "Vin til rejer og skaldyr",
@@ -553,32 +553,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til rejer: tør hvidvin, albariño og bobler med syre og salt. Grillede rejer, gambas og skaldyrspasta — servering og flasker til dansk sommer.",
   },
 
-  // Bølge 6 — GSC vinbot aug 2026: vin-viden lav CTR + alkoholfri rosé + mad striking distance
-  "hvor-mange-kalorier-i-vin": {
-    title: "Kalorier i vin: glas og flaske (tabel)",
-    description:
-      "80–120 kcal per glas (12,5 cl), 600–700 per flaske tør vin. Tabel for hvidvin, rødvin, bobler og alkoholfri — hvad alkohol % gør med kalorierne.",
-  },
-  "hvor-laenge-holder-hvidvin": {
-    title: "Hvor længe holder hvidvin åbnet?",
-    description:
-      "Åbnet hvidvin 3–7 dage på køl med prop. Uåbnet hverdags-hvid 1–3 år. Tabel for sauvignon, chardonnay og dessertvin — og hvornår du skal smide flasken.",
-  },
-  "vin-til-stegt-flaesk": {
-    title: "Vin til flæskesteg og persillesovs",
-    description:
-      "Hvilken vin til flæskesteg? Grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner. Dansk parring til stegt flæsk.",
-  },
-  "vin-til-tatar-og-carpaccio": {
-    title: "Vin til carpaccio og bøftatar",
-    description:
-      "Vin til carpaccio: kølig gamay, pinot noir eller rosé med syre. Lav tannin til råt kød, citron og parmesan — undgå ung cabernet.",
-  },
-  "vin-til-smorrebrod": {
-    title: "Vin til smørrebrød: sild, lever og roastbeef",
-    description:
-      "Hvilken vin til smørrebrød? Bobler og syre til sild og fisk, let rød til kød og paté. Dansk frokost og julefrokost — konkrete flasketyper.",
-  },
+  // Bølge 6 — GSC vinbot aug 2026 (nye slugs)
   "vin-til-svinekoed": {
     title: "Vin til svinekød: pinot, gamay og sangiovese",
     description:
