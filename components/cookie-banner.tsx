@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   COOKIE_CONSENT_KEY,
   dispatchConsentChoice,
@@ -17,11 +17,31 @@ import {
  */
 export function CookieBanner() {
   const [open, setOpen] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const existing = getStoredConsent();
     setOpen(existing === null);
   }, []);
+
+  useEffect(() => {
+    if (!open) {
+      document.body.style.paddingBottom = "";
+      return;
+    }
+    const el = bannerRef.current;
+    if (!el) return;
+    const sync = () => {
+      document.body.style.paddingBottom = `${el.getBoundingClientRect().height}px`;
+    };
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.body.style.paddingBottom = "";
+    };
+  }, [open]);
 
   const choose = (choice: CookieConsentChoice) => {
     setStoredConsent(choice);
@@ -33,6 +53,7 @@ export function CookieBanner() {
 
   return (
     <div
+      ref={bannerRef}
       className="fixed inset-x-0 bottom-0 z-[100] border-t border-stone-200 bg-white/95 px-4 py-4 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm"
       role="dialog"
       aria-label="Om cookies"

@@ -16,7 +16,7 @@ const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-stone-300 bg-stone-100">
+    <footer className="relative z-40 mt-auto border-t border-stone-300 bg-stone-100">
       <PageShell className="py-10 text-sm text-stone-600">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>

@@ -64,7 +64,7 @@ export function HomeStickyPartnerBanners() {
   return (
     <>
       <div
-        className="pointer-events-none fixed inset-y-0 left-0 z-30 hidden 2xl:flex 2xl:items-center 2xl:justify-center 2xl:px-2"
+        className="pointer-events-none fixed inset-y-0 left-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-center min-[114rem]:px-2"
         style={railStyle}
       >
         <div
@@ -98,7 +98,7 @@ export function HomeStickyPartnerBanners() {
         </div>
       </div>
       <div
-        className="pointer-events-none fixed inset-y-0 right-0 z-30 hidden 2xl:flex 2xl:items-center 2xl:justify-center 2xl:px-2"
+        className="pointer-events-none fixed inset-y-0 right-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-center min-[114rem]:px-2"
         style={railStyle}
       >
         <div
