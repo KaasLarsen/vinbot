@@ -74,6 +74,33 @@ export default function AlkoholfriVinHubPage() {
         .
       </p>
 
+      <section className="mt-8 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Mest søgte lige nu</h2>
+        <p className="mt-3 text-sm text-stone-700">
+          GSC-top i Danmark — start her hvis du vil have 0 % der smager af vin:
+        </p>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/bedste-alkoholfri-hvidvin" className="font-medium hover:underline">
+            Alkoholfri hvidvin bedst i test
+          </Link>
+          <Link href="/guides/bedste-alkoholfri-vin" className="font-medium hover:underline">
+            Bedste alkoholfri vin (top 10)
+          </Link>
+          <Link href="/guides/bedste-alkoholfri-bobler" className="hover:underline">
+            Alkoholfri bobler til fest
+          </Link>
+          <Link href="/guides/bedste-alkoholfri-rose" className="hover:underline">
+            Alkoholfri rosé bedst i test
+          </Link>
+          <Link href="/guides/bedste-alkoholfri-rodvin" className="hover:underline">
+            Alkoholfri rødvin 0 %
+          </Link>
+          <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="hover:underline">
+            Alkoholfri vin under 100 kr
+          </Link>
+        </div>
+      </section>
+
       <section className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-stone-200 bg-white p-5">
           <h2 className="text-lg font-semibold text-stone-900">Typer — vælg stil</h2>

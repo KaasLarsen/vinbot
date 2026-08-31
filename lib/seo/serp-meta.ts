@@ -23,9 +23,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Standardflaske = 750 ml (75 cl). Piccolo, magnum og jeroboam i tabel. Hvor mange glas per flaske — og hvornår størrelsen giver bedre smag.",
   },
   "hvor-laenge-holder-boks-vin": {
-    title: "Hvor længe holder papvin uåbnet og åben?",
+    title: "Papvin holdbarhed: uåbnet og åbnet",
     description:
-      "Bag-in-box holder 4–6 uger åben i køleskab. Uåbnet papvin typisk 6–12 mdr. Tabel, opbevaring og hvornår boks-vin smager bedst.",
+      "Hvor længe holder papvin? Uåbnet 6–12 mdr., åbnet 4–6 uger i køleskab. Tabel for bag-in-box vs. flaske — og hvornår boks-vin smager bedst.",
   },
   "hvor-laenge-holder-uaabnet-vin": {
     title: "Hvor længe holder uåbnet vin?",
@@ -48,9 +48,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Rødvin 14–18 °C, hvidvin 8–12 °C, bobler 6–8 °C. Vintemperatur-guide med tabeller for rosé, riesling og port. Opbevaring af åbnet vin.",
   },
   "bedste-alkoholfri-hvidvin": {
-    title: "Alkoholfri hvidvin 0 % — ikke saft (2026)",
+    title: "Alkoholfri hvidvin bedst i test 2026",
     description:
-      "Alkoholfri hvidvin 0 %: Leitz, Giesen og sauvignon med bid — ikke saft. Ca. 80–160 kr i DK. Til sushi, salat og fisk. Server 8–10 °C.",
+      "Alkoholfri hvidvin bedst i test: Leitz riesling, Giesen sauvignon og Torres — 0 % med syre, ikke saft. Ca. 80–160 kr. Til sushi, salat og fisk.",
   },
   "bedste-alkoholfri-bobler": {
     title: "Alkoholfri bobler 0 % til fest 2026",
@@ -58,14 +58,14 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri bobler 0 %: Noughty, Leitz, French Bloom. Bedst til nytår, brunch og fest — ca. 90–200 kr. Server 6–8 °C.",
   },
   "bedste-alkoholfri-rose": {
-    title: "Alkoholfri rosé 0 % til grill & tapas",
+    title: "Alkoholfri rosé bedst i test 2026",
     description:
-      "Alkoholfri rosé 0 %: Leitz, Torres og Noughty til terrasse, grill og tapas. Ca. 80–150 kr — køb i DK. Server velafkølet.",
+      "Alkoholfri rosé bedst i test: Leitz, Torres og Noughty til terrasse, grill og tapas. 0 % med syre — ca. 80–150 kr i DK. Server velafkølet.",
   },
   "bedste-alkoholfri-rodvin": {
-    title: "Alkoholfri rødvin 0 %: hvad virker i DK",
+    title: "Alkoholfri rødvin bedst i test 2026",
     description:
-      "Alkoholfri rødvin 0 %: Leitz pinot og Torres til pizza og grill. Ærligt: rød er sværest uden alkohol — hvornår bobler eller rosé vinder i DK.",
+      "Alkoholfri rødvin bedst i test: Leitz pinot og Torres garnacha til pizza og and. Ærligt: rød er sværest uden alkohol — hvornår rosé vinder i DK.",
   },
   "vin-til-ost-og-ostebord": {
     title: "Vin til ostebord: port, sherry og bobler",
@@ -637,6 +637,26 @@ const RECIPE_SERP_OVERRIDES: Record<string, { title?: string; description?: stri
     title: "Pasta amatriciana opskrift med rødvin",
     description:
       "Amatriciana med guanciale, tomater og rødvin i saucen. Klassisk italiensk pasta til 4 — pecorino og ung sangiovese.",
+  },
+  "flaesketesteg-med-rodvin-i-brun-sovs": {
+    title: "Flæskesteg med rødvin i brun sovs — opskrift",
+    description:
+      "Dansk flæskesteg med brun sovs reduceret i pinot noir eller gamay. Opskrift til 6 personer — vin i gryden og vin til glasset til juleaften.",
+  },
+  "sauerbraten-med-rodvin": {
+    title: "Sauerbraten opskrift med rødvin",
+    description:
+      "Tysk sauerbraten: oksekød marineret og braiseret i rødvin og eddike. Opskrift til 6 — klassisk gryderet med sød-sovs og kartoffelkløse.",
+  },
+  "juleand": {
+    title: "Juleand opskrift — andesteg til 6 personer",
+    description:
+      "Hel juleand med sprødt skind, brune kartoffler og rødkål. Opskrift til juleaften — plus pinot noir til julebordet (ingen vin i saucen).",
+  },
+  "roedkaal-med-rodvin": {
+    title: "Rødkål med rødvin — opskrift til julemad",
+    description:
+      "Langt simret rødkål med æbler, eddike og rødvin. Tilbehør til flæskesteg, and og medister — opskrift til 6–8 personer.",
   },
 };
 

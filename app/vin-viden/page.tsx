@@ -139,6 +139,30 @@ export default function VinVidenHubPage() {
         .
       </p>
 
+      <section className="mt-8 rounded-lg bg-rose-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Mest søgte lige nu</h2>
+        <p className="mt-3 text-sm text-stone-700">
+          De guides der får flest Google-søgninger — korte svar med tabeller:
+        </p>
+        <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/hvor-mange-enheder-alkohol-i-et-glas-vin" className="font-medium text-rose-900 hover:underline">
+            Genstande i en flaske vin
+          </Link>
+          <Link href="/guides/hvor-mange-kalorier-i-vin" className="font-medium text-rose-900 hover:underline">
+            Kalorier i vin (glas og flaske)
+          </Link>
+          <Link href="/guides/hvor-meget-alkohol-i-vin" className="font-medium text-rose-900 hover:underline">
+            Alkoholprocent i vin
+          </Link>
+          <Link href="/guides/hvor-meget-fylder-en-flaske-vin" className="font-medium text-rose-900 hover:underline">
+            750 ml = hvor mange glas?
+          </Link>
+          <Link href="/guides/hvor-laenge-holder-boks-vin" className="font-medium text-rose-900 hover:underline">
+            Papvin holdbarhed
+          </Link>
+        </div>
+      </section>
+
       <section className="mt-8 max-w-3xl space-y-4 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Hvad er vin-viden?</h2>
         <p>

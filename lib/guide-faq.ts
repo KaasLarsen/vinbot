@@ -3192,6 +3192,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Et standardglas er typisk 125 ml (12,5 cl) i Danmark — restaurantstandard er ofte 12–15 cl. Et stort glas kan være 15–20 cl. Tjek størrelsen hvis du beregner genstande præcist.",
     },
     {
+      question: "Hvor mange genstande er der i en flaske vin?",
+      answer:
+        "En standardflaske (75 cl) ved 12,5 % alkohol = ca. 7,4 genstande. Ved 14 % rødvin ca. 8,3 genstande. Halvflaske (37,5 cl) ca. 3,7. Bag-in-box 3 L ved 13 % ca. 30,8 genstande.",
+    },
+    {
       question: "Hvor mange genstande er der i et glas vin?",
       answer:
         "En genstand i Danmark er 12 gram ren alkohol. Et normalt glas vin (12 cl ved 12 % alkohol) er ca. 1 genstand. Et stort glas (15 cl ved 13,5 %) er ca. 1,3 genstand. En hel flaske vin (75 cl ved 12,5 %) svarer til ca. 7,4 genstande.",

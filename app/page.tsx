@@ -128,6 +128,15 @@ export default function HomePage() {
           </p>
         </Link>
         <Link
+          href="/guides/vin-til-flaesketesteg"
+          className="rounded-2xl border border-rose-200 bg-rose-50/80 p-6 shadow-sm transition hover:border-rose-300 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Vin til flæskesteg</h3>
+          <p className="mt-2 text-stone-600">
+            Juleaften og søndagssteg: pinot noir, gamay og Chianti til sprød svær, brun sovs og rødkål — med søgning på flasker.
+          </p>
+        </Link>
+        <Link
           href="/saeson"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
         >
