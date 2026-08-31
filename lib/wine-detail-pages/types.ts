@@ -32,6 +32,8 @@ export type WineDetailPage = {
   merchantId: MerchantWineId;
   slug: string;
   displayTitle: string;
+  /** Valgfri kortere titel til SERP (H1 bruger displayTitle). */
+  metaTitle?: string;
   metaDescription: string;
   /** Rå produkt-URL — normaliseres via merchant-config ved lookup. */
   productPageUrl: string;

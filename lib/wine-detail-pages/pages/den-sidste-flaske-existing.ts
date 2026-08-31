@@ -88,8 +88,9 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     merchantId: "den-sidste-flaske",
     slug: "weinhof-519-alte-reben-rheingau-riesling-trocken",
     displayTitle: "Weinhof 519 · Alte Reben Rheingau Riesling (tør)",
+    metaTitle: "Alte Reben Riesling trocken — Weinhof 519",
     metaDescription:
-      "Tør riesling fra gamle vinstokke i Rheingau — citrus, mineralsk bid og struktur til mad med syre eller fedme. Vinbot guider til servering og køb hos Den Sidste Flaske.",
+      "Weinhof 519 Alte Reben Rheingau Riesling trocken: tør tysk hvidvin fra gamle stokke. Ca. 119 kr hos Den Sidste Flaske — citrus, mineral og syre til fisk.",
     productPageUrl: "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rheingau-riesling-trocken-2024-weinhof-519-hvidvin-1166619551.png?v=1747124324",
@@ -159,8 +160,9 @@ export const DEN_SIDSTE_FLASKE_WINE_DETAIL_PAGES: readonly WineDetailPage[] = [
     merchantId: "den-sidste-flaske",
     slug: "the-guvnor-tinto",
     displayTitle: "The Guv'nor Tinto",
+    metaTitle: "The Guv'nor rødvin — pris og smag",
     metaDescription:
-      "The Guv'nor rødvin: spansk husvin til tapas og grill. Ca. 109 kr hos Den Sidste Flaske — mørk frugt og bløde tanniner. Se pris og køb via Vinbot.",
+      "The Guv'nor rødvin (Tinto): spansk husvin til tapas og grill. Ca. 109 kr hos Den Sidste Flaske — mørk frugt, bløde tanniner og hverdags-rød.",
     productPageUrl: "https://densidsteflaske.dk/products/the-guv-nor-tinto",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/the-guv-nor-tinto-felix-solis-avantis-rodvin-1172580197.png?v=1749550958",

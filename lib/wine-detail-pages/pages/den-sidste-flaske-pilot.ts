@@ -5,8 +5,9 @@ export const DEN_SIDSTE_FLASKE_PILOT_PAGES: readonly WineDetailPage[] = [
     merchantId: "den-sidste-flaske",
     slug: "weinhof-519-alte-reben-rose",
     displayTitle: "Weinhof 519 · Alte Reben Rosé (Rheingau)",
+    metaTitle: "Alte Reben rosé — Weinhof 519",
     metaDescription:
-      "Tør rosé fra gamle vinstokke i Rheingau — saft, syre og sommerstemning til salater, let fisk og terrasse. Vinbots guide til servering og køb hos Den Sidste Flaske.",
+      "Alte Reben rosé fra Rheingau: tør, saftig og syrefast. Ca. 119 kr hos Den Sidste Flaske — terrasse, salat og let fisk. Den Sidste Flaske.",
     productPageUrl: "https://densidsteflaske.dk/products/alte-reben-rose-weinhof-519-2024",
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0076/1515/2192/files/weinhof-519-alte-reben-rose-2025-weinhof-519-rose-1224966837.png?v=1772641270",

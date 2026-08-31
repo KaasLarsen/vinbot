@@ -359,14 +359,19 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bedste rosévin til sommer: tør Provence-stil, spansk rosado og mousserende rosé. Prisguide, servering og madparring på dansk.",
   },
   "bedste-hvidvin-under-75-kr": {
-    title: "Bedste hvidvin under 75 kr",
+    title: "Bedste hvidvin under 75 kr i Danmark",
     description:
-      "Hvidvin under 75 kr der smager: Verdejo, grüner og Muscadet fra rigtige regioner — ikke vandig supermarkeds-bulk. Tilbud og faldgruber.",
+      "Hvidvin under 75 kr der smager: Vinho Verde, Verdejo, grüner og Muscadet — ikke vandig bulk. Regioner, druer og tilbud i supermarkedet.",
   },
   "bedste-rosevin-under-200-kr": {
     title: "Bedste rosévin under 200 kr",
     description:
       "Premium rosé under 200 kr: Provence, Tavel og Bandol med karakter. Enkelt-producenter og gastronomisk rosé — ikke bare lyserød saft.",
+  },
+  "bedste-rosevin-under-100-kr": {
+    title: "Bedste rosévin under 100 kr i Danmark",
+    description:
+      "Rosévin under 100 kr: tør Provence, spansk rosado og italiensk rosato. Frisk sommer-rosé med syre — server 8–10 °C. Regioner og producenter.",
   },
   "bedste-rodvin-under-200-kr": {
     title: "Bedste rødvin under 200 kr",
@@ -419,9 +424,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til nytår: bobler til skål, hvid til fisk og rød til hovedret. Kransekage, tapas og menu-match — plus alkoholfri alternativ.",
   },
   "bedste-rodvin-under-75-kr": {
-    title: "Bedste rødvin under 75 kr",
+    title: "Bedste rødvin under 75 kr i Danmark",
     description:
-      "Rødvin under 75 kr til hverdag: Rhône Villages, Chile-entry og spansk blend med moden frugt. Regioner og flasker der holder i glasset.",
+      "Rødvin under 75 kr med identitet: primitivo, tempranillo, montepulciano og Rhône Villages. Regioner, tilbud og hvad du skal undgå på hylden.",
   },
 
   // Bølge 4 — GSC lav CTR + mad/bedste-hubs (jun 2026)
@@ -575,9 +580,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 6 — GSC vinbot aug 2026 (nye slugs)
   "vin-til-svinekoed": {
-    title: "Vin til svinekød: pinot, gamay og sangiovese",
+    title: "Vin til svinekød — pinot, gamay og sangiovese",
     description:
-      "Vin til svinekød og flæsk: let rød med syre til fedme og salt. Steg, kotelet og gryderet — pinot, gamay og chianti i danske butikker.",
+      "Hvilken vin til svinekød? Let rød med syre til flæskesteg, mørbrad og grill. Pinot noir, gamay og chianti — tabel efter ret og tilberedning i DK.",
   },
   "vin-til-gas": {
     title: "Vin til gås og gåsesteg: pinot og riesling",

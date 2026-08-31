@@ -23,7 +23,8 @@ export function createWineDetailRoute(merchantId: MerchantWineId) {
     const wine = getWineDetailPage(merchantId, slug);
     if (!wine) return { title: "Vin ikke fundet | Vinbot" };
     const url = `${siteUrl}${wineDetailPagePath(merchantId, wine.slug)}`;
-    const title = `${wine.displayTitle} | ${cfg.displayName} · Vinbot`;
+    const primary = wine.metaTitle ?? wine.displayTitle;
+    const title = `${primary} | ${cfg.displayName} · Vinbot`;
     const ogCandidates = [...(wine.imageUrl != null ? [wine.imageUrl] : []), ...(wine.additionalGalleryImageUrls ?? [])];
     const ogImages =
       ogCandidates.length > 0

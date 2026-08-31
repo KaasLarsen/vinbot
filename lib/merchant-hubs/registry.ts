@@ -39,6 +39,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "Du sammenligner gerne med andre forhandlere via Vinbots søgning, men handler ofte hos DSF.",
     ],
     guideLinks: [
+      { href: "/den-sidste-flaske/vin/the-guvnor-tinto", label: "The Guv'nor rødvin" },
+      { href: "/den-sidste-flaske/vin/weinhof-519-alte-reben-rheingau-riesling-trocken", label: "Alte Reben Riesling" },
+      { href: "/den-sidste-flaske/vin/weinhof-519-alte-reben-rose", label: "Alte Reben rosé" },
       { href: "/guides/humoer-stemning-og-vin", label: "Humør og stemning" },
       { href: "/guides/komplet-guide-til-vin-og-mad", label: "Vin og mad" },
       { href: "/tilbud", label: "Vin tilbud" },

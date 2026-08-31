@@ -462,6 +462,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-svinekoed": [
     {
+      question: "Hvilken vin til svinekød?",
+      answer:
+        "Afhænger af ret: flæskesteg og brun sovs → pinot noir, gamay eller Chianti; mager mørbrad → chardonnay, grüner eller let pinot; grill/BBQ → primitivo, zinfandel eller Rhône. Fællesnævner: syre mod salt og fedme.",
+    },
+    {
       question: "Hvilken vin til svinemørbrad eller mørbrad?",
       answer:
         "Mager udgæring som mørbrad ligner kylling i vinlogik: chardonnay med friskhed (Chablis, Mâcon), grüner veltliner, chenin sec, tør rosé eller let pinot noir/gamay køligt serveret. Tung ung cabernet overdøver ofte kødet.",
