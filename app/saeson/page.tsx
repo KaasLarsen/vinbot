@@ -115,6 +115,8 @@ export default function SaesonHubPage() {
           <h3 className="text-lg font-semibold text-stone-900">Vinter (december-februar)</h3>
           <p className="mt-2 text-sm text-stone-700">
             Jul, julefrokost, nytår og fastelavn. Tør riesling og bobler til sild, beaujolais til medister, kraftig rødvin til flæskesteg og champagne til nytår. Læs om{" "}
+            <Link href="/guides/vin-til-juleaften" className="text-rose-900 hover:underline">juleaften</Link>,{" "}
+            <Link href="/guides/vin-til-flaesketesteg" className="text-rose-900 hover:underline">flæskesteg</Link>,{" "}
             <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">julemad</Link>,{" "}
             <Link href="/guides/vin-til-julefrokost" className="text-rose-900 hover:underline">julefrokost</Link>,{" "}
             <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="text-rose-900 hover:underline">nytår</Link> og{" "}
@@ -124,58 +126,58 @@ export default function SaesonHubPage() {
       </section>
 
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
-        <h2 className="text-xl font-semibold text-stone-900">Lige nu: sommer og udendørs</h2>
+        <h2 className="text-xl font-semibold text-stone-900">Lige nu: efterår og juleforberedelse</h2>
         <p className="mt-3 text-stone-700">
           Sæson-højdepunkter:{" "}
-          <Link href="/guides/vin-til-sommer" className="text-rose-900 hover:underline">
-            vin til sommer
+          <Link href="/guides/vin-til-flaesketesteg" className="text-rose-900 hover:underline">
+            vin til flæskesteg
           </Link>
           ,{" "}
-          <Link href="/guides/vin-til-grill-og-bbq" className="text-rose-900 hover:underline">
-            grill og BBQ
+          <Link href="/guides/vin-til-juleaften" className="text-rose-900 hover:underline">
+            juleaften
           </Link>
           ,{" "}
-          <Link href="/guides/vin-til-piknik" className="text-rose-900 hover:underline">
-            piknik
+          <Link href="/guides/vin-til-juleand" className="text-rose-900 hover:underline">
+            juleand
           </Link>
           ,{" "}
-          <Link href="/guides/vin-til-haveselskab" className="text-rose-900 hover:underline">
-            haveselskab
+          <Link href="/guides/bedste-julevin" className="text-rose-900 hover:underline">
+            bedste julevin
           </Link>
           ,{" "}
-          <Link href="/guides/vin-til-sankt-hans" className="text-rose-900 hover:underline">
-            Sankt Hans
+          <Link href="/guides/vin-til-mortensaften" className="text-rose-900 hover:underline">
+            Mortensaften
           </Link>
           ,{" "}
-          <Link href="/guides/bedste-sommervin" className="text-rose-900 hover:underline">
-            bedste sommervin
+          <Link href="/guides/vin-til-and" className="text-rose-900 hover:underline">
+            and
           </Link>
           {" "}og{" "}
-          <Link href="/guides/afkoelt-roedvin" className="text-rose-900 hover:underline">
-            afkølet rødvin
+          <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">
+            julemad
           </Link>
           .
         </p>
         <p className="mt-3 text-sm text-stone-700">
-          Opskrifter med vin til sommermenuen:{" "}
-          <Link href="/opskrifter/grillet-kylling-med-hvidvin" className="text-rose-900 hover:underline">
-            grillet kylling med hvidvin
+          Opskrifter til julebordet:{" "}
+          <Link href="/opskrifter/flaesketesteg-med-rodvin-i-brun-sovs" className="text-rose-900 hover:underline">
+            flæskesteg med rødvin i brun sovs
           </Link>
           ,{" "}
-          <Link href="/opskrifter/kold-pastasalat-med-hvidvin" className="text-rose-900 hover:underline">
-            kold pastasalat
+          <Link href="/opskrifter/juleand" className="text-rose-900 hover:underline">
+            juleand
           </Link>
           ,{" "}
-          <Link href="/opskrifter/piknik-sandwich-med-hvidvin-dressing" className="text-rose-900 hover:underline">
-            piknik-sandwich
+          <Link href="/opskrifter/roedkaal-med-rodvin" className="text-rose-900 hover:underline">
+            rødkål med rødvin
           </Link>
           ,{" "}
-          <Link href="/opskrifter/grillet-halloumi-med-hvidvin" className="text-rose-900 hover:underline">
-            grillet halloumi
+          <Link href="/opskrifter/brune-kartoffler-med-rodvin" className="text-rose-900 hover:underline">
+            brune kartoffler
           </Link>
           {" "}og{" "}
-          <Link href="/opskrifter/sommerfrugt-i-hvidvin" className="text-rose-900 hover:underline">
-            sommerfrugt i hvidvin
+          <Link href="/opskrifter/risalamande-med-hvidvin" className="text-rose-900 hover:underline">
+            risalamande
           </Link>
           . Se hele{" "}
           <Link href="/opskrifter" className="text-rose-900 hover:underline">

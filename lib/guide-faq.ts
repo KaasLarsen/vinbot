@@ -1267,9 +1267,46 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-flaesketesteg": [
     {
+      question: "Hvilken vin til flæskesteg?",
+      answer:
+        "Vælg mellemfyldig rødvin med syre og moden frugt: pinot noir, gamay (Beaujolais), sangiovese (Chianti) eller Rioja crianza. Syren skærer fedme og sur-sød rødkål; undgå unge, tørre cabernet-bomber uden frugt. Server ved 14–17 °C.",
+    },
+    {
+      question: "Hvilken rødvin til juleaften med flæskesteg?",
+      answer:
+        "Samme logik som til flæskesteg alene: pinot noir, cru Beaujolais eller Chianti Classico med moden frugt. Én flaske kan dække både flæsk og and, hvis menuen er blandet. Se også vin til juleaften for hele aftenens plan.",
+    },
+    {
       question: "Hvilken vin til brun sovs?",
       answer:
         "Brun sovs kræver typisk mellemfyldig rød med moden frugt og syre — gamay, pinot noir, sangiovese, grenache-blends eller Rioja — så salt, sødme og umami ikke gør vinen bitter eller tom. Undgå unge tanninbomber uden frugt. Pinot gris, gewürztraminer eller moden chardonnay kan fungere som hvid linje.",
+    },
+    {
+      question: "Kan man drikke hvidvin til flæskesteg?",
+      answer:
+        "Ja — alsace pinot gris, moden chardonnay eller tør riesling matcher fedme og brun sovs, især med sur-sød rødkål. Champagne blanc de noirs er et festligt alternativ til forret.",
+    },
+  ],
+  "amarone-vs-ripasso": [
+    {
+      question: "Hvad er forskellen på Amarone og Ripasso?",
+      answer:
+        "Amarone laves af tørrede druer (appassimento) og er kraftig, koncentreret og dyr (300 kr+). Ripasso er almindelig Valpolicella der gærer igen på Amarone-skraller — mellemfyldig «baby Amarone» til 150–350 kr.",
+    },
+    {
+      question: "Hvilken mad passer bedst til Amarone?",
+      answer:
+        "Amarone passer til braseret oksekød, vildt, osso buco, hård ost og risotto all'Amarone. Server ved 16–18 °C med luftning. Undgå let fisk og meget krydret mad.",
+    },
+    {
+      question: "Er Ripasso det samme som Amarone?",
+      answer:
+        "Nej — Ripasso bruger ikke tørrede druer som Amarone, men får ekstra krop og smag ved at gære på Amarone-rester. Ripasso er lettere, billigere og bedre til hverdags-pasta, lasagne og pizza.",
+    },
+    {
+      question: "Hvad koster Amarone og Ripasso i Danmark?",
+      answer:
+        "Amarone typisk 300–1.200 kr+; Ripasso 150–350 kr. Ripasso giver ofte bedst value til italiensk rødvin. Sammenlign priser på Vinbot før køb.",
     },
   ],
   "vin-til-gryderet": [
@@ -1733,7 +1770,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvad koster en god flaske vin?",
       answer:
-        "I Danmark er ca. 70–120 kr et realistisk udgangspunkt for en præsentabel værtsgave på kampagnepris; 120–200 kr giver ofte tydelig kvalitet og oprindelse; 200–400 kr til champagne NV eller klassiske ikoner; derover til særlige lejligheder. Sammenlign altid samme vin på tværs af forhandlere via Vinbot før du betaler fuld pris.",
+        "I Danmark er ca. 70–120 kr et realistisk udgangspunkt for en præsentabel værtsgave; 120–200 kr giver tydelig kvalitet. Ca. 35–45 % af prisen er afgifter og moms — ved 100 kr er der begrænset plads til druekvalitet. Sammenlign samme vin på tværs af forhandlere via Vinbot.",
     },
     {
       question: "Hvad er en sikker gavevin?",
@@ -2506,6 +2543,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "1 flaske per 4–6 gæster til velkomst; mere hvis I skåler ofte. Bobler går hurtigere end stillvin — køb gerne 20 % ekstra.",
     },
+    {
+      question: "Hvor meget vin skal man beregne til 30, 40 eller 50 personer?",
+      answer:
+        "Ved 3-timers middag med bobler, forret, hovedret og dessert: ca. 22 flasker (+ reserve) til 30 gæster, 31 til 40 og 38–39 til 50. Fordeling: bobler, hvid, rød og dessertvin — se tabellerne i guiden.",
+    },
   ],
   "vin-til-burger": [
     {
@@ -2790,6 +2832,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvor mange glas i en magnum?",
       answer:
         "En magnum (1,5 l) giver 10-12 glas — ideelt til 4-6 personer. Magnum modner også langsommere og bedre end standardflasker, fordi forholdet mellem luft og vin er lavere.",
+    },
+    {
+      question: "Hvor mange glas vin til reception vs. middag?",
+      answer:
+        "Reception/velkomst: 10 cl per glas = 7–8 glas per flaske. Middag hovedret: 15 cl = 5 glas per flaske. Dessertvin: 7,5 cl = 10 glas per flaske.",
     },
   ],
   "hvad-er-tanniner": [

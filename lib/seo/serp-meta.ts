@@ -90,9 +90,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 2 — GSC lav CTR (jun 2026)
   "bedste-alkoholfri-vin": {
-    title: "Alkoholfri vin 0 %: top 10 i DK 2026",
+    title: "Bedste alkoholfri vin 2026 — top 10 i DK",
     description:
-      "Top 10 alkoholfri vin 0 % i DK 2026: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris og madparring.",
+      "Bedste alkoholfri vin 0 %: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris, madparring og hvad du skal undgå.",
   },
   "bedste-alkoholfri-champagne": {
     title: "Alkoholfri champagne 0 % — bedst 2026",
@@ -378,10 +378,35 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til fars dag: cabernet og malbec til grill og bøf, pinot til kylling. Gaveidéer og menu-match til dansk fars-dag-middag.",
   },
-  "bedste-box-vin": {
-    title: "Bedste box-vin og papvin i Danmark",
+  "bedste-vin-til-gave": {
+    title: "Hvad koster en god flaske vin? Gaveguide",
     description:
-      "Bedste bag-in-box: kvalitets-papvin til hverdag og fest. Holdbarhed, pris per glas og producenter der slår billig bulk-boks.",
+      "Hvad koster en god flaske vin i DK? Afgifter, prisbånd og gaveidéer fra 70–400 kr. Bobler, rødvin og dessertvin — og hvad du reelt betaler for.",
+  },
+  "bedste-box-vin": {
+    title: "Bedste papvin og boxvin i Danmark 2026",
+    description:
+      "Bedste papvin (bag-in-box): kvalitet, holdbarhed og pris pr. glas. Papvin til sommerhus, fest og hverdag — sammenlign tilbud på Vinbot.",
+  },
+  "vin-til-flaesketesteg": {
+    title: "Hvilken vin til flæskesteg? Rødvin til jul",
+    description:
+      "Hvilken vin til flæskesteg og brun sovs? Pinot noir, gamay og Chianti til juleaften — syre mod svær, rødkål og brunede kartofler. Pris og søgning.",
+  },
+  "amarone-vs-ripasso": {
+    title: "Amarone vs. Ripasso — forskellen",
+    description:
+      "Amarone vs. Ripasso: appassimento, pris og madparring. Sådan vælger du mellem Valpolicellas kraftige og mellemfyldige rødvine i Danmark.",
+  },
+  "bedste-rodvin-under-100-kr": {
+    title: "Bedste rødvin under 100 kr i Danmark",
+    description:
+      "Bedste rødvin under 100 kr: Sicilien, Spanien, Portugal og Rhône der over-performer prisen. Regioner, druer og hvad du skal undgå på hylden.",
+  },
+  "hurtig-koeling-vin-is-salt-10-minutter": {
+    title: "Hurtig afkøling af vin på 10 minutter",
+    description:
+      "Gæster på vej? Køl hvidvin, rosé og bobler på under 10 min med is, vand og salt. Trin-for-trin — hurtigere og sikrere end fryseren.",
   },
   "bedste-champagne-under-300-kr": {
     title: "Bedste champagne under 300 kr",
@@ -494,11 +519,6 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Hvor længe holder rødvin åbnet?",
     description:
       "Åbnet rødvin holder 3–5 dage på køl. Uåbnet hverdags-rød 2–5 år. Tabel, vakuum og hvornår du skal drikke flasken før den falder.",
-  },
-  "bedste-vin-til-gave": {
-    title: "Bedste vin til gave",
-    description:
-      "Vin til gave: bobler til fest, seriøs rød til kødelskeren, hvid til fisk. Budget, personlighed og hvornår magnum eller årgang giver mening.",
   },
   "vin-til-brunch": {
     title: "Vin til brunch: bobler og frisk hvid",

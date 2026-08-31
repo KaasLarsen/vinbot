@@ -132,6 +132,9 @@ function guideMatchesSaesonTags(tags: string[] | undefined): boolean {
 const SAESON_EXTRA_SLUGS = new Set<string>([
   "komplet-guide-til-vin-og-mad",
   "opbevaring-af-vin-temperatur-og-aabnet-flaske",
+  "vin-til-flaesketesteg",
+  "vin-til-juleaften",
+  "vin-til-juleand",
   "vin-til-stegt-flaesk",
   "vin-til-frikadeller",
   "vin-til-smorrebrod",

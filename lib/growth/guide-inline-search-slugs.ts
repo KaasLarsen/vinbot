@@ -1,5 +1,9 @@
 /** Guides med inline vinsøgning (fase 2 — udvid efter GSC-data). */
 export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
+  "vin-til-flaesketesteg",
+  "vin-til-juleaften",
+  "vin-til-juleand",
+  "bedste-julevin",
   "vin-til-tapas",
   "vin-til-gryderet",
   "vin-til-nytaar-og-nytaarsmenu",
