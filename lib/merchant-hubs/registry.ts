@@ -24,9 +24,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     displayName: "Den Sidste Flaske",
     feedMerchant: null,
     blurb: "Restpartier, daglige tilbud og sjældne flasker hos en af Danmarks stærkeste vinshops.",
-    title: "Den Sidste Flaske — vin tilbud og shop online",
+    title: "Den Sidste Flaske — vin tilbud og restpartier",
     description:
-      "Gå til Den Sidste Flaske (densidsteflaske.dk): restpartier, daglige tilbud og sjældne flasker. Vinbot guider dig med kuraterede anbefalinger — klik videre til shoppen.",
+      "Den Sidste Flaske (densidsteflaske.dk): daglige tilbud, restpartier og sjældne flasker. Kuraterede anbefalinger og guides — klik videre til shoppen.",
     introParagraphs: [
       "Den Sidste Flaske (densidsteflaske.dk) er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.",
       "Vinbot sælger ikke vin selv. Vi samler kuraterede forslag og guider, så du hurtigere finder den rigtige flaske — og linker tydeligt videre, når du vil handle hos Den Sidste Flaske.",

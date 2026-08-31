@@ -1267,6 +1267,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-flaesketesteg": [
     {
+      question: "Hvilken rødvin til flæskesteg?",
+      answer:
+        "Pinot noir, gamay (Beaujolais), sangiovese (Chianti) eller Rioja crianza — alle med moden frugt og god syre. Undgå ung cabernet uden frugt; den bliver bitter mod brun sovs og rødkål. Server ved 14–17 °C.",
+    },
+    {
       question: "Hvilken vin til flæskesteg?",
       answer:
         "Vælg mellemfyldig rødvin med syre og moden frugt: pinot noir, gamay (Beaujolais), sangiovese (Chianti) eller Rioja crianza. Syren skærer fedme og sur-sød rødkål; undgå unge, tørre cabernet-bomber uden frugt. Server ved 14–17 °C.",
@@ -2528,6 +2533,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "hvor-meget-vin-til-fest": [
+    {
+      question: "Hvor meget vin til fest?",
+      answer:
+        "½ flaske per voksen til middag-fest; 2–3 glas ved 3-timers cocktailparty; 1+ flaske ved lang bryllup. Tilføj bobler til skål separat og 10–20 % buffer så du ikke løber tør.",
+    },
     {
       question: "Hvor meget vin per gæst til fest?",
       answer:

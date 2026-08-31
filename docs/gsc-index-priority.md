@@ -52,4 +52,14 @@ Brug **URL-inspektion → Anmod om indeksering** på URL'erne nedenfor (priorite
 
 Efter deploy: valider FAQ rich results på Tier 1 + Tier 3 URL'er i GSC. Følg [growth-measurement-checklist.md](./growth-measurement-checklist.md) efter 14 dage.
 
-Sidst opdateret: 2026-08-31 (SEO trafik sprint 2)
+## Tier 6 — sprint 3 (aug 2026)
+
+- https://www.vinbot.dk/guides/vin-til-flaesketesteg
+- https://www.vinbot.dk/guides/hvor-laenge-holder-uaabnet-vin
+- https://www.vinbot.dk/guides/hvor-meget-vin-til-fest
+- https://www.vinbot.dk/guides/bedste-hvidvin
+- https://www.vinbot.dk/guides/bedste-alkoholfri-bobler
+- https://www.vinbot.dk/den-sidste-flaske
+- https://www.vinbot.dk/fest-og-vin
+
+Sidst opdateret: 2026-08-31 (SEO trafik sprint 3)

@@ -28,7 +28,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Hvor længe holder papvin? Uåbnet 6–12 mdr., åbnet 4–6 uger i køleskab. Tabel for bag-in-box vs. flaske — og hvornår boks-vin smager bedst.",
   },
   "hvor-laenge-holder-uaabnet-vin": {
-    title: "Hvor længe holder uåbnet vin?",
+    title: "Hvor længe holder uåbnet vin? (tabel)",
     description:
       "Uåbnet hverdagsvin: drik inden for 1–5 år. Lagringsvine 10–50+ år. Tabel for rød, hvid, rosé og bobler — og hvornår flasken er for gammel.",
   },
@@ -53,9 +53,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri hvidvin bedst i test: Leitz riesling, Giesen sauvignon og Torres — 0 % med syre, ikke saft. Ca. 80–160 kr. Til sushi, salat og fisk.",
   },
   "bedste-alkoholfri-bobler": {
-    title: "Alkoholfri bobler 0 % til fest 2026",
+    title: "Alkoholfri bobler bedst i test 2026",
     description:
-      "Alkoholfri bobler 0 %: Noughty, Leitz, French Bloom. Bedst til nytår, brunch og fest — ca. 90–200 kr. Server 6–8 °C.",
+      "Alkoholfri bobler bedst i test: Leitz, Noughty, French Bloom og Torres. 0 % til nytår, brunch og fest — ca. 80–200 kr. Server 6–8 °C.",
   },
   "bedste-alkoholfri-rose": {
     title: "Alkoholfri rosé bedst i test 2026",
@@ -349,7 +349,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Hvilken vin til tarteletter? Chardonnay, aligoté og bobler til kylling i asparges og cremet fyld. Syre til sauce og butterdej.",
   },
   "bedste-hvidvin": {
-    title: "Bedste hvidvin: sauvignon, chardonnay, riesling",
+    title: "Bedste hvidvin 2026 — sauvignon, chardonnay",
     description:
       "Bedste hvidvin i DK: frisk sauvignon, chardonnay og riesling med prisguide. Druesorter, regioner og madparring — fra hverdag til fest.",
   },
@@ -389,9 +389,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bedste papvin (bag-in-box): kvalitet, holdbarhed og pris pr. glas. Papvin til sommerhus, fest og hverdag — sammenlign tilbud på Vinbot.",
   },
   "vin-til-flaesketesteg": {
-    title: "Hvilken vin til flæskesteg? Rødvin til jul",
+    title: "Vin til flæskesteg — rødvin til jul",
     description:
-      "Hvilken vin til flæskesteg og brun sovs? Pinot noir, gamay og Chianti til juleaften — syre mod svær, rødkål og brunede kartofler. Pris og søgning.",
+      "Vin til flæskesteg: pinot noir, gamay og Chianti til brun sovs og rødkål. Rødvin til juleaften med moden frugt og syre — undgå unge tanniner. Pris og søgning.",
   },
   "amarone-vs-ripasso": {
     title: "Amarone vs. Ripasso — forskellen",
@@ -526,9 +526,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til brunch: prosecco, crémant og let hvid til æg, laks og avokado. Mimosa, temperatur og mængder — plus alkoholfri alternativ.",
   },
   "hvor-meget-vin-til-fest": {
-    title: "Hvor meget vin til fest per gæst?",
+    title: "Vin til fest: hvor meget per gæst?",
     description:
-      "Regn med ½–1 flaske vin per voksen til middag og fest. Fordeling af rød, hvid og bobler — og hvornår du skal have ekstra til skål.",
+      "Vin til fest: ½ flaske per gæst til middag, 2–3 glas til cocktailparty. Beregn flasker til 20, 30, 50 og 100 gæster — med bobler og buffer.",
   },
   "hvor-laenge-kan-vin-lagres": {
     title: "Hvor længe kan vin lagres?",

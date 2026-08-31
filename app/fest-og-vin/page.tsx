@@ -67,6 +67,29 @@ export default function FestOgVinHubPage() {
         .
       </p>
 
+      <section className="mt-8 rounded-lg bg-amber-50 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Vin til fest — beregn mængde</h2>
+        <p className="mt-3 text-sm text-stone-700">
+          Start her:{" "}
+          <Link href="/guides/hvor-meget-vin-til-fest" className="font-medium text-rose-900 hover:underline">
+            hvor meget vin til fest
+          </Link>
+          {" "}(½ flaske per gæst til middag),{" "}
+          <Link href="/guides/hvor-meget-vin-til-bryllup" className="text-rose-900 hover:underline">
+            vin til bryllup
+          </Link>
+          ,{" "}
+          <Link href="/guides/hvor-meget-vin-til-konfirmation" className="text-rose-900 hover:underline">
+            konfirmation
+          </Link>
+          {" "}og{" "}
+          <Link href="/guides/bedste-vin-til-fest" className="text-rose-900 hover:underline">
+            bedste vin til fest
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-stone-200 bg-white p-5">
           <h2 className="text-lg font-semibold text-stone-900">Mængde og planlægning</h2>
