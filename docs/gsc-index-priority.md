@@ -72,4 +72,15 @@ Efter deploy: valider FAQ rich results på Tier 1 + Tier 3 URL'er i GSC. Følg [
 - https://www.vinbot.dk/den-sidste-flaske/vin/weinhof-519-alte-reben-rheingau-riesling-trocken
 - https://www.vinbot.dk/den-sidste-flaske/vin/weinhof-519-alte-reben-rose
 
-Sidst opdateret: 2026-08-31 (SEO trafik sprint 4)
+## Tier 8 — sprint 5 (aug 2026)
+
+- https://www.vinbot.dk/guides/vin-til-boeff
+- https://www.vinbot.dk/guides/vin-til-grill-og-bbq
+- https://www.vinbot.dk/guides/vin-til-kylling-og-lyst-koed
+- https://www.vinbot.dk/guides/vin-til-ost-og-ostebord
+- https://www.vinbot.dk/guides/bedste-dansk-vin
+- https://www.vinbot.dk/guides/rosevin-til-mad-og-sommer
+- https://www.vinbot.dk/guides/hvor-laenge-kan-vin-lagres
+- https://www.vinbot.dk/guides/hvor-meget-vin-til-bryllup
+
+Sidst opdateret: 2026-08-31 (SEO trafik sprint 5)

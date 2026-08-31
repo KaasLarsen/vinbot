@@ -68,9 +68,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri rødvin bedst i test: Leitz pinot og Torres garnacha til pizza og and. Ærligt: rød er sværest uden alkohol — hvornår rosé vinder i DK.",
   },
   "vin-til-ost-og-ostebord": {
-    title: "Vin til ostebord: port, sherry og bobler",
+    title: "Vin til ost — bobler, sherry og port",
     description:
-      "Vin til ost: bobler til milde oste, sherry til lagrede, port til blåskimmel. Dansk osteboard-guide med syre, fad og serveringstemperatur.",
+      "Hvilken vin til ost? Bobler til mild ost, sherry til lagrede, port til blåskimmel. Ostebord og julefrokost — tre flasker der dækker brættet.",
   },
   "vin-til-laks": {
     title: "Vin til laks og grillet laks",
@@ -78,9 +78,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bedste vin til laks: tør riesling, chardonnay med syre og let rosé. Røget, grill, dild og sauce — konkrete flasketyper du kan købe i DK.",
   },
   "vin-til-kylling-og-lyst-koed": {
-    title: "Vin til kylling: hvid, rosé og let rød",
+    title: "Vin til kylling — hvid, rosé og pinot",
     description:
-      "Vin til kylling efter sauce: chardonnay til fløde, pinot til grill, riesling til karry. Kylling, kalkun og kalv — flasker der passer i danske butikker.",
+      "Hvilken vin til kylling? Chardonnay til fløde, pinot til grill, riesling til karry. Sauce styrer valget — tabel efter tilberedning.",
   },
   "vin-til-sushi": {
     title: "Vin til sushi: riesling, bobler og grüner",
@@ -95,9 +95,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bedste alkoholfri vin 0 %: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris, madparring og hvad du skal undgå.",
   },
   "bedste-alkoholfri-champagne": {
-    title: "Alkoholfri champagne 0 % — bedst 2026",
+    title: "Alkoholfri champagne bedst i test 2026",
     description:
-      "Alkoholfri champagne 0 %: French Bloom, Noughty, Leitz og Oddbird. Premium sparkling til nytår og kransekage — fest uden promille.",
+      "Alkoholfri champagne bedst i test: French Bloom, Oddbird og Noughty. Premium 0 % sparkling til nytår, kransekage og skål — ca. 100–300 kr.",
   },
   "alkoholsvag-og-alkoholfri-vin": {
     title: "Alkoholfri vs alkoholsvag vin — forskel",
@@ -192,9 +192,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri vin til konfirmation: bobler, middagsvin, mængde pr. gæst og mærker (Leitz, Torres, Noughty). Blandede selskaber i DK.",
   },
   "vin-til-boeff": {
-    title: "Vin til bøf: cabernet, malbec og syrah",
+    title: "Hvilken vin til bøf? Cabernet og malbec",
     description:
-      "Hvilken vin til bøf? Cabernet og malbec til steg og grill, pinot til tyndt kød. Bearnaise, rødvinssauce og sauce på tallerkenen — konkret guide.",
+      "Hvilken vin til bøf? Malbec og cabernet til ribeye og grill; pinot noir til filet. Bearnaise, rødvinssauce og peberbøf — tabel efter udskæring.",
   },
   "vin-til-oksefilet": {
     title: "Vin til oksefilet: pinot og Chianti",
@@ -282,9 +282,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bobler til kransekage: demi-sec, moscato og sød riesling. Vin til dessert skal matche kagens sødme — ellers smager glasset surt.",
   },
   "hvor-meget-vin-til-bryllup": {
-    title: "Hvor meget vin til bryllup? Flasker per gæst",
+    title: "Vin til bryllup: hvor meget per gæst?",
     description:
-      "1 flaske vin per drikkende gæst + bobler til skål. Beregning til 50, 100 og 150 gæster — fordeling af rød, hvid og rosé.",
+      "Vin til bryllup: 1 flaske per voksen gæst + bobler til skål. Beregn flasker til 50, 100 og 150 gæster — fordeling og buffer.",
   },
   "vivino-app-til-vin-anmeldelser": {
     title: "Vivino-app: ratings og priser i DK",
@@ -352,6 +352,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Bedste hvidvin 2026 — sauvignon, chardonnay",
     description:
       "Bedste hvidvin i DK: frisk sauvignon, chardonnay og riesling med prisguide. Druesorter, regioner og madparring — fra hverdag til fest.",
+  },
+  "bedste-dansk-vin": {
+    title: "Bedste dansk vin 2026 — producenter",
+    description:
+      "Bedste dansk vin: Solaris, Rondo og danske bobler fra Dyrhøj, Skærsøgaard og Cold Hand. Guide til producenter, pris og besøg.",
   },
   "bedste-rosevin": {
     title: "Bedste rosévin: Provence, rosado og bobler",
@@ -441,9 +446,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Hvilken vin til fisk? Tør hvidvin, bobler og let rosé til laks, tun og hummer. Syre, mineralitet og serveringstemperatur — med konkrete flasker.",
   },
   "vin-til-grill-og-bbq": {
-    title: "Vin til grill og BBQ",
+    title: "Vin til grill — rødvin, rosé og BBQ",
     description:
-      "Vin til grill: syrah, malbec og afkølet gamay til kød, spareribs og burger. Kraftig rød eller rosé — match fedme og røg fra grillen.",
+      "Vin til grill: malbec, syrah og zinfandel til kød og BBQ-sauce. Rosé til grønt og kylling — tabel efter protein og marinade.",
   },
   "vin-til-asiatisk-mad": {
     title: "Vin til asiatisk mad: riesling og gewürz",
@@ -466,9 +471,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Bedste sommervin til terrasse: Provence-rosé, sauvignon og afkølet rød. Top-liste med pris, regioner og servering til varme aftener.",
   },
   "rosevin-til-mad-og-sommer": {
-    title: "Rosévin til mad og sommer",
+    title: "Rosévin til mad og sommer — grill og tapas",
     description:
-      "Rosé til grill, salat og tapas: tør Provence-stil og spansk rosado. Servering, temperatur og madparring — dansk sommerguide.",
+      "Rosé til grill, salat, laks og tapas: tør Provence og spansk rosado. Sommerguide med temperatur, madparring og stilvalg.",
   },
   "bedste-champagne-under-500-kr": {
     title: "Bedste champagne under 500 kr",
@@ -516,9 +521,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Den store danske guide til vin og mad: rød og hvid til kød, fisk, ost og grønt. Temperatur, syre, tanniner og praktiske regler der virker.",
   },
   "kan-vin-blive-daarlig": {
-    title: "Kan vin blive dårlig? Tegn og holdbarhed",
+    title: "Kan vin blive dårlig? Tegn og fejl",
     description:
-      "Kan vin blive sur? Ja — efter åbning, varme eller korkfejl. Sådan spotter du oxideret, korket og gammel vin — og hvornår den stadig kan drikkes.",
+      "Kan vin blive dårlig? Ja — korksmag, oxidation og eddike. Tabel over tegn, fejl og hvornår du skal kassere flasken (sjældent farligt).",
   },
   "hvor-laenge-holder-rodvin": {
     title: "Hvor længe holder rødvin åbnet?",
@@ -536,9 +541,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til fest: ½ flaske per gæst til middag, 2–3 glas til cocktailparty. Beregn flasker til 20, 30, 50 og 100 gæster — med bobler og buffer.",
   },
   "hvor-laenge-kan-vin-lagres": {
-    title: "Hvor længe kan vin lagres?",
+    title: "Hvor længe kan vin lagres? (tabel)",
     description:
-      "Hverdagsvin drikkes inden for få år. Lagringsvine 10–50+ år i køl, mørkt og liggende. Tabel pr. stil — og hvornår flasken er klar nu.",
+      "Hvor længe kan vin lagres? Hverdagsvin 1–3 år, kvalitetsvin 5–15 år, topvine 20–50+ år. Tabel pr. vintype og lagringsbetingelser.",
   },
   "vin-til-julefrokost": {
     title: "Vin til julefrokost: flæsk, fisk og risalamande",

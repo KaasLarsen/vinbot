@@ -225,6 +225,30 @@ export default function MadOgVinHubPage() {
         </p>
       </section>
 
+      <section className="mt-10 rounded-lg bg-stone-100 p-6">
+        <h2 className="text-xl font-semibold text-stone-900">Mest søgte madparring</h2>
+        <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/guides/vin-til-boeff" className="font-medium hover:underline">
+            Vin til bøf
+          </Link>
+          <Link href="/guides/vin-til-grill-og-bbq" className="font-medium hover:underline">
+            Vin til grill
+          </Link>
+          <Link href="/guides/vin-til-kylling-og-lyst-koed" className="font-medium hover:underline">
+            Vin til kylling
+          </Link>
+          <Link href="/guides/vin-til-ost-og-ostebord" className="font-medium hover:underline">
+            Vin til ost
+          </Link>
+          <Link href="/guides/vin-til-laks" className="hover:underline">
+            Vin til laks
+          </Link>
+          <Link href="/guides/rodvin-til-pizza" className="hover:underline">
+            Rødvin til pizza
+          </Link>
+        </div>
+      </section>
+
       <section className="mt-10 rounded-lg bg-rose-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Forår og sommer — konkrete lejligheder</h2>
         <p className="mt-3 text-stone-700">

@@ -617,6 +617,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-kylling-og-lyst-koed": [
     {
+      question: "Hvilken vin til kylling?",
+      answer:
+        "Saucen styrer valget: fløde/svamp → chardonnay eller pinot noir; grill med citron → sauvignon, crémant eller let pinot; karry/asiatisk → riesling eller gewürztraminer; tomat/pasta → sangiovese eller rosé.",
+    },
+    {
       question: "Hvilken rødvin passer til kylling?",
       answer:
         "Pinot noir, gamay fra Beaujolais eller lettere sangiovese/chianti med moderat tannin — serveret lidt køligt ved behov. Undgå unge, meget kraftige tanninrige røde til magert kyllingebryst uden kraftig sauce.",
@@ -941,6 +946,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-grill-og-bbq": [
     {
+      question: "Hvilken vin til grill?",
+      answer:
+        "Afhænger af protein: oksebøf/ribeye → malbec, syrah eller zinfandel; BBQ/spareribs → primitivo eller Rhône; kylling → rosé eller afkølet gamay; grønt/halloumi → rosé eller grüner. Sød marinade kræver moden frugt frem for ung tannin.",
+    },
+    {
       question: "Hvilken vin passer til BBQ med sød glasur?",
       answer:
         "Sød sauce kræver ofte lidt restsødme eller frugtrig rød eller rosé med moden frugt — ellers kan vinen smage bitter. Syre er stadig vigtig for at skære igennem fedme og røg.",
@@ -994,6 +1004,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "vin-til-ost-og-ostebord": [
+    {
+      question: "Hvilken vin til ost?",
+      answer:
+        "Mild ost (brie, havarti) → bobler eller frisk hvid; lagret hård ost → sherry eller moden chardonnay; blåskimmel → port eller Sauternes. Tre flasker dækker et dansk ostebord: bobler + sherry + port.",
+    },
     {
       question: "Hvilken vin til blåskimmelost?",
       answer:
@@ -1104,6 +1119,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "vin-til-boeff": [
+    {
+      question: "Hvilken vin til bøf?",
+      answer:
+        "Afhænger af udskæring: filet/mørbrad → pinot noir, Chianti eller cru Beaujolais; ribeye/entrecôte → malbec, syrah eller Bordeaux. Med bearnaise eller rødvinssauce: moden frugt og syre — undgå ung, stram cabernet. Server ved 14–17 °C.",
+    },
     {
       question: "Hvilken vin til bearnaise eller bearnaisesovs?",
       answer:
