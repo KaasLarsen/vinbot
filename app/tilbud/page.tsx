@@ -147,14 +147,11 @@ export default async function TilbudHubPage() {
         </p>
       </header>
 
-      <section
-        className="mt-8 w-full rounded-2xl border border-stone-200 bg-stone-50/80 p-5 sm:p-6"
-        aria-label="Tilmeld nyhedsbrev"
-      >
+      <section className="mt-6 max-w-md" aria-label="Tilmeld nyhedsbrev">
         <NewsletterSignupForm variant="section" />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-10" />
+      <PartnerAdsLeaderboard className="mt-8" />
 
       <OlVinFacebookCarousel posts={OL_VIN_FACEBOOK_POSTS} />
 

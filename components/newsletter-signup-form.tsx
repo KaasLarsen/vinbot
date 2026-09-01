@@ -75,51 +75,89 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
   }
 
   const isFooter = variant === "footer";
+  const compactInput =
+    "min-w-0 flex-1 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none placeholder:text-stone-400 focus:border-rose-900 focus:ring-2 focus:ring-rose-900/15";
 
-  const fields = (
-    <>
+  return (
+    <form onSubmit={handleSubmit} className={`flex flex-col gap-2.5 ${className}`}>
+      {isFooter ? (
+        <>
+          <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Nyhedsbrev</p>
+          <p className="text-sm text-stone-600">Få gode tilbud i din mailbox — plus nyheder og tips.</p>
+        </>
+      ) : (
+        <p className="text-sm font-medium text-stone-800">Få tilbud i indbakken</p>
+      )}
+
       <label htmlFor={emailId} className="sr-only">
         E-mail
       </label>
-      <div className={isFooter ? "contents" : "flex flex-col gap-3 sm:flex-row sm:items-stretch"}>
+      {isFooter ? (
         <input
           id={emailId}
           type="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={isFooter ? inputClassName : `${inputClassName} sm:min-w-0 sm:flex-1`}
+          className={inputClassName}
           placeholder="din@email.dk"
           autoComplete="email"
           required
         />
-        {!isFooter ? (
+      ) : (
+        <div className="flex gap-2">
+          <input
+            id={emailId}
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={compactInput}
+            placeholder="din@email.dk"
+            autoComplete="email"
+            required
+          />
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="shrink-0 rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950 disabled:cursor-not-allowed disabled:opacity-60"
+            className="shrink-0 rounded-lg bg-rose-900 px-3.5 py-2 text-sm font-semibold text-white hover:bg-rose-950 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {status === "submitting" ? "Tilmelder…" : "Tilmeld nyhedsbrev"}
+            {status === "submitting" ? "…" : "Tilmeld"}
           </button>
-        ) : null}
-      </div>
+        </div>
+      )}
 
-      <label htmlFor={consentId} className="flex min-w-0 items-start gap-2.5 text-xs leading-snug text-stone-600">
+      <label
+        htmlFor={consentId}
+        className={`flex min-w-0 items-start gap-2 leading-snug text-stone-500 ${isFooter ? "text-xs text-stone-600" : "text-[11px]"}`}
+      >
         <input
           id={consentId}
           type="checkbox"
           name="consent"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 size-4 shrink-0 accent-rose-900"
+          className={`${isFooter ? "mt-0.5 size-4" : "mt-0.5 size-3.5"} shrink-0 accent-rose-900`}
           required
         />
         <span className="min-w-0">
-          Jeg samtykker til at Vinbot sender mig nyhedsbrev med tilbud og nyheder. Jeg kan afmelde mig når som helst. Se{" "}
-          <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
-            privatlivspolitik
-          </Link>
-          .
+          {isFooter ? (
+            <>
+              Jeg samtykker til at Vinbot sender mig nyhedsbrev med tilbud og nyheder. Jeg kan afmelde mig når som helst. Se{" "}
+              <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
+                privatlivspolitik
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              Ja tak — se{" "}
+              <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
+                privatliv
+              </Link>
+              .
+            </>
+          )}
         </span>
       </label>
 
@@ -138,33 +176,6 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
           {status === "submitting" ? "Tilmelder…" : "Tilmeld nyhedsbrev"}
         </button>
       ) : null}
-    </>
-  );
-
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className={`${isFooter ? "flex flex-col gap-3" : "grid gap-4 md:grid-cols-2 md:items-center md:gap-8"} ${className}`}
-    >
-      {isFooter ? (
-        <>
-          <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Nyhedsbrev</p>
-          <p className="text-sm text-stone-600">
-            Få gode tilbud i din mailbox — plus nyheder og tips.
-          </p>
-          {fields}
-        </>
-      ) : (
-        <>
-          <div className="min-w-0">
-            <p className="text-base font-semibold text-stone-900">Tilmeld nyhedsbrev</p>
-            <p className="mt-1 text-sm leading-relaxed text-stone-600">
-              Få gode tilbud direkte i din mailbox — plus nyheder og tips fra Vinbot.
-            </p>
-          </div>
-          <div className="flex min-w-0 flex-col gap-3">{fields}</div>
-        </>
-      )}
     </form>
   );
 }
