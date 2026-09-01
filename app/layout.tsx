@@ -33,6 +33,14 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
+  /** Stabilt 96×96 PNG til Google Search (ud over app/favicon.ico og app/icon). */
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: "/apple-icon",
+  },
   openGraph: {
     type: "website",
     locale: "da_DK",

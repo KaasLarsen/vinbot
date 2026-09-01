@@ -281,8 +281,11 @@ export function WebSiteJsonLd({ url }: { url: string }) {
     "@id": `${url}/#website`,
     /** Primært brandsnavn til Googles site name (vis ved resultatets domænelinje hvor understøttet). */
     name: siteName,
-    /** Binder domænestreng til brand og mindsker kun-domænenavvisning ved tvetydige signaler. */
-    alternateName: [`${siteName}.dk`, domain, `www.${domain}`],
+    /**
+     * Primært “Vinbot”. Domæne kun som sidste fallback (Google kræver lowercase
+     * for at genkende det som domænenavn — vi vil helst have brandet med stort V).
+     */
+    alternateName: [`${siteName}.dk`, domain],
     url,
     inLanguage: "da-DK",
     publisher: { "@id": organizationSchemaId },
