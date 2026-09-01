@@ -64,7 +64,7 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
         ]}
       />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Opskrifter</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Ét opskrift-univers med to roller:{" "}
         <strong className="font-medium text-stone-800">vin i retten</strong> (madlavning med vin) og{" "}
         <strong className="font-medium text-stone-800">vin til maden</strong> (opskrift + anbefalet vin til

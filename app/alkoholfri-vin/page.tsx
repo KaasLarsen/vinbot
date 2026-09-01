@@ -45,7 +45,7 @@ export default function AlkoholfriVinHubPage() {
       <CollectionPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} items={collectionItems} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/alkoholfri-vin", label: "Alkoholfri vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Alkoholfri vin</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Alt om <strong className="font-medium text-stone-800">0 % og alkoholfri vin</strong> i Danmark: hvilke
         flasker der smager af vin (ikke saft), hvilke mærker der er værd at købe, og hvad der virker til fest, grill
         og hverdag. Start med typen — eller gå direkte til{" "}

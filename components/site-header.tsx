@@ -9,10 +9,14 @@ import { PageShell } from "@/components/page-shell";
 
 type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
 
-const nav: NavItem[] = [
-  { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
+const primaryNav: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
+  { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/opskrifter", label: "Opskrifter", activePrefix: "/opskrifter" },
+  { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
+];
+
+const moreNav: NavItem[] = [
   { href: "/humoer-og-vin", label: "Humør & stemning" },
   { href: "/saeson", label: "Sæson" },
   { href: "/fest-og-vin", label: "Fest & selskab" },
@@ -39,7 +43,7 @@ const nav: NavItem[] = [
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/rabatkoder", label: "Rabatkoder" },
   { href: "/tilbud", label: "Vin tilbud" },
-  { href: "/guides/komplet-guide-til-vin-og-mad", label: "Guides", activePrefix: "/guides" },
+  { href: "/guides", label: "Alle guides", activePrefix: "/guides" },
 ];
 
 function navItemActive(item: NavItem, pathname: string) {
@@ -102,7 +106,23 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-2 lg:gap-4">
+            <nav className="hidden min-w-0 items-center gap-1 lg:flex" aria-label="Primær navigation">
+              {primaryNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`shrink-0 rounded-lg px-2.5 py-1.5 text-sm transition ${
+                    navItemActive(item, pathname)
+                      ? "font-medium text-rose-950"
+                      : "text-stone-700 hover:bg-stone-50 hover:text-rose-900"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
             <HeaderSearch />
 
             <div ref={menuRef} className="relative">
@@ -131,17 +151,32 @@ export function SiteHeader() {
                     </>
                   )}
                 </svg>
-                Menu
+                <span className="hidden sm:inline">Mere</span>
+                <span className="sm:hidden">Menu</span>
               </button>
 
               {open ? (
                 <nav
                   id={panelId}
-                  aria-label="Hovedmenu"
+                  aria-label="Flere sider"
                   className="absolute right-0 top-full z-40 mt-1.5 max-h-[min(70vh,calc(100dvh-4.5rem))] min-w-[12rem] overflow-y-auto overscroll-contain rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
                 >
                   <ul>
-                    {nav.map((item) => (
+                    {primaryNav.map((item) => (
+                      <li key={item.href} className="lg:hidden">
+                        <Link
+                          href={item.href}
+                          className={`block px-4 py-2 text-sm transition ${
+                            navItemActive(item, pathname)
+                              ? "font-medium text-rose-950"
+                              : "text-stone-700 hover:bg-stone-50 hover:text-rose-900"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                    {moreNav.map((item) => (
                       <li key={item.href}>
                         <Link
                           href={item.href}

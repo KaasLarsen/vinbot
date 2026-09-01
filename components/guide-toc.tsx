@@ -13,7 +13,7 @@ export function GuideToc({ items }: GuideTocProps) {
 
   return (
     <nav
-      className="mt-8 rounded-xl border border-stone-200 bg-stone-50/80 px-4 py-4 sm:px-5"
+      className="mt-8 border-t border-stone-200 pt-6"
       aria-labelledby="guide-toc-heading"
     >
       <h2 id="guide-toc-heading" className="text-sm font-semibold uppercase tracking-wide text-stone-500">

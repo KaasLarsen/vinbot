@@ -14,7 +14,7 @@ const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "htt
 export function GuideLauridsenRegionCta({ slug }: { slug: string }) {
   return (
     <aside
-      className="not-prose mt-8 rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/90 to-white px-5 py-4 shadow-sm ring-1 ring-stone-200/70 sm:px-6 sm:py-5"
+      className="not-prose mt-8 border-t border-stone-200 pt-8"
       aria-label="Sponsorlink til Lauridsen Vine"
     >
       <p className="text-xs font-semibold uppercase tracking-wide text-amber-900/85">Affiliate · partner</p>

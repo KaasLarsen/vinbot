@@ -73,7 +73,7 @@ export default function LandeHubPage() {
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/lande", label: "Vinlande" }]} />
 
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vinlande</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Land giver en hurtig stilforventning — klima, typiske druer og madparring. Hver landeside har{" "}
         <strong className="font-medium text-stone-800">kendetegn</strong>,{" "}
         <strong className="font-medium text-stone-800">regioner</strong> og{" "}

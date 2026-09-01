@@ -4,17 +4,14 @@ import { GUIDE_CLUSTER_LINKS, type GuideClusterBlock } from "@/lib/growth/guide-
 
 const TONE_STYLES = {
   emerald: {
-    section: "border-emerald-200/80 bg-emerald-50/50",
     link: "text-emerald-900 decoration-emerald-200 hover:text-emerald-950",
     footer: "text-emerald-900",
   },
   rose: {
-    section: "border-rose-200/80 bg-rose-50/50",
     link: "text-rose-900 decoration-rose-200 hover:text-rose-950",
     footer: "text-rose-900",
   },
   amber: {
-    section: "border-amber-200/80 bg-amber-50/50",
     link: "text-amber-950 decoration-amber-200 hover:text-stone-950",
     footer: "text-amber-950",
   },
@@ -30,7 +27,7 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
 
   return (
     <section
-      className={`not-prose mt-10 rounded-2xl border p-6 shadow-sm ${styles.section}`}
+      className="not-prose mt-10 border-t border-stone-200 pt-8"
       aria-labelledby={`guide-cluster-heading-${block.clusterTitle}`}
     >
       <h2 id={`guide-cluster-heading-${block.clusterTitle}`} className="text-xl font-semibold text-stone-900">

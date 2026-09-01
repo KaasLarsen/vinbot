@@ -15,7 +15,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { GuideCatalogSearchBar } from "@/components/guide-catalog-search-bar";
-import { GuideSearchCta } from "@/components/guide-search-cta";
 import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideLauridsenRegionCta } from "@/components/guide-lauridsen-region-cta";
 import { GuideWineDetailLinks } from "@/components/guide-wine-detail-links";
@@ -31,7 +30,6 @@ import { PageShell } from "@/components/page-shell";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { dishIdForGuideSlug } from "@/lib/food-picker/dishes";
 import { GuideToc } from "@/components/guide-toc";
-import { GUIDE_TOC_MIN_HEADINGS } from "@/lib/content/guide-headings";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -121,7 +119,7 @@ export default async function GuidePage({ params }: Props) {
   const articleImage = `${url}/opengraph-image`;
 
   return (
-    <PageShell as="article" className="py-10">
+    <PageShell as="article" variant="article" className="py-10">
       <ArticleJsonLd
         title={frontmatter.title}
         description={frontmatter.description}
@@ -135,10 +133,12 @@ export default async function GuidePage({ params }: Props) {
       <BreadcrumbJsonLd items={breadcrumbLdItems} />
       {faqItems?.length ? <FaqJsonLd items={faqItems} /> : null}
       <Breadcrumbs items={crumbs} />
-      <GuideCatalogSearchBar className="mt-6" />
-      <header className="mt-8 border-b border-stone-200 pb-8">
-        <h1 className="text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
-        <p className="mt-4 text-xl text-stone-600">{frontmatter.description}</p>
+      <GuideCatalogSearchBar className="mt-3" />
+      <header className="mt-6 border-b border-stone-200 pb-6">
+        <h1 className="text-balance text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+          {frontmatter.title}
+        </h1>
+        <p className="mt-3 text-lg leading-relaxed text-stone-600">{frontmatter.description}</p>
         <p className="mt-3 text-sm text-stone-600">
           Af{" "}
           <Link href="/om-os" className="font-medium text-rose-900 hover:underline">
@@ -164,28 +164,18 @@ export default async function GuidePage({ params }: Props) {
           </Link>
         </p>
       </header>
+      <GuideToc items={toc} />
+      <div className="prose prose-stone mt-8 max-w-none">
+        {content}
+      </div>
       {slug.startsWith("vin-til-") ? (
         <FoodWinePicker
-          className="mt-8 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
+          className="mt-10 border-t border-stone-200 pt-8"
           heading="Tre flasker til retten"
           intro="Vælg budget — eller en anden ret — så viser vi vine, der er til salg hos forhandlerne nu."
           initialDishId={dishIdForGuideSlug(slug)}
         />
       ) : null}
-      {intent ? <GuideSearchCta label={intent.label} searchHref={searchHref} /> : null}
-      {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
-      <div className="mx-auto mt-10 max-w-3xl">
-        <GuideToc items={toc} />
-        <div
-          className={
-            toc.length >= GUIDE_TOC_MIN_HEADINGS
-              ? "prose prose-stone mt-8 max-w-none"
-              : "prose prose-stone max-w-none"
-          }
-        >
-          {content}
-        </div>
-      </div>
       {intent ? (
         <GuideProductPicks
           q={intent.q}
@@ -197,6 +187,7 @@ export default async function GuidePage({ params }: Props) {
           heading={slug === "bedste-box-vin" ? "Flere boxvine fra forhandlere" : "Se 3 forslag fra danske forhandlere"}
         />
       ) : null}
+      {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
       {intent && hub === "regioner" ? <GuideLauridsenRegionCta slug={slug} /> : null}
       <GuideWineDetailLinks guideSlug={slug} />
       <GuideClusterCrosslinks guideSlug={slug} />

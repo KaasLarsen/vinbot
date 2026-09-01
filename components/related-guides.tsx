@@ -17,7 +17,7 @@ export function RelatedGuides({ tags, excludeSlug }: { tags: string[]; excludeSl
   const fallback = scored.length ? scored : all.slice(0, 5);
 
   return (
-    <section className="rounded-2xl border border-stone-200 bg-stone-50/80 p-6">
+    <section className="border-t border-stone-200 pt-8">
       <h2 className="text-lg font-semibold text-stone-900">Læs også</h2>
       <ul className="mt-4 space-y-3">
         {fallback.map((g) => (

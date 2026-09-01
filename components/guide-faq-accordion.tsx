@@ -8,7 +8,7 @@ type FaqItem = { question: string; answer: string };
 export function GuideFaqAccordion({ items }: { items: FaqItem[] }) {
   if (!items || items.length === 0) return null;
   return (
-    <section className="not-prose mt-12 rounded-2xl border border-stone-200 bg-white p-5 sm:p-6" aria-labelledby="guide-faq-heading">
+    <section className="not-prose mt-12 border-t border-stone-200 pt-8" aria-labelledby="guide-faq-heading">
       <h2 id="guide-faq-heading" className="text-xl font-semibold text-stone-900 sm:text-2xl">
         Ofte stillede spørgsmål
       </h2>

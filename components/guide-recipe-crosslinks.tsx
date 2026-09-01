@@ -10,7 +10,7 @@ export function GuideRecipeCrosslinks({ guideSlug }: { guideSlug: string }) {
 
   return (
     <section
-      className="not-prose mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
+      className="not-prose mt-10 border-t border-stone-200 pt-8"
       aria-labelledby="guide-recipes-heading"
     >
       <h2 id="guide-recipes-heading" className="text-xl font-semibold text-stone-900">

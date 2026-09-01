@@ -50,7 +50,7 @@ export default function HumoerHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/humoer-og-vin", label: "Humør & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Humør og stemning</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Vin er socialt — samme flaske kan føles festlig, rolig eller romantisk afhængigt af kontekst. Her samler vi guider om{" "}
         <strong className="font-medium text-stone-800">hygge</strong>,{" "}
         <strong className="font-medium text-stone-800">fest og bobler</strong>,{" "}

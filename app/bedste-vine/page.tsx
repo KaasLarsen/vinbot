@@ -51,7 +51,7 @@ export default function BedsteVineHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/bedste-vine", label: "Bedste vine" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Bedste vine</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Hvilken vin er den <strong className="font-medium text-stone-800">bedste</strong> lige nu? Det afhænger af pris,
         stil og lejlighed — ikke en enkelt flaske. Her er Vinbots top-lister, så du hurtigt kan zoome ind på det
         rigtige valg. Brug også søgningen på forsiden til at sammenligne priser på tværs af danske forhandlere.

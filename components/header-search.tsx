@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { NavSearchKind, NavSearchSuggestion } from "@/lib/nav-search";
 
@@ -59,13 +59,16 @@ function useDebouncedValue<T>(value: T, ms: number): T {
  */
 export function HeaderSearch() {
   const router = useRouter();
+  const pathname = usePathname();
   const formId = useId();
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [expanded, setExpanded] = useState(false);
-  const [mode, setMode] = useState<SearchMode>("vin");
+  const [mode, setMode] = useState<SearchMode>(() =>
+    pathname.startsWith("/guides") ? "guides" : "vin",
+  );
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -76,7 +79,11 @@ export function HeaderSearch() {
 
   useEffect(() => {
     const stored = readStoredMode();
-    if (stored) setMode(stored);
+    if (pathname.startsWith("/guides")) {
+      setMode("guides");
+    } else if (stored) {
+      setMode(stored);
+    }
 
     function onSync(e: Event) {
       const ce = e as CustomEvent<SearchMode>;
@@ -93,7 +100,7 @@ export function HeaderSearch() {
       window.removeEventListener(MODE_SYNC_EVENT, onSync);
       window.removeEventListener("storage", onStorage);
     };
-  }, []);
+  }, [pathname]);
 
   const fetchSuggestions = useCallback(async (query: string, searchMode: SearchMode) => {
     setLoading(true);
@@ -180,7 +187,7 @@ export function HeaderSearch() {
       return;
     }
     if (v) {
-      router.push(`/guides?q=${encodeURIComponent(v)}`);
+      router.push(`/?q=${encodeURIComponent(v)}`);
       setOpen(false);
       return;
     }

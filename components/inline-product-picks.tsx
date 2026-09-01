@@ -61,7 +61,7 @@ export function InlineProductPicks({
   return (
     <section
       aria-label="Anbefalede vine"
-      className="not-prose mt-8 rounded-2xl border border-stone-200 bg-gradient-to-br from-rose-50/70 via-white to-amber-50/40 p-5 shadow-sm sm:p-6"
+      className="not-prose mt-10 border-t border-stone-200 pt-8"
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -80,7 +80,7 @@ export function InlineProductPicks({
       </div>
 
       {loading ? (
-        <div className="mt-4 grid gap-3 sm:grid-cols-3" aria-busy="true">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2" aria-busy="true">
           {Array.from({ length: max_items }).map((_, i) => (
             <div key={i} className="h-48 animate-pulse rounded-2xl border border-stone-200 bg-white/60" />
           ))}
@@ -94,7 +94,7 @@ export function InlineProductPicks({
           — vi søger på tværs af 10+ danske forhandlere.
         </div>
       ) : (
-        <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {products.map((p, i) => (
             <li key={`${p.url}-${i}`}>
               <InlineProductCard product={p} slug={slug} hub={hub} placement={placement} />

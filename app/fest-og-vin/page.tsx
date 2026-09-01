@@ -45,7 +45,7 @@ export default function FestOgVinHubPage() {
       <CollectionPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} items={collectionItems} />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/fest-og-vin", label: "Fest og selskab" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin til fest og selskab</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Når du inviterer mange gæster — konfirmation, studenterfest, bryllup, firmafest eller runde fødselsdage — handler det ofte om{" "}
         <strong className="font-medium text-stone-800">mængde</strong>,{" "}
         <strong className="font-medium text-stone-800">buffere</strong> og{" "}

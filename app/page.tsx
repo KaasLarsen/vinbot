@@ -41,18 +41,19 @@ export default function HomePage() {
         <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
           Find vin på sekunder
         </h1>
-        <p className="mt-3 max-w-lg text-base leading-relaxed text-stone-700 sm:max-w-xl">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
           Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
         </p>
 
-        <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-4xl sm:p-5">
+        <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-5">
           <FoodWinePicker />
         </div>
 
-        <div className="mt-5 sm:mt-6">
+        <div className="relative z-10 mt-4 max-w-xl">
+          <p className="mb-2 text-sm font-medium text-stone-800">Eller søg frit på flaske, drue eller budget</p>
           <HomeWineSearch
-            controlsClassName="max-w-lg rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-2xl sm:p-5"
-            resultsClassName="rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-6"
+            controlsClassName="rounded-xl border border-white/80 bg-white/90 p-3 shadow-sm"
+            resultsClassName="mt-3 rounded-xl border border-white/80 bg-white/95 p-4 shadow-sm sm:p-5"
           />
         </div>
       </HomeHeroSearchSection>
@@ -71,7 +72,7 @@ export default function HomePage() {
       </HomeFeedStripsGate>
 
       <section className="mt-16" aria-labelledby="home-topics-heading">
-        <div>
+        <div className="max-w-2xl">
           <h2 id="home-topics-heading" className="text-xl font-semibold tracking-tight text-stone-900">
             Udforsk emner
           </h2>
@@ -79,7 +80,7 @@ export default function HomePage() {
             Mad, fest, sæson og vin-viden — spring direkte ind i det, der interesserer dig.
           </p>
         </div>
-        <div className="mt-5 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Link
           href="/mad-og-vin"
           className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"

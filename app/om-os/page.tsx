@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function OmOsPage() {
   return (
-    <PageShell className="py-10">
+    <PageShell variant="article" className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },

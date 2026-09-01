@@ -9,7 +9,7 @@ export function GuideWineDetailLinks({ guideSlug }: { guideSlug: string }) {
   if (pages.length === 0) return null;
 
   return (
-    <section className="not-prose mt-10 rounded-2xl border border-stone-200 bg-stone-50/90 p-6" aria-labelledby="guide-wine-detail-heading">
+    <section className="not-prose mt-10 border-t border-stone-200 pt-8" aria-labelledby="guide-wine-detail-heading">
       <h2 id="guide-wine-detail-heading" className="text-xl font-semibold text-stone-900">
         Eksempel-flasker hos forhandlere
       </h2>

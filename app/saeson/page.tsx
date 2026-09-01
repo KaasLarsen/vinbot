@@ -51,7 +51,7 @@ export default function SaesonHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/saeson", label: "Sæson" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Sæson og vin</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Årstiden påvirker både køkkenet og lysten i glasset. Her finder du{" "}
         <strong className="font-medium text-stone-800">højtider</strong>,{" "}
         <strong className="font-medium text-stone-800">grill og sommer</strong>,{" "}

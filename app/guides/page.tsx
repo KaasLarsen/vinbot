@@ -66,7 +66,7 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/guides", label: "Guides" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Alle guides</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Søg på tværs af <strong className="font-medium text-stone-800">vin til mad</strong>,{" "}
         <strong className="font-medium text-stone-800">druesorter</strong> og{" "}
         <strong className="font-medium text-stone-800">begreber</strong>. Brug kategorierne til hurtigt at indsnævre listen — eller hop til{" "}

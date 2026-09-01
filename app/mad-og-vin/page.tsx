@@ -52,7 +52,7 @@ export default function MadOgVinHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/mad-og-vin", label: "Mad & vin" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Mad og vin</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Vinbot samler danske guides om parring, temperatur og praktiske valg.{" "}
         <strong className="font-medium text-stone-800">Søg nedenfor</strong> eller vælg kategori — så finder du hurtigere frem, når listen vokser.
         Brug også søgningen på forsiden til konkrete flasker med pris og billede.

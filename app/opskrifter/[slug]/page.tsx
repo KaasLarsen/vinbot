@@ -104,7 +104,7 @@ export default async function RecipePage({ params }: Props) {
   ].filter(Boolean);
 
   return (
-    <PageShell as="article" className="py-10">
+    <PageShell as="article" variant="article" className="py-10">
       <RecipeJsonLd
         name={frontmatter.title}
         description={frontmatter.description}
@@ -135,8 +135,8 @@ export default async function RecipePage({ params }: Props) {
         >
           {recipeRoleLabel(role)}
         </p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-stone-900">{frontmatter.title}</h1>
-        <p className="mt-4 text-xl text-stone-600">{frontmatter.description}</p>
+        <h1 className="mt-2 text-balance text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">{frontmatter.title}</h1>
+        <p className="mt-3 text-lg leading-relaxed text-stone-600">{frontmatter.description}</p>
         <p className="mt-3 text-sm text-stone-600">
           Af{" "}
           <Link href="/om-os" className="font-medium text-rose-900 hover:underline">

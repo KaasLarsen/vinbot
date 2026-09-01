@@ -283,7 +283,7 @@ export default function DruesorterHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/druesorter", label: "Druesorter" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Druesorter</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Hver drue har en <strong className="font-medium text-stone-800">kort guide</strong> med smag, typiske områder og madidéer — og et{" "}
         <strong className="font-medium text-stone-800">søgelink</strong> til forsiden, så du ser flasker med pris fra flere forhandlere.
       </p>

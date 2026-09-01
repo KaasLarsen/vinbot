@@ -20,7 +20,7 @@ const mailtoHref = `mailto:${contactEmail}?subject=Kontakt%20Vinbot`;
 
 export default function KontaktPage() {
   return (
-    <PageShell className="py-10">
+    <PageShell variant="article" className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },

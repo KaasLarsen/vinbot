@@ -51,7 +51,7 @@ export default function VinVidenHubPage() {
       />
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/vin-viden", label: "Vin-viden" }]} />
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-stone-900">Vin-viden</h1>
-      <p className="mt-4 max-w-3xl text-lg text-stone-700">
+      <p className="mt-4 max-w-2xl text-lg text-stone-700">
         Korte, konkrete svar på det folk typisk googler om vin:{" "}
         <strong className="font-medium text-stone-800">rødvin temperatur og vintemperatur i °C</strong>,{" "}
         <strong className="font-medium text-stone-800">hvor længe holder</strong> åbnet og uåbnet vin,{" "}

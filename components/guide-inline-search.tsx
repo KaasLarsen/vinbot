@@ -35,7 +35,7 @@ type Props = {
 /** Kompakt vinsøgning på guiden — samme feed + DSF-stribe som forsiden. */
 export function GuideInlineSearch({ slug, intent }: Props) {
   return (
-    <section className="not-prose mt-8 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6" aria-labelledby={`guide-inline-search-${slug}`}>
+    <section className="not-prose mt-10 border-t border-stone-200 pt-8" aria-labelledby={`guide-inline-search-${slug}`}>
       <h2 id={`guide-inline-search-${slug}`} className="text-lg font-semibold text-stone-900">
         Søg flasker til guiden
       </h2>
