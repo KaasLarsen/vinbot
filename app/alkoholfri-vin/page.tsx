@@ -168,7 +168,7 @@ export default function AlkoholfriVinHubPage() {
             </li>
             <li>
               <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
-                Netto, Føtex og Bilka
+                Netto, Rema, Føtex og Coop
               </Link>
             </li>
             <li>
@@ -196,6 +196,10 @@ export default function AlkoholfriVinHubPage() {
               ,{" "}
               <Link href="/guides/alkoholfri-vin-til-brunch" className="text-rose-900 hover:underline">
                 brunch
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-mimosa" className="text-rose-900 hover:underline">
+                mimosa 0 %
               </Link>
             </li>
             <li>
@@ -265,7 +269,7 @@ export default function AlkoholfriVinHubPage() {
           </Link>{" "}
           — det er det nemmeste sted at lande godt første gang. Skal du købe i butik:{" "}
           <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
-            Netto/Føtex
+            Netto, Rema og Føtex
           </Link>{" "}
           eller{" "}
           <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="text-rose-900 hover:underline">

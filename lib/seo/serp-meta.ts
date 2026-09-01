@@ -13,14 +13,14 @@ const GENERIC_BEDSTE_DESC =
  */
 const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
-    title: "Hvor mange ml i et glas vin? Enheder",
+    title: "7,4 genstande i en flaske vin",
     description:
-      "125 ml rødvin (13 %) ≈ 1,5 genstande. 1 genstand = 12 g alkohol. Tabel for ml, cl, hvidvin og hel flaske — dansk beregning til promille og sundhed.",
+      "75 cl ved 12,5 % = ca. 7,4 genstande. 1 genstand = 12 g alkohol. Tabel for glas, flaske, champagne og bag-in-box — dansk beregning.",
   },
   "hvor-meget-fylder-en-flaske-vin": {
-    title: "Hvor meget fylder en flaske vin? (75 cl)",
+    title: "75 cl: hvor meget fylder en flaske",
     description:
-      "Standardflaske = 750 ml (75 cl). Piccolo, magnum og jeroboam i tabel. Hvor mange glas per flaske — og hvornår størrelsen giver bedre smag.",
+      "En flaske vin er 750 ml (75 cl). Piccolo, magnum og jeroboam i tabel. Hvor mange glas per flaske — og hvornår størrelsen giver bedre smag.",
   },
   "hvor-laenge-holder-boks-vin": {
     title: "Papvin holdbarhed: uåbnet og åbnet",
@@ -28,7 +28,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Hvor længe holder papvin? Uåbnet 6–12 mdr., åbnet 4–6 uger i køleskab. Tabel for bag-in-box vs. flaske — og hvornår boks-vin smager bedst.",
   },
   "hvor-laenge-holder-uaabnet-vin": {
-    title: "Hvor længe holder uåbnet vin? (tabel)",
+    title: "Uåbnet vin: 1–5 år (tabel)",
     description:
       "Uåbnet hverdagsvin: drik inden for 1–5 år. Lagringsvine 10–50+ år. Tabel for rød, hvid, rosé og bobler — og hvornår flasken er for gammel.",
   },
@@ -38,7 +38,7 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Åbnet rødvin 3–5 dage, hvidvin 3–7 dage, bobler 1–3 dage. Vakuum, køl og genlukning forlænger. Tabel pr. vintype og hvornår du skal smide den.",
   },
   "hvor-meget-alkohol-i-vin": {
-    title: "Hvor meget alkohol er der i vin? (%)",
+    title: "11–15 % alkohol i vin (tabel)",
     description:
       "Vin er typisk 11–15 % alkohol. Hvidvin 10–13 %, rødvin 12–15 %, port 19–22 %. Tabel pr. vintype og hvad ABV betyder på etiketten.",
   },
@@ -90,9 +90,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 2 — GSC lav CTR (jun 2026)
   "bedste-alkoholfri-vin": {
-    title: "Bedste alkoholfri vin 2026 — top 10 i DK",
+    title: "Alkoholfri vin 0 % — bedst i test 2026",
     description:
-      "Bedste alkoholfri vin 0 %: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris, madparring og hvad du skal undgå.",
+      "Alkoholfri vin 0 % i DK: Leitz, French Bloom, Giesen, Torres, Noughty. Bobler, hvid, rosé og rød — pris, madparring og hvad du skal undgå.",
   },
   "bedste-alkoholfri-champagne": {
     title: "Alkoholfri champagne bedst i test 2026",
@@ -120,6 +120,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Alkoholfri vin til brunch: bobler & mimosa",
     description:
       "Alkoholfri brunch-vin 0 %: bobler, mimosa-alternativer og let hvid til æg, laks og avocado. Mærker og temperatur til weekend-bordet.",
+  },
+  "alkoholfri-mimosa": {
+    title: "Alkoholfri mimosa: opskrift 0 %",
+    description:
+      "Alkoholfri mimosa: 150 ml 0 %-bobler + 100 ml appelsin. Leitz, Torres og Noughty. Forhold, glas og brunch uden alkohol.",
   },
   "alkoholfri-vin-til-dry-january": {
     title: "Alkoholfri vin til Dry January 2026",
@@ -162,9 +167,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Leitz 0 %: sparkling riesling, still riesling, rosé og pinot. Pris i DK, madparring og hvorfor Leitz er benchmark — ikke saft.",
   },
   "alkoholfri-vin-i-netto-foetex": {
-    title: "Alkoholfri vin i Netto og Føtex",
+    title: "Alkoholfri vin i Netto, Rema og Føtex",
     description:
-      "Alkoholfri vin i Netto, Føtex og Bilka: Torres Natureo vs private label, hvad du skal undgå — og samme stil online på Vinbot.",
+      "Alkoholfri vin i Netto, Føtex, Bilka, Rema, Coop 365 og Kvickly: Torres vs private label — og samme stil online på Vinbot.",
   },
   "smager-alkoholfri-vin-godt": {
     title: "Smager alkoholfri vin godt? Ærligt svar",
@@ -292,9 +297,14 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Sådan bruger du Vivino smart: hvad ratings kan og ikke kan, og hvordan du tjekker pris i supermarkedet. Vinbot supplerer med madparring og guides.",
   },
   "hvor-mange-kalorier-i-vin": {
-    title: "Kalorier i vin: glas og flaske (tabel)",
+    title: "80–120 kcal i et glas vin",
     description:
-      "80–120 kcal per glas (12,5 cl), 600–700 per flaske tør vin. Tabel for hvidvin, rødvin, bobler og alkoholfri — hvad alkohol % gør med kalorierne.",
+      "80–120 kcal per glas (12,5 cl). Flaske tør hvidvin ca. 550–650 kcal, rødvin 630–700. Bobler og champagne i tabel — plus kcal per flaske.",
+  },
+  "hvor-mange-glas-i-en-flaske-vin": {
+    title: "5–6 glas i en flaske vin",
+    description:
+      "75 cl giver 5–6 glas (12,5–15 cl). Champagne: 7–8 glas à 10 cl. Tabel til middag, reception og bryllup.",
   },
   "bedste-hvidvin-under-200-kr": {
     title: "Bedste hvidvin under 200 kr i Danmark",
@@ -339,9 +349,19 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
 
   // Bølge 3 — GSC lav CTR (jun 2026)
   "vin-til-stegt-flaesk": {
-    title: "Vin til flæskesteg og persillesovs",
+    title: "Vin til stegt flæsk med persillesovs",
     description:
-      "Hvilken vin til flæskesteg? Grüner, riesling og gamay mod salt og fedme. Syre til persillesovs — undgå unge tanniner. Dansk parring til stegt flæsk.",
+      "Vin til stegt flæsk med persillesovs: grüner, riesling og gamay. Til jule-flæskesteg med brun sovs: se den dedikerede flæskesteg-guide.",
+  },
+  "vin-til-and": {
+    title: "Vin til and: pinot, gamay, rødkål",
+    description:
+      "Hvilken vin til and? Pinot noir, gamay og riesling til fed and og sur rødkål. Juleand, confit og temperatur — dansk parring.",
+  },
+  "vin-til-juleand": {
+    title: "Vin til juleand: pinot og rødkål",
+    description:
+      "Vin til juleand 24. december: pinot noir og gamay til rødkål og brunede kartofler. Forskellen fra hverdags-and.",
   },
   "vin-til-tarteletter": {
     title: "Vin til tarteletter med kylling",

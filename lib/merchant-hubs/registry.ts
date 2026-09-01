@@ -24,11 +24,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     displayName: "Den Sidste Flaske",
     feedMerchant: null,
     blurb: "Restpartier, daglige tilbud og sjældne flasker hos en af Danmarks stærkeste vinshops.",
-    title: "Den Sidste Flaske — vin tilbud og restpartier",
+    title: "Den Sidste Flaske (densidsteflaske) — vin tilbud",
     description:
-      "Den Sidste Flaske (densidsteflaske.dk): daglige tilbud, restpartier og sjældne flasker. Kuraterede anbefalinger og guides — klik videre til shoppen.",
+      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Kuraterede anbefalinger — klik videre til shoppen.",
     introParagraphs: [
-      "Den Sidste Flaske (densidsteflaske.dk) er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.",
+      "Den Sidste Flaske — også søgt som densidsteflaske — er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.",
       "Vinbot sælger ikke vin selv. Vi samler kuraterede forslag og guider, så du hurtigere finder den rigtige flaske — og linker tydeligt videre, når du vil handle hos Den Sidste Flaske.",
       "Sortimentet skifter ofte: restpartier, kampagner og limited editions betyder, at dagens tilbud kan være væk i morgen. Brug derfor altid densidsteflaske.dk som kilde til pris, lager og årgang.",
     ],
@@ -65,6 +65,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     faq: [
+      {
+        question: "Er densidsteflaske det samme som Den Sidste Flaske?",
+        answer:
+          "Ja. Densidsteflaske er shoppens domæne (densidsteflaske.dk) og den stavemåde mange søger. Den Sidste Flaske er det officielle navn. Vinbot linker videre til deres webshop — vi sælger ikke selv vin.",
+      },
       {
         question: "Hvad er Den Sidste Flaske?",
         answer:
@@ -863,9 +868,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     displayName: "Bottles With History",
     feedMerchant: "Bottles With History",
     blurb: "Vintage og ældre vine — flasker med historie.",
-    title: "Bottles With History — vintage vin | Vinbot",
+    title: "Bottles With History — vintage vin",
     description:
-      "Bottles With History: vintage og ældre vine i Vinbots Daisycon-feed. Se flasker med pris og klik videre til shoppen.",
+      "Bottles With History: vintage og ældre vine. Se flasker med pris på Vinbot og klik videre til shoppen.",
     introParagraphs: [
       "Bottles With History specialiserer sig i vintage og ældre vine — flasker der har ligget i årtier og fortæller en historie. Deres sortiment synkroniseres til Vinbot via Daisycon.",
       "Vinbot sælger ikke vin. På denne side får du intro og flaske-CTA’er fra feedet; shop-landing uden separat tracking-URL betyder, at de tracked køb primært sker via produktkortene.",
@@ -894,6 +899,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     faq: [
+      {
+        question: "Hvad er Bottles With History?",
+        answer:
+          "Bottles With History er en vinforhandler med vintage og ældre vine. På Vinbot kan du se flasker fra deres feed og klikke videre til shoppen.",
+      },
       {
         question: "Hvorfor linker Vinbot til Bottles With History?",
         answer:

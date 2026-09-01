@@ -265,6 +265,7 @@ const ALKOHOLFRI_HUB_SLUGS: readonly string[] = [
   "alkoholfri-vin-til-konfirmation",
   "alkoholfri-vin-til-grill",
   "alkoholfri-vin-til-brunch",
+  "alkoholfri-mimosa",
   "alkoholfri-vin-til-jul",
   "alkoholfri-vin-til-dry-january",
   "alkoholfri-vin-til-graviditet",

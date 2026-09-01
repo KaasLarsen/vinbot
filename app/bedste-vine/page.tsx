@@ -195,6 +195,7 @@ export default function BedsteVineHubPage() {
           <Link href="/guides/alkoholfri-vin-til-jul" className="hover:underline">Alkoholfri vin til jul</Link>
           <Link href="/guides/alkoholfri-vin-til-fest" className="hover:underline">Alkoholfri vin til fest</Link>
           <Link href="/guides/alkoholfri-vin-til-brunch" className="hover:underline">Alkoholfri vin til brunch</Link>
+          <Link href="/guides/alkoholfri-mimosa" className="hover:underline">Alkoholfri mimosa</Link>
           <Link href="/guides/alkoholfri-vin-til-dry-january" className="hover:underline">Alkoholfri vin til Dry January</Link>
           <Link href="/guides/alkoholfri-vin-til-graviditet" className="hover:underline">Alkoholfri under graviditet</Link>
           <Link href="/guides/hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin" className="hover:underline">Alkoholfri vs alkoholsvag</Link>

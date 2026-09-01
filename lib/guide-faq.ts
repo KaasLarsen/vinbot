@@ -1317,6 +1317,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — alsace pinot gris, moden chardonnay eller tør riesling matcher fedme og brun sovs, især med sur-sød rødkål. Champagne blanc de noirs er et festligt alternativ til forret.",
     },
   ],
+  "vin-til-and": [
+    {
+      question: "Hvilken vin til and?",
+      answer:
+        "Pinot noir, gamay (Beaujolais) eller tør riesling. Andens fedme og rødkål kræver syre og moderat tannin — undgå unge cabernet-bomber. Juleand 24. december har egen guide.",
+    },
+    {
+      question: "Hvilken vin til juleand?",
+      answer:
+        "Samme familie som hverdags-and, men med mere vægt på pinot og gamay til rødkål og brunede kartofler. Se vin til juleand for 24. december-tallerkenen.",
+    },
+    {
+      question: "Kan man drikke hvidvin til and?",
+      answer:
+        "Ja — tør eller halvtør riesling og pinot gris matcher fedme og sur-sødt tilbehør, især til confit eller and med appelsin. Rød pinot er stadig det klassiske valg til helstegt and.",
+    },
+  ],
   "amarone-vs-ripasso": [
     {
       question: "Hvad er forskellen på Amarone og Ripasso?",
@@ -2351,7 +2368,29 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — skruelåg er mere pålidelig end billig prop i denne pris. Risikoen for prop-smag (TCA) er stort set elimineret, og vinen kommer frisk ind i glasset. For hvidvin og rosé er skruelåg særligt anbefalet.",
     },
   ],
+  "alkoholfri-mimosa": [
+    {
+      question: "Hvordan laver man alkoholfri mimosa?",
+      answer:
+        "Hæld 100 ml kold friskpresset appelsinsaft i en flute og top med 150 ml alkoholfri sparkling (Leitz, Torres Natureo eller Noughty). Rør ikke. Forhold 2:1 bobler:juice smager tørrere.",
+    },
+    {
+      question: "Hvilken alkoholfri vin til mimosa?",
+      answer:
+        "Brug tør 0 % bobler — ikke stille hvid og ikke sød festdrik. Leitz Eins-Zwei-Zero Sparkling er det sikreste valg; Torres Natureo Sparkling er det almindelige supermarkedskøb.",
+    },
+    {
+      question: "Er alkoholfri mimosa helt uden alkohol?",
+      answer:
+        "Alkoholfri vin i EU må indeholde op til 0,5 % ABV. En mimosa fortyndes yderligere af juice. Gravide bør følge Sundhedsstyrelsen og vælge 0,0 % hvis det står på etiketten.",
+    },
+  ],
   "bedste-alkoholfri-vin": [
+    {
+      question: "Hvad er alkoholfri vin?",
+      answer:
+        "Alkoholfri vin er vin hvor alkoholen er fjernet efter gæring (typisk vakuum eller omvendt osmose). I EU må den hedde alkoholfri ved max 0,5 % ABV. Den bedste 0 % smager af syre og frugt — ikke af saft.",
+    },
     {
       question: "Smager alkoholfri vin som rigtig vin?",
       answer:
@@ -2520,9 +2559,14 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ca. 550–650 kcal per 75 cl tør hvidvin ved 12 % alkohol. Kraftig chardonnay ved 14 % kan nå 700+ kcal. Alkoholfri hvidvin typisk 120–240 kcal per flaske.",
     },
     {
-      question: "Hvor mange kalorier i en flaske rødvin?",
+      question: "Hvor mange kalorier er der i en flaske rødvin?",
       answer:
         "Ca. 600–750 kcal per 75 cl tør rødvin (12,5 %). Højere alkohol (14–15 %) og restsødme øger kalorierne — det er alkohol og sukker, ikke farven, der tæller.",
+    },
+    {
+      question: "Hvor mange kcal er der i et glas champagne?",
+      answer:
+        "Typisk 80–95 kcal for et glas brut champagne eller cava (ca. 10–12,5 cl ved 11–12 % alkohol). En hel flaske brut ligger omkring 550–600 kcal.",
     },
     {
       question: "Har rosé færre kalorier end rødvin?",
@@ -2869,6 +2913,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "En magnum (1,5 l) giver 10-12 glas — ideelt til 4-6 personer. Magnum modner også langsommere og bedre end standardflasker, fordi forholdet mellem luft og vin er lavere.",
     },
     {
+      question: "Hvor mange glas er der i en flaske champagne?",
+      answer:
+        "7–8 glas, fordi champagne skænkes i ca. 10 cl (flute) — samme 75 cl-flaske som stille vin, men mindre portion. Til 12 gæster: 2 flasker er stramt, 3 flasker er behageligt.",
+    },
+    {
       question: "Hvor mange glas vin til reception vs. middag?",
       answer:
         "Reception/velkomst: 10 cl per glas = 7–8 glas per flaske. Middag hovedret: 15 cl = 5 glas per flaske. Dessertvin: 7,5 cl = 10 glas per flaske.",
@@ -3122,9 +3171,9 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "hvor-laenge-holder-uaabnet-vin": [
     {
-      question: "Hvor længe kan uåbnet vin holde sig?",
+      question: "Hvor lang tid kan vin holde sig uåbnet?",
       answer:
-        "Hverdagsvin drikkes 1-5 år efter køb og bliver sjældent bedre med alderen. Kvalitetsvine som Rioja Reserva, Chianti Classico Riserva og Bordeaux Cru Bourgeois kan lagres 5-15 år. Top-Bordeaux, Barolo og Bourgogne Grand Cru kan lagre 15-50+ år. Rosé og prosecco bør drikkes inden for 1-2 år.",
+        "Hverdagsvin drikkes 1–5 år efter køb. Rosé og prosecco 1–2 år. Reserva-stil 5–15 år. Top-Bordeaux, Barolo og vintage champagne kan lagre 15–50+ år. Flasken bliver sjældent farlig — den mister frugt.",
     },
     {
       question: "Bliver uåbnet vin bedre med alderen?",
@@ -3572,6 +3621,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Er Netto alkoholfri vin god nok til fest?",
       answer:
         "Til lille selskab kan Natureo bobler + hvid fungere. Til større fest: køb mindst to stilarter, eller supplér online med Leitz. Se også guiden om alkoholfri vin til fest.",
+    },
+    {
+      question: "Findes der alkoholfri vin i Rema, Coop 365 og Kvickly?",
+      answer:
+        "Ja, men smallere end i Føtex. Rema og 365 er oftest kampagne og private label; Kvickly har oftere sparkling og rosé. Tjek producent. Samme flasker kan du sammenligne online på Vinbot.",
     },
   ],
   "smager-alkoholfri-vin-godt": [
