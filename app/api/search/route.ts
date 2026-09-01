@@ -7,9 +7,15 @@ export async function GET(req: NextRequest) {
   try {
     const qRaw = (req.nextUrl.searchParams.get("q") || "").trim();
     const maxParam = req.nextUrl.searchParams.get("max");
-    const budgetMaxParam = maxParam ? parseInt(maxParam, 10) : null;
+    const minParam = req.nextUrl.searchParams.get("min");
+    const budgetMaxParam = maxParam ? Number.parseFloat(maxParam) : null;
+    const budgetMinParam = minParam ? Number.parseFloat(minParam) : null;
 
-    const result = await runSearch(qRaw, Number.isFinite(budgetMaxParam) ? budgetMaxParam : null);
+    const result = await runSearch(
+      qRaw,
+      Number.isFinite(budgetMaxParam) ? budgetMaxParam : null,
+      Number.isFinite(budgetMinParam) ? budgetMinParam : null,
+    );
     return NextResponse.json(result);
   } catch (e) {
     console.error("[search] fatal:", e);

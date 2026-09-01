@@ -74,8 +74,10 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("portvin", "port", "sauternes", "moscato", "dessertvin", "late harvest");
   }
 
-  if (/(pizza|pasta|bolognese|carbonara|lasagne)/.test(txt)) {
-    add("chianti", "sangiovese", "barbera", "primitivo", "nebbiolo", "montepulciano");
+  if (/(flødesovs|floedesovs|flødepasta|floedepasta|carbonara|alfredo)/.test(txt)) {
+    add("chardonnay", "pinot noir", "soave", "pinot grigio", "barbera", "hvidvin");
+  } else if (/(pizza|pasta|bolognese|lasagne)/.test(txt)) {
+    add("chianti", "sangiovese", "barbera", "primitivo", "nebbiolo", "montepulciano", "garnacha", "grenache");
   }
 
   if (/(grill|bbq|barbecue|pølser|pølse|grillkød)/.test(txt)) {

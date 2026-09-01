@@ -99,9 +99,10 @@ async function runMerchantBrowse(
   budgetMaxParam: number | null,
   merchant: string,
   remainingQuery: string,
+  budgetMinParam: number | null = null,
 ): Promise<SearchResult> {
   const feed = FEEDS.find((f) => f.merchant === merchant);
-  const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
+  const priceFilter = parsePriceFilter(qRaw, budgetMaxParam, budgetMinParam);
   const priceMin = priceFilter.min;
   const priceMax = priceFilter.max;
   const tier = feed ? feedTier(feed) : null;
@@ -194,8 +195,12 @@ async function runMerchantBrowse(
   return { source: "fallback", products: [], meta };
 }
 
-async function runGtinSearch(barcode: string, budgetMaxParam: number | null): Promise<SearchResult> {
-  const priceFilter = parsePriceFilter("", budgetMaxParam);
+async function runGtinSearch(
+  barcode: string,
+  budgetMaxParam: number | null,
+  budgetMinParam: number | null = null,
+): Promise<SearchResult> {
+  const priceFilter = parsePriceFilter("", budgetMaxParam, budgetMinParam);
   const priceMin = priceFilter.min;
   const priceMax = priceFilter.max;
   let feeds_ok = 0;
@@ -253,18 +258,28 @@ async function runGtinSearch(barcode: string, budgetMaxParam: number | null): Pr
   return { source: "fallback", products: [], meta };
 }
 
-export async function runSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
+export async function runSearch(
+  qRaw: string,
+  budgetMaxParam: number | null,
+  budgetMinParam: number | null = null,
+): Promise<SearchResult> {
   const barcode = parseBarcodeQuery(qRaw);
   if (barcode) {
-    return runGtinSearch(barcode, budgetMaxParam);
+    return runGtinSearch(barcode, budgetMaxParam, budgetMinParam);
   }
 
   const merchantIntent = detectMerchantIntent(qRaw);
   if (merchantIntent) {
-    return runMerchantBrowse(qRaw, budgetMaxParam, merchantIntent.merchant, merchantIntent.remainingQuery);
+    return runMerchantBrowse(
+      qRaw,
+      budgetMaxParam,
+      merchantIntent.merchant,
+      merchantIntent.remainingQuery,
+      budgetMinParam,
+    );
   }
 
-  const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
+  const priceFilter = parsePriceFilter(qRaw, budgetMaxParam, budgetMinParam);
   const priceMin = priceFilter.min;
   const priceMax = priceFilter.max;
 

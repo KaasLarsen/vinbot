@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FoodWinePicker } from "@/components/food-wine-picker";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
@@ -56,7 +57,12 @@ export default function MadOgVinHubPage() {
         <strong className="font-medium text-stone-800">Søg nedenfor</strong> eller vælg kategori — så finder du hurtigere frem, når listen vokser.
         Brug også søgningen på forsiden til konkrete flasker med pris og billede.
       </p>
-      <p className="mt-3 text-sm text-stone-600">
+      <FoodWinePicker
+        className="mt-8 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
+        heading="Find vin til aftensmaden"
+      />
+
+      <p className="mt-8 text-sm text-stone-600">
         Startklassikere:{" "}
         <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
           den komplette mad-guide

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
@@ -42,6 +43,10 @@ export default function HomePage() {
         <p className="mt-3 max-w-lg text-base leading-relaxed text-stone-700 sm:max-w-xl">
           Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
         </p>
+
+        <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:max-w-4xl sm:p-5">
+          <FoodWinePicker />
+        </div>
 
         <div className="mt-5 sm:mt-6">
           <HomeWineSearch

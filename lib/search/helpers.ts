@@ -6,7 +6,11 @@ import { intentTermsFromQuery } from "./intents";
 export const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 
-export function parsePriceFilter(qRaw: string, budgetMaxParam: number | null): { min: number | null; max: number | null } {
+export function parsePriceFilter(
+  qRaw: string,
+  budgetMaxParam: number | null,
+  budgetMinParam: number | null = null,
+): { min: number | null; max: number | null } {
   const txt = (qRaw || "").toLowerCase();
 
   let min: number | null = null;
@@ -44,6 +48,10 @@ export function parsePriceFilter(qRaw: string, budgetMaxParam: number | null): {
 
   if (budgetMaxParam != null) {
     if (max == null || budgetMaxParam < max) max = budgetMaxParam;
+  }
+
+  if (budgetMinParam != null) {
+    if (min == null || budgetMinParam > min) min = budgetMinParam;
   }
 
   if (max == null && /billig|budget/.test(txt)) max = 100;
