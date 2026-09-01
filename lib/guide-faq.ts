@@ -141,6 +141,159 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Fra stuetemperatur: 3–4 timer. Isspand med vand og salt: omkring 10 minutter. Fryser kun i nød, max 15 minutter.",
     },
   ],
+  "billig-prosecco": [
+    {
+      question: "Hvad koster billig prosecco i Danmark?",
+      answer:
+        "Solide DOC-flasker ligger typisk 70–99 kr. Under 70 kr uden DOC er ofte anonym bulk. DOCG Valdobbiadene koster oftere 90–140 kr.",
+    },
+    {
+      question: "Er Extra Dry tørrere end Brut?",
+      answer:
+        "Nej. Extra Dry har mere sukker (ca. 12–17 g/l) end Brut. Extra Dry er den almindelige «billige prosecco»-stil til spritz.",
+    },
+    {
+      question: "Kan billig prosecco erstatte champagne?",
+      answer:
+        "Til spritz og mimosa: ja. Til østers, ost og skål hvor du vil have brød og tørhed: vælg crémant eller cava brut.",
+    },
+  ],
+  "hvad-vejer-en-flaske-vin": [
+    {
+      question: "Hvad vejer en flaske vin?",
+      answer:
+        "En fyldt 75 cl-flaske vejer typisk omkring 1,2 kg: 750 g vin plus 400–600 g glas. Tunge prestige-flasker kan veje over 1,4 kg.",
+    },
+    {
+      question: "Hvor meget vejer vinen uden flaske?",
+      answer:
+        "75 cl vin vejer ca. 750 g — næsten som vand. Forskellen mellem flasker er næsten kun glasmassen.",
+    },
+    {
+      question: "Hvad vejer en magnum?",
+      answer:
+        "Fyldt magnum (1,5 L) ligger ofte 2,3–2,8 kg. Champagneflasker er tykkere og tungere end stille vin.",
+    },
+  ],
+  "prosecco-alkoholprocent": [
+    {
+      question: "Hvor mange procent alkohol er der i prosecco?",
+      answer:
+        "Typisk 11–11,5 % vol. Extra Dry og Brut har samme alkohol; Extra Dry er sødere. En flaske er ca. 5,4 genstande.",
+    },
+    {
+      question: "Har prosecco mindre alkohol end champagne?",
+      answer:
+        "Ja, oftest. Champagne ligger omkring 12–12,5 %. Forskellen er lille pr. flute, men mærkbar over en aften.",
+    },
+    {
+      question: "Hvor mange genstande er et glas prosecco?",
+      answer:
+        "Et 10 cl-glas ved 11 % er ca. 0,7 genstand. Spritz med soda er lavere pr. glas.",
+    },
+  ],
+  "champagne-alkoholprocent": [
+    {
+      question: "Hvor mange procent alkohol er der i champagne?",
+      answer:
+        "Typisk 12–12,5 % vol. Brut og rosé ligger i samme bånd. Et 10 cl-flute er ca. 0,8 genstand.",
+    },
+    {
+      question: "Er demi-sec stærkere end brut?",
+      answer:
+        "Nej — demi-sec har mere sukker, ikke nødvendigvis mere alkohol. Tjek % vol. på etiketten.",
+    },
+    {
+      question: "Hvor mange genstande i en flaske champagne?",
+      answer:
+        "En 75 cl ved 12,5 % er ca. 6,2 genstande. 7–8 glas à 10 cl betyder mindre alkohol pr. skål end et stort rødvinsglas.",
+    },
+  ],
+  "portvin-alkoholprocent": [
+    {
+      question: "Hvor mange procent er der i portvin?",
+      answer:
+        "Typisk 19–22 % vol., fordi gæringen stoppes med druebrændevin. Derfor små glas på 6–10 cl.",
+    },
+    {
+      question: "Er portvin stærkere end rødvin?",
+      answer:
+        "Ja. Almindelig rød er 12–14,5 %. 10 cl port ved 20 % er ca. 1,3 genstand — mere end et standardglas hvidvin.",
+    },
+    {
+      question: "Har tawny og ruby samme alkohol?",
+      answer:
+        "Cirka. Begge ligger omkring 19–20 %. Vintage kan ramme op mod 22 %. Forskellen er lagring og stil, ikke primært ABV.",
+    },
+  ],
+  "cremant-vs-champagne": [
+    {
+      question: "Hvad er forskellen på crémant og champagne?",
+      answer:
+        "Samme metode (flaskegæring), anden appellation. Champagne kommer kun fra Champagne. Crémant laves i Alsace, Bourgogne, Loire m.fl. og koster oftest mindre.",
+    },
+    {
+      question: "Er crémant lige så god som champagne?",
+      answer:
+        "En god crémant slår ofte billig champagne. Vintage og grower-champagne har en dybde crémant sjældent rammer. Du betaler også for navn.",
+    },
+    {
+      question: "Skal jeg købe crémant eller prosecco?",
+      answer:
+        "Crémant til mad, ost og skål (tør, brød). Prosecco til spritz og mimosa (frugt, ofte Extra Dry).",
+    },
+  ],
+  "vin-til-osso-buco": [
+    {
+      question: "Hvilken vin til osso buco?",
+      answer:
+        "Barbera, Chianti Classico eller Valpolicella Ripasso. Syre til tomat og gremolata, saft til marv. Undgå ung cabernet.",
+    },
+    {
+      question: "Kan man drikke hvidvin til osso buco?",
+      answer:
+        "Ja, hvis saucen er lys (safran, risotto milanese): Soave eller Gavi. Klassisk rød tomat-osso buco vil have rød italiensk vin.",
+    },
+    {
+      question: "Skal vinen i gryden være den samme som i glasset?",
+      answer:
+        "Brug tør hvid eller billig barbera i gryden. I glasset kan du gå et trin op i kvalitet — ikke Amarone i begge.",
+    },
+  ],
+  "alkoholfri-asti": [
+    {
+      question: "Findes der alkoholfri Asti?",
+      answer:
+        "Der findes 0 % mousserende i Moscato/Asti-stil, men sortimentet i DK skifter. Tjek 0,0/0,5 % og om det er vin eller aromatiseret drik.",
+    },
+    {
+      question: "Er alkoholfri Asti det samme som Leitz sparkling?",
+      answer:
+        "Nej. Leitz er tør 0 %. Asti-stil er sød og duftende. Brug tør 0 % til skål, sød 0 % til kage.",
+    },
+    {
+      question: "Kan jeg bruge alkoholfri Asti i mimosa?",
+      answer:
+        "Du kan, men saft + sød 0 % bliver meget sødt. Til mimosa er tør alkoholfri sparkling bedre.",
+    },
+  ],
+  "soede-bobler": [
+    {
+      question: "Hvad er søde bobler?",
+      answer:
+        "Mousserende med tydeligt restsukker: Moscato d'Asti, prosecco Extra Dry/Dry, champagne demi-sec, lambrusco dolce. Extra Dry er sødere end Brut.",
+    },
+    {
+      question: "Hvilke søde bobler til kransekage?",
+      answer:
+        "Demi-sec champagne, Asti eller Extra Dry prosecco. Knastør brut taber til marcipanen.",
+    },
+    {
+      question: "Er søde bobler til aperitif?",
+      answer:
+        "Sjældent til chips og ost. Extra Dry prosecco går til brunch og spritz. Til tapas: brut.",
+    },
+  ],
   "orangevin-for-begyndere": [
     {
       question: "Hvad er orangevin for begyndere?",

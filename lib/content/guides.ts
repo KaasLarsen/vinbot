@@ -60,6 +60,11 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "hvilken-vin-til-madlavning-sovs",
   "rosevin-alkoholprocent",
   "champagne-serveringstemperatur",
+  "hvad-vejer-en-flaske-vin",
+  "prosecco-alkoholprocent",
+  "champagne-alkoholprocent",
+  "portvin-alkoholprocent",
+  "cremant-vs-champagne",
 ]);
 
 function isVidenGuide(slug: string): boolean {
@@ -268,6 +273,7 @@ const ALKOHOLFRI_HUB_SLUGS: readonly string[] = [
   "alkoholfri-vin-til-grill",
   "alkoholfri-vin-til-brunch",
   "alkoholfri-mimosa",
+  "alkoholfri-asti",
   "alkoholfri-vin-til-jul",
   "alkoholfri-vin-til-dry-january",
   "alkoholfri-vin-til-graviditet",

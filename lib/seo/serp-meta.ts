@@ -654,6 +654,51 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Champagne serveringstemperatur 8–10 °C. Cava og prosecco 6–9 °C. For koldt slår duften ihjel — tabel og køleskab.",
   },
+  "billig-prosecco": {
+    title: "Billig prosecco under 100 kr",
+    description:
+      "Billig prosecco: Extra Dry vs Brut, DOC vs DOCG. Til spritz og mimosa — ikke champagne. Faldgruber under 70 kr.",
+  },
+  "hvad-vejer-en-flaske-vin": {
+    title: "En flaske vin vejer ca. 1,2 kg",
+    description:
+      "Fyldt 75 cl-flaske: typisk 1,15–1,35 kg. 750 g vin + glas. Magnum, halvflaske og flybagage i tabel.",
+  },
+  "prosecco-alkoholprocent": {
+    title: "Prosecco: 11–11,5 % alkohol",
+    description:
+      "Prosecco alkoholprocent er oftest 11–11,5 % vol. Brut og Extra Dry har samme ABV — forskellen er sukker. Genstande pr. glas.",
+  },
+  "champagne-alkoholprocent": {
+    title: "Champagne: 12–12,5 % alkohol",
+    description:
+      "Champagne alkoholprocent er typisk 12–12,5 % vol. Flute, flaske og forskel på prosecco og crémant.",
+  },
+  "portvin-alkoholprocent": {
+    title: "Portvin: 19–22 % alkohol",
+    description:
+      "Portvin er fortificeret: 19–22 % vol. Ruby, tawny og vintage i tabel — derfor små glas og flere genstande.",
+  },
+  "cremant-vs-champagne": {
+    title: "Crémant vs champagne — forskellen",
+    description:
+      "Samme metode, anden appellation. Crémant er ofte det klogeste køb under champagne-pris. Druer, sødme og hvornår du vælger hvad.",
+  },
+  "vin-til-osso-buco": {
+    title: "Vin til osso buco: barbera og chianti",
+    description:
+      "Hvilken vin til osso buco? Barbera, Chianti og Ripasso til kalveskank, tomat og gremolata. Undgå ung cabernet.",
+  },
+  "alkoholfri-asti": {
+    title: "Alkoholfri Asti og sød 0 % boble",
+    description:
+      "Alkoholfri Asti: sød 0 %-mousserende vs tør Leitz. Til kage og brunch — ikke til østers. Hvad du skal læse på etiketten.",
+  },
+  "soede-bobler": {
+    title: "Søde bobler: Extra Dry, Asti, demi-sec",
+    description:
+      "Søde bobler til kransekage og brunch: Extra Dry prosecco, Moscato d'Asti, demi-sec. Extra Dry er sødere end Brut.",
+  },
 };
 
 /** Opskrift → målrettet SERP (GSC striking distance, jul 2026). */

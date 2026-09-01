@@ -29,6 +29,7 @@ const OCCASION: GuideClusterLink[] = [
   { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
   { slug: "alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" },
   { slug: "alkoholfri-mimosa", label: "Alkoholfri mimosa" },
+  { slug: "alkoholfri-asti", label: "Alkoholfri Asti" },
   { slug: "alkoholfri-vin-til-dry-january", label: "Alkoholfri vin til Dry January" },
   { slug: "alkoholfri-vin-til-graviditet", label: "Alkoholfri vin under graviditet" },
 ];
@@ -400,6 +401,15 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" }],
     [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
     [{ slug: "bobler-til-brunch", label: "Bobler til brunch (med alkohol)" }],
+  ),
+  "alkoholfri-asti": alkoholfriBlock(
+    ["alkoholfri-asti"],
+    "Sød 0 % og alkoholfri Asti",
+    "Moscato-stil uden alkohol — til kage, ikke til østers.",
+    [HUB],
+    [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
+    [{ slug: "alkoholfri-mimosa", label: "Alkoholfri mimosa" }],
+    [{ slug: "soede-bobler", label: "Søde bobler (med alkohol)" }],
   ),
   "alkoholfri-vin-til-dry-january": alkoholfriBlock(
     ["alkoholfri-vin-til-dry-january"],

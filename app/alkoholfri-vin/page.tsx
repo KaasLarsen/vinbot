@@ -201,6 +201,10 @@ export default function AlkoholfriVinHubPage() {
               <Link href="/guides/alkoholfri-mimosa" className="text-rose-900 hover:underline">
                 mimosa 0 %
               </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-asti" className="text-rose-900 hover:underline">
+                Asti 0 %
+              </Link>
             </li>
             <li>
               <Link href="/guides/alkoholfri-vin-til-jul" className="text-rose-900 hover:underline">
