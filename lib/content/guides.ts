@@ -58,6 +58,8 @@ const VIDEN_SLUG_PREFIXES: readonly string[] = [
 const VIDEN_EXTRA_SLUGS = new Set<string>([
   "kan-vin-blive-daarlig",
   "hvilken-vin-til-madlavning-sovs",
+  "rosevin-alkoholprocent",
+  "champagne-serveringstemperatur",
 ]);
 
 function isVidenGuide(slug: string): boolean {

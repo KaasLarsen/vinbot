@@ -22,6 +22,125 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis reglerne tillader det — god inklusion. Vælg kvalitets-alkoholfri bobler eller hvid med syre, så gaven stadig føles festlig. Se guiden om alkoholfri vin til fest.",
     },
   ],
+  "rosevin-med-bobler": [
+    {
+      question: "Hvad er forskellen på frizzante og mousserende rosé?",
+      answer:
+        "Frizzante har lavt tryk og let perlage — nem til terrasse. Mousserende (cava, crémant, champagne, prosecco spumante) har fuld mousse og egner sig bedre til skål og mad med fedme.",
+    },
+    {
+      question: "Hvilken rosévin med bobler til brunch?",
+      answer:
+        "Prosecco rosé extra dry eller let frizzante. Til mimosa uden alkohol: 0 % sparkling, ikke sød festdrik. Se også alkoholfri mimosa.",
+    },
+    {
+      question: "Er cava rosado tørrere end prosecco rosé?",
+      answer:
+        "Ofte ja, især i brut. Prosecco extra dry har mere restsødme. Tjek brut vs extra dry på etiketten.",
+    },
+  ],
+  "bedste-cremant": [
+    {
+      question: "Hvad er den bedste crémant til prisen?",
+      answer:
+        "Crémant d'Alsace brut er ofte bedst pr. krone i Danmark: høj syre, tør, 120–180 kr. Crémant de Bourgogne er tættest på champagne, typisk lidt dyrere.",
+    },
+    {
+      question: "Er crémant det samme som champagne?",
+      answer:
+        "Samme metode (anden gæring på flaske), anden appellation. Champagne kommer kun fra Champagne. Crémant er det fornuftige valg under champagne-pris.",
+    },
+    {
+      question: "Hvad koster god crémant i Danmark?",
+      answer:
+        "Solide flasker ligger typisk 120–220 kr. Under 100 kr er du oftere i cava/prosecco. Sammenlign samme navn på Vinbot.",
+    },
+  ],
+  "vin-til-tomatsuppe": [
+    {
+      question: "Hvilken vin til tomatsuppe?",
+      answer:
+        "Chianti, barbera eller tør rosé — vin med syre der matcher tomaten. Undgå fad-chardonnay og ung cabernet.",
+    },
+    {
+      question: "Kan man drikke hvidvin til tomatsuppe?",
+      answer:
+        "Ja, hvis suppen er lys, urtet eller cremet: vermentino, grüner eller pinot grigio med syre. Kraftig rød tomat vil oftere have rød sangiovese.",
+    },
+    {
+      question: "Hvilken vin til tomatsuppe med fløde?",
+      answer:
+        "Barbera eller chardonnay uden tung fad. Fløden dæmper syren, så vinen skal stadig have bid.",
+    },
+  ],
+  "vin-til-lys-fisk": [
+    {
+      question: "Hvilken vin til lys fisk?",
+      answer:
+        "Muscadet, chablis, albariño eller picpoul. Høj syre og mineralitet — ikke egefad. Laks og tun er federe og har egne guides.",
+    },
+    {
+      question: "Kan man drikke rødvin til torsk?",
+      answer:
+        "Sjældent. Kun let, kølig gamay eller pinot til kraftigt stegt fisk med bacon. Pocheret og dampet: hvidvin.",
+    },
+    {
+      question: "Hvilken vin til rødspætte eller pighvar?",
+      answer:
+        "Samme logik som torsk: muscadet, chablis eller albariño. Sauce (smør vs. citron) styrer om du går op i krop.",
+    },
+  ],
+  "rosevin-alkoholprocent": [
+    {
+      question: "Hvor mange procent alkohol er der i rosévin?",
+      answer:
+        "Typisk 11–13 % vol. Provence oftest 12–13 %. Sødere stile kan ligge lavere i alkohol men højere i sukker. Tjek % vol. på etiketten.",
+    },
+    {
+      question: "Har rosé mindre alkohol end rødvin?",
+      answer:
+        "Ofte lidt mindre end kraftig rød (14–15 %), men tæt på tør hvid. Et stort glas rosé ved 13 % er stadig omkring 1,2–1,5 genstand.",
+    },
+    {
+      question: "Hvor mange procent har mousserende rosé?",
+      answer:
+        "Brut cava, crémant og champagne rosé ligger typisk 11–12,5 % — samme bånd som stille tør rosé.",
+    },
+  ],
+  "vin-til-efteraar": [
+    {
+      question: "Hvilken vin skal man drikke om efteråret?",
+      answer:
+        "Kølig saftig rød (pinot, gamay, chianti) til hverdag, syrah eller rioja til gryde, tør riesling til kål og æble. Ikke automatisk tung cabernet fordi det er koldt.",
+    },
+    {
+      question: "Hvilken vin til svampe om efteråret?",
+      answer:
+        "Pinot noir, chardonnay med syre eller nebbiolo i lettere stil. Tanninbombe og sød rød skærer.",
+    },
+    {
+      question: "Hvilken vin til Mortensaften?",
+      answer:
+        "Pinot, cru beaujolais eller tør riesling til and og gås. Se den dedikerede Mortensaften-guide.",
+    },
+  ],
+  "champagne-serveringstemperatur": [
+    {
+      question: "Hvilken temperatur skal champagne have?",
+      answer:
+        "8–10 °C. Tag den ud af køleskabet 10–15 minutter før skål, hvis den har ligget koldt natten over.",
+    },
+    {
+      question: "Må champagne være iskold?",
+      answer:
+        "Gerne kold, ikke frossen. Under ca. 6 °C forsvinder duften. Prosecco kan tåle lidt koldere (6–9 °C) end vintage champagne.",
+    },
+    {
+      question: "Hvor længe skal champagne i køleskab?",
+      answer:
+        "Fra stuetemperatur: 3–4 timer. Isspand med vand og salt: omkring 10 minutter. Fryser kun i nød, max 15 minutter.",
+    },
+  ],
   "orangevin-for-begyndere": [
     {
       question: "Hvad er orangevin for begyndere?",

@@ -106,6 +106,7 @@ export default function SaesonHubPage() {
           <h3 className="text-lg font-semibold text-stone-900">Efterår (september-november)</h3>
           <p className="mt-2 text-sm text-stone-700">
             Mortensaften, vildt, svampe, og overgangen til kraftigere rødvine. Moden pinot noir, syrah, nebbiolo og sangiovese passer til kraftigere retter. Læs om{" "}
+            <Link href="/guides/vin-til-efteraar" className="text-rose-900 hover:underline">vin til efterår</Link>,{" "}
             <Link href="/guides/vin-til-mortensaften" className="text-rose-900 hover:underline">Mortensaften</Link>,{" "}
             <Link href="/guides/vin-til-vildt" className="text-rose-900 hover:underline">vildt</Link>,{" "}
             <Link href="/guides/vin-til-and" className="text-rose-900 hover:underline">and</Link> og{" "}

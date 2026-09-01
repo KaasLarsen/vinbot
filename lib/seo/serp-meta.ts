@@ -619,6 +619,41 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til gullasch/gulasch: gamay, tempranillo eller ung syrah til paprika og rødvin i gryden. Samme flaske i sauce og glas — dansk guide.",
   },
+  "rosevin-med-bobler": {
+    title: "Rosévin med bobler: frizzante og cava",
+    description:
+      "Rosévin med bobler: frizzante, prosecco rosé, cava og crémant. Hvornår du vælger let perlage vs rigtig mousse — og hvad du drikker den til.",
+  },
+  "bedste-cremant": {
+    title: "Bedste crémant til prisen 2026",
+    description:
+      "Bedste crémant til prisen: Alsace, Bourgogne og Loire. Traditionel metode uden champagne-pris — brut til aperitif, fisk og fest.",
+  },
+  "vin-til-tomatsuppe": {
+    title: "Vin til tomatsuppe: chianti og barbera",
+    description:
+      "Hvilken vin til tomatsuppe? Sangiovese, barbera og tør rosé til syre og umami. Fløde, chili og croutoner — hvad der skærer.",
+  },
+  "vin-til-lys-fisk": {
+    title: "Vin til lys fisk: muscadet og chablis",
+    description:
+      "Vin til lys fisk: muscadet, chablis og albariño til torsk og rødspætte. Sauce og pande — uden fad-chardonnay der overdøver.",
+  },
+  "rosevin-alkoholprocent": {
+    title: "Rosévin alkoholprocent: 11–13 %",
+    description:
+      "Rosévin er typisk 11–13 % alkohol. Provence, sød rosé og bobler i tabel — hvad % vol. betyder for genstande og kalorier.",
+  },
+  "vin-til-efteraar": {
+    title: "Vin til efterår: svampe, gryde og vildt",
+    description:
+      "Vin til efterår i DK: pinot og gamay til svampe, syrah til gryde, riesling til æble. Inspiration september–november.",
+  },
+  "champagne-serveringstemperatur": {
+    title: "Champagne: 8–10 °C i glasset",
+    description:
+      "Champagne serveringstemperatur 8–10 °C. Cava og prosecco 6–9 °C. For koldt slår duften ihjel — tabel og køleskab.",
+  },
 };
 
 /** Opskrift → målrettet SERP (GSC striking distance, jul 2026). */
