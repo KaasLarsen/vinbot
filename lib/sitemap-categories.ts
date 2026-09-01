@@ -1,4 +1,4 @@
-import { listGuides, isThinGuide, type GuideFrontmatter } from "@/lib/content/guides";
+import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
 import { matchDrueRegionSlug } from "@/lib/guide-intent";
 
 export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
@@ -101,7 +101,7 @@ export function guidesByCategory(cat: GuideCategory): GuideFrontmatter[] {
   return listGuides().filter((g) => classifyGuide(g.slug) === cat);
 }
 
-/** Guides i en kategori som også er indexerbare (ikke tynde). Brugt af sitemap-routerne. */
+/** Guides i en kategori. Brugt af sitemap-routerne. */
 export function indexableGuidesByCategory(cat: GuideCategory): GuideFrontmatter[] {
-  return guidesByCategory(cat).filter((g) => !isThinGuide(g.slug));
+  return guidesByCategory(cat);
 }

@@ -4,7 +4,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { filterIndexableGuides, listSaesonHubGuides } from "@/lib/content/guides";
+import { listSaesonHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function SaesonHubPage() {
-  const guides = filterIndexableGuides(listSaesonHubGuides());
+  const guides = listSaesonHubGuides();
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,

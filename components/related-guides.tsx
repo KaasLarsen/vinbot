@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { listGuides, isThinGuide } from "@/lib/content/guides";
+import { listGuides } from "@/lib/content/guides";
 
 export function RelatedGuides({ tags, excludeSlug }: { tags: string[]; excludeSlug: string }) {
-  const all = listGuides().filter((g) => g.slug !== excludeSlug && !isThinGuide(g.slug));
+  const all = listGuides().filter((g) => g.slug !== excludeSlug);
   const tagSet = new Set(tags.map((t) => t.toLowerCase()));
   const scored = all
     .map((g) => ({

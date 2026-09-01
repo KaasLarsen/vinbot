@@ -1,4 +1,4 @@
-import { filterIndexableGuides, listGuides } from "@/lib/content/guides";
+import { listGuides } from "@/lib/content/guides";
 import { getAllRecipes } from "@/lib/content/recipes";
 import { guideMatchesSearch } from "@/lib/guide-browse";
 
@@ -122,7 +122,7 @@ export function searchNavSuggestions(q: string, mode: "vin" | "guides", limit = 
     }
   }
 
-  for (const g of filterIndexableGuides(listGuides())) {
+  for (const g of listGuides()) {
     const s = guideScore(g.slug, g.title, g.description, g.tags || [], g.updated, trimmed, mode);
     if (s > 0) {
       out.push({

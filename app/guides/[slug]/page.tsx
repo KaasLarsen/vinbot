@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getGuide, getGuideSlugs } from "@/lib/content/guides";
-import { MIN_INDEXABLE_WORDS, MIN_WORDS_FOR_FALLBACK_FAQ } from "@/lib/content/thresholds";
+import { MIN_WORDS_FOR_FALLBACK_FAQ } from "@/lib/content/thresholds";
 import { guidePublicationAndModified } from "@/lib/guide-dates";
 import { siteUrl } from "@/lib/site";
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from "@/components/json-ld";
@@ -45,7 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const g = await getGuide(slug);
   if (!g) return {};
   const canonical = `${siteUrl}/guides/${slug}`;
-  const tooThin = g.wordCount < MIN_INDEXABLE_WORDS;
   const serpTitle = buildGuideSerpTitle(g.frontmatter.title, slug);
   const serpDescription = buildGuideSerpDescription(g.frontmatter.description, slug, g.frontmatter.title);
   const ogImageUrl = `${canonical}/opengraph-image`;
@@ -64,15 +63,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       images: [ogImageUrl],
     },
-    ...(tooThin
-      ? {
-          robots: {
-            index: false,
-            follow: true,
-            googleBot: { index: false, follow: true },
-          },
-        }
-      : {}),
   };
 }
 

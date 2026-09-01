@@ -5,7 +5,7 @@ import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
-import { filterIndexableGuides, listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
+import { listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 };
 
 export default function MadOgVinHubPage() {
-  const raw = filterIndexableGuides(listMadOgVinHubGuides());
-  const guides = raw.length ? raw : filterIndexableGuides(listGuides()).slice(0, 8);
+  const raw = listMadOgVinHubGuides();
+  const guides = raw.length ? raw : listGuides().slice(0, 8);
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,
