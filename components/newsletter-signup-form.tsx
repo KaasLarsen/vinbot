@@ -76,50 +76,45 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
 
   const isFooter = variant === "footer";
 
-  return (
-    <form onSubmit={handleSubmit} className={`flex flex-col gap-3 ${className}`}>
-      {!isFooter ? (
-        <div>
-          <p className="text-base font-semibold text-stone-900">Tilmeld nyhedsbrev</p>
-          <p className="mt-1 text-sm text-stone-600">
-            Få gode tilbud direkte i din mailbox — plus nyheder og tips fra Vinbot.
-          </p>
-        </div>
-      ) : (
-        <>
-          <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Nyhedsbrev</p>
-          <p className="text-sm text-stone-600">
-            Få gode tilbud i din mailbox — plus nyheder og tips.
-          </p>
-        </>
-      )}
-
+  const fields = (
+    <>
       <label htmlFor={emailId} className="sr-only">
         E-mail
       </label>
-      <input
-        id={emailId}
-        type="email"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className={inputClassName}
-        placeholder="din@email.dk"
-        autoComplete="email"
-        required
-      />
+      <div className={isFooter ? "contents" : "flex flex-col gap-3 sm:flex-row sm:items-stretch"}>
+        <input
+          id={emailId}
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className={isFooter ? inputClassName : `${inputClassName} sm:min-w-0 sm:flex-1`}
+          placeholder="din@email.dk"
+          autoComplete="email"
+          required
+        />
+        {!isFooter ? (
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="shrink-0 rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {status === "submitting" ? "Tilmelder…" : "Tilmeld nyhedsbrev"}
+          </button>
+        ) : null}
+      </div>
 
-      <label htmlFor={consentId} className="inline-flex items-start gap-2.5 text-xs leading-snug text-stone-600">
+      <label htmlFor={consentId} className="flex min-w-0 items-start gap-2.5 text-xs leading-snug text-stone-600">
         <input
           id={consentId}
           type="checkbox"
           name="consent"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 accent-rose-900"
+          className="mt-0.5 size-4 shrink-0 accent-rose-900"
           required
         />
-        <span>
+        <span className="min-w-0">
           Jeg samtykker til at Vinbot sender mig nyhedsbrev med tilbud og nyheder. Jeg kan afmelde mig når som helst. Se{" "}
           <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
             privatlivspolitik
@@ -134,13 +129,42 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
         </p>
       ) : null}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {status === "submitting" ? "Tilmelder…" : "Tilmeld nyhedsbrev"}
-      </button>
+      {isFooter ? (
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === "submitting" ? "Tilmelder…" : "Tilmeld nyhedsbrev"}
+        </button>
+      ) : null}
+    </>
+  );
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className={`${isFooter ? "flex flex-col gap-3" : "grid gap-4 md:grid-cols-2 md:items-center md:gap-8"} ${className}`}
+    >
+      {isFooter ? (
+        <>
+          <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Nyhedsbrev</p>
+          <p className="text-sm text-stone-600">
+            Få gode tilbud i din mailbox — plus nyheder og tips.
+          </p>
+          {fields}
+        </>
+      ) : (
+        <>
+          <div className="min-w-0">
+            <p className="text-base font-semibold text-stone-900">Tilmeld nyhedsbrev</p>
+            <p className="mt-1 text-sm leading-relaxed text-stone-600">
+              Få gode tilbud direkte i din mailbox — plus nyheder og tips fra Vinbot.
+            </p>
+          </div>
+          <div className="flex min-w-0 flex-col gap-3">{fields}</div>
+        </>
+      )}
     </form>
   );
 }
