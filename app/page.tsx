@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
+import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
@@ -55,6 +56,8 @@ export default function HomePage() {
           />
         </div>
       </HomeHeroSearchSection>
+
+      <HomeLigeNuStrip />
 
       <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />
 

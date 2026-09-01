@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --experimental-strip-types --test lib/home-moment.test.ts",
     "vercel:secrets": "bash scripts/push-vercel-secrets.sh",
     "gsc:vin-til-gap": "node scripts/vin-til-gsc-gap.mjs",
     "audit:guides": "node scripts/audit-guide-word-counts.mjs",

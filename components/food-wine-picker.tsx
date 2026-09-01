@@ -6,12 +6,12 @@ import { ProductCard } from "@/components/product-card";
 import type { ProductHit } from "@/lib/search/types";
 import {
   FOOD_PICKER_BUDGETS,
-  FOOD_PICKER_DISHES,
   foodPickerSearchHref,
   getFoodPickerBudget,
   getFoodPickerDish,
   type FoodPickerBudgetId,
 } from "@/lib/food-picker/dishes";
+import { dishesForMoment, getHomeMoment } from "@/lib/home-moment";
 
 type ApiResponse = { source: string; products: ProductHit[] };
 
@@ -111,6 +111,7 @@ export function FoodWinePicker({
   }
 
   const searchHref = dish && budget ? foodPickerSearchHref(dish, budget) : "/";
+  const dishes = dishesForMoment(getHomeMoment());
 
   return (
     <div className={className}>
@@ -120,7 +121,7 @@ export function FoodWinePicker({
 
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-stone-500">1. Hvad skal du spise?</p>
       <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
-        {FOOD_PICKER_DISHES.map((d) => {
+        {dishes.map((d) => {
           const selected = d.id === dishId;
           return (
             <button
