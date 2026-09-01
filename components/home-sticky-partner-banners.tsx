@@ -56,10 +56,7 @@ function useHomeSkyscraperParallax(enabled: boolean) {
 
 export function HomeStickyPartnerBanners() {
   const pathname = usePathname() || "/";
-  const onHome = pathname === "/";
-  const parallax = useHomeSkyscraperParallax(onHome);
-
-  if (!onHome) return null;
+  const parallax = useHomeSkyscraperParallax(true);
 
   const left = bannerPair(LEFT_BANNER_ID);
   const right = bannerPair(RIGHT_BANNER_ID);
