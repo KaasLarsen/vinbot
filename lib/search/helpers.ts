@@ -64,7 +64,7 @@ export function parsePriceFilter(
   return { min, max };
 }
 
-/** Ikke flasker (glas, karaffel, møbler …). Synk med tidligere hardNegative i isWineLike. */
+/** Ikke flasker (glas, karaffel, møbler, tilbehør …). Synk med tidligere hardNegative i isWineLike. */
 const NON_WINE_HARDWARE_MARKERS: readonly string[] = [
   "glas",
   "vinglas",
@@ -85,6 +85,19 @@ const NON_WINE_HARDWARE_MARKERS: readonly string[] = [
   "oplukker",
   "proptrækker",
   "korkskruer",
+  "champagnestopper",
+  "champagne stopper",
+  "flaskestopper",
+  "vinstopper",
+  "wine stopper",
+  "champagnestop",
+  "champagneprop",
+  "flaskeprop",
+  "vakuumprop",
+  "vacuum stopper",
+  "wine pourer",
+  "drypfanger",
+  "drypring",
   "iskøler",
   "vinkøler",
   "shotglas",
@@ -174,8 +187,42 @@ const NON_WINE_HARDWARE_MARKERS: readonly string[] = [
   "balloon bouquet",
 ];
 
+/**
+ * Madvarer og merch der ofte har «vin»/«champagne» i navnet (Gourmetshoppen, Barlife m.fl.).
+ * Kun titel — smagsnoter i beskrivelsen bruger marmelade, gelé osv.
+ */
+const NON_WINE_GROCERY_TITLE_MARKERS: readonly string[] = [
+  "syltetøj",
+  "syltetoj",
+  "marmelade",
+  "chutney",
+  "sennep",
+  "mustard",
+  "ketchup",
+  "mayonnaise",
+  "pesto",
+  "tapenade",
+  "kiks",
+  "knækbrød",
+  "knaekbrod",
+  "chips",
+  "trøffelmayo",
+  "troffelmayo",
+  "stopper",
+  "vinprop",
+  "aerator",
+  "skænkeprop",
+  "skaenkeprop",
+];
+
 function catalogTextLooksLikeNonWineHardware(text: string): boolean {
   return NON_WINE_HARDWARE_MARKERS.some((w) => text.includes(w));
+}
+
+function titleLooksLikeNonWineGroceryOrGadget(title: string): boolean {
+  const t = (title || "").toLowerCase();
+  if (!t) return false;
+  return NON_WINE_GROCERY_TITLE_MARKERS.some((w) => t.includes(w));
 }
 
 /** Til forsiden/produktsøgning: kun vin — ikke glas og øvrigt tilbehør fra blandfeeds (Likehome m.fl.). */
@@ -183,12 +230,14 @@ export function productEligibleForWineSearch(
   p: Pick<FeedProduct, "title" | "desc" | "category">,
 ): boolean {
   const text = `${p.title || ""} ${p.desc || ""} ${p.category || ""}`.toLowerCase();
+  if (titleLooksLikeNonWineGroceryOrGadget(p.title || "")) return false;
   return !catalogTextLooksLikeNonWineHardware(text);
 }
 
 export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">): boolean {
   const text = `${p.title || ""} ${p.desc || ""} ${p.category || ""}`.toLowerCase();
 
+  if (titleLooksLikeNonWineGroceryOrGadget(p.title || "")) return false;
   if (catalogTextLooksLikeNonWineHardware(text)) return false;
 
   const positive = [
