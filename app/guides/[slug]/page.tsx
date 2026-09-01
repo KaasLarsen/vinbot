@@ -30,7 +30,6 @@ import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-m
 import { PageShell } from "@/components/page-shell";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { dishIdForGuideSlug } from "@/lib/food-picker/dishes";
-import { GuideOgHero } from "@/components/guide-og-hero";
 import { GuideToc } from "@/components/guide-toc";
 import { GUIDE_TOC_MIN_HEADINGS } from "@/lib/content/guide-headings";
 
@@ -165,7 +164,6 @@ export default async function GuidePage({ params }: Props) {
           </Link>
         </p>
       </header>
-      <GuideOgHero slug={slug} title={frontmatter.title} />
       {slug.startsWith("vin-til-") ? (
         <FoodWinePicker
           className="mt-8 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
