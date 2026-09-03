@@ -1,4 +1,5 @@
 export type PlaCatalogItem = {
+  offerId: string;
   slug: string;
   merchantId: "sps-wine";
   title: string;

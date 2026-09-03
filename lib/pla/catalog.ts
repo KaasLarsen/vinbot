@@ -7,7 +7,7 @@ import { stripHtmlForDisplay } from "@/lib/vine/product-text";
 import { inferWineProducerBrand } from "@/lib/schema/product-identifiers";
 
 import { unwrapAffiliateShopUrl } from "./unwrap-shop-url";
-import { decodePlaSlugParam, plaProductSlug } from "./slug";
+import { decodePlaSlugParam, plaOfferId, plaProductSlug } from "./slug";
 import type { PlaCatalogItem } from "./types";
 
 const SPS_FEED_MERCHANT = "SPS Wine";
@@ -73,6 +73,7 @@ function toCatalogItem(p: {
   const description = stripHtmlForDisplay(p.desc);
 
   return {
+    offerId: plaOfferId(shopUrl),
     slug,
     merchantId: "sps-wine",
     title: p.title.trim().slice(0, 150),
@@ -105,7 +106,7 @@ async function buildSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
 
 export async function getSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
   try {
-    return await unstable_cache(buildSpsPlaCatalog, ["vinbot-pla-sps-catalog-v2"], {
+    return await unstable_cache(buildSpsPlaCatalog, ["vinbot-pla-sps-catalog-v3"], {
       revalidate: 21600,
       tags: ["vinbot-feeds"],
     })();

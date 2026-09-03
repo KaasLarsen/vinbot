@@ -26,13 +26,17 @@ function itemXml(item: PlaCatalogItem, base: string): string {
 
   const extra: string[] = [];
   if (gtin) extra.push(`      <g:gtin>${xmlEscape(gtin)}</g:gtin>`);
-  if (mpn) extra.push(`      <g:mpn>${xmlEscape(mpn)}</g:mpn>`);
+  if (mpn) extra.push(`      <g:mpn>${xmlEscape(mpn.slice(0, 70))}</g:mpn>`);
   if (!gtin && !mpn) extra.push(`      <g:identifier_exists>no</g:identifier_exists>`);
 
-  const productType = item.category.trim() || "Vin";
+  const productType = "Vin";
 
   return `    <item>
-      <g:id>${xmlEscape(`sps-wine-${item.slug}`)}</g:id>
+      <title>${xmlEscape(item.title)}</title>
+      <link>${xmlEscape(link)}</link>
+      <description>${xmlEscape(desc)}</description>
+      <guid isPermaLink="false">${xmlEscape(item.offerId)}</guid>
+      <g:id>${xmlEscape(item.offerId)}</g:id>
       <g:title>${xmlEscape(item.title)}</g:title>
       <g:description>${xmlEscape(desc)}</g:description>
       <g:link>${xmlEscape(link)}</g:link>
@@ -42,7 +46,7 @@ function itemXml(item: PlaCatalogItem, base: string): string {
       <g:price>${xmlEscape(formatPrice(item.price, item.currency))}</g:price>
       <g:brand>${xmlEscape(item.brand)}</g:brand>
       <g:google_product_category>499676</g:google_product_category>
-      <g:product_type>${xmlEscape(productType.slice(0, 750))}</g:product_type>
+      <g:product_type>${xmlEscape(productType)}</g:product_type>
       <g:custom_label_0>SPS Wine</g:custom_label_0>
       <g:shipping>
         <g:country>DK</g:country>
@@ -59,9 +63,10 @@ export function renderGooglePlaRss(items: PlaCatalogItem[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="${G_NS}">
   <channel>
-    <title>Vinbot — SPS Wine</title>
+    <title>Vinbot SPS Wine</title>
     <link>${xmlEscape(base)}</link>
-    <description>Produktsider på Vinbot med tydelig Gå til butik-knap. Kun SPS Wine.</description>
+    <description>SPS Wine produktsider paa Vinbot med Gaa til butik.</description>
+    <language>da</language>
 ${body}
   </channel>
 </rss>
