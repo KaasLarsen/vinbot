@@ -32,7 +32,12 @@ export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProd
     "user-agent": UA,
     accept: "text/xml,application/xml,text/plain,text/csv,*/*",
   };
-  const r = await fetch(url, { headers, redirect: "follow", signal: AbortSignal.timeout(45_000) });
+  const r = await fetch(url, {
+    headers,
+    redirect: "follow",
+    cache: "no-store",
+    signal: AbortSignal.timeout(45_000),
+  });
   const buf = await r.arrayBuffer();
   const text = decodeText(buf);
 
@@ -78,7 +83,7 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
 const FEED_PRODUCTS_CACHE_VERSION = "v12-wine-only-grocery";
-const PLA_FEED_CACHE_VERSION = "v1-pla-desc";
+const PLA_FEED_CACHE_VERSION = "v2-pla-desc";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {

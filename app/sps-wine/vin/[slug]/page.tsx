@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { WineDetailPageView } from "@/components/wine-detail-page";
 import { getSpsPlaItemBySlug } from "@/lib/pla/catalog";
+import { decodePlaSlugParam } from "@/lib/pla/slug";
 import { spsPlaItemToWineDetail } from "@/lib/pla/to-wine-detail";
 import { wineDetailPagePath } from "@/lib/wine-detail-pages/merchants";
 import { siteUrl } from "@/lib/site";
@@ -17,7 +18,8 @@ export async function generateStaticParams() {
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodePlaSlugParam(rawSlug);
   const item = await getSpsPlaItemBySlug(slug);
   if (!item) return { title: "Vin ikke fundet | Vinbot" };
   const wine = spsPlaItemToWineDetail(item);
@@ -37,7 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SpsWineProductPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodePlaSlugParam(rawSlug);
   const item = await getSpsPlaItemBySlug(slug);
   if (!item) notFound();
   return <WineDetailPageView wine={spsPlaItemToWineDetail(item)} />;

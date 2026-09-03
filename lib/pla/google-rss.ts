@@ -17,7 +17,7 @@ function formatPrice(n: number, currency: string): string {
 }
 
 function itemXml(item: PlaCatalogItem, base: string): string {
-  const link = `${base}/sps-wine/vin/${encodeURIComponent(item.slug)}`;
+  const link = `${base}/sps-wine/vin/${item.slug}`;
   const desc =
     item.description.trim().slice(0, 5000) ||
     `${item.title} hos SPS Wine. Gå til butikken fra Vinbots produktside.`;

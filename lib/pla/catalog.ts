@@ -3,11 +3,11 @@ import { unstable_cache } from "next/cache";
 import { FEEDS } from "@/lib/feeds/config";
 import { getCachedFeedProductsForPla } from "@/lib/search/fetch-feed";
 import { getMerchantWineConfig } from "@/lib/wine-detail-pages/merchants";
-import { wineSlugFromId } from "@/lib/vine/slug";
 import { stripHtmlForDisplay } from "@/lib/vine/product-text";
 import { inferWineProducerBrand } from "@/lib/schema/product-identifiers";
 
 import { unwrapAffiliateShopUrl } from "./unwrap-shop-url";
+import { decodePlaSlugParam, plaProductSlug } from "./slug";
 import type { PlaCatalogItem } from "./types";
 
 const SPS_FEED_MERCHANT = "SPS Wine";
@@ -69,7 +69,7 @@ function toCatalogItem(p: {
   if (!shopUrl) return null;
 
   const brand = p.brand.trim() || inferWineProducerBrand(p.title) || "SPS Wine";
-  const slug = wineSlugFromId(shopUrl, p.title, brand);
+  const slug = plaProductSlug(shopUrl, p.title);
   const description = stripHtmlForDisplay(p.desc);
 
   return {
@@ -105,7 +105,7 @@ async function buildSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
 
 export async function getSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
   try {
-    return await unstable_cache(buildSpsPlaCatalog, ["vinbot-pla-sps-catalog-v1"], {
+    return await unstable_cache(buildSpsPlaCatalog, ["vinbot-pla-sps-catalog-v2"], {
       revalidate: 21600,
       tags: ["vinbot-feeds"],
     })();
@@ -116,5 +116,6 @@ export async function getSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
 
 export async function getSpsPlaItemBySlug(slug: string): Promise<PlaCatalogItem | undefined> {
   const catalog = await getSpsPlaCatalog();
-  return catalog.find((p) => p.slug === slug);
+  const wanted = decodePlaSlugParam(slug);
+  return catalog.find((p) => p.slug === wanted || p.slug === slug);
 }
