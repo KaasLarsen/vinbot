@@ -104,6 +104,22 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "alkoholfri-bobler-til-nytaar") {
+    return {
+      q: "alkoholfri bobler 0% leitz noughty",
+      max: null,
+      label: "alkoholfrie bobler til nytår",
+    };
+  }
+
+  if (slug === "alkoholfri-vin-til-flaesketeg") {
+    return {
+      q: "alkoholfri vin 0% leitz pinot",
+      max: null,
+      label: "alkoholfri vin til flæskesteg",
+    };
+  }
+
   if (slug.startsWith("alkoholfri-vin-til-")) {
     const occasion = slug.replace(/^alkoholfri-vin-til-/, "").replace(/-/g, " ");
     return {

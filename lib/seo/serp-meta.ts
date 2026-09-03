@@ -63,9 +63,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri rosé bedst i test: Leitz, Torres og Noughty til terrasse, grill og tapas. 0 % med syre — ca. 80–150 kr i DK. Server velafkølet.",
   },
   "bedste-alkoholfri-rodvin": {
-    title: "Alkoholfri rødvin bedst i test 2026",
+    title: "Kan alkoholfri rødvin smage godt?",
     description:
-      "Alkoholfri rødvin bedst i test: Leitz pinot og Torres garnacha til pizza og and. Ærligt: rød er sværest uden alkohol — hvornår rosé vinder i DK.",
+      "Kan alkoholfri rødvin smage godt? Ærligt: sværest uden alkohol. Leitz pinot og Torres garnacha — syre, tannin og hvornår bobler vinder i DK.",
   },
   "vin-til-ost-og-ostebord": {
     title: "Vin til ost — bobler, sherry og port",
@@ -132,9 +132,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri vin til Dry January: Leitz, Noughty og flere 0 %-valg der holder en hel måned. Rutiner, fest-strategi og flasker i DK.",
   },
   "alkoholfri-vin-til-graviditet": {
-    title: "Alkoholfri vin under graviditet (0 %)",
+    title: "Vin til gravide og ammende (0,0 %)",
     description:
-      "Alkoholfri vin under graviditet: hvad 0 % på etiketten betyder, trygge mærker og Sundhedsstyrelsens anbefaling. Nøgtern guide — ikke lægeråd.",
+      "Vin til gravide og ammende: 0,0 % vs 0,5 %, Leitz og Torres, bobler til fest. Nøgtern produktguide — ikke lægeråd. Tjek etiketten.",
   },
   "bedste-lavalkohol-vin": {
     title: "Bedste lavalkohol-vin under 11 % ABV",
@@ -167,9 +167,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Leitz 0 %: sparkling riesling, still riesling, rosé og pinot. Pris i DK, madparring og hvorfor Leitz er benchmark — ikke saft.",
   },
   "alkoholfri-vin-i-netto-foetex": {
-    title: "Alkoholfri vin i Netto, Rema og Føtex",
+    title: "Alkoholfri vin i Netto, Føtex og Coop",
     description:
-      "Alkoholfri vin i Netto, Føtex, Bilka, Rema, Coop 365 og Kvickly: Torres vs private label — og samme stil online på Vinbot.",
+      "Alkoholfri vin i Netto, Føtex og Coop: hvad du skal gå efter ved hylden — Torres vs private label, bobler først, og samme stil online.",
   },
   "smager-alkoholfri-vin-godt": {
     title: "Smager alkoholfri vin godt? Ærligt svar",
@@ -688,6 +688,16 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Vin til osso buco: barbera og chianti",
     description:
       "Hvilken vin til osso buco? Barbera, Chianti og Ripasso til kalveskank, tomat og gremolata. Undgå ung cabernet.",
+  },
+  "alkoholfri-bobler-til-nytaar": {
+    title: "Alkoholfrie bobler til nytår — top 5",
+    description:
+      "Alkoholfrie bobler til nytår, bryllup og konfirmation: Leitz, Noughty, French Bloom og Torres. 0 % til skål — server 6–8 °C.",
+  },
+  "alkoholfri-vin-til-flaesketeg": {
+    title: "Alkoholfri vin til flæskesteg",
+    description:
+      "Alkoholfri vin til flæskesteg og simreretter: bobler og pinot 0 %. Syre før tannin — ærligt når rød mangler fylde.",
   },
   "alkoholfri-asti": {
     title: "Alkoholfri Asti og sød 0 % boble",

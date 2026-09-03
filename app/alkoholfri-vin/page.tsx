@@ -98,6 +98,12 @@ export default function AlkoholfriVinHubPage() {
           <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="hover:underline">
             Alkoholfri vin under 100 kr
           </Link>
+          <Link href="/guides/alkoholfri-bobler-til-nytaar" className="hover:underline">
+            Alkoholfrie bobler til nytår
+          </Link>
+          <Link href="/guides/alkoholfri-vin-til-flaesketeg" className="hover:underline">
+            Alkoholfri vin til flæskesteg
+          </Link>
         </div>
       </section>
 
@@ -184,6 +190,14 @@ export default function AlkoholfriVinHubPage() {
             <li>
               <Link href="/guides/alkoholfri-vin-til-fest" className="text-rose-900 hover:underline">
                 Fest
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-bobler-til-nytaar" className="text-rose-900 hover:underline">
+                nytår / velkomst
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-vin-til-flaesketeg" className="text-rose-900 hover:underline">
+                flæskesteg
               </Link>
               ,{" "}
               <Link href="/guides/alkoholfri-vin-til-konfirmation" className="text-rose-900 hover:underline">

@@ -150,8 +150,13 @@ export function dishIdForGuideSlug(slug: string): string | null {
   return exact?.id ?? null;
 }
 
-export function foodPickerSearchHref(dish: FoodPickerDish, budget: FoodPickerBudget): string {
-  const params = new URLSearchParams({ q: dish.searchQuery });
+export function foodPickerSearchHref(
+  dish: FoodPickerDish,
+  budget: FoodPickerBudget,
+  alcoholFree = false,
+): string {
+  const q = alcoholFree ? `${dish.searchQuery} alkoholfri 0%` : dish.searchQuery;
+  const params = new URLSearchParams({ q });
   if (budget.max != null) params.set("max", String(Math.round(budget.max)));
   if (budget.min != null) params.set("min", String(Math.ceil(budget.min)));
   return `/?${params.toString()}`;

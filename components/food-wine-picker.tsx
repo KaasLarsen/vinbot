@@ -23,19 +23,25 @@ type FoodWinePickerProps = {
   className?: string;
 };
 
-function readUrlPicker(): { mad: string | null; budget: string | null } {
-  if (typeof window === "undefined") return { mad: null, budget: null };
+function readUrlPicker(): { mad: string | null; budget: string | null; alkoholfri: boolean } {
+  if (typeof window === "undefined") return { mad: null, budget: null, alkoholfri: false };
   const params = new URLSearchParams(window.location.search);
-  return { mad: params.get("mad"), budget: params.get("budget") };
+  return {
+    mad: params.get("mad"),
+    budget: params.get("budget"),
+    alkoholfri: params.get("alkoholfri") === "1",
+  };
 }
 
-function writeUrlPicker(mad: string | null, budget: string | null) {
+function writeUrlPicker(mad: string | null, budget: string | null, alkoholfri: boolean) {
   if (typeof window === "undefined") return;
   const url = new URL(window.location.href);
   if (mad) url.searchParams.set("mad", mad);
   else url.searchParams.delete("mad");
   if (budget) url.searchParams.set("budget", budget);
   else url.searchParams.delete("budget");
+  if (alkoholfri) url.searchParams.set("alkoholfri", "1");
+  else url.searchParams.delete("alkoholfri");
   const next = `${url.pathname}${url.search}${url.hash}`;
   if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== next) {
     window.history.replaceState(null, "", next);
@@ -51,6 +57,7 @@ export function FoodWinePicker({
 }: FoodWinePickerProps) {
   const [dishId, setDishId] = useState<string | null>(initialDishId);
   const [budgetId, setBudgetId] = useState<FoodPickerBudgetId | null>(null);
+  const [alcoholFree, setAlcoholFree] = useState(false);
   const [products, setProducts] = useState<ProductHit[]>([]);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -66,51 +73,62 @@ export function FoodWinePicker({
     setDishId(fromUrl.mad && getFoodPickerDish(fromUrl.mad) ? fromUrl.mad : initialDishId);
     const b = getFoodPickerBudget(fromUrl.budget);
     if (b) setBudgetId(b.id);
+    setAlcoholFree(fromUrl.alkoholfri);
   }, [initialDishId, syncUrl]);
 
   const dish = getFoodPickerDish(dishId);
   const budget = getFoodPickerBudget(budgetId);
 
-  const runSearch = useCallback(async (nextDishId: string, nextBudgetId: FoodPickerBudgetId) => {
-    const d = getFoodPickerDish(nextDishId);
-    const b = getFoodPickerBudget(nextBudgetId);
-    if (!d || !b) return;
-    setLoading(true);
-    setFailed(false);
-    setHasSearched(true);
-    try {
-      const params = new URLSearchParams({ q: d.searchQuery });
-      if (b.max != null) params.set("max", String(b.max));
-      if (b.min != null) params.set("min", String(b.min));
-      const r = await fetch(`/api/search?${params.toString()}`);
-      const json = (await r.json()) as ApiResponse;
-      setProducts((json.products || []).slice(0, 3));
-    } catch {
-      setFailed(true);
-      setProducts([]);
-    } finally {
-      setLoading(false);
-      requestAnimationFrame(() => {
-        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    }
-  }, []);
+  const runSearch = useCallback(
+    async (nextDishId: string, nextBudgetId: FoodPickerBudgetId, nextAlcoholFree: boolean) => {
+      const d = getFoodPickerDish(nextDishId);
+      const b = getFoodPickerBudget(nextBudgetId);
+      if (!d || !b) return;
+      setLoading(true);
+      setFailed(false);
+      setHasSearched(true);
+      try {
+        const q = nextAlcoholFree ? `${d.searchQuery} alkoholfri 0%` : d.searchQuery;
+        const params = new URLSearchParams({ q });
+        if (b.max != null) params.set("max", String(b.max));
+        if (b.min != null) params.set("min", String(b.min));
+        const r = await fetch(`/api/search?${params.toString()}`);
+        const json = (await r.json()) as ApiResponse;
+        setProducts((json.products || []).slice(0, 3));
+      } catch {
+        setFailed(true);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+        requestAnimationFrame(() => {
+          resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
-    if (dishId && budgetId) void runSearch(dishId, budgetId);
-  }, [dishId, budgetId, runSearch]);
+    if (dishId && budgetId) void runSearch(dishId, budgetId, alcoholFree);
+  }, [dishId, budgetId, alcoholFree, runSearch]);
 
   function pickDish(id: string) {
     setDishId(id);
-    if (syncUrl) writeUrlPicker(id, budgetId);
+    if (syncUrl) writeUrlPicker(id, budgetId, alcoholFree);
   }
 
   function pickBudget(id: FoodPickerBudgetId) {
     setBudgetId(id);
-    if (syncUrl) writeUrlPicker(dishId, id);
+    if (syncUrl) writeUrlPicker(dishId, id, alcoholFree);
   }
 
-  const searchHref = dish && budget ? foodPickerSearchHref(dish, budget) : "/";
+  function toggleAlcoholFree() {
+    const next = !alcoholFree;
+    setAlcoholFree(next);
+    if (syncUrl) writeUrlPicker(dishId, budgetId, next);
+  }
+
+  const searchHref = dish && budget ? foodPickerSearchHref(dish, budget, alcoholFree) : "/";
   const dishes = dishesForMoment(getHomeMoment());
 
   return (
@@ -171,6 +189,22 @@ export function FoodWinePicker({
         })}
       </div>
 
+      <div className="mt-3">
+        <button
+          type="button"
+          onClick={toggleAlcoholFree}
+          aria-pressed={alcoholFree}
+          className={`rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition ${
+            alcoholFree
+              ? "border-rose-800 bg-rose-900 text-white ring-2 ring-rose-300"
+              : "border-stone-200/90 bg-white/95 text-stone-800 hover:border-rose-300 hover:bg-rose-50"
+          }`}
+        >
+          Alkoholfri
+        </button>
+        <span className="ml-2 text-xs text-stone-500">0 % — behold budgettet, skift til alkoholfri flasker</span>
+      </div>
+
       <div id="vin-til-mad" ref={resultsRef} className="scroll-mt-24">
         {hasSearched && dish && budget ? (
           <section
@@ -181,8 +215,12 @@ export function FoodWinePicker({
               <div>
                 <h3 className="text-base font-semibold text-stone-900 sm:text-lg">
                   Tre flasker til {dish.label.toLowerCase()} · {budget.label.toLowerCase()}
+                  {alcoholFree ? " · alkoholfri" : ""}
                 </h3>
-                <p className="mt-0.5 text-sm text-stone-600">{budget.hint} · priser og lager hos forhandleren.</p>
+                <p className="mt-0.5 text-sm text-stone-600">
+                  {budget.hint}
+                  {alcoholFree ? " · alkoholfri 0 %" : ""} · priser og lager hos forhandleren.
+                </p>
               </div>
               <Link
                 href={searchHref}

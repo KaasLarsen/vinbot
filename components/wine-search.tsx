@@ -46,6 +46,7 @@ const ALL_CHIPS: WineSearchChip[] = [
 
 /** Druer og klassikere — blandes ind i forslag under søgefeltet. */
 const QUICK_GRAPE_CHIPS: WineSearchChip[] = [
+  { label: "Alkoholfri", q: "alkoholfri vin 0%" },
   { label: "Nebbiolo", q: "nebbiolo" },
   { label: "Riesling", q: "riesling hvidvin" },
   { label: "Sauvignon", q: "sauvignon blanc" },
@@ -57,7 +58,9 @@ const QUICK_GRAPE_CHIPS: WineSearchChip[] = [
 function mergeSearchSuggestions(seasonal: WineSearchChip[], max = 8): WineSearchChip[] {
   const seen = new Set<string>();
   const out: WineSearchChip[] = [];
-  for (const c of [...seasonal, ...QUICK_GRAPE_CHIPS]) {
+  const alkoholfri = QUICK_GRAPE_CHIPS.find((c) => c.label === "Alkoholfri");
+  const restQuick = QUICK_GRAPE_CHIPS.filter((c) => c.label !== "Alkoholfri");
+  for (const c of [...(alkoholfri ? [alkoholfri] : []), ...seasonal, ...restQuick]) {
     if (seen.has(c.label)) continue;
     seen.add(c.label);
     out.push(c);

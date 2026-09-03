@@ -3809,6 +3809,45 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Tjek tilsat sukker (under 5 g/100 ml er fornuftigt). Alkoholfri vin kan stadig indeholde sulfit (E220-E228) som konserveringsmiddel. Læs ingredienslisten ved fødevareallergi. Undgå billige 'wine flavored drinks' uden specifik oprindelse — kvaliteten svinger. Vinbot giver produktguides, ikke medicinske råd.",
     },
+    {
+      question: "Kan jeg drikke alkoholfri vin under amning?",
+      answer:
+        "Sundhedsstyrelsen anbefaler meget begrænset alkohol under amning. Mange vælger 0,0 % (under ca. 0,05 % ABV) for nultolerance; «alkoholfri» må lovligt indeholde op til 0,5 %. Tjek etiketten (Leitz og Torres Natureo er typisk 0,0 %). Tal med sundhedsplejerske eller læge ved tvivl — Vinbot giver ikke medicinske råd.",
+    },
+  ],
+  "alkoholfri-bobler-til-nytaar": [
+    {
+      question: "Hvilke alkoholfrie bobler er bedst til nytår?",
+      answer:
+        "Leitz Eins-Zwei-Zero Sparkling er det sikreste danske hverdagsvalg. French Bloom Le Blanc er premium-skål. Noughty Sparkling Chardonnay og Torres Natureo Sparkling dækker konfirmation og budget. Server 6–8 °C i champagneglas.",
+    },
+    {
+      question: "Hvor mange alkoholfrie flasker til nytårsaften?",
+      answer:
+        "Til én midnatsskål: cirka 1 flaske pr. 6–8 gæster. Til velkomst hele aftenen: planlæg som til fest — se alkoholfri vin til fest. Hav en tør 0 % til skål og evt. en sødere til kage.",
+    },
+    {
+      question: "Er alkoholfri rødvin et godt nytårsvalg?",
+      answer:
+        "Sjældent til skål. Bobler kompenserer bedst for manglende alkohol. Gem 0 %-rød til pizza eller grill — ikke til klokken 24.",
+    },
+  ],
+  "alkoholfri-vin-til-flaesketeg": [
+    {
+      question: "Hvilken alkoholfri vin til flæskesteg?",
+      answer:
+        "Tør alkoholfri sparkling eller riesling 0 % er de sikreste valg til svær, brun sovs og rødkål. Vil du have rød: Leitz Pinot Noir 0 % (blød tannin), ikke tung cabernet-stil uden alkohol.",
+    },
+    {
+      question: "Kan alkoholfri rødvin bære juleflæsk?",
+      answer:
+        "Delvist. Uden alkohol mangler rød fylde, og tannin kan føles hård. Afkøl 12–14 °C og vælg pinot eller garnacha. Mange serverer bobler ved siden af som det glas, der faktisk renser ganen.",
+    },
+    {
+      question: "Hvad med alkoholfri vin til simreretter?",
+      answer:
+        "Samme logik: syre og frugt før struktur. Bobler eller frisk hvid 0 % til tomatede gryder; blød rød 0 % kun hvis du accepterer tyndere krop end rigtig vin.",
+    },
   ],
   "bedste-alkoholfri-vin-under-100-kr": [
     {

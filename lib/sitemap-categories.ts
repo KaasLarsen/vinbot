@@ -35,6 +35,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "rosevin-til-mad-og-sommer",
   "hverdags-bobler",
   "vin-til-asiatisk-takeaway-dumplings-sushi-ramen",
+  "alkoholfri-bobler-til-nytaar",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */

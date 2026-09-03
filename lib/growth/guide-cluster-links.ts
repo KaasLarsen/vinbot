@@ -24,6 +24,8 @@ const BY_TYPE: GuideClusterLink[] = [
 
 const OCCASION: GuideClusterLink[] = [
   { slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" },
+  { slug: "alkoholfri-bobler-til-nytaar", label: "Alkoholfrie bobler til nytår" },
+  { slug: "alkoholfri-vin-til-flaesketeg", label: "Alkoholfri vin til flæskesteg" },
   { slug: "alkoholfri-vin-til-konfirmation", label: "Alkoholfri vin til konfirmation" },
   { slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" },
   { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
@@ -373,6 +375,25 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [HUB],
     BY_TYPE,
     OCCASION.filter((l) => l.slug !== "alkoholfri-vin-til-fest").slice(0, 3),
+  ),
+  "alkoholfri-bobler-til-nytaar": alkoholfriBlock(
+    ["alkoholfri-bobler-til-nytaar"],
+    "Alkoholfri bobler til fest",
+    "Nytår, velkomst og konfirmation — 0 % sparkling først.",
+    [HUB],
+    [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
+    [{ slug: "bedste-alkoholfri-champagne", label: "Alkoholfri champagne" }],
+    OCCASION.filter((l) => l.slug !== "alkoholfri-bobler-til-nytaar").slice(0, 3),
+  ),
+  "alkoholfri-vin-til-flaesketeg": alkoholfriBlock(
+    ["alkoholfri-vin-til-flaesketeg"],
+    "Alkoholfri til mad",
+    "Flæskesteg og simreretter uden alkohol — syre før tannin.",
+    [HUB],
+    [{ slug: "vin-til-flaesketesteg", label: "Vin til flæskesteg (med alkohol)" }],
+    [{ slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" }],
+    [{ slug: "bedste-alkoholfri-rodvin", label: "Alkoholfri rødvin" }],
+    BY_TYPE.slice(0, 3),
   ),
   "alkoholfri-vin-til-jul": alkoholfriBlock(
     ["alkoholfri-vin-til-jul"],

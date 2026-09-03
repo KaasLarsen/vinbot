@@ -1,9 +1,8 @@
 import Link from "next/link";
 
 import { proxyImg } from "@/lib/search/helpers";
-import { getWineBySlug } from "@/lib/vine/catalog";
 import { vineCatalogStyleFromBlob, type VineWineStyleGuess } from "@/lib/vine/catalog-style";
-import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
+import { resolveFeaturedHomeWines, wineLooksAlcoholFree } from "@/lib/vine/featured-slugs";
 import type { CanonicalWine } from "@/lib/vine/types";
 
 const STYLE_BADGE: Record<NonNullable<VineWineStyleGuess>, string> = {
@@ -19,8 +18,7 @@ function lowestPrice(wine: CanonicalWine): number | null {
 }
 
 export async function HomeWinesStrip() {
-  const resolved = await Promise.all(FEATURED_WINE_SLUGS.map((slug) => getWineBySlug(slug)));
-  const wines = resolved.filter((w): w is CanonicalWine & { image: string } => Boolean(w?.image));
+  const wines = await resolveFeaturedHomeWines();
 
   if (wines.length === 0) return null;
 
@@ -43,6 +41,7 @@ export async function HomeWinesStrip() {
         {wines.map((w) => {
           const blob = [w.displayTitle, w.brand, w.category].filter(Boolean).join(" ");
           const catalogStyle = vineCatalogStyleFromBlob(blob);
+          const alcoholFree = wineLooksAlcoholFree(w);
           const price = lowestPrice(w);
           return (
             <li key={w.slug}>
@@ -63,11 +62,17 @@ export async function HomeWinesStrip() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-4">
-                  {catalogStyle ? (
-                    <span className="w-fit rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-700">
-                      {STYLE_BADGE[catalogStyle]}
-                    </span>
-                  ) : null}
+                  <div className="flex flex-wrap gap-1">
+                    {alcoholFree ? (
+                      <span className="w-fit rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900">
+                        Alkoholfri
+                      </span>
+                    ) : catalogStyle ? (
+                      <span className="w-fit rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-700">
+                        {STYLE_BADGE[catalogStyle]}
+                      </span>
+                    ) : null}
+                  </div>
                   <h3 className="mt-2 line-clamp-2 text-base font-semibold leading-snug text-stone-900">
                     {w.displayTitle}
                   </h3>

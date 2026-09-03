@@ -374,6 +374,9 @@ export function expandQuery(q: string): string[] {
     set.add("bib");
     set.add("bag-in-box");
   }
+  if (/alkoholfri|uden\s+alkohol/.test(lower)) {
+    set.add("alkoholfri");
+  }
 
   const base = normalize(raw);
 
@@ -422,6 +425,9 @@ export function expandQuery(q: string): string[] {
     cab: ["cabernet", "cabernet sauvignon"],
     cabernet: ["cab", "cabernet sauvignon"],
     "cabernet sauvignon": ["cab", "cabernet"],
+    alkoholfri: ["0%", "0,0", "uden alkohol"],
+    "0%": ["alkoholfri", "0,0"],
+    "uden alkohol": ["alkoholfri"],
     ...buildCountrySynonymMapNormalized(),
   };
 
