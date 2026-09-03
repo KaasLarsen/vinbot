@@ -49,6 +49,8 @@ export type WineDetailPage = {
   foodPairing?: WineDetailFoodPairing;
   specs: readonly WineDetailSpec[];
   guideRefs: readonly WineDetailGuideRef[];
+  /** Primær affiliate-CTA. Standard: «Se vinen hos {forhandler}». */
+  primaryCtaLabel?: string;
 };
 
 export type WineDetailFeaturedPick = {

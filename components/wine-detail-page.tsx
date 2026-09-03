@@ -57,7 +57,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
   const faqItems = [
     {
       question: `Hvor køber jeg ${wine.displayTitle.split("—")[0]?.trim() ?? "vinen"}?`,
-      answer: `Du handler hos ${cfg.displayName}. Knappen «Se vinen hos ${cfg.displayName}» åbner butikken i et nyt vindue.`,
+      answer: `Du handler hos ${cfg.displayName}. Knappen «${wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}» åbner butikken i et nyt vindue.`,
     },
     {
       question: "Er prisen på Vinbot altid den samme som hos forhandleren?",
@@ -215,7 +215,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
               slug={wine.slug}
               className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
             >
-              Se vinen hos {cfg.displayName}
+              {wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}
             </MerchantAffiliateOutboundLink>
 
             <div className="space-y-4 text-base leading-relaxed text-stone-800">

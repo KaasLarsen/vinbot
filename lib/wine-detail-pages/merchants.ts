@@ -6,7 +6,8 @@ export type MerchantWineId =
   | "lauridsen-vine"
   | "winther-vin"
   | "dh-wines"
-  | "johnsen-wine";
+  | "johnsen-wine"
+  | "sps-wine";
 
 export type MerchantWineConfig = {
   id: MerchantWineId;
@@ -59,6 +60,14 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     partnerAdsBannerId: PARTNER_ADS_KLIK_BANNERS.johnsenWine,
     shopBaseUrl: "https://www.johnsenwine.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "johnsenwine.dk"),
+  },
+  "sps-wine": {
+    id: "sps-wine",
+    hubPath: "/sps-wine",
+    displayName: "SPS Wine",
+    partnerAdsBannerId: PARTNER_ADS_KLIK_BANNERS.spsWine,
+    shopBaseUrl: "https://www.spswine.dk/",
+    sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "spswine.dk"),
   },
 };
 

@@ -40,6 +40,10 @@ const MERCHANT_OFFER_META: Record<MerchantWineId, MerchantOfferMeta> = {
     name: "Johnsen Wine",
     url: "https://www.johnsenwine.dk",
   },
+  "sps-wine": {
+    name: "SPS Wine",
+    url: "https://www.spswine.dk",
+  },
 };
 
 /** DSF-specifik shipping/return — andre forhandlere får generisk DK-levering. */

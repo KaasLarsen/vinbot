@@ -25,14 +25,14 @@ function filterVinAdjacentCatalog(feed: FeedConfig, products: FeedProduct[]): Fe
   });
 }
 
-async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> {
+export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> {
   const { merchant, url } = feed;
   const tier = feedTier(feed);
   const headers = {
     "user-agent": UA,
     accept: "text/xml,application/xml,text/plain,text/csv,*/*",
   };
-  const r = await fetch(url, { headers, redirect: "follow" });
+  const r = await fetch(url, { headers, redirect: "follow", signal: AbortSignal.timeout(45_000) });
   const buf = await r.arrayBuffer();
   const text = decodeText(buf);
 
@@ -60,8 +60,25 @@ async function fetchFeedProductsForCache(feed: FeedConfig): Promise<FeedProduct[
   return slimFeedProductsForCache(products);
 }
 
+const PLA_DESC_MAX = 1800;
+
+/** Til Google PLA og dynamiske produktsider — beholder kort beskrivelse (egen cache-nøgle). */
+function slimFeedProductsForPla(products: FeedProduct[]): FeedProduct[] {
+  return products.map((p) => ({
+    ...p,
+    desc: (p.desc || "").slice(0, PLA_DESC_MAX),
+    _search: "",
+  }));
+}
+
+async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProduct[]> {
+  const products = await fetchFeedProductsInner(feed);
+  return slimFeedProductsForPla(products);
+}
+
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
 const FEED_PRODUCTS_CACHE_VERSION = "v12-wine-only-grocery";
+const PLA_FEED_CACHE_VERSION = "v1-pla-desc";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
@@ -81,5 +98,25 @@ export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProdu
     )();
   } catch {
     return fetchFeedProductsInner(feed);
+  }
+}
+
+export async function getCachedFeedProductsForPla(feed: FeedConfig): Promise<FeedProduct[]> {
+  const filterKey =
+    feed.wineFilter !== false
+      ? "wine"
+      : [
+          "nof-wine-filter",
+          feed.vinAdjacentIncludeAny?.join(",") ?? "",
+          feed.vinAdjacentExcludeAny?.join(",") ?? "",
+        ].join("|");
+  try {
+    return await unstable_cache(
+      () => fetchFeedProductsForPlaCache(feed),
+      ["vinbot-feed-pla", PLA_FEED_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
+      { revalidate: 21600, tags: ["vinbot-feeds"] },
+    )();
+  } catch {
+    return slimFeedProductsForPla(await fetchFeedProductsInner(feed));
   }
 }
