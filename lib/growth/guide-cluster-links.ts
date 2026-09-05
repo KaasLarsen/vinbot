@@ -90,6 +90,54 @@ function alkoholfriBlock(
   return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "emerald" };
 }
 
+const SUPERMARKED_PILLAR: GuideClusterLink = {
+  slug: "vin-i-supermarkedet-guide",
+  label: "Vin i supermarkedet — overblik",
+};
+
+const SUPERMARKED: GuideClusterLink[] = [
+  { slug: "vin-i-supermarkedet-guide", label: "Vin i supermarkedet" },
+  { slug: "discount-vin-hylde-guide", label: "Discount-hylden under 70 kr" },
+  { slug: "bedste-vin-i-netto-under-70-kr", label: "Vin i Netto under 70 kr" },
+  { slug: "alkoholfri-vin-i-netto-foetex", label: "Alkoholfri i Netto og Føtex" },
+  { slug: "bedste-rodvin-under-75-kr", label: "Rødvin under 75 kr" },
+  { slug: "bedste-vin-til-hverdag", label: "Vin til hverdag" },
+  { slug: "bedste-box-vin", label: "Bedste box-vin" },
+  { slug: "vin-tilbud-og-foer-pris", label: "Vin tilbud og før-pris" },
+];
+
+function supermarketBlock(
+  exclude: string[],
+  title: string,
+  intro: string,
+  ...groups: GuideClusterLink[][]
+): GuideClusterBlock {
+  return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
+}
+
+const DANSK_VIN_PILLAR: GuideClusterLink = {
+  slug: "bedste-dansk-vin",
+  label: "Bedste dansk vin",
+};
+
+const DANSK_VIN: GuideClusterLink[] = [
+  { slug: "bedste-dansk-vin", label: "Bedste dansk vin" },
+  { slug: "danmarks-vingaarde-guide", label: "Danmarks vingårde" },
+  { slug: "solaris-druen", label: "Solaris-druen" },
+  { slug: "rondo-druen", label: "Rondo-druen" },
+  { slug: "saesonvin-i-danmark", label: "Sæsonvin i Danmark" },
+  { slug: "bedste-okologiske-vin", label: "Økologisk vin" },
+];
+
+function danskVinBlock(
+  exclude: string[],
+  title: string,
+  intro: string,
+  ...groups: GuideClusterLink[][]
+): GuideClusterBlock {
+  return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "rose" };
+}
+
 const MAD_HUB: GuideClusterLink = {
   slug: "komplet-guide-til-vin-og-mad",
   label: "Komplet guide til vin og mad",
@@ -240,15 +288,76 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     BY_TYPE.slice(0, 3),
     BUDGET,
   ),
-  "alkoholfri-vin-i-netto-foetex": alkoholfriBlock(
-    ["alkoholfri-vin-i-netto-foetex"],
-    "Alkoholfri vin — relaterede guider",
-    "Supermarked vs online — find samme stil billigere og bedre.",
-    [HUB],
-    BUDGET,
-    BRANDS,
-    BY_TYPE.slice(0, 3),
-    [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
+  "alkoholfri-vin-i-netto-foetex": [
+    alkoholfriBlock(
+      ["alkoholfri-vin-i-netto-foetex"],
+      "Alkoholfri vin — relaterede guider",
+      "Supermarked vs online — find samme stil billigere og bedre.",
+      [HUB],
+      BUDGET,
+      BRANDS,
+      BY_TYPE.slice(0, 3),
+      [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
+    ),
+    supermarketBlock(
+      ["alkoholfri-vin-i-netto-foetex"],
+      "Supermarked — også med alkohol",
+      "Samme hylde-logik til almindelig vin i Netto, Rema og Lidl.",
+      [SUPERMARKED_PILLAR],
+      SUPERMARKED.filter((l) => l.slug !== "alkoholfri-vin-i-netto-foetex").slice(0, 4),
+    ),
+  ],
+  "vin-i-supermarkedet-guide": supermarketBlock(
+    ["vin-i-supermarkedet-guide"],
+    "Supermarked og budget",
+    "Fra hylden i Netto/Rema til samme stil online.",
+    SUPERMARKED,
+    [{ slug: "vivino-app-til-vin-anmeldelser", label: "Vivino-app" }],
+  ),
+  "discount-vin-hylde-guide": supermarketBlock(
+    ["discount-vin-hylde-guide"],
+    "Supermarked og budget",
+    "Navigér discount-hylden — og sammenlign online bagefter.",
+    [SUPERMARKED_PILLAR],
+    SUPERMARKED,
+  ),
+  "bedste-vin-i-netto-under-70-kr": supermarketBlock(
+    ["bedste-vin-i-netto-under-70-kr"],
+    "Supermarked og budget",
+    "Netto under 70 kr hører til den bredere supermarket-klynge.",
+    [SUPERMARKED_PILLAR],
+    SUPERMARKED,
+  ),
+  "danmarks-vingaarde-guide": danskVinBlock(
+    ["danmarks-vingaarde-guide"],
+    "Dansk vin og oplevelser",
+    "Besøg, druer og flasker — samme klynge.",
+    [DANSK_VIN_PILLAR],
+    DANSK_VIN,
+  ),
+  "bedste-dansk-vin": danskVinBlock(
+    ["bedste-dansk-vin"],
+    "Dansk vin og oplevelser",
+    "Fra producenter til besøg og danske druer.",
+    DANSK_VIN,
+  ),
+  "solaris-druen": danskVinBlock(
+    ["solaris-druen"],
+    "Dansk vin og druer",
+    "Solaris er kernen i dansk hvid — se også Rondo og vingårde.",
+    [DANSK_VIN_PILLAR],
+    DANSK_VIN,
+    [{ slug: "riesling-druen", label: "Riesling-druen" }],
+    [{ slug: "gruener-veltliner-druen", label: "Grüner Veltliner" }],
+  ),
+  "rondo-druen": danskVinBlock(
+    ["rondo-druen"],
+    "Dansk vin og druer",
+    "Rondo i køligt klima — se Solaris og danske producenter.",
+    [DANSK_VIN_PILLAR],
+    DANSK_VIN,
+    [{ slug: "pinot-noir-druen", label: "Pinot noir-druen" }],
+    [{ slug: "gamay-druen", label: "Gamay-druen" }],
   ),
   "smager-alkoholfri-vin-godt": alkoholfriBlock(
     ["smager-alkoholfri-vin-godt"],

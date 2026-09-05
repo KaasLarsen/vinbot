@@ -395,6 +395,71 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ikke nødvendigvis — det er hverdagsvin til ung, frugtig drikke, ikke lagring. Kvaliteten afhænger af producent og stil; samme budget rækker langt med Sydeuropa og Portugal.",
     },
   ],
+  "vin-i-supermarkedet-guide": [
+    {
+      question: "Hvordan vælger man vin i supermarkedet?",
+      answer:
+        "Vælg land og drue frem for fancy navne: primitivo, tempranillo, vinho verde, cava/prosecco brut. Tjek alkoholprocent, undgå vage «Premium Reserva» uden region, og sammenlign samme stil online bagefter.",
+    },
+    {
+      question: "Er vin i Netto, Rema og Lidl den samme kvalitet?",
+      answer:
+        "Sortimentet skifter, men logikken er den samme: Sydeuropa og Portugal holder oftere under 70–80 kr end billig Bourgogne eller anonym «Smooth Red». Føtex/Bilka har typisk bredere hylde.",
+    },
+    {
+      question: "Sælger Vinbot vin fra Netto?",
+      answer:
+        "Nej. Vinbot sammenligner online-forhandlere. Supermarket-guiderne hjælper dig ved hylden og pege videre til samme stil hos vinhandlere med levering.",
+    },
+  ],
+  "discount-vin-hylde-guide": [
+    {
+      question: "Hvilken vin skal man købe under 70 kr i Rema eller Lidl?",
+      answer:
+        "Gå efter Tempranillo, Primitivo, Montepulciano d'Abruzzo, vinho verde eller Cava/Prosecco brut. Hold dig fra billig Bourgogne og anonyme blends uden oprindelse.",
+    },
+    {
+      question: "Hvorfor frarådes billig Bourgogne i discount?",
+      answer:
+        "Under 70 kr er «Bourgogne» eller «Pinot Prestige» ofte tynd eller præget af marketing. Samme penge rækker længere på sydeuropæiske DOC/DO-vine.",
+    },
+  ],
+  "danmarks-vingaarde-guide": [
+    {
+      question: "Kan man besøge danske vingårde?",
+      answer:
+        "Ja — mange gårde tilbyder smagning efter aftale, fx Dyrhøj, Skærsøgaard, Cold Hand og Lille Gadegaard. Book altid i forvejen; åbningstider skifter.",
+    },
+    {
+      question: "Hvor skal man starte en vintur i Danmark?",
+      answer:
+        "Nordvestsjælland (Røsnæs/Odsherred) eller Trekantsområdet (Skærsøgaard) er oplagte. Smag Solaris først, derefter bobler og Rondo i gode årgange.",
+    },
+  ],
+  "solaris-druen": [
+    {
+      question: "Hvad smager Solaris af?",
+      answer:
+        "Høj syre, citrus, grønt æble og ofte hyldeblomst/blomster — mere som kølig Riesling/Grüner end fad-Chardonnay. Det er Danmarks stærkeste hvidvinsdrue.",
+    },
+    {
+      question: "Hvorfor dyrkes Solaris i Danmark?",
+      answer:
+        "Tidlig modning, god sygdomsresistens og syrebevarelse i køligt klima. Den er en hybrid, der passer til danske vækstsæsoner bedre end mange klassiske vinifera-druer.",
+    },
+  ],
+  "rondo-druen": [
+    {
+      question: "Hvad er Rondo-vin?",
+      answer:
+        "Rondo er en tysk hybrid-rødvin brugt i Danmark: let til middel krop, røde bær og lav-middel tannin. Kvaliteten svinger mere med årgang end i Sydeuropa.",
+    },
+    {
+      question: "Er dansk Rondo bedre end billig import-rød?",
+      answer:
+        "Ikke på pris — god import under 130 kr vinder ofte. Rondo giver mening for lokal stil og oplevelse; start gerne med Solaris, hvis du er ny i dansk vin.",
+    },
+  ],
   "vin-brevkassen": [
     {
       question: "Hvor længe kan en åbnet flaske vin holde sig?",
