@@ -19,6 +19,8 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Danske vingårde, vinsmagning, vinturisme DK | `danmarks-vingaarde-guide` | Live (bølge A) |
 | Solaris vin, dansk hvidvin (drue) | `solaris-druen` | Live `*-druen` |
 | Rondo vin, dansk rødvin (drue) | `rondo-druen` | Live `*-druen` |
+| Cabernet Cortis / Regent (DK-hybrider) | `cabernet-cortis-druen`, `regent-druen` | Live niche `*-druen` |
+| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Live — sep 2026 efterårs-refresh |
 | Vin i netto / vin i supermarkedet | `vin-i-supermarkedet-guide` | Live pillar; Netto under 70 = supporting |
 | Discount-hylde, billig vin Rema/Lidl under 70–80 kr | `discount-vin-hylde-guide` | Live navigationsguide |
 | Lidl vin / Rema vin / Føtex vin (kæde) | `bedste-vin-i-lidl`, `bedste-vin-i-rema-1000`, `bedste-vin-i-foetex-og-bilka` | Live (bølge B) |
@@ -26,7 +28,7 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Frugtvin, kirsebærvin, æblevin, Cold Hand-stil | `dansk-frugtvin-guide` | Live (bølge B) |
 | Champagne/bobler/vin til kransekage | `vin-til-kransekage` | Live; `vin-til-dessert-og-kransekage` = bred dessert supporting |
 | Vinbar København / Aarhus / Odense | `vinbarer-koebenhavn`, `vinbarer-aarhus`, `vinbarer-odense` | Live (bølge B+C) |
-| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Live — månedlig evergreen (ikke scrapede spotpriser) |
+| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Live — sep 2026 efterårs-refresh (ikke scrapede spotpriser) |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |

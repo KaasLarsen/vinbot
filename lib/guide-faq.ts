@@ -460,6 +460,41 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ikke på pris — god import under 130 kr vinder ofte. Rondo giver mening for lokal stil og oplevelse; start gerne med Solaris, hvis du er ny i dansk vin.",
     },
   ],
+
+  "cabernet-cortis-druen": [
+    {
+      question: "Hvad er Cabernet Cortis?",
+      answer:
+        "En tysk hybrid-rødvin (1982) til køligt klima: mørkere bær end Rondo, middel struktur og bedre sygdomsresistens end klassisk Cabernet. Niche i dansk vin — spørg producenten om årgang og blend.",
+    },
+    {
+      question: "Er Cabernet Cortis det samme som Cabernet Sauvignon?",
+      answer:
+        "Nej. Cortis er en hybrid avlet til køligt klima. Den kan minde om en lettere cabernet-stil, men er ikke Napa/Bordeaux-cabernet i krop eller lagring.",
+    },
+    {
+      question: "Cabernet Cortis eller Rondo?",
+      answer:
+        "Rondo er lettere og mere pinot-agtig; Cortis er typisk mørkere. Start med Rondo/Solaris hvis du er ny — Cortis er niche og årgangsfølsom.",
+    },
+  ],
+  "regent-druen": [
+    {
+      question: "Hvad smager Regent-vin af?",
+      answer:
+        "Mørk frugt (kirsebær/brombær), ofte mere krop end Rondo, middel tannin. Tysk hybrid til køligt klima — drikkeklar «efterårsrød», ikke langtids-lagring.",
+    },
+    {
+      question: "Er dansk Regent værd prisen?",
+      answer:
+        "Som lokal oplevelse ja; som ren hverdagsværdi vinder god import under 120 kr ofte. Køb Regent for stil og nysgerrighed, ikke for at slå Rioja på pris.",
+    },
+    {
+      question: "Regent eller Cabernet Cortis?",
+      answer:
+        "Regent er ofte saftigere hverdagsrød; Cortis mere cabernet-agtig. Begge er niche — spørg producenten om årgang, og sammenlign med Rondo i samme hus.",
+    },
+  ],
   "bedste-vin-i-lidl": [
     {
       question: "Hvad er bedste vin i Lidl?",
@@ -516,12 +551,17 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvad er månedens vinkup i supermarkedet?",
       answer:
-        "Ikke scrapede spotpriser, men stilvalg der typisk holder på tværs af Netto, Rema, Lidl, Føtex og Coop: Primitivo, Tempranillo, vinho verde og Cava brut. Tjek hylden — sortiment skifter.",
+        "Ikke scrapede spotpriser, men stilvalg der typisk holder på tværs af Netto, Rema, Lidl, Føtex og Coop: Primitivo, Tempranillo, vinho verde og Cava brut. I september: hold øje med Crianza/Chianti med rigtig appellation.",
     },
     {
       question: "Opdaterer I ugentlige Netto-tilbud?",
       answer:
-        "Nej. Guiden er evergreen og månedligt redigeret. Brug den ved hylden, og sammenlign samme stil online på Vinbot, hvis du skal bruge flere flasker.",
+        "Nej. Guiden er evergreen og månedligt redigeret (senest sep 2026). Brug den ved hylden, og sammenlign samme stil online på Vinbot, hvis du skal bruge flere flasker.",
+    },
+    {
+      question: "Hvad skal man købe i efteråret i discount?",
+      answer:
+        "Stadig Primitivo/Tempranillo til gryder — og Rioja Crianza eller Chianti med DOC/DO, når «efterårsrød» uden region dukker op. Undgå søde gløgg-agtige røde til flæskesteg.",
     },
   ],
   "vin-i-coop-365-og-kvickly": [

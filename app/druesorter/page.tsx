@@ -228,6 +228,18 @@ const DRUE_GRUPPER: DrueGruppe[] = [
         note: "Dansk hybrid-rød: røde bær og let struktur — smørrebrød og mildere kød.",
         guide: "rondo-druen",
       },
+      {
+        navn: "Cabernet Cortis",
+        q: "cabernet cortis",
+        note: "Hybrid til køligt klima: mørkere end Rondo, cabernet-agtig — niche i dansk vin.",
+        guide: "cabernet-cortis-druen",
+      },
+      {
+        navn: "Regent",
+        q: "regent",
+        note: "Tysk hybrid-rød: mørk frugt og mere krop end Rondo — efterårsgryder.",
+        guide: "regent-druen",
+      },
       { navn: "Sangiovese / Chianti", q: "chianti", note: "Syre og tomatven — pizza, pasta og italiensk.", guide: "sangiovese-druen" },
       { navn: "Syrah / Shiraz", q: "syrah", note: "Krydderi og mørke bær — grill, lam og gryde.", guide: "syrah-druen" },
       { navn: "Tempranillo / Rioja", q: "rioja", note: "Bær og krydderi — tapas, pølser og simremad.", guide: "tempranillo-druen" },

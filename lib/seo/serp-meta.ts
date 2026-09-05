@@ -408,6 +408,16 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rondo i Danmark: let rød med bær og urter. Hvornår den lykkes, årgangssving og madparring — ærlig guide.",
   },
+  "cabernet-cortis-druen": {
+    title: "Cabernet Cortis — hybrid-rød forklaret",
+    description:
+      "Cabernet Cortis i Danmark: mørkere end Rondo, kølig cabernet-stil. Resistens, begrænsninger og madparring — ærlig niche-guide.",
+  },
+  "regent-druen": {
+    title: "Regent-druen — dansk hybrid-rød",
+    description:
+      "Regent i Danmark: mørk frugt og mere krop end Rondo. Hvornår den lykkes, madparring og ærlig prisforventning.",
+  },
   "bedste-vin-i-lidl": {
     title: "Bedste vin i Lidl — hyldeguide",
     description:
@@ -439,9 +449,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vinbarer i Aarhus med afslappet stemning og godt glas. Kurateret oversigt til bytur og date.",
   },
   "ugens-vinkup-supermarked": {
-    title: "Månedens vinkup i Netto, Rema, Lidl, Føtex",
+    title: "Månedens vinkup sep 2026 — Netto, Rema, Lidl",
     description:
-      "Månedens vinkup i supermarkedet: stilvalg til Netto, Rema, Lidl, Føtex og Coop — evergreen kup-logik, ikke scrapede spotpriser.",
+      "Månedens vinkup september 2026: efterårs-skift i Netto, Rema, Lidl, Føtex og Coop. Stilvalg og Crianza/Chianti — ikke scrapede spotpriser.",
   },
   "vin-i-coop-365-og-kvickly": {
     title: "Vin i Coop 365 og Kvickly — hyldeguide",

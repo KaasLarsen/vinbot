@@ -196,7 +196,7 @@ Pillar nævner allerede Solaris/Rondo/Cold Hand. Nye sider er **pædagogiske dyb
 | P0 | `rondo-druen` | Rondo-druen: dansk rødvin i køligt klima | «rondo vin» | vin-viden / mad-og-vin | **Ny** |
 | P1 | `dansk-frugtvin-guide` | Dansk frugtvin og kirsebærvin: Cold Hand-stil, dessert og ost | «frugtvin», «kirsebærvin», «æblevin danmark» | bedste-vine | **Ny** |
 | P2 | `vin-til-kransekage` | Vin til kransekage (og nordisk dessert) | Madparring | mad-og-vin | **Live** (GSC: champagne/bobler/vin til kransekage) |
-| P2 | `cabernet-cortis-druen` / `regent-druen` | Øvrige DK-hybrider | Niche | vin-viden | **Senere** |
+| P2 | `cabernet-cortis-druen` / `regent-druen` | Øvrige DK-hybrider | Niche | vin-viden | **Live** |
 
 ### Drue-sider — minimum
 
