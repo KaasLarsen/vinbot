@@ -7,6 +7,7 @@ import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banne
 import { AnalyticsConsentGate } from "@/components/analytics-consent-gate";
 import { AdSenseConsentGate } from "@/components/adsense-consent-gate";
 import { CookieBanner } from "@/components/cookie-banner";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
@@ -70,6 +71,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <ScrollToTop />
       </body>
     </html>
   );
