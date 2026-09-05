@@ -195,7 +195,7 @@ Pillar nævner allerede Solaris/Rondo/Cold Hand. Nye sider er **pædagogiske dyb
 | P0 | `solaris-druen` | Solaris-druen: derfor smager dansk hvidvin af hyldeblomst og syre | «solaris vin», «dansk hvidvin» | vin-viden / mad-og-vin | **Ny** (`*-druen`-mønster) |
 | P0 | `rondo-druen` | Rondo-druen: dansk rødvin i køligt klima | «rondo vin» | vin-viden / mad-og-vin | **Ny** |
 | P1 | `dansk-frugtvin-guide` | Dansk frugtvin og kirsebærvin: Cold Hand-stil, dessert og ost | «frugtvin», «kirsebærvin», «æblevin danmark» | bedste-vine | **Ny** |
-| P2 | `vin-til-kransekage` | Vin til kransekage (og nordisk dessert) | Madparring | mad-og-vin | **Ny** kun hvis GSC/intent ikke dækkes af frugtvin-guiden |
+| P2 | `vin-til-kransekage` | Vin til kransekage (og nordisk dessert) | Madparring | mad-og-vin | **Live** (GSC: champagne/bobler/vin til kransekage) |
 | P2 | `cabernet-cortis-druen` / `regent-druen` | Øvrige DK-hybrider | Niche | vin-viden | **Senere** |
 
 ### Drue-sider — minimum
@@ -240,7 +240,7 @@ Følg [`*-druen`](../content/guides/tempranillo-druen.mdx)-mønster: smagsbilled
 1. `ugens-vinkup-supermarked` — **live** (månedlig redaktionel rytme)  
 2. `vin-i-coop-365-og-kvickly` — **live**  
 3. `vinbarer-odense` — **live**  
-4. Evt. `vin-til-kransekage` efter GSC  
+4. `vin-til-kransekage` — **live** (GSC-intent: champagne/bobler/vin til kransekage; dessert-guiden forbliver bred)  
 5. Hub-side `/supermarked-vin` — **live**
 
 ---
@@ -265,6 +265,7 @@ Følg [`*-druen`](../content/guides/tempranillo-druen.mdx)-mønster: smagsbilled
 | Vinbar København / Aarhus | `vinbarer-*` | Kurateret lokal |
 | Solaris vin / Rondo vin | `solaris-druen`, `rondo-druen` | Pillar linker ned |
 | Frugtvin / kirsebærvin / æblevin | `dansk-frugtvin-guide` | Dessertparring her |
+| Champagne/bobler/vin til kransekage | `vin-til-kransekage` | Dessert-guiden = bred supporting |
 
 ---
 

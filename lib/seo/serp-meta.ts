@@ -281,10 +281,15 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til thai, indisk og stærk mad: tør riesling, gewürztraminer og lavalkohol-bobler. Syre og mild sødme slår tung tannin når chili dominerer.",
   },
-  "vin-til-dessert-og-kransekage": {
-    title: "Vin til kransekage og dessert",
+  "vin-til-kransekage": {
+    title: "Vin og champagne til kransekage",
     description:
-      "Bobler til kransekage: demi-sec, moscato og sød riesling. Vin til dessert skal matche kagens sødme — ellers smager glasset surt.",
+      "Champagne til kransekage: demi-sec, moscato d’Asti og sød riesling — ikke brut. Hurtig guide til nytår, konfirmation og fest.",
+  },
+  "vin-til-dessert-og-kransekage": {
+    title: "Vin til dessert: chokolade, tærte og kage",
+    description:
+      "Vin til dessertbordet: sødme-skala, port, riesling og bobler. Til kransekage alene: se den dedikerede kransekage-guide.",
   },
   "hvor-meget-vin-til-bryllup": {
     title: "Vin til bryllup: hvor meget per gæst?",

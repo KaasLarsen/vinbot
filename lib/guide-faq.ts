@@ -1125,11 +1125,33 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja hvis salaten har bacon, tun, grillkylling eller ost der giver fedme — vælg let gamay eller pinot og undgå grove tanniner til ren citron-salat.",
     },
   ],
+  "vin-til-kransekage": [
+    {
+      question: "Hvilken vin til kransekage?",
+      answer:
+        "Demi-sec champagne, sødere bobler, moscato d'Asti eller sød riesling (Spätlese/Auslese). Match eller overstig kagens sødme — ellers smager glasset surt.",
+    },
+    {
+      question: "Champagne til kransekage — brut eller demi-sec?",
+      answer:
+        "Demi-sec. Brut og Brut Nature er for tørre til marcipan og sukker. Brug tør champagne til skål/middag og skift til demi-sec eller moscato til kagen.",
+    },
+    {
+      question: "Bobler til kransekage uden dyrt champagne-budget?",
+      answer:
+        "Moscato d'Asti er ofte bedste pris/kvalitet. Alternativt crémant demi-sec eller Extra Dry/Dry prosecco som kompromis — ikke knastør brut.",
+    },
+    {
+      question: "Kan man bruge dansk frugtvin til kransekage?",
+      answer:
+        "Ja — kirsebær- og frugtvin med restsødme er et nordisk alternativ til moscato/port, især hvis desserten også har bær. Se dansk frugtvin-guiden.",
+    },
+  ],
   "vin-til-dessert-og-kransekage": [
     {
       question: "Hvilken vin til kransekage?",
       answer:
-        "Halvsød eller sødere bobler (fx demi-sec champagne), moscato d'Asti eller sød riesling i Auslese/Spätlese-stil — mat eller overstig kagens sødme så vinen ikke smager sur.",
+        "Se den dedikerede guide vin til kransekage: demi-sec, moscato d'Asti eller sød riesling. Denne side dækker hele dessertbordet.",
     },
     {
       question: "Kan man drikke brut champagne til kransekage?",

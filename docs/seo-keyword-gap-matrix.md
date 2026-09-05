@@ -24,6 +24,7 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Lidl vin / Rema vin / Føtex vin (kæde) | `bedste-vin-i-lidl`, `bedste-vin-i-rema-1000`, `bedste-vin-i-foetex-og-bilka` | Live (bølge B) |
 | Coop 365 / Kvickly vin | `vin-i-coop-365-og-kvickly` | Live (bølge C) |
 | Frugtvin, kirsebærvin, æblevin, Cold Hand-stil | `dansk-frugtvin-guide` | Live (bølge B) |
+| Champagne/bobler/vin til kransekage | `vin-til-kransekage` | Live; `vin-til-dessert-og-kransekage` = bred dessert supporting |
 | Vinbar København / Aarhus / Odense | `vinbarer-koebenhavn`, `vinbarer-aarhus`, `vinbarer-odense` | Live (bølge B+C) |
 | Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Live — månedlig evergreen (ikke scrapede spotpriser) |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
