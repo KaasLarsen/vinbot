@@ -403,6 +403,36 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rondo i Danmark: let rød med bær og urter. Hvornår den lykkes, årgangssving og madparring — ærlig guide.",
   },
+  "bedste-vin-i-lidl": {
+    title: "Bedste vin i Lidl — hyldeguide",
+    description:
+      "Lidl-vin: Cava, Primitivo og Tempranillo frem for anonyme blends. Hurtig guide til hylden og samme stil online.",
+  },
+  "bedste-vin-i-rema-1000": {
+    title: "Bedste vin i Rema 1000 under 80 kr",
+    description:
+      "Rema 1000-vin under 80 kr: Tempranillo, Primitivo og Cava brut. Stilregler til den smalle hylde.",
+  },
+  "bedste-vin-i-foetex-og-bilka": {
+    title: "Vin i Føtex og Bilka — guide",
+    description:
+      "Føtex og Bilka: bredere vinudvalg end discount, samme stilregler. Hvornår du skal vælge 80–150 kr-laget.",
+  },
+  "dansk-frugtvin-guide": {
+    title: "Dansk frugtvin — kirsebær, æble, dessert",
+    description:
+      "Dansk frugtvin vs. druevin: kirsebær og æble til dessert, kransekage og ost. Ærlig guide til nordiske specialiteter.",
+  },
+  "vinbarer-koebenhavn": {
+    title: "Vinbarer i København uden snobberi",
+    description:
+      "5 hyggelige vinbarer i København med god vin og lavt snobberi. Kurateret liste — tjek åbningstider før besøg.",
+  },
+  "vinbarer-aarhus": {
+    title: "Vinbarer i Aarhus — hyggelig byvin",
+    description:
+      "Vinbarer i Aarhus med afslappet stemning og godt glas. Kurateret oversigt til bytur og date.",
+  },
   "bedste-rosevin": {
     title: "Bedste rosévin: Provence, rosado og bobler",
     description:

@@ -21,6 +21,10 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Rondo vin, dansk rødvin (drue) | `rondo-druen` | Live `*-druen` |
 | Vin i netto / vin i supermarkedet | `vin-i-supermarkedet-guide` | Live pillar; Netto under 70 = supporting |
 | Discount-hylde, billig vin Rema/Lidl under 70–80 kr | `discount-vin-hylde-guide` | Live navigationsguide |
+| Lidl vin / Rema vin / Føtex vin (kæde) | `bedste-vin-i-lidl`, `bedste-vin-i-rema-1000`, `bedste-vin-i-foetex-og-bilka` | Live (bølge B) |
+| Frugtvin, kirsebærvin, æblevin, Cold Hand-stil | `dansk-frugtvin-guide` | Live (bølge B) |
+| Vinbar København / Aarhus / Odense | `vinbarer-koebenhavn`, `vinbarer-aarhus`, `vinbarer-odense` | KBH + Aarhus live; Odense i bølge C |
+| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Bølge C — månedlig evergreen (ikke scrapede spotpriser) |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |
@@ -28,4 +32,4 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 
 **Strategi:** affiliate-side prioriterer *commercial investigation* og dybe guides; transaktionelle head terms («billig rødvin») overlades til store webshops — Vinbot fanger trafik tidligt og sender videre via sammenligning.
 
-**Lokal & personlig (sep 2026):** Supermarket-ved-hylden, dansk vinturisme og DK-druer er top-of-funnel oven på online-søgningen. Bølge A er live som MDX-guides; fuld plan: se PR/indholdsplan for lokal & personlig.
+**Lokal & personlig (sep 2026):** Supermarket-ved-hylden, dansk vinturisme/vinbarer og DK-druer/frugtvin er top-of-funnel oven på online-søgningen. Bølge A+B er live; Bølge C følger. Fuld plan: [lokal-personlig-indholdsplan.md](./lokal-personlig-indholdsplan.md).

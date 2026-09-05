@@ -460,6 +460,58 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ikke på pris — god import under 130 kr vinder ofte. Rondo giver mening for lokal stil og oplevelse; start gerne med Solaris, hvis du er ny i dansk vin.",
     },
   ],
+  "bedste-vin-i-lidl": [
+    {
+      question: "Hvad er bedste vin i Lidl?",
+      answer:
+        "Gå efter Cava brut, Primitivo, Tempranillo og Montepulciano med tydelig DOC/DO. Undgå anonyme blends uden land eller drue — sortimentet skifter mellem uger.",
+    },
+    {
+      question: "Er Lidls egne vinserier gode?",
+      answer:
+        "De kan være fine til prisen, når etiketten viser region og drue. Stol mere på oprindelse end på «Premium»-ord. Sammenlign samme stil online på Vinbot.",
+    },
+  ],
+  "bedste-vin-i-rema-1000": [
+    {
+      question: "Hvilken vin skal man købe i Rema 1000?",
+      answer:
+        "Under 80 kr: Tempranillo, Primitivo, vinho verde eller Cava/Prosecco brut. Rema roterer stærkt — vælg stil, ikke kun kampagnenavn.",
+    },
+  ],
+  "bedste-vin-i-foetex-og-bilka": [
+    {
+      question: "Er vin i Føtex bedre end i Netto?",
+      answer:
+        "Ofte bredere udvalg og flere flasker i 80–150 kr-laget, men samme regel gælder: stil og region før marketing. Bilka har typisk størst dybde.",
+    },
+  ],
+  "dansk-frugtvin-guide": [
+    {
+      question: "Er frugtvin det samme som dansk vin?",
+      answer:
+        "Nej. Frugtvin er lavet på frugt (kirsebær, æble m.m.), mens Solaris/Rondo er druevin. Begge kan være danske specialiteter — til forskellige formål.",
+    },
+    {
+      question: "Hvad drikker man til kransekage?",
+      answer:
+        "Sød kirsebærvin eller anden dessertvin med sødme mindst som desserten. Let kølet. Tør bordvin taber typisk til kransekagens sukker.",
+    },
+  ],
+  "vinbarer-koebenhavn": [
+    {
+      question: "Hvor finder man en hyggelig vinbar i København?",
+      answer:
+        "Gå efter kvarter og stil (naturvin vs. klassisk) frem for «bedst i byen». Ved Stranden, Christianshavn og Nørrebro har flere afslappede vinbarer — tjek åbningstider.",
+    },
+  ],
+  "vinbarer-aarhus": [
+    {
+      question: "Er der gode vinbarer i Aarhus?",
+      answer:
+        "Ja — midtbyen har flere afslappede vin- og madsteder. Book i weekenden, spørg efter åbne vine, og tjek aktuelle åbningstider før du går.",
+    },
+  ],
   "vin-brevkassen": [
     {
       question: "Hvor længe kan en åbnet flaske vin holde sig?",
