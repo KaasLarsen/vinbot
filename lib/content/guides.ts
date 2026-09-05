@@ -300,6 +300,34 @@ export function listAlkoholfriHubGuides(): GuideFrontmatter[] {
   return out;
 }
 
+/** Kurateret rækkefølge til /supermarked-vin-hubben. */
+const SUPERMARKED_VIN_HUB_SLUGS: readonly string[] = [
+  "vin-i-supermarkedet-guide",
+  "discount-vin-hylde-guide",
+  "ugens-vinkup-supermarked",
+  "bedste-vin-i-netto-under-70-kr",
+  "bedste-vin-i-lidl",
+  "bedste-vin-i-rema-1000",
+  "bedste-vin-i-foetex-og-bilka",
+  "vin-i-coop-365-og-kvickly",
+  "alkoholfri-vin-i-netto-foetex",
+  "bedste-rodvin-under-75-kr",
+  "bedste-vin-til-hverdag",
+  "bedste-box-vin",
+  "vin-tilbud-og-foer-pris",
+];
+
+/** Hub «Supermarked-vin»: kædeguides, discount-hylde og kup. */
+export function listSupermarkedVinHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of SUPERMARKED_VIN_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));

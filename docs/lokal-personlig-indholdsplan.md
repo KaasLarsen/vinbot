@@ -237,11 +237,11 @@ Følg [`*-druen`](../content/guides/tempranillo-druen.mdx)-mønster: smagsbilled
 
 ### Bølge C — Genbesøg + long tail
 
-1. `ugens-vinkup-supermarked` (månedlig redaktionel rytme)  
-2. `vin-i-coop-365-og-kvickly`  
-3. `vinbarer-odense`  
+1. `ugens-vinkup-supermarked` — **live** (månedlig redaktionel rytme)  
+2. `vin-i-coop-365-og-kvickly` — **live**  
+3. `vinbarer-odense` — **live**  
 4. Evt. `vin-til-kransekage` efter GSC  
-5. Overvej hub-side `/supermarked-vin` når ≥6 supermarket-URL’er er live
+5. Hub-side `/supermarked-vin` — **live**
 
 ---
 

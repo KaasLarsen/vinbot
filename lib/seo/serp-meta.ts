@@ -433,6 +433,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vinbarer i Aarhus med afslappet stemning og godt glas. Kurateret oversigt til bytur og date.",
   },
+  "ugens-vinkup-supermarked": {
+    title: "Månedens vinkup i Netto, Rema, Lidl, Føtex",
+    description:
+      "Månedens vinkup i supermarkedet: stilvalg til Netto, Rema, Lidl, Føtex og Coop — evergreen kup-logik, ikke scrapede spotpriser.",
+  },
+  "vin-i-coop-365-og-kvickly": {
+    title: "Vin i Coop 365 og Kvickly — hyldeguide",
+    description:
+      "Vin i Coop 365 og Kvickly: discount vs bredere hylde. Stilråd under 80 kr og samme stil online på Vinbot.",
+  },
+  "vinbarer-odense": {
+    title: "Vinbarer i Odense — hyggelig byvin",
+    description:
+      "Vinbarer i Odense med god vin uden snobberi. Kurateret byguide — tjek åbningstider før besøg.",
+  },
   "bedste-rosevin": {
     title: "Bedste rosévin: Provence, rosado og bobler",
     description:
