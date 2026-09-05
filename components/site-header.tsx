@@ -101,13 +101,13 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="relative z-50 border-b border-stone-200/80 bg-white/90 backdrop-blur">
+    <header className="relative z-50 overflow-x-clip border-b border-stone-200/80 bg-white/90 backdrop-blur">
       <PageShell className="py-3">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex min-w-0 items-center justify-between gap-2 sm:gap-4">
           <Link
             href="/"
             aria-label="Vinbot — gå til forsiden"
-            className="group flex min-w-0 cursor-pointer items-center gap-2.5"
+            className="group flex min-w-0 shrink cursor-pointer items-center gap-2.5"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault();

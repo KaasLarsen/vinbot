@@ -203,8 +203,8 @@ export function HeaderSearch() {
   const showPanel = expanded && open && (loading || suggestions.length > 0 || debouncedQ.trim().length > 0);
 
   const panel = showPanel ? (
-    <div className="absolute right-0 z-50 mt-1 min-w-[20rem] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 sm:min-w-[24rem]">
-      <ul id={listId} role="listbox" className="max-h-[min(70vh,20rem)] overflow-y-auto py-1">
+    <div className="absolute inset-x-0 z-50 mt-1 w-full max-w-[100vw] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 sm:inset-x-auto sm:right-0 sm:w-auto sm:min-w-[24rem] sm:max-w-none">
+      <ul id={listId} role="listbox" className="max-h-[min(60dvh,20rem)] overflow-y-auto overscroll-contain py-1">
         {loading && suggestions.length === 0 ? (
           <li className="px-3 py-2.5 text-sm text-stone-500">Henter forslag…</li>
         ) : null}
@@ -257,7 +257,7 @@ export function HeaderSearch() {
   ) : null;
 
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className="relative shrink-0">
       {!expanded ? (
         <button
           type="button"
@@ -280,127 +280,161 @@ export function HeaderSearch() {
           </svg>
         </button>
       ) : (
-      <form
-        role="search"
-        aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
-        onSubmit={submit}
-        className="relative flex w-[min(100vw-2rem,28rem)] flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:w-[28rem] sm:flex-row sm:flex-wrap sm:items-center"
-      >
-        <div
-          className="flex shrink-0 rounded-lg border border-stone-200 bg-stone-100 p-0.5"
-          role="group"
-          aria-label="Søgetype"
-        >
+        <>
+          {/* Mobile backdrop — closes search without horizontal page pan */}
           <button
             type="button"
-            aria-pressed={mode === "vin"}
+            aria-label="Luk søgning"
+            className="fixed inset-0 z-[55] bg-stone-950/25 sm:hidden"
             onClick={() => {
-              persistMode("vin", setMode);
-              if (open) void fetchSuggestions(debouncedQ, "vin");
+              setOpen(false);
+              setExpanded(false);
+              setQ("");
             }}
-            className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${
-              mode === "vin"
-                ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
-                : "text-stone-600 hover:text-stone-900"
-            }`}
-          >
-            Vin
-          </button>
-          <button
-            type="button"
-            aria-pressed={mode === "guides"}
-            onClick={() => {
-              persistMode("guides", setMode);
-              if (open) void fetchSuggestions(debouncedQ, "guides");
-            }}
-            className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${
-              mode === "guides"
-                ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
-                : "text-stone-600 hover:text-stone-900"
-            }`}
-          >
-            Guides
-          </button>
-        </div>
-
-        <div className="relative flex min-w-0 flex-1 items-center gap-1.5">
-          <label htmlFor={inputId} className="sr-only">
-            {mode === "vin" ? "Søg efter vin og mad" : "Søg i guides"}
-          </label>
-          <svg
-            aria-hidden
-            viewBox="0 0 24 24"
-            className="h-4 w-4 shrink-0 text-stone-400"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="M20 20l-3.5-3.5" />
-          </svg>
-          <input
-            ref={inputRef}
-            id={inputId}
-            type="search"
-            value={q}
-            role="combobox"
-            aria-expanded={showPanel}
-            aria-controls={listId}
-            aria-autocomplete="list"
-            aria-activedescendant={activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined}
-            autoComplete="off"
-            onChange={(e) => {
-              setQ(e.target.value);
-              setOpen(true);
-            }}
-            onFocus={() => {
-              setOpen(true);
-              void fetchSuggestions(q, mode);
-            }}
-            onKeyDown={(e) => {
-              if (!showPanel || suggestions.length === 0) return;
-              if (e.key === "ArrowDown") {
-                e.preventDefault();
-                setActiveIndex((i) => (i + 1) % suggestions.length);
-              } else if (e.key === "ArrowUp") {
-                e.preventDefault();
-                setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
-              } else if (e.key === "Escape") {
-                setOpen(false);
-                setActiveIndex(-1);
-                setExpanded(false);
-                setQ("");
-              }
-            }}
-            placeholder={placeholder}
-            className="min-w-0 flex-1 bg-transparent px-1 py-1 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none"
           />
-          <button
-            type="submit"
-            className="shrink-0 rounded-lg bg-rose-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-950"
-          >
-            Søg
-          </button>
-        </div>
-        <button
-          type="button"
-          aria-label="Luk søgning"
-          onClick={() => {
-            setOpen(false);
-            setExpanded(false);
-            setQ("");
-          }}
-          className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:static sm:ml-auto sm:h-8 sm:w-8 sm:shrink-0 sm:rounded-lg"
-        >
-          <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-      </form>
-      )}
+          {/*
+            Mobile: viewport-bound overlay so the panel never forces horizontal scroll.
+            sm+: keep inline header layout at fixed width.
+          */}
+          <div className="fixed inset-x-3 top-3 z-[60] w-auto max-w-[calc(100vw-1.5rem)] sm:static sm:inset-auto sm:z-auto sm:w-[28rem] sm:max-w-none">
+            <form
+              role="search"
+              aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
+              onSubmit={submit}
+              className="relative flex w-full max-w-full flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:flex-row sm:flex-wrap sm:items-center"
+            >
+              <div className="flex items-center gap-2">
+                <div
+                  className="flex min-w-0 flex-1 rounded-lg border border-stone-200 bg-stone-100 p-0.5"
+                  role="group"
+                  aria-label="Søgetype"
+                >
+                  <button
+                    type="button"
+                    aria-pressed={mode === "vin"}
+                    onClick={() => {
+                      persistMode("vin", setMode);
+                      if (open) void fetchSuggestions(debouncedQ, "vin");
+                    }}
+                    className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
+                      mode === "vin"
+                        ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
+                        : "text-stone-600 hover:text-stone-900"
+                    }`}
+                  >
+                    Vin
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={mode === "guides"}
+                    onClick={() => {
+                      persistMode("guides", setMode);
+                      if (open) void fetchSuggestions(debouncedQ, "guides");
+                    }}
+                    className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
+                      mode === "guides"
+                        ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
+                        : "text-stone-600 hover:text-stone-900"
+                    }`}
+                  >
+                    Guides
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Luk søgning"
+                  onClick={() => {
+                    setOpen(false);
+                    setExpanded(false);
+                    setQ("");
+                  }}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:hidden"
+                >
+                  <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
 
-      {panel}
+              <div className="relative flex min-w-0 flex-1 items-center gap-1.5">
+                <label htmlFor={inputId} className="sr-only">
+                  {mode === "vin" ? "Søg efter vin og mad" : "Søg i guides"}
+                </label>
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 shrink-0 text-stone-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-3.5-3.5" />
+                </svg>
+                <input
+                  ref={inputRef}
+                  id={inputId}
+                  type="search"
+                  value={q}
+                  role="combobox"
+                  aria-expanded={showPanel}
+                  aria-controls={listId}
+                  aria-autocomplete="list"
+                  aria-activedescendant={activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined}
+                  autoComplete="off"
+                  onChange={(e) => {
+                    setQ(e.target.value);
+                    setOpen(true);
+                  }}
+                  onFocus={() => {
+                    setOpen(true);
+                    void fetchSuggestions(q, mode);
+                  }}
+                  onKeyDown={(e) => {
+                    if (!showPanel || suggestions.length === 0) return;
+                    if (e.key === "ArrowDown") {
+                      e.preventDefault();
+                      setActiveIndex((i) => (i + 1) % suggestions.length);
+                    } else if (e.key === "ArrowUp") {
+                      e.preventDefault();
+                      setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
+                    } else if (e.key === "Escape") {
+                      setOpen(false);
+                      setActiveIndex(-1);
+                      setExpanded(false);
+                      setQ("");
+                    }
+                  }}
+                  placeholder={placeholder}
+                  className="min-w-0 flex-1 bg-transparent px-1 py-1 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="shrink-0 rounded-lg bg-rose-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-950"
+                >
+                  Søg
+                </button>
+                <button
+                  type="button"
+                  aria-label="Luk søgning"
+                  onClick={() => {
+                    setOpen(false);
+                    setExpanded(false);
+                    setQ("");
+                  }}
+                  className="ml-auto hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:flex"
+                >
+                  <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+            {panel}
+          </div>
+        </>
+      )}
     </div>
   );
 }
