@@ -15,10 +15,21 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Genstande i flaske / glas | `hvor-mange-enheder-alkohol-i-et-glas-vin`, `hvor-mange-glas-i-en-flaske-vin` | Allerede stærkt |
 | Serveringstemperatur | `opbevaring-af-vin-temperatur-og-aabnet-flaske`, `sadan-serverer-du-vin` | Allerede stærkt |
 | Italiensk rødvin, Amarone, Barolo | `bedste-italiensk-rodvin`, `vinregion-italien`, `nebbiolo-fra-barolo`, `bedste-rodvin-under-300-kr` | Allerede stærkt |
-| Dansk vin, vingård | `bedste-dansk-vin` | Allerede stærkt |
+| Dansk vin (køb / producenter / stil) | `bedste-dansk-vin` | Produkt-pillar; besøg/druer udskilt til egne URL’er (sep 2026) |
+| Danske vingårde, vinsmagning, vinturisme DK | `danmarks-vingaarde-guide` | Planlagt — se [lokal-personlig-indholdsplan.md](./lokal-personlig-indholdsplan.md) |
+| Vinbar København / Aarhus / Odense | `vinbarer-koebenhavn`, `vinbarer-aarhus`, `vinbarer-odense` | Planlagt lokal oplevelse |
+| Solaris vin, dansk hvidvin (drue) | `solaris-druen` | Planlagt `*-druen`; pillar linker ned |
+| Rondo vin, dansk rødvin (drue) | `rondo-druen` | Planlagt `*-druen` |
+| Frugtvin, kirsebærvin, æblevin, Cold Hand-stil | `dansk-frugtvin-guide` | Planlagt dessert/ost-parring |
+| Vin i netto / vin i supermarkedet | `vin-i-supermarkedet-guide` | Planlagt pillar; Netto under 70 = supporting |
+| Discount-hylde, billig vin Rema/Lidl under 70–80 kr | `discount-vin-hylde-guide` | Planlagt navigationsguide |
+| Lidl vin / Rema vin / Føtex vin (kæde) | `bedste-vin-i-lidl`, `bedste-vin-i-rema-1000`, `bedste-vin-i-foetex-og-bilka` | Planlagt efter pillar |
+| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Planlagt månedlig evergreen (ikke scrapede spotpriser) |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |
 | Fest / bryllup mængde | `hvor-meget-vin-til-fest`, `hvor-meget-vin-til-bryllup` | Allerede stærkt |
 
 **Strategi:** affiliate-side prioriterer *commercial investigation* og dybe guides; transaktionelle head terms («billig rødvin») overlades til store webshops — Vinbot fanger trafik tidligt og sender videre via sammenligning.
+
+**Lokal & personlig (sep 2026):** Supermarked-ved-hylden, dansk vinturisme/vinbarer og DK-druer/frugtvin er et bevidst top-of-funnel-lag oven på online-søgningen. Fuld artikelliste, bølger og non-goals: [lokal-personlig-indholdsplan.md](./lokal-personlig-indholdsplan.md).
