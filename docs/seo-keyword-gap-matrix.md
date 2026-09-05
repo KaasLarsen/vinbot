@@ -15,10 +15,17 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Genstande i flaske / glas | `hvor-mange-enheder-alkohol-i-et-glas-vin`, `hvor-mange-glas-i-en-flaske-vin` | Allerede stærkt |
 | Serveringstemperatur | `opbevaring-af-vin-temperatur-og-aabnet-flaske`, `sadan-serverer-du-vin` | Allerede stærkt |
 | Italiensk rødvin, Amarone, Barolo | `bedste-italiensk-rodvin`, `vinregion-italien`, `nebbiolo-fra-barolo`, `bedste-rodvin-under-300-kr` | Allerede stærkt |
-| Dansk vin, vingård | `bedste-dansk-vin` | Allerede stærkt |
+| Dansk vin (køb / producenter / stil) | `bedste-dansk-vin` | Produkt-pillar; besøg/druer udskilt til egne URL’er (sep 2026) |
+| Danske vingårde, vinsmagning, vinturisme DK | `danmarks-vingaarde-guide` | Live (bølge A) |
+| Solaris vin, dansk hvidvin (drue) | `solaris-druen` | Live `*-druen` |
+| Rondo vin, dansk rødvin (drue) | `rondo-druen` | Live `*-druen` |
+| Vin i netto / vin i supermarkedet | `vin-i-supermarkedet-guide` | Live pillar; Netto under 70 = supporting |
+| Discount-hylde, billig vin Rema/Lidl under 70–80 kr | `discount-vin-hylde-guide` | Live navigationsguide |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |
 | Fest / bryllup mængde | `hvor-meget-vin-til-fest`, `hvor-meget-vin-til-bryllup` | Allerede stærkt |
 
 **Strategi:** affiliate-side prioriterer *commercial investigation* og dybe guides; transaktionelle head terms («billig rødvin») overlades til store webshops — Vinbot fanger trafik tidligt og sender videre via sammenligning.
+
+**Lokal & personlig (sep 2026):** Supermarket-ved-hylden, dansk vinturisme og DK-druer er top-of-funnel oven på online-søgningen. Bølge A er live som MDX-guides; fuld plan: se PR/indholdsplan for lokal & personlig.

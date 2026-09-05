@@ -376,7 +376,32 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "bedste-dansk-vin": {
     title: "Bedste dansk vin 2026 — producenter",
     description:
-      "Bedste dansk vin: Solaris, Rondo og danske bobler fra Dyrhøj, Skærsøgaard og Cold Hand. Guide til producenter, pris og besøg.",
+      "Bedste dansk vin: Solaris, Rondo og bobler fra Dyrhøj, Skærsøgaard og Cold Hand. Producenter, pris — og links til besøg og druerguides.",
+  },
+  "vin-i-supermarkedet-guide": {
+    title: "Vin i supermarkedet — guide til hylden",
+    description:
+      "Vin i Netto, Rema, Lidl og Føtex: vælg efter drue og region, undgå marketingfælder, og find samme stil online på Vinbot.",
+  },
+  "discount-vin-hylde-guide": {
+    title: "Discount-vin under 70 kr — Rema, Lidl, Netto",
+    description:
+      "Discount-hylden under 70 kr: Tempranillo og Primitivo ja, billig Bourgogne nej. Navigationsguide til Rema, Lidl og Netto.",
+  },
+  "danmarks-vingaarde-guide": {
+    title: "Danmarks vingårde — besøg og smagning",
+    description:
+      "Danske vingårde med smagning på Sjælland, Fyn, i Jylland og på Bornholm. Book i forvejen — weekendture og vinruter.",
+  },
+  "solaris-druen": {
+    title: "Solaris-druen — dansk hvidvin forklaret",
+    description:
+      "Solaris: hyldeblomst, citrus og høj syre. Derfor smager dansk hvid anderledes end Chardonnay — producenter og madparring.",
+  },
+  "rondo-druen": {
+    title: "Rondo-druen — dansk rødvin forklaret",
+    description:
+      "Rondo i Danmark: let rød med bær og urter. Hvornår den lykkes, årgangssving og madparring — ærlig guide.",
   },
   "bedste-rosevin": {
     title: "Bedste rosévin: Provence, rosado og bobler",
