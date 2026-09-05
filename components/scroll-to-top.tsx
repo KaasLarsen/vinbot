@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /** Vis knappen når brugeren er inden for denne afstand fra dokumentets bund. */
-const BOTTOM_THRESHOLD_PX = 120;
+const BOTTOM_THRESHOLD_PX = 200;
 
 function isNearBottom(): boolean {
   const doc = document.documentElement;
@@ -14,13 +14,21 @@ function isNearBottom(): boolean {
   return remaining <= BOTTOM_THRESHOLD_PX;
 }
 
+function cookieBannerOffsetPx(): number {
+  const padding = Number.parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+  // Lille ekstra luft over cookie-banneret (eller bottom-edge når banner er lukket)
+  return padding + 20;
+}
+
 export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
+  const [bottomPx, setBottomPx] = useState(20);
 
   useEffect(() => {
     let raf = 0;
     const update = () => {
       setVisible(isNearBottom());
+      setBottomPx(cookieBannerOffsetPx());
     };
     const onScrollOrResize = () => {
       cancelAnimationFrame(raf);
@@ -30,10 +38,16 @@ export function ScrollToTop() {
     update();
     window.addEventListener("scroll", onScrollOrResize, { passive: true });
     window.addEventListener("resize", onScrollOrResize, { passive: true });
+
+    // Cookie-banner sætter body paddingBottom — følg med uden at afhænge af scroll
+    const ro = new ResizeObserver(onScrollOrResize);
+    ro.observe(document.body);
+
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScrollOrResize);
       window.removeEventListener("resize", onScrollOrResize);
+      ro.disconnect();
     };
   }, []);
 
@@ -48,7 +62,8 @@ export function ScrollToTop() {
       aria-label="Scroll til toppen"
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
-      className={`fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-800 shadow-md transition-[opacity,transform,box-shadow] duration-200 hover:border-rose-300 hover:text-rose-900 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-800 ${
+      style={{ bottom: bottomPx }}
+      className={`fixed right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-800 shadow-md transition-[opacity,transform,box-shadow,bottom] duration-200 hover:border-rose-300 hover:text-rose-900 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-800 ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"
