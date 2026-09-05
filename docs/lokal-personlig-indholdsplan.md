@@ -303,3 +303,7 @@ Korte clips/carousels: «3 flasker under 70 i Rema», «Solaris vs Chardonnay p�
 - Mindst én måned med GSC-data på P0-slugs før hub-side bygges
 
 **Næste konkrete eksekvering:** implementér Bølge A som separat indholdspr — start med `vin-i-supermarkedet-guide` + `discount-vin-hylde-guide` + `danmarks-vingaarde-guide` + `solaris-druen` / `rondo-druen`.
+
+## Gæste-/værtsrolle (sep 2026)
+
+Leveret: interaktiv mængdeberegner på fest/bryllup-guides, `maa-man-aabne-vaertsgaven-vin`, `crowdpleaser-vin-til-gaester`, `gavevin-50-150-500-kr`, `vin-til-vinkyndig-gave`.

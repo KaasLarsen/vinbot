@@ -292,9 +292,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til dessertbordet: sødme-skala, port, riesling og bobler. Til kransekage alene: se den dedikerede kransekage-guide.",
   },
   "hvor-meget-vin-til-bryllup": {
-    title: "Vin til bryllup: hvor meget per gæst?",
+    title: "Vin til bryllup: beregn flasker per gæst",
     description:
-      "Vin til bryllup: 1 flaske per voksen gæst + bobler til skål. Beregn flasker til 50, 100 og 150 gæster — fordeling og buffer.",
+      "Beregn vin til bryllup: ca. 1 flaske/gæst + bobler til skål. Interaktiv beregner, fordeling og 15 % buffer til 50–150 gæster.",
   },
   "vivino-app-til-vin-anmeldelser": {
     title: "Vivino-app: ratings og priser i DK",
@@ -631,9 +631,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til brunch: prosecco, crémant og let hvid til æg, laks og avokado. Mimosa, temperatur og mængder — plus alkoholfri alternativ.",
   },
   "hvor-meget-vin-til-fest": {
-    title: "Vin til fest: hvor meget per gæst?",
+    title: "Vin til fest: beregn flasker (40 gæster)",
     description:
-      "Vin til fest: ½ flaske per gæst til middag, 2–3 glas til cocktailparty. Beregn flasker til 20, 30, 50 og 100 gæster — med bobler og buffer.",
+      "Beregn vin til fest: ½ flaske/gæst til middag + 15 % buffer. Interaktiv beregner til 20, 30, 40 og 50 gæster — med bobler og kassesøgning.",
   },
   "hvor-laenge-kan-vin-lagres": {
     title: "Hvor længe kan vin lagres? (tabel)",
@@ -783,6 +783,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     title: "Søde bobler: Extra Dry, Asti, demi-sec",
     description:
       "Søde bobler til kransekage og brunch: Extra Dry prosecco, Moscato d'Asti, demi-sec. Extra Dry er sødere end Brut.",
+  },
+  "maa-man-aabne-vaertsgaven-vin": {
+    title: "Må man åbne værtsgaven? Vin-etikette",
+    description:
+      "Må man åbne den vin, gæsten har med? Kort dansk etikette: gaven er til værten — medmindre I aftaler andet. Scripts til gæst og vært.",
+  },
+  "crowdpleaser-vin-til-gaester": {
+    title: "Crowdpleaser-vin til gæster: sikre flasker",
+    description:
+      "Crowdpleaser til blandet selskab: Ripasso, Primitivo, blød Merlot og nem hvid. Backup når gæsten ikke kan lide aftenens vin.",
+  },
+  "gavevin-50-150-500-kr": {
+    title: "Gavevin: 50, 150 og 500 kr",
+    description:
+      "Gavevin i tre budgetter: pakkeleg under 50 kr, værtsgave ca. 150 kr, stor fødselsdag ca. 500 kr. Jordnære valg og søgelinks.",
+  },
+  "vin-til-vinkyndig-gave": {
+    title: "Vin til vinkyndig gave — hvad virker?",
+    description:
+      "Gave til dem der ved alt om vin: grower-champagne, cru Beaujolais, Riesling og Pinot. Undgå den åbenlyse supermarket-flaske.",
   },
 };
 

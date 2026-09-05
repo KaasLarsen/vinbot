@@ -216,6 +216,8 @@ const VIDEN_MAENGDER: GuideClusterLink[] = [
 const VIDEN_FEST: GuideClusterLink[] = [
   { slug: "hvor-meget-vin-til-bryllup", label: "Hvor meget vin til bryllup" },
   { slug: "hvor-meget-vin-til-fest", label: "Hvor meget vin til fest" },
+  { slug: "maa-man-aabne-vaertsgaven-vin", label: "Må man åbne værtsgaven?" },
+  { slug: "crowdpleaser-vin-til-gaester", label: "Crowdpleaser til gæster" },
 ];
 
 function videnBlock(
@@ -961,6 +963,45 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       VIDEN_MAENGDER.slice(0, 3),
     ),
   ],
+  "maa-man-aabne-vaertsgaven-vin": videnBlock(
+    ["maa-man-aabne-vaertsgaven-vin"],
+    "Gæst, vært og gaver",
+    "Etikette, crowdpleaser-backup og budget-gaver — praktisk før middagen.",
+    [VIN_VIDEN_PILLAR],
+    [{ slug: "crowdpleaser-vin-til-gaester", label: "Crowdpleaser til gæster" }],
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
+    [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+  ),
+  "crowdpleaser-vin-til-gaester": videnBlock(
+    ["crowdpleaser-vin-til-gaester"],
+    "Værtens sikre valg",
+    "Backup-flasker til blandet selskab — plus etikette og mængde.",
+    [VIN_VIDEN_PILLAR],
+    [{ slug: "maa-man-aabne-vaertsgaven-vin", label: "Må man åbne værtsgaven?" }],
+    [{ slug: "hvor-meget-vin-til-fest", label: "Hvor meget vin til fest" }],
+    [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
+    VIDEN_FEST,
+  ),
+  "gavevin-50-150-500-kr": videnBlock(
+    ["gavevin-50-150-500-kr"],
+    "Gavevin — budget og anledninger",
+    "Fra pakkeleg til stor fødselsdag — og gaver til vinkyndige.",
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+    [{ slug: "vin-til-vinkyndig-gave", label: "Vin til vinkyndig gave" }],
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
+    [{ slug: "vin-til-pakkeleg", label: "Vin til pakkeleg" }],
+    [{ slug: "bedste-julegavevin", label: "Bedste julegavevin" }],
+  ),
+  "vin-til-vinkyndig-gave": videnBlock(
+    ["vin-til-vinkyndig-gave"],
+    "Gaver til vinkyndige",
+    "Niche frem for prestige — se også budget-stige og værtindegave.",
+    [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
+    [{ slug: "crowdpleaser-vin-til-gaester", label: "Crowdpleaser til gæster" }],
+  ),
   "hovedpine-af-roedvin": [
     alkoholfriBlock(
       [],

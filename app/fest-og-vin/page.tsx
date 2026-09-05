@@ -79,12 +79,12 @@ export default function FestOgVinHubPage() {
             vin til bryllup
           </Link>
           ,{" "}
-          <Link href="/guides/hvor-meget-vin-til-konfirmation" className="text-rose-900 hover:underline">
+          <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
             konfirmation
           </Link>
           {" "}og{" "}
-          <Link href="/guides/bedste-vin-til-fest" className="text-rose-900 hover:underline">
-            bedste vin til fest
+          <Link href="/guides/crowdpleaser-vin-til-gaester" className="text-rose-900 hover:underline">
+            crowdpleaser til gæster
           </Link>
           .
         </p>

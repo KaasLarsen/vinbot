@@ -219,6 +219,10 @@ export function listHumoerHubGuides(): GuideFrontmatter[] {
 const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
   "hvor-meget-vin-til-fest",
   "hvor-meget-vin-til-bryllup",
+  "maa-man-aabne-vaertsgaven-vin",
+  "crowdpleaser-vin-til-gaester",
+  "gavevin-50-150-500-kr",
+  "vin-til-vinkyndig-gave",
   "vin-til-konfirmation",
   "vin-til-sommerbryllup",
   "vin-til-studenterfest",

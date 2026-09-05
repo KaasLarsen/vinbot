@@ -28,6 +28,7 @@ import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
 import { FoodWinePicker } from "@/components/food-wine-picker";
+import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { dishIdForGuideSlug } from "@/lib/food-picker/dishes";
 import { GuideToc } from "@/components/guide-toc";
 
@@ -165,6 +166,13 @@ export default async function GuidePage({ params }: Props) {
         </p>
       </header>
       <GuideToc items={toc} />
+      {slug === "hvor-meget-vin-til-fest" || slug === "hvor-meget-vin-til-bryllup" ? (
+        <WineQuantityCalculator
+          className="mt-8"
+          defaultPartyType={slug === "hvor-meget-vin-til-bryllup" ? "bryllup" : "middag"}
+          defaultGuests={slug === "hvor-meget-vin-til-bryllup" ? 80 : 40}
+        />
+      ) : null}
       <div className="prose prose-stone mt-8 max-w-none">
         {content}
       </div>

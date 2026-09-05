@@ -4703,4 +4703,72 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Beaujolais (Morgon, Fleurie), tysk pinot noir eller frappato. Høj syre, frisk frugt, lav tannin — match råt kød, capers og æggeblomme.",
     },
   ],
+  "maa-man-aabne-vaertsgaven-vin": [
+    {
+      question: "Må man åbne værtsgaven?",
+      answer:
+        "Ikke automatisk. Flasken er til værten og må gemmes, medmindre værten selv foreslår at åbne den, eller I har aftalt det. Sig gerne «I må gemme den», så er forventningen klar.",
+    },
+    {
+      question: "Skal værten åbne den vin, gæsten har med?",
+      answer:
+        "Kun hvis den matcher menuen, eller hvis I mangler vin. Ellers er det høfligt at takke og gemme flasken. Det er ikke uhøfligt at holde sig til den vin, du allerede har planlagt til maden.",
+    },
+    {
+      question: "Hvordan giver man værtsgave-vin uden at presse?",
+      answer:
+        "Giv flasken ved ankomst og sig, at den gerne må gemmes. Vil du signalere, at den er drikkeklar i aften, så sig det eksplicit — stadig uden at forvente, at den erstatter værtens valg.",
+    },
+  ],
+  "crowdpleaser-vin-til-gaester": [
+    {
+      question: "Hvad er en crowdpleaser-vin?",
+      answer:
+        "En blød, frugtig stil de fleste kan lide: Ripasso, Primitivo, blød Merlot, Pinot Grigio eller umiddelbar Sauvignon. Den er din backup, hvis nogen ikke kan lide aftenens planlagte vin.",
+    },
+    {
+      question: "Hvad gør jeg, hvis gæsten ikke kan lide vinen?",
+      answer:
+        "Spørg stille om et alternativ, skift glas, og server crowdpleaseren uden forelæsning. Hav 2–4 sikre flasker ekstra til større selskaber.",
+    },
+    {
+      question: "Hvilken rødvin er sikker til blandet selskab?",
+      answer:
+        "Valpolicella Ripasso, Primitivo i den runde ende, blød Merlot eller Rioja Crianza. Undgå ultra-tør naturvin eller meget tanninrig ung Cabernet som eneste valg.",
+    },
+  ],
+  "gavevin-50-150-500-kr": [
+    {
+      question: "Hvad koster en god værtsgave-vin?",
+      answer:
+        "Omkring 150 kr er et solidt bånd til værtsgave: crémant, Cava Gran Reserva eller klassisk Chianti/Rioja. Under 50 kr egner sig bedst til pakkeleg; ca. 500 kr til store anledninger.",
+    },
+    {
+      question: "Hvilken vin til pakkeleg under 50 kr?",
+      answer:
+        "Prosecco, Cava eller let Beaujolais/Gamay. Vælg festsignal frem for kælderværdi — se også guiden vin til pakkeleg.",
+    },
+    {
+      question: "Hvad giver man i vin til ca. 500 kr?",
+      answer:
+        "Champagne Brut NV, Barolo/Barbaresco entry eller fin Chablis/Sancerre. Til vinkyndige: overvej grower-champagne eller cru Beaujolais i stedet for den mest åbenlyse supermarket-flaske.",
+    },
+  ],
+  "vin-til-vinkyndig-gave": [
+    {
+      question: "Hvad giver man til en, der ved alt om vin?",
+      answer:
+        "Noget de ikke selv har 12 af: grower-champagne, cru Beaujolais med årgang, lagringsværdig Riesling eller Pinot fra køligt klima. Undgå den mest reklamerede supermarket-prestige.",
+    },
+    {
+      question: "Er dyr champagne altid den bedste gave til vinkyndige?",
+      answer:
+        "Nej. En karakterfuld grower eller en gennemtænkt cru Beaujolais/Riesling signalerer ofte mere omtanke end den dyreste hus-NV, alle allerede kender.",
+    },
+    {
+      question: "Hvilket budget til vinkyndig gavevin?",
+      answer:
+        "150–250 kr kan række til cru Beaujolais eller god crémant; 300–500 kr til grower-champagne eller fin Pinot/Chablis. Over 500 kr kun hvis anledningen bærer det.",
+    },
+  ],
 };

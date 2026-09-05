@@ -30,7 +30,11 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |
-| Fest / bryllup mængde | `hvor-meget-vin-til-fest`, `hvor-meget-vin-til-bryllup` | Allerede stærkt |
+| Fest / bryllup mængde | `hvor-meget-vin-til-fest`, `hvor-meget-vin-til-bryllup` | Live + interaktiv beregner (Vinbot-formlen, 15 % buffer) |
+| Værtsgave åbne / etikette | `maa-man-aabne-vaertsgaven-vin` | Live (gæste-/værtsrolle) |
+| Crowdpleaser / backup-vin | `crowdpleaser-vin-til-gaester` | Live |
+| Gavevin 50/150/500 kr | `gavevin-50-150-500-kr` | Live budget-stige |
+| Gave til vinkyndig | `vin-til-vinkyndig-gave` | Live |
 
 **Strategi:** affiliate-side prioriterer *commercial investigation* og dybe guides; transaktionelle head terms («billig rødvin») overlades til store webshops — Vinbot fanger trafik tidligt og sender videre via sammenligning.
 
