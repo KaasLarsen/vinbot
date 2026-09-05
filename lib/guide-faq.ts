@@ -512,6 +512,32 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja — midtbyen har flere afslappede vin- og madsteder. Book i weekenden, spørg efter åbne vine, og tjek aktuelle åbningstider før du går.",
     },
   ],
+  "ugens-vinkup-supermarked": [
+    {
+      question: "Hvad er månedens vinkup i supermarkedet?",
+      answer:
+        "Ikke scrapede spotpriser, men stilvalg der typisk holder på tværs af Netto, Rema, Lidl, Føtex og Coop: Primitivo, Tempranillo, vinho verde og Cava brut. Tjek hylden — sortiment skifter.",
+    },
+    {
+      question: "Opdaterer I ugentlige Netto-tilbud?",
+      answer:
+        "Nej. Guiden er evergreen og månedligt redigeret. Brug den ved hylden, og sammenlign samme stil online på Vinbot, hvis du skal bruge flere flasker.",
+    },
+  ],
+  "vin-i-coop-365-og-kvickly": [
+    {
+      question: "Er vin i Coop 365 det samme som i Kvickly?",
+      answer:
+        "Nej. Coop 365 er smallere discount; Kvickly har typisk bredere hylde. Samme stilregler gælder: drue og region før marketing.",
+    },
+  ],
+  "vinbarer-odense": [
+    {
+      question: "Findes der vinbarer i Odense?",
+      answer:
+        "Ja — midtbyen har flere steder med godt glas og afslappet stemning. Book i weekenden, spørg efter åbne vine, og bekræft åbningstider.",
+    },
+  ],
   "vin-brevkassen": [
     {
       question: "Hvor længe kan en åbnet flaske vin holde sig?",
