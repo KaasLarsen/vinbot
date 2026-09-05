@@ -28,7 +28,6 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Frugtvin, kirsebærvin, æblevin, Cold Hand-stil | `dansk-frugtvin-guide` | Live (bølge B) |
 | Champagne/bobler/vin til kransekage | `vin-til-kransekage` | Live; `vin-til-dessert-og-kransekage` = bred dessert supporting |
 | Vinbar København / Aarhus / Odense | `vinbarer-koebenhavn`, `vinbarer-aarhus`, `vinbarer-odense` | Live (bølge B+C) |
-| Vin tilbud netto / månedens vinkup | `ugens-vinkup-supermarked` | Live — sep 2026 efterårs-refresh (ikke scrapede spotpriser) |
 | Vinpakker / smagekasser | `bedste-vin-smagekasser`, `koeb-vin-online-sadan-holder-du-styr-paa-det` | Allerede stærkt |
 | Kalorier, sulfit, hovedpine | `hvor-mange-kalorier-i-vin`, `hvad-er-sulfit-i-vin`, `hvad-er-tanniner` | Delvist; ingen obligatorisk ny URL |
 | Madlavning vin, risotto, tapas | `sadan-bruger-du-vin-til-sauce-og-simren`, `vin-til-risotto`, `vin-til-tapas` | Allerede stærkt |
