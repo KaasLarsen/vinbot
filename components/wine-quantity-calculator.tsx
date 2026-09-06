@@ -240,7 +240,7 @@ export function WineQuantityCalculator({
           <div
             ref={picksRef}
             id="fest-wine-picks"
-            className="mt-5 border-t border-stone-200 pt-4"
+            className="mt-5 scroll-mt-24 border-t border-stone-200 pt-4"
           >
             <h3 className="text-sm font-semibold text-stone-900">
               Festvine til dig — ca. {result.totalBottles} flasker
