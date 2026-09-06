@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type MouseEvent } from "react";
 import Link from "next/link";
+import { HOME_WINE_SEARCH_EVENT } from "@/components/home-wine-search";
 import {
   calculateWineQuantity,
   wineQuantitySearchHref,
@@ -32,7 +33,7 @@ function guideHrefForPartyType(partyType: PartyType): string {
 
 export function WineQuantityCalculator({
   heading = "Beregn flasker til festen",
-  intro = "Antal drikkende gæster + festtype — så får du Vinbot-formlen med 15 % buffer og et søgelink til kassekøb.",
+  intro = "Antal drikkende gæster + festtype — så får du Vinbot-formlen med 15 % buffer. Find derefter festvine til indkøbet.",
   defaultPartyType = "middag",
   defaultGuests = 40,
   variant = "full",
@@ -61,6 +62,20 @@ export function WineQuantityCalculator({
   const searchHref = wineQuantitySearchHref(result);
   const guideHref = guideHrefForPartyType(partyType);
   const padding = isCompact ? "p-4 sm:p-5" : "p-5 sm:p-6";
+
+  function goToFestWineSearch(e: MouseEvent<HTMLAnchorElement>) {
+    // På forsiden: opdatér søgning + scroll i stedet for forvirrende «genindlæs»
+    if (typeof window === "undefined") return;
+    if (window.location.pathname !== "/") return;
+    e.preventDefault();
+    const url = new URL(searchHref, window.location.origin);
+    window.history.pushState({}, "", `${url.pathname}${url.search}${url.hash}`);
+    window.dispatchEvent(new Event(HOME_WINE_SEARCH_EVENT));
+    document.getElementById("home-wine-search")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 
   return (
     <section
@@ -195,14 +210,18 @@ export function WineQuantityCalculator({
           </ul>
         ) : null}
 
+        <p className="mt-3 text-xs leading-relaxed text-stone-500">
+          Ca. {result.casesOf6} kasser à 6 flasker — vi finder festvine til dig. Mængderabat får du typisk
+          ved storkøb hos forhandleren.
+        </p>
+
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href={searchHref}
+            onClick={goToFestWineSearch}
             className="inline-flex items-center justify-center rounded-full bg-rose-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-800"
           >
-            {isCompact
-              ? "Se vinkasser og mængderabatter, der passer til din fest"
-              : "Søg kasser og storkøb"}
+            {isCompact ? "Find festvine til indkøbet" : "Find festvine hos forhandlerne"}
           </Link>
           {isCompact ? (
             <Link

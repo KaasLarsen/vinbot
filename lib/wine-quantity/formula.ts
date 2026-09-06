@@ -141,14 +141,18 @@ export function calculateWineQuantity(input: WineQuantityInput): WineQuantityRes
   };
 }
 
+/**
+ * CTA fra festberegneren → forsidesøgning med festvine (ikke «kasse»-katalog;
+ * feedet har ikke ægte vinkasser/mængderabat som filter).
+ */
 export function wineQuantitySearchHref(result: WineQuantityResult): string {
   const q =
     result.partyType === "bryllup"
-      ? "bryllup fest kasse"
+      ? "bryllup cava champagne"
       : result.partyType === "cocktail"
-        ? "fest selskab bobler kasse"
-        : "fest selskab kasse";
-  return `/?q=${encodeURIComponent(q)}`;
+        ? "bobler prosecco cava"
+        : "fest crowdpleaser";
+  return `/?q=${encodeURIComponent(q)}#home-wine-search`;
 }
 
 /** Alias så UI kan bruge «casesOf6» konsistent. */
