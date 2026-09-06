@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
+import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listFestOgVinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
@@ -89,6 +90,15 @@ export default function FestOgVinHubPage() {
           .
         </p>
       </section>
+
+      <WineQuantityCalculator
+        variant="full"
+        className="mt-6"
+        defaultPartyType="middag"
+        defaultGuests={40}
+        heading="Beregn flasker til festen"
+        intro="Angiv gæster og festtype — finjustér med timer, faser og dessertvin. Resultatet følger Vinbot-formlen med 15 % buffer."
+      />
 
       <section className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-stone-200 bg-white p-5">

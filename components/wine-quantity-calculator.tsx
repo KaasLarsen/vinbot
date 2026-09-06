@@ -13,6 +13,8 @@ type WineQuantityCalculatorProps = {
   intro?: string;
   defaultPartyType?: PartyType;
   defaultGuests?: number;
+  /** `full` = guide/hub med finjustering; `compact` = forside hurtig beregning */
+  variant?: "full" | "compact";
   className?: string;
 };
 
@@ -22,13 +24,21 @@ const PARTY_OPTIONS: { id: PartyType; label: string; hint: string }[] = [
   { id: "bryllup", label: "Bryllup / lang fest", hint: "1 flaske/gæst" },
 ];
 
+function guideHrefForPartyType(partyType: PartyType): string {
+  return partyType === "bryllup"
+    ? "/guides/hvor-meget-vin-til-bryllup"
+    : "/guides/hvor-meget-vin-til-fest";
+}
+
 export function WineQuantityCalculator({
   heading = "Beregn flasker til festen",
   intro = "Antal drikkende gæster + festtype — så får du Vinbot-formlen med 15 % buffer og et søgelink til kassekøb.",
   defaultPartyType = "middag",
   defaultGuests = 40,
+  variant = "full",
   className = "",
 }: WineQuantityCalculatorProps) {
+  const isCompact = variant === "compact";
   const [guests, setGuests] = useState(defaultGuests);
   const [partyType, setPartyType] = useState<PartyType>(defaultPartyType);
   const [hours, setHours] = useState(3);
@@ -40,27 +50,33 @@ export function WineQuantityCalculator({
       calculateWineQuantity({
         guests,
         partyType,
-        hours,
-        withPhases: partyType === "cocktail" ? withPhases : withPhases,
-        withDessert: partyType !== "cocktail" && withDessert,
+        hours: isCompact ? 3 : hours,
+        // Compact: standardformel uden fase-/dessert-finjustering
+        withPhases: isCompact ? false : withPhases,
+        withDessert: isCompact ? false : partyType !== "cocktail" && withDessert,
       }),
-    [guests, partyType, hours, withPhases, withDessert],
+    [guests, partyType, hours, withPhases, withDessert, isCompact],
   );
 
   const searchHref = wineQuantitySearchHref(result);
+  const guideHref = guideHrefForPartyType(partyType);
+  const padding = isCompact ? "p-4 sm:p-5" : "p-5 sm:p-6";
 
   return (
     <section
-      className={`rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 p-5 shadow-sm sm:p-6 ${className}`}
+      className={`rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 shadow-sm ${padding} ${className}`}
       aria-labelledby="wine-qty-calc-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-amber-900/80">Vinbot-formlen</p>
-      <h2 id="wine-qty-calc-heading" className="mt-1 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">
+      <h2
+        id="wine-qty-calc-heading"
+        className={`mt-1 font-semibold tracking-tight text-stone-900 ${isCompact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl"}`}
+      >
         {heading}
       </h2>
       <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-stone-700">{intro}</p>
 
-      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+      <div className={`mt-5 grid gap-4 ${isCompact ? "grid-cols-1" : "gap-5 sm:grid-cols-2"}`}>
         <label className="block">
           <span className="text-xs font-medium uppercase tracking-wide text-stone-500">
             Antal voksne der drikker vin
@@ -75,7 +91,7 @@ export function WineQuantityCalculator({
           />
         </label>
 
-        {partyType === "cocktail" ? (
+        {!isCompact && partyType === "cocktail" ? (
           <label className="block">
             <span className="text-xs font-medium uppercase tracking-wide text-stone-500">Varighed (timer)</span>
             <input
@@ -87,7 +103,9 @@ export function WineQuantityCalculator({
               className="mt-1.5 w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-lg font-semibold text-stone-900 shadow-sm outline-none ring-rose-300 focus:ring-2"
             />
           </label>
-        ) : (
+        ) : null}
+
+        {!isCompact && partyType !== "cocktail" ? (
           <div className="flex flex-col justify-end gap-2 pb-1">
             <label className="flex items-center gap-2 text-sm text-stone-700">
               <input
@@ -109,11 +127,11 @@ export function WineQuantityCalculator({
               Inkluder dessertvin
             </label>
           </div>
-        )}
+        ) : null}
       </div>
 
       <p className="mt-5 text-xs font-medium uppercase tracking-wide text-stone-500">Festtype</p>
-      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div className={`mt-2 grid gap-2 ${isCompact ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-3"}`}>
         {PARTY_OPTIONS.map((opt) => {
           const selected = opt.id === partyType;
           return (
@@ -136,9 +154,11 @@ export function WineQuantityCalculator({
         })}
       </div>
 
-      <div className="mt-6 rounded-xl border border-stone-200 bg-white/90 p-4">
-        <p className="text-xs text-stone-500">{result.formulaLabel} · +{Math.round(result.bufferPct * 100)} % buffer</p>
-        <p className="mt-2 text-3xl font-semibold tracking-tight text-stone-900">
+      <div className={`mt-6 rounded-xl border border-stone-200 bg-white/90 ${isCompact ? "p-3.5" : "p-4"}`}>
+        <p className="text-xs text-stone-500">
+          {result.formulaLabel} · +{Math.round(result.bufferPct * 100)} % buffer
+        </p>
+        <p className={`mt-2 font-semibold tracking-tight text-stone-900 ${isCompact ? "text-2xl" : "text-3xl"}`}>
           {result.totalBottles}{" "}
           <span className="text-lg font-medium text-stone-600">flasker</span>
         </p>
@@ -152,7 +172,7 @@ export function WineQuantityCalculator({
           ) : null}
         </p>
 
-        {result.breakdown ? (
+        {!isCompact && result.breakdown ? (
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm text-stone-700 sm:grid-cols-4">
             <li className="rounded-lg bg-stone-50 px-2.5 py-2">
               <span className="block text-xs text-stone-500">Bobler</span>
@@ -180,14 +200,25 @@ export function WineQuantityCalculator({
             href={searchHref}
             className="inline-flex items-center justify-center rounded-full bg-rose-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-800"
           >
-            Søg kasser og storkøb
+            {isCompact
+              ? "Se vinkasser og mængderabatter, der passer til din fest"
+              : "Søg kasser og storkøb"}
           </Link>
-          <Link
-            href="/fest-og-vin"
-            className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 hover:border-rose-300 hover:bg-rose-50"
-          >
-            Fest- og selskab-hub
-          </Link>
+          {isCompact ? (
+            <Link
+              href={guideHref}
+              className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 hover:border-rose-300 hover:bg-rose-50"
+            >
+              Finjustér i guiden
+            </Link>
+          ) : (
+            <Link
+              href="/fest-og-vin"
+              className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 hover:border-rose-300 hover:bg-rose-50"
+            >
+              Fest- og selskab-hub
+            </Link>
+          )}
         </div>
       </div>
     </section>

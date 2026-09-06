@@ -14,6 +14,7 @@ import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores"
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
+import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { siteName } from "@/lib/site";
@@ -60,6 +61,13 @@ export default function HomePage() {
           />
         </div>
       </HomeHeroSearchSection>
+
+      <WineQuantityCalculator
+        variant="compact"
+        className="mt-10"
+        heading="Hvor mange flasker til festen?"
+        intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
+      />
 
       <HomeLigeNuStrip />
 
