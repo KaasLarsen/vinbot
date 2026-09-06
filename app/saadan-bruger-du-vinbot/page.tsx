@@ -7,7 +7,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Sådan bruger du Vinbot";
 const PAGE_DESCRIPTION =
-  "Kort guide til Vinbot: søg efter mad eller drue, scan stregkode, sammenlign tilbud, brug vin-kataloget, guides, opskrifter, vinkøleskabe og rabatkoder.";
+  "Kort guide til Vinbot: søg efter mad eller drue, scan etiket eller stregkode, sammenlign tilbud, brug vin-kataloget, guides, opskrifter, vinkøleskabe og rabatkoder.";
 const PAGE_URL = `${siteUrl}/saadan-bruger-du-vinbot`;
 
 export const metadata: Metadata = {
@@ -55,11 +55,26 @@ export default function SaadanBrugerDuVinbotPage() {
       </section>
 
       <section className="mt-10 space-y-4 text-stone-700">
+        <h2 className="text-xl font-semibold text-stone-900">Scan etiket med kamera</h2>
+        <p className="leading-relaxed">
+          På{" "}
+          <Link href="/" className="font-medium text-rose-900 hover:underline">
+            forsiden
+          </Link>{" "}
+          finder du knappen <strong>Scan etiket</strong>. Browseren beder om lov til kameraet — tag et billede
+          af flaskens etiket (fx i butikken eller til middagen). Vinbot aflæser etiketten og hopper til
+          vinsiden med tilbud, prissammenligning og guides, når vi genkender flasken. Finder vi ikke et
+          sikkert match, åbner vi en søgning med det, vi kunne læse.
+        </p>
+      </section>
+
+      <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">Scan stregkode eller indtast EAN</h2>
         <p className="leading-relaxed">
-          I søgningen kan du åbne stregkodelæseren og pege kameraet mod flaskens EAN — eller skrive nummeret
-          manuelt. Match kræver, at forhandlerens produktfeed indeholder GTIN/EAN. Finder vi ikke flasken,
-          prøv navn + årgang i stedet, eller en anden butik i filteret.
+          I søgningen kan du stadig åbne stregkodelæseren og pege kameraet mod flaskens EAN — eller skrive
+          nummeret manuelt. Det er en separat funktion fra etiket-foto. Match kræver, at forhandlerens
+          produktfeed indeholder GTIN/EAN. Finder vi ikke flasken, prøv etiket-scan, navn + årgang, eller en
+          anden butik i filteret.
         </p>
       </section>
 
