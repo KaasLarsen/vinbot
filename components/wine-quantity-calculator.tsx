@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { HOME_WINE_SEARCH_EVENT } from "@/components/home-wine-search";
+import { WineSearch } from "@/components/wine-search";
 import {
   calculateWineQuantity,
-  wineQuantitySearchHref,
+  wineQuantitySearchQuery,
   type PartyType,
 } from "@/lib/wine-quantity/formula";
 
@@ -45,6 +45,8 @@ export function WineQuantityCalculator({
   const [hours, setHours] = useState(3);
   const [withPhases, setWithPhases] = useState(true);
   const [withDessert, setWithDessert] = useState(false);
+  const [showPicks, setShowPicks] = useState(false);
+  const picksRef = useRef<HTMLDivElement>(null);
 
   const result = useMemo(
     () =>
@@ -52,30 +54,25 @@ export function WineQuantityCalculator({
         guests,
         partyType,
         hours: isCompact ? 3 : hours,
-        // Compact: standardformel uden fase-/dessert-finjustering
         withPhases: isCompact ? false : withPhases,
         withDessert: isCompact ? false : partyType !== "cocktail" && withDessert,
       }),
     [guests, partyType, hours, withPhases, withDessert, isCompact],
   );
 
-  const searchHref = wineQuantitySearchHref(result);
+  const picksQuery = wineQuantitySearchQuery(result);
   const guideHref = guideHrefForPartyType(partyType);
   const padding = isCompact ? "p-4 sm:p-5" : "p-5 sm:p-6";
 
-  function goToFestWineSearch(e: MouseEvent<HTMLAnchorElement>) {
-    // På forsiden: opdatér søgning + scroll i stedet for forvirrende «genindlæs»
-    if (typeof window === "undefined") return;
-    if (window.location.pathname !== "/") return;
-    e.preventDefault();
-    const url = new URL(searchHref, window.location.origin);
-    window.history.pushState({}, "", `${url.pathname}${url.search}${url.hash}`);
-    window.dispatchEvent(new Event(HOME_WINE_SEARCH_EVENT));
-    document.getElementById("home-wine-search")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+  useEffect(() => {
+    if (!showPicks) return;
+    const node = picksRef.current;
+    if (!node) return;
+    // Scroll så vin-forslagene fylder skærmen — ikke op til hero-søgningen
+    requestAnimationFrame(() => {
+      node.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  }
+  }, [showPicks, picksQuery]);
 
   return (
     <section
@@ -146,7 +143,7 @@ export function WineQuantityCalculator({
       </div>
 
       <p className="mt-5 text-xs font-medium uppercase tracking-wide text-stone-500">Festtype</p>
-      <div className={`mt-2 grid gap-2 ${isCompact ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-3"}`}>
+      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
         {PARTY_OPTIONS.map((opt) => {
           const selected = opt.id === partyType;
           return (
@@ -211,18 +208,17 @@ export function WineQuantityCalculator({
         ) : null}
 
         <p className="mt-3 text-xs leading-relaxed text-stone-500">
-          Ca. {result.casesOf6} kasser à 6 flasker — vi finder festvine til dig. Mængderabat får du typisk
-          ved storkøb hos forhandleren.
+          Ca. {result.casesOf6} kasser à 6 flasker. Mængderabat får du typisk ved storkøb hos forhandleren.
         </p>
 
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link
-            href={searchHref}
-            onClick={goToFestWineSearch}
+          <button
+            type="button"
+            onClick={() => setShowPicks(true)}
             className="inline-flex items-center justify-center rounded-full bg-rose-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-800"
           >
-            {isCompact ? "Find festvine til indkøbet" : "Find festvine hos forhandlerne"}
-          </Link>
+            {showPicks ? "Opdater festvine" : "Find festvine til indkøbet"}
+          </button>
           {isCompact ? (
             <Link
               href={guideHref}
@@ -239,6 +235,24 @@ export function WineQuantityCalculator({
             </Link>
           )}
         </div>
+
+        {showPicks ? (
+          <div
+            ref={picksRef}
+            id="fest-wine-picks"
+            className="mt-5 border-t border-stone-200 pt-4"
+          >
+            <h3 className="text-sm font-semibold text-stone-900">
+              Festvine til dig — ca. {result.totalBottles} flasker
+            </h3>
+            <p className="mt-1 text-xs text-stone-500">
+              Forslag fra danske forhandlere. Skift festtype ovenfor for andre vine.
+            </p>
+            <div className="mt-3">
+              <WineSearch key={picksQuery} initialQuery={picksQuery} variant="compact" />
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

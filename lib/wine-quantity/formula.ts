@@ -141,18 +141,18 @@ export function calculateWineQuantity(input: WineQuantityInput): WineQuantityRes
   };
 }
 
+/** Søgeord til festvine ud fra festtype (ikke «kasse»-katalog). */
+export function wineQuantitySearchQuery(result: WineQuantityResult): string {
+  if (result.partyType === "bryllup") return "bryllup cava champagne";
+  if (result.partyType === "cocktail") return "bobler prosecco cava";
+  return "fest crowdpleaser";
+}
+
 /**
- * CTA fra festberegneren → forsidesøgning med festvine (ikke «kasse»-katalog;
- * feedet har ikke ægte vinkasser/mængderabat som filter).
+ * Deep-link til forsidesøgning (fx fra e-mail/andel). Primær CTA viser vine inline i beregneren.
  */
 export function wineQuantitySearchHref(result: WineQuantityResult): string {
-  const q =
-    result.partyType === "bryllup"
-      ? "bryllup cava champagne"
-      : result.partyType === "cocktail"
-        ? "bobler prosecco cava"
-        : "fest crowdpleaser";
-  return `/?q=${encodeURIComponent(q)}#home-wine-search`;
+  return `/?q=${encodeURIComponent(wineQuantitySearchQuery(result))}#home-wine-search`;
 }
 
 /** Alias så UI kan bruge «casesOf6» konsistent. */
