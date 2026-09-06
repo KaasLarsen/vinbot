@@ -203,7 +203,7 @@ export function HeaderSearch() {
   const showPanel = expanded && open && (loading || suggestions.length > 0 || debouncedQ.trim().length > 0);
 
   const panel = showPanel ? (
-    <div className="absolute inset-x-0 z-50 mt-1 w-full max-w-[100vw] overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 sm:inset-x-auto sm:right-0 sm:w-auto sm:min-w-[24rem] sm:max-w-none">
+    <div className="absolute inset-x-0 z-50 mt-1 w-full max-w-full overflow-hidden rounded-xl border border-stone-200 bg-white shadow-lg ring-1 ring-stone-100 sm:inset-x-auto sm:right-0 sm:w-auto sm:min-w-[24rem] sm:max-w-none">
       <ul id={listId} role="listbox" className="max-h-[min(60dvh,20rem)] overflow-y-auto overscroll-contain py-1">
         {loading && suggestions.length === 0 ? (
           <li className="px-3 py-2.5 text-sm text-stone-500">Henter forslag…</li>
@@ -296,7 +296,7 @@ export function HeaderSearch() {
             Mobile: viewport-bound overlay so the panel never forces horizontal scroll.
             sm+: keep inline header layout at fixed width.
           */}
-          <div className="fixed inset-x-3 top-3 z-[60] w-auto max-w-[calc(100vw-1.5rem)] sm:static sm:inset-auto sm:z-auto sm:w-[28rem] sm:max-w-none">
+          <div className="fixed inset-x-3 top-3 z-[60] w-auto max-w-[calc(100%-1.5rem)] sm:static sm:inset-auto sm:z-auto sm:w-[28rem] sm:max-w-none">
             <form
               role="search"
               aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
