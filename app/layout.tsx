@@ -60,8 +60,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="da" className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}>
-      <body className="min-h-full flex flex-col font-sans text-stone-900">
+    <html
+        lang="da"
+        className={`${geistSans.variable} ${geistMono.variable} h-full max-w-full overflow-x-clip scroll-smooth antialiased`}
+      >
+      <body className="flex min-h-full max-w-full flex-col overflow-x-clip font-sans text-stone-900">
         {gaMeasurementId ? <AnalyticsConsentGate measurementId={gaMeasurementId} /> : null}
         <AdSenseConsentGate />
         <CookieBanner />

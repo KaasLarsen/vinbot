@@ -12,9 +12,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
+  Mobil: forhindr sideværts «skub»/rubber-band når et barn er en anelse bredere end viewport.
+  `clip` (ikke `hidden`) så position:sticky stadig virker.
+*/
+html {
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  max-width: 100%;
 }
 
 /* Forside: skjul feed-strips ved ?q= før React hydrerer (parallelt med HomeFeedStripsGate). */
