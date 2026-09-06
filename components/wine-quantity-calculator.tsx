@@ -40,13 +40,16 @@ export function WineQuantityCalculator({
   className = "",
 }: WineQuantityCalculatorProps) {
   const isCompact = variant === "compact";
-  const [guests, setGuests] = useState(defaultGuests);
+  const [guestsInput, setGuestsInput] = useState(String(defaultGuests));
   const [partyType, setPartyType] = useState<PartyType>(defaultPartyType);
-  const [hours, setHours] = useState(3);
+  const [hoursInput, setHoursInput] = useState("3");
   const [withPhases, setWithPhases] = useState(true);
   const [withDessert, setWithDessert] = useState(false);
   const [showPicks, setShowPicks] = useState(false);
   const picksRef = useRef<HTMLDivElement>(null);
+
+  const guests = Math.max(0, Math.min(500, parseInt(guestsInput, 10) || 0));
+  const hours = Math.max(1, Math.min(8, parseInt(hoursInput, 10) || 3));
 
   const result = useMemo(
     () =>
@@ -95,10 +98,16 @@ export function WineQuantityCalculator({
           </span>
           <input
             type="number"
+            inputMode="numeric"
             min={1}
             max={500}
-            value={guests}
-            onChange={(e) => setGuests(Number(e.target.value) || 0)}
+            value={guestsInput}
+            onChange={(e) => setGuestsInput(e.target.value)}
+            onBlur={() => {
+              const n = Math.max(1, Math.min(500, parseInt(guestsInput, 10) || defaultGuests));
+              setGuestsInput(String(n));
+            }}
+            onFocus={(e) => e.currentTarget.select()}
             className="mt-1.5 w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-lg font-semibold text-stone-900 shadow-sm outline-none ring-rose-300 focus:ring-2"
           />
         </label>
@@ -108,10 +117,16 @@ export function WineQuantityCalculator({
             <span className="text-xs font-medium uppercase tracking-wide text-stone-500">Varighed (timer)</span>
             <input
               type="number"
+              inputMode="numeric"
               min={1}
               max={8}
-              value={hours}
-              onChange={(e) => setHours(Number(e.target.value) || 1)}
+              value={hoursInput}
+              onChange={(e) => setHoursInput(e.target.value)}
+              onBlur={() => {
+                const n = Math.max(1, Math.min(8, parseInt(hoursInput, 10) || 3));
+                setHoursInput(String(n));
+              }}
+              onFocus={(e) => e.currentTarget.select()}
               className="mt-1.5 w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-lg font-semibold text-stone-900 shadow-sm outline-none ring-rose-300 focus:ring-2"
             />
           </label>
