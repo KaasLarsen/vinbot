@@ -86,7 +86,10 @@ export function FoodWinePicker({
     const el = resultsRef.current;
     if (!el || !allowScrollRef.current) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    // Brug window.scrollTo — scrollIntoView virker ikke pålideligt inde i hero med overflow-hidden.
+    const headerOffsetPx = 112;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffsetPx;
+    window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? "auto" : "smooth" });
   }, []);
 
   const runSearch = useCallback(
@@ -122,7 +125,7 @@ export function FoodWinePicker({
   // Scroll når panelet dukker op (loading) og igen når resultater har layout.
   useEffect(() => {
     if (!hasSearched) return;
-    const delayMs = loading ? 50 : 120;
+    const delayMs = loading ? 80 : 180;
     const timer = window.setTimeout(scrollToResults, delayMs);
     return () => window.clearTimeout(timer);
   }, [hasSearched, loading, products, failed, scrollToResults]);
