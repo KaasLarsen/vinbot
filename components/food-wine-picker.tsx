@@ -79,6 +79,16 @@ export function FoodWinePicker({
   const dish = getFoodPickerDish(dishId);
   const budget = getFoodPickerBudget(budgetId);
 
+  /** Kun scroll efter brugerens valg — ikke ved URL-hydrate. */
+  const allowScrollRef = useRef(false);
+
+  const scrollToResults = useCallback(() => {
+    const el = resultsRef.current;
+    if (!el || !allowScrollRef.current) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }, []);
+
   const runSearch = useCallback(
     async (nextDishId: string, nextBudgetId: FoodPickerBudgetId, nextAlcoholFree: boolean) => {
       const d = getFoodPickerDish(nextDishId);
@@ -100,9 +110,6 @@ export function FoodWinePicker({
         setProducts([]);
       } finally {
         setLoading(false);
-        requestAnimationFrame(() => {
-          resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
       }
     },
     [],
@@ -112,17 +119,28 @@ export function FoodWinePicker({
     if (dishId && budgetId) void runSearch(dishId, budgetId, alcoholFree);
   }, [dishId, budgetId, alcoholFree, runSearch]);
 
+  // Scroll når panelet dukker op (loading) og igen når resultater har layout.
+  useEffect(() => {
+    if (!hasSearched) return;
+    const delayMs = loading ? 50 : 120;
+    const timer = window.setTimeout(scrollToResults, delayMs);
+    return () => window.clearTimeout(timer);
+  }, [hasSearched, loading, products, failed, scrollToResults]);
+
   function pickDish(id: string) {
+    allowScrollRef.current = true;
     setDishId(id);
     if (syncUrl) writeUrlPicker(id, budgetId, alcoholFree);
   }
 
   function pickBudget(id: FoodPickerBudgetId) {
+    allowScrollRef.current = true;
     setBudgetId(id);
     if (syncUrl) writeUrlPicker(dishId, id, alcoholFree);
   }
 
   function toggleAlcoholFree() {
+    allowScrollRef.current = true;
     const next = !alcoholFree;
     setAlcoholFree(next);
     if (syncUrl) writeUrlPicker(dishId, budgetId, next);
@@ -205,11 +223,12 @@ export function FoodWinePicker({
         <span className="ml-2 text-xs text-stone-500">0 % — behold budgettet, skift til alkoholfri flasker</span>
       </div>
 
-      <div id="vin-til-mad" ref={resultsRef} className="scroll-mt-24">
+      <div id="vin-til-mad" className="scroll-mt-28">
         {hasSearched && dish && budget ? (
           <section
+            ref={resultsRef}
             aria-live="polite"
-            className="mt-5 rounded-2xl border border-stone-200/90 bg-white/95 p-4 shadow-sm sm:p-5"
+            className="mt-5 scroll-mt-28 rounded-2xl border border-stone-200/90 bg-white/95 p-4 shadow-sm sm:p-5"
           >
             <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <div>
