@@ -1,6 +1,6 @@
 /**
- * Kurateret PriceRunner-katalog (udstyr/tilbehør — ikke vinflasker).
- * productId + compareUrl kommer fra https://www.pricerunner.dk/widget / produktsider.
+ * Kurateret PriceRunner-katalog: vintilbehør plus et lille flaske-eksperiment
+ * (pairing-guides). productId + compareUrl fra PriceRunner produktsider.
  */
 export type PriceRunnerProduct = {
   productId: string;
@@ -12,7 +12,8 @@ export type PriceRunnerProduct = {
     | "proptrekker"
     | "vinreol"
     | "vinprop"
-    | "flaskekoeler";
+    | "flaskekoeler"
+    | "vin";
   /** Attribution-link til PriceRunner produktside (nofollow). */
   compareUrl: string;
 };
@@ -136,6 +137,55 @@ export const priceRunnerProducts = {
     category: "flaskekoeler",
     compareUrl:
       "https://www.pricerunner.dk/pl/461-3224096/Koekkentilbehoer/Vacu-Vin-Active-Flaskekoeler-Sammenlign-Priser",
+  },
+  "fontodi-chianti-classico": {
+    productId: "3214173268",
+    title: "Fontodi Chianti Classico",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3214173268/Vine/Fontodi-Chianti-Classico-2017-Toscana-DOCG-OEKO-Sammenlign-Priser",
+  },
+  "san-marzano-primitivo": {
+    productId: "3200123548",
+    title: "Cantina San Marzano Primitivo Puglia",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3200123548/Vine/Marzano-Primitivo-2017-14.5-Sammenlign-Priser",
+  },
+  "trapiche-oak-cask-malbec": {
+    productId: "5232720",
+    title: "Trapiche Oak Cask Malbec",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-5232720/Vine/Trapiche-Oak-Cask-Malbec-Mendoza-Maipo-Valley-14-75cl-Sammenlign-Priser",
+  },
+  "chablis-la-pierrelee": {
+    productId: "3214945209",
+    title: "La Chablisienne Chablis La Pierrelée",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3214945209/Vine/Chablis-La-Pierrelee-174.50-kr.-pr.-flaske-Sammenlign-Priser",
+  },
+  "grahams-10-tawny": {
+    productId: "5199014",
+    title: "Graham's 10 Years Old Tawny Port",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-5199014/Vine/Graham-s-10-Years-Old-Tawny-Port-Douro-20-75cl-Sammenlign-Priser",
+  },
+  "chateau-tanunda-grand-shiraz": {
+    productId: "5231215",
+    title: "Château Tanunda Grand Barossa Shiraz",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-5231215/Vine/Chateau-Tanunda-Grand-2015-Shiraz-Barossa-Valley-South-Australia-14.5-75cl-Sammenlign-Priser",
+  },
+  "louis-jadot-pinot-noir": {
+    productId: "3216391975",
+    title: "Louis Jadot Pinot Noir / Bourgogne Rouge",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3216391975/Vine/Louis-Jadot-Pinot-Noir-2021-Sammenlign-Priser",
   },
 } as const satisfies Record<string, PriceRunnerProduct>;
 
