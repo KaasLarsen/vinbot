@@ -62,7 +62,7 @@ export default function CookiepolitikPage() {
             <strong>Affiliate:</strong> når du klikker videre til en forhandler, kan <strong>Partner-Ads</strong>,{" "}
             <strong>Adtraction</strong>, <strong>Daisycon</strong> eller <strong>PriceRunner</strong> sætte cookies
             eller bruge tilsvarende teknologi for at tilskrive et eventuelt salg til Vinbot — uden merpris for dig.
-            PriceRunner-widgets indlæses kun efter <strong>Accepter</strong>.
+            PriceRunner-widgets (prissammenligning på vintilbehør) indlæses som en del af indholdet; klik kan sætte tracking hos PriceRunner.
           </li>
         </ul>
 

@@ -104,7 +104,7 @@ export default function PrivatlivPage() {
           <li>Nyhedsbrev med tilbud og nyheder (samtykke ved tilmelding).</li>
           <li>Statistik og forbedring af sitet (samtykke, når du har trykket Accepter).</li>
           <li>Annoncer via Google AdSense (samtykke, når du har trykket Accepter).</li>
-          <li>Affiliate-sporing via Partner-Ads, Adtraction, Daisycon og PriceRunner (samtykke, når du har trykket Accepter).</li>
+          <li>Affiliate-sporing via Partner-Ads, Adtraction og Daisycon (samtykke, når du har trykket Accepter). PriceRunner-widgets til prissammenligning på vintilbehør indlæses som en del af indholdet; klik kan sætte tracking hos PriceRunner.</li>
         </ul>
 
         <h2 className="text-xl font-semibold text-stone-900">Cookie-banner</h2>
@@ -131,7 +131,7 @@ export default function PrivatlivPage() {
         <h2 className="text-xl font-semibold text-stone-900">Affiliate-links</h2>
         <p>
           Nogle links er affiliate. Afhængigt af forhandler kan de formidles via netværk som <strong>Partner-Ads</strong>, <strong>Adtraction</strong>,{" "}
-          <strong>Daisycon</strong> eller <strong>PriceRunner</strong>. Når du klikker, kan forhandleren eller netværket sætte en cookie eller bruge anden teknisk sporingsmekanisme for at tildele kommission til Vinbot. Det påvirker ikke din pris hos butikken. PriceRunner-widgets på sider om vintilbehør er markeret som annoncer.
+          <strong>Daisycon</strong> eller <strong>PriceRunner</strong>. Når du klikker, kan forhandleren eller netværket sætte en cookie eller bruge anden teknisk sporingsmekanisme for at tildele kommission til Vinbot. Det påvirker ikke din pris hos butikken. PriceRunner-widgets på sider om vintilbehør indlæses som prissammenligning og er markeret som annoncer.
         </p>
 
         <p className="flex flex-wrap gap-x-3 gap-y-1 pt-4">

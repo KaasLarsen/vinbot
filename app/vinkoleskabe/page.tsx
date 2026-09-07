@@ -153,6 +153,11 @@ export default function VinkoleskabePage() {
           heading="Integrerbar/klassisk — Witt Classic EF5483I (48 flasker)"
           className="mt-8"
         />
+        <PriceRunnerProductWidget
+          productKey="scandomestic-wc105bg"
+          heading="Stor kapacitet — Scandomestic WC105BG (105 flasker)"
+          className="mt-8"
+        />
       </section>
 
       <section className="mt-14 space-y-14">
