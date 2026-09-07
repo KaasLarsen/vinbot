@@ -4811,4 +4811,55 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "150–250 kr kan række til cru Beaujolais eller god crémant; 300–500 kr til grower-champagne eller fin Pinot/Chablis. Over 500 kr kun hvis anledningen bærer det.",
     },
   ],
+  "sadan-vaelger-du-proptrekker": [
+    {
+      question: "Hvilken proptrækker skal jeg købe?",
+      answer:
+        "En waiter’s friend med folieskærer, spiral og to-trins støtte. Den dækker næsten alle naturpropper. Vinge er nemmere første gang, men dårligere til skrøbelige propper.",
+    },
+    {
+      question: "Kan jeg åbne champagne med waiter’s friend?",
+      answer:
+        "Nej. Champagne åbnes med muselet og kontrolleret prop — se guiden til champagne. Waiter’s friend er til stillvin med kork.",
+    },
+    {
+      question: "Hvad koster en god proptrækker?",
+      answer:
+        "150–250 kr rækker til en holdbar waiter’s friend. Over det betaler du mest for design og træhåndtag.",
+    },
+  ],
+  "sadan-holder-du-aabnet-vin-frisk": [
+    {
+      question: "Virker vakuumpumpe til åbnet vin?",
+      answer:
+        "Den kan give et par extra dage på hverdagsvin sammen med køleskab. Den erstatter ikke kulde, og den skal ikke bruges på bobler.",
+    },
+    {
+      question: "Hvordan lukker jeg champagne igen?",
+      answer:
+        "Med en klem-champagneprop, ikke vakuum. Køleskab. Forvent 1–3 dage med brus, ikke en uge.",
+    },
+    {
+      question: "Skal rødvin i køleskabet efter åbning?",
+      answer:
+        "Ja. Tag den ud 15–20 minutter før næste glas, så den ikke serveres iskold.",
+    },
+  ],
+  "isspand-og-flaskekoeler-vin": [
+    {
+      question: "Hvad er hurtigst: isspand eller fryser?",
+      answer:
+        "Isspand med vand og salt: typisk 8–12 minutter og lavere risiko. Fryser kun i nød med alarm, max ca. 15 minutter.",
+    },
+    {
+      question: "Hvad er en Active-flaskekøler?",
+      answer:
+        "Et gelé-ærme fra fryseren, du trækker over flasken. Den køler og holder temperaturen ved bordet uden isvand.",
+    },
+    {
+      question: "Hvornår skal jeg købe vinkøleskab i stedet?",
+      answer:
+        "Hvis du køler hvid og bobler flere gange om ugen. Isspand og flaskekøler er til panik og bordet — ikke til lagring.",
+    },
+  ],
 };

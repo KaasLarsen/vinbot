@@ -68,6 +68,9 @@ export function SiteFooter() {
               <Link href="/vinkoleskabe" className="hover:text-rose-900">
                 Vinkøleskabe
               </Link>
+              <Link href="/vintilbehor" className="hover:text-rose-900">
+                Vintilbehør
+              </Link>
               <Link href="/guides/komplet-guide-til-vin-og-mad" className="hover:text-rose-900">
                 Stor guide: vin og mad
               </Link>

@@ -5,7 +5,14 @@
 export type PriceRunnerProduct = {
   productId: string;
   title: string;
-  category: "vinkoleskab" | "vinglas" | "karaffel" | "proptrekker" | "vinreol";
+  category:
+    | "vinkoleskab"
+    | "vinglas"
+    | "karaffel"
+    | "proptrekker"
+    | "vinreol"
+    | "vinprop"
+    | "flaskekoeler";
   /** Attribution-link til PriceRunner produktside (nofollow). */
   compareUrl: string;
 };
@@ -94,6 +101,41 @@ export const priceRunnerProducts = {
     category: "vinreol",
     compareUrl:
       "https://www.pricerunner.dk/pl/459-3200280310/Brugskunst/DAY-12-Bottles-Vinreol-56x26cm-Sammenlign-Priser",
+  },
+  "le-creuset-waiters-friend-classic": {
+    productId: "3357972024",
+    title: "Le Creuset Classic Waiter's Friend",
+    category: "proptrekker",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3357972024/Koekkentilbehoer/Le-Creuset-Premium-Tjenerproptraekker-Black-12-8-cm-Proptraekker-Sammenlign-Priser",
+  },
+  "spiegelau-definition-hvidvinsglas": {
+    productId: "3201389919",
+    title: "Spiegelau Definition Hvidvinsglas 43 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3201389919/Koekkentilbehoer/Spiegelau-Definition-Hvidvinsglas-43cl-2stk-Sammenlign-Priser",
+  },
+  "vacu-vin-wine-saver-gift-pack": {
+    productId: "3200042945",
+    title: "Vacu Vin Wine Saver Gift Pack (pumpe + 2 propper)",
+    category: "vinprop",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3200042945/Koekkentilbehoer/Vacu-Vin-Wine-Saver-Gift-Pack-Vinpumpe-3stk-Sammenlign-Priser",
+  },
+  "vacu-vin-champagne-prop": {
+    productId: "3440434",
+    title: "Vacu Vin Champagne Saver",
+    category: "vinprop",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3440434/Koekkentilbehoer/Vacu-Vin-Saver-Barudstyr-Sammenlign-Priser",
+  },
+  "vacu-vin-active-flaskekoeler": {
+    productId: "3224096",
+    title: "Vacu Vin Active Flaskekøler",
+    category: "flaskekoeler",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3224096/Koekkentilbehoer/Vacu-Vin-Active-Flaskekoeler-Sammenlign-Priser",
   },
 } as const satisfies Record<string, PriceRunnerProduct>;
 

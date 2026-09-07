@@ -60,6 +60,7 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "hvilken-vin-til-madlavning-sovs",
   "rosevin-alkoholprocent",
   "champagne-serveringstemperatur",
+  "isspand-og-flaskekoeler-vin",
   "hvad-vejer-en-flaske-vin",
   "prosecco-alkoholprocent",
   "champagne-alkoholprocent",

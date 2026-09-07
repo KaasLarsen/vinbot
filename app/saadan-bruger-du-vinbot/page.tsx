@@ -140,7 +140,11 @@ export default function SaadanBrugerDuVinbotPage() {
           <Link href="/vinkoleskabe" className="font-medium text-rose-900 hover:underline">
             /vinkoleskabe
           </Link>{" "}
-          — separat fra flaskesøgningen, med modeller fra specialiserede feeds.
+          — separat fra flaskesøgningen, med modeller fra specialiserede feeds. Mindre gear (glas, proptrækker, prop, køler) ligger på{" "}
+          <Link href="/vintilbehor" className="font-medium text-rose-900 hover:underline">
+            /vintilbehor
+          </Link>
+          .
         </p>
       </section>
 
