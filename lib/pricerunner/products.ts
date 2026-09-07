@@ -13,6 +13,7 @@ export type PriceRunnerProduct = {
     | "vinreol"
     | "vinprop"
     | "flaskekoeler"
+    | "vinudstyr"
     | "vin";
   /** Attribution-link til PriceRunner produktside (nofollow). */
   compareUrl: string;
@@ -235,6 +236,34 @@ export const priceRunnerProducts = {
     category: "vin",
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3222430955/Vine/E.-Guigal-2019-Cuvee-Philipson-Cotes-du-Rhone-Rouge-Guigal-Syrah-Roedvin-fra-Rhone-Frankrig-Sammenlign-Priser",
+  },
+  "latelier-du-vin-vintermometer": {
+    productId: "5163357",
+    title: "L'Atelier du Vin Vintermometer",
+    category: "vinudstyr",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-5163357/Koekkentilbehoer/-Vintermometer-Sammenlign-Priser",
+  },
+  "vacu-vin-wine-aerator": {
+    productId: "3273041",
+    title: "Vacu Vin Wine Aerator",
+    category: "vinudstyr",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3273041/Koekkentilbehoer/Vacu-Vin-Wine-Aerator-Vinilter-Sammenlign-Priser",
+  },
+  "funktion-wing-proptrekker": {
+    productId: "3444414",
+    title: "Funktion Wing Proptrækker",
+    category: "proptrekker",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3444414/Koekkentilbehoer/Funktion-Wing-Proptraekker-Sammenlign-Priser",
+  },
+  "coravin-pivot-plus": {
+    productId: "3200426905",
+    title: "Coravin Pivot+",
+    category: "vinudstyr",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3200426905/Koekkentilbehoer/Coravin-Pivot-Vinpumpe-Sammenlign-Priser",
   },
 } as const satisfies Record<string, PriceRunnerProduct>;
 

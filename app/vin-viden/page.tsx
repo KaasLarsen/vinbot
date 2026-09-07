@@ -213,6 +213,10 @@ export default function VinVidenHubPage() {
             Dekantering, vinglas, servering-temperatur, åbning af champagne. Læs om{" "}
             <Link href="/guides/sadan-dekanterer-du-vin" className="text-rose-900 hover:underline">dekantering</Link>,{" "}
             <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">vinglas</Link>,{" "}
+            <Link href="/guides/sadan-bruger-du-vintermometer" className="text-rose-900 hover:underline">vintermometer</Link>,{" "}
+            <Link href="/guides/sadan-vaelger-du-vinaerator" className="text-rose-900 hover:underline">vinaerator</Link>,{" "}
+            <Link href="/guides/sadan-vaelger-du-vinge-proptrekker" className="text-rose-900 hover:underline">vinge-proptrækker</Link>,{" "}
+            <Link href="/guides/sadan-virker-coravin" className="text-rose-900 hover:underline">Coravin</Link>,{" "}
             <Link href="/guides/hvordan-aabner-du-champagne" className="text-rose-900 hover:underline">åbning af champagne</Link> og{" "}
             <Link href="/guides/kan-vin-blive-daarlig" className="text-rose-900 hover:underline">forkert vin</Link>.
           </p>

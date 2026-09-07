@@ -4845,6 +4845,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja. Tag den ud 15–20 minutter før næste glas, så den ikke serveres iskold.",
     },
   ],
+  "sadan-bruger-du-vintermometer": [
+    {
+      question: "Skal jeg have vintermometer?",
+      answer:
+        "Nej, ikke som første grej. Det hjælper, når du skifter mellem rød, hvid og bobler og vil ramme graderne i stedet for at gætte på køleskab og stuetemperatur.",
+    },
+    {
+      question: "Hvor koldt skal rødvin være?",
+      answer:
+        "Let rød typisk 13–16 °C, kraftig rød 16–18 °C. Dansk stue er ofte for varm. Mål i vinen, ikke i luften over glasset.",
+    },
+    {
+      question: "Måler flaskeklemme det samme som en sonde?",
+      answer:
+        "Næsten. Klemmen måler flaskevæggen og kan ligge lidt koldere lige efter køleskab. Sonden i glasset er mest præcis.",
+    },
+  ],
+  "sadan-vaelger-du-vinaerator": [
+    {
+      question: "Er vinaerator bedre end karaffel?",
+      answer:
+        "Nej. Aeratoren er hurtigere til ét glas ung rød. Karaffel er bedre, når hele flasken skal luftes, eller du skal skille bundfald.",
+    },
+    {
+      question: "Kan jeg bruge aerator til pinot noir?",
+      answer:
+        "Sjældent. Lette røde og gamle vine kan overlufte. Brug aerator til ung, stram rød — cabernet, malbec, ung rioja.",
+    },
+    {
+      question: "Skal aeratoren i opvaskemaskinen?",
+      answer:
+        "Skyl med varmt vand efter hver flaske. Maskine kun hvis producenten siger det — tørret vin i venturien smager grimt.",
+    },
+  ],
+  "sadan-vaelger-du-vinge-proptrekker": [
+    {
+      question: "Er vinge-proptrækker bedre end waiter’s friend?",
+      answer:
+        "Den er nemmere første gang, men dårligere til gamle, smuldrende propper og har ofte ingen folieskærer. Waiter’s friend er hverdagsvalget.",
+    },
+    {
+      question: "Kan jeg åbne champagne med vinge-proptrækker?",
+      answer:
+        "Nej. Champagne åbnes med muselet og kontrolleret prop. Vinge og waiter’s friend er til stillvin med kork.",
+    },
+    {
+      question: "Hvem skal købe vinge-modellen?",
+      answer:
+        "Gæster der selv åbner, eller hænder der vil have to store greb. Har du kun ét budget, køb waiter’s friend.",
+    },
+  ],
+  "sadan-virker-coravin": [
+    {
+      question: "Er Coravin pengene værd?",
+      answer:
+        "Kun hvis du drikker dyre flasker over flere dage og accepterer prisen på system plus gas. Til hverdagsvin er køleskab og prop nok.",
+    },
+    {
+      question: "Hvad er forskellen på Pivot og Timeless?",
+      answer:
+        "Pivot skifter til en Coravin-stopper efter du har åbnet. Timeless nåler gennem naturkork, så flasken ser uåbnet ud. Pivot er billigere og nemmere.",
+    },
+    {
+      question: "Virker Coravin på skruelåg?",
+      answer:
+        "Nåle-systemet kræver naturkork. Pivot-stopperen kan bruges, når du alligevel åbner. Bobler kræver andet gear.",
+    },
+  ],
   "isspand-og-flaskekoeler-vin": [
     {
       question: "Hvad er hurtigst: isspand eller fryser?",
