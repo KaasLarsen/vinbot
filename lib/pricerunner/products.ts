@@ -187,6 +187,55 @@ export const priceRunnerProducts = {
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3216391975/Vine/Louis-Jadot-Pinot-Noir-2021-Sammenlign-Priser",
   },
+  "duc-de-foix-cava-brut": {
+    productId: "4718668",
+    title: "Duc de Foix Cava Brut",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-4718668/Vine/Duc-de-Foix-Cava-Brut-12-75cl-Sammenlign-Priser",
+  },
+  "ribeauville-cremant-alsace": {
+    productId: "3443060271",
+    title: "Cave de Ribeauvillé Crémant d'Alsace Giersberger Brut",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3443060271/Vine/Cave-de-Ribeauville-Cremant-d-Alsace-Giersberger-Brut-Sammenlign-Priser",
+  },
+  "scavi-ray-prosecco-doc": {
+    productId: "4754695",
+    title: "Scavi & Ray Prosecco DOC",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-4754695/Vine/Scavi-Ray-Prosecco-DOC-11-75cl-Sammenlign-Priser",
+  },
+  "faustino-1-gran-reserva": {
+    productId: "3200192122",
+    title: "Faustino I Gran Reserva Rioja",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3200192122/Vine/Faustino-1-Gran-Reserva-Tempranillo-Rioja-14.5-75cl-Sammenlign-Priser",
+  },
+  "bodegas-muga-reserva": {
+    productId: "3200123264",
+    title: "Bodegas Muga Reserva Rioja",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3200123264/Vine/Bodegas-Muga-Reserva-2017-Tempranillo-Rioja-14-75cl-Sammenlign-Priser",
+  },
+  "chateau-maucoil-cdr-villages": {
+    productId: "3214923127",
+    title: "Château Maucoil Côtes du Rhône Villages",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3214923127/Vine/Villages-2021-Grenache-Syrah-Carignan-Cotes-du-Rhone-14.5-75cl-Sammenlign-Priser",
+  },
+  "guigal-cotes-du-rhone-rouge": {
+    productId: "3222430955",
+    title: "E. Guigal Côtes du Rhône Rouge",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3222430955/Vine/E.-Guigal-2019-Cuvee-Philipson-Cotes-du-Rhone-Rouge-Guigal-Syrah-Roedvin-fra-Rhone-Frankrig-Sammenlign-Priser",
+  },
 } as const satisfies Record<string, PriceRunnerProduct>;
 
 export type PriceRunnerProductKey = keyof typeof priceRunnerProducts;
