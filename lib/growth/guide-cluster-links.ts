@@ -1132,4 +1132,15 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     HEDVIN_PORT.filter((l) => l.slug !== "bedste-portvin"),
     [{ slug: "hvad-er-portvin", label: "Hvad er portvin?" }],
   ),
+  "hvad-er-isvin": videnBlock(
+    ["hvad-er-isvin"],
+    "Isvin & dessertvin",
+    "Eiswein og Icewine i kontekst — dessertvin, riesling, Mosel og Canada.",
+    [{ slug: "bedste-dessertvin", label: "Bedste dessertvin" }],
+    [{ slug: "riesling-druen", label: "Riesling-druen" }],
+    [{ slug: "vinregion-mosel", label: "Vinregion Mosel" }],
+    [{ slug: "vin-til-dessert-og-kransekage", label: "Vin til dessert" }],
+    [{ slug: "hvad-er-syre-i-vin", label: "Hvad er syre i vin" }],
+    [{ slug: "hvad-er-restsukker-i-vin", label: "Hvad er restsukker" }],
+  ),
 };

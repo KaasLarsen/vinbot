@@ -769,6 +769,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hedvin er fortificeret vin med tilsat druesprit: 15–22 % alkohol, ofte sød, lang holdbarhed. Port, sherry, madeira og vermouth forklaret.",
   },
+  "hvad-er-isvin": {
+    title: "Hvad er isvin? Eiswein og Icewine",
+    description:
+      "Isvin er dessertvin af druer frosset på vinstokken. Frosthøst, koncentreret sødme og høj syre — Eiswein (DE/AT) vs Icewine (Canada).",
+  },
   "hedvin-alkoholprocent": {
     title: "Hedvin: 15–22 % alkohol",
     description:

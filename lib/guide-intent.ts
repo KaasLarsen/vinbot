@@ -193,6 +193,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hvad-er-isvin") {
+    return {
+      q: "isvin eiswein icewine",
+      max: null,
+      label: "isvin og Eiswein",
+    };
+  }
+
   if (slug === "hvad-er-madeira-vin") {
     return {
       q: "madeira vin",

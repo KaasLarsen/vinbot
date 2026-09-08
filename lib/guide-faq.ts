@@ -243,6 +243,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "De fire mest kendte er portvin (Douro), sherry (Jerez), madeira (øen Madeira) og vermouth (aromatiseret hedvin til aperitif og cocktails).",
     },
   ],
+  "hvad-er-isvin": [
+    {
+      question: "Hvad er isvin?",
+      answer:
+        "Isvin (Eiswein/Icewine) er dessertvin lavet på druer, der er frosset på vinstokken. De presses frosne, så vandet bliver tilbage som is, og kun ultrasød, koncentreret saft løber ud — med høj frugtsyre.",
+    },
+    {
+      question: "Hvorfor er isvin så dyr?",
+      answer:
+        "Risiko for totalt høsttab mens man venter på frost, kun 10–20 % udbytte fordi is sorteres fra, og små halvflasker. Top-Eiswein koster ofte flere hundrede til tusindvis af kroner.",
+    },
+    {
+      question: "Hvad er forskellen på Eiswein og Icewine?",
+      answer:
+        "Samme princip: naturlig frost på stokken. Eiswein er det tyske/østrigske navn (ofte riesling); Icewine er det canadiske (især Niagara, også vidal). Klima gør Canada mere stabil til produktion i dag.",
+    },
+  ],
   "hedvin-alkoholprocent": [
     {
       question: "Hvor mange procent er der i hedvin?",
