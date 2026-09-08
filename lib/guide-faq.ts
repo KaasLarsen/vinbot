@@ -4930,4 +4930,55 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Hvis du køler hvid og bobler flere gange om ugen. Isspand og flaskekøler er til panik og bordet — ikke til lagring.",
     },
   ],
+  "sadan-vaelger-du-vinreol": [
+    {
+      question: "Er en vinreol det samme som et vinkøleskab?",
+      answer:
+        "Nej. En vinreol giver orden og liggende flasker. Den styrer ikke temperatur. Til stabile grader og flere stilarter skal du have vinkøleskab.",
+    },
+    {
+      question: "Skal flaskerne ligge eller stå?",
+      answer:
+        "Naturkork bør ligge, så proppen forbliver fugtig. Skruelåg kan stå. Undgå direkte sol og radiator uanset orientering.",
+    },
+    {
+      question: "Hvor mange flasker skal reolen kunne holde?",
+      answer:
+        "Køb lidt flere pladser end du har i dag — typisk +4–8. Flasketal gælder Bordeaux-standard; magnum og champagne fylder mere.",
+    },
+  ],
+  "sadan-vaelger-du-vinkaraffel": [
+    {
+      question: "Hvilken karaffel skal jeg købe?",
+      answer:
+        "En med bred bund og plads til mindst én flaske plus luft (ca. 1,2–1,7 L). Slanke karafler er mest til bordet og lufter dårligere.",
+    },
+    {
+      question: "Skal jeg have karaffel eller vinaerator?",
+      answer:
+        "Karaffel når hele flasken skal luftes. Aerator når du kun skal have ét glas ung rød i hast. Let pinot og gamle vine skal ofte bare i glasset.",
+    },
+    {
+      question: "Kan jeg vaske karaflen i opvaskemaskinen?",
+      answer:
+        "Kun hvis producenten siger det. Ellers varmt vand uden stærk sæbe, og tør helt — fugt giver muglugt til næste flaske.",
+    },
+  ],
+  "vintilbehor-til-begyndere": [
+    {
+      question: "Hvad er det første vintilbehør, man skal købe?",
+      answer:
+        "Waiter’s friend, to til fire fornuftige glas og en prop eller vakuumsæt til åbnet vin. Karaffel, Coravin og vinkøleskab kan vente.",
+    },
+    {
+      question: "Hvad koster et begynder-sæt?",
+      answer:
+        "Typisk 450–850 kr for proptrækker, fire glas og prop/vakuum. Læg hellere pengene der end i billige gadget-sæt.",
+    },
+    {
+      question: "Hvornår skal jeg købe karaffel?",
+      answer:
+        "Når ung, stram rød ofte smager lukket, og du vil lufte hele flasken 30–60 minutter. Ellers er glas eller aerator nok.",
+    },
+  ],
 };

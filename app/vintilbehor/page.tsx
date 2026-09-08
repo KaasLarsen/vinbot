@@ -67,8 +67,11 @@ export default function VintilbehorPage() {
 
       <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[
+          { href: "/guides/vintilbehor-til-begyndere", title: "Startkit", body: "Hvad du skal købe først." },
           { href: "/guides/sadan-vaelger-du-vinglas", title: "Vinglas", body: "Form, rød, hvid og bobler." },
           { href: "/guides/sadan-vaelger-du-proptrekker", title: "Proptrækker", body: "Waiter’s friend vs vinge." },
+          { href: "/guides/sadan-vaelger-du-vinkaraffel", title: "Vinkaraffel", body: "Bred bund vs. bordkaraffel." },
+          { href: "/guides/sadan-vaelger-du-vinreol", title: "Vinreol", body: "Størrelse, placering og format." },
           { href: "/guides/sadan-holder-du-aabnet-vin-frisk", title: "Prop & vakuum", body: "Åbnet vin og champagneprop." },
           { href: "/guides/isspand-og-flaskekoeler-vin", title: "Køling", body: "Isspand og flaskekøler." },
           { href: "/guides/sadan-bruger-du-vintermometer", title: "Vintermometer", body: "Servering i °C uden gætteri." },
