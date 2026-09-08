@@ -120,6 +120,44 @@ function supermarketBlock(
   return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
 }
 
+const HEDVIN_PILLAR: GuideClusterLink = {
+  slug: "hvad-er-hedvin",
+  label: "Hvad er hedvin?",
+};
+
+const HEDVIN_TYPES: GuideClusterLink[] = [
+  { slug: "hvad-er-portvin", label: "Hvad er portvin?" },
+  { slug: "hvad-er-sherry-vin", label: "Hvad er sherry?" },
+  { slug: "hvad-er-madeira-vin", label: "Hvad er madeira?" },
+  { slug: "hvad-er-vermouth", label: "Hvad er vermouth?" },
+];
+
+const HEDVIN_PORT: GuideClusterLink[] = [
+  { slug: "bedste-portvin", label: "Bedste portvin" },
+  { slug: "ruby-portvin", label: "Ruby portvin" },
+  { slug: "tawny-portvin", label: "Tawny portvin" },
+  { slug: "sadan-serverer-du-portvin", label: "Sådan serverer du portvin" },
+  { slug: "hvor-laenge-holder-portvin", label: "Hvor længe holder portvin" },
+  { slug: "portvin-alkoholprocent", label: "Portvin alkoholprocent" },
+  { slug: "portvin-til-ost", label: "Portvin til ost" },
+  { slug: "portvin-til-chokolade", label: "Portvin til chokolade" },
+];
+
+const HEDVIN_VIDEN: GuideClusterLink[] = [
+  { slug: "hedvin-alkoholprocent", label: "Hedvin alkoholprocent" },
+  { slug: "bedste-dessertvin", label: "Bedste dessertvin" },
+  { slug: "vin-til-portugisisk-mad", label: "Vin til portugisisk mad" },
+];
+
+function hedvinBlock(
+  exclude: string[],
+  title: string,
+  intro: string,
+  ...groups: GuideClusterLink[][]
+): GuideClusterBlock {
+  return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
+}
+
 const DANSK_VIN_PILLAR: GuideClusterLink = {
   slug: "bedste-dansk-vin",
   label: "Bedste dansk vin",
@@ -1038,4 +1076,60 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       [{ slug: "afkoelt-roedvin", label: "Afkølet rødvin" }],
     ),
   ],
+  "hvad-er-hedvin": hedvinBlock(
+    ["hvad-er-hedvin"],
+    "Hedvin — hele klyngen",
+    "Port, sherry, madeira og vermouth — start med typen eller alkoholprocent.",
+    HEDVIN_TYPES,
+    HEDVIN_VIDEN,
+    HEDVIN_PORT.slice(0, 4),
+  ),
+  "hedvin-alkoholprocent": hedvinBlock(
+    ["hedvin-alkoholprocent"],
+    "Hedvin — relaterede guider",
+    "15–22 % i kontekst: hvad hedvin er, og hvordan port og sherry adskiller sig.",
+    [HEDVIN_PILLAR],
+    HEDVIN_TYPES,
+    [{ slug: "portvin-alkoholprocent", label: "Portvin alkoholprocent" }],
+  ),
+  "hvad-er-madeira-vin": hedvinBlock(
+    ["hvad-er-madeira-vin"],
+    "Hedvin — relaterede guider",
+    "Madeira side om side med port, sherry og det generelle hedvin-overblik.",
+    [HEDVIN_PILLAR],
+    HEDVIN_TYPES.filter((l) => l.slug !== "hvad-er-madeira-vin"),
+    HEDVIN_VIDEN,
+  ),
+  "hvad-er-vermouth": hedvinBlock(
+    ["hvad-er-vermouth"],
+    "Hedvin — relaterede guider",
+    "Vermouth som aromatiseret hedvin — se også sherry til aperitif og cocktails.",
+    [HEDVIN_PILLAR],
+    HEDVIN_TYPES.filter((l) => l.slug !== "hvad-er-vermouth"),
+    [{ slug: "hedvin-alkoholprocent", label: "Hedvin alkoholprocent" }],
+  ),
+  "hvad-er-portvin": hedvinBlock(
+    ["hvad-er-portvin"],
+    "Hedvin & portvin",
+    "Port i hedvin-familien — typer, servering og køb.",
+    [HEDVIN_PILLAR],
+    HEDVIN_PORT,
+    HEDVIN_TYPES.filter((l) => l.slug !== "hvad-er-portvin").slice(0, 3),
+  ),
+  "hvad-er-sherry-vin": hedvinBlock(
+    ["hvad-er-sherry-vin"],
+    "Hedvin & sherry",
+    "Sherry i hedvin-familien — sammenlign med port, madeira og vermouth.",
+    [HEDVIN_PILLAR],
+    HEDVIN_TYPES.filter((l) => l.slug !== "hvad-er-sherry-vin"),
+    HEDVIN_VIDEN,
+  ),
+  "bedste-portvin": hedvinBlock(
+    ["bedste-portvin"],
+    "Portvin-klyngen",
+    "Køb, typer og mad — plus det bredere hedvin-overblik.",
+    [HEDVIN_PILLAR],
+    HEDVIN_PORT.filter((l) => l.slug !== "bedste-portvin"),
+    [{ slug: "hvad-er-portvin", label: "Hvad er portvin?" }],
+  ),
 };

@@ -113,6 +113,10 @@ export default function VinVidenHubPage() {
           alkoholfri-hubben
         </Link>
         ,{" "}
+        <Link href="/hedvin" className="text-rose-900 hover:underline">
+          hedvin-hubben
+        </Link>
+        ,{" "}
         <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">
           vin-trends og forbrug i Danmark
         </Link>

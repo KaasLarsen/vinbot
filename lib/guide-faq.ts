@@ -226,6 +226,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Cirka. Begge ligger omkring 19–20 %. Vintage kan ramme op mod 22 %. Forskellen er lagring og stil, ikke primært ABV.",
     },
   ],
+  "hvad-er-hedvin": [
+    {
+      question: "Hvad er hedvin?",
+      answer:
+        "Hedvin (forstærket eller fortificeret vin) er vin, hvor der er tilsat druesprit under produktionen. Det giver typisk 15–22 % alkohol, ofte sødme og længere holdbarhed end bordvin.",
+    },
+    {
+      question: "Hvad er forskellen på hedvin og almindelig vin?",
+      answer:
+        "Bordvin gæres færdig uden tilsat sprit (ca. 12–14 %). Hedvin får tilsat druesprit — enten midt i gæringen (klassisk port) eller efter (mange tørre sherry-typer).",
+    },
+    {
+      question: "Hvilke typer hedvin findes der?",
+      answer:
+        "De fire mest kendte er portvin (Douro), sherry (Jerez), madeira (øen Madeira) og vermouth (aromatiseret hedvin til aperitif og cocktails).",
+    },
+  ],
+  "hedvin-alkoholprocent": [
+    {
+      question: "Hvor mange procent er der i hedvin?",
+      answer:
+        "Næsten altid 15–22 % vol. Vermouth ligger ofte 15–18 %, sherry og madeira omkring 15–22 %, port typisk 19–22 %. Bordvin er 12–14,5 %.",
+    },
+    {
+      question: "Er hedvin altid sød?",
+      answer:
+        "Nej. Mange sherry-typer (fino, manzanilla) er knastørre. Sødmen afhænger af, om spritten tilsættes før eller efter gæringen er færdig.",
+    },
+    {
+      question: "Hvor stort glas skal man bruge til hedvin?",
+      answer:
+        "Små glas — typisk 6–10 cl. 10 cl port ved 20 % er ca. 1,3 genstand, så et stort rødvinsglas bliver for meget.",
+    },
+  ],
+  "hvad-er-madeira-vin": [
+    {
+      question: "Hvad er madeira-vin?",
+      answer:
+        "Madeira er fortificeret vin fra den portugisiske ø Madeira. Den opvarmes under lagringen, hvilket giver smag af karamel, nødder og frisk syre — og ekstrem holdbarhed.",
+    },
+    {
+      question: "Er madeira det samme som portvin?",
+      answer:
+        "Nej. Port kommer fra Douro og er typisk sød uden systematisk opvarmning. Madeira er ø-vin med bevidst varme og oxidation; stilarterne går fra tør sercial til sød malmsey.",
+    },
+    {
+      question: "Hvor længe holder åben madeira?",
+      answer:
+        "Ofte måneder på køl. Madeira er allerede «trænet» til varme og luft, så den tåler åbning bedre end de fleste bordvine og mange porte.",
+    },
+  ],
+  "hvad-er-vermouth": [
+    {
+      question: "Hvad er vermouth?",
+      answer:
+        "Vermouth er fortificeret vin smagt til med krydderier og krydderurter — især malurt. Den bruges som aperitif og i cocktails som Negroni og Martini.",
+    },
+    {
+      question: "Er vermouth en hedvin?",
+      answer:
+        "Ja. Vermouth er aromatiseret hedvin, typisk omkring 15–18 % alkohol. Den adskiller sig fra port og sherry ved krydderiudtrækket.",
+    },
+    {
+      question: "Skal åben vermouth på køl?",
+      answer:
+        "Ja. Brug den inden for ca. 1–3 måneder. Aromatiserede vine oxiderer hurtigere end madeira eller tawny port.",
+    },
+  ],
   "cremant-vs-champagne": [
     {
       question: "Hvad er forskellen på crémant og champagne?",

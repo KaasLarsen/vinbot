@@ -24,6 +24,16 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
     guideSlug.startsWith("bedste-alkoholfri") ||
     guideSlug.startsWith("alkoholfri-vin-til-") ||
     guideSlug === "alkoholsvag-og-alkoholfri-vin";
+  const isHedvinSlug =
+    guideSlug === "hvad-er-hedvin" ||
+    guideSlug === "hedvin-alkoholprocent" ||
+    guideSlug === "hvad-er-madeira-vin" ||
+    guideSlug === "hvad-er-vermouth" ||
+    guideSlug === "hvad-er-portvin" ||
+    guideSlug === "hvad-er-sherry-vin" ||
+    guideSlug === "bedste-portvin" ||
+    guideSlug.startsWith("portvin") ||
+    guideSlug.includes("portvin");
 
   return (
     <section
@@ -63,7 +73,14 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
           </Link>
         </p>
       ) : null}
-      {tone === "amber" ? (
+      {tone === "amber" && isHedvinSlug ? (
+        <p className="mt-4 text-sm text-stone-600">
+          <Link href="/hedvin" className={`font-medium hover:underline ${styles.footer}`}>
+            Se hele hedvin-hubben
+          </Link>
+        </p>
+      ) : null}
+      {tone === "amber" && !isHedvinSlug ? (
         <p className="mt-4 text-sm text-stone-600">
           <Link href="/vin-viden" className={`font-medium hover:underline ${styles.footer}`}>
             Se hele vin-viden-hubben

@@ -333,6 +333,37 @@ export function listSupermarkedVinHubGuides(): GuideFrontmatter[] {
   return out;
 }
 
+/** Kurateret rækkefølge til /hedvin-hubben. */
+const HEDVIN_HUB_SLUGS: readonly string[] = [
+  "hvad-er-hedvin",
+  "hedvin-alkoholprocent",
+  "hvad-er-portvin",
+  "hvad-er-sherry-vin",
+  "hvad-er-madeira-vin",
+  "hvad-er-vermouth",
+  "bedste-portvin",
+  "ruby-portvin",
+  "tawny-portvin",
+  "sadan-serverer-du-portvin",
+  "hvor-laenge-holder-portvin",
+  "portvin-alkoholprocent",
+  "portvin-til-ost",
+  "portvin-til-chokolade",
+  "bedste-dessertvin",
+  "vin-til-portugisisk-mad",
+];
+
+/** Hub «Hedvin»: forstærket vin — port, sherry, madeira, vermouth. */
+export function listHedvinHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of HEDVIN_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
 export function guidesByTag(tag: string): GuideFrontmatter[] {
   const t = tag.toLowerCase();
   return listGuides().filter((g) => (g.tags || []).map((x) => x.toLowerCase()).includes(t));

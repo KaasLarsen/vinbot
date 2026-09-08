@@ -21,6 +21,21 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
     href: "/alkoholfri-vin",
     keywords: ["alkoholfri", "0%", "0 %", "uden alkohol", "leitz", "noughty", "lavalkohol"],
   },
+  {
+    label: "Hedvin",
+    href: "/hedvin",
+    keywords: [
+      "hedvin",
+      "forstærket",
+      "fortificeret",
+      "portvin",
+      "port",
+      "sherry",
+      "madeira",
+      "vermouth",
+      "fortified",
+    ],
+  },
   { label: "Vin-viden", href: "/vin-viden", keywords: ["viden", "temperatur", "opbevaring", "glas"] },
   { label: "Alle guides", href: "/guides", keywords: ["guide", "guides", "artikel"] },
 ];

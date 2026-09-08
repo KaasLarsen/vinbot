@@ -185,6 +185,46 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hvad-er-hedvin" || slug === "hedvin-alkoholprocent") {
+    return {
+      q: "hedvin portvin sherry madeira",
+      max: null,
+      label: "hedvin, port og sherry",
+    };
+  }
+
+  if (slug === "hvad-er-madeira-vin") {
+    return {
+      q: "madeira vin",
+      max: null,
+      label: "madeira",
+    };
+  }
+
+  if (slug === "hvad-er-vermouth") {
+    return {
+      q: "vermouth",
+      max: null,
+      label: "vermouth",
+    };
+  }
+
+  if (slug === "hvad-er-portvin") {
+    return {
+      q: "portvin tawny LBV ruby",
+      max: null,
+      label: "portvin",
+    };
+  }
+
+  if (slug === "hvad-er-sherry-vin") {
+    return {
+      q: "sherry fino manzanilla oloroso jerez",
+      max: null,
+      label: "sherry",
+    };
+  }
+
   if (slug.startsWith("vinregion-")) {
     const fromLand = searchQueryForGuideSlug(slug);
     const region = slug.replace(/^vinregion-/, "").replace(/-/g, " ");

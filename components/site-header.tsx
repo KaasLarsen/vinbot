@@ -21,6 +21,27 @@ const moreNav: NavItem[] = [
   { href: "/saeson", label: "Sæson" },
   { href: "/fest-og-vin", label: "Fest & selskab" },
   {
+    href: "/hedvin",
+    label: "Hedvin",
+    activePrefixes: [
+      "/hedvin",
+      "/guides/hvad-er-hedvin",
+      "/guides/hedvin-alkoholprocent",
+      "/guides/hvad-er-portvin",
+      "/guides/hvad-er-sherry-vin",
+      "/guides/hvad-er-madeira-vin",
+      "/guides/hvad-er-vermouth",
+      "/guides/bedste-portvin",
+      "/guides/ruby-portvin",
+      "/guides/tawny-portvin",
+      "/guides/sadan-serverer-du-portvin",
+      "/guides/hvor-laenge-holder-portvin",
+      "/guides/portvin-alkoholprocent",
+      "/guides/portvin-til-ost",
+      "/guides/portvin-til-chokolade",
+    ],
+  },
+  {
     href: "/alkoholfri-vin",
     label: "Alkoholfri",
     activePrefixes: [

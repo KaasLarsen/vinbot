@@ -764,6 +764,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Portvin er fortificeret: 19–22 % vol. Ruby, tawny og vintage i tabel — derfor små glas og flere genstande.",
   },
+  "hvad-er-hedvin": {
+    title: "Hvad er hedvin? Forstærket vin",
+    description:
+      "Hedvin er fortificeret vin med tilsat druesprit: 15–22 % alkohol, ofte sød, lang holdbarhed. Port, sherry, madeira og vermouth forklaret.",
+  },
+  "hedvin-alkoholprocent": {
+    title: "Hedvin: 15–22 % alkohol",
+    description:
+      "Hedvin alkoholprocent er typisk 15–22 % vol. Tabel for port, sherry, madeira og vermouth — vs bordvin og genstande i små glas.",
+  },
+  "hvad-er-madeira-vin": {
+    title: "Hvad er madeira-vin?",
+    description:
+      "Madeira er fortificeret vin fra øen Madeira — opvarmet under lagring med karamel, nødder og syre. Typer fra sercial til malmsey.",
+  },
+  "hvad-er-vermouth": {
+    title: "Hvad er vermouth?",
+    description:
+      "Vermouth er aromatiseret hedvin med malurt og krydderier. Tør vs sød, Negroni og Martini, servering og holdbarhed.",
+  },
   "cremant-vs-champagne": {
     title: "Crémant vs champagne — forskellen",
     description:
