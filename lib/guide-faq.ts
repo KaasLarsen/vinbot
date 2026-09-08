@@ -4981,4 +4981,38 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Når ung, stram rød ofte smager lukket, og du vil lufte hele flasken 30–60 minutter. Ellers er glas eller aerator nok.",
     },
   ],
+  "stort-vinkoleskab-sadan-vaelger-du": [
+    {
+      question: "Hvornår skal jeg købe et stort vinkøleskab?",
+      answer:
+        "Når det kompakte skab er fuldt, du køber hurtigere end du drikker, eller du vil lagre flere stilarter. Under ca. 30 flasker er kompakt model eller vinreol ofte nok.",
+    },
+    {
+      question: "Er 100 flasker bedre end to zoner?",
+      answer:
+        "Nej, ikke automatisk. To zoner betyder mere for hverdagen, hvis du både drikker kølig hvid og lidt varmere rød. Kapacitet først, når samlingen allerede fylder.",
+    },
+    {
+      question: "Hvad skal jeg tjekke før levering af et stort skab?",
+      answer:
+        "Mål døråbning, trapper og fri højde. Tjek ventilation, støj hvis skabet står i opholdsrum, og om forhandleren tilbyder hjemmelevering.",
+    },
+  ],
+  "vin-gave-gear": [
+    {
+      question: "Er vintilbehør en bedre gave end en flaske?",
+      answer:
+        "Ofte ja, hvis modtageren allerede har vin og åbner regelmæssigt. Til værtsgave samme aften er flasken stadig sikrere.",
+    },
+    {
+      question: "Hvilket vin-gear skal jeg give?",
+      answer:
+        "Waiter’s friend er det sikreste. Derefter et sæt gode glas. Karaffel kun hvis de drikker ung, stram rød.",
+    },
+    {
+      question: "Hvad koster godt gave-gear?",
+      answer:
+        "150–250 kr til proptrækker; 250–450 kr til glas-sæt; 450–800 kr til kombination. Hellere ét godt stykke end et billigt gadget-sæt.",
+    },
+  ],
 };

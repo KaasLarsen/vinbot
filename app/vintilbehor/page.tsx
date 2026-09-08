@@ -68,6 +68,7 @@ export default function VintilbehorPage() {
       <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[
           { href: "/guides/vintilbehor-til-begyndere", title: "Startkit", body: "Hvad du skal købe først." },
+          { href: "/guides/vin-gave-gear", title: "Gave-gear", body: "Glas, proptrækker og karaffel." },
           { href: "/guides/sadan-vaelger-du-vinglas", title: "Vinglas", body: "Form, rød, hvid og bobler." },
           { href: "/guides/sadan-vaelger-du-proptrekker", title: "Proptrækker", body: "Waiter’s friend vs vinge." },
           { href: "/guides/sadan-vaelger-du-vinkaraffel", title: "Vinkaraffel", body: "Bred bund vs. bordkaraffel." },

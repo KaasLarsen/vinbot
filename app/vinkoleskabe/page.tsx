@@ -190,6 +190,10 @@ export default function VinkoleskabePage() {
             <Link href="/guides/vinkoleskabe-sadan-vaelger-du" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
               sådan vælger du vinkøleskab
             </Link>
+            . Stor kapacitet (50–100+ flasker):{" "}
+            <Link href="/guides/stort-vinkoleskab-sadan-vaelger-du" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
+              stort vinkøleskab
+            </Link>
             . Temperatur og opbevaring:{" "}
             <Link href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
               vintemperatur og opbevaring
