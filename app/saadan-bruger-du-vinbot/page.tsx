@@ -61,10 +61,11 @@ export default function SaadanBrugerDuVinbotPage() {
           <Link href="/" className="font-medium text-rose-900 hover:underline">
             forsiden
           </Link>{" "}
-          finder du knappen <strong>Scan etiket</strong>. Browseren beder om lov til kameraet — tag et billede
+          finder du knappen <strong>Scan etiket</strong> når du er på telefonen. Browseren beder om lov til kameraet — tag et billede
           af flaskens etiket (fx i butikken eller til middagen). Vinbot aflæser etiketten og hopper til
           vinsiden med tilbud, prissammenligning og guides, når vi genkender flasken. Finder vi ikke et
-          sikkert match, åbner vi en søgning med det, vi kunne læse.
+          sikkert match, åbner vi en søgning med det, vi kunne læse. På computeren er knappen skjult — der er
+          søgning med tastatur det hurtigste.
         </p>
       </section>
 

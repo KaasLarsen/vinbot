@@ -25,7 +25,7 @@ export function HomeLabelScanButton() {
 
   return (
     <>
-      <div className="mt-5 flex flex-col items-center sm:items-start">
+      <div className="mt-5 flex flex-col items-center sm:items-start lg:hidden">
         <button
           type="button"
           onClick={() => setOpen(true)}
