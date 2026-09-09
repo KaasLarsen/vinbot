@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BlackFridayDealTabs } from "@/components/black-friday-deal-tabs";
+import { SeasonWineCalculator } from "@/components/season-wine-calculator";
 import { BlackFridayPriceCheck } from "@/components/black-friday-price-check";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
@@ -131,6 +132,13 @@ export default async function BlackFridayHubPage() {
       <PartnerAdsLeaderboard className="mt-8" hub="black-friday" slug="black-friday-hub" />
 
       <div className="mt-14">
+        <SeasonWineCalculator
+          heading="Julevin- og nytårsvins-beregner"
+          intro="Hvor meget skal I købe, og hvilke aktuelle flasker passer? Tre klik — så matcher vi gæster og budget med vine til salg nu."
+        />
+      </div>
+
+      <div className="mt-14">
         <BlackFridayDealTabs
           shopDeals={shopDeals}
           crossDeals={crossTop}
@@ -164,13 +172,15 @@ export default async function BlackFridayHubPage() {
         <div className="space-y-3">
           <h3 className="text-xl font-semibold text-stone-900">Hvor meget vin skal du købe ind til juleaften?</h3>
           <p className="leading-relaxed">
-            En tommelfingerregel er omkring en halv flaske vin pr. voksen til et langt julemåltid, plus en ekstra flaske
-            til det søde bord eller gæster der bliver hængende. Til and og flæskesteg rammer du ofte rigtigt med kraftig
-            rød — se{" "}
+            En tommelfingerregel er omkring en halv flaske vin pr. voksen til et langt julemåltid, plus dessertvin. Brug{" "}
+            <Link href="/julevin-beregner" className="font-medium text-rose-900 hover:underline">
+              julevin-beregneren
+            </Link>{" "}
+            til antal flasker og konkrete tilbud, eller se{" "}
             <Link href="/guides/vin-til-juleaften" className="font-medium text-rose-900 hover:underline">
               vin til juleaften
-            </Link>{" "}
-            og fanen «Julevin på tilbud» ovenfor.
+            </Link>
+            . Til and og flæskesteg rammer du ofte rigtigt med saftig rød med syre (pinot, gamay, chianti) — kraftig julevin er et tilvalg.
           </p>
         </div>
 

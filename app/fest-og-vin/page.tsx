@@ -88,7 +88,11 @@ export default function FestOgVinHubPage() {
           <Link href="/guides/crowdpleaser-vin-til-gaester" className="text-rose-900 hover:underline">
             crowdpleaser til gæster
           </Link>
-          .
+          {" "}og{" "}
+          <Link href="/julevin-beregner" className="font-medium text-rose-900 hover:underline">
+            julevin- og nytårsvins-beregneren
+          </Link>
+          {" "}(jul og nytår med budget og konkrete flasker).
         </p>
       </section>
 

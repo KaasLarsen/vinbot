@@ -44,21 +44,22 @@ export function DealCard({
     </div>
   );
 
-  const badge = (
-    <span
-      className={`rounded-full font-semibold text-white ${
-        deal.kind === "cross" ? "bg-emerald-800" : "bg-rose-900"
-      } ${variant === "featured" ? "px-3 py-1 text-sm" : "px-2.5 py-1 text-xs"}`}
-    >
-      {deal.kind === "cross" ? "↓ " : ""}−{deal.discountPercent}%
-    </span>
-  );
+  const badge =
+    deal.discountPercent > 0 ? (
+      <span
+        className={`rounded-full font-semibold text-white ${
+          deal.kind === "cross" ? "bg-emerald-800" : "bg-rose-900"
+        } ${variant === "featured" ? "px-3 py-1 text-sm" : "px-2.5 py-1 text-xs"}`}
+      >
+        {deal.kind === "cross" ? "↓ " : ""}−{deal.discountPercent}%
+      </span>
+    ) : null;
 
   if (variant === "featured") {
     return (
       <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-rose-200/60 bg-gradient-to-br from-rose-50/80 via-white to-white shadow-md ring-1 ring-rose-100/80 sm:flex-row">
         <div className="relative flex shrink-0 items-center justify-center p-5 sm:w-48">
-          <span className="absolute left-4 top-4 z-10">{badge}</span>
+          {badge ? <span className="absolute left-4 top-4 z-10">{badge}</span> : null}
           <a
             href={deal.url}
             target="_blank"
@@ -127,7 +128,7 @@ export function DealCard({
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:border-stone-300 hover:shadow-md">
       <div className="relative">
-        <span className="absolute left-3 top-3 z-10">{badge}</span>
+        {badge ? <span className="absolute left-3 top-3 z-10">{badge}</span> : null}
         <a
           href={deal.url}
           target="_blank"

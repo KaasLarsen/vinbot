@@ -23,6 +23,7 @@ const moreNav: NavItem[] = [
   { href: "/humoer-og-vin", label: "Humør & stemning" },
   { href: "/saeson", label: "Sæson" },
   { href: "/fest-og-vin", label: "Fest & selskab" },
+  { href: "/julevin-beregner", label: "Julevin-beregner" },
   {
     href: "/hedvin",
     label: "Hedvin",

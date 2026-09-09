@@ -28,8 +28,10 @@ import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
 import { FoodWinePicker } from "@/components/food-wine-picker";
+import { SeasonWineCalculator } from "@/components/season-wine-calculator";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { dishIdForGuideSlug } from "@/lib/food-picker/dishes";
+import { defaultEventForGuideSlug } from "@/lib/wine-quantity/season";
 import { GuideToc } from "@/components/guide-toc";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -103,6 +105,7 @@ export default async function GuidePage({ params }: Props) {
           undefined
         : undefined;
 
+  const seasonEvent = defaultEventForGuideSlug(slug);
   const intent = deriveGuideIntent(slug);
   const searchHref = intent
     ? `/?q=${encodeURIComponent(intent.q)}${intent.max != null ? `&max=${intent.max}` : ""}`
@@ -171,6 +174,14 @@ export default async function GuidePage({ params }: Props) {
           className="mt-8"
           defaultPartyType={slug === "hvor-meget-vin-til-bryllup" ? "bryllup" : "middag"}
           defaultGuests={slug === "hvor-meget-vin-til-bryllup" ? 80 : 40}
+        />
+      ) : null}
+      {seasonEvent ? (
+        <SeasonWineCalculator
+          className="mt-8"
+          defaultEvent={seasonEvent}
+          heading="Beregn flasker og find vinene"
+          intro="Antal gæster og budget — så får du en konkret vinmenu med vine til salg nu."
         />
       ) : null}
       <div className="prose prose-stone mt-8 max-w-none">

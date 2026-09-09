@@ -16,9 +16,9 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   { label: "Mad & vin", href: "/mad-og-vin", keywords: ["mad", "vin", "parring", "match"] },
   { label: "Opskrifter", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon", "parring", "pizza", "burger"] },
   {
-    label: "Black Friday vin",
-    href: "/black-friday",
-    keywords: ["black friday", "black week", "cyber monday", "tilbud", "julevin", "rabat"],
+    label: "Julevin-beregner",
+    href: "/julevin-beregner",
+    keywords: ["julevin", "nytårsvin", "nytaarsvin", "beregner", "flasker", "juleaften", "hvor meget vin"],
   },
   {
     label: "Alkoholfri vin",
@@ -46,6 +46,7 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
 
 /** Populære genveje når feltet er tomt (roterer ikke — stabilt sæt). */
 const QUICK_PICKS: NavSearchSuggestion[] = [
+  { href: "/julevin-beregner", label: "Julevin- og nytårsvins-beregner", kind: "quick", score: 0 },
   { href: "/guides/vin-til-julefrokost", label: "Vin til julefrokost", kind: "quick", score: 0 },
   { href: "/black-friday", label: "Black Friday vin-hub", kind: "quick", score: 0 },
   { href: "/guides/vin-til-pizza-og-pasta", label: "Vin til pizza og pasta", kind: "quick", score: 0 },
