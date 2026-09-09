@@ -17,6 +17,13 @@ const CURATED_OUTSIDERS: { slug: string; displayName: string }[] = [
   { slug: "erik-sorensen-vin", displayName: "Erik Sørensen Vin" },
   { slug: "jysk-vin", displayName: "Jysk Vin" },
   { slug: "skjold-burne", displayName: "Skjold Burne" },
+  { slug: "supervin", displayName: "Supervin" },
+  { slug: "vildmedvin", displayName: "VildMedVin" },
+  { slug: "vinmedmere", displayName: "Vinmedmere" },
+  { slug: "andrup-vin", displayName: "Andrup Vin" },
+  { slug: "bichel-vine", displayName: "Bichel Vine" },
+  { slug: "holte-vinlager", displayName: "Holte Vinlager" },
+  { slug: "vin-og-vin", displayName: "Vin & Vin" },
 ];
 
 export type BlackFridayStore = {

@@ -42,6 +42,13 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   "erik-sorensen-vin": { src: "" },
   "jysk-vin": { src: "" },
   "skjold-burne": { src: "" },
+  supervin: { src: "" },
+  vildmedvin: { src: "" },
+  vinmedmere: { src: "" },
+  "andrup-vin": { src: "" },
+  "bichel-vine": { src: "" },
+  "holte-vinlager": { src: "" },
+  "vin-og-vin": { src: "" },
 };
 
 export function getMerchantLogo(slug: string): MerchantLogo | null {
