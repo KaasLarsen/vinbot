@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
@@ -355,6 +356,90 @@ export default function MadOgVinHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige guide</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="mad-og-vin"
+        slug="mad-og-vin-hub"
+        products={[
+          { productKey: "trapiche-oak-cask-malbec", heading: "Malbec til bøf og grill — Trapiche Oak Cask" },
+          { productKey: "bodegas-muga-reserva", heading: "Rioja til tapas og gryderetter — Bodegas Muga Reserva" },
+        ]}
+        seoHeading="Mad og vin: hvordan du matcher glas og tallerken"
+        faq={[
+          {
+            question: "Hvilken vin til bøf?",
+            answer:
+              "Kraftig rød med tannin — malbec, cabernet, syrah eller rioja reserva. Fedme i kødet tåler strukturen. Se guiden vin til bøf.",
+          },
+          {
+            question: "Hvilken vin til fisk?",
+            answer:
+              "Tør hvid med syre: chablis, albariño, muscadet eller sauvignon blanc. Federe fisk kan bære let fad eller champagne.",
+          },
+          {
+            question: "Skal vinen komme fra samme land som maden?",
+            answer:
+              "Det er et godt udgangspunkt (chianti til toscana, rioja til tapas), men syre, sødme og styrke betyder mere end passet i passet.",
+          },
+        ]}
+      >
+        <p>
+          God parring handler om balance: syre skærer fedme, tannin møder protein, sødme dæmper chili og salt. Du behøver
+          ikke et kort over hele verden — start med retten (fed, syrlig, krydret, sød) og vælg vin i samme vægtklasse.
+          Den komplette ramme ligger i{" "}
+          <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
+            komplet guide til vin og mad
+          </Link>
+          .
+        </p>
+        <p>
+          Klassiske danske hverdagsmatch:{" "}
+          <Link href="/guides/vin-til-boeff" className="text-rose-900 hover:underline">
+            bøf
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-pizza" className="text-rose-900 hover:underline">
+            pizza
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-pasta" className="text-rose-900 hover:underline">
+            pasta
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-fisk" className="text-rose-900 hover:underline">
+            fisk
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/vin-til-ost-og-ostebord" className="text-rose-900 hover:underline">
+            ost
+          </Link>
+          . Til grill og BBQ virker syrah, malbec og cariñena; til asiatisk og chili er off-dry riesling ofte klogere end
+          tør cabernet.
+        </p>
+        <p>
+          Regionale køkkener er et genvejskort: sangiovese til toscana, rioja og sherry til spansk tapas, pinot og
+          chablis til bourgogne-mad. Gå via de regionale guides på siden, eller start i{" "}
+          <Link href="/regioner" className="text-rose-900 hover:underline">
+            vinregioner
+          </Link>
+          . Flaskeeksemplerne ovenfor er PriceRunner-annoncer — brug dem som prissammenligning, ikke som eneste sandhed.
+        </p>
+        <p>
+          Når menuen er låst, finjustér stemningen via{" "}
+          <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">
+            humør og vin
+          </Link>{" "}
+          og sæson via{" "}
+          <Link href="/saeson" className="text-rose-900 hover:underline">
+            sæson
+          </Link>
+          . Skal du bare have en pålidelig flaske uden ret:{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            bedste vine
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="mad-og-vin" slug="mad-og-vin-hub" />
       <section className="mt-12 text-stone-700">

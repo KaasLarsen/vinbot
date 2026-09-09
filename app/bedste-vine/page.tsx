@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listBedsteVineHubGuides, listGuides } from "@/lib/content/guides";
@@ -206,6 +207,89 @@ export default function BedsteVineHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Find den rigtige top-liste</h2>
         <GuideHubBrowser guides={cards} showKindTabs showTagChips tagMinCount={2} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="bedste-vine"
+        slug="bedste-vine-hub"
+        products={[
+          { productKey: "fontodi-chianti-classico", heading: "Chianti Classico — Fontodi (sammenlign priser)" },
+          { productKey: "louis-jadot-pinot-noir", heading: "Bourgogne rouge — Louis Jadot Pinot Noir" },
+        ]}
+        seoHeading="Sådan bruger du top-lister over bedste vine"
+        faq={[
+          {
+            question: "Hvad betyder bedst i test på Vinbot?",
+            answer:
+              "Det er redaktionelle lister til danske købere: stil, prisleje og tilgængelighed — ikke et laboratorium-test. Vi peger på flasker der typisk rammer godt i kategorien.",
+          },
+          {
+            question: "Skal jeg købe den dyreste på listen?",
+            answer:
+              "Nej. Start med prisklassen du faktisk drikker. Under 100 kr og weekendvin dækker de fleste hverdagsbehov; premium er til gave og særlige aftener.",
+          },
+          {
+            question: "Ændrer top-listerne sig?",
+            answer:
+              "Ja, årgang, lager og kampagner skifter. Tjek opdateringsdatoen på guiden og sammenlign priser før du køber.",
+          },
+        ]}
+      >
+        <p>
+          “Bedste vin” er altid relativt: bedst til hvilken pris, hvilken mad og hvilken smag. Hubben samler lister efter
+          stil (rød, hvid, rosé, bobler), budget og lejlighed, så du ikke skal starte på bar bund. Start bredt med{" "}
+          <Link href="/guides/bedste-rodvin" className="text-rose-900 hover:underline">
+            bedste rødvin
+          </Link>
+          ,{" "}
+          <Link href="/guides/bedste-hvidvin" className="text-rose-900 hover:underline">
+            hvidvin
+          </Link>{" "}
+          eller{" "}
+          <Link href="/guides/bedste-bobler" className="text-rose-900 hover:underline">
+            bobler
+          </Link>
+          — og zoom ind når du kender anledningen.
+        </p>
+        <p>
+          Pris er det mest googled filter i Danmark. Brug{" "}
+          <Link href="/guides/bedste-vin-under-100-kr" className="text-rose-900 hover:underline">
+            under 100 kr
+          </Link>
+          ,{" "}
+          <Link href="/guides/bedste-weekendvin" className="text-rose-900 hover:underline">
+            weekendvin
+          </Link>{" "}
+          og gave-listerne, når du køber uden at kende modtagerens kælder. Chianti classico og bourgogne pinot (eksempel
+          på widgets herover) er to forskellige “bedst”-profiler: den ene er kirsebær og syre til pasta, den anden er
+          silke og jord til lyst kød.
+        </p>
+        <p>
+          Top-lister erstatter ikke smag. Hvis du ved, du elsker rioja eller riesling, er det klogere at gå via{" "}
+          <Link href="/druesorter" className="text-rose-900 hover:underline">
+            druesorter
+          </Link>{" "}
+          og{" "}
+          <Link href="/regioner" className="text-rose-900 hover:underline">
+            regioner
+          </Link>{" "}
+          end at jage en generisk “bedst i test”. Til 0 % se{" "}
+          <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
+            alkoholfri vin
+          </Link>
+          .
+        </p>
+        <p>
+          Køb online med omtanke: tjek årgang, flaskestørrelse og fragt. En kort metode ligger i{" "}
+          <Link href="/guides/koeb-vin-online-sadan-holder-du-styr-paa-det" className="text-rose-900 hover:underline">
+            køb vin online
+          </Link>
+          . Parring til maden finder du på{" "}
+          <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="bedste-vine" slug="bedste-vine-hub" />
       <section className="mt-12 text-stone-700">

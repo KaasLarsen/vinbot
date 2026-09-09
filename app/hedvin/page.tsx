@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listHedvinHubGuides } from "@/lib/content/guides";
@@ -234,6 +235,85 @@ export default function HedvinHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Alle hedvin-guides</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="hedvin"
+        slug="hedvin-hub"
+        products={[
+          { productKey: "grahams-10-tawny", heading: "Tawny 10 år — Graham's (sammenlign priser)" },
+          {
+            productKey: "spiegelau-definition-roedvinsglas",
+            heading: "Mindre tulipan-glas til port og sherry — Spiegelau Definition",
+          },
+        ]}
+        seoHeading="Hedvin i Danmark: port, sherry, madeira og vermouth"
+        faq={[
+          {
+            question: "Hvad er hedvin?",
+            answer:
+              "Vin med tilsat destillat (typisk brandy), så gæringen stopper og alkoholen lander ofte på 15–22 %. Port, sherry, madeira og marsala er de kendte familier.",
+          },
+          {
+            question: "Hvilken portvin skal man købe først?",
+            answer:
+              "Tawny 10 år er det mest alsidige danske startpunkt: nødder, tørret frugt, god til ost og chokolade. Ruby er frugtigere og billigere; vintage er til lagring.",
+          },
+          {
+            question: "Skal hedvin i køleskab?",
+            answer:
+              "Tawny og hvid port serveres let køligt. Åbnet tawny holder uger i køleskab; vintage ruby kortere. Sherry fino skal drikkes hurtigt efter åbning.",
+          },
+        ]}
+      >
+        <p>
+          Hedvin er forstærket vin: destillat tilsættes, gæringen stopper, og du får højere alkohol, sødme eller tør
+          oxidativ karakter. I Danmark er{" "}
+          <Link href="/guides/bedste-portvin" className="text-rose-900 hover:underline">
+            portvin
+          </Link>{" "}
+          den mest købte — tawny til ost og dessert, ruby til chokolade, vintage når du vil lagre. Læs definitionen i{" "}
+          <Link href="/guides/hvad-er-hedvin" className="text-rose-900 hover:underline">
+            hvad er hedvin
+          </Link>{" "}
+          og tallene i{" "}
+          <Link href="/guides/hedvin-alkoholprocent" className="text-rose-900 hover:underline">
+            alkoholprocent
+          </Link>
+          .
+        </p>
+        <p>
+          Sherry er den tørre (eller søde) spanske slægtning: fino og manzanilla til tapas og mandler, oloroso og PX til
+          dessert. Start med{" "}
+          <Link href="/guides/hvad-er-sherry-vin" className="text-rose-900 hover:underline">
+            hvad er sherry
+          </Link>
+          . Vermouth er krydret, forstærket vin til drinks — se{" "}
+          <Link href="/guides/hvad-er-vermouth" className="text-rose-900 hover:underline">
+            vermouth
+          </Link>
+          . Madeira og marsala dukker op i køkkenet og til ost.
+        </p>
+        <p>
+          Servering: små glas (ikke store rødvinsbægre), korrekt temperatur, og husk at åbnet flaske opfører sig
+          forskelligt efter type. Graham’s 10 Year Tawny (widget) er et konkret, let tilgængeligt eksempel på den
+          danske “første port”. Glas-widgeten er tilbehør — port smager bedre i et mindre glas.
+        </p>
+        <p>
+          Relateret geografi:{" "}
+          <Link href="/lande/portugal" className="text-rose-900 hover:underline">
+            Portugal
+          </Link>{" "}
+          og{" "}
+          <Link href="/lande/spanien" className="text-rose-900 hover:underline">
+            Spanien
+          </Link>
+          . Til ostebord og tapas krydser hedvin over i{" "}
+          <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="hedvin" slug="hedvin-hub" />
 

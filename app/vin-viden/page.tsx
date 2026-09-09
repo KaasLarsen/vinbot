@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listGuides, listVinVidenHubGuides } from "@/lib/content/guides";
@@ -289,17 +290,93 @@ export default function VinVidenHubPage() {
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={2} />
       </section>
 
-      <PartnerAdsLeaderboard className="mt-12" hub="vin-viden" slug="vin-viden-hub" />
-      <section className="mt-12 max-w-3xl space-y-4 text-stone-700">
-        <h2 className="text-2xl font-semibold text-stone-900">Sådan læser vi vin-viden</h2>
+      <GuideTopicHubExtras
+        hub="vin-viden"
+        slug="vin-viden-hub"
+        products={[
+          { productKey: "spiegelau-definition-roedvinsglas", heading: "Rødvinsglas — Spiegelau Definition" },
+          { productKey: "riedel-ultra-vinkaraffel", heading: "Karaffel — Riedel Ultra" },
+        ]}
+        seoHeading="Vin-viden i praksis: holdbarhed, mængder, smag og servering"
+        faq={[
+          {
+            question: "Hvor længe holder åbnet vin?",
+            answer:
+              "Hvid og rosé typisk 3–5 dage i køleskab med prop. Let rød 3–4 dage; kraftig rød op til en uge. Bobler mister mousse på 1–2 dage. Se holdbarhedsguiderne.",
+          },
+          {
+            question: "Hvor mange glas er der i en flaske vin?",
+            answer:
+              "En 75 cl-flaske giver ca. 5 glas à 15 cl, eller 6 mindre restaurantglas. Til fest-regnskab: 5–6 portioner pr. flaske.",
+          },
+          {
+            question: "Hvilken temperatur skal vin have?",
+            answer:
+              "Hvid og rosé 7–10 °C, let rød 12–14 °C, kraftig rød 16–18 °C. Danske stuer er ofte for varme til rød — 20 minutter i køleskab hjælper.",
+          },
+        ]}
+      >
         <p>
-          Vi deler vin-viden op i fire praktiske kategorier: <strong>holdbarhed</strong> (hvor længe holder åbnet og uåbnet vin), <strong>mængder</strong> (hvor mange glas, hvor meget alkohol, hvor meget skal købes til en fest), <strong>smag og begreber</strong> (tanniner, syre, sulfit, fadlagring, malolaktisk gæring, appellationer) og <strong>praktik</strong> (dekantering, glasvalg, temperatur, åbning af champagne). De fleste danske googlespørgsmål falder ind under én af disse fire — og for hver af dem har vi et konkret, kort svar med de tal og eksempler der rent faktisk er brug for.
+          Vi deler vin-viden op i fire praktiske kategorier: <strong>holdbarhed</strong> (åbnet og uåbnet),{" "}
+          <strong>mængder</strong> (glas, alkohol, festindkøb), <strong>smag og begreber</strong> (tannin, syre, sulfit,
+          fad, appellation) og <strong>praktik</strong> (dekantering, glas, temperatur, åbning). De fleste danske
+          googlespørgsmål falder i én af de fire — og for hver har vi korte svar med tal, der kan bruges ved hylden.
         </p>
         <p>
-          Bag hver guide ligger redaktionelt arbejde: vi henter tal fra etablerede kilder (sommelier-håndbøger, producentdata, Fødevarestyrelsen for alkoholenheder), sammenholder med hvad der faktisk er på hylderne hos danske vinhandlere, og skriver med udgangspunkt i danske spise- og drikkevaner. Vi forsøger at være den guide du selv ville have ønsket dig første gang du stod ved vinhylden — hurtig at læse, konkret i sine anbefalinger, og ærlig om hvor reglerne kan brydes.
+          Glas og karaffel (widgets herover) er det udstyr, der oftest ændrer oplevelsen uden at kræve et vinkøleskab.
+          Et anstændigt tulipanglas og en karaffel til ung rød slår de fleste “dyre flaske, forkerte glas”-aftener. Se
+          også{" "}
+          <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">
+            sådan vælger du vinglas
+          </Link>{" "}
+          og{" "}
+          <Link href="/vintilbehor" className="text-rose-900 hover:underline">
+            vintilbehør
+          </Link>
+          .
         </p>
-      </section>
+        <p>
+          Tal og kilder: alkoholenheder efter Fødevarestyrelsen, holdbarhed efter sommelier-praksis og producentdata,
+          servering efter hvad der faktisk virker i danske køkkener (ikke kældertemperatur i Bourgogne). Startpunkter:{" "}
+          <Link href="/guides/hvor-laenge-holder-aabnet-vin" className="text-rose-900 hover:underline">
+            åbnet vin
+          </Link>
+          ,{" "}
+          <Link href="/guides/hvor-mange-glas-i-en-flaske-vin" className="text-rose-900 hover:underline">
+            glas i en flaske
+          </Link>
+          ,{" "}
+          <Link href="/guides/hvad-er-tanniner" className="text-rose-900 hover:underline">
+            tanniner
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/sadan-serverer-du-vin" className="text-rose-900 hover:underline">
+            servering
+          </Link>
+          .
+        </p>
+        <p>
+          Parring:{" "}
+          <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          . Mængder til gæster:{" "}
+          <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+            fest og selskab
+          </Link>
+          . Flaskevalg:{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            bedste vine
+          </Link>
+          . Begreber i sammenhæng:{" "}
+          <Link href="/guides/vin-begreber-i-praksis" className="text-rose-900 hover:underline">
+            vinbegreber i praksis
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
+      <PartnerAdsLeaderboard className="mt-12" hub="vin-viden" slug="vin-viden-hub" />
       <section className="mt-12 text-stone-700">
         <h2 className="text-2xl font-semibold text-stone-900">Relaterede emner</h2>
         <p className="mt-4">

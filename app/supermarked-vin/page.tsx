@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listSupermarkedVinHubGuides } from "@/lib/content/guides";
@@ -97,12 +98,87 @@ export default function SupermarkedVinHubPage() {
       </section>
 
       <div className="mt-10">
-        <PartnerAdsLeaderboard />
-      </div>
-
-      <div className="mt-10">
         <GuideHubBrowser guides={cards} />
       </div>
+
+      <GuideTopicHubExtras
+        hub="supermarked-vin"
+        slug="supermarked-vin-hub"
+        products={[
+          { productKey: "scavi-ray-prosecco-doc", heading: "Supermarkeds-klassiker: Scavi & Ray Prosecco DOC" },
+          { productKey: "chateau-maucoil-cdr-villages", heading: "Côtes du Rhône-stil — Château Maucoil Villages" },
+        ]}
+        seoHeading="Vin i Netto, Rema, Lidl og Føtex — sådan vælger du"
+        faq={[
+          {
+            question: "Kan man få god vin i supermarkedet?",
+            answer:
+              "Ja, især i faste linjer under 70–80 kr: primitivo, tempranillo, cariñena, cava og riesling. Undgå de sødeste “velour”-røde hvis du vil have tør vin til mad.",
+          },
+          {
+            question: "Er tilbudsvin altid et kup?",
+            answer:
+              "Nej. Tjek før-pris, årgang og om du kender stilen. Månedens kup-guiden forklarer, hvornår et skilt er værd at stole på.",
+          },
+          {
+            question: "Hvad hvis jeg hellere vil købe samme stil online?",
+            answer:
+              "Vinbot sælger ikke kædernes egne flasker. Brug stilnavnet (fx Côtes du Rhône, prosecco DOC) og sammenlign hos vinhandlere — widgets her er eksempler på samme stil.",
+          },
+        ]}
+      >
+        <p>
+          Supermarkedsvin i Danmark er et sortiment bygget til pris, volumen og genkendelighed — ikke til årgangsjagt.
+          Du får mest for pengene ved at kende <strong className="font-medium text-stone-800">stilen</strong>: tør
+          spansk rød, italiensk primitivo, tysk riesling, cava/prosecco. Start med{" "}
+          <Link href="/guides/vin-i-supermarkedet-guide" className="text-rose-900 hover:underline">
+            overblikket
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/discount-vin-hylde-guide" className="text-rose-900 hover:underline">
+            discount-hylden
+          </Link>
+          .
+        </p>
+        <p>
+          Kæderne adskiller sig: Netto og Rema er stærke på faste lavpris-linjer, Føtex/Bilka har lidt bredere hylder,
+          Lidl kører kampagner. Se{" "}
+          <Link href="/guides/bedste-vin-i-netto-under-70-kr" className="text-rose-900 hover:underline">
+            Netto under 70 kr
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/bedste-vin-i-rema-1000" className="text-rose-900 hover:underline">
+            Rema 1000
+          </Link>
+          . 0 % på hylden:{" "}
+          <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
+            alkoholfri i Netto og Føtex
+          </Link>
+          .
+        </p>
+        <p>
+          PriceRunner-flaskerne her er <em>stil-eksempler</em> (prosecco og Côtes du Rhône), ikke kædernes egne SKU’er.
+          Når du vil have samme type online med flere årgange og fragt, sammenlign hos vinhandlere via butikskortene.
+          Kup-logik:{" "}
+          <Link href="/guides/ugens-vinkup-supermarked" className="text-rose-900 hover:underline">
+            månedens vinkup
+          </Link>
+          .
+        </p>
+        <p>
+          Til mad derhjemme efter indkøb:{" "}
+          <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          . Til top-lister uden kæde-filter:{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            bedste vine
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
+
+      <PartnerAdsLeaderboard className="mt-12" hub="supermarked-vin" slug="supermarked-vin-hub" />
     </PageShell>
   );
 }

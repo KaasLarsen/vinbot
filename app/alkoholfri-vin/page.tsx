@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listAlkoholfriHubGuides } from "@/lib/content/guides";
@@ -305,6 +306,117 @@ export default function AlkoholfriVinHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Alle alkoholfri-guides</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="alkoholfri-vin"
+        slug="alkoholfri-vin-hub"
+        products={[
+          {
+            productKey: "leitz-eins-zwei-zero-sparkling-rose",
+            heading: "Alkoholfri bobler — Leitz Eins Zwei Zero Sparkling Rosé",
+          },
+          {
+            productKey: "torres-natureo-rose",
+            heading: "Alkoholfri rosé — Torres Natureo 0,0 %",
+          },
+        ]}
+        seoHeading="Alkoholfri vin i Danmark — hvad du skal vide"
+        faq={[
+          {
+            question: "Smager alkoholfri vin som rigtig vin?",
+            answer:
+              "De bedste 0 %-flasker smager af vin — syre, frugt og tørhed — ikke saft. Leitz, Torres Natureo, Giesen og Noughty rammer oftest tættest. Billige supermarkedsbobler kan smage sødt; start med tør riesling eller sparkling.",
+          },
+          {
+            question: "Hvor køber man alkoholfri vin i Danmark?",
+            answer:
+              "Netto, Føtex og Rema har faste 0 %-linjer, mens vinhandlere har bredere mærkeudvalg. Sammenlign priser online og tjek under 100 kr-guiden hvis budgettet er stramt.",
+          },
+          {
+            question: "Hvad er forskellen på alkoholfri og alkoholsvag vin?",
+            answer:
+              "Alkoholfri er typisk 0,0–0,5 %. Alkoholsvag ligger oftest på 5–9 %. Til graviditet og bil vælges 0 %; til mindful drinking kan lavalkohol være et skridt på vejen.",
+          },
+        ]}
+      >
+        <p>
+          Alkoholfri vin er vin, hvor alkoholen er fjernet (vakuumdestillation, omvendt osmose eller lignende) eller
+          aldrig er gæret færdigt. I Danmark står der ofte <strong className="font-medium text-stone-800">0 %</strong>{" "}
+          eller <strong className="font-medium text-stone-800">0,0–0,5 %</strong> på etiketten. Det er ikke saft med
+          kulsyre — men smagen afhænger af, om producenten har bevaret syre og tørhed. Derfor rammer nogle flasker
+          “næsten vin”, mens andre rammer sodavand.
+        </p>
+        <p>
+          Start med typen:{" "}
+          <Link href="/guides/bedste-alkoholfri-bobler" className="text-rose-900 hover:underline">
+            bobler
+          </Link>{" "}
+          er det nemmeste sted at lande godt til fest,{" "}
+          <Link href="/guides/bedste-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+            hvidvin
+          </Link>{" "}
+          til fisk og asiatisk,{" "}
+          <Link href="/guides/bedste-alkoholfri-rose" className="text-rose-900 hover:underline">
+            rosé
+          </Link>{" "}
+          til terrasse og grill, og{" "}
+          <Link href="/guides/bedste-alkoholfri-rodvin" className="text-rose-900 hover:underline">
+            rød
+          </Link>{" "}
+          til pizza og hverdag. Overblikket ligger i{" "}
+          <Link href="/guides/bedste-alkoholfri-vin" className="text-rose-900 hover:underline">
+            bedste alkoholfri vin
+          </Link>
+          . Mærker der går igen i danske butikker: Leitz Eins-Zwei-Zero, Torres Natureo, Noughty og Giesen.
+        </p>
+        <p>
+          Pris og indkøb:{" "}
+          <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="text-rose-900 hover:underline">
+            under 100 kr
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
+            Netto, Rema og Føtex
+          </Link>{" "}
+          dækker hverdagskøb. Til anledninger:{" "}
+          <Link href="/guides/alkoholfri-vin-til-fest" className="text-rose-900 hover:underline">
+            fest
+          </Link>
+          ,{" "}
+          <Link href="/guides/alkoholfri-bobler-til-nytaar" className="text-rose-900 hover:underline">
+            nytår
+          </Link>
+          ,{" "}
+          <Link href="/guides/alkoholfri-vin-til-grill" className="text-rose-900 hover:underline">
+            grill
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/alkoholfri-vin-til-flaesketeg" className="text-rose-900 hover:underline">
+            flæskesteg
+          </Link>
+          . Ærlige svar på smag, kalorier og fremstilling ligger under{" "}
+          <Link href="/guides/smager-alkoholfri-vin-godt" className="text-rose-900 hover:underline">
+            smager det godt
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/hvordan-fremstilles-alkoholfri-vin" className="text-rose-900 hover:underline">
+            hvordan det laves
+          </Link>
+          .
+        </p>
+        <p>
+          Server koldt (især bobler og hvid), og forvent ikke tanniner som i en barolo. Alkoholfri rød virker bedst
+          let afkølet til mad med fedme og krydderi. Læs også{" "}
+          <Link href="/guides/hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin" className="text-rose-900 hover:underline">
+            alkoholfri vs alkoholsvag
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/mindful-drikke-low-no-alkohol" className="text-rose-900 hover:underline">
+            mindful drinking
+          </Link>
+          , hvis 0 % er ét skridt — ikke hele vejen.
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="alkoholfri-vin" slug="alkoholfri-vin-hub" />
 

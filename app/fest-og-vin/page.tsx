@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
@@ -292,6 +293,89 @@ export default function FestOgVinHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Guides til fest og selskab</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="fest-og-vin"
+        slug="fest-og-vin-hub"
+        products={[
+          { productKey: "scavi-ray-prosecco-doc", heading: "Fest-prosecco — Scavi & Ray Prosecco DOC" },
+          { productKey: "duc-de-foix-cava-brut", heading: "Cava til skål — Duc de Foix Cava Brut" },
+        ]}
+        seoHeading="Vin til fest: mængder, bobler og budget"
+        faq={[
+          {
+            question: "Hvor meget vin skal man købe til fest?",
+            answer:
+              "Regn ca. ½ flaske vin pr. gæst ved middag på 3–4 timer, plus bobler til skål. Til længere fester og tørstige grupper: op mod ¾ flaske. Brug mængde-guiden og justér efter øl og drinks.",
+          },
+          {
+            question: "Hvilke bobler til konfirmation og bryllup?",
+            answer:
+              "Prosecco og cava er budgetvenlige til mange gæster; crémant og champagne når toasten skal føles finere. Hav altid et 0 %-alternativ.",
+          },
+          {
+            question: "Skal der både rød og hvid?",
+            answer:
+              "Ja, hvis menuen er blandet. Typisk 60/40 hvid-bobler vs rød om sommeren, omvendt om vinteren — og altid en kasse 0 %.",
+          },
+        ]}
+      >
+        <p>
+          Festvin er logistik først, terroir bagefter. Du skal ramme mængde, temperatur, skål og et par stilarter så
+          både kødspisere, fiskespisere og dem der kører hjem er dækket. Start med{" "}
+          <Link href="/guides/hvor-meget-vin-til-fest" className="text-rose-900 hover:underline">
+            hvor meget vin til fest
+          </Link>{" "}
+          og finjustér med{" "}
+          <Link href="/guides/hvor-meget-vin-til-bryllup" className="text-rose-900 hover:underline">
+            bryllup
+          </Link>{" "}
+          eller{" "}
+          <Link href="/guides/vin-til-konfirmation" className="text-rose-900 hover:underline">
+            konfirmation
+          </Link>
+          .
+        </p>
+        <p>
+          Bobler er standard til velkomst. Prosecco og cava (widgets herover) er de mest købte fest-kasser i Danmark;
+          crémant og champagne når anledningen og budgettet tillader det. Se{" "}
+          <Link href="/guides/bedste-bobler" className="text-rose-900 hover:underline">
+            bedste bobler
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="text-rose-900 hover:underline">
+            champagne, cava, prosecco og crémant
+          </Link>
+          . Til gæster uden alkohol:{" "}
+          <Link href="/guides/alkoholfri-vin-til-fest" className="text-rose-900 hover:underline">
+            alkoholfri vin til fest
+          </Link>
+          .
+        </p>
+        <p>
+          Undgå at købe 12 forskellige flasker “til smagning”. To hvid, to rød, én boble og én 0 % skalerer. Hold rød
+          let- til mellemfyldig (pinot, sangiovese, cariñena) hvis menuen er buffet. Tjek{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            bedste vine
+          </Link>{" "}
+          for prisklasser og{" "}
+          <Link href="/rabatkoder" className="text-rose-900 hover:underline">
+            rabatkoder
+          </Link>{" "}
+          inden storkøb.
+        </p>
+        <p>
+          Højtider overlapper fest: nytår, julefrokost og sommerbryllup har egne guides under{" "}
+          <Link href="/saeson" className="text-rose-900 hover:underline">
+            sæson
+          </Link>
+          . Serveringstemperatur og glas betyder mere end folk tror, når 40 gæster drikker af de samme kasser — se{" "}
+          <Link href="/vin-viden" className="text-rose-900 hover:underline">
+            vin-viden
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="fest-og-vin" slug="fest-og-vin-hub" />
 

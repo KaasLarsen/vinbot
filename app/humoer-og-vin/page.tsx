@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listHumoerHubGuides } from "@/lib/content/guides";
@@ -162,6 +163,85 @@ export default function HumoerHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Guides efter stemning</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="humoer-og-vin"
+        slug="humoer-hub"
+        products={[
+          { productKey: "guigal-cotes-du-rhone-rouge", heading: "Hverdagsrød med peber og varme — Guigal Côtes du Rhône" },
+          { productKey: "san-marzano-primitivo", heading: "Blød, frugtig rød til sofaen — San Marzano Primitivo" },
+        ]}
+        seoHeading="Vin efter humør og anledning — ikke kun efter drue"
+        faq={[
+          {
+            question: "Hvilken vin til hygge derhjemme?",
+            answer:
+              "Blød frugtig rød (primitivo, merlot, cariñena) eller saftig hvid. Undgå stramme, unge tanninbomber til sofaen.",
+          },
+          {
+            question: "Hvilken vin til date eller værtindegave?",
+            answer:
+              "Noget med historie på etiketten og pæn flaske: crémant, rioja reserva eller en kendt pinot. Se gave- og værtindegave-guides.",
+          },
+          {
+            question: "Hvad drikker man til haveselskab?",
+            answer:
+              "Rosé, albariño, let rød på køl og bobler. Hold det koldt og enkelt — gæsterne står op.",
+          },
+        ]}
+      >
+        <p>
+          Humør er et gyldigt filter: den vin du vil have en tirsdag i sofaen er sjældent den samme som til et formelt
+          middagsselskab. Hubben samler guides efter anledninger — haveselskab, weekend, gave, mors og fars dag — så du
+          vælger ud fra situationen, ikke kun appellationen. Når menuen er kendt, gå til{" "}
+          <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
+            mad og vin
+          </Link>
+          ; når det er festen der styrer,{" "}
+          <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+            fest og vin
+          </Link>
+          .
+        </p>
+        <p>
+          To typiske “humør-røde”: Côtes du Rhône (peber, urter, madvillig) og primitivo (moden frugt, blød finish). De
+          to widgets herover er prissammenligning, ikke en rangering. Til gave og værtinde:{" "}
+          <Link href="/guides/bedste-vin-til-gave" className="text-rose-900 hover:underline">
+            bedste vin til gave
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/bedste-vaertindegave-vin" className="text-rose-900 hover:underline">
+            værtindegave
+          </Link>
+          . Til hverdag:{" "}
+          <Link href="/guides/bedste-weekendvin" className="text-rose-900 hover:underline">
+            weekendvin
+          </Link>
+          .
+        </p>
+        <p>
+          Årstid og kalender skubber humøret: grill i juli, and i december, brunch om foråret. Kryds til{" "}
+          <Link href="/saeson" className="text-rose-900 hover:underline">
+            sæson
+          </Link>
+          . Skal du slå et konkret navn op, er{" "}
+          <Link href="/bedste-vine" className="text-rose-900 hover:underline">
+            bedste vine
+          </Link>{" "}
+          det rigtige indeks.
+        </p>
+        <p>
+          Regioner og druer er stadig nyttige, når du har smagt dig ind:{" "}
+          <Link href="/regioner" className="text-rose-900 hover:underline">
+            vinregioner
+          </Link>{" "}
+          og den{" "}
+          <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
+            komplette parringsguide
+          </Link>
+          .
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="humoer-og-vin" slug="humoer-hub" />
       <p className="mt-10 text-stone-700">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listSaesonHubGuides } from "@/lib/content/guides";
@@ -147,6 +148,87 @@ export default function SaesonHubPage() {
         <h2 className="mb-4 text-2xl font-semibold text-stone-900">Sæsonguides</h2>
         <GuideHubBrowser guides={cards} showKindTabs={false} showTagChips tagMinCount={1} />
       </section>
+
+      <GuideTopicHubExtras
+        hub="saeson"
+        slug="saeson-hub"
+        products={[
+          { productKey: "chateau-tanunda-grand-shiraz", heading: "Barossa Shiraz til grill og efterår — Château Tanunda Grand" },
+          { productKey: "ribeauville-cremant-alsace", heading: "Crémant til nytår og brunch — Ribeauvillé Giersberger Brut" },
+        ]}
+        seoHeading="Vin efter sæson og højtider i Danmark"
+        faq={[
+          {
+            question: "Hvilken vin til jul?",
+            answer:
+              "Til flæskesteg: tysk riesling spätlese eller pinot noir. Til and: pinot eller rød bourgogne. Til risengrød og dessert: tawny port. Se julemad-guiden for hele bordet.",
+          },
+          {
+            question: "Hvilken vin til nytår?",
+            answer:
+              "Bobler til klokken 24 — champagne, crémant eller cava efter budget — plus en rød til midnatsmad. Hav 0 % bobler parat.",
+          },
+          {
+            question: "Hvad drikker man om sommeren?",
+            answer:
+              "Rosé, albariño, sauvignon blanc, lette røde (chillable) og spritz. Tunge amarone-typer venter til efteråret.",
+          },
+        ]}
+      >
+        <p>
+          Dansk vinsæson følger vejret og kalenderen mere end høsten i Bordeaux. Om sommeren vil vi have syre, kulde og
+          lette røde; om vinteren mere fylde, krydderi og dessertvin. Højtiderne (jul, nytår, påske, pinse) har faste
+          menuer — og derfor faste parringsfejl. Brug{" "}
+          <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">
+            vin til julemad
+          </Link>
+          ,{" "}
+          <Link href="/guides/vin-til-nytaar-og-nytaarsmenu" className="text-rose-900 hover:underline">
+            nytår
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/vin-til-paaske-og-paaskefrokost" className="text-rose-900 hover:underline">
+            påske
+          </Link>{" "}
+          som tjeklister, ikke som religion.
+        </p>
+        <p>
+          Grill og BBQ kalder på frugt og peber (shiraz, malbec, grenache). Nytår og brunch kalder på bobler — crémant
+          er ofte bedre værdi end billig champagne. Widgets herover er eksempler på de to poler: efterårsrød og
+          festboble. Sommeren dækkes af{" "}
+          <Link href="/guides/vin-til-sommer" className="text-rose-900 hover:underline">
+            vin til sommer
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides/rosevin-til-mad-og-sommer" className="text-rose-900 hover:underline">
+            rosé
+          </Link>
+          .
+        </p>
+        <p>
+          Stemning og selskab overlapper: haveselskab, konfirmation i maj, julefrokost i december. Kryds til{" "}
+          <Link href="/fest-og-vin" className="text-rose-900 hover:underline">
+            fest og vin
+          </Link>{" "}
+          og{" "}
+          <Link href="/humoer-og-vin" className="text-rose-900 hover:underline">
+            humør og vin
+          </Link>
+          . 0 % til højtidsbordet ligger på{" "}
+          <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
+            alkoholfri vin
+          </Link>
+          .
+        </p>
+        <p>
+          En enkelt flaske kan godt bryde sæsonen: afkølet cru beaujolais om sommeren, tør riesling til sild i
+          december. Principperne i{" "}
+          <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-900 hover:underline">
+            komplet guide til vin og mad
+          </Link>{" "}
+          gælder året rundt.
+        </p>
+      </GuideTopicHubExtras>
 
       <PartnerAdsLeaderboard className="mt-12" hub="saeson" slug="saeson-hub" />
       <p className="mt-10 text-stone-700">

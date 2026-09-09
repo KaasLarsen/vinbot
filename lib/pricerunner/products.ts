@@ -265,6 +265,20 @@ export const priceRunnerProducts = {
     compareUrl:
       "https://www.pricerunner.dk/pl/461-3200426905/Koekkentilbehoer/Coravin-Pivot-Vinpumpe-Sammenlign-Priser",
   },
+  "leitz-eins-zwei-zero-sparkling-rose": {
+    productId: "3329835248",
+    title: "Leitz Eins Zwei Zero Sparkling Rosé Riesling",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3329835248/Vine/Leitz-Eins-Zwei-Zero-Sparkling-Rose-Riesling-75cl-Sammenlign-Priser",
+  },
+  "torres-natureo-rose": {
+    productId: "3214874998",
+    title: "Torres Natureo Rosé Syrah/Cabernet 0,0 %",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3214874998/Vine/Torres-Natureo-Rose-Syrah-Cabernet-0-0-Sammenlign-Priser",
+  },
 } as const satisfies Record<string, PriceRunnerProduct>;
 
 export type PriceRunnerProductKey = keyof typeof priceRunnerProducts;

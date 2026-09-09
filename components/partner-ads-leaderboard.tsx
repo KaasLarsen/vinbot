@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import {
+  hubRotationPool,
+  rotationIndex,
+  type HubRotationMerchant,
+} from "@/lib/partner-ads-hub-rotations";
 import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
 export const WINTHER_VIN_LEADERBOARD_BANNER_ID = "76692";
@@ -68,38 +73,18 @@ const DSF: BannerChoice = {
   logoH: 225,
 };
 
-/**
- * Hub → rotationsliste (Lauridsen indgår på alle relevante hubs undtagen ren DSF-katalog,
- * hvor DSF stadig dominerer men deles med Lauridsen).
- */
-const HUB_ROTATIONS: Record<string, BannerChoice[]> = {
-  "bedste-vine": [WINTHER, LAURIDSEN, JOHNSEN],
-  "mad-og-vin": [DH, LAURIDSEN, WINTHER],
-  "vin-viden": [JOHNSEN, LAURIDSEN, DH],
-  hedvin: [LAURIDSEN, JOHNSEN, DH],
-  regioner: [LAURIDSEN, DH, JOHNSEN],
-  saeson: [WINTHER, LAURIDSEN, DH],
-  "fest-og-vin": [WINTHER, LAURIDSEN, JOHNSEN],
-  "humoer-og-vin": [WINTHER, LAURIDSEN],
-  druesorter: [JOHNSEN, LAURIDSEN, WINTHER],
-  "vine-katalog": [DSF, WINTHER],
+const BANNER_BY_MERCHANT: Record<HubRotationMerchant, BannerChoice> = {
+  winther: WINTHER,
+  lauridsen: LAURIDSEN,
+  johnsen: JOHNSEN,
+  dh: DH,
+  dsf: DSF,
 };
 
-/** Deterministisk indeks ud fra slug (samme guide → samme banner ved reload). */
-function rotationIndex(slug: string, modulo: number): number {
-  if (modulo <= 1) return 0;
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) {
-    h = (h + slug.charCodeAt(i) * (i + 1)) % 10007;
-  }
-  return h % modulo;
-}
-
 function pickBanner(hub: string | undefined, slug: string): BannerChoice {
-  const key = hub && HUB_ROTATIONS[hub] ? hub : "bedste-vine";
-  const pool = HUB_ROTATIONS[key] ?? HUB_ROTATIONS["bedste-vine"];
+  const pool = hubRotationPool(hub);
   const idx = rotationIndex(slug || "vinbot", pool.length);
-  return pool[idx]!;
+  return BANNER_BY_MERCHANT[pool[idx]!];
 }
 
 type PartnerAdsLeaderboardProps = {
