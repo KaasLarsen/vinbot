@@ -158,7 +158,7 @@ export function WineQuantityCalculator({
       </div>
 
       <p className="mt-5 text-xs font-medium uppercase tracking-wide text-stone-500">Festtype</p>
-      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div className={`mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3 ${isCompact ? "lg:grid-cols-1" : ""}`}>
         {PARTY_OPTIONS.map((opt) => {
           const selected = opt.id === partyType;
           return (

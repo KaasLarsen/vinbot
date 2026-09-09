@@ -7,7 +7,10 @@ export function HomeLigeNuStrip() {
   const moment = getHomeMoment();
 
   return (
-    <section className="mt-8 rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5" aria-labelledby="home-lige-nu-heading">
+    <section
+      className="mt-8 rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5 lg:mt-0"
+      aria-labelledby="home-lige-nu-heading"
+    >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Lige nu</p>
       <h2 id="home-lige-nu-heading" className="mt-1 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">
         {moment.headline}

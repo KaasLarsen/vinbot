@@ -13,14 +13,14 @@ export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
           alt=""
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 1440px"
-          className="object-cover object-[72%_center] sm:object-[85%_center]"
+          sizes="(max-width: 1023px) 100vw, 900px"
+          className="object-cover object-[72%_center] sm:object-[85%_center] lg:object-[78%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/78 to-white/15 sm:from-white/92 sm:via-white/55 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/78 to-white/15 sm:from-white/92 sm:via-white/55 sm:to-transparent lg:from-white/90 lg:via-white/42 lg:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-rose-950/8 via-transparent to-amber-900/15" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-rose-950/20 to-transparent sm:h-32" />
       </div>
-      <div className="relative z-10 px-5 py-7 sm:px-8 sm:py-8">{children}</div>
+      <div className="relative z-10 px-5 py-7 sm:px-8 sm:py-8 lg:min-h-[28rem] lg:px-10 lg:py-10">{children}</div>
     </section>
   );
 }

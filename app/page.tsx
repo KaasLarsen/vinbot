@@ -36,40 +36,44 @@ export default function HomePage() {
   return (
     <PageShell className="py-10">
       <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
-      <HomeHeroSearchSection>
-        <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
-          Vinsøgning · danske forhandlere
-        </p>
-        <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
-          Find vin på sekunder
-        </h1>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
-          Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
-        </p>
+      <div className="lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)] lg:items-start lg:gap-6">
+        <HomeHeroSearchSection>
+          <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
+            Vinsøgning · danske forhandlere
+          </p>
+          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
+            Find vin på sekunder
+          </h1>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
+            Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
+          </p>
 
-        <HomeLabelScanButton />
+          <HomeLabelScanButton />
 
-        <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-5">
-          <FoodWinePicker />
-        </div>
+          <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-5">
+            <FoodWinePicker />
+          </div>
 
-        <div className="relative z-10 mt-4 max-w-xl">
-          <p className="mb-2 text-sm font-medium text-stone-800">Eller søg frit på flaske, drue eller budget</p>
-          <HomeWineSearch
-            controlsClassName="rounded-xl border border-white/80 bg-white/90 p-3 shadow-sm"
-            resultsClassName="mt-3 rounded-xl border border-white/80 bg-white/95 p-4 shadow-sm sm:p-5"
+          <div className="relative z-10 mt-4 max-w-xl">
+            <p className="mb-2 text-sm font-medium text-stone-800">Eller søg frit på flaske, drue eller budget</p>
+            <HomeWineSearch
+              controlsClassName="rounded-xl border border-white/80 bg-white/90 p-3 shadow-sm"
+              resultsClassName="mt-3 rounded-xl border border-white/80 bg-white/95 p-4 shadow-sm sm:p-5"
+            />
+          </div>
+        </HomeHeroSearchSection>
+
+        <div className="lg:flex lg:flex-col lg:gap-6">
+          <WineQuantityCalculator
+            variant="compact"
+            className="mt-10 lg:mt-0"
+            heading="Hvor mange flasker til festen?"
+            intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
           />
+
+          <HomeLigeNuStrip />
         </div>
-      </HomeHeroSearchSection>
-
-      <WineQuantityCalculator
-        variant="compact"
-        className="mt-10"
-        heading="Hvor mange flasker til festen?"
-        intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
-      />
-
-      <HomeLigeNuStrip />
+      </div>
 
       <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />
 
