@@ -65,6 +65,9 @@ export function SiteFooter() {
               <Link href="/black-friday" className="hover:text-rose-900">
                 Black Friday vin
               </Link>
+              <Link href="/black-friday/butikker" className="hover:text-rose-900">
+                Black Friday butikker
+              </Link>
               <Link href="/tilbud" className="hover:text-rose-900">
                 Vin tilbud
               </Link>

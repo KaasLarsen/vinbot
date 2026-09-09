@@ -29,6 +29,19 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   vinpalle: { src: "/images/merchants/vinpalle.png" },
   whiskystack: { src: "/images/merchants/whiskystack.png" },
   "beer-me": { src: "/images/merchants/beer-me.png" },
+  /** BF-oversigt: outsiders uden fil endnu → monogram. */
+  "philipson-wine": { src: "" },
+  "theis-vine": { src: "" },
+  "kjaer-sommerfeldt": { src: "" },
+  "sigurd-muller": { src: "" },
+  "poetzsch-wine": { src: "" },
+  "hj-hansen-vin": { src: "" },
+  vinoble: { src: "" },
+  winefamly: { src: "" },
+  "laudrup-vin": { src: "" },
+  "erik-sorensen-vin": { src: "" },
+  "jysk-vin": { src: "" },
+  "skjold-burne": { src: "" },
 };
 
 export function getMerchantLogo(slug: string): MerchantLogo | null {

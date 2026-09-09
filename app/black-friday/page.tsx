@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BlackFridayDealTabs } from "@/components/black-friday-deal-tabs";
+import { BlackFridayStoreGrid } from "@/components/black-friday-store-grid";
 import { SeasonWineCalculator } from "@/components/season-wine-calculator";
 import { BlackFridayPriceCheck } from "@/components/black-friday-price-check";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -23,6 +24,7 @@ import { listCrossMerchantDeals } from "@/lib/deals/cross-merchant";
 import { listFeedDeals } from "@/lib/deals/engine";
 import { crossMerchantDealToCard, feedDealToCard } from "@/lib/deals/types";
 import { copenhagenParts } from "@/lib/home-moment";
+import { listBlackFridayStoreTeaser } from "@/lib/black-friday/store-directory";
 import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Black Friday vin tilbud 2026 — sammenlign ægte vintilbud";
@@ -130,6 +132,19 @@ export default async function BlackFridayHubPage() {
       </div>
 
       <PartnerAdsLeaderboard className="mt-8" hub="black-friday" slug="black-friday-hub" />
+
+      <section className="mt-14" aria-labelledby="bf-stores-heading">
+        <h2 id="bf-stores-heading" className="text-2xl font-semibold tracking-tight text-stone-900">
+          Vinbutikker
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-stone-600">
+          Alle de butikker, vi kender på det danske vinmarked. Live-link kun hos partnere — resten åbner en kort
+          forklaring.
+        </p>
+        <div className="mt-8">
+          <BlackFridayStoreGrid stores={listBlackFridayStoreTeaser(12)} teaserHref="/black-friday/butikker" />
+        </div>
+      </section>
 
       <div className="mt-14">
         <SeasonWineCalculator

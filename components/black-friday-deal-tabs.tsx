@@ -50,7 +50,7 @@ export function BlackFridayDealTabs({
   const active = tabs.find((t) => t.id === tab) ?? tabs[0];
 
   return (
-    <section aria-labelledby="bf-feed-heading">
+    <section id="tilbud" aria-labelledby="bf-feed-heading">
       <h2 id="bf-feed-heading" className="text-2xl font-semibold tracking-tight text-stone-900">
         Live vintilbud
       </h2>
