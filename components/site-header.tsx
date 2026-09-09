@@ -6,15 +6,18 @@ import { useEffect, useId, useRef, useState } from "react";
 import { HeaderSearch } from "@/components/header-search";
 import { VinbotLogo } from "@/components/vinbot-logo";
 import { PageShell } from "@/components/page-shell";
+import { campaignNavActive } from "@/lib/black-friday/phase";
 
 type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
 
-const primaryNav: NavItem[] = [
+const primaryNavBase: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/opskrifter", label: "Opskrifter", activePrefix: "/opskrifter" },
   { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
 ];
+
+const blackFridayNav: NavItem = { href: "/black-friday", label: "Black Friday" };
 
 const moreNav: NavItem[] = [
   { href: "/humoer-og-vin", label: "Humør & stemning" },
@@ -79,6 +82,7 @@ const moreNav: NavItem[] = [
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
   { href: "/vintilbehor", label: "Vintilbehør" },
   { href: "/rabatkoder", label: "Rabatkoder" },
+  { href: "/black-friday", label: "Black Friday vin" },
   { href: "/tilbud", label: "Vin tilbud" },
   { href: "/guides", label: "Alle guides", activePrefix: "/guides" },
 ];
@@ -101,6 +105,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const panelId = useId();
   const menuRef = useRef<HTMLDivElement>(null);
+  const primaryNav = campaignNavActive() ? [blackFridayNav, ...primaryNavBase] : primaryNavBase;
 
   useEffect(() => {
     setOpen(false);

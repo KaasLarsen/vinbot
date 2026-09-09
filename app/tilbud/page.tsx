@@ -317,6 +317,11 @@ export default async function TilbudHubPage() {
             </li>
           ))}
           <li>
+            <Link href="/black-friday" className="font-medium text-rose-900 hover:underline">
+              Black Friday vin
+            </Link>
+          </li>
+          <li>
             <Link href="/rabatkoder" className="font-medium text-rose-900 hover:underline">
               Rabatkoder
             </Link>

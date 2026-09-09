@@ -5,6 +5,10 @@
     {
       "path": "/api/cron/revalidate-feeds",
       "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/black-friday-live",
+      "schedule": "0 * * * *"
     }
   ]
 }

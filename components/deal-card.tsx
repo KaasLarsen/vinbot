@@ -46,11 +46,11 @@ export function DealCard({
 
   const badge = (
     <span
-      className={`rounded-full bg-rose-900 font-semibold text-white ${
-        variant === "featured" ? "px-3 py-1 text-sm" : "px-2.5 py-1 text-xs"
-      }`}
+      className={`rounded-full font-semibold text-white ${
+        deal.kind === "cross" ? "bg-emerald-800" : "bg-rose-900"
+      } ${variant === "featured" ? "px-3 py-1 text-sm" : "px-2.5 py-1 text-xs"}`}
     >
-      −{deal.discountPercent}%
+      {deal.kind === "cross" ? "↓ " : ""}−{deal.discountPercent}%
     </span>
   );
 
@@ -93,8 +93,8 @@ export function DealCard({
           </div>
           <p className="text-sm text-stone-600">
             {deal.kind === "cross" && deal.highestMerchant
-              ? `Billigst hos ${deal.merchant} — spar op mod ${deal.highestMerchant}`
-              : "Nedsat i butikkens feed lige nu"}
+              ? `Billigst hos ${deal.merchant} · spar ${typeof deal.savingsAmount === "number" ? `${deal.savingsAmount.toLocaleString("da-DK")} kr` : `mod ${deal.highestMerchant}`}`
+              : "Nedsat i shop (før-pris fra butikken)"}
           </p>
           <div className="mt-auto flex flex-wrap gap-2 pt-2">
             <a
@@ -157,12 +157,14 @@ export function DealCard({
           </a>
         </h3>
         {deal.kind === "cross" && deal.highestMerchant ? (
-          <p className="text-xs text-stone-600">
+          <p className="text-xs text-emerald-900">
             Billigst hos {deal.merchant}
             {deal.merchantCount && deal.merchantCount > 1 ? ` · ${deal.merchantCount} butikker` : ""}
             {typeof deal.savingsAmount === "number" ? ` · spar ${deal.savingsAmount.toLocaleString("da-DK")} kr` : ""}
           </p>
-        ) : null}
+        ) : (
+          <p className="text-xs text-stone-500">Nedsat i shop (før-pris fra butikken)</p>
+        )}
         <div className="flex flex-wrap items-baseline gap-2">
           <p className={`font-semibold tabular-nums text-stone-800 ${variant === "compact" ? "text-base" : "text-lg"}`}>
             {saleLabel}

@@ -2,6 +2,7 @@ import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 import { siteUrl } from "@/lib/site";
+import { recordDailyPriceSnapshot } from "@/lib/black-friday/price-snapshots";
 import { warmWineCatalog } from "@/lib/vine/catalog";
 import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
 
@@ -56,12 +57,14 @@ export async function GET(req: NextRequest) {
 
   revalidateTag("vinbot-feeds", "max");
   const catalog = await warmWineCatalog();
+  const snapshot = await recordDailyPriceSnapshot(catalog);
   const featured = await warmFeaturedWinePages();
   return NextResponse.json({
     revalidated: true,
     tag: "vinbot-feeds",
     catalogWines: catalog.wines.length,
     catalogGeneratedAt: catalog.generatedAt,
+    priceSnapshot: snapshot,
     featuredWarmed: featured.warmed,
     featuredFailed: featured.failed,
   });

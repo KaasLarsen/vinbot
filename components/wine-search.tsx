@@ -447,6 +447,7 @@ export function WineSearch({
   intentChips,
   controlsClassName,
   resultsClassName,
+  inputPlaceholder,
 }: {
   initialQuery?: string;
   initialMax?: number;
@@ -457,6 +458,7 @@ export function WineSearch({
   controlsClassName?: string;
   /** Valgfri wrapper omkring søgeresultater (fx hvid flade i hero). */
   resultsClassName?: string;
+  inputPlaceholder?: string;
 }) {
   const [q, setQ] = useState(initialQuery?.trim() || "");
   const [max, setMax] = useState(
@@ -468,7 +470,10 @@ export function WineSearch({
     return mergeSearchSuggestions(seasonalChips(monthIndex));
   }, [monthIndex, variant, intentChips]);
   const [queryFocused, setQueryFocused] = useState(false);
-  const placeholder = useMemo(() => seasonalPlaceholder(monthIndex), [monthIndex]);
+  const placeholder = useMemo(
+    () => inputPlaceholder?.trim() || seasonalPlaceholder(monthIndex),
+    [monthIndex, inputPlaceholder],
+  );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);

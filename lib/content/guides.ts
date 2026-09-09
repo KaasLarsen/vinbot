@@ -166,6 +166,27 @@ export function listSaesonHubGuides(): GuideFrontmatter[] {
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
 }
 
+const BLACK_FRIDAY_GUIDE_SLUGS = [
+  "vin-tilbud-og-foer-pris",
+  "bedste-julevin",
+  "vin-til-juleaften",
+  "vin-til-julemad-den-store-guide",
+  "vin-til-nytaar-og-nytaarsmenu",
+  "bobler-champagne-cava-prosecco-og-cremant",
+  "koeb-vin-online-sadan-holder-du-styr-paa-det",
+] as const;
+
+export function listBlackFridayHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const ordered = BLACK_FRIDAY_GUIDE_SLUGS.map((slug) => bySlug.get(slug)).filter(
+    (g): g is GuideFrontmatter => Boolean(g),
+  );
+  const extras = listGuides().filter(
+    (g) => g.hub === "black-friday" && !BLACK_FRIDAY_GUIDE_SLUGS.some((s) => s === g.slug),
+  );
+  return [...ordered, ...extras];
+}
+
 /**
  * Tags der matcher “humør & stemning” (lejlighed, selskab, bobler, weekend).
  */

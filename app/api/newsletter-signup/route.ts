@@ -31,6 +31,10 @@ export async function POST(req: Request) {
     );
   }
 
+  if (parsed.data.source) {
+    console.info("newsletter-signup source:", parsed.data.source);
+  }
+
   const result = await subscribeNewsletterContact(apiKey, parsed.data.email);
   if (!result.ok) {
     return NextResponse.json(

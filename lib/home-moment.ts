@@ -131,6 +131,7 @@ function momentFromId(id: HomeMomentId): HomeMoment {
         saesonIntro:
           "Hele december handler om syre til fedtet, sødme til desserten og flasker der kan følge et langt julebord.",
         saesonGuideLinks: [
+          { href: "/black-friday", label: "Black Friday vin" },
           g("vin-til-flaesketesteg", "vin til flæskesteg"),
           g("vin-til-juleaften", "juleaften"),
           g("vin-til-juleand", "juleand"),
@@ -305,12 +306,17 @@ function momentFromId(id: HomeMomentId): HomeMoment {
         id,
         headline: "Efterår: vildt, gryde og hygge",
         blurb: "Kraftigere rødvin til simre og det der kommer ind fra køkkenet.",
-        links: [g("vin-til-vildt", "Vildt"), g("vin-til-gryderet", "Gryderet"), g("vin-til-and", "And")],
+        links: [
+          { href: "/black-friday", label: "Black Friday" },
+          g("vin-til-vildt", "Vildt"),
+          g("vin-til-and", "And"),
+        ],
         dishIds: prioritizeDishes(["boef", "grill", "flaeskesteg", "pasta-tomat"]),
         recipeSlugs: ["boeuf-bourguignon", "coq-au-vin", "lasagne-med-rodvin", "risotto-med-hvidvin"],
         saesonHeadline: "Lige nu: efterår",
         saesonIntro: "Vildt, svampe og gryder — her rykker glasset over på rødvin med mere krop.",
         saesonGuideLinks: [
+          { href: "/black-friday", label: "Black Friday vin" },
           g("vin-til-mortensaften", "Mortensaften"),
           g("vin-til-vildt", "vildt"),
           g("vin-til-and", "and"),

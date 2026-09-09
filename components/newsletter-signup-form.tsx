@@ -13,9 +13,19 @@ type Props = {
   /** Compact variant for footer; default is a bit more spacious (fx /tilbud). */
   variant?: "footer" | "section";
   className?: string;
+  /** Valgfri kilde til senere segmentering (fx black-friday). */
+  source?: string;
+  heading?: string;
+  hint?: string;
 };
 
-export function NewsletterSignupForm({ variant = "footer", className = "" }: Props) {
+export function NewsletterSignupForm({
+  variant = "footer",
+  className = "",
+  source,
+  heading,
+  hint,
+}: Props) {
   const formId = useId();
   const emailId = `${formId}-email`;
   const consentId = `${formId}-consent`;
@@ -42,7 +52,7 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
       const res = await fetch("/api/newsletter-signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), consent: true }),
+        body: JSON.stringify({ email: email.trim(), consent: true, source: source || undefined }),
       });
       const json = (await res.json().catch(() => null)) as { error?: string } | null;
       if (!res.ok) {
@@ -65,8 +75,8 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
         <p className="text-sm font-semibold text-stone-900">Tak — du er tilmeldt</p>
         <p className="mt-1 text-sm text-stone-600">
           Du får snart en velkomstmail. Se også{" "}
-          <Link href="/tilbud" className="font-medium text-rose-900 hover:underline">
-            aktuelle tilbud
+          <Link href={source === "black-friday" ? "/black-friday" : "/tilbud"} className="font-medium text-rose-900 hover:underline">
+            {source === "black-friday" ? "Black Friday-hubben" : "aktuelle tilbud"}
           </Link>
           .
         </p>
@@ -86,7 +96,10 @@ export function NewsletterSignupForm({ variant = "footer", className = "" }: Pro
           <p className="text-sm text-stone-600">Få gode tilbud i din mailbox — plus nyheder og tips.</p>
         </>
       ) : (
-        <p className="text-sm font-medium text-stone-800">Få tilbud i indbakken</p>
+        <>
+          <p className="text-sm font-medium text-stone-800">{heading || "Få tilbud i indbakken"}</p>
+          {hint ? <p className="text-sm text-stone-600">{hint}</p> : null}
+        </>
       )}
 
       <label htmlFor={emailId} className="sr-only">

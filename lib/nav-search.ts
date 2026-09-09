@@ -15,7 +15,11 @@ export type NavSearchSuggestion = {
 const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   { label: "Mad & vin", href: "/mad-og-vin", keywords: ["mad", "vin", "parring", "match"] },
   { label: "Opskrifter", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon", "parring", "pizza", "burger"] },
-  { label: "Bedste vine", href: "/bedste-vine", keywords: ["bedste", "køb", "pris", "anbefaling"] },
+  {
+    label: "Black Friday vin",
+    href: "/black-friday",
+    keywords: ["black friday", "black week", "cyber monday", "tilbud", "julevin", "rabat"],
+  },
   {
     label: "Alkoholfri vin",
     href: "/alkoholfri-vin",
@@ -43,6 +47,7 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
 /** Populære genveje når feltet er tomt (roterer ikke — stabilt sæt). */
 const QUICK_PICKS: NavSearchSuggestion[] = [
   { href: "/guides/vin-til-julefrokost", label: "Vin til julefrokost", kind: "quick", score: 0 },
+  { href: "/black-friday", label: "Black Friday vin-hub", kind: "quick", score: 0 },
   { href: "/guides/vin-til-pizza-og-pasta", label: "Vin til pizza og pasta", kind: "quick", score: 0 },
   { href: "/guides/vin-til-fisk-og-skaldyr", label: "Vin til fisk og skaldyr", kind: "quick", score: 0 },
   { href: "/guides/bedste-vin-under-150-kr", label: "Bedste vin under 150 kr", kind: "quick", score: 0 },

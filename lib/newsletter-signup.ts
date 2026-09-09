@@ -1,6 +1,7 @@
 export type NewsletterSignupPayload = {
   email: string;
   consent: true;
+  source?: string;
 };
 
 export type NewsletterSignupValidationError = {
@@ -39,5 +40,8 @@ export function parseNewsletterSignupBody(raw: unknown): {
     };
   }
 
-  return { data: { email, consent: true } };
+  const sourceRaw = typeof body.source === "string" ? body.source.trim().toLowerCase() : "";
+  const source = sourceRaw && /^[a-z0-9-]{1,40}$/.test(sourceRaw) ? sourceRaw : undefined;
+
+  return { data: { email, consent: true, source } };
 }

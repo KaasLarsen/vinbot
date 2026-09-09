@@ -17,6 +17,7 @@ export const HUB_ROTATIONS: Record<string, HubRotationMerchant[]> = {
   "vine-katalog": ["dsf", "winther"],
   "alkoholfri-vin": ["winther", "lauridsen", "johnsen"],
   "supermarked-vin": ["winther", "dh", "lauridsen"],
+  "black-friday": ["winther", "dsf", "lauridsen"],
 };
 
 export function rotationIndex(slug: string, modulo: number): number {

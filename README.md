@@ -25,7 +25,8 @@ Se [`.env.example`](.env.example) for alle felter. Vigtigste:
 | `NEXT_PUBLIC_SITE_URL` | Canonical base-URL (typisk `https://www.vinbot.dk`) |
 | `NEXT_PUBLIC_ADSENSE_CLIENT` / `NEXT_PUBLIC_ADSENSE_ACTIVE` | AdSense |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 |
-| `CRON_SECRET` | Auth til Vercel cron (`/api/cron/revalidate-feeds`) |
+| `CRON_SECRET` | Auth til Vercel cron (`/api/cron/revalidate-feeds` og `/api/cron/black-friday-live`) |
+| `BLOB_READ_WRITE_TOKEN` | Valgfrit — daglige pris-snapshots til senere historiske Black Friday-badges |
 | `RESEND_API_KEY` / `RESEND_FROM` | Forhandler-tilmelding + nyhedsbrev (Contacts) |
 | `RESEND_NEWSLETTER_SEGMENT_ID` / `RESEND_NEWSLETTER_TOPIC_ID` | Valgfrit — ellers auto find/opret «Vinbot nyhedsbrev» |
 
@@ -65,7 +66,9 @@ Sæt de samme værdier i Vercel (Production + Preview) ved deploy.
 
 Push til `main` deployer automatisk til Vercel production.
 
-Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 6. time).
+Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 6. time). Under Black Week revaliderer `/api/cron/black-friday-live` hver time.
+
+Permanent hub: `/black-friday`.
 
 ## Indhold og SEO
 
