@@ -54,9 +54,18 @@ function snapshotFromCatalog(catalog: WineCatalog): PriceDayPoint[] {
   return priced;
 }
 
-async function readExisting(token: string): Promise<PriceHistoryBlob> {
+function blobAuthOptions(): { token?: string } {
+  const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
+  return token ? { token } : {};
+}
+
+function blobConfigured(): boolean {
+  return Boolean(process.env.BLOB_STORE_ID?.trim() || process.env.BLOB_READ_WRITE_TOKEN?.trim());
+}
+
+async function readExisting(): Promise<PriceHistoryBlob> {
   try {
-    const listed = await list({ prefix: BLOB_PATH, token, limit: 10 });
+    const listed = await list({ prefix: BLOB_PATH, limit: 10, ...blobAuthOptions() });
     const hit = listed.blobs.find((b) => b.pathname === BLOB_PATH);
     if (!hit) return { days: {} };
     const res = await fetch(hit.url, { cache: "no-store" });
@@ -68,18 +77,17 @@ async function readExisting(token: string): Promise<PriceHistoryBlob> {
   }
 }
 
-/** Gemmer ét kompakt dags-snapshot. No-op uden BLOB_READ_WRITE_TOKEN. */
+/** Gemmer ét kompakt dags-snapshot. No-op uden Blob (OIDC `BLOB_STORE_ID` eller `BLOB_READ_WRITE_TOKEN`). */
 export async function recordDailyPriceSnapshot(catalog: WineCatalog, now: Date = new Date()): Promise<{
   ok: boolean;
   skipped?: string;
   day?: string;
   wines?: number;
 }> {
-  const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
-  if (!token) return { ok: false, skipped: "missing-token" };
+  if (!blobConfigured()) return { ok: false, skipped: "missing-blob" };
 
   const day = copenhagenDay(now);
-  const existing = await readExisting(token);
+  const existing = await readExisting();
   if (existing.days[day]?.length) {
     return { ok: true, skipped: "already-recorded", day, wines: existing.days[day]!.length };
   }
@@ -89,10 +97,10 @@ export async function recordDailyPriceSnapshot(catalog: WineCatalog, now: Date =
 
   await put(BLOB_PATH, JSON.stringify({ days }), {
     access: "public",
-    token,
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: "application/json",
+    ...blobAuthOptions(),
   });
 
   return { ok: true, day, wines: points.length };
