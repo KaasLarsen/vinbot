@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Black Friday vinbutikker — overblik over det danske vinmarked";
 const PAGE_DESCRIPTION =
-  "Se danske vinforhandlere samlet ét sted. Live-links og verificerede priser gælder kun partnere — resten vises i oversigten uden eksternt link.";
+  "Overblik over danske vinbutikker ét sted — klar til Black Friday.";
 const PAGE_URL = `${siteUrl}/black-friday/butikker`;
 
 export const metadata: Metadata = {
@@ -59,8 +59,7 @@ export default function BlackFridayStoresPage() {
           Danske vinbutikker i ét overblik
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-stone-700">
-          Vinbot sælger ikke vin. Vi samler forhandlerne, så du kan se markedet samlet. Klikbare logoer går videre til
-          partnere med prissamarbejde. Øvrige butikker er med i indekset, men uden eksternt link.
+          Et samlet overblik over danske vinbutikker — så du hurtigt kan finde rundt, når Black Friday nærmer sig.
         </p>
       </header>
 
