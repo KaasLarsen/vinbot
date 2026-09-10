@@ -3,7 +3,7 @@ import { MERCHANT_HUBS, resolveMerchantHubShopHref } from "@/lib/merchant-hubs/r
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
 import { partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
-const EXCLUDED_HUB_SLUGS = new Set(["whiskystack", "beer-me"]);
+const EXCLUDED_HUB_SLUGS = new Set(["beer-me"]);
 
 /** Kendte danske vinshops uden partnerskab (ingen udgående link). */
 const CURATED_OUTSIDERS: { slug: string; displayName: string }[] = [
