@@ -1,3 +1,9 @@
+import {
+  BLACK_FRIDAY_STORE_CATEGORIES,
+  blackFridayPartnerBlurb,
+  blackFridayStoreCategory,
+  type BlackFridayStoreCategoryId,
+} from "@/lib/black-friday/store-copy";
 import { getMerchantLogo, type MerchantLogo } from "@/lib/merchant-hubs/logos";
 import { MERCHANT_HUBS, resolveMerchantHubShopHref } from "@/lib/merchant-hubs/registry";
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
@@ -49,6 +55,9 @@ export type BlackFridayStore = {
   href: string | null;
   external: boolean;
   logo: MerchantLogo | null;
+  category: BlackFridayStoreCategoryId;
+  /** Kun betalende partnere. */
+  blurb?: string;
 };
 
 function isPartnerKind(kind: MerchantHubConfig["affiliate"]["kind"]): boolean {
@@ -82,6 +91,8 @@ export function listBlackFridayStores(): BlackFridayStore[] {
         href,
         external: Boolean(partner && href),
         logo: getMerchantLogo(hub.slug),
+        category: blackFridayStoreCategory(hub.slug),
+        blurb: partner ? blackFridayPartnerBlurb(hub.slug) : undefined,
       };
     },
   );
@@ -93,6 +104,7 @@ export function listBlackFridayStores(): BlackFridayStore[] {
     href: null,
     external: false,
     logo: getMerchantLogo(s.slug),
+    category: blackFridayStoreCategory(s.slug),
   }));
 
   return [...fromHubs, ...outsiders].sort((a, b) => {
@@ -103,4 +115,24 @@ export function listBlackFridayStores(): BlackFridayStore[] {
 
 export function listBlackFridayStoreTeaser(limit = 12): BlackFridayStore[] {
   return listBlackFridayStores().slice(0, limit);
+}
+
+export function groupBlackFridayStoresByCategory(stores: BlackFridayStore[]): {
+  id: BlackFridayStoreCategoryId;
+  heading: string;
+  partners: BlackFridayStore[];
+  others: BlackFridayStore[];
+}[] {
+  const byName = (a: BlackFridayStore, b: BlackFridayStore) =>
+    a.displayName.localeCompare(b.displayName, "da");
+
+  return BLACK_FRIDAY_STORE_CATEGORIES.map((cat) => {
+    const inCat = stores.filter((s) => s.category === cat.id);
+    return {
+      id: cat.id,
+      heading: cat.heading,
+      partners: inCat.filter((s) => s.partner).sort(byName),
+      others: inCat.filter((s) => !s.partner).sort(byName),
+    };
+  }).filter((g) => g.partners.length + g.others.length > 0);
 }

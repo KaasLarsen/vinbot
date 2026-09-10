@@ -75,8 +75,11 @@ export function NewsletterSignupForm({
         <p className="text-sm font-semibold text-stone-900">Tak — du er tilmeldt</p>
         <p className="mt-1 text-sm text-stone-600">
           Du får snart en velkomstmail. Se også{" "}
-          <Link href={source === "black-friday" ? "/black-friday" : "/tilbud"} className="font-medium text-rose-900 hover:underline">
-            {source === "black-friday" ? "Black Friday-hubben" : "aktuelle tilbud"}
+          <Link
+            href={source?.startsWith("black-friday") ? "/black-friday" : "/tilbud"}
+            className="font-medium text-rose-900 hover:underline"
+          >
+            {source?.startsWith("black-friday") ? "Black Friday-hubben" : "aktuelle tilbud"}
           </Link>
           .
         </p>
