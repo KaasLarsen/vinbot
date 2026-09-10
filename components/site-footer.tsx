@@ -134,10 +134,10 @@ export function SiteFooter() {
               </Link>
               <RetailerSignupCta />
             </nav>
+            <div className="mt-8">
+              <NewsletterSignupForm variant="footer" />
+            </div>
           </div>
-        </div>
-        <div className="mt-10 max-w-md border-t border-stone-300/80 pt-8">
-          <NewsletterSignupForm variant="footer" />
         </div>
         <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} rareWineHref={PARTNER_ADS_RAREWINE_MEMBERS} />
         <p className="mt-8 text-xs text-stone-500">© {new Date().getFullYear()} {siteName}</p>
