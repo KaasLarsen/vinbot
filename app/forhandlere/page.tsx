@@ -124,8 +124,8 @@ export default function ForhandlerePage() {
       <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-rose-900/90">Ansøg her</h2>
         <p className="mt-3 text-stone-700">
-          Udfyld formularen med butiksnavn, produktfeed-URL og e-mail. Angiv også, om I samarbejder via
-          affiliate — eller om I ønsker en CPC-aftale.
+          Udfyld formularen med butiksnavn og e-mail. Har I et produktfeed, kan I tilføje URL’en. Angiv
+          også, om I samarbejder via affiliate — eller om I ønsker en CPC-aftale.
         </p>
         <div className="mt-5">
           <RetailerSignupCta />

@@ -17,6 +17,7 @@ const inputClassName =
 export function RetailerSignupModal({ open, onClose }: Props) {
   const titleId = useId();
   const [storeName, setStoreName] = useState("");
+  const [hasProductFeed, setHasProductFeed] = useState<"yes" | "no" | "">("");
   const [feedUrl, setFeedUrl] = useState("");
   const [email, setEmail] = useState("");
   const [hasAffiliate, setHasAffiliate] = useState<"yes" | "no" | "">("");
@@ -45,6 +46,7 @@ export function RetailerSignupModal({ open, onClose }: Props) {
   useEffect(() => {
     if (!open) return;
     setStoreName("");
+    setHasProductFeed("");
     setFeedUrl("");
     setEmail("");
     setHasAffiliate("");
@@ -64,7 +66,11 @@ export function RetailerSignupModal({ open, onClose }: Props) {
       setErrorMessage("Butiksnavn er påkrævet.");
       return;
     }
-    if (!feedUrl.trim()) {
+    if (hasProductFeed === "") {
+      setErrorMessage("Vælg om I har et produktfeed.");
+      return;
+    }
+    if (hasProductFeed === "yes" && !feedUrl.trim()) {
       setErrorMessage("Produkt feed URL er påkrævet.");
       return;
     }
@@ -88,7 +94,8 @@ export function RetailerSignupModal({ open, onClose }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           storeName: storeName.trim(),
-          feedUrl: feedUrl.trim(),
+          hasProductFeed: hasProductFeed === "yes",
+          feedUrl: hasProductFeed === "yes" ? feedUrl.trim() : undefined,
           email: email.trim(),
           hasAffiliate: hasAffiliate === "yes",
           affiliateNetwork: hasAffiliate === "yes" ? affiliateNetwork.trim() : undefined,
@@ -125,7 +132,7 @@ export function RetailerSignupModal({ open, onClose }: Props) {
               Bliv forhandler på Vinbot
             </h2>
             <p className="mt-1 text-sm text-stone-600">
-              Fortæl os om jeres butik og produktfeed — vi vender tilbage.{" "}
+              Fortæl os om jeres butik — vi vender tilbage.{" "}
               <Link
                 href="/forhandlere"
                 onClick={onClose}
@@ -173,18 +180,56 @@ export function RetailerSignupModal({ open, onClose }: Props) {
               />
             </label>
 
-            <label className="block text-sm font-medium text-stone-800">
-              Produkt feed URL <span className="text-rose-800">*</span>
-              <input
-                type="url"
-                name="feedUrl"
-                value={feedUrl}
-                onChange={(e) => setFeedUrl(e.target.value)}
-                className={inputClassName}
-                placeholder="https://…"
-                required
-              />
-            </label>
+            <fieldset>
+              <legend className="text-sm font-medium text-stone-800">
+                Har I et produktfeed? <span className="text-rose-800">*</span>
+              </legend>
+              <p className="mt-1 text-xs text-stone-500">
+                Et XML/CSV-feed med jeres sortiment, så vi kan vise jeres flasker
+              </p>
+              <div className="mt-2 flex gap-4">
+                <label className="inline-flex items-center gap-2 text-sm text-stone-700">
+                  <input
+                    type="radio"
+                    name="hasProductFeed"
+                    value="yes"
+                    checked={hasProductFeed === "yes"}
+                    onChange={() => setHasProductFeed("yes")}
+                    className="accent-rose-900"
+                  />
+                  Ja
+                </label>
+                <label className="inline-flex items-center gap-2 text-sm text-stone-700">
+                  <input
+                    type="radio"
+                    name="hasProductFeed"
+                    value="no"
+                    checked={hasProductFeed === "no"}
+                    onChange={() => {
+                      setHasProductFeed("no");
+                      setFeedUrl("");
+                    }}
+                    className="accent-rose-900"
+                  />
+                  Nej
+                </label>
+              </div>
+            </fieldset>
+
+            {hasProductFeed === "yes" ? (
+              <label className="block text-sm font-medium text-stone-800">
+                Produkt feed URL <span className="text-rose-800">*</span>
+                <input
+                  type="url"
+                  name="feedUrl"
+                  value={feedUrl}
+                  onChange={(e) => setFeedUrl(e.target.value)}
+                  className={inputClassName}
+                  placeholder="https://…"
+                  required
+                />
+              </label>
+            ) : null}
 
             <label className="block text-sm font-medium text-stone-800">
               E-mail <span className="text-rose-800">*</span>

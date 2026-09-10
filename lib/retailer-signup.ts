@@ -1,6 +1,7 @@
 export type RetailerSignupPayload = {
   storeName: string;
-  feedUrl: string;
+  hasProductFeed: boolean;
+  feedUrl?: string;
   email: string;
   hasAffiliate: boolean;
   affiliateNetwork?: string;
@@ -36,6 +37,7 @@ export function parseRetailerSignupBody(raw: unknown): {
 
   const body = raw as Record<string, unknown>;
   const storeName = typeof body.storeName === "string" ? body.storeName.trim() : "";
+  const hasProductFeed = body.hasProductFeed === true;
   const feedUrl = typeof body.feedUrl === "string" ? body.feedUrl.trim() : "";
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const hasAffiliate = body.hasAffiliate === true;
@@ -46,13 +48,15 @@ export function parseRetailerSignupBody(raw: unknown): {
   if (!storeName) {
     return { error: { field: "storeName", message: "Butiksnavn er påkrævet." } };
   }
-  if (!feedUrl) {
-    return { error: { field: "feedUrl", message: "Produkt feed URL er påkrævet." } };
-  }
-  if (!isHttpUrl(feedUrl)) {
-    return {
-      error: { field: "feedUrl", message: "Angiv en gyldig URL (http eller https)." },
-    };
+  if (hasProductFeed) {
+    if (!feedUrl) {
+      return { error: { field: "feedUrl", message: "Produkt feed URL er påkrævet." } };
+    }
+    if (!isHttpUrl(feedUrl)) {
+      return {
+        error: { field: "feedUrl", message: "Angiv en gyldig URL (http eller https)." },
+      };
+    }
   }
   if (!email) {
     return { error: { field: "email", message: "E-mail er påkrævet." } };
@@ -72,10 +76,11 @@ export function parseRetailerSignupBody(raw: unknown): {
   return {
     data: {
       storeName,
-      feedUrl,
+      hasProductFeed,
       email,
       hasAffiliate,
       wantsCpc: hasAffiliate ? false : wantsCpc,
+      ...(hasProductFeed ? { feedUrl } : {}),
       ...(hasAffiliate ? { affiliateNetwork } : {}),
     },
   };

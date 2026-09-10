@@ -29,7 +29,8 @@ export async function POST(req: Request) {
     );
   }
 
-  const { storeName, feedUrl, email, hasAffiliate, affiliateNetwork, wantsCpc } = parsed.data;
+  const { storeName, hasProductFeed, feedUrl, email, hasAffiliate, affiliateNetwork, wantsCpc } =
+    parsed.data;
   const from =
     process.env.RESEND_FROM?.trim() || `${siteName} <onboarding@resend.dev>`;
 
@@ -43,7 +44,9 @@ export async function POST(req: Request) {
     "",
     `Butiksnavn: ${storeName}`,
     `E-mail: ${email}`,
-    `Produkt feed URL: ${feedUrl}`,
+    hasProductFeed
+      ? `Produkt feed URL: ${feedUrl}`
+      : "Produktfeed: Nej",
     affiliateLine,
     cpcLine,
   ].join("\n");
