@@ -41,7 +41,6 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "DH Wines": ["dh wines", "dhwines", "dh"],
   "D’Wine": ["dwine", "d wine", "dwines"],
   "Lauridsen Vine": ["lauridsen"],
-  "Mere om Vin": ["mereomvin", "mere om vin"],
   "SPS Wine": ["sps", "sps wine"],
   "Westjysk Smag": ["westjysk"],
   "Bottles With History": ["bottles with history", "bwh"],
@@ -60,7 +59,6 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   Whiskystack: ["whisky stack"],
   "Beer Me": ["beerme", "beer me"],
   Barlife: ["bar life"],
-  Vinea: ["vinea"],
 };
 
 function levenshtein(a: string, b: string): number {

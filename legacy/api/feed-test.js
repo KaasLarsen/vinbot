@@ -1,14 +1,12 @@
 export const config = { runtime: "nodejs" };
 
 const FEEDS = {
-  mere:   { name: "Mere om Vin",  url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=87611&feedid=2182" },
   winther:{ name: "Winther Vin",  url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
-  vinea:  { name: "Vinea",        url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=111911&feedid=3767" },
 };
 
 export default async function handler(req,res){
-  const key = (req.query.feed||"mere").toString().toLowerCase();
-  const feed = FEEDS[key] || FEEDS.mere;
+  const key = (req.query.feed||"winther").toString().toLowerCase();
+  const feed = FEEDS[key] || FEEDS.winther;
 
   const useProxy = String(req.query.proxy||"") === "1";
   const forceRaw = String(req.query.raw||"") === "1";

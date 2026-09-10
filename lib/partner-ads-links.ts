@@ -46,8 +46,6 @@ export function partnerAdsKlikUrl(
 export const PARTNER_ADS_KLIK_BANNERS = {
   /** Den Sidste Flaske — kuraterede enkeltvin-sider og hub */
   denSidsteFlaske: "68720",
-  /** Mere om Vin — samme banner som produktfeed */
-  mereOmVin: "87611",
   /** Johnsen Wine (“Johnsen Vine” i feed) */
   johnsenWine: "114732",
   /**
@@ -68,8 +66,6 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */
   spsWine: "112662",
-  /** Vinea — samme banner som produktfeed */
-  vinea: "111911",
   /** Barlife — samme banner som produktfeed */
   barlife: "46609",
   /** D’Wine — samme banner som produktfeed */
@@ -84,13 +80,4 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   lforLiving: "47209",
   /** Likehome.dk — vinreoler, bar m.m.; stort blandfeed filtreres til vin/vintilbehør (ikke øvrigt boligmøbler). */
   likeHome: "64634",
-  /**
-   * RareWine Members Club — kun klikbanner (intet produktfeed / intet visbanner i programmet).
-   * Brug altid `htmlurl`: Partner-Ads’ standard-redirect rammer `/da/members-club/`, som pt. giver 404;
-   * `https://www.rarewine.com/members-club/` returnerer 200 og tilføjer paid/utm ved klik.
-   */
-  rareWineMembersClub: "114954",
 } as const;
-
-/** Landingsside RareWine Members Club (engelsk sti — dansk `/da/…` er 404 pr. apr. 2026). */
-export const RAREWINE_MEMBERS_CLUB_LANDING = "https://www.rarewine.com/members-club/";

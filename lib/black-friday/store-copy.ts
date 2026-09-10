@@ -59,9 +59,7 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   "johnsen-wine": "importers",
   "havnens-vin": "importers",
   "sps-wine": "importers",
-  "mere-om-vin": "importers",
   winefriends: "importers",
-  vinea: "importers",
   "d-wine": "importers",
   winesommelier: "importers",
   "vin-og-vin": "importers",
@@ -87,12 +85,8 @@ const PARTNER_BLURBS: Record<string, string> = {
     "Havnens Vin er en dansk shop med både vin og et mere afslappet udvalg til hverdagen. Black Friday er et godt tidspunkt at tjekke, om deres kampagnepriser slår de større kæder på de flasker, du alligevel ville købe.",
   "sps-wine":
     "SPS Wine er en online vinbutik med bredt sortiment i Vinbots feed. Hold øje med Black Friday, hvis du vil stable kasser til jul og samtidig se, om prisen faktisk er lavere end hos de andre forhandlere.",
-  "mere-om-vin":
-    "Mere om Vin blander vin med tilbehør og inspiration. På Black Friday er de interessante, hvis du både skal bruge flasker og noget til køkkenet — men tjek stadig, at rabatprocenten ikke kun sidder på tilbehøret.",
   winefriends:
     "Winefriends er en dansk vinwebshop med et blandet sortiment til både hverdag og selskab. Hold øje med deres Black Friday, hvis du vil finde flasker, der matcher julemaden, uden at gå på kompromis med prisen.",
-  vinea:
-    "Vinea er en dansk vinshop i feedet med et praktisk, købeklart udvalg. Black Friday er et godt tidspunkt at se, om de matcher de store kæder på de vine, du allerede har i kurven andre steder.",
   barlife:
     "Barlife blander vin og spiritus til hjemmebaren. Hold øje med Black Friday, hvis du skal bruge både rødvin til and og noget at blande drinks af til nytår — og sammenlign flaskeprisen, ikke kun kampagneprocenten.",
   "d-wine":

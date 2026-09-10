@@ -822,7 +822,7 @@
 
     function pickTop3(items, terms){
       const W = { rel:5, img:2, pricedist:2, comm:1, norm:1, diversity:2 };
-      const COMM = { "Mere om Vin": 0.10, "Winther Vin": 0.10, "Vinea": 0.10, "SPS Wine": 0.15 };
+      const COMM = { "Winther Vin": 0.10, "SPS Wine": 0.15 };
       const budget = state.filters.pris ?? null;
 
       function relScore(p){

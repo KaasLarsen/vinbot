@@ -464,63 +464,6 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.spsWine, "https://www.spswine.dk/"),
   },
   {
-    slug: "mere-om-vin",
-    displayName: "Mere om Vin",
-    feedMerchant: "Mere om Vin",
-    blurb: "Stor dansk vinwebshop med bredt sortiment til hverdag og fest.",
-    title: "Mere om Vin — shop og inspiration | Vinbot",
-    description:
-      "Mere om Vin er en dansk vinforhandler i Vinbots søgning. Inspiration, flasker med pris og direkte link til shoppen via Partner-Ads.",
-    introParagraphs: [
-      "Mere om Vin er en etableret dansk vinwebshop med et bredt sortiment — fra hverdagsvine til flasker til weekend, gave og fest. Deres produkter indgår i Vinbots Partner-Ads-feed.",
-      "På denne side finder du kontekst om forhandleren, FAQ og flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du køber og betaler altid hos Mere om Vin.",
-      "Mange læsere lander her efter en søgning på forsiden, eller når de vil tjekke rabatkoder og nyhedsbrev hos netop denne shop.",
-    ],
-    matchHeading: "Hvornår er Mere om Vin et godt match?",
-    matchBullets: [
-      "Du vil browse et stort, dansk online-sortiment.",
-      "Du har fundet Mere om Vin i søgeresultaterne og vil se flere flasker.",
-      "Du vil kombinere Vinbot-guider med én konkret webshop.",
-    ],
-    guideLinks: [
-      { href: "/rabatkoder", label: "Rabatkoder" },
-      { href: "/guides", label: "Guider" },
-      { href: "/mad-og-vin", label: "Mad og vin" },
-    ],
-    shopCtaLabel: "Besøg Mere om Vin",
-    shopIntro: "Åbner Mere om Vin i et nyt vindue — du handler og betaler altid hos dem.",
-    showRabatkoderLink: true,
-    productIntro: "Flasker fra Mere om Vin i vores feed — udvalget skifter.",
-    productSections: [
-      {
-        title: "Klassikere hos Mere om Vin",
-        queries: ["bourgogne pinot noir", "rioja tempranillo", "chardonnay sauvignon"],
-        placement: "mere-om-vin-page-table",
-      },
-      {
-        title: "Bobler",
-        queries: ["champagne prosecco cava brut"],
-        placement: "mere-om-vin-page-bubbles",
-      },
-    ],
-    faq: [
-      {
-        question: "Hvorfor linker Vinbot til Mere om Vin?",
-        answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Mere om Vin er en af vores Partner-Ads-partnere med aktivt produktfeed.",
-      },
-      {
-        question: "Kan jeg få rabat?",
-        answer: "Se rabatkoder — Mere om Vin optræder ofte med nyhedsbrev eller kampagner. Tjek aktuelle vilkår på mereomvin.dk.",
-      },
-      {
-        question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Brug altid mereomvin.dk som autoritativ kilde til pris, lager og levering.",
-      },
-    ],
-    affiliate: pa(B.mereOmVin, "https://mereomvin.dk/"),
-  },
-  {
     slug: "winefriends",
     displayName: "Winefriends",
     feedMerchant: "Winefriends",
@@ -571,53 +514,6 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     affiliate: pa(B.winefriends, "https://winefriends.dk/"),
-  },
-  {
-    slug: "vinea",
-    displayName: "Vinea",
-    feedMerchant: "Vinea",
-    blurb: "Dansk vinshop med sortiment til både hverdag og særlige anledninger.",
-    title: "Vinea — shop og inspiration | Vinbot",
-    description:
-      "Vinea er en dansk vinforhandler i Vinbots Partner-Ads-feed. Inspiration, flasker med pris og link til shoppen.",
-    introParagraphs: [
-      "Vinea er en dansk vinwebshop, der indgår i Vinbots produktfeed. På denne hub får du baggrund, FAQ og flaske-CTA’er, så du nemt kan gå videre til køb.",
-      "Vinbot sælger ikke vin. Sammenlign gerne på forsiden; her er fokus kun på Vinea.",
-      "Brug siden, når du vil orientere dig om forhandleren og se aktuelle flasker fra deres feed hos os.",
-    ],
-    matchHeading: "Hvornår er Vinea et godt match?",
-    matchBullets: [
-      "Du har fundet Vinea i Vinbots søgning og vil se flere flasker.",
-      "Du vil have et klart næste skridt: klik på flaske → shop.",
-      "Du læser guider på Vinbot og vil handle hos én dansk webshop.",
-    ],
-    guideLinks: [
-      { href: "/regioner", label: "Regioner" },
-      { href: "/druesorter", label: "Druesorter" },
-      { href: "/vine", label: "Vin-katalog" },
-    ],
-    shopCtaLabel: "Besøg Vinea",
-    shopIntro: "Åbner Vinea i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Flasker fra Vinea i vores feed — udvalget kan skifte.",
-    productSections: [
-      {
-        title: "Udvalgte vine hos Vinea",
-        queries: ["pinot noir bourgogne", "riesling alsace", "champagne brut"],
-        placement: "vinea-page-table",
-      },
-    ],
-    faq: [
-      {
-        question: "Hvorfor linker Vinbot til Vinea?",
-        answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Vinea har aktivt Partner-Ads-produktfeed.",
-      },
-      {
-        question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Brug altid vinea.dk som kilde til endelig pris, lager og levering.",
-      },
-    ],
-    affiliate: pa(B.vinea, "https://vinea.dk/"),
   },
   {
     slug: "barlife",

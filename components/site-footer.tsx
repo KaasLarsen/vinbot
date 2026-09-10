@@ -3,16 +3,11 @@ import { FooterAffiliatePromos } from "@/components/footer-affiliate-promos";
 import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { PageShell } from "@/components/page-shell";
 import { RetailerSignupCta } from "@/components/retailer-signup-cta";
-import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl, RAREWINE_MEMBERS_CLUB_LANDING } from "@/lib/partner-ads-links";
+import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { facebookOlVinUrl, siteName } from "@/lib/site";
 
 /** Partner-Ads tekstlink — Beer Me ølabonnement (intet visbanner i programmet). */
 const PARTNER_ADS_BEER_ME_SUBSCRIPTION = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.beerMe);
-
-const PARTNER_ADS_RAREWINE_MEMBERS = partnerAdsKlikUrl(
-  PARTNER_ADS_KLIK_BANNERS.rareWineMembersClub,
-  RAREWINE_MEMBERS_CLUB_LANDING,
-);
 
 export function SiteFooter() {
   return (
@@ -139,7 +134,7 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-        <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} rareWineHref={PARTNER_ADS_RAREWINE_MEMBERS} />
+        <FooterAffiliatePromos beerMeHref={PARTNER_ADS_BEER_ME_SUBSCRIPTION} />
         <p className="mt-8 text-xs text-stone-500">© {new Date().getFullYear()} {siteName}</p>
       </PageShell>
     </footer>

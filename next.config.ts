@@ -444,6 +444,10 @@ const rootLegacyHubRedirects: { source: string; destination: string }[] = [
   { source: "/anbefalinger", destination: "/den-sidste-flaske" },
   { source: "/anbefalinger/", destination: "/den-sidste-flaske" },
   { source: "/pages/index.html", destination: "/" },
+  { source: "/mere-om-vin", destination: "/vinforhandlere" },
+  { source: "/mere-om-vin/", destination: "/vinforhandlere" },
+  { source: "/vinea", destination: "/vinforhandlere" },
+  { source: "/vinea/", destination: "/vinforhandlere" },
 ];
 
 const nextConfig: NextConfig = {

@@ -10,7 +10,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Rabatkoder til vin — partnertilbud";
 const PAGE_DESCRIPTION =
-  "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Mere om Vin, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.";
+  "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.";
 const PAGE_URL = `${siteUrl}/rabatkoder`;
 
 export const metadata: Metadata = {
@@ -72,18 +72,6 @@ const PARTNERE: RabatPartner[] = [
       {
         title: "Nyhedsbrev",
         body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Johnsen Wine. Tilmelding og vilkår på johnsenwine.dk.",
-      },
-    ],
-  },
-  {
-    name: "Mere om Vin",
-    shopUrl: "https://mereomvin.dk/",
-    affiliateVia: "partner-ads",
-    affiliateHref: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.mereOmVin, "https://mereomvin.dk/"),
-    entries: [
-      {
-        title: "Nyhedsbrev",
-        body: "**10% rabat** når du tilmelder dig **nyhedsbrevet** hos Mere om Vin. Tilmelding og vilkår på mereomvin.dk.",
       },
     ],
   },
