@@ -123,6 +123,9 @@ export function expandWineCoolerQuery(qRaw: string): string[] {
     flasker: ["flasker", "flaske"],
     kompakt: ["15 flasker", "18 flasker", "24 flasker"],
     stor: ["vinlagring", "150 flasker", "180 flasker"],
+    vinlagring: ["vinlagringsskab", "ageing"],
+    temperaturzoner: ["temperaturzone", "to zoner", "2 zoner"],
+    indbygning: ["integrerbar", "built-in"],
   };
 
   for (const part of base.split(/\s+/)) {

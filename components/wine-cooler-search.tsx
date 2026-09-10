@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ProductHit, SearchMeta } from "@/lib/search/types";
 import { ProductCard } from "@/components/product-card";
+import { WineCoolerFinder } from "@/components/wine-cooler-finder";
+import type { CoolerFinderSearch } from "@/lib/search/wine-cooler-finder";
 
 export type WineCoolerSearchChip = { label: string; q: string; max?: number };
 
@@ -62,6 +64,8 @@ export function WineCoolerSearch({
   const [error, setError] = useState<string | null>(null);
   const [moreSteps, setMoreSteps] = useState(0);
   const [lastQuery, setLastQuery] = useState("");
+  const [finderOpen, setFinderOpen] = useState(false);
+  const [finderSummary, setFinderSummary] = useState<string | null>(null);
 
   const maxNum = useMemo(() => {
     const n = parseInt(max, 10);
@@ -89,10 +93,23 @@ export function WineCoolerSearch({
 
   const runChipSearch = useCallback(
     (chip: WineCoolerSearchChip) => {
+      setFinderSummary(null);
+      setFinderOpen(false);
       setQ(chip.q);
       if (chip.max != null) setMax(String(chip.max));
       else setMax("");
       void search(chip.q, chip.max ?? null);
+    },
+    [search],
+  );
+
+  const runFinderSearch = useCallback(
+    (result: CoolerFinderSearch) => {
+      setFinderOpen(false);
+      setFinderSummary(result.summary);
+      setQ(result.q);
+      setMax(result.max != null ? String(result.max) : "");
+      void search(result.q, result.max);
     },
     [search],
   );
@@ -114,6 +131,7 @@ export function WineCoolerSearch({
         className="flex flex-col gap-3 sm:flex-row sm:items-end"
         onSubmit={(e) => {
           e.preventDefault();
+          setFinderSummary(null);
           void search(q, maxNum);
         }}
       >
@@ -151,6 +169,39 @@ export function WineCoolerSearch({
           {loading ? "Søger…" : "Søg"}
         </button>
       </form>
+
+      {finderOpen ? (
+        <WineCoolerFinder onComplete={runFinderSearch} onCancel={() => setFinderOpen(false)} />
+      ) : (
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button
+            type="button"
+            onClick={() => setFinderOpen(true)}
+            className="rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-950"
+          >
+            Hjælp mig med at vælge
+          </button>
+          <p className="text-sm text-stone-600">Svar på 4 korte spørgsmål — så finder vi modeller der matcher.</p>
+        </div>
+      )}
+
+      {finderSummary && !finderOpen ? (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-rose-200 bg-rose-50/70 px-3 py-2 text-sm text-stone-800">
+          <span>
+            Dit valg: <strong className="font-semibold">{finderSummary}</strong>
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              setFinderSummary(null);
+              setFinderOpen(true);
+            }}
+            className="font-medium text-rose-900 hover:underline"
+          >
+            Start forfra
+          </button>
+        </div>
+      ) : null}
 
       <div className="rounded-xl border border-stone-200/80 bg-stone-50/60 px-3 py-3 sm:px-4">
         <p className="text-sm text-stone-600">
