@@ -147,16 +147,6 @@ function StoreCell({
     );
   }
 
-  if (store.partner && store.href) {
-    return (
-      <li className="min-w-0">
-        <Link href={store.href} className={className} aria-label={label}>
-          {body}
-        </Link>
-      </li>
-    );
-  }
-
   return (
     <li className="min-w-0">
       <button type="button" className={`${className} w-full`} aria-label={label} onClick={() => onInactive(store)}>

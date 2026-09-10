@@ -1,5 +1,7 @@
 import { getMerchantLogo, type MerchantLogo } from "@/lib/merchant-hubs/logos";
 import { MERCHANT_HUBS, resolveMerchantHubShopHref } from "@/lib/merchant-hubs/registry";
+import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
+import { partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
 const EXCLUDED_HUB_SLUGS = new Set(["whiskystack", "beer-me"]);
 
@@ -26,33 +28,59 @@ const CURATED_OUTSIDERS: { slug: string; displayName: string }[] = [
   { slug: "vin-og-vin", displayName: "Vin & Vin" },
 ];
 
+/** Hjemmeside når hubben er feed-only (ingen shop-klikbanner). */
+const FEED_ONLY_HOMEPAGES: Record<string, string> = {
+  "bottles-with-history": "https://bottleswithhistory.dk/",
+  "8wines": "https://8wines.com/",
+  "wine-store": "https://www.wine-store.dk/",
+};
+
+/**
+ * Valgfri Black Friday-kampagneside pr. slug.
+ * Tom indtil butikkerne har en BF-landing — wraps i Partner-Ads når hubben har banner-id.
+ */
+const BLACK_FRIDAY_LANDING_URLS: Record<string, string> = {};
+
 export type BlackFridayStore = {
   slug: string;
   displayName: string;
   partner: boolean;
-  /** Tracked shop URL eller intern hub-sti. Null = inaktiv (pop-up). */
+  /** Tracked eller direkte shop-URL. Null = inaktiv (pop-up). */
   href: string | null;
   external: boolean;
   logo: MerchantLogo | null;
 };
 
-function isPartnerKind(kind: (typeof MERCHANT_HUBS)[number]["affiliate"]["kind"]): boolean {
+function isPartnerKind(kind: MerchantHubConfig["affiliate"]["kind"]): boolean {
   return kind === "partner-ads" || kind === "daisycon" || kind === "feed-only";
+}
+
+function resolveBlackFridayStoreHref(hub: MerchantHubConfig): string | null {
+  const landing = BLACK_FRIDAY_LANDING_URLS[hub.slug]?.trim();
+  const a = hub.affiliate;
+
+  if (landing) {
+    if (a.kind === "partner-ads") return partnerAdsKlikUrl(a.bannerId, landing);
+    return landing;
+  }
+
+  const shopHref = resolveMerchantHubShopHref(hub);
+  if (shopHref) return shopHref;
+  if (a.kind === "feed-only") return FEED_ONLY_HOMEPAGES[hub.slug] ?? null;
+  return null;
 }
 
 export function listBlackFridayStores(): BlackFridayStore[] {
   const fromHubs: BlackFridayStore[] = MERCHANT_HUBS.filter((h) => !EXCLUDED_HUB_SLUGS.has(h.slug)).map(
     (hub) => {
       const partner = isPartnerKind(hub.affiliate.kind);
-      const shopHref = resolveMerchantHubShopHref(hub);
-      const href = partner ? (shopHref ?? `/${hub.slug}`) : null;
-      const external = Boolean(partner && shopHref);
+      const href = partner ? resolveBlackFridayStoreHref(hub) : null;
       return {
         slug: hub.slug,
         displayName: hub.displayName,
         partner,
         href,
-        external,
+        external: Boolean(partner && href),
         logo: getMerchantLogo(hub.slug),
       };
     },

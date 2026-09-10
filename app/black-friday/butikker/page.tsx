@@ -42,7 +42,7 @@ export default function BlackFridayStoresPage() {
         url={PAGE_URL}
         items={stores
           .filter((s) => s.partner)
-          .map((s) => ({ name: s.displayName, url: `${siteUrl}/${s.slug}` }))}
+          .map((s) => ({ name: s.displayName, url: s.href ?? PAGE_URL }))}
       />
 
       <Breadcrumbs
