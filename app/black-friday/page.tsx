@@ -138,8 +138,7 @@ export default async function BlackFridayHubPage() {
           Vinbutikker
         </h2>
         <p className="mt-2 max-w-3xl text-sm text-stone-600">
-          Alle de butikker, vi kender på det danske vinmarked. Live-link kun hos partnere — resten åbner en kort
-          forklaring.
+          Et samlet overblik over danske vinbutikker — så du hurtigt kan finde rundt, når Black Friday nærmer sig.
         </p>
         <div className="mt-8">
           <BlackFridayStoreGrid stores={listBlackFridayStoreTeaser(12)} teaserHref="/black-friday/butikker" />
