@@ -124,6 +124,7 @@ export const FEEDS: FeedConfig[] = [
     vinAdjacentExcludeAny: [...VIN_ADJ_EXCLUDE_NON_WINE_GLASS, "vinny"],
   },
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
+  { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
   { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
   {

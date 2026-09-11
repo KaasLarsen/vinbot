@@ -516,6 +516,63 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.winefriends, "https://winefriends.dk/"),
   },
   {
+    slug: "buus-vine",
+    displayName: "Buus Vine",
+    feedMerchant: "Buus Vine",
+    blurb: "Dansk vinwebshop med fokus på italienske klassikere, smagekasser og gode hverdagsvine.",
+    title: "Buus Vine — shop og inspiration | Vinbot",
+    description:
+      "Buus Vine er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre via Partner-Ads-link.",
+    introParagraphs: [
+      "Buus Vine er en dansk vinwebshop, hvis sortiment indgår i Vinbots Partner-Ads-feed — så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
+      "Her på siden får du en kort introduktion til forhandleren, FAQ om affiliate, og konkrete flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du handler altid hos Buus Vine.",
+      "Shoppen passer godt, når du jagter italienske klassikere som Barolo og Amarone, smagekasser eller vine til hverdag og selskab.",
+    ],
+    matchHeading: "Hvornår er Buus Vine et godt match?",
+    matchBullets: [
+      "Du har set Buus Vine i Vinbots søgeresultater og vil dykke ned i deres udvalg.",
+      "Du vil have direkte flaske-links med billede og pris fra deres feed.",
+      "Du leder efter italienske vine, smagekasser eller kampagneflasker.",
+    ],
+    guideLinks: [
+      { href: "/rabatkoder", label: "Rabatkoder" },
+      { href: "/regioner", label: "Regioner" },
+      { href: "/vine", label: "Vin-katalog" },
+    ],
+    shopCtaLabel: "Besøg Buus Vine",
+    shopIntro: "Åbner Buus Vine i et nyt vindue — du handler og betaler altid hos dem.",
+    showRabatkoderLink: true,
+    productIntro: "Udvalgte flasker fra Buus Vine i vores feed — klik videre for at købe hos dem.",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Buus Vine",
+        queries: ["barolo amarone chianti", "rosso veneto", "chardonnay limoux"],
+        placement: "buus-vine-page-table",
+      },
+      {
+        title: "Smagekasser og pakker",
+        queries: ["smagekasse amarone", "vinmanden deluxe"],
+        placement: "buus-vine-page-boxes",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Buus Vine?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Buus Vine indgår i vores Partner-Ads-feed og sorterer godt ind i vores læseres søgninger.",
+      },
+      {
+        question: "Kan jeg få rabat?",
+        answer: "Se vores side med rabatkoder for aktuelle tilbud og vilkår hos Buus Vine og andre partnere.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid buusvine.dk som kilde til endelig pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.buusVine, "https://buusvine.dk/"),
+  },
+  {
     slug: "barlife",
     displayName: "Barlife",
     feedMerchant: "Barlife",

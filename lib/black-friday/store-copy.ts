@@ -60,6 +60,7 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   "havnens-vin": "importers",
   "sps-wine": "importers",
   winefriends: "importers",
+  "buus-vine": "importers",
   "d-wine": "importers",
   winesommelier: "importers",
   "vin-og-vin": "importers",
@@ -87,6 +88,8 @@ const PARTNER_BLURBS: Record<string, string> = {
     "SPS Wine er en online vinbutik med bredt sortiment i Vinbots feed. Hold øje med Black Friday, hvis du vil stable kasser til jul og samtidig se, om prisen faktisk er lavere end hos de andre forhandlere.",
   winefriends:
     "Winefriends er en dansk vinwebshop med et blandet sortiment til både hverdag og selskab. Hold øje med deres Black Friday, hvis du vil finde flasker, der matcher julemaden, uden at gå på kompromis med prisen.",
+  "buus-vine":
+    "Buus Vine er en dansk vinwebshop med fokus på italienske klassikere, smagekasser og hverdagsvine. Hold øje med Black Friday, hvis du vil stable Barolo, Amarone eller gavekasser til jul — og stadig sammenligne før-prisen.",
   barlife:
     "Barlife blander vin og spiritus til hjemmebaren. Hold øje med Black Friday, hvis du skal bruge både rødvin til and og noget at blande drinks af til nytår — og sammenlign flaskeprisen, ikke kun kampagneprocenten.",
   "d-wine":

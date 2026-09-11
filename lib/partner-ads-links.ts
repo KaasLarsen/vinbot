@@ -62,6 +62,10 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   lauridsenVine: "116085",
   /** Winefriends — samme banner som produktfeed */
   winefriends: "115348",
+  /**
+   * Buus Vine — shop/hub-klik (produktfeed bruger 118149).
+   */
+  buusVine: "118150",
   /** DH Wines — samme banner som produktfeed */
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */
