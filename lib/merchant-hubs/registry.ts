@@ -573,6 +573,63 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.buusVine, "https://buusvine.dk/"),
   },
   {
+    slug: "otto-suenson",
+    displayName: "Otto Suenson",
+    feedMerchant: "Otto Suenson",
+    blurb: "Klassisk dansk vinimportør med fokus på Champagne, Bourgogne og europæiske kvalitetsvine.",
+    title: "Otto Suenson — shop og inspiration | Vinbot",
+    description:
+      "Otto Suenson er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre via Partner-Ads-link.",
+    introParagraphs: [
+      "Otto Suenson er en dansk vinwebshop og importør, hvis sortiment indgår i Vinbots Partner-Ads-feed — så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
+      "Her på siden får du en kort introduktion til forhandleren, FAQ om affiliate, og konkrete flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du handler altid hos Otto Suenson.",
+      "Shoppen passer godt, når du jagter Champagne, Bourgogne, Riesling eller andre europæiske kvalitetsvine — inkl. magnum og mere eksklusive årgange.",
+    ],
+    matchHeading: "Hvornår er Otto Suenson et godt match?",
+    matchBullets: [
+      "Du har set Otto Suenson i Vinbots søgeresultater og vil dykke ned i deres udvalg.",
+      "Du vil have direkte flaske-links med billede og pris fra deres feed.",
+      "Du leder efter Champagne, Bourgogne eller klassiske europæiske vine.",
+    ],
+    guideLinks: [
+      { href: "/rabatkoder", label: "Rabatkoder" },
+      { href: "/regioner", label: "Regioner" },
+      { href: "/vine", label: "Vin-katalog" },
+    ],
+    shopCtaLabel: "Besøg Otto Suenson",
+    shopIntro: "Åbner Otto Suenson i et nyt vindue — du handler og betaler altid hos dem.",
+    showRabatkoderLink: true,
+    productIntro: "Udvalgte flasker fra Otto Suenson i vores feed — klik videre for at købe hos dem.",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Otto Suenson",
+        queries: ["champagne brut", "beaune bourgogne", "riesling mosel"],
+        placement: "otto-suenson-page-table",
+      },
+      {
+        title: "Champagne og magnum",
+        queries: ["champagne magnum", "brut 1 cru"],
+        placement: "otto-suenson-page-bubbles",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Otto Suenson?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Otto Suenson indgår i vores Partner-Ads-feed og sorterer godt ind i vores læseres søgninger.",
+      },
+      {
+        question: "Kan jeg få rabat?",
+        answer: "Se vores side med rabatkoder for aktuelle tilbud og vilkår hos Otto Suenson og andre partnere.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid ottosuenson.dk som kilde til endelig pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.ottoSuenson, "https://ottosuenson.dk/"),
+  },
+  {
     slug: "barlife",
     displayName: "Barlife",
     feedMerchant: "Barlife",

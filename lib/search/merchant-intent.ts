@@ -57,6 +57,7 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   Gourmetshoppen: ["gourmet shoppen"],
   Winefriends: ["wine friends"],
   "Buus Vine": ["buus", "buus vine"],
+  "Otto Suenson": ["otto", "otto suenson", "suenson"],
   Whiskystack: ["whisky stack"],
   "Beer Me": ["beerme", "beer me"],
   Barlife: ["bar life"],

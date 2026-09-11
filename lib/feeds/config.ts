@@ -125,6 +125,7 @@ export const FEEDS: FeedConfig[] = [
   },
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
   { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
+  { merchant: "Otto Suenson", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=117927&feedid=4434" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
   { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
   {
