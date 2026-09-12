@@ -13,13 +13,37 @@ import type { PlaCatalogItem, PlaMerchantId } from "./types";
 
 const SPS_FEED_MERCHANT = "SPS Wine";
 const SPS_HOST = "spswine.dk";
-const DH_FEED_MERCHANT = "DH Wines";
-const DH_HOST = "dhwines.dk";
-const DH_MIN_DISCOUNT_PERCENT = 30;
+const SALE_MIN_DISCOUNT_PERCENT = 30;
+
+type SalePlaSource = {
+  merchantId: Exclude<PlaMerchantId, "sps-wine">;
+  feedMerchant: string;
+  host: string;
+  prefix: string;
+  cacheKey: string;
+};
+
+const SALE_PLA_SOURCES: readonly SalePlaSource[] = [
+  {
+    merchantId: "dh-wines",
+    feedMerchant: "DH Wines",
+    host: "dhwines.dk",
+    prefix: "dh",
+    cacheKey: "vinbot-pla-dh-catalog-v1",
+  },
+  {
+    merchantId: "lauridsen-vine",
+    feedMerchant: "Lauridsen Vine",
+    host: "lauridsenvine.dk",
+    prefix: "lv",
+    cacheKey: "vinbot-pla-lv-catalog-v1",
+  },
+];
 
 const OFFER_ID_PREFIX: Record<PlaMerchantId, string> = {
   "sps-wine": "sps",
   "dh-wines": "dh",
+  "lauridsen-vine": "lv",
 };
 
 function httpsImage(url: string): string | null {
@@ -51,16 +75,18 @@ function shopUrlForMerchant(rawFeedUrl: string, merchantId: PlaMerchantId, host:
   }
 }
 
-export function spsFeedConfig() {
-  const feed = FEEDS.find((f) => f.merchant === SPS_FEED_MERCHANT);
-  if (!feed) throw new Error("SPS Wine mangler i FEEDS");
+function feedConfigByMerchant(feedMerchant: string) {
+  const feed = FEEDS.find((f) => f.merchant === feedMerchant);
+  if (!feed) throw new Error(`${feedMerchant} mangler i FEEDS`);
   return feed;
 }
 
+export function spsFeedConfig() {
+  return feedConfigByMerchant(SPS_FEED_MERCHANT);
+}
+
 export function dhFeedConfig() {
-  const feed = FEEDS.find((f) => f.merchant === DH_FEED_MERCHANT);
-  if (!feed) throw new Error("DH Wines mangler i FEEDS");
-  return feed;
+  return feedConfigByMerchant("DH Wines");
 }
 
 function toCatalogItem(
@@ -73,7 +99,7 @@ function toCatalogItem(
   if (priceValue == null || !Number.isFinite(priceValue) || priceValue <= 0) return null;
 
   if (opts?.requireDiscount) {
-    if (p.discountPercent == null || p.discountPercent < DH_MIN_DISCOUNT_PERCENT) return null;
+    if (p.discountPercent == null || p.discountPercent < SALE_MIN_DISCOUNT_PERCENT) return null;
     if (p.salePrice == null || p.referencePrice == null) return null;
   }
 
@@ -132,9 +158,9 @@ async function buildSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
   return dedupeCatalog(products, "sps-wine", SPS_HOST);
 }
 
-async function buildDhPlaCatalog(): Promise<PlaCatalogItem[]> {
-  const products = await getCachedFeedProductsForPla(dhFeedConfig());
-  return dedupeCatalog(products, "dh-wines", DH_HOST, { requireDiscount: true });
+async function buildSalePlaCatalog(source: SalePlaSource): Promise<PlaCatalogItem[]> {
+  const products = await getCachedFeedProductsForPla(feedConfigByMerchant(source.feedMerchant));
+  return dedupeCatalog(products, source.merchantId, source.host, { requireDiscount: true });
 }
 
 export async function getSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
@@ -148,20 +174,37 @@ export async function getSpsPlaCatalog(): Promise<PlaCatalogItem[]> {
   }
 }
 
-export async function getDhPlaCatalog(): Promise<PlaCatalogItem[]> {
+async function getSalePlaCatalog(source: SalePlaSource): Promise<PlaCatalogItem[]> {
   try {
-    return await unstable_cache(buildDhPlaCatalog, ["vinbot-pla-dh-catalog-v1"], {
+    return await unstable_cache(() => buildSalePlaCatalog(source), [source.cacheKey], {
       revalidate: 21600,
       tags: ["vinbot-feeds"],
     })();
   } catch {
-    return buildDhPlaCatalog();
+    return buildSalePlaCatalog(source);
   }
 }
 
+function saleSource(merchantId: Exclude<PlaMerchantId, "sps-wine">): SalePlaSource {
+  const source = SALE_PLA_SOURCES.find((s) => s.merchantId === merchantId);
+  if (!source) throw new Error(`PLA sale-kilde mangler for ${merchantId}`);
+  return source;
+}
+
+export async function getDhPlaCatalog(): Promise<PlaCatalogItem[]> {
+  return getSalePlaCatalog(saleSource("dh-wines"));
+}
+
+export async function getLauridsenPlaCatalog(): Promise<PlaCatalogItem[]> {
+  return getSalePlaCatalog(saleSource("lauridsen-vine"));
+}
+
 export async function getPlaCatalog(): Promise<PlaCatalogItem[]> {
-  const [sps, dh] = await Promise.all([getSpsPlaCatalog(), getDhPlaCatalog()]);
-  return [...sps, ...dh];
+  const [sps, ...sale] = await Promise.all([
+    getSpsPlaCatalog(),
+    ...SALE_PLA_SOURCES.map((source) => getSalePlaCatalog(source)),
+  ]);
+  return [sps, ...sale].flat();
 }
 
 function findBySlug(catalog: PlaCatalogItem[], slug: string): PlaCatalogItem | undefined {
@@ -175,4 +218,16 @@ export async function getSpsPlaItemBySlug(slug: string): Promise<PlaCatalogItem 
 
 export async function getDhPlaItemBySlug(slug: string): Promise<PlaCatalogItem | undefined> {
   return findBySlug(await getDhPlaCatalog(), slug);
+}
+
+export async function getLauridsenPlaItemBySlug(slug: string): Promise<PlaCatalogItem | undefined> {
+  return findBySlug(await getLauridsenPlaCatalog(), slug);
+}
+
+export async function getSalePlaItemBySlug(
+  merchantId: Exclude<PlaMerchantId, "sps-wine">,
+  slug: string,
+): Promise<PlaCatalogItem | undefined> {
+  if (merchantId === "dh-wines") return getDhPlaItemBySlug(slug);
+  return getLauridsenPlaItemBySlug(slug);
 }

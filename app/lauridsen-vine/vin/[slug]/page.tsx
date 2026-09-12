@@ -1,8 +1,9 @@
-import { createWineDetailRoute } from "@/lib/wine-detail-pages/create-route";
+import { createPlaEditorialWineDetailRoute } from "@/lib/pla/create-editorial-pla-route";
 
-const route = createWineDetailRoute("lauridsen-vine");
+const route = createPlaEditorialWineDetailRoute("lauridsen-vine");
 
 export const revalidate = 21600;
+export const dynamicParams = true;
 export const generateStaticParams = route.generateStaticParams;
 export const generateMetadata = route.generateMetadata;
 export default route.default;

@@ -1,4 +1,4 @@
-export type PlaMerchantId = "sps-wine" | "dh-wines";
+export type PlaMerchantId = "sps-wine" | "dh-wines" | "lauridsen-vine";
 
 export type PlaCatalogItem = {
   offerId: string;

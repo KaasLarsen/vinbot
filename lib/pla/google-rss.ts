@@ -32,7 +32,7 @@ function itemXml(item: PlaCatalogItem, base: string): string {
   if (!gtin && !mpn) extra.push(`      <g:identifier_exists>no</g:identifier_exists>`);
 
   const onSale =
-    item.merchantId === "dh-wines" &&
+    item.merchantId !== "sps-wine" &&
     item.referencePrice != null &&
     Number.isFinite(item.referencePrice) &&
     item.referencePrice > item.price;
@@ -77,7 +77,7 @@ export function renderGooglePlaRss(items: PlaCatalogItem[]): string {
   <channel>
     <title>Vinbot PLA</title>
     <link>${xmlEscape(base)}</link>
-    <description>SPS Wine og DH Wines produktsider paa Vinbot med Gaa til butik.</description>
+    <description>SPS Wine, DH Wines og Lauridsen Vine produktsider paa Vinbot med Gaa til butik.</description>
     <language>da</language>
 ${body}
   </channel>
