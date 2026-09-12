@@ -1,3 +1,4 @@
+import { getMerchantWineConfig, wineDetailPagePath } from "@/lib/wine-detail-pages/merchants";
 import { siteUrl } from "@/lib/site";
 import type { PlaCatalogItem } from "./types";
 
@@ -17,10 +18,11 @@ function formatPrice(n: number, currency: string): string {
 }
 
 function itemXml(item: PlaCatalogItem, base: string): string {
-  const link = `${base}/sps-wine/vin/${item.slug}`;
+  const cfg = getMerchantWineConfig(item.merchantId);
+  const link = `${base}${wineDetailPagePath(item.merchantId, item.slug)}`;
   const desc =
     item.description.trim().slice(0, 5000) ||
-    `${item.title} hos SPS Wine. Gå til butikken fra Vinbots produktside.`;
+    `${item.title} hos ${cfg.displayName}. Gå til butikken fra Vinbots produktside.`;
   const gtin = item.gtin && /^\d{8,14}$/.test(item.gtin) ? item.gtin : null;
   const mpn = item.mpn?.trim() || null;
 
@@ -28,6 +30,16 @@ function itemXml(item: PlaCatalogItem, base: string): string {
   if (gtin) extra.push(`      <g:gtin>${xmlEscape(gtin)}</g:gtin>`);
   if (mpn) extra.push(`      <g:mpn>${xmlEscape(mpn.slice(0, 70))}</g:mpn>`);
   if (!gtin && !mpn) extra.push(`      <g:identifier_exists>no</g:identifier_exists>`);
+
+  const onSale =
+    item.merchantId === "dh-wines" &&
+    item.referencePrice != null &&
+    Number.isFinite(item.referencePrice) &&
+    item.referencePrice > item.price;
+  const listedPrice = onSale ? item.referencePrice! : item.price;
+  const salePriceXml = onSale
+    ? `\n      <g:sale_price>${xmlEscape(formatPrice(item.price, item.currency))}</g:sale_price>`
+    : "";
 
   const productType = "Vin";
 
@@ -43,11 +55,11 @@ function itemXml(item: PlaCatalogItem, base: string): string {
       <g:image_link>${xmlEscape(item.imageUrl)}</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
-      <g:price>${xmlEscape(formatPrice(item.price, item.currency))}</g:price>
+      <g:price>${xmlEscape(formatPrice(listedPrice, item.currency))}</g:price>${salePriceXml}
       <g:brand>${xmlEscape(item.brand)}</g:brand>
       <g:google_product_category>499676</g:google_product_category>
       <g:product_type>${xmlEscape(productType)}</g:product_type>
-      <g:custom_label_0>SPS Wine</g:custom_label_0>
+      <g:custom_label_0>${xmlEscape(cfg.displayName)}</g:custom_label_0>
       <g:shipping>
         <g:country>DK</g:country>
         <g:service>Standard</g:service>
@@ -63,9 +75,9 @@ export function renderGooglePlaRss(items: PlaCatalogItem[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="${G_NS}">
   <channel>
-    <title>Vinbot SPS Wine</title>
+    <title>Vinbot PLA</title>
     <link>${xmlEscape(base)}</link>
-    <description>SPS Wine produktsider paa Vinbot med Gaa til butik.</description>
+    <description>SPS Wine og DH Wines produktsider paa Vinbot med Gaa til butik.</description>
     <language>da</language>
 ${body}
   </channel>

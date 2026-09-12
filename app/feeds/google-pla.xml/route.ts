@@ -1,11 +1,11 @@
-import { getSpsPlaCatalog } from "@/lib/pla/catalog";
+import { getPlaCatalog } from "@/lib/pla/catalog";
 import { renderGooglePlaRss } from "@/lib/pla/google-rss";
 
 export const revalidate = 21600;
 export const maxDuration = 60;
 
 export async function GET(): Promise<Response> {
-  const items = await getSpsPlaCatalog();
+  const items = await getPlaCatalog();
   const xml = renderGooglePlaRss(items);
   return new Response(xml, {
     headers: {

@@ -12,8 +12,8 @@ export function plaProductSlug(shopUrl: string, title: string): string {
   return `${ascii || "vin"}-${shortHash(shopUrl, 8)}`;
 }
 
-export function plaOfferId(shopUrl: string): string {
-  return `sps-${shortHash(shopUrl, 16)}`;
+export function plaOfferId(shopUrl: string, prefix = "sps"): string {
+  return `${prefix}-${shortHash(shopUrl, 16)}`;
 }
 
 export function decodePlaSlugParam(raw: string): string {
