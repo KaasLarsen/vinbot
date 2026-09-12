@@ -14,6 +14,7 @@ import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores"
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
 import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
+import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
@@ -85,6 +86,8 @@ export default function HomePage() {
           <HomeDealsStrip />
         </div>
       </HomeFeedStripsGate>
+
+      <HomePriceRunnerStrip />
 
       <section className="mt-16" aria-labelledby="home-topics-heading">
         <div className="max-w-2xl">
