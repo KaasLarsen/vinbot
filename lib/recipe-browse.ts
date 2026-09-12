@@ -301,6 +301,7 @@ export const RECIPE_HUB_CLASSICS: { href: string; label: string }[] = [
   { href: "/opskrifter/roedkaal-med-rodvin", label: "Rødkål med rødvin" },
   { href: "/opskrifter/sauerbraten-med-rodvin", label: "Sauerbraten" },
   { href: "/opskrifter/chorizo-i-rodvin", label: "Chorizo i rødvin" },
+  { href: "/opskrifter/bagt-camembert-med-hvidvin", label: "Bagt camembert" },
   { href: "/opskrifter/frikadeller-i-hvidvinsauce", label: "Frikadeller i hvidvinsauce" },
 ];
 

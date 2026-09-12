@@ -13,6 +13,13 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "aioli-med-hvidvin", label: "Aioli med hvidvin" },
     { slug: "marinerede-oliven-med-hvidvin", label: "Marinerede oliven med hvidvin" },
     { slug: "kamskjell-med-hvidvin", label: "Kamskjell med hvidvin" },
+    { slug: "portvins-fignemarmelade-med-rosmarin", label: "Portvins-fignemarmelade" },
+    { slug: "rose-syltede-roedloeg-med-timian", label: "Rosé-syltede rødløg" },
+    { slug: "bagt-camembert-med-hvidvin", label: "Bagt camembert med hvidvin" },
+    { slug: "manchego-marineret-i-hvidvin", label: "Manchego marineret i hvidvin" },
+    { slug: "portvinsglaserede-dadler-med-bacon", label: "Portvinsglaserede dadler" },
+    { slug: "kaemperejer-dampet-i-hvidvin", label: "Dampede kæmperejer i hvidvin" },
+    { slug: "serrano-med-hvidvinsmarineret-melon", label: "Serrano med hvidvinsmelon" },
   ],
   "vin-til-gryderet": [
     { slug: "coq-au-vin", label: "Coq au vin" },
@@ -110,6 +117,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "krebsesuppe-med-hvidvin", label: "Krebsesuppe med hvidvin" },
     { slug: "kamskjell-med-hvidvin", label: "Kamskjell med hvidvin" },
     { slug: "oesters-gratineret-med-hvidvin", label: "Østers gratineret med hvidvin" },
+    { slug: "lakse-rilette-med-hvidvin", label: "Lakse-rilette med hvidvin" },
+    { slug: "blaeksprutteringe-i-hvidvin", label: "Blæksprutteringe i hvidvin" },
   ],
   "vin-til-boeff": [
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
@@ -255,6 +264,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "porchetta-med-hvidvin", label: "Porchetta med hvidvin" },
     { slug: "svinebryst-braiseret-i-rodvin", label: "Svinebryst braiseret i rødvin" },
     { slug: "morbradgryde-med-hvidvin", label: "Mørbradgryde med hvidvin" },
+    { slug: "svinekaeber-i-portvinsreduktion", label: "Svinekæber i portvinsreduktion" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -359,6 +369,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rejesalat-med-hvidvin", label: "Rejesalat med hvidvin" },
     { slug: "rejer-i-hvidvin", label: "Rejer i hvidvin" },
     { slug: "wok-rejer-hvidvin", label: "Wok-rejer med hvidvin" },
+    { slug: "kaemperejer-dampet-i-hvidvin", label: "Dampede kæmperejer i hvidvin" },
   ],
   "vin-til-koldskaal": [
     { slug: "koldskal-med-hvidvin", label: "Koldskål med hvidvin" },
@@ -458,6 +469,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-muslinger": [
     { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
+    { slug: "muslinger-i-hvidvin-og-safran", label: "Muslinger i hvidvin og safran" },
   ],
   "vin-til-blaeksprutte": [
     { slug: "blaeksprutte-i-rodvin", label: "Blæksprutte i rødvin" },
@@ -473,6 +485,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "andebaer-portvin-sauce", label: "Andebryst med portvinsauce" },
     { slug: "andeconfit-med-rodvin", label: "Andeconfit med rødvin" },
     { slug: "canard-a-l-orange-med-rodvin", label: "Canard à l'orange med rødvin" },
+    { slug: "rodvinsmarineret-andebryst", label: "Rødvinsmarineret andebryst" },
   ],
   "vin-til-gas": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -488,6 +501,10 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "creme-brulee-med-hvidvin", label: "Crème brûlée med hvidvin" },
     { slug: "panna-cotta-med-hvidvin", label: "Panna cotta med hvidvin" },
     { slug: "crepes-suzette-med-hvidvin", label: "Crêpes Suzette med hvidvin" },
+    { slug: "champagne-jordbaersorbet", label: "Champagne-jordbærsorbet" },
+    { slug: "chokolade-trofler-med-portvin", label: "Chokoladetrøfler med portvin" },
+    { slug: "hvidvinsbagede-fersken", label: "Hvidvinsbagede ferskner" },
+    { slug: "rose-granite-med-hindbaer", label: "Rosé-granité med hindbær" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -563,6 +580,30 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-grillet-gront": [
     { slug: "ratatouille-med-hvidvin", label: "Ratatouille med hvidvin" },
     { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
+  ],
+
+  "vin-til-ost-og-ostebord": [
+    { slug: "portvins-fignemarmelade-med-rosmarin", label: "Portvins-fignemarmelade" },
+    { slug: "gorgonzola-creme-med-portvin", label: "Gorgonzola-creme med portvin" },
+    { slug: "mini-hvidvinsfondue-tapas", label: "Mini-hvidvinsfondue" },
+    { slug: "klar-rodvinsgele-med-vanilje", label: "Klar rødvinsgelé" },
+  ],
+
+  "vin-til-gedeost": [
+    { slug: "rodvinsglaserede-figner-med-gedeost", label: "Rødvinsglaserede figner med gedeost" },
+    { slug: "gedeost-crostini-med-skalotteloeg", label: "Gedeost-crostini med skalotteløg" },
+  ],
+
+  "vin-til-brie-og-camembert": [
+    { slug: "bagt-camembert-med-hvidvin", label: "Bagt camembert med hvidvin" },
+  ],
+
+  "vin-til-foie-gras": [
+    { slug: "sauternes-gele-med-safran", label: "Sauternes-gelé med safran" },
+  ],
+
+  "champagne-til-mad": [
+    { slug: "champagne-jordbaersorbet", label: "Champagne-jordbærsorbet" },
   ],
 
 };
