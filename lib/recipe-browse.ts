@@ -188,4 +188,120 @@ export function wineBadgeLabel(wine: Exclude<RecipeWineFilter, "alle">): string 
   return map[wine];
 }
 
+export type RecipeHubFilterState = {
+  q: string;
+  role: RecipeRoleFilter;
+  wine: RecipeWineFilter;
+  cuisine: RecipeCuisineFilter;
+  time: RecipeTimeFilter;
+  tag: string | null;
+};
+
+export const EMPTY_RECIPE_HUB_FILTERS: RecipeHubFilterState = {
+  q: "",
+  role: "alle",
+  wine: "alle",
+  cuisine: "alle",
+  time: "alle",
+  tag: null,
+};
+
+const ROLE_VALUES = new Set<RecipeRoleFilter>(["alle", "cooking", "pairing"]);
+const WINE_VALUES = new Set<RecipeWineFilter>(["alle", "rod", "hvid", "port"]);
+const CUISINE_VALUES = new Set<RecipeCuisineFilter>([
+  "alle",
+  "dansk",
+  "fransk",
+  "italiensk",
+  "spansk",
+  "schweizisk",
+  "andet",
+]);
+const TIME_VALUES = new Set<RecipeTimeFilter>(["alle", "hurtig", "mellem", "lang"]);
+
+function pickFilter<T extends string>(raw: string | undefined | null, allowed: Set<T>, fallback: T): T {
+  const v = (raw ?? "").trim().toLowerCase();
+  return allowed.has(v as T) ? (v as T) : fallback;
+}
+
+export function parseRecipeHubSearchParams(params: {
+  q?: string;
+  role?: string;
+  wine?: string;
+  cuisine?: string;
+  time?: string;
+  tag?: string;
+}): RecipeHubFilterState {
+  const tag = (params.tag ?? "").trim().toLowerCase();
+  return {
+    q: (params.q ?? "").trim(),
+    role: pickFilter(params.role, ROLE_VALUES, "alle"),
+    wine: pickFilter(params.wine, WINE_VALUES, "alle"),
+    cuisine: pickFilter(params.cuisine, CUISINE_VALUES, "alle"),
+    time: pickFilter(params.time, TIME_VALUES, "alle"),
+    tag: tag || null,
+  };
+}
+
+export function buildRecipeHubHref(state: Partial<RecipeHubFilterState>, pathname = "/opskrifter"): string {
+  const params = new URLSearchParams();
+  const q = state.q?.trim() ?? "";
+  if (q) params.set("q", q);
+  if (state.role && state.role !== "alle") params.set("role", state.role);
+  if (state.wine && state.wine !== "alle") params.set("wine", state.wine);
+  if (state.cuisine && state.cuisine !== "alle") params.set("cuisine", state.cuisine);
+  if (state.time && state.time !== "alle") params.set("time", state.time);
+  if (state.tag) params.set("tag", state.tag);
+  const qs = params.toString();
+  return qs ? `${pathname}?${qs}` : pathname;
+}
+
+export type RecipeHubIntent = {
+  id: string;
+  label: string;
+  hint: string;
+  filters: Partial<RecipeHubFilterState>;
+};
+
+export const RECIPE_HUB_INTENTS: RecipeHubIntent[] = [
+  { id: "cooking", label: "Vin i gryden", hint: "Madlavning med vin", filters: { role: "cooking" } },
+  { id: "pairing", label: "Vin til glasset", hint: "Opskrift + parring", filters: { role: "pairing" } },
+  { id: "hurtig", label: "Hurtig hverdag", hint: "Under 1 time", filters: { time: "hurtig" } },
+  { id: "dansk", label: "Dansk", hint: "Klassikere hjemmefra", filters: { cuisine: "dansk" } },
+  { id: "fransk", label: "Fransk", hint: "Sauce og simreretter", filters: { cuisine: "fransk" } },
+  { id: "italiensk", label: "Italiensk", hint: "Pasta, risotto, pizza", filters: { cuisine: "italiensk" } },
+  { id: "fisk", label: "Fisk og skaldyr", hint: "Lettere retter", filters: { tag: "fisk" } },
+  { id: "gryde", label: "Kødgryde", hint: "Simremad med vin", filters: { tag: "gryderet" } },
+];
+
+export function recipeHubIntentHref(intent: RecipeHubIntent): string {
+  return buildRecipeHubHref(intent.filters);
+}
+
+export function recipeHubIntentIsActive(intent: RecipeHubIntent, state: RecipeHubFilterState): boolean {
+  const f = intent.filters;
+  if (f.role && f.role !== "alle" && state.role !== f.role) return false;
+  if (f.wine && f.wine !== "alle" && state.wine !== f.wine) return false;
+  if (f.cuisine && f.cuisine !== "alle" && state.cuisine !== f.cuisine) return false;
+  if (f.time && f.time !== "alle" && state.time !== f.time) return false;
+  if (f.tag && state.tag !== f.tag) return false;
+  if (f.q && state.q.trim().toLowerCase() !== f.q.trim().toLowerCase()) return false;
+  return Boolean(f.role || f.wine || f.cuisine || f.time || f.tag || f.q);
+}
+
+export const RECIPE_HUB_CLASSICS: { href: string; label: string }[] = [
+  { href: "/opskrifter/flaesketesteg-med-rodvin-i-brun-sovs", label: "Flæskesteg med rødvin" },
+  { href: "/opskrifter/juleand", label: "Juleand" },
+  { href: "/opskrifter/coq-au-vin", label: "Coq au vin" },
+  { href: "/opskrifter/boeuf-bourguignon", label: "Boeuf bourguignon" },
+  { href: "/opskrifter/pizza-margherita", label: "Pizza margherita" },
+  { href: "/opskrifter/klassisk-burger", label: "Klassisk burger" },
+  { href: "/opskrifter/risotto-med-hvidvin", label: "Risotto med hvidvin" },
+  { href: "/opskrifter/roedvinssauce-til-boef", label: "Rødvinssauce til bøf" },
+  { href: "/opskrifter/roedkaal-med-rodvin", label: "Rødkål med rødvin" },
+  { href: "/opskrifter/sauerbraten-med-rodvin", label: "Sauerbraten" },
+  { href: "/opskrifter/chorizo-i-rodvin", label: "Chorizo i rødvin" },
+  { href: "/opskrifter/frikadeller-i-hvidvinsauce", label: "Frikadeller i hvidvinsauce" },
+];
+
 export { recipeRoleLabel };

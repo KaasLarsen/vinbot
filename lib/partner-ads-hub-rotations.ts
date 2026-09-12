@@ -7,6 +7,7 @@ export type HubRotationMerchant = "winther" | "lauridsen" | "johnsen" | "dh" | "
 export const HUB_ROTATIONS: Record<string, HubRotationMerchant[]> = {
   "bedste-vine": ["winther", "lauridsen", "johnsen"],
   "mad-og-vin": ["dh", "lauridsen", "winther"],
+  opskrifter: ["dh", "winther", "lauridsen"],
   "vin-viden": ["johnsen", "lauridsen", "dh"],
   hedvin: ["lauridsen", "johnsen", "dh"],
   regioner: ["lauridsen", "dh", "johnsen"],

@@ -2,17 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { getRecipeImageAlt, getRecipeImagePath } from "@/lib/recipe-images";
 import type {
   RecipeCardData,
   RecipeCuisineFilter,
   RecipeDifficultyFilter,
+  RecipeHubFilterState,
   RecipeRoleFilter,
   RecipeTimeFilter,
   RecipeWineFilter,
 } from "@/lib/recipe-browse";
 import {
+  EMPTY_RECIPE_HUB_FILTERS,
+  RECIPE_HUB_INTENTS,
+  buildRecipeHubHref,
   classifyRecipeCuisine,
   classifyRecipeTime,
   classifyRecipeWine,
@@ -21,6 +25,8 @@ import {
   countRecipesByWine,
   cuisineFilterLabel,
   difficultyFilterLabel,
+  recipeHubIntentHref,
+  recipeHubIntentIsActive,
   recipeMatchesSearch,
   recipeRoleLabel,
   roleFilterLabel,
@@ -33,7 +39,8 @@ import { difficultyLabel, formatTotalTime } from "@/lib/recipe-format";
 
 type Props = {
   recipes: RecipeCardData[];
-  initialQuery?: string;
+  initialFilters?: RecipeHubFilterState;
+  children?: ReactNode;
 };
 
 const SELECT_CLASS =
@@ -41,6 +48,9 @@ const SELECT_CLASS =
 
 const ROLE_CHIP_CLASS =
   "rounded-xl border px-3.5 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200";
+
+const INTENT_CHIP_CLASS =
+  "rounded-2xl border px-3.5 py-2.5 text-left text-sm shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200";
 
 function FilterSelect<T extends string>({
   id,
@@ -84,18 +94,48 @@ function FilterSelect<T extends string>({
   );
 }
 
-export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
-  const [query, setQuery] = useState(initialQuery.trim());
-  const [role, setRole] = useState<RecipeRoleFilter>("alle");
-  const [wine, setWine] = useState<RecipeWineFilter>("alle");
-  const [cuisine, setCuisine] = useState<RecipeCuisineFilter>("alle");
+export function RecipeHubBrowser({
+  recipes,
+  initialFilters = EMPTY_RECIPE_HUB_FILTERS,
+  children,
+}: Props) {
+  const [query, setQuery] = useState(initialFilters.q);
+  const [role, setRole] = useState<RecipeRoleFilter>(initialFilters.role);
+  const [wine, setWine] = useState<RecipeWineFilter>(initialFilters.wine);
+  const [cuisine, setCuisine] = useState<RecipeCuisineFilter>(initialFilters.cuisine);
   const [difficulty, setDifficulty] = useState<RecipeDifficultyFilter>("alle");
-  const [time, setTime] = useState<RecipeTimeFilter>("alle");
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [time, setTime] = useState<RecipeTimeFilter>(initialFilters.time);
+  const [activeTag, setActiveTag] = useState<string | null>(initialFilters.tag);
 
   useEffect(() => {
-    setQuery(initialQuery.trim());
-  }, [initialQuery]);
+    setQuery(initialFilters.q);
+    setRole(initialFilters.role);
+    setWine(initialFilters.wine);
+    setCuisine(initialFilters.cuisine);
+    setTime(initialFilters.time);
+    setActiveTag(initialFilters.tag);
+    setDifficulty("alle");
+  }, [
+    initialFilters.q,
+    initialFilters.role,
+    initialFilters.wine,
+    initialFilters.cuisine,
+    initialFilters.time,
+    initialFilters.tag,
+  ]);
+
+  function syncUrl(next: RecipeHubFilterState) {
+    if (typeof window === "undefined") return;
+    const href = buildRecipeHubHref(next);
+    const current = `${window.location.pathname}${window.location.search}`;
+    if (window.location.pathname !== "/opskrifter") return;
+    if (current !== href) window.history.replaceState(null, "", href);
+  }
+
+  const filterState: RecipeHubFilterState = useMemo(
+    () => ({ q: query, role, wine, cuisine, time, tag: activeTag }),
+    [query, role, wine, cuisine, time, activeTag],
+  );
 
   const tagOptions = useMemo(() => topTagsForRecipes(recipes, 2, 10), [recipes]);
   const roleCounts = useMemo(() => countRecipesByRole(recipes), [recipes]);
@@ -179,6 +219,24 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
     [roleCounts],
   );
 
+  function applyFilters(patch: Partial<RecipeHubFilterState>) {
+    const next: RecipeHubFilterState = {
+      q: patch.q ?? query,
+      role: patch.role ?? role,
+      wine: patch.wine ?? wine,
+      cuisine: patch.cuisine ?? cuisine,
+      time: patch.time ?? time,
+      tag: patch.tag === undefined ? activeTag : patch.tag,
+    };
+    if (patch.q !== undefined) setQuery(patch.q);
+    if (patch.role !== undefined) setRole(patch.role);
+    if (patch.wine !== undefined) setWine(patch.wine);
+    if (patch.cuisine !== undefined) setCuisine(patch.cuisine);
+    if (patch.time !== undefined) setTime(patch.time);
+    if (patch.tag !== undefined) setActiveTag(patch.tag);
+    syncUrl(next);
+  }
+
   function clearFilters() {
     setQuery("");
     setRole("alle");
@@ -187,11 +245,48 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
     setDifficulty("alle");
     setTime("alle");
     setActiveTag(null);
+    syncUrl(EMPTY_RECIPE_HUB_FILTERS);
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <section
+        className="rounded-2xl border border-rose-200 bg-rose-50/50 p-4 sm:p-5"
+        aria-labelledby="recipe-intent-heading"
+      >
+        <h2 id="recipe-intent-heading" className="text-lg font-semibold text-stone-900">
+          Hvad leder du efter?
+        </h2>
+        <p className="mt-1 text-sm text-stone-600">
+          Vælg et spor — så filtrerer vi listen. Du kan stadig søge og finjustere nedenfor.
+        </p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {RECIPE_HUB_INTENTS.map((intent) => {
+            const active = recipeHubIntentIsActive(intent, filterState);
+            return (
+              <li key={intent.id}>
+                <Link
+                  href={active ? "/opskrifter" : recipeHubIntentHref(intent)}
+                  scroll={false}
+                  aria-current={active ? "true" : undefined}
+                  className={
+                    active
+                      ? `${INTENT_CHIP_CLASS} block border-rose-300 bg-white text-rose-950 ring-1 ring-rose-200`
+                      : `${INTENT_CHIP_CLASS} block border-stone-200/90 bg-white text-stone-800 hover:border-rose-300 hover:bg-rose-50`
+                  }
+                >
+                  <span className="font-semibold">{intent.label}</span>
+                  <span className="mt-0.5 block text-xs font-normal text-stone-500">{intent.hint}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {children}
+
+      <div id="alle-opskrifter" className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0 flex-1">
           <label htmlFor="recipe-hub-search" className="sr-only">
             Søg i opskrifter
@@ -202,7 +297,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
             autoComplete="off"
             placeholder="Søg efter ret, køkken, kød, fisk…"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => applyFilters({ q: e.target.value })}
             className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
           />
         </div>
@@ -219,7 +314,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
               key={o.value}
               type="button"
               aria-pressed={active}
-              onClick={() => setRole(o.value)}
+              onClick={() => applyFilters({ role: o.value })}
               className={
                 active
                   ? `${ROLE_CHIP_CLASS} border-rose-300 bg-rose-50 text-rose-950`
@@ -238,14 +333,14 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
           label="Vintype"
           value={wine}
           options={wineOptions}
-          onChange={setWine}
+          onChange={(value) => applyFilters({ wine: value })}
         />
         <FilterSelect
           id="recipe-filter-cuisine"
           label="Køkken"
           value={cuisine}
           options={cuisineOptions}
-          onChange={setCuisine}
+          onChange={(value) => applyFilters({ cuisine: value })}
         />
         <FilterSelect
           id="recipe-filter-difficulty"
@@ -259,7 +354,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
           label="Tid"
           value={time}
           options={timeOptions}
-          onChange={setTime}
+          onChange={(value) => applyFilters({ time: value })}
         />
         {tagOptions.length > 0 ? (
           <FilterSelect
@@ -267,7 +362,7 @@ export function RecipeHubBrowser({ recipes, initialQuery = "" }: Props) {
             label="Emne"
             value={activeTag ?? "alle"}
             options={tagSelectOptions}
-            onChange={(value) => setActiveTag(value === "alle" ? null : value)}
+            onChange={(value) => applyFilters({ tag: value === "alle" ? null : value })}
           />
         ) : null}
         {hasActiveFilters ? (

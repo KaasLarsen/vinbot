@@ -13,7 +13,23 @@ export type HomeRecipeCard = {
   recipeRole: RecipeRole;
 };
 
-export function HomeRecipesStripClient({ catalog }: { catalog: HomeRecipeCard[] }) {
+export function HomeRecipesStripClient({
+  catalog,
+  heading = "Udvalgte opskrifter",
+  intro = "Vin i retten eller vin til glasset — samme opskrift-univers.",
+  allHref = "/opskrifter",
+  allLabel = "Se alle opskrifter →",
+  headingId = "home-recipes-heading",
+  className = "mt-12",
+}: {
+  catalog: HomeRecipeCard[];
+  heading?: string;
+  intro?: string;
+  allHref?: string;
+  allLabel?: string;
+  headingId?: string;
+  className?: string;
+}) {
   const bySlug = new Map(catalog.map((r) => [r.slug, r]));
   const recipes = getHomeMoment()
     .recipeSlugs.map((slug) => bySlug.get(slug))
@@ -23,18 +39,16 @@ export function HomeRecipesStripClient({ catalog }: { catalog: HomeRecipeCard[] 
   if (recipes.length === 0) return null;
 
   return (
-    <section className="mt-12" aria-labelledby="home-recipes-heading">
+    <section className={className} aria-labelledby={headingId}>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 id="home-recipes-heading" className="text-xl font-semibold tracking-tight text-stone-900">
-            Udvalgte opskrifter
+          <h2 id={headingId} className="text-xl font-semibold tracking-tight text-stone-900">
+            {heading}
           </h2>
-          <p className="mt-1 text-sm text-stone-600">
-            Vin i retten eller vin til glasset — samme opskrift-univers.
-          </p>
+          <p className="mt-1 text-sm text-stone-600">{intro}</p>
         </div>
-        <Link href="/opskrifter" className="text-sm font-medium text-rose-900 hover:underline">
-          Se alle opskrifter →
+        <Link href={allHref} className="text-sm font-medium text-rose-900 hover:underline">
+          {allLabel}
         </Link>
       </div>
       <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
