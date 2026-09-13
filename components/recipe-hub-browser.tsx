@@ -25,7 +25,6 @@ import {
   countRecipesByWine,
   cuisineFilterLabel,
   difficultyFilterLabel,
-  recipeHubIntentHref,
   recipeHubIntentIsActive,
   recipeMatchesSearch,
   recipeRoleLabel,
@@ -237,6 +236,30 @@ export function RecipeHubBrowser({
     syncUrl(next);
   }
 
+  function applyIntent(intent: (typeof RECIPE_HUB_INTENTS)[number]) {
+    const active = recipeHubIntentIsActive(intent, filterState);
+    if (active) {
+      clearFilters();
+      return;
+    }
+    const next: RecipeHubFilterState = {
+      ...EMPTY_RECIPE_HUB_FILTERS,
+      ...intent.filters,
+      tag: intent.filters.tag ?? null,
+    };
+    setQuery(next.q);
+    setRole(next.role);
+    setWine(next.wine);
+    setCuisine(next.cuisine);
+    setDifficulty("alle");
+    setTime(next.time);
+    setActiveTag(next.tag);
+    syncUrl(next);
+    if (typeof document !== "undefined") {
+      document.getElementById("alle-opskrifter")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
   function clearFilters() {
     setQuery("");
     setRole("alle");
@@ -265,19 +288,19 @@ export function RecipeHubBrowser({
             const active = recipeHubIntentIsActive(intent, filterState);
             return (
               <li key={intent.id}>
-                <Link
-                  href={active ? "/opskrifter" : recipeHubIntentHref(intent)}
-                  scroll={false}
-                  aria-current={active ? "true" : undefined}
+                <button
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => applyIntent(intent)}
                   className={
                     active
-                      ? `${INTENT_CHIP_CLASS} block border-rose-300 bg-white text-rose-950 ring-1 ring-rose-200`
-                      : `${INTENT_CHIP_CLASS} block border-stone-200/90 bg-white text-stone-800 hover:border-rose-300 hover:bg-rose-50`
+                      ? `${INTENT_CHIP_CLASS} w-full border-rose-300 bg-white text-rose-950 ring-1 ring-rose-200`
+                      : `${INTENT_CHIP_CLASS} w-full border-stone-200/90 bg-white text-stone-800 hover:border-rose-300 hover:bg-rose-50`
                   }
                 >
                   <span className="font-semibold">{intent.label}</span>
                   <span className="mt-0.5 block text-xs font-normal text-stone-500">{intent.hint}</span>
-                </Link>
+                </button>
               </li>
             );
           })}

@@ -110,11 +110,8 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
       <header className="mt-6 max-w-3xl">
         <h1 className="text-4xl font-semibold tracking-tight text-stone-900">Opskrifter</h1>
         <p className="mt-4 text-lg text-stone-700">
-          {count} opskrifter med vin i to spor:{" "}
-          <strong className="font-medium text-stone-800">vin i retten</strong> (madlavning med vin i gryde, pande
-          eller sauce) og <strong className="font-medium text-stone-800">vin til maden</strong> (fuld opskrift +
-          anbefalet vin til glasset). Brug “hvad leder du efter”, filtrér efter køkken og tid — eller hop til en
-          klassiker.
+          {count} opskrifter — enten med <strong className="font-medium text-stone-800">vin i gryden</strong>, eller
+          med en anbefalet flaske <strong className="font-medium text-stone-800">til glasset</strong>.
         </p>
         <p className="mt-3 text-sm text-stone-600">
           Leder du efter dybere parrings-guides i stedet for en fuld opskrift? Se{" "}
