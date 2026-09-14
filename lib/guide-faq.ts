@@ -5117,6 +5117,79 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Chianti Classico eller anden sangiovese, der kan åbnes samme aften. Match intensitet: kraftig olie til rød med syre, citronolie til tør hvid.",
     },
   ],
+  "vaertindegave-olivenolie": [
+    {
+      question: "Kan olivenolie være værtindegave under 250 kr?",
+      answer:
+        "Ja. 25 cl urte-, chili- eller basilikumolie ligger typisk under 150 kr. En 500 ml extra virgin rammer omkring 250 kr hos KitchenOne — tjek den aktuelle pris.",
+    },
+    {
+      question: "Pakker KitchenOne olivenolie ind som gave?",
+      answer:
+        "Ikke som standard i kassen. Flaskerne — især 500 ml EVOO — er designet til at stå fremme. Put dem i en pose eller et viskestykke, og skriv at olien er finish, ikke stegeolie.",
+    },
+    {
+      question: "Skal jeg give vin og olie sammen?",
+      answer:
+        "Gerne, men det er to indkøb. Flasken hos en vinhandler, olien hos KitchenOne. Sig det tydeligt, så det ikke føles som en fake-pakke.",
+    },
+  ],
+  "olivenolie-gave-fars-dag": [
+    {
+      question: "Hvilken olivenolie til fars dag?",
+      answer:
+        "Kraftig extra virgin til bøf og ost, chili- eller hvidløgsolie til grill og pizza efter varmen, eller hvid trøffel til pasta. Match det, han allerede laver.",
+    },
+    {
+      question: "Er trøffelolie en god fars-dag-gave?",
+      answer:
+        "Ja, hvis han laver pasta, risotto eller ost — og hvis kortet siger få dråber, aldrig opvarmning. 25 cl er nok. Ellers vælg EVOO eller chili.",
+    },
+    {
+      question: "Skal olien erstatte vinen til fars dag?",
+      answer:
+        "Nej, medmindre han ikke drikker. Grillvinen ligger i vin-til-fars-dag-guiden. Olie og vin er to kurve.",
+    },
+  ],
+  "olivenolie-gave-mors-dag": [
+    {
+      question: "Hvilken olivenolie til mors dag?",
+      answer:
+        "Mild græsk extra virgin, basilikum eller herbes de Provence. Brunch, laks og salat — ikke chili til grillen, medmindre hun beder om det.",
+    },
+    {
+      question: "Er olivenolie bedre end blomster til mors dag?",
+      answer:
+        "Det er et andet signal: køkkenet frem for entreen. En 25 cl-flaske plus en note slår ofte et bundt, der visner mandag.",
+    },
+    {
+      question: "Må man give olie og bobler sammen?",
+      answer:
+        "Ja. Crémant eller rosé købes hos vinhandleren, olien hos KitchenOne. To checkouts — ærligt.",
+    },
+  ],
+  "olivenolie-julegave": [
+    {
+      question: "Er olivenolie en god julegave?",
+      answer:
+        "Ja, hvis flasken ser ud som gave og modtageren laver mad. 500 ml extra virgin eller 25 cl trøffel signalerer luksus uden herregårdspris. Finish, ikke stegeolie.",
+    },
+    {
+      question: "Kan olivenolie bruges som firmagave?",
+      answer:
+        "Ja: ingen alkoholpolitik, samme flaske til alle, pris i 200–250 kr-båndet for 500 ml EVOO. KitchenOne er webshop, ikke et firmagave-program — bestil tidligt og pak selv.",
+    },
+    {
+      question: "Pakker shoppen juleolien ind?",
+      answer:
+        "KitchenOne har ikke gaveindpakning som standard. Det, der sælger, er flaskedesignet. Pose og tre linjer om finish slår en opdigtet wrap-knap.",
+    },
+    {
+      question: "Kan jeg give vin og olie som én julepakke?",
+      answer:
+        "Som idé ja, som ét checkout nej. Port eller champagne ét sted, olien et andet. Sig det højt.",
+    },
+  ],
   "olivenolie-finish": [
     {
       question: "Må man stege i den dyre olivenolie?",

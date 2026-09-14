@@ -55,9 +55,13 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   if (/fisk|skaldyr|laks|torsk|sushi|musling|reje|hvidvin/i.test(t)) out.push("vin-til-fisk-og-skaldyr");
   if (/grill|bbq|malbec|entrecôte|entrecote|bøf|boef/i.test(t)) out.push("vin-til-grill-og-bbq", "vin-til-oksekoed");
   if (/gave|konfirmation|bryllup/i.test(t)) out.push("bedste-vin-til-gave");
-  if (/olivenolie|trøffelolie|troffelolie|chiliolie|værtsgave.*olie|olie.*gave/i.test(t)) {
-    out.push("olivenolie-finish", "vin-og-olie-vaertsgave");
+  if (/olivenolie|trøffelolie|troffelolie|chiliolie|værtsgave.*olie|olie.*gave|gave.*olie/i.test(t)) {
+    out.push("olivenolie-finish", "vin-og-olie-vaertsgave", "vaertindegave-olivenolie");
   }
+  if (/værtindegave.*olie|olie.*værtinde/i.test(t)) out.push("vaertindegave-olivenolie");
+  if (/fars.?dag.*olie|olie.*fars.?dag/i.test(t)) out.push("olivenolie-gave-fars-dag");
+  if (/mors.?dag.*olie|olie.*mors.?dag/i.test(t)) out.push("olivenolie-gave-mors-dag");
+  if (/(julegave|jul).*olie|olie.*(julegave|jul)/i.test(t)) out.push("olivenolie-julegave");
   if (/caprese|vaniljeis|olie.*finish|finish.*olie/i.test(t)) {
     out.push("olivenolie-finish");
   }

@@ -503,6 +503,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Værtsgave: flaske + olivenolie uden fake-pakke. Chianti og EVOO, fisk og citronolie, trøffel til risotto. To shops — ærligt.",
   },
+  "vaertindegave-olivenolie": {
+    title: "Værtindegave: olie under 250 kr",
+    description:
+      "Værtindegave med olivenolie under 250 kr: 25 cl urter eller 500 ml EVOO. Pæn flaske hos KitchenOne — ikke gavepapir i kassen.",
+  },
+  "olivenolie-gave-fars-dag": {
+    title: "Olivenolie til fars dag 5. juni",
+    description:
+      "Olivenolie til fars dag: kraftig EVOO, chili, hvidløg og trøffel. Finish ved grillen. Vin til menuen ligger i fars-dag-guiden.",
+  },
+  "olivenolie-gave-mors-dag": {
+    title: "Olivenolie til mors dag",
+    description:
+      "Olivenolie til mors dag: mild græsk EVOO, basilikum og herbes de Provence. Finish til brunch — ikke blomst i cellofan.",
+  },
+  "olivenolie-julegave": {
+    title: "Olivenolie som julegave",
+    description:
+      "Olivenolie som julegave og firmagave: 500 ml EVOO og trøffel. Flot flaske, ikke kasse-wrap. Vin-julegaver ligger i julegavevin-guiden.",
+  },
   "bedste-box-vin": {
     title: "Bedste papvin og boxvin i Danmark 2026",
     description:

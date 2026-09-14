@@ -269,6 +269,15 @@ function videnBlock(
   return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
 }
 
+const OIL_GIFT: GuideClusterLink[] = [
+  { slug: "vaertindegave-olivenolie", label: "Værtindegave olivenolie" },
+  { slug: "olivenolie-gave-fars-dag", label: "Olivenolie til fars dag" },
+  { slug: "olivenolie-gave-mors-dag", label: "Olivenolie til mors dag" },
+  { slug: "olivenolie-julegave", label: "Olivenolie som julegave" },
+  { slug: "vin-og-olie-vaertsgave", label: "Vin og olie som værtsgave" },
+  { slug: "olivenolie-finish", label: "Olivenolie som finish" },
+];
+
 /** Synlige klynge-links på guide-sider — styrker intern linking. */
 export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideClusterBlock[]> = {
   "bedste-alkoholfri-vin": alkoholfriBlock(
@@ -1051,17 +1060,53 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     ["vin-og-olie-vaertsgave"],
     "Gave — flaske, gear og olie",
     "Værtsgave uden fake-pakke: vin ét sted, olie eller gear et andet.",
-    [{ slug: "olivenolie-finish", label: "Olivenolie som finish" }],
+    OIL_GIFT,
     [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
     [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
     [{ slug: "vin-gave-gear", label: "Vin-gave gear" }],
     [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
   ),
+  "vaertindegave-olivenolie": videnBlock(
+    ["vaertindegave-olivenolie"],
+    "Olie-gaver og værtinde",
+    "Under 250 kr i pæn flaske — eller vin ved siden af, ærligt to shops.",
+    OIL_GIFT,
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave i vin" }],
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+    [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
+  ),
+  "olivenolie-gave-fars-dag": videnBlock(
+    ["olivenolie-gave-fars-dag"],
+    "Fars dag — grill, vin og olie",
+    "Olie til den madglade far, og vinen til 5. juni.",
+    OIL_GIFT,
+    [{ slug: "vin-til-fars-dag", label: "Vin til fars dag" }],
+    [{ slug: "vin-til-grill-og-bbq", label: "Vin til grill og BBQ" }],
+    [{ slug: "vin-gave-gear", label: "Vin-gave gear" }],
+  ),
+  "olivenolie-gave-mors-dag": videnBlock(
+    ["olivenolie-gave-mors-dag"],
+    "Mors dag — brunch, vin og olie",
+    "Finish-olie til køkkenet, bobler til glasset.",
+    OIL_GIFT,
+    [{ slug: "vin-til-mors-dag", label: "Vin til mors dag" }],
+    [{ slug: "vin-til-brunch", label: "Vin til brunch" }],
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave i vin" }],
+  ),
+  "olivenolie-julegave": videnBlock(
+    ["olivenolie-julegave"],
+    "Julegave — olie, vin og firmagave",
+    "Luksusflaske uden herregård — og julegavevin hvis glasset skal med.",
+    OIL_GIFT,
+    [{ slug: "bedste-julegavevin", label: "Bedste julegavevin" }],
+    [{ slug: "vin-til-julemad-den-store-guide", label: "Vin til julemad" }],
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+  ),
   "olivenolie-finish": videnBlock(
     ["olivenolie-finish"],
     "Finish-olie og italiensk mad",
     "Én ske olie på tallerkenen — og vinen der passer til tomat, pizza og dessert.",
-    [{ slug: "vin-og-olie-vaertsgave", label: "Vin og olie som værtsgave" }],
+    OIL_GIFT,
     [{ slug: "vin-til-mozzarella-og-burrata", label: "Vin til mozzarella og burrata" }],
     [{ slug: "vin-til-pizza", label: "Vin til pizza" }],
     [{ slug: "vin-til-dessert-og-kransekage", label: "Vin til dessert" }],
