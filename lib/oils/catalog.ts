@@ -39,7 +39,7 @@ export const OIL_PICKS: readonly OilPick[] = [
     shopUrl: "https://www.kitchenone.dk/p/nicolas-vah-virgin-olivenolie-greece-500-ml_79437",
     profile: "mild",
     pairingNote:
-      "Mild, græsk ekstra jomfru til salat, fisk og lyse retter, hvor olien skal bære uden at pebe.",
+      "Mild, frugtig græsk EVOO til salat, fisk og et par dråber over vaniljeis med havsalt — finish, ikke dessert-sirup.",
     dishIds: ["kylling", "fisk"],
     recipeSlugs: ["graesk-salat"],
   },
@@ -48,9 +48,10 @@ export const OIL_PICKS: readonly OilPick[] = [
     title: "Nicolas Vahé Extra Virgin olivenolie Italy 500 ml",
     shopUrl: "https://www.kitchenone.dk/p/nicolas-vah-virgin-olivenolie-italy-500-ml_79438",
     profile: "kraftig",
-    pairingNote: "Italiensk EVOO til tomatpasta — den type olie opskrifter kalder «god olivenolie».",
+    pairingNote:
+      "Kraftig italiensk EVOO til caprese og tomatpasta — grøn peber-finish over tomat og mozzarella.",
     dishIds: ["pasta-tomat"],
-    recipeSlugs: [],
+    recipeSlugs: ["caprese"],
   },
   {
     id: "herbes-provence",
@@ -75,9 +76,20 @@ export const OIL_PICKS: readonly OilPick[] = [
     title: "Gridelli Olio e aglio — olivenolie med hvidløg 250 ml",
     shopUrl: "https://www.kitchenone.dk/p/gridelli-olio-e-aglio-olivenolie-m-hvidloeg-250-ml_70158",
     profile: "urte",
-    pairingNote: "Hvidløgsolie til brød og tapas, når du vil have aroma uden at stege fedtet.",
+    pairingNote:
+      "Hvidløgsolie til brød, tapas og pizza lige efter ovnen — aroma uden at stege fedtet.",
     dishIds: [],
     recipeSlugs: [],
+  },
+  {
+    id: "chili",
+    title: "Nicolas Vahé olivenolie med chili 25 cl",
+    shopUrl: "https://www.kitchenone.dk/p/nicolas-vahe-olive-oil-with-chili-25-cl_62856",
+    profile: "urte",
+    pairingNote:
+      "Chiliolie over pizza efter ovnen — varme i finishen, ikke i dejen.",
+    dishIds: [],
+    recipeSlugs: ["pizza-margherita"],
   },
   {
     id: "hvid-troffel",

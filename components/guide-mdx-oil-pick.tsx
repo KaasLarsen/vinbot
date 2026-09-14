@@ -5,9 +5,13 @@ import { getOilById } from "@/lib/oils/catalog";
 export function GuideOilPick({
   oilId,
   heading,
+  slug,
+  hub,
 }: {
   oilId: string;
   heading?: string;
+  slug?: string;
+  hub?: string;
 }) {
   const oil = getOilById(oilId);
   if (!oil) return null;
@@ -18,8 +22,8 @@ export function GuideOilPick({
         oil={oil}
         heading={heading ?? "Olie hos KitchenOne"}
         placement="guide-oil"
-        slug="vin-og-olie-vaertsgave"
-        hub="bedste-vine"
+        slug={slug ?? "vin-og-olie-vaertsgave"}
+        hub={hub ?? "bedste-vine"}
       />
     </div>
   );

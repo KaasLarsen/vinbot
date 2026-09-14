@@ -5117,4 +5117,26 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Chianti Classico eller anden sangiovese, der kan åbnes samme aften. Match intensitet: kraftig olie til rød med syre, citronolie til tør hvid.",
     },
   ],
+  "olivenolie-finish": [
+    {
+      question: "Må man stege i den dyre olivenolie?",
+      answer:
+        "Nej — finish-olie dryppes på maden ved bordet. Stegepanden får en anden flaske. Varme slår aromaen ihjel, især i chili- og trøffelolie.",
+    },
+    {
+      question: "Skal chiliolie på pizzaen før eller efter ovnen?",
+      answer:
+        "Efter ovnen. I 250 °C forsvinder varmen, og olien smager flad. Dryp en tynd slange over den færdige pizza.",
+    },
+    {
+      question: "Virker olivenolie på vaniljeis?",
+      answer:
+        "Ja, med måde: en teskefuld frugtig extra virgin og et nip flagesalt. Det smager af oliven og fedme, ikke af dessert-sirup. For meget olie bliver fedtet.",
+    },
+    {
+      question: "Hvor meget olie skal der på caprese?",
+      answer:
+        "Cirka én spiseskefuld over et fad til fire. Tomat og mozzarella skal være synlige — olien er finish, ikke en pool.",
+    },
+  ],
 };

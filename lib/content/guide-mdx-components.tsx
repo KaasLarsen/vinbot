@@ -41,6 +41,14 @@ export function createGuideMdxComponents(headingIds: string[] = []) {
     strong: (props: ComponentProps<"strong">) => (
       <strong {...props} className="font-semibold text-stone-900" />
     ),
+    img: (props: ComponentProps<"img">) => (
+      // eslint-disable-next-line @next/next/no-img-element -- MDX markdown images
+      <img
+        {...props}
+        alt={props.alt ?? ""}
+        className="mt-6 w-full rounded-2xl border border-stone-200 object-cover"
+      />
+    ),
     table: (props: ComponentProps<"table">) => (
       <div className="mt-6 overflow-x-auto rounded-lg border border-stone-200">
         <table {...props} className="w-full min-w-[20rem] border-collapse text-left text-base text-stone-700" />
