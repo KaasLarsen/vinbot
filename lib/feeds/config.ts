@@ -98,6 +98,7 @@ const VIN_ADJ_LIKEHOME_INCLUDE_EXTRA: string[] = [
   "barskab",
 ];
 
+/** Partner- og shop-feeds til vinsøgning. KitchenOne (PA feed 1862) må ikke tilføjes — blandet køkkenkatalog. */
 export const FEEDS: FeedConfig[] = [
   { merchant: "Winther Vin", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
   { merchant: "Barlife", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=46609&feedid=651" },

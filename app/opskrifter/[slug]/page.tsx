@@ -27,6 +27,8 @@ import { PageShell } from "@/components/page-shell";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   return getAllRecipeSlugs().map((slug) => ({ slug }));
 }

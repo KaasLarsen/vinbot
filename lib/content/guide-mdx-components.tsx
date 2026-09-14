@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react";
 import { GuideMdxShopPicks } from "@/components/guide-mdx-shop-picks";
+import { GuideOilPick } from "@/components/guide-mdx-oil-pick";
 import { PriceRunnerProduct } from "@/components/pricerunner-product";
 
 export function createGuideMdxComponents(headingIds: string[] = []) {
@@ -7,6 +8,7 @@ export function createGuideMdxComponents(headingIds: string[] = []) {
 
   return {
     GuideMdxShopPicks,
+    GuideOilPick,
     PriceRunnerProduct,
     a: (props: ComponentProps<"a">) => (
       <a

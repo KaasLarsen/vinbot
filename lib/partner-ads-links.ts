@@ -70,6 +70,11 @@ export const PARTNER_ADS_KLIK_BANNERS = {
    * Otto Suenson — shop/hub-klik (produktfeed bruger 117927).
    */
   ottoSuenson: "117936",
+  /**
+   * KitchenOne.dk — shop-klik (produktfeed 1862 bruger banner 79283).
+   * Hele køkkenfeedet må ikke ind i vinsøgningen; kun kuraterede olie-deeplinks.
+   */
+  kitchenOne: "18776",
   /** DH Wines — samme banner som produktfeed */
   dhWines: "108173",
   /** SPS Wine — samme banner som produktfeed */

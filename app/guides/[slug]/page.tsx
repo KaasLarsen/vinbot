@@ -36,6 +36,8 @@ import { GuideToc } from "@/components/guide-toc";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   return getGuideSlugs().map((slug) => ({ slug }));
 }
