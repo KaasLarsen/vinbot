@@ -5100,4 +5100,21 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "150–250 kr til proptrækker; 250–450 kr til glas-sæt; 450–800 kr til kombination. Hellere ét godt stykke end et billigt gadget-sæt.",
     },
   ],
+  "vin-og-olie-vaertsgave": [
+    {
+      question: "Kan man give vin og olivenolie som én pakke?",
+      answer:
+        "Som idé ja, som ét checkout nej. Flasken købes hos en vinhandler, olien typisk et andet sted. Sig det tydeligt, så gaven ikke føles som to tilfældige links.",
+    },
+    {
+      question: "Hvilken olie passer til en værtsgave?",
+      answer:
+        "En pæn extra virgin til at dryppe ved bordet, eller en lille trøffelolie hvis værten laver pasta eller ost. Undgå stegeolie i gavepapir.",
+    },
+    {
+      question: "Hvilken vin til italiensk olie-gave?",
+      answer:
+        "Chianti Classico eller anden sangiovese, der kan åbnes samme aften. Match intensitet: kraftig olie til rød med syre, citronolie til tør hvid.",
+    },
+  ],
 };

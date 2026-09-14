@@ -14,7 +14,8 @@ export type PriceRunnerProduct = {
     | "vinprop"
     | "flaskekoeler"
     | "vinudstyr"
-    | "vin";
+    | "vin"
+    | "olie";
   /** Attribution-link til PriceRunner produktside (nofollow). */
   compareUrl: string;
 };
@@ -278,6 +279,62 @@ export const priceRunnerProducts = {
     category: "vin",
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3214874998/Vine/Torres-Natureo-Rose-Syrah-Cabernet-0-0-Sammenlign-Priser",
+  },
+  "nicolas-vahe-ekstra-jomfru-50cl": {
+    productId: "4487382",
+    title: "Nicolas Vahé Ekstra Jomfru Olivenolie 50 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4487382/Foedevarer/Nicolas-Vahe-Extra-Virgin-Olive-Oil-50cl-1pack-Sammenlign-Priser",
+  },
+  "roemer-olivenolie-ekstra-jomfru-50cl": {
+    productId: "3200125970",
+    title: "Rømer Olivenolie Ekstra Jomfru 50 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-3200125970/Foedevarer/Roemer-Olivenolie-Ekstra-Jomfru-50cl-Sammenlign-Priser",
+  },
+  "clearspring-italiensk-evoo-100cl": {
+    productId: "4734816",
+    title: "Clearspring økologisk italiensk ekstra jomfru olivenolie 1 L",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4734816/Foedevarer/Clearspring-OEkologisk-Ekstra-Jomfru-Olivenolie-1L-100cl-Sammenlign-Priser",
+  },
+  "nicolas-vahe-herbes-de-provence": {
+    productId: "4487304",
+    title: "Nicolas Vahé olivenolie med herbes de Provence 25 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4487304/Foedevarer/Nicolas-Vahe-Olivenolie-med-Provence-Krydderi-25cl-25cl-Sammenlign-Priser",
+  },
+  "nicolas-vahe-basilikum": {
+    productId: "4093319",
+    title: "Nicolas Vahé olivenolie med basilikum 25 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4093319/Foedevarer/Nicolas-Vahe-Olivenoile-med-Basilikum-25cl-25cl-Sammenlign-Priser",
+  },
+  "nicolas-vahe-lemon": {
+    productId: "4487232",
+    title: "Nicolas Vahé olivenolie med citron 25 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4487232/Foedevarer/Nicolas-Vahe-Olivenolie-med-Lemon-25cl-25cl-Sammenlign-Priser",
+  },
+  "nicolas-vahe-hvidloeg": {
+    productId: "4487209",
+    title: "Nicolas Vahé olivenolie med hvidløg 25 cl",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-4487209/Foedevarer/Nicolas-Vahe-Olivenolie-med-Hvidloeg-25cl-25cl-Sammenlign-Priser",
+  },
+  "deli-drengene-hvid-troffelolie": {
+    productId: "3381528047",
+    title: "Deli Drengene hvid trøffelolie 55 ml",
+    category: "olie",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/620-3381528047/Foedevarer/Deli-Drengene-Hvid-Troeffelolie-55ml-100cl-Sammenlign-Priser",
   },
 } as const satisfies Record<string, PriceRunnerProduct>;
 

@@ -9,6 +9,7 @@ import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
 import { RecipeSteps } from "@/components/recipe-steps";
 import { RecipeWineBox } from "@/components/recipe-wine-box";
 import { RecipeShopSection } from "@/components/recipe-shop-section";
+import { RecipeOilBox } from "@/components/recipe-oil-box";
 import { getAllRecipeSlugs, getRecipe } from "@/lib/content/recipes";
 import { recipePublicationAndModified } from "@/lib/recipe-dates";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
@@ -183,6 +184,7 @@ export default async function RecipePage({ params }: Props) {
               : "Køb vin til retten — direkte fra forhandlere"
           }
         />
+        <RecipeOilBox recipeSlug={slug} />
       </div>
 
       <div className="mt-10 space-y-10">

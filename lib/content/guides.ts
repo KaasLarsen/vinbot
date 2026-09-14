@@ -260,6 +260,7 @@ const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
   "bedste-champagne-under-300-kr",
   "bobler-til-brunch",
   "bedste-vin-til-gave",
+  "vin-og-olie-vaertsgave",
   "gavevin-sadan-vaelger-du-den-rigtige-flaske",
   "bedste-vaertindegave-vin",
   "vin-til-dessert-og-kransekage",

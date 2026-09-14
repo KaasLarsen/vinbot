@@ -498,6 +498,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hvad koster en god flaske vin i DK? Afgifter, prisbånd og gaveidéer fra 70–400 kr. Bobler, rødvin og dessertvin — og hvad du reelt betaler for.",
   },
+  "vin-og-olie-vaertsgave": {
+    title: "Vin og olie som værtsgave",
+    description:
+      "Værtsgave: flaske + olivenolie uden fake-pakke. Chianti og EVOO, fisk og citronolie, trøffel til risotto. To shops — ærligt.",
+  },
   "bedste-box-vin": {
     title: "Bedste papvin og boxvin i Danmark 2026",
     description:

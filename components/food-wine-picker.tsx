@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { OilAffiliateCard } from "@/components/oil-affiliate-card";
 import type { ProductHit } from "@/lib/search/types";
+import { getOilForDish } from "@/lib/oils/catalog";
 import {
   FOOD_PICKER_BUDGETS,
   foodPickerSearchHref,
@@ -151,6 +153,7 @@ export function FoodWinePicker({
 
   const searchHref = dish && budget ? foodPickerSearchHref(dish, budget, alcoholFree) : "/";
   const dishes = dishesForMoment(getHomeMoment());
+  const oil = getOilForDish(dish?.id);
 
   return (
     <div className={className}>
@@ -283,6 +286,24 @@ export function FoodWinePicker({
                 ))}
               </ul>
             )}
+
+            {oil ? (
+              <div className="mt-5 border-t border-stone-200 pt-4">
+                <h4 className="text-sm font-semibold text-stone-900">Gør måltidet komplet</h4>
+                <p className="mt-1 text-sm text-stone-600">
+                  Du har valgt {dish.label.toLowerCase()}. Flaskerne ovenfor er til glasset — olien er
+                  finish på tallerkenen. To forskellige shops er helt fint.
+                </p>
+                <OilAffiliateCard
+                  oil={oil}
+                  heading="Anbefalet olie til retten"
+                  placement="food-picker-oil"
+                  slug={dish.id}
+                  hub="mad-og-vin"
+                  className="mt-3"
+                />
+              </div>
+            ) : null}
 
             <p className="mt-3 text-xs text-stone-500">
               Annoncelinks: vi kan modtage provision — det koster dig ikke ekstra.{" "}

@@ -1047,6 +1047,15 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "vin-til-pakkeleg", label: "Vin til pakkeleg" }],
     [{ slug: "bedste-julegavevin", label: "Bedste julegavevin" }],
   ),
+  "vin-og-olie-vaertsgave": videnBlock(
+    ["vin-og-olie-vaertsgave"],
+    "Gave — flaske, gear og olie",
+    "Værtsgave uden fake-pakke: vin ét sted, olie eller gear et andet.",
+    [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
+    [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
+    [{ slug: "vin-gave-gear", label: "Vin-gave gear" }],
+    [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
+  ),
   "vin-til-vinkyndig-gave": videnBlock(
     ["vin-til-vinkyndig-gave"],
     "Gaver til vinkyndige",

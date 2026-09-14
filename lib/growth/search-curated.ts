@@ -55,6 +55,9 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   if (/fisk|skaldyr|laks|torsk|sushi|musling|reje|hvidvin/i.test(t)) out.push("vin-til-fisk-og-skaldyr");
   if (/grill|bbq|malbec|entrecôte|entrecote|bøf|boef/i.test(t)) out.push("vin-til-grill-og-bbq", "vin-til-oksekoed");
   if (/gave|konfirmation|bryllup/i.test(t)) out.push("bedste-vin-til-gave");
+  if (/olivenolie|trøffelolie|troffelolie|værtsgave.*olie|olie.*gave/i.test(t)) {
+    out.push("vin-og-olie-vaertsgave");
+  }
   if (/påske|paaske/i.test(t)) out.push("vin-til-paaske");
   if (/jule|jul/i.test(t)) out.push("vin-til-julefrokost");
   if (/ost|cheese|brie|parmesan/i.test(t)) out.push("vin-til-ost-og-ostebord");
