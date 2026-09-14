@@ -56,7 +56,22 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   if (/grill|bbq|malbec|entrecôte|entrecote|bøf|boef/i.test(t)) out.push("vin-til-grill-og-bbq", "vin-til-oksekoed");
   if (/gave|konfirmation|bryllup/i.test(t)) out.push("bedste-vin-til-gave");
   if (/olivenolie|trøffelolie|troffelolie|chiliolie|værtsgave.*olie|olie.*gave|gave.*olie/i.test(t)) {
-    out.push("olivenolie-finish", "vin-og-olie-vaertsgave", "vaertindegave-olivenolie");
+    out.push(
+      "olivenolie-finish",
+      "vin-og-olie-vaertsgave",
+      "vaertindegave-olivenolie",
+      "hvad-er-ekstra-jomfru-olivenolie",
+      "olivenolie-sundhed",
+    );
+  }
+  if (/ekstra jomfru|extra virgin|\bevoo\b|koldpres/i.test(t)) {
+    out.push("hvad-er-ekstra-jomfru-olivenolie", "olivenolie-sundhed", "olivenolie-finish");
+  }
+  if (/falsk olivenolie|fake.*olivenolie|olivenolie.*svindel/i.test(t)) {
+    out.push("falsk-olivenolie", "hvad-er-ekstra-jomfru-olivenolie");
+  }
+  if (/polyfenol|antioxidant|olivenolie.*sundhed|sundhed.*olivenolie|kradser i halsen|oleocanthal/i.test(t)) {
+    out.push("olivenolie-sundhed", "hvad-er-ekstra-jomfru-olivenolie");
   }
   if (/værtindegave.*olie|olie.*værtinde/i.test(t)) out.push("vaertindegave-olivenolie");
   if (/fars.?dag.*olie|olie.*fars.?dag/i.test(t)) out.push("olivenolie-gave-fars-dag");

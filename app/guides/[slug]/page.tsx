@@ -228,6 +228,7 @@ function hubLabel(hub: string): string {
     "humoer-og-vin": "Humør & vin",
     "bedste-vine": "Bedste vine",
     "vin-viden": "Vin-viden",
+    "olie-leksikon": "Olie-Leksikon",
     saeson: "Sæson",
     "fest-og-vin": "Fest og selskab",
     "alkoholfri-vin": "Alkoholfri vin",

@@ -30,12 +30,27 @@ export function listGuides(): GuideFrontmatter[] {
     .sort((a, b) => (a.updated < b.updated ? 1 : -1));
 }
 
+/** Kerneartikler i Olie-Leksikonet — ikke vin-viden, selvom slug starter med hvad-er-. */
+export const OLIE_LEKSIKON_GUIDE_SLUGS = [
+  "hvad-er-ekstra-jomfru-olivenolie",
+  "falsk-olivenolie",
+  "olivenolie-sundhed",
+] as const;
+
+export function isOlieLeksikonGuide(slug: string, hub?: string): boolean {
+  return (
+    hub === "olie-leksikon" ||
+    (OLIE_LEKSIKON_GUIDE_SLUGS as readonly string[]).includes(slug)
+  );
+}
+
 /** Guides til mad & vin-hubben (hub + “mad” i tags). "bedste-*" og viden-sider hører ikke hjemme her. */
 export function listMadOgVinHubGuides(): GuideFrontmatter[] {
   return listGuides().filter(
     (g) =>
       !g.slug.startsWith("bedste-") &&
       !isVidenGuide(g.slug) &&
+      !isOlieLeksikonGuide(g.slug, g.hub) &&
       (g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad"))),
   );
 }
@@ -69,16 +84,26 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
 ]);
 
 function isVidenGuide(slug: string): boolean {
+  if (isOlieLeksikonGuide(slug)) return false;
   return VIDEN_EXTRA_SLUGS.has(slug) || VIDEN_SLUG_PREFIXES.some((p) => slug.startsWith(p));
 }
 
 export function listVinVidenHubGuides(): GuideFrontmatter[] {
-  return listGuides().filter(
-    (g) =>
+  return listGuides().filter((g) => {
+    if (isOlieLeksikonGuide(g.slug, g.hub)) return false;
+    return (
       g.hub === "vin-viden" ||
       VIDEN_EXTRA_SLUGS.has(g.slug) ||
-      VIDEN_SLUG_PREFIXES.some((p) => g.slug.startsWith(p)),
-  );
+      VIDEN_SLUG_PREFIXES.some((p) => g.slug.startsWith(p))
+    );
+  });
+}
+
+export function listOlieLeksikonHubGuides(): GuideFrontmatter[] {
+  const order = new Map<string, number>(OLIE_LEKSIKON_GUIDE_SLUGS.map((s, i) => [s, i]));
+  return listGuides()
+    .filter((g) => isOlieLeksikonGuide(g.slug, g.hub))
+    .sort((a, b) => (order.get(a.slug) ?? 99) - (order.get(b.slug) ?? 99));
 }
 
 /** Druer og vinregioner hører til andre hubber — ikke sæson + vin som emne. */

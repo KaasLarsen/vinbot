@@ -523,6 +523,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Olivenolie som julegave og firmagave: 500 ml EVOO og trøffel. Flot flaske, ikke kasse-wrap. Vin-julegaver ligger i julegavevin-guiden.",
   },
+  "hvad-er-ekstra-jomfru-olivenolie": {
+    title: "Hvad er ekstra jomfru olivenolie?",
+    description:
+      "Extra virgin forklaret: EU-kvalitetsklasse, koldpresning, syreprocent og finish vs. stegeolie. Tre extra virgin-flasker vi selv bruger.",
+  },
+  "falsk-olivenolie": {
+    title: "Falsk olivenolie: sådan spotter du den",
+    description:
+      "Spot fake extra virgin: mix, packed-in, for billig dunk og olien der lugter af lampe. Tjekliste og tre ægte EVOO-flasker.",
+  },
+  "olivenolie-sundhed": {
+    title: "Olivenolie sundhed og halskrads",
+    description:
+      "Polyfenoler, koldpres og hjertesundhed uden mirakelkur. Hvorfor god extra virgin kradser i halsen — og hvorfor kvalitet betaler sig.",
+  },
   "bedste-box-vin": {
     title: "Bedste papvin og boxvin i Danmark 2026",
     description:

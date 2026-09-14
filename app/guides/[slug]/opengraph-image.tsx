@@ -21,6 +21,7 @@ function hubLabel(hub: string): string {
     druesorter: "Druesorter",
     regioner: "Regioner",
     "vin-viden": "Vin-viden",
+    "olie-leksikon": "Olie-Leksikon",
     "bedste-vine": "Bedste vine",
   };
   return m[hub] || hub;

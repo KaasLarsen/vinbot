@@ -499,7 +499,11 @@ export default function MadOgVinHubPage() {
           <Link href="/guides/sadan-serverer-du-vin" className="text-rose-900 hover:underline">
             sådan serverer du vin
           </Link>
-          .
+          . Olivenolie:{" "}
+          <Link href="/olie-leksikon" className="text-rose-900 hover:underline">
+            Olie-Leksikon
+          </Link>{" "}
+          — extra virgin, falsk olie og sundhed.
         </p>
       </section>
     </PageShell>

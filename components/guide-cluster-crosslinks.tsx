@@ -34,6 +34,12 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
     guideSlug === "bedste-portvin" ||
     guideSlug.startsWith("portvin") ||
     guideSlug.includes("portvin");
+  const isOilSlug =
+    guideSlug.startsWith("olivenolie-") ||
+    guideSlug === "vaertindegave-olivenolie" ||
+    guideSlug === "vin-og-olie-vaertsgave" ||
+    guideSlug === "falsk-olivenolie" ||
+    guideSlug === "hvad-er-ekstra-jomfru-olivenolie";
 
   return (
     <section
@@ -73,6 +79,13 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
           </Link>
         </p>
       ) : null}
+      {tone === "amber" && isOilSlug ? (
+        <p className="mt-4 text-sm text-stone-600">
+          <Link href="/olie-leksikon" className={`font-medium hover:underline ${styles.footer}`}>
+            Se hele Olie-Leksikonet
+          </Link>
+        </p>
+      ) : null}
       {tone === "amber" && isHedvinSlug ? (
         <p className="mt-4 text-sm text-stone-600">
           <Link href="/hedvin" className={`font-medium hover:underline ${styles.footer}`}>
@@ -80,7 +93,7 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
           </Link>
         </p>
       ) : null}
-      {tone === "amber" && !isHedvinSlug ? (
+      {tone === "amber" && !isHedvinSlug && !isOilSlug ? (
         <p className="mt-4 text-sm text-stone-600">
           <Link href="/vin-viden" className={`font-medium hover:underline ${styles.footer}`}>
             Se hele vin-viden-hubben

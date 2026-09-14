@@ -1,4 +1,4 @@
-import { listGuides, type GuideFrontmatter } from "@/lib/content/guides";
+import { isOlieLeksikonGuide, listGuides, type GuideFrontmatter } from "@/lib/content/guides";
 import { matchDrueRegionSlug } from "@/lib/guide-intent";
 
 export type GuideCategory = "mad" | "druer" | "regioner" | "bedste" | "viden" | "andre";
@@ -83,6 +83,7 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
 ]);
 
 export function classifyGuide(slug: string): GuideCategory {
+  if (isOlieLeksikonGuide(slug)) return "andre";
   if (slug.endsWith("-druen")) return "druer";
   if (matchDrueRegionSlug(slug)) return "druer";
   if (slug.startsWith("vinregion-") || REGIONER_EXTRA_SLUGS.has(slug)) return "regioner";

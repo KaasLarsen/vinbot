@@ -95,7 +95,7 @@ export default function HomePage() {
             Udforsk emner
           </h2>
           <p className="mt-1 text-sm text-stone-600">
-            Mad, fest, sæson og vin-viden — spring direkte ind i det, der interesserer dig.
+            Mad, fest, sæson, vin-viden og olivenolie — spring direkte ind i det, der interesserer dig.
           </p>
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -178,6 +178,15 @@ export default function HomePage() {
         >
           <h3 className="text-lg font-semibold text-stone-900">Vin-viden</h3>
           <p className="mt-2 text-stone-600">Korte svar: hvor længe holder vin, hvor mange glas i en flaske, hvad er tanniner — og sådan dekanterer, serverer og smager du.</p>
+        </Link>
+        <Link
+          href="/olie-leksikon"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Olie-Leksikon</h3>
+          <p className="mt-2 text-stone-600">
+            Extra virgin, falsk olivenolie og hvorfor god olie kradser i halsen — kvalitet og sundhed uden mirakelkur.
+          </p>
         </Link>
         </div>
       </section>

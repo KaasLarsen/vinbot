@@ -5212,4 +5212,55 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Cirka én spiseskefuld over et fad til fire. Tomat og mozzarella skal være synlige — olien er finish, ikke en pool.",
     },
   ],
+  "hvad-er-ekstra-jomfru-olivenolie": [
+    {
+      question: "Hvad betyder ekstra jomfru olivenolie?",
+      answer:
+        "Extra virgin er EU’s højeste kvalitetsklasse: mekanisk udvundet olivenolie uden raffinering, med lavt indhold af frie fedtsyrer og ren smag. Det er et krav — ikke et italiensk stemningsord.",
+    },
+    {
+      question: "Er koldpresset det samme som extra virgin?",
+      answer:
+        "Nej. Extra virgin kræver klasse og smagstest. Koldpresset er et procesord, der også kan misbruges. Køb extra virgin, og brug den som finish.",
+    },
+    {
+      question: "Må man stege i extra virgin?",
+      answer:
+        "Du kan, men du spilder aroma og polyfenoler. Stegepanden får en billigere flaske. Extra virgin dryppes på maden ved bordet.",
+    },
+  ],
+  "falsk-olivenolie": [
+    {
+      question: "Hvordan spotter jeg falsk olivenolie?",
+      answer:
+        "For lav pris, uklar oprindelse («packed in»), gennemsigtig dunk i lys, og olie der lugter harsk eller af ingenting. Ægte extra virgin lugter af frugt og kradser ofte i halsen.",
+    },
+    {
+      question: "Betyder packed in Italy at olien er italiensk?",
+      answer:
+        "Nej. Det betyder tappet i Italien. Olivenerne kan komme fra flere lande. Kig efter dyrkningsoprindelse på etiketten.",
+    },
+    {
+      question: "Virker køleskabstesten på olivenolie?",
+      answer:
+        "Nej. Mange fedtstoffer størkner i køleskab. Stol på næse, extra virgin-klassen og en ærlig pris.",
+    },
+  ],
+  "olivenolie-sundhed": [
+    {
+      question: "Hvorfor kradser god olivenolie i halsen?",
+      answer:
+        "Ofte på grund af oleocanthal, et polyfenol i frisk extra virgin. Det er et kvalitetssignal, ikke chili og ikke en fejl. Raffineret olie kradser sjældent.",
+    },
+    {
+      question: "Er olivenolie sundt for hjertet?",
+      answer:
+        "Extra virgin indgår i middelhavskosten, som er undersøgt. Det er et fedtvalg — ikke medicin. Raffineret «olivenolie» har færre polyfenoler. Tal med lægen om behandling.",
+    },
+    {
+      question: "Bevarer koldpresning næringsstofferne?",
+      answer:
+        "Mekanisk, kold udvinding holder flere polyfenoler end raffinering. Lys, varme og tid ødelægger dem alligevel, så flasken skal være mørk og bruges som finish.",
+    },
+  ],
 };

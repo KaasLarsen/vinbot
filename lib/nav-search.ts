@@ -41,6 +41,19 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
     ],
   },
   { label: "Vin-viden", href: "/vin-viden", keywords: ["viden", "temperatur", "opbevaring", "glas"] },
+  {
+    label: "Olie-Leksikon",
+    href: "/olie-leksikon",
+    keywords: [
+      "olie",
+      "olivenolie",
+      "extra virgin",
+      "ekstra jomfru",
+      "koldpresset",
+      "polyfenol",
+      "falsk olivenolie",
+    ],
+  },
   { label: "Alle guides", href: "/guides", keywords: ["guide", "guides", "artikel"] },
 ];
 

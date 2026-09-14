@@ -278,6 +278,13 @@ const OIL_GIFT: GuideClusterLink[] = [
   { slug: "olivenolie-finish", label: "Olivenolie som finish" },
 ];
 
+const OIL_LEXIKON: GuideClusterLink[] = [
+  { slug: "hvad-er-ekstra-jomfru-olivenolie", label: "Hvad er ekstra jomfru?" },
+  { slug: "falsk-olivenolie", label: "Falsk olivenolie" },
+  { slug: "olivenolie-sundhed", label: "Olivenolie og sundhed" },
+  { slug: "olivenolie-finish", label: "Olivenolie som finish" },
+];
+
 /** Synlige klynge-links på guide-sider — styrker intern linking. */
 export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideClusterBlock[]> = {
   "bedste-alkoholfri-vin": alkoholfriBlock(
@@ -1061,6 +1068,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Gave — flaske, gear og olie",
     "Værtsgave uden fake-pakke: vin ét sted, olie eller gear et andet.",
     OIL_GIFT,
+    OIL_LEXIKON.slice(0, 1),
     [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
     [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave" }],
     [{ slug: "vin-gave-gear", label: "Vin-gave gear" }],
@@ -1071,6 +1079,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Olie-gaver og værtinde",
     "Under 250 kr i pæn flaske — eller vin ved siden af, ærligt to shops.",
     OIL_GIFT,
+    OIL_LEXIKON.slice(0, 1),
     [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave i vin" }],
     [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
     [{ slug: "gavevin-50-150-500-kr", label: "Gavevin 50 / 150 / 500 kr" }],
@@ -1080,6 +1089,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Fars dag — grill, vin og olie",
     "Olie til den madglade far, og vinen til 5. juni.",
     OIL_GIFT,
+    OIL_LEXIKON.slice(0, 1),
     [{ slug: "vin-til-fars-dag", label: "Vin til fars dag" }],
     [{ slug: "vin-til-grill-og-bbq", label: "Vin til grill og BBQ" }],
     [{ slug: "vin-gave-gear", label: "Vin-gave gear" }],
@@ -1089,6 +1099,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Mors dag — brunch, vin og olie",
     "Finish-olie til køkkenet, bobler til glasset.",
     OIL_GIFT,
+    OIL_LEXIKON.slice(0, 1),
     [{ slug: "vin-til-mors-dag", label: "Vin til mors dag" }],
     [{ slug: "vin-til-brunch", label: "Vin til brunch" }],
     [{ slug: "bedste-vaertindegave-vin", label: "Bedste værtindegave i vin" }],
@@ -1098,6 +1109,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Julegave — olie, vin og firmagave",
     "Luksusflaske uden herregård — og julegavevin hvis glasset skal med.",
     OIL_GIFT,
+    OIL_LEXIKON.slice(0, 1),
     [{ slug: "bedste-julegavevin", label: "Bedste julegavevin" }],
     [{ slug: "vin-til-julemad-den-store-guide", label: "Vin til julemad" }],
     [{ slug: "bedste-vin-til-gave", label: "Bedste vin til gave" }],
@@ -1106,11 +1118,33 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     ["olivenolie-finish"],
     "Finish-olie og italiensk mad",
     "Én ske olie på tallerkenen — og vinen der passer til tomat, pizza og dessert.",
+    OIL_LEXIKON,
     OIL_GIFT,
     [{ slug: "vin-til-mozzarella-og-burrata", label: "Vin til mozzarella og burrata" }],
     [{ slug: "vin-til-pizza", label: "Vin til pizza" }],
     [{ slug: "vin-til-dessert-og-kransekage", label: "Vin til dessert" }],
     [{ slug: "vin-til-italiensk-mad", label: "Vin til italiensk mad" }],
+  ),
+  "hvad-er-ekstra-jomfru-olivenolie": videnBlock(
+    ["hvad-er-ekstra-jomfru-olivenolie"],
+    "Olie-Leksikon",
+    "Extra virgin, falsk olie og hvorfor kvalitet kradser — plus finish når flasken skal bruges.",
+    OIL_LEXIKON,
+    OIL_GIFT.slice(0, 3),
+  ),
+  "falsk-olivenolie": videnBlock(
+    ["falsk-olivenolie"],
+    "Olie-Leksikon",
+    "Spot fake EVOO, lær klassen, og dryp den ægte flaske på maden.",
+    OIL_LEXIKON,
+    OIL_GIFT.slice(0, 3),
+  ),
+  "olivenolie-sundhed": videnBlock(
+    ["olivenolie-sundhed"],
+    "Olie-Leksikon",
+    "Polyfenoler og halskrads — og den finish, der gør flasken værd at købe.",
+    OIL_LEXIKON,
+    OIL_GIFT.slice(0, 3),
   ),
   "vin-til-vinkyndig-gave": videnBlock(
     ["vin-til-vinkyndig-gave"],
