@@ -53,6 +53,7 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "LforLiving.dk": ["lforliving", "l for living"],
   "Likehome.dk": ["likehome", "like home"],
   Vinpalle: ["vinpalle", "vin palle"],
+  "Villa Bianca": ["villa bianca", "villabianca"],
   Winesommelier: ["wine sommelier"],
   Gourmetshoppen: ["gourmet shoppen"],
   Winefriends: ["wine friends"],

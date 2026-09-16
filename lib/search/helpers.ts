@@ -213,6 +213,10 @@ const NON_WINE_GROCERY_TITLE_MARKERS: readonly string[] = [
   "aerator",
   "skænkeprop",
   "skaenkeprop",
+  "savon",
+  "sæbe",
+  "saebe",
+  "soap",
 ];
 
 function catalogTextLooksLikeNonWineHardware(text: string): boolean {
@@ -805,7 +809,18 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
 
   for (const b of blocks) {
     const title = pickOne(b, ["name", "title", "g_title", "produktnavn"]);
-    const desc = pickOne(b, ["description", "shortdescription", "longdescription", "long_description", "content_encoded", "beskrivelse"]);
+    const desc = pickOne(b, [
+      "description",
+      "g_description",
+      "shortdescription",
+      "longdescription",
+      "long_description",
+      "content_encoded",
+      "beskrivelse",
+      /* Google Merchant: structured_description/content */
+      "g_content",
+      "content",
+    ]);
     const categoryRaw = pickOne(b, [
       "categorypath",
       "category",
@@ -813,6 +828,8 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       "kategorinavn",
       "g_product_type",
       "product_type",
+      "g_google_product_category",
+      "google_product_category",
     ]);
     const wineMeta = [pickOne(b, ["wine_type"]), pickOne(b, ["wine_grape"]), pickOne(b, ["wine_region"]), pickOne(b, ["wine_country"])]
       .filter(Boolean)

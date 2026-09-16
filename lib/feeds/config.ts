@@ -180,4 +180,12 @@ export const FEEDS: FeedConfig[] = [
     url: "https://www.vinpalle.dk/google-shopping-feed",
     tier: "free",
   },
+  {
+    merchant: "Villa Bianca",
+    url: "https://villabianca.eu/?vb_google_feed=1",
+    tier: "free",
+    /* Blandkatalog (sæbe, lys, tallerkener …) — behold kun vin via Google-kategori / vinnavne. */
+    wineFilter: false,
+    vinAdjacentIncludeAny: ["wine", "bulichella", "smagekasse"],
+  },
 ];
