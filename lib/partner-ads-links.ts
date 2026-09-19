@@ -1,19 +1,21 @@
 /** Partner-Ads publisher (Vinbot). */
 export const PARTNER_ADS_PARTNER_ID = "50537";
 
-/** Ekstra click ref i Partner-Ads (må ikke indeholde `/`). */
+/** Ekstra click ref i Partner-Ads (må ikke indeholde `/`). Standard for organisk Vinbot-trafik. */
 export const PARTNER_ADS_UID = "vinbot";
 
 /**
  * Tilføj `uid` på eksisterende klikbanner-URL'er (fx fra produktfeeds).
  * Daisycon/Adtraction og andre netværk røres ikke.
+ * Server-side default er `vinbot`; klienten kan overskrive til `vinbot-google` via session
+ * (se `withPartnerAdsTrafficUid`).
  */
-export function ensurePartnerAdsKlikUid(href: string): string {
+export function ensurePartnerAdsKlikUid(href: string, uid: string = PARTNER_ADS_UID): string {
   const trimmed = href.trim();
   if (!trimmed.includes("partner-ads.com/dk/klikbanner.php")) return trimmed;
   try {
     const u = new URL(trimmed);
-    u.searchParams.set("uid", PARTNER_ADS_UID);
+    u.searchParams.set("uid", uid.trim() || PARTNER_ADS_UID);
     return u.toString();
   } catch {
     return trimmed;

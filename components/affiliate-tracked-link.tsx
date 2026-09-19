@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 type Props = Omit<ComponentPropsWithoutRef<"a">, "href" | "onClick"> & {
   href: string;
@@ -12,9 +13,9 @@ type Props = Omit<ComponentPropsWithoutRef<"a">, "href" | "onClick"> & {
   children: ReactNode;
 };
 
-/** Udgående affiliate-link med GA4 `affiliate_click`. */
+/** Udgående affiliate-link med GA4 `affiliate_click` og sessionens Partner-Ads uid. */
 export function AffiliateTrackedLink({
-  href,
+  href: hrefProp,
   merchant,
   placement,
   slug = "",
@@ -24,6 +25,8 @@ export function AffiliateTrackedLink({
   rel = "nofollow sponsored noopener noreferrer",
   ...rest
 }: Props) {
+  const href = usePartnerAdsHref(hrefProp);
+
   return (
     <a
       href={href}

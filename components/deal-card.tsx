@@ -5,6 +5,7 @@ import Link from "next/link";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { productOutboundRel } from "@/lib/feeds/outbound-link";
 import type { TilbudCardItem } from "@/lib/deals/types";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 const IMAGE_FRAME_DEFAULT =
   "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
@@ -26,8 +27,9 @@ export function DealCard({
   placement?: string;
   variant?: "default" | "compact" | "featured";
 }) {
+  const href = usePartnerAdsHref(deal.url);
   const onClick = () =>
-    trackAffiliateClick({ merchant: deal.merchant, placement, url: deal.url });
+    trackAffiliateClick({ merchant: deal.merchant, placement, url: href });
 
   const saleLabel = formatPrice(deal.salePrice);
   const refLabel = deal.referencePrice != null ? formatPrice(deal.referencePrice) : null;
@@ -61,7 +63,7 @@ export function DealCard({
         <div className="relative flex shrink-0 items-center justify-center p-5 sm:w-48">
           {badge ? <span className="absolute left-4 top-4 z-10">{badge}</span> : null}
           <a
-            href={deal.url}
+            href={href}
             target="_blank"
             rel={linkRel}
             onClick={onClick}
@@ -79,7 +81,7 @@ export function DealCard({
           {merchantLine}
           <h3 className="line-clamp-2 text-lg font-semibold leading-snug text-stone-900">
             <a
-              href={deal.url}
+              href={href}
               target="_blank"
               rel={linkRel}
               onClick={onClick}
@@ -99,7 +101,7 @@ export function DealCard({
           </p>
           <div className="mt-auto flex flex-wrap gap-2 pt-2">
             <a
-              href={deal.url}
+              href={href}
               target="_blank"
               rel={linkRel}
               onClick={onClick}
@@ -130,7 +132,7 @@ export function DealCard({
       <div className="relative">
         {badge ? <span className="absolute left-3 top-3 z-10">{badge}</span> : null}
         <a
-          href={deal.url}
+          href={href}
           target="_blank"
           rel={linkRel}
           onClick={onClick}
@@ -148,7 +150,7 @@ export function DealCard({
         {merchantLine}
         <h3 className={`leading-snug text-stone-900 ${titleClass}`}>
           <a
-            href={deal.url}
+            href={href}
             target="_blank"
             rel={linkRel}
             onClick={onClick}
@@ -178,7 +180,7 @@ export function DealCard({
         </div>
         <div className={`mt-auto flex flex-col gap-2 ${variant === "compact" ? "pt-1" : ""} sm:flex-row`}>
           <a
-            href={deal.url}
+            href={href}
             target="_blank"
             rel={linkRel}
             onClick={onClick}

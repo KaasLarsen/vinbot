@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { AffiliateTrackedLink } from "@/components/affiliate-tracked-link";
 import { hubRotationPool, type HubRotationMerchant } from "@/lib/partner-ads-hub-rotations";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
-
-const linkRel = "nofollow sponsored noopener noreferrer";
 
 type StoreCard = {
   id: HubRotationMerchant;
@@ -120,23 +118,16 @@ export function HubFeaturedStores({ hub, slug }: { hub: string; slug: string }) 
             </div>
             <p className="mt-3 text-base font-semibold text-stone-900">{s.name}</p>
             <p className="mt-2 flex-1 text-sm text-stone-600">{s.blurb}</p>
-            <a
+            <AffiliateTrackedLink
               href={s.href}
-              target="_blank"
-              rel={linkRel}
-              onClick={() =>
-                trackAffiliateClick({
-                  merchant: s.name,
-                  placement: `hub-featured-store-${s.id}`,
-                  slug,
-                  hub,
-                  url: s.href,
-                })
-              }
+              merchant={s.name}
+              placement={`hub-featured-store-${s.id}`}
+              slug={slug}
+              hub={hub}
               className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-rose-900 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-rose-950"
             >
               Gå til shop
-            </a>
+            </AffiliateTrackedLink>
             {s.readMoreHref ? (
               <Link
                 href={s.readMoreHref}

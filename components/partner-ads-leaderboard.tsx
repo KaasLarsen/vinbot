@@ -8,6 +8,7 @@ import {
   type HubRotationMerchant,
 } from "@/lib/partner-ads-hub-rotations";
 import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 export const WINTHER_VIN_LEADERBOARD_BANNER_ID = "76692";
 const JOHNSEN_LEADERBOARD_BANNER_ID = "114732";
@@ -113,7 +114,7 @@ export function PartnerAdsLeaderboard({
   const logoH = mapped.logoH ?? 48;
   const placementLabel = placement ?? `partner-leaderboard-${hub || "default"}`;
 
-  const href = partnerAdsKlikUrl(finalBannerId);
+  const href = usePartnerAdsHref(partnerAdsKlikUrl(finalBannerId));
   const src = `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${finalBannerId}`;
   const showBannerImage = LEADERBOARD_VISBANNER_OK.has(finalBannerId) && !imgFailed;
 

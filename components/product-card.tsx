@@ -3,11 +3,13 @@
 import { productOutboundRel } from "@/lib/feeds/outbound-link";
 import type { ProductHit } from "@/lib/search/types";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 /** Fast billedstørrelse på tværs af sitet — samme ramme i søgning, DSF m.m. */
 const IMAGE_FRAME = "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
 
 export function ProductCard({ product, placement = "home-search" }: { product: ProductHit; placement?: string }) {
+  const href = usePartnerAdsHref(product.url);
   const price =
     product.price != null
       ? new Intl.NumberFormat("da-DK", { style: "currency", currency: product.currency || "DKK" }).format(product.price)
@@ -24,7 +26,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
   const isFree = product.tier === "free";
 
   const onClick = () =>
-    trackAffiliateClick({ merchant: product.merchant, placement, url: product.url });
+    trackAffiliateClick({ merchant: product.merchant, placement, url: href });
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
@@ -35,7 +37,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
           </span>
         ) : null}
         <a
-          href={product.url}
+          href={href}
           target="_blank"
           rel={linkRel}
           onClick={onClick}
@@ -59,7 +61,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
           ) : null}
         </div>
         <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-          <a href={product.url} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
+          <a href={href} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
             {product.title}
           </a>
         </h3>
@@ -72,7 +74,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
           </div>
         )}
         <a
-          href={product.url}
+          href={href}
           target="_blank"
           rel={linkRel}
           onClick={onClick}

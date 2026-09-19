@@ -1,3 +1,4 @@
+import { appendGooglePlaLandingQuery } from "@/lib/partner-ads-traffic-uid";
 import { getMerchantWineConfig, wineDetailPagePath } from "@/lib/wine-detail-pages/merchants";
 import { siteUrl } from "@/lib/site";
 import type { PlaCatalogItem } from "./types";
@@ -19,7 +20,7 @@ function formatPrice(n: number, currency: string): string {
 
 function itemXml(item: PlaCatalogItem, base: string): string {
   const cfg = getMerchantWineConfig(item.merchantId);
-  const link = `${base}${wineDetailPagePath(item.merchantId, item.slug)}`;
+  const link = appendGooglePlaLandingQuery(`${base}${wineDetailPagePath(item.merchantId, item.slug)}`);
   const desc =
     item.description.trim().slice(0, 5000) ||
     `${item.title} hos ${cfg.displayName}. Gå til butikken fra Vinbots produktside.`;

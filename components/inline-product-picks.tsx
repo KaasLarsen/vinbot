@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { ProductHit } from "@/lib/search/types";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 type ApiResponse = { source: string; products: ProductHit[] };
 
@@ -124,6 +125,7 @@ function InlineProductCard({
   hub?: string;
   placement: string;
 }) {
+  const href = usePartnerAdsHref(product.url);
   const price =
     product.price != null
       ? new Intl.NumberFormat("da-DK", {
@@ -138,7 +140,7 @@ function InlineProductCard({
       placement,
       slug,
       hub,
-      url: product.url,
+      url: href,
     });
   };
 
@@ -147,7 +149,7 @@ function InlineProductCard({
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
       <a
-        href={product.url}
+        href={href}
         target="_blank"
         rel={linkRel}
         onClick={onClick}
@@ -171,7 +173,7 @@ function InlineProductCard({
         </div>
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-stone-900">
           <a
-            href={product.url}
+            href={href}
             target="_blank"
             rel={linkRel}
             onClick={onClick}
@@ -182,7 +184,7 @@ function InlineProductCard({
         </h3>
         {price && <p className="text-sm font-semibold text-stone-800">{price}</p>}
         <a
-          href={product.url}
+          href={href}
           target="_blank"
           rel={linkRel}
           onClick={onClick}

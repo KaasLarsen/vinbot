@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { CONTENT_MAX_REM } from "@/components/page-shell";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { PARTNER_ADS_PARTNER_ID, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 const LEFT_BANNER_ID = "108308";
 const RIGHT_BANNER_ID = "94900";
@@ -19,11 +20,8 @@ const railStyle = {
 const PARALLAX_FACTOR = 0.068;
 const PARALLAX_CAP = 42;
 
-function bannerPair(bannerId: string) {
-  return {
-    href: partnerAdsKlikUrl(bannerId),
-    src: `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${bannerId}`,
-  };
+function bannerSrc(bannerId: string) {
+  return `https://www.partner-ads.com/dk/visbanner.php?partnerid=${PARTNER_ADS_PARTNER_ID}&bannerid=${bannerId}`;
 }
 
 function useHomeSkyscraperParallax(enabled: boolean) {
@@ -58,8 +56,10 @@ export function HomeStickyPartnerBanners() {
   const pathname = usePathname() || "/";
   const parallax = useHomeSkyscraperParallax(true);
 
-  const left = bannerPair(LEFT_BANNER_ID);
-  const right = bannerPair(RIGHT_BANNER_ID);
+  const leftHref = usePartnerAdsHref(partnerAdsKlikUrl(LEFT_BANNER_ID));
+  const rightHref = usePartnerAdsHref(partnerAdsKlikUrl(RIGHT_BANNER_ID));
+  const leftSrc = bannerSrc(LEFT_BANNER_ID);
+  const rightSrc = bannerSrc(RIGHT_BANNER_ID);
 
   return (
     <>
@@ -72,7 +72,7 @@ export function HomeStickyPartnerBanners() {
           style={{ transform: `translate3d(0, ${parallax.left}px, 0)` }}
         >
           <a
-            href={left.href}
+            href={leftHref}
             target="_blank"
             rel={linkRel}
             onClick={() =>
@@ -80,7 +80,7 @@ export function HomeStickyPartnerBanners() {
                 merchant: "Partner-Ads",
                 placement: "skyscraper-left",
                 slug: pathname,
-                url: left.href,
+                url: leftHref,
               })
             }
             className="block rounded-lg shadow-md ring-1 ring-stone-200/80 transition-opacity hover:opacity-95"
@@ -88,7 +88,7 @@ export function HomeStickyPartnerBanners() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element -- Partner-Ads leverer banner dynamisk */}
             <img
-              src={left.src}
+              src={leftSrc}
               alt=""
               className="h-auto max-h-[min(85vh,38rem)] w-full max-w-[10.5rem] object-contain"
               width={160}
@@ -106,7 +106,7 @@ export function HomeStickyPartnerBanners() {
           style={{ transform: `translate3d(0, ${parallax.right}px, 0)` }}
         >
           <a
-            href={right.href}
+            href={rightHref}
             target="_blank"
             rel={linkRel}
             onClick={() =>
@@ -114,7 +114,7 @@ export function HomeStickyPartnerBanners() {
                 merchant: "Partner-Ads",
                 placement: "skyscraper-right",
                 slug: pathname,
-                url: right.href,
+                url: rightHref,
               })
             }
             className="block rounded-lg shadow-md ring-1 ring-stone-200/80 transition-opacity hover:opacity-95"
@@ -122,7 +122,7 @@ export function HomeStickyPartnerBanners() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={right.src}
+              src={rightSrc}
               alt=""
               className="h-auto max-h-[min(85vh,38rem)] w-full max-w-[10.5rem] object-contain"
               width={160}

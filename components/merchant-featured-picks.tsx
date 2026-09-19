@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-outbound-link";
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
@@ -8,11 +9,39 @@ import { getMerchantWineConfig, merchantPartnerAdsClickUrl } from "@/lib/wine-de
 import { wineDetailSlugForProductUrl } from "@/lib/wine-detail-pages/registry";
 import type { MerchantFeaturedPick } from "@/lib/merchant-featured-picks";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
 const IMAGE_FRAME =
   "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
+
+function FeaturedPickOutbound({
+  baseHref,
+  merchant,
+  placement,
+  className,
+  children,
+}: {
+  baseHref: string;
+  merchant: string;
+  placement: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  const href = usePartnerAdsHref(baseHref);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel={linkRel}
+      className={className}
+      onClick={() => trackAffiliateClick({ merchant, placement, url: href })}
+    >
+      {children}
+    </a>
+  );
+}
 
 export type MerchantFeaturedPicksVariant = "hub" | "home";
 
@@ -57,31 +86,31 @@ export function MerchantFeaturedPicks({
       <ul className={gridClass}>
         {picks.map((pick) => {
           const clean = cfg.sanitizeProductUrl(pick.productUrl);
-          const href = pick.directLink ? clean : merchantPartnerAdsClickUrl(merchantId, clean);
-          const onClick = () =>
-            trackAffiliateClick({
-              merchant: cfg.displayName,
-              placement: variant === "home" ? `home-${merchantId}-featured` : `hub-${merchantId}-featured`,
-              url: href,
-            });
+          const baseHref = pick.directLink ? clean : merchantPartnerAdsClickUrl(merchantId, clean);
+          const placement = variant === "home" ? `home-${merchantId}-featured` : `hub-${merchantId}-featured`;
           const detailSlug = pick.directLink ? undefined : wineDetailSlugForProductUrl(merchantId, pick.productUrl);
           return (
             <li key={pick.productUrl}>
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
-                <a href={href} target="_blank" rel={linkRel} onClick={onClick} className={IMAGE_FRAME}>
+                <FeaturedPickOutbound baseHref={baseHref} merchant={cfg.displayName} placement={placement} className={IMAGE_FRAME}>
                   {pick.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={pick.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
                   ) : (
                     <div className="px-2 text-center text-xs text-stone-400">{cfg.displayName}</div>
                   )}
-                </a>
+                </FeaturedPickOutbound>
                 <div className="flex flex-1 flex-col gap-2 p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
                   <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-                    <a href={href} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
+                    <FeaturedPickOutbound
+                      baseHref={baseHref}
+                      merchant={cfg.displayName}
+                      placement={placement}
+                      className="hover:underline"
+                    >
                       {pick.title}
-                    </a>
+                    </FeaturedPickOutbound>
                   </h3>
                   {pick.blurb ? <p className="line-clamp-3 text-sm text-stone-600">{pick.blurb}</p> : null}
                   {detailSlug ? (

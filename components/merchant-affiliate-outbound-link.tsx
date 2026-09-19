@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
 import { getMerchantWineConfig, merchantPartnerAdsClickUrl } from "@/lib/wine-detail-pages/merchants";
 
@@ -25,7 +26,8 @@ export function MerchantAffiliateOutboundLink({
 }) {
   const cfg = getMerchantWineConfig(merchantId);
   const clean = cfg.sanitizeProductUrl(productUrl);
-  const href = merchantPartnerAdsClickUrl(merchantId, clean);
+  const baseHref = merchantPartnerAdsClickUrl(merchantId, clean);
+  const href = usePartnerAdsHref(baseHref);
 
   function onClick() {
     trackAffiliateClick({

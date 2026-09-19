@@ -1,9 +1,7 @@
 "use client";
 
-import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { AffiliateTrackedLink } from "@/components/affiliate-tracked-link";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
-
-const linkRel = "nofollow sponsored noopener noreferrer";
 
 const SHOP_HREF = partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.lauridsenVine, "https://lauridsenvine.dk/");
 
@@ -22,23 +20,16 @@ export function GuideLauridsenRegionCta({ slug }: { slug: string }) {
         Udforsk <strong className="font-semibold text-stone-900">Lauridsen Vine</strong> — stort europæisk sortiment der passer godt til regionguider som denne.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <a
+        <AffiliateTrackedLink
           href={SHOP_HREF}
-          target="_blank"
-          rel={linkRel}
-          onClick={() =>
-            trackAffiliateClick({
-              merchant: "Lauridsen Vine",
-              placement: "guide-region-lauridsen-cta",
-              slug,
-              hub: "regioner",
-              url: SHOP_HREF,
-            })
-          }
+          merchant="Lauridsen Vine"
+          placement="guide-region-lauridsen-cta"
+          slug={slug}
+          hub="regioner"
           className="inline-flex rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
         >
           Besøg Lauridsen Vine
-        </a>
+        </AffiliateTrackedLink>
         <span className="text-xs text-stone-500">Åbner i nyt vindue · provision til Vinbot mulig</span>
       </div>
     </aside>

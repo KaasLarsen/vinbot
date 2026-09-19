@@ -7,6 +7,7 @@ import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banne
 import { AnalyticsConsentGate } from "@/components/analytics-consent-gate";
 import { AdSenseConsentGate } from "@/components/adsense-consent-gate";
 import { CookieBanner } from "@/components/cookie-banner";
+import { PartnerAdsTrafficCapture } from "@/components/partner-ads-traffic-capture";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
@@ -67,6 +68,7 @@ export default function RootLayout({
       <body className="flex min-h-full max-w-full flex-col overflow-x-clip font-sans text-stone-900">
         {gaMeasurementId ? <AnalyticsConsentGate measurementId={gaMeasurementId} /> : null}
         <AdSenseConsentGate />
+        <PartnerAdsTrafficCapture />
         <CookieBanner />
         <OrganizationJsonLd />
         <WebSiteJsonLd url={siteUrl} />
