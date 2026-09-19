@@ -287,6 +287,18 @@ const PAPVIN: GuideClusterLink[] = [
   { slug: "hvorfor-har-papvin-udloebsdato", label: "Hvorfor udløbsdato" },
   { slug: "bedste-rose-paa-boks", label: "Rosé på boks" },
   { slug: "papvin-co2-og-klima", label: "Papvin og klima" },
+  { slug: "papvin-til-reception", label: "Papvin til reception" },
+  { slug: "papvin-15-og-225-liter", label: "1,5 og 2,25 L papvin" },
+  { slug: "premium-papvin", label: "Premium papvin" },
+  { slug: "papvin-myter-hovedpine", label: "Papvin-myter" },
+  { slug: "okologisk-og-naturvin-paa-boks", label: "Øko og naturvin på boks" },
+  { slug: "hvorfor-smager-papvin-anderledes", label: "Hvorfor smager papvin anderledes" },
+  { slug: "papvin-til-sommerhus-og-camping", label: "Papvin til camping" },
+  { slug: "glogg-paa-papvin", label: "Gløgg på papvin" },
+  { slug: "papvin-til-skiferie", label: "Papvin til skiferie" },
+  { slug: "kan-man-fryse-papvin", label: "Kan man fryse papvin" },
+  { slug: "sadan-tommer-du-papvin", label: "Tøm den sidste papvin" },
+  { slug: "papvin-graensehandel-tyskland", label: "Papvin-grænsehandel" },
 ];
 
 function papvinBlock(exclude: string[], intro: string): GuideClusterBlock {
@@ -998,7 +1010,55 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   ),
   "bedste-box-vin": papvinBlock(
     ["bedste-box-vin"],
-    "Pilar for papvin — detaljer om glas i 3 L, fest, pris, rosé og klima.",
+    "Pilar for papvin — 3 L, fest, pris, sæson og de praktiske hacks.",
+  ),
+  "papvin-til-reception": papvinBlock(
+    ["papvin-til-reception"],
+    "Hvid eller rød til velkomst — plus mængde, karaffel og premium-boks.",
+  ),
+  "papvin-15-og-225-liter": papvinBlock(
+    ["papvin-15-og-225-liter"],
+    "Mindre bokse til weekend — se camping, literpris og 3 L-omregning.",
+  ),
+  "premium-papvin": papvinBlock(
+    ["premium-papvin"],
+    "Dyrere boks vs. budget — smag, øko og hvorfor flasken kan smage anderledes.",
+  ),
+  "papvin-myter-hovedpine": papvinBlock(
+    ["papvin-myter-hovedpine"],
+    "Rus og tømmermænd — se genstande, smagsforskel og holdbarhed.",
+  ),
+  "okologisk-og-naturvin-paa-boks": papvinBlock(
+    ["okologisk-og-naturvin-paa-boks"],
+    "Øko-logo på karton vs. sjælden naturvin — plus klima og premium.",
+  ),
+  "hvorfor-smager-papvin-anderledes": papvinBlock(
+    ["hvorfor-smager-papvin-anderledes"],
+    "Pose, svovl og ilt — se udløbsdato, myter og premium-boks.",
+  ),
+  "papvin-til-sommerhus-og-camping": papvinBlock(
+    ["papvin-til-sommerhus-og-camping"],
+    "Transport og varme — små bokse, temperatur og skiferie.",
+  ),
+  "glogg-paa-papvin": papvinBlock(
+    ["glogg-paa-papvin"],
+    "Billig rød som base — budget-boks, frost-rester og holdbarhed.",
+  ),
+  "papvin-til-skiferie": papvinBlock(
+    ["papvin-til-skiferie"],
+    "Kraftig rød i hytten — tagboks, frost og grænsehandel.",
+  ),
+  "kan-man-fryse-papvin": papvinBlock(
+    ["kan-man-fryse-papvin"],
+    "Isterninger til mad — tøm posen, holdbarhed og gløgg-rest.",
+  ),
+  "sadan-tommer-du-papvin": papvinBlock(
+    ["sadan-tommer-du-papvin"],
+    "Vip eller tag posen ud — plus frost og camping.",
+  ),
+  "papvin-graensehandel-tyskland": papvinBlock(
+    ["papvin-graensehandel-tyskland"],
+    "Tysk bulk vs. danske priser — literpris, temperatur og fest-mængde.",
   ),
   "hvor-laenge-holder-uaabnet-vin": videnBlock(
     ["hvor-laenge-holder-uaabnet-vin"],

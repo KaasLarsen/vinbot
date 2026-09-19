@@ -85,6 +85,9 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "hvorfor-har-papvin-udloebsdato",
   "papvin-co2-og-klima",
   "papvin-vs-flaske-pris",
+  "papvin-myter-hovedpine",
+  "hvorfor-smager-papvin-anderledes",
+  "kan-man-fryse-papvin",
 ]);
 
 function isVidenGuide(slug: string): boolean {
@@ -270,6 +273,7 @@ export function listHumoerHubGuides(): GuideFrontmatter[] {
 const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
   "hvor-meget-vin-til-fest",
   "hvor-meget-papvin-til-fest",
+  "papvin-til-reception",
   "hvor-meget-vin-til-bryllup",
   "maa-man-aabne-vaertsgaven-vin",
   "crowdpleaser-vin-til-gaester",

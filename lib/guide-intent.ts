@@ -78,12 +78,30 @@ export function deriveGuideIntent(
     slug === "hvor-meget-papvin-til-fest" ||
     slug === "temperatur-guide-papvin" ||
     slug === "hvorfor-har-papvin-udloebsdato" ||
-    slug === "papvin-co2-og-klima"
+    slug === "papvin-co2-og-klima" ||
+    slug === "papvin-til-reception" ||
+    slug === "papvin-15-og-225-liter" ||
+    slug === "premium-papvin" ||
+    slug === "papvin-myter-hovedpine" ||
+    slug === "okologisk-og-naturvin-paa-boks" ||
+    slug === "hvorfor-smager-papvin-anderledes" ||
+    slug === "papvin-til-sommerhus-og-camping" ||
+    slug === "kan-man-fryse-papvin" ||
+    slug === "sadan-tommer-du-papvin" ||
+    slug === "papvin-graensehandel-tyskland"
   ) {
     return {
       q: "bag-in-box bib",
       max: null,
       label: "papvin og boxvin",
+    };
+  }
+
+  if (slug === "glogg-paa-papvin" || slug === "papvin-til-skiferie") {
+    return {
+      q: "bag-in-box bib rodvin",
+      max: null,
+      label: "rød papvin",
     };
   }
 

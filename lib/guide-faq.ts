@@ -3005,6 +3005,195 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Nej hvis du drikker den inden datoen. Spildt vin æder klimagevinsten. Køb det, du bruger.",
     },
   ],
+  "papvin-til-reception": [
+    {
+      question: "Kan man servere papvin til reception?",
+      answer:
+        "Ja til velkomst og buffet, især hvis du skænker i karaffel. Flaske til skål og gave. Hvid eller rosé er oftere første glas end kraftig rød.",
+    },
+    {
+      question: "Hvidvin eller rødvin på boks til reception?",
+      answer:
+        "Stående velkomst: tør hvid eller rosé. Rød når maden kommer, og ikke for varm i foyeren. 3 L giver ca. 30 glas à 10 cl.",
+    },
+    {
+      question: "Er papvin for uformelt til bryllup?",
+      answer:
+        "Til volumen bag kulissen: nej. Til fotomoment og taler: brug flaske. Mix er det voksne valg.",
+    },
+  ],
+  "papvin-15-og-225-liter": [
+    {
+      question: "Hvor mange flasker er 1,5 liter papvin?",
+      answer: "To flasker à 75 cl, ca. 12 glas à 12,5 cl. 2,25 L er tre flasker / ca. 18 glas.",
+    },
+    {
+      question: "Er 1,5 L billigere end 3 L?",
+      answer:
+        "Sjældent pr. liter. Du betaler for praktisk størrelse. Tjek kr/L på den konkrete boks.",
+    },
+    {
+      question: "Kan jeg filtrere 2,25 L på Vinbot?",
+      answer:
+        "Nej, feeds har ikke volumenfelt. Søg bag-in-box og læs liter i titlen (1,5 / 2,25 / 3 L).",
+    },
+  ],
+  "premium-papvin": [
+    {
+      question: "Er dyr papvin pengene værd?",
+      answer:
+        "Ofte i 280–400 kr-lejet for 3 L, hvis du drikker den i glasset. Over det betaler du mest for brand. BiB er stadig ung vin, ikke lagring.",
+    },
+    {
+      question: "Fås Barolo på boks?",
+      answer: "I praksis nej i Danmark. Premium-boks er hverdagskvalitet fra kendte huse, ikke prestige-regioner.",
+    },
+    {
+      question: "Samme vin på flaske og boks — hvilken er bedre?",
+      answer:
+        "Flaske til ét glas og gave. Boks til ugepris og spild. Smagen kan afvige pga. tapning og pose.",
+    },
+  ],
+  "papvin-myter-hovedpine": [
+    {
+      question: "Bliver man mere fuld af papvin?",
+      answer:
+        "Nej. Alkoholprocenten står på kartonen som på flaske. Hanen gør det nemt at skænke mere — det er mængden.",
+    },
+    {
+      question: "Giver papvin mere hovedpine?",
+      answer:
+        "Ikke pga. posen. Dehydrering, histamin, sukker og søvn er de sædvanlige mistænkte — som ved flaske.",
+    },
+    {
+      question: "Er der kemi i posen?",
+      answer:
+        "Fødevaregodkendt folie er standard. Lugter det af plast, lim eller eddike, så kasser vinen.",
+    },
+  ],
+  "okologisk-og-naturvin-paa-boks": [
+    {
+      question: "Findes økologisk papvin i Danmark?",
+      answer:
+        "Ja. Kig efter EU-øko-blad på kartonen og søg økologisk bag-in-box. Det er certificering, ikke automatisk bedre smag.",
+    },
+    {
+      question: "Findes naturvin på boks?",
+      answer:
+        "Meget sjældent. Lavt svovl og 3 L-pose passer dårligt sammen. «Natural» på en billig boks er ofte marketing.",
+    },
+    {
+      question: "Er øko-boks bedre for klimaet?",
+      answer:
+        "Øko handler om marken; karton handler om vægt. Begge kan være sande. Spildt vin æder gevinsten.",
+    },
+  ],
+  "hvorfor-smager-papvin-anderledes": [
+    {
+      question: "Hvorfor smager samme vin anderledes på boks?",
+      answer:
+        "Anden tapning, SO₂, ingen kork og langsom ilt gennem posen. Det er søskende, ikke en klon af flasken.",
+    },
+    {
+      question: "Er papvin dårligere vin?",
+      answer:
+        "Ikke automatisk. Tæt på udløb eller kogt i bilen smager den kedeligt. Ny boks fra et hus, du kender, kan være ren og frisk.",
+    },
+    {
+      question: "Kan korksmag opstå i papvin?",
+      answer: "TCA fra kork opstår ikke i pose. Andre fejl (oxidation, hane, varme) kan.",
+    },
+  ],
+  "papvin-til-sommerhus-og-camping": [
+    {
+      question: "Er papvin god til camping?",
+      answer:
+        "Ja: mindre vægt, ingen skår, holdbar hane. Undgå varme i bilen og køl hvid/rosé. 1,5 L er nemmere end 3 L i køletasken.",
+    },
+    {
+      question: "Må papvin ligge i tagboksen?",
+      answer: "Dårlig idé om sommeren. 40 °C koger vinen. Pak i kabinen, oprejst.",
+    },
+    {
+      question: "Hvor længe holder åben papvin i sommerhuset?",
+      answer: "4–6 uger i køleskab. Uden køl i hedebølge: dage, ikke uger.",
+    },
+  ],
+  "glogg-paa-papvin": [
+    {
+      question: "Hvilken papvin til gløgg?",
+      answer:
+        "Tør, frugtig rød — tempranillo, garnacha, merlot. Undgå sød saft-rød og fadbomber. Under 150 kr for 3 L er fint.",
+    },
+    {
+      question: "Hvor mange 3 L til gløgg til 20 gæster?",
+      answer:
+        "Ofte én boks plus saft at strække, eller to til lang aften. Folk drikker mindre volumen af varm, sød drik end af tør vin.",
+    },
+    {
+      question: "Kan jeg koge papvin til gløgg?",
+      answer: "Varm forsigtigt. Længere kogning slår aroma ihjel og gør alkoholen grov.",
+    },
+  ],
+  "papvin-til-skiferie": [
+    {
+      question: "Hvilken papvin til skiferie?",
+      answer: "Kraftig, tør rød til hytte og gryde. Hvid i lille format til fondue, holdt over frysepunktet.",
+    },
+    {
+      question: "Må papvin fryse i tagboksen?",
+      answer: "Nej. Frost kan skade pose og hane. Pak i kabinen eller isoleret.",
+    },
+    {
+      question: "Bliver man hurtigere fuld i højden?",
+      answer: "Mange mærker rus hurtigere pga. tør luft og højde. Hane plus hygge kræver vand — ikke at posen er stærkere.",
+    },
+  ],
+  "kan-man-fryse-papvin": [
+    {
+      question: "Kan man fryse papvin?",
+      answer:
+        "Ja i isterninger til madlavning. Nej som vin i glasset bagefter, og nej hele 3 L-kartonen i fryseren.",
+    },
+    {
+      question: "Hvor længe kan frossen vin holde?",
+      answer: "Et par måneder i tæt pose. Brug til sovs og gryde, ikke til at tø op og skænke.",
+    },
+    {
+      question: "Kan jeg fryse gløgg-rest?",
+      answer: "Ja som krydrede terninger til næste omgang — ikke til fin fiskesauce.",
+    },
+  ],
+  "sadan-tommer-du-papvin": [
+    {
+      question: "Hvordan får jeg den sidste vin ud af papvinen?",
+      answer: "Vip kartonen så hanen er lavest. Ellers tag posen ud af kassen og klem forsigtigt over en karaffel.",
+    },
+    {
+      question: "Må man skære posen op?",
+      answer: "Du kan, men det splatter. Posen ud og klem er renere.",
+    },
+    {
+      question: "Hvad gør jeg med karton og pose?",
+      answer: "Karton i pap, pose og hane i restaffald.",
+    },
+  ],
+  "papvin-graensehandel-tyskland": [
+    {
+      question: "Er papvin billigere hos Fleggaard og Calle?",
+      answer:
+        "Ofte på volume-mærker — men sammenlign kr/L med danske tilbud plus bro og benzin. Sortimentet skifter; tjek kædens egen avis.",
+    },
+    {
+      question: "Må jeg tage 3 L-bokse med hjem fra Tyskland?",
+      answer:
+        "Køb til eget brug i EU er hverdag for mange. Erhverv og kæmpe mængder er noget andet — tjek Skattestyrelsen. Vinbot giver ikke juridisk rådgivning.",
+    },
+    {
+      question: "Hvad skal jeg tjekke på kartonen ved grænsen?",
+      answer: "Liter, dato, alkohol og at hanen sidder fast. Undgå mastede kartoner i bunden af stativet.",
+    },
+  ],
   "bedste-cava-under-150-kr": [
     {
       question: "Hvad er den bedste cava under 150 kr?",

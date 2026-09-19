@@ -583,6 +583,66 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hvor meget CO₂ sparer papvin vs. glas? Lettere emballage, færre kilo på lastbil. Ærlig guide uden opdigtede gramtal.",
   },
+  "papvin-til-reception": {
+    title: "Papvin til reception: hvid eller rød?",
+    description:
+      "Bag-in-box til reception: fordele, ulemper og karaffel-trick. Hvid vs. rød, 10 cl-glas og hvornår flaske stadig vinder.",
+  },
+  "papvin-15-og-225-liter": {
+    title: "1,5 og 2,25 L papvin til weekenden",
+    description:
+      "Mindre papvin (magnumboks): 1,5 L og 2,25 L vs. 3 liter. Hvornår det passer til camping, køleskab og to personer.",
+  },
+  "premium-papvin": {
+    title: "Premium papvin: er dyr boks pengene værd?",
+    description:
+      "Dyrere bag-in-box vs. discount: hvornår merprisen smager, hvad posen ikke kan, og ærlig literpris uden fake top 5.",
+  },
+  "papvin-myter-hovedpine": {
+    title: "Papvin: bliver man mere fuld?",
+    description:
+      "Papvin giver ikke ekstra rus eller automatisk hovedpine. Alkohol, sukker og mængde — ikke kartonen — styrer tømmermænd.",
+  },
+  "okologisk-og-naturvin-paa-boks": {
+    title: "Økologisk papvin og naturvin på boks",
+    description:
+      "Øko-logo på 3 L-boks findes i DK. Ægte naturvin i pose er sjælden. Sådan søger du bæredygtig BiB uden buzzwords.",
+  },
+  "hvorfor-smager-papvin-anderledes": {
+    title: "Hvorfor smager papvin anderledes end flaske?",
+    description:
+      "Samme vin på boks og flaske kan smage forskelligt: pose, svovl, ilt og tapning. Hvornår forskellen er et problem.",
+  },
+  "papvin-til-sommerhus-og-camping": {
+    title: "Papvin til sommerhus og camping",
+    description:
+      "Boks-vin til campingvogn og sommerhus: varme i bilen, 1,5 vs. 3 L, køling og holdbarhed i sommervarmen.",
+  },
+  "glogg-paa-papvin": {
+    title: "Gløgg på papvin: billig rød som base",
+    description:
+      "Hvilken rød papvin til gløgg? Tør, frugtig 3 L under 150 kr. Mængde, dato og hvad du ikke skal koge ihjel.",
+  },
+  "papvin-til-skiferie": {
+    title: "Papvin til skiferie: rød i tagboksen",
+    description:
+      "Kraftig rød bag-in-box til hytten. Frost og varme i tagboks, format og hvorfor hane plus højde kræver vand.",
+  },
+  "kan-man-fryse-papvin": {
+    title: "Kan man fryse papvin? Isterninger til mad",
+    description:
+      "Frys rest af papvin i isterninger til sovs — ikke til at drikke. Ikke hele 3 L-kassen. Holdbarhed og tips.",
+  },
+  "sadan-tommer-du-papvin": {
+    title: "Tøm den sidste papvin: pose ud af kassen",
+    description:
+      "Sidste halve liter i bag-in-box: vip kartonen eller tag posen ud og klem. Hack uden at skære folien op.",
+  },
+  "papvin-graensehandel-tyskland": {
+    title: "Papvin-grænsehandel: Fleggaard og Calle",
+    description:
+      "3 L papvin i Tyskland: Fleggaard, Calle m.fl. Sammenlign literpris med DK, pak køligt, tjek regler til eget brug.",
+  },
   "vin-til-flaesketesteg": {
     title: "Vin til flæskesteg — rødvin til jul",
     description:
