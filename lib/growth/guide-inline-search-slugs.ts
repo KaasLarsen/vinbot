@@ -22,6 +22,10 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "bedste-rod-papvin",
   "bedste-hvid-papvin",
   "papvin-tilbud",
+  "alkoholfri-riesling",
+  "alkoholfri-sauvignon-blanc",
+  "tor-alkoholfri-hvidvin",
+  "alkoholfri-hvidvin-til-skaldyr-og-fisk",
 ]);
 
 export function guideHasInlineSearch(slug: string): boolean {

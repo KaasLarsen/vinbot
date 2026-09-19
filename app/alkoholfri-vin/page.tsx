@@ -237,6 +237,87 @@ export default function AlkoholfriVinHubPage() {
           </ul>
         </div>
         <div className="rounded-lg border border-stone-200 bg-white p-5 md:col-span-2">
+          <h2 className="text-lg font-semibold text-stone-900">Alkoholfri hvidvin — dyk dybere</h2>
+          <ul className="mt-3 grid list-disc gap-x-6 gap-y-1.5 pl-5 text-sm text-stone-700 sm:grid-cols-2">
+            <li>
+              <Link href="/guides/alkoholfri-riesling" className="text-rose-900 hover:underline">
+                Riesling 0 %
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-sauvignon-blanc" className="text-rose-900 hover:underline">
+                Sauvignon Blanc
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-chardonnay" className="text-rose-900 hover:underline">
+                Chardonnay
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/alkoholfri-pinot-grigio" className="text-rose-900 hover:underline">
+                Pinot Grigio
+              </Link>
+              ,{" "}
+              <Link
+                href="/guides/alkoholfri-gewurztraminer-og-muscat"
+                className="text-rose-900 hover:underline"
+              >
+                Muscat &amp; Gewürz
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/tor-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+                Tør 0 % hvid
+              </Link>
+              ,{" "}
+              <Link href="/guides/halvtor-og-soed-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+                halvtør &amp; sød
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-frizzante-hvidvin" className="text-rose-900 hover:underline">
+                frizzante
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guides/alkoholfri-hvidvin-til-skaldyr-og-fisk"
+                className="text-rose-900 hover:underline"
+              >
+                Fisk &amp; skaldyr
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-hvidvin-til-asiatisk-mad" className="text-rose-900 hover:underline">
+                asiatisk
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-hvidvin-til-ost" className="text-rose-900 hover:underline">
+                ost
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-hvidvin-til-sommermenu" className="text-rose-900 hover:underline">
+                sommer
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/serveringstemperatur-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+                Temperatur
+              </Link>
+              ,{" "}
+              <Link href="/guides/holdbarhed-aabnet-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+                holdbarhed
+              </Link>
+              ,{" "}
+              <Link href="/guides/kalorier-i-alkoholfri-hvidvin" className="text-rose-900 hover:underline">
+                kalorier
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-hvidvin-til-gravide" className="text-rose-900 hover:underline">
+                gravide
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="rounded-lg border border-stone-200 bg-white p-5 md:col-span-2">
           <h2 className="text-lg font-semibold text-stone-900">Viden — ærlige svar</h2>
           <ul className="mt-3 grid list-disc gap-x-6 gap-y-1.5 pl-5 text-sm text-stone-700 sm:grid-cols-2">
             <li>

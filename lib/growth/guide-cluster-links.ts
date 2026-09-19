@@ -60,7 +60,9 @@ const BRANDS: GuideClusterLink[] = [
 const VIDEN: GuideClusterLink[] = [
   { slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" },
   { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
+  { slug: "kalorier-i-alkoholfri-hvidvin", label: "Kalorier i alkoholfri hvidvin" },
   { slug: "hvordan-fremstilles-alkoholfri-vin", label: "Hvordan fremstilles alkoholfri vin" },
+  { slug: "hvordan-fjernes-alkohol-fra-hvidvin", label: "Hvordan fjernes alkohol fra hvidvin" },
   { slug: "alkoholsvag-og-alkoholfri-vin", label: "Alkoholsvag og alkoholfri vin" },
   {
     slug: "hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin",
@@ -68,7 +70,49 @@ const VIDEN: GuideClusterLink[] = [
   },
   { slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" },
   { slug: "mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no" },
+  { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
+  { slug: "serveringstemperatur-alkoholfri-hvidvin", label: "Serveringstemperatur 0 % hvid" },
+  { slug: "holdbarhed-aabnet-alkoholfri-hvidvin", label: "Holdbarhed åbnet 0 % hvid" },
 ];
+
+const HVIDVIN_DRUER: GuideClusterLink[] = [
+  { slug: "alkoholfri-riesling", label: "Alkoholfri Riesling" },
+  { slug: "alkoholfri-sauvignon-blanc", label: "Alkoholfri Sauvignon Blanc" },
+  { slug: "alkoholfri-chardonnay", label: "Alkoholfri Chardonnay" },
+  { slug: "alkoholfri-pinot-grigio", label: "Alkoholfri Pinot Grigio" },
+  { slug: "alkoholfri-gewurztraminer-og-muscat", label: "Alkoholfri Muscat & Gewürz" },
+];
+
+const HVIDVIN_STIL: GuideClusterLink[] = [
+  { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
+  { slug: "halvtor-og-soed-alkoholfri-hvidvin", label: "Halvtør og sød 0 % hvid" },
+  { slug: "alkoholfri-frizzante-hvidvin", label: "Frizzante vs. mousserende" },
+  { slug: "alkoholfri-hvidvin-med-fadlagring", label: "0 % hvid med fadlagring" },
+  { slug: "okologisk-og-biodynamisk-alkoholfri-hvidvin", label: "Øko & biodynamisk 0 % hvid" },
+];
+
+const HVIDVIN_MAD: GuideClusterLink[] = [
+  { slug: "alkoholfri-hvidvin-til-skaldyr-og-fisk", label: "0 % hvid til fisk & skaldyr" },
+  { slug: "alkoholfri-hvidvin-til-asiatisk-mad", label: "0 % hvid til asiatisk mad" },
+  { slug: "alkoholfri-hvidvin-til-ost", label: "0 % hvid til ost" },
+  { slug: "alkoholfri-hvidvin-til-sommermenu", label: "0 % hvid til sommermenu" },
+  { slug: "alkoholfri-hvidvin-i-madlavning", label: "0 % hvid i madlavning" },
+  { slug: "alkoholfri-hvidvin-til-gravide", label: "0 % hvid til gravide" },
+];
+
+function hvidvinBlock(exclude: string[], intro: string): GuideClusterBlock {
+  return alkoholfriBlock(
+    exclude,
+    "Alkoholfri hvidvin — dyk dybere",
+    intro,
+    [{ slug: "bedste-alkoholfri-hvidvin", label: "Bedste alkoholfri hvidvin" }],
+    [HUB],
+    HVIDVIN_DRUER,
+    HVIDVIN_STIL,
+    HVIDVIN_MAD,
+    BY_TYPE.filter((l) => l.slug !== "bedste-alkoholfri-hvidvin").slice(0, 3),
+  );
+}
 
 function cluster(exclude: string[], ...groups: GuideClusterLink[][]): GuideClusterLink[] {
   const seen = new Set<string>();
@@ -577,11 +621,93 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   "bedste-alkoholfri-hvidvin": alkoholfriBlock(
     ["bedste-alkoholfri-hvidvin"],
     "Alkoholfri vin — relaterede guider",
-    "Hvidvin er stærkest i 0 %-klassen. Se også bobler, rosé og overblikket.",
+    "Hvidvin er stærkest i 0 %-klassen. Dyk ned i druer, stil, mad og how-to.",
     [HUB],
+    HVIDVIN_DRUER,
+    HVIDVIN_STIL,
+    HVIDVIN_MAD.slice(0, 4),
     BY_TYPE,
-    OCCASION.slice(0, 3),
-    VIDEN.slice(0, 3),
+    OCCASION.slice(0, 2),
+  ),
+  "alkoholfri-riesling": hvidvinBlock(
+    ["alkoholfri-riesling"],
+    "Riesling 0 % — syre, sushi og de andre druer i klyngen.",
+  ),
+  "alkoholfri-sauvignon-blanc": hvidvinBlock(
+    ["alkoholfri-sauvignon-blanc"],
+    "Sauvignon 0 % — friskhed, salat og skaldyr side om side med riesling.",
+  ),
+  "alkoholfri-chardonnay": hvidvinBlock(
+    ["alkoholfri-chardonnay"],
+    "Chardonnay 0 % — fedme uden fadbombe, plus tørheds- og øko-guides.",
+  ),
+  "alkoholfri-pinot-grigio": hvidvinBlock(
+    ["alkoholfri-pinot-grigio"],
+    "Pinot grigio 0 % til hverdag — se også tør stil og sommermenu.",
+  ),
+  "alkoholfri-gewurztraminer-og-muscat": hvidvinBlock(
+    ["alkoholfri-gewurztraminer-og-muscat"],
+    "Aromatisk 0 % — muscat, sødme og asiatisk madparring.",
+  ),
+  "tor-alkoholfri-hvidvin": hvidvinBlock(
+    ["tor-alkoholfri-hvidvin"],
+    "Find knastør 0 %-hvid — og se hvad halvtør/sød egner sig til.",
+  ),
+  "halvtor-og-soed-alkoholfri-hvidvin": hvidvinBlock(
+    ["halvtor-og-soed-alkoholfri-hvidvin"],
+    "Sød og halvtør 0 % til velkomst — sammenlign med tør stil og muscat.",
+  ),
+  "alkoholfri-frizzante-hvidvin": hvidvinBlock(
+    ["alkoholfri-frizzante-hvidvin"],
+    "Perlende vs. mousserende 0 % — plus bobler og stille hvid.",
+  ),
+  "alkoholfri-hvidvin-med-fadlagring": hvidvinBlock(
+    ["alkoholfri-hvidvin-med-fadlagring"],
+    "Fad og 0 % — ærlige forventninger ved siden af chardonnay-guiden.",
+  ),
+  "okologisk-og-biodynamisk-alkoholfri-hvidvin": hvidvinBlock(
+    ["okologisk-og-biodynamisk-alkoholfri-hvidvin"],
+    "Øko 0 %-hvid — Noughty, certificering og smagsvalg i klyngen.",
+  ),
+  "alkoholfri-hvidvin-til-skaldyr-og-fisk": hvidvinBlock(
+    ["alkoholfri-hvidvin-til-skaldyr-og-fisk"],
+    "Fisk og skaldyr uden alkohol — sauvignon, riesling og madlavning.",
+  ),
+  "alkoholfri-hvidvin-til-asiatisk-mad": hvidvinBlock(
+    ["alkoholfri-hvidvin-til-asiatisk-mad"],
+    "Sushi og thai med 0 %-hvid — riesling, muscat og sødme-guides.",
+  ),
+  "alkoholfri-hvidvin-til-ost": hvidvinBlock(
+    ["alkoholfri-hvidvin-til-ost"],
+    "Ostebordet uden promille — match til milde og kraftige oste.",
+  ),
+  "alkoholfri-hvidvin-til-sommermenu": hvidvinBlock(
+    ["alkoholfri-hvidvin-til-sommermenu"],
+    "Salat og grillkylling — sommer 0 %-hvid og temperatur.",
+  ),
+  "holdbarhed-aabnet-alkoholfri-hvidvin": hvidvinBlock(
+    ["holdbarhed-aabnet-alkoholfri-hvidvin"],
+    "Åbnet 0 %-hvid i køleskabet — plus servering og madlavning.",
+  ),
+  "serveringstemperatur-alkoholfri-hvidvin": hvidvinBlock(
+    ["serveringstemperatur-alkoholfri-hvidvin"],
+    "Hvor kold skal 0 %-hvid være? Se også stil- og drueguides.",
+  ),
+  "hvordan-fjernes-alkohol-fra-hvidvin": hvidvinBlock(
+    ["hvordan-fjernes-alkohol-fra-hvidvin"],
+    "Vakuum og osmose forklaret — videre til smag og bedste flasker.",
+  ),
+  "kalorier-i-alkoholfri-hvidvin": hvidvinBlock(
+    ["kalorier-i-alkoholfri-hvidvin"],
+    "Sukker vs. alkohol i kcal — vælg tør stil og kendte mærker.",
+  ),
+  "alkoholfri-hvidvin-i-madlavning": hvidvinBlock(
+    ["alkoholfri-hvidvin-i-madlavning"],
+    "0 % i gryden til muslinger og risotto — plus tørheds-guide.",
+  ),
+  "alkoholfri-hvidvin-til-gravide": hvidvinBlock(
+    ["alkoholfri-hvidvin-til-gravide"],
+    "Under 0,5 % med fokus på etiket — se også produktion og kalorier.",
   ),
   "bedste-alkoholfri-bobler": alkoholfriBlock(
     ["bedste-alkoholfri-bobler"],

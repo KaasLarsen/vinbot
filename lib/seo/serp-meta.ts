@@ -47,6 +47,106 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rødvin 14–18 °C, hvidvin 8–12 °C, bobler 6–8 °C. Vintemperatur-guide med tabeller for rosé, riesling og port. Opbevaring af åbnet vin.",
   },
+  "alkoholfri-riesling": {
+    title: "Alkoholfri Riesling: syre og madparring",
+    description:
+      "Alkoholfri Riesling-guide: Leitz Eins-Zwei-Zero, citrus og mineral uden alkohol. Mad til sushi og thai. Server 8–10 °C.",
+  },
+  "alkoholfri-sauvignon-blanc": {
+    title: "Alkoholfri Sauvignon Blanc: Giesen og friskhed",
+    description:
+      "Alkoholfri Sauvignon Blanc med stikkelsbær og græs. Giesen 0 %, smagsnoter og mad til salat, fisk og terrasse.",
+  },
+  "alkoholfri-chardonnay": {
+    title: "Alkoholfri Chardonnay: fedme uden fadbombe",
+    description:
+      "Findes alkoholfri Chardonnay med fedme og fad? Noughty og ærlige forventninger — hvornår riesling stadig vinder.",
+  },
+  "alkoholfri-pinot-grigio": {
+    title: "Alkoholfri Pinot Grigio til hverdag",
+    description:
+      "Alkoholfri Pinot Grigio som uformel terrasse- og hverdagsvin. Tør stil, temperatur og hvornår sauvignon er bedre.",
+  },
+  "alkoholfri-gewurztraminer-og-muscat": {
+    title: "Alkoholfri Muscat og Gewürztraminer",
+    description:
+      "Oversete aromatiske 0 %-druer: Torres Natureo Muscat og gewürz-logik. Brunch, thai og velkomst uden alkohol.",
+  },
+  "tor-alkoholfri-hvidvin": {
+    title: "Tør alkoholfri hvidvin uden restsukker",
+    description:
+      "Sådan finder du knastør alkoholfri hvidvin: riesling, sauvignon, etiket-tips og hvorfor 0 % smager sødere.",
+  },
+  "halvtor-og-soed-alkoholfri-hvidvin": {
+    title: "Halvtør og sød alkoholfri hvidvin",
+    description:
+      "Halvtørre og søde 0 %-hvidvine til velkomst og dessert. Muscat, Asti-stil og hvornår sødme er en fordel.",
+  },
+  "alkoholfri-frizzante-hvidvin": {
+    title: "Frizzante vs. mousserende alkoholfri hvid",
+    description:
+      "Forskel på perlende (frizzante) og mousserende alkoholfri vin. Hvornår du vælger let perlage vs. fuld boble.",
+  },
+  "alkoholfri-hvidvin-med-fadlagring": {
+    title: "Alkoholfri hvidvin med fadlagring",
+    description:
+      "Smager fadlagret 0 %-hvid som traditionel vin? Ærlig guide til eg, vanilje og chardonnay uden alkohol.",
+  },
+  "okologisk-og-biodynamisk-alkoholfri-hvidvin": {
+    title: "Økologisk alkoholfri hvidvin",
+    description:
+      "Økologisk og biodynamisk alkoholfri hvidvin: Noughty, EU-logo og hvad certificering ikke lover om smag.",
+  },
+  "alkoholfri-hvidvin-til-skaldyr-og-fisk": {
+    title: "Alkoholfri hvidvin til fisk og skaldyr",
+    description:
+      "Alkoholfri hvidvin til rejer, muslinger og hvid fisk. Sauvignon, riesling og bobler 0 % — konkrete parringer.",
+  },
+  "alkoholfri-hvidvin-til-asiatisk-mad": {
+    title: "Alkoholfri hvidvin til sushi og thai",
+    description:
+      "Halvtør alkoholfri hvidvin til asiatisk mad: riesling og muscat 0 % der balancerer chili, soja og sødme.",
+  },
+  "alkoholfri-hvidvin-til-ost": {
+    title: "Alkoholfri hvidvin til ostebordet",
+    description:
+      "Ost uden alkohol: alkoholfri hvidvin til gedeost, brie, cheddar og blåskimmel. To stilarter dækker brættet.",
+  },
+  "alkoholfri-hvidvin-til-sommermenu": {
+    title: "Alkoholfri hvidvin til sommermenu",
+    description:
+      "Alkoholfri hvidvin til salat og grillkylling. Sauvignon, pinot grigio og temperatur-tips til terrassen.",
+  },
+  "holdbarhed-aabnet-alkoholfri-hvidvin": {
+    title: "Holdbarhed: åbnet alkoholfri hvidvin",
+    description:
+      "Hvor mange dage holder åbnet alkoholfri hvidvin i køleskabet? Typisk 3–5 dage — prop, oxidation og tips.",
+  },
+  "serveringstemperatur-alkoholfri-hvidvin": {
+    title: "Serveringstemperatur alkoholfri hvidvin",
+    description:
+      "Hvor kold skal alkoholfri hvidvin være? 7–10 °C for tør hvid, 6–8 °C for sød og sparkling. Tabel og tips.",
+  },
+  "hvordan-fjernes-alkohol-fra-hvidvin": {
+    title: "Hvordan fjernes alkohol fra hvidvin?",
+    description:
+      "Vakuumdestillation og omvendt osmose forklaret for alkoholfri hvidvin. Hvad metoderne betyder for smag og aroma.",
+  },
+  "kalorier-i-alkoholfri-hvidvin": {
+    title: "Kalorier i alkoholfri hvidvin",
+    description:
+      "Kalorier i alkoholfri hvidvin vs. almindelig: sukker vs. alkohol. Tabel pr. glas og flaske — læs etiketten.",
+  },
+  "alkoholfri-hvidvin-i-madlavning": {
+    title: "Alkoholfri hvidvin i madlavning",
+    description:
+      "Kan man bruge alkoholfri vin til muslinger, risotto og hvidvinssovs? Ja med fond og citron — undgå sød 0 %.",
+  },
+  "alkoholfri-hvidvin-til-gravide": {
+    title: "Alkoholfri hvidvin til gravide (≤0,5 %)",
+    description:
+      "Alkoholfri hvidvin under 0,5 % til gravide: ABV, ingrediensliste og tryghed. Ikke medicinsk rådgivning.",
+  },
   "bedste-alkoholfri-hvidvin": {
     title: "Alkoholfri hvidvin bedst i test 2026",
     description:

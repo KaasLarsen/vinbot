@@ -19,6 +19,7 @@ const VIDEN_SLUGS = new Set<string>([
   "mindful-drikke-low-no-alkohol",
   "smager-alkoholfri-vin-godt",
   "kalorier-i-alkoholfri-vin",
+  "kalorier-i-alkoholfri-hvidvin",
   "vin-tiktok-trends-spicy-sauvy-og-vineddike",
   "orangevin-for-begyndere",
   "vin-marketing-tricks-forbruger-guide",
@@ -36,6 +37,19 @@ const VIDEN_SLUGS = new Set<string>([
   "hvorfor-smager-papvin-anderledes",
   "kan-man-fryse-papvin",
   "papvin-5-liter",
+  "tor-alkoholfri-hvidvin",
+  "halvtor-og-soed-alkoholfri-hvidvin",
+  "alkoholfri-frizzante-hvidvin",
+  "alkoholfri-hvidvin-med-fadlagring",
+  "okologisk-og-biodynamisk-alkoholfri-hvidvin",
+  "holdbarhed-aabnet-alkoholfri-hvidvin",
+  "serveringstemperatur-alkoholfri-hvidvin",
+  "alkoholfri-hvidvin-til-gravide",
+  "alkoholfri-riesling",
+  "alkoholfri-sauvignon-blanc",
+  "alkoholfri-chardonnay",
+  "alkoholfri-pinot-grigio",
+  "alkoholfri-gewurztraminer-og-muscat",
 ]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */
@@ -45,6 +59,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "hverdags-bobler",
   "vin-til-asiatisk-takeaway-dumplings-sushi-ramen",
   "alkoholfri-bobler-til-nytaar",
+  "alkoholfri-hvidvin-i-madlavning",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */
@@ -67,6 +82,7 @@ const MAD_EXTRA_PREFIXES: readonly string[] = [
   "sangiovese-til-",
   "syrah-til-",
   "alkoholfri-vin-til-",
+  "alkoholfri-hvidvin-til-",
 ];
 
 /** Slugs som bevist hører til "andre" (vin i praksis, opbevaring, stemning etc.). */

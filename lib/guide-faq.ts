@@ -4391,6 +4391,346 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Helt samme tyngde som rigtig rød får du ikke — men Torres Natureo Red og Vintense Zero Cabernet er blandt de mest fyldige bredt tilgængelige valg til flæsk og mørk sauce; Leitz Pinot Noir 0 % til and på krydderi. Suppler med alkoholfri bobler mellem bidderne; se alkoholfri vin til jul.",
     },
   ],
+  "alkoholfri-riesling": [
+    {
+      question: "Hvilken alkoholfri riesling er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Riesling er kategoriens reference i Danmark — citrus, æble og mineralsk syre uden saft-præg. Typisk 75–110 kr.",
+    },
+    {
+      question: "Passer alkoholfri riesling til sushi?",
+      answer:
+        "Ja. Syren renser fed fisk og soja. Server 8–10 °C. Se også guiden om alkoholfri hvidvin til asiatisk mad.",
+    },
+    {
+      question: "Er alkoholfri riesling tør?",
+      answer:
+        "Leitz-stilen smager tørt for de fleste, men tjek kulhydrat/sukker på etiketten — 0 % fremhæver restsødme mere end almindelig vin.",
+    },
+  ],
+  "alkoholfri-sauvignon-blanc": [
+    {
+      question: "Hvilken alkoholfri sauvignon blanc er bedst?",
+      answer:
+        "Giesen 0 % Sauvignon Blanc fra Marlborough leverer stikkelsbær og græs. Leitz Sauvignon Blanc 0 % er et godt tysk alternativ.",
+    },
+    {
+      question: "Hvad smager alkoholfri sauvignon af?",
+      answer:
+        "Lime, stikkelsbær, grønt græs og høj syre — samme signaler som alkoholisk NZ-sauvignon, bare uden alkoholens varme.",
+    },
+    {
+      question: "Passer den til salat og gedeost?",
+      answer:
+        "Ja — det er en af de sikreste 0 %-parringer. Hold glasset koldt (7–9 °C).",
+    },
+  ],
+  "alkoholfri-chardonnay": [
+    {
+      question: "Findes der alkoholfri chardonnay med fad?",
+      answer:
+        "Kun i let udgave. Noughty Chardonnay har mild cremet rundhed, men ikke klassisk Meursault-fad. Ægte toast/vanilje kræver alkoholens krop.",
+    },
+    {
+      question: "Hvornår skal jeg vælge chardonnay 0 % frem for riesling?",
+      answer:
+        "Til cremede saucer, kyllingesalat og milde oste. Til fisk med citron og sushi: vælg riesling eller sauvignon.",
+    },
+    {
+      question: "Er Noughty Chardonnay økologisk?",
+      answer:
+        "Ja — Noughty er blandt de clearest øko-certificerede 0 %-hvide i Danmark.",
+    },
+  ],
+  "alkoholfri-pinot-grigio": [
+    {
+      question: "Er alkoholfri pinot grigio god hverdagsvin?",
+      answer:
+        "Ja til terrasse og uformelt selskab. Den er neutral og nem — men riesling/sauvignon vinder til sushi, thai og muslinger.",
+    },
+    {
+      question: "Skal pinot grigio 0 % være tør?",
+      answer:
+        "Helst ja. Uden alkohol tipper sødme hurtigt over i saft. Kig efter tør stil og kendt producent.",
+    },
+    {
+      question: "Hvilken temperatur?",
+      answer:
+        "8–10 °C. For varm bliver den kedelig og sød.",
+    },
+  ],
+  "alkoholfri-gewurztraminer-og-muscat": [
+    {
+      question: "Hvilken alkoholfri muscat skal jeg købe?",
+      answer:
+        "Torres Natureo Muscat er det mest synlige valg i DK — aromatisk, let sød, god til brunch og mild asiatisk mad.",
+    },
+    {
+      question: "Findes alkoholfri gewürztraminer?",
+      answer:
+        "Sjældent i Danmark. Samme logik som muscat: aroma og krydderi, ofte mere sødme end riesling.",
+    },
+    {
+      question: "Hvornår vælger jeg muscat frem for riesling?",
+      answer:
+        "Når du vil have blomster/aroma og mild sødme — velkomst, dessert-agtige snacks eller stærk thai. Til knastør fisk: riesling/sauvignon.",
+    },
+  ],
+  "tor-alkoholfri-hvidvin": [
+    {
+      question: "Hvordan finder jeg en helt tør alkoholfri hvidvin?",
+      answer:
+        "Vælg riesling eller sauvignon fra Leitz/Giesen, tjek kulhydrat på etiketten, og undgå muscat/«sweet». Syre skal bære smagen.",
+    },
+    {
+      question: "Hvorfor smager alkoholfri vin sødere?",
+      answer:
+        "Alkoholen maskerer ikke længere sukkeret, og producenter tilsætter ofte sødme for krop. Samme gram sukker smager sødere i 0 %.",
+    },
+    {
+      question: "Er Leitz Riesling tør?",
+      answer:
+        "For de fleste ja — høj syre giver tørt indtryk. Læs stadig næringsdeklarationen hvis du er sukkerfølsom.",
+    },
+  ],
+  "halvtor-og-soed-alkoholfri-hvidvin": [
+    {
+      question: "Hvornår er sød alkoholfri hvidvin god?",
+      answer:
+        "Til velkomst, brunch, dessert og stærk asiatisk mad. Ikke som erstatning for tør hvid til salt fisk.",
+    },
+    {
+      question: "Hvilken flaske til velkomst uden alkohol?",
+      answer:
+        "Torres Natureo Muscat eller alkoholfri Asti/bobler. Server kold (6–8 °C).",
+    },
+    {
+      question: "Har sød 0 % flere kalorier?",
+      answer:
+        "Ofte ja — når alkoholen er væk, er sukker den primære kcal-kilde.",
+    },
+  ],
+  "alkoholfri-frizzante-hvidvin": [
+    {
+      question: "Hvad er forskellen på frizzante og mousserende alkoholfri vin?",
+      answer:
+        "Frizzante har let perlage; mousserende/sparkling har fuld boble til skål og fest. Begge findes som 0 %.",
+    },
+    {
+      question: "Hvornår vælger jeg frizzante?",
+      answer:
+        "Til mad og uformel terrasse. Til nytår, brunch-toast og skål: vælg sparkling.",
+    },
+    {
+      question: "Kan jeg servere frizzante i hvidvinsglas?",
+      answer:
+        "Ja. Sparkling fortjener flûte eller universalglas hvis du vil beholde boblerne længere.",
+    },
+  ],
+  "alkoholfri-hvidvin-med-fadlagring": [
+    {
+      question: "Smager fadlagret alkoholfri hvidvin som traditionel?",
+      answer:
+        "Nej — højst en antydning af rundhed. Toast, vanilje og viskositet kræver typisk alkohol.",
+    },
+    {
+      question: "Findes der oaked alkoholfri chardonnay?",
+      answer:
+        "I mild form (fx Noughty). Forvent ikke Meursault. Køb til cremet mundfølelse, ikke eg-show.",
+    },
+    {
+      question: "Skal fad-agtig 0 % serveres varmere?",
+      answer:
+        "Lidt — 10–12 °C kan fremhæve rundhed. For kold slår aroma ihjel.",
+    },
+  ],
+  "okologisk-og-biodynamisk-alkoholfri-hvidvin": [
+    {
+      question: "Findes økologisk alkoholfri hvidvin?",
+      answer:
+        "Ja. Noughty er et klart øko-eksempel i Danmark. Kig efter EU-øko-blad.",
+    },
+    {
+      question: "Findes biodynamisk alkoholfri vin?",
+      answer:
+        "Meget sjældent. De fleste biodynamiske huse laver klassisk vin, ikke 0 %.",
+    },
+    {
+      question: "Er øko automatisk bedre smag?",
+      answer:
+        "Nej. Øko er certificering. Smag stadig mod Leitz/Giesen hvis du vil have mest vin-karakter.",
+    },
+  ],
+  "alkoholfri-hvidvin-til-skaldyr-og-fisk": [
+    {
+      question: "Hvilken alkoholfri hvidvin til rejer og muslinger?",
+      answer:
+        "Tør sauvignon blanc 0 % (Giesen) eller riesling 0 % (Leitz). Syre og citrus skærer sødmen i skaldyr.",
+    },
+    {
+      question: "Hvad med laks?",
+      answer:
+        "Riesling 0 % eller let sparkling 0 %. Undgå sød muscat til fed fisk.",
+    },
+    {
+      question: "Kan jeg koge muslinger i alkoholfri vin?",
+      answer:
+        "Ja — brug tør 0 % og smag til med citron eller fond. Se guiden om alkoholfri hvidvin i madlavning.",
+    },
+  ],
+  "alkoholfri-hvidvin-til-asiatisk-mad": [
+    {
+      question: "Hvilken alkoholfri hvidvin til sushi?",
+      answer:
+        "Leitz Riesling 0 % eller Giesen Sauvignon Blanc 0 %. Syre renser soja og fed fisk.",
+    },
+    {
+      question: "Hvorfor halvtør til thaimad?",
+      answer:
+        "Lidt restsødme + syre dæmper chili bedre end knastør vin — også uden alkohol.",
+    },
+    {
+      question: "Muscat eller riesling til curry?",
+      answer:
+        "Riesling først; muscat hvis retten er sød/stærk og du vil have mere aroma.",
+    },
+  ],
+  "alkoholfri-hvidvin-til-ost": [
+    {
+      question: "Hvilken alkoholfri hvidvin til gedeost?",
+      answer:
+        "Tør sauvignon blanc 0 %. Syre matcher syre.",
+    },
+    {
+      question: "Hvad til brie uden alkohol?",
+      answer:
+        "Mild chardonnay 0 % (fx Noughty) eller tør riesling. Undgå kraftig sødme.",
+    },
+    {
+      question: "Virker 0 % til blåskimmel?",
+      answer:
+        "Bedst med halvtør/sød muscat. Klassisk port-logik er svær at kopiere uden alkohol.",
+    },
+  ],
+  "alkoholfri-hvidvin-til-sommermenu": [
+    {
+      question: "Hvilken alkoholfri hvidvin til salat?",
+      answer:
+        "Giesen Sauvignon Blanc 0 % — grøn, syrlig, kold.",
+    },
+    {
+      question: "Hvad til grillkylling?",
+      answer:
+        "Sauvignon med citron/urter; riesling hvis marinaden er sød. Pinot grigio 0 % til uformelt havebord.",
+    },
+    {
+      question: "Hvordan holder jeg den kold udendørs?",
+      answer:
+        "Isvand, små skænk, skygge. Sigte efter 7–9 °C.",
+    },
+  ],
+  "holdbarhed-aabnet-alkoholfri-hvidvin": [
+    {
+      question: "Hvor længe holder åbnet alkoholfri hvidvin?",
+      answer:
+        "Typisk 3–5 dage i køleskab med prop. Sparkling 0 %: 1–2 dage.",
+    },
+    {
+      question: "Holder den kortere end almindelig hvidvin?",
+      answer:
+        "Ofte ja — uden alkohol er der mindre «konservering». Lugt og smag før du skænker dag 4–5.",
+    },
+    {
+      question: "Kan jeg bruge gammel 0 %-hvid til madlavning?",
+      answer:
+        "Hvis den lugter rent: ja til sovs. Eddike/mug: kasser.",
+    },
+  ],
+  "serveringstemperatur-alkoholfri-hvidvin": [
+    {
+      question: "Hvor kold skal alkoholfri hvidvin være?",
+      answer:
+        "Typisk 7–10 °C. Tør riesling/sauvignon i den kolde ende; chardonnay-stil lidt varmere.",
+    },
+    {
+      question: "Hvorfor smager den af saft når den er varm?",
+      answer:
+        "Varme fremhæver sødme og slår syrens bid ihjel. Køl ned i isvand.",
+    },
+    {
+      question: "Hvad med sparkling 0 %?",
+      answer:
+        "6–8 °C — iskold gennem aftenen i isbalje.",
+    },
+  ],
+  "hvordan-fjernes-alkohol-fra-hvidvin": [
+    {
+      question: "Hvordan fjernes alkoholen fra hvidvin?",
+      answer:
+        "Primært vakuumdestillation eller omvendt osmose efter at vinen er gæret færdig. Aroma kan føres tilbage.",
+    },
+    {
+      question: "Hvilken metode er bedst?",
+      answer:
+        "Kvaliteten af basisvinen og processen betyder mere end metode-navnet. Smag flasken.",
+    },
+    {
+      question: "Bliver hvidvin ødelagt af dealkoholisering?",
+      answer:
+        "Ikke nødvendigvis — syrerige druer som riesling og sauvignon klarer det bedst.",
+    },
+  ],
+  "kalorier-i-alkoholfri-hvidvin": [
+    {
+      question: "Hvor mange kalorier er der i alkoholfri hvidvin?",
+      answer:
+        "Ofte 15–25 kcal pr. 100 ml vs. 70–85 i almindelig hvid — ca. en tredjedel, hvis sukkeret er lavt.",
+    },
+    {
+      question: "Hvorfor kan sød 0 % have flere kalorier?",
+      answer:
+        "Når alkoholen er væk, er sukker den vigtigste kcal-kilde. Tjek kulhydrat på etiketten.",
+    },
+    {
+      question: "Hvilken 0 %-hvid er lavest i kalorier?",
+      answer:
+        "Tørre stilarter og mærker som Noughty der kommunikerer lav kcal. Undgå dessert-søde cuvéer.",
+    },
+  ],
+  "alkoholfri-hvidvin-i-madlavning": [
+    {
+      question: "Kan man lave risotto med alkoholfri hvidvin?",
+      answer:
+        "Ja. Brug tør 0 % og vær generøs med fond — dybden bliver lettere end med 12 % vin.",
+    },
+    {
+      question: "Virker 0 % til muslinger?",
+      answer:
+        "Ja med tør sauvignon/riesling 0 %. Smag til med citron.",
+    },
+    {
+      question: "Kan man flambere med alkoholfri vin?",
+      answer:
+        "Nej — flambering kræver alkohol. Brug 0 % til deglacering og simring i stedet.",
+    },
+  ],
+  "alkoholfri-hvidvin-til-gravide": [
+    {
+      question: "Må gravide drikke alkoholfri hvidvin?",
+      answer:
+        "Mange vælger max 0,5 % eller 0,0 % som alternativ. Sundhedsstyrelsen anbefaler at undgå alkohol — spørg jordemoder/læge. Vinbot giver ikke medicinsk rådgivning.",
+    },
+    {
+      question: "Hvad skal jeg tjekke på etiketten?",
+      answer:
+        "ABV (0,0 vs 0,5), sulfit, sukker/kulhydrat og eventuel ingrediensliste via QR.",
+    },
+    {
+      question: "Hvilke mærker er tydeligt mærket?",
+      answer:
+        "Leitz Eins-Zwei-Zero, Giesen 0 % og Noughty har klar non-alcoholic kommunikation i danske butikker.",
+    },
+  ],
   "bedste-alkoholfri-hvidvin": [
     {
       question: "Hvilken alkoholfri hvidvin er bedst?",

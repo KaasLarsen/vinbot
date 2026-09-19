@@ -257,6 +257,44 @@ export function deriveGuideIntent(
     };
   }
 
+  if (
+    slug === "alkoholfri-riesling" ||
+    slug === "alkoholfri-sauvignon-blanc" ||
+    slug === "alkoholfri-chardonnay" ||
+    slug === "alkoholfri-pinot-grigio" ||
+    slug === "alkoholfri-gewurztraminer-og-muscat" ||
+    slug === "tor-alkoholfri-hvidvin" ||
+    slug === "halvtor-og-soed-alkoholfri-hvidvin" ||
+    slug === "alkoholfri-frizzante-hvidvin" ||
+    slug === "alkoholfri-hvidvin-med-fadlagring" ||
+    slug === "okologisk-og-biodynamisk-alkoholfri-hvidvin" ||
+    slug === "alkoholfri-hvidvin-til-skaldyr-og-fisk" ||
+    slug === "alkoholfri-hvidvin-til-asiatisk-mad" ||
+    slug === "alkoholfri-hvidvin-til-ost" ||
+    slug === "alkoholfri-hvidvin-til-sommermenu" ||
+    slug === "holdbarhed-aabnet-alkoholfri-hvidvin" ||
+    slug === "serveringstemperatur-alkoholfri-hvidvin" ||
+    slug === "hvordan-fjernes-alkohol-fra-hvidvin" ||
+    slug === "kalorier-i-alkoholfri-hvidvin" ||
+    slug === "alkoholfri-hvidvin-i-madlavning" ||
+    slug === "alkoholfri-hvidvin-til-gravide"
+  ) {
+    const grapeHints: Record<string, string> = {
+      "alkoholfri-riesling": "alkoholfri riesling leitz 0%",
+      "alkoholfri-sauvignon-blanc": "alkoholfri sauvignon blanc giesen 0%",
+      "alkoholfri-chardonnay": "alkoholfri chardonnay noughty 0%",
+      "alkoholfri-pinot-grigio": "alkoholfri pinot grigio 0%",
+      "alkoholfri-gewurztraminer-og-muscat": "alkoholfri muscat torres natureo",
+      "alkoholfri-frizzante-hvidvin": "alkoholfri sparkling bobler 0%",
+      "okologisk-og-biodynamisk-alkoholfri-hvidvin": "oekologisk alkoholfri noughty 0%",
+    };
+    return {
+      q: grapeHints[slug] || "alkoholfri hvidvin 0% leitz giesen",
+      max: null,
+      label: "alkoholfri hvidvin",
+    };
+  }
+
   if (slug === "hvad-er-hedvin" || slug === "hedvin-alkoholprocent") {
     return {
       q: "hedvin portvin sherry madeira",
