@@ -83,6 +83,12 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   if (/påske|paaske/i.test(t)) out.push("vin-til-paaske");
   if (/jule|jul/i.test(t)) out.push("vin-til-julefrokost");
   if (/ost|cheese|brie|parmesan/i.test(t)) out.push("vin-til-ost-og-ostebord");
+  if (/gammel.?knas/i.test(t)) out.push("vin-til-gammel-knas");
+  if (/vesterhavs/i.test(t)) out.push("vin-til-vesterhavsost");
+  if (/ostebord/i.test(t)) out.push("vin-til-hele-ostebordet", "vin-til-supermarkedets-ostebord");
+  if (/rødvin.*ost|ost.*rødvin|rodvin.*ost|ost.*rodvin/i.test(t)) {
+    out.push("hvorfor-smager-rodvin-grimt-til-ost");
+  }
   if (/piemonte|piemont|langhe|barolo|barbaresco/i.test(t)) {
     out.push("nebbiolo-druen", "nebbiolo-fra-barolo", "vinregion-piemonte");
   }

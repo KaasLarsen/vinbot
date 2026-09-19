@@ -60,6 +60,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "vin-til-asiatisk-takeaway-dumplings-sushi-ramen",
   "alkoholfri-bobler-til-nytaar",
   "alkoholfri-hvidvin-i-madlavning",
+  "hvorfor-smager-rodvin-grimt-til-ost",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */

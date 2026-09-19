@@ -133,6 +133,47 @@ export const FOOD_PICKER_DISHES: FoodPickerDish[] = [
     guideSlug: "vin-til-vegetar",
     matchSlugs: ["vin-til-vegetar", "vin-til-vegetar-og-gront"],
   },
+  {
+    id: "brie",
+    label: "Brie",
+    emoji: "🧀",
+    searchQuery: "cava cremant chablis pinot noir",
+    fallbackStyle: "Cava, crémant eller let pinot noir",
+    guideSlug: "vin-til-brie-og-camembert",
+    matchSlugs: ["vin-til-brie-og-camembert"],
+  },
+  {
+    id: "vesterhavsost",
+    label: "Vesterhavsost / Gammel Knas",
+    emoji: "🧀",
+    searchQuery: "amontillado sherry rioja tawny portvin",
+    fallbackStyle: "Amontillado, rioja reserva eller tawny",
+    guideSlug: "vin-til-vesterhavsost",
+    matchSlugs: ["vin-til-vesterhavsost", "vin-til-gammel-knas", "vin-til-hard-ost"],
+  },
+  {
+    id: "blaaskimmel",
+    label: "Blåskimmel",
+    emoji: "🧀",
+    searchQuery: "tawny portvin LBV sauternes",
+    fallbackStyle: "Tawny, LBV-port eller Sauternes",
+    guideSlug: "vin-til-blaaskimmelost",
+    matchSlugs: ["vin-til-blaaskimmelost", "portvin-til-ost"],
+  },
+  {
+    id: "ostebord",
+    label: "Hele ostebordet",
+    emoji: "🧀",
+    searchQuery: "riesling tawny portvin beaujolais",
+    fallbackStyle: "Off-dry riesling, tawny eller cru Beaujolais",
+    guideSlug: "vin-til-hele-ostebordet",
+    matchSlugs: [
+      "vin-til-hele-ostebordet",
+      "vin-til-ost-og-ostebord",
+      "vin-til-supermarkedets-ostebord",
+      "hvorfor-smager-rodvin-grimt-til-ost",
+    ],
+  },
 ];
 
 export function getFoodPickerDish(id: string | null | undefined): FoodPickerDish | null {

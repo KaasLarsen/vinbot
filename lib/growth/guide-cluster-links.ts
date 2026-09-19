@@ -257,6 +257,18 @@ const MAD_DANSK: GuideClusterLink[] = [
   { slug: "vin-til-tarteletter", label: "Vin til tarteletter" },
 ];
 
+const MAD_OST: GuideClusterLink[] = [
+  { slug: "vin-til-ost-og-ostebord", label: "Vin til ost og ostebord" },
+  { slug: "vin-til-gammel-knas", label: "Vin til Gammel Knas" },
+  { slug: "vin-til-vesterhavsost", label: "Vin til Vesterhavsost" },
+  { slug: "vin-til-hele-ostebordet", label: "Én vin til hele ostebordet" },
+  { slug: "vin-til-supermarkedets-ostebord", label: "Supermarkedets ostebord" },
+  { slug: "hvorfor-smager-rodvin-grimt-til-ost", label: "Hvorfor rødvin smager grimt til ost" },
+  { slug: "vin-til-hard-ost", label: "Vin til hård ost" },
+  { slug: "vin-til-brie-og-camembert", label: "Vin til brie" },
+  { slug: "vin-til-blaaskimmelost", label: "Vin til blåskimmel" },
+];
+
 const MAD_SAESON: GuideClusterLink[] = [
   { slug: "vin-til-julemad-den-store-guide", label: "Vin til julemad" },
   { slug: "vin-til-nytaar-og-nytaarsmenu", label: "Vin til nytår" },
@@ -948,8 +960,58 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     MAD_KOED,
     MAD_DANSK,
     MAD_SAESON,
-    [{ slug: "vin-til-ost-og-ostebord", label: "Vin til ostebord" }],
+    MAD_OST,
     [{ slug: "vin-til-asiatisk-mad", label: "Vin til asiatisk mad" }],
+  ),
+  "vin-til-ost-og-ostebord": madBlock(
+    ["vin-til-ost-og-ostebord"],
+    "Ost og ostebord — relaterede guider",
+    "Danske oste, supermarkedskurv og én flaske til hele brættet.",
+    [MAD_HUB],
+    MAD_OST,
+  ),
+  "vin-til-gammel-knas": madBlock(
+    ["vin-til-gammel-knas"],
+    "Ost og ostebord — relaterede guider",
+    "Gammel Knas ved siden af Vesterhavsost, hård ost og kompromis-vinen.",
+    [MAD_HUB],
+    MAD_OST,
+  ),
+  "vin-til-vesterhavsost": madBlock(
+    ["vin-til-vesterhavsost"],
+    "Ost og ostebord — relaterede guider",
+    "Vesterhavsost, Gammel Knas og sherry til lagret dansk ost.",
+    [MAD_HUB],
+    MAD_OST,
+  ),
+  "vin-til-hele-ostebordet": madBlock(
+    ["vin-til-hele-ostebordet"],
+    "Ost og ostebord — relaterede guider",
+    "Én flaske til brættet — plus de danske ostesider.",
+    [MAD_HUB],
+    MAD_OST,
+  ),
+  "vin-til-supermarkedets-ostebord": madBlock(
+    ["vin-til-supermarkedets-ostebord"],
+    "Ost og ostebord — relaterede guider",
+    "Castello, brie og danablu fra køledisken — og vin du kan søge live.",
+    [MAD_HUB],
+    MAD_OST,
+    [SUPERMARKED_PILLAR],
+  ),
+  "hvorfor-smager-rodvin-grimt-til-ost": madBlock(
+    ["hvorfor-smager-rodvin-grimt-til-ost"],
+    "Ost og ostebord — relaterede guider",
+    "Tannin vs. ost — og flasker der faktisk virker.",
+    [MAD_HUB],
+    MAD_OST,
+  ),
+  "vin-til-hard-ost": madBlock(
+    ["vin-til-hard-ost"],
+    "Ost og ostebord — relaterede guider",
+    "Comté-logik plus danske hårde oste.",
+    [MAD_HUB],
+    MAD_OST,
   ),
   "vin-til-fisk-og-skaldyr": madBlock(
     ["vin-til-fisk-og-skaldyr"],

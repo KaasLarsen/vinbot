@@ -1594,7 +1594,92 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvad er god vin til dansk ostebord?",
       answer:
-        "Cava eller crémant til første oste, albariño eller sauvignon til mild ost, rioja reserva eller sherry til Vesterhavsost og lagret ost, og LBV-port eller sød hvid til danablu.",
+        "Cava eller crémant til første oste, albariño eller sauvignon til mild ost, rioja reserva eller sherry til Vesterhavsost og lagret ost, og LBV-port eller sød hvid til danablu. Danske navne: se vin til Gammel Knas og vin til Vesterhavsost. Én flaske: vin til hele ostebordet.",
+    },
+  ],
+  "vin-til-gammel-knas": [
+    {
+      question: "Hvilken vin passer til Gammel Knas?",
+      answer:
+        "Tawny port eller LBV er det sikre valg. Off-dry riesling eller fadlagret chardonnay, hvis du vil have hvid. Til rød: cru Beaujolais eller pinot — ikke ung cabernet. Osten er salt-sød og krystallinsk; hård tannin smager bittert.",
+    },
+    {
+      question: "Skal Gammel Knas have port eller rødvin?",
+      answer:
+        "Port (tawny 10 eller LBV) matcher salt og karamel bedst. Rødvin virker kun som gamay eller pinot, serveret kølig. Kraftig ung rød er det hyppigste fejlvalg.",
+    },
+    {
+      question: "Er Gammel Knas det samme som Vesterhavsost til vin?",
+      answer:
+        "Samme familie (lagret dansk hård ost), men Gammel Knas er oftere sødere og mere karamel. Vesterhavsost tåler tørrere amontillado. Begge har egne korte guides.",
+    },
+  ],
+  "vin-til-vesterhavsost": [
+    {
+      question: "Hvilken vin passer til Vesterhavsost?",
+      answer:
+        "Amontillado sherry eller rioja reserva er klassikeren. Moden chardonnay som hvid. Pinot eller gamay som rød. Undgå ung cabernet. Osten minder om comté, men du behøver ikke vin jaune.",
+    },
+    {
+      question: "Kan man drikke rødvin til Vesterhavsost?",
+      answer:
+        "Ja, hvis den er blød: rioja reserva, pinot noir eller chianti classico med luft. Køl til 14–16 °C. Ung tannin-rød smager ofte metallisk til den salte ost.",
+    },
+    {
+      question: "Hvilken vin til Vesterhavsost og brie på samme bræt?",
+      answer:
+        "Vælg én kompromis-flaske — off-dry riesling eller tawny — i stedet for at matche hver ost. Se guiden vin til hele ostebordet.",
+    },
+  ],
+  "vin-til-hele-ostebordet": [
+    {
+      question: "Hvilken vin passer til hele ostebordet?",
+      answer:
+        "Off-dry riesling (kabinett/spätlese) er det mest alsidige ét-flaske-valg. Tawny port hvis der er blåskimmel. Cru Beaujolais hvis det skal være rød. Tre flasker er bedre, men de fleste vil kun åbne én.",
+    },
+    {
+      question: "Kan én rødvin dække ostebordet?",
+      answer:
+        "Kun saftig gamay eller pinot, serveret kølig. Cabernet og ung bordeaux rammer sjældent brie og danablu samtidig.",
+    },
+    {
+      question: "Hvad er forskellen på én flaske og tre flasker til ost?",
+      answer:
+        "Tre flasker (bobler, sherry, port) matcher typerne bedre. Én flaske er kompromis, så gæsterne ikke skifter vin mellem skiver. Hubben vin til ost og ostebord dækker tre-flaske-planen.",
+    },
+  ],
+  "hvorfor-smager-rodvin-grimt-til-ost": [
+    {
+      question: "Hvorfor smager rødvin grimt til ost?",
+      answer:
+        "Ung tannin møder ostens salt og protein og smager tørt, metallisk og bittert. Det er garvesyre, ikke «at rødvin og ost ikke kan». Skift til pinot, gamay, sherry, riesling eller port.",
+    },
+    {
+      question: "Hvilken rødvin kan man drikke til ost?",
+      answer:
+        "Pinot noir og cru Beaujolais med lav tannin, gerne afkølet. Moden rioja reserva til hård ost. Undgå ung cabernet, malbec og billig «kraftig rød».",
+    },
+    {
+      question: "Hvad gør jeg, hvis rødvinen allerede er åbnet til ostebordet?",
+      answer:
+        "Køl flasken 20 minutter. Smager den stadig skarpt, åbn cava eller riesling til osten og gem røden til kød.",
+    },
+  ],
+  "vin-til-supermarkedets-ostebord": [
+    {
+      question: "Hvilken vin til ostebord fra Netto og Rema?",
+      answer:
+        "Cava eller crémant til brie og Castello hvidskimmel, riesling eller let pinot til gouda og danbo, tawny til danablu. Én flaske til blandet kurv: off-dry riesling. Søg stilene på Vinbot — vi tracker vin, ikke ostepriser.",
+    },
+    {
+      question: "Hvilken vin til Castello og færdigskåret gouda?",
+      answer:
+        "Castello-brie: bobler. Færdigskåret gouda: riesling eller mild pinot. Kraftig reserva-rød er overkill til mild skæreost.",
+    },
+    {
+      question: "Kan jeg købe både ost og vin i supermarkedet?",
+      answer:
+        "Ja — kig efter cava brut, tysk riesling og tawny hvis kæden har det. Ellers køb osten i butikken og find samme vinstil hos online-forhandlere via Vinbot.",
     },
   ],
   "vin-til-pizza": [

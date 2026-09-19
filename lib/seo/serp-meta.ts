@@ -172,6 +172,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hvilken vin til ost? Bobler til mild ost, sherry til lagrede, port til blåskimmel. Ostebord og julefrokost — tre flasker der dækker brættet.",
   },
+  "vin-til-gammel-knas": {
+    title: "Hvilken vin passer til Gammel Knas?",
+    description:
+      "Vin til Gammel Knas: tawny, off-dry riesling eller saftig rød. Hvorfor ung cabernet skærer — kort dansk svar.",
+  },
+  "vin-til-vesterhavsost": {
+    title: "Hvilken vin passer til Vesterhavsost?",
+    description:
+      "Vin til Vesterhavsost: amontillado, rioja og pinot. Comté-analogi uden vin jaune-tvang — konkret dansk guide.",
+  },
+  "vin-til-hele-ostebordet": {
+    title: "Hvilken vin passer til hele ostebordet?",
+    description:
+      "Én flaske til ostebordet: riesling med restsødme, tawny eller cru Beaujolais. Kompromis når du ikke vil købe fire vine.",
+  },
+  "hvorfor-smager-rodvin-grimt-til-ost": {
+    title: "Hvorfor smager rødvin grimt til ost?",
+    description:
+      "Tannin møder salt ost og smager bittert. Hvornår pinot og gamay virker — og hvad du skal skifte til i aften.",
+  },
+  "vin-til-supermarkedets-ostebord": {
+    title: "Vin til supermarkedets ostebord",
+    description:
+      "Vin til Castello, brie og gouda fra Rema og Netto. Søg cava, riesling og tawny live på Vinbot.",
+  },
   "vin-til-laks": {
     title: "Vin til laks og grillet laks",
     description:

@@ -189,7 +189,7 @@ export default async function GuidePage({ params }: Props) {
       <div className="prose prose-stone mt-8 max-w-none">
         {content}
       </div>
-      {slug.startsWith("vin-til-") ? (
+      {slug.startsWith("vin-til-") || slug === "hvorfor-smager-rodvin-grimt-til-ost" ? (
         <FoodWinePicker
           className="mt-10 border-t border-stone-200 pt-8"
           heading="Tre flasker til retten"

@@ -294,6 +294,11 @@ export default function MadOgVinHubPage() {
         </p>
         <div className="mt-4 grid gap-x-6 gap-y-2 text-sm text-rose-900 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="/guides/vin-til-ost-og-ostebord" className="hover:underline">Generel ost og ostebord</Link>
+          <Link href="/guides/vin-til-gammel-knas" className="hover:underline">Gammel Knas</Link>
+          <Link href="/guides/vin-til-vesterhavsost" className="hover:underline">Vesterhavsost</Link>
+          <Link href="/guides/vin-til-hele-ostebordet" className="hover:underline">Én vin til hele ostebordet</Link>
+          <Link href="/guides/vin-til-supermarkedets-ostebord" className="hover:underline">Supermarkedets ostebord</Link>
+          <Link href="/guides/hvorfor-smager-rodvin-grimt-til-ost" className="hover:underline">Hvorfor rødvin smager grimt til ost</Link>
           <Link href="/guides/vin-til-blaaskimmelost" className="hover:underline">Blåskimmelost</Link>
           <Link href="/guides/vin-til-brie-og-camembert" className="hover:underline">Brie og camembert</Link>
           <Link href="/guides/vin-til-hard-ost" className="hover:underline">Hård ost (comté, gruyère)</Link>

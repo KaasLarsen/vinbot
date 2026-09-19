@@ -176,6 +176,14 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "hvorfor-smager-rodvin-grimt-til-ost") {
+    return {
+      q: "pinot noir beaujolais tawny portvin",
+      max: null,
+      label: "vin til ost",
+    };
+  }
+
   if (slug === "alkoholfri-bobler-til-nytaar") {
     return {
       q: "alkoholfri bobler 0% leitz noughty",
