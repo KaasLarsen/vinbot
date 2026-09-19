@@ -35,6 +35,7 @@ const VIDEN_SLUGS = new Set<string>([
   "papvin-myter-hovedpine",
   "hvorfor-smager-papvin-anderledes",
   "kan-man-fryse-papvin",
+  "papvin-5-liter",
 ]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */

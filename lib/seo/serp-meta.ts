@@ -643,6 +643,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "3 L papvin i Tyskland: Fleggaard, Calle m.fl. Sammenlign literpris med DK, pak køligt, tjek regler til eget brug.",
   },
+  "papvin-bedst-i-test": {
+    title: "Papvin bedst i test: sammenlign live",
+    description:
+      "Bag-in-box bedst i test? Ingen fake lab-vinder. Dato, kr/L og tør stil — plus aktuelle papvine hos danske forhandlere.",
+  },
+  "bedste-rod-papvin": {
+    title: "Bedste rød papvin: 3 L til hverdag",
+    description:
+      "Bedste rødvin på boks: tør tempranillo, primitivo og grenache. Live bag-in-box rød i Danmark — ikke en evig testvinder.",
+  },
+  "bedste-hvid-papvin": {
+    title: "Bedste hvid papvin: tør 3 L-boks",
+    description:
+      "Bedste hvidvin på boks: verdejo, pinot grigio og tør cuvée. Temperatur, dato og aktuelle hvid bag-in-box i DK.",
+  },
+  "papvin-tilbud": {
+    title: "Papvin tilbud: 3 L kampagner i DK",
+    description:
+      "Papvin på tilbud: sammenlign live priser, gennemskue før-pris og literpris. Uden opdigtet ugeavis — danske feeds.",
+  },
+  "papvin-5-liter": {
+    title: "5 liter papvin: 6,7 flasker",
+    description:
+      "5 L papvin til havefest: ca. 40 glas. Hvornår den store boks kan betale sig vs. 3 L — vægt, køl og literpris.",
+  },
   "vin-til-flaesketesteg": {
     title: "Vin til flæskesteg — rødvin til jul",
     description:

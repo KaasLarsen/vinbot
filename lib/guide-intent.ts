@@ -73,6 +73,30 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "bedste-rod-papvin") {
+    return {
+      q: "bag-in-box bib rodvin",
+      max: null,
+      label: "rød papvin",
+    };
+  }
+
+  if (slug === "bedste-hvid-papvin") {
+    return {
+      q: "bag-in-box bib hvidvin",
+      max: null,
+      label: "hvid papvin",
+    };
+  }
+
+  if (slug === "papvin-bedst-i-test" || slug === "papvin-tilbud" || slug === "papvin-5-liter") {
+    return {
+      q: "bag-in-box bib",
+      max: null,
+      label: "papvin og boxvin",
+    };
+  }
+
   if (
     slug === "hvor-mange-flasker-i-en-3-liter-papvin" ||
     slug === "hvor-meget-papvin-til-fest" ||

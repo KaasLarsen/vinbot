@@ -32,6 +32,20 @@ const PRESETS: Record<string, ShopPreset> = {
     searchHref: "/?q=bag-in-box+rosato+bib",
     heading: "Rosé på boks — fra forhandlerne",
   },
+  "bedste-rod-papvin": {
+    q: "bag-in-box bib rodvin",
+    max: null,
+    label: "rød papvin",
+    searchHref: "/?q=bag-in-box+bib+rodvin",
+    heading: "Rød papvin — fra forhandlerne",
+  },
+  "bedste-hvid-papvin": {
+    q: "bag-in-box bib hvidvin",
+    max: null,
+    label: "hvid papvin",
+    searchHref: "/?q=bag-in-box+bib+hvidvin",
+    heading: "Hvid papvin — fra forhandlerne",
+  },
 };
 
 /** Shop-blok til indlejring i guide-MDX (fx ved Top 5). */

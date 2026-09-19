@@ -3194,6 +3194,82 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer: "Liter, dato, alkohol og at hanen sidder fast. Undgå mastede kartoner i bunden af stativet.",
     },
   ],
+  "papvin-bedst-i-test": [
+    {
+      question: "Hvilken papvin er bedst i test?",
+      answer:
+        "Der findes ikke en fast laboratorievinder på Vinbot. Sammenlign aktuelle bag-in-box på dato, kr/L og tør stil — og smag én boks før du køber til festen.",
+    },
+    {
+      question: "Laver I bag-in-box vin bedst i test 2026?",
+      answer:
+        "Nej, ikke som medaljeliste. Priser og tapning skifter. Brug live-søgning og farve-guides til rød, hvid og rosé.",
+    },
+    {
+      question: "Er kvalitetsvin bag-in-box en ting?",
+      answer:
+        "Ja i hverdags- og premium-lejet (kendte huse, tør stil). Prestige-regioner ligger næsten aldrig i pose.",
+    },
+  ],
+  "bedste-rod-papvin": [
+    {
+      question: "Hvilken rød papvin skal jeg købe?",
+      answer:
+        "Tør tempranillo, garnacha, primitivo eller merlot i 3 L, som du vil drikke i glasset. Undgå sød 14,5 % saft. Søg rød bag-in-box på Vinbot.",
+    },
+    {
+      question: "Er rød papvin god til fest?",
+      answer: "Ja til volume. Køl den om sommeren. Til gløgg: vælg billig tør rød, ikke den dyreste.",
+    },
+    {
+      question: "Hvor længe holder åben rød papvin?",
+      answer: "4–6 uger i køleskab, som anden BiB.",
+    },
+  ],
+  "bedste-hvid-papvin": [
+    {
+      question: "Hvilken hvid papvin er bedst?",
+      answer:
+        "Tør verdejo, pinot grigio eller cuvée med syre. Tjek dato — hvid ældes hurtigere uåbnet end rød i pose. Søg hvid bag-in-box.",
+    },
+    {
+      question: "Skal hvid papvin i køleskabet?",
+      answer: "Ja, 7–10 °C. 3 L skal køle flere timer.",
+    },
+    {
+      question: "Rækker 3 L hvid til reception?",
+      answer: "Ca. 30 glas à 10 cl. Se papvin til reception og fest-mængde.",
+    },
+  ],
+  "papvin-tilbud": [
+    {
+      question: "Hvor finder jeg papvin på tilbud?",
+      answer:
+        "Sammenlign danske feeds på Vinbot med søgning bag-in-box. Tjek kr/L og dato — ikke kun «før-pris».",
+    },
+    {
+      question: "Er grænsetilbud altid billigere?",
+      answer: "Nej. Læg bro og benzin til, og benchmark samme uge i Danmark.",
+    },
+    {
+      question: "Skal jeg hamstre papvin i tilbud?",
+      answer: "Kun med lang dato. Kort best-before er ikke et kup.",
+    },
+  ],
+  "papvin-5-liter": [
+    {
+      question: "Hvor mange flasker er 5 liter papvin?",
+      answer: "Ca. 6,7 flasker à 75 cl — omkring 40 glas à 12,5 cl.",
+    },
+    {
+      question: "Hvornår skal jeg købe 5 L i stedet for 3 L?",
+      answer: "Havefest og volume af én farve. Ikke til to personer eller lille køleskab.",
+    },
+    {
+      question: "Kan jeg filtrere 5 L på Vinbot?",
+      answer: "Nej. Søg bag-in-box og læs 5 liter i produktnavnet.",
+    },
+  ],
   "bedste-cava-under-150-kr": [
     {
       question: "Hvad er den bedste cava under 150 kr?",

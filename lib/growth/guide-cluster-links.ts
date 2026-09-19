@@ -299,6 +299,11 @@ const PAPVIN: GuideClusterLink[] = [
   { slug: "kan-man-fryse-papvin", label: "Kan man fryse papvin" },
   { slug: "sadan-tommer-du-papvin", label: "Tøm den sidste papvin" },
   { slug: "papvin-graensehandel-tyskland", label: "Papvin-grænsehandel" },
+  { slug: "papvin-bedst-i-test", label: "Papvin bedst i test" },
+  { slug: "bedste-rod-papvin", label: "Bedste rød papvin" },
+  { slug: "bedste-hvid-papvin", label: "Bedste hvid papvin" },
+  { slug: "papvin-tilbud", label: "Papvin tilbud" },
+  { slug: "papvin-5-liter", label: "5 liters papvin" },
 ];
 
 function papvinBlock(exclude: string[], intro: string): GuideClusterBlock {
@@ -1059,6 +1064,26 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   "papvin-graensehandel-tyskland": papvinBlock(
     ["papvin-graensehandel-tyskland"],
     "Tysk bulk vs. danske priser — literpris, temperatur og fest-mængde.",
+  ),
+  "papvin-bedst-i-test": papvinBlock(
+    ["papvin-bedst-i-test"],
+    "Ingen fake lab-vinder — se rød, hvid, tilbud og pilaren.",
+  ),
+  "bedste-rod-papvin": papvinBlock(
+    ["bedste-rod-papvin"],
+    "Rød 3 L til hverdag og fest — plus test-metode, tilbud og gløgg.",
+  ),
+  "bedste-hvid-papvin": papvinBlock(
+    ["bedste-hvid-papvin"],
+    "Tør hvid i karton — reception, temperatur og rød/rosé ved siden af.",
+  ),
+  "papvin-tilbud": papvinBlock(
+    ["papvin-tilbud"],
+    "Live kampagner vs. før-pris — budget, grænse og literpris.",
+  ),
+  "papvin-5-liter": papvinBlock(
+    ["papvin-5-liter"],
+    "Den store boks til volume — 3 L-omregning, fest og små formater.",
   ),
   "hvor-laenge-holder-uaabnet-vin": videnBlock(
     ["hvor-laenge-holder-uaabnet-vin"],

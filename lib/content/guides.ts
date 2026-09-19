@@ -88,6 +88,7 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "papvin-myter-hovedpine",
   "hvorfor-smager-papvin-anderledes",
   "kan-man-fryse-papvin",
+  "papvin-5-liter",
 ]);
 
 function isVidenGuide(slug: string): boolean {

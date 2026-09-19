@@ -18,6 +18,10 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "bedste-rose-paa-boks",
   "premium-papvin",
   "okologisk-og-naturvin-paa-boks",
+  "papvin-bedst-i-test",
+  "bedste-rod-papvin",
+  "bedste-hvid-papvin",
+  "papvin-tilbud",
 ]);
 
 export function guideHasInlineSearch(slug: string): boolean {
