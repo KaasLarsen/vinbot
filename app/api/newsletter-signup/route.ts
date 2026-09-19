@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { parseNewsletterSignupBody } from "@/lib/newsletter-signup";
 import {
+  sendNewsletterSignupNotifyEmail,
   sendNewsletterWelcomeEmail,
   subscribeNewsletterContact,
 } from "@/lib/resend-newsletter";
@@ -42,6 +43,11 @@ export async function POST(req: Request) {
       { status: 502 },
     );
   }
+
+  void sendNewsletterSignupNotifyEmail(apiKey, parsed.data.email, {
+    isNew: result.isNew,
+    source: parsed.data.source,
+  });
 
   if (result.isNew) {
     // Fire-and-forget: don't block success on welcome mail

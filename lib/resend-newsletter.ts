@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-import { siteName, siteUrl } from "@/lib/site";
+import { contactEmail, siteName, siteUrl } from "@/lib/site";
 
 const SEGMENT_NAME = "Vinbot nyhedsbrev";
 const TOPIC_NAME = "Vinbot nyhedsbrev";
@@ -150,6 +150,50 @@ export async function subscribeNewsletterContact(
   }
 
   return { ok: true, isNew: false };
+}
+
+/** Notify Vinbot inbox so signups are visible without opening Resend. Failures are logged, not thrown. */
+export async function sendNewsletterSignupNotifyEmail(
+  apiKey: string,
+  subscriberEmail: string,
+  options?: { isNew: boolean; source?: string },
+): Promise<void> {
+  const resend = getResendClient(apiKey);
+  const from = getFromAddress();
+  const isNew = options?.isNew ?? true;
+  const source = options?.source;
+  const kind = isNew ? "Ny tilmelding" : "Gentilmelding";
+  const sourceLine = source ? `Kilde: ${source}` : "Kilde: (ikke angivet)";
+
+  const text = [
+    `${kind} til ${siteName}s nyhedsbrev`,
+    "",
+    `E-mail: ${subscriberEmail}`,
+    sourceLine,
+    `Status: ${isNew ? "ny kontakt" : "eksisterende kontakt"}`,
+  ].join("\n");
+
+  const html = `
+    <p><strong>${kind}</strong> til ${siteName}s nyhedsbrev</p>
+    <p>E-mail: <a href="mailto:${subscriberEmail}">${subscriberEmail}</a></p>
+    <p>${sourceLine}<br/>Status: ${isNew ? "ny kontakt" : "eksisterende kontakt"}</p>
+  `.trim();
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: contactEmail,
+      replyTo: subscriberEmail,
+      subject: `${kind}: ${subscriberEmail}`,
+      text,
+      html,
+    });
+    if (error) {
+      console.error("Resend signup notify:", error);
+    }
+  } catch (err) {
+    console.error("Resend signup notify failed:", err);
+  }
 }
 
 /** Short welcome mail after first-time signup. Failures are logged, not thrown. */
