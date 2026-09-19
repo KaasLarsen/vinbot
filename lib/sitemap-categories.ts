@@ -28,6 +28,10 @@ const VIDEN_SLUGS = new Set<string>([
   "kan-roedvin-blive-for-gammel",
   "vivino-app-til-vin-anmeldelser",
   "hvilken-vin-til-madlavning-sovs",
+  "temperatur-guide-papvin",
+  "hvorfor-har-papvin-udloebsdato",
+  "papvin-co2-og-klima",
+  "papvin-vs-flaske-pris",
 ]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */

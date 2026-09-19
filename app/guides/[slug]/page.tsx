@@ -171,7 +171,7 @@ export default async function GuidePage({ params }: Props) {
         </p>
       </header>
       <GuideToc items={toc} />
-      {slug === "hvor-meget-vin-til-fest" || slug === "hvor-meget-vin-til-bryllup" ? (
+      {slug === "hvor-meget-vin-til-fest" || slug === "hvor-meget-vin-til-bryllup" || slug === "hvor-meget-papvin-til-fest" ? (
         <WineQuantityCalculator
           className="mt-8"
           defaultPartyType={slug === "hvor-meget-vin-til-bryllup" ? "bryllup" : "middag"}

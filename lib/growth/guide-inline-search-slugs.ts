@@ -14,6 +14,8 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "bedste-vin-til-gave",
   "bobler-champagne-cava-prosecco-og-cremant",
   "bedste-box-vin",
+  "bedste-papvin-under-150-kr",
+  "bedste-rose-paa-boks",
 ]);
 
 export function guideHasInlineSearch(slug: string): boolean {

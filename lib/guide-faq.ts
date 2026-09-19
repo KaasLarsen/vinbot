@@ -2869,6 +2869,142 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ikke i samme prisleje — moderne box kan matche eller slå glasflasker pr. liter i hverdagssegmentet. Prestige- og lagringsvine findes sjældent i box; til fest og gave er glas ofte bedre.",
     },
   ],
+  "hvor-mange-flasker-i-en-3-liter-papvin": [
+    {
+      question: "Hvor mange flasker er der i en 3-liters papvin?",
+      answer:
+        "3 liter papvin rummer præcis 4 flasker à 75 cl. 5 liter er ca. 6,7 flasker; 1,5 liter er 2 flasker.",
+    },
+    {
+      question: "Hvor mange glas er der i en 3-liters boks?",
+      answer:
+        "Ca. 24 glas à 12,5 cl eller 20 glas à 15 cl. Til reception med 10 cl får du ca. 30 glas.",
+    },
+    {
+      question: "Er 3 liter det samme som en magnum?",
+      answer:
+        "Nej. Magnum er 1,5 liter i glasflaske. 3 L er fire standardflasker i bag-in-box.",
+    },
+  ],
+  "hvor-meget-papvin-til-fest": [
+    {
+      question: "Hvor mange 3-liters bokse skal jeg købe til 20 gæster?",
+      answer:
+        "Til middag ca. 3 bokse (10 flasker + 15 % buffer, afrundet). Til lang fest/bryllup ca. 6 bokse. Divider flasker med 4 og rund op.",
+    },
+    {
+      question: "Kan jeg bruge samme formel som til flasker?",
+      answer:
+        "Ja: 0,5 flaske/gæst til middag, ca. 1 glas/time til cocktail, 1 flaske/gæst til bryllup, plus 15 % buffer. Én 3 L-boks = 4 flasker.",
+    },
+    {
+      question: "Er papvin ok til reception?",
+      answer:
+        "Ja til volumen og hane. Skænk i karaffel hvis du vil undgå «karton-look». Flaske til skål og gave.",
+    },
+  ],
+  "papvin-vs-flaske-pris": [
+    {
+      question: "Hvor meget billigere er papvin end flaske?",
+      answer:
+        "Typisk 20–40 % lavere literpris i hverdagssegmentet. Regn kr/L: boks-pris divideret med liter, flaske-pris divideret med 0,75. Sammenlign samme stil — ikke Barolo vs. discount-boks.",
+    },
+    {
+      question: "Hvordan omregner jeg 3 liter til flaskepris?",
+      answer:
+        "Divider boksens pris med 4. En 3 L til 240 kr svarer til 60 kr pr. 75 cl.",
+    },
+    {
+      question: "Hvornår er flaske billigere?",
+      answer:
+        "Sjældent pr. liter. Flaske kan være bedre hvis du kun drikker ét glas, eller hvis boksens dato er kort og du spilder resten.",
+    },
+  ],
+  "bedste-papvin-under-150-kr": [
+    {
+      question: "Findes der god papvin under 150 kr?",
+      answer:
+        "Ja som hverdagsvin: 150 kr for 3 L er 50 kr/L. Forvent tør, enkel frugt — ikke fadlagret prestige. Sammenlign aktuelle bokse på Vinbot med max 150 kr.",
+    },
+    {
+      question: "Hvad skal jeg kigge efter på budget-boks?",
+      answer:
+        "Synlig dato, 12–14 % alkohol, tør stil, og gerne et hus du kender fra flaske. Undgå anonym sød rød, hvis du vil have madvin.",
+    },
+    {
+      question: "Rækker 3 liter under 150 kr til en uge?",
+      answer:
+        "Ja for et par, der drikker et par glas om aftenen. Åbnet boks holder 4–6 uger i køleskab.",
+    },
+  ],
+  "temperatur-guide-papvin": [
+    {
+      question: "Skal rødvin på boks i køleskabet?",
+      answer:
+        "Efter anbrud og i sommervarmen: ja. Tag den ud 20–30 minutter før servering (ca. 14–16 °C). Uåbnet: køligt skab under 18 °C er nok.",
+    },
+    {
+      question: "Hvor kold skal hvid papvin være?",
+      answer:
+        "7–10 °C — hele kartonen i køleskab i flere timer. 3 liter køler langsomt.",
+    },
+    {
+      question: "Må papvin ligge i bilen om sommeren?",
+      answer:
+        "Nej. Bagagerum og tagboks kan overstige 40 °C og ødelægge vinen længe før udløbsdatoen.",
+    },
+  ],
+  "hvorfor-har-papvin-udloebsdato": [
+    {
+      question: "Hvorfor har papvin udløbsdato når flaske ikke har?",
+      answer:
+        "Posen slipper langsomt ilt igennem; glas gør ikke. Derfor best-before typisk 6–12 måneder uåbnet, mens hverdagsflaske kan ligge år.",
+    },
+    {
+      question: "Må man drikke papvin efter datoen?",
+      answer:
+        "Ofte ja, hvis den har stået køligt — det er en kvalitetsdato. Smag: flad, sherry-agtig eller eddike = kasser.",
+    },
+    {
+      question: "Er åbnet papvin det samme som udløbsdato?",
+      answer:
+        "Nej. Udløb gælder uåbnet pose. Efter hane holder vinen 4–6 uger i køleskab, fordi posen klapper sammen og holder luft ude.",
+    },
+  ],
+  "bedste-rose-paa-boks": [
+    {
+      question: "Er rosé på boks værd at købe?",
+      answer:
+        "Ja til grill, terrasse og uger med åben hane. Flaske vinder til ét glas og gave. Søg bag-in-box rosato på Vinbot — udvalget er mindre end rød/hvid.",
+    },
+    {
+      question: "Skal rosé-papvin på køl?",
+      answer:
+        "Ja, 8–12 °C. Køl hele 3 L-kartonen i god tid; den er isolator.",
+    },
+    {
+      question: "Hvor længe holder åben rosé-boks?",
+      answer:
+        "4–6 uger i køleskab, som anden papvin. Rosé ældes dog hurtigere uåbnet — tjek datoen.",
+    },
+  ],
+  "papvin-co2-og-klima": [
+    {
+      question: "Er papvin bedre for klimaet end flaske?",
+      answer:
+        "Typisk ja pr. liter, fordi karton og pose vejer langt mindre end glas. Tal som 70–75 % mindre CO₂ er retningsgivende, ikke målt på din konkrete boks.",
+    },
+    {
+      question: "Hvad med plastikposen?",
+      answer:
+        "Posen er fossil plast og restaffald de fleste steder. Gevinsten ligger i transportvægt og mindre spild efter åbning — ikke at plast er grønt i sig selv.",
+    },
+    {
+      question: "Sparer hamstring af papvin klimaet?",
+      answer:
+        "Nej hvis du drikker den inden datoen. Spildt vin æder klimagevinsten. Køb det, du bruger.",
+    },
+  ],
   "bedste-cava-under-150-kr": [
     {
       question: "Hvad er den bedste cava under 150 kr?",

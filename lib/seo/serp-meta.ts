@@ -543,6 +543,46 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Bedste papvin (bag-in-box): kvalitet, holdbarhed og pris pr. glas. Papvin til sommerhus, fest og hverdag — sammenlign tilbud på Vinbot.",
   },
+  "hvor-mange-flasker-i-en-3-liter-papvin": {
+    title: "3 liter papvin = 4 flasker, 20–24 glas",
+    description:
+      "Hvor mange flasker og glas i en 3-liters papvin? 4 × 75 cl, ca. 24 glas à 12,5 cl. Tabel til fest, 1,5 L, 2,25 L og 5 L.",
+  },
+  "hvor-meget-papvin-til-fest": {
+    title: "Papvin til fest: gæster til 3 L-bokse",
+    description:
+      "Hvor meget papvin til fest og bryllup? 3 L = 4 flasker, +15 % buffer. Tabel for 10, 20 og 50 gæster — og reception.",
+  },
+  "papvin-vs-flaske-pris": {
+    title: "Papvin vs. flaske: literpris og besparelse",
+    description:
+      "Hvor meget sparer du på papvin vs. flaske? 20–40 % pr. liter som tommelfinger. Omregn 3 L til flaske-ækvivalent — uden fake-priser.",
+  },
+  "bedste-papvin-under-150-kr": {
+    title: "Papvin under 150 kr: hverdags-boks",
+    description:
+      "Bedste papvin under 150 kr for 3 liter: 50 kr/L til hverdag. Hvad du skal kigge efter, og aktuelle bokse hos danske forhandlere.",
+  },
+  "temperatur-guide-papvin": {
+    title: "Papvin-temperatur: rød på køl om sommeren",
+    description:
+      "Skal rødvin på boks i køleskabet? Ja om sommeren efter anbrud. Tabel for hvid, rosé og rød — plus camping og 3 L-køling.",
+  },
+  "hvorfor-har-papvin-udloebsdato": {
+    title: "Hvorfor har papvin udløbsdato?",
+    description:
+      "Papvin har best-before, fordi posen slipper ilt igennem — i modsætning til glas. Uåbnet 6–12 mdr. vs. åbnet 4–6 uger.",
+  },
+  "bedste-rose-paa-boks": {
+    title: "Rosé på boks: papvin til forår og grill",
+    description:
+      "Bedste rosé på boks til terrasse og havefest. Temperatur, holdbarhed og søgning efter bag-in-box rosato hos danske forhandlere.",
+  },
+  "papvin-co2-og-klima": {
+    title: "Papvin og CO₂: klima vs. glasflaske",
+    description:
+      "Hvor meget CO₂ sparer papvin vs. glas? Lettere emballage, færre kilo på lastbil. Ærlig guide uden opdigtede gramtal.",
+  },
   "vin-til-flaesketesteg": {
     title: "Vin til flæskesteg — rødvin til jul",
     description:

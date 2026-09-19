@@ -49,11 +49,41 @@ export function deriveGuideIntent(
     };
   }
 
-  if (slug === "bedste-box-vin") {
+  if (slug === "bedste-box-vin" || slug === "papvin-vs-flaske-pris") {
     return {
       q: "bag-in-box bib",
       max: null,
       label: "boxvin og papvin",
+    };
+  }
+
+  if (slug === "bedste-papvin-under-150-kr") {
+    return {
+      q: "bag-in-box bib",
+      max: 150,
+      label: "papvin under 150 kr",
+    };
+  }
+
+  if (slug === "bedste-rose-paa-boks") {
+    return {
+      q: "bag-in-box rosato bib",
+      max: null,
+      label: "rosé på boks",
+    };
+  }
+
+  if (
+    slug === "hvor-mange-flasker-i-en-3-liter-papvin" ||
+    slug === "hvor-meget-papvin-til-fest" ||
+    slug === "temperatur-guide-papvin" ||
+    slug === "hvorfor-har-papvin-udloebsdato" ||
+    slug === "papvin-co2-og-klima"
+  ) {
+    return {
+      q: "bag-in-box bib",
+      max: null,
+      label: "papvin og boxvin",
     };
   }
 

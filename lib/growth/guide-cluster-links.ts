@@ -249,6 +249,7 @@ const VIDEN_MAENGDER: GuideClusterLink[] = [
   { slug: "hvor-mange-enheder-alkohol-i-et-glas-vin", label: "Genstande pr. glas vin" },
   { slug: "hvor-meget-fylder-en-flaske-vin", label: "Hvor meget fylder en flaske" },
   { slug: "hvor-mange-glas-i-en-flaske-vin", label: "Glas pr. flaske" },
+  { slug: "hvor-mange-flasker-i-en-3-liter-papvin", label: "Flasker og glas i 3 L papvin" },
   { slug: "hvor-meget-alkohol-i-vin", label: "Alkoholprocent i vin" },
   { slug: "hvor-mange-kalorier-i-vin", label: "Kalorier i vin" },
 ];
@@ -256,6 +257,7 @@ const VIDEN_MAENGDER: GuideClusterLink[] = [
 const VIDEN_FEST: GuideClusterLink[] = [
   { slug: "hvor-meget-vin-til-bryllup", label: "Hvor meget vin til bryllup" },
   { slug: "hvor-meget-vin-til-fest", label: "Hvor meget vin til fest" },
+  { slug: "hvor-meget-papvin-til-fest", label: "Papvin til fest" },
   { slug: "maa-man-aabne-vaertsgaven-vin", label: "Må man åbne værtsgaven?" },
   { slug: "crowdpleaser-vin-til-gaester", label: "Crowdpleaser til gæster" },
 ];
@@ -267,6 +269,28 @@ function videnBlock(
   ...groups: GuideClusterLink[][]
 ): GuideClusterBlock {
   return { clusterTitle: title, intro, links: cluster(exclude, ...groups), tone: "amber" };
+}
+
+const PAPVIN_PILLAR: GuideClusterLink = {
+  slug: "bedste-box-vin",
+  label: "Bedste papvin og boxvin",
+};
+
+const PAPVIN: GuideClusterLink[] = [
+  { slug: "bedste-box-vin", label: "Bedste papvin" },
+  { slug: "hvor-laenge-holder-boks-vin", label: "Hvor længe holder papvin" },
+  { slug: "hvor-mange-flasker-i-en-3-liter-papvin", label: "Flasker og glas i 3 L" },
+  { slug: "hvor-meget-papvin-til-fest", label: "Papvin til fest" },
+  { slug: "papvin-vs-flaske-pris", label: "Papvin vs. flaske — pris" },
+  { slug: "bedste-papvin-under-150-kr", label: "Papvin under 150 kr" },
+  { slug: "temperatur-guide-papvin", label: "Temperatur-guide papvin" },
+  { slug: "hvorfor-har-papvin-udloebsdato", label: "Hvorfor udløbsdato" },
+  { slug: "bedste-rose-paa-boks", label: "Rosé på boks" },
+  { slug: "papvin-co2-og-klima", label: "Papvin og klima" },
+];
+
+function papvinBlock(exclude: string[], intro: string): GuideClusterBlock {
+  return videnBlock(exclude, "Papvin og bag-in-box", intro, [PAPVIN_PILLAR], PAPVIN);
 }
 
 const OIL_GIFT: GuideClusterLink[] = [
@@ -936,13 +960,45 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     VIDEN_MAENGDER.filter((l) => !["hvor-meget-fylder-en-flaske-vin"].includes(l.slug)),
     VIDEN_HOLD.slice(0, 2),
   ),
-  "hvor-laenge-holder-boks-vin": videnBlock(
+  "hvor-laenge-holder-boks-vin": papvinBlock(
     ["hvor-laenge-holder-boks-vin"],
-    "Vin-viden — holdbarhed",
-    "Papvin holder længere åbnet — sammenlign med flaske, karaffel og lagring.",
-    [VIN_VIDEN_PILLAR],
-    VIDEN_HOLD.filter((l) => l.slug !== "hvor-laenge-holder-boks-vin").slice(0, 5),
-    VIDEN_MAENGDER.slice(0, 2),
+    "Papvin holder længere åbnet — se også 3 L-omregning, udløbsdato og temperatur.",
+  ),
+  "hvor-mange-flasker-i-en-3-liter-papvin": papvinBlock(
+    ["hvor-mange-flasker-i-en-3-liter-papvin"],
+    "3 liter = 4 flasker. Brug det til fest-mængde, literpris og holdbarhed.",
+  ),
+  "hvor-meget-papvin-til-fest": papvinBlock(
+    ["hvor-meget-papvin-til-fest"],
+    "Gæster til bokse — plus glas i 3 L og bedste papvin til volumen.",
+  ),
+  "papvin-vs-flaske-pris": papvinBlock(
+    ["papvin-vs-flaske-pris"],
+    "Literpris hænger sammen med budget-boks, klima og pilaren om bedste papvin.",
+  ),
+  "bedste-papvin-under-150-kr": papvinBlock(
+    ["bedste-papvin-under-150-kr"],
+    "Budget-hverdag — sammenlign literpris og se også rosé på boks.",
+  ),
+  "temperatur-guide-papvin": papvinBlock(
+    ["temperatur-guide-papvin"],
+    "Køl og sommervarme — se holdbarhed, udløbsdato og camping-logik.",
+  ),
+  "hvorfor-har-papvin-udloebsdato": papvinBlock(
+    ["hvorfor-har-papvin-udloebsdato"],
+    "Posen vs. glas: ilt, best-before og hvor længe åbnet boks holder.",
+  ),
+  "bedste-rose-paa-boks": papvinBlock(
+    ["bedste-rose-paa-boks"],
+    "Rosé i karton til sæson — plus temperatur, holdbarhed og bedste papvin.",
+  ),
+  "papvin-co2-og-klima": papvinBlock(
+    ["papvin-co2-og-klima"],
+    "Vægt vs. glas — se literpris og hvorfor boksen har udløbsdato.",
+  ),
+  "bedste-box-vin": papvinBlock(
+    ["bedste-box-vin"],
+    "Pilar for papvin — detaljer om glas i 3 L, fest, pris, rosé og klima.",
   ),
   "hvor-laenge-holder-uaabnet-vin": videnBlock(
     ["hvor-laenge-holder-uaabnet-vin"],

@@ -81,6 +81,10 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "champagne-alkoholprocent",
   "portvin-alkoholprocent",
   "cremant-vs-champagne",
+  "temperatur-guide-papvin",
+  "hvorfor-har-papvin-udloebsdato",
+  "papvin-co2-og-klima",
+  "papvin-vs-flaske-pris",
 ]);
 
 function isVidenGuide(slug: string): boolean {
@@ -265,6 +269,7 @@ export function listHumoerHubGuides(): GuideFrontmatter[] {
 /** Kurateret rækkefølge — kun slug der findes på disk vises (ukendte slug springes over). */
 const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
   "hvor-meget-vin-til-fest",
+  "hvor-meget-papvin-til-fest",
   "hvor-meget-vin-til-bryllup",
   "maa-man-aabne-vaertsgaven-vin",
   "crowdpleaser-vin-til-gaester",
@@ -370,6 +375,7 @@ const SUPERMARKED_VIN_HUB_SLUGS: readonly string[] = [
   "bedste-rodvin-under-75-kr",
   "bedste-vin-til-hverdag",
   "bedste-box-vin",
+  "bedste-papvin-under-150-kr",
   "vin-tilbud-og-foer-pris",
 ];
 
