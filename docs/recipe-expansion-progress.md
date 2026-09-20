@@ -1,37 +1,41 @@
-# Opskrifter — udvidelse (30 nye)
+# Opskrifter — vinretter der dækker sortimentet
 
-**Status:** 30 / 30 færdige.
+**Status:** 13 nye + 7 eksisterende dækket (batch 2026-09-20).
 
-## Færdige (udvidelses-batch)
+## Nye (denne batch)
 
-| # | Slug | Guide-klynge |
-|---|------|----------------|
-| 1–15 | (se commit `0cd0971`) | lasagne, bøf, julemad, pasta … |
-| 16 | `svinekam-med-rodvin` | svinekød, grill |
-| 17 | `gravad-laks-med-hvidvin` | fisk, julefrokost |
-| 18 | `kyllingesuppe-med-hvidvin` | suppe, kylling |
-| 19 | `lammekoteletter-i-rodvin` | lam |
-| 20 | `svinefilet-i-rodvinssauce` | svinekød |
-| 21 | `stuvet-kylling-med-hvidvin` | kylling, gryderet |
-| 22 | `pasta-puttanesca-med-rodvin` | pasta, italiensk |
-| 23 | `rodspette-med-hvidvin` | fisk |
-| 24 | `champignonsuppe-med-hvidvin` | suppe, vegetar |
-| 25 | `braiseret-kylling-med-rodvin` | gryderet, fransk |
-| 26 | `entrecote-med-rodvinsmarinade` | bøf, grill |
-| 27 | `fennikelkylling-med-hvidvin` | kylling, italiensk |
-| 28 | `svineribs-med-rodvin` | bbq |
-| 29 | `sellerisuppe-med-hvidvin` | suppe |
-| 30 | `oksesteg-med-rodvin` | oksekød, fest |
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `ossobuco-med-rodvin` | Rødvin |
+| 2 | `balsamico-rodvinsmarineret-oksemoerbrad` | Rødvin |
+| 3 | `svinekaeber-i-rodvin-og-moerkt-oel` | Rødvin |
+| 4 | `andebryst-med-brombaer-rodvinssauce` | Rødvin |
+| 5 | `pighvar-med-hvidvin-og-vesterhavsost` | Hvidvin |
+| 6 | `poulet-a-lestragon` | Hvidvin |
+| 7 | `hvidvinsdampet-torsk-med-porrer-og-safran` | Hvidvin |
+| 8 | `oesters-med-champagne-sabayonne` | Bobler |
+| 9 | `hummersuppe-med-cognac-og-bobler` | Bobler |
+| 10 | `dampet-laks-med-rosevinssauce` | Rosé |
+| 11 | `cremet-pastasalat-med-melon-og-parma` | Rosé |
+| 12 | `mousserende-vingele-med-friske-baer` | Bobler/dessert |
+| 13 | `portvinsglaserede-figner-med-gedeost` | Portvin |
 
-## AdSense / kvalitet (parallel)
+## Allerede dækket (opdateret hvor relevant)
 
-- 5 tynde guides under 400 ord udvidet (brevkasse, køling, barbera, gewürz, pinot grigio)
-- Ved genansøgning: brug `/opskrifter` eller `/mad-og-vin` som primær URL
+| Ret | Slug |
+|-----|------|
+| Lammekølle / lammesteg med rosmarin | `lammesteg-med-rodvin-rosmarin` |
+| Risotto al Barolo med svampe | `risotto-med-rodvin-barolo` (opdateret) |
+| Carbonara med hvidvin | `carbonara-med-hvidvin` |
+| Asparges (hvide + grønne) | `asparges-i-hvidvinsauce` (opdateret) |
+| Tiramisu med Marsala | `tiramisu-med-marsala-og-hvidvin` |
+| Zabaione | `zabaglione-med-hvidvin` |
+| Crepes Suzette | `crepes-suzette-med-hvidvin` |
 
 ## Deploy
 
-- Kør `node scripts/verify-recipe-images.mjs`
-- Push til `main`
+- `node scripts/verify-recipe-images.mjs`
+- Push til `main` / merge PR
 - GSC: genindsend `sitemap-opskrifter.xml`
 
-Sidst opdateret: 2026-06-07
+Sidst opdateret: 2026-09-20
