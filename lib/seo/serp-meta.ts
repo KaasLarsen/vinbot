@@ -401,6 +401,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Vin til stjerneskud: riesling, albariño og cava til fisk, rejer og remoulade. Dansk smørrebrød-klassiker.",
   },
+  "vin-til-mac-and-cheese": {
+    title: "Vin til mac and cheese: chardonnay og bobler",
+    description:
+      "Vin til mac and cheese med cheddar og bacon: fadlagret chardonnay, tør cava og crémant. Syre skærer ostefedme.",
+  },
+  "vin-til-skipperlabskovs": {
+    title: "Vin til skipperlabskovs: rustik rød og riesling",
+    description:
+      "Vin til skipperlabskovs: Côtes du Rhône, primitivo eller tør tysk riesling. Dansk vintergryde uden tanninbombe.",
+  },
+  "vin-til-gule-aerter": {
+    title: "Vin til gule ærter: medister og sennep",
+    description:
+      "Vin til gule ærter med medister og sennep: rustik rød eller tør tysk hvid. Klassisk dansk vintersuppe.",
+  },
+  "vin-til-okseskank": {
+    title: "Vin til okseskank: Shiraz og Amarone",
+    description:
+      "Vin til braiseret okseskank i øl og rødvin: Shiraz, Amarone og Rhône. Tung vinterret til kraftig fadlagret rød.",
+  },
   "vin-til-krydret-og-staerk-mad": {
     title: "Vin til krydret mad og asiatisk",
     description:

@@ -74,10 +74,22 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("portvin", "port", "sauternes", "moscato", "dessertvin", "late harvest");
   }
 
-  if (/(flødesovs|floedesovs|flødepasta|floedepasta|carbonara|alfredo)/.test(txt)) {
-    add("chardonnay", "pinot noir", "soave", "pinot grigio", "barbera", "hvidvin");
+  if (/(flødesovs|floedesovs|flødepasta|floedepasta|carbonara|alfredo|mac and cheese|macaroni)/.test(txt)) {
+    add("chardonnay", "pinot noir", "soave", "pinot grigio", "barbera", "cava", "hvidvin");
   } else if (/(pizza|pasta|bolognese|lasagne)/.test(txt)) {
     add("chianti", "sangiovese", "barbera", "primitivo", "nebbiolo", "montepulciano", "garnacha", "grenache");
+  }
+
+  if (/(ceviche|stjerneskud)/.test(txt)) {
+    add("sauvignon blanc", "riesling", "albariño", "albarino", "cava", "muscadet", "hvidvin");
+  }
+
+  if (/(skipperlabskovs|labskovs|gule ærter|gule aerter)/.test(txt)) {
+    add("côtes du rhône", "cotes du rhone", "rioja", "primitivo", "riesling", "syrah");
+  }
+
+  if (/(okseskank|braiseret|osso buco)/.test(txt)) {
+    add("shiraz", "syrah", "amarone", "ripasso", "priorat", "malbec");
   }
 
   if (/(grill|bbq|barbecue|pølser|pølse|grillkød)/.test(txt)) {

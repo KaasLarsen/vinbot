@@ -241,11 +241,14 @@ const MAD_FISK: GuideClusterLink[] = [
   { slug: "vin-til-laks", label: "Vin til laks" },
   { slug: "vin-til-sushi", label: "Vin til sushi" },
   { slug: "vin-til-rejer", label: "Vin til rejer" },
+  { slug: "vin-til-ceviche", label: "Vin til ceviche" },
+  { slug: "vin-til-stjerneskud", label: "Vin til stjerneskud" },
 ];
 
 const MAD_KOED: GuideClusterLink[] = [
   { slug: "vin-til-boeff", label: "Vin til bøf og oksekød" },
   { slug: "vin-til-gulasch", label: "Vin til gulasch" },
+  { slug: "vin-til-okseskank", label: "Vin til okseskank" },
   { slug: "vin-til-kylling-og-lyst-koed", label: "Vin til kylling" },
   { slug: "vin-til-grill-og-bbq", label: "Vin til grill og BBQ" },
   { slug: "rodvin-til-pizza", label: "Rødvin til pizza" },
@@ -255,6 +258,9 @@ const MAD_DANSK: GuideClusterLink[] = [
   { slug: "vin-til-stegt-flaesk", label: "Vin til stegt flæsk" },
   { slug: "vin-til-smorrebrod", label: "Vin til smørrebrød" },
   { slug: "vin-til-tarteletter", label: "Vin til tarteletter" },
+  { slug: "vin-til-skipperlabskovs", label: "Vin til skipperlabskovs" },
+  { slug: "vin-til-gule-aerter", label: "Vin til gule ærter" },
+  { slug: "vin-til-stjerneskud", label: "Vin til stjerneskud" },
 ];
 
 const MAD_OST: GuideClusterLink[] = [
@@ -1020,6 +1026,58 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [MAD_HUB],
     MAD_FISK,
     [{ slug: "bedste-hvidvin", label: "Bedste hvidvin" }],
+  ),
+  "vin-til-ceviche": madBlock(
+    ["vin-til-ceviche"],
+    "Fisk og skaldyr — relaterede guider",
+    "Lime, chili og rå fisk — se også stjerneskud, sushi og den brede fiskeguide.",
+    [MAD_HUB],
+    MAD_FISK,
+  ),
+  "vin-til-stjerneskud": madBlock(
+    ["vin-til-stjerneskud"],
+    "Dansk frokost og fisk",
+    "Stjerneskud, rejer og smørrebrød — bobler og syrefuld hvid.",
+    [MAD_HUB],
+    MAD_DANSK,
+    MAD_FISK.slice(0, 3),
+  ),
+  "vin-til-mac-and-cheese": madBlock(
+    ["vin-til-mac-and-cheese"],
+    "Comfort food og ost",
+    "Mac and cheese, cheddar og amerikansk comfort — chardonnay og bobler.",
+    [MAD_HUB],
+    [{ slug: "vin-til-amerikansk-comfort-mad", label: "Amerikansk comfort" }],
+    [{ slug: "vin-til-cheddar", label: "Vin til cheddar" }],
+    [{ slug: "vin-til-nachos", label: "Vin til nachos" }],
+    [{ slug: "bobler-champagne-cava-prosecco-og-cremant", label: "Bobler" }],
+  ),
+  "vin-til-skipperlabskovs": madBlock(
+    ["vin-til-skipperlabskovs"],
+    "Dansk vintermad",
+    "Labskovs, gule ærter og gryder — rustik rød og tysk hvid.",
+    [MAD_HUB],
+    MAD_DANSK,
+    [{ slug: "vin-til-gryderet", label: "Vin til gryderet" }],
+    [{ slug: "vin-til-okseskank", label: "Vin til okseskank" }],
+  ),
+  "vin-til-gule-aerter": madBlock(
+    ["vin-til-gule-aerter"],
+    "Dansk vintermad",
+    "Gule ærter, medister og skipperlabskovs — mormormad med vin.",
+    [MAD_HUB],
+    MAD_DANSK,
+    [{ slug: "vin-til-medister", label: "Vin til medister" }],
+    [{ slug: "vin-til-gryderet", label: "Vin til gryderet" }],
+  ),
+  "vin-til-okseskank": madBlock(
+    ["vin-til-okseskank"],
+    "Kød og braise",
+    "Okseskank, gryderet og kraftig rød — Shiraz, Amarone og Rhône.",
+    [MAD_HUB],
+    MAD_KOED,
+    [{ slug: "vin-til-oksekoed-i-sauce", label: "Oksekød i sauce" }],
+    [{ slug: "amarone-vs-ripasso", label: "Amarone vs ripasso" }],
   ),
   "vin-til-grill-og-bbq": madBlock(
     ["vin-til-grill-og-bbq"],

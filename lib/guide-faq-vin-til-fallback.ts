@@ -33,8 +33,10 @@ function kategori(slug: string): Kat {
   if (/krydret|thai|indisk|koreansk|vietnamesisk|kebab|nachos|tacos|wok|couscous|ramen/.test(slug)) return "spicy";
   if (/vegetar|gront|falafel/.test(slug)) return "veg";
   if (/kylling|kalkun|and/.test(slug)) return "poultry";
-  if (/fisk|laks|torsk|rejer|muslinger|skaldyr|ceviche|sild|krebse/.test(slug)) return "seafood";
-  if (/boeff|burger|lam|svine|medister|flaesk|vildt|tatar|carpaccio|gryderet|bolognese|koed/.test(slug)) return "redmeat";
+  if (/fisk|laks|torsk|rejer|muslinger|skaldyr|ceviche|sild|krebse|stjerneskud/.test(slug)) return "seafood";
+  if (/boeff|burger|lam|svine|medister|flaesk|vildt|tatar|carpaccio|gryderet|bolognese|koed|okseskank|skipperlabskovs|gule-aerter/.test(slug))
+    return "redmeat";
+  if (/mac-and-cheese|amerikansk-comfort/.test(slug)) return "generic";
   return "generic";
 }
 

@@ -1937,6 +1937,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Riesling, albariño eller cava — syre skærer mayo, rejer og stegt filet. Undgå tannin-rød til remoulade.",
     },
   ],
+  "vin-til-mac-and-cheese": [
+    {
+      question: "Hvilken vin til mac and cheese?",
+      answer:
+        "Fadlagret chardonnay fra USA eller Australien, eller tør cava/crémant. Syre og bobler skærer cheddar og bacon; undgå tannin-tung rød.",
+    },
+    {
+      question: "Kan man drikke rødvin til mac and cheese?",
+      answer:
+        "Kun let rød med lav tannin — gamay, pinot noir eller lambrusco secco, gerne lidt kølig. Cabernet og ung syrah bliver bitter mod ost.",
+    },
+    {
+      question: "Hvilken vin til mac and cheese med bacon?",
+      answer:
+        "Bobler først (cava, crémant), derefter chardonnay med syre. Baconens salt og røg elsker mousseux mere end tung rød.",
+    },
+  ],
+  "vin-til-skipperlabskovs": [
+    {
+      question: "Hvilken vin til skipperlabskovs?",
+      answer:
+        "Saftig rustik rød — Côtes du Rhône, rioja crianza eller primitivo. Alternativt tør tysk riesling, der skærer fedme og salt.",
+    },
+    {
+      question: "Kan man drikke hvidvin til skipperlabskovs?",
+      answer:
+        "Ja — tør riesling eller pinot blanc fra Tyskland overrasker positivt, især med syltede rødbeder eller asier ved siden af.",
+    },
+    {
+      question: "Hvilken rødvin skal undgås til labskovs?",
+      answer:
+        "Ung cabernet og stram Bordeaux uden frugt — kartofler og salt forstærker bitter tannin. Vælg moden, saftig frugt i stedet.",
+    },
+  ],
+  "vin-til-gule-aerter": [
+    {
+      question: "Hvilken vin til gule ærter?",
+      answer:
+        "Côtes du Rhône, blød merlot eller tør tysk riesling. Ærternes sødme kræver frugt; sennep og flæsk kræver syre.",
+    },
+    {
+      question: "Hvilken vin til gule ærter med medister?",
+      answer:
+        "Samme som til medister generelt: saftig rød med moderat tannin, eller tør riesling hvis sennep og syltet dominerer tallerkenen.",
+    },
+    {
+      question: "Passer sød vin til gule ærter?",
+      answer:
+        "Sjældent som hovedvin — ærterne er allerede søde. Halvtør riesling kan fungere ved meget syrligt tilbehør, ellers hold det tørt med frugt.",
+    },
+  ],
+  "vin-til-okseskank": [
+    {
+      question: "Hvilken vin til braiseret okseskank?",
+      answer:
+        "Kraftig fadlagret rød: australsk Shiraz, Amarone, Priorat eller nord-rhône Syrah. Retten kræver krop og moden frugt.",
+    },
+    {
+      question: "Hvilken vin til okseskank i mørkt øl?",
+      answer:
+        "Shiraz, ripasso/Amarone eller Châteauneuf — samme kraftklasse som øl og reduceret sauce. Undgå let Beaujolais; den forsvinder.",
+    },
+    {
+      question: "Skal Amarone decanteres til okseskank?",
+      answer:
+        "Ung Amarone og kraftig Shiraz har godt af 30–60 minutters luft. Server ved 16–18 °C, ikke stuetemperatur i en varm stue.",
+    },
+  ],
   "vin-til-flaesketesteg": [
     {
       question: "Hvilken rødvin til flæskesteg?",

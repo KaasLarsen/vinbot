@@ -26,17 +26,20 @@ const GRAPE_AND_STYLE_GUIDES: Record<string, readonly string[]> = {
   beaujolais: ["gamay-druen"],
   "pinot noir": ["pinot-noir-druen", "vin-til-kylling-og-lyst-koed"],
   pinot: ["pinot-noir-druen"],
-  riesling: ["riesling-druen", "vin-til-fisk-og-skaldyr"],
-  chardonnay: ["chardonnay-druen", "vin-til-fisk-og-skaldyr"],
-  sauvignon: ["sauvignon-blanc-druen", "vin-til-fisk-og-skaldyr"],
-  merlot: ["merlot-druen", "vin-til-oksekoed"],
+  riesling: ["riesling-druen", "vin-til-fisk-og-skaldyr", "vin-til-stjerneskud", "vin-til-gule-aerter"],
+  chardonnay: ["chardonnay-druen", "vin-til-fisk-og-skaldyr", "vin-til-mac-and-cheese"],
+  sauvignon: ["sauvignon-blanc-druen", "vin-til-fisk-og-skaldyr", "vin-til-ceviche"],
+  merlot: ["merlot-druen", "vin-til-oksekoed", "vin-til-skipperlabskovs"],
   cabernet: ["cabernet-sauvignon-druen", "vin-til-oksekoed"],
   tempranillo: ["tempranillo-druen", "vin-til-spansk-mad", "vin-til-tapas"],
-  rioja: ["vin-til-spansk-mad", "vin-til-tapas"],
-  primitivo: ["zinfandel-druen", "rodvin-til-pizza"],
+  rioja: ["vin-til-spansk-mad", "vin-til-tapas", "vin-til-skipperlabskovs"],
+  primitivo: ["zinfandel-druen", "rodvin-til-pizza", "vin-til-skipperlabskovs"],
   barbera: ["vin-til-italiensk-mad", "vin-til-lasagne"],
-  grenache: ["grenache-druen", "vin-til-grill-og-bbq"],
+  grenache: ["grenache-druen", "vin-til-grill-og-bbq", "vin-til-gryderet"],
   garnacha: ["grenache-druen"],
+  shiraz: ["syrah-druen", "vin-til-okseskank", "vin-til-grill-og-bbq"],
+  syrah: ["syrah-druen", "vin-til-okseskank"],
+  amarone: ["amarone-vs-ripasso", "vin-til-okseskank"],
 };
 
 /** Map fri søgetekst → guide-slugs med kuraterede enkeltvin-sider. */
@@ -49,11 +52,19 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   }
 
   if (/tapas|chorizo|jamón|jamon|charcuteri|aperitivo|spritz/i.test(t)) out.push("vin-til-tapas");
-  if (/gryderet|bourguignon|coq|braiser|stuvning|oksekae|lammeskank|estofado/i.test(t)) out.push("vin-til-gryderet");
+  if (/gryderet|bourguignon|coq|braiser|stuvning|oksekae|lammeskank|estofado|okseskank|labskovs/i.test(t))
+    out.push("vin-til-gryderet", "vin-til-okseskank", "vin-til-skipperlabskovs");
+  if (/gule.?ært|gule.?aerter/i.test(t)) out.push("vin-til-gule-aerter", "vin-til-medister");
+  if (/mac.?and.?cheese|macaroni|mac n cheese/i.test(t))
+    out.push("vin-til-mac-and-cheese", "vin-til-amerikansk-comfort-mad");
+  if (/ceviche/i.test(t)) out.push("vin-til-ceviche", "vin-til-fisk-og-skaldyr");
+  if (/stjerneskud/i.test(t)) out.push("vin-til-stjerneskud", "vin-til-rejer", "vin-til-smorrebrod");
   if (/nytår|nytaar|champagne|bobler|cava|prosecco|cremant|fest/i.test(t)) out.push("vin-til-nytaar-og-nytaarsmenu");
   if (/pizza|pasta|lasagne|italien/i.test(t)) out.push("rodvin-til-pizza", "vin-til-pizza", "vin-til-lasagne");
   if (/fisk|skaldyr|laks|torsk|sushi|musling|reje|hvidvin/i.test(t)) out.push("vin-til-fisk-og-skaldyr");
   if (/grill|bbq|malbec|entrecôte|entrecote|bøf|boef/i.test(t)) out.push("vin-til-grill-og-bbq", "vin-til-oksekoed");
+  if (/chardonnay/i.test(t) && /mac|ost|cheese|bacon/i.test(t)) out.push("vin-til-mac-and-cheese");
+  if (/amarone|shiraz/i.test(t) && /skank|braise|okse/i.test(t)) out.push("vin-til-okseskank");
   if (/gave|konfirmation|bryllup/i.test(t)) out.push("bedste-vin-til-gave");
   if (/olivenolie|trøffelolie|troffelolie|chiliolie|værtsgave.*olie|olie.*gave|gave.*olie/i.test(t)) {
     out.push(
