@@ -39,3 +39,19 @@
 - GSC: genindsend `sitemap-opskrifter.xml`
 
 Sidst opdateret: 2026-09-20
+
+## Batch 2026-09-20b — asiatisk, hverdag, grill, vegetar, tapas
+
+| Status | Slug |
+|--------|------|
+| Ny | `tom-kha-gai-med-hvidvin` |
+| Ny | `gyoza-svinekoed-med-riesling` |
+| Ny | `pizza-parmaskinke-og-rucola` |
+| Ny | `grillede-jomfruhummere-med-hvidloegssmoer` |
+| Ny | `bagt-graeskar-med-salviesmoer` |
+| Ny | `svampetoast-med-hvidvin-og-timian` |
+| Opdateret | `burger-med-rodvinsglace` (rødvinssautérede løg / Zinfandel-Ripasso) |
+| Opdateret | `rejer-i-hvidvin` → Gambas al ajillo |
+| Opdateret | `pulled-pork-med-rodvin` (BBQ / Syrah-Malbec) |
+| Allerede dækket | `chorizo-i-rodvin` |
+

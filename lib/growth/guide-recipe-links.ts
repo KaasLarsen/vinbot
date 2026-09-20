@@ -87,6 +87,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tomatsauce-med-rodvin-til-pizza", label: "Tomatsauce med rødvin til pizza" },
     { slug: "lasagne-med-rodvin", label: "Lasagne med rødvin" },
     { slug: "pasta-puttanesca-med-rodvin", label: "Pasta puttanesca med rødvin" },
+    { slug: "pizza-parmaskinke-og-rucola", label: "Pizza med parma og rucola" },
   ],
   "vin-til-julefrokost": [
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
@@ -190,7 +191,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
   ],
   "vin-til-stjerneskud": [
-    { slug: "rejer-i-hvidvin", label: "Rejer i hvidvin" },
+    { slug: "rejer-i-hvidvin", label: "Gambas al ajillo" },
     { slug: "fiskefilet-citron-hvidvin", label: "Fiskefilet med citron og hvidvin" },
     { slug: "fiskefrikadeller-i-hvidvinsauce", label: "Fiskefrikadeller i hvidvinsauce" },
   ],
@@ -305,6 +306,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "marinerede-oliven-med-hvidvin", label: "Marinerede oliven med hvidvin" },
     { slug: "caponata-med-rodvin", label: "Caponata med rødvin" },
     { slug: "minestrone-med-rodvin", label: "Minestrone med rødvin" },
+    { slug: "bagt-graeskar-med-salviesmoer", label: "Bagt græskar med salviesmør" },
+    { slug: "svampetoast-med-hvidvin-og-timian", label: "Svampetoast med hvidvin" },
   ],
   "vin-til-nachos": [
     { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
@@ -315,7 +318,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kebab-spyd-med-rodvin", label: "Kebab-spyd med rødvin" },
   ],
   "vin-til-burger": [
-    { slug: "burger-med-rodvinsglace", label: "Burger med rødvinsglace" },
+    { slug: "burger-med-rodvinsglace", label: "Gourmet-burger med rødvinssautérede løg" },
   ],
   "vin-til-pho": [
     { slug: "pho-kylling-med-hvidvin", label: "Pho med kylling og hvidvin" },
@@ -374,7 +377,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-rejer": [
     { slug: "rejesalat-med-hvidvin", label: "Rejesalat med hvidvin" },
-    { slug: "rejer-i-hvidvin", label: "Rejer i hvidvin" },
+    { slug: "rejer-i-hvidvin", label: "Gambas al ajillo" },
     { slug: "wok-rejer-hvidvin", label: "Wok-rejer med hvidvin" },
     { slug: "kaemperejer-dampet-i-hvidvin", label: "Dampede kæmperejer i hvidvin" },
   ],
@@ -412,6 +415,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-hummer": [
     { slug: "hummer-i-hvidvinsauce", label: "Hummer i hvidvinsauce" },
+    { slug: "grillede-jomfruhummere-med-hvidloegssmoer", label: "Grillede jomfruhummere" },
   ],
   "vin-til-paaske-og-paaskefrokost": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -421,6 +425,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-thai-mad": [
     { slug: "thai-gron-karry-med-hvidvin", label: "Thai grøn karry med hvidvin" },
+    { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
   ],
   "vin-til-brittisk-mad": [
     { slug: "shepherd-pie-med-rodvin", label: "Shepherd's pie med rødvin" },
@@ -623,6 +628,16 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "portvin-til-ost": [
     { slug: "portvinsglaserede-figner-med-gedeost", label: "Portvinsglaserede figner med gedeost" },
+  ],
+  "riesling-til-asiatisk-mad": [
+    { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
+    { slug: "gyoza-svinekoed-med-riesling", label: "Gyoza med svinekød" },
+  ],
+  "vin-til-dim-sum": [
+    { slug: "gyoza-svinekoed-med-riesling", label: "Gyoza med svinekød" },
+  ],
+  "vin-til-svampe": [
+    { slug: "svampetoast-med-hvidvin-og-timian", label: "Svampetoast med hvidvin" },
   ],
 
 };
