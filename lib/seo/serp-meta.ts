@@ -15,12 +15,12 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "den-store-grillguide": {
     title: "Grillguide: vin til kul, gas og røg",
     description:
-      "Vin til grill på kul, gas og røg: zinfandel, shiraz og fadlagret chardonnay. Tabel efter brændsel — og hvad du undgår til BBQ-sauce.",
+      "Vin til grill på kul, gas og røg: zinfandel, shiraz og fad-chardonnay. Tabel efter brændsel — undgå bitter tannin til BBQ.",
   },
   "vin-til-mexicansk-mad-og-tacos": {
     title: "Vin til tacos: jalapeño, lime, koriander",
     description:
-      "Hvad tæmmer jalapeños, lime og koriander? Vin til mexicansk mad og tacos — syre, lav alkohol og konkrete flasketyper.",
+      "Hvad tæmmer jalapeños, lime og koriander? Vin til tacos og mexicansk mad — syre, lav alkohol og konkrete flasketyper.",
   },
   "vin-til-vegetariske-og-veganske-retter": {
     title: "Vin til vegetar og vegan: svampe & linser",
@@ -30,37 +30,37 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "bourgogne-vs-tyskland-pinot-noir": {
     title: "Spätburgunder vs. Bourgogne-pinot",
     description:
-      "Tysk Spätburgunder som billigere pinot-alternativ til Bourgogne: stil, pris, Baden/Pfalz og mad til and og svampe.",
+      "Spätburgunder vs. Bourgogne-pinot: stil, pris og mad. Hvornår tysk pinot er det smartere køb i Danmark.",
   },
   "italiensk-vin-jungle": {
     title: "Italiensk vin: Barolo til Amarone",
     description:
-      "Lynkursus i Barolo, Brunello, Barbera, Ripasso og Amarone — stil, pris og mad, så du finder rundt i den italienske jungle.",
+      "Barolo, Brunello, Barbera, Ripasso og Amarone forklaret: stil, pris og mad — lynkursus i italiensk rødvin.",
   },
   "hvidvin-uden-for-de-kendte-rammer": {
     title: "Albariño, Grüner og Viognier",
     description:
-      "Hvidvin ud over chardonnay og sauvignon: albariño, grüner veltliner og viognier — smag, mad og hvornår de vinder.",
+      "Albariño, grüner veltliner og viognier: smag, mad og hvornår de slår chardonnay og sauvignon på hylden.",
   },
   "glas-guiden": {
     title: "Vinglas: universal eller special?",
     description:
-      "Behøver du specielle vinglas — eller er det snobberi? Ærlig guide: ét universalglas dækker det meste. Hvornår specialglas giver mening.",
+      "Behøver du specielle vinglas? Érligt svar: ét universalglas dækker det meste. Hvornår specialglas giver mening.",
   },
   "aabnet-vin-holdbarhed-og-snydetricks": {
     title: "Åbnet vin: teskeer, pumper, køl",
     description:
-      "Hvor længe holder åbnet vin i køleskabet? Teskeen virker ikke; vakuumpumpe hjælper lidt. Tabel og ærlige snydetricks.",
+      "Åbnet vin i køleskab: teskeen virker ikke, vakuum hjælper lidt. Tabel pr. type og tricks der faktisk virker.",
   },
   "chillable-reds": {
     title: "Chillable reds: let rød serveret kold",
     description:
-      "Hvad er chillable reds? Gamay, pinot og frappato ved 12–16 °C. 30-minutters-regel, druer og mad til trenden.",
+      "Chillable reds: gamay, pinot og frappato ved 12–16 °C. 30-minutters-regel, indkøb og mad til trenden.",
   },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:
-      "Pét-nat forklaret: naturvinens bobler, hvorfor det smager anderledes end champagne, og hvordan du åbner og serverer det.",
+      "Pét-nat for begyndere: naturvinens bobler, forskel på champagne, åbning, servering og første køb.",
   },
 
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
