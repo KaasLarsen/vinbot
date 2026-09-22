@@ -12,9 +12,13 @@ const RIGHT_BANNER_ID = "94900";
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
-const railStyle = {
-  width: `min(11rem, calc((100vw - ${CONTENT_MAX_REM}rem) / 2 - 1rem))`,
-} as const;
+/** Bannerbredde + lidt luft — bruges til at lægge rails op ad indholdskanten. */
+const BANNER_SLOT_REM = 10.75;
+/**
+ * Hvor meget bannerne skubbes ind mod indholdet (overlapper PageShell-padding).
+ * Positiv = tættere på midten / mere «en del af layoutet».
+ */
+const INWARD_NUDGE_REM = 2.5;
 
 /** px pr. scroll — hold lav for diskret effekt */
 const PARALLAX_FACTOR = 0.068;
@@ -52,6 +56,10 @@ function useHomeSkyscraperParallax(enabled: boolean) {
   return y;
 }
 
+/**
+ * Sticky skyscrapere i gutteren — placeret tæt på indholdskanten (skubbet indad)
+ * i stedet for midt i den yderste margin.
+ */
 export function HomeStickyPartnerBanners() {
   const pathname = usePathname() || "/";
   const parallax = useHomeSkyscraperParallax(true);
@@ -61,11 +69,21 @@ export function HomeStickyPartnerBanners() {
   const leftSrc = bannerSrc(LEFT_BANNER_ID);
   const rightSrc = bannerSrc(RIGHT_BANNER_ID);
 
+  const leftStyle = {
+    width: `${BANNER_SLOT_REM}rem`,
+    left: `max(0.25rem, calc((100vw - ${CONTENT_MAX_REM}rem) / 2 - ${BANNER_SLOT_REM}rem + ${INWARD_NUDGE_REM}rem))`,
+  } as const;
+
+  const rightStyle = {
+    width: `${BANNER_SLOT_REM}rem`,
+    right: `max(0.25rem, calc((100vw - ${CONTENT_MAX_REM}rem) / 2 - ${BANNER_SLOT_REM}rem + ${INWARD_NUDGE_REM}rem))`,
+  } as const;
+
   return (
     <>
       <div
-        className="pointer-events-none fixed inset-y-0 left-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-center min-[114rem]:px-2"
-        style={railStyle}
+        className="pointer-events-none fixed inset-y-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-end"
+        style={leftStyle}
       >
         <div
           className="pointer-events-auto will-change-transform"
@@ -98,8 +116,8 @@ export function HomeStickyPartnerBanners() {
         </div>
       </div>
       <div
-        className="pointer-events-none fixed inset-y-0 right-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-center min-[114rem]:px-2"
-        style={railStyle}
+        className="pointer-events-none fixed inset-y-0 z-30 hidden overflow-hidden min-[114rem]:flex min-[114rem]:items-center min-[114rem]:justify-start"
+        style={rightStyle}
       >
         <div
           className="pointer-events-auto will-change-transform"
