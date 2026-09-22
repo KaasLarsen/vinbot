@@ -36,6 +36,16 @@ Kort mapping fra typiske danske søgeclusters til **primær guide** på Vinbot o
 | Crowdpleaser / backup-vin | `crowdpleaser-vin-til-gaester` | Live |
 | Gavevin 50/150/500 kr | `gavevin-50-150-500-kr` | Live budget-stige |
 | Gave til vinkyndig | `vin-til-vinkyndig-gave` | Live |
+| Grill kul/gas/røg (zin, shiraz, fad-chard) | `den-store-grillguide` | Live (sep 2026); supporting: `vin-til-grill-og-bbq` |
+| Mexicansk + tacos (jalapeño/lime/koriander) | `vin-til-mexicansk-mad-og-tacos` | Live; dybde: `vin-til-tacos`, `vin-til-mexicansk-mad` |
+| Vegetar/vegan + vegansk vin | `vin-til-vegetariske-og-veganske-retter` | Live |
+| Spätburgunder vs Bourgogne | `bourgogne-vs-tyskland-pinot-noir` | Live |
+| Italiensk rød (Barolo→Amarone) | `italiensk-vin-jungle` | Live |
+| Albariño / Grüner / Viognier intro | `hvidvin-uden-for-de-kendte-rammer` | Live |
+| Vinglas snobberi vs universal | `glas-guiden` | Live; teknik: `sadan-vaelger-du-vinglas` |
+| Åbnet vin teskeer/pumper | `aabnet-vin-holdbarhed-og-snydetricks` | Live; pillar: `hvor-laenge-holder-aabnet-vin` |
+| Chillable reds | `chillable-reds` | Live; praktisk: `afkoelt-roedvin` |
+| Pét-nat begynder | `pet-nat-for-begyndere` | Live; teknik: `hvad-er-pet-nat` |
 
 **Strategi:** affiliate-side prioriterer *commercial investigation* og dybe guides; transaktionelle head terms («billig rødvin») overlades til store webshops — Vinbot fanger trafik tidligt og sender videre via sammenligning.
 

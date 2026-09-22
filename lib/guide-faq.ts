@@ -1,5 +1,176 @@
 /** FAQ til FAQPage JSON-LD — korte, rene svar (flere sider kan tilføjes efter behov). */
 export const guideFaqBySlug: Record<string, { question: string; answer: string }[]> = {
+  "den-store-grillguide": [
+    {
+      question: "Hvilken vin til grill på kul?",
+      answer:
+        "Kul giver mere røg — vælg zinfandel, shiraz/syrah eller malbec med moden frugt. Undgå knastør mineralsk hvid til røget brisket og ung, stram cabernet til sød BBQ-sauce.",
+    },
+    {
+      question: "Hvilken vin til gasgrill?",
+      answer:
+        "Gas har mindre røg: fadlagret chardonnay til kylling, rosé til blandet bord, lettere shiraz eller afkølet gamay til kød uden tung glasur.",
+    },
+    {
+      question: "Passer fadlagret chardonnay til grill?",
+      answer:
+        "Ja til grillet kylling, majs og milde marinader. Nej til skarp lime-fisk og kraftig røg — der vinder albariño eller let hvid.",
+    },
+  ],
+  "vin-til-mexicansk-mad-og-tacos": [
+    {
+      question: "Hvilken vin tæmmer jalapeños?",
+      answer:
+        "Hold alkoholen nede (ca. 12–13,5 %) og overvej lidt restsødme: halvtør riesling, tør rosé eller afkølet gamay. Capsaicin forstærker alkohol-varme.",
+    },
+    {
+      question: "Hvilken vin til tacos med lime?",
+      answer:
+        "Høj syre: albariño, tør riesling, sauvignon eller saftig barbera/gamay. Blød, lav-syre rød smager flad mod lime.",
+    },
+    {
+      question: "Hvilken vin til koriander i mexicansk mad?",
+      answer:
+        "Urtet hvid (grüner, sauvignon, vermentino) hvis du kan lide koriander. Ellers frugtig gamay eller rosé, der ikke forstærker den grønne note.",
+    },
+  ],
+  "vin-til-vegetariske-og-veganske-retter": [
+    {
+      question: "Hvad betyder vegansk vin?",
+      answer:
+        "Vin kan klareres med æg, mælk eller fiskeblære. Vegansk vin bruger plantebaserede eller minerale klaringsmidler — eller ingen. Økologisk er ikke automatisk vegansk.",
+    },
+    {
+      question: "Hvilken vin til svamperetter?",
+      answer:
+        "Pinot noir, barbera, gamay cru eller orangevin med moderate tanniner. Undgå meget ung, stram cabernet uden protein at lande på.",
+    },
+    {
+      question: "Hvilken vin til linser og rodfrugter?",
+      answer:
+        "Sangiovese eller tempranillo til tomat-linsegryde; pinot eller gamay til bagte rodfrugter; grüner eller chenin til kold linsesalat.",
+    },
+  ],
+  "bourgogne-vs-tyskland-pinot-noir": [
+    {
+      question: "Er Spätburgunder det samme som Pinot Noir?",
+      answer:
+        "Ja — Spätburgunder er det tyske navn for pinot noir. Stilen varierer med region (Baden, Pfalz, Ahr), ligesom Bourgogne varierer by for by.",
+    },
+    {
+      question: "Er tysk Pinot Noir billigere end Bourgogne?",
+      answer:
+        "Ofte ja i hverdagssegmentet (ca. 120–250 kr). God Bourgogne village koster typisk mere. Top-tysk GG kan dog matche Bourgogne-priser.",
+    },
+    {
+      question: "Hvornår skal man vælge Bourgogne frem for Spätburgunder?",
+      answer:
+        "Når anledningen og budgettet matcher, du kender producenten, eller du vil lagre. Til hverdagsand og svampe er Spätburgunder ofte bedst værdi.",
+    },
+  ],
+  "italiensk-vin-jungle": [
+    {
+      question: "Hvad er forskellen på Ripasso og Amarone?",
+      answer:
+        "Amarone laves på tørrede druer og er kraftigere og dyrere. Ripasso får ekstra krop ved kontakt med Amarone-rester — en midterstil til pasta og stegt kød.",
+    },
+    {
+      question: "Er Barbera godt til hverdag?",
+      answer:
+        "Ja. Barbera har høj syre, lav tannin og rød frugt — ideel til pasta, pizza og tomatsauce uden Barolo-pris eller -stramhed.",
+    },
+    {
+      question: "Hvornår skal man åbne Barolo?",
+      answer:
+        "Ung Barolo er ofte stram; mange flasker vinder ved 5–10+ års alder eller god dekantering. Til hverdag: prøv Langhe Nebbiolo først.",
+    },
+  ],
+  "hvidvin-uden-for-de-kendte-rammer": [
+    {
+      question: "Hvad smager Albariño af?",
+      answer:
+        "Citrus, fersken og ofte et saltholdigt, mineralsk strejf. Klassisk til skaldyr — tæt på muscadet/picpoul, med lidt mere frugt.",
+    },
+    {
+      question: "Hvad er Grüner Veltliner godt til?",
+      answer:
+        "Asparges, schnitzel, urtesalater og let asiatisk mad. Smagen er grønt æble, citrus og hvid peber.",
+    },
+    {
+      question: "Hvornår vælger man Viognier?",
+      answer:
+        "Når du vil have mere krop og blomster/abrikos end sauvignon — til kylling, mild karry og grillkylling. Pas på meget tung fad til delicate skaldyr.",
+    },
+  ],
+  "glas-guiden": [
+    {
+      question: "Behøver man forskellige glas til rød- og hvidvin?",
+      answer:
+        "Nej til hverdag. Ét godt universalglas dækker det meste. Specialglas (Bourgogne/Bordeaux/flute) er nice-to-have, når du drikker samme stil ofte.",
+    },
+    {
+      question: "Er dyre vinglas snobberi?",
+      answer:
+        "Glassets form påvirker aroma — det er fysik. Men et skab fuldt af drue-specifikke serier er valgfrit. Start med seks ens tulipglas.",
+    },
+    {
+      question: "Skal champagne på flute?",
+      answer:
+        "Flute bevarer bobler og ser festlig ud. Tulip eller hvidvinsglas giver mere aroma til god champagne. Begge er fine — kontekst afgør.",
+    },
+  ],
+  "aabnet-vin-holdbarhed-og-snydetricks": [
+    {
+      question: "Virker en teskeen i vinflasken?",
+      answer:
+        "Nej. Sølvteskeen-myten holder ikke — den ændrer ikke ilttrykket meningsfuldt. Brug prop, køl og gerne mindre flaske til resten.",
+    },
+    {
+      question: "Virker vakuumpumpe til åbnet vin?",
+      answer:
+        "Ja, lidt: typisk 1–3 ekstra dage på stille vin. Den erstatter ikke køleskab. Brug ikke vakuum på bobler — du fjerner kulsyren.",
+    },
+    {
+      question: "Skal åbnet rødvin i køleskabet?",
+      answer:
+        "Ja, hvis den skal gemmes. Kulde bremser oxidation. Tag den ud 20–30 minutter før servering, medmindre det er en chillable red.",
+    },
+  ],
+  "chillable-reds": [
+    {
+      question: "Hvad er chillable reds?",
+      answer:
+        "Lette, saftige rødvine (gamay, let pinot, frappato m.fl.), der smager bedst kølige omkring 12–16 °C — ikke iskold cabernet.",
+    },
+    {
+      question: "Hvor længe skal chillable reds i køleskabet?",
+      answer:
+        "Fra stuetemperatur typisk 20–30 minutter til ca. 13–15 °C. Smag undervejs; under ca. 11 °C lukker aromaen ofte.",
+    },
+    {
+      question: "Kan alle rødvine serveres kolde?",
+      answer:
+        "Nej. Kraftige, tanninrige vine (ung Barolo, mange cabernet) bliver hårde og lukkede, hvis de er for kolde. Vælg lav-tannin-stilarter.",
+    },
+  ],
+  "pet-nat-for-begyndere": [
+    {
+      question: "Hvad er pét-nat?",
+      answer:
+        "Pétillant naturel: mousserende vin hvor gæringen færdiggøres i flasken (méthode ancestrale). Ofte uklar, frugtig og mindre forudsigelig end champagne.",
+    },
+    {
+      question: "Hvorfor smager pét-nat anderledes end champagne?",
+      answer:
+        "Anden metode: typisk én gæring, ingen klassisk dosage, ofte uden disgorging. Mere cider-agtig frugt, lavere alkohol, mere variation flaske til flaske.",
+    },
+    {
+      question: "Hvordan serverer man pét-nat?",
+      answer:
+        "Køl til 6–10 °C, åbn forsigtigt, hæld langsomt. Tulip eller hvidvinsglas. De fleste flasker drikkes unge inden for 1–2 år.",
+    },
+  ],
+
   "vin-til-pakkeleg": [
     {
       question: "Hvilken vin skal man købe til pakkeleg?",
