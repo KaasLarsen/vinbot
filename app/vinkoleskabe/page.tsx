@@ -33,7 +33,7 @@ const FAQ = [
   {
     question: "Hvor finder jeg vinkøleskabe med pris og billede?",
     answer:
-      "På denne side søger du direkte i sortimentet fra Vinkøleskabet.dk, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS via vores produktfeeds. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
+      "På denne side søger du direkte i sortimentet fra Vinkøleskabet.dk, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function VinkoleskabePage() {
       <section className="mt-14 max-w-3xl">
         <h2 className="text-2xl font-semibold text-stone-900">Populære modeller — sammenlign priser</h2>
         <p className="mt-2 text-stone-700 leading-relaxed">
-          Ud over vores partnerfeeds kan du sammenligne aktuelle tilbud på tværs af flere danske butikker via{" "}
+          Ud over butikssøgningen herover kan du sammenligne aktuelle tilbud på tværs af flere danske butikker via{" "}
           <strong className="font-medium text-stone-800">PriceRunner</strong> — kompakt fritstående, to zoner og større kapacitet.
         </p>
         <PriceRunnerProductWidget

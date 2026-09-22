@@ -25,7 +25,7 @@ const FAQ = [
   {
     question: "Er det det samme som vinkøleskabe?",
     answer:
-      "Nej. Vinkøleskabe har deres egen side med produktfeeds. Vinglas har også sin egen hub under /vinglas. Her samler vi mindre gear: glas, åbning, prop og køling ved bordet.",
+      "Nej. Vinkøleskabe har deres egen side. Vinglas har også sin egen hub under /vinglas. Her samler vi mindre gear: glas, åbning, prop og køling ved bordet.",
   },
 ];
 
