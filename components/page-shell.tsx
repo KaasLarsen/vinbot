@@ -7,7 +7,10 @@ type PageShellProps = {
   children: ReactNode;
   className?: string;
   as?: "div" | "article";
-  /** `article` = reading column (~42rem). Default stays full hub/katalog width. */
+  /**
+   * Kept for call-site compatibility. Both variants use the same content width
+   * so navigating hubs → articles (e.g. regioner → dybdeguides) does not jump.
+   */
   variant?: "wide" | "article";
 };
 
@@ -15,12 +18,12 @@ export function PageShell({
   children,
   className,
   as: Tag = "div",
-  variant = "wide",
+  variant: _variant = "wide",
 }: PageShellProps) {
-  const maxWidth = variant === "article" ? "max-w-3xl" : "max-w-[90rem]";
+  void _variant;
   return (
     <Tag
-      className={["mx-auto w-full px-4 sm:px-6", maxWidth, className]
+      className={["mx-auto w-full max-w-[90rem] px-4 sm:px-6", className]
         .filter(Boolean)
         .join(" ")}
     >
