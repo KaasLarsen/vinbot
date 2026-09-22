@@ -41,6 +41,38 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "sadan-vaelger-du-roedvinsglas") {
+    return {
+      q: "rødvinsglas bordeauxglas bourgogneglas cabernet pinot",
+      max: null,
+      label: "rødvinsglas",
+    };
+  }
+
+  if (slug === "sadan-vaelger-du-hvidvinsglas") {
+    return {
+      q: "hvidvinsglas krystal chardonnay riesling",
+      max: null,
+      label: "hvidvinsglas",
+    };
+  }
+
+  if (slug === "sadan-vaelger-du-champagneglas") {
+    return {
+      q: "champagneglas flute tulip prosecco cava",
+      max: null,
+      label: "champagneglas",
+    };
+  }
+
+  if (slug === "riedel-vs-zalto-vs-spiegelau-vinglas") {
+    return {
+      q: "riedel zalto spiegelau holmegaard vinglas krystal",
+      max: null,
+      label: "vinglas mærker",
+    };
+  }
+
   if (slug === "hvilken-vin-til-madlavning-sovs") {
     return {
       q: "merlot gamay rhône chianti sauvignon blanc riesling madlavning sovs",

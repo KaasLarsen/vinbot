@@ -25,7 +25,7 @@ const FAQ = [
   {
     question: "Er det det samme som vinkøleskabe?",
     answer:
-      "Nej. Vinkøleskabe har deres egen side med produktfeeds. Her samler vi mindre gear: glas, åbning, prop og køling ved bordet.",
+      "Nej. Vinkøleskabe har deres egen side med produktfeeds. Vinglas har også sin egen hub under /vinglas. Her samler vi mindre gear: glas, åbning, prop og køling ved bordet.",
   },
 ];
 
@@ -57,7 +57,11 @@ export default function VintilbehorPage() {
         <p className="mt-4 text-lg leading-relaxed text-stone-700">
           Flasken er halve oplevelsen. Her samler vi <strong className="font-medium text-stone-800">prissammenligning</strong> på
           konkret vintilbehør via <strong className="font-medium text-stone-800">PriceRunner</strong> — markeret som annonce — plus
-          købsguides. Flasker søger du på forsiden; vinkøleskabe ligger på{" "}
+          købsguides. Dedikeret hub til glas:{" "}
+          <Link href="/vinglas" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
+            /vinglas
+          </Link>
+          . Flasker søger du på forsiden; vinkøleskabe ligger på{" "}
           <Link href="/vinkoleskabe" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
             /vinkoleskabe
           </Link>
@@ -67,9 +71,14 @@ export default function VintilbehorPage() {
 
       <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[
+          { href: "/vinglas", title: "Vinglas-hub", body: "Rød, hvid, bobler og mærker." },
           { href: "/guides/vintilbehor-til-begyndere", title: "Startkit", body: "Hvad du skal købe først." },
           { href: "/guides/vin-gave-gear", title: "Gave-gear", body: "Glas, proptrækker og karaffel." },
-          { href: "/guides/sadan-vaelger-du-vinglas", title: "Vinglas", body: "Form, rød, hvid og bobler." },
+          { href: "/guides/sadan-vaelger-du-vinglas", title: "Vinglas-guide", body: "Form, rød, hvid og bobler." },
+          { href: "/guides/sadan-vaelger-du-roedvinsglas", title: "Rødvinsglas", body: "Bourgogne vs Bordeaux." },
+          { href: "/guides/sadan-vaelger-du-hvidvinsglas", title: "Hvidvinsglas", body: "Volumen og stilk." },
+          { href: "/guides/sadan-vaelger-du-champagneglas", title: "Champagneglas", body: "Flute, tulip, coupé." },
+          { href: "/guides/riedel-vs-zalto-vs-spiegelau-vinglas", title: "Mærker", body: "Riedel, Zalto, Spiegelau." },
           { href: "/guides/sadan-vaelger-du-proptrekker", title: "Proptrækker", body: "Waiter’s friend vs vinge." },
           { href: "/guides/sadan-vaelger-du-vinkaraffel", title: "Vinkaraffel", body: "Bred bund vs. bordkaraffel." },
           { href: "/guides/sadan-vaelger-du-vinreol", title: "Vinreol", body: "Størrelse, placering og format." },

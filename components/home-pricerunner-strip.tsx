@@ -13,9 +13,14 @@ export function HomePriceRunnerStrip() {
             Flaske og vintilbehør via PriceRunner (annonce). Tjek altid lager, årgang og fragt hos forhandleren.
           </p>
         </div>
-        <Link href="/vintilbehor" className="text-sm font-medium text-rose-900 hover:underline">
-          Mere vintilbehør →
-        </Link>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <Link href="/vinglas" className="text-sm font-medium text-rose-900 hover:underline">
+            Vinglas →
+          </Link>
+          <Link href="/vintilbehor" className="text-sm font-medium text-rose-900 hover:underline">
+            Mere vintilbehør →
+          </Link>
+        </div>
       </div>
 
       <PriceRunnerProductWidget

@@ -4127,6 +4127,74 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Kvalitetsglas er typisk tyndere i læben, lettere og mere ensartet — det påvirker mundfølelse og oplevet præcision. Meget dyre brands giver ofte marginal extra; start med tynde, neutrale glas og udvid først når du ved hvilken stil du drikker mest.",
     },
   ],
+  "sadan-vaelger-du-roedvinsglas": [
+    {
+      question: "Bourgogne- eller Bordeaux-glas?",
+      answer:
+        "Bourgogne (bred skål) til pinot og aromatiske lette røde. Bordeaux (højere tulip) til cabernet, syrah og strukturerede blends. Universalglas dækker begge, indtil du ved hvad du drikker mest.",
+    },
+    {
+      question: "Hvor store skal rødvinsglassene være?",
+      answer:
+        "50–70 cl i volumen er typisk sweet spot — skænk kun omkring en tredjedel (ca. 12–15 cl). Gigantiske XXL-glas frister til for store portioner.",
+    },
+    {
+      question: "Hvor mange rødvinsglas skal man købe?",
+      answer:
+        "Fire til seks ens glas dækker de fleste husstande. Start med to, hvis du vil prøve formen, før du investerer i et helt sæt.",
+    },
+  ],
+  "sadan-vaelger-du-hvidvinsglas": [
+    {
+      question: "Kan jeg bruge rødvinsglas til hvidvin?",
+      answer:
+        "Ja i nød, men hvidvin bliver hurtigere lunken i store skåle, og aromaen spredes. Et mindre hvidvinsglas holder temperatur og næse bedre.",
+    },
+    {
+      question: "Skal hvidvinsglas have stilk?",
+      answer:
+        "Stilk er det bedste default til kølig hvidvin, så hånden ikke varmer skålen. Stilkeløse glas er fine til picnic og grill.",
+    },
+    {
+      question: "Hvilken størrelse hvidvinsglas?",
+      answer:
+        "Typisk 35–45 cl. Skænk mindre end til rød — hold kulden og koncentrationen i glasset.",
+    },
+  ],
+  "sadan-vaelger-du-champagneglas": [
+    {
+      question: "Flute eller tulip til champagne?",
+      answer:
+        "Flute holder brus længere og ser festlig ud. Tulip giver mere aroma og er ofte bedre til kvalitets-champagne og crémant. Coupé er mest æstetik.",
+    },
+    {
+      question: "Kan man bruge hvidvinsglas til bobler?",
+      answer:
+        "Ja — især til prosecco, cava og hverdagsbobler. Du får mere næse end i flute, men mindre «champagne-look».",
+    },
+    {
+      question: "Hvor mange champagneglas til gæster?",
+      answer:
+        "Regn mindst ét glas pr. gæst plus et par ekstra til spild og genopfyldning ved velkomst.",
+    },
+  ],
+  "riedel-vs-zalto-vs-spiegelau-vinglas": [
+    {
+      question: "Er Zalto pengene værd?",
+      answer:
+        "Zalto er ekstremt let og tyndt — en luksusoplevelse. Det er ikke nødvendigt for god vin. Start med Spiegelau eller lignende, medmindre budget og forsigtighed matcher.",
+    },
+    {
+      question: "Riedel eller Spiegelau til hverdag?",
+      answer:
+        "Spiegelau er typisk det bedre hverdagsvalg på pris og holdbarhed. Riedel giver mening, når du vil specialisere dig i drue-specifikke former.",
+    },
+    {
+      question: "Hvilket mærke skal man starte med?",
+      answer:
+        "Spiegelau, Luigi Bormioli eller Holmegaard. Opgrader til Riedel eller Zalto, når du mærker forskellen og ved, hvilke vine du drikker oftest.",
+    },
+  ],
   "vin-til-konfirmation": [
     {
       question: "Hvilken vin skal man servere til konfirmation?",

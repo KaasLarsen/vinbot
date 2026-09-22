@@ -324,6 +324,17 @@ const VIDEN_FEST: GuideClusterLink[] = [
   { slug: "crowdpleaser-vin-til-gaester", label: "Crowdpleaser til gæster" },
 ];
 
+const VIDEN_GLAS: GuideClusterLink[] = [
+  { slug: "sadan-vaelger-du-vinglas", label: "Sådan vælger du vinglas" },
+  { slug: "sadan-vaelger-du-roedvinsglas", label: "Rødvinsglas" },
+  { slug: "sadan-vaelger-du-hvidvinsglas", label: "Hvidvinsglas" },
+  { slug: "sadan-vaelger-du-champagneglas", label: "Champagneglas" },
+  { slug: "riedel-vs-zalto-vs-spiegelau-vinglas", label: "Riedel vs Zalto vs Spiegelau" },
+  { slug: "sadan-vaelger-du-vinkaraffel", label: "Vinkaraffel" },
+  { slug: "sadan-serverer-du-vin", label: "Sådan serverer du vin" },
+  { slug: "hvor-mange-glas-i-en-flaske-vin", label: "Glas pr. flaske" },
+];
+
 function videnBlock(
   exclude: string[],
   title: string,
@@ -1628,5 +1639,35 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "vin-til-dessert-og-kransekage", label: "Vin til dessert" }],
     [{ slug: "hvad-er-syre-i-vin", label: "Hvad er syre i vin" }],
     [{ slug: "hvad-er-restsukker-i-vin", label: "Hvad er restsukker" }],
+  ),
+  "sadan-vaelger-du-vinglas": videnBlock(
+    ["sadan-vaelger-du-vinglas"],
+    "Vinglas-klyngen",
+    "Form, rød, hvid, bobler og mærker — plus karaffel og servering.",
+    VIDEN_GLAS.filter((l) => l.slug !== "sadan-vaelger-du-vinglas"),
+  ),
+  "sadan-vaelger-du-roedvinsglas": videnBlock(
+    ["sadan-vaelger-du-roedvinsglas"],
+    "Rødvinsglas & vinglas",
+    "Bourgogne, Bordeaux og mærker — se også hvid og champagne.",
+    VIDEN_GLAS.filter((l) => l.slug !== "sadan-vaelger-du-roedvinsglas"),
+  ),
+  "sadan-vaelger-du-hvidvinsglas": videnBlock(
+    ["sadan-vaelger-du-hvidvinsglas"],
+    "Hvidvinsglas & vinglas",
+    "Volumen, stilk og aroma — plus rød, bobler og mærker.",
+    VIDEN_GLAS.filter((l) => l.slug !== "sadan-vaelger-du-hvidvinsglas"),
+  ),
+  "sadan-vaelger-du-champagneglas": videnBlock(
+    ["sadan-vaelger-du-champagneglas"],
+    "Champagneglas & vinglas",
+    "Flute, tulip og hvidvinsglas til bobler — plus resten af glas-klyngen.",
+    VIDEN_GLAS.filter((l) => l.slug !== "sadan-vaelger-du-champagneglas"),
+  ),
+  "riedel-vs-zalto-vs-spiegelau-vinglas": videnBlock(
+    ["riedel-vs-zalto-vs-spiegelau-vinglas"],
+    "Vinglas-mærker",
+    "Riedel, Zalto, Spiegelau og Holmegaard i kontekst med form-guides.",
+    VIDEN_GLAS.filter((l) => l.slug !== "riedel-vs-zalto-vs-spiegelau-vinglas"),
   ),
 };

@@ -42,6 +42,24 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   },
   { label: "Vin-viden", href: "/vin-viden", keywords: ["viden", "temperatur", "opbevaring", "glas"] },
   {
+    label: "Vinglas",
+    href: "/vinglas",
+    keywords: [
+      "vinglas",
+      "glas",
+      "rødvinsglas",
+      "hvidvinsglas",
+      "champagneglas",
+      "flute",
+      "riedel",
+      "zalto",
+      "spiegelau",
+      "holmegaard",
+      "krystal",
+      "stemware",
+    ],
+  },
+  {
     label: "Olie-Leksikon",
     href: "/olie-leksikon",
     keywords: [

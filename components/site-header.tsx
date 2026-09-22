@@ -81,6 +81,7 @@ const moreNav: NavItem[] = [
   { href: "/lande", label: "Vinlande", activePrefix: "/lande" },
   { href: "/regioner", label: "Regioner" },
   { href: "/vinkoleskabe", label: "Vinkøleskabe" },
+  { href: "/vinglas", label: "Vinglas" },
   { href: "/vintilbehor", label: "Vintilbehør" },
   { href: "/rabatkoder", label: "Rabatkoder" },
   { href: "/black-friday", label: "Black Friday vin" },

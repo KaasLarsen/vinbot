@@ -119,6 +119,69 @@ export const priceRunnerProducts = {
     compareUrl:
       "https://www.pricerunner.dk/pl/461-3201389919/Koekkentilbehoer/Spiegelau-Definition-Hvidvinsglas-43cl-2stk-Sammenlign-Priser",
   },
+  "spiegelau-authentis-roedvinsglas": {
+    productId: "3208286",
+    title: "Spiegelau Authentis Rødvinsglas 48 cl (4 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3208286/Koekkentilbehoer/Spiegelau-Authentis-Roedvinsglas-48cl-4stk-Sammenlign-Priser",
+  },
+  "spiegelau-authentis-champagneglas": {
+    productId: "3208997",
+    title: "Spiegelau Authentis Champagneglas 27 cl (4 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3208997/Koekkentilbehoer/Spiegelau-Authentis-Champagneglas-27cl-4stk-Sammenlign-Priser",
+  },
+  "spiegelau-lifestyle-hvidvinsglas": {
+    productId: "5198457",
+    title: "Spiegelau LifeStyle Hvidvinsglas 44 cl (4 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-5198457/Koekkentilbehoer/Spiegelau-LifeStyle-Hvidvinsglas-44cl-4stk-Sammenlign-Priser",
+  },
+  "riedel-extreme-cabernet": {
+    productId: "3200336706",
+    title: "Riedel Extreme Cabernet Rødvinsglas 80 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3200336706/Koekkentilbehoer/Riedel-Extreme-Cabernet-Roedvinsglas-80cl-2stk-Sammenlign-Priser",
+  },
+  "riedel-veritas-cabernet": {
+    productId: "3268944",
+    title: "Riedel Veritas Cabernet/Merlot Rødvinsglas 67 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3268944/Koekkentilbehoer/Riedel-Veritas-Roedvinsglas-67cl-2stk-Sammenlign-Priser",
+  },
+  "riedel-vinum-bordeaux": {
+    productId: "3208633",
+    title: "Riedel Vinum Bordeaux Rødvinsglas 61 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3208633/Koekkentilbehoer/Riedel-Vinum-Cabernet-Sauvignon-Merlot-Roedvinsglas-2stk-Sammenlign-Priser",
+  },
+  "riedel-vinum-pinot-noir": {
+    productId: "3769048",
+    title: "Riedel Vinum Pinot Noir Rødvinsglas 70 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3769048/Koekkentilbehoer/Riedel-Vinum-Pinot-Noir-Roedvinsglas-70cl-2stk-Sammenlign-Priser",
+  },
+  "zalto-universal-denk-art": {
+    productId: "3335365190",
+    title: "Zalto Universal Denk'Art Vinglas 53 cl (2 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3335365190/Koekkentilbehoer/Zalto-Universal-Denk-Art-Vinglas-53cl-2stk-Sammenlign-Priser",
+  },
+  "holmegaard-cabernet-roedvinsglas-6stk": {
+    productId: "3165191",
+    title: "Holmegaard Cabernet Rødvinsglas 69 cl (6 stk)",
+    category: "vinglas",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/461-3165191/Koekkentilbehoer/Holmegaard-Cabernet-Roedvinsglas-69cl-6stk-Sammenlign-Priser",
+  },
   "vacu-vin-wine-saver-gift-pack": {
     productId: "3200042945",
     title: "Vacu Vin Wine Saver Gift Pack (pumpe + 2 propper)",

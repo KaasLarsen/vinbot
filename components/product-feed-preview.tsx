@@ -1,14 +1,14 @@
 import { ProductCard } from "@/components/product-card";
 import { runSearch } from "@/lib/search/engine";
 import { runWineCoolerSearch } from "@/lib/search/wine-cooler-engine";
+import { runWineGlassSearch } from "@/lib/search/wine-glass-engine";
 import type { ProductHit } from "@/lib/search/types";
 
-async function runScopedSearch(
-  q: string,
-  maxPrice: number | null,
-  searchScope: "wine" | "wine-cooler",
-) {
+type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass";
+
+async function runScopedSearch(q: string, maxPrice: number | null, searchScope: FeedSearchScope) {
   if (searchScope === "wine-cooler") return runWineCoolerSearch(q, maxPrice);
+  if (searchScope === "wine-glass") return runWineGlassSearch(q, maxPrice);
   return runSearch(q, maxPrice);
 }
 
@@ -23,7 +23,7 @@ async function mergeSearchQueries(
   maxPrice: number | null,
   merchant: string | null | undefined,
   maxItems: number,
-  searchScope: "wine" | "wine-cooler",
+  searchScope: FeedSearchScope,
 ): Promise<ProductHit[]> {
   const seen = new Set<string>();
   const out: ProductHit[] = [];
@@ -68,8 +68,8 @@ export async function ProductFeedPreview({
   placement?: string;
   /** CSS grid-klasser (fx 4 kolonner på forsiden). */
   gridClassName?: string;
-  /** Vinsøgning (standard) eller kun vinkøleskabe fra Vinkøleskabet.dk. */
-  searchScope?: "wine" | "wine-cooler";
+  /** Vinsøgning (standard), vinkøleskabe eller vinglas fra tilbehørsfeeds. */
+  searchScope?: FeedSearchScope;
   emptyLabel?: string;
 }) {
   const nonEmptyQueries = queries?.map((s) => s.trim()).filter(Boolean);

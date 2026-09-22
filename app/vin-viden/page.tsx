@@ -97,6 +97,10 @@ export default function VinVidenHubPage() {
           sådan vælger du vinglas
         </Link>
         ,{" "}
+        <Link href="/vinglas" className="text-rose-900 hover:underline">
+          vinglas-hub
+        </Link>
+        ,{" "}
         <Link href="/guides/hvad-er-tanniner" className="text-rose-900 hover:underline">
           hvad er tanniner
         </Link>
@@ -326,6 +330,10 @@ export default function VinVidenHubPage() {
           Glas og karaffel (widgets herover) er det udstyr, der oftest ændrer oplevelsen uden at kræve et vinkøleskab.
           Et anstændigt tulipanglas og en karaffel til ung rød slår de fleste “dyre flaske, forkerte glas”-aftener. Se
           også{" "}
+          <Link href="/vinglas" className="text-rose-900 hover:underline">
+            vinglas-hubben
+          </Link>
+          ,{" "}
           <Link href="/guides/sadan-vaelger-du-vinglas" className="text-rose-900 hover:underline">
             sådan vælger du vinglas
           </Link>{" "}
