@@ -37,7 +37,7 @@ const FAQ = [
   {
     question: "Hvor køber man vinglas med pris og billede?",
     answer:
-      "På denne side viser vi glas fra LforLiving.dk og Likehome.dk via produktfeeds, plus prissammenligning på konkrete modeller via PriceRunner. Klik videre til forhandleren for lager, fragt og aktuel pris.",
+      "På denne side viser vi glas fra LforLiving.dk og Likehome.dk, plus prissammenligning på konkrete modeller via PriceRunner. Klik videre til forhandleren for lager, fragt og aktuel pris.",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function VinglasPage() {
           <Link href="/vintilbehor" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4">
             vintilbehør
           </Link>
-          . Sortimentet i feeds kommer især fra{" "}
+          . Sortimentet kommer især fra{" "}
           <a
             href={LFOR_LIVING_SHOP}
             target="_blank"
@@ -153,7 +153,7 @@ export default function VinglasPage() {
             searchScope="wine-glass"
             emptyLabel="rødvinsglas"
             queries={["rødvinsglas", "bordeauxglas", "bourgogneglas"]}
-            title="Rødvinsglas fra partnerfeeds"
+            title="Rødvinsglas"
             placement="vinglas-roed"
           />
         </div>
@@ -162,7 +162,7 @@ export default function VinglasPage() {
             searchScope="wine-glass"
             emptyLabel="hvidvinsglas"
             query="hvidvinsglas"
-            title="Hvidvinsglas fra partnerfeeds"
+            title="Hvidvinsglas"
             placement="vinglas-hvid"
           />
         </div>
