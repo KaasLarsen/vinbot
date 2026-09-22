@@ -33,11 +33,83 @@ export function deriveGuideIntent(
     };
   }
 
-  if (slug === "sadan-vaelger-du-vinglas") {
+  if (slug === "sadan-vaelger-du-vinglas" || slug === "glas-guiden") {
     return {
       q: "vinglas champagneglas rødvinsglas krystal bourgogne flute tulip vinreol vinhylder karaffel dekanter",
       max: null,
       label: "vinglas",
+    };
+  }
+
+  if (slug === "den-store-grillguide") {
+    return {
+      q: "zinfandel shiraz syrah malbec primitivo grill bbq",
+      max: 200,
+      label: "grillvin (zin, shiraz, malbec)",
+    };
+  }
+
+  if (slug === "vin-til-mexicansk-mad-og-tacos") {
+    return {
+      q: "albariño riesling gamay tempranillo rosé cava tacos",
+      max: 150,
+      label: "vin til tacos og mexicansk",
+    };
+  }
+
+  if (slug === "vin-til-vegetariske-og-veganske-retter") {
+    return {
+      q: "pinot noir gamay barbera chianti grüner veltliner vegetar",
+      max: 150,
+      label: "vin til vegetar og vegan",
+    };
+  }
+
+  if (slug === "bourgogne-vs-tyskland-pinot-noir") {
+    return {
+      q: "pinot noir spätburgunder bourgogne baden pfalz",
+      max: 250,
+      label: "pinot noir og Spätburgunder",
+    };
+  }
+
+  if (slug === "italiensk-vin-jungle") {
+    return {
+      q: "barolo brunello barbera ripasso amarone chianti",
+      max: 300,
+      label: "italiensk rødvin",
+    };
+  }
+
+  if (slug === "hvidvin-uden-for-de-kendte-rammer") {
+    return {
+      q: "albariño albarinho grüner veltliner viognier",
+      max: 200,
+      label: "albariño, grüner og viognier",
+    };
+  }
+
+  if (slug === "aabnet-vin-holdbarhed-og-snydetricks") {
+    return {
+      q: "vakuum vinprop champagneprop coravin flaskekøler",
+      max: null,
+      label: "vintilbehør til åbnet vin",
+    };
+  }
+
+  if (slug === "chillable-reds") {
+    return {
+      q: "gamay beaujolais pinot noir frappato lettere rødvin",
+      max: 150,
+      label: "chillable / afkølet rødvin",
+    };
+  }
+
+  if (slug === "pet-nat-for-begyndere") {
+    return {
+      q: "pét-nat petnat naturvin mousserende crémant",
+      max: 250,
+      label: "pét-nat og naturvin-bobler",
     };
   }
 
