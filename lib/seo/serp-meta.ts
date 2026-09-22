@@ -12,6 +12,57 @@ const GENERIC_BEDSTE_DESC =
  * Fuldt H1 på siden ændres ikke — kun metadata.
  */
 const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
+  "den-store-grillguide": {
+    title: "Grillguide: vin til kul, gas og røg",
+    description:
+      "Vin til grill på kul, gas og røg: zinfandel, shiraz og fadlagret chardonnay. Tabel efter brændsel — og hvad du undgår til BBQ-sauce.",
+  },
+  "vin-til-mexicansk-mad-og-tacos": {
+    title: "Vin til tacos: jalapeño, lime, koriander",
+    description:
+      "Hvad tæmmer jalapeños, lime og koriander? Vin til mexicansk mad og tacos — syre, lav alkohol og konkrete flasketyper.",
+  },
+  "vin-til-vegetariske-og-veganske-retter": {
+    title: "Vin til vegetar og vegan: svampe & linser",
+    description:
+      "Vin til svampe, linser og rodfrugter — plus hvad vegansk vin betyder. Pinot, barbera og syre uden kød.",
+  },
+  "bourgogne-vs-tyskland-pinot-noir": {
+    title: "Spätburgunder vs. Bourgogne-pinot",
+    description:
+      "Tysk Spätburgunder som billigere pinot-alternativ til Bourgogne: stil, pris, Baden/Pfalz og mad til and og svampe.",
+  },
+  "italiensk-vin-jungle": {
+    title: "Italiensk vin: Barolo til Amarone",
+    description:
+      "Lynkursus i Barolo, Brunello, Barbera, Ripasso og Amarone — stil, pris og mad, så du finder rundt i den italienske jungle.",
+  },
+  "hvidvin-uden-for-de-kendte-rammer": {
+    title: "Albariño, Grüner og Viognier",
+    description:
+      "Hvidvin ud over chardonnay og sauvignon: albariño, grüner veltliner og viognier — smag, mad og hvornår de vinder.",
+  },
+  "glas-guiden": {
+    title: "Vinglas: universal eller special?",
+    description:
+      "Behøver du specielle vinglas — eller er det snobberi? Ærlig guide: ét universalglas dækker det meste. Hvornår specialglas giver mening.",
+  },
+  "aabnet-vin-holdbarhed-og-snydetricks": {
+    title: "Åbnet vin: teskeer, pumper, køl",
+    description:
+      "Hvor længe holder åbnet vin i køleskabet? Teskeen virker ikke; vakuumpumpe hjælper lidt. Tabel og ærlige snydetricks.",
+  },
+  "chillable-reds": {
+    title: "Chillable reds: let rød serveret kold",
+    description:
+      "Hvad er chillable reds? Gamay, pinot og frappato ved 12–16 °C. 30-minutters-regel, druer og mad til trenden.",
+  },
+  "pet-nat-for-begyndere": {
+    title: "Pét-nat for begyndere",
+    description:
+      "Pét-nat forklaret: naturvinens bobler, hvorfor det smager anderledes end champagne, og hvordan du åbner og serverer det.",
+  },
+
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
     title: "7,4 genstande i en flaske vin",
     description:
