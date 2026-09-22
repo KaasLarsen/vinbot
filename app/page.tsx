@@ -9,7 +9,6 @@ import { HomeWineSearch } from "@/components/home-wine-search";
 import { HomeLabelScanButton } from "@/components/home-label-scan-button";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
 import { CampaignBanner } from "@/components/campaign-banner";
-import { HomePartnerBanners } from "@/components/home-partner-banners";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
@@ -89,8 +88,6 @@ export default function HomePage() {
       </HomeFeedStripsGate>
 
       <HomePriceRunnerStrip />
-
-      <HomePartnerBanners />
 
       <section className="mt-16" aria-labelledby="home-topics-heading">
         <div className="max-w-2xl">
