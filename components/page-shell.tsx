@@ -1,8 +1,5 @@
 import type { ReactNode } from "react";
 
-/** Wide content max width in rem — keep in sync with skyscraper rail math. */
-export const CONTENT_MAX_REM = 90;
-
 type PageShellProps = {
   children: ReactNode;
   className?: string;
