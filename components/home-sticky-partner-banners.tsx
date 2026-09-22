@@ -18,7 +18,7 @@ const BANNER_SLOT_REM = 10.75;
  * Hvor meget bannerne skubbes ind mod indholdet (overlapper PageShell-padding).
  * Positiv = tættere på midten / mere «en del af layoutet».
  */
-const INWARD_NUDGE_REM = 1.25;
+const INWARD_NUDGE_REM = 2.5;
 
 /** px pr. scroll — hold lav for diskret effekt */
 const PARALLAX_FACTOR = 0.068;
