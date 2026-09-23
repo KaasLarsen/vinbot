@@ -151,6 +151,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "balsamico-rodvinsmarineret-oksemoerbrad", label: "Balsamico-rødvinsmarineret oksemørbrad" },
     { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
+    { slug: "portvinssauce-til-oksemoerbrad", label: "Portvinssauce til oksemørbrad" },
   ],
   "vin-til-peberboef": [
     { slug: "peberboef-med-rodvinsauce", label: "Peberbøf med rødvinssauce" },
@@ -630,6 +631,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-i-cocktails-spritz-og-drikke": [
     { slug: "sangria-med-rodvin", label: "Sangria med rødvin" },
+    { slug: "kir-royal", label: "Kir Royal" },
   ],
   "vin-til-indisk-mad": [
     { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
@@ -711,6 +713,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
     { slug: "asparges-med-mousserende-sabayon", label: "Asparges med mousserende sabayon" },
     { slug: "champagne-mousserende-vinsmarinade", label: "Mousserende fisk" },
+    { slug: "kir-royal", label: "Kir Royal" },
   ],
   "bedste-rosevin": [
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
@@ -752,6 +755,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "klassisk-rodvins-rosmarinmarinade", label: "Rødvinsmarinade" },
     { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
     { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
+    { slug: "beurre-blanc", label: "Beurre blanc" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -763,6 +767,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
     { slug: "portvins-hvidloegsmarinade", label: "Portvins-hvidløgsmarinade" },
     { slug: "portvin-mynte-lammemarinade", label: "Portvin til lam" },
+    { slug: "portvinssauce-til-oksemoerbrad", label: "Portvinssauce" },
+    { slug: "portvinsgloegg", label: "Portvinsgløgg" },
   ],
   "hvad-er-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
@@ -811,6 +817,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-oksekoed-i-sauce": [
     { slug: "boef-stroganoff-med-rodvin", label: "Boeuf Stroganoff med rødvin" },
+    { slug: "portvinssauce-til-oksemoerbrad", label: "Portvinssauce" },
   ],
   "vin-til-vildt": [
     { slug: "vildtgryde-med-portvin-og-enebaer", label: "Vildtgryde med portvin og enebær" },
@@ -839,6 +846,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "asparges-med-mousserende-sabayon", label: "Asparges med sabayon" },
     { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
     { slug: "champagne-mousserende-vinsmarinade", label: "Champagne-marinade" },
+    { slug: "kir-royal", label: "Kir Royal" },
   ],
   "rosevin-til-grill": [
     { slug: "rose-jordbaermarinade", label: "Jordbærmarinade" },
@@ -853,6 +861,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hvidvins-dildmarinade", label: "Hvidvin-dild" },
     { slug: "lime-hvidvins-cevichemarinade", label: "Ceviche-marinade" },
     { slug: "champagne-mousserende-vinsmarinade", label: "Bobler til fisk" },
+    { slug: "beurre-blanc", label: "Beurre blanc" },
   ],
   "vin-til-grillet-fisk": [
     { slug: "hvidvins-dildmarinade", label: "Grillet laks" },
@@ -861,6 +870,10 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-vegetariske-og-veganske-retter": [
     { slug: "hvidvins-urtemarinade-groentsager", label: "Grøntsagsmarinade" },
+  ],
+  "bedste-julevin": [
+    { slug: "roedvinsgloegg", label: "Rødvinsgløgg" },
+    { slug: "portvinsgloegg", label: "Portvinsgløgg" },
   ],
 
 };

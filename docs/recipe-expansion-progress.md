@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** 30 vinmarinader komplet (batch 1–6, 2026-09-23). Top 30 + Vin20 + Asia10 komplet. Top 30 + Vin20 + Asia10 komplet.
+**Status:** Sauce/drikke batch 1 + 30 marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Sauce + drikke batch 1 — 2026-09-23 (5 nye)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `portvinssauce-til-oksemoerbrad` | Portvin / sauce |
+| 2 | `beurre-blanc` | Hvidvin / sauce |
+| 3 | `roedvinsgloegg` | Rødvin / jul |
+| 4 | `portvinsgloegg` | Portvin / jul |
+| 5 | `kir-royal` | Champagne / aperitif |
+
+Næste idéer: flere saucer (madeira-jus, marsala), hvidvinsgløgg, alkoholfri gløgg, spritz, Bellini.
+
+---
 
 ## Marinader batch 3–6 — 2026-09-23 (20 nye — liste komplet)
 
