@@ -126,6 +126,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "pighvar-med-hvidvin-og-vesterhavsost", label: "Pighvar med hvidvin og Vesterhavsost" },
     { slug: "zuppa-di-pesce", label: "Zuppa di Pesce" },
     { slug: "gambas-al-jerez", label: "Gambas al Jerez" },
+    { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
   ],
   "vin-til-boeff": [
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
@@ -435,6 +436,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-hummer": [
     { slug: "hummer-i-hvidvinsauce", label: "Hummer i hvidvinsauce" },
     { slug: "grillede-jomfruhummere-med-hvidloegssmoer", label: "Grillede jomfruhummere" },
+    { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque med cognac og hvidvin" },
   ],
   "vin-til-paaske-og-paaskefrokost": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -474,6 +476,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "torsk-i-hvidvin", label: "Torsk i hvidvin" },
     { slug: "helleflynder-med-hvidvin", label: "Helleflynder med hvidvin" },
     { slug: "hvidvinsdampet-torsk-med-porrer-og-safran", label: "Hvidvinsdampet torsk med porrer og safran" },
+    { slug: "hvidvinsdampet-torsk-en-papillote", label: "Hvidvinsdampet torsk en papillote" },
   ],
   "vin-til-moussaka": [
     { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
@@ -541,6 +544,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rose-granite-med-hindbaer", label: "Rosé-granité med hindbær" },
     { slug: "mousserende-vingele-med-friske-baer", label: "Mousserende vingelé med bær" },
     { slug: "moscato-dasti-sorbet", label: "Moscato d'Asti sorbet" },
+    { slug: "sherry-trifle", label: "Sherry Trifle" },
+    { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
+    { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -643,6 +649,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "champagne-til-mad": [
     { slug: "champagne-jordbaersorbet", label: "Champagne-jordbærsorbet" },
     { slug: "hummersuppe-med-cognac-og-bobler", label: "Hummersuppe med cognac og bobler" },
+    { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
   ],
   "bedste-rosevin": [
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
@@ -710,6 +717,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "bedste-dessertvin": [
     { slug: "moscato-dasti-sorbet", label: "Moscato d'Asti sorbet" },
     { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" },
+    { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
+    { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
+  ],
+  "hvad-er-sherry-vin": [
+    { slug: "sherry-trifle", label: "Sherry Trifle" },
+  ],
+  "chardonnay-til-fisk": [
+    { slug: "hvidvinsdampet-torsk-en-papillote", label: "Torsk en papillote" },
+    { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
   ],
 
 };

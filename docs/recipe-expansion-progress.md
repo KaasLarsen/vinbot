@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Top 30 batch 3 (2026-09-23) + batch 1–2 + tidligere.
+**Status:** Top 30 komplet (batch 1–4, 2026-09-23).
+
+## Top 30 batch 4 — 2026-09-23 (sidste 5)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `sherry-trifle` | Sherry / dessert |
+| 2 | `paerer-i-hvidvin-og-safran` | Hvidvin / dessert |
+| 3 | `plommetrifli-med-rodvinssirup` | Rødvin / dessert |
+| 4 | `hvidvinsdampet-torsk-en-papillote` | Hvidvin / fisk |
+| 5 | `hummerbisque-med-cognac-og-hvidvin` | Cognac+hvidvin / fest |
+
+Top 30-listen er nu dækket (nye + eksisterende klassikere).
+
+---
 
 ## Top 30 batch 3 — 2026-09-23 (5 nye huller)
 
