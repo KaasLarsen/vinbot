@@ -1,6 +1,19 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Asia10 batch 1 + Vin20 + Top 30 (2026-09-23).
+**Status:** Asia10 komplet + Vin20 batch 1–2 + Top 30 (2026-09-23).
+
+## Asia10 batch 2 — 2026-09-23 (4 nye — liste komplet)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `asparges-med-mousserende-sabayon` | Bobler / asparges |
+| 2 | `loegeringe-i-hvidvinsdej` | Bobler / snack |
+| 3 | `jordskokkesuppe-med-hvidvinsreduktion` | Hvidvin / suppe |
+| 4 | `svinekoteletter-med-sennep-og-hvidvin` | Hvidvin / koteletter |
+
+Asia10-listen er dækket. Resterende fra Vin20: rødvinssorbet · Tarte Tatin · Moscato-ferskner.
+
+---
 
 ## Asia10 batch 1 — 2026-09-23 (5 nye)
 

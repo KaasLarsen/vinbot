@@ -53,6 +53,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "caldeirada-med-hvidvin", label: "Caldeirada med hvidvin" },
     { slug: "krebsesuppe-med-hvidvin", label: "Krebsesuppe med hvidvin" },
     { slug: "minestrone-med-rodvin", label: "Minestrone med rødvin" },
+    { slug: "jordskokkesuppe-med-hvidvinsreduktion", label: "Jordskokkesuppe med hvidvinsreduktion" },
   ],
   "vin-til-tarteletter": [
     { slug: "tarteletter-i-hvidvin", label: "Tarteletter i hvidvin" },
@@ -292,6 +293,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinekaeber-i-portvinsreduktion", label: "Svinekæber i portvinsreduktion" },
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
     { slug: "morbradgryde-med-paprika-og-hvidvin", label: "Mørbradgryde med paprika" },
+    { slug: "svinekoteletter-med-sennep-og-hvidvin", label: "Svinekoteletter med sennep og hvidvin" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -335,6 +337,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svampetoast-med-hvidvin-og-timian", label: "Svampetoast med hvidvin" },
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
+    { slug: "jordskokkesuppe-med-hvidvinsreduktion", label: "Jordskokkesuppe" },
   ],
   "vin-til-nachos": [
     { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
@@ -666,6 +669,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "champagne-jordbaersorbet", label: "Champagne-jordbærsorbet" },
     { slug: "hummersuppe-med-cognac-og-bobler", label: "Hummersuppe med cognac og bobler" },
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
+    { slug: "asparges-med-mousserende-sabayon", label: "Asparges med mousserende sabayon" },
   ],
   "bedste-rosevin": [
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
@@ -700,6 +704,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
     { slug: "hvidvinsbraiserede-porrer", label: "Hvidvinsbraiserede porrer" },
     { slug: "kylling-i-hvidvinssauce-med-porrer-og-vindruer", label: "Kylling med vindruer" },
+    { slug: "svinekoteletter-med-sennep-og-hvidvin", label: "Sennep-hvidvinssauce" },
+    { slug: "jordskokkesuppe-med-hvidvinsreduktion", label: "Hvidvinsreduktion til suppe" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -764,6 +770,17 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-japansk-mad": [
     { slug: "kylling-teriyaki-med-sake-og-mirin", label: "Kylling Teriyaki med sake og mirin" },
     { slug: "gyoza-dampet-i-sake", label: "Gyoza dampet i sake" },
+  ],
+  "bedste-bobler": [
+    { slug: "asparges-med-mousserende-sabayon", label: "Asparges med sabayon" },
+    { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
+  ],
+  "bobler-til-fredag": [
+    { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
+  ],
+  "bobler-champagne-cava-prosecco-og-cremant": [
+    { slug: "asparges-med-mousserende-sabayon", label: "Asparges med sabayon" },
+    { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
   ],
 
 };
