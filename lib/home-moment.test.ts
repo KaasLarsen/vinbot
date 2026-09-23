@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getHomeMoment, resolveHomeMomentId, copenhagenParts } from "./home-moment.ts";
+import {
+  getHomeMoment,
+  resolveHomeMomentId,
+  copenhagenParts,
+  pickFeaturedRecipeSlugs,
+} from "./home-moment.ts";
 
 function idAt(iso: string) {
   return getHomeMoment(new Date(iso)).id;
@@ -63,4 +68,30 @@ test("moment includes three home links and dish order", () => {
   assert.equal(m.links.length, 3);
   assert.equal(m.dishIds[0], "flaeskesteg");
   assert.ok(m.recipeSlugs.length >= 3);
+});
+
+test("pickFeaturedRecipeSlugs rotates by isoWeek", () => {
+  const pool = ["a", "b", "c", "d", "e", "f", "g", "h"];
+  const w1 = pickFeaturedRecipeSlugs(pool, 1);
+  const w2 = pickFeaturedRecipeSlugs(pool, 2);
+  assert.equal(w1.length, 4);
+  assert.equal(w2.length, 4);
+  assert.notDeepEqual(w1, w2);
+  assert.deepEqual(pickFeaturedRecipeSlugs(pool, 1), w1);
+});
+
+test("efterår featured recipes change across ISO weeks", () => {
+  // Wed 2026-09-23 = week 39, Wed 2026-09-30 = week 40 — both efterår
+  const a = getHomeMoment(new Date("2026-09-23T12:00:00+02:00"));
+  const b = getHomeMoment(new Date("2026-09-30T12:00:00+02:00"));
+  assert.equal(a.id, "efteraar");
+  assert.equal(b.id, "efteraar");
+  assert.equal(a.recipeSlugs.length, 4);
+  assert.equal(b.recipeSlugs.length, 4);
+  assert.notDeepEqual(a.recipeSlugs, b.recipeSlugs);
+});
+
+test("same timestamp yields same featured slugs", () => {
+  const iso = "2026-09-23T12:00:00+02:00";
+  assert.deepEqual(getHomeMoment(new Date(iso)).recipeSlugs, getHomeMoment(new Date(iso)).recipeSlugs);
 });

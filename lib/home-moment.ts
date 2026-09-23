@@ -106,7 +106,27 @@ const DEFAULT_RECIPES = [
   "risotto-med-hvidvin",
   "pizza-margherita",
   "klassisk-burger",
+  "frikadeller-i-hvidvinsauce",
+  "bolognese-med-rodvin",
+  "citronkylling-i-hvidvin",
+  "hakkeboef-i-rodvinssauce",
+  "lasagne-med-rodvin",
+  "pasta-vongole-med-hvidvin",
+  "svinekoteletter-i-hvidvin",
+  "tomatsuppe-med-hvidvin",
 ] as const;
+
+/** Stable weekly pick from a pool — same for all users within an ISO week. */
+export function pickFeaturedRecipeSlugs(pool: readonly string[], isoWeek: number, count = 4): string[] {
+  if (pool.length === 0) return [];
+  if (pool.length <= count) return [...pool];
+  const start = (isoWeek * 3) % pool.length;
+  const out: string[] = [];
+  for (let i = 0; i < count; i++) {
+    out.push(pool[(start + i) % pool.length]!);
+  }
+  return out;
+}
 
 function momentFromId(id: HomeMomentId): HomeMoment {
   switch (id) {
@@ -126,6 +146,12 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "juleand",
           "risalamande-med-hvidvin",
           "coq-au-vin",
+          "andesteg-med-port-og-hvidvin",
+          "boeuf-bourguignon",
+          "glaseret-skinke-med-madeirasauce",
+          "brune-kartofler-med-portvin",
+          "cremet-svampesuppe-med-madeira",
+          "portvinsgloegg",
         ],
         saesonHeadline: "Lige nu: jul og julemad",
         saesonIntro:
@@ -155,7 +181,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-sushi", "Sushi"),
         ],
         dishIds: prioritizeDishes(["tapas", "sushi", "fisk", "boef"]),
-        recipeSlugs: ["pizza-margherita", "klassisk-burger", "risotto-med-hvidvin", "coq-au-vin"],
+        recipeSlugs: [
+          "pizza-margherita",
+          "klassisk-burger",
+          "risotto-med-hvidvin",
+          "coq-au-vin",
+          "gazpacho",
+          "blamuslinger",
+          "grillet-kylling-med-hvidvin",
+          "pasta-vongole-med-hvidvin",
+          "champagne-hollandaise",
+          "fisk-i-hvidvinsauce",
+        ],
         saesonHeadline: "Lige nu: nytår",
         saesonIntro: "Bobler til midnat, og en plan for menuen så I ikke står med tre tilfældige flasker.",
         saesonGuideLinks: [
@@ -176,7 +213,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-pizza", "Pizza"),
         ],
         dishIds: prioritizeDishes(["burger", "pizza", "pasta-tomat", "kylling"]),
-        recipeSlugs: ["klassisk-burger", "pizza-margherita", "coq-au-vin", "risotto-med-hvidvin"],
+        recipeSlugs: [
+          "klassisk-burger",
+          "pizza-margherita",
+          "coq-au-vin",
+          "risotto-med-hvidvin",
+          "frikadeller-i-hvidvinsauce",
+          "hakkeboef-i-rodvinssauce",
+          "bolognese-med-rodvin",
+          "burger-med-rodvinsglace",
+          "chili-con-carne-med-rodvin",
+          "pizza-parmaskinke-og-rucola",
+        ],
         saesonHeadline: "Lige nu: fastelavn",
         saesonIntro: "Fastelavn er hverdagsfest: boller, masker og vin der ikke skal være højtidelig.",
         saesonGuideLinks: [g("vin-til-fastelavn", "fastelavn"), g("vin-til-burger", "burger")],
@@ -193,7 +241,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-fisk-og-skaldyr", "Fisk"),
         ],
         dishIds: prioritizeDishes(["fisk", "kylling", "boef", "tapas"]),
-        recipeSlugs: ["risotto-med-hvidvin", "coq-au-vin", "gazpacho", "pizza-margherita"],
+        recipeSlugs: [
+          "risotto-med-hvidvin",
+          "lammekoteletter-i-rodvin",
+          "lammesteg-med-rodvin-rosmarin",
+          "fisk-i-hvidvinsauce",
+          "asparges-i-hvidvinsauce",
+          "citronkylling-i-hvidvin",
+          "gazpacho",
+          "braiseret-lammeskank-med-rodvin",
+          "gravad-laks-med-hvidvin",
+          "pizza-margherita",
+        ],
         saesonHeadline: "Lige nu: påske",
         saesonIntro: "Påsken blander frokost, lam og forår — planlæg både hvidvin til sild og rød til lammet.",
         saesonGuideLinks: [
@@ -214,7 +273,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-sommerbryllup", "Bryllup"),
         ],
         dishIds: prioritizeDishes(["tapas", "fisk", "sushi", "kylling"]),
-        recipeSlugs: ["gazpacho", "risotto-med-hvidvin", "pizza-margherita", "grillet-kylling-med-hvidvin"],
+        recipeSlugs: [
+          "gazpacho",
+          "risotto-med-hvidvin",
+          "pizza-margherita",
+          "grillet-kylling-med-hvidvin",
+          "blamuslinger",
+          "grillet-laks-hvidvin-dressing",
+          "pasta-vongole-med-hvidvin",
+          "asparges-med-mousserende-sabayon",
+          "champagne-hollandaise",
+          "ratatouille-med-hvidvin",
+        ],
         saesonHeadline: "Lige nu: konfirmation, student og selskab",
         saesonIntro:
           "Maj og juni er højsæson for store borde. Tænk mængde, bobler og flasker der smager godt uden at sprænge budgettet.",
@@ -232,7 +302,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
         blurb: "And, sauce og vine med krop — før juletravlheden tager over.",
         links: [g("vin-til-mortensaften", "Mortensaften"), g("vin-til-and", "And"), g("vin-til-vildt", "Vildt")],
         dishIds: prioritizeDishes(["boef", "kylling", "flaeskesteg", "grill"]),
-        recipeSlugs: ["juleand", "coq-au-vin", "boeuf-bourguignon", "lasagne-med-rodvin"],
+        recipeSlugs: [
+          "juleand",
+          "coq-au-vin",
+          "boeuf-bourguignon",
+          "lasagne-med-rodvin",
+          "andesteg",
+          "andeconfit-med-rodvin",
+          "vildtgryde-med-portvin-og-enebaer",
+          "braiseret-raadyrskank-med-rodvin",
+          "cremet-svampesuppe-med-madeira",
+          "andebaer-portvin-sauce",
+        ],
         saesonHeadline: "Lige nu: Mortensaften og efterår",
         saesonIntro: "Anden på Mortensaften kalder på rødvin med fylde — og er en god generalprøve til juleanden.",
         saesonGuideLinks: [
@@ -249,7 +330,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
         blurb: "Pizza, burger og det der lander på sofaen — tre hurtige match.",
         links: [g("vin-til-pizza", "Pizza"), g("vin-til-burger", "Burger"), g("vin-til-tapas", "Tapas")],
         dishIds: prioritizeDishes(["pizza", "burger", "tapas", "grill"]),
-        recipeSlugs: ["pizza-margherita", "klassisk-burger", "risotto-med-hvidvin", "coq-au-vin"],
+        recipeSlugs: [
+          "pizza-margherita",
+          "klassisk-burger",
+          "burger-med-rodvinsglace",
+          "pizza-parmaskinke-og-rucola",
+          "fish-and-chips",
+          "chili-con-carne-med-rodvin",
+          "hakkeboef-i-rodvinssauce",
+          "frikadeller-i-hvidvinsauce",
+          "risotto-med-hvidvin",
+          "svampetoast-med-hvidvin-og-timian",
+        ],
         saesonHeadline: "Lige nu: fredag og weekend",
         saesonIntro: "Købslysten topper torsdag–fredag. Match vinen til takeaway og det I faktisk spiser i aften.",
         saesonGuideLinks: [g("vin-til-pizza", "pizza"), g("vin-til-burger", "burger"), g("vin-til-grill-og-bbq", "grill")],
@@ -266,7 +358,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-gryderet", "Gryderet"),
         ],
         dishIds: prioritizeDishes(["pasta-tomat", "boef", "pasta-floede", "kylling"]),
-        recipeSlugs: ["lasagne-med-rodvin", "boeuf-bourguignon", "coq-au-vin", "risotto-med-hvidvin"],
+        recipeSlugs: [
+          "lasagne-med-rodvin",
+          "boeuf-bourguignon",
+          "coq-au-vin",
+          "bolognese-med-rodvin",
+          "ossobuco-med-rodvin",
+          "braiseret-oksekaebe-med-rodvin",
+          "chili-con-carne-med-rodvin",
+          "gnocchi-rodvinssauce",
+          "risotto-med-rodvin-barolo",
+          "svampe-bourguignon",
+        ],
         saesonHeadline: "Lige nu: søndagssimmer",
         saesonIntro: "Søndag er til langtidssimring og at planlægge ugen — ikke til nørdet teori.",
         saesonGuideLinks: [
@@ -287,7 +390,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("bedste-sommervin", "Sommervin"),
         ],
         dishIds: prioritizeDishes(["grill", "fisk", "tapas", "vegetar"]),
-        recipeSlugs: ["grillet-kylling-med-hvidvin", "gazpacho", "pizza-margherita", "klassisk-burger"],
+        recipeSlugs: [
+          "grillet-kylling-med-hvidvin",
+          "gazpacho",
+          "pizza-margherita",
+          "klassisk-burger",
+          "grillet-laks-hvidvin-dressing",
+          "grillet-halloumi-med-hvidvin",
+          "grillet-tunboef-med-hvidvin",
+          "ratatouille-med-hvidvin",
+          "blamuslinger",
+          "cote-de-boeuf-med-rodvin",
+        ],
         saesonHeadline: "Lige nu: grill og sommer",
         saesonIntro: "Når det er terrassevejr, vinder kold rosé, sprød hvid og saftig rød til grillen.",
         saesonGuideLinks: [
@@ -312,7 +426,20 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-and", "And"),
         ],
         dishIds: prioritizeDishes(["boef", "grill", "flaeskesteg", "pasta-tomat"]),
-        recipeSlugs: ["boeuf-bourguignon", "coq-au-vin", "lasagne-med-rodvin", "risotto-med-hvidvin"],
+        recipeSlugs: [
+          "boeuf-bourguignon",
+          "coq-au-vin",
+          "lasagne-med-rodvin",
+          "vildtgryde-med-portvin-og-enebaer",
+          "cremet-svampesuppe-med-madeira",
+          "ossobuco-med-rodvin",
+          "andesteg",
+          "braiseret-oksekaebe-med-rodvin",
+          "svampe-bourguignon",
+          "risotto-med-rodvin-barolo",
+          "gnocchi-rodvinssauce",
+          "madeira-glaseret-rosenkaal",
+        ],
         saesonHeadline: "Lige nu: efterår",
         saesonIntro: "Vildt, svampe og gryder — her rykker glasset over på rødvin med mere krop.",
         saesonGuideLinks: [
@@ -335,7 +462,20 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-oksekoed", "Oksekød"),
         ],
         dishIds: prioritizeDishes(["boef", "flaeskesteg", "pasta-floede", "kylling"]),
-        recipeSlugs: ["boeuf-bourguignon", "coq-au-vin", "lasagne-med-rodvin", "risotto-med-hvidvin"],
+        recipeSlugs: [
+          "boeuf-bourguignon",
+          "coq-au-vin",
+          "lasagne-med-rodvin",
+          "ossobuco-med-rodvin",
+          "braiseret-oksekaebe-med-rodvin",
+          "chili-con-carne-med-rodvin",
+          "cremet-svampesuppe-med-madeira",
+          "flaesketesteg-med-rodvin-i-brun-sovs",
+          "bolognese-med-rodvin",
+          "vildtgryde-med-portvin-og-enebaer",
+          "risotto-med-rodvin-barolo",
+          "svinekoteletter-med-sennep-og-hvidvin",
+        ],
         saesonHeadline: "Lige nu: vinter og hygge",
         saesonIntro: "Når det er mørkt og koldt, passer tungere rødvin, gryder og det lange måltid.",
         saesonGuideLinks: [
@@ -356,7 +496,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           g("vin-til-lam", "Lam"),
         ],
         dishIds: prioritizeDishes(["fisk", "vegetar", "kylling", "tapas"]),
-        recipeSlugs: ["risotto-med-hvidvin", "gazpacho", "grillet-kylling-med-hvidvin", "pizza-margherita"],
+        recipeSlugs: [
+          "risotto-med-hvidvin",
+          "gazpacho",
+          "grillet-kylling-med-hvidvin",
+          "asparges-i-hvidvinsauce",
+          "fisk-i-hvidvinsauce",
+          "citronkylling-i-hvidvin",
+          "lammekoteletter-i-rodvin",
+          "pasta-vongole-med-hvidvin",
+          "gravad-laks-med-hvidvin",
+          "ratatouille-med-hvidvin",
+        ],
         saesonHeadline: "Lige nu: forår",
         saesonIntro: "Lysere mad og lettere vine — riesling, grüner og det der passer til forårskøkkenet.",
         saesonGuideLinks: [
@@ -419,7 +570,11 @@ export function resolveHomeMomentId(parts: CopenhagenParts): HomeMomentId {
 
 export function getHomeMoment(now: Date = new Date()): HomeMoment {
   const parts = copenhagenParts(now);
-  return momentFromId(resolveHomeMomentId(parts));
+  const moment = momentFromId(resolveHomeMomentId(parts));
+  return {
+    ...moment,
+    recipeSlugs: pickFeaturedRecipeSlugs(moment.recipeSlugs, parts.isoWeek),
+  };
 }
 
 export function prioritizeDishes(first: string[]): string[] {
