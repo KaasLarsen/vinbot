@@ -317,6 +317,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "poulet-a-lestragon", label: "Poulet à l'Estragon" },
     { slug: "chicken-marsala", label: "Chicken Marsala" },
     { slug: "kanin-i-hvidvin", label: "Kanin i hvidvin" },
+    { slug: "kylling-i-hvidvinssauce-med-porrer-og-vindruer", label: "Kylling med porrer og vindruer" },
+    { slug: "kylling-teriyaki-med-sake-og-mirin", label: "Kylling Teriyaki" },
   ],
   "vin-til-vegetar-og-gront": [
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
@@ -380,6 +382,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "couscous-kylling-med-hvidvin", label: "Couscous med kylling og hvidvin" },
     { slug: "pho-kylling-med-hvidvin", label: "Pho med kylling og hvidvin" },
     { slug: "ramen-kylling-med-hvidvin", label: "Ramen med kylling og hvidvin" },
+    { slug: "sticky-pork-belly-med-shaoxing", label: "Sticky pork belly med Shaoxing" },
+    { slug: "rosenkaal-med-hvidvin-og-oestersauce", label: "Rosenkål med hvidvin og østerssauce" },
   ],
   "vin-til-laks": [
     { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
@@ -635,6 +639,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
     { slug: "hvidvinsbraiserede-porrer", label: "Hvidvinsbraiserede porrer" },
+    { slug: "rosenkaal-med-hvidvin-og-oestersauce", label: "Rosenkål med hvidvin og østerssauce" },
   ],
 
   "vin-til-ost-og-ostebord": [
@@ -674,6 +679,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "riesling-til-asiatisk-mad": [
     { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
     { slug: "gyoza-svinekoed-med-riesling", label: "Gyoza med svinekød" },
+    { slug: "sticky-pork-belly-med-shaoxing", label: "Sticky pork belly" },
   ],
   "vin-til-dim-sum": [
     { slug: "gyoza-svinekoed-med-riesling", label: "Gyoza med svinekød" },
@@ -693,6 +699,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kanin-i-hvidvin", label: "Kanin i hvidvin" },
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
     { slug: "hvidvinsbraiserede-porrer", label: "Hvidvinsbraiserede porrer" },
+    { slug: "kylling-i-hvidvinssauce-med-porrer-og-vindruer", label: "Kylling med vindruer" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -753,6 +760,10 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-baskisk-mad": [
     { slug: "pintxos-txakoli-chorizo", label: "Pintxos med txakoli-chorizo" },
+  ],
+  "vin-til-japansk-mad": [
+    { slug: "kylling-teriyaki-med-sake-og-mirin", label: "Kylling Teriyaki med sake og mirin" },
+    { slug: "gyoza-dampet-i-sake", label: "Gyoza dampet i sake" },
   ],
 
 };

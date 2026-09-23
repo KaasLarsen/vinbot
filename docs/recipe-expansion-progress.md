@@ -1,6 +1,21 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Vin20 batch 2 + batch 1 + Top 30 (2026-09-23).
+**Status:** Asia10 batch 1 + Vin20 + Top 30 (2026-09-23).
+
+## Asia10 batch 1 — 2026-09-23 (5 nye)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `kylling-i-hvidvinssauce-med-porrer-og-vindruer` | Hvidvin / hverdag |
+| 2 | `kylling-teriyaki-med-sake-og-mirin` | Sake+mirin / japansk |
+| 3 | `gyoza-dampet-i-sake` | Sake / dumplings |
+| 4 | `sticky-pork-belly-med-shaoxing` | Shaoxing / kinesisk |
+| 5 | `rosenkaal-med-hvidvin-og-oestersauce` | Hvidvin / tilbehør |
+
+Næste (Asia10 batch 2): asparges m. mousserende sabayon · løgringe i hvidvinsdej · jordskokkesuppe · sennepskoteletter.  
+Også resten af Vin20: rødvinssorbet · Tarte Tatin · Moscato-ferskner.
+
+---
 
 ## Vin20 batch 2 — 2026-09-23 (5 nye)
 
