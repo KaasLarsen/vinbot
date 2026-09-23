@@ -138,6 +138,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "okse-wellington-med-rodvinssauce", label: "Okse-wellington med rødvinssauce" },
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "balsamico-rodvinsglaserede-skalotteloeg", label: "Balsamico-rødvinsglaserede skalotteløg" },
+    { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
   ],
   "vin-til-oksefilet": [
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -145,6 +146,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "balsamico-rodvinsmarineret-oksemoerbrad", label: "Balsamico-rødvinsmarineret oksemørbrad" },
+    { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
   ],
   "vin-til-peberboef": [
     { slug: "peberboef-med-rodvinsauce", label: "Peberbøf med rødvinssauce" },
@@ -194,6 +196,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-boef-stroganoff": [
     { slug: "boef-stroganoff-med-hvidvin", label: "Bøf stroganoff med hvidvin" },
     { slug: "svampesovs-med-hvidvin", label: "Svampesovs med hvidvin" },
+    { slug: "boef-stroganoff-med-rodvin", label: "Boeuf Stroganoff med rødvin" },
   ],
   "vin-til-bearnaise": [
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
@@ -684,6 +687,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
+    { slug: "hvidvinsmarineret-svinekam", label: "Hvidvinsmarineret svinekam" },
   ],
   "bedste-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
@@ -726,6 +730,18 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "chardonnay-til-fisk": [
     { slug: "hvidvinsdampet-torsk-en-papillote", label: "Torsk en papillote" },
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
+  ],
+  "vin-til-oksekoed-i-sauce": [
+    { slug: "boef-stroganoff-med-rodvin", label: "Boeuf Stroganoff med rødvin" },
+  ],
+  "vin-til-vildt": [
+    { slug: "vildtgryde-med-portvin-og-enebaer", label: "Vildtgryde med portvin og enebær" },
+  ],
+  "vin-til-blaaskimmelost": [
+    { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
+  ],
+  "vin-til-baskisk-mad": [
+    { slug: "pintxos-txakoli-chorizo", label: "Pintxos med txakoli-chorizo" },
   ],
 
 };

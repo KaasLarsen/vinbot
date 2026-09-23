@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Top 30 komplet (batch 1–4, 2026-09-23).
+**Status:** Vin20 batch 1 + Top 30 komplet (2026-09-23).
+
+## Vin20 batch 1 — 2026-09-23 (5 nye)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `boef-stroganoff-med-rodvin` | Rødvin / oksekød |
+| 2 | `vildtgryde-med-portvin-og-enebaer` | Portvin / vildt |
+| 3 | `gorgonzolasauce-med-hvidvin` | Hvidvin / sauce |
+| 4 | `hvidvinsmarineret-svinekam` | Hvidvin / svinekød |
+| 5 | `pintxos-txakoli-chorizo` | Txakoli / tapas |
+
+Næste (Vin20 batch 2): skaldyrsrisotto, safran-sauce til laks, braiserede porrer, paprika-mørbradgryde, hvidvinsgelé.
+
+---
 
 ## Top 30 batch 4 — 2026-09-23 (sidste 5)
 
