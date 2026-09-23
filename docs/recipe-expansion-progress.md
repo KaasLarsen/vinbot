@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Strategiske køkkener (35) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+**Status:** Strategiske køkkener (45) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+
+## Strategiske huller batch 6 — 2026-09-23 (10 nye)
+
+**Korea (0 → 3):** `bulgogi-med-sake-og-mirin` · `galbi-jjim-med-sake` · `gochujang-kylling-med-mirin`
+
+**Sydamerika:** `lomo-saltado-med-rodvin` · `moqueca-med-hvidvin` · `empanadas-med-rodvin` · `bife-de-chorizo-med-malbec`
+
+**Jul + dessert:** `brune-kartofler-med-portvin` · `syltede-roedbeder-med-rodvin` · `clafoutis-med-hvidvin`
+
+Script: `scripts/add-recipes-strategic-gaps-batch6.mjs`.
+
+---
 
 ## Strategiske huller batch 5 — 2026-09-23 (10 nye)
 

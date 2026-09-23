@@ -663,9 +663,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "cantucci-med-vinsanto", label: "Cantucci med Vin Santo" },
     { slug: "madeira-kage-med-madeira", label: "Madeira-kage med Madeira" },
     { slug: "champagne-brioche", label: "Champagne-brioche" },
+    { slug: "clafoutis-med-hvidvin", label: "Clafoutis med hvidvin" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
+    { slug: "moqueca-med-hvidvin", label: "Moqueca med hvidvin" },
   ],
   "vin-til-oesters": [
     { slug: "oesters-gratineret-med-hvidvin", label: "Østers gratineret med hvidvin" },
@@ -877,6 +879,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-juleaften": [
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+    { slug: "brune-kartofler-med-portvin", label: "Brune kartofler med portvin" },
+    { slug: "syltede-roedbeder-med-rodvin", label: "Syltede rødbeder med rødvin" },
   ],
   "vin-til-julemad-den-store-guide": [
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
@@ -992,6 +996,18 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-libanesisk-mad": [
     { slug: "maqluba-med-hvidvin", label: "Maqluba med hvidvin" },
+  ],
+  "vin-til-koreansk-mad": [
+    { slug: "bulgogi-med-sake-og-mirin", label: "Bulgogi med sake og mirin" },
+    { slug: "galbi-jjim-med-sake", label: "Galbi jjim med sake" },
+    { slug: "gochujang-kylling-med-mirin", label: "Gochujang-kylling med mirin" },
+  ],
+  "vin-til-peruviansk-mad": [
+    { slug: "lomo-saltado-med-rodvin", label: "Lomo saltado med rødvin" },
+  ],
+  "vin-til-argentinsk-mad": [
+    { slug: "empanadas-med-rodvin", label: "Empanadas med rødvin" },
+    { slug: "bife-de-chorizo-med-malbec", label: "Bife de chorizo med Malbec" },
   ],
 
 };
