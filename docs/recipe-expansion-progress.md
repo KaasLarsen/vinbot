@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Top 30 + Vin20 + Asia10 komplet (2026-09-23).
+**Status:** Marinader batch 1 i gang (2026-09-23). Top 30 + Vin20 + Asia10 komplet.
+
+## Marinader batch 1 — 2026-09-23 (5 nye — okse/kalv)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `klassisk-rodvins-rosmarinmarinade` | Rødvin / okse |
+| 2 | `portvins-hvidloegsmarinade` | Portvin / okse |
+| 3 | `bourguignon-marinade` | Pinot / okse |
+| 4 | `asiatisk-rodvin-ingefaermarinade` | Rødvin / wok |
+| 5 | `rodvin-soya-glaze` | Rødvin+soja / glaze |
+
+Næste: batch 2 (syrlig balsamico · hvidvin-sennep · sherry-appelsin · salvie · paprika).
+
+---
 
 ## Vin20 batch 3 — 2026-09-23 (3 nye — Vin20 komplet)
 

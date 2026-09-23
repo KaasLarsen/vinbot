@@ -141,6 +141,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "balsamico-rodvinsglaserede-skalotteloeg", label: "Balsamico-rødvinsglaserede skalotteløg" },
     { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
+    { slug: "klassisk-rodvins-rosmarinmarinade", label: "Klassisk rødvins-rosmarinmarinade" },
   ],
   "vin-til-oksefilet": [
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -226,6 +227,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "romesco-med-rodvin", label: "Romesco med rødvin" },
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
     { slug: "souvlaki-med-hvidvin", label: "Souvlaki med hvidvin" },
+    { slug: "klassisk-rodvins-rosmarinmarinade", label: "Rødvins-rosmarinmarinade" },
+    { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
   ],
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
@@ -275,6 +278,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "biksemad-med-rodvin", label: "Biksemad med rødvin" },
     { slug: "oksehojreb-marineret-i-rodvin", label: "Oksehøjreb marineret i rødvin" },
+    { slug: "klassisk-rodvins-rosmarinmarinade", label: "Rødvins-rosmarinmarinade" },
+    { slug: "portvins-hvidloegsmarinade", label: "Portvins-hvidløgsmarinade" },
+    { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
   ],
   "vin-til-lam": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -387,6 +393,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ramen-kylling-med-hvidvin", label: "Ramen med kylling og hvidvin" },
     { slug: "sticky-pork-belly-med-shaoxing", label: "Sticky pork belly med Shaoxing" },
     { slug: "rosenkaal-med-hvidvin-og-oestersauce", label: "Rosenkål med hvidvin og østerssauce" },
+    { slug: "asiatisk-rodvin-ingefaermarinade", label: "Asiatisk rødvin-ingefærmarinade" },
+    { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
   ],
   "vin-til-laks": [
     { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
@@ -698,6 +706,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-bourgogne-mad": [
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
+    { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
   ],
   "sadan-bruger-du-vin-til-sauce-og-simren": [
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
@@ -709,6 +718,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kylling-i-hvidvinssauce-med-porrer-og-vindruer", label: "Kylling med vindruer" },
     { slug: "svinekoteletter-med-sennep-og-hvidvin", label: "Sennep-hvidvinssauce" },
     { slug: "jordskokkesuppe-med-hvidvinsreduktion", label: "Hvidvinsreduktion til suppe" },
+    { slug: "klassisk-rodvins-rosmarinmarinade", label: "Rødvinsmarinade" },
+    { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
+    { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -717,6 +729,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "bedste-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
+    { slug: "portvins-hvidloegsmarinade", label: "Portvins-hvidløgsmarinade" },
   ],
   "hvad-er-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
