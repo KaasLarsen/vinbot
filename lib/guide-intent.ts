@@ -361,6 +361,60 @@ export function deriveGuideIntent(
     };
   }
 
+  if (slug === "oddbird-alkoholfri-vin") {
+    return {
+      q: "oddbird alkoholfri vin",
+      max: null,
+      label: "Oddbird alkoholfri",
+    };
+  }
+
+  if (slug === "french-bloom-alkoholfri-vin") {
+    return {
+      q: "french bloom alkoholfri",
+      max: null,
+      label: "French Bloom",
+    };
+  }
+
+  if (slug === "alkoholfri-pinot-noir") {
+    return {
+      q: "leitz pinot noir alkoholfri 0%",
+      max: null,
+      label: "alkoholfri Pinot Noir",
+    };
+  }
+
+  if (
+    slug === "ma-man-kore-efter-alkoholfri-vin" ||
+    slug === "alkoholfri-vin-sukker-og-diabetes"
+  ) {
+    return {
+      q: "alkoholfri leitz noughty 0%",
+      max: null,
+      label: "alkoholfri vin",
+    };
+  }
+
+  if (
+    slug === "alkoholfri-vin-til-tapas" ||
+    slug === "alkoholfri-vin-til-pizza-og-pasta"
+  ) {
+    return {
+      q: "alkoholfri rosé rødvin 0%",
+      max: null,
+      label: "alkoholfri vin til mad",
+    };
+  }
+
+  if (slug === "alkoholfri-gin-tonic-og-aperitif") {
+    return {
+      q: "alkoholfri bobler leitz oddbird",
+      max: null,
+      label: "alkoholfri bobler",
+    };
+  }
+
   if (slug === "kalorier-i-alkoholfri-vin") {
     return {
       q: "alkoholfri leitz noughty 0%",

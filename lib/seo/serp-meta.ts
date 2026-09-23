@@ -362,6 +362,46 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Noughty 0 %: Sparkling Chardonnay, still og rosé. Økologisk, pris i DK, vs Leitz og Torres — til brunch, skål og fest.",
   },
+  "oddbird-alkoholfri-vin": {
+    title: "Oddbird alkoholfri vin: bobler & design",
+    description:
+      "Oddbird 0 %: Blanc de Blancs, hvid og Rouge. Svensk kultmærke, pris i DK, vs French Bloom og Leitz — til fest og gave.",
+  },
+  "french-bloom-alkoholfri-vin": {
+    title: "French Bloom: premium 0 % bobler",
+    description:
+      "French Bloom Le Blanc og Le Rosé: fransk luksus-0 % til 200+ kr. Vs Oddbird og Noughty — nytår, gave og skål.",
+  },
+  "alkoholfri-pinot-noir": {
+    title: "Alkoholfri Pinot Noir / Spätburgunder",
+    description:
+      "Alkoholfri Pinot Noir (Spätburgunder): hvorfor pinot er bedste 0 %-rød, Leitz Eins-Zwei-Zero, madparring og temperatur.",
+  },
+  "ma-man-kore-efter-alkoholfri-vin": {
+    title: "Må man køre efter alkoholfri vin?",
+    description:
+      "Må man køre bil efter alkoholfri vin 0,0–0,5 %? Regnestykke, promillegrænse og hvorfor det praktisk talt er umuligt at sprænge grænsen.",
+  },
+  "alkoholfri-vin-sukker-og-diabetes": {
+    title: "Alkoholfri vin, sukker og diabetes",
+    description:
+      "Alkoholfri vin og sukker: hvorfor 0 % ofte har restsukker, knastørre flasker og hvad du tjekker på etiketten — ikke medicinsk rådgivning.",
+  },
+  "alkoholfri-vin-til-tapas": {
+    title: "Alkoholfri vin til tapas",
+    description:
+      "Alkoholfri vin til tapas: 0 % rosé, tør hvid og bobler til oliven, jamón og ost — setup og mærker til det danske tapasbord.",
+  },
+  "alkoholfri-vin-til-pizza-og-pasta": {
+    title: "Alkoholfri vin til pizza og pasta",
+    description:
+      "Alkoholfri vin til pizza og pasta: garnacha og pinot 0 % til tomatsyre — Natureo, Leitz og hvornår hvid er bedre.",
+  },
+  "alkoholfri-gin-tonic-og-aperitif": {
+    title: "Alkoholfri gin, tonic og aperitif",
+    description:
+      "Alkoholfri gin & tonic og spritz: Ish, Tanqueray 0.0 og 0 % bobler som velkomst — når festen ikke kun er vin.",
+  },
   "kalorier-i-alkoholfri-vin": {
     title: "Kalorier i alkoholfri vin (kcal)",
     description:

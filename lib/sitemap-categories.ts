@@ -50,6 +50,9 @@ const VIDEN_SLUGS = new Set<string>([
   "alkoholfri-chardonnay",
   "alkoholfri-pinot-grigio",
   "alkoholfri-gewurztraminer-og-muscat",
+  "alkoholfri-pinot-noir",
+  "ma-man-kore-efter-alkoholfri-vin",
+  "alkoholfri-vin-sukker-og-diabetes",
 ]);
 
 /** Slugs som bevist hører til mad-hubben selvom de ikke starter med "vin-til-". */
@@ -60,6 +63,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "vin-til-asiatisk-takeaway-dumplings-sushi-ramen",
   "alkoholfri-bobler-til-nytaar",
   "alkoholfri-hvidvin-i-madlavning",
+  "alkoholfri-gin-tonic-og-aperitif",
   "hvorfor-smager-rodvin-grimt-til-ost",
 ]);
 
@@ -101,6 +105,8 @@ const ANDRE_EXTRA_SLUGS = new Set<string>([
   "leitz-eins-zwei-zero",
   "torres-natureo",
   "noughty-alkoholfri-vin",
+  "oddbird-alkoholfri-vin",
+  "french-bloom-alkoholfri-vin",
   "alkoholfri-vin-i-netto-foetex",
   "bobler-champagne-cava-prosecco-og-cremant",
   "naturvin-hvad-er-det",

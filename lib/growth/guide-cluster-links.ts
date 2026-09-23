@@ -28,6 +28,9 @@ const OCCASION: GuideClusterLink[] = [
   { slug: "alkoholfri-vin-til-flaesketeg", label: "Alkoholfri vin til flæskesteg" },
   { slug: "alkoholfri-vin-til-konfirmation", label: "Alkoholfri vin til konfirmation" },
   { slug: "alkoholfri-vin-til-grill", label: "Alkoholfri vin til grill" },
+  { slug: "alkoholfri-vin-til-tapas", label: "Alkoholfri vin til tapas" },
+  { slug: "alkoholfri-vin-til-pizza-og-pasta", label: "Alkoholfri vin til pizza og pasta" },
+  { slug: "alkoholfri-gin-tonic-og-aperitif", label: "Alkoholfri gin, tonic & aperitif" },
   { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
   { slug: "alkoholfri-vin-til-brunch", label: "Alkoholfri vin til brunch" },
   { slug: "alkoholfri-mimosa", label: "Alkoholfri mimosa" },
@@ -43,7 +46,7 @@ const BUDGET: GuideClusterLink[] = [
   },
   {
     slug: "alkoholfri-vin-i-netto-foetex",
-    label: "Alkoholfri vin i Netto og Føtex",
+    label: "Alkoholfri vin i Netto, Føtex, Bilka og Meny",
   },
 ];
 
@@ -55,6 +58,8 @@ const BRANDS: GuideClusterLink[] = [
   { slug: "leitz-eins-zwei-zero", label: "Leitz Eins-Zwei-Zero" },
   { slug: "torres-natureo", label: "Torres Natureo" },
   { slug: "noughty-alkoholfri-vin", label: "Noughty alkoholfri vin" },
+  { slug: "oddbird-alkoholfri-vin", label: "Oddbird alkoholfri vin" },
+  { slug: "french-bloom-alkoholfri-vin", label: "French Bloom" },
 ];
 
 const VIDEN: GuideClusterLink[] = [
@@ -68,11 +73,24 @@ const VIDEN: GuideClusterLink[] = [
     slug: "hvad-er-forskellen-paa-alkoholfri-og-alkoholsvag-vin",
     label: "Alkoholfri vs. alkoholsvag vin",
   },
+  { slug: "ma-man-kore-efter-alkoholfri-vin", label: "Må man køre efter alkoholfri vin?" },
+  {
+    slug: "alkoholfri-vin-sukker-og-diabetes",
+    label: "Alkoholfri vin, sukker og diabetes",
+  },
   { slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" },
   { slug: "mindful-drikke-low-no-alkohol", label: "Mindful drinking — low & no" },
   { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
   { slug: "serveringstemperatur-alkoholfri-hvidvin", label: "Serveringstemperatur 0 % hvid" },
   { slug: "holdbarhed-aabnet-alkoholfri-hvidvin", label: "Holdbarhed åbnet 0 % hvid" },
+];
+
+const RODVIN_DYK: GuideClusterLink[] = [
+  { slug: "bedste-alkoholfri-rodvin", label: "Bedste alkoholfri rødvin" },
+  { slug: "alkoholfri-pinot-noir", label: "Alkoholfri Pinot Noir" },
+  { slug: "alkoholfri-vin-til-pizza-og-pasta", label: "0 % til pizza og pasta" },
+  { slug: "alkoholfri-vin-til-flaesketeg", label: "0 % til flæskesteg" },
+  { slug: "leitz-eins-zwei-zero", label: "Leitz Eins-Zwei-Zero" },
 ];
 
 const HVIDVIN_DRUER: GuideClusterLink[] = [
@@ -451,6 +469,83 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     [{ slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" }],
     OCCASION.slice(0, 3),
   ),
+  "oddbird-alkoholfri-vin": alkoholfriBlock(
+    ["oddbird-alkoholfri-vin"],
+    "Alkoholfri vin — relaterede guider",
+    "Oddbird til fest og gave — sammenlign med French Bloom og Leitz.",
+    [HUB],
+    BRANDS,
+    BY_TYPE.slice(0, 3),
+    [{ slug: "bedste-alkoholfri-champagne", label: "Alkoholfri champagne" }],
+    OCCASION.slice(0, 3),
+  ),
+  "french-bloom-alkoholfri-vin": alkoholfriBlock(
+    ["french-bloom-alkoholfri-vin"],
+    "Alkoholfri vin — relaterede guider",
+    "French Bloom som premium-skål — se Oddbird, bobler og nytår.",
+    [HUB],
+    BRANDS,
+    [{ slug: "bedste-alkoholfri-champagne", label: "Alkoholfri champagne" }],
+    [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
+    [{ slug: "alkoholfri-bobler-til-nytaar", label: "Bobler til nytår" }],
+  ),
+  "alkoholfri-pinot-noir": alkoholfriBlock(
+    ["alkoholfri-pinot-noir"],
+    "Alkoholfri rødvin — dyk dybere",
+    "Pinot er den stærkeste 0 %-røddrue — se også pizza, flæskesteg og Leitz.",
+    [HUB],
+    RODVIN_DYK,
+    BRANDS.slice(0, 4),
+    BY_TYPE.filter((l) => l.slug !== "bedste-alkoholfri-rodvin").slice(0, 3),
+  ),
+  "ma-man-kore-efter-alkoholfri-vin": alkoholfriBlock(
+    ["ma-man-kore-efter-alkoholfri-vin"],
+    "Alkoholfri vin — viden",
+    "Kørsel, 0,0 % og etiketten — se også graviditet og vs alkoholsvag.",
+    [HUB],
+    VIDEN.filter((l) => l.slug !== "ma-man-kore-efter-alkoholfri-vin").slice(0, 5),
+    [{ slug: "alkoholfri-vin-til-graviditet", label: "Alkoholfri under graviditet" }],
+    BRANDS.slice(0, 3),
+  ),
+  "alkoholfri-vin-sukker-og-diabetes": alkoholfriBlock(
+    ["alkoholfri-vin-sukker-og-diabetes"],
+    "Alkoholfri vin — viden",
+    "Sukker, tør stil og etiketten — se også kalorier og tør hvid.",
+    [HUB],
+    [
+      { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
+      { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
+    ],
+    VIDEN.filter((l) => l.slug !== "alkoholfri-vin-sukker-og-diabetes").slice(0, 4),
+    BRANDS.slice(0, 4),
+  ),
+  "alkoholfri-vin-til-tapas": alkoholfriBlock(
+    ["alkoholfri-vin-til-tapas"],
+    "Alkoholfri til mad og selskab",
+    "Rosé, hvid og bobler til tapas — se også grill og pizza.",
+    [HUB],
+    BY_TYPE.slice(0, 4),
+    OCCASION.filter((l) => l.slug !== "alkoholfri-vin-til-tapas").slice(0, 4),
+    BUDGET,
+  ),
+  "alkoholfri-vin-til-pizza-og-pasta": alkoholfriBlock(
+    ["alkoholfri-vin-til-pizza-og-pasta"],
+    "Alkoholfri til mad",
+    "Garnacha og pinot til tomat — se også rødvin-pillar og tapas.",
+    [HUB],
+    RODVIN_DYK,
+    OCCASION.filter((l) => l.slug !== "alkoholfri-vin-til-pizza-og-pasta").slice(0, 3),
+    BUDGET,
+  ),
+  "alkoholfri-gin-tonic-og-aperitif": alkoholfriBlock(
+    ["alkoholfri-gin-tonic-og-aperitif"],
+    "Alkoholfri til fest",
+    "0 % G&T og spritz ved siden af bobler og festguiden.",
+    [HUB],
+    [{ slug: "alkoholfri-vin-til-fest", label: "Alkoholfri vin til fest" }],
+    [{ slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" }],
+    OCCASION.filter((l) => l.slug !== "alkoholfri-gin-tonic-og-aperitif").slice(0, 4),
+  ),
   "kalorier-i-alkoholfri-vin": alkoholfriBlock(
     ["kalorier-i-alkoholfri-vin"],
     "Alkoholfri vin — relaterede guider",
@@ -760,8 +855,9 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   "bedste-alkoholfri-rodvin": alkoholfriBlock(
     ["bedste-alkoholfri-rodvin"],
     "Alkoholfri vin — relaterede guider",
-    "Rød uden alkohol er sværest — sammenlign med rosé og bobler før du køber.",
+    "Rød uden alkohol er sværest — dyk ned i pinot, pizza og bobler før du køber.",
     [HUB],
+    RODVIN_DYK,
     BY_TYPE,
     VIDEN.slice(0, 3),
   ),

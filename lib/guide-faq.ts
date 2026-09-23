@@ -5413,6 +5413,127 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Noughty kommunikerer ofte lavt kcal pr. 100 ml, men tjek altid etiketten for sukker. Se guiden om kalorier i alkoholfri vin for typiske tal.",
     },
   ],
+  "oddbird-alkoholfri-vin": [
+    {
+      question: "Hvad er Oddbird alkoholfri vin?",
+      answer:
+        "Oddbird er et svensk 0 %-mærke kendt for designflasker og seriøs sparkling (Blanc de Blancs), plus hvid og rød. Pris ligger typisk mellem Leitz/Noughty og French Bloom.",
+    },
+    {
+      question: "Er Oddbird bedre end French Bloom?",
+      answer:
+        "French Bloom er premium (ofte 200–300 kr) med champagne-agtig ambition. Oddbird er elegant mid–premium til fest og gave, når budgettet er strammere. Vælg efter anledning, ikke «bedst i test».",
+    },
+    {
+      question: "Hvor køber man Oddbird i Danmark?",
+      answer:
+        "Primært online vinhandlere og udvalgte specialty/super. Sjældnere i Netto end Torres Natureo. Sammenlign priser på Vinbot.",
+    },
+  ],
+  "french-bloom-alkoholfri-vin": [
+    {
+      question: "Hvad er French Bloom?",
+      answer:
+        "French Bloom er et fransk premium-mærke for alkoholfri sparkling (Le Blanc og Le Rosé), typisk 200–300 kr. Økologisk, vegansk og tænkt til nytår, gave og formel skål.",
+    },
+    {
+      question: "Er French Bloom rigtig champagne?",
+      answer:
+        "Nej. EU tillader ikke champagne-navnet under 0,5 % ABV. Det er de-alkoholiseret premium sparkling med champagne-æstetik — ikke AOC-champagne.",
+    },
+    {
+      question: "Hvornår er French Bloom pengene værd?",
+      answer:
+        "Til ritual (nytår, gave, bryllup uden alkohol). Til store selskaber er Leitz eller Torres bedre til volumen, evt. med én French Bloom til første skål.",
+    },
+  ],
+  "alkoholfri-pinot-noir": [
+    {
+      question: "Hvilken alkoholfri Pinot Noir er bedst?",
+      answer:
+        "Leitz Eins-Zwei-Zero Pinot Noir er den mest anbefalede 0 %-pinot i DK — blødere tannin og mere «vin» end de fleste billige røde. Ca. 110–150 kr.",
+    },
+    {
+      question: "Er Spätburgunder det samme som Pinot Noir?",
+      answer:
+        "Ja — Spätburgunder er det tyske navn for Pinot Noir. På alkoholfri rosé ses det ofte som base; på rød 0 % sælges det typisk som Pinot Noir (fx Leitz).",
+    },
+    {
+      question: "Hvornår vælger jeg pinot frem for Torres Natureo Red?",
+      answer:
+        "Natureo (garnacha) til hverdags-pizza og budget. Leitz Pinot når du vil have mere elegance til and, svampe eller «vinagtig» pizza.",
+    },
+  ],
+  "ma-man-kore-efter-alkoholfri-vin": [
+    {
+      question: "Må man køre bil efter alkoholfri vin?",
+      answer:
+        "I praksis ja for 0,0–0,5 % ABV: alkoholmængden er så lav, at det er urealistisk at nå 0,50 ‰ alene fra glasset. Vælg 0,0 % hvis du vil være ekstra forsigtig, og undgå alkoholsvag vin.",
+    },
+    {
+      question: "Kan 0,5 % vin give promille?",
+      answer:
+        "Et glas 0,5 % indeholder ca. 0,6 g alkohol — mange gange mindre end et almindeligt glas vin. En hel flaske 0,5 % svarer cirka til et lille slurk almindelig vin.",
+    },
+    {
+      question: "Gælder det også alkoholsvag vin?",
+      answer:
+        "Nej. Alkoholsvag (fx 5–11 %) er stadig alkohol og tæller som almindelig vin ift. kørsel.",
+    },
+  ],
+  "alkoholfri-vin-sukker-og-diabetes": [
+    {
+      question: "Har alkoholfri vin meget sukker?",
+      answer:
+        "Ofte mere restsukker end forventet, fordi most/sukker kan tilsættes for krop efter de-alkoholisering. Tjek etiketten — det varierer kraftigt mellem flasker.",
+    },
+    {
+      question: "Hvilken alkoholfri vin er mest tør?",
+      answer:
+        "Leitz Riesling/Sparkling, tør sauvignon (fx Giesen 0 %) og premium sparkling som Oddbird/French Bloom er typisk mere knastørre end sød muscat eller anonym «festdrik».",
+    },
+    {
+      question: "Er dette medicinsk rådgivning?",
+      answer:
+        "Nej. Guiden hjælper med at læse etiketten og vælge tør stil. Tal med læge eller diabetessygeplejerske om dit eget blodsukker.",
+    },
+  ],
+  "alkoholfri-vin-til-tapas": [
+    {
+      question: "Hvilken alkoholfri vin til tapas?",
+      answer:
+        "Rosé + bobler dækker de fleste tapasborde. Tilføj tør hvid til fisk/citrus. Undgå én tung 0 %-rød til hele brættet.",
+    },
+    {
+      question: "Kan jeg bruge alkoholfri rødvin til tapas?",
+      answer:
+        "Kun hvis bordet er kødtungt (chorizo, kødboller). Ellers er rosé og bobler mere alsidige.",
+    },
+  ],
+  "alkoholfri-vin-til-pizza-og-pasta": [
+    {
+      question: "Hvilken alkoholfri vin til pizza?",
+      answer:
+        "Torres Natureo Red (garnacha) er hverdagsdefault til tomat-pizza. Leitz Pinot Noir er opgraderingen til svampe og mere karakter.",
+    },
+    {
+      question: "Hvad med pasta pesto?",
+      answer:
+        "Vælg hvid 0 % (riesling/chardonnay) i stedet for rød — pesto og fløde matcher dårligt med tannin-agtig 0 %-rød.",
+    },
+  ],
+  "alkoholfri-gin-tonic-og-aperitif": [
+    {
+      question: "Hvad er et godt alkoholfrit alternativ til gin & tonic?",
+      answer:
+        "Tanqueray 0.0 eller Ish Spirits gin med kvalitets-tonic og citrus. Til fælles skål er alkoholfri bobler stadig det bedste ritual.",
+    },
+    {
+      question: "Kan jeg lave spritz uden alkohol?",
+      answer:
+        "Ja: 0 % «Aperol»-stil (fx Lyre’s Italian Orange) + alkoholfri bobler + soda — eller simplere: Natureo/Leitz sparkling med appelsinskive.",
+    },
+  ],
   "kalorier-i-alkoholfri-vin": [
     {
       question: "Hvor mange kalorier er der i alkoholfri vin?",

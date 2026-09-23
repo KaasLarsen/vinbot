@@ -34,8 +34,13 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "papvin-tilbud",
   "alkoholfri-riesling",
   "alkoholfri-sauvignon-blanc",
+  "alkoholfri-pinot-noir",
   "tor-alkoholfri-hvidvin",
   "alkoholfri-hvidvin-til-skaldyr-og-fisk",
+  "alkoholfri-vin-til-tapas",
+  "alkoholfri-vin-til-pizza-og-pasta",
+  "oddbird-alkoholfri-vin",
+  "french-bloom-alkoholfri-vin",
 ]);
 
 export function guideHasInlineSearch(slug: string): boolean {

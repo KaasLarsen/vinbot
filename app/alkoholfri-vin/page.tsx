@@ -162,6 +162,14 @@ export default function AlkoholfriVinHubPage() {
               <Link href="/guides/noughty-alkoholfri-vin" className="text-rose-900 hover:underline">
                 Noughty
               </Link>
+              ,{" "}
+              <Link href="/guides/oddbird-alkoholfri-vin" className="text-rose-900 hover:underline">
+                Oddbird
+              </Link>
+              ,{" "}
+              <Link href="/guides/french-bloom-alkoholfri-vin" className="text-rose-900 hover:underline">
+                French Bloom
+              </Link>
             </li>
           </ul>
         </div>
@@ -175,7 +183,7 @@ export default function AlkoholfriVinHubPage() {
             </li>
             <li>
               <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
-                Netto, Rema, Føtex og Coop
+                Netto, Rema, Føtex, Bilka og Meny
               </Link>
             </li>
             <li>
@@ -209,6 +217,14 @@ export default function AlkoholfriVinHubPage() {
                 grill
               </Link>
               ,{" "}
+              <Link href="/guides/alkoholfri-vin-til-tapas" className="text-rose-900 hover:underline">
+                tapas
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-vin-til-pizza-og-pasta" className="text-rose-900 hover:underline">
+                pizza &amp; pasta
+              </Link>
+              ,{" "}
               <Link href="/guides/alkoholfri-vin-til-brunch" className="text-rose-900 hover:underline">
                 brunch
               </Link>
@@ -219,6 +235,10 @@ export default function AlkoholfriVinHubPage() {
               ,{" "}
               <Link href="/guides/alkoholfri-asti" className="text-rose-900 hover:underline">
                 Asti 0 %
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-gin-tonic-og-aperitif" className="text-rose-900 hover:underline">
+                gin &amp; aperitif 0 %
               </Link>
             </li>
             <li>
@@ -317,9 +337,34 @@ export default function AlkoholfriVinHubPage() {
           </ul>
         </div>
 
-        <div className="rounded-lg border border-stone-200 bg-white p-5 md:col-span-2">
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
+          <h2 className="text-lg font-semibold text-stone-900">Alkoholfri rødvin — dyk dybere</h2>
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-stone-700">
+            <li>
+              <Link href="/guides/bedste-alkoholfri-rodvin" className="text-rose-900 hover:underline">
+                Bedste alkoholfri rødvin
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/alkoholfri-pinot-noir" className="text-rose-900 hover:underline">
+                Pinot Noir / Spätburgunder 0 %
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/alkoholfri-vin-til-pizza-og-pasta" className="text-rose-900 hover:underline">
+                Pizza &amp; pasta
+              </Link>
+              ,{" "}
+              <Link href="/guides/alkoholfri-vin-til-flaesketeg" className="text-rose-900 hover:underline">
+                flæskesteg
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="rounded-lg border border-stone-200 bg-white p-5">
           <h2 className="text-lg font-semibold text-stone-900">Viden — ærlige svar</h2>
-          <ul className="mt-3 grid list-disc gap-x-6 gap-y-1.5 pl-5 text-sm text-stone-700 sm:grid-cols-2">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-stone-700">
             <li>
               <Link href="/guides/smager-alkoholfri-vin-godt" className="text-rose-900 hover:underline">
                 Smager alkoholfri vin godt?
@@ -328,6 +373,16 @@ export default function AlkoholfriVinHubPage() {
             <li>
               <Link href="/guides/kalorier-i-alkoholfri-vin" className="text-rose-900 hover:underline">
                 Kalorier i alkoholfri vin
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/ma-man-kore-efter-alkoholfri-vin" className="text-rose-900 hover:underline">
+                Må man køre efter 0 %?
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/alkoholfri-vin-sukker-og-diabetes" className="text-rose-900 hover:underline">
+                Sukker &amp; diabetes
               </Link>
             </li>
             <li>
@@ -369,7 +424,7 @@ export default function AlkoholfriVinHubPage() {
           </Link>{" "}
           — det er det nemmeste sted at lande godt første gang. Skal du købe i butik:{" "}
           <Link href="/guides/alkoholfri-vin-i-netto-foetex" className="text-rose-900 hover:underline">
-            Netto, Rema og Føtex
+            Netto, Rema, Føtex, Bilka og Meny
           </Link>{" "}
           eller{" "}
           <Link href="/guides/bedste-alkoholfri-vin-under-100-kr" className="text-rose-900 hover:underline">
@@ -378,6 +433,14 @@ export default function AlkoholfriVinHubPage() {
           . Vil du have ét mærke:{" "}
           <Link href="/guides/leitz-eins-zwei-zero" className="text-rose-900 hover:underline">
             Leitz Eins-Zwei-Zero
+          </Link>
+          ,{" "}
+          <Link href="/guides/oddbird-alkoholfri-vin" className="text-rose-900 hover:underline">
+            Oddbird
+          </Link>{" "}
+          eller{" "}
+          <Link href="/guides/french-bloom-alkoholfri-vin" className="text-rose-900 hover:underline">
+            French Bloom
           </Link>
           .
         </p>
