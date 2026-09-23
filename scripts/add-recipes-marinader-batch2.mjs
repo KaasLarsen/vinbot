@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Marinader batch 1: 5 nye klassikere + guide-recipe-links + FAQ.
+/** Marinader batch 2: 5 nye klassikere + guide-recipe-links + FAQ.
  *  Billeder: generér madfotos (ikke create-recipe-placeholder-images) og kopiér til public/images/recipes/. */
 import fs from "node:fs";
 import path from "node:path";
@@ -8,7 +8,7 @@ import {
   GUIDE_RECIPE_ADDITIONS,
   SLUG_EXPANSIONS,
   UPDATED,
-} from "./recipes-marinader-batch1-data.mjs";
+} from "./recipes-marinader-batch2-data.mjs";
 
 const RECIPES_DIR = path.join(process.cwd(), "content", "recipes");
 const GUIDE_LINKS_PATH = path.join(process.cwd(), "lib", "growth", "guide-recipe-links.ts");
@@ -45,12 +45,8 @@ For syrlig marinade: mere olie eller en snert honning. For mild: mere vin, eddik
 function buildFaq(r) {
   if (!r.faq?.length) return "";
   const items = r.faq
-    .map(([q, a]) => `### ${q}
-
-${a}`)
-    .join("
-
-");
+    .map(([q, a]) => `### ${q}\n\n${a}`)
+    .join("\n\n");
   return `## Ofte stillede spørgsmål
 
 ${items}
@@ -58,10 +54,8 @@ ${items}
 }
 
 function buildBody(r) {
-  const tips = r.tips.map(([t, d]) => `- **${t}:** ${d}`).join("
-");
-  const mistakes = r.mistakes.map((m) => `- ${m}`).join("
-");
+  const tips = r.tips.map(([t, d]) => `- **${t}:** ${d}`).join("\n");
+  const mistakes = r.mistakes.map((m) => `- ${m}`).join("\n");
   return `${r.intro}
 
 ## ${r.whyTitle}

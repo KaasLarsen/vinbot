@@ -142,6 +142,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "balsamico-rodvinsglaserede-skalotteloeg", label: "Balsamico-rødvinsglaserede skalotteløg" },
     { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
     { slug: "klassisk-rodvins-rosmarinmarinade", label: "Klassisk rødvins-rosmarinmarinade" },
+    { slug: "syrlig-rodvin-balsamicomarinade", label: "Syrlig rødvin-balsamicomarinade" },
   ],
   "vin-til-oksefilet": [
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -184,6 +185,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "karbonader-i-hvidvinsauce", label: "Karbonader i hvidvinsauce" },
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
     { slug: "morbradgryde-med-paprika-og-hvidvin", label: "Mørbradgryde med paprika og hvidvin" },
+    { slug: "hvidvins-sennepsmarinade", label: "Hvidvins-sennepsmarinade" },
   ],
   "vin-til-ribeye": [
     { slug: "ribeye", label: "Ribeye (vin til glasset)" },
@@ -281,6 +283,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "klassisk-rodvins-rosmarinmarinade", label: "Rødvins-rosmarinmarinade" },
     { slug: "portvins-hvidloegsmarinade", label: "Portvins-hvidløgsmarinade" },
     { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
+    { slug: "syrlig-rodvin-balsamicomarinade", label: "Syrlig balsamicomarinade" },
   ],
   "vin-til-lam": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -300,6 +303,10 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
     { slug: "morbradgryde-med-paprika-og-hvidvin", label: "Mørbradgryde med paprika" },
     { slug: "svinekoteletter-med-sennep-og-hvidvin", label: "Svinekoteletter med sennep og hvidvin" },
+    { slug: "hvidvins-sennepsmarinade", label: "Hvidvins-sennepsmarinade" },
+    { slug: "sherry-appelsinmarinade", label: "Sherry-appelsinmarinade" },
+    { slug: "italiensk-hvidvins-salviemarinade", label: "Salviemarinade" },
+    { slug: "rodvins-paprikamarinade", label: "Rødvins-paprikamarinade" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -768,6 +775,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "hvad-er-sherry-vin": [
     { slug: "sherry-trifle", label: "Sherry Trifle" },
+    { slug: "sherry-appelsinmarinade", label: "Sherry-appelsinmarinade" },
   ],
   "chardonnay-til-fisk": [
     { slug: "hvidvinsdampet-torsk-en-papillote", label: "Torsk en papillote" },

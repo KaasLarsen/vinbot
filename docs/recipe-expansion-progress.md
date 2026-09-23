@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Marinader batch 1 i gang (2026-09-23). Top 30 + Vin20 + Asia10 komplet.
+**Status:** Marinader batch 1–2 live (2026-09-23). Top 30 + Vin20 + Asia10 komplet.
+
+## Marinader batch 2 — 2026-09-23 (5 nye — okse + svin)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `syrlig-rodvin-balsamicomarinade` | Rødvin / okse |
+| 2 | `hvidvins-sennepsmarinade` | Hvidvin / svin |
+| 3 | `sherry-appelsinmarinade` | Sherry / svin |
+| 4 | `italiensk-hvidvins-salviemarinade` | Hvidvin / svin |
+| 5 | `rodvins-paprikamarinade` | Rødvin / ribs |
+
+Næste: batch 3 (citron-oregano · æble-hvidvin · provençal · rosé-jordbær · marsala-svampe).
+
+---
 
 ## Marinader batch 1 — 2026-09-23 (5 nye — okse/kalv)
 
