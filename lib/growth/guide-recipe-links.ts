@@ -132,6 +132,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
     { slug: "okse-wellington-med-rodvinssauce", label: "Okse-wellington med rødvinssauce" },
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
+    { slug: "balsamico-rodvinsglaserede-skalotteloeg", label: "Balsamico-rødvinsglaserede skalotteløg" },
   ],
   "vin-til-oksefilet": [
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -166,6 +167,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kalv-i-hvidvinsauce", label: "Kalv i hvidvinsauce" },
     { slug: "blanquette-de-veau-med-hvidvin", label: "Blanquette de veau" },
     { slug: "ossobuco-med-hvidvin", label: "Ossobuco med hvidvin" },
+    { slug: "saltimbocca-alla-romana", label: "Saltimbocca alla Romana" },
   ],
   "vin-til-svinemoerbrad": [
     { slug: "svinefilet-i-rodvinssauce", label: "Svinefilet i rødvinssauce" },
@@ -177,10 +179,12 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "entrecote-med-rodvinsmarinade", label: "Entrecôte med rødvinsmarinade" },
     { slug: "cote-de-boeuf-med-rodvin", label: "Côte de bœuf med rødvin" },
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+    { slug: "oksehojreb-marineret-i-rodvin", label: "Oksehøjreb marineret i rødvin" },
   ],
   "vin-til-roastbeef": [
     { slug: "oksesteg-med-rodvin", label: "Oksesteg med rødvin" },
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
+    { slug: "oksehojreb-marineret-i-rodvin", label: "Oksehøjreb marineret i rødvin" },
   ],
   "vin-til-boef-stroganoff": [
     { slug: "boef-stroganoff-med-hvidvin", label: "Bøf stroganoff med hvidvin" },
@@ -233,6 +237,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tiramisu-med-marsala-og-hvidvin", label: "Tiramisu med marsala og hvidvin" },
     { slug: "panna-cotta-med-hvidvin", label: "Panna cotta med hvidvin" },
     { slug: "ossobuco-med-rodvin", label: "Ossobuco med rødvin og gremolata" },
+    { slug: "saltimbocca-alla-romana", label: "Saltimbocca alla Romana" },
+    { slug: "chicken-marsala", label: "Chicken Marsala" },
   ],
   "vin-til-spansk-mad": [
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
@@ -255,6 +261,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
     { slug: "bearnaisesauce-med-hvidvin", label: "Bearnaisesauce med hvidvin" },
     { slug: "biksemad-med-rodvin", label: "Biksemad med rødvin" },
+    { slug: "oksehojreb-marineret-i-rodvin", label: "Oksehøjreb marineret i rødvin" },
   ],
   "vin-til-lam": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -294,6 +301,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "marokkansk-kylling-tagine-med-hvidvin", label: "Marokkansk kylling tagine med hvidvin" },
     { slug: "souvlaki-med-hvidvin", label: "Souvlaki med hvidvin" },
     { slug: "poulet-a-lestragon", label: "Poulet à l'Estragon" },
+    { slug: "chicken-marsala", label: "Chicken Marsala" },
   ],
   "vin-til-vegetar-og-gront": [
     { slug: "champignonsuppe-med-hvidvin", label: "Champignonsuppe med hvidvin" },
@@ -308,6 +316,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "minestrone-med-rodvin", label: "Minestrone med rødvin" },
     { slug: "bagt-graeskar-med-salviesmoer", label: "Bagt græskar med salviesmør" },
     { slug: "svampetoast-med-hvidvin-og-timian", label: "Svampetoast med hvidvin" },
+    { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
   ],
   "vin-til-nachos": [
     { slug: "nachos-med-rodvinskaesesovs", label: "Nachos med rødvinskaesesovs" },
@@ -638,6 +647,16 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-svampe": [
     { slug: "svampetoast-med-hvidvin-og-timian", label: "Svampetoast med hvidvin" },
+    { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
+    { slug: "chicken-marsala", label: "Chicken Marsala" },
+  ],
+  "vin-til-bourgogne-mad": [
+    { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
+  ],
+  "sadan-bruger-du-vin-til-sauce-og-simren": [
+    { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
+    { slug: "balsamico-rodvinsglaserede-skalotteloeg", label: "Glaserede skalotteløg" },
+    { slug: "chicken-marsala", label: "Chicken Marsala" },
   ],
 
 };

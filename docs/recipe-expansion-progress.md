@@ -1,6 +1,22 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** 13 nye + 7 eksisterende dækket (batch 2026-09-20).
+**Status:** Top 30 batch 1 (2026-09-23) + tidligere batches.
+
+## Top 30 batch 1 — 2026-09-23 (5 nye huller)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `svampe-bourguignon` | Rødvin / vegetar |
+| 2 | `oksehojreb-marineret-i-rodvin` | Rødvin / steg |
+| 3 | `balsamico-rodvinsglaserede-skalotteloeg` | Rødvin / tilbehør |
+| 4 | `saltimbocca-alla-romana` | Hvidvin / italiensk |
+| 5 | `chicken-marsala` | Marsala / kylling |
+
+Allerede dækket på Top 30 (sprunget over): svinekæber, lammeskank, chorizo, risotto al Barolo, vongole, løgsuppe.
+
+---
+
+**Tidligere:** 13 nye + 7 eksisterende dækket (batch 2026-09-20).
 
 ## Nye (denne batch)
 
