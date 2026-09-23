@@ -130,8 +130,10 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="relative z-50 overflow-x-clip border-b border-stone-200/80 bg-white/90 backdrop-blur">
-      <PageShell className="py-3">
+    <header className="relative z-50 border-b border-stone-200/80 bg-white/90">
+      {/* Sibling blur layer — not an ancestor of HeaderSearch, so fixed mobile search isn't clipped. */}
+      <div className="pointer-events-none absolute inset-0 backdrop-blur" aria-hidden />
+      <PageShell className="relative py-3">
         <div className="flex min-w-0 items-center justify-between gap-2 sm:gap-4">
           <Link
             href="/"

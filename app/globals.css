@@ -33,3 +33,31 @@ body {
 html[data-vinbot-home-q] [data-home-feed-strips] {
   display: none;
 }
+
+/*
+  Header-søgning (mobil): tving synlig tekst — iOS Safari dark mode / autofill kan ellers
+  male hvid tekst på hvid baggrund, så man ikke ser hvad man skriver.
+*/
+input[data-vinbot-header-search] {
+  color: #1c1917 !important;
+  -webkit-text-fill-color: #1c1917 !important;
+  caret-color: #1c1917;
+  background-color: #fff !important;
+  color-scheme: light;
+  opacity: 1;
+}
+
+input[data-vinbot-header-search]::placeholder {
+  color: #a8a29e !important;
+  -webkit-text-fill-color: #a8a29e !important;
+  opacity: 1;
+}
+
+input[data-vinbot-header-search]:-webkit-autofill,
+input[data-vinbot-header-search]:-webkit-autofill:hover,
+input[data-vinbot-header-search]:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1c1917 !important;
+  caret-color: #1c1917;
+  box-shadow: 0 0 0 1000px #fff inset;
+  transition: background-color 99999s ease-out;
+}

@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
+import { createPortal } from "react-dom";
 import type { NavSearchKind, NavSearchSuggestion } from "@/lib/nav-search";
 
 type SearchMode = "vin" | "guides";
 
 const STORAGE_KEY = "vinbot-header-search-mode";
 const MODE_SYNC_EVENT = "vinbot-header-search-mode-changed";
+
+/** Matches Tailwind `sm` — below this the search uses a body portal overlay. */
+const MOBILE_MQ = "(max-width: 639px)";
 
 function readStoredMode(): SearchMode | null {
   try {
@@ -44,6 +48,18 @@ const KIND_CLASS: Record<NavSearchKind, string> = {
   quick: "bg-stone-100 text-stone-700",
 };
 
+/** Explicit colors — iOS Safari dark mode can otherwise paint white text on our white field. */
+const INPUT_VISIBLE_STYLE: CSSProperties = {
+  color: "#1c1917",
+  WebkitTextFillColor: "#1c1917",
+  caretColor: "#1c1917",
+  backgroundColor: "#ffffff",
+  colorScheme: "light",
+  opacity: 1,
+  fontSize: 16,
+  lineHeight: "1.5",
+};
+
 function useDebouncedValue<T>(value: T, ms: number): T {
   const [debounced, setDebounced] = useState(value);
   useEffect(() => {
@@ -51,6 +67,18 @@ function useDebouncedValue<T>(value: T, ms: number): T {
     return () => window.clearTimeout(t);
   }, [value, ms]);
   return debounced;
+}
+
+function useIsMobileSearch(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_MQ);
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return isMobile;
 }
 
 /**
@@ -64,6 +92,8 @@ export function HeaderSearch() {
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isMobile = useIsMobileSearch();
+  const [portalReady, setPortalReady] = useState(false);
 
   const [expanded, setExpanded] = useState(false);
   const [mode, setMode] = useState<SearchMode>(() =>
@@ -76,6 +106,10 @@ export function HeaderSearch() {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const debouncedQ = useDebouncedValue(q, 120);
+
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
 
   useEffect(() => {
     const stored = readStoredMode();
@@ -158,6 +192,12 @@ export function HeaderSearch() {
   }, [expanded]);
 
   const inputId = `${formId}-header`;
+
+  function closeSearch() {
+    setOpen(false);
+    setExpanded(false);
+    setQ("");
+  }
 
   function navigateTo(s: NavSearchSuggestion) {
     setOpen(false);
@@ -256,8 +296,173 @@ export function HeaderSearch() {
     </div>
   ) : null;
 
+  const searchForm = (
+    <form
+      role="search"
+      aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
+      onSubmit={submit}
+      className="relative z-10 flex w-full max-w-full flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:flex-row sm:flex-wrap sm:items-center"
+    >
+      <div className="flex items-center gap-2">
+        <div
+          className="flex min-w-0 flex-1 rounded-lg border border-stone-200 bg-stone-100 p-0.5"
+          role="group"
+          aria-label="Søgetype"
+        >
+          <button
+            type="button"
+            aria-pressed={mode === "vin"}
+            onClick={() => {
+              persistMode("vin", setMode);
+              if (open) void fetchSuggestions(debouncedQ, "vin");
+            }}
+            className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
+              mode === "vin"
+                ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
+                : "text-stone-600 hover:text-stone-900"
+            }`}
+          >
+            Vin
+          </button>
+          <button
+            type="button"
+            aria-pressed={mode === "guides"}
+            onClick={() => {
+              persistMode("guides", setMode);
+              if (open) void fetchSuggestions(debouncedQ, "guides");
+            }}
+            className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
+              mode === "guides"
+                ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
+                : "text-stone-600 hover:text-stone-900"
+            }`}
+          >
+            Guides
+          </button>
+        </div>
+        <button
+          type="button"
+          aria-label="Luk søgning"
+          onClick={closeSearch}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:hidden"
+        >
+          <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div className="relative flex min-h-11 min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2 py-1.5">
+        <label htmlFor={inputId} className="sr-only">
+          {mode === "vin" ? "Søg efter vin og mad" : "Søg i guides"}
+        </label>
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          className="h-4 w-4 shrink-0 text-stone-400"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-3.5-3.5" />
+        </svg>
+        <input
+          ref={inputRef}
+          id={inputId}
+          data-vinbot-header-search=""
+          type="text"
+          enterKeyHint="search"
+          inputMode="search"
+          value={q}
+          role="combobox"
+          aria-expanded={showPanel}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => {
+            setOpen(true);
+            void fetchSuggestions(q, mode);
+          }}
+          onKeyDown={(e) => {
+            if (!showPanel || suggestions.length === 0) return;
+            if (e.key === "ArrowDown") {
+              e.preventDefault();
+              setActiveIndex((i) => (i + 1) % suggestions.length);
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
+            } else if (e.key === "Escape") {
+              setOpen(false);
+              setActiveIndex(-1);
+              setExpanded(false);
+              setQ("");
+            }
+          }}
+          placeholder={placeholder}
+          style={INPUT_VISIBLE_STYLE}
+          className="min-w-0 flex-1 appearance-none border-0 bg-white px-1 py-1 text-base text-stone-900 caret-stone-900 shadow-none outline-none [-webkit-text-fill-color:#1c1917] placeholder:text-stone-400 placeholder:[-webkit-text-fill-color:#a8a29e] focus:outline-none focus:ring-0 sm:text-sm"
+        />
+        <button
+          type="submit"
+          className="shrink-0 rounded-lg bg-rose-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-950"
+        >
+          Søg
+        </button>
+        <button
+          type="button"
+          aria-label="Luk søgning"
+          onClick={closeSearch}
+          className="ml-auto hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:flex"
+        >
+          <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </form>
+  );
+
+  const expandedUi = (
+    <div className="relative w-full max-w-full">
+      {searchForm}
+      {panel}
+    </div>
+  );
+
+  const mobilePortal =
+    expanded && portalReady && isMobile
+      ? createPortal(
+          <div ref={rootRef} className="vinbot-header-search-portal">
+            <button
+              type="button"
+              aria-label="Luk søgning"
+              className="fixed inset-0 z-[55] bg-stone-950/25"
+              onClick={closeSearch}
+            />
+            {/*
+              Portal to body so header overflow-x-clip + backdrop-filter cannot clip the
+              input row (typed text was invisible because it painted below the header edge).
+            */}
+            <div className="fixed inset-x-3 top-3 z-[60] w-auto max-w-[calc(100%-1.5rem)]">
+              {expandedUi}
+            </div>
+          </div>,
+          document.body,
+        )
+      : null;
+
   return (
-    <div ref={rootRef} className="relative shrink-0">
+    <div ref={isMobile ? undefined : rootRef} className="relative shrink-0">
       {!expanded ? (
         <button
           type="button"
@@ -279,169 +484,10 @@ export function HeaderSearch() {
             <path d="M20 20l-3.5-3.5" />
           </svg>
         </button>
+      ) : isMobile ? (
+        mobilePortal
       ) : (
-        <>
-          {/* Mobile backdrop — closes search without horizontal page pan */}
-          <button
-            type="button"
-            aria-label="Luk søgning"
-            className="fixed inset-0 z-[55] bg-stone-950/25 sm:hidden"
-            onClick={() => {
-              setOpen(false);
-              setExpanded(false);
-              setQ("");
-            }}
-          />
-          {/*
-            Mobile: viewport-bound overlay so the panel never forces horizontal scroll.
-            sm+: keep inline header layout at fixed width.
-            Relative wrapper + top-full keeps suggestions below the input (never covering typed text).
-          */}
-          <div className="fixed inset-x-3 top-3 z-[60] w-auto max-w-[calc(100%-1.5rem)] sm:static sm:inset-auto sm:z-auto sm:w-[28rem] sm:max-w-none">
-            <div className="relative w-full max-w-full">
-              <form
-                role="search"
-                aria-label={mode === "vin" ? "Søg vin og mad på Vinbot" : "Søg i Vinbots guides"}
-                onSubmit={submit}
-                className="relative z-10 flex w-full max-w-full flex-col gap-2 rounded-xl border border-stone-200 bg-white p-2 shadow-lg sm:flex-row sm:flex-wrap sm:items-center"
-              >
-                <div className="flex items-center gap-2">
-                  <div
-                    className="flex min-w-0 flex-1 rounded-lg border border-stone-200 bg-stone-100 p-0.5"
-                    role="group"
-                    aria-label="Søgetype"
-                  >
-                    <button
-                      type="button"
-                      aria-pressed={mode === "vin"}
-                      onClick={() => {
-                        persistMode("vin", setMode);
-                        if (open) void fetchSuggestions(debouncedQ, "vin");
-                      }}
-                      className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
-                        mode === "vin"
-                          ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
-                          : "text-stone-600 hover:text-stone-900"
-                      }`}
-                    >
-                      Vin
-                    </button>
-                    <button
-                      type="button"
-                      aria-pressed={mode === "guides"}
-                      onClick={() => {
-                        persistMode("guides", setMode);
-                        if (open) void fetchSuggestions(debouncedQ, "guides");
-                      }}
-                      className={`flex-1 rounded-md px-2.5 py-1 text-xs font-semibold transition sm:flex-none ${
-                        mode === "guides"
-                          ? "bg-white text-rose-950 shadow-sm ring-1 ring-stone-200/80"
-                          : "text-stone-600 hover:text-stone-900"
-                      }`}
-                    >
-                      Guides
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    aria-label="Luk søgning"
-                    onClick={() => {
-                      setOpen(false);
-                      setExpanded(false);
-                      setQ("");
-                    }}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:hidden"
-                  >
-                    <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 6l12 12M18 6L6 18" />
-                    </svg>
-                  </button>
-                </div>
-
-                <div className="relative flex min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2 py-1.5">
-                  <label htmlFor={inputId} className="sr-only">
-                    {mode === "vin" ? "Søg efter vin og mad" : "Søg i guides"}
-                  </label>
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 24 24"
-                    className="h-4 w-4 shrink-0 text-stone-400"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <circle cx="11" cy="11" r="7" />
-                    <path d="M20 20l-3.5-3.5" />
-                  </svg>
-                  <input
-                    ref={inputRef}
-                    id={inputId}
-                    type="search"
-                    enterKeyHint="search"
-                    inputMode="search"
-                    value={q}
-                    role="combobox"
-                    aria-expanded={showPanel}
-                    aria-controls={listId}
-                    aria-autocomplete="list"
-                    aria-activedescendant={activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined}
-                    autoComplete="off"
-                    autoCorrect="off"
-                    autoCapitalize="off"
-                    spellCheck={false}
-                    onChange={(e) => {
-                      setQ(e.target.value);
-                      setOpen(true);
-                    }}
-                    onFocus={() => {
-                      setOpen(true);
-                      void fetchSuggestions(q, mode);
-                    }}
-                    onKeyDown={(e) => {
-                      if (!showPanel || suggestions.length === 0) return;
-                      if (e.key === "ArrowDown") {
-                        e.preventDefault();
-                        setActiveIndex((i) => (i + 1) % suggestions.length);
-                      } else if (e.key === "ArrowUp") {
-                        e.preventDefault();
-                        setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
-                      } else if (e.key === "Escape") {
-                        setOpen(false);
-                        setActiveIndex(-1);
-                        setExpanded(false);
-                        setQ("");
-                      }
-                    }}
-                    placeholder={placeholder}
-                    className="min-w-0 flex-1 appearance-none bg-white px-1 py-0.5 text-base text-stone-900 caret-stone-900 [-webkit-text-fill-color:#1c1917] placeholder:text-stone-400 placeholder:[-webkit-text-fill-color:#a8a29e] focus:outline-none sm:text-sm"
-                  />
-                  <button
-                    type="submit"
-                    className="shrink-0 rounded-lg bg-rose-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-950"
-                  >
-                    Søg
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Luk søgning"
-                    onClick={() => {
-                      setOpen(false);
-                      setExpanded(false);
-                      setQ("");
-                    }}
-                    className="ml-auto hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 shadow-sm hover:text-stone-800 sm:flex"
-                  >
-                    <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 6l12 12M18 6L6 18" />
-                    </svg>
-                  </button>
-                </div>
-              </form>
-              {panel}
-            </div>
-          </div>
-        </>
+        <div className="relative w-[28rem] max-w-full">{expandedUi}</div>
       )}
     </div>
   );
