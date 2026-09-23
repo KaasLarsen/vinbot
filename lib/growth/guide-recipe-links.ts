@@ -467,6 +467,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hvidvinssyltede-agurker-med-dild", label: "Hvidvinssyltede agurker med dild" },
     { slug: "sherrysyltede-sennepsfro", label: "Sherrysyltede sennepsfrø" },
     { slug: "hvidvinssyltede-gronne-tomater", label: "Hvidvinssyltede grønne tomater" },
+    { slug: "roedvins-rugbrod", label: "Rødvins-rugbrød" },
   ],
   "vin-til-rejer": [
     { slug: "rejesalat-med-hvidvin", label: "Rejesalat med hvidvin" },
@@ -660,6 +661,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "pocherede-rabarber-i-moscato", label: "Pocherede rabarber i Moscato" },
     { slug: "appelsinsalat-campari-vermouthsirup", label: "Appelsinsalat med Campari-sirup" },
     { slug: "cantucci-med-vinsanto", label: "Cantucci med Vin Santo" },
+    { slug: "madeira-kage-med-madeira", label: "Madeira-kage med Madeira" },
+    { slug: "champagne-brioche", label: "Champagne-brioche" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -693,6 +696,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "vindaloo-med-hvidvin", label: "Vindaloo med hvidvin" },
     { slug: "karrykylling-med-hvidvin", label: "Karrykylling med hvidvin" },
     { slug: "tikka-masala-med-hvidvin", label: "Tikka masala med hvidvin" },
+    { slug: "kylling-biryani-med-hvidvin", label: "Kyllingebiryani med hvidvin" },
+    { slug: "rogan-josh-med-rodvin", label: "Rogan josh med rødvin" },
   ],
   "vin-til-fisk-og-chips": [
     { slug: "fish-and-chips", label: "Fish and chips (vin til glasset)" },
@@ -846,6 +851,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "chili-verde-med-hvidvin", label: "Chili Verde" },
     { slug: "kokkinisto-med-rodvin", label: "Kokkinisto" },
     { slug: "birria-med-rodvin", label: "Birria" },
+    { slug: "rogan-josh-med-rodvin", label: "Rogan josh" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -914,6 +920,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "vildtgryde-med-portvin-og-enebaer", label: "Vildtgryde med portvin og enebær" },
     { slug: "rodvin-enebaermarinade", label: "Enebærmarinade" },
     { slug: "rodvinssyltede-tyttebaer", label: "Rødvinssyltede tyttebær" },
+    { slug: "braiseret-raadyrskank-med-rodvin", label: "Braiseret rådyrskank" },
+    { slug: "vildsvinegryde-med-rodvin", label: "Vildsvinegryde med rødvin" },
   ],
   "vin-til-blaaskimmelost": [
     { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
@@ -976,6 +984,14 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bacalhau-a-bras-med-hvidvin", label: "Bacalhau à Brás med hvidvin" },
     { slug: "arroz-de-pato-med-rodvin", label: "Arroz de Pato med rødvin" },
     { slug: "francesinha-sauce-med-ol-og-vin", label: "Francesinha-sauce" },
+  ],
+  "vin-til-mellemoestlig-mad": [
+    { slug: "imam-bayildi-med-hvidvin", label: "Imam bayildi med hvidvin" },
+    { slug: "maqluba-med-hvidvin", label: "Maqluba med hvidvin" },
+    { slug: "tyrkisk-guevec-med-rodvin", label: "Tyrkisk güveç med rødvin" },
+  ],
+  "vin-til-libanesisk-mad": [
+    { slug: "maqluba-med-hvidvin", label: "Maqluba med hvidvin" },
   ],
 
 };

@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Strategiske køkkener (25) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+**Status:** Strategiske køkkener (35) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+
+## Strategiske huller batch 5 — 2026-09-23 (10 nye)
+
+**Indien:** `kylling-biryani-med-hvidvin` · `rogan-josh-med-rodvin`
+
+**Mellemøsten:** `imam-bayildi-med-hvidvin` · `maqluba-med-hvidvin` · `tyrkisk-guevec-med-rodvin`
+
+**Nordisk vildt:** `braiseret-raadyrskank-med-rodvin` · `vildsvinegryde-med-rodvin`
+
+**Drunken bakning:** `madeira-kage-med-madeira` · `champagne-brioche` · `roedvins-rugbrod`
+
+Script: `scripts/add-recipes-strategic-gaps-batch5.mjs`.
+
+---
 
 ## Strategiske huller batch 4 — 2026-09-23 (10 nye — dybere tynde køkkener)
 
