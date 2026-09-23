@@ -8,6 +8,7 @@ import { getAllRecipes } from "@/lib/content/recipes";
 import { classifyGuide } from "@/lib/sitemap-categories";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderIndex, sitemapResponseInit } from "@/lib/sitemap-xml";
+import { getCachedWineCatalog } from "@/lib/vine/catalog";
 
 /** Undgår timeout ved kolde starts (tungere end undersitemaps: guides + disk-scan + vin-katalog). */
 export const maxDuration = 60;
@@ -84,10 +85,14 @@ async function buildSitemapIndexXml(): Promise<string> {
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch6.ts")),
   ]);
 
+  const vineCatalog = await getCachedWineCatalog();
+  const vineLastmod = new Date(vineCatalog.generatedAt);
+
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-opskrifter.xml`, lastmod: recipesLastmod },
     { loc: `${base}/sitemap-wine-detail.xml`, lastmod: wineDetailLastmod },
+    { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-pla.xml`, lastmod: new Date() },
     { loc: `${base}/sitemap-lande.xml`, lastmod: fileLastModified(path.join(process.cwd(), "lib/lande/registry.ts")) },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
@@ -103,7 +108,7 @@ async function buildSitemapIndexXml(): Promise<string> {
  * Cache kort — indekset er et let XML-dokument, men **generering** kan være langsom (I/O).
  * Undersitemaps som `sitemap-vine.xml` kalder kun ét dataset og rammer sjældnere timeout i GSC.
  */
-const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v3-pla"], {
+const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v4-vine"], {
   revalidate: 300,
   tags: ["sitemap-index", "vinbot-feeds"],
 });

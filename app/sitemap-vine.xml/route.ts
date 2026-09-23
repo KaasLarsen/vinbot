@@ -1,27 +1,33 @@
 import { siteUrl } from "@/lib/site";
 import { getCachedWineCatalog } from "@/lib/vine/catalog";
-import { renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
+import { renderUrlset, sitemapResponseInit, type SitemapUrl } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 /**
- * Kun vin-katalog-hub — individuelle `/vine/[slug]` er noindex (feed roterer).
- * Undgår at GSC indekserer tusindvis af midlertidige produkt-URL’er.
+ * Vin-katalog-hub + alle aktuelle `/vine/[slug]` fra feed-kataloget.
+ * Gone/404-slugs er ikke i kataloget og listes ikke.
  */
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");
   const catalog = await getCachedWineCatalog();
   const lastmod = new Date(catalog.generatedAt);
 
-  const xml = renderUrlset([
+  const urls: SitemapUrl[] = [
     {
       loc: `${base}/vine`,
       lastmod,
       changefreq: "weekly" as const,
       priority: 0.55,
     },
-  ]);
+    ...catalog.wines.map((w) => ({
+      loc: `${base}/vine/${w.slug}`,
+      lastmod,
+      changefreq: "weekly" as const,
+      priority: 0.5,
+    })),
+  ];
 
-  return new Response(xml, sitemapResponseInit);
+  return new Response(renderUrlset(urls), sitemapResponseInit);
 }
