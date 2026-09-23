@@ -51,7 +51,7 @@ export const OIL_PICKS: readonly OilPick[] = [
     pairingNote:
       "Kraftig italiensk EVOO til caprese og tomatpasta — grøn peber-finish over tomat og mozzarella.",
     dishIds: ["pasta-tomat"],
-    recipeSlugs: ["caprese"],
+    recipeSlugs: ["caprese", "carpaccio-med-hvidvindressing"],
   },
   {
     id: "herbes-provence",

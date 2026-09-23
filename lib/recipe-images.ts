@@ -45,6 +45,7 @@ export function recipeCuisineForSchema(tags: string[] = []): string | undefined 
 /** Schema.org recipeCategory ud fra emne-tags. */
 export function recipeCategoryForSchema(tags: string[] = []): string {
   const t = new Set(tags.map((x) => x.toLowerCase()));
+  if (t.has("forret") || t.has("forretter") || t.has("appetitvækker")) return "Forret";
   if (t.has("dessert")) return "Dessert";
   if (t.has("suppe")) return "Suppe";
   if (t.has("sauce")) return "Sauce";
