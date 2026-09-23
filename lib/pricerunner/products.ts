@@ -15,6 +15,7 @@ export type PriceRunnerProduct = {
     | "flaskekoeler"
     | "vinudstyr"
     | "vin"
+    | "spiritus"
     | "olie";
   /** Attribution-link til PriceRunner produktside (nofollow). */
   compareUrl: string;
@@ -336,12 +337,110 @@ export const priceRunnerProducts = {
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3329835248/Vine/Leitz-Eins-Zwei-Zero-Sparkling-Rose-Riesling-75cl-Sammenlign-Priser",
   },
+  "leitz-eins-zwei-zero-riesling": {
+    productId: "5233914",
+    title: "Leitz Eins Zwei Zero Riesling 0 %",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-5233914/Vine/Leitz-Wein-Eins-Zwei-Zero-Riesling-0-75cl-Sammenlign-Priser",
+  },
+  "leitz-eins-zwei-zero-sparkling-riesling": {
+    productId: "3227483394",
+    title: "Leitz Eins Zwei Zero Sparkling Riesling Alcohol Free",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3227483394/Vine/Leitz-Leitz-Eins-Zwei-Zero-Sparkling-Riesling-Alcohol-Free-Hvid-750-ml-Sammenlign-Priser",
+  },
+  "leitz-eins-zwei-zero-rose-pinot": {
+    productId: "3330107703",
+    title: "Leitz Eins Zwei Zero Rosé Pinot Noir 0 %",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3330107703/Vine/Leitz-Eins-Zwei-Zero-Rose-Pinot-Noir-0-75cl-Sammenlign-Priser",
+  },
+  "leitz-zero-point-five-pinot-noir": {
+    productId: "3329799632",
+    title: "Leitz Zero Point Five Pinot Noir 0,5 %",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3329799632/Vine/Leitz-Zero-Point-Five-Pinot-Noir-0.5-75cl-Sammenlign-Priser",
+  },
   "torres-natureo-rose": {
     productId: "3214874998",
     title: "Torres Natureo Rosé Syrah/Cabernet 0,0 %",
     category: "vin",
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3214874998/Vine/Torres-Natureo-Rose-Syrah-Cabernet-0-0-Sammenlign-Priser",
+  },
+  "torres-natureo-red": {
+    productId: "3213908251",
+    title: "Torres Natureo Red Syrah/Garnacha alkoholfri",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3213908251/Vine/Torres-Natureo-Syrah-Garnacha-Alkoholfri-roedvin-fra-Sammenlign-Priser",
+  },
+  "torres-natureo-sparkling": {
+    productId: "3329429448",
+    title: "Torres Natureo Sparkling alkoholfri",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3329429448/Vine/Miguel-Torres-Natureo-Sparkling-Alkoholfri-75-ml-Sammenlign-Priser",
+  },
+  "french-bloom-le-blanc": {
+    productId: "3329831196",
+    title: "French Bloom Le Blanc 0,0 %",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3329831196/Vine/French-Bloom-Le-Blanc-0.0-Sammenlign-Priser",
+  },
+  "french-bloom-le-rose": {
+    productId: "3436081170",
+    title: "French Bloom Le Rosé Sparkling alkoholfri",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3436081170/Vine/Bloom-French-Bloom-Le-Rose-Sparkling-Alkoholfri-75ml-Sammenlign-Priser",
+  },
+  "oddbird-sparkling-rose": {
+    productId: "3335664519",
+    title: "Oddbird Sparkling Rosé Liberated from Alcohol",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3335664519/Vine/Oddbird-Sparkling-Rose-Liberated-from-alcohol-Sammenlign-Priser",
+  },
+  "oddbird-gsm": {
+    productId: "3330446353",
+    title: "Oddbird GSM Liberated from Alcohol",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3330446353/Vine/Oddbird-GSM-Liberated-from-Alcohol-Sammenlign-Priser",
+  },
+  "noughty-blanc-chardonnay": {
+    productId: "3214893693",
+    title: "Noughty Blanc Chardonnay alkoholfri",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3214893693/Vine/Thomson-Noughty-Blanc-Alkoholfri-Thomson-Scott-Chardonnay-Hvidvin-fra-Cape-South-Coast-Sydafrika-Sammenlign-Priser",
+  },
+  "noughty-rose-sparkling": {
+    productId: "3204282266",
+    title: "Noughty Rosé alkoholfri mousserende",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3204282266/Vine/Noughty-Rose-Alkoholfri-Mousserende-Thomson-Scott-Sammenlign-Priser",
+  },
+  "tanqueray-alcohol-free": {
+    productId: "3202716266",
+    title: "Tanqueray Alcohol Free 0,0 % 70 cl",
+    category: "spiritus",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/1424-3202716266/OEl-Spiritus/Tanqueray-Alcohol-Free-0-70-cl-Sammenlign-Priser",
+  },
+  "ginish-alkoholfri": {
+    productId: "4792438",
+    title: "GinISH alkoholfri gin 70 cl",
+    category: "spiritus",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/1424-4792438/OEl-Spiritus/GinISH-Alkoholfri-Gin-70-cl-Sammenlign-Priser",
   },
   "nicolas-vahe-ekstra-jomfru-50cl": {
     productId: "4487382",

@@ -460,8 +460,24 @@ export default function AlkoholfriVinHubPage() {
             heading: "Alkoholfri bobler — Leitz Eins Zwei Zero Sparkling Rosé",
           },
           {
+            productKey: "leitz-eins-zwei-zero-riesling",
+            heading: "Alkoholfri hvid — Leitz Eins Zwei Zero Riesling 0 %",
+          },
+          {
             productKey: "torres-natureo-rose",
             heading: "Alkoholfri rosé — Torres Natureo 0,0 %",
+          },
+          {
+            productKey: "torres-natureo-red",
+            heading: "Alkoholfri rød — Torres Natureo Red",
+          },
+          {
+            productKey: "french-bloom-le-blanc",
+            heading: "Premium bobler — French Bloom Le Blanc",
+          },
+          {
+            productKey: "oddbird-sparkling-rose",
+            heading: "Oddbird Sparkling Rosé — sammenlign priser",
           },
         ]}
         seoHeading="Alkoholfri vin i Danmark — hvad du skal vide"
