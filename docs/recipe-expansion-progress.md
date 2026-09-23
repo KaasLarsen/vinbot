@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Top 30 batch 1 (2026-09-23) + tidligere batches.
+**Status:** Top 30 batch 2 (2026-09-23) + batch 1 + tidligere.
+
+## Top 30 batch 2 — 2026-09-23 (5 nye huller)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `kanin-i-hvidvin` | Hvidvin / fransk |
+| 2 | `hvidvinsbraiseret-fennikel` | Hvidvin / tilbehør |
+| 3 | `gambas-al-jerez` | Sherry / tapas |
+| 4 | `zuppa-di-pesce` | Hvidvin / fiskesuppe |
+| 5 | `glaseret-skinke-med-madeirasauce` | Madeira / fest |
+
+Næste huller (batch 3+): leverparfait, rødkål med port, andebryst port+figne, rødvinskage, moscato-sorbet, sherry trifle, pærer/safran, plommetrifli, m.fl.
+
+---
 
 ## Top 30 batch 1 — 2026-09-23 (5 nye huller)
 
