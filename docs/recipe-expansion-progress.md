@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Asia10 komplet + Vin20 batch 1–2 + Top 30 (2026-09-23).
+**Status:** Top 30 + Vin20 + Asia10 komplet (2026-09-23).
+
+## Vin20 batch 3 — 2026-09-23 (3 nye — Vin20 komplet)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `rodvinssorbet-med-brombaer` | Rødvin / dessert |
+| 2 | `tarte-tatin-med-hvidvinskaramel` | Hvidvin / dessert |
+| 3 | `moscato-pocherede-ferskner` | Moscato / dessert |
+
+Alle planlagte lister (Top 30, Vin20, Asia10) er nu dækket.
+
+---
 
 ## Asia10 batch 2 — 2026-09-23 (4 nye — liste komplet)
 

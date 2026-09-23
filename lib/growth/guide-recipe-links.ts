@@ -564,6 +564,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
     { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
     { slug: "hvidvinsgele-med-sommerbaer", label: "Hvidvinsgelé med sommerbær" },
+    { slug: "rodvinssorbet-med-brombaer", label: "Rødvinssorbet med brombær" },
+    { slug: "tarte-tatin-med-hvidvinskaramel", label: "Tarte Tatin med hvidvinskaramel" },
+    { slug: "moscato-pocherede-ferskner", label: "Moscato-pocherede ferskner" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -746,6 +749,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
     { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
     { slug: "hvidvinsgele-med-sommerbaer", label: "Hvidvinsgelé med sommerbær" },
+    { slug: "rodvinssorbet-med-brombaer", label: "Rødvinssorbet med brombær" },
+    { slug: "tarte-tatin-med-hvidvinskaramel", label: "Tarte Tatin med hvidvinskaramel" },
+    { slug: "moscato-pocherede-ferskner", label: "Moscato-pocherede ferskner" },
   ],
   "hvad-er-sherry-vin": [
     { slug: "sherry-trifle", label: "Sherry Trifle" },
