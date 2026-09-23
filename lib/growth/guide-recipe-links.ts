@@ -494,6 +494,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kleftiko-med-hvidvin", label: "Kleftiko med hvidvin" },
     { slug: "stifado-med-rodvin", label: "Stifado med rødvin" },
     { slug: "hvidvins-citrondampede-artiskokker", label: "Hvidvins-artiskokker" },
+    { slug: "gigantes-plaki-med-hvidvin", label: "Gigantes plaki med hvidvin" },
+    { slug: "kokkinisto-med-rodvin", label: "Kokkinisto med rødvin" },
   ],
   "vin-til-mortensaften": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -528,6 +530,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "chili-lime-hvidvinsmarinade", label: "Chili-lime-marinade" },
     { slug: "carnitas-med-hvidvin", label: "Carnitas med hvidvin" },
     { slug: "chili-verde-med-hvidvin", label: "Chili Verde med hvidvin" },
+    { slug: "birria-med-rodvin", label: "Birria med rødvin" },
   ],
   "vin-til-thai-mad": [
     { slug: "thai-gron-karry-med-hvidvin", label: "Thai grøn karry med hvidvin" },
@@ -545,6 +548,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-kinesisk-mad": [
     { slug: "kung-pao-kylling-med-hvidvin", label: "Kung pao kylling med hvidvin" },
     { slug: "shaoxing-femkrydderi-marinade", label: "Femkrydderi" },
+    { slug: "drunken-chicken-med-shaoxing", label: "Drunken chicken med Shaoxing" },
+    { slug: "mapo-tofu-med-shaoxing", label: "Mapo tofu med Shaoxing" },
+    { slug: "char-siu-med-shaoxing", label: "Char siu med Shaoxing" },
   ],
   "vin-til-spareribs": [
     { slug: "pulled-pork-med-rodvin", label: "Pulled pork med rødvin" },
@@ -653,6 +659,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rose-hindbaercoulis", label: "Rosé-hindbærcoulis" },
     { slug: "pocherede-rabarber-i-moscato", label: "Pocherede rabarber i Moscato" },
     { slug: "appelsinsalat-campari-vermouthsirup", label: "Appelsinsalat med Campari-sirup" },
+    { slug: "cantucci-med-vinsanto", label: "Cantucci med Vin Santo" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -837,6 +844,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "braiseret-spidskaal-i-hvidvin", label: "Braiseret spidskål" },
     { slug: "belugalinser-i-rodvin", label: "Belugalinser i rødvin" },
     { slug: "chili-verde-med-hvidvin", label: "Chili Verde" },
+    { slug: "kokkinisto-med-rodvin", label: "Kokkinisto" },
+    { slug: "birria-med-rodvin", label: "Birria" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -964,6 +973,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-portugisisk-mad": [
     { slug: "churrasco-med-hvidvin-og-hvidloeg", label: "Churrasco med hvidvin" },
     { slug: "carne-de-porco-a-alentejana", label: "Carne de Porco à Alentejana" },
+    { slug: "bacalhau-a-bras-med-hvidvin", label: "Bacalhau à Brás med hvidvin" },
+    { slug: "arroz-de-pato-med-rodvin", label: "Arroz de Pato med rødvin" },
+    { slug: "francesinha-sauce-med-ol-og-vin", label: "Francesinha-sauce" },
   ],
 
 };

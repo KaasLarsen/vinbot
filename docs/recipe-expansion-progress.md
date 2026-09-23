@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Strategiske køkkener (15) + vin-tilbehør 35 + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Strategiske køkkener (25) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+
+## Strategiske huller batch 4 — 2026-09-23 (10 nye — dybere tynde køkkener)
+
+**Portugal:** `bacalhau-a-bras-med-hvidvin` · `arroz-de-pato-med-rodvin` · `francesinha-sauce-med-ol-og-vin`
+
+**Kina:** `drunken-chicken-med-shaoxing` · `mapo-tofu-med-shaoxing` · `char-siu-med-shaoxing`
+
+**Græsk / mexicansk / bagning:** `gigantes-plaki-med-hvidvin` · `kokkinisto-med-rodvin` · `birria-med-rodvin` · `cantucci-med-vinsanto`
+
+Script: `scripts/add-recipes-strategic-gaps-batch4.mjs`.
+
+---
 
 ## Strategiske huller — 2026-09-23 (15 nye)
 
