@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Sauce/drikke batch 1 + 30 marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Suppe/dessert-huller + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Suppe + dessert huller — 2026-09-23 (3 nye)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `cremet-svampesuppe-med-madeira` | Madeira / suppe |
+| 2 | `minestrone-di-verdure-med-hvidvin` | Hvidvin / minestrone |
+| 3 | `figner-i-krydret-portvinssirup` | Portvin / dessert |
+
+Listen «10 supper & desserter» er nu dækket (7 fandtes i forvejen).
+
+---
 
 ## Sauce + drikke batch 1 — 2026-09-23 (5 nye)
 

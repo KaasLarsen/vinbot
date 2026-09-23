@@ -54,6 +54,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "krebsesuppe-med-hvidvin", label: "Krebsesuppe med hvidvin" },
     { slug: "minestrone-med-rodvin", label: "Minestrone med rødvin" },
     { slug: "jordskokkesuppe-med-hvidvinsreduktion", label: "Jordskokkesuppe med hvidvinsreduktion" },
+    { slug: "minestrone-di-verdure-med-hvidvin", label: "Minestrone med hvidvin" },
   ],
   "vin-til-tarteletter": [
     { slug: "tarteletter-i-hvidvin", label: "Tarteletter i hvidvin" },
@@ -259,6 +260,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "saltimbocca-alla-romana", label: "Saltimbocca alla Romana" },
     { slug: "chicken-marsala", label: "Chicken Marsala" },
     { slug: "zuppa-di-pesce", label: "Zuppa di Pesce" },
+    { slug: "minestrone-di-verdure-med-hvidvin", label: "Minestrone di Verdure" },
   ],
   "vin-til-spansk-mad": [
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
@@ -723,6 +725,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "portvinsglaserede-figner-med-gedeost", label: "Portvinsglaserede figner med gedeost" },
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+    { slug: "figner-i-krydret-portvinssirup", label: "Figner i portvinssirup" },
   ],
   "riesling-til-asiatisk-mad": [
     { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
@@ -737,6 +740,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
     { slug: "chicken-marsala", label: "Chicken Marsala" },
     { slug: "marsala-svampemarinade", label: "Marsala-porcini" },
+    { slug: "cremet-svampesuppe-med-madeira", label: "Cremet svampesuppe med Madeira" },
   ],
   "vin-til-bourgogne-mad": [
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
@@ -769,6 +773,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "portvin-mynte-lammemarinade", label: "Portvin til lam" },
     { slug: "portvinssauce-til-oksemoerbrad", label: "Portvinssauce" },
     { slug: "portvinsgloegg", label: "Portvinsgløgg" },
+    { slug: "figner-i-krydret-portvinssirup", label: "Figner i portvinssirup" },
   ],
   "hvad-er-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
@@ -856,6 +861,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "hvad-er-madeira-vin": [
     { slug: "madeira-allehaandemarinade", label: "Madeira-marinade" },
+    { slug: "cremet-svampesuppe-med-madeira", label: "Svampesuppe med Madeira" },
   ],
   "vin-til-lys-fisk": [
     { slug: "hvidvins-dildmarinade", label: "Hvidvin-dild" },
@@ -870,6 +876,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-vegetariske-og-veganske-retter": [
     { slug: "hvidvins-urtemarinade-groentsager", label: "Grøntsagsmarinade" },
+    { slug: "minestrone-di-verdure-med-hvidvin", label: "Minestrone med hvidvin" },
   ],
   "bedste-julevin": [
     { slug: "roedvinsgloegg", label: "Rødvinsgløgg" },
