@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Marinader batch 1–2 live (2026-09-23). Top 30 + Vin20 + Asia10 komplet.
+**Status:** 30 vinmarinader komplet (batch 1–6, 2026-09-23). Top 30 + Vin20 + Asia10 komplet. Top 30 + Vin20 + Asia10 komplet.
+
+## Marinader batch 3–6 — 2026-09-23 (20 nye — liste komplet)
+
+**Batch 3:** `hvidvins-citron-oreganomarinade` · `aeble-hvidvinsmarinade` · `provencal-hvidvins-hvidloegsmarinade` · `rose-jordbaermarinade` · `marsala-svampemarinade`
+
+**Batch 4:** `chili-lime-hvidvinsmarinade` · `hvidvins-estragonmarinade` · `hvidvins-karrymarinade` · `rodvin-enebaermarinade` · `portvin-mynte-lammemarinade`
+
+**Batch 5:** `madeira-allehaandemarinade` · `rodvin-hvidloeg-rosmarinmarinade-til-lam` · `hvidvins-dildmarinade` · `lime-hvidvins-cevichemarinade` · `ingefaer-chili-hvidvinsmarinade`
+
+**Batch 6:** `champagne-mousserende-vinsmarinade` · `hvidvins-urtemarinade-groentsager` · `klassisk-teriyaki-marinade` · `shaoxing-femkrydderi-marinade` · `sake-misomarinade`
+
+Alle 30 vinmarinader er nu dækket (plus eksisterende `rodvinsmarinade-til-oksekod`).
+
+---
 
 ## Marinader batch 2 — 2026-09-23 (5 nye — okse + svin)
 
