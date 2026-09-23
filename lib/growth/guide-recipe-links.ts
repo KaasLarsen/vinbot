@@ -127,6 +127,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "zuppa-di-pesce", label: "Zuppa di Pesce" },
     { slug: "gambas-al-jerez", label: "Gambas al Jerez" },
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
+    { slug: "hvidvins-safransauce-til-laks", label: "Hvidvins-safransauce til laks" },
   ],
   "vin-til-boeff": [
     { slug: "rodvinsmarinade-til-oksekod", label: "Rødvinsmarinade til oksekød" },
@@ -180,6 +181,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "svinefilet-i-rodvinssauce", label: "Svinefilet i rødvinssauce" },
     { slug: "karbonader-i-hvidvinsauce", label: "Karbonader i hvidvinsauce" },
     { slug: "svinekam-med-rodvin", label: "Svinekam med rødvin" },
+    { slug: "morbradgryde-med-paprika-og-hvidvin", label: "Mørbradgryde med paprika og hvidvin" },
   ],
   "vin-til-ribeye": [
     { slug: "ribeye", label: "Ribeye (vin til glasset)" },
@@ -289,6 +291,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "morbradgryde-med-hvidvin", label: "Mørbradgryde med hvidvin" },
     { slug: "svinekaeber-i-portvinsreduktion", label: "Svinekæber i portvinsreduktion" },
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
+    { slug: "morbradgryde-med-paprika-og-hvidvin", label: "Mørbradgryde med paprika" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -381,6 +384,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-laks": [
     { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
+    { slug: "hvidvins-safransauce-til-laks", label: "Hvidvins-safransauce til laks" },
   ],
   "vin-til-sushi": [
     { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
@@ -489,6 +493,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-risotto": [
     { slug: "risotto-med-hvidvin", label: "Risotto med hvidvin" },
+    { slug: "skaldyrsrisotto-med-hvidvin", label: "Skaldyrsrisotto med hvidvin" },
   ],
   "vin-til-paella": [
     { slug: "paella-med-rodvin", label: "Paella med rødvin" },
@@ -509,6 +514,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "muslinger-i-hvidvin", label: "Muslinger i hvidvin" },
     { slug: "muslinger-i-hvidvin-og-safran", label: "Muslinger i hvidvin og safran" },
     { slug: "zuppa-di-pesce", label: "Zuppa di Pesce" },
+    { slug: "skaldyrsrisotto-med-hvidvin", label: "Skaldyrsrisotto" },
   ],
   "vin-til-blaeksprutte": [
     { slug: "blaeksprutte-i-rodvin", label: "Blæksprutte i rødvin" },
@@ -550,6 +556,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "sherry-trifle", label: "Sherry Trifle" },
     { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
     { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
+    { slug: "hvidvinsgele-med-sommerbaer", label: "Hvidvinsgelé med sommerbær" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -627,6 +634,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ratatouille-med-hvidvin", label: "Ratatouille med hvidvin" },
     { slug: "grillet-halloumi-med-hvidvin", label: "Grillet halloumi med hvidvin" },
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
+    { slug: "hvidvinsbraiserede-porrer", label: "Hvidvinsbraiserede porrer" },
   ],
 
   "vin-til-ost-og-ostebord": [
@@ -684,6 +692,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "chicken-marsala", label: "Chicken Marsala" },
     { slug: "kanin-i-hvidvin", label: "Kanin i hvidvin" },
     { slug: "hvidvinsbraiseret-fennikel", label: "Hvidvinsbraiseret fennikel" },
+    { slug: "hvidvinsbraiserede-porrer", label: "Hvidvinsbraiserede porrer" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -723,6 +732,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" },
     { slug: "paerer-i-hvidvin-og-safran", label: "Pærer i hvidvin og safran" },
     { slug: "plommetrifli-med-rodvinssirup", label: "Plommetrifli med rødvinssirup" },
+    { slug: "hvidvinsgele-med-sommerbaer", label: "Hvidvinsgelé med sommerbær" },
   ],
   "hvad-er-sherry-vin": [
     { slug: "sherry-trifle", label: "Sherry Trifle" },
@@ -730,6 +740,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "chardonnay-til-fisk": [
     { slug: "hvidvinsdampet-torsk-en-papillote", label: "Torsk en papillote" },
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
+    { slug: "hvidvins-safransauce-til-laks", label: "Hvidvins-safransauce til laks" },
   ],
   "vin-til-oksekoed-i-sauce": [
     { slug: "boef-stroganoff-med-rodvin", label: "Boeuf Stroganoff med rødvin" },

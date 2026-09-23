@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Vin20 batch 1 + Top 30 komplet (2026-09-23).
+**Status:** Vin20 batch 2 + batch 1 + Top 30 (2026-09-23).
+
+## Vin20 batch 2 — 2026-09-23 (5 nye)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `skaldyrsrisotto-med-hvidvin` | Hvidvin / skaldyr |
+| 2 | `hvidvins-safransauce-til-laks` | Hvidvin / sauce |
+| 3 | `hvidvinsbraiserede-porrer` | Hvidvin / tilbehør |
+| 4 | `morbradgryde-med-paprika-og-hvidvin` | Hvidvin / hverdag |
+| 5 | `hvidvinsgele-med-sommerbaer` | Hvidvin / dessert |
+
+Næste (Vin20 batch 3): rødvinssorbet med brombær · Tarte Tatin med hvidvinskaramel · Moscato-pocherede ferskner.
+
+---
 
 ## Vin20 batch 1 — 2026-09-23 (5 nye)
 
