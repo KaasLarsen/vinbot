@@ -22,6 +22,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "serrano-med-hvidvinsmarineret-melon", label: "Serrano med hvidvinsmelon" },
     { slug: "gambas-al-jerez", label: "Gambas al Jerez" },
     { slug: "sherry-glaseret-svampemix", label: "Sherry-glaseret svampemix" },
+    { slug: "portvinssyltede-svampe", label: "Portvinssyltede svampe" },
+    { slug: "hvidvins-hvidloegsconfit", label: "Hvidvins-hvidløgsconfit" },
+    { slug: "hvidvins-troffelmayo", label: "Hvidvins-trøffelmayo" },
   ],
   "vin-til-gryderet": [
     { slug: "coq-au-vin", label: "Coq au vin" },
@@ -237,6 +240,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
     { slug: "provencal-hvidvins-hvidloegsmarinade", label: "Provence-kylling" },
     { slug: "rose-jordbaermarinade", label: "Rosé-jordbær" },
+    { slug: "rodvins-chiliglace-bbq", label: "Rødvins-chiliglace BBQ" },
   ],
   "vin-til-kartoffelmad": [
     { slug: "kartoffelgratin-med-hvidvin", label: "Kartoffelgratin med hvidvin" },
@@ -429,6 +433,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvin-soya-glaze", label: "Rødvins-soya-glaze" },
     { slug: "hvidvins-karrymarinade", label: "Karrymarinade" },
     { slug: "shaoxing-femkrydderi-marinade", label: "Shaoxing" },
+    { slug: "sake-ingefaersirup", label: "Sake- og ingefærsirup" },
   ],
   "vin-til-laks": [
     { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
@@ -532,6 +537,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-spareribs": [
     { slug: "pulled-pork-med-rodvin", label: "Pulled pork med rødvin" },
     { slug: "brisket-braiseret-i-rodvin", label: "Brisket braiseret i rødvin" },
+    { slug: "rodvins-chiliglace-bbq", label: "Rødvins-chiliglace BBQ" },
   ],
   "vin-til-aebleskiver": [
     { slug: "aebleskiver-med-hvidvin", label: "Æbleskiver med hvidvin" },
@@ -631,6 +637,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rabarberkompot-med-rose", label: "Rabarberkompot med rosé" },
     { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
     { slug: "espresso-marsalasirup", label: "Espresso- og Marsalasirup" },
+    { slug: "rose-hindbaercoulis", label: "Rosé-hindbærcoulis" },
+    { slug: "pocherede-rabarber-i-moscato", label: "Pocherede rabarber i Moscato" },
+    { slug: "appelsinsalat-campari-vermouthsirup", label: "Appelsinsalat med Campari-sirup" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -724,6 +733,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rabarberkompot-med-rose", label: "Rabarberkompot med rosé" },
     { slug: "moscato-abrikoskompot", label: "Moscato-abrikoskompot" },
     { slug: "pocherede-blommer-i-rodvin-og-nelliker", label: "Pocherede blommer i rødvin" },
+    { slug: "sherry-karamelliserede-valnodder", label: "Sherry-karamelliserede valnødder" },
+    { slug: "hvidvinssyltede-havtorn", label: "Hvidvinssyltede havtorn" },
   ],
 
   "vin-til-gedeost": [
@@ -773,6 +784,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "marsala-svampemarinade", label: "Marsala-porcini" },
     { slug: "cremet-svampesuppe-med-madeira", label: "Cremet svampesuppe med Madeira" },
     { slug: "sherry-glaseret-svampemix", label: "Sherry-glaseret svampemix" },
+    { slug: "portvinssyltede-svampe", label: "Portvinssyltede svampe" },
   ],
   "vin-til-bourgogne-mad": [
     { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
@@ -802,6 +814,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
     { slug: "portvinsglasering-til-and-og-flaeskesteg", label: "Portvinsglasering" },
     { slug: "sherry-honning-glace-til-skinke", label: "Sherry-honning-glace" },
+    { slug: "hvidvins-troffelmayo", label: "Hvidvins-trøffelmayo" },
+    { slug: "rodvins-chiliglace-bbq", label: "Rødvins-chiliglace BBQ" },
+    { slug: "hvidvins-hvidloegsconfit", label: "Hvidløgsconfit med hvidvin" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },

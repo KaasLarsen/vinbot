@@ -1,6 +1,25 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Vin-tilbehør 25 (20 net-nye + 5 varianter) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Vin-tilbehør 35 (20+5+10) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Vin-tilbehør 40 batch 1 — 2026-09-23 (10 nye — idé #31–40)
+
+| # | Slug | Type |
+|---|------|------|
+| 1 | `hvidvins-troffelmayo` | mayo / trøffel |
+| 2 | `portvinssyltede-svampe` | syltet / tapas |
+| 3 | `sherry-karamelliserede-valnodder` | crunch (≠ syltede) |
+| 4 | `rodvins-chiliglace-bbq` | BBQ-glace |
+| 5 | `hvidvins-hvidloegsconfit` | confit |
+| 6 | `rose-hindbaercoulis` | dessert-coulis |
+| 7 | `sake-ingefaersirup` | asiatisk sirup |
+| 8 | `appelsinsalat-campari-vermouthsirup` | aperitivo |
+| 9 | `hvidvinssyltede-havtorn` | nordisk sylt |
+| 10 | `pocherede-rabarber-i-moscato` | dessert (≠ rosé-kompot) |
+
+Script: `scripts/add-recipes-tilbehor40-batch1.mjs`. Listen er nu ~40 unikke vinøse kondimenter/tilbehør.
+
+---
 
 ## Vin-tilbehør variants — 2026-09-23 (5 nye)
 
