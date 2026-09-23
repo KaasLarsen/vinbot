@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Strategiske køkkener (45) + vin-tilbehør 35 + øvrige batches (2026-09-23).
+**Status:** Sauce 30 (23 net-nye) + strategiske køkkener (45) + vin-tilbehør 35 + øvrige (2026-09-23).
+
+## Sauce-expansion — 2026-09-23 (23 net-nye)
+
+Fra 30-listen; sprunget over pga. eksisterende: béarnaise, gorgonzola-hvidvin, bolognese/ragu, hummerbisque, safran-hvidvin, estragon-glace, sabayon-retter, teriyaki-ret/marinade (egen glaze tilføjet alligevel).
+
+**Kraftige & mørke:** `sauce-bordelaise` · `portvins-morkelsauce` · `madeirasauce` · `rodvins-chokoladesauce` · `sauce-grand-veneur` · `portvinsglace` · `marsalasauce-til-svinekoed` · `rodvins-balsamicosauce`
+
+**Lyse & smør/æg:** `sauce-noilly-prat` · `sauce-albufera` · `sauce-bercy` · `hvidvins-dijonsauce` · `sherrysauce-med-svampe` · `beurre-rouge` · `champagne-hollandaise` · `hvidvins-veloute-med-urter`
+
+**Asiatisk + ekstra:** `aegte-teriyakisauce` · `shaoxing-hoisin-glace` · `miso-sakesauce` · `aeble-hvidvins-skysauce` · `cidresauce-med-skalotteloeg` · `gloegg-sauce-til-julestegen` · `sherry-groen-pebersauce`
+
+Scripts: `scripts/add-recipes-sauce30-batch{1,2,3}.mjs`.
+
+---
 
 ## Strategiske huller batch 6 — 2026-09-23 (10 nye)
 

@@ -149,6 +149,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "klassisk-rodvins-rosmarinmarinade", label: "Klassisk rødvins-rosmarinmarinade" },
     { slug: "syrlig-rodvin-balsamicomarinade", label: "Syrlig rødvin-balsamicomarinade" },
     { slug: "balsamico-rodvinssirup-til-steak", label: "Balsamico- og rødvinssirup til steak" },
+    { slug: "sauce-bordelaise", label: "Sauce Bordelaise" },
+    { slug: "portvins-morkelsauce", label: "Portvins-morkelsauce" },
+    { slug: "portvinsglace", label: "Portvinsglace" },
+    { slug: "beurre-rouge", label: "Beurre rouge" },
+    { slug: "sherry-groen-pebersauce", label: "Sherry- og grøn pebersauce" },
   ],
   "vin-til-oksefilet": [
     { slug: "roedvinssauce-til-boef", label: "Rødvinsauce til bøf" },
@@ -299,6 +304,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "bourguignon-marinade", label: "Bourguignon-marinade" },
     { slug: "syrlig-rodvin-balsamicomarinade", label: "Syrlig balsamicomarinade" },
     { slug: "balsamico-rodvinssirup-til-steak", label: "Balsamico- og rødvinssirup til steak" },
+    { slug: "sauce-bordelaise", label: "Sauce Bordelaise" },
+    { slug: "madeirasauce", label: "Madeirasauce" },
   ],
   "vin-til-lam": [
     { slug: "lammesteg-med-rodvin-rosmarin", label: "Lammesteg med rødvin og rosmarin" },
@@ -326,6 +333,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvins-paprikamarinade", label: "Rødvins-paprikamarinade" },
     { slug: "hvidvins-citron-oreganomarinade", label: "Citron-oreganomarinade" },
     { slug: "aeble-hvidvinsmarinade", label: "Æble-hvidvinsmarinade" },
+    { slug: "marsalasauce-til-svinekoed", label: "Marsalasauce til svinekød" },
+    { slug: "rodvins-balsamicosauce", label: "Rødvins-balsamicosauce" },
+    { slug: "hvidvins-dijonsauce", label: "Hvidvins-dijonsauce" },
+    { slug: "aeble-hvidvins-skysauce", label: "Æble-hvidvins-skysauce" },
+    { slug: "cidresauce-med-skalotteloeg", label: "Cidresauce" },
   ],
   "sangiovese-til-pasta": [
     { slug: "pasta-amatriciana-med-rodvin", label: "Pasta amatriciana med rødvin" },
@@ -440,12 +452,16 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hvidvins-karrymarinade", label: "Karrymarinade" },
     { slug: "shaoxing-femkrydderi-marinade", label: "Shaoxing" },
     { slug: "sake-ingefaersirup", label: "Sake- og ingefærsirup" },
+    { slug: "aegte-teriyakisauce", label: "Ægte teriyakisauce" },
+    { slug: "shaoxing-hoisin-glace", label: "Shaoxing-hoisin-glace" },
+    { slug: "miso-sakesauce", label: "Miso- og sakesauce" },
   ],
   "vin-til-laks": [
     { slug: "grillet-laks-hvidvin-dressing", label: "Grillet laks med hvidvindressing" },
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
     { slug: "hvidvins-safransauce-til-laks", label: "Hvidvins-safransauce til laks" },
     { slug: "hvidvins-dildmarinade", label: "Dildmarinade" },
+    { slug: "miso-sakesauce", label: "Miso- og sakesauce" },
   ],
   "vin-til-sushi": [
     { slug: "dim-sum-kylling-hvidvin", label: "Dim sum med kylling og hvidvin" },
@@ -486,6 +502,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "aeble-hvidvinskompot-med-timian", label: "Æble- og hvidvinskompot med timian" },
     { slug: "madeira-glaseret-rosenkaal", label: "Madeira-glaseret rosenkål" },
     { slug: "sherry-honning-glace-til-skinke", label: "Sherry-honning-glace til skinke" },
+    { slug: "madeirasauce", label: "Madeirasauce" },
+    { slug: "aeble-hvidvins-skysauce", label: "Æble-hvidvins-skysauce" },
+    { slug: "cidresauce-med-skalotteloeg", label: "Cidresauce" },
   ],
   "vin-til-graesk-mad": [
     { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
@@ -624,6 +643,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "shaoxing-femkrydderi-marinade", label: "Shaoxing-and" },
     { slug: "aeble-hvidvinskompot-med-timian", label: "Æble- og hvidvinskompot med timian" },
     { slug: "portvinsglasering-til-and-og-flaeskesteg", label: "Portvinsglasering til and" },
+    { slug: "shaoxing-hoisin-glace", label: "Shaoxing-hoisin-glace" },
+    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" },
   ],
   "vin-til-gas": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -689,6 +710,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-asparges": [
     { slug: "asparges-i-hvidvinsauce", label: "Asparges i hvidvinsauce" },
+    { slug: "champagne-hollandaise", label: "Champagne-hollandaise" },
   ],
   "vin-i-cocktails-spritz-og-drikke": [
     { slug: "sangria-med-rodvin", label: "Sangria med rødvin" },
@@ -854,6 +876,21 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kokkinisto-med-rodvin", label: "Kokkinisto" },
     { slug: "birria-med-rodvin", label: "Birria" },
     { slug: "rogan-josh-med-rodvin", label: "Rogan josh" },
+    { slug: "sauce-bordelaise", label: "Sauce Bordelaise" },
+    { slug: "portvins-morkelsauce", label: "Portvins-morkelsauce" },
+    { slug: "portvinsglace", label: "Portvinsglace" },
+    { slug: "marsalasauce-til-svinekoed", label: "Marsalasauce" },
+    { slug: "rodvins-balsamicosauce", label: "Rødvins-balsamicosauce" },
+    { slug: "madeirasauce", label: "Madeirasauce" },
+    { slug: "hvidvins-dijonsauce", label: "Hvidvins-dijonsauce" },
+    { slug: "beurre-rouge", label: "Beurre rouge" },
+    { slug: "champagne-hollandaise", label: "Champagne-hollandaise" },
+    { slug: "aegte-teriyakisauce", label: "Ægte teriyakisauce" },
+    { slug: "shaoxing-hoisin-glace", label: "Shaoxing-hoisin-glace" },
+    { slug: "miso-sakesauce", label: "Miso-sakesauce" },
+    { slug: "aeble-hvidvins-skysauce", label: "Æble-hvidvins-skysauce" },
+    { slug: "cidresauce-med-skalotteloeg", label: "Cidresauce" },
+    { slug: "sherry-groen-pebersauce", label: "Sherry-grøn pebersauce" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
@@ -884,9 +921,11 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-julemad-den-store-guide": [
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
+    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" },
   ],
   "vin-til-juleand": [
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" },
   ],
   "pinot-noir-til-and": [
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
@@ -926,6 +965,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "rodvinssyltede-tyttebaer", label: "Rødvinssyltede tyttebær" },
     { slug: "braiseret-raadyrskank-med-rodvin", label: "Braiseret rådyrskank" },
     { slug: "vildsvinegryde-med-rodvin", label: "Vildsvinegryde med rødvin" },
+    { slug: "rodvins-chokoladesauce", label: "Rødvins-chokoladesauce" },
+    { slug: "sauce-grand-veneur", label: "Sauce Grand Veneur" },
   ],
   "vin-til-blaaskimmelost": [
     { slug: "gorgonzolasauce-med-hvidvin", label: "Gorgonzolasauce med hvidvin" },
@@ -1008,6 +1049,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "vin-til-argentinsk-mad": [
     { slug: "empanadas-med-rodvin", label: "Empanadas med rødvin" },
     { slug: "bife-de-chorizo-med-malbec", label: "Bife de chorizo med Malbec" },
+  ],
+  "vin-til-fisk": [
+    { slug: "sauce-noilly-prat", label: "Sauce Noilly Prat" },
+    { slug: "sauce-bercy", label: "Sauce Bercy" },
+    { slug: "hvidvins-veloute-med-urter", label: "Hvidvins-velouté med urter" },
+  ],
+  "vin-til-kylling": [
+    { slug: "sauce-albufera", label: "Sauce Albuféra" },
+    { slug: "sherrysauce-med-svampe", label: "Sherrysauce med svampe" },
   ],
 
 };
