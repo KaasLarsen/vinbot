@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Top 30 batch 2 (2026-09-23) + batch 1 + tidligere.
+**Status:** Top 30 batch 3 (2026-09-23) + batch 1–2 + tidligere.
+
+## Top 30 batch 3 — 2026-09-23 (5 nye huller)
+
+| # | Slug | Kategori |
+|---|------|----------|
+| 1 | `kyllingeleverparfait-med-portvinsgele` | Portvin / forret |
+| 2 | `roedkaal-med-portvin` | Portvin / jul |
+| 3 | `andebryst-med-portvins-og-figneglasering` | Portvin / and |
+| 4 | `rodvinskage-med-mork-chokolade` | Rødvin / dessert |
+| 5 | `moscato-dasti-sorbet` | Moscato / dessert |
+
+Næste huller (batch 4): sherry trifle, pærer i hvidvin+safran, plommetrifli (+ evt. torsk papillote, hummerbisque).
+
+---
 
 ## Top 30 batch 2 — 2026-09-23 (5 nye huller)
 

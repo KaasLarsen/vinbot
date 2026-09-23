@@ -540,6 +540,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hvidvinsbagede-fersken", label: "Hvidvinsbagede ferskner" },
     { slug: "rose-granite-med-hindbaer", label: "Rosé-granité med hindbær" },
     { slug: "mousserende-vingele-med-friske-baer", label: "Mousserende vingelé med bær" },
+    { slug: "moscato-dasti-sorbet", label: "Moscato d'Asti sorbet" },
   ],
   "vin-til-brasiliansk-mad": [
     { slug: "feijoada-med-rodvin", label: "Feijoada med rødvin" },
@@ -649,6 +650,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "portvin-til-ost": [
     { slug: "portvinsglaserede-figner-med-gedeost", label: "Portvinsglaserede figner med gedeost" },
+    { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
   ],
   "riesling-til-asiatisk-mad": [
     { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
@@ -674,6 +677,39 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
+  ],
+  "bedste-portvin": [
+    { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+    { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
+  ],
+  "hvad-er-portvin": [
+    { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+  ],
+  "sadan-serverer-du-portvin": [
+    { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+  ],
+  "vin-til-juleaften": [
+    { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
+    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+  ],
+  "vin-til-julemad-den-store-guide": [
+    { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
+  ],
+  "vin-til-juleand": [
+    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+  ],
+  "pinot-noir-til-and": [
+    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+  ],
+  "portvin-til-chokolade": [
+    { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" },
+  ],
+  "vin-til-chokolademousse": [
+    { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" },
+  ],
+  "bedste-dessertvin": [
+    { slug: "moscato-dasti-sorbet", label: "Moscato d'Asti sorbet" },
+    { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" },
   ],
 
 };
