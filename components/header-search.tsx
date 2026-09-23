@@ -352,7 +352,7 @@ export function HeaderSearch() {
         </button>
       </div>
 
-      <div className="relative flex min-h-11 min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2 py-1.5">
+      <div className="relative flex min-h-12 min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2">
         <label htmlFor={inputId} className="sr-only">
           {mode === "vin" ? "Søg efter vin og mad" : "Søg i guides"}
         </label>
@@ -410,7 +410,7 @@ export function HeaderSearch() {
           }}
           placeholder={placeholder}
           style={INPUT_VISIBLE_STYLE}
-          className="min-w-0 flex-1 appearance-none border-0 bg-white px-1 py-1 text-base text-stone-900 caret-stone-900 shadow-none outline-none [-webkit-text-fill-color:#1c1917] placeholder:text-stone-400 placeholder:[-webkit-text-fill-color:#a8a29e] focus:outline-none focus:ring-0 sm:text-sm"
+          className="h-10 min-w-0 flex-1 appearance-none border-0 bg-white px-1 text-base leading-normal text-stone-900 caret-stone-900 shadow-none outline-none [-webkit-text-fill-color:#1c1917] placeholder:text-stone-400 placeholder:[-webkit-text-fill-color:#a8a29e] focus:outline-none focus:ring-0 sm:text-sm"
         />
         <button
           type="submit"
