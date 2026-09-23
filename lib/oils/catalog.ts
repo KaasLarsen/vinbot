@@ -79,7 +79,7 @@ export const OIL_PICKS: readonly OilPick[] = [
     pairingNote:
       "Hvidløgsolie til brød, tapas og pizza lige efter ovnen — aroma uden at stege fedtet.",
     dishIds: [],
-    recipeSlugs: [],
+    recipeSlugs: ["aioli-med-hvidvin"],
   },
   {
     id: "chili",
