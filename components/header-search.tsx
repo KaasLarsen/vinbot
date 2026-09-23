@@ -57,7 +57,8 @@ const INPUT_VISIBLE_STYLE: CSSProperties = {
   colorScheme: "light",
   opacity: 1,
   fontSize: 16,
-  lineHeight: "1.5",
+  lineHeight: "24px",
+  height: 40,
 };
 
 function useDebouncedValue<T>(value: T, ms: number): T {
