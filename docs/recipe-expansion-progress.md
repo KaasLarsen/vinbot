@@ -1,10 +1,26 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Vin-tilbehør 20 (kompot/marmelade/glace/sirup/sylt) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Vin-tilbehør 25 (20 net-nye + 5 varianter) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Vin-tilbehør variants — 2026-09-23 (5 nye)
+
+Tydelige varianter af temaer der allerede fandtes i nær form:
+
+| # | Slug | Forskel fra eksisterende |
+|---|------|--------------------------|
+| 1 | `moscato-abrikoskompot` | Sød Moscato + vanilje vs tør hvidvin + rosmarin |
+| 2 | `rodvinssyltede-roedloeg` | Rødvin/rødvinseddike vs hvidvin/rosé |
+| 3 | `portvinsglasering-til-and-og-flaeskesteg` | Ren glace vs færdig andebryst-ret |
+| 4 | `sherry-honning-glace-til-skinke` | PX + honning vs Madeira-sauce |
+| 5 | `pocherede-blommer-i-rodvin-og-nelliker` | Glas/tilbehør vs færdig plommetrifli |
+
+Script: `scripts/add-recipes-tilbehor30-variants.mjs`.
+
+---
 
 ## Vin-tilbehør batch 1–4 — 2026-09-23 (20 nye — net-nye fra 30-listen)
 
-Springet over (eksisterede allerede): figner i portvinssirup · pærechutney · Sauternes-gelé · abrikoskompot · brombærmarmelade · balsamico-skalotteløg · syltede rødløg · portvinsglasering and · sherry-honning skinke · pocherede blommer.
+Oprindeligt sprunget over som nær-dubletter; fem er nu dækket som variants (se ovenfor). Stadig kun via eksisterende sider: figner i portvinssirup · pærechutney · Sauternes-gelé · brombærmarmelade · balsamico-skalotteløg.
 
 **Batch 1 (burger/sandwich):** `rodvins-loegkompot` · `portvins-baconmarmelade` · `hvidvins-jalapenorelish` · `oel-rodvinssennep` · `sherry-glaseret-svampemix`
 

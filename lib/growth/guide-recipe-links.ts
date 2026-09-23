@@ -385,6 +385,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "portvins-baconmarmelade", label: "Portvins-baconmarmelade" },
     { slug: "hvidvins-jalapenorelish", label: "Hvidvins-jalapeñorelish" },
     { slug: "oel-rodvinssennep", label: "Øl- og rødvinssennep" },
+    { slug: "rodvinssyltede-roedloeg", label: "Rødvinssyltede rødløg" },
   ],
   "vin-til-pho": [
     { slug: "pho-kylling-med-hvidvin", label: "Pho med kylling og hvidvin" },
@@ -472,6 +473,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "roedkaal-med-rodvin", label: "Rødkål med rødvin" },
     { slug: "aeble-hvidvinskompot-med-timian", label: "Æble- og hvidvinskompot med timian" },
     { slug: "madeira-glaseret-rosenkaal", label: "Madeira-glaseret rosenkål" },
+    { slug: "sherry-honning-glace-til-skinke", label: "Sherry-honning-glace til skinke" },
   ],
   "vin-til-graesk-mad": [
     { slug: "moussaka-med-rodvin", label: "Moussaka med rødvin" },
@@ -595,6 +597,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "andebryst-med-brombaer-rodvinssauce", label: "Andebryst med brombær-rødvinssauce" },
     { slug: "shaoxing-femkrydderi-marinade", label: "Shaoxing-and" },
     { slug: "aeble-hvidvinskompot-med-timian", label: "Æble- og hvidvinskompot med timian" },
+    { slug: "portvinsglasering-til-and-og-flaeskesteg", label: "Portvinsglasering til and" },
   ],
   "vin-til-gas": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -719,6 +722,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tranebaekompot-grand-marnier-rodvin", label: "Tranebærkompot med Grand Marnier" },
     { slug: "chorizomarmelade-med-sherry", label: "Chorizomarmelade med sherry" },
     { slug: "rabarberkompot-med-rose", label: "Rabarberkompot med rosé" },
+    { slug: "moscato-abrikoskompot", label: "Moscato-abrikoskompot" },
+    { slug: "pocherede-blommer-i-rodvin-og-nelliker", label: "Pocherede blommer i rødvin" },
   ],
 
   "vin-til-gedeost": [
@@ -795,6 +800,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "madeira-glaseret-rosenkaal", label: "Madeira-glaseret rosenkål" },
     { slug: "espresso-marsalasirup", label: "Espresso-Marsalasirup" },
     { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
+    { slug: "portvinsglasering-til-and-og-flaeskesteg", label: "Portvinsglasering" },
+    { slug: "sherry-honning-glace-til-skinke", label: "Sherry-honning-glace" },
   ],
   "vin-til-svinekam": [
     { slug: "glaseret-skinke-med-madeirasauce", label: "Glaseret skinke med Madeirasauce" },
