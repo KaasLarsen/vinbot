@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Vin-tilbehør 35 (20+5+10) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Strategiske køkkener (15) + vin-tilbehør 35 + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Strategiske huller — 2026-09-23 (15 nye)
+
+Allerede dækket (sprunget over): kylling teriyaki · sticky Shaoxing-pork · estofado de ternera.
+
+**Iberia + sake + græsk start:** `churrasco-med-hvidvin-og-hvidloeg` · `carne-de-porco-a-alentejana` · `polbo-a-feira-med-albarino` · `sake-dampede-muslinger` · `kleftiko-med-hvidvin`
+
+**Græsk + bagning:** `stifado-med-rodvin` · `hvidvins-citrondampede-artiskokker` · `guinness-olbrod` · `taralli-med-hvidvin` · `focaccia-med-hvidvin`
+
+**Grønt + mexicansk:** `braiseret-spidskaal-i-hvidvin` · `svampe-rodvinspostej` · `belugalinser-i-rodvin` · `carnitas-med-hvidvin` · `chili-verde-med-hvidvin`
+
+Scripts: `scripts/add-recipes-strategic-gaps-batchN.mjs`.
+
+---
 
 ## Vin-tilbehør 40 batch 1 — 2026-09-23 (10 nye — idé #31–40)
 
