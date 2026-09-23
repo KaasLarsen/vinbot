@@ -1,6 +1,22 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Suppe/dessert-huller + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+**Status:** Vin-tilbehør 20 (kompot/marmelade/glace/sirup/sylt) + supper/dessert + sauce/drikke + marinader + Top30/Vin20/Asia10 (2026-09-23).
+
+## Vin-tilbehør batch 1–4 — 2026-09-23 (20 nye — net-nye fra 30-listen)
+
+Springet over (eksisterede allerede): figner i portvinssirup · pærechutney · Sauternes-gelé · abrikoskompot · brombærmarmelade · balsamico-skalotteløg · syltede rødløg · portvinsglasering and · sherry-honning skinke · pocherede blommer.
+
+**Batch 1 (burger/sandwich):** `rodvins-loegkompot` · `portvins-baconmarmelade` · `hvidvins-jalapenorelish` · `oel-rodvinssennep` · `sherry-glaseret-svampemix`
+
+**Batch 2 (ost/tapas + glace):** `balsamico-rodvinssirup-til-steak` · `tranebaekompot-grand-marnier-rodvin` · `chorizomarmelade-med-sherry` · `hvidvins-estragonglace-til-kylling` · `aeble-hvidvinskompot-med-timian`
+
+**Batch 3 (middag + dessert-sirup):** `rodvinssyltede-tyttebaer` · `madeira-glaseret-rosenkaal` · `rodvinssirup-med-vanilje` · `champagne-jordbaersirup` · `rabarberkompot-med-rose`
+
+**Batch 4 (dessert + syltede):** `kirsebaersovs-med-portvin` · `espresso-marsalasirup` · `hvidvinssyltede-agurker-med-dild` · `sherrysyltede-sennepsfro` · `hvidvinssyltede-gronne-tomater`
+
+Scripts: `scripts/add-recipes-tilbehor30-batchN.mjs` + `recipes-tilbehor30-batchN-data.mjs`.
+
+---
 
 ## Suppe + dessert huller — 2026-09-23 (3 nye)
 
