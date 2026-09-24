@@ -1,6 +1,16 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Value Plays PT/GR + Chill-gaps (16) · Chill Your Reds hub · sauce 30 (2026-09-24).
+**Status:** Portugal value (Douro/Dão + bifana/prego/cataplana) · Value PT/GR · Chill Your Reds (2026-09-24).
+
+## Portugal value — 2026-09-24
+
+**Guide:** `douro-vs-dao`
+
+**Opskrifter:** `bifana` · `prego-sandwich` · `cataplana-med-hvidvin`
+
+Script: `scripts/add-recipes-portugal-value.mjs`.
+
+---
 
 ## Value Plays + Chill-gaps — 2026-09-24 (4 guides + 12 opskrifter)
 

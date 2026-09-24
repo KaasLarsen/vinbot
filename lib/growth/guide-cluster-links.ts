@@ -1671,6 +1671,19 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       { slug: "vin-til-tapas", label: "Vin til tapas" },
     ],
   ),
+  "douro-vs-dao": videnBlock(
+    ["douro-vs-dao"],
+    "Douro vs. Dão",
+    "Portugals to store røde dale — kraft vs. elegance, value og mad.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "vinregion-portugal", label: "Vinregion Portugal" },
+      { slug: "touriga-nacional-druen", label: "Touriga nacional" },
+      { slug: "vinho-verde-vs-alvarinho", label: "Vinho Verde vs. Alvarinho" },
+      { slug: "vin-til-portugisisk-mad", label: "Vin til portugisisk mad" },
+      { slug: "xinomavro-og-touriga-nacional", label: "Xinomavro og Touriga" },
+    ],
+  ),
   "pet-nat-for-begyndere": videnBlock(
     ["pet-nat-for-begyndere"],
     "Pét-nat og naturvin-bobler",

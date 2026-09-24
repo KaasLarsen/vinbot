@@ -231,6 +231,18 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Tør Assyrtiko eller Moschofilero ved 8–11 °C til oliven, feta og tzatziki. Til kødboller: let Xinomavro eller en kold gamay.",
     },
   ],
+  "douro-vs-dao": [
+    {
+      question: "Hvad er forskellen på Douro og Dão?",
+      answer:
+        "Douro er varmere og kraftigere (skifer, mørk frugt). Dão er køligere og mere elegant (granit, højere syre). Begge bruger ofte Touriga Nacional.",
+    },
+    {
+      question: "Hvornår skal jeg vælge Douro frem for Dão?",
+      answer:
+        "Til bøf, braiseret okse og rige saucer: Douro. Til lam, fugl og lettere grill: Dão. Til fisk og sandwiches: hellere Vinho Verde/Alvarinho.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

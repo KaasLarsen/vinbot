@@ -24,6 +24,7 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "rodvin-til-terrassen",
   "farvel-sancerre-goddag-assyrtiko",
   "vinho-verde-vs-alvarinho",
+  "douro-vs-dao",
   "pet-nat-for-begyndere",
   "vin-til-pizza",
   "bedste-vin-til-gave",

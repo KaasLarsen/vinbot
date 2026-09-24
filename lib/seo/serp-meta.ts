@@ -102,6 +102,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Sådan sammensætter du et græsk meze-bræt med oliven, tzatziki, feta og dolmades — plus Assyrtiko til glasset.",
   },
+  "douro-vs-dao": {
+    title: "Douro vs. Dão: portugisisk rød",
+    description:
+      "Douro vs. Dão: kraft eller elegance? Touriga Nacional, value-køb og hvilken mad der passer til hver dal.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

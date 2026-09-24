@@ -1111,6 +1111,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "polvo-a-lagareiro", label: "Polvo à Lagareiro" },
     { slug: "ameijoas-a-bulhao-pato", label: "Amêijoas à Bulhão Pato" },
     { slug: "pica-pau", label: "Pica-pau" },
+    { slug: "cataplana-med-hvidvin", label: "Cataplana" },
   ],
   "farvel-sancerre-goddag-assyrtiko": [
     { slug: "dampede-hjertemuslinger-feta-assyrtiko", label: "Hjertemuslinger med feta" },
@@ -1128,9 +1129,14 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "polvo-a-lagareiro", label: "Polvo à Lagareiro" },
     { slug: "ameijoas-a-bulhao-pato", label: "Amêijoas à Bulhão Pato" },
     { slug: "pica-pau", label: "Pica-pau" },
+    { slug: "cataplana-med-hvidvin", label: "Cataplana" },
   ],
   "xinomavro-og-touriga-nacional": [
     { slug: "keftedakia-med-rodvin", label: "Keftedakia" },
+  ],
+  "douro-vs-dao": [
+    { slug: "prego-sandwich", label: "Prego-sandwich" },
+    { slug: "bifana", label: "Bifana" },
   ],
 
 };
