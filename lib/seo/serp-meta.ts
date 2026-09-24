@@ -1834,6 +1834,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Watermelon Rosé Cooler: rosé blended med vandmelon, vodka og lime. Sommer-slush til 4 glas.",
   },
+  "pisco-sour-roedvinssloer": {
+    title: "Pisco Sour med rødvinsslør opskrift",
+    description:
+      "Pisco Sour toppet med frugtig rødvin. Peruansk sour med New York Sour-float — opskrift til 1 glas.",
+  },
+  "white-port-negroni": {
+    title: "White Port Negroni opskrift",
+    description:
+      "White Port Negroni: hvid port, hvid vermouth og Campari eller Suze. Lys Negroni-twist — opskrift.",
+  },
+  "sparkling-sangria": {
+    title: "Sparkling Sangria opskrift",
+    description:
+      "Sparkling Sangria med mousserende vin, lys rom, æblemost og bær. Festbowle til 6–8.",
+  },
+  "sherry-tonic": {
+    title: "Sherry Tonic opskrift — fino og tonic",
+    description:
+      "Sherry Tonic: Fino eller Manzanilla toppet med tonic og citron. Let sherry-aperitif — opskrift.",
+  },
+  "french-77": {
+    title: "French 77 opskrift — hyldeblomst og bobler",
+    description:
+      "French 77: gin, hyldeblomstlikør, citron og champagne. Blomstret French 75-søster — opskrift.",
+  },
+  "portvins-mojito": {
+    title: "Portvins-Mojito opskrift",
+    description:
+      "Portvins-Mojito: hvid eller rosé-port, mynte, lime og danskvand. Port-twist på mojito — opskrift.",
+  },
+  "cynar-spritz": {
+    title: "Cynar Spritz opskrift",
+    description:
+      "Cynar Spritz med artiskoklikør Cynar, Prosecco og danskvand. Bitter italiensk aperitif — opskrift.",
+  },
+  "moscato-mule": {
+    title: "Moscato Mule opskrift",
+    description:
+      "Moscato Mule: Moscato d'Asti, vodka, ginger beer og lime. Frugtig mule — opskrift til 1 glas.",
+  },
+  "blackberry-rose-spritz": {
+    title: "Blackberry Rosé Spritz opskrift",
+    description:
+      "Blackberry Rosé Spritz: rosé, mosede brombær, kulsyre og lime. Sommer-spritz — opskrift til 1 glas.",
+  },
+  "efteraars-sangria": {
+    title: "Efterårs-sangria opskrift — rom og kanel",
+    description:
+      "Rødvinssangria med mørk rom og kanel. Krydret efterårs-bowle til 6–8 — opskrift.",
+  },
 };
 
 export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
