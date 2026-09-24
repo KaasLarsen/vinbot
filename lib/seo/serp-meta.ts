@@ -1782,7 +1782,7 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   roedvinsgloegg: {
     title: "Rødvinsgløgg opskrift — klassisk dansk",
     description:
-      "Hjemmelavet rødvinsgløgg med kanel, nelliker, appelsin og port. Klassisk juleopskrift til 8–10 glas.",
+      "Hjemmelavet rødvinsgløgg med kanel, nelliker, appelsin og port. Klassisk jule-drink til 8–10 glas.",
   },
   rossini: {
     title: "Rossini opskrift — prosecco og jordbær",
