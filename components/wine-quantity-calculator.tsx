@@ -16,6 +16,8 @@ type WineQuantityCalculatorProps = {
   defaultGuests?: number;
   /** `full` = guide/hub med finjustering; `compact` = forside hurtig beregning */
   variant?: "full" | "compact";
+  /** Start sammenklappet (kun relevant for `compact` — fx forsiden). */
+  defaultCollapsed?: boolean;
   className?: string;
 };
 
@@ -37,9 +39,12 @@ export function WineQuantityCalculator({
   defaultPartyType = "middag",
   defaultGuests = 40,
   variant = "full",
+  defaultCollapsed = false,
   className = "",
 }: WineQuantityCalculatorProps) {
   const isCompact = variant === "compact";
+  const canCollapse = isCompact && defaultCollapsed;
+  const [expanded, setExpanded] = useState(!canCollapse);
   const [guestsInput, setGuestsInput] = useState(String(defaultGuests));
   const [partyType, setPartyType] = useState<PartyType>(defaultPartyType);
   const [hoursInput, setHoursInput] = useState("3");
@@ -77,19 +82,72 @@ export function WineQuantityCalculator({
     });
   }, [showPicks, picksQuery]);
 
+  const partyLabel = PARTY_OPTIONS.find((o) => o.id === partyType)?.label ?? partyType;
+
+  if (canCollapse && !expanded) {
+    return (
+      <section
+        className={`rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 shadow-sm ${padding} ${className}`}
+        aria-labelledby="wine-qty-calc-heading"
+      >
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          aria-expanded={false}
+          className="flex w-full items-start gap-3 text-left"
+        >
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber-900/80">Vinbot-formlen</p>
+            <h2
+              id="wine-qty-calc-heading"
+              className="mt-1 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl"
+            >
+              {heading}
+            </h2>
+            <p className="mt-1.5 text-sm text-stone-600">
+              Ca. <strong className="font-semibold text-stone-800">{result.totalBottles} flasker</strong>
+              {" · "}
+              {result.guests} gæster · {partyLabel}
+            </p>
+          </div>
+          <span className="mt-1 shrink-0 rounded-full border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-950 shadow-sm">
+            Åbn
+          </span>
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section
       className={`rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 shadow-sm ${padding} ${className}`}
       aria-labelledby="wine-qty-calc-heading"
     >
-      <p className="text-xs font-semibold uppercase tracking-wider text-amber-900/80">Vinbot-formlen</p>
-      <h2
-        id="wine-qty-calc-heading"
-        className={`mt-1 font-semibold tracking-tight text-stone-900 ${isCompact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl"}`}
-      >
-        {heading}
-      </h2>
-      <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-stone-700">{intro}</p>
+      <div className={canCollapse ? "flex items-start justify-between gap-3" : undefined}>
+        <div className="min-w-0">
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-900/80">Vinbot-formlen</p>
+          <h2
+            id="wine-qty-calc-heading"
+            className={`mt-1 font-semibold tracking-tight text-stone-900 ${isCompact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl"}`}
+          >
+            {heading}
+          </h2>
+          <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-stone-700">{intro}</p>
+        </div>
+        {canCollapse ? (
+          <button
+            type="button"
+            onClick={() => {
+              setExpanded(false);
+              setShowPicks(false);
+            }}
+            aria-expanded={true}
+            className="mt-1 shrink-0 rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-semibold text-stone-700 shadow-sm hover:border-amber-300 hover:bg-amber-50"
+          >
+            Luk
+          </button>
+        ) : null}
+      </div>
 
       <div className={`mt-5 grid gap-4 ${isCompact ? "grid-cols-1" : "gap-5 sm:grid-cols-2"}`}>
         <label className="block">

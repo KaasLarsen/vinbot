@@ -69,6 +69,7 @@ export default function HomePage() {
         <div className="lg:flex lg:flex-col lg:gap-6">
           <WineQuantityCalculator
             variant="compact"
+            defaultCollapsed
             className="mt-10 lg:mt-0"
             heading="Hvor mange flasker til festen?"
             intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
