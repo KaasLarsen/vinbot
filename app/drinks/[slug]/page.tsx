@@ -21,6 +21,7 @@ import {
 } from "@/lib/drink-images";
 import { buildDrinkSerpDescription, buildDrinkSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
+import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -182,6 +183,8 @@ export default async function DrinkPage({ params }: Props) {
       </div>
 
       <div className="prose prose-stone mt-10 max-w-none">{content}</div>
+
+      {faqItems.length > 0 ? <GuideFaqAccordion items={faqItems} /> : null}
 
       {frontmatter.relatedGuides?.length ? (
         <RecipeRelatedGuides slugs={frontmatter.relatedGuides} />
