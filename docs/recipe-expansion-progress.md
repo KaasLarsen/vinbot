@@ -1,6 +1,16 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Portugal value (Douro/Dão + bifana/prego/cataplana) · Value PT/GR · Chill Your Reds (2026-09-24).
+**Status:** Greece value (3 druer + 3 opskrifter) · Portugal value · Chill Your Reds (2026-09-24).
+
+## Greece value — 2026-09-24
+
+**Drueguides:** `xinomavro-druen` · `moschofilero-druen` · `agiorgitiko-druen`
+
+**Opskrifter:** `spanakopita-med-hvidvin` · `pastitsio-med-rodvin` · `feta-saganaki`
+
+Script: `scripts/add-recipes-greece-value.mjs`.
+
+---
 
 ## Portugal value — 2026-09-24
 

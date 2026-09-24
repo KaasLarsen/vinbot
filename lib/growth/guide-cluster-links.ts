@@ -1684,6 +1684,42 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       { slug: "xinomavro-og-touriga-nacional", label: "Xinomavro og Touriga" },
     ],
   ),
+  "xinomavro-druen": videnBlock(
+    ["xinomavro-druen"],
+    "Xinomavro-druen",
+    "Grækenlands Nebbiolo — Naoussa, tannin og value.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "agiorgitiko-druen", label: "Agiorgitiko-druen" },
+      { slug: "xinomavro-og-touriga-nacional", label: "Xinomavro og Touriga" },
+      { slug: "vin-til-graesk-mad", label: "Vin til græsk mad" },
+      { slug: "assyrtiko-druen", label: "Assyrtiko-druen" },
+    ],
+  ),
+  "moschofilero-druen": videnBlock(
+    ["moschofilero-druen"],
+    "Moschofilero-druen",
+    "Blomstret Mantinia-hvid til meze og krydret mad.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "assyrtiko-druen", label: "Assyrtiko-druen" },
+      { slug: "graesk-meze-braet", label: "Græsk meze-bræt" },
+      { slug: "vin-til-graesk-mad", label: "Vin til græsk mad" },
+      { slug: "farvel-sancerre-goddag-assyrtiko", label: "Farvel Sancerre, goddag Assyrtiko" },
+    ],
+  ),
+  "agiorgitiko-druen": videnBlock(
+    ["agiorgitiko-druen"],
+    "Agiorgitiko-druen",
+    "Nemeas bløde rød — kirsebær, grill og hverdag.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "xinomavro-druen", label: "Xinomavro-druen" },
+      { slug: "vin-til-graesk-mad", label: "Vin til græsk mad" },
+      { slug: "vin-til-moussaka", label: "Vin til moussaka" },
+      { slug: "moschofilero-druen", label: "Moschofilero-druen" },
+    ],
+  ),
   "pet-nat-for-begyndere": videnBlock(
     ["pet-nat-for-begyndere"],
     "Pét-nat og naturvin-bobler",

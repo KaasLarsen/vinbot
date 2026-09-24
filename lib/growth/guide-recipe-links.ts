@@ -1138,5 +1138,23 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "prego-sandwich", label: "Prego-sandwich" },
     { slug: "bifana", label: "Bifana" },
   ],
+  "moschofilero-druen": [
+    { slug: "spanakopita-med-hvidvin", label: "Spanakopita" },
+    { slug: "feta-saganaki", label: "Feta saganaki" },
+  ],
+  "agiorgitiko-druen": [
+    { slug: "pastitsio-med-rodvin", label: "Pastitsio" },
+  ],
+  "xinomavro-druen": [
+    { slug: "pastitsio-med-rodvin", label: "Pastitsio" },
+  ],
+  "assyrtiko-druen": [
+    { slug: "feta-saganaki", label: "Feta saganaki" },
+    { slug: "spanakopita-med-hvidvin", label: "Spanakopita" },
+  ],
+  "vin-til-feta": [
+    { slug: "feta-saganaki", label: "Feta saganaki" },
+    { slug: "spanakopita-med-hvidvin", label: "Spanakopita" },
+  ],
 
 };

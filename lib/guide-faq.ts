@@ -243,6 +243,27 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Til bøf, braiseret okse og rige saucer: Douro. Til lam, fugl og lettere grill: Dão. Til fisk og sandwiches: hellere Vinho Verde/Alvarinho.",
     },
   ],
+  "xinomavro-druen": [
+    {
+      question: "Hvad smager Xinomavro af?",
+      answer:
+        "Tomatblad, oliven, røde bær og jord med høj syre og fast tannin — ofte sammenlignet med Nebbiolo, typisk til lavere pris.",
+    },
+  ],
+  "moschofilero-druen": [
+    {
+      question: "Hvad er Moschofilero?",
+      answer:
+        "En aromatisk græsk hvidvinsdrue fra Mantinia med rose, litchi og høj syre — god til meze, feta og krydret mad.",
+    },
+  ],
+  "agiorgitiko-druen": [
+    {
+      question: "Hvad er forskellen på Agiorgitiko og Xinomavro?",
+      answer:
+        "Agiorgitiko (Nemea) er frugtigere og blødere. Xinomavro (Naoussa) har mere tannin og jordede toner. Agiorgitiko er den mere alsidige hverdagsrød.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

@@ -107,6 +107,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Douro vs. Dão: kraft eller elegance? Touriga Nacional, value-køb og hvilken mad der passer til hver dal.",
   },
+  "xinomavro-druen": {
+    title: "Xinomavro: Grækenlands Nebbiolo",
+    description:
+      "Xinomavro fra Naoussa: tomatblad, syre og tannin. Value ift. Barolo — og mad til lam, moussaka og keftedakia.",
+  },
+  "moschofilero-druen": {
+    title: "Moschofilero: blomstret Mantinia-hvid",
+    description:
+      "Moschofilero fra Mantinia: rose, krydderi og syre. Græsk aromatisk hvid til meze, feta og sommer.",
+  },
+  "agiorgitiko-druen": {
+    title: "Agiorgitiko: Nemeas bløde rød",
+    description:
+      "Agiorgitiko fra Nemea: kirsebær og krydderi med blødere tannin end Xinomavro — græsk hverdagsrød.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:
