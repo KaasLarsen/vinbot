@@ -3,10 +3,12 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
+import { HomeDrinksStripClient } from "@/components/home-drinks-strip-client";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { DrinkHubBrowser } from "@/components/drink-hub-browser";
-import { getAllDrinks } from "@/lib/content/drinks";
+import { getAllDrinks, getDrinkBySlug } from "@/lib/content/drinks";
 import { DRINK_HUB_CLASSICS, parseDrinkHubSearchParams } from "@/lib/drink-browse";
+import { allHomeMomentDrinkSlugs } from "@/lib/home-moment";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -63,6 +65,15 @@ export default async function DrinksHubPage({ searchParams }: PageProps) {
     difficulty: d.difficulty,
   }));
 
+  const featuredCatalog = allHomeMomentDrinkSlugs()
+    .map((slug) => getDrinkBySlug(slug))
+    .filter((d): d is NonNullable<typeof d> => d != null)
+    .map((d) => ({
+      slug: d.slug,
+      title: d.title,
+      tags: d.tags,
+    }));
+
   const collectionItems = drinks.map((d) => ({
     name: d.title,
     url: `${siteUrl}/drinks/${d.slug}`,
@@ -113,6 +124,18 @@ export default async function DrinksHubPage({ searchParams }: PageProps) {
 
       <div className="mt-10">
         <DrinkHubBrowser drinks={cards} initialFilters={initialFilters}>
+          {featuredCatalog.length > 0 ? (
+            <HomeDrinksStripClient
+              catalog={featuredCatalog}
+              heading="Udvalgt lige nu"
+              intro="Sæson og anledninger — fire drinks at starte med, før du graver i hele listen."
+              allHref="#alle-drinks"
+              allLabel="Se alle nedenfor →"
+              headingId="drink-hub-featured-heading"
+              className=""
+            />
+          ) : null}
+
           <section aria-labelledby="drink-classics-heading">
             <h2 id="drink-classics-heading" className="text-xl font-semibold tracking-tight text-stone-900">
               Must-haves

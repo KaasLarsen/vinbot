@@ -47,6 +47,44 @@ export const DRINK_HUB_CLASSICS: { href: string; label: string }[] = [
   { href: "/drinks/tawny-sour", label: "Tawny Sour" },
 ];
 
+export type DrinkHubIntent = {
+  id: string;
+  label: string;
+  hint: string;
+  filters: Partial<DrinkHubFilterState>;
+};
+
+export const DRINK_HUB_INTENTS: DrinkHubIntent[] = [
+  { id: "spritz", label: "Spritz", hint: "Bobler, bitter og sodavand", filters: { style: "spritz" } },
+  { id: "cocktail", label: "Cocktail", hint: "Klassikere med vin", filters: { style: "cocktail" } },
+  { id: "bowle", label: "Bowle", hint: "Sangria og fest", filters: { style: "bowle" } },
+  { id: "varm", label: "Varm", hint: "Gløgg og varme drikke", filters: { style: "varm" } },
+  { id: "aperitif", label: "Aperitif", hint: "Let før maden", filters: { style: "aperitif" } },
+];
+
+export function drinkHubIntentIsActive(intent: DrinkHubIntent, state: DrinkHubFilterState): boolean {
+  const f = intent.filters;
+  if (f.style && f.style !== "alle" && state.style !== f.style) return false;
+  if (f.wine && f.wine !== "alle" && state.wine !== f.wine) return false;
+  if (f.q && state.q.trim().toLowerCase() !== f.q.trim().toLowerCase()) return false;
+  return Boolean(f.style || f.wine || f.q);
+}
+
+export function drinkStyleBadgeClass(style: Exclude<DrinkStyleFilter, "alle">): string {
+  switch (style) {
+    case "spritz":
+      return "rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900";
+    case "bowle":
+      return "rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900";
+    case "varm":
+      return "rounded-md bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-950";
+    case "aperitif":
+      return "rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-900";
+    default:
+      return "rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-800";
+  }
+}
+
 const WINE_LABELS: Record<DrinkWineFilter, string> = {
   alle: "Alle vintyper",
   bobler: "Bobler",

@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { classifyDrinkStyle, styleFilterLabel } from "@/lib/drink-browse";
-import type { DrinkStyleFilter } from "@/lib/drink-browse";
+import { classifyDrinkStyle, drinkStyleBadgeClass, styleFilterLabel } from "@/lib/drink-browse";
 import { getDrinkImageAlt, getDrinkImagePath } from "@/lib/drink-images";
 import { getHomeMoment } from "@/lib/home-moment";
 
@@ -12,21 +11,6 @@ export type HomeDrinkCard = {
   title: string;
   tags?: string[];
 };
-
-function styleBadgeClass(style: Exclude<DrinkStyleFilter, "alle">): string {
-  switch (style) {
-    case "spritz":
-      return "rounded-md bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-900";
-    case "bowle":
-      return "rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900";
-    case "varm":
-      return "rounded-md bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-950";
-    case "aperitif":
-      return "rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-900";
-    default:
-      return "rounded-md bg-stone-100 px-2 py-0.5 text-xs font-medium text-stone-800";
-  }
-}
 
 export function HomeDrinksStripClient({
   catalog,
@@ -85,7 +69,7 @@ export function HomeDrinksStripClient({
                   />
                 </div>
                 <div className="p-4">
-                  <span className={styleBadgeClass(style)}>{styleFilterLabel(style)}</span>
+                  <span className={drinkStyleBadgeClass(style)}>{styleFilterLabel(style)}</span>
                   <h3 className="mt-2 text-base font-semibold leading-snug text-stone-900">
                     {d.title.split(" — ")[0] || d.title}
                   </h3>
