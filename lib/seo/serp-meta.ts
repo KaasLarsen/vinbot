@@ -1724,6 +1724,51 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Tawny Sour med 10-års tawny port, citronsaft og sukkersirup. Nøddeagtig sour — opskrift.",
   },
+  mimosa: {
+    title: "Mimosa opskrift — bobler og appelsin",
+    description:
+      "Klassisk Mimosa med mousserende vin og friskpresset appelsinsaft. Brunch-opskrift til 1 flute.",
+  },
+  bellini: {
+    title: "Bellini opskrift — prosecco og fersken",
+    description:
+      "Klassisk Bellini med Prosecco og ferskenpuré. Venetiansk aperitif — opskrift til 1 flute.",
+  },
+  "red-wine-paloma": {
+    title: "Red Wine Paloma opskrift",
+    description:
+      "Red Wine Paloma: tequila, grapefrugtsoda, lime og rødvinsslør. Long drink — opskrift til 1 glas.",
+  },
+  "campari-spritz": {
+    title: "Campari Spritz opskrift",
+    description:
+      "Campari Spritz med Campari, Prosecco og danskvand. Bitter spritz — opskrift til 1 glas.",
+  },
+  "devils-share": {
+    title: "Devil's Share opskrift — bourbon og rødvin",
+    description:
+      "Devil's Share: bourbon, citron, ingefærsirup og rødvin. Krydret sour — opskrift til 1 glas.",
+  },
+  "rose-sangria": {
+    title: "Rosé Sangria opskrift",
+    description:
+      "Rosé Sangria med rosévin, hindbærlikør, vodka og sommerbær. Festbowle til 6–8.",
+  },
+  "white-wine-spritzer": {
+    title: "White Wine Spritzer opskrift",
+    description:
+      "White Wine Spritzer: sprød hvidvin, danskvand og citronskal. Nem lav-alkohol aperitif.",
+  },
+  "saffron-spritz": {
+    title: "Saffron Spritz opskrift",
+    description:
+      "Saffron Spritz: safran-infuseret hvidvin, kulsyre og appelsinskal. Gylden aperitif — opskrift.",
+  },
+  nytaarsbowle: {
+    title: "Nytårsbowle opskrift — champagnepunch",
+    description:
+      "Nytårsbowle med mousserende vin, gin, lime, mynte og agurk. Punch til 10–12 glas.",
+  },
   "kir-royal": {
     title: "Kir Royal opskrift — cassis og champagne",
     description:

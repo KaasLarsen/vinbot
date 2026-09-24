@@ -454,6 +454,7 @@ const rootLegacyHubRedirects: { source: string; destination: string }[] = [
   { source: "/opskrifter/sangria-med-rodvin", destination: "/drinks/sangria-med-rodvin" },
   { source: "/opskrifter/portvinsgloegg", destination: "/drinks/portvinsgloegg" },
   { source: "/opskrifter/roedvinsgloegg", destination: "/drinks/roedvinsgloegg" },
+  { source: "/drinks/kir-royale", destination: "/drinks/kir-royal" },
 ];
 
 const nextConfig: NextConfig = {
