@@ -16,7 +16,19 @@ export type ListFeedDealsOptions = {
   maxPrice?: number;
   merchant?: string;
   limit?: number;
+  /** Fritekstsøgning i title/brand/_search — springer merchant-diversify over. */
+  q?: string;
 };
+
+function dealMatchesQuery(deal: DealHit, q: string): boolean {
+  const t = q.trim().toLowerCase();
+  if (!t) return true;
+  return (
+    deal.title.toLowerCase().includes(t) ||
+    deal.brand.toLowerCase().includes(t) ||
+    (deal._search || "").includes(t)
+  );
+}
 
 function diversifyTopByMerchant(items: DealHit[], prefixCount: number): DealHit[] {
   if (items.length <= 1) return items;
@@ -51,6 +63,8 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
   const maxPrice = opts.maxPrice ?? null;
   const merchantFilter = opts.merchant?.trim() || null;
   const limit = opts.limit ?? DEFAULT_LIMIT;
+  const q = opts.q?.trim() || "";
+  const hasQuery = q.length > 0;
 
   const lists = await Promise.all(
     FEEDS.map(async (feed) => {
@@ -82,6 +96,10 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
   );
 
   let items = lists.flat();
+  if (hasQuery) {
+    items = items.filter((d) => dealMatchesQuery(d, q));
+  }
+
   items.sort(
     (a, b) =>
       (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) ||
@@ -90,7 +108,10 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
       (a.image ? 0 : 1) - (b.image ? 0 : 1),
   );
 
-  items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
+  if (!hasQuery) {
+    items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
+  }
+
   return items.slice(0, limit);
 }
 

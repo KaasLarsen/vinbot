@@ -19,7 +19,18 @@ export type ListCrossMerchantDealsOptions = {
   minSavingsPercent?: number;
   minSavingsAmount?: number;
   limit?: number;
+  /** Fritekstsøgning i titel/brand/alternativtitler. */
+  q?: string;
 };
+
+function crossDealMatchesQuery(deal: CrossMerchantDeal, q: string): boolean {
+  const t = q.trim().toLowerCase();
+  if (!t) return true;
+  if (deal.wine.displayTitle.toLowerCase().includes(t)) return true;
+  if (deal.wine.brand.toLowerCase().includes(t)) return true;
+  if (deal.wine.category.toLowerCase().includes(t)) return true;
+  return deal.wine.alternateListingTitles.some((title) => title.toLowerCase().includes(t));
+}
 
 function isNoisyTitle(title: string): boolean {
   const t = title.trim();
@@ -49,6 +60,7 @@ async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {})
   const minPct = opts.minSavingsPercent ?? DEFAULT_MIN_SAVINGS_PERCENT;
   const minAmount = opts.minSavingsAmount ?? DEFAULT_MIN_SAVINGS_AMOUNT;
   const limit = opts.limit ?? DEFAULT_LIMIT;
+  const q = opts.q?.trim() || "";
 
   const { wines } = await loadWineCatalog();
   const deals: CrossMerchantDeal[] = [];
@@ -58,6 +70,7 @@ async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {})
     if (!deal) continue;
     if (deal.savingsPercent < minPct) continue;
     if (deal.savingsAmount < minAmount) continue;
+    if (q && !crossDealMatchesQuery(deal, q)) continue;
     deals.push(deal);
   }
 

@@ -12,6 +12,7 @@ export async function GET(req: Request) {
   const minDiscount = Number(url.searchParams.get("minDiscount") || "15");
   const maxPrice = url.searchParams.get("maxPrice");
   const merchant = url.searchParams.get("merchant") || undefined;
+  const q = url.searchParams.get("q")?.trim() || undefined;
   const limit = Math.min(Number(url.searchParams.get("limit") || "48"), 96);
 
   const opts = {
@@ -19,6 +20,7 @@ export async function GET(req: Request) {
     maxPrice: maxPrice ? Number(maxPrice) : undefined,
     merchant,
     limit,
+    q,
   };
 
   const [feedDeals, crossDeals] = await Promise.all([
@@ -29,6 +31,7 @@ export async function GET(req: Request) {
           limit,
           minSavingsPercent: opts.minDiscount,
           minSavingsAmount: 20,
+          q,
         }),
   ]);
 

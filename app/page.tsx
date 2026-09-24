@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
+import { HomeBestDealsSearch } from "@/components/home-best-deals-search";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeDrinksStrip } from "@/components/home-drinks-strip";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
@@ -72,6 +73,8 @@ export default function HomePage() {
             heading="Hvor mange flasker til festen?"
             intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
           />
+
+          <HomeBestDealsSearch />
 
           <HomeLigeNuStrip />
         </div>
