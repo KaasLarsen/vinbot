@@ -1674,6 +1674,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Frosé: frozen rosé blended med jordbær og is. Sommerdrink på blender — opskrift til 4 glas.",
   },
+  kalimotxo: {
+    title: "Kalimotxo opskrift — rødvin og cola",
+    description:
+      "Kalimotxo (calimocho): lige dele rødvin og Coca-Cola over is. Baskisk street-drink — opskrift til 1 glas.",
+  },
+  "bicicletta-spritz": {
+    title: "Bicicletta Spritz opskrift",
+    description:
+      "Bicicletta: tør hvidvin, Campari og danskvand. Let italiensk aperitif — opskrift til 1 glas.",
+  },
+  "tinto-de-verano": {
+    title: "Tinto de Verano opskrift",
+    description:
+      "Tinto de Verano: rødvin og citronsodavand over is. Spansk sommerklassiker — lettere end sangria.",
+  },
+  "porto-flip": {
+    title: "Porto Flip opskrift — port og æg",
+    description:
+      "Porto Flip med ruby port, cognac og helt æg. Cremet dessert-cocktail — opskrift til 1 glas.",
+  },
+  adonis: {
+    title: "Adonis Cocktail opskrift",
+    description:
+      "Adonis: tør sherry, sød rød vermouth og orangebitter. Elegant aperitif — opskrift til 1 glas.",
+  },
+  "sangria-blanca": {
+    title: "Sangria Blanca opskrift — hvid sangria",
+    description:
+      "Sangria Blanca med hvidvin, hyldeblomstlikør, lys rom og frugt. Sommerbowle til 6–8.",
+  },
+  "pink-sensation": {
+    title: "Pink Sensation opskrift — pink port",
+    description:
+      "Pink Sensation med rosé-port, limesaft og mousserende vin. Festlig flute-drink — opskrift.",
+  },
+  "bamboo-cocktail": {
+    title: "Bamboo Cocktail opskrift",
+    description:
+      "Bamboo: tør sherry, tør hvid vermouth og orangebitter. Lav-alkohol aperitif — opskrift.",
+  },
+  "sherry-cobbler": {
+    title: "Sherry Cobbler opskrift",
+    description:
+      "Sherry Cobbler med amontillado, sukker, knust is og bær. Klassisk long drink — opskrift.",
+  },
+  "tawny-sour": {
+    title: "Tawny Sour opskrift — 10-års port",
+    description:
+      "Tawny Sour med 10-års tawny port, citronsaft og sukkersirup. Nøddeagtig sour — opskrift.",
+  },
   "kir-royal": {
     title: "Kir Royal opskrift — cassis og champagne",
     description:

@@ -40,11 +40,11 @@ export const DRINK_HUB_CLASSICS: { href: string; label: string }[] = [
   { href: "/drinks/aperol-spritz", label: "Aperol Spritz" },
   { href: "/drinks/hugo-spritz", label: "Hugo Spritz" },
   { href: "/drinks/portvin-tonic", label: "Port & Tonic" },
-  { href: "/drinks/french-75", label: "French 75" },
-  { href: "/drinks/negroni-sbagliato", label: "Negroni Sbagliato" },
+  { href: "/drinks/tinto-de-verano", label: "Tinto de Verano" },
+  { href: "/drinks/kalimotxo", label: "Kalimotxo" },
   { href: "/drinks/sangria-med-rodvin", label: "Sangria" },
-  { href: "/drinks/new-york-sour", label: "New York Sour" },
-  { href: "/drinks/frose", label: "Frosé" },
+  { href: "/drinks/negroni-sbagliato", label: "Negroni Sbagliato" },
+  { href: "/drinks/tawny-sour", label: "Tawny Sour" },
 ];
 
 const WINE_LABELS: Record<DrinkWineFilter, string> = {
