@@ -82,6 +82,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rødvin til terrassen: let, afkølet rød som aperitif i solen — alternativ til rosé og hvidvin.",
   },
+  "farvel-sancerre-goddag-assyrtiko": {
+    title: "Farvel Sancerre, goddag Assyrtiko",
+    description:
+      "Assyrtiko som value-alternativ til Sancerre: mineralitet, syre og græsk hvidvin til fisk, feta og meze.",
+  },
+  "vinho-verde-vs-alvarinho": {
+    title: "Vinho Verde vs. Alvarinho",
+    description:
+      "Forskellen på Vinho Verde og Alvarinho (Albariño): stil, krop og hvilken mad de hver især passer til.",
+  },
+  "xinomavro-og-touriga-nacional": {
+    title: "Xinomavro og Touriga Nacional",
+    description:
+      "De glemte røde value-druer: Xinomavro fra Grækenland og Touriga Nacional fra Portugal — smag, mad og °C.",
+  },
+  "graesk-meze-braet": {
+    title: "Græsk meze-bræt: komplet guide",
+    description:
+      "Sådan sammensætter du et græsk meze-bræt med oliven, tzatziki, feta og dolmades — plus Assyrtiko til glasset.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

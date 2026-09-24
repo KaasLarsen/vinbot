@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Chill Your Reds (5 guides + 13 opskrifter) + sauce 30 + strategiske køkkener (2026-09-24).
+**Status:** Value Plays PT/GR + Chill-gaps (16) · Chill Your Reds hub · sauce 30 (2026-09-24).
+
+## Value Plays + Chill-gaps — 2026-09-24 (4 guides + 12 opskrifter)
+
+Sprunget over (fandtes): rørt tatar · vitello tonnato · Chill Your Reds-ultimativ · 20-min-regel.
+
+**Guides:** `farvel-sancerre-goddag-assyrtiko` · `vinho-verde-vs-alvarinho` · `xinomavro-og-touriga-nacional` · `graesk-meze-braet`
+
+**Opskrifter:** `arroz-de-marisco` · `dampede-hjertemuslinger-feta-assyrtiko` · `rejer-saganaki` · `polvo-a-lagareiro` · `psarosoupa-graesk-fiskesuppe` · `sliders-med-barbera-glaze` · `grillet-unghanebryst-brombaer-rodvinssauce` · `sprode-gyoza-med-kold-rodvin` · `grillet-halloumi-hvidvins-honningglace` · `pica-pau` · `ameijoas-a-bulhao-pato` · `keftedakia-med-rodvin`
+
+Scripts: `scripts/add-recipes-value-chill-batch{1,2}.mjs`.
+
+---
 
 ## Chill Your Reds — 2026-09-24
 

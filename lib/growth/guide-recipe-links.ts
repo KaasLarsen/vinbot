@@ -1065,6 +1065,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
     { slug: "svamperisotto-med-kold-pinot", label: "Svamperisotto med kold pinot" },
     { slug: "grillet-kyllingebryst-estragon-kold-rodvin", label: "Kylling med estragon" },
+    { slug: "sliders-med-barbera-glaze", label: "Sliders med Barbera-glaze" },
+    { slug: "grillet-unghanebryst-brombaer-rodvinssauce", label: "Unghanebryst med brombær" },
+    { slug: "sprode-gyoza-med-kold-rodvin", label: "Sprøde gyoza med kold rødvin" },
   ],
   "rodvin-til-fisk-kold": [
     { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
@@ -1087,6 +1090,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "lynstegt-tunsteak-med-sesam", label: "Tun + Frappato" },
     { slug: "sliders-med-fritter-og-barbera", label: "Sliders + Barbera" },
     { slug: "svamperisotto-med-kold-pinot", label: "Risotto + Pinot" },
+    { slug: "sliders-med-barbera-glaze", label: "Sliders med Barbera-glaze" },
   ],
   "rodvin-til-terrassen": [
     { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
@@ -1095,10 +1099,38 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "tarte-flambee-med-gedeost", label: "Tarte flambée med gedeost" },
     { slug: "luksus-hotdogs-med-rodvinsloeg", label: "Luksus-hotdogs med rødvinssløg" },
     { slug: "grillede-portobello-med-parmesan", label: "Grillede portobello med parmesan" },
+    { slug: "sprode-gyoza-med-kold-rodvin", label: "Sprøde gyoza med kold rødvin" },
+    { slug: "grillet-halloumi-hvidvins-honningglace", label: "Halloumi med honningglace" },
   ],
   "20-minutter-i-koeleskabet-roedvin": [
     { slug: "luksus-hotdogs-med-rodvinsloeg", label: "Luksus-hotdogs" },
     { slug: "charcuteribraet-med-kold-rodvin", label: "Charcuteribræt" },
+  ],
+  "vinho-verde-vs-alvarinho": [
+    { slug: "arroz-de-marisco", label: "Arroz de marisco" },
+    { slug: "polvo-a-lagareiro", label: "Polvo à Lagareiro" },
+    { slug: "ameijoas-a-bulhao-pato", label: "Amêijoas à Bulhão Pato" },
+    { slug: "pica-pau", label: "Pica-pau" },
+  ],
+  "farvel-sancerre-goddag-assyrtiko": [
+    { slug: "dampede-hjertemuslinger-feta-assyrtiko", label: "Hjertemuslinger med feta" },
+    { slug: "rejer-saganaki", label: "Rejer saganaki" },
+    { slug: "psarosoupa-graesk-fiskesuppe", label: "Psarosoupa" },
+  ],
+  "graesk-meze-braet": [
+    { slug: "rejer-saganaki", label: "Rejer saganaki" },
+    { slug: "dampede-hjertemuslinger-feta-assyrtiko", label: "Hjertemuslinger med feta" },
+    { slug: "keftedakia-med-rodvin", label: "Keftedakia" },
+    { slug: "grillet-halloumi-hvidvins-honningglace", label: "Halloumi med honningglace" },
+  ],
+  "vinregion-portugal": [
+    { slug: "arroz-de-marisco", label: "Arroz de marisco" },
+    { slug: "polvo-a-lagareiro", label: "Polvo à Lagareiro" },
+    { slug: "ameijoas-a-bulhao-pato", label: "Amêijoas à Bulhão Pato" },
+    { slug: "pica-pau", label: "Pica-pau" },
+  ],
+  "xinomavro-og-touriga-nacional": [
+    { slug: "keftedakia-med-rodvin", label: "Keftedakia" },
   ],
 
 };

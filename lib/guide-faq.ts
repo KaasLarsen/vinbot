@@ -203,6 +203,34 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "En let, afkølet rødvin er et stærkt alternativ: mere krop end hvid, mere friskhed end lun stue-rød — ideel som aperitif.",
     },
   ],
+  "farvel-sancerre-goddag-assyrtiko": [
+    {
+      question: "Er Assyrtiko billigere end Sancerre?",
+      answer:
+        "Ofte ja i samme kvalitetsoplevelse: Assyrtiko leverer mineralitet og syre typisk til færre kroner end mange Sancerre-flasker i DK.",
+    },
+  ],
+  "vinho-verde-vs-alvarinho": [
+    {
+      question: "Er Vinho Verde og Alvarinho det samme?",
+      answer:
+        "Nej. Vinho Verde er en region/stil; Alvarinho er en drue (samme som Albariño), der kan indgå i Vinho Verde eller stå alene som mere koncentreret vin.",
+    },
+  ],
+  "xinomavro-og-touriga-nacional": [
+    {
+      question: "Skal Xinomavro og Touriga serveres kolde?",
+      answer:
+        "Nej — de er strukturerede middagsvine ved ca. 16–18 °C. Til køleskabskold rød vælg gamay, pinot eller frappato i stedet.",
+    },
+  ],
+  "graesk-meze-braet": [
+    {
+      question: "Hvilken vin skal man drikke til græsk meze?",
+      answer:
+        "Tør Assyrtiko eller Moschofilero ved 8–11 °C til oliven, feta og tzatziki. Til kødboller: let Xinomavro eller en kold gamay.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

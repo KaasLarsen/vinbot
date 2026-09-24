@@ -22,6 +22,8 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "chill-your-reds",
   "rodvin-til-fisk-kold",
   "rodvin-til-terrassen",
+  "farvel-sancerre-goddag-assyrtiko",
+  "vinho-verde-vs-alvarinho",
   "pet-nat-for-begyndere",
   "vin-til-pizza",
   "bedste-vin-til-gave",
