@@ -6,11 +6,13 @@ import { BreadcrumbJsonLd, FaqJsonLd, RecipeJsonLd } from "@/components/json-ld"
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { RecipeIngredients } from "@/components/recipe-ingredients";
 import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
+import { RelatedDrinks } from "@/components/related-drinks";
 import { RecipeSteps } from "@/components/recipe-steps";
 import { DrinkWineBox } from "@/components/drink-wine-box";
 import { DrinkShopSection } from "@/components/drink-shop-section";
 import { DrinkHeroImage } from "@/components/drink-hero-image";
 import { getAllDrinkSlugs, getDrink } from "@/lib/content/drinks";
+import { getRelatedDrinks } from "@/lib/content/related-drinks";
 import { drinkPublicationAndModified } from "@/lib/drink-dates";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
 import { editorialTeamName, siteUrl } from "@/lib/site";
@@ -110,6 +112,12 @@ export default async function DrinkPage({ params }: Props) {
     answer: f.answer,
   }));
 
+  const relatedDrinks = getRelatedDrinks({
+    excludeSlug: slug,
+    tags: frontmatter.tags,
+    relatedDrinks: frontmatter.relatedDrinks,
+  });
+
   return (
     <PageShell as="article" variant="article" className="py-10">
       <RecipeJsonLd
@@ -185,6 +193,8 @@ export default async function DrinkPage({ params }: Props) {
       <div className="prose prose-stone mt-10 max-w-none">{content}</div>
 
       {faqItems.length > 0 ? <GuideFaqAccordion items={faqItems} /> : null}
+
+      <RelatedDrinks drinks={relatedDrinks} />
 
       {frontmatter.relatedGuides?.length ? (
         <RecipeRelatedGuides slugs={frontmatter.relatedGuides} />

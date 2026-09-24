@@ -33,6 +33,8 @@ export type DrinkFrontmatter = {
   wineInRecipe: DrinkWineInRecipe;
   wineToDrink: DrinkWineToDrink;
   relatedGuides?: string[];
+  /** Valgfri curated drink-slugs; ellers auto via tag-overlap. */
+  relatedDrinks?: string[];
   ingredients: string[];
   instructions: string[];
   /** Struktureret FAQ til FAQPage JSON-LD. */
