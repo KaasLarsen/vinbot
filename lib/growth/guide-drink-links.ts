@@ -229,8 +229,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "spiced-red-wine-hot-toddy", label: "Spiced Red Wine Hot Toddy" },
     { slug: "sangria-med-rodvin", label: "Sangria med rødvin" },
   ],
-      { slug: "fino-cobbler-brombaer", label: "Fino Cobbler med brombær" },
-"hvad-er-sherry-vin": [
+  "hvad-er-sherry-vin": [
     { slug: "rebujito", label: "Rebujito" },
     { slug: "rebujito-de-fresa", label: "Rebujito de Fresa" },
     { slug: "sherry-tonic", label: "Sherry Tonic" },
@@ -239,6 +238,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "adonis-highball", label: "Adonis Highball" },
     { slug: "bamboo-cocktail", label: "Bamboo Cocktail" },
     { slug: "sherry-cobbler", label: "Sherry Cobbler" },
+    { slug: "fino-cobbler-brombaer", label: "Fino Cobbler med brombær" },
   ],
   "hvad-er-vermouth": [
     { slug: "adonis", label: "Adonis" },
