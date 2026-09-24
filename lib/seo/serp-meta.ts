@@ -1784,6 +1784,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hjemmelavet rødvinsgløgg med kanel, nelliker, appelsin og port. Klassisk juleopskrift til 8–10 glas.",
   },
+  rossini: {
+    title: "Rossini opskrift — prosecco og jordbær",
+    description:
+      "Rossini med mousserende vin og jordbærpuré. Belliniens jordbær-kusine — opskrift til 1 flute.",
+  },
+  "black-velvet": {
+    title: "Black Velvet opskrift — stout og champagne",
+    description:
+      "Black Velvet: lige dele stout og tør mousserende vin. Klassisk øl-og-bobler-drink — opskrift.",
+  },
+  "chambord-spritz": {
+    title: "Chambord Spritz opskrift",
+    description:
+      "Chambord Spritz med mousserende vin, Chambord og danskvand. Hindbær-spritz — opskrift til 1 glas.",
+  },
+  "vermouth-highball": {
+    title: "Vermouth Highball opskrift",
+    description:
+      "Vermouth Highball: sød eller tør vermouth, soda/tonic og citrus. Lav-alkohol long drink — opskrift.",
+  },
+  "death-in-the-afternoon": {
+    title: "Death in the Afternoon opskrift",
+    description:
+      "Death in the Afternoon: absint toppet med iskold champagne. Hemingway-drink — opskrift til 1 flute.",
+  },
+  "gluehwein-sour": {
+    title: "Glühwein-Sour opskrift — bourbon og gløgg",
+    description:
+      "Glühwein-Sour: bourbon, citron og krydret gløgg-rødvin som float. Vinter-sour — opskrift til 1 glas.",
+  },
+  "port-spritzer": {
+    title: "Port Spritzer opskrift",
+    description:
+      "Port Spritzer: tawny eller ruby port toppet med danskvand og appelsinskal. Nem aperitif — opskrift.",
+  },
+  "sake-cocktail": {
+    title: "Sake Cocktail opskrift — sake, gin og agurk",
+    description:
+      "Sake Cocktail: japansk risvin rystet med gin, agurk og lime. Frisk fusion-drink — opskrift.",
+  },
+  kir: {
+    title: "Kir opskrift — hvidvin og cassis",
+    description:
+      "Klassisk Kir med tør hvidvin og crème de cassis. Bourgogne-aperitif — opskrift til 1 glas.",
+  },
+  "watermelon-rose-cooler": {
+    title: "Watermelon Rosé Cooler opskrift",
+    description:
+      "Watermelon Rosé Cooler: rosé blended med vandmelon, vodka og lime. Sommer-slush til 4 glas.",
+  },
 };
 
 export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
