@@ -7,7 +7,7 @@ import { DealCard } from "@/components/deal-card";
 import type { TilbudCardItem } from "@/lib/deals/types";
 
 const QUICK_CHIPS = ["Portvin", "Champagne", "Rosé"] as const;
-const DEBOUNCE_MS = 300;
+const DEBOUNCE_MS = 250;
 
 function useDebouncedValue<T>(value: T, ms: number): T {
   const [debounced, setDebounced] = useState(value);
@@ -18,12 +18,6 @@ function useDebouncedValue<T>(value: T, ms: number): T {
   return debounced;
 }
 
-function mergeTopDeals(feedDeals: TilbudCardItem[], crossDeals: TilbudCardItem[], limit: number): TilbudCardItem[] {
-  return [...feedDeals, ...crossDeals]
-    .sort((a, b) => b.discountPercent - a.discountPercent || a.salePrice - b.salePrice)
-    .slice(0, limit);
-}
-
 export function HomeBestDealsSearch() {
   const inputId = useId();
   const [q, setQ] = useState("");
@@ -31,6 +25,13 @@ export function HomeBestDealsSearch() {
   const [deals, setDeals] = useState<TilbudCardItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Varm den delte feed-deal-pool ved mount (uden q) — så første søgning er hurtig.
+  useEffect(() => {
+    void fetch("/api/deals?type=feed&limit=1&minDiscount=15").catch(() => {
+      /* ignore */
+    });
+  }, []);
 
   useEffect(() => {
     const term = debouncedQ.trim();
@@ -47,20 +48,18 @@ export function HomeBestDealsSearch() {
 
     void (async () => {
       try {
+        // Kun feed: undgår tung cross-merchant-katalog. Pool er cachet uden q.
         const params = new URLSearchParams({
           q: term,
-          type: "all",
-          limit: "6",
+          type: "feed",
+          limit: "3",
           minDiscount: "15",
         });
         const res = await fetch(`/api/deals?${params}`, { signal: ac.signal });
         if (!res.ok) throw new Error("fetch failed");
-        const data = (await res.json()) as {
-          feedDeals: TilbudCardItem[];
-          crossDeals: TilbudCardItem[];
-        };
+        const data = (await res.json()) as { feedDeals: TilbudCardItem[] };
         if (ac.signal.aborted) return;
-        setDeals(mergeTopDeals(data.feedDeals ?? [], data.crossDeals ?? [], 3));
+        setDeals(data.feedDeals ?? []);
       } catch (err) {
         if (ac.signal.aborted) return;
         setDeals([]);

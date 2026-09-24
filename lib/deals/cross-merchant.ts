@@ -23,6 +23,11 @@ export type ListCrossMerchantDealsOptions = {
   q?: string;
 };
 
+type CrossDealsPoolOpts = {
+  minSavingsPercent: number;
+  minSavingsAmount: number;
+};
+
 function crossDealMatchesQuery(deal: CrossMerchantDeal, q: string): boolean {
   const t = q.trim().toLowerCase();
   if (!t) return true;
@@ -56,11 +61,9 @@ function computeCrossMerchantDeal(wine: CanonicalWine): CrossMerchantDeal | null
   return { wine, lowestOffer, highestOffer, savingsPercent, savingsAmount };
 }
 
-async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {}): Promise<CrossMerchantDeal[]> {
-  const minPct = opts.minSavingsPercent ?? DEFAULT_MIN_SAVINGS_PERCENT;
-  const minAmount = opts.minSavingsAmount ?? DEFAULT_MIN_SAVINGS_AMOUNT;
-  const limit = opts.limit ?? DEFAULT_LIMIT;
-  const q = opts.q?.trim() || "";
+/** Fuld sorteret cross-deal-pool (uden q/limit) — én cache pr. filter-sæt. */
+async function buildCrossMerchantDealsPool(opts: CrossDealsPoolOpts): Promise<CrossMerchantDeal[]> {
+  const { minSavingsPercent: minPct, minSavingsAmount: minAmount } = opts;
 
   const { wines } = await loadWineCatalog();
   const deals: CrossMerchantDeal[] = [];
@@ -70,7 +73,6 @@ async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {})
     if (!deal) continue;
     if (deal.savingsPercent < minPct) continue;
     if (deal.savingsAmount < minAmount) continue;
-    if (q && !crossDealMatchesQuery(deal, q)) continue;
     deals.push(deal);
   }
 
@@ -81,23 +83,34 @@ async function buildCrossMerchantDeals(opts: ListCrossMerchantDealsOptions = {})
       b.wine.offers.length - a.wine.offers.length,
   );
 
-  return deals.slice(0, limit);
+  return deals;
 }
 
-const getCachedCrossMerchantDeals = unstable_cache(
-  (optsJson: string) => buildCrossMerchantDeals(JSON.parse(optsJson) as ListCrossMerchantDealsOptions),
-  ["vinbot-cross-merchant-deals-v3"],
+const getCachedCrossMerchantDealsPool = unstable_cache(
+  (optsJson: string) => buildCrossMerchantDealsPool(JSON.parse(optsJson) as CrossDealsPoolOpts),
+  ["vinbot-cross-merchant-deals-pool-v1"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
+
+async function loadCrossMerchantDealsPool(opts: CrossDealsPoolOpts): Promise<CrossMerchantDeal[]> {
+  try {
+    return await getCachedCrossMerchantDealsPool(JSON.stringify(opts));
+  } catch {
+    return buildCrossMerchantDealsPool(opts);
+  }
+}
 
 export async function listCrossMerchantDeals(
   opts: ListCrossMerchantDealsOptions = {},
 ): Promise<CrossMerchantDeal[]> {
-  try {
-    const cached = await getCachedCrossMerchantDeals(JSON.stringify(opts));
-    if (cached.length > 0) return cached;
-  } catch {
-    // fall through
+  const minSavingsPercent = opts.minSavingsPercent ?? DEFAULT_MIN_SAVINGS_PERCENT;
+  const minSavingsAmount = opts.minSavingsAmount ?? DEFAULT_MIN_SAVINGS_AMOUNT;
+  const limit = opts.limit ?? DEFAULT_LIMIT;
+  const q = opts.q?.trim() || "";
+
+  let deals = await loadCrossMerchantDealsPool({ minSavingsPercent, minSavingsAmount });
+  if (q) {
+    deals = deals.filter((d) => crossDealMatchesQuery(d, q));
   }
-  return buildCrossMerchantDeals(opts);
+  return deals.slice(0, limit);
 }

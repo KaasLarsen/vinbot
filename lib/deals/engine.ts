@@ -20,6 +20,12 @@ export type ListFeedDealsOptions = {
   q?: string;
 };
 
+type FeedDealsPoolOpts = {
+  minDiscount: number;
+  maxPrice: number | null;
+  merchant: string | null;
+};
+
 function dealMatchesQuery(deal: DealHit, q: string): boolean {
   const t = q.trim().toLowerCase();
   if (!t) return true;
@@ -58,13 +64,9 @@ function diversifyTopByMerchant(items: DealHit[], prefixCount: number): DealHit[
   return [...out, ...rest];
 }
 
-async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[]> {
-  const minDiscount = opts.minDiscount ?? DEFAULT_MIN_DISCOUNT;
-  const maxPrice = opts.maxPrice ?? null;
-  const merchantFilter = opts.merchant?.trim() || null;
-  const limit = opts.limit ?? DEFAULT_LIMIT;
-  const q = opts.q?.trim() || "";
-  const hasQuery = q.length > 0;
+/** Fuld sorteret deal-pool (uden q/limit/diversify) — én cache pr. filter-sæt. */
+async function buildFeedDealsPool(opts: FeedDealsPoolOpts): Promise<DealHit[]> {
+  const { minDiscount, maxPrice, merchant: merchantFilter } = opts;
 
   const lists = await Promise.all(
     FEEDS.map(async (feed) => {
@@ -95,11 +97,7 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
     }),
   );
 
-  let items = lists.flat();
-  if (hasQuery) {
-    items = items.filter((d) => dealMatchesQuery(d, q));
-  }
-
+  const items = lists.flat();
   items.sort(
     (a, b) =>
       (a.tier === "free" ? 1 : 0) - (b.tier === "free" ? 1 : 0) ||
@@ -107,28 +105,39 @@ async function buildFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[
       (a.salePrice ?? 9e9) - (b.salePrice ?? 9e9) ||
       (a.image ? 0 : 1) - (b.image ? 0 : 1),
   );
+  return items;
+}
 
-  if (!hasQuery) {
+const getCachedFeedDealsPool = unstable_cache(
+  (optsJson: string) => buildFeedDealsPool(JSON.parse(optsJson) as FeedDealsPoolOpts),
+  ["vinbot-feed-deals-pool-v1"],
+  { revalidate: 21600, tags: ["vinbot-feeds"] },
+);
+
+async function loadFeedDealsPool(opts: FeedDealsPoolOpts): Promise<DealHit[]> {
+  try {
+    return await getCachedFeedDealsPool(JSON.stringify(opts));
+  } catch {
+    return buildFeedDealsPool(opts);
+  }
+}
+
+export async function listFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[]> {
+  const minDiscount = opts.minDiscount ?? DEFAULT_MIN_DISCOUNT;
+  const maxPrice = opts.maxPrice ?? null;
+  const merchant = opts.merchant?.trim() || null;
+  const limit = opts.limit ?? DEFAULT_LIMIT;
+  const q = opts.q?.trim() || "";
+
+  let items = await loadFeedDealsPool({ minDiscount, maxPrice, merchant });
+
+  if (q) {
+    items = items.filter((d) => dealMatchesQuery(d, q));
+  } else {
     items = diversifyTopByMerchant(items, DIVERSIFY_PREFIX);
   }
 
   return items.slice(0, limit);
-}
-
-const getCachedFeedDeals = unstable_cache(
-  (optsJson: string) => buildFeedDeals(JSON.parse(optsJson) as ListFeedDealsOptions),
-  ["vinbot-feed-deals-v4"],
-  { revalidate: 21600, tags: ["vinbot-feeds"] },
-);
-
-export async function listFeedDeals(opts: ListFeedDealsOptions = {}): Promise<DealHit[]> {
-  try {
-    const cached = await getCachedFeedDeals(JSON.stringify(opts));
-    if (cached.length > 0) return cached;
-  } catch {
-    // fall through
-  }
-  return buildFeedDeals(opts);
 }
 
 /** Unikke forhandlere med mindst ét feed-tilbud. */
