@@ -1984,6 +1984,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Soho Spritz: gin, hvidvin, æblejuice, hyldeblomst og soda. Let britisk spritz — opskrift.",
   },
+  "pisco-punch-hvidvin": {
+    title: "Pisco Punch med hvidvin opskrift",
+    description:
+      "Pisco Punch med hvidvin: pisco, ananas, lime og sprød hvidvin. Tropisk punch — opskrift.",
+  },
+  "adonis-highball": {
+    title: "Adonis Highball opskrift",
+    description:
+      "Adonis Highball: tør sherry, sød vermouth og danskvand på is. Let long drink — opskrift.",
+  },
+  "sparkling-paloma": {
+    title: "Sparkling Paloma opskrift",
+    description:
+      "Sparkling Paloma: tequila, grapefrugtsoda, lime og tør mousserende vin. Fest-Paloma — opskrift.",
+  },
+  "portvins-sour-skum": {
+    title: "Portvins-Sour med æggehvide opskrift",
+    description:
+      "Portvins-Sour med æggehvide: tawny, citron, sirup og tæt skum. Cremet port-sour — opskrift.",
+  },
+  "sake-tonic": {
+    title: "Sake & Tonic opskrift",
+    description:
+      "Sake & Tonic: japansk risvin, premium tonic, agurk og lime. Let sake-long drink — opskrift.",
+  },
+  "lillet-spritz": {
+    title: "Lillet Spritz opskrift",
+    description:
+      "Lillet Spritz: Lillet Blanc, mousserende vin, danskvand og agurk. Fransk aperitif — opskrift.",
+  },
+  "rose-tequila-spritz": {
+    title: "Rosé Tequila Spritz opskrift",
+    description:
+      "Rosé Tequila Spritz: tequila, rosé, grapefrugtsaft og kulsyre. Pink sommer-spritz — opskrift.",
+  },
+  "fino-cobbler-brombaer": {
+    title: "Fino Cobbler med brombær opskrift",
+    description:
+      "Fino Cobbler: Fino sherry, mosede brombær, sukker, knust is og mynte. Frugtig cobbler — opskrift.",
+  },
+  "champagne-bowle-fersken": {
+    title: "Champagne Bowle med fersken opskrift",
+    description:
+      "Champagne Bowle med fersken: bobler, ferskenlikør, lys rom og danskvand. Festbowle til 8–10.",
+  },
+  "white-wine-mojito": {
+    title: "White Wine Mojito opskrift",
+    description:
+      "White Wine Mojito: sprød hvidvin, sukker, lime, mynte og danskvand. Let vin-mojito — opskrift.",
+  },
 };
 
 export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
