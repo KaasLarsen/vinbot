@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
-import { HomeBestDealsSearch } from "@/components/home-best-deals-search";
+import { HomeBestDealsSearchSection } from "@/components/home-best-deals-search-section";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeDrinksStrip } from "@/components/home-drinks-strip";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
@@ -75,7 +75,7 @@ export default function HomePage() {
             intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
           />
 
-          <HomeBestDealsSearch />
+          <HomeBestDealsSearchSection />
 
           <HomeLigeNuStrip />
         </div>

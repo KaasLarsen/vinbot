@@ -4,6 +4,7 @@ import { FEEDS } from "@/lib/feeds/config";
 import { getCachedFeedProducts } from "@/lib/search/fetch-feed";
 import { normalizeUrl, productEligibleForWineSearch, proxyImg } from "@/lib/search/helpers";
 import type { DealHit } from "@/lib/search/types";
+import { feedDealToCard, type DealSearchItem } from "@/lib/deals/types";
 
 const DEFAULT_MIN_DISCOUNT = 15;
 const DEFAULT_LIMIT = 48;
@@ -138,6 +139,31 @@ export async function listFeedDeals(opts: ListFeedDealsOptions = {}): Promise<De
   }
 
   return items.slice(0, limit);
+}
+
+function toSearchItem(d: DealHit): DealSearchItem {
+  const hay = `${d.title} ${d.brand} ${d.merchant} ${d.category} ${(d._search || "").slice(0, 160)}`.toLowerCase();
+  return { ...feedDealToCard(d), s: hay };
+}
+
+async function buildFeedDealSearchIndex(minDiscount: number): Promise<DealSearchItem[]> {
+  const pool = await loadFeedDealsPool({ minDiscount, maxPrice: null, merchant: null });
+  return pool.map(toSearchItem);
+}
+
+const getCachedFeedDealSearchIndex = unstable_cache(
+  (minDiscount: number) => buildFeedDealSearchIndex(minDiscount),
+  ["vinbot-feed-deal-search-index-v1"],
+  { revalidate: 21600, tags: ["vinbot-feeds"] },
+);
+
+/** Fuld tilbudssøge-indeks til forsiden — filtreres i browseren (ingen API pr. tast). */
+export async function getFeedDealSearchIndex(minDiscount = DEFAULT_MIN_DISCOUNT): Promise<DealSearchItem[]> {
+  try {
+    return await getCachedFeedDealSearchIndex(minDiscount);
+  } catch {
+    return buildFeedDealSearchIndex(minDiscount);
+  }
 }
 
 /** Unikke forhandlere med mindst ét feed-tilbud. */

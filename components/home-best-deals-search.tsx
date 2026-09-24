@@ -1,84 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 
 import { DealCard } from "@/components/deal-card";
-import type { TilbudCardItem } from "@/lib/deals/types";
+import type { DealSearchItem } from "@/lib/deals/types";
 
 const QUICK_CHIPS = ["Portvin", "Champagne", "Rosé"] as const;
-const DEBOUNCE_MS = 250;
 
-function useDebouncedValue<T>(value: T, ms: number): T {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const t = window.setTimeout(() => setDebounced(value), ms);
-    return () => window.clearTimeout(t);
-  }, [value, ms]);
-  return debounced;
+function topMatches(index: DealSearchItem[], q: string, limit: number): DealSearchItem[] {
+  const t = q.trim().toLowerCase();
+  if (!t) return [];
+  return index
+    .filter((d) => d.s.includes(t) || d.title.toLowerCase().includes(t) || d.brand.toLowerCase().includes(t))
+    .sort((a, b) => b.discountPercent - a.discountPercent || a.salePrice - b.salePrice)
+    .slice(0, limit);
 }
 
-export function HomeBestDealsSearch() {
+export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
   const inputId = useId();
   const [q, setQ] = useState("");
-  const debouncedQ = useDebouncedValue(q, DEBOUNCE_MS);
-  const [deals, setDeals] = useState<TilbudCardItem[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  // Varm den delte feed-deal-pool ved mount (uden q) — så første søgning er hurtig.
-  useEffect(() => {
-    void fetch("/api/deals?type=feed&limit=1&minDiscount=15").catch(() => {
-      /* ignore */
-    });
-  }, []);
-
-  useEffect(() => {
-    const term = debouncedQ.trim();
-    if (!term) {
-      setDeals([]);
-      setError(null);
-      setLoading(false);
-      return;
-    }
-
-    const ac = new AbortController();
-    setLoading(true);
-    setError(null);
-
-    void (async () => {
-      try {
-        // Kun feed: undgår tung cross-merchant-katalog. Pool er cachet uden q.
-        const params = new URLSearchParams({
-          q: term,
-          type: "feed",
-          limit: "3",
-          minDiscount: "15",
-        });
-        const res = await fetch(`/api/deals?${params}`, { signal: ac.signal });
-        if (!res.ok) throw new Error("fetch failed");
-        const data = (await res.json()) as { feedDeals: TilbudCardItem[] };
-        if (ac.signal.aborted) return;
-        setDeals(data.feedDeals ?? []);
-      } catch (err) {
-        if (ac.signal.aborted) return;
-        setDeals([]);
-        setError("Kunne ikke hente tilbud. Prøv igen.");
-        console.error(err);
-      } finally {
-        if (!ac.signal.aborted) setLoading(false);
-      }
-    })();
-
-    return () => ac.abort();
-  }, [debouncedQ]);
+  const deals = useMemo(() => topMatches(index, q, 3), [index, q]);
 
   const trimmed = q.trim();
   const showResults = trimmed.length > 0;
 
   return (
     <section
-      className="mt-8 rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5 lg:mt-0"
+      className="mt-8 min-w-0 max-w-full overflow-x-clip rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5 lg:mt-0"
       aria-labelledby="home-best-deals-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Tilbud</p>
@@ -89,7 +39,7 @@ export function HomeBestDealsSearch() {
         Skriv fx Portvin — vi viser de 3 stærkeste rabatter.
       </p>
 
-      <div className="mt-3">
+      <div className="mt-3 min-w-0">
         <label htmlFor={inputId} className="sr-only">
           Søg bedste tilbud
         </label>
@@ -100,7 +50,9 @@ export function HomeBestDealsSearch() {
           onChange={(e) => setQ(e.target.value)}
           placeholder="fx Portvin, champagne, rosé"
           autoComplete="off"
-          className="w-full rounded-xl border border-rose-200 bg-white px-3 py-2.5 text-sm text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
+          enterKeyHint="search"
+          // text-base (16px): undgår iOS Safari zoom ved fokus
+          className="w-full max-w-full rounded-xl border border-rose-200 bg-white px-3 py-2.5 text-base text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
         />
       </div>
 
@@ -121,21 +73,21 @@ export function HomeBestDealsSearch() {
       ) : null}
 
       {showResults ? (
-        <div className="mt-4" aria-live="polite">
-          {loading ? <p className="text-sm text-stone-600">Søger tilbud…</p> : null}
-          {!loading && error ? <p className="text-sm text-rose-800">{error}</p> : null}
-          {!loading && !error && deals.length === 0 ? (
+        <div className="mt-4 min-w-0" aria-live="polite">
+          {deals.length === 0 ? (
             <p className="text-sm text-stone-600">Ingen tilbud matcher «{trimmed}» lige nu.</p>
-          ) : null}
-          {!loading && deals.length > 0 ? (
-            <ul className="grid gap-3">
-              {deals.map((deal) => (
-                <li key={deal.id}>
-                  <DealCard deal={deal} placement="home-best-deals" variant="compact" />
-                </li>
-              ))}
+          ) : (
+            <ul className="grid min-w-0 gap-3">
+              {deals.map((deal) => {
+                const { s: _s, ...card } = deal;
+                return (
+                  <li key={card.id} className="min-w-0">
+                    <DealCard deal={card} placement="home-best-deals" variant="compact" />
+                  </li>
+                );
+              })}
             </ul>
-          ) : null}
+          )}
         </div>
       ) : null}
 

@@ -20,6 +20,9 @@ export type TilbudCardItem = {
   merchantCount?: number;
 };
 
+/** Tilbudskort + søge-haystack til klient-side filter. */
+export type DealSearchItem = TilbudCardItem & { s: string };
+
 export function feedDealToCard(deal: {
   merchant: string;
   tier?: "paid" | "free";
