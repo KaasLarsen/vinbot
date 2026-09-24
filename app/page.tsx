@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
+import { HomeDrinksStrip } from "@/components/home-drinks-strip";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { HomeWineSearch } from "@/components/home-wine-search";
@@ -82,6 +83,7 @@ export default function HomePage() {
         <div data-home-feed-strips>
           <HomeWinesStrip />
           <HomeRecipesStrip />
+          <HomeDrinksStrip />
           <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
           <HomeDealsStrip />
         </div>
@@ -113,6 +115,15 @@ export default function HomePage() {
           <h3 className="text-lg font-semibold text-stone-900">Opskrifter</h3>
           <p className="mt-2 text-stone-600">
             Vin i gryden eller vin til glasset — fulde opskrifter med anbefalet vin og shop-forslag.
+          </p>
+        </Link>
+        <Link
+          href="/drinks"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Drinks</h3>
+          <p className="mt-2 text-stone-600">
+            Spritz, sangria, Port &amp; Tonic og klassiske cocktails — hvor vin er hovedrollen.
           </p>
         </Link>
         <Link

@@ -28,6 +28,8 @@ export type HomeMoment = {
   links: HomeMomentLink[];
   dishIds: string[];
   recipeSlugs: string[];
+  /** Drink-opskrifter til forsiden (vin i glasset). */
+  drinkSlugs: string[];
   saesonHeadline: string;
   saesonIntro: string;
   saesonGuideLinks: HomeMomentLink[];
@@ -116,11 +118,38 @@ const DEFAULT_RECIPES = [
   "tomatsuppe-med-hvidvin",
 ] as const;
 
+const DEFAULT_DRINKS = [
+  "aperol-spritz",
+  "hugo-spritz",
+  "portvin-tonic",
+  "french-75",
+  "negroni-sbagliato",
+  "tinto-de-verano",
+  "sangria-med-rodvin",
+  "new-york-sour",
+  "kir-royal",
+  "limoncello-spritz",
+  "kalimotxo",
+  "rebujito",
+] as const;
+
 /** Stable weekly pick from a pool — same for all users within an ISO week. */
 export function pickFeaturedRecipeSlugs(pool: readonly string[], isoWeek: number, count = 4): string[] {
   if (pool.length === 0) return [];
   if (pool.length <= count) return [...pool];
   const start = (isoWeek * 3) % pool.length;
+  const out: string[] = [];
+  for (let i = 0; i < count; i++) {
+    out.push(pool[(start + i) % pool.length]!);
+  }
+  return out;
+}
+
+/** Samme rotation som opskrifter — eget offset, så strips ikke spejler hinanden. */
+export function pickFeaturedDrinkSlugs(pool: readonly string[], isoWeek: number, count = 4): string[] {
+  if (pool.length === 0) return [];
+  if (pool.length <= count) return [...pool];
+  const start = (isoWeek * 5 + 2) % pool.length;
   const out: string[] = [];
   for (let i = 0; i < count; i++) {
     out.push(pool[(start + i) % pool.length]!);
@@ -151,6 +180,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "glaseret-skinke-med-madeirasauce",
           "brune-kartofler-med-portvin",
           "cremet-svampesuppe-med-madeira",
+        ],
+        drinkSlugs: [
+          "roedvinsgloegg",
+          "portvinsgloegg",
+          "gluehwein-sour",
+          "kir-royal",
+          "french-75",
+          "black-velvet",
+          "porto-flip",
+          "tawny-sour",
         ],
         saesonHeadline: "Lige nu: jul og julemad",
         saesonIntro:
@@ -192,6 +231,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "champagne-hollandaise",
           "fisk-i-hvidvinsauce",
         ],
+        drinkSlugs: [
+          "nytaarsbowle",
+          "french-75",
+          "kir-royal",
+          "death-in-the-afternoon",
+          "black-velvet",
+          "mimosa",
+          "french-77",
+          "sparkling-sangria",
+          "bellini",
+          "negroni-sbagliato",
+        ],
         saesonHeadline: "Lige nu: nytår",
         saesonIntro: "Bobler til midnat, og en plan for menuen så I ikke står med tre tilfældige flasker.",
         saesonGuideLinks: [
@@ -224,6 +275,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "chili-con-carne-med-rodvin",
           "pizza-parmaskinke-og-rucola",
         ],
+        drinkSlugs: [
+          "negroni-sbagliato",
+          "campari-spritz",
+          "kir",
+          "portvin-tonic",
+          "aperol-spritz",
+          "french-75",
+          "new-york-sour",
+          "tawny-sour",
+        ],
         saesonHeadline: "Lige nu: fastelavn",
         saesonIntro: "Fastelavn er hverdagsfest: boller, masker og vin der ikke skal være højtidelig.",
         saesonGuideLinks: [g("vin-til-fastelavn", "fastelavn"), g("vin-til-burger", "burger")],
@@ -251,6 +312,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "braiseret-lammeskank-med-rodvin",
           "gravad-laks-med-hvidvin",
           "pizza-margherita",
+        ],
+        drinkSlugs: [
+          "mimosa",
+          "bellini",
+          "kir-royal",
+          "french-75",
+          "hugo-spritz",
+          "rossini",
+          "kir",
+          "white-wine-spritzer",
         ],
         saesonHeadline: "Lige nu: påske",
         saesonIntro: "Påsken blander frokost, lam og forår — planlæg både hvidvin til sild og rød til lammet.",
@@ -284,6 +355,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "champagne-hollandaise",
           "ratatouille-med-hvidvin",
         ],
+        drinkSlugs: [
+          "hugo-spritz",
+          "aperol-spritz",
+          "french-75",
+          "kir-royal",
+          "mimosa",
+          "limoncello-spritz",
+          "bellini",
+          "sparkling-sangria",
+          "negroni-sbagliato",
+          "chambord-spritz",
+        ],
         saesonHeadline: "Lige nu: konfirmation, student og selskab",
         saesonIntro:
           "Maj og juni er højsæson for store borde. Tænk mængde, bobler og flasker der smager godt uden at sprænge budgettet.",
@@ -313,6 +396,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "cremet-svampesuppe-med-madeira",
           "andebaer-portvin-sauce",
         ],
+        drinkSlugs: [
+          "efteraars-sangria",
+          "new-york-sour",
+          "gluehwein-sour",
+          "porto-flip",
+          "tawny-sour",
+          "kir",
+          "white-port-negroni",
+          "cynar-spritz",
+        ],
         saesonHeadline: "Lige nu: Mortensaften og efterår",
         saesonIntro: "Anden på Mortensaften kalder på rødvin med fylde — og er en god generalprøve til juleanden.",
         saesonGuideLinks: [
@@ -341,6 +434,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "risotto-med-hvidvin",
           "svampetoast-med-hvidvin-og-timian",
         ],
+        drinkSlugs: [
+          "aperol-spritz",
+          "hugo-spritz",
+          "portvin-tonic",
+          "negroni-sbagliato",
+          "tinto-de-verano",
+          "kalimotxo",
+          "campari-spritz",
+          "limoncello-spritz",
+        ],
         saesonHeadline: "Lige nu: fredag og weekend",
         saesonIntro: "Købslysten topper torsdag–fredag. Match vinen til takeaway og det I faktisk spiser i aften.",
         saesonGuideLinks: [g("vin-til-pizza", "pizza"), g("vin-til-burger", "burger"), g("vin-til-grill-og-bbq", "grill")],
@@ -368,6 +471,16 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "gnocchi-rodvinssauce",
           "risotto-med-rodvin-barolo",
           "svampe-bourguignon",
+        ],
+        drinkSlugs: [
+          "new-york-sour",
+          "kir",
+          "portvin-tonic",
+          "negroni-sbagliato",
+          "tawny-sour",
+          "sherry-tonic",
+          "bamboo-cocktail",
+          "adonis",
         ],
         saesonHeadline: "Lige nu: søndagssimmer",
         saesonIntro: "Søndag er til langtidssimring og at planlægge ugen — ikke til nørdet teori.",
@@ -400,6 +513,20 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "ratatouille-med-hvidvin",
           "blamuslinger",
           "cote-de-boeuf-med-rodvin",
+        ],
+        drinkSlugs: [
+          "aperol-spritz",
+          "hugo-spritz",
+          "tinto-de-verano",
+          "frose",
+          "rose-sangria",
+          "watermelon-rose-cooler",
+          "limoncello-spritz",
+          "rebujito",
+          "sangria-blanca",
+          "blackberry-rose-spritz",
+          "portvin-tonic",
+          "kalimotxo",
         ],
         saesonHeadline: "Lige nu: grill og sommer",
         saesonIntro: "Når det er terrassevejr, vinder kold rosé, sprød hvid og saftig rød til grillen.",
@@ -439,6 +566,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "gnocchi-rodvinssauce",
           "madeira-glaseret-rosenkaal",
         ],
+        drinkSlugs: [
+          "efteraars-sangria",
+          "new-york-sour",
+          "gluehwein-sour",
+          "tawny-sour",
+          "porto-flip",
+          "white-port-negroni",
+          "cynar-spritz",
+          "kir",
+          "sangria-med-rodvin",
+          "negroni-sbagliato",
+        ],
         saesonHeadline: "Lige nu: efterår",
         saesonIntro: "Vildt, svampe og gryder — her rykker glasset over på rødvin med mere krop.",
         saesonGuideLinks: [
@@ -475,6 +614,17 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "risotto-med-rodvin-barolo",
           "svinekoteletter-med-sennep-og-hvidvin",
         ],
+        drinkSlugs: [
+          "roedvinsgloegg",
+          "portvinsgloegg",
+          "gluehwein-sour",
+          "porto-flip",
+          "tawny-sour",
+          "black-velvet",
+          "new-york-sour",
+          "kir",
+          "white-port-negroni",
+        ],
         saesonHeadline: "Lige nu: vinter og hygge",
         saesonIntro: "Når det er mørkt og koldt, passer tungere rødvin, gryder og det lange måltid.",
         saesonGuideLinks: [
@@ -507,6 +657,18 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "gravad-laks-med-hvidvin",
           "ratatouille-med-hvidvin",
         ],
+        drinkSlugs: [
+          "hugo-spritz",
+          "french-75",
+          "kir",
+          "aperol-spritz",
+          "mimosa",
+          "bellini",
+          "french-77",
+          "white-wine-spritzer",
+          "rossini",
+          "bicicletta-spritz",
+        ],
         saesonHeadline: "Lige nu: forår",
         saesonIntro: "Lysere mad og lettere vine — riesling, grüner og det der passer til forårskøkkenet.",
         saesonGuideLinks: [
@@ -528,6 +690,7 @@ function momentFromId(id: HomeMomentId): HomeMoment {
         ],
         dishIds: DEFAULT_DISH_IDS,
         recipeSlugs: [...DEFAULT_RECIPES],
+        drinkSlugs: [...DEFAULT_DRINKS],
         saesonHeadline: "Lige nu: hverdag og sæson",
         saesonIntro: "Årstiden styrer køkkenet — vælg en sæson eller højtid, og find vinen der passer.",
         saesonGuideLinks: [
@@ -573,6 +736,7 @@ export function getHomeMoment(now: Date = new Date()): HomeMoment {
   return {
     ...moment,
     recipeSlugs: pickFeaturedRecipeSlugs(moment.recipeSlugs, parts.isoWeek),
+    drinkSlugs: pickFeaturedDrinkSlugs(moment.drinkSlugs, parts.isoWeek),
   };
 }
 
@@ -615,6 +779,29 @@ export function allHomeMomentRecipeSlugs(): string[] {
   const set = new Set<string>();
   for (const id of ids) {
     for (const slug of momentFromId(id).recipeSlugs) set.add(slug);
+  }
+  return [...set];
+}
+
+export function allHomeMomentDrinkSlugs(): string[] {
+  const ids: HomeMomentId[] = [
+    "jul",
+    "nytaar",
+    "fastelavn",
+    "paaske",
+    "konfirmation",
+    "mortens",
+    "friday",
+    "sunday",
+    "grill",
+    "efteraar",
+    "vinter",
+    "foraar",
+    "weekday",
+  ];
+  const set = new Set<string>();
+  for (const id of ids) {
+    for (const slug of momentFromId(id).drinkSlugs) set.add(slug);
   }
   return [...set];
 }
