@@ -1300,6 +1300,36 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Portvin er fortificeret: 19–22 % vol. Ruby, tawny og vintage i tabel — derfor små glas og flere genstande.",
   },
+  "hvid-portvin": {
+    title: "Hvid portvin og Port & Tonic",
+    description:
+      "Hvid portvin: tør white til aperitif og P&T, sød white til dessert. Ratio, tonic, citrus og køb.",
+  },
+  "hvad-er-colheita": {
+    title: "Hvad er Colheita-portvin?",
+    description:
+      "Colheita er årgangsbestemt tawny — ikke det samme som 10/20 year-blend. Forskelle, etiket og hvornår du køber den.",
+  },
+  "lbv-ufiltreret-vs-filtreret": {
+    title: "LBV: ufiltreret vs. filtreret",
+    description:
+      "Late Bottled Vintage: filtered er drikkeklar; unfiltered kan have bundfald og føles mere vintage-agtig. Købsguide.",
+  },
+  "vintage-portvin-dekantering": {
+    title: "Sådan dekanterer du Vintage Port",
+    description:
+      "Vintage Port-dekantering: flaske stående, lys under halsen, stop ved sediment. Hvornår LBV også skal i karaffel.",
+  },
+  "douro-dalen-subregioner": {
+    title: "Douro: Baixo Corgo, Cima Corgo, Superior",
+    description:
+      "Douro-dalens tre subregioner: klima fra kølig Baixo Corgo til brandvarm Douro Superior — og hvad det betyder for port.",
+  },
+  "portvin-til-risalamande": {
+    title: "Portvin til risalamande: LBV, tawny, Vintage",
+    description:
+      "Portvin til risalamande med kirsebærsovs: LBV vs. tawny 10 vs. Vintage. Hvad vinder til jul — og hvad er overkill.",
+  },
   "hvad-er-hedvin": {
     title: "Hvad er hedvin? Forstærket vin",
     description:

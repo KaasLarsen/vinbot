@@ -5963,7 +5963,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvilken portvin til risalamande?",
       answer:
-        "Vælg sød og koncentreret port: tawny 10 eller 20 år, LBV eller ruby reserve fra et pålideligt hus matcher kirsebærsovs og marcipan — vintage port kan også fungere til fest, men kræver oftere luft og er mindre praktisk til hverdag. Se bedste portvin om risalamande og julemad-guiden for hele menuen.",
+        "Vælg sød og koncentreret port: tawny 10 eller 20 år, LBV eller ruby reserve fra et pålideligt hus matcher kirsebærsovs og marcipan — vintage port kan også fungere til fest, men kræver oftere luft og er mindre praktisk til hverdag. Side-by-side: portvin til risalamande. Se også bedste portvin og julemad-guiden for hele menuen.",
     },
     {
       question: "Portvin til ost eller blåskimmel — hvad er bedst?",
@@ -6012,7 +6012,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Skal vintage port dekanteres?",
       answer:
-        "Ofte ja, hvis der er bundfald — hæld forsigtigt eller brug karaffel. Tawny og de fleste ruby behøver sjældent dekantering.",
+        "Ofte ja, hvis der er bundfald — hæld forsigtigt eller brug karaffel. Fuld guide: vintage-portvin-dekantering. Tawny og de fleste ruby behøver sjældent dekantering.",
     },
   ],
   "hvor-laenge-holder-portvin": [
@@ -6098,6 +6098,108 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan man bruge champagne til chokolade?",
       answer:
         "Kun demi-sec eller sødere. Brut til mørk chokolade smager typisk surt — vælg port, banyuls eller moscato i stedet.",
+    },
+  ],
+  "hvid-portvin": [
+    {
+      question: "Hvad er hvid portvin?",
+      answer:
+        "White port er fortificeret vin af hvide Douro-druer. Tør stil bruges som aperitif og i Port & Tonic; sød white passer bedre til dessert.",
+    },
+    {
+      question: "Hvordan laver man Port & Tonic?",
+      answer:
+        "5–6 cl tør white port, 10–12 cl tonic, is, citrus og mynte i højballglas. Brug tør white — ikke sød dessert-white.",
+    },
+    {
+      question: "Hvor kold skal white port serveres?",
+      answer:
+        "Ca. 6–10 °C alene, godt kold med is i P&T. For varm white smager tung og alkoholisk.",
+    },
+  ],
+  "hvad-er-colheita": [
+    {
+      question: "Hvad er Colheita-portvin?",
+      answer:
+        "Colheita er årgangsbestemt tawny: én høstårgang fadlagret mindst syv år. Den er ikke det samme som et 10 eller 20 year-blend med gennemsnitsalder.",
+    },
+    {
+      question: "Er Colheita det samme som Vintage Port?",
+      answer:
+        "Nej. Colheita er fadlagret tawny-stil; Vintage Port lagres kort på fad og udvikler sig på flaske med bundfald.",
+    },
+    {
+      question: "Skal jeg købe Colheita eller tawny 10 year?",
+      answer:
+        "Tawny 10 til hverdag og ost. Colheita når du vil have en specifik årgang, gave eller mere fad-karakter.",
+    },
+  ],
+  "lbv-ufiltreret-vs-filtreret": [
+    {
+      question: "Hvad betyder unfiltered LBV?",
+      answer:
+        "Ufiltreret Late Bottled Vintage kan have bundfald og føles mere vintage-agtig. Filtreret LBV er klar og drikkeklar direkte fra flasken.",
+    },
+    {
+      question: "Skal LBV dekanteres?",
+      answer:
+        "Filtreret LBV nej. Ufiltreret LBV ofte ja — samme forsigtige hældning som Vintage Port, hvis der er sediment.",
+    },
+    {
+      question: "Er LBV det samme som Vintage Port?",
+      answer:
+        "Nej. LBV er fra én årgang og drikkeklar ved tapning. Deklareret Vintage er sjældnere, dyrere og lagres længere på flaske.",
+    },
+  ],
+  "vintage-portvin-dekantering": [
+    {
+      question: "Skal Vintage Port dekanteres?",
+      answer:
+        "Ja, typisk — Vintage danner bundfald. Stil flasken lodret 24 timer, hæld langsomt med lys under halsen, og stop når sedimentet nærmer sig.",
+    },
+    {
+      question: "Hvor længe skal Vintage Port stå i karaffel?",
+      answer:
+        "Drik gerne samme aften. Det er bundfaldsadskillelse, ikke timevis luftning som ung Barolo. Åbnet vintage holder kun få dage.",
+    },
+    {
+      question: "Skal tawny også dekanteres?",
+      answer:
+        "Sjældent. Tawny og de fleste ruby/filtrerede LBV har ikke Vintage-depot.",
+    },
+  ],
+  "douro-dalen-subregioner": [
+    {
+      question: "Hvad er de tre Douro-subregioner?",
+      answer:
+        "Baixo Corgo (vest, køligst), Cima Corgo (midten, klassisk port-hjerte) og Douro Superior (øst, varmest og tørrest).",
+    },
+    {
+      question: "Hvor kommer den bedste portvin fra?",
+      answer:
+        "Mange top-kvintaer ligger i Cima Corgo; Douro Superior giver koncentration til moderne premium. Hus og stil betyder mere end zona alene på etiketten.",
+    },
+    {
+      question: "Hvorfor lagres port i Vila Nova de Gaia?",
+      answer:
+        "Historisk sejlede man tønderne ned ad Douro til det køligere kystklima ved Gaia — mere stabilt til lang fadlagring end den varme dal.",
+    },
+  ],
+  "portvin-til-risalamande": [
+    {
+      question: "Hvilken portvin til risalamande?",
+      answer:
+        "LBV eller tawny 10 er de mest praktiske til dansk jul. LBV spejler kirsebær bedst; tawny matcher mandel og holder længere efter åbning. Vintage er festvalg.",
+    },
+    {
+      question: "Er Vintage Port nødvendigt til risalamande?",
+      answer:
+        "Nej. Det kan smage fantastisk, men kræver dekantering og drikkes hurtigt. LBV giver meget af frugt-oplevelsen til lavere pris og mindre besvær.",
+    },
+    {
+      question: "Ruby eller tawny til kirsebærsovs?",
+      answer:
+        "Ruby reserve eller LBV til kirsebærfrugt; tawny hvis desserten er meget mandel-tung, eller I vil bruge flasken til ost bagefter.",
     },
   ],
   "bedste-cabernet-sauvignon-under-150-kr": [

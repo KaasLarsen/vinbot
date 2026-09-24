@@ -904,14 +904,40 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "portvin-mynte-lammemarinade", label: "Portvin til lam" },
     { slug: "portvinssauce-til-oksemoerbrad", label: "Portvinssauce" },
     { slug: "portvinsgloegg", label: "Portvinsgløgg" },
+    { slug: "portvin-tonic", label: "Portvin-tonic (P&T)" },
     { slug: "figner-i-krydret-portvinssirup", label: "Figner i portvinssirup" },
   ],
   "hvad-er-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
     { slug: "portvin-mynte-lammemarinade", label: "Port i marinade" },
+    { slug: "portvin-tonic", label: "Portvin-tonic" },
   ],
   "sadan-serverer-du-portvin": [
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+    { slug: "portvin-tonic", label: "Portvin-tonic" },
+  ],
+  "hvid-portvin": [
+    { slug: "portvin-tonic", label: "Portvin-tonic (Port & Tonic)" },
+    { slug: "portvinsgloegg", label: "Portvinsgløgg" },
+  ],
+  "portvin-til-risalamande": [
+    { slug: "risalamande", label: "Risalamande" },
+    { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
+    { slug: "portvinsgloegg", label: "Portvinsgløgg" },
+  ],
+  "hvad-er-colheita": [
+    { slug: "portvinsglaserede-figner-med-gedeost", label: "Portvinsglaserede figner med gedeost" },
+  ],
+  "lbv-ufiltreret-vs-filtreret": [
+    { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
+    { slug: "chokolademousse-med-portvin", label: "Chokolademousse med portvin" },
+  ],
+  "vintage-portvin-dekantering": [
+    { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
+  ],
+  "douro-dalen-subregioner": [
+    { slug: "portvin-tonic", label: "Portvin-tonic" },
+    { slug: "bifana", label: "Bifana" },
   ],
   "vin-til-juleaften": [
     { slug: "roedkaal-med-portvin", label: "Rødkål med portvin" },
