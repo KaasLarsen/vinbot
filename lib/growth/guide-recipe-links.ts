@@ -1180,6 +1180,7 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "sprode-foraarsruller-med-bobler", label: "Sprøde forårsruller" },
     { slug: "kartoffelchips-med-stenbiderrogn", label: "Chips med stenbiderrogn" },
     { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
+    { slug: "fish-and-chips", label: "Fish & chips" },
   ],
   "hverdags-bobler": [
     { slug: "fried-chicken-med-bobler", label: "Fried chicken" },
