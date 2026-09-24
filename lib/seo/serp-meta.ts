@@ -1934,6 +1934,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Sparkling Margarita: tequila, triple sec, lime og tør mousserende vin. Fest-margarita — opskrift.",
   },
+  "bicicletta-prosecco": {
+    title: "Bicicletta med Prosecco opskrift",
+    description:
+      "Bicicletta med Prosecco: hvidvin, Campari og bobler i stedet for soda. Boble-Bicicletta — opskrift.",
+  },
+  cardinale: {
+    title: "Cardinale opskrift — gin og dry vermouth",
+    description:
+      "Cardinale: gin, tør hvid vermouth og Campari. Tørrere Negroni-kusine — opskrift til 1 glas.",
+  },
+  "port-light": {
+    title: "Port Light opskrift — bourbon og ruby port",
+    description:
+      "Port Light: bourbon, passionsfrugt, citron og ruby port-float. Tropisk port-sour — opskrift.",
+  },
+  "sake-spritz": {
+    title: "Sake Spritz opskrift",
+    description:
+      "Sake Spritz: japansk risvin, agurk, mynte og danskvand. Let sake-aperitif — opskrift til 1 glas.",
+  },
+  "corpse-reviver-no-2": {
+    title: "Corpse Reviver No. 2 opskrift",
+    description:
+      "Corpse Reviver No. 2: gin, Lillet/vermouth, triple sec, citron og absint. Klassiker — opskrift.",
+  },
+  "rebujito-de-fresa": {
+    title: "Rebujito de Fresa opskrift",
+    description:
+      "Rebujito de Fresa: Fino sherry, jordbær, lemon-soda og mynte. Frugtig andalusisk drink — opskrift.",
+  },
+  "vermouth-tonic": {
+    title: "Vermouth & Tonic opskrift",
+    description:
+      "Vermouth & Tonic: sød rød vermouth, premium tonic og appelsin. Nem aperitif — opskrift til 1 glas.",
+  },
+  "el-presidente": {
+    title: "El Presidente opskrift — rom og vermouth",
+    description:
+      "El Presidente: lys rom, tør vermouth, triple sec og grenadine. Cubansk klassiker — opskrift.",
+  },
+  "grand-mimosa": {
+    title: "Grand Mimosa opskrift",
+    description:
+      "Grand Mimosa: bobler, appelsinjuice og Grand Marnier. Opgraderet Mimosa — opskrift til 1 flute.",
+  },
+  "soho-spritz": {
+    title: "Soho Spritz opskrift",
+    description:
+      "Soho Spritz: gin, hvidvin, æblejuice, hyldeblomst og soda. Let britisk spritz — opskrift.",
+  },
 };
 
 export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
