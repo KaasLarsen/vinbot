@@ -65,8 +65,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "moscato-mule", label: "Moscato Mule" },
     { slug: "spiced-red-wine-hot-toddy", label: "Spiced Red Wine Hot Toddy" },
   ],
-      { slug: "champagne-bowle-fersken", label: "Champagne Bowle med fersken" },
-"bobler-champagne-cava-prosecco-og-cremant": [
+  "bobler-champagne-cava-prosecco-og-cremant": [
     { slug: "mimosa", label: "Mimosa" },
     { slug: "grand-mimosa", label: "Grand Mimosa" },
     { slug: "bellini", label: "Bellini" },
@@ -88,6 +87,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "death-in-the-afternoon", label: "Death in the Afternoon" },
     { slug: "black-velvet", label: "Black Velvet" },
     { slug: "sparkling-sangria", label: "Sparkling Sangria" },
+    { slug: "champagne-bowle-fersken", label: "Champagne Bowle med fersken" },
     { slug: "moscato-mule", label: "Moscato Mule" },
     { slug: "negroni-sbagliato", label: "Negroni Sbagliato" },
     { slug: "pink-sensation", label: "Pink Sensation" },
@@ -168,8 +168,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "negroni-sbagliato", label: "Negroni Sbagliato" },
     { slug: "pink-sensation", label: "Pink Sensation" },
   ],
-      { slug: "sake-tonic", label: "Sake & Tonic" },
-"vin-til-sommer": [
+  "vin-til-sommer": [
     { slug: "hugo-spritz", label: "Hugo Spritz" },
     { slug: "soho-spritz", label: "Soho Spritz" },
     { slug: "pisco-punch-hvidvin", label: "Pisco Punch med hvidvin" },
@@ -198,6 +197,7 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "vermouth-tonic", label: "Vermouth & Tonic" },
     { slug: "pompier-cocktail", label: "Pompier Cocktail" },
     { slug: "sake-spritz", label: "Sake Spritz" },
+    { slug: "sake-tonic", label: "Sake & Tonic" },
   ],
   "vin-til-brunch": [
     { slug: "mimosa", label: "Mimosa" },
@@ -275,10 +275,10 @@ export const GUIDE_DRINK_LINKS: Record<string, readonly { slug: string; label: s
     { slug: "black-velvet", label: "Black Velvet" },
     { slug: "nytaarsbowle", label: "Nytårsbowle" },
   ],
-      { slug: "sake-tonic", label: "Sake & Tonic" },
-"vin-til-japansk-mad": [
+  "vin-til-japansk-mad": [
     { slug: "sake-cocktail", label: "Sake Cocktail" },
     { slug: "sake-spritz", label: "Sake Spritz" },
+    { slug: "sake-tonic", label: "Sake & Tonic" },
   ],
   "vin-til-bourgogne-mad": [
     { slug: "kir", label: "Kir" },
