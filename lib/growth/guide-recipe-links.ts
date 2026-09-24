@@ -627,7 +627,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "polbo-a-feira-med-albarino", label: "Polbo á Feira" }
   ],
   "vin-til-fondue": [
-    { slug: "fondue-med-hvidvin", label: "Fondue med hvidvin" }
+    { slug: "fondue-med-hvidvin", label: "Fondue med hvidvin" },
+    { slug: "fondue-med-rodvin", label: "Fondue med rødvin (Bacchus)" }
   ],
   "vin-til-shakshuka": [
     { slug: "shakshuka-med-hvidvin", label: "Shakshuka med hvidvin" }
