@@ -122,6 +122,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Agiorgitiko fra Nemea: kirsebær og krydderi med blødere tannin end Xinomavro — græsk hverdagsrød.",
   },
+  "zweigelt-druen": {
+    title: "Zweigelt: østrigsk chill-rød",
+    description:
+      "Zweigelt: kirsebær og peber ved 12–14 °C. Østrigs saftige rød til sticky pork, grill og charcuteri.",
+  },
+  "frappato-druen": {
+    title: "Frappato: siciliansk saftbombe",
+    description:
+      "Frappato fra Sicilia: blomstret, let og lav-tannin. Chillable red til tun, tapas og terrasse.",
+  },
+  "schiava-druen": {
+    title: "Schiava: lys Alto Adige-rød",
+    description:
+      "Schiava/Vernatsch: lys, blød alpine rød ved 12–14 °C — til speck, knödel og terrasse.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

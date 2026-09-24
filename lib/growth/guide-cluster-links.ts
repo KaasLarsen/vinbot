@@ -1720,6 +1720,43 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       { slug: "moschofilero-druen", label: "Moschofilero-druen" },
     ],
   ),
+  "zweigelt-druen": videnBlock(
+    ["zweigelt-druen"],
+    "Zweigelt-druen",
+    "Østrigs saftige chill-rød — kirsebær til køleskabet.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "chill-your-reds", label: "Chill Your Reds" },
+      { slug: "frappato-druen", label: "Frappato-druen" },
+      { slug: "schiava-druen", label: "Schiava-druen" },
+      { slug: "gamay-druen", label: "Gamay-druen" },
+      { slug: "top-5-druer-til-koeleskabet", label: "Top 5 druer til køleskabet" },
+    ],
+  ),
+  "frappato-druen": videnBlock(
+    ["frappato-druen"],
+    "Frappato-druen",
+    "Siciliens blomstrede chillable red til tun og terrasse.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "chill-your-reds", label: "Chill Your Reds" },
+      { slug: "zweigelt-druen", label: "Zweigelt-druen" },
+      { slug: "rodvin-til-fisk-kold", label: "Rødvin til fisk (kold)" },
+      { slug: "top-5-druer-til-koeleskabet", label: "Top 5 druer til køleskabet" },
+    ],
+  ),
+  "schiava-druen": videnBlock(
+    ["schiava-druen"],
+    "Schiava-druen",
+    "Lys Alto Adige-rød (Vernatsch) til speck og køleskab.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "chill-your-reds", label: "Chill Your Reds" },
+      { slug: "zweigelt-druen", label: "Zweigelt-druen" },
+      { slug: "rodvin-til-terrassen", label: "Rødvin til terrassen" },
+      { slug: "gamay-druen", label: "Gamay-druen" },
+    ],
+  ),
   "pet-nat-for-begyndere": videnBlock(
     ["pet-nat-for-begyndere"],
     "Pét-nat og naturvin-bobler",

@@ -1,6 +1,16 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Greece value (3 druer + 3 opskrifter) · Portugal value · Chill Your Reds (2026-09-24).
+**Status:** Chill deepen (3 druer + 3 opskrifter) · Greece/Portugal value · Chill hub (2026-09-24).
+
+## Chill deepen — 2026-09-24
+
+**Drueguides:** `zweigelt-druen` · `frappato-druen` · `schiava-druen`
+
+**Opskrifter:** `sticky-pork-belly-med-kold-zweigelt` · `grillpoelser-med-kold-zweigelt` · `speck-braet-med-schiava`
+
+Script: `scripts/add-recipes-chill-deepen.mjs`.
+
+---
 
 ## Greece value — 2026-09-24
 

@@ -264,6 +264,27 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Agiorgitiko (Nemea) er frugtigere og blødere. Xinomavro (Naoussa) har mere tannin og jordede toner. Agiorgitiko er den mere alsidige hverdagsrød.",
     },
   ],
+  "zweigelt-druen": [
+    {
+      question: "Skal Zweigelt serveres kold?",
+      answer:
+        "Ja i den frugtige stil: 12–14 °C. Det fremhæver kirsebær og syre og dæmper alkohol — ideelt til grill, sticky pork og charcuteri.",
+    },
+  ],
+  "frappato-druen": [
+    {
+      question: "Hvad er Frappato?",
+      answer:
+        "En let, blomstret siciliansk røddrue med lav tannin. Serveres gerne ved 11–14 °C til tun, tapas og terrasse — ofte som ren Frappato eller i Cerasuolo di Vittoria.",
+    },
+  ],
+  "schiava-druen": [
+    {
+      question: "Hvad er Schiava / Vernatsch?",
+      answer:
+        "En lys, blød rødvin fra Alto Adige med lav tannin og ofte mandelagtig finish. Server kølig (12–14 °C) til speck, skinke og alpine snacks.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

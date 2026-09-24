@@ -1156,5 +1156,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "feta-saganaki", label: "Feta saganaki" },
     { slug: "spanakopita-med-hvidvin", label: "Spanakopita" },
   ],
+  "zweigelt-druen": [
+    { slug: "sticky-pork-belly-med-kold-zweigelt", label: "Sticky pork med kold Zweigelt" },
+    { slug: "grillpoelser-med-kold-zweigelt", label: "Grillpølser med kold Zweigelt" },
+  ],
+  "schiava-druen": [
+    { slug: "speck-braet-med-schiava", label: "Speck-bræt med Schiava" },
+  ],
+  "frappato-druen": [
+    { slug: "sticky-pork-belly-med-kold-zweigelt", label: "Sticky pork (alt: Frappato)" },
+  ],
 
 };
