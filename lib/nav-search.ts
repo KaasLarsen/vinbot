@@ -1,8 +1,9 @@
 import { listGuides } from "@/lib/content/guides";
 import { getAllRecipes } from "@/lib/content/recipes";
+import { getAllDrinks } from "@/lib/content/drinks";
 import { guideMatchesSearch } from "@/lib/guide-browse";
 
-export type NavSearchKind = "guide" | "recipe" | "hub" | "quick";
+export type NavSearchKind = "guide" | "recipe" | "drink" | "hub" | "quick";
 
 export type NavSearchSuggestion = {
   href: string;
@@ -15,6 +16,24 @@ export type NavSearchSuggestion = {
 const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   { label: "Mad & vin", href: "/mad-og-vin", keywords: ["mad", "vin", "parring", "match"] },
   { label: "Opskrifter", href: "/opskrifter", keywords: ["opskrift", "opskrifter", "gryde", "coq", "bourguignon", "parring", "pizza", "burger"] },
+  {
+    label: "Drinks",
+    href: "/drinks",
+    keywords: [
+      "drink",
+      "drinks",
+      "cocktail",
+      "spritz",
+      "aperol",
+      "hugo",
+      "sangria",
+      "negroni",
+      "french 75",
+      "port tonic",
+      "frosé",
+      "gløgg",
+    ],
+  },
   {
     label: "Julevin-beregner",
     href: "/julevin-beregner",
@@ -84,6 +103,7 @@ const QUICK_PICKS: NavSearchSuggestion[] = [
   { href: "/guides/vin-til-fisk-og-skaldyr", label: "Vin til fisk og skaldyr", kind: "quick", score: 0 },
   { href: "/guides/bedste-vin-under-150-kr", label: "Bedste vin under 150 kr", kind: "quick", score: 0 },
   { href: "/opskrifter", label: "Opskrifter — vin i retten og til maden", kind: "quick", score: 0 },
+  { href: "/drinks", label: "Drinks — spritz, cocktails og bowle", kind: "quick", score: 0 },
   { href: "/guides/pinot-noir-druen", label: "Pinot noir-druen", kind: "quick", score: 0 },
   { href: "/guides/riesling-druen", label: "Riesling-druen", kind: "quick", score: 0 },
   { href: "/mad-og-vin", label: "Mad & vin — overblik", kind: "quick", score: 0 },
@@ -197,6 +217,18 @@ export function searchNavSuggestions(q: string, mode: "vin" | "guides", limit = 
           description: r.description,
           kind: "recipe",
           score: s,
+        });
+      }
+    }
+    for (const d of getAllDrinks()) {
+      const s = recipeScore(d.title, d.slug, d.description, trimmed);
+      if (s > 0) {
+        out.push({
+          href: `/drinks/${d.slug}`,
+          label: d.title,
+          description: d.description,
+          kind: "drink",
+          score: s + 5,
         });
       }
     }

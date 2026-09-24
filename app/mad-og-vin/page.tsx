@@ -107,6 +107,9 @@ export default function MadOgVinHubPage() {
           <Link href="/opskrifter" className="font-medium hover:underline">
             Alle opskrifter
           </Link>
+          <Link href="/drinks" className="font-medium hover:underline">
+            Drinks med vin
+          </Link>
           <Link href="/opskrifter/pizza-margherita" className="hover:underline">
             Pizza margherita + vin
           </Link>

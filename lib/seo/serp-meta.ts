@@ -1621,3 +1621,93 @@ export function buildRecipeSerpTitle(title: string, slug: string): string {
   if (base.length <= SERP_TITLE_BUDGET) return base;
   return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
 }
+
+/** Drink → målrettet SERP. */
+const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
+  "aperol-spritz": {
+    title: "Aperol Spritz opskrift — klassisk",
+    description:
+      "Klassisk Aperol Spritz: Aperol, Prosecco og danskvand. Opskrift til 1 glas — ratio, tips og hvilken prosecco der passer.",
+  },
+  "hugo-spritz": {
+    title: "Hugo Spritz opskrift — hyldeblomst",
+    description:
+      "Hugo Spritz med Prosecco, hyldeblomst, danskvand og mynte. Nem aperitif-opskrift — friskere end Aperol.",
+  },
+  "portvin-tonic": {
+    title: "Portvin-tonic opskrift — Port & Tonic",
+    description:
+      "Port & Tonic med tør white port, tonic, citrus og mynte. Portugals sommeraperitif — opskrift til 1 glas.",
+  },
+  "french-75": {
+    title: "French 75 opskrift — gin og champagne",
+    description:
+      "French 75: gin, citronsaft, sukker og champagne. Klassisk boble-cocktail — opskrift, ratio og tips.",
+  },
+  "negroni-sbagliato": {
+    title: "Negroni Sbagliato opskrift",
+    description:
+      "Negroni Sbagliato: Campari, sød vermouth og mousserende vin. Den «forkerte» Negroni — lettere og festlig.",
+  },
+  "new-york-sour": {
+    title: "New York Sour opskrift — whiskey og rødvin",
+    description:
+      "New York Sour: whiskey sour med rødvinsslag på toppen. Opskrift med tip til rødvin og lagdeling.",
+  },
+  "sangria-med-rodvin": {
+    title: "Sangria opskrift med rødvin",
+    description:
+      "Klassisk rød sangria med rødvin, brandy, frugt og sodavand. Bowle-opskrift til 6–8 — festklar sommerdrink.",
+  },
+  "limoncello-spritz": {
+    title: "Limoncello Spritz opskrift",
+    description:
+      "Limoncello Spritz med limoncello, mousserende vin og danskvand. Frisk citron-aperitif — opskrift til 1 glas.",
+  },
+  rebujito: {
+    title: "Rebujito opskrift — fino sherry",
+    description:
+      "Rebujito: tør Fino Sherry, citronsodavand og mynte. Andalusisk sommerdrink — opskrift og tips til sherry.",
+  },
+  frose: {
+    title: "Frosé opskrift — frozen roséslush",
+    description:
+      "Frosé: frozen rosé blended med jordbær og is. Sommerdrink på blender — opskrift til 4 glas.",
+  },
+  "kir-royal": {
+    title: "Kir Royal opskrift — cassis og champagne",
+    description:
+      "Kir Royal med crème de cassis og tør champagne eller crémant. Elegant aperitif på 2 minutter.",
+  },
+  portvinsgloegg: {
+    title: "Portvinsgløgg opskrift",
+    description:
+      "Portvinsgløgg med ruby port, æblejuice og julekrydderier. Fyldig julevarme — opskrift til 6–8 glas.",
+  },
+  roedvinsgloegg: {
+    title: "Rødvinsgløgg opskrift — klassisk dansk",
+    description:
+      "Hjemmelavet rødvinsgløgg med kanel, nelliker, appelsin og port. Klassisk juleopskrift til 8–10 glas.",
+  },
+};
+
+export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
+  const override = DRINK_SERP_OVERRIDES[slug]?.description;
+  if (override) return truncateMetaDescription(override);
+
+  const cleaned = description.replace(/\s+/g, " ").trim();
+  if (cleaned.length <= SERP_DESCRIPTION_MAX) return cleaned;
+  return truncateMetaDescription(cleaned);
+}
+
+export function buildDrinkSerpTitle(title: string, slug: string): string {
+  const override = DRINK_SERP_OVERRIDES[slug]?.title;
+  if (override)
+    return override.length <= SERP_TITLE_BUDGET
+      ? override
+      : truncateMetaDescription(override, SERP_TITLE_BUDGET).replace(/…$/, "");
+
+  const base = title.trim();
+  if (base.length <= SERP_TITLE_BUDGET) return base;
+  return truncateMetaDescription(base, SERP_TITLE_BUDGET).replace(/…$/, "");
+}

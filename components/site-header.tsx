@@ -14,6 +14,7 @@ const primaryNavBase: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
   { href: "/bedste-vine", label: "Bedste vine" },
   { href: "/opskrifter", label: "Opskrifter", activePrefix: "/opskrifter" },
+  { href: "/drinks", label: "Drinks", activePrefix: "/drinks" },
   { href: "/vine", label: "Vin-katalog", activePrefix: "/vine" },
 ];
 

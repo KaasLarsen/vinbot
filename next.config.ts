@@ -448,6 +448,12 @@ const rootLegacyHubRedirects: { source: string; destination: string }[] = [
   { source: "/mere-om-vin/", destination: "/vinforhandlere" },
   { source: "/vinea", destination: "/vinforhandlere" },
   { source: "/vinea/", destination: "/vinforhandlere" },
+  // Drinks flyttet fra /opskrifter → /drinks
+  { source: "/opskrifter/portvin-tonic", destination: "/drinks/portvin-tonic" },
+  { source: "/opskrifter/kir-royal", destination: "/drinks/kir-royal" },
+  { source: "/opskrifter/sangria-med-rodvin", destination: "/drinks/sangria-med-rodvin" },
+  { source: "/opskrifter/portvinsgloegg", destination: "/drinks/portvinsgloegg" },
+  { source: "/opskrifter/roedvinsgloegg", destination: "/drinks/roedvinsgloegg" },
 ];
 
 const nextConfig: NextConfig = {

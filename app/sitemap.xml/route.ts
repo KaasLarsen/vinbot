@@ -5,6 +5,7 @@ import path from "path";
 import { siteUrl } from "@/lib/site";
 import { listGuides } from "@/lib/content/guides";
 import { getAllRecipes } from "@/lib/content/recipes";
+import { getAllDrinks } from "@/lib/content/drinks";
 import { classifyGuide } from "@/lib/sitemap-categories";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderIndex, sitemapResponseInit } from "@/lib/sitemap-xml";
@@ -50,6 +51,13 @@ async function buildSitemapIndexXml(): Promise<string> {
     }),
   );
 
+  const drinksLastmod = newest(
+    getAllDrinks().map((d) => {
+      const date = d.updated ? new Date(d.updated) : new Date(d.fallbackDate);
+      return Number.isNaN(date.getTime()) ? new Date() : date;
+    }),
+  );
+
   const wineDetailLastmod = newest([
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/registry.ts")),
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/den-sidste-flaske-existing.ts")),
@@ -91,6 +99,7 @@ async function buildSitemapIndexXml(): Promise<string> {
   return renderIndex([
     { loc: `${base}/sitemap-pages.xml`, lastmod: pagesLastmod },
     { loc: `${base}/sitemap-opskrifter.xml`, lastmod: recipesLastmod },
+    { loc: `${base}/sitemap-drinks.xml`, lastmod: drinksLastmod },
     { loc: `${base}/sitemap-wine-detail.xml`, lastmod: wineDetailLastmod },
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-pla.xml`, lastmod: new Date() },
@@ -108,7 +117,7 @@ async function buildSitemapIndexXml(): Promise<string> {
  * Cache kort — indekset er et let XML-dokument, men **generering** kan være langsom (I/O).
  * Undersitemaps som `sitemap-vine.xml` kalder kun ét dataset og rammer sjældnere timeout i GSC.
  */
-const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v4-vine"], {
+const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v5-drinks"], {
   revalidate: 300,
   tags: ["sitemap-index", "vinbot-feeds"],
 });

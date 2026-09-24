@@ -19,6 +19,7 @@ import { GuideProductPicks } from "@/components/guide-product-picks";
 import { GuideLauridsenRegionCta } from "@/components/guide-lauridsen-region-cta";
 import { GuideWineDetailLinks } from "@/components/guide-wine-detail-links";
 import { GuideRecipeCrosslinks } from "@/components/guide-recipe-crosslinks";
+import { GuideDrinkCrosslinks } from "@/components/guide-drink-crosslinks";
 import { GuideClusterCrosslinks } from "@/components/guide-cluster-crosslinks";
 import { GuideInlineSearch } from "@/components/guide-inline-search";
 import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
@@ -213,6 +214,7 @@ export default async function GuidePage({ params }: Props) {
       <GuideWineDetailLinks guideSlug={slug} />
       <GuideClusterCrosslinks guideSlug={slug} />
       <GuideRecipeCrosslinks guideSlug={slug} />
+      <GuideDrinkCrosslinks guideSlug={slug} />
       {faqItems?.length ? <GuideFaqAccordion items={faqItems} /> : null}
       <PartnerAdsLeaderboard className="mt-12" hub={hub} slug={slug} />
       <div className="mt-12">

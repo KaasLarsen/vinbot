@@ -37,6 +37,7 @@ function persistMode(next: SearchMode, apply: (m: SearchMode) => void) {
 const KIND_LABEL: Record<NavSearchKind, string> = {
   guide: "Guide",
   recipe: "Opskrift",
+  drink: "Drink",
   hub: "Overblik",
   quick: "Forslag",
 };
@@ -44,6 +45,7 @@ const KIND_LABEL: Record<NavSearchKind, string> = {
 const KIND_CLASS: Record<NavSearchKind, string> = {
   guide: "bg-rose-100 text-rose-900",
   recipe: "bg-amber-100 text-amber-950",
+  drink: "bg-violet-100 text-violet-950",
   hub: "bg-stone-200 text-stone-800",
   quick: "bg-stone-100 text-stone-700",
 };

@@ -151,7 +151,6 @@ function momentFromId(id: HomeMomentId): HomeMoment {
           "glaseret-skinke-med-madeirasauce",
           "brune-kartofler-med-portvin",
           "cremet-svampesuppe-med-madeira",
-          "portvinsgloegg",
         ],
         saesonHeadline: "Lige nu: jul og julemad",
         saesonIntro:
