@@ -1215,5 +1215,35 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "bedste-champagne-under-300-kr": [
     { slug: "smash-burger-med-troffelmayo", label: "Smash burger med trøffelmayo" },
   ],
+  "fibermaxxing-vinost-gront": [
+    { slug: "rodvinsstuvet-gronkaal-med-valnodder", label: "Rødvinsstuvet grønkål" },
+    { slug: "puy-linser-i-rodvin-med-chokolade", label: "Puy-linser med chokolade" },
+    { slug: "byg-otto-med-hvidvin-og-svampe", label: "Byg-otto med svampe" },
+    { slug: "braiseret-spidskaal-i-hvidvin", label: "Braiseret spidskål" },
+    { slug: "belugalinser-i-rodvin", label: "Belugalinser i rødvin" },
+    { slug: "hvidvins-confiterede-portobellos", label: "Confiterede portobellos" },
+    { slug: "raamarineret-spidskaalssalat", label: "Råmarineret spidskålssalat" },
+    { slug: "fuldkorns-taralli-med-hvidvin", label: "Fuldkorns-taralli" },
+    { slug: "grov-focaccia-med-hvidvin", label: "Grov focaccia" },
+  ],
+  "umami-uden-koed-vin": [
+    { slug: "svampe-bourguignon-med-jordskokkechips", label: "Svampe Bourguignon med jordskokke" },
+    { slug: "puy-linser-i-rodvin-med-chokolade", label: "Puy-linser" },
+    { slug: "kikaerte-cassoulet-med-hvidvin", label: "Kikærte-cassoulet" },
+    { slug: "svampe-bourguignon", label: "Svampe Bourguignon" },
+    { slug: "hvidvins-confiterede-portobellos", label: "Confiterede portobellos" },
+    { slug: "broccolisalat-med-portvins-baconjam", label: "Broccolisalat med baconjam" },
+  ],
+  "vin-til-crunch": [
+    { slug: "hvidvinsbraiserede-porrer-med-panko", label: "Porrer med panko" },
+    { slug: "grillet-blomkaalssteak-med-rodvinssauce", label: "Blomkålssteak" },
+    { slug: "lynstegt-palmekaal-med-sherry-sennepsfro", label: "Palmekål med sennepsfrø" },
+    { slug: "svampe-bourguignon-med-jordskokkechips", label: "Bourguignon med chips" },
+    { slug: "raamarineret-spidskaalssalat", label: "Spidskålssalat" },
+    { slug: "sprodstegte-oestershatte-med-bearnaise", label: "Sprøde østershatte" },
+    { slug: "hvidvinssyltede-sennepsfro", label: "Hvidvinssyltede sennepsfrø" },
+    { slug: "ristede-graeskarkerner-i-rodvinssalt", label: "Græskarkerner i rødvinssalt" },
+    { slug: "fuldkorns-taralli-med-hvidvin", label: "Fuldkorns-taralli" },
+  ],
 
 };

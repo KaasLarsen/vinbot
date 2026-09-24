@@ -152,6 +152,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Brut Cava vs. sød Prosecco: hvilke bobler under 100 kr der faktisk dur til fed hverdagsmad.",
   },
+  "fibermaxxing-vinost-gront": {
+    title: "Fibermaxxing: guiden til vinøst grønt",
+    description:
+      "Hvad er Fibermaxxing? Grove grøntsager, kål og bælgfrugter som måltidets stjerne — parret med vin, crunch og umami.",
+  },
+  "vin-til-crunch": {
+    title: "Vin til ekstrem crunch",
+    description:
+      "Panko, rå kål og chips kræver vine med høj syre og struktur: Champagne, Grüner Veltliner og Brut Cava.",
+  },
+  "umami-uden-koed-vin": {
+    title: "Umami uden kød: vin gør grønt tungt",
+    description:
+      "Sådan trækker syre og alkohol i madlavningsvin smag ud af svampe og kål, så vegetariske retter mætter.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

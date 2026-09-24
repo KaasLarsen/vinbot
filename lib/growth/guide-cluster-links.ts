@@ -1794,6 +1794,42 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       { slug: "billig-prosecco", label: "Billig prosecco" },
     ],
   ),
+  "fibermaxxing-vinost-gront": madBlock(
+    ["fibermaxxing-vinost-gront"],
+    "Fibermaxxing og vinøst grønt",
+    "Grønt, kål og bælgfrugter som stjerne — med vin, crunch og umami.",
+    [
+      { slug: "vin-til-crunch", label: "Vin til crunch" },
+      { slug: "umami-uden-koed-vin", label: "Umami uden kød" },
+      { slug: "vin-til-vegetar-og-gront", label: "Vin til vegetar og grønt" },
+      { slug: "vin-til-grillet-gront", label: "Vin til grillet grønt" },
+      { slug: "vin-til-svampe", label: "Vin til svampe" },
+    ],
+  ),
+  "vin-til-crunch": madBlock(
+    ["vin-til-crunch"],
+    "Vin til ekstrem crunch",
+    "Panko, rå kål og chips møder syre og struktur.",
+    [
+      { slug: "fibermaxxing-vinost-gront", label: "Fibermaxxing" },
+      { slug: "umami-uden-koed-vin", label: "Umami uden kød" },
+      { slug: "friture-og-bobler", label: "Friture og bobler" },
+      { slug: "champagne-til-mad", label: "Champagne til mad" },
+      { slug: "gruener-veltliner-druen", label: "Grüner Veltliner" },
+    ],
+  ),
+  "umami-uden-koed-vin": madBlock(
+    ["umami-uden-koed-vin"],
+    "Umami uden kød",
+    "Vin, svampe og reduktion gør grønt tungt og mættende.",
+    [
+      { slug: "fibermaxxing-vinost-gront", label: "Fibermaxxing" },
+      { slug: "vin-til-crunch", label: "Vin til crunch" },
+      { slug: "vin-til-svampe", label: "Vin til svampe" },
+      { slug: "vin-til-vegetar-og-gront", label: "Vin til vegetar og grønt" },
+      { slug: "sadan-bruger-du-vin-til-sauce-og-simren", label: "Vin til sauce og simren" },
+    ],
+  ),
   "pet-nat-for-begyndere": videnBlock(
     ["pet-nat-for-begyndere"],
     "Pét-nat og naturvin-bobler",

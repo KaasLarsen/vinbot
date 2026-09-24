@@ -306,6 +306,27 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Ja, hvis de er Brut (især Cava). Extra Dry Prosecco er for sød til friture og burger — gem den til aperitif med jordbær.",
     },
   ],
+  "fibermaxxing-vinost-gront": [
+    {
+      question: "Hvad er Fibermaxxing?",
+      answer:
+        "En trend hvor grøntsager, kål, kerner og bælgfrugter er måltidets stjerne. Vin, umami og crunch erstatter kødets tyngde og mundfølelse.",
+    },
+  ],
+  "vin-til-crunch": [
+    {
+      question: "Hvilken vin til sprød mad (panko, rå kål, chips)?",
+      answer:
+        "Vine med høj syre og klar struktur: tør Champagne, Brut Cava, Grüner Veltliner eller Sauvignon Blanc. Undgå bløde, sødlige flasker.",
+    },
+  ],
+  "umami-uden-koed-vin": [
+    {
+      question: "Hvordan giver vin umami til grøntsager?",
+      answer:
+        "Syre og alkohol hjælper med at trække smagsstoffer ud af svampe og kål; reduktion koncentrerer dem. Brun hårdt, tilsæt vin, kog ind — evt. tomatpuré, miso eller knivspids chokolade.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

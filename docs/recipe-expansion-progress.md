@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Bubbles Any Day (3 guides + 11 opskrifter) · Chill/PT/GR value (2026-09-24).
+**Status:** Fibermaxxing (3 guides + 16 opskrifter) · Bubbles Any Day · Chill/PT/GR value (2026-09-24).
+
+## Fibermaxxing — 2026-09-24
+
+Sprunget over / kædet ind (fandtes): braiseret spidskål · belugalinser · svampe-bourguignon (base) · focaccia-med-hvidvin · taralli-med-hvidvin · sherrysyltede sennepsfrø · portvins-baconmarmelade · bearnaise · hvidvinsbraiserede porrer (uden panko).
+
+**Guides:** `fibermaxxing-vinost-gront` · `vin-til-crunch` · `umami-uden-koed-vin`
+
+**Opskrifter:** `rodvinsstuvet-gronkaal-med-valnodder` · `hvidvinsbraiserede-porrer-med-panko` · `grillet-blomkaalssteak-med-rodvinssauce` · `lynstegt-palmekaal-med-sherry-sennepsfro` · `puy-linser-i-rodvin-med-chokolade` · `byg-otto-med-hvidvin-og-svampe` · `kikaerte-cassoulet-med-hvidvin` · `svampe-bourguignon-med-jordskokkechips` · `hvidvins-confiterede-portobellos` · `sprodstegte-oestershatte-med-bearnaise` · `raamarineret-spidskaalssalat` · `broccolisalat-med-portvins-baconjam` · `hvidvinssyltede-sennepsfro` · `fuldkorns-taralli-med-hvidvin` · `ristede-graeskarkerner-i-rodvinssalt` · `grov-focaccia-med-hvidvin`
+
+Scripts: `scripts/add-recipes-fiber-batch{1,2}.mjs`.
+
+---
 
 ## Bubbles Any Day — 2026-09-24
 
