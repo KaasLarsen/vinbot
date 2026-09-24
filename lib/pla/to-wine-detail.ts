@@ -69,7 +69,7 @@ export function plaItemToWineDetail(item: PlaCatalogItem): WineDetailPage {
       bullets: [
         `Klik «Gå til butik» for at åbne produktsiden hos ${cfg.displayName}.`,
         "Pris og lager tjekkes altid i butikken, før du betaler.",
-        "Vinbot er et hobbyprojekt og sælger ikke selv vin.",
+        "Vinbot sælger ikke selv vin.",
       ],
       footnote: "Affiliate-link: vi kan modtage provision ved køb — uden merpris for dig.",
     },

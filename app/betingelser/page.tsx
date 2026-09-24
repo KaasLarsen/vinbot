@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, legalPagesUpdatedDisplay, siteUrl } from "@/lib/site";
+import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, companyCvr, companyLegalName, legalPagesUpdatedDisplay, siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Betingelser";
 const PAGE_DESCRIPTION =
-  "Brugerbetingelser for Vinbot: hobbyprojekt, indhold, ansvar, alkohol og køb hos partnere, annoncer og affiliate.";
+  "Brugerbetingelser for Vinbot: Vinbot.dk (CVR), indhold, ansvar, alkohol og køb hos partnere, annoncer og affiliate.";
 const PAGE_URL = `${siteUrl}/betingelser`;
 
 export const metadata: Metadata = {
@@ -32,7 +32,8 @@ export default function BetingelserPage() {
 
       <section className="mt-8 space-y-6 text-stone-700">
         <p>
-          <strong>Kort fortalt:</strong> Vinbot er et <strong>hobbyprojekt uden CVR</strong> og <strong>sælger ikke vin</strong>. Indhold er til inspiration. Priser og lagerstatus kan variere. Vi viser annoncer (Google AdSense) og bruger affiliate-links og kan modtage kommission — uden ekstra omkostning for dig.
+          <strong>Kort fortalt:</strong> Vinbot drives af <strong>{companyLegalName}</strong> (CVR-nr.{" "}
+          {companyCvr}) og <strong>sælger ikke vin</strong>. Indhold er til inspiration. Priser og lagerstatus kan variere. Vi viser annoncer (Google AdSense) og bruger affiliate-links og kan modtage kommission — uden ekstra omkostning for dig.
         </p>
         <div>
           <h2 className="text-xl font-semibold text-stone-900">1. Anvendelse af sitet</h2>
@@ -66,6 +67,8 @@ export default function BetingelserPage() {
         <div>
           <h2 className="text-xl font-semibold text-stone-900">6. Kontakt</h2>
           <p className="mt-2">
+            {companyLegalName} · CVR-nr. {companyCvr}
+            <br />
             <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
               {contactEmail}
             </a>

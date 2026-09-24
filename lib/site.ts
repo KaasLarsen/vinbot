@@ -12,7 +12,11 @@ export const contactEmail = "info@vinbot.dk";
 /** Øl & Vin — Facebook-side med tilbud og tips. */
 export const facebookOlVinUrl = "https://www.facebook.com/profile.php?id=61554449533252";
 
-/** Mob.nr. til hobbyprojektet — `tel:` uden mellemrum. */
+/** Juridisk firmanavn og CVR (enkeltmandsvirksomhed). */
+export const companyLegalName = "Vinbot.dk";
+export const companyCvr = "42277312";
+
+/** Mob.nr. — `tel:` uden mellemrum. */
 export const contactPhoneDisplay = "27 29 91 06";
 export const contactPhoneTelHref = "tel:+4527299106";
 
@@ -20,7 +24,7 @@ export const contactPhoneTelHref = "tel:+4527299106";
  * Dato vist på privatliv, betingelser og cookiepolitik — bump ved meningsfulde ændringer
  * (fx efter deploy af nye tekster).
  */
-export const legalPagesUpdatedDisplay = "28. juli 2026";
+export const legalPagesUpdatedDisplay = "24. september 2026";
 
 /** Fast @id til Organization i JSON-LD (samme på tværs af sider). */
 export const organizationSchemaId = `${siteUrl}/#organization`;

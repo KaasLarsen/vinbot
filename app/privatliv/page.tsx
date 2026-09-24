@@ -4,6 +4,8 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CookieConsentReset } from "@/components/cookie-consent-reset";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
+  companyCvr,
+  companyLegalName,
   contactEmail,
   contactPhoneDisplay,
   contactPhoneTelHref,
@@ -14,7 +16,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Privatliv";
 const PAGE_DESCRIPTION =
-  "Sådan behandler Vinbot personoplysninger: hobbyprojekt uden CVR, Vercel-hosting, nyhedsbrev, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon, PriceRunner).";
+  "Sådan behandler Vinbot personoplysninger: Vinbot.dk (CVR), Vercel-hosting, nyhedsbrev, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon, PriceRunner).";
 const PAGE_URL = `${siteUrl}/privatliv`;
 
 export const metadata: Metadata = {
@@ -39,7 +41,8 @@ export default function PrivatlivPage() {
 
       <section className="mt-8 space-y-4 text-stone-700">
         <p>
-          <strong>Overblik:</strong> Vinbot drives som <strong>hobbyprojekt uden CVR-nummer</strong>. Vi bruger cookies og lignende teknologier til drift, statistik (Google Analytics 4), annoncer (Google AdSense) og affiliate-sporing. Den praktiske opdeling af cookie-typer og banneret er samlet på siden{" "}
+          <strong>Overblik:</strong> Vinbot drives af <strong>{companyLegalName}</strong> (CVR-nr.{" "}
+          {companyCvr}). Vi bruger cookies og lignende teknologier til drift, statistik (Google Analytics 4), annoncer (Google AdSense) og affiliate-sporing. Den praktiske opdeling af cookie-typer og banneret er samlet på siden{" "}
           <Link href="/cookiepolitik" className="text-rose-900 hover:underline">
             Cookiepolitik
           </Link>
@@ -56,7 +59,7 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Dataansvarlig</h2>
         <p>
-          Vinbot (hobbyprojekt) — kontakt:{" "}
+          {companyLegalName} (CVR-nr. {companyCvr}) — kontakt:{" "}
           <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
             {contactEmail}
           </a>
