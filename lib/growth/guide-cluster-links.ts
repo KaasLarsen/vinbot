@@ -1757,6 +1757,43 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
       { slug: "gamay-druen", label: "Gamay-druen" },
     ],
   ),
+  "bobler-paa-en-tirsdag": videnBlock(
+    ["bobler-paa-en-tirsdag"],
+    "Bobler på en tirsdag",
+    "Hvorfor kulsyre og syre nulstiller ganen ved fed hverdagsmad.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "hverdags-bobler", label: "Hverdags-bobler" },
+      { slug: "friture-og-bobler", label: "Friture og bobler" },
+      { slug: "hverdagsbobler-under-100-til-mad", label: "Hverdagsbobler under 100 til mad" },
+      { slug: "bobler-til-takeaway-og-fastfood", label: "Bobler til takeaway" },
+      { slug: "pet-nat-for-begyndere", label: "Pét-nat for begyndere" },
+    ],
+  ),
+  "friture-og-bobler": videnBlock(
+    ["friture-og-bobler"],
+    "Friture og bobler",
+    "Sprød, salt frituremad møder knastørre bobler.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "bobler-paa-en-tirsdag", label: "Bobler på en tirsdag" },
+      { slug: "hverdags-bobler", label: "Hverdags-bobler" },
+      { slug: "champagne-til-mad", label: "Champagne til mad" },
+      { slug: "bedste-cava-under-150-kr", label: "Cava under 150 kr" },
+    ],
+  ),
+  "hverdagsbobler-under-100-til-mad": videnBlock(
+    ["hverdagsbobler-under-100-til-mad"],
+    "Hverdagsbobler under 100 til mad",
+    "Brut Cava vs. sød Prosecco — bobler under 100 kr der klarer maden.",
+    [VIN_VIDEN_PILLAR],
+    [
+      { slug: "bedste-bobler-under-100-kr", label: "Bedste bobler under 100 kr" },
+      { slug: "bobler-paa-en-tirsdag", label: "Bobler på en tirsdag" },
+      { slug: "hverdags-bobler", label: "Hverdags-bobler" },
+      { slug: "billig-prosecco", label: "Billig prosecco" },
+    ],
+  ),
   "pet-nat-for-begyndere": videnBlock(
     ["pet-nat-for-begyndere"],
     "Pét-nat og naturvin-bobler",

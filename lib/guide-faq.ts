@@ -285,6 +285,27 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "En lys, blød rødvin fra Alto Adige med lav tannin og ofte mandelagtig finish. Server kølig (12–14 °C) til speck, skinke og alpine snacks.",
     },
   ],
+  "bobler-paa-en-tirsdag": [
+    {
+      question: "Hvorfor drikke bobler til hverdagsmad?",
+      answer:
+        "Kulsyre og høj syre renser ganen for fedt, salt og panering — så næste bid smager frisk. Brut Cava eller Crémant gør jobbet uden champagne-budget.",
+    },
+  ],
+  "friture-og-bobler": [
+    {
+      question: "Hvilken mousserende vin til friture?",
+      answer:
+        "Knastør Brut eller Brut Nature — Cava eller Crémant. Undgå sød Prosecco Extra Dry, som forstærker fedme i stedet for at skære den.",
+    },
+  ],
+  "hverdagsbobler-under-100-til-mad": [
+    {
+      question: "Kan bobler under 100 kr bruges til mad?",
+      answer:
+        "Ja, hvis de er Brut (især Cava). Extra Dry Prosecco er for sød til friture og burger — gem den til aperitif med jordbær.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

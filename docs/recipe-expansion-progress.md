@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Chill deepen (3 druer + 3 opskrifter) · Greece/Portugal value · Chill hub (2026-09-24).
+**Status:** Bubbles Any Day (3 guides + 11 opskrifter) · Chill/PT/GR value (2026-09-24).
+
+## Bubbles Any Day — 2026-09-24
+
+Sprunget over (fandtes): pét-nat-begynder · bobler under 100 (generel) · fish & chips · champagne-brioche · asparges-sabayon · moscato-sorbet · champagne-marinade.
+
+**Guides:** `bobler-paa-en-tirsdag` · `friture-og-bobler` · `hverdagsbobler-under-100-til-mad`
+
+**Opskrifter:** `fried-chicken-med-bobler` · `loegeringe-i-bobledej` · `hotdogs-med-cava` · `pizza-bianca-mousserende-rose` · `flaesketestegssandwich-med-pet-nat` · `smash-burger-med-troffelmayo` · `sprode-foraarsruller-med-bobler` · `gougeres` · `luksus-nachos-med-cava` · `kartoffelchips-med-stenbiderrogn` · `cava-svamperisotto`
+
+Scripts: `scripts/add-recipes-bubbles-batch{1,2}.mjs`.
+
+---
 
 ## Chill deepen — 2026-09-24
 

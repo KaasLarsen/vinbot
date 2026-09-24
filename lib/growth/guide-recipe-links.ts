@@ -1166,5 +1166,53 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "frappato-druen": [
     { slug: "sticky-pork-belly-med-kold-zweigelt", label: "Sticky pork (alt: Frappato)" },
   ],
+  "bobler-paa-en-tirsdag": [
+    { slug: "fried-chicken-med-bobler", label: "Fried chicken med bobler" },
+    { slug: "hotdogs-med-cava", label: "Hotdogs med Cava" },
+    { slug: "pizza-bianca-mousserende-rose", label: "Pizza bianca" },
+    { slug: "smash-burger-med-troffelmayo", label: "Smash burger med trøffelmayo" },
+    { slug: "luksus-nachos-med-cava", label: "Nachos med Cava" },
+    { slug: "gougeres", label: "Gougères" },
+  ],
+  "friture-og-bobler": [
+    { slug: "fried-chicken-med-bobler", label: "Fried chicken" },
+    { slug: "loegeringe-i-bobledej", label: "Løgringe i bobledej" },
+    { slug: "sprode-foraarsruller-med-bobler", label: "Sprøde forårsruller" },
+    { slug: "kartoffelchips-med-stenbiderrogn", label: "Chips med stenbiderrogn" },
+    { slug: "loegeringe-i-hvidvinsdej", label: "Løgringe i hvidvinsdej" },
+  ],
+  "hverdags-bobler": [
+    { slug: "fried-chicken-med-bobler", label: "Fried chicken" },
+    { slug: "hotdogs-med-cava", label: "Hotdogs med Cava" },
+    { slug: "flaesketestegssandwich-med-pet-nat", label: "Flæskestegssandwich" },
+    { slug: "smash-burger-med-troffelmayo", label: "Smash burger" },
+    { slug: "luksus-nachos-med-cava", label: "Nachos med Cava" },
+    { slug: "gougeres", label: "Gougères" },
+    { slug: "cava-svamperisotto", label: "Cava-svamperisotto" },
+    { slug: "champagne-brioche", label: "Champagne-brioche" },
+    { slug: "asparges-med-mousserende-sabayon", label: "Asparges med mousserende sabayon" },
+    { slug: "moscato-dasti-sorbet", label: "Moscato d'Asti-sorbet" },
+    { slug: "fish-and-chips", label: "Fish & chips" },
+    { slug: "champagne-mousserende-vinsmarinade", label: "Mousserende vinsmarinade" },
+  ],
+  "hverdagsbobler-under-100-til-mad": [
+    { slug: "fried-chicken-med-bobler", label: "Fried chicken" },
+    { slug: "hotdogs-med-cava", label: "Hotdogs med Cava" },
+    { slug: "luksus-nachos-med-cava", label: "Nachos med Cava" },
+  ],
+  "bobler-til-takeaway-og-fastfood": [
+    { slug: "fried-chicken-med-bobler", label: "Fried chicken" },
+    { slug: "pizza-bianca-mousserende-rose", label: "Pizza bianca" },
+    { slug: "sprode-foraarsruller-med-bobler", label: "Forårsruller" },
+  ],
+  "pet-nat-for-begyndere": [
+    { slug: "flaesketestegssandwich-med-pet-nat", label: "Flæskestegssandwich med pét-nat" },
+  ],
+  "rosevin-med-bobler": [
+    { slug: "pizza-bianca-mousserende-rose", label: "Pizza bianca med mousserende rosé" },
+  ],
+  "bedste-champagne-under-300-kr": [
+    { slug: "smash-burger-med-troffelmayo", label: "Smash burger med trøffelmayo" },
+  ],
 
 };

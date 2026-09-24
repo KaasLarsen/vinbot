@@ -137,6 +137,21 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Schiava/Vernatsch: lys, blød alpine rød ved 12–14 °C — til speck, knödel og terrasse.",
   },
+  "bobler-paa-en-tirsdag": {
+    title: "Bobler på en tirsdag: derfor",
+    description:
+      "Derfor skal du drikke bobler midt i ugen: kulsyre og syre nulstiller ganen ved fed, salt og paneret hverdagsmad.",
+  },
+  "friture-og-bobler": {
+    title: "Friture og bobler: ultimativt match",
+    description:
+      "Sprød frituremad møder knastørre bobler. Cava, Crémant og Brut Nature til fried chicken, chips og snacks.",
+  },
+  "hverdagsbobler-under-100-til-mad": {
+    title: "Hverdagsbobler under 100 kr til mad",
+    description:
+      "Brut Cava vs. sød Prosecco: hvilke bobler under 100 kr der faktisk dur til fed hverdagsmad.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:
