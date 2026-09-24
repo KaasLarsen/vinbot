@@ -1245,5 +1245,40 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "ristede-graeskarkerner-i-rodvinssalt", label: "Græskarkerner i rødvinssalt" },
     { slug: "fuldkorns-taralli-med-hvidvin", label: "Fuldkorns-taralli" },
   ],
+  "vinost-pantry-5-flasker": [
+    { slug: "rodvinssauce-essens", label: "Rødvinssauce-essens" },
+    { slug: "hvidvins-bearnaiseessens", label: "Béarnaiseessens" },
+    { slug: "rodvinssennep", label: "Rødvinssennep" },
+    { slug: "glace-de-viande-med-rodvin", label: "Glace de viande" },
+    { slug: "portvins-baconmarmelade", label: "Portvins-baconmarmelade" },
+    { slug: "hvidvins-hvidloegsconfit", label: "Hvidløgsconfit" },
+    { slug: "sherrysyltede-sennepsfro", label: "Sherrysyltede sennepsfrø" },
+    { slug: "hvidvins-jalapenorelish", label: "Jalapeñorelish" },
+    { slug: "aegte-teriyakisauce", label: "Ægte teriyaki" },
+    { slug: "rose-hindbaercoulis", label: "Rosé-hindbærcoulis" },
+    { slug: "espresso-marsalasirup", label: "Espresso-Marsalasirup" },
+    { slug: "champagne-jordbaersirup", label: "Champagne-jordbærsirup" },
+  ],
+  "vin-som-naturlig-smagsforstaerker": [
+    { slug: "rodvinssauce-essens", label: "Rødvinssauce-essens" },
+    { slug: "glace-de-viande-med-rodvin", label: "Glace de viande" },
+    { slug: "hvidvins-bearnaiseessens", label: "Béarnaiseessens" },
+  ],
+  "byg-din-egen-eddikemor": [
+    { slug: "hindbaer-rodvinseddike", label: "Hindbær-rødvinseddike" },
+    { slug: "hvidvinssyltede-gronne-tomater", label: "Hvidvinssyltede grønne tomater" },
+    { slug: "sherrysyltede-sennepsfro", label: "Sherrysyltede sennepsfrø" },
+  ],
+  "naturlig-konservering-med-vin-og-eddike": [
+    { slug: "hindbaer-rodvinseddike", label: "Hindbær-rødvinseddike" },
+    { slug: "hvidvinssyltede-gronne-tomater", label: "Syltede grønne tomater" },
+    { slug: "rodvinssennep", label: "Rødvinssennep" },
+    { slug: "hvidvins-jalapenorelish", label: "Jalapeñorelish" },
+    { slug: "rodvinssirup-med-vanilje", label: "Rødvinssirup" },
+  ],
+  "kemien-i-marinering-med-vin": [
+    { slug: "hvidvins-bearnaiseessens", label: "Béarnaiseessens (reduktion)" },
+    { slug: "rodvinssauce-essens", label: "Rødvinssauce-essens" },
+  ],
 
 };

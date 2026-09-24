@@ -167,6 +167,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Sådan trækker syre og alkohol i madlavningsvin smag ud af svampe og kål, så vegetariske retter mætter.",
   },
+  "vin-som-naturlig-smagsforstaerker": {
+    title: "Vin som naturlig smagsforstærker",
+    description:
+      "Alkohol og vinsyre som naturlige smagsfremmere — samme logik som MSG, fra flasken i gryden.",
+  },
+  "vinost-pantry-5-flasker": {
+    title: "Vinøst pantry: 5 flasker til køkkenet",
+    description:
+      "Tør hvidvin, kraftig rødvin, port, sherry og risvin — slut med færdigkøbte poser.",
+  },
+  "kemien-i-marinering-med-vin": {
+    title: "Kemien i marinering med vin",
+    description:
+      "Hvordan syren i vin mørner kødfibre naturligt — tider, fejl og vinvalg uden kemiske mørnere.",
+  },
+  "naturlig-konservering-med-vin-og-eddike": {
+    title: "Konservering med vin og eddike",
+    description:
+      "Alkohol og syre som klassiske konserveringsmidler — praktisk guide til sylt, eddike og pantry.",
+  },
+  "byg-din-egen-eddikemor": {
+    title: "Byg din egen eddikemor",
+    description:
+      "Forvandl vinrester til levende gourmet-vineddike — trin for trin med moder, tid og fejlfinding.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

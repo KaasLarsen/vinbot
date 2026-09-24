@@ -1,6 +1,18 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Fibermaxxing (3 guides + 16 opskrifter) · Bubbles Any Day · Chill/PT/GR value (2026-09-24).
+**Status:** Vin-pantry/kondimenter (5 guides + 5 opskrifter) · Fibermaxxing · Bubbles · Chill/PT/GR (2026-09-24).
+
+## Vin-pantry & kondimenter — 2026-09-24
+
+Sprunget over (fandtes): portvins-baconmarmelade · hvidløgsconfit · sherrysyltede sennepsfrø · jalapeñorelish · ægte teriyaki · hvidvinssyltede grønne tomater · rødvinssirup-vanilje · rosé-hindbærcoulis · espresso-Marsalasirup · champagne-jordbærsirup. Øl-rødvinssennep fandtes — ny ren `rodvinssennep` tilføjet. TikTok-vineddike fandtes — fuld `byg-din-egen-eddikemor` tilføjet.
+
+**Guides:** `vin-som-naturlig-smagsforstaerker` · `vinost-pantry-5-flasker` · `kemien-i-marinering-med-vin` · `naturlig-konservering-med-vin-og-eddike` · `byg-din-egen-eddikemor`
+
+**Opskrifter:** `rodvinssennep` · `rodvinssauce-essens` · `hvidvins-bearnaiseessens` · `glace-de-viande-med-rodvin` · `hindbaer-rodvinseddike`
+
+Script: `scripts/add-recipes-pantry-batch.mjs`.
+
+---
 
 ## Fibermaxxing — 2026-09-24
 

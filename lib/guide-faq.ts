@@ -327,6 +327,41 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Syre og alkohol hjælper med at trække smagsstoffer ud af svampe og kål; reduktion koncentrerer dem. Brun hårdt, tilsæt vin, kog ind — evt. tomatpuré, miso eller knivspids chokolade.",
     },
   ],
+  "vin-som-naturlig-smagsforstaerker": [
+    {
+      question: "Er vin en smagsforstærker som MSG?",
+      answer:
+        "Delvist: alkohol opløser aromaer, og vinsyre skærper smagen. Vin erstatter ikke glutamat, men forstærker det, du allerede har i gryden — især ved bruning og reduktion.",
+    },
+  ],
+  "vinost-pantry-5-flasker": [
+    {
+      question: "Hvilke vine skal man have til madlavning?",
+      answer:
+        "Fem flasker dækker det meste: tør hvidvin, kraftig rødvin, portvin, tør sherry og sake/mirin. Køb drikkeværdigt — undgå saltet «madlavningsvin».",
+    },
+  ],
+  "kemien-i-marinering-med-vin": [
+    {
+      question: "Mørner vin kød?",
+      answer:
+        "Ja, mildt: syren påvirker proteiner på overfladen. Match tiden til kødtype — for lang marinade i stærk syre gør fisk og kylling grødet.",
+    },
+  ],
+  "naturlig-konservering-med-vin-og-eddike": [
+    {
+      question: "Kan vin og eddike konservere mad?",
+      answer:
+        "Ja: lav pH og høj alkohol hæmmer mikroorganismer. Brug rene glas, tilstrækkelig syre, og køleskab til de fleste hjemmelavede kondimenter.",
+    },
+  ],
+  "byg-din-egen-eddikemor": [
+    {
+      question: "Hvad er en eddikemor?",
+      answer:
+        "En kultur af eddikesyrebakterier, der omdanner alkohol i vin til eddikesyre. Start med restvin, levende eddike/moder, luft og 3–8 uger.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",
