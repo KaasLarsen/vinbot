@@ -1059,5 +1059,46 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "sauce-albufera", label: "Sauce Albuféra" },
     { slug: "sherrysauce-med-svampe", label: "Sherrysauce med svampe" },
   ],
+  "chill-your-reds": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+    { slug: "svamperisotto-med-kold-pinot", label: "Svamperisotto med kold pinot" },
+    { slug: "grillet-kyllingebryst-estragon-kold-rodvin", label: "Kylling med estragon" },
+  ],
+  "rodvin-til-fisk-kold": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "grillet-roedspaette-med-chorizocrumble", label: "Rødspætte med chorizocrumble" },
+    { slug: "stegt-torskeryg-med-beurre-rouge", label: "Torskeryg med beurre rouge" },
+    { slug: "lynstegt-tunsteak-med-sesam", label: "Lynstegt tunsteak med sesam" },
+  ],
+  "afkoelt-roedvin": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "vitello-tonnato-med-dolcetto", label: "Vitello tonnato med Dolcetto" },
+    { slug: "svamperisotto-med-kold-pinot", label: "Svamperisotto med kold pinot" },
+  ],
+  "chillable-reds": [
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+  ],
+  "top-5-druer-til-koeleskabet": [
+    { slug: "roert-tatar-med-beaujolais", label: "Tatar + Gamay" },
+    { slug: "lynstegt-tunsteak-med-sesam", label: "Tun + Frappato" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders + Barbera" },
+    { slug: "svamperisotto-med-kold-pinot", label: "Risotto + Pinot" },
+  ],
+  "rodvin-til-terrassen": [
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+    { slug: "vitello-tonnato-med-dolcetto", label: "Vitello tonnato" },
+    { slug: "charcuteribraet-med-kold-rodvin", label: "Charcuteribræt med kold rødvin" },
+    { slug: "tarte-flambee-med-gedeost", label: "Tarte flambée med gedeost" },
+    { slug: "luksus-hotdogs-med-rodvinsloeg", label: "Luksus-hotdogs med rødvinssløg" },
+    { slug: "grillede-portobello-med-parmesan", label: "Grillede portobello med parmesan" },
+  ],
+  "20-minutter-i-koeleskabet-roedvin": [
+    { slug: "luksus-hotdogs-med-rodvinsloeg", label: "Luksus-hotdogs" },
+    { slug: "charcuteribraet-med-kold-rodvin", label: "Charcuteribræt" },
+  ],
 
 };

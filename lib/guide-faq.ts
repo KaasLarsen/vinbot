@@ -153,6 +153,56 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Nej. Kraftige, tanninrige vine (ung Barolo, mange cabernet) bliver hårde og lukkede, hvis de er for kolde. Vælg lav-tannin-stilarter.",
     },
   ],
+  "chill-your-reds": [
+    {
+      question: "Hvad betyder Chill Your Reds?",
+      answer:
+        "At servere lette, frugtige rødvine med lav tannin ved 11–14 °C, så alkoholen dæmpes og frugt/syre fremhæves.",
+    },
+    {
+      question: "Må man køle Cabernet Sauvignon?",
+      answer:
+        "Ikke hårdt. Kraftig cabernet bliver grynede og lukket i kulde. Vælg gamay, pinot, frappato, barbera eller Valpolicella i stedet.",
+    },
+    {
+      question: "Hvor koldt er for koldt?",
+      answer:
+        "Under ca. 10–11 °C lukker aromaen ofte. Tag flasken ud, varm glasset i hænderne et minut, og smag igen.",
+    },
+  ],
+  "20-minutter-i-koeleskabet-roedvin": [
+    {
+      question: "Virker 20 minutter i køleskabet altid?",
+      answer:
+        "Fra ca. 21 °C lander de fleste lette røde omkring 13–15 °C. Fra kælderkølig flaske rækker 5–10 min. Smag dig frem.",
+    },
+    {
+      question: "Isspand eller køleskab?",
+      answer:
+        "Køleskab er stabilt. Isspand med vand og is er hurtigere (ca. 8–12 min). Undgå isterninger i glasset.",
+    },
+  ],
+  "top-5-druer-til-koeleskabet": [
+    {
+      question: "Hvilke 5 druer er bedst til køleskabet?",
+      answer:
+        "Gamay, Frappato, Pinot Noir (let stil), Barbera og Valpolicella/Corvina. Bonus: Zweigelt, Schiava og let Cabernet Franc.",
+    },
+  ],
+  "rodvin-til-fisk-kold": [
+    {
+      question: "Kan man drikke rødvin til fisk?",
+      answer:
+        "Ja, til fed eller kødagtig fisk (laks, tun) med let, lav-tannin rødvin serveret kølig. Lys dampet fisk matcher bedre hvidvin.",
+    },
+  ],
+  "rodvin-til-terrassen": [
+    {
+      question: "Kan rødvin erstatte rosé på terrassen?",
+      answer:
+        "En let, afkølet rødvin er et stærkt alternativ: mere krop end hvid, mere friskhed end lun stue-rød — ideel som aperitif.",
+    },
+  ],
   "pet-nat-for-begyndere": [
     {
       question: "Hvad er pét-nat?",

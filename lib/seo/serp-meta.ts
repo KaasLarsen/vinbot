@@ -57,6 +57,31 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Chillable reds: gamay, pinot og frappato ved 12–16 °C. 30-minutters-regel, indkøb og mad til trenden.",
   },
+  "chill-your-reds": {
+    title: "Chill Your Reds: ultimativ guide",
+    description:
+      "Chill Your Reds: hvorfor kulde dæmper alkohol og fremhæver frugt — og hvorfor tung cabernet ikke skal på køl.",
+  },
+  "20-minutter-i-koeleskabet-roedvin": {
+    title: "20 min i køleskabet redder rødvin",
+    description:
+      "20 minutter i køleskabet: lifehacket der redder lun, sprittet rødvin en varm sommerdag. Tommelfingerregel og isspand.",
+  },
+  "top-5-druer-til-koeleskabet": {
+    title: "Top 5 druer til køleskabet",
+    description:
+      "Gamay, Frappato, Pinot Noir, Barbera og Valpolicella: druerne der smager bedst ved 11–14 °C.",
+  },
+  "rodvin-til-fisk-kold": {
+    title: "Rødvin til fisk — hvis den er kold",
+    description:
+      "Rødvin til fisk? Ja tak med afkølet pinot, gamay eller frappato til laks og tun. Myten om kun hvidvin.",
+  },
+  "rodvin-til-terrassen": {
+    title: "Rødvin til terrassen: kold aperitif",
+    description:
+      "Rødvin til terrassen: let, afkølet rød som aperitif i solen — alternativ til rosé og hvidvin.",
+  },
   "pet-nat-for-begyndere": {
     title: "Pét-nat for begyndere",
     description:

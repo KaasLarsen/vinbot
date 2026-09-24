@@ -1,0 +1,526 @@
+/** Chill Your Reds recipes batch 1: fisk + café (7). */
+import { r } from "./add-recipes-tilbehor30-lib.mjs";
+
+export const UPDATED = "2026-09-24";
+
+export const SLUG_EXPANSIONS = {
+  "stegt-lakseside-med-kold-pinot":
+    "Fed laks med sprødt skind — server med let pinot noir ved 11–14 °C. Vinens syre skærer fedmen; samme stil kan bruges i en let pan-deglaze.",
+  "grillet-roedspaette-med-chorizocrumble":
+    "Lys fisk + saltet chorizo åbner for kold Valpolicella. Crumble af chorizo og brød giver umami uden at overdøve fisken.",
+  "stegt-torskeryg-med-beurre-rouge":
+    "Beurre rouge på samme lette rødvin, der serveres iskold i glasset — konsistens i smagen.",
+  "lynstegt-tunsteak-med-sesam":
+    "Tunens kødagtige struktur matcher kølig Frappato. Lynsteg — rød midte.",
+  "roert-tatar-med-beaujolais":
+    "Klassisk rørt tatar + ultra-frugtig Gamay ved 12 °C. Et skvæt Beaujolais i tatarblandingen binder ret og glas.",
+  "sliders-med-fritter-og-barbera":
+    "Mini-burgere og fritter — Barberas høje syre danser mod fedme. Kold servering er afgørende.",
+  "vitello-tonnato-med-dolcetto":
+    "Kalv + tunsauce midt mellem kød og fisk — sprød kold Dolcetto.",
+};
+
+export const GUIDE_RECIPE_ADDITIONS = {
+  "chill-your-reds": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+  ],
+  "rodvin-til-fisk-kold": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "grillet-roedspaette-med-chorizocrumble", label: "Rødspætte med chorizocrumble" },
+    { slug: "stegt-torskeryg-med-beurre-rouge", label: "Torskeryg med beurre rouge" },
+    { slug: "lynstegt-tunsteak-med-sesam", label: "Lynstegt tunsteak med sesam" },
+  ],
+  "afkoelt-roedvin": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "vitello-tonnato-med-dolcetto", label: "Vitello tonnato med Dolcetto" },
+  ],
+  "chillable-reds": [
+    { slug: "roert-tatar-med-beaujolais", label: "Rørt tatar med Beaujolais" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+  ],
+  "vin-til-laks": [
+    { slug: "stegt-lakseside-med-kold-pinot", label: "Stegt lakseside med kold pinot" },
+  ],
+  "vin-til-burger": [
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+  ],
+  "top-5-druer-til-koeleskabet": [
+    { slug: "roert-tatar-med-beaujolais", label: "Tatar + Gamay" },
+    { slug: "lynstegt-tunsteak-med-sesam", label: "Tun + Frappato" },
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders + Barbera" },
+  ],
+  "rodvin-til-terrassen": [
+    { slug: "sliders-med-fritter-og-barbera", label: "Sliders med Barbera" },
+    { slug: "vitello-tonnato-med-dolcetto", label: "Vitello tonnato" },
+  ],
+};
+
+export const RECIPES = [
+  r({
+    slug: "stegt-lakseside-med-kold-pinot",
+    title: "Stegt lakseside med kold Pinot Noir",
+    description:
+      "Fed lakseside med sprødt skind — parret med kølig, elegant Pinot Noir. Opskrift til 4.",
+    tags: ["opskrift", "laks", "fisk", "pinot noir", "chillable", "sommer"],
+    prepTime: "PT10M",
+    cookTime: "PT20M",
+    servings: 4,
+    difficulty: "easy",
+    wineInRecipe: {
+      style: "Let, frugtig Pinot Noir — også til glasset ved 11–14 °C",
+      amount: "50 ml pinot noir (deglaze) + flaske til servering",
+      note: "Et skvæt pinot i panden binder sauce og glas; hovedparten serveres kold.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-fisk-kold",
+      searchQuery: "pinot noir laks chillable",
+      searchMax: 180,
+      label: "rødvin til fisk (kold)",
+    },
+    relatedGuides: [
+      "rodvin-til-fisk-kold",
+      "vin-til-laks",
+      "chill-your-reds",
+      "top-5-druer-til-koeleskabet",
+    ],
+    ingredients: [
+      "1 lakseside (ca. 800 g) med skind",
+      "1 spsk olie",
+      "50 ml let Pinot Noir",
+      "30 g smør",
+      "1 citron",
+      "Dild, salt, peber",
+      "Flaske Pinot Noir til servering (kølet)",
+    ],
+    instructions: [
+      "Tør laksen godt. Salt skindsiden. Varm olie i pande — steg skind-nedved ved middel-høj varme 6–8 minutter til sprødt.",
+      "Vend forsigtigt. Steg 2–4 minutter mere (eller ovn 180 °C til ønsket kerne).",
+      "Tag fisken op. Hæld pinot i panden — skrab. Pisk smør i. Smag til med citron, salt og peber.",
+      "Server med dild og sauce. Skænk Pinot Noir ved 11–14 °C.",
+    ],
+    intro: `**Stegt lakseside med kold Pinot Noir** er beviset på [rødvin til fisk](/guides/rodvin-til-fisk-kold): fed laks, sprødt skind, og en elegant pinot lige fra køleskabet. Syren skærer fedmen — præcis som [Chill Your Reds](/guides/chill-your-reds) lover.`,
+    why: `Pinots **lave tannin** irriterer ikke fisken; kulden gør vinen **læskende**. Læs [vin til laks](/guides/vin-til-laks).`,
+    tips: [
+      ["Skind", "Helt tørt = sprødt."],
+      ["Vin i glas", "20 min i køleskab før servering."],
+      ["Kerne", "Laks må gerne være rosa midt."],
+      ["Stil", "Let pinot — ikke tung fad-Californien."],
+    ],
+    serving: `Nye kartofler, asparges eller grøn salat. Se [20-minutters-reglen](/guides/20-minutter-i-koeleskabet-roedvin).`,
+    mistakes: [
+      "Kraftig cabernet til laks — metallisk.",
+      "Lun pinot — smager sprittet.",
+      "Vådt skind — ikke sprødt.",
+      "At overstege — tør laks.",
+    ],
+    storage: `Spis frisk. Rester kolde i salat dagen efter.`,
+    glass: `Pinot Noir 11–14 °C — se [rødvin til fisk](/guides/rodvin-til-fisk-kold).`,
+    faq: [
+      ["Rosé i stedet?", "Ja — men pinot giver mere krop."],
+      ["Uden vin i panden?", "Kun citronsmør — stadig server kold pinot."],
+      ["Orkney-/færøsk laks?", "Samme metode."],
+    ],
+  }),
+
+  r({
+    slug: "grillet-roedspaette-med-chorizocrumble",
+    title: "Grillet rødspætte med chorizocrumble",
+    description:
+      "Lys rødspætte opgraderet med saltet chorizocrumble — perfekt til kold Valpolicella. Opskrift til 4.",
+    tags: ["opskrift", "fisk", "chorizo", "grill", "chillable", "valpolicella"],
+    prepTime: "PT15M",
+    cookTime: "PT15M",
+    servings: 4,
+    difficulty: "easy",
+    wineInRecipe: {
+      style: "Let Valpolicella Classico (Corvina) — også til glasset kølig",
+      amount: "2 spsk rødvin til crumble + flaske til servering",
+      note: "Chorizo + et skvæt Valpolicella i crumble; resten serveres ved 12 °C.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-fisk-kold",
+      searchQuery: "valpolicella fisk chillable",
+      searchMax: 150,
+      label: "rødvin til fisk (kold)",
+    },
+    relatedGuides: [
+      "rodvin-til-fisk-kold",
+      "chill-your-reds",
+      "top-5-druer-til-koeleskabet",
+      "vin-til-grillet-fisk",
+    ],
+    ingredients: [
+      "4 rødspættefileter (eller anden lys fladfisk)",
+      "100 g chorizo, finthakket",
+      "40 g rasp eller tørret brød, smuldret",
+      "2 spsk let Valpolicella eller anden let rødvin",
+      "1 spsk olivenolie",
+      "Persille, citron, salt, peber",
+    ],
+    instructions: [
+      "Sauter chorizo, til fedtet smelter. Tilsæt rasp og vin — rist til sprød crumble. Afkøl lidt. Rør persille i.",
+      "Pensl fisk med olie, salt og peber. Grill eller steg 2–3 minutter pr. side.",
+      "Drys chorizocrumble over. Citron ved siden.",
+      "Server med kold Valpolicella Classico (ikke Amarone).",
+    ],
+    intro: `**Grillet rødspætte med chorizocrumble** er trick'et, der gør lys fisk «rødvinsegnet»: saltet kød åbner for [kold Valpolicella](/guides/top-5-druer-til-koeleskabet). Uden chorizo havde hvidvin været det sikre valg.`,
+    why: `Chorizo giver **fedt og krydderi**; Corvina giver **kirsebær og syre**. Læs [rødvin til fisk](/guides/rodvin-til-fisk-kold).`,
+    tips: [
+      ["Ikke Amarone", "For tung til fisk."],
+      ["Crumble", "Skal være sprød — ikke våd."],
+      ["Fisk", "Rødspætte, rødtunge eller sej."],
+      ["Vin", "12 °C."],
+    ],
+    serving: `Grøn salat, grillede grøntsager. Terrasse: [rødvin til terrassen](/guides/rodvin-til-terrassen).`,
+    mistakes: [
+      "Ripasso/Amarone — overdøver.",
+      "For meget rasp — tørt.",
+      "At overstege fladfisk.",
+      "Lun vin — mister friskhed.",
+    ],
+    storage: `Crumble kan laves dagen før. Fisk frisk.`,
+    glass: `Valpolicella Classico 11–14 °C.`,
+    faq: [
+      ["Bacon i stedet?", "Ja — samme logik."],
+      ["Ovnstegt fisk?", "Ja — 180 °C i 8–10 min."],
+      ["Hvidvin?", "Kun hvis du springer chorizo over."],
+    ],
+  }),
+
+  r({
+    slug: "stegt-torskeryg-med-beurre-rouge",
+    title: "Stegt torskeryg med beurre rouge",
+    description:
+      "Torskeryg med rødvinssmørsauce — samme lette rødvin serveres iskold i glasset. Opskrift til 4.",
+    tags: ["opskrift", "torsk", "fisk", "beurre rouge", "rødvin", "chillable"],
+    prepTime: "PT10M",
+    cookTime: "PT25M",
+    servings: 4,
+    difficulty: "medium",
+    wineInRecipe: {
+      style: "Let, frugtig rødvin — pinot eller gamay (til sauce + glas)",
+      amount: "250 ml til beurre rouge + flaske til servering",
+      note: "Saucen laves på samme stil, som serveres kold — se også beurre-rouge-opskriften.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-fisk-kold",
+      searchQuery: "pinot noir torsk beurre rouge",
+      searchMax: 150,
+      label: "rødvin til fisk (kold)",
+    },
+    relatedGuides: [
+      "rodvin-til-fisk-kold",
+      "chill-your-reds",
+      "sadan-bruger-du-vin-til-sauce-og-simren",
+    ],
+    ingredients: [
+      "4 torskerygge (á ca. 150–180 g)",
+      "250 ml let rødvin (pinot/gamay)",
+      "2 skalotteløg, finthakkede",
+      "150 g koldt smør i tern",
+      "1 spsk olie",
+      "Salt, peber, citronsaft",
+      "Evt. 1 spsk rødvinsseddike",
+    ],
+    instructions: [
+      "Sauter skalotteløg. Hæld vin (+ eddike) i. Kog ind til 2–3 spsk. Montér smør til [beurre rouge](/opskrifter/beurre-rouge). Hold lunken.",
+      "Steg torsk i olie 3–4 minutter pr. side, til netop gennemstegt. Salt og peber.",
+      "Anret med sauce. Server samme vintype ved 11–14 °C.",
+    ],
+    intro: `**Stegt torskeryg med beurre rouge** binder tallerken og glas: saucen er [beurre rouge](/opskrifter/beurre-rouge), vinen i glasset er den samme lette rød — **iskold**. Klassisk fransk logik møder [Chill Your Reds](/guides/chill-your-reds).`,
+    why: `Når sauce og glas deler **frugtprofil**, smager det dyrere. Kulden holder alkoholen i skak. Læs [rødvin til fisk](/guides/rodvin-til-fisk-kold).`,
+    tips: [
+      ["Emulsion", "Smør af varmen — ellers skilt."],
+      ["Torsk", "Pas på udtørring."],
+      ["Vin", "Samme flaske til sauce og glas, hvis muligt."],
+      ["Temp", "Sauce lunken, vin kold."],
+    ],
+    serving: `Spinat, kartofler, ærter.`,
+    mistakes: [
+      "Kraftig vin i saucen — bitter.",
+      "At koge efter smør.",
+      "Lun vin i glasset — flat match.",
+      "At overstege torsk.",
+    ],
+    storage: `Sauce bedst frisk. Fisk frisk.`,
+    glass: `Samme pinot/gamay 11–14 °C.`,
+    faq: [
+      ["Beurre blanc i stedet?", "Mere klassisk til torsk — men mist chill-red-temaet."],
+      ["Sej?", "Ja."],
+      ["Uden eddike?", "Ja."],
+    ],
+  }),
+
+  r({
+    slug: "lynstegt-tunsteak-med-sesam",
+    title: "Lynstegt tunsteak med sesam",
+    description:
+      "Tunsteak med sesam — kødagtig struktur til kølig, saftig Frappato. Opskrift til 4.",
+    tags: ["opskrift", "tun", "fisk", "sesam", "frappato", "chillable", "asiatisk"],
+    prepTime: "PT10M",
+    cookTime: "PT10M",
+    servings: 4,
+    difficulty: "easy",
+    wineInRecipe: {
+      style: "Frappato eller let pinot — til glasset ved 11–14 °C",
+      amount: "2 spsk sake eller let rødvin til pensling (valgfri)",
+      note: "Retten er primært glas-match: Frappato kølig. Evt. let pensling med vin/sake.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-fisk-kold",
+      searchQuery: "frappato tun pinot",
+      searchMax: 150,
+      label: "rødvin til fisk (kold)",
+    },
+    relatedGuides: [
+      "rodvin-til-fisk-kold",
+      "top-5-druer-til-koeleskabet",
+      "chill-your-reds",
+      "vin-til-asiatisk-mad",
+    ],
+    ingredients: [
+      "4 tunsteaks (á ca. 150 g)",
+      "2 spsk sesamfrø (blandede)",
+      "1 spsk soja",
+      "1 tsk sesamolie",
+      "1 spsk olie til stegning",
+      "2 spsk sake eller let rødvin (valgfri)",
+      "Forårsløg, lime",
+    ],
+    instructions: [
+      "Pensl tun med soja, sesamolie og evt. sake/vin. Vend i sesamfrø.",
+      "Meget hot pande: lynsteg 45–60 sekunder pr. side (rød midte).",
+      "Hvile 1 minut. Skær i skiver. Forårsløg og lime.",
+      "Server med iskold Frappato eller let pinot.",
+    ],
+    intro: `**Lynstegt tunsteak med sesam** skriger på [Frappato](/guides/top-5-druer-til-koeleskabet): tun minder om oksekød, men tåler ikke tung tannin. Kølig, saftig rød er svaret — ikke cabernet.`,
+    why: `Frappatos **blomster og rød frugt** matcher sesam og soja uden at knuse fisken. Læs [rødvin til fisk](/guides/rodvin-til-fisk-kold).`,
+    tips: [
+      ["Rå midte", "Sushikvalitet-tun."],
+      ["Pande", "Rygende hot."],
+      ["Vin", "Pinot virker, hvis Frappato mangler."],
+      ["Ikke gennemsteg", "Tør og kedelig."],
+    ],
+    serving: `Ris, edamame, agurkesalat.`,
+    mistakes: [
+      "Gennemstegt tun.",
+      "Kraftig rødvin.",
+      "Lun vin.",
+      "For meget soja — saltbombe.",
+    ],
+    storage: `Spis med det samme.`,
+    glass: `Frappato 11–14 °C — se [top 5 druer](/guides/top-5-druer-til-koeleskabet).`,
+    faq: [
+      ["Dåsetun?", "Nej — frisk steak."],
+      ["Grill?", "Ja — samme tid."],
+      ["Hvidvin?", "Grüner eller albariño — anden stil."],
+    ],
+  }),
+
+  r({
+    slug: "roert-tatar-med-beaujolais",
+    title: "Rørt tatar med kold Beaujolais",
+    description:
+      "Klassisk rørt oksetatar parret med ultra-frugtig Gamay ved 12 °C. Opskrift til 4 som forret.",
+    tags: ["opskrift", "tatar", "oksekød", "beaujolais", "gamay", "chillable", "forret"],
+    prepTime: "PT20M",
+    cookTime: "PT0M",
+    servings: 4,
+    difficulty: "medium",
+    wineInRecipe: {
+      style: "Beaujolais / Gamay — til tatar + glasset ved 12 °C",
+      amount: "2 spsk Beaujolais i tatar + flaske til servering",
+      note: "Et skvæt Gamay i tataren binder ret og glas; server resten iskold.",
+    },
+    wineToDrink: {
+      guideSlug: "chill-your-reds",
+      searchQuery: "beaujolais tatar gamay",
+      searchMax: 180,
+      label: "Chill Your Reds",
+    },
+    relatedGuides: [
+      "chill-your-reds",
+      "chillable-reds",
+      "top-5-druer-til-koeleskabet",
+      "gamay-fra-beaujolais",
+      "afkoelt-roedvin",
+    ],
+    ingredients: [
+      "400 g oksefilet eller mørbrad i tip-top kvalitet",
+      "2 spsk Beaujolais",
+      "1 spsk kapers, hakket",
+      "1 spsk finthakket skalotteløg",
+      "1 æggeblomme (pasteuriseret hvis ønsket)",
+      "1 tsk dijon",
+      "1 spsk olivenolie",
+      "Worcestershire, salt, peber, evt. tabasco",
+      "Toast og cornichoner",
+    ],
+    instructions: [
+      "Hak kødet fint med kniv (ikke blender).",
+      "Rør vin, kapers, skalotteløg, æggeblomme, dijon, olie og smag til.",
+      "Form med ring eller ske. Server med toast.",
+      "Skænk Beaujolais ved ca. 12 °C.",
+    ],
+    intro: `**Rørt tatar med kold Beaujolais** er chill-reds' absolutte topkombi: råt, fedt kød møder Gamays **jordbær-syre**, der renser munden. Mere Beaujolais-fokuseret end [bøftatar med hvidvin](/opskrifter/boeftatar-med-hvidvin).`,
+    why: `Gamay har **næsten ingen tannin** og masser af frugt — perfekt til rå okse. Læs [gamay fra Beaujolais](/guides/gamay-fra-beaujolais).`,
+    tips: [
+      ["Kødkvalitet", "Ikke kompromis."],
+      ["Vin", "Villages eller cru — frugtig."],
+      ["Temp", "12 °C — [20 min i køl](/guides/20-minutter-i-koeleskabet-roedvin)."],
+      ["Server straks", "Tatar venter ikke."],
+    ],
+    serving: `Forret eller let frokost. Cornichoner, kapers, toast.`,
+    mistakes: [
+      "Kværnet køledisk-kød af tvivlsom kvalitet.",
+      "Kraftig vin.",
+      "Lun Beaujolais — mister magien.",
+      "For meget worcester — overdøver.",
+    ],
+    storage: `Spis med det samme. Hak ikke forud i flere timer.`,
+    glass: `Beaujolais 11–13 °C — se [Chill Your Reds](/guides/chill-your-reds).`,
+    faq: [
+      ["Uden æg?", "Ja — mere olie og dijon."],
+      ["Hest?", "Klassisk i FR — samme vin."],
+      ["Cru eller villages?", "Begge — Fleurie er elegant."],
+    ],
+  }),
+
+  r({
+    slug: "sliders-med-fritter-og-barbera",
+    title: "Sliders med fritter og kold Barbera",
+    description:
+      "Mini-burgere og sprøde fritter — afkølet Barbera med høj syre til fedmen. Opskrift til 4.",
+    tags: ["opskrift", "burger", "sliders", "barbera", "chillable", "fredag", "frokost"],
+    prepTime: "PT20M",
+    cookTime: "PT25M",
+    servings: 4,
+    difficulty: "easy",
+    wineInRecipe: {
+      style: "Barbera d'Asti eller d'Alba — til glasset ved 12–14 °C",
+      amount: "1 dl Barbera til evt. løgkompot + flaske til servering",
+      note: "Valgfri hurtig rødvinssløg; hovedsagen er kold Barbera til sliders og fritter.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-terrassen",
+      searchQuery: "barbera burger chillable",
+      searchMax: 150,
+      label: "rødvin til terrassen",
+    },
+    relatedGuides: [
+      "rodvin-til-terrassen",
+      "vin-til-burger",
+      "top-5-druer-til-koeleskabet",
+      "barbera-druen",
+      "chill-your-reds",
+    ],
+    ingredients: [
+      "500 g hakket oksekød",
+      "8 mini-burgerboller",
+      "8 skiver cheddar eller lige ost",
+      "Salat, tomat, pickles, mayo",
+      "800 g kartofler til fritter (eller frosne)",
+      "1 rødløg + 1 dl Barbera (valgfri kompot)",
+      "Salt, peber, olie",
+    ],
+    instructions: [
+      "Lav 8 små bøffer. Steg eller grill 2–3 minutter pr. side. Ost på til sidst.",
+      "Fritter: bag eller steg sprøde. Salt.",
+      "Valgfri: sauter løg, hæld Barbera i, kog ind til kompot.",
+      "Samle sliders. Server med fritter og Barbera ved 12–14 °C.",
+    ],
+    intro: `**Sliders med fritter og kold Barbera** er fredagsmad med chill-red-logik: Barberas **høje syre** klipper burgerfedt og fritter. Mere specifik end [klassisk burger](/opskrifter/klassisk-burger) — her er vinen i fokus.`,
+    why: `Barbera er [top 5 til køleskabet](/guides/top-5-druer-til-koeleskabet) netop fordi syren **renser**. Læs [vin til burger](/guides/vin-til-burger).`,
+    tips: [
+      ["Ikke for tykke bøffer", "Sliders skal være saftige, ikke stegeflade."],
+      ["Vin", "Ung Barbera — frugtig."],
+      ["Køl", "20 min før servering."],
+      ["Fritter", "Sprøde = bedre med syre."],
+    ],
+    serving: `Cornichoner, chili mayo. Terrasse: [rødvin til terrassen](/guides/rodvin-til-terrassen).`,
+    mistakes: [
+      "Tung cabernet — for meget tannin.",
+      "Lun Barbera — sprittet.",
+      "Tørre bøffer.",
+      "For bløde boller uden toast.",
+    ],
+    storage: `Bøffer kan formes forud. Steg friskt.`,
+    glass: `Barbera 12–14 °C — se [barbera-druen](/guides/barbera-druen).`,
+    faq: [
+      ["Pinot i stedet?", "Ja — lettere."],
+      ["Kyllingesliders?", "Barbera eller kold gamay."],
+      ["Uden fritter?", "Stadig god — men fritter er pointen."],
+    ],
+  }),
+
+  r({
+    slug: "vitello-tonnato-med-dolcetto",
+    title: "Vitello tonnato med kold Dolcetto",
+    description:
+      "Italiensk kalvekød med tunsauce — midt mellem kød og fisk — med sprød kold Dolcetto. Opskrift til 4.",
+    tags: ["opskrift", "kalvekød", "italiensk", "dolcetto", "chillable", "forret", "café"],
+    prepTime: "PT25M",
+    cookTime: "PT45M",
+    servings: 4,
+    difficulty: "medium",
+    wineInRecipe: {
+      style: "Dolcetto eller let Barbera — til glasset ved 12–14 °C",
+      amount: "1 dl hvidvin til kogevand + Dolcetto til servering",
+      note: "Kalven pocheres med hvidvin; i glasset: kold Dolcetto til den cremede tunsauce.",
+    },
+    wineToDrink: {
+      guideSlug: "rodvin-til-terrassen",
+      searchQuery: "dolcetto vitello tonnato",
+      searchMax: 150,
+      label: "rødvin til terrassen",
+    },
+    relatedGuides: [
+      "rodvin-til-terrassen",
+      "vin-til-italiensk-mad",
+      "chill-your-reds",
+      "top-5-druer-til-koeleskabet",
+    ],
+    ingredients: [
+      "600 g kalveculotte eller filet",
+      "1 dl hvidvin",
+      "1 løg, 1 gulerod, 1 laurbærblad",
+      "150 g tun i olie, afløbet",
+      "2 spsk kapers + ekstra til pynt",
+      "2 æggeblommer eller 100 ml mayo",
+      "1 spsk citronsaft",
+      "Olivenolie, salt, peber",
+      "Flaske Dolcetto (kølet)",
+    ],
+    instructions: [
+      "Pocher kalv i vand, hvidvin og grøntsager 40–50 minutter til mør. Afkøl i lagen. Skær tynde skiver.",
+      "Blend tun, kapers, æggeblommer/mayo, citron og olie til cremet sauce. Smag til.",
+      "Anret kalveskiver, dæk med sauce, pynt med kapers.",
+      "Server med Dolcetto ved 12–14 °C.",
+    ],
+    intro: `**Vitello tonnato med kold Dolcetto** er caféklassikeren midt mellem kød og fisk — derfor er **sprød, kold Dolcetto** genial. Cremet tunsauce + let Piemonte-rød = terrasse og frokost.`,
+    why: `Dolcetto har **blød frugt og lav bitterhed** — den skubber ikke til tunsaucen. Læs [rødvin til terrassen](/guides/rodvin-til-terrassen).`,
+    tips: [
+      ["Kalv", "Skær koldt — tynde skiver."],
+      ["Sauce", "Skal være cremet, ikke grynet."],
+      ["Vin", "Dolcetto d'Alba — ung."],
+      ["Make-ahead", "Lav dagen før — smager bedre."],
+    ],
+    serving: `Forret eller let hovedret med salat og brød.`,
+    mistakes: [
+      "Kraftig Barolo — for meget.",
+      "Varm servering af kødet — forkert stil.",
+      "For salt sauce — smag til.",
+      "Lun vin.",
+    ],
+    storage: `Køleskab 2 dage samlet.`,
+    glass: `Dolcetto 12–14 °C — alternativ: kold Barbera.`,
+    faq: [
+      ["Kylling i stedet?", "Ja — «pollo tonnato»."],
+      ["Uden æg?", "Kun mayo-base."],
+      ["Hvidvin i glasset?", "Vermentino — anden oplevelse."],
+    ],
+  }),
+];

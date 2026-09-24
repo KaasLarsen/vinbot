@@ -1,6 +1,20 @@
 # Opskrifter — vinretter der dækker sortimentet
 
-**Status:** Sauce 30 (23 net-nye) + strategiske køkkener (45) + vin-tilbehør 35 + øvrige (2026-09-23).
+**Status:** Chill Your Reds (5 guides + 13 opskrifter) + sauce 30 + strategiske køkkener (2026-09-24).
+
+## Chill Your Reds — 2026-09-24
+
+Hub fandtes allerede: `chillable-reds` · `afkoelt-roedvin`.
+
+**Nye guides (5):** `chill-your-reds` · `20-minutter-i-koeleskabet-roedvin` · `top-5-druer-til-koeleskabet` · `rodvin-til-fisk-kold` · `rodvin-til-terrassen`
+
+**Nye opskrifter (13):** lakseside+pinot · rødspætte+chorizo · torsk+beurre rouge · tun+sesam · tatar+Beaujolais · sliders+Barbera · vitello tonnato · kylling+estragon · charcuteribræt · tarte flambée · hotdogs+rødvinssløg · portobello · svamperisotto+kold pinot
+
+Sprunget over (fandtes): sticky pork belly · gyoza.
+
+Scripts: `scripts/add-recipes-chill-reds-batch{1,2}.mjs`.
+
+---
 
 ## Sauce-expansion — 2026-09-23 (23 net-nye)
 
