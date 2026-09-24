@@ -1884,6 +1884,56 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Rødvinssangria med mørk rom og kanel. Krydret efterårs-bowle til 6–8 — opskrift.",
   },
+  "pompier-cocktail": {
+    title: "Pompier Cocktail opskrift",
+    description:
+      "Pompier: tør fransk vermouth, crème de cassis og danskvand. Let aperitif — opskrift til 1 glas.",
+  },
+  "barolo-chinato-manhattan": {
+    title: "Barolo Chinato Manhattan opskrift",
+    description:
+      "Barolo Chinato Manhattan: whiskey, Barolo Chinato og bitters. Vinøs Manhattan — opskrift.",
+  },
+  "rose-french-75": {
+    title: "Rosé French 75 opskrift",
+    description:
+      "Rosé French 75: gin, citron, sirup og mousserende rosé. Pink French 75 — opskrift til 1 flute.",
+  },
+  "air-mail": {
+    title: "Air Mail opskrift — rom og champagne",
+    description:
+      "Air Mail: mørk rom, lime, honning og tør mousserende vin. Klassisk boble-cocktail — opskrift.",
+  },
+  "white-port-ginger-ale": {
+    title: "White Port & Ginger Ale opskrift",
+    description:
+      "White Port & Ginger Ale: hvid port, ginger ale og frisk ingefær. Nem long drink — opskrift.",
+  },
+  "queens-dubonnet": {
+    title: "The Queen's Dubonnet opskrift",
+    description:
+      "Queen's Dubonnet: Dubonnet og gin med citron. Den britiske dronnings favorit — opskrift.",
+  },
+  "spiced-red-wine-hot-toddy": {
+    title: "Spiced Red Wine Hot Toddy opskrift",
+    description:
+      "Spiced Red Wine Hot Toddy: rødvin, bourbon, honning, citron og krydderier. Vinterdrink — opskrift.",
+  },
+  "elderflower-white-wine-cooler": {
+    title: "Elderflower White Wine Cooler opskrift",
+    description:
+      "Elderflower Cooler: sprød hvidvin, hyldeblomst, lime og lemon-soda. Sommercooler — opskrift.",
+  },
+  "sherry-alexander": {
+    title: "Sherry Alexander opskrift — PX og kakao",
+    description:
+      "Sherry Alexander: Pedro Ximénez, kakaolikør og fløde. Cremet dessert-cocktail — opskrift.",
+  },
+  "sparkling-margarita": {
+    title: "Sparkling Margarita opskrift",
+    description:
+      "Sparkling Margarita: tequila, triple sec, lime og tør mousserende vin. Fest-margarita — opskrift.",
+  },
 };
 
 export function buildDrinkSerpDescription(description: string, slug: string, _title: string): string {
