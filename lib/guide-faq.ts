@@ -3905,7 +3905,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor mange kalorier har alkoholfri vin?",
       answer:
-        "Cirka 1/3 af alkoholisk vin, typisk 15–25 kcal per 100 ml mod 70–85 kcal. Tjek etiket — nogle alkoholfri vine har tilsat sukker for at kompensere for tabt krop.",
+        "Det varierer. Frida har fx ca. 15 kcal/100 g for en alkoholfri rød/rosé-reference mod ca. 67–77 for alkoholisk hvid/rød. Sukker kan hæve tallet — tjek etiketten.",
     },
     {
       question: "Hvad er god alkoholfri vin til mad?",
@@ -5285,7 +5285,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor mange kalorier er der i alkoholfri hvidvin?",
       answer:
-        "Ofte 15–25 kcal pr. 100 ml vs. 70–85 i almindelig hvid — ca. en tredjedel, hvis sukkeret er lavt.",
+        "Varierer med produktet. Frida har ca. 67 kcal/100 g for en alkoholisk hvidvins-reference og ca. 15 for alkoholfri rød/rosé — tør 0 %-hvid ligger ofte lavt, sød 0 % højere. Læs etiketten.",
     },
     {
       question: "Hvorfor kan sød 0 % have flere kalorier?",
@@ -5747,7 +5747,7 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvor mange kalorier er der i alkoholfri vin?",
       answer:
-        "Ofte ca. 15–25 kcal pr. 100 ml (ca. 20–35 pr. 12,5 cl-glas) — typisk omkring en tredjedel af alkoholisk vin. Sukker kan hæve tallet; læs etiketten.",
+        "Det varierer. Frida har fx en reference for alkoholfri rød/rosé på ca. 15 kcal/100 g, mens alkoholisk hvid/rød ligger omkring 67–77 kcal/100 g. Sukker kan hæve tallet — læs altid etiketten. Se også tabellen alkohol vs. alkoholfri.",
     },
     {
       question: "Er alkoholfri vin godt til vægttab?",
@@ -5758,6 +5758,142 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Har bobler færre kalorier end rød alkoholfri?",
       answer:
         "Tør alkoholfri bobler ligger ofte i den lave ende. Rød kan have mere frugtsødme afhængigt af produkt. Tjek kcal og sukker pr. 100 ml på flasken.",
+    },
+  ],
+  "er-alkoholfri-vin-sundere": [
+    {
+      question: "Er alkoholfri vin sundere end almindelig vin?",
+      answer:
+        "Den vigtigste dokumenterede forskel er mindre eller ingen alkohol. Kalorier og sukker varierer mellem produkter, så alkoholfri er ikke automatisk et sundhedsprodukt. Tjek etiketten.",
+    },
+    {
+      question: "Har alkoholfri vin færre kalorier?",
+      answer:
+        "Ofte ja, fordi alkohol giver 7 kcal/g. Men sød 0 % kan stadig have mærkbare kalorier fra sukker. Se Frida-referencer og produktdeclaration i kalorie-tabellen.",
+    },
+    {
+      question: "Er alkoholfri vin sukkerfri?",
+      answer:
+        "Nej. Mange 0 %-vine har restsukker eller tilsat sødme. Læs «heraf sukkerarter» pr. 100 ml.",
+    },
+  ],
+  "er-alkoholfri-oel-sundere": [
+    {
+      question: "Er alkoholfri øl sundere end almindelig øl?",
+      answer:
+        "Den klareste forskel er mindre eller ingen alkohol. Sundhedsstyrelsen nævner, at alkoholfri øl ofte har ca. halvdelen af kalorierne — men sukker og kulhydrat varierer. Ikke medicinsk rådgivning.",
+    },
+    {
+      question: "Er alkoholfri øl kaloriefri?",
+      answer:
+        "Nej. 0 % fjerner alkoholkalorier, men kulhydrat giver stadig energi. Sammenlign kcal pr. 100 ml og din portionsstørrelse.",
+    },
+    {
+      question: "Kan man tage på af alkoholfri øl?",
+      answer:
+        "Ja, hvis det samlede energiindtag er for højt. Se guiden om vægt og alkoholfri øl for 1–3 øl-regnestykker.",
+    },
+  ],
+  "tager-man-paa-af-alkoholfri-oel": [
+    {
+      question: "Tager man på af alkoholfri øl?",
+      answer:
+        "Ikke automatisk. Vægt styres af kaloriebalance over tid. Alkoholfri øl kan stadig bidrage med kalorier fra kulhydrat — især ved flere store portioner.",
+    },
+    {
+      question: "Har alkoholfri øl færre kalorier end almindelig øl?",
+      answer:
+        "Ofte ja ifølge Sundhedsstyrelsens tommelfinger (ca. halvdelen), men tjek din etiket. Frida angiver ca. 37 kcal/100 g for en classic pilsner som alkoholisk reference.",
+    },
+    {
+      question: "Hvordan regner jeg kalorier i 2–3 øl?",
+      answer:
+        "Tag kcal/100 ml × (ml/100) × antal. 33 cl er ×3,3; 50 cl er ×5. Brug altid produktets egne tal.",
+    },
+  ],
+  "kalorier-i-alkohol-vs-alkoholfri": [
+    {
+      question: "Hvor mange kalorier er der i alkohol vs. alkoholfri?",
+      answer:
+        "Det afhænger af drikken. Frida-eksempler: classic pilsner ca. 37 kcal/100 g; hvidvin ca. 67; rødvin ca. 77; alkoholfri rød/rosé-reference ca. 15. Alkoholfri øl og mange 0 %-vine varierer — læs etiketten.",
+    },
+    {
+      question: "Hvorfor giver alkohol mange kalorier?",
+      answer:
+        "Ifølge EU-forordning 1169/2011 giver alkohol 7 kcal pr. gram — mere end kulhydrat (4 kcal/g).",
+    },
+    {
+      question: "Kan jeg regne pr. glas ud fra tabellen?",
+      answer:
+        "Ja: gang kcal/100 ml med 1,25 for 12,5 cl vin eller 3,3 for 33 cl øl. Brug helst dit produkts deklaration.",
+    },
+  ],
+  "hvor-meget-sukker-i-alkoholfri-vin": [
+    {
+      question: "Hvor meget sukker er der i alkoholfri vin?",
+      answer:
+        "Der findes ikke ét tal for hele kategorien. Tjek «heraf sukkerarter» pr. 100 ml. Tør/brut ligger typisk lavere end sød 0 % eller «festdrik».",
+    },
+    {
+      question: "Hvorfor smager alkoholfri vin ofte sødere?",
+      answer:
+        "Alkohol maskerer sødme, og producenter kan tilsætte most/sukker for krop efter dealkoholisering. Samme gram sukker smager derfor tydeligere.",
+    },
+    {
+      question: "Er tør alkoholfri vin sukkerfri?",
+      answer:
+        "Ikke nødvendigvis. «Tør» er et smagssignal — næringsdeklarationen er facit.",
+    },
+  ],
+  "hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit": [
+    {
+      question: "Hvad sker der med kroppen, når man dropper alkohol?",
+      answer:
+        "Du fjerner ethanol-påvirkningen. Sundhedsstyrelsen kobler mindre alkohol bl.a. til bedre søvnmuligheder. Effekten afhænger af dit tidligere indtag og hvad du erstatter med.",
+    },
+    {
+      question: "Detox’er alkoholfri kroppen?",
+      answer:
+        "Nej — det er ikke en dokumenteret «detox». Alkoholfri er et alternativ med mindre eller ingen alkohol; næringsindholdet varierer.",
+    },
+    {
+      question: "Sover man bedre uden alkohol?",
+      answer:
+        "Alkohol før sengetid kan give urolig søvn (SST). Mange oplever bedre søvn ved at drikke mindre, men det er ikke en garanti.",
+    },
+  ],
+  "saadan-vaelger-du-alkoholfri-med-faerre-kalorier": [
+    {
+      question: "Hvordan vælger jeg alkoholfri med færre kalorier?",
+      answer:
+        "Sammenlign kcal/100 ml, omregn til din portion, tjek sukker og kulhydrat, notér % vol., og sammenlign mindst to produkter side om side.",
+    },
+    {
+      question: "Betyder 0,0 % få kalorier?",
+      answer:
+        "Nej. 0,0 % handler om alkohol. Kalorierne kommer især fra kulhydrat/sukker.",
+    },
+    {
+      question: "Er bobler altid det letteste valg?",
+      answer:
+        "Tør/brut 0 %-bobler er ofte et godt startsted, men verifikation kræver etiketten — søde bobler kan ligge højere.",
+    },
+  ],
+  "alkoholfri-vs-alkoholholdig": [
+    {
+      question: "Hvad er forskellen på alkoholfri og alkoholholdig?",
+      answer:
+        "Primært alkoholindholdet (typisk 0–0,5 % vs. langt højere). Kalorier, sukker og smag varierer mellem produkter.",
+    },
+    {
+      question: "Er alkoholfri sundere?",
+      answer:
+        "Det fjerner eller reducerer alkohol, som er den vigtigste dokumenterede forskel. Det gør ikke automatisk drikken til et sundhedsprodukt.",
+    },
+    {
+      question: "Hvor starter jeg, hvis jeg vil skifte?",
+      answer:
+        "Brug denne pillar til overblik, kalorie-tabellen til tal, og «vælg med færre kalorier» til etiket-metoden. Til flasker: alkoholfri-hubben.",
     },
   ],
   "alkoholfri-vin-til-konfirmation": [

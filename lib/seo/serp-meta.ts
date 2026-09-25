@@ -540,7 +540,47 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "kalorier-i-alkoholfri-vin": {
     title: "Kalorier i alkoholfri vin (kcal)",
     description:
-      "Kalorier i alkoholfri vin: typisk 15–25 kcal/100 ml vs 70–85 i almindelig vin. Tabel, sukker og hvad etiketten skal tjekkes for.",
+      "Kalorier i alkoholfri vin: Frida-reference og etiket-tips. Sukker kan hæve kcal — se også den store alkohol vs. 0 %-tabel.",
+  },
+  "er-alkoholfri-vin-sundere": {
+    title: "Er alkoholfri vin sundere?",
+    description:
+      "Er alkoholfri vin sundere end almindelig vin? Faktuel guide om alkohol, kalorier, sukker og søvn — uden sundhedspåstande uden belæg.",
+  },
+  "er-alkoholfri-oel-sundere": {
+    title: "Er alkoholfri øl sundere?",
+    description:
+      "Er alkoholfri øl sundere end almindelig øl? Alkohol, kalorier, sukker, portioner og vægt — med SST/Frida-kilder og etiket-fokus.",
+  },
+  "tager-man-paa-af-alkoholfri-oel": {
+    title: "Tager man på af alkoholfri øl?",
+    description:
+      "Tager man på af alkoholfri øl? Kaloriebalance, 1–3 øl-regnestykker og hvorfor 0 % ikke er kaloriefri.",
+  },
+  "kalorier-i-alkohol-vs-alkoholfri": {
+    title: "Kalorier: alkohol vs. alkoholfri",
+    description:
+      "Kalorier i alkohol vs. alkoholfri vin og øl: tabel med Frida-tal, portioner og hvorfor alkohol giver 7 kcal/g.",
+  },
+  "hvor-meget-sukker-i-alkoholfri-vin": {
+    title: "Sukker i alkoholfri vin",
+    description:
+      "Hvor meget sukker er der i alkoholfri vin? Restsukker, tør vs. sød og hvordan du læser næringsdeklarationen.",
+  },
+  "hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit": {
+    title: "Kroppen uden alkohol",
+    description:
+      "Hvad sker der med kroppen, når du vælger alkoholfrit? Søvn, kalorier, vægt og restitution — SST/SDU, uden detox.",
+  },
+  "saadan-vaelger-du-alkoholfri-med-faerre-kalorier": {
+    title: "Alkoholfri med færre kalorier",
+    description:
+      "Sådan vælger du alkoholfri øl eller vin med færre kalorier: 6 trin fra kcal/100 ml til sukker, kulhydrat og % vol.",
+  },
+  "alkoholfri-vs-alkoholholdig": {
+    title: "Alkoholfri vs. alkoholholdig",
+    description:
+      "Alkoholfri vs. alkohol: kalorier, sukker, søvn, vægt og smag. Komplet overblik med links til alle dybdeguides.",
   },
   "alkoholfri-vin-til-konfirmation": {
     title: "Alkoholfri vin til konfirmation",

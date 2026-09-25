@@ -371,8 +371,33 @@ export default function AlkoholfriVinHubPage() {
               </Link>
             </li>
             <li>
+              <Link href="/guides/alkoholfri-vs-alkoholholdig" className="text-rose-900 hover:underline">
+                Alkoholfri vs. alkoholholdig
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/er-alkoholfri-vin-sundere" className="text-rose-900 hover:underline">
+                Er alkoholfri vin sundere?
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/kalorier-i-alkohol-vs-alkoholfri" className="text-rose-900 hover:underline">
+                Kalorier: alkohol vs. alkoholfri
+              </Link>
+            </li>
+            <li>
               <Link href="/guides/kalorier-i-alkoholfri-vin" className="text-rose-900 hover:underline">
                 Kalorier i alkoholfri vin
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/hvor-meget-sukker-i-alkoholfri-vin" className="text-rose-900 hover:underline">
+                Sukker i alkoholfri vin
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides/saadan-vaelger-du-alkoholfri-med-faerre-kalorier" className="text-rose-900 hover:underline">
+                Vælg 0 % med færre kalorier
               </Link>
             </li>
             <li>

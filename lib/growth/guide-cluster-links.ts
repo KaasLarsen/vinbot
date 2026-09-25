@@ -63,6 +63,20 @@ const BRANDS: GuideClusterLink[] = [
 ];
 
 const VIDEN: GuideClusterLink[] = [
+  { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+  { slug: "er-alkoholfri-vin-sundere", label: "Er alkoholfri vin sundere?" },
+  { slug: "er-alkoholfri-oel-sundere", label: "Er alkoholfri øl sundere?" },
+  { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+  { slug: "hvor-meget-sukker-i-alkoholfri-vin", label: "Sukker i alkoholfri vin" },
+  {
+    slug: "hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit",
+    label: "Kroppen når du vælger alkoholfrit",
+  },
+  {
+    slug: "saadan-vaelger-du-alkoholfri-med-faerre-kalorier",
+    label: "Vælg alkoholfri med færre kalorier",
+  },
+  { slug: "tager-man-paa-af-alkoholfri-oel", label: "Tager man på af alkoholfri øl?" },
   { slug: "smager-alkoholfri-vin-godt", label: "Smager alkoholfri vin godt?" },
   { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
   { slug: "kalorier-i-alkoholfri-hvidvin", label: "Kalorier i alkoholfri hvidvin" },
@@ -555,10 +569,132 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   "kalorier-i-alkoholfri-vin": alkoholfriBlock(
     ["kalorier-i-alkoholfri-vin"],
     "Alkoholfri vin — relaterede guider",
-    "Kcal-tal og ærlige forventninger — vælg tør bobler og kendte mærker.",
+    "Kcal i 0 % vin — se også den store alkohol vs. 0 %-tabel og sukker-guiden.",
     [HUB],
-    BRANDS,
+    [
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      { slug: "er-alkoholfri-vin-sundere", label: "Er alkoholfri vin sundere?" },
+      { slug: "hvor-meget-sukker-i-alkoholfri-vin", label: "Sukker i alkoholfri vin" },
+      {
+        slug: "saadan-vaelger-du-alkoholfri-med-faerre-kalorier",
+        label: "Vælg alkoholfri med færre kalorier",
+      },
+    ],
+    BRANDS.slice(0, 3),
     VIDEN.filter((l) => l.slug !== "kalorier-i-alkoholfri-vin").slice(0, 3),
+  ),
+  "alkoholfri-vs-alkoholholdig": alkoholfriBlock(
+    ["alkoholfri-vs-alkoholholdig"],
+    "Alkoholfri — dybdeguides",
+    "Pillar for kalorier, sukker, søvn og valg — hop videre til den guide der matcher dit spørgsmål.",
+    [HUB],
+    VIDEN.filter((l) => l.slug !== "alkoholfri-vs-alkoholholdig").slice(0, 8),
+    BY_TYPE.slice(0, 3),
+  ),
+  "er-alkoholfri-vin-sundere": alkoholfriBlock(
+    ["er-alkoholfri-vin-sundere"],
+    "Alkoholfri vin — relaterede guider",
+    "Sundere? Se kalorier, sukker og kroppen — plus flasker der smager af vin.",
+    [HUB],
+    [
+      { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      { slug: "hvor-meget-sukker-i-alkoholfri-vin", label: "Sukker i alkoholfri vin" },
+      {
+        slug: "hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit",
+        label: "Kroppen når du vælger alkoholfrit",
+      },
+    ],
+    BRANDS.slice(0, 3),
+  ),
+  "er-alkoholfri-oel-sundere": alkoholfriBlock(
+    ["er-alkoholfri-oel-sundere"],
+    "Alkoholfri — kalorier og valg",
+    "Øl-fokus med bro til vin, vægt og den store kcal-tabel.",
+    [
+      { slug: "tager-man-paa-af-alkoholfri-oel", label: "Tager man på af alkoholfri øl?" },
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+      {
+        slug: "saadan-vaelger-du-alkoholfri-med-faerre-kalorier",
+        label: "Vælg alkoholfri med færre kalorier",
+      },
+    ],
+    [HUB],
+    BY_TYPE.slice(0, 3),
+  ),
+  "tager-man-paa-af-alkoholfri-oel": alkoholfriBlock(
+    ["tager-man-paa-af-alkoholfri-oel"],
+    "Alkoholfri — kalorier og valg",
+    "Vægt og kaloriebalance — se også øl-sundere og den tværgående tabel.",
+    [
+      { slug: "er-alkoholfri-oel-sundere", label: "Er alkoholfri øl sundere?" },
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      {
+        slug: "saadan-vaelger-du-alkoholfri-med-faerre-kalorier",
+        label: "Vælg alkoholfri med færre kalorier",
+      },
+      { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+    ],
+    [HUB],
+  ),
+  "kalorier-i-alkohol-vs-alkoholfri": alkoholfriBlock(
+    ["kalorier-i-alkohol-vs-alkoholfri"],
+    "Alkoholfri — kalorier og valg",
+    "Den store tabel — dyk videre i vin-kun, øl-vægt og etiket-metoden.",
+    [
+      { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
+      { slug: "hvor-mange-kalorier-i-vin", label: "Kalorier i vin" },
+      { slug: "er-alkoholfri-vin-sundere", label: "Er alkoholfri vin sundere?" },
+      { slug: "er-alkoholfri-oel-sundere", label: "Er alkoholfri øl sundere?" },
+      {
+        slug: "saadan-vaelger-du-alkoholfri-med-faerre-kalorier",
+        label: "Vælg alkoholfri med færre kalorier",
+      },
+      { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+    ],
+    [HUB],
+  ),
+  "hvor-meget-sukker-i-alkoholfri-vin": alkoholfriBlock(
+    ["hvor-meget-sukker-i-alkoholfri-vin"],
+    "Alkoholfri vin — sukker og kalorier",
+    "Sukker i 0 % — se også diabetes-vinkel, restsukker og kcal-tabellen.",
+    [HUB],
+    [
+      { slug: "alkoholfri-vin-sukker-og-diabetes", label: "Sukker og diabetes" },
+      { slug: "hvad-er-restsukker-i-vin", label: "Hvad er restsukker?" },
+      { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
+      { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
+      { slug: "er-alkoholfri-vin-sundere", label: "Er alkoholfri vin sundere?" },
+    ],
+    BRANDS.slice(0, 3),
+  ),
+  "hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit": alkoholfriBlock(
+    ["hvad-sker-der-med-kroppen-naar-man-vaelger-alkoholfrit"],
+    "Alkoholfri — krop og valg",
+    "Søvn, kalorier og restitution — uden detox. Se også sundere-vin og mindful drinking.",
+    [HUB],
+    [
+      { slug: "er-alkoholfri-vin-sundere", label: "Er alkoholfri vin sundere?" },
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      { slug: "mindful-drikke-low-no-alkohol", label: "Mindful drinking" },
+      { slug: "alkoholfri-vin-til-dry-january", label: "Dry January" },
+      { slug: "alkoholfri-vs-alkoholholdig", label: "Alkoholfri vs. alkoholholdig" },
+    ],
+  ),
+  "saadan-vaelger-du-alkoholfri-med-faerre-kalorier": alkoholfriBlock(
+    ["saadan-vaelger-du-alkoholfri-med-faerre-kalorier"],
+    "Alkoholfri — praktisk valg",
+    "6 trin til færre kalorier — plus tabel, sukker og flaske-inspiration.",
+    [HUB],
+    [
+      { slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" },
+      { slug: "hvor-meget-sukker-i-alkoholfri-vin", label: "Sukker i alkoholfri vin" },
+      { slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" },
+      { slug: "bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" },
+      { slug: "tor-alkoholfri-hvidvin", label: "Tør alkoholfri hvidvin" },
+    ],
+    BRANDS.slice(0, 3),
   ),
   "alkoholfri-vin-til-konfirmation": alkoholfriBlock(
     ["alkoholfri-vin-til-konfirmation"],
@@ -1955,9 +2091,10 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     alkoholfriBlock(
       [],
       "Færre kalorier i glasset",
-      "Alkoholfri vin har typisk færre kalorier end fuld styrke — se overblikket.",
+      "Sammenlign alkoholisk vin med 0 % — se den tværgående tabel og alkoholfri vin-guiden.",
       [HUB],
-      [{ slug: "bedste-alkoholfri-hvidvin", label: "Alkoholfri hvidvin" }],
+      [{ slug: "kalorier-i-alkohol-vs-alkoholfri", label: "Kalorier: alkohol vs. alkoholfri" }],
+      [{ slug: "kalorier-i-alkoholfri-vin", label: "Kalorier i alkoholfri vin" }],
       [{ slug: "bedste-lavalkohol-vin", label: "Bedste lavalkohol-vin" }],
     ),
     videnBlock(

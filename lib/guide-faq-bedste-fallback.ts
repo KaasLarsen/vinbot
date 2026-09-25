@@ -175,7 +175,7 @@ export function getBedsteFallbackFaq(slug: string, title: string): BedsteFaqItem
       {
         question: "Hvornår giver alkoholfri vin mening?",
         answer:
-          "Gravide, dry january, køreture, sundhedshensyn eller blandet selskab. Kalori-indholdet er typisk 1/3 af alkoholisk vin.",
+          "Gravide, dry january, køreture, sundhedshensyn eller blandet selskab. Alkoholfri fjerner eller reducerer alkohol — men kcal og sukker varierer; tjek etiketten."
       },
     ],
     "style-box": [
