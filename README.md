@@ -60,11 +60,10 @@ Sæt de samme værdier i Vercel (Production + Preview) ved deploy.
 | `npm run audit:guides:thin` | Guides under 400 ord |
 | `npm run gsc:vin-til-gap` | GSC-queries → manglende `vin-til-*` |
 | `npm run audit:feed-deals` | Audit af feed-tilbud |
-| `npm run vercel:secrets` | Push secrets til Vercel |
 
 ## Deploy
 
-Push til `main` deployer automatisk til Vercel production.
+Push til `main` deployer automatisk til Vercel production via Git-integration (ingen GitHub Actions-token).
 
 Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 6. time). Under Black Week revaliderer `/api/cron/black-friday-live` hver time.
 
