@@ -59,3 +59,16 @@ export function subscribeHomeSearchUrl(onChange: () => void): () => void {
     window.removeEventListener(HOME_WINE_SEARCH_EVENT, onChange);
   };
 }
+
+/**
+ * Naviger til forsidesøgning med hard reload.
+ * Soft-nav (`router.push`) til /?q= fra forsiden kørte ikke søgningen pålideligt.
+ */
+export function navigateToHomeSearch(query: string, opts?: { max?: number }) {
+  const q = query.trim();
+  if (!q || typeof window === "undefined") return;
+  const params = new URLSearchParams();
+  params.set("q", q);
+  if (opts?.max != null && Number.isFinite(opts.max)) params.set("max", String(opts.max));
+  window.location.assign(`/?${params.toString()}#home-wine-search`);
+}

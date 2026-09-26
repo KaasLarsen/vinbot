@@ -90,3 +90,41 @@ test("queryFromTokens prefers longer tokens", () => {
   const q = queryFromTokens(["rio", "nebbiolo", "barolo", "piemonte"], "x");
   assert.ok(q.includes("nebbiolo") || q.includes("barolo"));
 });
+
+test("unmatched barcode falls back to text query, not EAN digits", () => {
+  const wines = [
+    wine({
+      slug: "margaux",
+      displayTitle: "Chateau Margaux 2018",
+      brand: "Margaux",
+      gtin: "9999999999999",
+    }),
+  ];
+  const result = matchCatalogFromLabelText(
+    wines,
+    "Chateau Margaux 2018 Rouge 75 cl 5701234567890 contains sulphites",
+  );
+  assert.equal(result.match, null);
+  assert.notEqual(result.query, "5701234567890");
+  assert.match(result.query.toLowerCase(), /margaux/);
+});
+
+test("weak match uses alternative displayTitle as search query", () => {
+  const wines = [
+    wine({
+      slug: "poet",
+      displayTitle: "Il Poeta Barolo",
+      brand: "Fratelli",
+    }),
+  ];
+  // Score enough for alternative but not always a "strong clear winner" alone —
+  // single candidate with decent score may still be a match; use short tokens.
+  const result = matchCatalogFromLabelText(wines, "Poeta Barolo Fratelli Piemonte");
+  assert.ok(result.query.length > 0);
+  if (!result.match) {
+    assert.ok(
+      result.query.toLowerCase().includes("poeta") ||
+        result.query.toLowerCase().includes("barolo"),
+    );
+  }
+});

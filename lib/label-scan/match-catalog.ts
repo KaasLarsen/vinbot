@@ -195,7 +195,8 @@ export function matchCatalogFromLabelText(
   rawText: string,
 ): CatalogMatchResult {
   const { tokens, barcode } = tokenizeLabelText(rawText);
-  const query = barcode ?? queryFromTokens(tokens, rawText);
+  /** Tekst-query til søge-fallback — aldrig en umatchet stregkode (feeds matcher sjældent EAN). */
+  const textQuery = queryFromTokens(tokens, rawText);
 
   if (barcode) {
     const byGtin = wines.find((w) => w.gtin && normalizeBarcodeDigits(w.gtin) === barcode);
@@ -209,7 +210,7 @@ export function matchCatalogFromLabelText(
   }
 
   if (!tokens.length) {
-    return { match: null, alternatives: [], query };
+    return { match: null, alternatives: [], query: textQuery };
   }
 
   const scored: LabelScanMatch[] = [];
@@ -230,5 +231,11 @@ export function matchCatalogFromLabelText(
   const match = strongEnough && clearWinner ? top : null;
   const alternatives = scored.slice(match ? 1 : 0, match ? 4 : 3);
 
-  return { match, alternatives, query };
+  // Uden stærkt match: brug bedste alternativ-titel hvis den er mere specifik end OCR-tokens.
+  const fallbackQuery =
+    !match && alternatives[0]?.displayTitle?.trim()
+      ? alternatives[0].displayTitle.trim()
+      : textQuery;
+
+  return { match, alternatives, query: fallbackQuery };
 }

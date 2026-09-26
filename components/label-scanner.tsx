@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { LabelScanErrorBody, LabelScanSuccess } from "@/lib/label-scan/types";
+import { navigateToHomeSearch } from "@/lib/home-search-url";
 
 export type LabelScannerErrorKind = "permission_denied" | "unsupported" | "other";
 
@@ -253,8 +254,8 @@ export function LabelScanner({ onClose, onError }: Props) {
       if (result.query.trim()) {
         trackLabelScan("search_fallback", { method: result.method, query: result.query });
         onClose();
-        // Hash scroller til søgefeltet; HomeWineSearch lytter på URL-ændringer (inkl. client push).
-        router.push(`/?q=${encodeURIComponent(result.query)}#home-wine-search`);
+        // Hard reload — Next soft-nav til /?q= fra forsiden kørte ikke søgningen pålideligt.
+        navigateToHomeSearch(result.query);
         return;
       }
 

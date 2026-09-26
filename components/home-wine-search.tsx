@@ -29,7 +29,10 @@ function scrollHomeSearchIntoView() {
 
 /** Læser ?q= og ?max= på klienten så forsiden kan caches statisk uden searchParams på serveren. */
 export function HomeWineSearch({ controlsClassName, resultsClassName }: HomeWineSearchProps) {
-  const [urlSearch, setUrlSearch] = useState<{ q?: string; initialMax?: number }>({});
+  // Læs URL synkront ved første klient-render (hard reload efter etiket-scan).
+  const [urlSearch, setUrlSearch] = useState<{ q?: string; initialMax?: number }>(() =>
+    typeof window !== "undefined" ? readHomeSearchUrl() : {},
+  );
 
   useEffect(() => {
     const sync = () => {

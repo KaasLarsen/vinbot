@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import type { NavSearchKind, NavSearchSuggestion } from "@/lib/nav-search";
+import { navigateToHomeSearch } from "@/lib/home-search-url";
 
 type SearchMode = "vin" | "guides";
 
@@ -230,8 +231,8 @@ export function HeaderSearch() {
       return;
     }
     if (v) {
-      router.push(`/?q=${encodeURIComponent(v)}#home-wine-search`);
       setOpen(false);
+      navigateToHomeSearch(v);
       return;
     }
     setOpen(true);
