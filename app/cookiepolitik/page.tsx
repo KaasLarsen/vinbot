@@ -33,11 +33,11 @@ export default function CookiepolitikPage() {
 
       <section className="mt-8 space-y-4 text-stone-700">
         <p>
-          <strong>Kort:</strong> Vi bruger <strong>nødvendige cookies</strong> til drift og sprog/valg, og — hvis du trykker{" "}
+          <strong>Kort:</strong> Vi bruger <strong>nødvendige cookies</strong> til drift og til at huske dit valg, og — hvis du trykker{" "}
           <strong>Accepter</strong> i banneret — cookies til <strong>statistik (Google Analytics 4)</strong>,{" "}
           <strong>annoncer (Google AdSense)</strong> og <strong>affiliate-sporing</strong> via netværkene{" "}
           <strong>Partner-Ads</strong>, <strong>Adtraction</strong>, <strong>Daisycon</strong> og{" "}
-          <strong>PriceRunner</strong>. Den fulde ramme for personoplysninger findes på{" "}
+          <strong>PriceRunner</strong>. Google Consent Mode starter som afvist, indtil du accepterer. Den fulde ramme for personoplysninger findes på{" "}
           <Link href="/privatliv" className="text-rose-900 hover:underline">
             Privatliv
           </Link>
@@ -47,7 +47,7 @@ export default function CookiepolitikPage() {
         <h2 className="text-xl font-semibold text-stone-900">Nødvendige cookies</h2>
         <p>
           Teknik der gør sitet brugbart — fx sessions- og sikkerhedsrelevante cookies fra vores host (Vercel) og lokal lagring af dit{" "}
-          <strong>cookievalg</strong> (så vi ikke spørger ved hvert sidevisning). De indlæses uanset bannervalg.
+          <strong>cookievalg</strong> og din <strong>18+-bekræftelse</strong> (så vi ikke spørger ved hvert sidevisning). De indlæses uanset bannervalg. De identificerer dig ikke på tværs af sites.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Valgfrie cookies — efter samtykke</h2>
@@ -56,20 +56,25 @@ export default function CookiepolitikPage() {
             <strong>Google Analytics 4:</strong> forstå trafik og brug af sider. Indlæses kun efter <strong>Accepter</strong>.
           </li>
           <li>
-            <strong>Google AdSense:</strong> annoncefelter vises kun efter <strong>Accepter</strong> og når annoncer er slået til i opsætningen. Googles annoncenetværk kan sætte cookies til målretning i overensstemmelse med dit valg.
+            <strong>Google AdSense:</strong> publisher-scriptet kan ligge på siden, så Google kan godkende sitet, men Consent Mode holder annonce-cookies afvist, indtil du trykker <strong>Accepter</strong>. Annoncefelter vises kun efter det samtykke, og når annoncer er slået til i opsætningen.
           </li>
           <li>
             <strong>Affiliate:</strong> når du klikker videre til en forhandler, kan <strong>Partner-Ads</strong>,{" "}
             <strong>Adtraction</strong>, <strong>Daisycon</strong> eller <strong>PriceRunner</strong> sætte cookies
             eller bruge tilsvarende teknologi for at tilskrive et eventuelt salg til Vinbot — uden merpris for dig.
-            PriceRunner-widgets (prissammenligning på vintilbehør) indlæses som en del af indholdet; klik kan sætte tracking hos PriceRunner.
+            PriceRunner-widgets (prissammenligning på vintilbehør) indlæses først efter <strong>Accepter</strong>.
           </li>
         </ul>
+
+        <h2 className="text-xl font-semibold text-stone-900">Google Consent Mode</h2>
+        <p>
+          Før Google-tags indlæses, sætter vi annonce- og statistiklagring til <strong>afvist</strong>. Trykker du <strong>Accepter</strong>, skifter vi til tilladt for statistik og annoncer. Trykker du <strong>Kun nødvendige</strong>, forbliver de afvist: så indlæses ikke Google Analytics, og vi viser hverken AdSense-felter eller PriceRunner-widgets.
+        </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Cookie-banner</h2>
         <p>
           Ved første besøg viser vi et banner i bunden. <strong>Accepter</strong> giver samtykke til statistik og markedsføringsrelevante cookies (annoncefelter og sporingsmekanismer som beskrevet på denne side).{" "}
-          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige — så indlæses ikke Google Analytics, og vi viser ikke AdSense-annoncer.
+          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige.
         </p>
         <p className="flex flex-wrap items-center gap-3">
           <CookieConsentReset />

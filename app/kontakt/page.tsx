@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { contactEmail, contactPhoneDisplay, contactPhoneTelHref, siteUrl } from "@/lib/site";
+import {
+  companyAddressDisplay,
+  companyCvr,
+  companyLegalName,
+  contactEmail,
+  contactPhoneDisplay,
+  contactPhoneTelHref,
+  siteUrl,
+} from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Kontakt";
@@ -50,6 +58,11 @@ export default function KontaktPage() {
           <a href={contactPhoneTelHref} className="font-semibold text-rose-900 hover:underline">
             {contactPhoneDisplay}
           </a>
+        </p>
+        <p className="mt-5 text-stone-700">
+          {companyLegalName} · CVR-nr. {companyCvr}
+          <br />
+          {companyAddressDisplay}
         </p>
       </section>
 

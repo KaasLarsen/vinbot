@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CookieConsentReset } from "@/components/cookie-consent-reset";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
+  companyAddressDisplay,
   companyCvr,
   companyLegalName,
   contactEmail,
@@ -59,7 +60,7 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Dataansvarlig</h2>
         <p>
-          {companyLegalName} (CVR-nr. {companyCvr}) — kontakt:{" "}
+          {companyLegalName} (CVR-nr. {companyCvr}), {companyAddressDisplay} — kontakt:{" "}
           <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
             {contactEmail}
           </a>
@@ -107,13 +108,15 @@ export default function PrivatlivPage() {
           <li>Nyhedsbrev med tilbud og nyheder (samtykke ved tilmelding).</li>
           <li>Statistik og forbedring af sitet (samtykke, når du har trykket Accepter).</li>
           <li>Annoncer via Google AdSense (samtykke, når du har trykket Accepter).</li>
-          <li>Affiliate-sporing via Partner-Ads, Adtraction og Daisycon (samtykke, når du har trykket Accepter). PriceRunner-widgets til prissammenligning på vintilbehør indlæses som en del af indholdet; klik kan sætte tracking hos PriceRunner.</li>
+          <li>
+            Affiliate-sporing via Partner-Ads, Adtraction, Daisycon og PriceRunner (samtykke, når du har trykket Accepter). PriceRunner-widgets indlæses først efter det samtykke. Et klik på et affiliate-link kan sætte en cookie hos netværket eller forhandleren, så et salg kan tilskrives Vinbot.
+          </li>
         </ul>
 
         <h2 className="text-xl font-semibold text-stone-900">Cookie-banner</h2>
         <p>
-          Ved første besøg viser vi en besked i bunden af skærmen. <strong>Accepter</strong> giver samtykke til statistik (Google Analytics) og til cookie-baseret annoncering via Google AdSense, når vi har aktiveret annoncefelter på sitet.{" "}
-          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige; så indlæses ikke Google Analytics, og vi viser ikke AdSense-annoncer (felter).
+          Ved første besøg viser vi en besked i bunden af skærmen. <strong>Accepter</strong> giver samtykke til statistik (Google Analytics), cookie-baseret annoncering via Google AdSense og PriceRunner-widgets.{" "}
+          <strong>Kun nødvendige</strong> begrænser til det teknisk nødvendige; så indlæses ikke Google Analytics, og vi viser hverken AdSense-annoncer eller PriceRunner-widgets. Google Consent Mode står på afvist, indtil du accepterer.
         </p>
         <p className="flex flex-wrap items-center gap-3">
           <CookieConsentReset />
@@ -127,14 +130,64 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Google AdSense</h2>
         <p>
-          Vi kan indlæse Googles AdSense <strong>publisher-script</strong> på siderne, når sitet er konfigureret til det — det kan være nødvendigt, så Google kan kontrollere og godkende sitet.{" "}
-          <strong>Selve annoncefelterne</strong> vises kun, hvis du har trykket <strong>Accepter</strong> i cookie-banneret, og vi har slået annoncer til i opsætningen. Når annoncer vises, kan Google bruge cookies til at levere annoncer — herunder personligt tilpassede, når du har givet samtykke.
+          Vi kan indlæse Googles AdSense <strong>publisher-script</strong> på siderne, når sitet er konfigureret til det — det kan være nødvendigt, så Google kan kontrollere og godkende sitet. Consent Mode holder annonce-cookies <strong>afvist</strong>, indtil du trykker <strong>Accepter</strong>.{" "}
+          <strong>Selve annoncefelterne</strong> vises kun efter det samtykke, og når vi har slået annoncer til i opsætningen. Når annoncer vises, kan Google bruge cookies til at levere annoncer — herunder personligt tilpassede, når du har givet samtykke.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Affiliate-links</h2>
         <p>
           Nogle links er affiliate. Afhængigt af forhandler kan de formidles via netværk som <strong>Partner-Ads</strong>, <strong>Adtraction</strong>,{" "}
-          <strong>Daisycon</strong> eller <strong>PriceRunner</strong>. Når du klikker, kan forhandleren eller netværket sætte en cookie eller bruge anden teknisk sporingsmekanisme for at tildele kommission til Vinbot. Det påvirker ikke din pris hos butikken. PriceRunner-widgets på sider om vintilbehør indlæses som prissammenligning og er markeret som annoncer.
+          <strong>Daisycon</strong> eller <strong>PriceRunner</strong>. Når du klikker, kan forhandleren eller netværket sætte en cookie eller bruge anden teknisk sporingsmekanisme for at tildele kommission til Vinbot. Det påvirker ikke din pris hos butikken. PriceRunner-widgets på sider om vintilbehør indlæses kun efter <strong>Accepter</strong> og er markeret som annoncer.
+        </p>
+
+        <h2 className="text-xl font-semibold text-stone-900">Opbevaring</h2>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Nyhedsbrev: e-mailen gemmes, så længe du er tilmeldt, og slettes eller anonymiseres ved afmelding — med forbehold for korte tekniske logge.</li>
+          <li>Mails du sender til os: så længe korrespondancen er relevant, og derefter slettes den, når vi ikke længere har brug for den.</li>
+          <li>Dit cookievalg og din 18+-bekræftelse ligger i din browser, indtil du nulstiller valget eller rydder data for sitet.</li>
+          <li>Driftslog hos Vercel gemmes i den periode, hosten bruger til drift og sikkerhed.</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold text-stone-900">Overførsel ud af EU</h2>
+        <p>
+          Google (Analytics og AdSense), Vercel og Resend kan behandle oplysninger i USA. Når det sker, bruger leverandørerne de værn, de stiller til rådighed — typisk EU-Kommissionens standardkontraktbestemmelser og, hvor leverandøren er certificeret, EU-US Data Privacy Framework.
+        </p>
+
+        <h2 className="text-xl font-semibold text-stone-900">Dine rettigheder</h2>
+        <p>Du kan bede os om:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>indsigt i de oplysninger, vi har om dig</li>
+          <li>rettelse af forkerte oplysninger</li>
+          <li>sletning</li>
+          <li>begrænsning af behandlingen</li>
+          <li>dataportabilitet, hvor behandlingen bygger på samtykke og sker automatisk</li>
+          <li>indsigelse mod behandling, der bygger på berettiget interesse</li>
+          <li>at trække samtykke tilbage — det påvirker ikke behandling, der allerede er sket</li>
+        </ul>
+        <p>
+          Skriv til{" "}
+          <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+            {contactEmail}
+          </a>
+          . Nyhedsbrev kan også afmeldes via linket i mailen. Cookievalg nulstilles på siden{" "}
+          <Link href="/cookiepolitik" className="text-rose-900 hover:underline">
+            Cookiepolitik
+          </Link>
+          .
+        </p>
+
+        <h2 className="text-xl font-semibold text-stone-900">Klage</h2>
+        <p>
+          Du kan klage til Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby,{" "}
+          <a href="https://www.datatilsynet.dk" className="text-rose-900 hover:underline" rel="noopener noreferrer">
+            datatilsynet.dk
+          </a>
+          .
+        </p>
+
+        <h2 className="text-xl font-semibold text-stone-900">Automatiske afgørelser</h2>
+        <p>
+          Vi træffer ikke afgørelser, der alene bygger på automatisk behandling, og som har retsvirkning for dig. Personligt tilpassede annoncer hos Google sker hos Google, efter dit samtykke i cookie-banneret.
         </p>
 
         <p className="flex flex-wrap gap-x-3 gap-y-1 pt-4">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   PRICERUNNER_DEFAULT_OFFER_LIMIT,
@@ -13,6 +14,8 @@ import {
   getPriceRunnerProduct,
   type PriceRunnerProductKey,
 } from "@/lib/pricerunner/products";
+import { useIsClient } from "@/lib/use-is-client";
+import { useMarketingConsent } from "@/lib/use-marketing-consent";
 
 export type PriceRunnerProductWidgetProps = {
   productKey?: PriceRunnerProductKey | string;
@@ -71,7 +74,7 @@ function loadScript(src: string): Promise<void> {
 
 /**
  * Kurateret PriceRunner-prissammenligning (udstyr/tilbehør).
- * Scriptet indlæses altid (ikke samtykke-gated) som PriceRunners snippet.
+ * product.js indlæses kun efter cookie-valget "Accepter".
  */
 export function PriceRunnerProductWidget({
   productKey,
@@ -84,6 +87,8 @@ export function PriceRunnerProductWidget({
 }: PriceRunnerProductWidgetProps) {
   const reactId = useId();
   const hostRef = useRef<HTMLDivElement>(null);
+  const allowMarketing = useMarketingConsent();
+  const isClient = useIsClient();
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
 
   const widgetId = useMemo(
@@ -112,7 +117,7 @@ export function PriceRunnerProductWidget({
     : null;
 
   useEffect(() => {
-    if (!scriptSrc) return;
+    if (!allowMarketing || !scriptSrc) return;
     const host = hostRef.current;
     if (!host) return;
 
@@ -149,9 +154,27 @@ export function PriceRunnerProductWidget({
       cancelled = true;
       observer.disconnect();
     };
-  }, [scriptSrc]);
+  }, [allowMarketing, scriptSrc]);
 
   if (!resolved) return null;
+
+  if (!allowMarketing) {
+    return (
+      <aside className={className} aria-label={`Prissammenligning: ${resolved.title}`}>
+        {heading ? <h3 className="mb-3 text-lg font-semibold text-stone-900">{heading}</h3> : null}
+        {isClient ? (
+          <p className="rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-relaxed text-stone-700">
+            Prissammenligning via PriceRunner vises, når du har accepteret cookies til statistik og annoncer.{" "}
+            <Link href="/cookiepolitik" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2">
+              Cookiepolitik
+            </Link>
+          </p>
+        ) : (
+          <div className="min-h-[8rem] w-full animate-pulse rounded-lg bg-stone-100" />
+        )}
+      </aside>
+    );
+  }
 
   const trackedCompareUrl = withPriceRunnerRefSite(resolved.compareUrl);
 

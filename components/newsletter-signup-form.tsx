@@ -167,9 +167,9 @@ export function NewsletterSignupForm({
             </>
           ) : (
             <>
-              Ja tak — se{" "}
+              Jeg samtykker til at Vinbot sender mig nyhedsbrev med tilbud og nyheder. Jeg kan afmelde mig når som helst. Se{" "}
               <Link href="/privatliv" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950">
-                privatliv
+                privatlivspolitik
               </Link>
               .
             </>

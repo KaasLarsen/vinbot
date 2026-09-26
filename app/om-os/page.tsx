@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { companyCvr, companyLegalName, contactEmail, contactPhoneDisplay, contactPhoneTelHref, siteUrl } from "@/lib/site";
+import {
+  companyAddressDisplay,
+  companyCvr,
+  companyLegalName,
+  contactEmail,
+  contactPhoneDisplay,
+  contactPhoneTelHref,
+  siteUrl,
+} from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Om Vinbot — dansk vininspiration med uafhængig redaktion";
@@ -164,8 +172,8 @@ export default function OmOsPage() {
       <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">Alkohol og ansvar</h2>
         <p className="leading-relaxed">
-          Vinbot henvender sig til voksne, der må købe alkohol efter gældende regler. Vinbot <strong>sælger ikke alkohol</strong> — køb sker hos{" "}
-          <strong>forhandlere via links</strong> fra siden; deres alderskontrol og handelsbetingelser gælder. Alkohol skal nydes ansvarligt, og vores anbefalinger
+          Vinbot er for personer, der er fyldt 18. Vi <strong>sælger ikke alkohol</strong> — køb, betaling og butikkens egen alderskontrol sker hos{" "}
+          <strong>forhandlere via links</strong> fra siden. Vi bruger 18 år som grænse på sitet, også hvor en butik i nogle tilfælde må sælge øl og vin fra 16. Guider til fest og konfirmation er til de voksne, der planlægger indkøbet. Alkohol skal nydes ansvarligt, og vores anbefalinger
           erstatter ikke sundhedsrådgivning. Har du spørgsmål til alkohol i relation til graviditet,
           medicinering eller egen adfærd, så tal med en fagperson eller brug{" "}
           <a href="https://www.sst.dk" className="text-rose-900 hover:underline" rel="noopener">
@@ -182,7 +190,7 @@ export default function OmOsPage() {
       <section className="mt-10 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-stone-700">
         <h2 className="text-lg font-semibold text-stone-900">Kontakt og det formelle</h2>
         <p className="mt-3 leading-relaxed">
-          Vinbot drives af {companyLegalName} (CVR-nr. {companyCvr}). Spørgsmål, rettelser eller presse? Skriv til{" "}
+          Vinbot drives af {companyLegalName} (CVR-nr. {companyCvr}), {companyAddressDisplay}. Spørgsmål, rettelser eller presse? Skriv til{" "}
           <a href={`mailto:${contactEmail}`} className="font-medium text-rose-900 hover:underline">
             {contactEmail}
           </a>

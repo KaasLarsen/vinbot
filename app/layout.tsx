@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banners";
 import { AnalyticsConsentGate } from "@/components/analytics-consent-gate";
 import { AdSenseConsentGate } from "@/components/adsense-consent-gate";
+import { AgeGate } from "@/components/age-gate";
+import { ConsentModeUpdater } from "@/components/consent-mode";
 import { CookieBanner } from "@/components/cookie-banner";
 import { PartnerAdsTrafficCapture } from "@/components/partner-ads-traffic-capture";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld";
+import { COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
 /** Offentligt GA4-ID — env overstyrer; fallback så analytics virker hvis Vercel-env mangler ved build. */
@@ -66,9 +70,29 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} h-full max-w-full overflow-x-clip scroll-smooth antialiased`}
       >
       <body className="flex min-h-full max-w-full flex-col overflow-x-clip font-sans text-stone-900">
+        <Script id="vinbot-consent-default" strategy="beforeInteractive">
+          {`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = window.gtag || gtag;
+(function () {
+  var stored = null;
+  try { stored = localStorage.getItem(${JSON.stringify(COOKIE_CONSENT_KEY)}); } catch (e) {}
+  var value = stored === "all" ? "granted" : "denied";
+  gtag("consent", "default", {
+    ad_storage: value,
+    ad_user_data: value,
+    ad_personalization: value,
+    analytics_storage: value
+  });
+})();
+          `.trim()}
+        </Script>
+        <ConsentModeUpdater />
         {gaMeasurementId ? <AnalyticsConsentGate measurementId={gaMeasurementId} /> : null}
         <AdSenseConsentGate />
         <PartnerAdsTrafficCapture />
+        <AgeGate />
         <CookieBanner />
         <OrganizationJsonLd />
         <WebSiteJsonLd url={siteUrl} />
