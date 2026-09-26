@@ -230,7 +230,7 @@ export function HeaderSearch() {
       return;
     }
     if (v) {
-      router.push(`/?q=${encodeURIComponent(v)}`);
+      router.push(`/?q=${encodeURIComponent(v)}#home-wine-search`);
       setOpen(false);
       return;
     }

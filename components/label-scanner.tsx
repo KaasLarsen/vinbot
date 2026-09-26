@@ -253,7 +253,8 @@ export function LabelScanner({ onClose, onError }: Props) {
       if (result.query.trim()) {
         trackLabelScan("search_fallback", { method: result.method, query: result.query });
         onClose();
-        router.push(`/?q=${encodeURIComponent(result.query)}`);
+        // Hash scroller til søgefeltet; HomeWineSearch lytter på URL-ændringer (inkl. client push).
+        router.push(`/?q=${encodeURIComponent(result.query)}#home-wine-search`);
         return;
       }
 

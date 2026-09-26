@@ -574,11 +574,12 @@ export function WineSearch({
 
   useEffect(() => {
     const iq = initialQuery?.trim();
-    if (iq) {
-      const budget = initialMax != null && Number.isFinite(initialMax) ? initialMax : null;
-      trackWineSearch(iq, budget != null);
-      void search(iq, budget);
-    }
+    if (!iq) return;
+    setQ(iq);
+    const budget = initialMax != null && Number.isFinite(initialMax) ? initialMax : null;
+    if (budget != null) setMax(String(budget));
+    trackWineSearch(iq, budget != null);
+    void search(iq, budget);
   }, [initialQuery, initialMax, search]);
 
   /* Når prisfilter har udelukket alt, henter vi billigste match uden budget

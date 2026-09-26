@@ -3,23 +3,18 @@
 import { useEffect, useState } from "react";
 
 import { WineSearch } from "@/components/wine-search";
+import {
+  HOME_WINE_SEARCH_EVENT,
+  readHomeSearchUrl,
+  subscribeHomeSearchUrl,
+} from "@/lib/home-search-url";
 
 type HomeWineSearchProps = {
   controlsClassName?: string;
   resultsClassName?: string;
 };
 
-export const HOME_WINE_SEARCH_EVENT = "vinbot:home-search";
-
-function readUrlSearch(): { q?: string; initialMax?: number } {
-  if (typeof window === "undefined") return {};
-  const params = new URLSearchParams(window.location.search);
-  const q = params.get("q") ?? undefined;
-  const maxRaw = params.get("max");
-  const parsedMax = maxRaw != null ? parseInt(maxRaw, 10) : Number.NaN;
-  const initialMax = Number.isFinite(parsedMax) ? parsedMax : undefined;
-  return { q, initialMax };
-}
+export { HOME_WINE_SEARCH_EVENT };
 
 function scrollHomeSearchIntoView() {
   if (typeof document === "undefined") return;
@@ -38,16 +33,11 @@ export function HomeWineSearch({ controlsClassName, resultsClassName }: HomeWine
 
   useEffect(() => {
     const sync = () => {
-      setUrlSearch(readUrlSearch());
+      setUrlSearch(readHomeSearchUrl());
       scrollHomeSearchIntoView();
     };
     sync();
-    window.addEventListener("popstate", sync);
-    window.addEventListener(HOME_WINE_SEARCH_EVENT, sync);
-    return () => {
-      window.removeEventListener("popstate", sync);
-      window.removeEventListener(HOME_WINE_SEARCH_EVENT, sync);
-    };
+    return subscribeHomeSearchUrl(sync);
   }, []);
 
   return (
