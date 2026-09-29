@@ -6812,6 +6812,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "150–250 kr rækker til en holdbar waiter’s friend. Over det betaler du mest for design og træhåndtag.",
     },
+    {
+      question: "Waiter’s friend eller vinge først?",
+      answer:
+        "Waiter’s friend, hvis du kun køber ét værktøj. Tilføj vinge senere, hvis gæster selv skal åbne uden øvelse.",
+    },
   ],
   "sadan-holder-du-aabnet-vin-frisk": [
     {
@@ -6846,6 +6851,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Næsten. Klemmen måler flaskevæggen og kan ligge lidt koldere lige efter køleskab. Sonden i glasset er mest præcis.",
     },
+    {
+      question: "Digital eller analog?",
+      answer:
+        "Digital sonde er hurtigst at aflæse. Flaskeklemme er praktisk uden at dyppe i glasset. Analog virker, men er langsommere i dæmpet lys.",
+    },
+    {
+      question: "Kan jeg gætte temperaturen uden termometer?",
+      answer:
+        "Ja groft: tid i køleskab og isspand med salt. Termometeret betaler sig, når menuen blander stilarter, eller gæsterne er kræsne.",
+    },
   ],
   "sadan-vaelger-du-vinaerator": [
     {
@@ -6862,6 +6877,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Skal aeratoren i opvaskemaskinen?",
       answer:
         "Skyl med varmt vand efter hver flaske. Maskine kun hvis producenten siger det — tørret vin i venturien smager grimt.",
+    },
+    {
+      question: "Er dyre aeratorer pengene værd?",
+      answer:
+        "Sjældent. En simpel pour-through gør det samme princip. Betal for holdbarhed og renlighed, ikke for «magisk» branding.",
+    },
+    {
+      question: "Skal aerator i begynder-sættet?",
+      answer:
+        "Nej. Proptrækker, glas og prop først. Aerator kommer, når du ofte åbner ung, stram rød og ikke gider karaffel.",
     },
   ],
   "sadan-vaelger-du-vinge-proptrekker": [
@@ -6880,6 +6905,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Gæster der selv åbner, eller hænder der vil have to store greb. Har du kun ét budget, køb waiter’s friend.",
     },
+    {
+      question: "Hvad gør jeg, hvis proppen smuldrer?",
+      answer:
+        "Stop vinge-trækket. Skift til waiter’s friend med to-trins støtte, eller arbejd proppen langsomt op. Kraft alene flækker gamle propper.",
+    },
+    {
+      question: "Mangler vinge folieskærer?",
+      answer:
+        "Ofte ja. Skær folien under læben med kniv, eller brug folieskæreren på en waiter’s friend.",
+    },
   ],
   "sadan-virker-coravin": [
     {
@@ -6896,6 +6931,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Virker Coravin på skruelåg?",
       answer:
         "Nåle-systemet kræver naturkork. Pivot-stopperen kan bruges, når du alligevel åbner. Bobler kræver andet gear.",
+    },
+    {
+      question: "Coravin eller vakuumprop?",
+      answer:
+        "Vakuum til hverdagsvin over 1–3 dage. Coravin til dyre flasker over uger, hvor du vil skænke glas uden at tømme resten.",
+    },
+    {
+      question: "Skal Coravin-flasker stadig køles?",
+      answer:
+        "Ja. Argon fortrænger ilt, men temperaturen påvirker stadig holdbarheden. Gem Pivot-stoppet vin køligt.",
     },
   ],
   "isspand-og-flaskekoeler-vin": [
@@ -6914,6 +6959,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Hvis du køler hvid og bobler flere gange om ugen. Isspand og flaskekøler er til panik og bordet — ikke til lagring.",
     },
+    {
+      question: "Hvorfor skal der vand i isspanden?",
+      answer:
+        "Vand leder kulde langt bedre end is alene. Salt gør blandingen koldere end 0 °C og forkorter tiden.",
+    },
+    {
+      question: "Isspand eller Active til bobler?",
+      answer:
+        "Isspand er hurtigst til mål-temperatur. Active er bedst til at holde kulden ved bordet uden smeltende is.",
+    },
   ],
   "sadan-vaelger-du-vinreol": [
     {
@@ -6930,6 +6985,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvor mange flasker skal reolen kunne holde?",
       answer:
         "Køb lidt flere pladser end du har i dag — typisk +4–8. Flasketal gælder Bordeaux-standard; magnum og champagne fylder mere.",
+    },
+    {
+      question: "Hvornår er reol nok — og hvornår skal jeg have skab?",
+      answer:
+        "Reol til orden i stuetemperatur. Vinkøleskab, når du køler eller lagrer ofte, og temperaturen i rummet svinger.",
     },
   ],
   "sadan-vaelger-du-vinkaraffel": [
@@ -6948,6 +7008,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Kun hvis producenten siger det. Ellers varmt vand uden stærk sæbe, og tør helt — fugt giver muglugt til næste flaske.",
     },
+    {
+      question: "Hvornår skal jeg købe karaffel som begynder?",
+      answer:
+        "Når ung, stram rød ofte smager lukket, og du vil lufte hele flasken. Ellers er glas eller aerator nok — se begynder-guiden.",
+    },
   ],
   "vintilbehor-til-begyndere": [
     {
@@ -6964,6 +7029,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvornår skal jeg købe karaffel?",
       answer:
         "Når ung, stram rød ofte smager lukket, og du vil lufte hele flasken 30–60 minutter. Ellers er glas eller aerator nok.",
+    },
+    {
+      question: "Hvad er typiske fejlkøb?",
+      answer:
+        "Alt-i-ét gadget-sæt med sløv spiral, Coravin som første køb, og drue-specifikke glas før du har fire ens hverdagsglas.",
+    },
+    {
+      question: "Skal flaskekøler i startkittet?",
+      answer:
+        "Nej, medmindre du ofte har gæster og hvid/bobler. Isspand med salt klarer panikken; Active-ærme er næste lag.",
     },
   ],
   "stort-vinkoleskab-sadan-vaelger-du": [

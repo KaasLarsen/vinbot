@@ -375,6 +375,20 @@ const VIDEN_GLAS: GuideClusterLink[] = [
   { slug: "hvor-mange-glas-i-en-flaske-vin", label: "Glas pr. flaske" },
 ];
 
+const VIDEN_GEAR: GuideClusterLink[] = [
+  { slug: "vintilbehor-til-begyndere", label: "Vintilbehør til begyndere" },
+  { slug: "vin-gave-gear", label: "Gave-gear" },
+  { slug: "sadan-vaelger-du-proptrekker", label: "Proptrækker" },
+  { slug: "sadan-vaelger-du-vinge-proptrekker", label: "Vinge-proptrækker" },
+  { slug: "sadan-vaelger-du-vinkaraffel", label: "Vinkaraffel" },
+  { slug: "sadan-vaelger-du-vinaerator", label: "Vinaerator" },
+  { slug: "sadan-holder-du-aabnet-vin-frisk", label: "Prop & vakuum" },
+  { slug: "isspand-og-flaskekoeler-vin", label: "Isspand og flaskekøler" },
+  { slug: "sadan-bruger-du-vintermometer", label: "Vintermometer" },
+  { slug: "sadan-vaelger-du-vinreol", label: "Vinreol" },
+  { slug: "sadan-virker-coravin", label: "Coravin" },
+];
+
 function videnBlock(
   exclude: string[],
   title: string,
@@ -2469,5 +2483,71 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Vinglas-mærker",
     "Riedel, Zalto, Spiegelau og Holmegaard i kontekst med form-guides.",
     VIDEN_GLAS.filter((l) => l.slug !== "riedel-vs-zalto-vs-spiegelau-vinglas"),
+  ),
+  "vintilbehor-til-begyndere": videnBlock(
+    ["vintilbehor-til-begyndere"],
+    "Vintilbehør-klyngen",
+    "Startkit, åbning, prop, køling, karaffel og specialgear.",
+    VIDEN_GEAR.filter((l) => l.slug !== "vintilbehor-til-begyndere"),
+  ),
+  "vin-gave-gear": videnBlock(
+    ["vin-gave-gear"],
+    "Gave-gear & vintilbehør",
+    "Gear til gave — plus startkit, glas-åbning og karaffel.",
+    VIDEN_GEAR.filter((l) => l.slug !== "vin-gave-gear"),
+  ),
+  "sadan-vaelger-du-proptrekker": videnBlock(
+    ["sadan-vaelger-du-proptrekker"],
+    "Proptrækker & vintilbehør",
+    "Waiter’s friend, vinge og resten af gear-klyngen.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-vaelger-du-proptrekker"),
+  ),
+  "sadan-vaelger-du-vinge-proptrekker": videnBlock(
+    ["sadan-vaelger-du-vinge-proptrekker"],
+    "Vinge-proptrækker & gear",
+    "Nem åbning for begyndere — plus waiter’s friend og startkit.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-vaelger-du-vinge-proptrekker"),
+  ),
+  "sadan-vaelger-du-vinkaraffel": videnBlock(
+    ["sadan-vaelger-du-vinkaraffel"],
+    "Karaffel & vintilbehør",
+    "Luftning, aerator og resten af gear-klyngen.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-vaelger-du-vinkaraffel"),
+  ),
+  "sadan-vaelger-du-vinaerator": videnBlock(
+    ["sadan-vaelger-du-vinaerator"],
+    "Vinaerator & vintilbehør",
+    "Hurtig luftning vs. karaffel — plus startkit og servering.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-vaelger-du-vinaerator"),
+  ),
+  "sadan-holder-du-aabnet-vin-frisk": videnBlock(
+    ["sadan-holder-du-aabnet-vin-frisk"],
+    "Prop, vakuum & gear",
+    "Åbnet vin, Coravin og resten af vintilbehør-klyngen.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-holder-du-aabnet-vin-frisk"),
+  ),
+  "isspand-og-flaskekoeler-vin": videnBlock(
+    ["isspand-og-flaskekoeler-vin"],
+    "Køling & vintilbehør",
+    "Isspand, flaskekøler, termometer og startkit.",
+    VIDEN_GEAR.filter((l) => l.slug !== "isspand-og-flaskekoeler-vin"),
+  ),
+  "sadan-bruger-du-vintermometer": videnBlock(
+    ["sadan-bruger-du-vintermometer"],
+    "Vintermometer & gear",
+    "Temperatur i °C — plus køling, servering og startkit.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-bruger-du-vintermometer"),
+  ),
+  "sadan-vaelger-du-vinreol": videnBlock(
+    ["sadan-vaelger-du-vinreol"],
+    "Vinreol & vintilbehør",
+    "Opbevaring på hylden — plus startkit og andet gear.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-vaelger-du-vinreol"),
+  ),
+  "sadan-virker-coravin": videnBlock(
+    ["sadan-virker-coravin"],
+    "Coravin & vintilbehør",
+    "Glas uden at tømme flasken — vs. vakuum og startkit.",
+    VIDEN_GEAR.filter((l) => l.slug !== "sadan-virker-coravin"),
   ),
 };
