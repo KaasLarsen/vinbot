@@ -143,14 +143,20 @@ export default async function BlackFridayHubPage() {
         <p className="mt-4 text-lg leading-relaxed text-stone-700">{copy.lead}</p>
       </header>
 
-      <div className="mt-8 max-w-xl rounded-2xl border border-rose-200/80 bg-rose-50/60 p-5 sm:p-6">
-        <NewsletterSignupForm
-          variant="section"
-          source="black-friday"
-          heading={copy.ctaTitle}
-          hint={copy.ctaHint}
-        />
-      </div>
+      <details className="group mt-6 max-w-md rounded-xl border border-rose-200/70 bg-rose-50/40">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3.5 py-2.5 text-sm font-medium text-stone-800 marker:content-none hover:bg-rose-50/80 [&::-webkit-details-marker]:hidden">
+          <span className="min-w-0 leading-snug">{copy.ctaTitle}</span>
+          <span
+            className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-100/80 text-xs text-rose-800 transition-transform group-open:rotate-180"
+            aria-hidden
+          >
+            {"\u25BE"}
+          </span>
+        </summary>
+        <div className="border-t border-rose-100 px-3.5 pb-3.5 pt-2">
+          <NewsletterSignupForm variant="section" source="black-friday" hint={copy.ctaHint} />
+        </div>
+      </details>
 
       <PartnerAdsLeaderboard className="mt-8" hub="black-friday" slug="black-friday-hub" />
 

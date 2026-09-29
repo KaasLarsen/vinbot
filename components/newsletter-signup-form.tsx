@@ -100,7 +100,7 @@ export function NewsletterSignupForm({
         </>
       ) : (
         <>
-          <p className="text-sm font-medium text-stone-800">{heading || "Få tilbud i indbakken"}</p>
+          {heading ? <p className="text-sm font-medium text-stone-800">{heading}</p> : null}
           {hint ? <p className="text-sm text-stone-600">{hint}</p> : null}
         </>
       )}
