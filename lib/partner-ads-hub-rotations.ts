@@ -1,5 +1,5 @@
 /** Merchant-nøgler til Partner-Ads-banner og hub-butikskort. */
-export type HubRotationMerchant = "winther" | "lauridsen" | "johnsen" | "dh" | "dsf";
+export type HubRotationMerchant = "winther" | "lauridsen" | "johnsen" | "dh";
 
 /**
  * Hub → tre forhandlere (rækkefølge = visning på hub-kort; banner picker ét af dem).
@@ -16,10 +16,10 @@ export const HUB_ROTATIONS: Record<string, HubRotationMerchant[]> = {
   "fest-og-vin": ["winther", "lauridsen", "johnsen"],
   "humoer-og-vin": ["winther", "lauridsen", "dh"],
   druesorter: ["johnsen", "lauridsen", "winther"],
-  "vine-katalog": ["dsf", "winther"],
+  "vine-katalog": ["johnsen", "winther"],
   "alkoholfri-vin": ["winther", "lauridsen", "johnsen"],
   "supermarked-vin": ["winther", "dh", "lauridsen"],
-  "black-friday": ["winther", "dsf", "lauridsen"],
+  "black-friday": ["winther", "lauridsen", "johnsen"],
 };
 
 export function rotationIndex(slug: string, modulo: number): number {

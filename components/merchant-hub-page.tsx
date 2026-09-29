@@ -12,16 +12,11 @@ import { PageShell } from "@/components/page-shell";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { dsfFeaturedPicks } from "@/lib/dsf-featured";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
-import {
-  dsfHubShopHref,
-  getRelatedMerchantHubs,
-  resolveMerchantHubShopHref,
-} from "@/lib/merchant-hubs/registry";
+import { getRelatedMerchantHubs, resolveMerchantHubShopHref } from "@/lib/merchant-hubs/registry";
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
 
 export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
-  const shopHref =
-    hub.slug === "den-sidste-flaske" ? dsfHubShopHref() : resolveMerchantHubShopHref(hub);
+  const shopHref = resolveMerchantHubShopHref(hub);
   const related = getRelatedMerchantHubs(hub.slug, 8);
   const featuredPicks = hub.featuredWineId ? getFeaturedPicksForMerchant(hub.featuredWineId) : [];
   const showShopButton = Boolean(shopHref) && hub.affiliate.kind !== "feed-only";
@@ -90,14 +85,25 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
         <h2 className="text-2xl font-semibold text-stone-900">Gå til butikken</h2>
         <p>{hub.shopIntro}</p>
         {showShopButton && shopHref ? (
-          <MerchantHubShopLink
-            href={shopHref}
-            merchant={hub.feedMerchant ?? hub.displayName}
-            slug={hub.slug}
-            className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
-          >
-            {hub.shopCtaLabel}
-          </MerchantHubShopLink>
+          hub.affiliate.kind === "partner-ads" ? (
+            <MerchantHubShopLink
+              href={shopHref}
+              merchant={hub.feedMerchant ?? hub.displayName}
+              slug={hub.slug}
+              className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
+            >
+              {hub.shopCtaLabel}
+            </MerchantHubShopLink>
+          ) : (
+            <a
+              href={shopHref}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
+            >
+              {hub.shopCtaLabel}
+            </a>
+          )
         ) : null}
         <p className="text-sm text-stone-600">
           {hub.showRabatkoderLink ? (

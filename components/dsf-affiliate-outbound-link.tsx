@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-outbound-link";
 
-/** Alle klik ud til densidsteflaske.dk skal igennem Partner-Ads banner 68720. */
+/** DSF-outbound er redaktionelt (direct link) — se MerchantAffiliateOutboundLink. */
 export function DsfAffiliateOutboundLink({
   productUrl,
   placement,

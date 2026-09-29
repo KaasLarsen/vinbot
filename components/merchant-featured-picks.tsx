@@ -5,13 +5,14 @@ import type { ReactNode } from "react";
 
 import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-outbound-link";
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
-import { getMerchantWineConfig, merchantPartnerAdsClickUrl } from "@/lib/wine-detail-pages/merchants";
+import { getMerchantWineConfig, merchantOutboundClickUrl } from "@/lib/wine-detail-pages/merchants";
 import { wineDetailSlugForProductUrl } from "@/lib/wine-detail-pages/registry";
 import type { MerchantFeaturedPick } from "@/lib/merchant-featured-picks";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
-const linkRel = "nofollow sponsored noopener noreferrer";
+const affiliateLinkRel = "nofollow sponsored noopener noreferrer";
+const editorialLinkRel = "nofollow noopener noreferrer";
 
 const IMAGE_FRAME =
   "mx-auto mt-3 flex size-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-40";
@@ -22,21 +23,27 @@ function FeaturedPickOutbound({
   placement,
   className,
   children,
+  usesAffiliate,
 }: {
   baseHref: string;
   merchant: string;
   placement: string;
   className?: string;
   children: ReactNode;
+  usesAffiliate: boolean;
 }) {
-  const href = usePartnerAdsHref(baseHref);
+  const trackedHref = usePartnerAdsHref(baseHref);
+  const href = usesAffiliate ? trackedHref : baseHref;
   return (
     <a
       href={href}
       target="_blank"
-      rel={linkRel}
+      rel={usesAffiliate ? affiliateLinkRel : editorialLinkRel}
       className={className}
-      onClick={() => trackAffiliateClick({ merchant, placement, url: href })}
+      onClick={() => {
+        if (!usesAffiliate) return;
+        trackAffiliateClick({ merchant, placement, url: href });
+      }}
     >
       {children}
     </a>
@@ -86,13 +93,20 @@ export function MerchantFeaturedPicks({
       <ul className={gridClass}>
         {picks.map((pick) => {
           const clean = cfg.sanitizeProductUrl(pick.productUrl);
-          const baseHref = pick.directLink ? clean : merchantPartnerAdsClickUrl(merchantId, clean);
+          const baseHref =
+            pick.directLink || !cfg.usesPartnerAdsAffiliate ? clean : merchantOutboundClickUrl(merchantId, clean);
           const placement = variant === "home" ? `home-${merchantId}-featured` : `hub-${merchantId}-featured`;
           const detailSlug = pick.directLink ? undefined : wineDetailSlugForProductUrl(merchantId, pick.productUrl);
           return (
             <li key={pick.productUrl}>
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
-                <FeaturedPickOutbound baseHref={baseHref} merchant={cfg.displayName} placement={placement} className={IMAGE_FRAME}>
+                <FeaturedPickOutbound
+                  baseHref={baseHref}
+                  merchant={cfg.displayName}
+                  placement={placement}
+                  className={IMAGE_FRAME}
+                  usesAffiliate={cfg.usesPartnerAdsAffiliate}
+                >
                   {pick.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={pick.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
@@ -108,6 +122,7 @@ export function MerchantFeaturedPicks({
                       merchant={cfg.displayName}
                       placement={placement}
                       className="hover:underline"
+                      usesAffiliate={cfg.usesPartnerAdsAffiliate}
                     >
                       {pick.title}
                     </FeaturedPickOutbound>

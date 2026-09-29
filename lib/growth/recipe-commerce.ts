@@ -138,11 +138,5 @@ export function listWineDetailPagesForRecipe(
     }
   }
 
-  pages.sort((a, b) => {
-    if (a.merchantId === "den-sidste-flaske" && b.merchantId !== "den-sidste-flaske") return -1;
-    if (b.merchantId === "den-sidste-flaske" && a.merchantId !== "den-sidste-flaske") return 1;
-    return 0;
-  });
-
   return pages.slice(0, limit);
 }

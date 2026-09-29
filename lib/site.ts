@@ -1,5 +1,3 @@
-import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
-
 /** Primær host skal matche Vercel “primary domain”. Apex (vinbot.dk) 307’er til www — undgå apex i sitemap/canonical hvis jeres setup er www-first. */
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.vinbot.dk").replace(/\/$/, "");
 export const siteName = "Vinbot";
@@ -52,7 +50,7 @@ export function organizationSameAs(): string[] {
 export const siteDescription =
   "Når du skal finde den rigtige vin: søg på tværs af danske forhandlere, og læs grundige guider om mad og vin, humør og årstid.";
 
-/** Omslutter en DSF-produktside med Partner-Ads klikbanner (samme mønster som legacy Vinbot). */
+/** @deprecated DSF er ikke længere affiliate — returnerer direkte shop-URL. */
 export function partnerAdsDsfClickUrl(productPageUrl: string): string {
-  return partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, productPageUrl.trim());
+  return productPageUrl.trim();
 }

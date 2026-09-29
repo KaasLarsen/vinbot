@@ -268,8 +268,8 @@ export default async function TilbudHubPage() {
 
             <h3 className="text-lg font-semibold text-stone-900">Danske vinbutikker med tilbud</h3>
             <p className="leading-relaxed">
-              Vinbot henter tilbud fra en række danske netbutikker via affiliate-feeds. Blandt de forhandlere, vi ofte
-              ser kampagner fra, er fx <Link href="/den-sidste-flaske">Den Sidste Flaske</Link>,{" "}
+              Vinbot henter tilbud fra en række danske netbutikker via affiliate-feeds. Blandt forhandlerne med
+              inspiration på Vinbot er fx <Link href="/den-sidste-flaske">Den Sidste Flaske</Link>,{" "}
               <Link href="/winther-vin">Winther Vin</Link>, <Link href="/lauridsen-vine">Lauridsen Vine</Link> og{" "}
               <Link href="/dh-wines">DH Wines</Link>. Hver shop har sit eget fokus — fra dagstilbud og restpartier til
               bredere sortimenter med løbende nedsættelser.

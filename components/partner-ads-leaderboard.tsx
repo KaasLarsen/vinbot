@@ -14,13 +14,8 @@ export const WINTHER_VIN_LEADERBOARD_BANNER_ID = "76692";
 const JOHNSEN_LEADERBOARD_BANNER_ID = "114732";
 const DH_WINES_LEADERBOARD_BANNER_ID = "108173";
 const LAURIDSEN_VINE_LEADERBOARD_BANNER_ID = "116085";
-export const DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID = "94856";
-
 /** visbanner.php returnerer `ugyldig.gif` for mange feed-banner-id'er — vis tekst-fallback i stedet. */
-const LEADERBOARD_VISBANNER_OK = new Set([
-  WINTHER_VIN_LEADERBOARD_BANNER_ID,
-  DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
-]);
+const LEADERBOARD_VISBANNER_OK = new Set([WINTHER_VIN_LEADERBOARD_BANNER_ID]);
 
 const linkRel = "nofollow sponsored noopener noreferrer";
 
@@ -65,21 +60,11 @@ const LAURIDSEN: BannerChoice = {
   logoW: 400,
   logoH: 51,
 };
-const DSF: BannerChoice = {
-  bannerId: DEN_SIDSTE_FLASKE_LEADERBOARD_BANNER_ID,
-  merchant: "Den Sidste Flaske",
-  copy: "Den Sidste Flaske: online vinhandel — se udvalget",
-  logoSrc: "/images/merchants/den-sidste-flaske.png",
-  logoW: 225,
-  logoH: 225,
-};
-
 const BANNER_BY_MERCHANT: Record<HubRotationMerchant, BannerChoice> = {
   winther: WINTHER,
   lauridsen: LAURIDSEN,
   johnsen: JOHNSEN,
   dh: DH,
-  dsf: DSF,
 };
 
 function pickBanner(hub: string | undefined, slug: string): BannerChoice {

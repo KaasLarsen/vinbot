@@ -10,16 +10,12 @@ import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { HomeWineSearch } from "@/components/home-wine-search";
 import { HomeLabelScanButton } from "@/components/home-label-scan-button";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
-import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
-import { DsfFeaturedPicks } from "@/components/dsf-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
-import { dsfFeaturedPicks } from "@/lib/dsf-featured";
-import { DsfFeaturedProductsJsonLd } from "@/components/json-ld";
 import { siteName } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -38,7 +34,6 @@ const HOME_QUERY_BOOTSTRAP = `(function(){try{var q=new URLSearchParams(location
 export default function HomePage() {
   return (
     <PageShell className="py-10">
-      <DsfFeaturedProductsJsonLd picks={dsfFeaturedPicks} />
       <div className="lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)] lg:items-start lg:gap-6">
         <HomeHeroSearchSection>
           <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
@@ -88,7 +83,6 @@ export default function HomePage() {
           <HomeWinesStrip />
           <HomeRecipesStrip />
           <HomeDrinksStrip />
-          <DsfFeaturedPicks picks={dsfFeaturedPicks} variant="home" />
           <HomeDealsStrip />
         </div>
       </HomeFeedStripsGate>
@@ -214,8 +208,6 @@ export default function HomePage() {
         </Link>
         </div>
       </section>
-
-      <CampaignBanner />
 
       <FeaturedAffiliateStores />
 

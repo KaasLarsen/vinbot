@@ -1,6 +1,5 @@
 import { HAVNENS_VIN_SHOP_HREF } from "@/lib/daisycon-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
-import { partnerAdsDsfClickUrl } from "@/lib/site";
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
 
 const B = PARTNER_ADS_KLIK_BANNERS;
@@ -26,17 +25,17 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Restpartier, daglige tilbud og sjældne flasker hos en af Danmarks stærkeste vinshops.",
     title: "Den Sidste Flaske (densidsteflaske) — vin tilbud",
     description:
-      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Kuraterede anbefalinger — klik videre til shoppen.",
+      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Redaktionel inspiration på Vinbot — link videre til shoppen.",
     introParagraphs: [
       "Den Sidste Flaske — også søgt som densidsteflaske — er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.",
-      "Vinbot sælger ikke vin selv. Vi samler kuraterede forslag og guider, så du hurtigere finder den rigtige flaske — og linker tydeligt videre, når du vil handle hos Den Sidste Flaske.",
+      "Vinbot sælger ikke vin selv. Vi samler kuraterede forslag og guider, så du hurtigere finder den rigtige flaske — og linker tydeligt videre til forhandlerens egen side.",
       "Sortimentet skifter ofte: restpartier, kampagner og limited editions betyder, at dagens tilbud kan være væk i morgen. Brug derfor altid densidsteflaske.dk som kilde til pris, lager og årgang.",
     ],
     matchHeading: "Hvornår er Den Sidste Flaske et godt match?",
     matchBullets: [
       "Du jagter restpartier, limited releases og daglige tilbud.",
       "Du vil have konkrete flaskeforslag og så købe direkte i shoppen.",
-      "Du sammenligner gerne med andre forhandlere via Vinbots søgning, men handler ofte hos DSF.",
+      "Du sammenligner gerne med andre forhandlere via Vinbots søgning, før du vælger butik.",
     ],
     guideLinks: [
       { href: "/den-sidste-flaske/vin/the-guvnor-tinto", label: "The Guv'nor rødvin" },
@@ -92,8 +91,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     affiliate: {
-      kind: "partner-ads",
-      bannerId: B.denSidsteFlaske,
+      kind: "direct",
       shopUrl:
         "https://densidsteflaske.dk/search?q=champagne&form_type=product&utf8=%E2%9C%93",
     },
@@ -1224,9 +1222,7 @@ export function getRelatedMerchantHubs(slug: string, limit = 6): MerchantHubConf
   return MERCHANT_HUBS.filter((h) => h.slug !== slug).slice(0, limit);
 }
 
-/** DSF shop CTA uses search deep-link via Partner-Ads. */
+/** @deprecated Brug resolveMerchantHubShopHref på DSF-hubben (direct link). */
 export function dsfHubShopHref(): string {
-  return partnerAdsDsfClickUrl(
-    "https://densidsteflaske.dk/search?q=champagne&form_type=product&utf8=%E2%9C%93",
-  );
+  return "https://densidsteflaske.dk/search?q=champagne&form_type=product&utf8=%E2%9C%93";
 }

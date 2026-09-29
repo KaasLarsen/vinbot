@@ -1,5 +1,5 @@
 import type { MerchantWineId } from "@/lib/wine-detail-pages/merchants";
-import { getMerchantWineConfig, merchantPartnerAdsClickUrl } from "@/lib/wine-detail-pages/merchants";
+import { getMerchantWineConfig, merchantOutboundClickUrl } from "@/lib/wine-detail-pages/merchants";
 import type { WineDetailFeaturedPick } from "@/lib/wine-detail-pages/types";
 import {
   productJsonLdIdentifierFields,
@@ -107,7 +107,10 @@ export function buildMerchantAffiliateProductNode(
   if (!pickHasValidOfferPrice(pick)) return null;
   const meta = MERCHANT_OFFER_META[merchantId];
   const cfg = getMerchantWineConfig(merchantId);
-  const affiliateUrl = pick.directLink ? pick.productUrl : merchantPartnerAdsClickUrl(merchantId, pick.productUrl);
+  const affiliateUrl =
+    pick.directLink || !cfg.usesPartnerAdsAffiliate
+      ? cfg.sanitizeProductUrl(pick.productUrl)
+      : merchantOutboundClickUrl(merchantId, pick.productUrl);
   const extra =
     merchantId === "den-sidste-flaske" ? dsfOfferShippingAndReturn() : genericOfferShippingAndReturn(meta.refundPolicyUrl);
   const currency = pick.priceCurrency ?? "DKK";

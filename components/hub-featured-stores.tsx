@@ -63,17 +63,6 @@ const STORES: Record<HubRotationMerchant, StoreCard> = {
     readMoreHref: "/johnsen-wine",
     readMoreLabel: "Læs om Vinbot × Johnsen Wine",
   },
-  dsf: {
-    id: "dsf",
-    name: "Den Sidste Flaske",
-    blurb: "Online vinhandel med bredt udvalg og faste kampagner.",
-    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.denSidsteFlaske, "https://densidsteflaske.dk/"),
-    logoSrc: "/images/merchants/den-sidste-flaske.png",
-    logoW: 225,
-    logoH: 225,
-    readMoreHref: "/den-sidste-flaske",
-    readMoreLabel: "Læs om Vinbot × Den Sidste Flaske",
-  },
 };
 
 export function HubFeaturedStores({ hub, slug }: { hub: string; slug: string }) {

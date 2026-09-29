@@ -1,4 +1,4 @@
-import { MERCHANT_FEATURED_PICKS, type MerchantFeaturedPick } from "@/lib/merchant-featured-picks";
+import type { MerchantFeaturedPick } from "@/lib/merchant-featured-picks";
 import {
   listAllWineDetailPages,
   listWineDetailPagesForGuide,
@@ -8,12 +8,6 @@ import {
 import { lowestPricePerBottle } from "@/lib/wine-pick-prices";
 import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
 import type { WineDetailPage } from "@/lib/wine-detail-pages/types";
-
-const DSF_DEFAULT_URLS = [
-  "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024",
-  "https://densidsteflaske.dk/products/the-guv-nor-tinto",
-  "https://densidsteflaske.dk/products/spritz-roll-aperetivo-originale-nv",
-] as const;
 
 /** Druer og stilarter → relevante guide-slugs (kuraterede enkeltvin-sider). */
 const GRAPE_AND_STYLE_GUIDES: Record<string, readonly string[]> = {
@@ -109,10 +103,6 @@ export function guideSlugsForSearchQuery(q: string): string[] {
   return [...new Set(out)];
 }
 
-function dsfPicks(): MerchantFeaturedPick[] {
-  return MERCHANT_FEATURED_PICKS.filter((p) => p.merchantId === "den-sidste-flaske");
-}
-
 const MIN_CURATED_MATCH_SCORE = 4;
 
 function queryTokens(q: string): string[] {
@@ -163,20 +153,10 @@ function pageMatchesGrapeFocus(page: WineDetailPage, grapeTokens: string[]): boo
   return grapeTokens.some((g) => strong.includes(g));
 }
 
-function isSpecificGuideSearch(guideSlugs: string[]): boolean {
-  return guideSlugs.some((s) => s !== "komplet-guide-til-vin-og-mad");
-}
-
 function guideSlugsForCuratedPicks(q: string): string[] {
   const slugs = guideSlugsForSearchQuery(q);
   const specific = slugs.filter((s) => s !== "komplet-guide-til-vin-og-mad");
   return specific.length > 0 ? specific : slugs;
-}
-
-function matchesFeaturedPick(pick: MerchantFeaturedPick, tokens: string[]): boolean {
-  if (tokens.length === 0) return false;
-  const hay = `${pick.title} ${pick.blurb ?? ""}`.toLowerCase();
-  return tokens.some((tok) => hay.includes(tok));
 }
 
 function withinBudget(pick: MerchantFeaturedPick, max: number | null): boolean {
@@ -189,14 +169,7 @@ function withinBudget(pick: MerchantFeaturedPick, max: number | null): boolean {
 function sortScoredPicks(
   items: { pick: MerchantFeaturedPick; score: number }[],
 ): MerchantFeaturedPick[] {
-  return [...items]
-    .sort((a, b) => {
-      if (b.score !== a.score) return b.score - a.score;
-      if (a.pick.merchantId === "den-sidste-flaske" && b.pick.merchantId !== "den-sidste-flaske") return -1;
-      if (b.pick.merchantId === "den-sidste-flaske" && a.pick.merchantId !== "den-sidste-flaske") return 1;
-      return 0;
-    })
-    .map((x) => x.pick);
+  return [...items].sort((a, b) => b.score - a.score).map((x) => x.pick);
 }
 
 function picksFromGuides(
@@ -248,30 +221,6 @@ function picksFromPageTextMatch(
   return sortScoredPicks(out);
 }
 
-function fallbackDsfPicks(tokens: string[], max: number | null, limit: number, onlyIfMatch: boolean): MerchantFeaturedPick[] {
-  const all = dsfPicks();
-  const matched = all.filter((p) => matchesFeaturedPick(p, tokens) && withinBudget(p, max));
-  if (onlyIfMatch) return matched.slice(0, limit);
-  const pool = matched.length > 0 ? matched : all.filter((p) => withinBudget(p, max));
-
-  const seen = new Set<string>();
-  const out: MerchantFeaturedPick[] = [];
-  for (const url of DSF_DEFAULT_URLS) {
-    const p = pool.find((x) => x.productUrl === url) ?? all.find((x) => x.productUrl === url);
-    if (p && withinBudget(p, max) && !seen.has(p.productUrl)) {
-      seen.add(p.productUrl);
-      out.push(p);
-    }
-  }
-  for (const p of pool) {
-    if (seen.has(p.productUrl)) continue;
-    seen.add(p.productUrl);
-    out.push(p);
-    if (out.length >= limit) break;
-  }
-  return out.slice(0, limit);
-}
-
 function mergePicks(primary: MerchantFeaturedPick[], extra: MerchantFeaturedPick[], limit: number): MerchantFeaturedPick[] {
   const seen = new Set(primary.map((p) => `${p.merchantId}:${p.productUrl}`));
   const merged = [...primary];
@@ -285,31 +234,21 @@ function mergePicks(primary: MerchantFeaturedPick[], extra: MerchantFeaturedPick
   return merged.slice(0, limit);
 }
 
-/** Kuraterede enkeltvin-forslag til søgning (relevans først; DSF kun ved ægte match). */
+/** Kuraterede enkeltvin-forslag til søgning (relevans fra wine-detail-sider). */
 export function listCuratedPicksForSearchQuery(q: string, max: number | null = null, limit = 3): MerchantFeaturedPick[] {
   const trimmed = q.trim();
-  if (!trimmed) return fallbackDsfPicks([], max, limit, false);
+  if (!trimmed) return [];
 
-  /* BiB-søgninger: kun rigtige boxvine fra feed — ikke DSF-flasker som fallback. */
+  /* BiB-søgninger: kun rigtige boxvine fra feed — ikke kuraterede flasker som fallback. */
   if (wineFormatIntentFromQuery(trimmed)) return [];
 
   const tokens = queryTokens(trimmed);
   const grapeTokens = grapeTokensFromQuery(trimmed, tokens);
   const guideSlugs = guideSlugsForCuratedPicks(trimmed);
-  const specific = isSpecificGuideSearch(guideSlugs);
 
   const fromText = picksFromPageTextMatch(tokens, grapeTokens, limit, max);
   const fromGuides = picksFromGuides(guideSlugs, tokens, grapeTokens, limit, max);
-  const merged = mergePicks(fromText, fromGuides, limit);
-
-  if (merged.length < limit) {
-    const dsfFill = fallbackDsfPicks(tokens, max, limit - merged.length, specific);
-    return mergePicks(merged, dsfFill, limit);
-  }
-
-  if (merged.length > 0) return merged;
-
-  return fallbackDsfPicks(tokens, max, limit, false);
+  return mergePicks(fromText, fromGuides, limit);
 }
 
 export function detailSlugForCuratedPick(pick: MerchantFeaturedPick): string | undefined {

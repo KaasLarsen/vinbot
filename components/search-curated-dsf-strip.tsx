@@ -24,9 +24,6 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
   const picks = useMemo(() => listCuratedPicksForSearchQuery(query, maxBudget, 3), [query, maxBudget]);
   if (picks.length === 0) return null;
 
-  const hasDsf = picks.some((p) => p.merchantId === "den-sidste-flaske");
-  const hasOther = picks.some((p) => p.merchantId !== "den-sidste-flaske");
-
   return (
     <section
       className={
@@ -38,15 +35,10 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-800/90">Ud over feed-søgningen</p>
       <h2 id="search-curated-wine-heading" className="mt-1 text-lg font-semibold text-stone-900">
-        {hasDsf && hasOther
-          ? "Kuraterede flasker — også fra Den Sidste Flaske"
-          : hasDsf
-            ? "Har du set hos Den Sidste Flaske?"
-            : "Kuraterede flasker med shop-link"}
+        Kuraterede flasker med shop-link
       </h2>
       <p className="mt-1 text-sm text-stone-600">
-        Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne fra produktfeed
-        ovenfor{hasDsf ? " — inkl. Den Sidste Flaske, som ikke er i feedet" : ""}.
+        Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne fra produktfeed ovenfor.
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {picks.map((pick) => (
@@ -54,10 +46,6 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
         ))}
       </ul>
       <p className="mt-3 text-xs text-stone-500">
-        <Link href="/den-sidste-flaske" className="font-medium text-rose-900 hover:underline">
-          Den Sidste Flaske
-        </Link>
-        {" · "}
         <Link href="/vine" className="font-medium text-rose-900 hover:underline">
           Vin-katalog
         </Link>
@@ -80,13 +68,17 @@ function CuratedPickCard({ pick, query }: { pick: ReturnType<typeof listCuratedP
         }).format(pick.listPrice)
       : null;
 
-  const trackImage = () =>
+  const imageRel = cfg.usesPartnerAdsAffiliate ? "nofollow sponsored noopener noreferrer" : "nofollow noopener noreferrer";
+
+  const trackImage = () => {
+    if (!cfg.usesPartnerAdsAffiliate) return;
     trackAffiliateClick({
       merchant: cfg.displayName,
       placement: "search-curated-wine",
       slug: query.slice(0, 80),
       url: pick.productUrl,
     });
+  };
 
   return (
     <li>
@@ -94,7 +86,7 @@ function CuratedPickCard({ pick, query }: { pick: ReturnType<typeof listCuratedP
         <a
           href={pick.productUrl}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={imageRel}
           onClick={trackImage}
           className={IMAGE_FRAME}
         >
