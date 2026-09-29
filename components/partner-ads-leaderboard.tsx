@@ -60,11 +60,21 @@ const LAURIDSEN: BannerChoice = {
   logoW: 400,
   logoH: 51,
 };
+const SPS_LEADERBOARD_BANNER_ID = "112662";
+const SPS: BannerChoice = {
+  bannerId: SPS_LEADERBOARD_BANNER_ID,
+  merchant: "SPS Wine",
+  copy: "SPS Wine: bredt online-sortiment — se udvalget her",
+  logoSrc: "/images/merchants/sps-wine.png",
+  logoW: 400,
+  logoH: 120,
+};
 const BANNER_BY_MERCHANT: Record<HubRotationMerchant, BannerChoice> = {
   winther: WINTHER,
   lauridsen: LAURIDSEN,
   johnsen: JOHNSEN,
   dh: DH,
+  sps: SPS,
 };
 
 function pickBanner(hub: string | undefined, slug: string): BannerChoice {

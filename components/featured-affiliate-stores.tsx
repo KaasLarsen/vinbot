@@ -63,6 +63,17 @@ const STORES: Store[] = [
     readMoreHref: "/johnsen-wine",
     readMoreLabel: "Læs om Vinbot × Johnsen Wine",
   },
+  {
+    id: "sps",
+    name: "SPS Wine",
+    blurb: "Bredt online-sortiment — godt til at sammenligne i Vinbots søgning.",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.spsWine, "https://www.spswine.dk/"),
+    logoSrc: "/images/merchants/sps-wine.png",
+    logoW: 400,
+    logoH: 120,
+    readMoreHref: "/sps-wine",
+    readMoreLabel: "Læs om Vinbot × SPS Wine",
+  },
 ];
 
 export function FeaturedAffiliateStores() {
@@ -83,7 +94,7 @@ export function FeaturedAffiliateStores() {
         </Link>
         .
       </p>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {STORES.map((s) => (
           <li
             key={s.id}

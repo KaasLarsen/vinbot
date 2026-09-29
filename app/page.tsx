@@ -10,14 +10,19 @@ import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { HomeWineSearch } from "@/components/home-wine-search";
 import { HomeLabelScanButton } from "@/components/home-label-scan-button";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
+import { CampaignBanner } from "@/components/campaign-banner";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
+import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
+import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { siteName } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
+
+const WINTHER_HOME_PICKS = getFeaturedPicksForMerchant("winther-vin").slice(0, 4);
 
 /** Samme interval som feed-cache — HTML caches på CDN, data opdateres i baggrunden. */
 export const revalidate = 21600;
@@ -83,6 +88,7 @@ export default function HomePage() {
           <HomeWinesStrip />
           <HomeRecipesStrip />
           <HomeDrinksStrip />
+          <MerchantFeaturedPicks merchantId="winther-vin" picks={WINTHER_HOME_PICKS} variant="home" />
           <HomeDealsStrip />
         </div>
       </HomeFeedStripsGate>
@@ -208,6 +214,8 @@ export default function HomePage() {
         </Link>
         </div>
       </section>
+
+      <CampaignBanner />
 
       <FeaturedAffiliateStores />
 

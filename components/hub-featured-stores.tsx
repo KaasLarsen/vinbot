@@ -63,6 +63,17 @@ const STORES: Record<HubRotationMerchant, StoreCard> = {
     readMoreHref: "/johnsen-wine",
     readMoreLabel: "Læs om Vinbot × Johnsen Wine",
   },
+  sps: {
+    id: "sps",
+    name: "SPS Wine",
+    blurb: "Bredt online-sortiment — godt til at sammenligne i Vinbots søgning.",
+    href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.spsWine, "https://www.spswine.dk/"),
+    logoSrc: "/images/merchants/sps-wine.png",
+    logoW: 400,
+    logoH: 120,
+    readMoreHref: "/sps-wine",
+    readMoreLabel: "Læs om Vinbot × SPS Wine",
+  },
 };
 
 export function HubFeaturedStores({ hub, slug }: { hub: string; slug: string }) {
