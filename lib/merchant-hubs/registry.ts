@@ -1065,6 +1065,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: { kind: "direct", shopUrl: "https://www.vinpalle.dk/" },
   },
   {
+    slug: "villa-bianca",
+    displayName: "Villa Bianca",
+    feedMerchant: "Villa Bianca",
+    blurb: "Italiensk vin og Bulichella — gratis produktfeed i Vinbots søgning.",
+    title: "Villa Bianca — shop og inspiration | Vinbot",
+    description:
+      "Villa Bianca er en italiensk vinforhandler i Vinbots gratis feed. Se flasker, læs om shoppen og gå videre til villabianca.eu.",
+    introParagraphs: [
+      "Villa Bianca sælger italiensk vin — blandt andet Bulichella og smagekasser. Shoppen indgår i Vinbot via et gratis Google Shopping-feed (uden affiliate-provision). Vi viser dem, fordi flaskerne beriger søgningen.",
+      "Vinbot sælger ikke vin. Links til Villa Bianca er direkte — uden Partner-Ads-wrapper.",
+      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+    ],
+    matchHeading: "Hvornår er Villa Bianca et godt match?",
+    matchBullets: [
+      "Du leder efter italiensk vin, Bulichella eller en smagekasse.",
+      "Du har set Villa Bianca i Vinbots søgeresultater.",
+      "Du vil handle via et direkte link uden affiliate-wrapper.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/tilbud", label: "Vin tilbud" },
+    ],
+    shopCtaLabel: "Besøg Villa Bianca",
+    shopIntro: "Åbner Villa Bianca i et nyt vindue — direkte link (gratis feed, ingen affiliate-wrapper).",
+    productIntro: "Flasker fra Villa Bianca i vores feed.",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Villa Bianca",
+        queries: ["bulichella", "rødvin", "smagekasse"],
+        placement: "villa-bianca-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Tjener Vinbot på klik til Villa Bianca?",
+        answer:
+          "Nej — Villa Bianca er på gratis feed-tier. Vi viser dem for at give dig flere valg i søgningen.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid villabianca.eu som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: { kind: "direct", shopUrl: "https://villabianca.eu/" },
+  },
+  {
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",

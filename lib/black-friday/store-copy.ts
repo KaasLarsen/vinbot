@@ -43,6 +43,7 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   winefamly: "online-lots",
   "8wines": "online-lots",
   vinpalle: "online-lots",
+  "villa-bianca": "online-lots",
   "bottles-with-history": "online-lots",
   "philipson-wine": "importers",
   "erik-sorensen-vin": "importers",
