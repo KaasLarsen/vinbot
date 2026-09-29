@@ -2,29 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getMerchantLogo, merchantMonogram } from "@/lib/merchant-hubs/logos";
+import {
+  getMerchantLogo,
+  merchantAccentForSlug,
+  merchantMonogram,
+} from "@/lib/merchant-hubs/logos";
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
-
-const ACCENTS = [
-  "from-rose-900/90 to-stone-800",
-  "from-amber-900/85 to-stone-800",
-  "from-stone-800 to-rose-950",
-  "from-rose-800 to-amber-950",
-  "from-stone-700 to-stone-900",
-] as const;
-
-function accentForSlug(slug: string) {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h + slug.charCodeAt(i) * (i + 1)) % ACCENTS.length;
-  return ACCENTS[h];
-}
 
 export function VinforhandlereDirectory({ hubs }: { hubs: MerchantHubConfig[] }) {
   return (
     <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {hubs.map((hub, index) => {
         const logo = getMerchantLogo(hub.slug);
-        const accent = accentForSlug(hub.slug);
+        const accent = merchantAccentForSlug(hub.slug);
         return (
           <li key={hub.slug} className="min-w-0">
             <Link

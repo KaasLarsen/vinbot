@@ -55,6 +55,21 @@ export function getMerchantLogo(slug: string): MerchantLogo | null {
   return logo;
 }
 
+/** Gradient-accents til logo-bands (directory + hub-hero). */
+export const MERCHANT_ACCENTS = [
+  "from-rose-900/90 to-stone-800",
+  "from-amber-900/85 to-stone-800",
+  "from-stone-800 to-rose-950",
+  "from-rose-800 to-amber-950",
+  "from-stone-700 to-stone-900",
+] as const;
+
+export function merchantAccentForSlug(slug: string): (typeof MERCHANT_ACCENTS)[number] {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h + slug.charCodeAt(i) * (i + 1)) % MERCHANT_ACCENTS.length;
+  return MERCHANT_ACCENTS[h];
+}
+
 /** Initialer til monogram-fallback (max 2 tegn). */
 export function merchantMonogram(displayName: string): string {
   const cleaned = displayName.replace(/[’']/g, "").trim();
