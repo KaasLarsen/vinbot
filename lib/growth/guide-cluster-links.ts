@@ -349,6 +349,7 @@ const VIDEN_MAENGDER: GuideClusterLink[] = [
   { slug: "hvor-mange-enheder-alkohol-i-et-glas-vin", label: "Genstande pr. glas vin" },
   { slug: "hvor-meget-fylder-en-flaske-vin", label: "Hvor meget fylder en flaske" },
   { slug: "hvor-mange-glas-i-en-flaske-vin", label: "Glas pr. flaske" },
+  { slug: "hvor-mange-glas-er-der-i-en-flaske-champagne", label: "Glas i en flaske champagne" },
   { slug: "hvor-mange-flasker-i-en-3-liter-papvin", label: "Flasker og glas i 3 L papvin" },
   { slug: "hvor-meget-alkohol-i-vin", label: "Alkoholprocent i vin" },
   { slug: "hvor-mange-kalorier-i-vin", label: "Kalorier i vin" },

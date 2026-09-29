@@ -307,6 +307,7 @@ const FEST_OG_VIN_HUB_SLUGS: readonly string[] = [
   "alkoholfri-bobler-til-nytaar",
   "alkoholfri-vin-til-fest",
   "hvor-mange-glas-i-en-flaske-vin",
+  "hvor-mange-glas-er-der-i-en-flaske-champagne",
   "hvor-mange-enheder-alkohol-i-et-glas-vin",
 ];
 

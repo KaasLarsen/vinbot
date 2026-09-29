@@ -404,6 +404,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "rosevin-med-bobler": [
     {
+      question: "Hvad er frizzante rosé?",
+      answer:
+        "Frizzante rosé er rosévin med lavt tryk og let perlage — ofte italiensk og billigere end cava eller champagne. Den passer til terrasse og brunch, ikke til skål med kransekage.",
+    },
+    {
+      question: "Hvad er rosé med bobler?",
+      answer:
+        "Rosé med bobler dækker frizzante, prosecco rosé, cava rosado, crémant rosé og champagne rosé. Forskellen er tryk og sødme, ikke farven.",
+    },
+    {
       question: "Hvad er forskellen på frizzante og mousserende rosé?",
       answer:
         "Frizzante har lavt tryk og let perlage — nem til terrasse. Mousserende (cava, crémant, champagne, prosecco spumante) har fuld mousse og egner sig bedre til skål og mad med fedme.",
@@ -472,6 +482,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "rosevin-alkoholprocent": [
     {
+      question: "Hvad er rosévin alkoholprocent?",
+      answer:
+        "Rosévin alkoholprocent er typisk 11–13 % vol. Provence oftest 12–13 %. Tjek % vol. på etiketten.",
+    },
+    {
       question: "Hvor mange procent alkohol er der i rosévin?",
       answer:
         "Typisk 11–13 % vol. Provence oftest 12–13 %. Sødere stile kan ligge lavere i alkohol men højere i sukker. Tjek % vol. på etiketten.",
@@ -505,6 +520,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "champagne-serveringstemperatur": [
+    {
+      question: "Hvad er champagne serveringstemperatur?",
+      answer:
+        "Champagne serveringstemperatur er 8–10 °C. Under ca. 6 °C forsvinder duften. Tag flasken ud 10–15 minutter, hvis den har ligget iskold.",
+    },
     {
       question: "Hvilken temperatur skal champagne have?",
       answer:
@@ -572,6 +592,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
         "Et 10 cl-glas ved 11 % er ca. 0,7 genstand. Spritz med soda er lavere pr. glas.",
     },
   ],
+  "hvor-mange-glas-er-der-i-en-flaske-champagne": [
+    {
+      question: "Hvor mange glas er der i en flaske champagne?",
+      answer:
+        "6 glas à 12,5 cl, eller 7–8 flute à 10 cl til skål. Flasken er 75 cl, samme volumen som stille vin. Forskellen er skænken.",
+    },
+    {
+      question: "Hvor mange glas champagne til 12 personer?",
+      answer:
+        "To flasker giver én skål à ca. 10 cl. Tre flasker giver en omgang mere. Til middag med flere glas: regn som vin til fest.",
+    },
+    {
+      question: "Hvor mange genstande er der i en flaske champagne?",
+      answer:
+        "Ca. 7,1 genstande ved 12 % i 75 cl. Et 10 cl-flute er under 1 genstand.",
+    },
+  ],
   "champagne-alkoholprocent": [
     {
       question: "Hvor mange procent alkohol er der i champagne?",
@@ -590,6 +627,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "portvin-alkoholprocent": [
+    {
+      question: "Hvad er portvin alkoholprocent?",
+      answer:
+        "Portvin alkoholprocent er typisk 19–22 % vol., fordi gæringen stoppes med druebrændevin. Skænk 6–10 cl.",
+    },
     {
       question: "Hvor mange procent er der i portvin?",
       answer:
@@ -1365,6 +1407,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-sushi": [
     {
+      question: "Hvilken hvidvin til sushi?",
+      answer:
+        "Tør riesling, grüner veltliner eller brut bobler. De har syre til rå fisk og soja. Rødvin kun til ruller med mayo, avocado eller tempura — og så let gamay eller kølig pinot.",
+    },
+    {
       question: "Hvilken vin passer bedst til sushi og sashimi?",
       answer:
         "Tør hvidvin med tydelig syre og bobler er ofte bedst: riesling, grüner veltliner, muscadet, albariño eller champagne/cremant. De matcher rå fisk og renser ganen uden tung fad eller hårde tanniner.",
@@ -1580,6 +1627,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "vin-til-laks": [
+    {
+      question: "Hvilken vin til laks?",
+      answer:
+        "Tør riesling, chablis eller grüner veltliner. Grillet laks tåler viognier eller kraftig rosé. Røget laks: muscadet, albariño eller brut bobler. Fælles: syre mod fedt.",
+    },
     {
       question: "Hvilken vin til grillet laks?",
       answer:
@@ -1947,6 +1999,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "vin-til-ost-og-ostebord": [
     {
+      question: "Hvilken ost til vin?",
+      answer:
+        "Ost til vin følger samme tabel som vin til ost: bobler til brie og havarti, sherry til lagret ost, port til blåskimmel. Tre flasker dækker et blandet bræt.",
+    },
+    {
       question: "Hvilken vin til ost?",
       answer:
         "Mild ost (brie, havarti) → bobler eller frisk hvid; lagret hård ost → sherry eller moden chardonnay; blåskimmel → port eller Sauternes. Tre flasker dækker et dansk ostebord: bobler + sherry + port.",
@@ -2146,6 +2203,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "vin-til-boeff": [
+    {
+      question: "Hvilken vin til oksemørbrad?",
+      answer:
+        "Pinot noir, Chianti eller cru Beaujolais. Oksemørbrad er mager, så ung cabernet bliver bitter. Server ved 14–16 °C. Oksefilet følger samme logik.",
+    },
+    {
+      question: "Hvilken vin til ribeye?",
+      answer:
+        "Malbec, syrah eller et Bordeaux-blend. Ribeye har fedt nok til tannin. Entrecôte ligger i samme bånd. Server ved 15–17 °C.",
+    },
     {
       question: "Hvilken vin til bøf?",
       answer:
@@ -2410,6 +2477,23 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Kan man drikke hvidvin til flæskesteg?",
       answer:
         "Ja — alsace pinot gris, moden chardonnay eller tør riesling matcher fedme og brun sovs, især med sur-sød rødkål. Champagne blanc de noirs er et festligt alternativ til forret.",
+    },
+  ],
+  "vin-til-vildt": [
+    {
+      question: "Hvilken vin til vildt?",
+      answer:
+        "Pinot noir eller cru Beaujolais til rådyr og dådyr. Syrah, Rioja Reserva eller grenache til vildsvin. Magert vildt vil have syre og moden frugt, ikke ung tannin.",
+    },
+    {
+      question: "Hvilken vin til vildtgryde?",
+      answer:
+        "Pinot eller syrah ved siden af gryden. Porten i saucen er sødere end glasset — drik ikke den samme søde port til hele tallerkenen, medmindre det er en tør ruby i små slurke.",
+    },
+    {
+      question: "Hvilken vin til rådyr?",
+      answer:
+        "Moden pinot noir eller cru Beaujolais. Kødet er magert, så grove tanniner smager tørt.",
     },
   ],
   "vin-til-and": [
@@ -4045,6 +4129,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "hvor-mange-kalorier-i-vin": [
     {
+      question: "Hvor mange kalorier er der i vin?",
+      answer:
+        "Kalorier i vin er typisk 80–120 kcal pr. glas (12,5 cl). En flaske tør hvidvin er 550–650 kcal, tør rødvin 630–700 kcal. Det er alkohol og sukker, ikke farven.",
+    },
+    {
       question: "Hvor mange kalorier er der i et glas vin?",
       answer:
         "Ca. 80–120 kcal per glas (12,5 cl) for tør vin ved 12–13 % alkohol. Bobler ofte 80–95 kcal. Dessertvin og port kan være 150–200+ kcal per glas pga. sukker.",
@@ -4098,6 +4187,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "hvor-meget-vin-til-fest": [
+    {
+      question: "Hvor meget vin pr. person til fest?",
+      answer:
+        "Ca. ½ flaske pr. voksen til middag, tættere på 1 flaske pr. person til lang fest. Konfirmation om eftermiddagen: ca. ½ flaske. Bryllup har sin egen beregning.",
+    },
+    {
+      question: "Hvor meget vin til konfirmation?",
+      answer:
+        "Ca. ½ flaske vin pr. gæst til en eftermiddagsfest, plus bobler til skål. Se også vin til konfirmation for stil, og hvor meget vin til bryllup hvis aftenen er lang.",
+    },
     {
       question: "Hvor meget vin til fest?",
       answer:
@@ -4813,6 +4912,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "hvor-meget-alkohol-i-vin": [
     {
+      question: "Hvad er champagne alkoholprocent?",
+      answer:
+        "Champagne alkoholprocent er typisk 12–12,5 % vol. Prosecco ligger oftest på 11–11,5 %. Den fulde tabel står i champagne-guiden.",
+    },
+    {
       question: "Hvor mange procent alkohol er der i vin?",
       answer:
         "Almindelig vin ligger på 11-15 % alkohol (volumenprocent). Hvidvin typisk 10-13 %, rødvin 12-15 %, mousserende 11-12,5 %, dessertvin 8-13 % og hedvin som portvin og sherry 15-22 %. Alkoholindholdet står på etiketten som '% vol.' og er lovpligtigt i EU.",
@@ -4834,6 +4938,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "hvor-mange-enheder-alkohol-i-et-glas-vin": [
+    {
+      question: "Hvor mange genstande er der i 3 liter vin?",
+      answer:
+        "3 liter papvin ved 13 % er ca. 30,8 genstande — omtrent fire standardflasker. Ved 12,5 % tættere på 29.",
+    },
+    {
+      question: "Hvor mange genstande er der i en flaske champagne?",
+      answer:
+        "Ca. 7,1 genstande i 75 cl ved 12 %. Et flute à 10 cl er under 1 genstand.",
+    },
     {
       question: "Hvor mange ml er et glas vin?",
       answer:
@@ -6136,6 +6250,21 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
   ],
   "sadan-serverer-du-portvin": [
     {
+      question: "Hvad er portvin temperatur?",
+      answer:
+        "Portvin temperatur er 14–17 °C for ruby, tawny og de fleste vintage. White port serveres koldere, 8–12 °C.",
+    },
+    {
+      question: "Skal portvin på køl?",
+      answer:
+        "Ja, kort. 15 minutter i køleskab hvis stuen er omkring 22 °C. Port skal ikke være iskold — så forsvinder nødder og frugt.",
+    },
+    {
+      question: "Hvad er portvin serveringstemperatur?",
+      answer:
+        "Ruby og LBV 15–17 °C, tawny 14–16 °C, vintage 16–18 °C, white port 8–12 °C. Køligere end stuetemperatur, ikke som hvidvin.",
+    },
+    {
       question: "Ved hvilken temperatur serverer man portvin?",
       answer:
         "De fleste stilarter omkring 14–17 °C — lidt køligere end en varm stue. White port serveres koldere (ca. 8–12 °C). For varm port smager af alkohol.",
@@ -6152,6 +6281,26 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     },
   ],
   "hvor-laenge-holder-portvin": [
+    {
+      question: "Hvad er portvin holdbarhed efter åbning?",
+      answer:
+        "Ruby 1–2 uger i køleskab, LBV 1–3 uger, tawny ofte 3–6 uger, vintage inden for få dage. Smag: flad frugt eller eddike betyder stop.",
+    },
+    {
+      question: "Hvad er tawny portvin holdbarhed?",
+      answer:
+        "Åbnet tawny holder ofte 3–6 uger på køl. Uåbnet tawny klarer flere år mørkt og køligt og er drikkeklar uden årelang flaskelagring.",
+    },
+    {
+      question: "Hvad er ruby portvin holdbarhed?",
+      answer:
+        "Åbnet ruby holder ca. 1–2 uger i køleskab med prop. Uåbnet ruby klarer flere år, men er ikke lavet til årtiers lagring som vintage.",
+    },
+    {
+      question: "Hvad er portvin holdbarhed uåbnet?",
+      answer:
+        "Ruby, LBV og tawny holder typisk flere år køligt og mørkt. Vintage kan udvikle sig i årtier. Undgå varme og sol.",
+    },
     {
       question: "Hvor længe holder åbnet portvin?",
       answer:

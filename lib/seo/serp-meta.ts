@@ -199,9 +199,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   },
 
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
-    title: "7,4 genstande i en flaske vin",
+    title: "Hvor mange genstande i en flaske vin?",
     description:
-      "75 cl ved 12,5 % = ca. 7,4 genstande. 1 genstand = 12 g alkohol. Tabel for glas, flaske, champagne og bag-in-box — dansk beregning.",
+      "75 cl ved 12,5 % = ca. 7,4 genstande. 3 liter papvin ca. 31. Champagne ca. 7,1. Glas, flaske og bag-in-box — dansk beregning.",
   },
   "hvor-meget-fylder-en-flaske-vin": {
     title: "75 cl: hvor meget fylder en flaske",
@@ -224,9 +224,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Åbnet rødvin 3–5 dage, hvidvin 3–7 dage, bobler 1–3 dage. Vakuum, køl og genlukning forlænger. Tabel pr. vintype og hvornår du skal smide den.",
   },
   "hvor-meget-alkohol-i-vin": {
-    title: "11–15 % alkohol i vin (tabel)",
+    title: "Alkohol i vin: 11–15 % (tabel)",
     description:
-      "Vin er typisk 11–15 % alkohol. Hvidvin 10–13 %, rødvin 12–15 %, port 19–22 %. Tabel pr. vintype og hvad ABV betyder på etiketten.",
+      "Alkohol i vin er typisk 11–15 %. Hvidvin alkoholprocent 10–13 %. Champagne 12–12,5 %. Port 19–22 %. Tabel pr. vintype.",
   },
   "opbevaring-af-vin-temperatur-og-aabnet-flaske": {
     title: "Rødvin temperatur i °C — komplet tabel",
@@ -354,9 +354,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Kan alkoholfri rødvin smage godt? Ærligt: sværest uden alkohol. Leitz pinot og Torres garnacha — syre, tannin og hvornår bobler vinder i DK.",
   },
   "vin-til-ost-og-ostebord": {
-    title: "Vin til ost — bobler, sherry og port",
+    title: "Ost til vin og vin til ost",
     description:
-      "Hvilken vin til ost? Bobler til mild ost, sherry til lagrede, port til blåskimmel. Ostebord og julefrokost — tre flasker der dækker brættet.",
+      "Ost til vin og vin til ost: bobler til mild ost, sherry til lagret, port til blåskimmel. Tre flasker dækker ostebordet.",
   },
   "vin-til-gammel-knas": {
     title: "Hvilken vin passer til Gammel Knas?",
@@ -384,9 +384,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til Castello, brie og gouda fra Rema og Netto. Søg cava, riesling og tawny live på Vinbot.",
   },
   "vin-til-laks": {
-    title: "Vin til laks og grillet laks",
+    title: "Hvilken vin til laks? Riesling og bobler",
     description:
-      "Bedste vin til laks: tør riesling, chardonnay med syre og let rosé. Røget, grill, dild og sauce — konkrete flasketyper du kan købe i DK.",
+      "Hvilken vin til laks? Tør riesling og chablis til ovn, viognier til grill, bobler til røget. Syre skærer fedtet.",
   },
   "vin-til-kylling-og-lyst-koed": {
     title: "Vin til kylling — hvid, rosé og pinot",
@@ -394,9 +394,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Hvilken vin til kylling? Chardonnay til fløde, pinot til grill, riesling til karry. Sauce styrer valget — tabel efter tilberedning.",
   },
   "vin-til-sushi": {
-    title: "Vin til sushi: riesling, bobler og grüner",
+    title: "Hvidvin til sushi: riesling og bobler",
     description:
-      "Bedste vin til sushi og sashimi: tør riesling, muscadet, champagne og grüner veltliner. Syre, temperatur og parring til nigiri og maki.",
+      "Hvidvin til sushi: tør riesling, grüner og bobler. Rødvin kun til mayo og tempura. Nigiri, maki og sashimi.",
   },
 
   // Bølge 2 — GSC lav CTR (jun 2026)
@@ -588,9 +588,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Alkoholfri vin til konfirmation: bobler, middagsvin, mængde pr. gæst og mærker (Leitz, Torres, Noughty). Blandede selskaber i DK.",
   },
   "vin-til-boeff": {
-    title: "Hvilken vin til bøf? Cabernet og malbec",
+    title: "Vin til bøf, oksemørbrad og ribeye",
     description:
-      "Hvilken vin til bøf? Malbec og cabernet til ribeye og grill; pinot noir til filet. Bearnaise, rødvinssauce og peberbøf — tabel efter udskæring.",
+      "Vin til bøf: pinot til oksemørbrad og oksefilet, malbec og syrah til ribeye. Bearnaise og rødvinssauce i tabellen.",
   },
   "vin-til-oksefilet": {
     title: "Vin til oksefilet: pinot og Chianti",
@@ -712,10 +712,25 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Sådan bruger du Vivino smart: hvad ratings kan og ikke kan, og hvordan du tjekker pris i supermarkedet. Vinbot supplerer med madparring og guides.",
   },
-  "hvor-mange-kalorier-i-vin": {
-    title: "80–120 kcal i et glas vin",
+  "hvor-laenge-holder-portvin": {
+    title: "Portvin holdbarhed: åbnet og uåbnet",
     description:
-      "80–120 kcal per glas (12,5 cl). Flaske tør hvidvin ca. 550–650 kcal, rødvin 630–700. Bobler og champagne i tabel — plus kcal per flaske.",
+      "Portvin holdbarhed: åbnet ruby 1–2 uger, tawny 3–6 uger, vintage få dage. Uåbnet flere år. Køl og prop.",
+  },
+  "sadan-serverer-du-portvin": {
+    title: "Portvin temperatur: 14–17 °C",
+    description:
+      "Portvin temperatur er 14–17 °C. Skal portvin på køl? Ja, kort. White port 8–12 °C. Servering pr. type.",
+  },
+  "hvor-mange-kalorier-i-vin": {
+    title: "Kalorier i vin: 80–120 kcal pr. glas",
+    description:
+      "Kalorier i vin: 80–120 kcal pr. glas. Flaske tør hvidvin 550–650 kcal, rødvin 630–700. Bobler og alkoholfri i tabel.",
+  },
+  "hvor-mange-glas-er-der-i-en-flaske-champagne": {
+    title: "Hvor mange glas i en flaske champagne?",
+    description:
+      "6 glas à 12,5 cl, eller 7–8 flute à 10 cl til skål. 75 cl champagne, genstande og serveringstemperatur.",
   },
   "hvor-mange-glas-i-en-flaske-vin": {
     title: "5–6 glas i en flaske vin",
@@ -770,9 +785,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til stegt flæsk med persillesovs: grüner, riesling og gamay. Til jule-flæskesteg med brun sovs: se den dedikerede flæskesteg-guide.",
   },
   "vin-til-and": {
-    title: "Vin til and: pinot, gamay, rødkål",
+    title: "Vin til and: juleand og hverdag",
     description:
-      "Hvilken vin til and? Pinot noir, gamay og riesling til fed and og sur rødkål. Juleand, confit og temperatur — dansk parring.",
+      "Hvilken vin til and? Pinot og gamay til juleand med rødkål. Hverdagsand og confit: pinot eller tør riesling.",
   },
   "vin-til-juleand": {
     title: "Vin til juleand: pinot og rødkål",
@@ -1080,9 +1095,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "5 L papvin til havefest: ca. 40 glas. Hvornår den store boks kan betale sig vs. 3 L — vægt, køl og literpris.",
   },
   "vin-til-flaesketesteg": {
-    title: "Vin til flæskesteg — rødvin til jul",
+    title: "Hvilken vin til flæskesteg?",
     description:
-      "Vin til flæskesteg: pinot noir, gamay og Chianti til brun sovs og rødkål. Rødvin til juleaften med moden frugt og syre — undgå unge tanniner. Pris og søgning.",
+      "Hvilken vin til flæskesteg? Pinot noir, gamay og Chianti til brun sovs og rødkål. Syre og moden frugt — ikke ung cabernet.",
   },
   "amarone-vs-ripasso": {
     title: "Amarone vs. Ripasso — forskellen",
@@ -1217,9 +1232,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til brunch: prosecco, crémant og let hvid til æg, laks og avokado. Mimosa, temperatur og mængder — plus alkoholfri alternativ.",
   },
   "hvor-meget-vin-til-fest": {
-    title: "Vin til fest: beregn flasker (40 gæster)",
+    title: "Hvor meget vin pr. person til fest?",
     description:
-      "Beregn vin til fest: ½ flaske/gæst til middag + 15 % buffer. Interaktiv beregner til 20, 30, 40 og 50 gæster — med bobler og kassesøgning.",
+      "Hvor meget vin pr. person? Ca. ½ flaske til middag. Bryllup og konfirmation har egne tal. Beregner og 15 % buffer.",
   },
   "hvor-laenge-kan-vin-lagres": {
     title: "Hvor længe kan vin lagres? (tabel)",
@@ -1281,9 +1296,9 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Vin til gullasch/gulasch: gamay, tempranillo eller ung syrah til paprika og rødvin i gryden. Samme flaske i sauce og glas — dansk guide.",
   },
   "rosevin-med-bobler": {
-    title: "Rosévin med bobler: frizzante og cava",
+    title: "Frizzante rosé og rosé med bobler",
     description:
-      "Rosévin med bobler: frizzante, prosecco rosé, cava og crémant. Hvornår du vælger let perlage vs rigtig mousse — og hvad du drikker den til.",
+      "Frizzante rosé og rosé med bobler: lav perlage vs cava, crémant og champagne rosé. Til brunch, tapas og fest.",
   },
   "bedste-cremant": {
     title: "Bedste crémant til prisen 2026",
@@ -1715,9 +1730,9 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Frosé: frozen rosé blended med jordbær og is. Sommerdrink på blender — opskrift til 4 glas.",
   },
   kalimotxo: {
-    title: "Kalimotxo opskrift — rødvin og cola",
+    title: "Kalimotxo: rødvin og cola",
     description:
-      "Kalimotxo (calimocho): lige dele rødvin og Coca-Cola over is. Baskisk street-drink — opskrift til 1 glas.",
+      "Kalimotxo er rødvin og cola over is. Lige dele, ung frugtig rød. Opskrift til 1 glas.",
   },
   "bicicletta-spritz": {
     title: "Bicicletta Spritz opskrift",
@@ -2005,9 +2020,9 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Rebujito de Fresa: Fino sherry, jordbær, lemon-soda og mynte. Frugtig andalusisk drink — opskrift.",
   },
   "vermouth-tonic": {
-    title: "Vermouth & Tonic opskrift",
+    title: "Vermouth tonic: opskrift",
     description:
-      "Vermouth & Tonic: sød rød vermouth, premium tonic og appelsin. Nem aperitif — opskrift til 1 glas.",
+      "Vermouth tonic: opskrift med sød rød vermouth, premium tonic og appelsin. Nem aperitif til 1 glas.",
   },
   "el-presidente": {
     title: "El Presidente opskrift — rom og vermouth",
