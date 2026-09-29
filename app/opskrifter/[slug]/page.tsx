@@ -21,6 +21,7 @@ import {
   recipeTotalTimeIso,
 } from "@/lib/recipe-images";
 import { RecipeHeroImage } from "@/components/recipe-hero-image";
+import { ChristmasGuideBanner } from "@/components/christmas-guide-banner";
 import { buildRecipeSerpDescription, buildRecipeSerpTitle } from "@/lib/seo/serp-meta";
 import { recipeRoleLabel } from "@/lib/content/recipe-types";
 import { PageShell } from "@/components/page-shell";
@@ -167,6 +168,8 @@ export default async function RecipePage({ params }: Props) {
       </header>
 
       <RecipeHeroImage slug={slug} title={frontmatter.title} />
+
+      <ChristmasGuideBanner slug={slug} />
 
       <div className="mt-8">
         <RecipeWineBox

@@ -46,6 +46,13 @@ const PRESETS: Record<string, ShopPreset> = {
     searchHref: "/?q=bag-in-box+bib+hvidvin",
     heading: "Hvid papvin — fra forhandlerne",
   },
+  julegave: {
+    q: "champagne smagekasse premium over 200",
+    max: null,
+    label: "eksklusiv julegavevin, smagekasse og premium-champagne",
+    searchHref: "/?q=champagne+smagekasse+premium+over+200",
+    heading: "Køb julegavevin nu — champagne, smagekasser og premium-flasker",
+  },
 };
 
 /** Shop-blok til indlejring i guide-MDX (fx ved Top 5). */
