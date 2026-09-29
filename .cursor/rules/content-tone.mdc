@@ -1,0 +1,46 @@
+---
+description: Site-wide redaktionel tone — kort, scannbart, få konkrete valg
+globs: content/guides/**/*.mdx,content/recipes/**/*.mdx,content/drinks/**/*.mdx,lib/vine/editorial-product-copy.ts
+alwaysApply: false
+---
+
+# Indholdstone (Vinbot)
+
+## Formel
+
+**Kort svar → 1 default + 1 alternativ + 1 undgå → kort hvorfor → søg/CTA.**
+
+Brugeren skal kunne handle på 30 sekunder. Dybere kontekst er OK, men ikke som producentkatalog eller AI-encyklopædi.
+
+## Tone
+
+Dansk, jordnær, handlingsorienteret. Korte afsnit. Forklar jargon kun når nødvendigt. Skriv som en venlig rådgiver — ikke som en sommelier-leksikon-artikel.
+
+## Scannbarhed
+
+- **Bold-budget:** max **1–3 fedte fraser pr. afsnit** (typisk stil/drue/valg). Undgå at fedte næsten hvert substantiv.
+- **Korte sektioner:** ét job pr. `##`. Foretræk tabeller og bullets frem for prose-vægge.
+- **«Læs mere»:** punktliste — ikke middot-kæder midt i et afsnit.
+- **Ordtal (guides):** typisk **500–900 ord** for midt-trafik `vin-til-*` / `bedste-*`. Specialguider kan være kortere.
+
+## Guides (`content/guides`)
+
+- Primær keyword naturligt i `title` / første H2 — ikke i hver sætning.
+- Per sektion: **1 default + 1 alternativ** (evt. ét «undgå»). Stil/drue/region + prisbånd — ikke 6–8 producentnavne.
+- Dybde via interne links og Vinbot-søgning (`/?q=…`), ikke lange lister.
+- Afslut med `## Læs mere i klyngen` (liste) + `## Søg …` med ét søgelink.
+- Ingen fabrikerede anmeldelser eller falske priser.
+
+## Opskrifter og drinks (`content/recipes`, `content/drinks`)
+
+- Behold: kort intro, tips, fejl, vin i glasset, evt. kort FAQ.
+- **Generér ikke** sektionerne `Planlægning og råvarer`, `Smagsbalance og justering` eller `Afsluttende bemærkninger` — de er fyld.
+- Ingen gentaget boilerplate der bare omskriver frontmatter.
+
+## Vinprofiler (`lib/vine/editorial-product-copy.ts`)
+
+- 2–3 korte, nyttige afsnit. Én tydelig disclaimer — ikke fire varianter af samme budskab.
+
+## FAQ
+
+Korte, ærlige svar. Gentag ikke hele guide-teksten.

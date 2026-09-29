@@ -23,23 +23,8 @@ function yamlList(items, indent = 0) {
 }
 
 function buildExpansion(r) {
-  const dish = r.title.split("—")[0].trim();
-  const guides = r.relatedGuides
-    .slice(0, 2)
-    .map((g) => `[${g}](/guides/${g})`)
-    .join(" · ");
-  const specific = SLUG_EXPANSIONS[r.slug] ?? "";
-  return `## Planlægning og råvarer
-
-${dish} starter med den rigtige flaske: ${r.wineInRecipe.amount}. ${r.wineInRecipe.style} er afgørende for slutresultatet — både smag og balance. Læs ${guides} og [madlavning med vin](/guides/sadan-bruger-du-vin-til-sauce-og-simren). Opskriften er sat til ${r.servings} ${r.servings === 1 ? "portion/glas" : "portioner"}.
-
-${specific}
-
-Vælg råvarer i god kvalitet: fond, smør, krydderier og likør gør større forskel end dyre «hverdagsvine» i gryden. Mål og smag til undervejs — især sødme og salt.
-
-## Smagsbalance og justering
-
-For syrlig: mere smør, sukker eller en snert fløde. For sød: mere eddike, citron eller tør vin. For tynd sauce: reducer længere. For kraftig drik: fortynd eller server i mindre glas. Til glasset (eller som drikkken selv): [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}).`;
+  // Content-tone: no waffle expansion sections
+  return "";
 }
 
 function buildFaq(r) {
@@ -90,12 +75,8 @@ ${buildClosing(r)}
 }
 
 function buildClosing(r) {
-  const tagStr = r.tags.filter((t) => t !== "opskrift").join(", ");
-  return `## Afsluttende bemærkninger
-
-Kategorier: ${tagStr}. ${r.wineInRecipe.note} Følg temperatur og tider — især ved smøremulsioner og varme drikke, der ikke må koge.
-
-Relateret: [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}). Stil: ${r.wineInRecipe.style.toLowerCase()}. God appetit — eller skål.`;
+  // Content-tone: no closing waffle
+  return "";
 }
 
 function buildMdx(r) {

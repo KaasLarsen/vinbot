@@ -1370,26 +1370,8 @@ const GUIDE_RECIPE_ADDITIONS = {
 };
 
 function buildExpansion(recipe) {
-  const dish = recipe.title.split("—")[0].trim();
-  const g0 = recipe.relatedGuides[0];
-  const g1 = recipe.relatedGuides[1];
-  return `## Planlægning og råvarer
-
-${dish} starter med flasken: ${recipe.wineInRecipe.style.toLowerCase()}. Mængden er ${recipe.wineInRecipe.amount.toLowerCase()} — det er ikke et strejf, det er opskriften. Læs relaterede guides [${g0}](/guides/${g0}) og [${g1}](/guides/${g1}) plus [vin til sauce og simren](/guides/sadan-bruger-du-vin-til-sauce-og-simren). Opskriften er til ${recipe.servings} personer som tapas, ostebord eller deling.
-
-Køb vin du også vil drikke til resten af bordet. Undgå «madlavningsvin» med salt — den smager af bouillonterning, når den reduceres. Smag til undervejs: mangler syre, tilsæt citron eller eddike; mangler dybde, reducér længere; for sødt, mere salt eller peber. Samme princip som [chorizo i rødvin](/opskrifter/chorizo-i-rodvin) og [rødvinsgelé til charcuteri](/opskrifter/roedvinsgele-til-charcuteri): vinen skal smage integreret, aldrig som rå alkohol.
-
-Tænk tapasbordet som helhed: én sød (marmelade, gelé, dadel), én salt (ost, skinke), én varm (rejer, fondue) og én kold ganerenser. Denne ret dækker ét af sporene. Brød er næsten altid rigtigt — ciabatta, baguette eller kiks til ost.
-
-## Sådan rammer du timingen
-
-Læs trinene igennem før du tænder blusset. Flere af tapasretterne tåler at laves før gæsterne kommer (marmelade, gelé, riilette, marineret ost); de varme skal ramme bordet med det samme (rejer, camembert, calamari). Hvis du laver flere vine-i-gryden-retter samme aften, åbn én flaske der kan bruges både i gryde og glas, så du ikke ender med tre anbrudte flasker.
-
-Hold øje med salt: serrano, bacon, manchego og gorgonzola bærer allerede salt, så saucer og lager skal smages til sidst. Sødme fra port, sauternes og honning skal mødes af syre — ellers bliver tapasbordet sliksødt.
-
-## Afsluttende bemærkninger
-
-Retten hører til tapas- og delikatessebordet med vin i gryden, lagen eller farsen. ${recipe.wineInRecipe.note} Første gang: følg mængderne. Derefter justér efter den flaske du har åbnet. Har du rest af samme vin, brug den i glasset: [${recipe.wineToDrink.label}](/guides/${recipe.wineToDrink.guideSlug}). Søg gerne efter ${recipe.wineToDrink.searchQuery} på Vinbot, hvis du vil sammenligne pris og butik. God appetit.`;
+  // Content-tone: no waffle expansion sections
+  return "";
 }
 
 function buildBody(recipe) {

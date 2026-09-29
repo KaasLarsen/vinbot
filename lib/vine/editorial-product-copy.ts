@@ -32,38 +32,27 @@ function openingParagraph(w: CanonicalWine, variant: number): string {
   const year = extractVintageYear(w.displayTitle);
   const who = brand ? `${title} (${brand})` : title;
   const mp = merchantPhrase(w);
+  const yearBit = year ? ` (${year})` : "";
 
-  switch (variant % 4) {
+  switch (variant % 2) {
     case 0:
-      return `Vinbots vinprofiler fremhæver gode flasker fra udvalgte danske forhandlere — med kontekst om vinen, før du går videre til butikken. Denne side handler om ${who}${year ? ` — med årgang ${year}` : ""}, og den er baseret på offentlige produktdata fra ${mp}.`;
-    case 1:
-      return `Denne vinprofil er et redaktionelt overblik: Vi samler den samme flaske under ét sted, når den findes hos vores udvalgte forhandlere (via GTIN eller stabil titel-match). Her drejer det sig om ${who}${year ? ` (${year})` : ""}. Aktuelle priser og tekster kommer fra ${mp}.`;
-    case 2:
-      return `Vinbot er ikke vinhandler — vi udvælger og præsenterer vine fra gode forhandlere, så du kan læse om flasken og hoppe videre til shoppens egen side. Profilen om ${who} viser, hvad ${mp} aktuelt har registreret om produktet.`;
+      return `${who}${yearBit} — oversigt fra Vinbot med data fra ${mp}. Vi sælger ikke vin; du handler hos forhandleren.`;
     default:
-      return `Formålet med vinprofiler er tryg navigation: ét sted med kontekst om flasken fra vores udvalg af forhandlere. Denne tekst omhandler ${who}${brand ? ` fra ${brand}` : ""}, og listen herunder er samlet fra ${mp}.`;
+      return `Profil for ${who}${yearBit}. Priser og produkttekst kommer fra ${mp}. Vinbot er et overblik — købet sker i butikken.`;
   }
 }
 
 function categoryParagraph(w: CanonicalWine): string {
   const trail = parseCategoryTrail(w.category);
   if (trail.length === 0) {
-    return `Når Vinbot ikke har modtaget en tydelig kategori-sti fra forhandler-feedet, kan hierarkiet udebliver — det påvirker ikke forsøget på at samme produkt korrekt med andre listninger af samme vin.`;
+    return `Ingen tydelig kategori-sti i feedet — det ændrer ikke matchningen af samme flaske på tværs af butikker.`;
   }
   const formatted = trail.join(" · ");
-  const leaf = trail[trail.length - 1];
-  return `I handelsdata er den typisk klassificeret som: ${formatted}. Den sidste del («${leaf}») kommer fra butikkens sortimentslogik og kan afvige fra traditionelle vinbegreber — vi viser den, fordi den hjælper dig med at finde beslægtede vine og forstå butikkens kuratering.`;
+  return `I butikkernes data: ${formatted}.`;
 }
 
-function responsibilityParagraph(variant: number): string {
-  switch (variant % 3) {
-    case 0:
-      return `Smagsnoter og madmatch på Vinbot er vejledende og kan ikke erstatte din egen smag eller menu — vi kombinerer åbne signaler fra titel og kategori med redaktionelle retningslinjer, du kan læse om under «Redaktionel proces».`;
-    case 1:
-      return `Har du allergier eller streng budgetdisciplin, bør du altid læse varens side hos forhandleren, før du handler — Vinbots tekst er journalistisk hjælp og overblik, ikke ingrediensliste eller prismærkningsmyndighed.`;
-    default:
-      return `Vinbots guides og dybe artikler findes et andet sted på sitet; vinprofiler er produktoplysning og praktisk navigation med redaktionel ramme — ikke et krav om at du skal handle via os; du kan også bruge siden kun til orientering.`;
-  }
+function responsibilityParagraph(): string {
+  return `Smagsnoter og madmatch er vejledende. Tjek altid forhandlerens side for pris, allergener og lager — se også vores [redaktionelle proces](/redaktionel-proces).`;
 }
 
 /**
@@ -71,11 +60,7 @@ function responsibilityParagraph(variant: number): string {
  */
 export function vineEditorialBridgeParagraphs(w: CanonicalWine): string[] {
   const h = stableHash(w.slug);
-  return [
-    openingParagraph(w, h % 4),
-    categoryParagraph(w),
-    responsibilityParagraph((h >> 7) % 3),
-  ];
+  return [openingParagraph(w, h % 2), categoryParagraph(w), responsibilityParagraph()];
 }
 
 export type VineProductFaqItem = { question: string; answer: string };
@@ -85,35 +70,28 @@ export function vineProductFaqItems(w: CanonicalWine): VineProductFaqItem[] {
   const title = w.displayTitle.trim();
   const mp = merchantPhrase(w);
   const descSource = w.description?.trim()
-    ? "Beskriften under «Om produktet» samler tekst fra de forhandler-feeds, der har indhold om varen — vi fjerner HTML og forsøger at undgå ren gentagelse."
-    : "Der ligger endnu ikke nok fritekst i feeds til en samlet beskrivelse her — du kan stadig bruge tilbudslisten og titlen til orientering og åbne butikkernes egne sider.";
+    ? "Teksten under «Om produktet» samler feed-tekst fra forhandlerne (uden HTML)."
+    : "Der er endnu lidt fritekst i feeds — brug tilbudslisten og butikkernes egne sider.";
 
   return [
     {
       question: "Sælger Vinbot denne vin?",
-      answer:
-        `Nej. Vinbot er ikke vinhandler — siden om «${title}» er et redaktionelt og teknisk overblik med links ud til ${mp}. Købsaftalen er altid mellem dig og den shop, du vælger.`,
+      answer: `Nej. Siden om «${title}» er et overblik med links til ${mp}. Købet er mellem dig og butikken.`,
     },
     {
       question: "Hvor kommer priser og produkttekster fra?",
-      answer: `${descSource} Priser og lagerstatus kan ændre sig — altid dobbelttjek på forhandlerens side.`,
+      answer: `${descSource} Priser kan ændre sig — dobbelttjek hos forhandleren.`,
     },
     {
       question: "Hvorfor er den samme vin listet flere steder?",
       answer:
         w.offers.length > 1
-          ? `Fordi Vinbot forsøger at genkende samme produkt på tværs af udvalgte netbutikker (GTIN eller samme vin-signatur). Her har vi fundet ${w.offers.length} aktuelle listninger hos vores forhandlere.`
-          : `Her er registreret ét aktuelt tilbud i Vinbots indeks — flere kan dukke op senere, når feeds opdateres.`,
+          ? `Vinbot genkender samme produkt på tværs af netbutikker (GTIN eller signatur). Her: ${w.offers.length} listninger.`
+          : `Her er ét aktuelt tilbud i indekset — flere kan dukke op, når feeds opdateres.`,
     },
     {
-      question: "Er madmatch og smagsnoter et krav til mig?",
-      answer:
-        "Nej — det er vejledende idéer ud fra titel og kategori. Din ret til at hoppe direkte til forhandler uden at følge Vinbots forslag er fuldstændig uændret.",
-    },
-    {
-      question: "Hvad er Vinbots journalistiske rolle udover vinprofiler?",
-      answer:
-        "Vinbot publicerer også selvstændige guides om mad og vin (find dem via «Guides» i menuen). Vinprofiler med udvalgte flasker fra gode forhandlere er et supplement til den redaktionelle kerne — ikke en erstatning.",
+      question: "Skal jeg følge madmatch og smagsnoter?",
+      answer: "Nej — det er vejledning. Du kan gå direkte til forhandleren.",
     },
   ];
 }
@@ -124,12 +102,11 @@ export function vineMetaSupplementSentence(w: CanonicalWine): string {
   const trail = parseCategoryTrail(w.category);
   const hint =
     trail.length > 0
-      ? `Sortimentssti fra butikker: ${trail.slice(-2).join(" · ")}.`
-      : "Uafhængig vinprofil og prislinks på Vinbot.";
+      ? `Sortimentssti: ${trail.slice(-2).join(" · ")}.`
+      : "Vinprofil og prislinks på Vinbot.";
   const variants = [
-    `${hint} Vinbot sælger ikke vin — du handler hos forhandleren.`,
-    `${hint} Se udvalget hos forhandlerne og læs mere på deres egne sider.`,
-    `${hint} Redaktionel kontekst og madmatch er vejledende.`,
+    `${hint} Du handler hos forhandleren.`,
+    `${hint} Madmatch er vejledende.`,
   ];
   return variants[h % variants.length];
 }
@@ -149,38 +126,37 @@ export function vineStructuralProfileParagraph(w: CanonicalWine): string {
   const t = blob.toLowerCase();
 
   if (/\bportvin\b|\btawny\b|\b(lbv|late bottled)\b|\bport\b/i.test(title)) {
-    return "Portvine har typisk koncentreret frugt, markant restsødme og høj alkohol — mundfornemmelsen afviger klart fra almindelig rødvin med samme farveintensitet.";
+    return "Portvin: koncentreret frugt, restsødme og høj alkohol — anderledes mundfølelse end almindelig rødvin.";
   }
   if (/\b(champagne|cava|prosecco|crémant|cremant|spumante|mousserende)\b/i.test(title)) {
-    return "Mousserende vine lever på syre og CO₂ — selv ved lav farve kan strukturen føles mere «skarp» end en stille vin med samme alkohol på papiret.";
+    return "Mousserende vine lever på syre og bobler — strukturen føles skarpere end stille vin med samme alkohol.";
   }
   if (/rosé|rosevin/i.test(t)) {
-    return "Rosés struktur afhænger af skalkontakt og vinifikation — fra knastør til næsten lys rød; farven afslører ikke automatisk syre eller alkohol.";
+    return "Rosé spænder fra knastør til næsten lys rød — farven siger lidt om syre eller alkohol.";
   }
   if (/hvid|white|chardonnay|riesling|sauvignon|hvidvin/i.test(t)) {
-    return "Hvidvin drejer sig typisk om syre, tekstur og evt. fad — ud fra titel og kategori kan ikke udledes restsukker eller alkohol præcist uden leverandørens tal.";
+    return "Hvidvin drejer sig om syre, tekstur og evt. fad — restsukker og alkohol kræver butikkens tal.";
   }
   if (/\bpinot\s*noir\b|burgunder\b|rød burgunder/i.test(t)) {
-    return "Pinot noir kan have lys farve men fin tanninkurve og markant syre — strukturen kan opleves mere «silke» end «massiv ekstrakt» sammenlignet med fx cabernet.";
+    return "Pinot noir: ofte lys farve, fin tannin og markant syre — mere silke end massiv ekstrakt.";
   }
   if (/cabernet|malbec/i.test(t)) {
-    return "Kraftige røddruer som cabernet eller malbec har oftere udtalt tannin og ekstrakt — fad og årgang kan flytte oplevelsen fra stram til rund.";
+    return "Cabernet og malbec har oftere udtalt tannin — fad og årgang kan gøre dem rundere.";
   }
   if (/syrah|shiraz/i.test(t)) {
-    return "Syrah/shiraz kan kombinere mørke bær med peber og strukturerede tanniner — klima og udbytte påvirker om det lander «lettere» eller «tungere».";
+    return "Syrah/shiraz: mørke bær, peber og struktur — klima afgør om det lander let eller tungt.";
   }
   if (/riesling/i.test(t)) {
-    return "Riesling spænder bredt fra knastør til sødmefuld — restsukker og syre er afgørende for mundfornemmelse og ikke synlig på titlen alene.";
+    return "Riesling spænder fra knastør til sød — restsukker og syre afgør oplevelsen, ikke titlen alene.";
   }
   if (/chardonnay|chablis|meursault|puligny/i.test(t)) {
-    return "Chardonnay kan være alt fra mineralsk til fadfyldt og cremet — strukturen styres af vinifikation mere end af druenavnet på label.";
+    return "Chardonnay kan være mineralsk eller fadfyldt — vinifikation styrer mere end druenavnet.";
   }
 
   const h = stableHash(w.slug + "|struct");
   const fallbacks = [
-    "Ud fra titel og kategori alene kan alkoholprocent, restsukker og fadbrug ikke fastslås præcist — brug butikkens fakta til den endelige vurdering.",
-    "Stil og krop varierer selv inden for samme drue — resumeet her er et generelt mønster, ikke et løfte om den konkrete flaske.",
-    "Syre, tannin og tekstur bør altid afstemmes mod den virkelige vin — sidens tekst er et første hjælpesignal ud fra åbne produktoplysninger.",
+    "Alkohol, restsukker og fadbrug kan ikke læses præcist af titel alene — brug butikkens fakta.",
+    "Stil varierer inden for samme drue — dette er et generelt mønster, ikke et løfte om flasken.",
   ];
   return fallbacks[h % fallbacks.length];
 }
@@ -188,5 +164,5 @@ export function vineStructuralProfileParagraph(w: CanonicalWine): string {
 /** Ekstra tydelighed når siden mangler udbygget leverandørtekst — styrker substans uden at fjerne noget. */
 export function vineStructuralExtraWhenThin(w: CanonicalWine): string | null {
   if (!wineDescriptionIsThin(w, 180)) return null;
-  return "Fordi tilgængelig leverandørtekst på denne profil er kort eller mangler, er struktur-resumeet ekstra afhængigt af titel og kategori — åbn altid butiksitet for fakta om alkohol, allergener og årgangsvariation.";
+  return "Leverandørteksten er kort her — tjek butikssiden for alkohol, allergener og årgang.";
 }

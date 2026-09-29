@@ -63,7 +63,8 @@ export default function RedaktionelProcesPage() {
       <section className="mt-10 space-y-4 text-stone-700">
         <h2 className="text-xl font-semibold text-stone-900">2. Skrivning og struktur</h2>
         <p className="leading-relaxed">
-          Hver guide følger en tjekliste før publicering:
+          Vi skriver kort og handlingsorienteret — så du kan vælge flaske på under et minut. Hver guide følger
+          denne tjekliste før publicering:
         </p>
         <ul className="ml-5 list-disc space-y-2 leading-relaxed">
           <li>
@@ -71,21 +72,28 @@ export default function RedaktionelProcesPage() {
             skal jeg drikke til pho?&quot; eller &quot;hvordan finder jeg en god riesling under 150 kr?&quot;)
           </li>
           <li>
-            <strong>Indledning:</strong> Hurtig tommelfingerregel og en kort forklaring af <em>hvorfor</em>.
+            <strong>Kort svar først:</strong> Tommelfingerregel, gerne som tabel — så svaret står øverst.
           </li>
           <li>
-            <strong>Konkrete anbefalinger:</strong> Druer, regioner, stile eller producenter — med
-            priseksempler hvor relevant.
+            <strong>Få konkrete valg:</strong> Typisk én default, ét alternativ og ét &quot;undgå&quot; pr.
+            situation. Vi peger på stil, drue, region og prisbånd — ikke lange producentkataloger.
           </li>
           <li>
-            <strong>Faldgruber:</strong> Hvad du skal undgå, og hvorfor gængse &quot;råd&quot; ofte er
-            forenklede.
+            <strong>Kort hvorfor:</strong> Én–to sætninger om hvorfor parringen virker (syre, fedme, tannin,
+            sødme).
           </li>
           <li>
-            <strong>Videre læsning:</strong> Krydshenvisninger til dybere emner (drue-guider, regions-guider,
-            madparringsguider).
+            <strong>Faldgruber:</strong> Hvad der ofte skærer, og hvorfor gængse råd kan være forenklede.
+          </li>
+          <li>
+            <strong>Søg og videre:</strong> Link til Vinbot-søgning i samme stil, plus en kort liste af
+            relaterede guides — ikke middot-kæder midt i brødteksten.
           </li>
         </ul>
+        <p className="leading-relaxed">
+          Samme princip gælder opskrifter og drinks: nyttig intro, tips og vin i glasset — uden generisk
+          fyldtekst der gentager det, du allerede kan se i opskriften.
+        </p>
       </section>
 
       <section className="mt-10 space-y-4 text-stone-700">

@@ -23,21 +23,8 @@ function yamlList(items, indent = 0) {
 }
 
 function buildExpansion(r) {
-  const dish = r.title.split("—")[0].trim();
-  const guides = r.relatedGuides
-    .slice(0, 2)
-    .map((g) => `[${g}](/guides/${g})`)
-    .join(" · ");
-  const specific = SLUG_EXPANSIONS[r.slug] ?? "";
-  return `## Planlægning og råvarer
-
-${dish} med vin i gryden starter med at vælge rigtig flaske til ${r.wineInRecipe.amount.toLowerCase()}. ${r.wineInRecipe.style} giver den syre og frugt, som retten har brug for — det er ikke snik-snak, men smagsbalance mod fedt, salt og krydderier. Læs ${guides} og [madlavning med vin i sauce](/guides/sadan-bruger-du-vin-til-sauce-og-simren) for baggrund. Opskriften er til ${r.servings} personer; prep og koketid følger frontmatter.
-
-${specific}
-
-## Smagsbalance og justering
-
-Smag til undervejs: mangler dybde, reducer saucen længere. For tung ret, tilsæt frisk syre — citron, eddike eller urter. Vin i gryden skal smage integreret, aldrig rå alkohol. Samme princip som [lasagne med rødvin](/opskrifter/lasagne-med-rodvin) og [spanske kødboller i rødvinsauce](/opskrifter/spansk-koedboller-i-rodvinsauce). Til glasset: [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}) — match syre og frugt til det, du har i gryden. Mange retter smager bedre næste dag; se opbevaring ovenfor.`;
+  // Content-tone: no waffle expansion sections
+  return "";
 }
 
 function buildBody(r) {
@@ -76,12 +63,8 @@ ${buildClosing(r)}
 }
 
 function buildClosing(r) {
-  const tagStr = r.tags.filter((t) => t !== "opskrift").join(", ");
-  return `## Afsluttende bemærkninger
-
-Opskriften hører hjemme i kategorierne ${tagStr} — og viser, at vin i gryden ikke kun er til franske klassikere. ${r.wineInRecipe.note} Første gang du laver retten, følg mængden vin nøje; derefter kan du justere efter smag. Smag saucen eller fyldet, før du serverer, og spørg dig selv om der mangler syre, salt eller frugt — små justeringer gør stor forskel.
-
-Har du rester af samme flaske, brug den i glasset via [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}). Alternativt søg efter vine med samme profil: ${r.wineInRecipe.style.toLowerCase()}. Læs også de relaterede guider i frontmatter for flere parringsidéer. God appetit — og læs trinene én gang igennem, før du starter, så kogetiden falder naturligt.`;
+  // Content-tone: no closing waffle
+  return "";
 }
 
 function buildMdx(r) {

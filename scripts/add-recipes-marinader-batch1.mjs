@@ -23,23 +23,8 @@ function yamlList(items, indent = 0) {
 }
 
 function buildExpansion(r) {
-  const dish = r.title.split("—")[0].trim();
-  const guides = r.relatedGuides
-    .slice(0, 2)
-    .map((g) => `[${g}](/guides/${g})`)
-    .join(" · ");
-  const specific = SLUG_EXPANSIONS[r.slug] ?? "";
-  return `## Planlægning og råvarer
-
-${dish} starter med den rigtige flaske: ${r.wineInRecipe.amount}. ${r.wineInRecipe.style} giver syre og aroma, der mørner og bærer krydderierne ind i råvaren. Læs ${guides} og [madlavning med vin](/guides/sadan-bruger-du-vin-til-sauce-og-simren). Opskriften dækker ca. ${r.servings} portioner kød, fisk eller grønt — fordobl marinaden til større batch.
-
-${specific}
-
-Vælg råvarer der matcher stil: magert kød tåler kortere tid, federe udskæringer og grydekød tåler længere. Brug zip-lock eller skål med låg, så overfladen ikke tørrer. Vend undervejs, hvis kødet ikke er helt dækket. Salt i marinaden er en del af mørningen — justér mindre salt ved bordet.
-
-## Smagsbalance og justering
-
-For syrlig marinade: mere olie eller en snert honning. For mild: mere vin, eddike eller citrus. For salt: fortynd med olie og vin. Salt tidligt mørner, men tør altid overfladen før stegning eller grill — vådt kød damper. Til glasset: [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}). Samme stil som i skålen er ofte det sikre valg. Se også [rødvinsmarinade til oksekød](/opskrifter/rodvinsmarinade-til-oksekod) for grundprincipper om tid, pose og genbrug af marinade.`;
+  // Content-tone: no waffle expansion sections
+  return "";
 }
 
 function buildFaq(r) {
@@ -96,12 +81,8 @@ ${buildClosing(r)}
 }
 
 function buildClosing(r) {
-  const tagStr = r.tags.filter((t) => t !== "opskrift").join(", ");
-  return `## Afsluttende bemærkninger
-
-Kategorier: ${tagStr}. Vinmarinade er en af de nemmeste måder at få dybde uden lang simring. ${r.wineInRecipe.note} Følg tiderne første gang; tynde udskæringer mørner hurtigere end tykke stege. Lav gerne dobbelt batch — halvdelen til kød, resten (ubesmittet) til reduktion eller pensling efter kogning.
-
-Resten af flasken hører til glasset: [${r.wineToDrink.label}](/guides/${r.wineToDrink.guideSlug}). Stil: ${r.wineInRecipe.style.toLowerCase()}. Læs relaterede guider i frontmatter for flere parringer. God appetit — og husk at tørre råvaren før varme, så du får skorpe i stedet for damp.`;
+  // Content-tone: no closing waffle
+  return "";
 }
 
 function buildMdx(r) {
