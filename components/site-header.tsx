@@ -9,6 +9,7 @@ import { PageShell } from "@/components/page-shell";
 import { campaignNavActive } from "@/lib/black-friday/phase";
 
 type NavItem = { href: string; label: string; activePrefix?: string; activePrefixes?: string[] };
+type NavGroup = { heading: string; items: NavItem[] };
 
 const primaryNavBase: NavItem[] = [
   { href: "/mad-og-vin", label: "Mad & vin" },
@@ -20,74 +21,99 @@ const primaryNavBase: NavItem[] = [
 
 const blackFridayNav: NavItem = { href: "/black-friday", label: "Black Friday" };
 
-const moreNav: NavItem[] = [
-  { href: "/humoer-og-vin", label: "Humør & stemning" },
-  { href: "/saeson", label: "Sæson" },
-  { href: "/fest-og-vin", label: "Fest & selskab" },
-  { href: "/julevin-beregner", label: "Julevin-beregner" },
+const moreNavGroups: NavGroup[] = [
   {
-    href: "/hedvin",
-    label: "Hedvin",
-    activePrefixes: [
-      "/hedvin",
-      "/guides/hvad-er-hedvin",
-      "/guides/hedvin-alkoholprocent",
-      "/guides/hvad-er-portvin",
-      "/guides/hvad-er-sherry-vin",
-      "/guides/hvad-er-madeira-vin",
-      "/guides/hvad-er-vermouth",
-      "/guides/bedste-portvin",
-      "/guides/ruby-portvin",
-      "/guides/tawny-portvin",
-      "/guides/sadan-serverer-du-portvin",
-      "/guides/hvor-laenge-holder-portvin",
-      "/guides/portvin-alkoholprocent",
-      "/guides/portvin-til-ost",
-      "/guides/portvin-til-chokolade",
+    heading: "Anledning",
+    items: [
+      { href: "/humoer-og-vin", label: "Humør & stemning" },
+      { href: "/saeson", label: "Sæson" },
+      { href: "/fest-og-vin", label: "Fest & selskab" },
+      { href: "/julevin-beregner", label: "Julevin-beregner" },
     ],
   },
   {
-    href: "/alkoholfri-vin",
-    label: "Alkoholfri",
-    activePrefixes: [
-      "/alkoholfri-vin",
-      "/guides/bedste-alkoholfri",
-      "/guides/alkoholfri-vin-til-",
-      "/guides/alkoholfri-vin-i-",
-      "/guides/leitz-eins-zwei-zero",
-      "/guides/torres-natureo",
-      "/guides/noughty-alkoholfri-vin",
-      "/guides/smager-alkoholfri-vin-godt",
-      "/guides/kalorier-i-alkoholfri-vin",
-      "/guides/mindful-drikke-low-no-alkohol",
-      "/guides/bedste-lavalkohol-vin",
+    heading: "Vin-typer",
+    items: [
+      {
+        href: "/hedvin",
+        label: "Hedvin",
+        activePrefixes: [
+          "/hedvin",
+          "/guides/hvad-er-hedvin",
+          "/guides/hedvin-alkoholprocent",
+          "/guides/hvad-er-portvin",
+          "/guides/hvad-er-sherry-vin",
+          "/guides/hvad-er-madeira-vin",
+          "/guides/hvad-er-vermouth",
+          "/guides/bedste-portvin",
+          "/guides/ruby-portvin",
+          "/guides/tawny-portvin",
+          "/guides/sadan-serverer-du-portvin",
+          "/guides/hvor-laenge-holder-portvin",
+          "/guides/portvin-alkoholprocent",
+          "/guides/portvin-til-ost",
+          "/guides/portvin-til-chokolade",
+        ],
+      },
+      {
+        href: "/alkoholfri-vin",
+        label: "Alkoholfri",
+        activePrefixes: [
+          "/alkoholfri-vin",
+          "/guides/bedste-alkoholfri",
+          "/guides/alkoholfri-vin-til-",
+          "/guides/alkoholfri-vin-i-",
+          "/guides/leitz-eins-zwei-zero",
+          "/guides/torres-natureo",
+          "/guides/noughty-alkoholfri-vin",
+          "/guides/smager-alkoholfri-vin-godt",
+          "/guides/kalorier-i-alkoholfri-vin",
+          "/guides/mindful-drikke-low-no-alkohol",
+          "/guides/bedste-lavalkohol-vin",
+        ],
+      },
+      {
+        href: "/supermarked-vin",
+        label: "Supermarked",
+        activePrefixes: [
+          "/supermarked-vin",
+          "/guides/vin-i-supermarkedet",
+          "/guides/discount-vin-hylde",
+          "/guides/ugens-vinkup-supermarked",
+          "/guides/bedste-vin-i-netto",
+          "/guides/bedste-vin-i-lidl",
+          "/guides/bedste-vin-i-rema",
+          "/guides/bedste-vin-i-foetex",
+          "/guides/vin-i-coop-365",
+        ],
+      },
     ],
   },
   {
-    href: "/supermarked-vin",
-    label: "Supermarked",
-    activePrefixes: [
-      "/supermarked-vin",
-      "/guides/vin-i-supermarkedet",
-      "/guides/discount-vin-hylde",
-      "/guides/ugens-vinkup-supermarked",
-      "/guides/bedste-vin-i-netto",
-      "/guides/bedste-vin-i-lidl",
-      "/guides/bedste-vin-i-rema",
-      "/guides/bedste-vin-i-foetex",
-      "/guides/vin-i-coop-365",
+    heading: "Udforsk",
+    items: [
+      { href: "/druesorter", label: "Druesorter" },
+      { href: "/lande", label: "Vinlande", activePrefix: "/lande" },
+      { href: "/regioner", label: "Regioner" },
+      { href: "/guides", label: "Alle guides", activePrefix: "/guides" },
     ],
   },
-  { href: "/druesorter", label: "Druesorter" },
-  { href: "/lande", label: "Vinlande", activePrefix: "/lande" },
-  { href: "/regioner", label: "Regioner" },
-  { href: "/vinkoleskabe", label: "Vinkøleskabe" },
-  { href: "/vinglas", label: "Vinglas" },
-  { href: "/vintilbehor", label: "Vintilbehør" },
-  { href: "/rabatkoder", label: "Rabatkoder" },
-  { href: "/black-friday", label: "Black Friday vin" },
-  { href: "/tilbud", label: "Vin tilbud" },
-  { href: "/guides", label: "Alle guides", activePrefix: "/guides" },
+  {
+    heading: "Gear",
+    items: [
+      { href: "/vinkoleskabe", label: "Vinkøleskabe" },
+      { href: "/vinglas", label: "Vinglas" },
+      { href: "/vintilbehor", label: "Vintilbehør" },
+    ],
+  },
+  {
+    heading: "Tilbud",
+    items: [
+      { href: "/rabatkoder", label: "Rabatkoder" },
+      { href: "/black-friday", label: "Black Friday vin" },
+      { href: "/tilbud", label: "Vin tilbud" },
+    ],
+  },
 ];
 
 function navItemActive(item: NavItem, pathname: string) {
@@ -206,24 +232,10 @@ export function SiteHeader() {
                 <nav
                   id={panelId}
                   aria-label="Flere sider"
-                  className="absolute right-0 top-full z-40 mt-1.5 max-h-[min(70vh,calc(100dvh-4.5rem))] min-w-[12rem] overflow-y-auto overscroll-contain rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
+                  className="absolute right-0 top-full z-40 mt-1.5 max-h-[min(70vh,calc(100dvh-4.5rem))] min-w-[13rem] overflow-y-auto overscroll-contain rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
                 >
-                  <ul>
+                  <ul className="lg:hidden">
                     {primaryNav.map((item) => (
-                      <li key={item.href} className="lg:hidden">
-                        <Link
-                          href={item.href}
-                          className={`block px-4 py-2 text-sm transition ${
-                            navItemActive(item, pathname)
-                              ? "font-medium text-rose-950"
-                              : "text-stone-700 hover:bg-stone-50 hover:text-rose-900"
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                    {moreNav.map((item) => (
                       <li key={item.href}>
                         <Link
                           href={item.href}
@@ -238,6 +250,33 @@ export function SiteHeader() {
                       </li>
                     ))}
                   </ul>
+                  <div className="mx-3 my-1.5 border-t border-stone-100 lg:hidden" aria-hidden />
+                  {moreNavGroups.map((group, groupIndex) => (
+                    <div key={group.heading}>
+                      {groupIndex > 0 ? (
+                        <div className="mx-3 my-1.5 border-t border-stone-100" aria-hidden />
+                      ) : null}
+                      <p className="px-4 pb-0.5 pt-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
+                        {group.heading}
+                      </p>
+                      <ul>
+                        {group.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className={`block px-4 py-2 text-sm transition ${
+                                navItemActive(item, pathname)
+                                  ? "font-medium text-rose-950"
+                                  : "text-stone-700 hover:bg-stone-50 hover:text-rose-900"
+                              }`}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </nav>
               ) : null}
             </div>
