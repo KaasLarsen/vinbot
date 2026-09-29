@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
-  companyAddressDisplay,
   companyCvr,
   companyLegalName,
   contactEmail,
@@ -61,8 +60,6 @@ export default function KontaktPage() {
         </p>
         <p className="mt-5 text-stone-700">
           {companyLegalName} · CVR-nr. {companyCvr}
-          <br />
-          {companyAddressDisplay}
         </p>
       </section>
 

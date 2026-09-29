@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
-  companyAddressDisplay,
   companyCvr,
   companyLegalName,
   contactEmail,
@@ -108,8 +107,6 @@ export default function BetingelserPage() {
           <h2 className="text-xl font-semibold text-stone-900">10. Kontakt</h2>
           <p className="mt-2">
             {companyLegalName} · CVR-nr. {companyCvr}
-            <br />
-            {companyAddressDisplay}
             <br />
             <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
               {contactEmail}

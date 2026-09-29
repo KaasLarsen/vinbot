@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
-  companyAddressDisplay,
   companyCvr,
   companyLegalName,
   contactEmail,
@@ -190,7 +189,7 @@ export default function OmOsPage() {
       <section className="mt-10 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-stone-700">
         <h2 className="text-lg font-semibold text-stone-900">Kontakt og det formelle</h2>
         <p className="mt-3 leading-relaxed">
-          Vinbot drives af {companyLegalName} (CVR-nr. {companyCvr}), {companyAddressDisplay}. Spørgsmål, rettelser eller presse? Skriv til{" "}
+          Vinbot drives af {companyLegalName} (CVR-nr. {companyCvr}). Spørgsmål, rettelser eller presse? Skriv til{" "}
           <a href={`mailto:${contactEmail}`} className="font-medium text-rose-900 hover:underline">
             {contactEmail}
           </a>

@@ -14,10 +14,7 @@ import {
   resolveProductBrandForJsonLd,
 } from "@/lib/schema/product-identifiers";
 import {
-  companyCity,
   companyCvr,
-  companyPostalCode,
-  companyStreet,
   contactEmail,
   editorialTeamDescription,
   editorialTeamName,
@@ -254,13 +251,6 @@ export function OrganizationJsonLd() {
     url: siteUrl,
     taxID: companyCvr,
     vatID: companyCvr,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: companyStreet,
-      postalCode: companyPostalCode,
-      addressLocality: companyCity,
-      addressCountry: "DK",
-    },
     logo: {
       "@type": "ImageObject",
       url: organizationLogoUrl,

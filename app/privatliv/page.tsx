@@ -4,7 +4,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CookieConsentReset } from "@/components/cookie-consent-reset";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import {
-  companyAddressDisplay,
   companyCvr,
   companyLegalName,
   contactEmail,
@@ -60,7 +59,7 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Dataansvarlig</h2>
         <p>
-          {companyLegalName} (CVR-nr. {companyCvr}), {companyAddressDisplay} — kontakt:{" "}
+          {companyLegalName} (CVR-nr. {companyCvr}) — kontakt:{" "}
           <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
             {contactEmail}
           </a>
