@@ -1680,9 +1680,9 @@ export function buildRecipeSerpTitle(title: string, slug: string): string {
 /** Drink → målrettet SERP. */
 const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: string }> = {
   "aperol-spritz": {
-    title: "Aperol Spritz opskrift — klassisk",
+    title: "Aperol spritz: opskrift",
     description:
-      "Klassisk Aperol Spritz: Aperol, Prosecco og danskvand. Opskrift til 1 glas — ratio, tips og hvilken prosecco der passer.",
+      "Aperol spritz opskrift: 6 cl Aperol, 9 cl prosecco brut og 3 cl danskvand. Klassisk 3-2-1 til 1 glas.",
   },
   "hugo-spritz": {
     title: "Hugo Spritz opskrift — hyldeblomst",
@@ -1700,9 +1700,9 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "French 75: gin, citronsaft, sukker og champagne. Klassisk boble-cocktail — opskrift, ratio og tips.",
   },
   "negroni-sbagliato": {
-    title: "Negroni Sbagliato opskrift",
+    title: "Negroni sbagliato: opskrift",
     description:
-      "Negroni Sbagliato: Campari, sød vermouth og mousserende vin. Den «forkerte» Negroni — lettere og festlig.",
+      "Negroni sbagliato opskrift: Campari, sød vermouth og prosecco i stedet for gin. Sbagliato betyder forkert.",
   },
   "new-york-sour": {
     title: "New York Sour opskrift — whiskey og rødvin",
@@ -1712,7 +1712,7 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
   "sangria-med-rodvin": {
     title: "Sangria opskrift med rødvin",
     description:
-      "Klassisk rød sangria med rødvin, brandy, frugt og sodavand. Bowle-opskrift til 6–8 — festklar sommerdrink.",
+      "Sangria opskrift med rødvin, frugt og brandy. Bowle til 6–8. Rom kan erstatte brandy.",
   },
   "limoncello-spritz": {
     title: "Limoncello Spritz opskrift",
@@ -1795,9 +1795,9 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Red Wine Paloma: tequila, grapefrugtsoda, lime og rødvinsslør. Long drink — opskrift til 1 glas.",
   },
   "campari-spritz": {
-    title: "Campari Spritz opskrift",
+    title: "Campari spritz: opskrift",
     description:
-      "Campari Spritz med Campari, Prosecco og danskvand. Bitter spritz — opskrift til 1 glas.",
+      "Campari spritz opskrift: 6 cl Campari, 9 cl prosecco brut og 3 cl danskvand. Bitter spritz til 1 glas.",
   },
   "devils-share": {
     title: "Devil's Share opskrift — bourbon og rødvin",
@@ -1920,9 +1920,9 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
       "Portvins-Mojito: hvid eller rosé-port, mynte, lime og danskvand. Port-twist på mojito — opskrift.",
   },
   "cynar-spritz": {
-    title: "Cynar Spritz opskrift",
+    title: "Cynar spritz: opskrift",
     description:
-      "Cynar Spritz med artiskoklikør Cynar, Prosecco og danskvand. Bitter italiensk aperitif — opskrift.",
+      "Cynar spritz opskrift: 6 cl Cynar, 9 cl prosecco brut og 3 cl danskvand. Bitter artiskok-aperitif til 1 glas.",
   },
   "moscato-mule": {
     title: "Moscato Mule opskrift",

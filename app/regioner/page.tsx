@@ -176,6 +176,12 @@ const FLERE_VINLANDE: (HurtigRegion & { landSlug?: string })[] = [
     landSlug: "uruguay",
   },
   {
+    navn: "Mexico",
+    q: "mexico",
+    note: "Valle de Guadalupe — nebbiolo og tempranillo. Ikke det samme som vin til tacos.",
+    landSlug: "mexico",
+  },
+  {
     navn: "Kroatien",
     q: "plavac mali croatia",
     note: "Dalmatiske kyster — kraftige røde og friske hvide til fisk og lam.",

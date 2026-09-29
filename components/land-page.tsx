@@ -53,7 +53,7 @@ export function LandPage({ land }: { land: LandConfig }) {
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {land.regions.map((r) => (
-              <li key={r.q} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
+              <li key={r.name} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
                 <h3 className="font-semibold text-stone-900">
                   {r.guideSlug ? (
                     <Link

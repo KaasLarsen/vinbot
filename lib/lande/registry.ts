@@ -815,6 +815,57 @@ export const LANDE: LandConfig[] = [
     ],
   },
   {
+    slug: "mexico",
+    displayName: "Mexico",
+    continent: "amerika",
+    teaser: "Valle de Guadalupe — nebbiolo, tempranillo og chenin i ørkenklima.",
+    title: "Vin fra Mexico — Valle de Guadalupe",
+    description:
+      "Mexicansk vin og vin fra Mexico: Valle de Guadalupe, nebbiolo og tempranillo. Kendetegn og søg hos danske forhandlere.",
+    introParagraphs: [
+      "Mexicansk vin er ikke det samme som vin til mexicansk mad. Vin fra Mexico kommer især fra Valle de Guadalupe i Baja California: varme dage, kølige nætter og middelhavsagtigt klima tæt på Stillehavet.",
+      "På danske hylder er det stadig en niche. Kig efter nebbiolo, tempranillo, cabernet og chenin — og skeln regionen fra taco-aftenen, hvor riesling og bobler ofte passer bedre end en tung mexicansk rød.",
+    ],
+    kendetegn: [
+      "Valle de Guadalupe er kernen: ørken, havtåge og store temperaturudsving.",
+      "Nebbiolo og tempranillo dyrkes ved siden af cabernet, merlot og chenin.",
+      "Parras i Coahuila har Mexicos ældste vingårdstradition, længere inde i landet.",
+      "Stilen er ofte moden frugt og struktur — ikke den samme flaske som til tacos og lime.",
+    ],
+    searchTerms: ["mexico", "mexicansk", "mexicanske", "mexican", "valle de guadalupe", "baja california"],
+    primaryQuery: "mexico",
+    wineSuggestions: [],
+    regions: [
+      {
+        name: "Valle de Guadalupe",
+        q: "mexico",
+        note: "Baja California — nebbiolo, tempranillo og cabernet med havpåvirkning.",
+      },
+      {
+        name: "Parras",
+        q: "mexico",
+        note: "Coahuila — ældre vingårdstradition inde i landet.",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvad er mexicansk vin?",
+        answer:
+          "Vin fra Mexico, oftest fra Valle de Guadalupe i Baja California. Nebbiolo, tempranillo og cabernet er de flasker, du oftest møder. Det er et andet valg end den vin, du drikker til tacos.",
+      },
+      {
+        question: "Hvor kommer vin fra Mexico fra?",
+        answer:
+          "Primært Valle de Guadalupe nær Ensenada. Parras i Coahuila er det andet navn, der er værd at kende. Resten af landet fylder mindre på danske hylder.",
+      },
+      {
+        question: "Hvilken vin drikker man til mexicansk mad?",
+        answer:
+          "Til tacos, lime og chili er tør riesling, bobler eller en let rød ofte bedre end en tung flaske fra Baja. Se guiden vin til mexicansk mad.",
+      },
+    ],
+  },
+  {
     slug: "australien",
     displayName: "Australien",
     continent: "afrika-oceanien",

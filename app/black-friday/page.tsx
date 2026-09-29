@@ -14,6 +14,7 @@ import { PageShell } from "@/components/page-shell";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import {
   blackFridayHeroCopy,
+  blackFridayWindow,
   getBlackFridayPhase,
   nextBlackFridayYear,
 } from "@/lib/black-friday/phase";
@@ -27,9 +28,9 @@ import { copenhagenParts } from "@/lib/home-moment";
 import { listBlackFridayStoreTeaser } from "@/lib/black-friday/store-directory";
 import { siteUrl } from "@/lib/site";
 
-const PAGE_TITLE = "Black Friday vin tilbud 2026 — sammenlign ægte vintilbud";
+const PAGE_TITLE = "Black Friday vin 2026";
 const PAGE_DESCRIPTION =
-  "Spar penge på vin Black Friday: vi scanner danske vinforhandlere, viser nedsættelser og prisforskelle, og hjælper dig med billig julevin og bobler til nytår. Opdateres løbende.";
+  "Black Friday vin 2026 er fredag 27. november. Sammenlign ægte vintilbud, julevin og bobler hos danske forhandlere.";
 const PAGE_URL = `${siteUrl}/black-friday`;
 
 export const metadata: Metadata = {
@@ -48,23 +49,14 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 export const maxDuration = 60;
 
-const BF_FAQ = [
-  {
-    question: "Hvordan finder Vinbot Black Friday vin-tilbud?",
-    answer:
-      "Vi henter priser fra danske vinforhandleres affiliate-feeds og viser både nedsættelser med før-pris i shop og prisforskelle på samme flaske på tværs. Vi sælger ikke selv vinen.",
-  },
-  {
-    question: "Er rabatprocenten en ægte historisk besparelse?",
-    answer:
-      "Ikke nødvendigvis. «Nedsat i shop» bygger på butikkens egen før-pris i feedet. «Billigst på tværs» betyder, at en anden forhandler har samme vin dyrere lige nu. Vi påstår ikke laveste pris i 6 måneder, før vi har nok pris-historik.",
-  },
-  {
-    question: "Hvor ofte opdateres Black Friday-hubben?",
-    answer:
-      "Siden caches typisk hver time. Under Black Week revaliderer vi feeds oftere. Tilbud og lager kan skifte mellem to opdateringer — tjek altid hos forhandleren.",
-  },
-] as const;
+function daLongDate(p: { year: number; month: number; day: number }): string {
+  return new Intl.DateTimeFormat("da-DK", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(p.year, p.month - 1, p.day)));
+}
 
 export default async function BlackFridayHubPage() {
   const now = new Date();
@@ -73,6 +65,35 @@ export default async function BlackFridayHubPage() {
   const merchantCount = wineMerchantFeedCount();
   const copyYear = phase === "offseason" ? nextBlackFridayYear(parts) : parts.year;
   const copy = blackFridayHeroCopy(phase, copyYear, merchantCount);
+  const window = blackFridayWindow(copyYear);
+  const blackFridayDate = daLongDate(window.blackFriday);
+  const blackWeekDate = daLongDate(window.blackWeekMonday);
+  const bfFaq = [
+    {
+      question: `Hvornår er Black Friday vin ${copyYear}?`,
+      answer: `Fredag ${blackFridayDate}. Black Week starter mandag ${blackWeekDate}. Vinbot sammenligner priser hos danske forhandlere og sælger ikke vinen.`,
+    },
+    {
+      question: "Hvad er Black Friday vin?",
+      answer:
+        "Vintilbud i dagene omkring Black Friday: julevin, bobler og hverdagsflasker med nedsat pris. En høj procent er ikke det samme som en lav slutpris. Sammenlign flasken på tværs, før du køber.",
+    },
+    {
+      question: "Hvordan finder Vinbot Black Friday vin-tilbud?",
+      answer:
+        "Vi henter priser fra danske vinforhandleres affiliate-feeds og viser både nedsættelser med før-pris i shop og prisforskelle på samme flaske på tværs. Vi sælger ikke selv vinen.",
+    },
+    {
+      question: "Er rabatprocenten en ægte historisk besparelse?",
+      answer:
+        "Ikke nødvendigvis. «Nedsat i shop» bygger på butikkens egen før-pris i feedet. «Billigst på tværs» betyder, at en anden forhandler har samme vin dyrere lige nu. Vi påstår ikke laveste pris i 6 måneder, før vi har nok pris-historik.",
+    },
+    {
+      question: "Hvor ofte opdateres Black Friday-hubben?",
+      answer:
+        "Siden caches typisk hver time. Under Black Week revaliderer vi feeds oftere. Tilbud og lager kan skifte mellem to opdateringer — tjek altid hos forhandleren.",
+    },
+  ];
 
   const [feedDealsRaw, crossDealsRaw] = await Promise.all([
     listFeedDeals({ limit: 120, minDiscount: 10 }),
@@ -112,7 +133,7 @@ export default async function BlackFridayHubPage() {
           ...guides.map((g) => ({ name: g.title, url: `${siteUrl}/guides/${g.slug}` })),
         ]}
       />
-      <FaqJsonLd items={[...BF_FAQ]} />
+      <FaqJsonLd items={bfFaq} />
 
       <Breadcrumbs items={[{ href: "/", label: "Forside" }, { href: "/black-friday", label: "Black Friday" }]} />
 
@@ -167,8 +188,29 @@ export default async function BlackFridayHubPage() {
 
       <section className="mt-16 max-w-3xl space-y-10 text-stone-700" aria-labelledby="bf-guide-heading">
         <h2 id="bf-guide-heading" className="text-2xl font-semibold text-stone-900">
-          Forbrugerguide: Black Friday vin tilbud 2026
+          Black Friday vin {copyYear}
         </h2>
+
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold text-stone-900">Hvornår er Black Friday vin {copyYear}?</h3>
+          <p className="leading-relaxed">
+            <strong>Black Friday vin {copyYear}</strong> er fredag {blackFridayDate}. Black Week starter mandag{" "}
+            {blackWeekDate}. Indtil da viser siden de nedsættelser, forhandlerne allerede har lagt ud. Vinbot
+            sammenligner priser og sælger ikke flaskerne. Se også{" "}
+            <Link href="/tilbud" className="font-medium text-rose-900 hover:underline">
+              aktuelle vintilbud
+            </Link>
+            ,{" "}
+            <Link href="/guides/bedste-julevin" className="font-medium text-rose-900 hover:underline">
+              julevin
+            </Link>{" "}
+            og{" "}
+            <Link href="/guides/bobler-champagne-cava-prosecco-og-cremant" className="font-medium text-rose-900 hover:underline">
+              bobler til nytår
+            </Link>
+            .
+          </p>
+        </div>
 
         <div className="space-y-3">
           <h3 className="text-xl font-semibold text-stone-900">Sådan spotter du falske vintilbud på Black Friday</h3>
