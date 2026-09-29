@@ -365,6 +365,7 @@ const VIDEN_FEST: GuideClusterLink[] = [
 
 const VIDEN_GLAS: GuideClusterLink[] = [
   { slug: "sadan-vaelger-du-vinglas", label: "Sådan vælger du vinglas" },
+  { slug: "glas-guiden", label: "Glas-guiden (myter)" },
   { slug: "sadan-vaelger-du-roedvinsglas", label: "Rødvinsglas" },
   { slug: "sadan-vaelger-du-hvidvinsglas", label: "Hvidvinsglas" },
   { slug: "sadan-vaelger-du-champagneglas", label: "Champagneglas" },
@@ -1675,16 +1676,9 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   ),
   "glas-guiden": videnBlock(
     ["glas-guiden"],
-    "Vinglas og servering",
-    "Universalglas vs. specialglas — se også den tekniske glas-guide og begynder-gear.",
-    [VIN_VIDEN_PILLAR],
-    [
-      { slug: "sadan-vaelger-du-vinglas", label: "Sådan vælger du vinglas" },
-      { slug: "sadan-serverer-du-vin", label: "Sådan serverer du vin" },
-      { slug: "vintilbehor-til-begyndere", label: "Vintilbehør til begyndere" },
-      { slug: "sadan-vaelger-du-vinkaraffel", label: "Sådan vælger du vinkaraffel" },
-      { slug: "isspand-og-flaskekoeler-vin", label: "Isspand og flaskekøler" },
-    ],
+    "Vinglas-klyngen",
+    "Myter vs. fysik — plus form-guides, mærker og servering.",
+    VIDEN_GLAS.filter((l) => l.slug !== "glas-guiden"),
   ),
   "chillable-reds": videnBlock(
     ["chillable-reds"],

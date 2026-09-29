@@ -35,6 +35,21 @@ const FAQ = [
       "Flute bevarer brus og ser festlig ud. Tulip (bredere midte) giver mere aroma — mange foretrækker det til kvalitets-champagne og crémant. Coupé er mest æstetik; boblerne forsvinder hurtigere. Et godt hvidvinsglas virker også fint til bobler i hverdagen.",
   },
   {
+    question: "Kan vinglas tåle opvaskemaskine?",
+    answer:
+      "Mange moderne krystalserier (fx Spiegelau) er designet til maskine — typisk øverste kurv, uden aggressive tabs der gør glassene matte. Håndvask og polering forlænger levetiden, især på meget tynde luksusglas som Zalto. Undgå parfumeret sæbe: residual duft dræber aroma.",
+  },
+  {
+    question: "Er stilkeløse vinglas okay?",
+    answer:
+      "Ja til grill, picnic og casual servering. Til kølig hvidvin og bobler ved bordet er stilk stadig det bedre default — hånden varmer ellers skålen. Til rødvin omkring 14–16 °C er forskellen mindre kritisk.",
+  },
+  {
+    question: "Hvor mange vinglas skal man have til middag?",
+    answer:
+      "Regn ét glas pr. gæst af den type I drikker, plus to ekstra til spild og genopfyldning. Til en middag for seks: typisk 6–8 ens rød- eller universalglas. Drikker I både rød og hvid, er 4 af hver ofte nok — eller ét sæt universalglas til begge.",
+  },
+  {
     question: "Hvor køber man vinglas med pris og billede?",
     answer:
       "På denne side viser vi glas fra LforLiving.dk og Likehome.dk, plus prissammenligning på konkrete modeller via PriceRunner. Klik videre til forhandleren for lager, fragt og aktuel pris.",
@@ -130,6 +145,7 @@ export default function VinglasPage() {
       <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {[
           { href: "/guides/sadan-vaelger-du-vinglas", title: "Start her", body: "Universal vs specialglas, stilk og kant." },
+          { href: "/guides/glas-guiden", title: "Myter & snobberi", body: "Hvad glasset gør — og hvad der er grej." },
           { href: "/guides/vintilbehor-til-begyndere", title: "Startkit", body: "Glas + proptrækker først." },
           { href: "/guides/sadan-serverer-du-vin", title: "Servering", body: "Temperatur, skænkning og glas." },
           { href: "/guides/sadan-vaelger-du-vinkaraffel", title: "Karaffel", body: "Når glasset ikke er nok luft." },
@@ -145,6 +161,87 @@ export default function VinglasPage() {
             <p className="mt-1 text-sm text-stone-600">{c.body}</p>
           </Link>
         ))}
+      </section>
+
+      <section className="mt-14 max-w-3xl">
+        <h2 className="text-2xl font-semibold text-stone-900">Hvad glasset egentlig gør</h2>
+        <p className="mt-3 text-stone-700 leading-relaxed">
+          Et vinglas er ikke magi — det er{" "}
+          <strong className="font-medium text-stone-800">overflade, åbning og volumen</strong>. En bred skål giver mere
+          luft: aroma stiger, og unge tanniner kan blødgøre lidt, mens vinen står i glasset. En smallere tulip samler
+          duften tættere til næsen, så citrus, blomst eller peber ikke spredes tyndt i rummet.
+        </p>
+        <p className="mt-3 text-stone-700 leading-relaxed">
+          <strong className="font-medium text-stone-800">Temperatur</strong> er den anden halvdel. Hvidvin og bobler
+          serveres kølige; i et stort rødvinsglas stiger temperaturen hurtigere, og du fristes til at skænke for meget.
+          Derfor er mindre volumen ofte bedre til hvid — ikke fordi rødvinsglas er &quot;forkert&quot;, men fordi kulden
+          er en del af oplevelsen. Stilk holder hånden væk fra skålen; stilkeløst er fint til grill, men dårligere default
+          til en kølig flaske ved middagsbordet.
+        </p>
+        <p className="mt-3 text-stone-700 leading-relaxed">
+          Tynd læbe og klarhed påvirker mundfølelse mere end logoet. Et rent, tyndt Spiegelau-glas slår et snavset
+          luksusglas hver gang. Er du i tvivl om, hvor meget specialglas betyder, så læs den ærlige myte-guide:{" "}
+          <Link
+            href="/guides/glas-guiden"
+            className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+          >
+            Glas-guiden
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section className="mt-14 max-w-3xl">
+        <h2 className="text-2xl font-semibold text-stone-900">Sådan bygger du et sæt</h2>
+        <ol className="mt-4 list-decimal space-y-4 pl-5 text-stone-700 leading-relaxed">
+          <li>
+            <strong className="font-medium text-stone-900">Start med 4–6 ens universalglas</strong> (eller én rød-serie,
+            hvis du næsten kun drikker rød). Det dækker hverdag, gæster og det meste af butikkens flasker. Se{" "}
+            <Link
+              href="/guides/sadan-vaelger-du-vinglas"
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+            >
+              sådan vælger du vinglas
+            </Link>
+            .
+          </li>
+          <li>
+            <strong className="font-medium text-stone-900">Tilføj rød eller hvid, når du kender mønsteret.</strong> Drikker
+            du ofte pinot og cabernet, kan Bourgogne- vs. Bordeaux-form give mening — men først efter du har et
+            hverdagssæt. Guiden til{" "}
+            <Link
+              href="/guides/sadan-vaelger-du-roedvinsglas"
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+            >
+              rødvinsglas
+            </Link>{" "}
+            og{" "}
+            <Link
+              href="/guides/sadan-vaelger-du-hvidvinsglas"
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+            >
+              hvidvinsglas
+            </Link>{" "}
+            går i dybden.
+          </li>
+          <li>
+            <strong className="font-medium text-stone-900">Bobler og mærke til sidst.</strong> Flute eller tulip til fest;{" "}
+            <Link
+              href="/guides/sadan-vaelger-du-champagneglas"
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+            >
+              champagneglas-guiden
+            </Link>{" "}
+            hjælper dig med valget. Opgrader til Riedel eller Zalto først, når du mærker forskellen — sammenligningen af{" "}
+            <Link
+              href="/guides/riedel-vs-zalto-vs-spiegelau-vinglas"
+              className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4"
+            >
+              mærker
+            </Link>{" "}
+            viser, hvad forskellen egentlig koster.
+          </li>
+        </ol>
       </section>
 
       <section className="mt-14 space-y-10">

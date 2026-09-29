@@ -4605,6 +4605,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Kvalitetsglas er typisk tyndere i læben, lettere og mere ensartet — det påvirker mundfølelse og oplevet præcision. Meget dyre brands giver ofte marginal extra; start med tynde, neutrale glas og udvid først når du ved hvilken stil du drikker mest.",
     },
+    {
+      question: "Hvornår skal man købe specialglas?",
+      answer:
+        "Når du allerede har et hverdagssæt, drikker samme stil ofte, og har mærket forskel i en side-om-side-test. Ellers: fire til seks ens universalglas først.",
+    },
+    {
+      question: "Hvor starter man et vinglassæt?",
+      answer:
+        "Køb fire til seks ens glas i én serie (Spiegelau, Luigi Bormioli eller lignende). Opgrader til rød/hvid/bobler eller Riedel/Zalto først, når du kender dit drikkemønster.",
+    },
   ],
   "sadan-vaelger-du-roedvinsglas": [
     {
@@ -4621,6 +4631,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvor mange rødvinsglas skal man købe?",
       answer:
         "Fire til seks ens glas dækker de fleste husstande. Start med to, hvis du vil prøve formen, før du investerer i et helt sæt.",
+    },
+    {
+      question: "Kan man bruge ét glas til både pinot og cabernet?",
+      answer:
+        "Ja — et tulipformet universalglas eller en god allround-rød dækker begge. Specialiser først, når du drikker én stil ofte og mærker forskellen.",
+    },
+    {
+      question: "Er dyre rødvinsglas nødvendige til hverdag?",
+      answer:
+        "Nej. Spiegelau, Luigi Bormioli eller Holmegaard i 4–6-pak er nok. Riedel og Zalto er opgradering, når formen og læben betyder noget for dig.",
     },
   ],
   "sadan-vaelger-du-hvidvinsglas": [
@@ -4639,6 +4659,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Typisk 35–45 cl. Skænk mindre end til rød — hold kulden og koncentrationen i glasset.",
     },
+    {
+      question: "Skal chardonnay og riesling have forskellige glas?",
+      answer:
+        "Ikke til start. En medium tulip dækker begge. Fadlagret chardonnay kan få lidt mere ud af en bredere skål; mineralsk riesling af en smallere — finpuds først, når du drikker meget af begge.",
+    },
+    {
+      question: "Hvor koldt skal hvidvin være i glasset?",
+      answer:
+        "Ofte 8–12 °C afhængigt af stil. Skænk mindre portioner og genopfyld, så vinen ikke bliver lunken midt i middagen.",
+    },
   ],
   "sadan-vaelger-du-champagneglas": [
     {
@@ -4656,6 +4686,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Regn mindst ét glas pr. gæst plus et par ekstra til spild og genopfyldning ved velkomst.",
     },
+    {
+      question: "Samme glas til prosecco og champagne?",
+      answer:
+        "Du kan godt. Flute eller hvidvinsglas er fint til hverdagsbobler; tulip eller hvidvinsglas giver mere aroma til god champagne og crémant.",
+    },
+    {
+      question: "Hvilken temperatur til champagne?",
+      answer:
+        "Typisk 6–9 °C. For koldt lukker aromaen; for varmt bliver mousse og alkohol aggressive. Hold flasken kølig under servering.",
+    },
   ],
   "riedel-vs-zalto-vs-spiegelau-vinglas": [
     {
@@ -4672,6 +4712,16 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       question: "Hvilket mærke skal man starte med?",
       answer:
         "Spiegelau, Luigi Bormioli eller Holmegaard. Opgrader til Riedel eller Zalto, når du mærker forskellen og ved, hvilke vine du drikker oftest.",
+    },
+    {
+      question: "Kan Zalto tåle opvaskemaskine?",
+      answer:
+        "Producenten siger ja, men håndvask og forsigtig opbevaring forlænger levetiden. Mikrorevner kommer oftest fra stød i skuffen.",
+    },
+    {
+      question: "Er Holmegaard godt nok til gæster?",
+      answer:
+        "Ja. Cabernet-serien er et klassisk dansk middagsvalg — pænt volumen og ens look i 6-pak, uden at du behøver drue-specifikke serier.",
     },
   ],
   "vin-til-konfirmation": [
