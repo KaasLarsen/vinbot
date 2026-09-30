@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RabatkodeShopLink } from "@/components/rabatkode-shop-link";
+import { RabatkodeCopyGoLink } from "@/components/rabatkode-copy-go-link";
 import { getHomepageRabatkoder } from "@/lib/rabatkoder/partners";
 
 export function HomeRabatkoderStrip() {
@@ -16,7 +16,7 @@ export function HomeRabatkoderStrip() {
         Gode koder lige nu
       </h2>
       <p className="mt-1.5 text-sm leading-relaxed text-stone-700">
-        Koder fra partnere — tjek vilkår i shoppen.
+        Tryk for at kopiere koden og gå til shoppen.
       </p>
 
       <ul className="mt-3 space-y-2">
@@ -25,32 +25,25 @@ export function HomeRabatkoderStrip() {
             key={`${item.partnerName}-${item.code}`}
             className="rounded-xl border border-emerald-200/80 bg-white px-3 py-2.5 shadow-sm"
           >
-            <div className="flex items-start justify-between gap-2">
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-stone-900">{item.partnerName}</p>
-                <p className="mt-1 flex flex-wrap items-center gap-2">
-                  <code className="rounded-md border border-stone-200 bg-stone-50 px-2 py-0.5 font-mono text-sm font-semibold tracking-wide text-stone-900">
-                    {item.code}
-                  </code>
-                  <span className="text-xs font-medium text-emerald-800">{item.benefit}</span>
-                </p>
-              </div>
-              <RabatkodeShopLink
-                href={item.affiliateHref}
-                merchant={item.partnerName}
-                placement="home-rabatkoder"
-                className="shrink-0 text-sm font-medium text-emerald-900 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-950"
-              >
-                Shop *
-              </RabatkodeShopLink>
+            <div className="flex items-baseline justify-between gap-2">
+              <p className="text-sm font-semibold text-stone-900">{item.partnerName}</p>
+              <span className="shrink-0 text-xs font-medium text-emerald-800">{item.benefit}</span>
             </div>
+            <RabatkodeCopyGoLink
+              href={item.affiliateHref}
+              merchant={item.partnerName}
+              code={item.code}
+              className="mt-2 flex w-full items-center justify-center rounded-lg bg-emerald-800 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-900"
+            >
+              Kopiér kode & shop *
+            </RabatkodeCopyGoLink>
           </li>
         ))}
       </ul>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
         <p className="text-[11px] leading-snug text-stone-500">
-          * Annoncelinks — uden merpris for dig.
+          * Annoncelinks — uden merpris for dig. Koden kopieres til udklipsholderen.
         </p>
         <Link
           href="/rabatkoder"
