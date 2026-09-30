@@ -101,6 +101,12 @@ export function SiteFooter() {
               <Link href="/havnens-vin" className="hover:text-rose-900">
                 Havnens Vin
               </Link>
+              <Link href="/decantalo" className="hover:text-rose-900">
+                Decantalo
+              </Link>
+              <Link href="/quierovinos" className="hover:text-rose-900">
+                QuieroVinos
+              </Link>
               <Link href="/den-sidste-flaske" className="hover:text-rose-900">
                 Den Sidste Flaske
               </Link>

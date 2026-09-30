@@ -24,8 +24,8 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   "bottles-with-history": { src: "/images/merchants/bottles-with-history.png" },
   "8wines": { src: "/images/merchants/eight-wines.png" },
   "wine-store": { src: "/images/merchants/wine-store.png" },
-  decantalo: { src: "" }, // monogram indtil logo
-  quierovinos: { src: "" }, // monogram indtil logo
+  decantalo: { src: "/images/merchants/decantalo.png" },
+  quierovinos: { src: "/images/merchants/quierovinos.png", wide: true },
   vinpalle: { src: "/images/merchants/vinpalle.png" },
   whiskystack: { src: "/images/merchants/whiskystack.png" },
   "beer-me": { src: "/images/merchants/beer-me.png" },

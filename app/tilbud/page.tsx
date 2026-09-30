@@ -43,6 +43,8 @@ const MERCHANT_DEAL_LINKS = [
   { href: "/johnsen-wine", label: "Johnsen Wine" },
   { href: "/havnens-vin", label: "Havnens Vin" },
   { href: "/sps-wine", label: "SPS Wine" },
+  { href: "/decantalo", label: "Decantalo" },
+  { href: "/quierovinos", label: "QuieroVinos" },
   { href: "/vinforhandlere", label: "Alle vinforhandlere" },
 ] as const;
 

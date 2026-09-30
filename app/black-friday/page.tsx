@@ -168,7 +168,7 @@ export default async function BlackFridayHubPage() {
           Et samlet overblik over danske vinbutikker — så du hurtigt kan finde rundt, når Black Friday nærmer sig.
         </p>
         <div className="mt-8">
-          <BlackFridayStoreGrid stores={listBlackFridayStoreTeaser(12)} teaserHref="/black-friday/butikker" />
+          <BlackFridayStoreGrid stores={listBlackFridayStoreTeaser(24)} teaserHref="/black-friday/butikker" />
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AffiliateTrackedLink } from "@/components/affiliate-tracked-link";
+import { DECANTALO_SHOP_HREF, QUIEROVINOS_SHOP_HREF } from "@/lib/daisycon-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
 type Store = {
@@ -74,6 +75,28 @@ const STORES: Store[] = [
     readMoreHref: "/sps-wine",
     readMoreLabel: "Læs om Vinbot × SPS Wine",
   },
+  {
+    id: "decantalo",
+    name: "Decantalo",
+    blurb: "International vinshop med spanske og europæiske flasker.",
+    href: DECANTALO_SHOP_HREF,
+    logoSrc: "/images/merchants/decantalo.png",
+    logoW: 32,
+    logoH: 32,
+    readMoreHref: "/decantalo",
+    readMoreLabel: "Læs om Vinbot × Decantalo",
+  },
+  {
+    id: "quierovinos",
+    name: "QuieroVinos",
+    blurb: "International vinwebshop — hop direkte videre til shoppen.",
+    href: QUIEROVINOS_SHOP_HREF,
+    logoSrc: "/images/merchants/quierovinos.png",
+    logoW: 465,
+    logoH: 76,
+    readMoreHref: "/quierovinos",
+    readMoreLabel: "Læs om Vinbot × QuieroVinos",
+  },
 ];
 
 export function FeaturedAffiliateStores() {
@@ -94,7 +117,7 @@ export function FeaturedAffiliateStores() {
         </Link>
         .
       </p>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {STORES.map((s) => (
           <li
             key={s.id}
