@@ -1,29 +1,89 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
+import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
+import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
-const PAGE_TITLE = "Vinbot Investor-Hub: Din uafhængige guide til vininvestering";
+const PAGE_TITLE = "Vininvestering i Danmark — guide til flasker, managed og vin-aktier";
 const PAGE_DESCRIPTION =
-  "Uafhængig guide til vininvestering: hvorfor vin kan stige i værdi, DIY vs. investeringshuse vs. vin-aktier, samt skat, toldoplag og OWC-emballage i Danmark.";
+  "Uafhængig guide til vininvestering: hvorfor under 0,1 % af al vin egner sig, DIY vs. investeringshuse vs. vin-aktier, samt skat, toldoplag og OWC i Danmark. Ingen købsanbefalinger.";
 const PAGE_URL = `${siteUrl}/investering`;
+
+const FAQ = [
+  {
+    question: "Er vininvestering en god idé for begyndere?",
+    answer:
+      "Kun hvis du har en tidshorisont på typisk 10–15 år, forstår omkostninger til opbevaring og handel, og kan tåle at tabe penge. Under 0,1 % af verdens vin er egnet som investering. Start med at lære mekanismerne — ikke med at købe dyre kasser.",
+  },
+  {
+    question: "Hvor længe skal man typisk holde investeringsvin?",
+    answer:
+      "Som udgangspunkt 10–15 år. Kort tidshorisont passer dårligt til fysisk vin, fordi handelsomkostninger, opbevaring og gebyrer æder hurtige handler. Markedet kan svinge i årevis uden at følge aktieindeks.",
+  },
+  {
+    question: "Skal investeringsvin ligge i original trækasse?",
+    answer:
+      "Ja. Professionel handel forventer næsten altid OWC — Original Wooden Case — uåbnet og i god stand. Løse flasker falder drastisk i investeringsværdi. Provenance (dokumenteret opbevaringshistorik) betyder mindst lige så meget som etiketten.",
+  },
+  {
+    question: "Hvorfor er toldoplag vigtigt?",
+    answer:
+      "Professionel investeringsvin handles og opbevares typisk i toldoplag uden dansk moms. Køber du vin med 25 % dansk moms i en almindelig butik, starter du med et moms-lag, der er svært at hente hjem via værdistigning alene.",
+  },
+  {
+    question: "Er gevinster på vin skattepligtige i Danmark?",
+    answer:
+      "Gevinster ved målrettet investering og spekulation i vin er skattepligtige. Grænsen mellem privat forbrug og spekulation afgøres af faktiske forhold. Hold dokumentation, og søg uvildig skatterådgivning ved væsentlige beløb. Vinbot giver ikke skatteråd.",
+  },
+  {
+    question: "Hvad er forskellen på fysisk vin og vin-aktier?",
+    answer:
+      "Fysisk vin giver dig ejerskab af flasker — men kræver opbevaring, forsikring og en salgskanal. Vin-aktier (fx i vinkonglomerater via en børsmægler) er ekstremt likvide, men du ejer ikke flaskerne, og kurserne følger ofte det generelle aktiemarked.",
+  },
+];
+
+const JUMP_CARDS = [
+  {
+    title: "Hvorfor stiger vin?",
+    body: "Faldende udbud, stigende kvalitet i flasken og en tidshorisont på 10–15 år.",
+    href: "#mekanismer",
+  },
+  {
+    title: "3 veje ind",
+    body: "DIY-flasker, managed investeringshuse eller vin-aktier via børsmægler.",
+    href: "#veje",
+  },
+  {
+    title: "Fælder & regler",
+    body: "Skat i DK, toldoplag vs. moms og kravet om OWC-emballage.",
+    href: "#faelder",
+  },
+] as const;
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    type: "article",
+  },
 };
 
 export default function InvesteringHubPage() {
   return (
-    <PageShell variant="article" className="py-10">
+    <PageShell className="py-10">
       <BreadcrumbJsonLd
         items={[
           { name: "Forside", url: `${siteUrl}/` },
           { name: "Investering", url: PAGE_URL },
         ]}
       />
+      <FaqJsonLd items={FAQ} />
       <WebPageJsonLd name={PAGE_TITLE} description={PAGE_DESCRIPTION} url={PAGE_URL} />
       <Breadcrumbs
         items={[
@@ -53,239 +113,402 @@ export default function InvesteringHubPage() {
         </p>
       </aside>
 
-      <h1 className="mt-8 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
-        Vinbot Investor-Hub: Din uafhængige guide til vininvestering
-      </h1>
-      <p className="mt-4 text-lg leading-relaxed text-stone-700">
-        Under 0,1 % af alverdens vin er egnet som investering. Resten er lavet til at blive drukket.
-        Den forskel er afgørende, før du binder penge i flasker.
-      </p>
-      <p className="mt-3 leading-relaxed text-stone-700">
-        Vin som investering er et <strong className="font-medium text-stone-800">alternativt aktiv</strong>.
-        Det opfører sig anderledes end aktier og obligationer:
-      </p>
-      <ul className="mt-3 ml-5 list-disc space-y-2 text-stone-700 leading-relaxed">
-        <li>Markedet er mindre likvidt.</li>
-        <li>Priserne styres af udbud, årgangskvalitet og efterspørgsel blandt samlere.</li>
-        <li>
-          Afkastet afhænger ofte af tid, opbevaring og handelskanal — ikke af kvartalsregnskaber.
-        </li>
-      </ul>
-      <p className="mt-3 leading-relaxed text-stone-700">
-        Denne hub forklarer mekanismerne, de praktiske veje ind på markedet og de faldgruber, mange
-        overser. Uden købsanbefalinger. Uden løfter om afkast.
-      </p>
+      <header className="mt-8 max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-wider text-rose-900/85">
+          Investor-Hub
+        </p>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-stone-900 sm:text-[2.65rem] sm:leading-tight">
+          Vinbot Investor-Hub: Din uafhængige guide til vininvestering
+        </h1>
+        <p className="mt-4 text-lg leading-relaxed text-stone-700">
+          Under <strong className="font-medium text-stone-800">0,1 %</strong> af alverdens vin er
+          egnet som investering. Resten er lavet til at blive drukket. Den forskel er afgørende, før
+          du binder penge i flasker.
+        </p>
+        <p className="mt-3 leading-relaxed text-stone-700">
+          Vin som investering er et{" "}
+          <strong className="font-medium text-stone-800">alternativt aktiv</strong>. Markedet er
+          mindre likvidt end aktier. Priserne styres af udbud, årgangskvalitet og efterspørgsel —
+          ikke af kvartalsregnskaber. Her får du mekanismerne, de praktiske veje ind og de
+          faldgruber, mange overser. Uden købsanbefalinger. Uden løfter om afkast.
+        </p>
+        <p className="mt-3 text-sm text-stone-600">
+          Relateret:{" "}
+          <Link href="/vinkoleskabe" className="text-rose-900 hover:underline">
+            vinkøleskabe til lagring
+          </Link>
+          ,{" "}
+          <Link
+            href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske"
+            className="text-rose-900 hover:underline"
+          >
+            vintemperatur og opbevaring
+          </Link>
+          ,{" "}
+          <Link href="/regioner" className="text-rose-900 hover:underline">
+            vinregioner
+          </Link>{" "}
+          og{" "}
+          <Link href="/guides" className="text-rose-900 hover:underline">
+            alle guides
+          </Link>
+          .
+        </p>
+      </header>
 
-      <section className="mt-12 space-y-4 text-stone-700">
-        <h2 className="text-xl font-semibold text-stone-900 sm:text-2xl">
-          Mekanismerne – hvorfor stiger vin i værdi?
-        </h2>
+      <section className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Nøgletal">
+        {[
+          { label: "Egnet som investering", value: "Under 0,1 %" },
+          { label: "Typisk tidshorisont", value: "10–15 år" },
+          { label: "Managed-gebyr (typisk)", value: "1–2 % / år" },
+          { label: "Dansk moms i butik", value: "25 %" },
+        ].map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-2xl border border-stone-200 bg-white px-5 py-4 shadow-sm ring-1 ring-stone-100"
+          >
+            <p className="text-2xl font-semibold tracking-tight text-stone-900">{stat.value}</p>
+            <p className="mt-1 text-sm text-stone-600">{stat.label}</p>
+          </div>
+        ))}
+      </section>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Det faldende udbud</h3>
-        <p className="leading-relaxed">
-          Når en årgang frigives, er der et fast antal flasker. Ingen flere. Flaskerne drikkes
-          løbende. Hver gang en flaske åbnes, falder det tilbageværende udbud.
-        </p>
-        <p className="leading-relaxed">
-          Over år bliver de bedste årgange sjældnere. Færre flasker i perfekt stand skærper
-          konkurrencen blandt købere. Det er den grundlæggende udbudsmekanisme bag mange
-          prisstigninger på investeringsvin.
-        </p>
+      <section className="mt-8 grid gap-4 md:grid-cols-3">
+        {JUMP_CARDS.map((card) => (
+          <a
+            key={card.href}
+            href={card.href}
+            className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm ring-1 ring-stone-100 transition hover:border-rose-200 hover:shadow-md"
+          >
+            <h2 className="text-lg font-semibold text-stone-900">{card.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-stone-600">{card.body}</p>
+            <span className="mt-3 inline-block text-sm font-medium text-rose-900">Læs mere ↓</span>
+          </a>
+        ))}
+      </section>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Den stigende kvalitet</h3>
-        <p className="leading-relaxed">
-          God investeringsvin er bygget til at udvikle sig i flasken. I 10, 20 eller 30 år kan aroma,
-          struktur og kompleksitet forbedres.
-        </p>
-        <p className="leading-relaxed">
-          Når vinen nærmer sig sit drikkevindue, stiger efterspørgslen typisk:
-        </p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Samlere vil have flasker i topstand.</li>
-          <li>Restauranter og auktioner søger modne flasker.</li>
-          <li>Det begrænsede udbud møder mere købekraft.</li>
-        </ul>
-        <p className="leading-relaxed">
+      <section id="mekanismer" className="mt-16 scroll-mt-24">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold text-stone-900">
+            Mekanismerne – hvorfor stiger vin i værdi?
+          </h2>
+          <p className="mt-3 leading-relaxed text-stone-700">
+            Tre kræfter driver typisk prisudviklingen på investeringsvin: færre flasker, bedre vin i
+            flasken over tid — og tålmodighed.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/80">01</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">Det faldende udbud</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Når en årgang frigives, er der et fast antal flasker. Ingen flere. Flaskerne drikkes
+              løbende. Hver gang en flaske åbnes, falder det tilbageværende udbud.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Over år bliver de bedste årgange sjældnere. Færre flasker i perfekt stand skærper
+              konkurrencen blandt købere.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/80">02</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">Den stigende kvalitet</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              God investeringsvin udvikler sig i flasken i 10, 20 eller 30 år. Aroma, struktur og
+              kompleksitet kan forbedres.
+            </p>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-700">
+              <li>Samlere vil have flasker i topstand.</li>
+              <li>Restauranter og auktioner søger modne flasker.</li>
+              <li>Begrænset udbud møder mere købekraft.</li>
+            </ul>
+          </article>
+
+          <article className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/80">03</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">Tidshorisont</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Vin er et <strong className="font-medium text-stone-800">langsigtet aktiv</strong>.
+              Pengene bør som udgangspunkt bindes i{" "}
+              <strong className="font-medium text-stone-800">10–15 år</strong>.
+            </p>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-700">
+              <li>Kort tidshorisont passer dårligt til fysisk vin.</li>
+              <li>Omkostninger æder hurtige handler.</li>
+              <li>Markedet følger ikke aktieindeks slavisk.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p className="mt-6 max-w-3xl text-sm leading-relaxed text-stone-600">
           Kombinationen — bedre vin + færre flasker — er kernen i værdipotentialet. Den gælder kun
           for vine med dokumenteret lagringsevne og efterspørgsel. Ikke for almindelig hverdagsvin.
-        </p>
-
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Tidshorisont</h3>
-        <p className="leading-relaxed">
-          Vin er et <strong className="font-medium text-stone-800">langsigtet aktiv</strong>. Pengene
-          bør som udgangspunkt bindes i{" "}
-          <strong className="font-medium text-stone-800">10–15 år</strong>.
-        </p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Kort tidshorisont passer dårligt til fysisk vin.</li>
-          <li>Handelsomkostninger, opbevaring og gebyrer æder hurtige handler.</li>
-          <li>Markedet kan svinge i årevis uden at følge aktieindeks.</li>
-        </ul>
-        <p className="leading-relaxed">
           Hvis du kan få brug for pengene snart, er fysisk vininvestering sjældent det rigtige
           værktøj.
         </p>
       </section>
 
-      <section className="mt-12 space-y-4 text-stone-700">
-        <h2 className="text-xl font-semibold text-stone-900 sm:text-2xl">
-          De 3 veje til markedet
-        </h2>
-        <p className="leading-relaxed">
-          Privatpersoner bruger typisk én af tre tilgange. De løser forskellige behov — og har
-          forskellige omkostninger.
-        </p>
+      <section id="veje" className="mt-16 scroll-mt-24">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold text-stone-900">De 3 veje til markedet</h2>
+          <p className="mt-3 leading-relaxed text-stone-700">
+            Privatpersoner bruger typisk én af tre tilgange. De løser forskellige behov — og har
+            forskellige omkostninger.
+          </p>
+        </div>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">
-          1. Gør-det-selv (fysiske flasker)
-        </h3>
-        <p className="leading-relaxed">Du køber selv vinen og ejer flaskerne direkte.</p>
-        <p className="font-medium text-stone-800">Fordel</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Fuld kontrol over valg, timing og salg.</li>
-        </ul>
-        <p className="font-medium text-stone-800">Ulemper</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Kræver professionel, temperaturstyret opbevaring.</li>
-          <li>Kræver forsikring.</li>
-          <li>
-            Kræver adgang til handelskanaler (fx Liv-ex eller auktioner), hvis du vil sælge
-            professionelt igen.
-          </li>
-        </ul>
-        <p className="leading-relaxed">
-          Gør-det-selv passer dig, der allerede forstår markedet — og har styr på logistikken. Uden
-          korrekt opbevaring mister flaskerne hurtigt både drikkekvalitet og handelsværdi.
-        </p>
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <article className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Vej 1</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">
+              Gør-det-selv (fysiske flasker)
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Du køber selv vinen og ejer flaskerne direkte.
+            </p>
+            <div className="mt-4 space-y-3 text-sm">
+              <div>
+                <p className="font-medium text-emerald-800">Fordel</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>Fuld kontrol over valg, timing og salg.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium text-rose-900">Ulemper</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>Professionel, temperaturstyret opbevaring.</li>
+                  <li>Forsikring.</li>
+                  <li>Adgang til handelskanaler (fx Liv-ex eller auktioner) ved salg.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-stone-600">
+              Uden korrekt opbevaring mister flaskerne hurtigt både drikkekvalitet og handelsværdi.
+              Se{" "}
+              <Link href="/vinkoleskabe" className="font-medium text-rose-900 hover:underline">
+                vinkøleskab-guiden
+              </Link>
+              .
+            </p>
+          </article>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">
-          2. Investeringshuse (managed)
-        </h3>
-        <p className="leading-relaxed">
-          Du skyder penge ind hos specialiserede huse, der køber, opbevarer og håndterer det
-          praktiske.
-        </p>
-        <p className="font-medium text-stone-800">Fordele</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Bekvemt: du slipper for køleskab, toldpapir og logistik.</li>
-          <li>Vinen ligger typisk på professionelle toldoplag.</li>
-        </ul>
-        <p className="font-medium text-stone-800">Ulemper</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>
-            Årlige administrationsgebyrer — typisk omkring{" "}
-            <strong className="font-medium text-stone-800">1–2 %</strong>.
-          </li>
-          <li>Kommission ved salg.</li>
-          <li>Du er afhængig af husets due diligence, gennemsigtighed og likviditet.</li>
-        </ul>
-        <p className="leading-relaxed">
-          Læs altid vilkår, gebyrstruktur og exit-muligheder, før du binder kapital. Sammenlign den
-          samlede omkostning over 10–15 år — ikke kun startgebyret.
-        </p>
+          <article className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Vej 2</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">
+              Investeringshuse (managed)
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Du skyder penge ind hos specialiserede huse, der køber, opbevarer og håndterer det
+              praktiske.
+            </p>
+            <div className="mt-4 space-y-3 text-sm">
+              <div>
+                <p className="font-medium text-emerald-800">Fordele</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>Bekvemt: ingen køleskab, toldpapir eller logistik.</li>
+                  <li>Vin typisk på professionelle toldoplag.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium text-rose-900">Ulemper</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>
+                    Årlige administrationsgebyrer — typisk{" "}
+                    <strong className="font-medium text-stone-800">1–2 %</strong>.
+                  </li>
+                  <li>Kommission ved salg.</li>
+                  <li>Afhængighed af husets due diligence og likviditet.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-stone-600">
+              Sammenlign den samlede omkostning over 10–15 år — ikke kun startgebyret. Læs vilkår og
+              exit-muligheder, før du binder kapital.
+            </p>
+          </article>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">3. Vin-aktier og fonde</h3>
-        <p className="leading-relaxed">
-          Du investerer i vinkonglomerater (fx LVMH) eller spiritusproducenter via en almindelig
-          børsmægler som Nordnet.
-        </p>
-        <p className="font-medium text-stone-800">Fordele</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Ekstremt høj likviditet — kan sælges på sekunder.</li>
-          <li>Ingen fysisk opbevaring, forsikring eller toldoplag.</li>
-          <li>Let at holde i en almindelig portefølje.</li>
-        </ul>
-        <p className="font-medium text-stone-800">Ulemper</p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Du ejer ikke fysisk vin.</li>
-          <li>Kurserne følger det generelle aktiemarked tæt.</li>
-          <li>
-            Du får eksponering mod virksomhedens indtjening — ikke direkte mod en flaskes
-            markedspris på Liv-ex.
-          </li>
-        </ul>
-        <p className="leading-relaxed">
-          Denne vej er ofte den mest likvide måde at få “vin-eksponering” på. Den er ikke det samme
-          som at eje en kasse Bordeaux.
-        </p>
+          <article className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Vej 3</p>
+            <h3 className="mt-2 text-lg font-semibold text-stone-900">Vin-aktier og fonde</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Du investerer i vinkonglomerater (fx LVMH) eller spiritusproducenter via en almindelig
+              børsmægler som Nordnet.
+            </p>
+            <div className="mt-4 space-y-3 text-sm">
+              <div>
+                <p className="font-medium text-emerald-800">Fordele</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>Ekstremt høj likviditet — kan sælges på sekunder.</li>
+                  <li>Ingen fysisk opbevaring eller toldoplag.</li>
+                  <li>Let at holde i en almindelig portefølje.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium text-rose-900">Ulemper</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-stone-700">
+                  <li>Du ejer ikke fysisk vin.</li>
+                  <li>Kurserne følger det generelle aktiemarked tæt.</li>
+                  <li>Eksponering mod virksomhed — ikke flaskepris på Liv-ex.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-stone-600">
+              Den mest likvide vej til “vin-eksponering”. Den er ikke det samme som at eje en kasse
+              Bordeaux.
+            </p>
+          </article>
+        </div>
 
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Hurtig sammenligning</h3>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>
-            <strong className="font-medium text-stone-800">Kontrol:</strong> DIY højest → managed
-            middel → aktier/fonde lavest (ingen flaskeejerskab).
-          </li>
-          <li>
-            <strong className="font-medium text-stone-800">Praktik:</strong> Aktier/fonde nemmest →
-            managed midt → DIY mest krævende.
-          </li>
-          <li>
-            <strong className="font-medium text-stone-800">Likviditet:</strong> Aktier/fonde højest →
-            managed varierer → DIY ofte lavest.
-          </li>
-          <li>
-            <strong className="font-medium text-stone-800">Omkostninger:</strong> DIY
-            (opbevaring/forsikring/handel) vs. managed (1–2 % + kommission) vs. aktier
-            (kurtage/fondsomkostninger).
-          </li>
+        <div className="mt-10 overflow-x-auto rounded-2xl border border-stone-200 bg-white shadow-sm ring-1 ring-stone-100">
+          <table className="min-w-full text-left text-sm">
+            <caption className="sr-only">Sammenligning af de tre veje til vininvestering</caption>
+            <thead className="border-b border-stone-200 bg-stone-50 text-stone-600">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-medium sm:px-5">
+                  Parameter
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium sm:px-5">
+                  DIY
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium sm:px-5">
+                  Managed
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium sm:px-5">
+                  Aktier/fonde
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-stone-100 text-stone-700">
+              <tr>
+                <th scope="row" className="px-4 py-3 font-medium text-stone-900 sm:px-5">
+                  Kontrol
+                </th>
+                <td className="px-4 py-3 sm:px-5">Højest</td>
+                <td className="px-4 py-3 sm:px-5">Middel</td>
+                <td className="px-4 py-3 sm:px-5">Lavest (ingen flaskeejerskab)</td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-medium text-stone-900 sm:px-5">
+                  Praktik
+                </th>
+                <td className="px-4 py-3 sm:px-5">Mest krævende</td>
+                <td className="px-4 py-3 sm:px-5">Midt</td>
+                <td className="px-4 py-3 sm:px-5">Nemmest</td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-medium text-stone-900 sm:px-5">
+                  Likviditet
+                </th>
+                <td className="px-4 py-3 sm:px-5">Ofte lavest</td>
+                <td className="px-4 py-3 sm:px-5">Varierer</td>
+                <td className="px-4 py-3 sm:px-5">Højest</td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-medium text-stone-900 sm:px-5">
+                  Omkostninger
+                </th>
+                <td className="px-4 py-3 sm:px-5">Opbevaring, forsikring, handel</td>
+                <td className="px-4 py-3 sm:px-5">1–2 % + kommission</td>
+                <td className="px-4 py-3 sm:px-5">Kurtage / fondsomkostninger</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="faelder" className="mt-16 scroll-mt-24">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold text-stone-900">
+            De skjulte fælder og regler
+          </h2>
+          <p className="mt-3 leading-relaxed text-stone-700">
+            Tre punkter, der ofte overrasker danske privatpersoner — og som er vigtigere end
+            “hvilken årgang er hot”.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <article className="rounded-2xl border border-amber-200/80 bg-amber-50/60 p-6">
+            <h3 className="text-lg font-semibold text-stone-900">Skat i Danmark</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Gevinster ved målrettet investering og spekulation i vin er skattepligtige.
+            </p>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-700">
+              <li>Privat forbrug ≠ systematisk spekulation — grænsen er faktuel.</li>
+              <li>Hold købspris, salgspris, omkostninger og dokumentation.</li>
+              <li>Søg uvildig skatterådgivning ved væsentlige beløb.</li>
+            </ul>
+          </article>
+
+          <article className="rounded-2xl border border-amber-200/80 bg-amber-50/60 p-6">
+            <h3 className="text-lg font-semibold text-stone-900">Toldoplag vs. moms</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Professionel investeringsvin handles og opbevares typisk i{" "}
+              <strong className="font-medium text-stone-800">toldoplag</strong> — uden dansk moms.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Køber du vin med{" "}
+              <strong className="font-medium text-stone-800">dansk moms (25 %)</strong> i en almindelig
+              butik, starter du med et moms-lag, der er svært at hente hjem via værdistigning alene.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-amber-200/80 bg-amber-50/60 p-6">
+            <h3 className="text-lg font-semibold text-stone-900">Krav til emballage</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">
+              Investeringsvin skal næsten altid ligge i originale, uåbnede trækasser —{" "}
+              <strong className="font-medium text-stone-800">OWC (Original Wooden Case)</strong>.
+            </p>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-700">
+              <li>Løse flasker falder drastisk i værdi.</li>
+              <li>Skadet eller genpakket emballage svækker prisen.</li>
+              <li>Provenance betyder mindst lige så meget som etiketten.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-2xl border border-stone-200 bg-stone-50/80 p-6 sm:p-8">
+        <h2 className="text-xl font-semibold text-stone-900">Tjekliste før du binder penge</h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {[
+            "Kan pengene ligge i 10–15 år uden at du får brug for dem?",
+            "Er vinen blandt den smalle del af markedet med reel efterspørgsel?",
+            "Har du styr på opbevaring, forsikring og salgskanal — eller gebyrerne ved managed?",
+            "Køber du uden unødig dansk moms (toldoplag), hvis det er fysisk vin?",
+            "Ligger flaskerne i OWC med dokumenteret provenance?",
+            "Har du talt med en uvildig rådgiver om skat og risiko?",
+          ].map((item) => (
+            <li
+              key={item}
+              className="flex gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm leading-relaxed text-stone-700"
+            >
+              <span className="mt-0.5 text-rose-900" aria-hidden>
+                ✓
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </section>
 
-      <section className="mt-12 space-y-4 text-stone-700">
-        <h2 className="text-xl font-semibold text-stone-900 sm:text-2xl">
-          De skjulte fælder og regler
-        </h2>
-
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Skat i Danmark</h3>
-        <p className="leading-relaxed">
-          Gevinster ved målrettet investering og spekulation i vin er skattepligtige.
-        </p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>
-            Køb til eget forbrug og senere salg af overskud er ikke det samme som systematisk
-            spekulation — men grænsen afgøres af faktiske forhold.
-          </li>
-          <li>Hold styr på købspris, salgspris, omkostninger og dokumentation.</li>
-          <li>
-            Søg uvildig skatterådgivning, hvis beløbene er væsentlige. Vinbot giver ikke skatteråd.
-          </li>
-        </ul>
-
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">
-          Toldoplag vs. dansk moms
-        </h3>
-        <p className="leading-relaxed">
-          Professionel investeringsvin handles og opbevares typisk i{" "}
-          <strong className="font-medium text-stone-800">toldoplag</strong> — uden dansk moms.
-        </p>
-        <p className="leading-relaxed">
-          Hvis du køber vin med{" "}
-          <strong className="font-medium text-stone-800">dansk moms (25 %)</strong> i en almindelig
-          butik, starter du med et moms-lag, der er svært at hente hjem via værdistigning alene. For
-          investeringsformål er momsbelagt hyldevin derfor ofte op ad bakke sammenlignet med
-          toldoplagsvin.
-        </p>
-
-        <h3 className="pt-2 text-lg font-semibold text-stone-900">Krav til emballage</h3>
-        <p className="leading-relaxed">
-          Investeringsvin skal næsten altid ligge i sine originale, uåbnede trækasser —{" "}
-          <strong className="font-medium text-stone-800">OWC (Original Wooden Case)</strong>.
-        </p>
-        <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>Løse flasker falder drastisk i investeringsværdi.</li>
-          <li>Skadet, mangelfuld eller genpakket emballage svækker handelsprisen.</li>
-          <li>
-            Provenance (dokumenteret opbevaringshistorik) betyder mindst lige så meget som
-            etiketten.
-          </li>
-        </ul>
-        <p className="leading-relaxed">
-          Kort sagt: en flot flaske uden korrekt kasse og historik er ofte drikkeken — ikke
-          investeringsvare.
-        </p>
+      <section className="mt-14 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm ring-1 ring-stone-100 sm:p-8">
+        <h2 className="text-xl font-semibold text-stone-900">Ofte stillede spørgsmål</h2>
+        <dl className="mt-5 space-y-5">
+          {FAQ.map((item) => (
+            <div key={item.question}>
+              <dt className="font-medium text-stone-900">{item.question}</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-stone-700 sm:text-base">
+                {item.answer}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
-      <section className="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-stone-700">
+      <section className="mt-14 rounded-2xl border border-stone-200 bg-stone-50 p-6 text-stone-700 sm:p-8">
         <h2 className="text-lg font-semibold text-stone-900">Kort sagt</h2>
         <p className="mt-3 leading-relaxed">
           Vin er et alternativt, langsigtet aktiv for dem, der forstår udbud, tid og omkostninger.
@@ -293,7 +516,23 @@ export default function InvesteringHubPage() {
           som rådgivning. Vend tilbage til ansvarsfraskrivelsen øverst, før du træffer økonomiske
           beslutninger.
         </p>
+        <p className="mt-3 text-sm text-stone-600">
+          Lagrer du selv? Start med{" "}
+          <Link href="/vinkoleskabe" className="font-medium text-rose-900 hover:underline">
+            vinkøleskabe
+          </Link>{" "}
+          og{" "}
+          <Link
+            href="/guides/opbevaring-af-vin-temperatur-og-aabnet-flaske"
+            className="font-medium text-rose-900 hover:underline"
+          >
+            opbevaring og temperatur
+          </Link>
+          .
+        </p>
       </section>
+
+      <PartnerAdsLeaderboard className="mt-14" hub="investering" slug="investering-hub" />
     </PageShell>
   );
 }
