@@ -831,10 +831,18 @@ export function parseXMLProducts(xml: string, merchant: string): FeedProduct[] {
       "g_google_product_category",
       "google_product_category",
     ]);
+    const customLabels = [
+      pickOne(b, ["g_custom_label_1", "custom_label_1"]),
+      pickOne(b, ["g_custom_label_2", "custom_label_2"]),
+      pickOne(b, ["g_custom_label_3", "custom_label_3"]),
+      pickOne(b, ["g_custom_label_4", "custom_label_4"]),
+    ]
+      .filter(Boolean)
+      .join(" ");
     const wineMeta = [pickOne(b, ["wine_type"]), pickOne(b, ["wine_grape"]), pickOne(b, ["wine_region"]), pickOne(b, ["wine_country"])]
       .filter(Boolean)
       .join(" ");
-    const category = [categoryRaw, wineMeta].filter(Boolean).join(" ").trim();
+    const category = [categoryRaw, customLabels, wineMeta].filter(Boolean).join(" ").trim();
     const brand = pickOne(b, ["brand", "g_brand", "manufacturer", "producer", "vendor", "creator", "forhandler"]);
 
     const gtin = normalizeBarcodeDigits(pickOne(b, ["gtin", "g_gtin", "ean", "g_ean", "upc", "barcode"]));

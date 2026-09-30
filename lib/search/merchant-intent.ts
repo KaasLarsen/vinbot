@@ -50,6 +50,7 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "Homeshop.dk": ["homeshop", "home shop"],
   "Kai Berntsen ApS": ["kai berntsen", "kai bertsen", "kai berntsen aps"],
   "Vinkøleskabet.dk": ["vinkoleskabet", "vinkøleskabet"],
+  "Witt Living": ["witt", "witt living", "wittliving"],
   "LforLiving.dk": ["lforliving", "l for living"],
   "Likehome.dk": ["likehome", "like home"],
   Vinpalle: ["vinpalle", "vin palle"],

@@ -11,7 +11,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Vinkøleskabe — den ultimative guide til køb og valg";
 const PAGE_DESCRIPTION =
-  "Find det rigtige vinkøleskab: integrerbart eller fritstående, størrelse, zoner og pris. Søg live hos Vinkøleskabet.dk, Homeshop, Erling Christensen og Kai Berntsen med billede og pris — plus købsguide til køkken, kælder og samling.";
+  "Find det rigtige vinkøleskab: integrerbart eller fritstående, størrelse, zoner og pris. Søg live hos Vinkøleskabet.dk, Witt Living, Homeshop, Erling Christensen og Kai Berntsen med billede og pris — plus købsguide til køkken, kælder og samling.";
 const PAGE_URL = `${siteUrl}/vinkoleskabe`;
 
 const FAQ = [
@@ -33,7 +33,7 @@ const FAQ = [
   {
     question: "Hvor finder jeg vinkøleskabe med pris og billede?",
     answer:
-      "På denne side søger du direkte i sortimentet fra Vinkøleskabet.dk, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
+      "På denne side søger du direkte i sortimentet fra Vinkøleskabet.dk, Witt Living, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS. Du klikker videre til forhandleren for endelig pris, mål, levering og garanti.",
   },
 ];
 
@@ -73,10 +73,11 @@ export default function VinkoleskabePage() {
         </p>
         <p className="mt-3 text-stone-700">
           Sortimentet kommer fra <strong className="font-medium text-stone-800">Vinkøleskabet.dk</strong>,{" "}
+          <strong className="font-medium text-stone-800">Witt Living</strong>,{" "}
           <strong className="font-medium text-stone-800">Homeshop.dk</strong>,{" "}
           <strong className="font-medium text-stone-800">Erling Christensen Møbler</strong> og{" "}
           <strong className="font-medium text-stone-800">Kai Berntsen ApS</strong> — fra kompakte fritstående skabe til
-          integrerbare WineKeeper- og WineCave-modeller, Scandomestic og store vinlagringsskabe.
+          integrerbare WineKeeper- og WineCave-modeller, Scandomestic, Haier, Liebherr og store vinlagringsskabe.
         </p>
         <p className="mt-3 text-sm text-stone-700">
           <a
@@ -124,7 +125,7 @@ export default function VinkoleskabePage() {
         <h2 className="text-2xl font-semibold text-stone-900">Søg vinkøleskab</h2>
         <p className="mt-2 max-w-2xl text-sm text-stone-600">
           Kun <strong className="font-medium text-stone-800">vinkøleskabe og vinlagringsskabe</strong> — ikke glas, proptrækkere,
-          isbøtter eller øvrigt inventar. Resultaterne kommer fra Vinkøleskabet.dk, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS; klik videre for mål,
+          isbøtter eller øvrigt inventar. Resultaterne kommer fra Vinkøleskabet.dk, Witt Living, Homeshop.dk, Erling Christensen Møbler og Kai Berntsen ApS; klik videre for mål,
           levering og aktuel pris.
         </p>
         <div className="mt-6">

@@ -34,6 +34,7 @@ export const WINE_COOLER_ONLY_INCLUDE: string[] = [
   "vinkøleskab",
   "vinkoleskab",
   "vinlagringsskab",
+  "vinskab",
   "wine cooler",
 ];
 export const WINE_COOLER_ONLY_EXCLUDE: string[] = [
@@ -45,6 +46,21 @@ export const WINE_COOLER_ONLY_EXCLUDE: string[] = [
   "sofa",
   "spisebord",
   "kontorstol",
+];
+
+/** Witt Living (Adtraction) — Google custom labels + vinskab-titler. */
+const WITT_LIVING_COOLER_INCLUDE: string[] = [
+  ...WINE_COOLER_ONLY_INCLUDE,
+  "freestanding wine",
+  "built-in wine",
+  "undercounter wine",
+  "slide-in wine",
+  "integrated wine",
+];
+const WITT_LIVING_COOLER_EXCLUDE: string[] = [
+  ...WINE_COOLER_ONLY_EXCLUDE,
+  "accessory for wine",
+  "kulfilter",
 ];
 
 /** Fælles nøgleord for vin + tilbehør i blandfeeds (glas, karaffel, servering). */
@@ -133,6 +149,17 @@ export const FEEDS: FeedConfig[] = [
     merchant: "Vinkøleskabet.dk",
     url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0",
     wineFilter: false,
+  },
+  /**
+   * Witt Living (Adtraction) — stort hvidvarekatalog; kun vinkøleskabe/vinskabe.
+   * product_type er tomt; filtrering via titel + custom_label (Wine / Freestanding wine m.m.).
+   */
+  {
+    merchant: "Witt Living",
+    url: "https://secure.adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=2042072967&asid=2022448293&gsh=1&pfid=3217&gt=0",
+    wineFilter: false,
+    vinAdjacentIncludeAny: WITT_LIVING_COOLER_INCLUDE,
+    vinAdjacentExcludeAny: WITT_LIVING_COOLER_EXCLUDE,
   },
   /**
    * Stort møbel-feed — kun rigtige vinkøleskabe (ikke vinkølere/isbøtter, ikke øvrigt inventar).
