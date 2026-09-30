@@ -1098,6 +1098,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg QuieroVinos",
     shopIntro: "Åbner QuieroVinos i et nyt vindue — du handler og betaler altid hos dem.",
+    showRabatkoderLink: true,
     productIntro:
       "Inspiration fra andre forhandlere i Vinbots søgning — QuieroVinos har endnu ikke produktfeed hos os.",
     productSections: [
@@ -1117,6 +1118,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
         question: "Kan jeg se QuieroVinos-flasker i Vinbots søgning?",
         answer:
           "Ikke endnu — QuieroVinos har ingen produktfeed hos os. Brug shop-linket ovenfor, eller sammenlign andre forhandlere i vinsøgningen.",
+      },
+      {
+        question: "Kan jeg få rabat hos QuieroVinos?",
+        answer:
+          "Ja — nye kunder kan ofte få 5% på første køb med koden WELCOME. Se aktuelle vilkår under rabatkoder, og tjek altid quierovinos.com før du betaler.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",

@@ -4,13 +4,14 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RabatkodeShopLink } from "@/components/rabatkode-shop-link";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
 import { ADTRACTION_VINKOELSKABET_SHOP, ADTRACTION_WITT_LIVING_SHOP } from "@/lib/adtraction-links";
+import { QUIEROVINOS_SHOP_HREF } from "@/lib/daisycon-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Rabatkoder til vin — partnertilbud";
 const PAGE_DESCRIPTION =
-  "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Winther Vin, Winefriends, DH Wines, SPS Wine, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.";
+  "Rabatkoder og nyhedsbreve: Lauridsen Vine, Beer Me, Johnsen Wine, Winther Vin, Winefriends, DH Wines, SPS Wine, QuieroVinos, Vinkøleskabet.dk m.fl. Affiliate-links markeres med *. Tjek vilkår hos butikken.";
 const PAGE_URL = `${siteUrl}/rabatkoder`;
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ type RabatPartner = {
   /** Affiliate-destination (Partner-Ads klikbanner eller Adtraction m.m.) */
   affiliateHref: string;
   /** Hvilket netværk der tracker klik (oplysningspligt / gennemsigtighed) */
-  affiliateVia: "partner-ads" | "adtraction";
+  affiliateVia: "partner-ads" | "adtraction" | "daisycon";
   entries: RabatEntry[];
   footnote?: string;
 };
@@ -127,6 +128,19 @@ const PARTNERE: RabatPartner[] = [
         title: "12% rabat",
         code: "YTAK9M8B",
         body: "Gælder **produkterne** i shoppen. **Rabatkoden kan ikke kombineres** med andre rabatkoder — se fulde vilkår på spswine.dk.",
+      },
+    ],
+  },
+  {
+    name: "QuieroVinos",
+    shopUrl: "https://www.quierovinos.com/",
+    affiliateVia: "daisycon",
+    affiliateHref: QUIEROVINOS_SHOP_HREF,
+    entries: [
+      {
+        title: "5% rabat — første køb",
+        code: "WELCOME",
+        body: "**5% rabat** på dit **første køb** hos QuieroVinos. Angiv koden i kurven — tjek aktuelle vilkår på quierovinos.com.",
       },
     ],
   },
