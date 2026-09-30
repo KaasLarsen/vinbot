@@ -9,17 +9,19 @@ export function RabatkodeShopLink({
   merchant,
   children,
   className,
+  placement = "rabatkoder-shop",
 }: {
   href: string;
   merchant: string;
   children: ReactNode;
   className?: string;
+  placement?: string;
 }) {
   return (
     <AffiliateTrackedLink
       href={href}
       merchant={merchant}
-      placement="rabatkoder-shop"
+      placement={placement}
       slug="rabatkoder"
       className={className}
     >

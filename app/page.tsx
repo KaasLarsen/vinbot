@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
+import { HomeRabatkoderStrip } from "@/components/home-rabatkoder-strip";
 import { HomeBestDealsSearchSection } from "@/components/home-best-deals-search-section";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
 import { HomeDrinksStrip } from "@/components/home-drinks-strip";
@@ -78,6 +79,8 @@ export default function HomePage() {
           <HomeBestDealsSearchSection />
 
           <HomeLigeNuStrip />
+
+          <HomeRabatkoderStrip />
         </div>
       </div>
 
