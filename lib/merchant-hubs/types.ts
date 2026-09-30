@@ -19,7 +19,12 @@ export type MerchantHubProductSection = {
 export type MerchantHubAffiliate =
   | { kind: "partner-ads"; bannerId: string; shopUrl: string }
   | { kind: "daisycon"; shopHref: string }
-  | { kind: "direct"; shopUrl: string }
+  | {
+      kind: "direct";
+      shopUrl: string;
+      /** Når sat: shop-CTA går via CPC `/go/[slug]` (kun direkte CPC-aftaler). */
+      cpcPartnerSlug?: string;
+    }
   /** Flaske-CTA’er tracked via feed; ingen shop-landing med tracking. */
   | { kind: "feed-only" };
 

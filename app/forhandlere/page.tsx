@@ -78,12 +78,20 @@ export default function ForhandlerePage() {
         <h2 className="text-xl font-semibold text-stone-900">3. CPC-aftale direkte med Vinbot</h2>
         <p className="leading-relaxed">
           Arbejder I ikke med CPA/affiliate, men ønsker I at blive listet som betalende partner? Så kan
-          I vælge en <strong>CPC-aftale</strong> direkte med vinbot.dk. Marker det i ansøgningen — så
-          kontakter vi jer på den e-mail, I angiver.
+          I vælge en <strong>CPC-aftale</strong> direkte med vinbot.dk via{" "}
+          <Link href="/partnere" className="text-rose-900 underline underline-offset-2">
+            partnerportalen
+          </Link>
+          . I får login, klikstatistik og en aftalt CPC — vi sender regning hver måned.
         </p>
         <ul className="ml-5 list-disc space-y-2 leading-relaxed">
           <li>Samme type partnerfordele og prioritering som via affiliate.</li>
-          <li>Aftale og setup sker direkte mellem jer og Vinbot.</li>
+          <li>Ingen tracking-plugin hos jer — kun klik via Vinbots links.</li>
+          <li>
+            <Link href="/partnere" className="text-rose-900 underline underline-offset-2">
+              Ansøg som CPC-partner
+            </Link>
+          </li>
         </ul>
       </section>
 

@@ -1,3 +1,4 @@
+import { cpcGoHref } from "@/lib/cpc/helpers";
 import {
   DECANTALO_SHOP_HREF,
   HAVNENS_VIN_SHOP_HREF,
@@ -17,7 +18,12 @@ export function resolveMerchantHubShopHref(hub: MerchantHubConfig): string | nul
   const a = hub.affiliate;
   if (a.kind === "partner-ads") return partnerAdsKlikUrl(a.bannerId, a.shopUrl);
   if (a.kind === "daisycon") return a.shopHref;
-  if (a.kind === "direct") return a.shopUrl;
+  if (a.kind === "direct") {
+    if (a.cpcPartnerSlug) {
+      return cpcGoHref(a.cpcPartnerSlug, a.shopUrl, `hub-shop-${hub.slug}`);
+    }
+    return a.shopUrl;
+  }
   return null;
 }
 
