@@ -2,20 +2,12 @@ import Link from "next/link";
 import { GuideSearchCta } from "@/components/guide-search-cta";
 import type { DrinkWineInRecipe, DrinkWineToDrink } from "@/lib/content/drink-types";
 
-function buildSearchHref(query: string, max?: number): string {
-  const params = new URLSearchParams({ q: query });
-  if (max != null) params.set("max", String(max));
-  return `/?${params.toString()}`;
-}
-
 type Props = {
   wineInRecipe: DrinkWineInRecipe;
   wineToDrink: DrinkWineToDrink;
 };
 
 export function DrinkWineBox({ wineInRecipe, wineToDrink }: Props) {
-  const searchHref = buildSearchHref(wineToDrink.searchQuery, wineToDrink.searchMax);
-
   return (
     <div className="not-prose space-y-4">
       <aside className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/80 p-5 shadow-sm">
@@ -43,7 +35,11 @@ export function DrinkWineBox({ wineInRecipe, wineToDrink }: Props) {
             <>Find flasker der matcher drinken — se forslag nedenfor.</>
           )}
         </p>
-        <GuideSearchCta searchHref={searchHref} label={`Søg ${wineToDrink.label}`} />
+        <GuideSearchCta
+          label={`Søg ${wineToDrink.label}`}
+          query={wineToDrink.searchQuery}
+          max={wineToDrink.searchMax}
+        />
       </aside>
     </div>
   );

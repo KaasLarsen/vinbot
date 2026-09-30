@@ -2,12 +2,7 @@ import Link from "next/link";
 import { InlineProductPicks } from "@/components/inline-product-picks";
 import { RecipeCuratedWineLinks } from "@/components/recipe-curated-wine-links";
 import type { DrinkWineToDrink } from "@/lib/content/drink-types";
-
-function buildSearchHref(query: string, max?: number): string {
-  const params = new URLSearchParams({ q: query });
-  if (max != null) params.set("max", String(max));
-  return `/?${params.toString()}`;
-}
+import { homeSearchHref } from "@/lib/home-search-url";
 
 type Props = {
   drinkSlug: string;
@@ -26,7 +21,10 @@ export function DrinkShopSection({
   maxItems = 3,
   heading = "Køb vin til drinken — direkte fra forhandlere",
 }: Props) {
-  const searchHref = buildSearchHref(wineToDrink.searchQuery, wineToDrink.searchMax);
+  const searchHref = homeSearchHref(
+    wineToDrink.searchQuery,
+    wineToDrink.searchMax != null ? { max: wineToDrink.searchMax } : undefined,
+  );
 
   return (
     <div className="not-prose mt-6 space-y-6">

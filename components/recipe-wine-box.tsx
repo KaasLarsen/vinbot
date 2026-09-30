@@ -2,12 +2,6 @@ import Link from "next/link";
 import { GuideSearchCta } from "@/components/guide-search-cta";
 import type { RecipeWineInRecipe, RecipeWineToDrink } from "@/lib/content/recipe-types";
 
-function buildSearchHref(query: string, max?: number): string {
-  const params = new URLSearchParams({ q: query });
-  if (max != null) params.set("max", String(max));
-  return `/?${params.toString()}`;
-}
-
 type Props = {
   wineInRecipe?: RecipeWineInRecipe;
   wineToDrink: RecipeWineToDrink;
@@ -16,7 +10,6 @@ type Props = {
 };
 
 export function RecipeWineBox({ wineInRecipe, wineToDrink, variant = "cooking" }: Props) {
-  const searchHref = buildSearchHref(wineToDrink.searchQuery, wineToDrink.searchMax);
   const showCookingBox = variant === "cooking" && wineInRecipe != null;
   const isPairing = variant === "pairing";
 
@@ -91,7 +84,11 @@ export function RecipeWineBox({ wineInRecipe, wineToDrink, variant = "cooking" }
         )}
       </aside>
 
-      <GuideSearchCta label={wineToDrink.label} searchHref={searchHref} />
+      <GuideSearchCta
+        label={wineToDrink.label}
+        query={wineToDrink.searchQuery}
+        max={wineToDrink.searchMax}
+      />
     </div>
   );
 }

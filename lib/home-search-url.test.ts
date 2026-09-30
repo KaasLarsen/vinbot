@@ -65,4 +65,13 @@ describe("home-search-url", () => {
     notifyHomeSearchUrlChanged();
     assert.equal(hits, 1);
   });
+
+  it("homeSearchHref includes q, max and hash", async () => {
+    const { homeSearchHref } = await import("./home-search-url.ts");
+    assert.equal(
+      homeSearchHref("rioja joven tempranillo tapas chorizo", { max: 150 }),
+      "/?q=rioja+joven+tempranillo+tapas+chorizo&max=150#home-wine-search",
+    );
+    assert.equal(homeSearchHref("chianti"), "/?q=chianti#home-wine-search");
+  });
 });
