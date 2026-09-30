@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 
+import { createSupabaseAnonClient } from "@/lib/supabase/anon";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
-import { createSupabaseServiceClient, hasSupabaseServiceRole } from "@/lib/supabase/service";
+import {
+  createSupabaseServiceClient,
+  hasSupabaseServiceRole,
+} from "@/lib/supabase/service";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,9 +22,6 @@ export async function GET(req: Request, context: RouteContext) {
   if (!isSupabaseConfigured()) {
     return badRequest("CPC-tracking er ikke konfigureret.", 503);
   }
-  if (!hasSupabaseServiceRole()) {
-    return badRequest("CPC-tracking mangler service role-nøgle.", 503);
-  }
 
   const { slug: rawSlug } = await context.params;
   const slug = decodeURIComponent(rawSlug || "").trim().toLowerCase();
@@ -34,7 +35,10 @@ export async function GET(req: Request, context: RouteContext) {
     return badRequest("Manglende eller ugyldig url-parameter.");
   }
 
-  const supabase = createSupabaseServiceClient();
+  const supabase = hasSupabaseServiceRole()
+    ? createSupabaseServiceClient()
+    : createSupabaseAnonClient();
+
   const { error } = await supabase.rpc("log_cpc_click", {
     p_slug: slug,
     p_target_url: target,
