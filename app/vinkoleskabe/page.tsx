@@ -5,7 +5,7 @@ import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { PriceRunnerProductWidget } from "@/components/pricerunner-product-widget";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
+import { ADTRACTION_VINKOELSKABET_SHOP, ADTRACTION_WITT_LIVING_SHOP } from "@/lib/adtraction-links";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -79,7 +79,7 @@ export default function VinkoleskabePage() {
           <strong className="font-medium text-stone-800">Kai Berntsen ApS</strong> — fra kompakte fritstående skabe til
           integrerbare WineKeeper- og WineCave-modeller, Scandomestic, Haier, Liebherr og store vinlagringsskabe.
         </p>
-        <p className="mt-3 text-sm text-stone-700">
+        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-stone-700">
           <a
             href={ADTRACTION_VINKOELSKABET_SHOP}
             target="_blank"
@@ -87,6 +87,14 @@ export default function VinkoleskabePage() {
             className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
           >
             Gå direkte til Vinkøleskabet.dk →
+          </a>
+          <a
+            href={ADTRACTION_WITT_LIVING_SHOP}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+          >
+            Gå direkte til Witt Living →
           </a>
         </p>
       </header>

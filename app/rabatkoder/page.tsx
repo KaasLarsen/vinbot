@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RabatkodeShopLink } from "@/components/rabatkode-shop-link";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/json-ld";
-import { ADTRACTION_VINKOELSKABET_SHOP } from "@/lib/adtraction-links";
+import { ADTRACTION_VINKOELSKABET_SHOP, ADTRACTION_WITT_LIVING_SHOP } from "@/lib/adtraction-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
@@ -140,6 +140,19 @@ const PARTNERE: RabatPartner[] = [
         title: "Shop — vinkøleskabe",
         body:
           "**Vinkøleskabet.dk** sælger vinkøleskabe og tilbehør. Priser, levering og kundeservice er på deres webshop.",
+      },
+    ],
+  },
+  {
+    name: "Witt Living",
+    shopUrl: "https://wittliving.com/da-dk",
+    affiliateVia: "adtraction",
+    affiliateHref: ADTRACTION_WITT_LIVING_SHOP,
+    entries: [
+      {
+        title: "Shop — vinkøleskabe",
+        body:
+          "**Witt Living** sælger vinkøleskabe (Witt, Haier, Liebherr m.fl.). Priser, levering og kundeservice er på deres webshop.",
       },
     ],
   },
