@@ -1,6 +1,6 @@
 "use client";
 
-import { productOutboundRel } from "@/lib/feeds/outbound-link";
+import { canProductOutbound, FREE_TIER_LABEL, productOutboundRel } from "@/lib/feeds/outbound-link";
 import type { ProductHit } from "@/lib/search/types";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
 import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
@@ -22,11 +22,19 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
         )
       : null;
 
+  const canOutbound = canProductOutbound(product.tier);
   const linkRel = productOutboundRel(product.tier);
-  const isFree = product.tier === "free";
+  const isFree = !canOutbound;
 
   const onClick = () =>
     trackAffiliateClick({ merchant: product.merchant, placement, url: href });
+
+  const image = product.image ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={product.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+  ) : (
+    <div className="px-2 text-center text-xs text-stone-400">Intet billede</div>
+  );
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
@@ -36,34 +44,31 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
             Tilbud −{product.discountPercent}%
           </span>
         ) : null}
-        <a
-          href={href}
-          target="_blank"
-          rel={linkRel}
-          onClick={onClick}
-          className={IMAGE_FRAME}
-        >
-        {product.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={product.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+        {canOutbound ? (
+          <a href={href} target="_blank" rel={linkRel} onClick={onClick} className={IMAGE_FRAME}>
+            {image}
+          </a>
         ) : (
-          <div className="px-2 text-center text-xs text-stone-400">Intet billede</div>
+          <div className={IMAGE_FRAME}>{image}</div>
         )}
-        </a>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
           {isFree ? (
             <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
-              Gratis butik
+              {FREE_TIER_LABEL}
             </span>
           ) : null}
         </div>
         <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-          <a href={href} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
-            {product.title}
-          </a>
+          {canOutbound ? (
+            <a href={href} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
+              {product.title}
+            </a>
+          ) : (
+            product.title
+          )}
         </h3>
         {price && (
           <div className="flex flex-wrap items-baseline gap-2">
@@ -73,15 +78,19 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
             ) : null}
           </div>
         )}
-        <a
-          href={href}
-          target="_blank"
-          rel={linkRel}
-          onClick={onClick}
-          className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
-        >
-          Se hos forhandler
-        </a>
+        {canOutbound ? (
+          <a
+            href={href}
+            target="_blank"
+            rel={linkRel}
+            onClick={onClick}
+            className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
+          >
+            Se hos forhandler
+          </a>
+        ) : (
+          <p className="mt-auto text-center text-xs font-medium text-stone-500">{FREE_TIER_LABEL}</p>
+        )}
       </div>
     </article>
   );

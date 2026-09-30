@@ -48,12 +48,15 @@ export default function ForhandlerePage() {
           kræver ingen aftale og ingen betaling.
         </p>
         <ul className="ml-5 list-disc space-y-2 leading-relaxed">
-          <li>I indgår i vinsøgningen på lige fod med andre forhandlere.</li>
+          <li>I indgår i vinsøgningen — flasker og priser vises for læserne.</li>
           <li>
-            Det er synligt, at I ikke er samarbejdspartner — I bliver ikke prioriteret på guides,
-            hub-sider og andre redaktionelle overflader.
+            Det er synligt, at I ikke er samarbejdspartner: I bliver ikke prioriteret på guides og
+            hub-sider, og der er <strong>ingen klik videre</strong> til jeres shop fra Vinbot.
           </li>
-          <li>God start, hvis I bare vil være synlige i prissammenligningen.</li>
+          <li>
+            God start, hvis I bare vil være synlige i prissammenligningen. For shop-links kræves
+            affiliate eller CPC.
+          </li>
         </ul>
       </section>
 
@@ -116,8 +119,8 @@ export default function ForhandlerePage() {
           </li>
         </ul>
         <p className="leading-relaxed">
-          Gratis butikker indgår i søgningen, men prioriteres ikke på guides og hub-sider — se forskellen
-          under gratis listing vs. partner ovenfor.
+          Gratis butikker indgår i søgningen uden link videre til shoppen, og prioriteres ikke på
+          guides og hub-sider — se forskellen under gratis listing vs. partner ovenfor.
         </p>
       </section>
 

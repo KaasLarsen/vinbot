@@ -43,7 +43,7 @@ export type SearchMeta = {
   results_capped: boolean;
   /** Sat når søgningen er butiks-browse (sortiment hos én forhandler). */
   merchant_browse: string | null;
-  /** Tier for den browsede butik — til «Gratis butik» i UI. */
+  /** Tier for den browsede butik — til «Ikke samarbejdspartner» i UI. */
   merchant_browse_tier: FeedTier | null;
 };
 

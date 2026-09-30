@@ -14,6 +14,7 @@ import { BarcodeScanner, type BarcodeScannerErrorKind } from "@/components/barco
 import { SearchCuratedWineStrip } from "@/components/search-curated-dsf-strip";
 import { wineFormatIntentFromQuery } from "@/lib/search/wine-format";
 import { matchLandeFromQuery } from "@/lib/lande/registry";
+import { FREE_TIER_LABEL } from "@/lib/feeds/outbound-link";
 
 export type WineSearchChip = { label: string; q: string; max?: number };
 
@@ -852,7 +853,7 @@ export function WineSearch({
               <h2 className="text-lg font-semibold text-stone-900">Sortiment hos {merchantBrowse}</h2>
               {merchantBrowseTier === "free" ? (
                 <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
-                  Gratis butik
+                  {FREE_TIER_LABEL}
                 </span>
               ) : null}
             </div>

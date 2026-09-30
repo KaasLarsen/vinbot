@@ -20,6 +20,7 @@ import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { PageShell } from "@/components/page-shell";
+import { canProductOutbound, FREE_TIER_LABEL, productOutboundRel } from "@/lib/feeds/outbound-link";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -181,13 +182,15 @@ export default async function VineProductPage({ params }: Props) {
         <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-stone-900">Hvor kan du købe den?</h2>
           <ul className="mt-4 divide-y divide-stone-100">
-            {wine.offers.map((o) => (
+            {wine.offers.map((o) => {
+              const canOutbound = canProductOutbound(o.tier);
+              return (
               <li key={`${o.merchant}-${o.url}`} className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <span className="font-medium text-stone-900">{o.merchant}</span>
-                  {o.tier === "free" ? (
+                  {!canOutbound ? (
                     <span className="ml-2 rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
-                      Gratis butik
+                      {FREE_TIER_LABEL}
                     </span>
                   ) : null}
                   {typeof o.price === "number" ? (
@@ -198,16 +201,23 @@ export default async function VineProductPage({ params }: Props) {
                     <span className="ml-2 text-stone-500">Pris ikke angivet</span>
                   )}
                 </div>
-                <a
-                  href={o.url}
-                  target="_blank"
-                  rel={o.tier === "free" ? "nofollow noopener noreferrer" : "nofollow sponsored noopener noreferrer"}
-                  className="inline-flex shrink-0 rounded-xl bg-rose-900 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-950"
-                >
-                  Til butikken
-                </a>
+                {canOutbound ? (
+                  <a
+                    href={o.url}
+                    target="_blank"
+                    rel={productOutboundRel(o.tier)}
+                    className="inline-flex shrink-0 rounded-xl bg-rose-900 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-950"
+                  >
+                    Til butikken
+                  </a>
+                ) : (
+                  <span className="inline-flex shrink-0 rounded-xl bg-stone-100 px-4 py-2 text-sm font-medium text-stone-500">
+                    {FREE_TIER_LABEL}
+                  </span>
+                )}
               </li>
-            ))}
+              );
+            })}
           </ul>
         </section>
 

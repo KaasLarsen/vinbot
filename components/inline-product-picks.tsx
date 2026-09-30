@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { ProductHit } from "@/lib/search/types";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { canProductOutbound, FREE_TIER_LABEL, productOutboundRel } from "@/lib/feeds/outbound-link";
 import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 type ApiResponse = { source: string; products: ProductHit[] };
@@ -144,54 +145,58 @@ function InlineProductCard({
     });
   };
 
-  const linkRel = product.tier === "free" ? "nofollow noopener noreferrer" : "nofollow sponsored noopener noreferrer";
+  const canOutbound = canProductOutbound(product.tier);
+  const linkRel = productOutboundRel(product.tier);
+  const imageFrame =
+    "mx-auto mt-3 flex size-28 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-32";
+  const image = product.image ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={product.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+  ) : (
+    <span className="px-2 text-center text-[11px] text-stone-400">Intet billede</span>
+  );
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
-      <a
-        href={href}
-        target="_blank"
-        rel={linkRel}
-        onClick={onClick}
-        className="mx-auto mt-3 flex size-28 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-stone-100 sm:size-32"
-      >
-        {product.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={product.image} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
-        ) : (
-          <span className="px-2 text-center text-[11px] text-stone-400">Intet billede</span>
-        )}
-      </a>
+      {canOutbound ? (
+        <a href={href} target="_blank" rel={linkRel} onClick={onClick} className={imageFrame}>
+          {image}
+        </a>
+      ) : (
+        <div className={imageFrame}>{image}</div>
+      )}
       <div className="flex flex-1 flex-col gap-1.5 p-3">
         <div className="flex flex-wrap items-center gap-1.5">
           <p className="text-[10px] font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
-          {product.tier === "free" ? (
+          {!canOutbound ? (
             <span className="rounded bg-stone-100 px-1 py-0.5 text-[9px] font-medium uppercase tracking-wide text-stone-600">
-              Gratis
+              {FREE_TIER_LABEL}
             </span>
           ) : null}
         </div>
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-stone-900">
+          {canOutbound ? (
+            <a href={href} target="_blank" rel={linkRel} onClick={onClick} className="hover:underline">
+              {product.title}
+            </a>
+          ) : (
+            product.title
+          )}
+        </h3>
+        {price && <p className="text-sm font-semibold text-stone-800">{price}</p>}
+        {canOutbound ? (
           <a
             href={href}
             target="_blank"
             rel={linkRel}
             onClick={onClick}
-            className="hover:underline"
+            className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-3 py-2 text-xs font-medium text-white hover:bg-rose-950"
           >
-            {product.title}
+            Se hos forhandler
           </a>
-        </h3>
-        {price && <p className="text-sm font-semibold text-stone-800">{price}</p>}
-        <a
-          href={href}
-          target="_blank"
-          rel={linkRel}
-          onClick={onClick}
-          className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-3 py-2 text-xs font-medium text-white hover:bg-rose-950"
-        >
-          Se hos forhandler
-        </a>
+        ) : (
+          <p className="mt-auto text-center text-[11px] font-medium text-stone-500">{FREE_TIER_LABEL}</p>
+        )}
       </div>
     </article>
   );
