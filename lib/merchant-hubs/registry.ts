@@ -1,4 +1,8 @@
-import { HAVNENS_VIN_SHOP_HREF } from "@/lib/daisycon-links";
+import {
+  DECANTALO_SHOP_HREF,
+  HAVNENS_VIN_SHOP_HREF,
+  QUIEROVINOS_SHOP_HREF,
+} from "@/lib/daisycon-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 import type { MerchantHubConfig } from "@/lib/merchant-hubs/types";
 
@@ -1015,6 +1019,111 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     affiliate: { kind: "feed-only" },
+  },
+  {
+    slug: "decantalo",
+    displayName: "Decantalo",
+    feedMerchant: "Decantalo",
+    blurb: "International vinwebshop med spanske og europæiske flasker — i Vinbots Daisycon-feed.",
+    title: "Decantalo — shop og inspiration | Vinbot",
+    description:
+      "Decantalo er en international vinforhandler i Vinbots Daisycon-feed. Se flasker med pris og klik videre til køb.",
+    introParagraphs: [
+      "Decantalo er en international vinwebshop med stærkt fokus på spanske og europæiske vine. Deres sortiment synkroniseres til Vinbot via Daisycon, så du kan finde flasker i søgningen og klikke videre til shoppen.",
+      "Vinbot sælger ikke vin. Du handler og betaler altid hos Decantalo — via shop-CTA eller produktkort fra feedet.",
+      "Brug forsiden til at sammenligne med danske forhandlere, hvis du vil se flere shops side om side — og husk fragt og told, når du handler internationalt.",
+    ],
+    matchHeading: "Hvornår er Decantalo et godt match?",
+    matchBullets: [
+      "Du har set Decantalo i Vinbots søgeresultater.",
+      "Du vil browse spanske eller internationale vine hos én shop.",
+      "Du vil bruge flaskekort eller shop-link som direkte købs-CTA.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/regioner", label: "Regioner" },
+      { href: "/guides", label: "Guider" },
+    ],
+    shopCtaLabel: "Besøg Decantalo",
+    shopIntro: "Åbner Decantalo i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro: "Flasker fra Decantalo i vores Daisycon-feed.",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Decantalo",
+        queries: ["rioja", "ribera del duero", "albariño"],
+        placement: "decantalo-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Decantalo?",
+        answer:
+          "Når du køber efter et klik fra Vinbot via feedet eller shop-linket, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Kan jeg se Decantalo i Vinbots vin-katalog?",
+        answer:
+          "Ja. Flasker fra feedet indgår i vinsøgningen og under /vine, når de matcher vores vinfiltre — sammenlign pris og forhandler der.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid Decantalos egen side som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: { kind: "daisycon", shopHref: DECANTALO_SHOP_HREF },
+  },
+  {
+    slug: "quierovinos",
+    displayName: "QuieroVinos",
+    feedMerchant: null,
+    blurb: "International vinwebshop — link til shoppen via Daisycon (ingen produktfeed endnu).",
+    title: "QuieroVinos — shop og inspiration | Vinbot",
+    description:
+      "QuieroVinos er en international vinforhandler Vinbot linker til via Daisycon. Inspiration og direkte shop-link — uden produktfeed i søgningen endnu.",
+    introParagraphs: [
+      "QuieroVinos er en international vinwebshop. Vinbot har endnu ikke deres produktfeed i søgningen — hubben her giver kontekst og et tracked link videre til shoppen.",
+      "Vinbot sælger ikke vin. Du handler og betaler altid hos QuieroVinos, når du klikker videre.",
+      "Brug vinsøgningen på forsiden til at sammenligne flasker fra andre forhandlere, før du vælger, hvor du handler.",
+    ],
+    matchHeading: "Hvornår er QuieroVinos et godt match?",
+    matchBullets: [
+      "Du vil browse en international vinshop direkte.",
+      "Du har hørt om QuieroVinos og vil hoppe videre fra Vinbot.",
+      "Du sammenligner gerne med andre shops i Vinbots søgning først.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/regioner", label: "Regioner" },
+      { href: "/guides", label: "Guider" },
+    ],
+    shopCtaLabel: "Besøg QuieroVinos",
+    shopIntro: "Åbner QuieroVinos i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro:
+      "Inspiration fra andre forhandlere i Vinbots søgning — QuieroVinos har endnu ikke produktfeed hos os.",
+    productSections: [
+      {
+        title: "Spanske og internationale vine (andre shops)",
+        queries: ["rioja", "priorat", "tempranillo"],
+        placement: "quierovinos-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til QuieroVinos?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Kan jeg se QuieroVinos-flasker i Vinbots søgning?",
+        answer:
+          "Ikke endnu — QuieroVinos har ingen produktfeed hos os. Brug shop-linket ovenfor, eller sammenlign andre forhandlere i vinsøgningen.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid QuieroVinos’ egen side som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: { kind: "daisycon", shopHref: QUIEROVINOS_SHOP_HREF },
   },
   {
     slug: "vinpalle",

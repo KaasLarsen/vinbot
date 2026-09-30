@@ -45,6 +45,8 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   vinpalle: "online-lots",
   "villa-bianca": "online-lots",
   "bottles-with-history": "online-lots",
+  decantalo: "online-lots",
+  quierovinos: "online-lots",
   "philipson-wine": "importers",
   "erik-sorensen-vin": "importers",
   "kjaer-sommerfeldt": "importers",
@@ -108,6 +110,10 @@ const PARTNER_BLURBS: Record<string, string> = {
     "Bottles With History er specialister i flasker med en historie — ældre årgange og mere særlige fund. Black Friday er tidspunktet at tjekke, om de slipper sjældenheder til en pris, der faktisk er lavere end til hverdag.",
   "8wines":
     "8wines er en international online-shop med et stort katalog og skarpe priser. Hold øje med Black Friday, hvis du jager volumen og kendte etiketter — og husk at medregne fragt, før du sammenligner med danske butikker.",
+  decantalo:
+    "Decantalo er en international vinshop med spanske og europæiske flasker. Hold øje med Black Friday, hvis du jagter Rioja, Ribera eller andre spanske klassikere — og husk at medregne fragt, før du sammenligner med danske butikker.",
+  quierovinos:
+    "QuieroVinos er en international vinwebshop Vinbot linker til via Daisycon. Hold øje med Black Friday, hvis du vil browse deres sortiment direkte — og husk fragt og slutpris på deres egen side.",
   "wine-store":
     "Wine Store er en dansk kæde/webshop med et bredt, tilgængeligt sortiment. På Black Friday er de relevante, hvis du vil handle vin, som du kender fra hylderne, og stadig tjekke, om kampagneprisen holder i sammenligningen.",
   whiskystack:

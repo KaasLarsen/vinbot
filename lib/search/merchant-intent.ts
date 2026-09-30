@@ -46,6 +46,7 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "Bottles With History": ["bottles with history", "bwh"],
   "8wines": ["8 wines", "8wine"],
   "Wine Store": ["winestore", "wine store"],
+  Decantalo: ["decantalo"],
   "Erling Christensen Møbler": ["erling christensen", "erling christensen mobler", "christensen mobler"],
   "Homeshop.dk": ["homeshop", "home shop"],
   "Kai Berntsen ApS": ["kai berntsen", "kai bertsen", "kai berntsen aps"],

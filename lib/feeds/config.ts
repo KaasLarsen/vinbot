@@ -203,6 +203,10 @@ export const FEEDS: FeedConfig[] = [
     url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=11&type=xml&program_id=21457&html_transform=none&rawdata=false&encoding=utf8&general=false",
   },
   {
+    merchant: "Decantalo",
+    url: "https://daisycon.io/datafeed/?media_id=399526&standard_id=4&language_code=da&locale_id=6&type=xml&program_id=18645&html_transform=none&rawdata=false&encoding=utf8&general=false",
+  },
+  {
     merchant: "Vinpalle",
     url: "https://www.vinpalle.dk/google-shopping-feed",
     tier: "free",
