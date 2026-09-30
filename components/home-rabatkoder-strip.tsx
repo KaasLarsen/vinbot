@@ -8,10 +8,10 @@ export function HomeRabatkoderStrip() {
 
   return (
     <section
-      className="rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5"
+      className="rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-4 sm:p-5"
       aria-labelledby="home-rabatkoder-heading"
     >
-      <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Rabatkoder</p>
+      <p className="text-xs font-semibold uppercase tracking-wider text-emerald-900/90">Rabatkoder</p>
       <h2 id="home-rabatkoder-heading" className="mt-1 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">
         Gode koder lige nu
       </h2>
@@ -23,7 +23,7 @@ export function HomeRabatkoderStrip() {
         {codes.map((item) => (
           <li
             key={`${item.partnerName}-${item.code}`}
-            className="rounded-xl border border-rose-200/80 bg-white px-3 py-2.5 shadow-sm"
+            className="rounded-xl border border-emerald-200/80 bg-white px-3 py-2.5 shadow-sm"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
@@ -32,14 +32,14 @@ export function HomeRabatkoderStrip() {
                   <code className="rounded-md border border-stone-200 bg-stone-50 px-2 py-0.5 font-mono text-sm font-semibold tracking-wide text-stone-900">
                     {item.code}
                   </code>
-                  <span className="text-xs font-medium text-rose-900">{item.benefit}</span>
+                  <span className="text-xs font-medium text-emerald-800">{item.benefit}</span>
                 </p>
               </div>
               <RabatkodeShopLink
                 href={item.affiliateHref}
                 merchant={item.partnerName}
                 placement="home-rabatkoder"
-                className="shrink-0 text-sm font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                className="shrink-0 text-sm font-medium text-emerald-900 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-950"
               >
                 Shop *
               </RabatkodeShopLink>
@@ -54,7 +54,7 @@ export function HomeRabatkoderStrip() {
         </p>
         <Link
           href="/rabatkoder"
-          className="text-sm font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+          className="text-sm font-medium text-emerald-900 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-950"
         >
           Alle rabatkoder →
         </Link>
