@@ -95,6 +95,7 @@ const moreNavGroups: NavGroup[] = [
       { href: "/druesorter", label: "Druesorter" },
       { href: "/lande", label: "Vinlande", activePrefix: "/lande" },
       { href: "/regioner", label: "Regioner" },
+      { href: "/investering", label: "Investering" },
       { href: "/guides", label: "Alle guides", activePrefix: "/guides" },
     ],
   },
