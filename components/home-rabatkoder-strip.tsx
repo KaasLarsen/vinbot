@@ -8,7 +8,7 @@ export function HomeRabatkoderStrip() {
 
   return (
     <section
-      className="rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-4 sm:p-5"
+      className="mt-8 rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-4 sm:p-5 lg:mt-0"
       aria-labelledby="home-rabatkoder-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-emerald-900/90">Rabatkoder</p>
