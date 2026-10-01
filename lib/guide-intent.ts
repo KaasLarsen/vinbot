@@ -271,6 +271,15 @@ export function deriveGuideIntent(
     };
   }
 
+  /** Mortensaften: slug alene matcher dårligt i feeds; brug pinot/gamay/and-hints. */
+  if (slug === "vin-til-mortensaften") {
+    return {
+      q: "pinot noir gamay beaujolais andesteg mortensaften",
+      max: 250,
+      label: "vin til Mortensaften",
+    };
+  }
+
   if (slug.startsWith("vin-til-")) {
     const food = slug.replace(/^vin-til-/, "").replace(/-/g, " ");
     return {

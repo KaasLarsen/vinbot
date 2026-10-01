@@ -3,6 +3,7 @@ export const GUIDE_INLINE_SEARCH_SLUGS = new Set([
   "vin-til-flaesketesteg",
   "vin-til-juleaften",
   "vin-til-juleand",
+  "vin-til-mortensaften",
   "bedste-julevin",
   "vin-til-tapas",
   "vin-til-gryderet",

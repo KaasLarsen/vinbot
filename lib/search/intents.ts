@@ -11,11 +11,17 @@ export function intentTermsFromQuery(q = ""): string[] {
   /* Land-synonymer (frankrig↔france, spanien↔spain, …) */
   countryIntentTermsFromQuery(q).forEach((t) => add(t));
 
-  if (/(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost)/.test(txt)) {
+  if (
+    /(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost|mortensaften|mortens)/.test(
+      txt,
+    )
+  ) {
     add(
       "rødvin",
       "pinot noir",
       "bourgogne",
+      "beaujolais",
+      "gamay",
       "valpolicella",
       "amarone",
       "ripasso",
