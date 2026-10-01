@@ -37,7 +37,10 @@ test("konfirmation in ISO weeks 18–24", () => {
 });
 
 test("Mortensaften window", () => {
+  assert.equal(idAt("2026-10-20T12:00:00+02:00"), "mortens");
   assert.equal(idAt("2026-11-10T12:00:00+01:00"), "mortens");
+  assert.equal(idAt("2026-11-15T12:00:00+01:00"), "mortens");
+  assert.equal(idAt("2026-11-16T12:00:00+01:00"), "efteraar");
 });
 
 test("Friday takeaway beats grill season", () => {
@@ -52,8 +55,9 @@ test("midweek July is grill", () => {
   assert.equal(idAt("2026-07-08T12:00:00+02:00"), "grill");
 });
 
-test("October weekday is efterår", () => {
+test("early October weekday is efterår", () => {
   assert.equal(idAt("2026-10-07T12:00:00+02:00"), "efteraar");
+  assert.equal(idAt("2026-10-19T12:00:00+02:00"), "efteraar");
 });
 
 test("late January weekday is vinter", () => {

@@ -34,6 +34,8 @@ const ALL_CHIPS: WineSearchChip[] = [
   { label: "Påske", q: "påske hvidvin riesling" },
   { label: "Forår", q: "forår rosé sauvignon blanc" },
   { label: "Efterår", q: "efterår rødvin" },
+  { label: "Mortensaften", q: "pinot noir gamay and mortensaften" },
+  { label: "And", q: "pinot noir and" },
   { label: "Under 150 kr", q: "vin", max: 150 },
   { label: "Nebbiolo", q: "nebbiolo" },
   { label: "Riesling", q: "riesling hvidvin" },
@@ -173,9 +175,9 @@ function seasonalChips(monthIndex: number): WineSearchChip[] {
     case 8:
       return pick("Efterår", "Grill", "Hygge", "Tapas", "Under 150 kr");
     case 9:
-      return pick("Efterår", "Hygge", "Romantisk", "Tapas", "Under 150 kr");
+      return pick("Mortensaften", "And", "Efterår", "Hygge", "Pinot noir", "Under 150 kr");
     case 10:
-      return pick("Hygge", "Efterår", "Romantisk", "Julemad", "Nebbiolo", "Under 150 kr");
+      return pick("Mortensaften", "And", "Pinot noir", "Hygge", "Julemad", "Under 150 kr");
     case 11:
       return pick("Julemad", "Nytår bobler", "Nytår", "Gave under 200 kr", "Champagne", "Under 150 kr");
     default:
@@ -194,9 +196,10 @@ function seasonalPlaceholder(monthIndex: number): string {
     case 7:
       return "Fx grill, rosé, sommer, fisk, tapas…";
     case 8:
-    case 9:
       return "Fx vildt, rødvin, svamperet, hygge…";
+    case 9:
     case 10:
+      return "Fx mortensaften, and, pinot noir, hygge…";
     case 11:
       return "Fx julemad, rødvin, nytår, champagne…";
     default:

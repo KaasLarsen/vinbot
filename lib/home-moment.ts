@@ -716,14 +716,15 @@ export function resolveHomeMomentId(parts: CopenhagenParts): HomeMomentId {
 
   if (isoWeek >= 18 && isoWeek <= 24) return "konfirmation";
 
-  if (month === 11 && day <= 15) return "mortens";
+  // Mortensaften ~10. nov — start ca. 3 uger før, så folk kan købe vin i tide.
+  if ((month === 10 && day >= 20) || (month === 11 && day <= 15)) return "mortens";
 
   if (weekday === 5) return "friday";
   if (weekday === 0) return "sunday";
 
   if (month >= 6 && month <= 8) return "grill";
   if (month === 5 && isoWeek > 24) return "grill";
-  if (month === 9 || month === 10 || (month === 11 && day > 15)) return "efteraar";
+  if (month === 9 || (month === 10 && day < 20) || (month === 11 && day > 15)) return "efteraar";
   if (month === 1 || month === 2) return "vinter";
   if (month === 3 || month === 4) return "foraar";
 
