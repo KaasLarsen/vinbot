@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { siteUrl } from "@/lib/site";
 import { recordDailyPriceSnapshot } from "@/lib/black-friday/price-snapshots";
+import { dispatchPriceAlerts } from "@/lib/price-alerts/dispatch";
 import { warmWineCatalog } from "@/lib/vine/catalog";
 import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
 
@@ -58,6 +59,18 @@ export async function GET(req: NextRequest) {
   revalidateTag("vinbot-feeds", "max");
   const catalog = await warmWineCatalog();
   const snapshot = await recordDailyPriceSnapshot(catalog);
+  let priceAlerts: { considered: number; sent: number; skipped: number; failed: number } | { error: string } = {
+    considered: 0,
+    sent: 0,
+    skipped: 0,
+    failed: 0,
+  };
+  try {
+    priceAlerts = await dispatchPriceAlerts(catalog);
+  } catch (err) {
+    console.error("dispatchPriceAlerts:", err);
+    priceAlerts = { error: "dispatch failed" };
+  }
   const featured = await warmFeaturedWinePages();
   return NextResponse.json({
     revalidated: true,
@@ -65,6 +78,7 @@ export async function GET(req: NextRequest) {
     catalogWines: catalog.wines.length,
     catalogGeneratedAt: catalog.generatedAt,
     priceSnapshot: snapshot,
+    priceAlerts,
     featuredWarmed: featured.warmed,
     featuredFailed: featured.failed,
   });

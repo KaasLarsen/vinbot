@@ -20,7 +20,9 @@ import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { PageShell } from "@/components/page-shell";
+import { PriceAlertSignup } from "@/components/price-alert-signup";
 import { canProductOutbound, FREE_TIER_LABEL, productOutboundRel } from "@/lib/feeds/outbound-link";
+import { currentPaidDeal } from "@/lib/price-alerts/match";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -181,7 +183,14 @@ export default async function VineProductPage({ params }: Props) {
 
         <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-stone-900">Hvor kan du købe den?</h2>
-          <ul className="mt-4 divide-y divide-stone-100">
+          <div className="mt-4 rounded-xl border border-rose-100 bg-rose-50/70 p-4">
+            <PriceAlertSignup
+              slug={wine.slug}
+              wineTitle={wine.displayTitle}
+              currentDeal={currentPaidDeal(wine.offers)}
+            />
+          </div>
+          <ul className="mt-2 divide-y divide-stone-100">
             {wine.offers.map((o) => {
               const canOutbound = canProductOutbound(o.tier);
               return (

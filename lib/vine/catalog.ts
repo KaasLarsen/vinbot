@@ -125,14 +125,18 @@ async function buildWineCatalog(): Promise<WineCatalog> {
       if (!acc.gtin && p.gtin) acc.gtin = p.gtin;
       if (!acc.image && p.image?.trim()) acc.image = p.image.trim();
 
-      acc.offers.push({
+      const offer: VineOffer = {
         merchant: p.merchant,
         tier: p.tier,
         price: p.price,
         currency: p.currency || "DKK",
         url: p.url,
         listingTitle: p.title,
-      });
+      };
+      // Kun sat når feedet har tal — null på hvert tilbud sprænger Next.js' 2 MB cache-loft.
+      if (typeof p.referencePrice === "number") offer.referencePrice = p.referencePrice;
+      if (typeof p.discountPercent === "number") offer.discountPercent = p.discountPercent;
+      acc.offers.push(offer);
     }
   }
 
@@ -191,7 +195,7 @@ async function buildWineCatalogForCache(): Promise<WineCatalog> {
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalogForCache, ["vinbot-wine-catalog-v15-slim"], {
+export const getCachedWineCatalog = unstable_cache(buildWineCatalogForCache, ["vinbot-wine-catalog-v16-discount"], {
   revalidate: 21600,
   tags: ["vinbot-feeds"],
 });

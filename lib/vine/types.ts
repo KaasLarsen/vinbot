@@ -18,6 +18,10 @@ export type VineOffer = {
   url: string;
   /** Oprindelig listetitel fra forhandleren. */
   listingTitle: string;
+  /** Før-pris fra feedet, når butikken har angivet den. */
+  referencePrice?: number | null;
+  /** Rabat i procent når før-pris er højere end salgspris (feedets egen beregning, min. 5 %). */
+  discountPercent?: number | null;
 };
 
 export type CanonicalWine = {

@@ -16,7 +16,7 @@ import { PageShell } from "@/components/page-shell";
 
 const PAGE_TITLE = "Privatliv";
 const PAGE_DESCRIPTION =
-  "Sådan behandler Vinbot personoplysninger: Vinbot.dk (CVR), Vercel-hosting, nyhedsbrev, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon, PriceRunner).";
+  "Sådan behandler Vinbot personoplysninger: Vinbot.dk (CVR), Vercel-hosting, nyhedsbrev, prisfald-beskeder, cookies, Google Analytics, Google AdSense og affiliate (Partner-Ads, Adtraction, Daisycon, PriceRunner).";
 const PAGE_URL = `${siteUrl}/privatliv`;
 
 export const metadata: Metadata = {
@@ -72,7 +72,7 @@ export default function PrivatlivPage() {
 
         <h2 className="text-xl font-semibold text-stone-900">Hosting og behandlere</h2>
         <p>
-          Websitet hostes hos <strong>Vercel</strong>. Ved besøg kan tekniske oplysninger (herunder IP-adresse, browser og forespørgselsmetadata) behandles af Vercel og af os til drift og sikkerhed. Google (Analytics, AdSense) og affiliate-netværk behandler data efter deres vilkår, når de respektive tjenester er aktiveret efter dit samtykke. Til nyhedsbrev bruger vi <strong>Resend</strong> som databehandler til lagring af tilmeldte e-mailadresser og afsendelse af mails.
+          Websitet hostes hos <strong>Vercel</strong>. Ved besøg kan tekniske oplysninger (herunder IP-adresse, browser og forespørgselsmetadata) behandles af Vercel og af os til drift og sikkerhed. Google (Analytics, AdSense) og affiliate-netværk behandler data efter deres vilkår, når de respektive tjenester er aktiveret efter dit samtykke. Til nyhedsbrev og prisfald-mails bruger vi <strong>Resend</strong> som databehandler til afsendelse. E-mail til prisfald gemmes i <strong>Supabase</strong>.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Oplysninger vi behandler</h2>
@@ -85,6 +85,10 @@ export default function PrivatlivPage() {
             (samtykke-checkbox).
           </li>
           <li>
+            Prisfald: din e-mailadresse, hvilken vin du følger, den laveste partnerpris ved tilmelding, og hvornår vi har
+            sendt en besked — når du aktivt tilmelder dig på en vinside (samtykke-checkbox).
+          </li>
+          <li>
             Smagsprofil (valgfri): vine du markerer som favoritter gemmes <strong>kun lokalt i din browser</strong>{" "}
             (localStorage) på denne enhed — ikke på vores servere. Du kan slette profilen via «Rediger smagsprofil» eller
             ved at rydde websteddata.
@@ -92,7 +96,7 @@ export default function PrivatlivPage() {
         </ul>
         <p className="text-sm text-stone-600">
           Vi kører ikke forbruger-login eller brugerkonti på Vinbot (partner-login til CPC-portalen er separat).
-          Nyhedsbrev kræver kun din e-mail — ikke en separat forbrugerkonto.
+          Nyhedsbrev og prisfald kræver kun din e-mail — ikke en separat forbrugerkonto.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Nyhedsbrev</h2>
@@ -107,10 +111,24 @@ export default function PrivatlivPage() {
           for tekniske logge i en kort periode).
         </p>
 
+        <h2 className="text-xl font-semibold text-stone-900">Prisfald</h2>
+        <p>
+          Hvis du tilmelder dig prisfald på en vin, bruger vi din e-mail til at skrive, når en partnerbutik sætter den vin
+          på tilbud. Mailen indeholder butikkens navn, pris og et link til butikken. Retsgrundlaget er dit{" "}
+          <strong>samtykke</strong>. Tilmeldingen er ikke nyhedsbrevet. Du kan trække samtykket tilbage via
+          afmeldingslinket i mailen (én vin ad gangen) eller ved at skrive til{" "}
+          <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
+            {contactEmail}
+          </a>
+          . Vi opbevarer oplysningerne, så længe tilmeldingen er aktiv, og markerer den som afmeldt, når du stopper den.
+          Afsendte beskeder kan ligge i en kort teknisk log, så vi ikke sender samme tilbud igen med det samme.
+        </p>
+
         <h2 className="text-xl font-semibold text-stone-900">Formål og grundlag</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Drift og sikkerhed (berettiget interesse / nødvendighed for tjenesten).</li>
           <li>Nyhedsbrev med tilbud og nyheder (samtykke ved tilmelding).</li>
+          <li>Prisfald-mail om en vin, du selv har valgt at følge (samtykke ved tilmelding).</li>
           <li>Statistik og forbedring af sitet (samtykke, når du har trykket Accepter).</li>
           <li>Annoncer via Google AdSense (samtykke, når du har trykket Accepter).</li>
           <li>
@@ -148,6 +166,10 @@ export default function PrivatlivPage() {
         <h2 className="text-xl font-semibold text-stone-900">Opbevaring</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Nyhedsbrev: e-mailen gemmes, så længe du er tilmeldt, og slettes eller anonymiseres ved afmelding — med forbehold for korte tekniske logge.</li>
+          <li>
+            Prisfald: e-mail, vin og afsendelseshistorik gemmes, så længe tilmeldingen er aktiv. Ved afmelding stopper
+            nye mails med det samme. Du kan bede os slette oplysningerne helt.
+          </li>
           <li>Mails du sender til os: så længe korrespondancen er relevant, og derefter slettes den, når vi ikke længere har brug for den.</li>
           <li>Dit cookievalg og din 18+-bekræftelse ligger i din browser, indtil du nulstiller valget eller rydder data for sitet.</li>
           <li>
@@ -178,7 +200,7 @@ export default function PrivatlivPage() {
           <a href={`mailto:${contactEmail}`} className="text-rose-900 hover:underline">
             {contactEmail}
           </a>
-          . Nyhedsbrev kan også afmeldes via linket i mailen. Cookievalg nulstilles på siden{" "}
+          . Nyhedsbrev og prisfald kan også afmeldes via linket i mailen. Cookievalg nulstilles på siden{" "}
           <Link href="/cookiepolitik" className="text-rose-900 hover:underline">
             Cookiepolitik
           </Link>
