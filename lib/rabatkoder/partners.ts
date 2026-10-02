@@ -1,4 +1,8 @@
-import { ADTRACTION_VINKOELSKABET_SHOP, ADTRACTION_WITT_LIVING_SHOP } from "@/lib/adtraction-links";
+import {
+  ADTRACTION_JORGSHOLM_SHOP,
+  ADTRACTION_VINKOELSKABET_SHOP,
+  ADTRACTION_WITT_LIVING_SHOP,
+} from "@/lib/adtraction-links";
 import { QUIEROVINOS_SHOP_HREF } from "@/lib/daisycon-links";
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
 
@@ -156,6 +160,18 @@ export const PARTNERE: RabatPartner[] = [
       {
         title: "Shop — vinkøleskabe",
         body: "**Witt Living** sælger vinkøleskabe (Witt, Haier, Liebherr m.fl.). Priser, levering og kundeservice er på deres webshop.",
+      },
+    ],
+  },
+  {
+    name: "Jørgsholm",
+    shopUrl: "https://jorgsholm.dk/",
+    affiliateVia: "adtraction",
+    affiliateHref: ADTRACTION_JORGSHOLM_SHOP,
+    entries: [
+      {
+        title: "Shop — vinglas",
+        body: "**Jørgsholm** sælger mundblæste vinglas (rød, hvid og champagne). Priser, levering og kundeservice er på deres webshop.",
       },
     ],
   },

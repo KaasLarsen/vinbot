@@ -2,7 +2,7 @@ import type { FeedProduct } from "./types";
 import { foldDa } from "./wine-cooler";
 
 /** Feeds der indgår i vinglas-søgning (ikke almindelig vinsøgning). */
-export const WINE_GLASS_MERCHANTS: readonly string[] = ["LforLiving.dk", "Likehome.dk"];
+export const WINE_GLASS_MERCHANTS: readonly string[] = ["LforLiving.dk", "Likehome.dk", "Jørgsholm"];
 
 const GLASS_TITLE_MARKERS: readonly string[] = [
   "vinglas",

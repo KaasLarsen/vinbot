@@ -4,6 +4,7 @@ import { PriceRunnerProductWidget } from "@/components/pricerunner-product-widge
 import { ProductFeedPreview } from "@/components/product-feed-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/json-ld";
+import { ADTRACTION_JORGSHOLM_SHOP } from "@/lib/adtraction-links";
 import { partnerAdsKlikUrl, PARTNER_ADS_KLIK_BANNERS } from "@/lib/partner-ads-links";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
@@ -52,7 +53,7 @@ const FAQ = [
   {
     question: "Hvor køber man vinglas med pris og billede?",
     answer:
-      "På denne side viser vi glas fra LforLiving.dk og Likehome.dk, plus prissammenligning på konkrete modeller via PriceRunner. Klik videre til forhandleren for lager, fragt og aktuel pris.",
+      "På denne side viser vi glas fra LforLiving.dk, Likehome.dk og Jørgsholm, plus prissammenligning på konkrete modeller via PriceRunner. Klik videre til forhandleren for lager, fragt og aktuel pris.",
   },
 ];
 
@@ -102,7 +103,16 @@ export default function VinglasPage() {
             rel="nofollow sponsored noopener noreferrer"
             className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
           >
-            LforLiving.dk →
+            LforLiving.dk
+          </a>{" "}
+          og{" "}
+          <a
+            href={ADTRACTION_JORGSHOLM_SHOP}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+          >
+            Jørgsholm →
           </a>
         </p>
       </header>

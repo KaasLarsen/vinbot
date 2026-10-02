@@ -103,6 +103,10 @@ const VIN_ADJ_EXCLUDE_NON_WINE_GLASS: string[] = [
   "kop til",
 ];
 
+/** Jørgsholm (Adtraction) — køkkenkatalog; kun vinglas, ikke vandglas/ølglas/bestik. */
+const JORGSHOLM_GLASS_INCLUDE: string[] = ["rødvinsglas", "hvidvinsglas", "champagneglas", "vinglas"];
+const JORGSHOLM_GLASS_EXCLUDE: string[] = ["vandglas", "ølglas", "vandkaraffel", "bestik"];
+
 /** Ekstra til Likehome (store møbel-feed): vinreoler, vinbar m.m. */
 const VIN_ADJ_LIKEHOME_INCLUDE_EXTRA: string[] = [
   "vinreol",
@@ -139,6 +143,17 @@ export const FEEDS: FeedConfig[] = [
     wineFilter: false,
     vinAdjacentIncludeAny: [...VIN_ADJ_GLASS_AND_TOOLS, ...VIN_ADJ_LIKEHOME_INCLUDE_EXTRA],
     vinAdjacentExcludeAny: [...VIN_ADJ_EXCLUDE_NON_WINE_GLASS, "vinny"],
+  },
+  /**
+   * Jørgsholm (Adtraction) — blandet køkkenkatalog. Kun vinglas på /vinglas.
+   * Qookware (pfid 3121) må ikke tilføjes: knive og pander, ingen vinrelevante varer.
+   */
+  {
+    merchant: "Jørgsholm",
+    url: "https://secure.adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=2048668929&asid=2022448293&gsh=1&pfid=3287&gt=0",
+    wineFilter: false,
+    vinAdjacentIncludeAny: JORGSHOLM_GLASS_INCLUDE,
+    vinAdjacentExcludeAny: JORGSHOLM_GLASS_EXCLUDE,
   },
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
   { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
