@@ -32,10 +32,12 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
     void fetch("/api/wine-chat")
       .then((r) => r.json())
       .then((j: { available?: boolean }) => {
-        if (!cancelled) setAvailable(Boolean(j.available));
+        // Chat er altid tilgængelig (AI eller katalog-fallback).
+        if (!cancelled) setAvailable(j.available !== false);
       })
       .catch(() => {
-        if (!cancelled) setAvailable(false);
+        // Vis stadig UI — POST håndterer fejl.
+        if (!cancelled) setAvailable(true);
       });
     return () => {
       cancelled = true;

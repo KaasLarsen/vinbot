@@ -4,6 +4,7 @@ import { runSearch } from "@/lib/search/engine";
 import type { ProductHit } from "@/lib/search/types";
 import { tasteSimilarity } from "@/lib/taste/vector";
 import type { TasteVector } from "@/lib/taste/types";
+import { heuristicWineChatPlan } from "@/lib/wine-chat/fallback";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -63,18 +64,36 @@ Svar KUN med JSON:
 - Undgå alkoholpromille/rådgivning om beruselse. Foreslå vin til mad.
 - Hvis smagsprofil er givet, skævvred stil (fx tung rød vs let hvid) derefter.`;
 
-export async function POST(req: NextRequest) {
-  if (!hasOpenAi()) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: "AI-chat er ikke konfigureret endnu. Brug mad-vælgeren eller søgefeltet i stedet.",
-        code: "no_ai",
-      },
-      { status: 503 },
-    );
+async function collectProducts(
+  queries: string[],
+  budgetMax: number | null,
+  vector: TasteVector | null,
+): Promise<ProductHit[]> {
+  const seen = new Set<string>();
+  const products: ProductHit[] = [];
+
+  for (const q of queries) {
+    const result = await runSearch(q, budgetMax, null);
+    for (const p of result.products) {
+      const key = p.url || `${p.merchant}:${p.title}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      products.push(p);
+    }
   }
 
+  products.sort((a, b) => {
+    const blobA = `${a.title} ${a.brand} ${a.desc}`;
+    const blobB = `${b.title} ${b.brand} ${b.desc}`;
+    const sa = tasteSimilarity(blobA, vector) * 30 + (a.discountPercent ?? 0);
+    const sb = tasteSimilarity(blobB, vector) * 30 + (b.discountPercent ?? 0);
+    return sb - sa;
+  });
+
+  return products.slice(0, 4);
+}
+
+export async function POST(req: NextRequest) {
   const ip = clientIp(req);
   if (!rateLimit(ip)) {
     return NextResponse.json(
@@ -103,66 +122,72 @@ export async function POST(req: NextRequest) {
     }
 
     const taste = body.taste ?? null;
-    const tasteNote = taste
-      ? `Smagsprofil: styles=${JSON.stringify(taste.styles ?? {})}, tokens=${(taste.tokens ?? []).join(", ")}, body=${taste.body ?? 0}, oak=${taste.oak ?? 0}`
-      : "Ingen smagsprofil.";
-
-    const parsed = await openAiChatJson({
-      system: SYSTEM,
-      user: `${tasteNote}\n\nBruger: ${message}`,
-      maxTokens: 400,
-      temperature: 0.5,
-    });
-
-    if (!parsed) {
-      return NextResponse.json(
-        { ok: false, error: "AI svarede ikke. Prøv igen om lidt.", code: "ai_failed" },
-        { status: 502 },
-      );
-    }
-
-    const reply = String(parsed.reply ?? "").trim() || "Her er vine, der kan passe til det, du har.";
-    const queriesRaw = Array.isArray(parsed.searchQueries) ? parsed.searchQueries : [];
-    const queries = queriesRaw
-      .map((q) => String(q ?? "").trim())
-      .filter(Boolean)
-      .slice(0, 3);
-    const budgetMax =
-      typeof parsed.budgetMax === "number" && Number.isFinite(parsed.budgetMax)
-        ? parsed.budgetMax
-        : null;
-
-    if (!queries.length) {
-      queries.push(message.slice(0, 80));
-    }
-
     const vector = vectorFromCtx(taste);
-    const seen = new Set<string>();
-    const products: ProductHit[] = [];
+    let reply: string;
+    let queries: string[];
+    let budgetMax: number | null;
+    let source: "openai" | "fallback" = "fallback";
+    let aiError: { status: number | null; code: string; message: string } | null = null;
 
-    for (const q of queries) {
-      const result = await runSearch(q, budgetMax, null);
-      for (const p of result.products) {
-        const key = p.url || `${p.merchant}:${p.title}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        products.push(p);
+    if (hasOpenAi()) {
+      const tasteNote = taste
+        ? `Smagsprofil: styles=${JSON.stringify(taste.styles ?? {})}, tokens=${(taste.tokens ?? []).join(", ")}, body=${taste.body ?? 0}, oak=${taste.oak ?? 0}`
+        : "Ingen smagsprofil.";
+
+      const ai = await openAiChatJson({
+        system: SYSTEM,
+        user: `${tasteNote}\n\nBruger: ${message}`,
+        maxTokens: 400,
+        temperature: 0.5,
+      });
+
+      if (ai.ok) {
+        source = "openai";
+        reply = String(ai.data.reply ?? "").trim() || "Her er vine, der kan passe til det, du har.";
+        const queriesRaw = Array.isArray(ai.data.searchQueries) ? ai.data.searchQueries : [];
+        queries = queriesRaw
+          .map((q) => String(q ?? "").trim())
+          .filter(Boolean)
+          .slice(0, 3);
+        budgetMax =
+          typeof ai.data.budgetMax === "number" && Number.isFinite(ai.data.budgetMax)
+            ? ai.data.budgetMax
+            : null;
+        if (!queries.length) {
+          queries.push(message.slice(0, 80));
+        }
+      } else {
+        aiError = ai.error;
+        console.error("[wine-chat] openai failed, using fallback", ai.error);
+        const plan = heuristicWineChatPlan(message);
+        reply = plan.reply;
+        queries = plan.searchQueries;
+        budgetMax = plan.budgetMax;
       }
+    } else {
+      const plan = heuristicWineChatPlan(message);
+      reply = plan.reply;
+      queries = plan.searchQueries;
+      budgetMax = plan.budgetMax;
     }
 
-    products.sort((a, b) => {
-      const blobA = `${a.title} ${a.brand} ${a.desc}`;
-      const blobB = `${b.title} ${b.brand} ${b.desc}`;
-      const sa = tasteSimilarity(blobA, vector) * 30 + (a.discountPercent ?? 0);
-      const sb = tasteSimilarity(blobB, vector) * 30 + (b.discountPercent ?? 0);
-      return sb - sa;
-    });
+    const products = await collectProducts(queries, budgetMax, vector);
 
     return NextResponse.json({
       ok: true,
       reply,
       queries,
-      products: products.slice(0, 4),
+      products,
+      source,
+      ...(aiError
+        ? {
+            aiWarning: {
+              code: aiError.code,
+              message: aiError.message,
+              status: aiError.status,
+            },
+          }
+        : {}),
     });
   } catch (e) {
     console.error("[wine-chat]", e);
@@ -174,5 +199,6 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
-  return NextResponse.json({ available: hasOpenAi() });
+  // Chat er altid tilgængelig (OpenAI hvis sat, ellers katalog-fallback).
+  return NextResponse.json({ available: true, openai: hasOpenAi() });
 }
