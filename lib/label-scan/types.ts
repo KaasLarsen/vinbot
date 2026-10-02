@@ -6,8 +6,15 @@ export type LabelScanMatch = {
   brand: string;
   score: number;
   lowestPrice: number | null;
+  /** Butik med laveste pris. */
+  cheapestMerchant: string | null;
+  /** Højeste pris blandt offers (til «X kr billigere»). */
+  highestPrice: number | null;
+  highestMerchant: string | null;
   merchantCount: number;
   image: string | null;
+  /** Kort regel-baseret parringstekst. */
+  pairingHint: string | null;
 };
 
 export type LabelScanSuccess = {

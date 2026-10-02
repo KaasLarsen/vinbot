@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { LabelScanErrorBody, LabelScanSuccess } from "@/lib/label-scan/types";
+import type { LabelScanErrorBody, LabelScanMatch, LabelScanSuccess } from "@/lib/label-scan/types";
 import { navigateToHomeSearch } from "@/lib/home-search-url";
+import { LabelScanResultSheet } from "@/components/label-scan-result-sheet";
 
 export type LabelScannerErrorKind = "permission_denied" | "unsupported" | "other";
 
@@ -12,7 +13,7 @@ type Props = {
   onError?: (kind: LabelScannerErrorKind) => void;
 };
 
-type Phase = "camera" | "preview" | "analyzing" | "error";
+type Phase = "camera" | "preview" | "analyzing" | "result" | "error";
 
 function stopStream(stream: MediaStream | null) {
   if (!stream) return;
@@ -80,6 +81,8 @@ export function LabelScanner({ onClose, onError }: Props) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [analyzeHint, setAnalyzeHint] = useState("Aflæser etiket…");
+  const [scanResult, setScanResult] = useState<LabelScanSuccess | null>(null);
+  const [activeMatch, setActiveMatch] = useState<LabelScanMatch | null>(null);
 
   const emitError = useCallback(
     (kind: LabelScannerErrorKind, message: string) => {
@@ -186,6 +189,8 @@ export function LabelScanner({ onClose, onError }: Props) {
   const retake = useCallback(async () => {
     setPreviewUrl(null);
     setErrorMessage(null);
+    setScanResult(null);
+    setActiveMatch(null);
     setPhase("camera");
     setStatus("starting");
     try {
@@ -208,6 +213,22 @@ export function LabelScanner({ onClose, onError }: Props) {
       emitError("other", "Kunne ikke genstarte kameraet.");
     }
   }, [emitError]);
+
+  const goToWine = useCallback(
+    (slug: string) => {
+      onClose();
+      router.push(`/vine/${slug}`);
+    },
+    [onClose, router],
+  );
+
+  const searchFallback = useCallback(
+    (q: string) => {
+      onClose();
+      navigateToHomeSearch(q);
+    },
+    [onClose],
+  );
 
   const analyze = useCallback(async () => {
     if (!previewUrl) return;
@@ -246,15 +267,23 @@ export function LabelScanner({ onClose, onError }: Props) {
           slug: result.match.slug,
           score: result.match.score,
         });
-        onClose();
-        router.push(`/vine/${result.match.slug}`);
+        setScanResult(result);
+        setActiveMatch(result.match);
+        setPhase("result");
+        return;
+      }
+
+      if (result.alternatives.length > 0) {
+        trackLabelScan("ambiguous", { method: result.method });
+        setScanResult(result);
+        setActiveMatch(null);
+        setPhase("result");
         return;
       }
 
       if (result.query.trim()) {
         trackLabelScan("search_fallback", { method: result.method, query: result.query });
         onClose();
-        // Hard reload — Next soft-nav til /?q= fra forsiden kørte ikke søgningen pålideligt.
         navigateToHomeSearch(result.query);
         return;
       }
@@ -267,7 +296,7 @@ export function LabelScanner({ onClose, onError }: Props) {
       setErrorMessage("Netværksfejl under genkendelse. Tjek forbindelsen og prøv igen.");
       setPhase("error");
     }
-  }, [previewUrl, onClose, router]);
+  }, [previewUrl, onClose]);
 
   return (
     <div
@@ -292,7 +321,10 @@ export function LabelScanner({ onClose, onError }: Props) {
 
       <div className="relative mx-auto flex w-full max-w-lg flex-1 flex-col px-4 pb-8 sm:px-6">
         <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-lg ring-1 ring-white/10">
-          {phase === "preview" || phase === "analyzing" || (phase === "error" && previewUrl) ? (
+          {phase === "preview" ||
+          phase === "analyzing" ||
+          phase === "result" ||
+          (phase === "error" && previewUrl) ? (
             // eslint-disable-next-line @next/next/no-img-element -- lokal data-URL fra kamera
             <img src={previewUrl ?? undefined} alt="Etiket-foto" className="h-full w-full object-cover" />
           ) : (
@@ -326,6 +358,19 @@ export function LabelScanner({ onClose, onError }: Props) {
             <div className="absolute inset-0 flex items-center justify-center bg-stone-950/85 p-6 text-center">
               <p className="text-sm text-stone-100">{errorMessage}</p>
             </div>
+          ) : null}
+
+          {phase === "result" && scanResult ? (
+            <LabelScanResultSheet
+              match={activeMatch}
+              alternatives={scanResult.alternatives}
+              query={scanResult.query}
+              onPickAlternative={(m) => setActiveMatch(m)}
+              onGoToWine={goToWine}
+              onSearchFallback={searchFallback}
+              onRetake={() => void retake()}
+              onClose={onClose}
+            />
           ) : null}
         </div>
 

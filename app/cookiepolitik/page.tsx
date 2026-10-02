@@ -47,7 +47,8 @@ export default function CookiepolitikPage() {
         <h2 className="text-xl font-semibold text-stone-900">Nødvendige cookies</h2>
         <p>
           Teknik der gør sitet brugbart — fx sessions- og sikkerhedsrelevante cookies fra vores host (Vercel) og lokal lagring af dit{" "}
-          <strong>cookievalg</strong> og din <strong>18+-bekræftelse</strong> (så vi ikke spørger ved hvert sidevisning). De indlæses uanset bannervalg. De identificerer dig ikke på tværs af sites.
+          <strong>cookievalg</strong>, din <strong>18+-bekræftelse</strong> og eventuelt din <strong>smagsprofil</strong>{" "}
+          (favoritvine i localStorage, så vi ikke spørger ved hvert sidevisning). De indlæses uanset bannervalg. De identificerer dig ikke på tværs af sites.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Valgfrie cookies — efter samtykke</h2>

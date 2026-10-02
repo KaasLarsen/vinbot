@@ -84,9 +84,15 @@ export default function PrivatlivPage() {
             Nyhedsbrev: din e-mailadresse og tidspunkt for tilmelding, når du aktivt tilmelder dig via formularen på sitet
             (samtykke-checkbox).
           </li>
+          <li>
+            Smagsprofil (valgfri): vine du markerer som favoritter gemmes <strong>kun lokalt i din browser</strong>{" "}
+            (localStorage) på denne enhed — ikke på vores servere. Du kan slette profilen via «Rediger smagsprofil» eller
+            ved at rydde websteddata.
+          </li>
         </ul>
         <p className="text-sm text-stone-600">
-          Vi kører ikke login eller brugerkonti på Vinbot. Nyhedsbrev kræver kun din e-mail — ikke en separat konto.
+          Vi kører ikke forbruger-login eller brugerkonti på Vinbot (partner-login til CPC-portalen er separat).
+          Nyhedsbrev kræver kun din e-mail — ikke en separat forbrugerkonto.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Nyhedsbrev</h2>
@@ -144,6 +150,10 @@ export default function PrivatlivPage() {
           <li>Nyhedsbrev: e-mailen gemmes, så længe du er tilmeldt, og slettes eller anonymiseres ved afmelding — med forbehold for korte tekniske logge.</li>
           <li>Mails du sender til os: så længe korrespondancen er relevant, og derefter slettes den, når vi ikke længere har brug for den.</li>
           <li>Dit cookievalg og din 18+-bekræftelse ligger i din browser, indtil du nulstiller valget eller rydder data for sitet.</li>
+          <li>
+            Din valgfrie smagsprofil (liked vine) ligger i localStorage på din enhed og sendes ikke til vores database.
+            Når du bruger AI-chat, kan en anonym smags-opsummering sendes med forespørgslen, så anbefalinger passer bedre.
+          </li>
           <li>Driftslog hos Vercel gemmes i den periode, hosten bruger til drift og sikkerhed.</li>
         </ul>
 

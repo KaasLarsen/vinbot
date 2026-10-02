@@ -19,6 +19,8 @@ import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
 import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
+import { TasteProfileCta } from "@/components/taste-profile-cta";
+import { WineFridgeChat } from "@/components/wine-fridge-chat";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { siteName } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
@@ -54,8 +56,16 @@ export default function HomePage() {
 
           <HomeLabelScanButton />
 
+          <div className="mt-4" id="taste-profile">
+            <TasteProfileCta />
+          </div>
+
           <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-5">
             <FoodWinePicker />
+          </div>
+
+          <div className="relative z-10 mt-4 max-w-3xl">
+            <WineFridgeChat />
           </div>
 
           <div className="relative z-10 mt-4 max-w-xl">

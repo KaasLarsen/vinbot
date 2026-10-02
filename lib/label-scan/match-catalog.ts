@@ -1,6 +1,19 @@
 import type { CanonicalWine } from "../vine/types.ts";
 import type { LabelScanMatch } from "./types.ts";
 
+/** Let parringstekst uden @/-imports (unit-testbar i Node). */
+function shortPairingHint(wine: CanonicalWine): string | null {
+  const t = `${wine.displayTitle} ${wine.category}`.toLowerCase();
+  if (/primitivo|zinfandel/.test(t)) return "Passer ofte til grill, pasta og kraftige retter.";
+  if (/riesling|mosel/.test(t)) return "Passer ofte til fisk, asiatisk mad og ost.";
+  if (/chardonnay/.test(t)) return "Passer ofte til fjerkræ, cremede saucer og skaldyr.";
+  if (/cabernet|malbec|syrah|shiraz/.test(t)) return "Passer ofte til okse, lam og grill.";
+  if (/champagne|prosecco|cava|mousserende/.test(t)) return "Passer ofte til appetitvækkere og fest.";
+  if (/ros[eé]/.test(t)) return "Passer ofte til salat, grill og lette retter.";
+  if (/hvid|white|sauvignon/.test(t)) return "Passer ofte til fisk, fjerkræ og salater.";
+  return "Se vinside for madparring og priser hos forhandlere.";
+}
+
 /** Lokal normalize — undgår `@/`-imports så match-logik kan unit-testes i Node. */
 function normalize(s = ""): string {
   return s
@@ -168,15 +181,23 @@ function scoreWineAgainstTokens(hay: string, tokens: string[]): number {
 }
 
 function toMatch(wine: CanonicalWine, score: number): LabelScanMatch {
-  const prices = wine.offers.map((o) => o.price).filter((p): p is number => p != null);
+  const priced = wine.offers
+    .filter((o) => typeof o.price === "number")
+    .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+  const lowest = priced[0] ?? null;
+  const highest = priced.length > 1 ? priced[priced.length - 1] : null;
   return {
     slug: wine.slug,
     displayTitle: wine.displayTitle,
     brand: wine.brand,
     score,
-    lowestPrice: prices.length ? Math.min(...prices) : null,
+    lowestPrice: lowest?.price ?? null,
+    cheapestMerchant: lowest?.merchant ?? null,
+    highestPrice: highest?.price ?? null,
+    highestMerchant: highest?.merchant ?? null,
     merchantCount: wine.offers.length,
     image: wine.image,
+    pairingHint: shortPairingHint(wine),
   };
 }
 

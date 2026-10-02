@@ -5,26 +5,50 @@ import { useId, useMemo, useState } from "react";
 
 import { DealCard } from "@/components/deal-card";
 import type { DealSearchItem } from "@/lib/deals/types";
+import { rankByTaste } from "@/lib/taste/vector";
+import { useTasteProfile } from "@/lib/taste/use-taste-profile";
 
 const QUICK_CHIPS = ["Portvin", "Champagne", "Rosé"] as const;
 
-function topMatches(index: DealSearchItem[], q: string, limit: number): DealSearchItem[] {
+function topMatches(
+  index: DealSearchItem[],
+  q: string,
+  limit: number,
+  tasteBoost: boolean,
+  vector: ReturnType<typeof useTasteProfile>["vector"],
+): DealSearchItem[] {
   const t = q.trim().toLowerCase();
-  if (!t) return [];
-  return index
-    .filter((d) => d.s.includes(t) || d.title.toLowerCase().includes(t) || d.brand.toLowerCase().includes(t))
-    .sort((a, b) => b.discountPercent - a.discountPercent || a.salePrice - b.salePrice)
-    .slice(0, limit);
+  const pool = t
+    ? index.filter(
+        (d) => d.s.includes(t) || d.title.toLowerCase().includes(t) || d.brand.toLowerCase().includes(t),
+      )
+    : index;
+
+  const sorted =
+    tasteBoost && vector
+      ? rankByTaste(
+          pool,
+          (d) => `${d.title} ${d.brand} ${d.merchant}`,
+          (d) => d.discountPercent,
+          vector,
+        )
+      : [...pool].sort((a, b) => b.discountPercent - a.discountPercent || a.salePrice - b.salePrice);
+
+  return sorted.slice(0, limit);
 }
 
 export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
   const inputId = useId();
   const [q, setQ] = useState("");
-
-  const deals = useMemo(() => topMatches(index, q, 3), [index, q]);
+  const { ready, vector } = useTasteProfile();
 
   const trimmed = q.trim();
-  const showResults = trimmed.length > 0;
+  const showResults = trimmed.length > 0 || ready;
+
+  const deals = useMemo(
+    () => topMatches(index, q, 3, ready, vector),
+    [index, q, ready, vector],
+  );
 
   return (
     <section
@@ -36,7 +60,9 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
         Bedste tilbud lige nu
       </h2>
       <p className="mt-1.5 text-sm leading-relaxed text-stone-700">
-        Skriv fx Portvin — vi viser de 3 stærkeste rabatter.
+        {ready
+          ? "Tilpasset din smagsprofil — skriv for at filtrere yderligere."
+          : "Skriv fx Portvin — vi viser de 3 stærkeste rabatter."}
       </p>
 
       <div className="mt-3 min-w-0">
@@ -51,12 +77,11 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
           placeholder="fx Portvin, champagne, rosé"
           autoComplete="off"
           enterKeyHint="search"
-          // text-base (16px): undgår iOS Safari zoom ved fokus
           className="w-full max-w-full rounded-xl border border-rose-200 bg-white px-3 py-2.5 text-base text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
         />
       </div>
 
-      {!showResults ? (
+      {!trimmed && !ready ? (
         <ul className="mt-3 flex flex-wrap gap-2">
           {QUICK_CHIPS.map((chip) => (
             <li key={chip}>
@@ -75,7 +100,9 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
       {showResults ? (
         <div className="mt-4 min-w-0" aria-live="polite">
           {deals.length === 0 ? (
-            <p className="text-sm text-stone-600">Ingen tilbud matcher «{trimmed}» lige nu.</p>
+            <p className="text-sm text-stone-600">
+              {trimmed ? `Ingen tilbud matcher «${trimmed}» lige nu.` : "Ingen tilbud lige nu."}
+            </p>
           ) : (
             <ul className="grid min-w-0 gap-3">
               {deals.map((deal) => {

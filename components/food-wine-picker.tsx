@@ -13,6 +13,7 @@ import {
   getFoodPickerDish,
   type FoodPickerBudgetId,
 } from "@/lib/food-picker/dishes";
+import { setFoodSessionContext } from "@/lib/food-picker/session-context";
 import { dishesForMoment, getHomeMoment } from "@/lib/home-moment";
 
 type ApiResponse = { source: string; products: ProductHit[] };
@@ -135,6 +136,14 @@ export function FoodWinePicker({
   function pickDish(id: string) {
     allowScrollRef.current = true;
     setDishId(id);
+    const d = getFoodPickerDish(id);
+    if (d) {
+      setFoodSessionContext({
+        dishId: d.id,
+        dishLabel: d.label,
+        searchQuery: d.searchQuery,
+      });
+    }
     if (syncUrl) writeUrlPicker(id, budgetId, alcoholFree);
   }
 
