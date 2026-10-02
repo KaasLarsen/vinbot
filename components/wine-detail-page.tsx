@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { MerchantAffiliateOutboundLink } from "@/components/merchant-affiliate-outbound-link";
 import { BreadcrumbJsonLd, FaqJsonLd, WineDetailProductJsonLd } from "@/components/json-ld";
 import { listGuides } from "@/lib/content/guides";
+import { FREE_TIER_LABEL } from "@/lib/feeds/outbound-link";
 import { getMerchantWineConfig } from "@/lib/wine-detail-pages/merchants";
 import {
   listWineDetailPagesForMerchant,
@@ -23,6 +24,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
   const pageUrl = `${siteUrl}${pagePath}`;
   const productUrlNorm = cfg.sanitizeProductUrl(wine.productPageUrl);
   const featuredPick = wineDetailPageToFeaturedPick(wine);
+  const allowsOutbound = cfg.allowsOutbound;
 
   const breadcrumbItems = [
     { name: "Forside", url: `${siteUrl}/` },
@@ -57,7 +59,9 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
   const faqItems = [
     {
       question: `Hvor køber jeg ${wine.displayTitle.split("—")[0]?.trim() ?? "vinen"}?`,
-      answer: `Du handler hos ${cfg.displayName}. Knappen «${wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}» åbner butikken i et nyt vindue.`,
+      answer: allowsOutbound
+        ? `Du handler hos ${cfg.displayName}. Knappen «${wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}» åbner butikken i et nyt vindue.`
+        : `${cfg.displayName} er ikke samarbejdspartner på Vinbot. Vi beskriver flasken redaktionelt — uden link videre til shoppen. Søg selv hos forhandleren, hvis du vil købe.`,
     },
     {
       question: "Er prisen på Vinbot altid den samme som hos forhandleren?",
@@ -124,16 +128,25 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
         <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-start">
           <div className="mx-auto flex w-full max-w-[21rem] shrink-0 flex-col gap-6 lg:mx-0">
             {wine.imageUrl ? (
-              <MerchantAffiliateOutboundLink
-                merchantId={wine.merchantId}
-                productUrl={wine.productPageUrl}
-                placement={`${wine.merchantId}-vin-detail-hero`}
-                slug={wine.slug}
-                className={`block rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm transition hover:shadow-md ${"flex size-72 items-center justify-center overflow-hidden bg-stone-50 sm:size-80"}`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={wine.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
-              </MerchantAffiliateOutboundLink>
+              allowsOutbound ? (
+                <MerchantAffiliateOutboundLink
+                  merchantId={wine.merchantId}
+                  productUrl={wine.productPageUrl}
+                  placement={`${wine.merchantId}-vin-detail-hero`}
+                  slug={wine.slug}
+                  className={`block rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm transition hover:shadow-md ${"flex size-72 items-center justify-center overflow-hidden bg-stone-50 sm:size-80"}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={wine.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+                </MerchantAffiliateOutboundLink>
+              ) : (
+                <div
+                  className={`rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm ${"flex size-72 items-center justify-center overflow-hidden bg-stone-50 sm:size-80"}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={wine.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+                </div>
+              )
             ) : null}
             {(wine.additionalGalleryImageUrls ?? []).length > 0 ? (
               <div className="space-y-2">
@@ -141,22 +154,34 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
                   Flere vinkler ({cfg.displayName})
                 </p>
                 <div className="grid grid-cols-2 gap-2" aria-label="Yderligere produktfotos">
-                  {(wine.additionalGalleryImageUrls ?? []).map((src, i) => (
-                    <MerchantAffiliateOutboundLink
-                      key={src}
-                      merchantId={wine.merchantId}
-                      productUrl={wine.productPageUrl}
-                      placement={`${wine.merchantId}-vin-detail-gallery-${i}`}
-                      slug={wine.slug}
-                      className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-stone-200/90 bg-white p-2 shadow-sm transition hover:shadow-md"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={src} alt="" className="max-h-[7.75rem] max-w-full object-contain" loading="lazy" sizes="140px" />
-                    </MerchantAffiliateOutboundLink>
-                  ))}
+                  {(wine.additionalGalleryImageUrls ?? []).map((src, i) =>
+                    allowsOutbound ? (
+                      <MerchantAffiliateOutboundLink
+                        key={src}
+                        merchantId={wine.merchantId}
+                        productUrl={wine.productPageUrl}
+                        placement={`${wine.merchantId}-vin-detail-gallery-${i}`}
+                        slug={wine.slug}
+                        className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-stone-200/90 bg-white p-2 shadow-sm transition hover:shadow-md"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt="" className="max-h-[7.75rem] max-w-full object-contain" loading="lazy" sizes="140px" />
+                      </MerchantAffiliateOutboundLink>
+                    ) : (
+                      <div
+                        key={src}
+                        className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-stone-200/90 bg-white p-2 shadow-sm"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt="" className="max-h-[7.75rem] max-w-full object-contain" loading="lazy" sizes="140px" />
+                      </div>
+                    ),
+                  )}
                 </div>
                 <p className="text-center text-[11px] leading-snug text-stone-500 lg:text-left">
-                  Klik fører til butikken — billeder leveres af forhandleren.
+                  {allowsOutbound
+                    ? "Klik fører til butikken — billeder leveres af forhandleren."
+                    : "Billeder leveres af forhandleren — uden link videre til shoppen."}
                 </p>
               </div>
             ) : null}
@@ -179,19 +204,23 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
             ) : null}
             {wine.imageUrl || wine.imageAside ? (
               <div className="rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm">
-                <p className="text-sm font-medium text-stone-900">Videre på Vinbot eller i butikken</p>
+                <p className="text-sm font-medium text-stone-900">
+                  {allowsOutbound ? "Videre på Vinbot eller i butikken" : "Videre på Vinbot"}
+                </p>
                 <ul className="mt-3 space-y-2 text-sm text-stone-700">
-                  <li>
-                    <MerchantAffiliateOutboundLink
-                      merchantId={wine.merchantId}
-                      productUrl={wine.productPageUrl}
-                      placement={`${wine.merchantId}-vin-detail-aside-buy`}
-                      slug={wine.slug}
-                      className="text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950"
-                    >
-                      Gå til produktet hos {cfg.displayName} →
-                    </MerchantAffiliateOutboundLink>
-                  </li>
+                  {allowsOutbound ? (
+                    <li>
+                      <MerchantAffiliateOutboundLink
+                        merchantId={wine.merchantId}
+                        productUrl={wine.productPageUrl}
+                        placement={`${wine.merchantId}-vin-detail-aside-buy`}
+                        slug={wine.slug}
+                        className="text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950"
+                      >
+                        Gå til produktet hos {cfg.displayName} →
+                      </MerchantAffiliateOutboundLink>
+                    </li>
+                  ) : null}
                   <li>
                     <Link
                       href={cfg.hubPath}
@@ -206,17 +235,25 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
           </div>
           <div className="min-w-0 flex-1 space-y-6">
             <p className="text-sm leading-relaxed text-stone-700">
-              Redaktionel anbefaling: du køber hos {cfg.displayName} — pris og lager tjekkes altid hos forhandleren.
+              {allowsOutbound
+                ? `Redaktionel anbefaling: du køber hos ${cfg.displayName} — pris og lager tjekkes altid hos forhandleren.`
+                : `Redaktionel beskrivelse af flasken hos ${cfg.displayName}. ${FREE_TIER_LABEL} — Vinbot linker ikke videre til shoppen.`}
             </p>
-            <MerchantAffiliateOutboundLink
-              merchantId={wine.merchantId}
-              productUrl={wine.productPageUrl}
-              placement={`${wine.merchantId}-vin-detail-primary`}
-              slug={wine.slug}
-              className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
-            >
-              {wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}
-            </MerchantAffiliateOutboundLink>
+            {allowsOutbound ? (
+              <MerchantAffiliateOutboundLink
+                merchantId={wine.merchantId}
+                productUrl={wine.productPageUrl}
+                placement={`${wine.merchantId}-vin-detail-primary`}
+                slug={wine.slug}
+                className="inline-flex rounded-xl bg-rose-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-950"
+              >
+                {wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}
+              </MerchantAffiliateOutboundLink>
+            ) : (
+              <p className="inline-flex rounded-xl bg-stone-100 px-5 py-2.5 text-sm font-medium text-stone-600">
+                {FREE_TIER_LABEL}
+              </p>
+            )}
 
             <div className="space-y-4 text-base leading-relaxed text-stone-800">
               {wine.bodyParagraphs.map((para, idx) => (
@@ -276,25 +313,35 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
                   <li key={pick.productUrl}>
                     <article className="flex flex-col rounded-2xl border border-stone-200/90 bg-white p-4 shadow-sm">
                       <h3 className="font-semibold text-stone-900">
-                        <MerchantAffiliateOutboundLink
-                          merchantId={wine.merchantId}
-                          productUrl={pick.productUrl}
-                          placement={`${wine.merchantId}-vin-detail-related-title`}
-                          className="hover:underline"
-                        >
-                          {pick.title}
-                        </MerchantAffiliateOutboundLink>
+                        {allowsOutbound ? (
+                          <MerchantAffiliateOutboundLink
+                            merchantId={wine.merchantId}
+                            productUrl={pick.productUrl}
+                            placement={`${wine.merchantId}-vin-detail-related-title`}
+                            className="hover:underline"
+                          >
+                            {pick.title}
+                          </MerchantAffiliateOutboundLink>
+                        ) : detailSlug ? (
+                          <Link href={`${cfg.hubPath}/vin/${detailSlug}`} className="hover:underline">
+                            {pick.title}
+                          </Link>
+                        ) : (
+                          pick.title
+                        )}
                       </h3>
                       {pick.blurb ? <p className="mt-2 line-clamp-3 text-sm text-stone-600">{pick.blurb}</p> : null}
                       <div className="mt-3 flex flex-wrap gap-3">
-                        <MerchantAffiliateOutboundLink
-                          merchantId={wine.merchantId}
-                          productUrl={pick.productUrl}
-                          placement={`${wine.merchantId}-vin-detail-related-cta`}
-                          className="text-sm font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
-                        >
-                          Købside hos {cfg.displayName} →
-                        </MerchantAffiliateOutboundLink>
+                        {allowsOutbound ? (
+                          <MerchantAffiliateOutboundLink
+                            merchantId={wine.merchantId}
+                            productUrl={pick.productUrl}
+                            placement={`${wine.merchantId}-vin-detail-related-cta`}
+                            className="text-sm font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
+                          >
+                            Købside hos {cfg.displayName} →
+                          </MerchantAffiliateOutboundLink>
+                        ) : null}
                         {detailSlug ? (
                           <Link
                             href={`${cfg.hubPath}/vin/${detailSlug}`}

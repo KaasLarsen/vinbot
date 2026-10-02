@@ -107,10 +107,13 @@ export function buildMerchantAffiliateProductNode(
   if (!pickHasValidOfferPrice(pick)) return null;
   const meta = MERCHANT_OFFER_META[merchantId];
   const cfg = getMerchantWineConfig(merchantId);
+  const cleanProductUrl = cfg.sanitizeProductUrl(pick.productUrl);
   const affiliateUrl =
-    pick.directLink || !cfg.usesPartnerAdsAffiliate
-      ? cfg.sanitizeProductUrl(pick.productUrl)
-      : merchantOutboundClickUrl(merchantId, pick.productUrl);
+    !cfg.allowsOutbound
+      ? options?.canonicalPageUrl ?? cleanProductUrl
+      : pick.directLink || !cfg.usesPartnerAdsAffiliate
+        ? cleanProductUrl
+        : merchantOutboundClickUrl(merchantId, pick.productUrl);
   const extra =
     merchantId === "den-sidste-flaske" ? dsfOfferShippingAndReturn() : genericOfferShippingAndReturn(meta.refundPolicyUrl);
   const currency = pick.priceCurrency ?? "DKK";
@@ -130,7 +133,7 @@ export function buildMerchantAffiliateProductNode(
   const product: Record<string, unknown> = {
     "@type": "Product",
     name: pick.title,
-    url: options?.canonicalPageUrl ?? cfg.sanitizeProductUrl(pick.productUrl),
+    url: options?.canonicalPageUrl ?? cleanProductUrl,
     ...(desc ? { description: desc } : {}),
     ...(brandName ? { brand: { "@type": "Brand", name: brandName } } : {}),
     ...productJsonLdIdentifierFields({ sku: shopifyProductSlugFromUrl(pick.productUrl) ?? undefined }),

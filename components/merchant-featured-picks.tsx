@@ -9,6 +9,7 @@ import { getMerchantWineConfig, merchantOutboundClickUrl } from "@/lib/wine-deta
 import { wineDetailSlugForProductUrl } from "@/lib/wine-detail-pages/registry";
 import type { MerchantFeaturedPick } from "@/lib/merchant-featured-picks";
 import { trackAffiliateClick } from "@/lib/affiliate-track";
+import { FREE_TIER_LABEL } from "@/lib/feeds/outbound-link";
 import { usePartnerAdsHref } from "@/lib/use-partner-ads-href";
 
 const affiliateLinkRel = "nofollow sponsored noopener noreferrer";
@@ -24,6 +25,7 @@ function FeaturedPickOutbound({
   className,
   children,
   usesAffiliate,
+  allowsOutbound,
 }: {
   baseHref: string;
   merchant: string;
@@ -31,9 +33,15 @@ function FeaturedPickOutbound({
   className?: string;
   children: ReactNode;
   usesAffiliate: boolean;
+  allowsOutbound: boolean;
 }) {
   const trackedHref = usePartnerAdsHref(baseHref);
   const href = usesAffiliate ? trackedHref : baseHref;
+
+  if (!allowsOutbound) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <a
       href={href}
@@ -79,14 +87,17 @@ export function MerchantFeaturedPicks({
         <p className="mt-2 text-stone-700">
           {variant === "home" ? (
             <>
-              Et kort redaktionelt udpluk — du handler på deres site.{" "}
+              Et kort redaktionelt udpluk
+              {cfg.allowsOutbound ? " — du handler på deres site" : ""}.{" "}
               <Link href={cfg.hubPath} className="text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
                 Mere om butikken
               </Link>
               .
             </>
-          ) : (
+          ) : cfg.allowsOutbound ? (
             "Et lille udpluk vi gerne fremhæver — du handler altid på deres site."
+          ) : (
+            "Et lille redaktionelt udpluk — uden link videre til shoppen."
           )}
         </p>
       </div>
@@ -106,6 +117,7 @@ export function MerchantFeaturedPicks({
                   placement={placement}
                   className={IMAGE_FRAME}
                   usesAffiliate={cfg.usesPartnerAdsAffiliate}
+                  allowsOutbound={cfg.allowsOutbound}
                 >
                   {pick.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -115,17 +127,29 @@ export function MerchantFeaturedPicks({
                   )}
                 </FeaturedPickOutbound>
                 <div className="flex flex-1 flex-col gap-2 p-4">
-                  <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
+                    {!cfg.allowsOutbound ? (
+                      <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
+                        {FREE_TIER_LABEL}
+                      </span>
+                    ) : null}
+                  </div>
                   <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-                    <FeaturedPickOutbound
-                      baseHref={baseHref}
-                      merchant={cfg.displayName}
-                      placement={placement}
-                      className="hover:underline"
-                      usesAffiliate={cfg.usesPartnerAdsAffiliate}
-                    >
-                      {pick.title}
-                    </FeaturedPickOutbound>
+                    {cfg.allowsOutbound ? (
+                      <FeaturedPickOutbound
+                        baseHref={baseHref}
+                        merchant={cfg.displayName}
+                        placement={placement}
+                        className="hover:underline"
+                        usesAffiliate={cfg.usesPartnerAdsAffiliate}
+                        allowsOutbound={cfg.allowsOutbound}
+                      >
+                        {pick.title}
+                      </FeaturedPickOutbound>
+                    ) : (
+                      pick.title
+                    )}
                   </h3>
                   {pick.blurb ? <p className="line-clamp-3 text-sm text-stone-600">{pick.blurb}</p> : null}
                   {detailSlug ? (
@@ -138,14 +162,18 @@ export function MerchantFeaturedPicks({
                       </Link>
                     </p>
                   ) : null}
-                  <MerchantAffiliateOutboundLink
-                    merchantId={merchantId}
-                    productUrl={pick.productUrl}
-                    placement={`${merchantId}-featured-cta`}
-                    className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
-                  >
-                    Se hos {cfg.displayName}
-                  </MerchantAffiliateOutboundLink>
+                  {cfg.allowsOutbound ? (
+                    <MerchantAffiliateOutboundLink
+                      merchantId={merchantId}
+                      productUrl={pick.productUrl}
+                      placement={`${merchantId}-featured-cta`}
+                      className="mt-auto inline-flex items-center justify-center rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
+                    >
+                      Se hos {cfg.displayName}
+                    </MerchantAffiliateOutboundLink>
+                  ) : (
+                    <p className="mt-auto text-center text-xs font-medium text-stone-500">{FREE_TIER_LABEL}</p>
+                  )}
                 </div>
               </article>
             </li>

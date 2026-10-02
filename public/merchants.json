@@ -9,7 +9,7 @@
     "name": "Den Sidste Flaske",
     "host": "densidsteflaske.dk",
     "search": "https://densidsteflaske.dk/search?q={Q}&form_type=product&utf8=%E2%9C%93",
-    "commission": 10
+    "commission": 0
   },
   {
     "name": "Beer Me",

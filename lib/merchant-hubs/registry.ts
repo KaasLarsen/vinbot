@@ -32,19 +32,19 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "den-sidste-flaske",
     displayName: "Den Sidste Flaske",
     feedMerchant: null,
-    blurb: "Restpartier, daglige tilbud og sjældne flasker hos en af Danmarks stærkeste vinshops.",
+    blurb: "Restpartier, daglige tilbud og sjældne flasker — redaktionel inspiration på Vinbot.",
     title: "Den Sidste Flaske (densidsteflaske) — vin tilbud",
     description:
-      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Redaktionel inspiration på Vinbot — link videre til shoppen.",
+      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Redaktionel inspiration på Vinbot — Den Sidste Flaske er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
     introParagraphs: [
-      "Den Sidste Flaske — også søgt som densidsteflaske — er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer — og du hopper nemt videre til shoppen, når du er klar til at købe.",
-      "Vinbot sælger ikke vin selv. Vi samler kuraterede forslag og guider, så du hurtigere finder den rigtige flaske — og linker tydeligt videre til forhandlerens egen side.",
-      "Sortimentet skifter ofte: restpartier, kampagner og limited editions betyder, at dagens tilbud kan være væk i morgen. Brug derfor altid densidsteflaske.dk som kilde til pris, lager og årgang.",
+      "Den Sidste Flaske — også søgt som densidsteflaske — er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer om flaskerne.",
+      "Den Sidste Flaske er markeret som ikke-samarbejdspartner: du kan læse om flaskerne her, men Vinbot linker ikke videre til densidsteflaske.dk.",
+      "Sortimentet skifter ofte: restpartier, kampagner og limited editions betyder, at dagens tilbud kan være væk i morgen. Brug derfor altid forhandlerens egen side som kilde til pris, lager og årgang, hvis du selv vælger at handle der.",
     ],
     matchHeading: "Hvornår er Den Sidste Flaske et godt match?",
     matchBullets: [
       "Du jagter restpartier, limited releases og daglige tilbud.",
-      "Du vil have konkrete flaskeforslag og så købe direkte i shoppen.",
+      "Du vil have konkrete flaskeforslag og redaktionel vejledning.",
       "Du sammenligner gerne med andre forhandlere via Vinbots søgning, før du vælger butik.",
     ],
     guideLinks: [
@@ -55,9 +55,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/guides/komplet-guide-til-vin-og-mad", label: "Vin og mad" },
       { href: "/tilbud", label: "Vin tilbud" },
     ],
-    shopCtaLabel: "Søg hos Den Sidste Flaske (eksempel: champagne)",
+    shopCtaLabel: "Besøg Den Sidste Flaske",
     shopIntro:
-      "Find kampagner, limited releases og hele deres sortiment på deres egen side. Linket åbner i et nyt vindue — du handler altid hos forhandleren.",
+      "Den Sidste Flaske er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
     showDsfFeatured: true,
     productIntro:
       "Inspiration fra andre gode forhandlere — samme idé som ovenfor, med billeder og priser du kan klikke videre på.",
@@ -77,17 +77,17 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Er densidsteflaske det samme som Den Sidste Flaske?",
         answer:
-          "Ja. Densidsteflaske er shoppens domæne (densidsteflaske.dk) og den stavemåde mange søger. Den Sidste Flaske er det officielle navn. Vinbot linker videre til deres webshop — vi sælger ikke selv vin.",
+          "Ja. Densidsteflaske er shoppens domæne (densidsteflaske.dk) og den stavemåde mange søger. Den Sidste Flaske er det officielle navn. Vinbot beskriver flaskerne redaktionelt — vi linker ikke videre til shoppen.",
       },
       {
         question: "Hvad er Den Sidste Flaske?",
         answer:
-          "Den Sidste Flaske (densidsteflaske.dk) er en dansk vinwebshop med restpartier, limited releases og daglige tilbud. Vinbot linker videre til deres shop, når du vil købe — vi sælger ikke selv vin.",
+          "Den Sidste Flaske (densidsteflaske.dk) er en dansk vinwebshop med restpartier, limited releases og daglige tilbud. På Vinbot kan du læse om udvalgte flasker — vi sælger ikke selv vin, og DSF er ikke samarbejdspartner.",
       },
       {
-        question: "Hvor finder jeg hele sortimentet fra Den Sidste Flaske?",
+        question: "Hvorfor linker Vinbot ikke til Den Sidste Flaske?",
         answer:
-          "Det bedste overblik får du direkte på deres egen webshop. Her på Vinbot samler vi inspiration, guider og forslag — og linker tydeligt videre, når du vil handle hos dem.",
+          "Den Sidste Flaske er på gratis listing og er ikke samarbejdspartner. Vi viser redaktionel inspiration og kuraterede vinsider, men uden klik videre til shoppen.",
       },
       {
         question: "Kan jeg sammenligne med andre butikker?",
@@ -100,11 +100,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
           "Priser og tilbud skifter hos butikkerne. Brug altid forhandlerens egen side som udgangspunkt for endelig pris, levering og årgang.",
       },
     ],
-    affiliate: {
-      kind: "direct",
-      shopUrl:
-        "https://densidsteflaske.dk/search?q=champagne&form_type=product&utf8=%E2%9C%93",
-    },
+    affiliate: { kind: "feed-only" },
   },
   {
     slug: "lauridsen-vine",
@@ -1343,7 +1339,7 @@ export function getRelatedMerchantHubs(slug: string, limit = 6): MerchantHubConf
   return MERCHANT_HUBS.filter((h) => h.slug !== slug).slice(0, limit);
 }
 
-/** @deprecated Brug resolveMerchantHubShopHref på DSF-hubben (direct link). */
-export function dsfHubShopHref(): string {
-  return "https://densidsteflaske.dk/search?q=champagne&form_type=product&utf8=%E2%9C%93";
+/** @deprecated DSF er gratis butik uden shop-CTA — returnerer null. */
+export function dsfHubShopHref(): string | null {
+  return null;
 }

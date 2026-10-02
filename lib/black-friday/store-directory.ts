@@ -34,7 +34,7 @@ const CURATED_OUTSIDERS: { slug: string; displayName: string }[] = [
   { slug: "vin-og-vin", displayName: "Vin & Vin" },
 ];
 
-/** Hjemmeside når hubben er feed-only (ingen shop-klikbanner). */
+/** Kendte Daisycon feed-only shops med eksplicit homepage (stadig betalte partnere via feed). */
 const FEED_ONLY_HOMEPAGES: Record<string, string> = {
   "bottles-with-history": "https://bottleswithhistory.dk/",
   "8wines": "https://8wines.com/",
@@ -60,8 +60,12 @@ export type BlackFridayStore = {
   blurb?: string;
 };
 
-function isPartnerKind(kind: MerchantHubConfig["affiliate"]["kind"]): boolean {
-  return kind === "partner-ads" || kind === "daisycon" || kind === "feed-only";
+function isPartnerHub(hub: MerchantHubConfig): boolean {
+  const kind = hub.affiliate.kind;
+  if (kind === "partner-ads" || kind === "daisycon") return true;
+  // feed-only med kendt homepage = Daisycon-partner; gratis listing (Vinpalle, DSF …) er ikke partner.
+  if (kind === "feed-only") return Boolean(FEED_ONLY_HOMEPAGES[hub.slug]);
+  return false;
 }
 
 function resolveBlackFridayStoreHref(hub: MerchantHubConfig): string | null {
@@ -82,7 +86,7 @@ function resolveBlackFridayStoreHref(hub: MerchantHubConfig): string | null {
 export function listBlackFridayStores(): BlackFridayStore[] {
   const fromHubs: BlackFridayStore[] = MERCHANT_HUBS.filter((h) => !EXCLUDED_HUB_SLUGS.has(h.slug)).map(
     (hub) => {
-      const partner = isPartnerKind(hub.affiliate.kind);
+      const partner = isPartnerHub(hub);
       const href = partner ? resolveBlackFridayStoreHref(hub) : null;
       return {
         slug: hub.slug,

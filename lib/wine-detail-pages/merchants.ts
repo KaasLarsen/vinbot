@@ -18,6 +18,11 @@ export type MerchantWineConfig = {
   sanitizeProductUrl: (url: string) => string;
   /** False = redaktionelt outbound uden Partner-Ads (fx efter affiliate-exit). */
   usesPartnerAdsAffiliate: boolean;
+  /**
+   * False = gratis butik: vises redaktionelt, men uden klik videre til shoppen
+   * (samme politik som free feed-tier).
+   */
+  allowsOutbound: boolean;
 };
 
 const DSF_HOST = "densidsteflaske.dk";
@@ -31,6 +36,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: `https://${DSF_HOST}/`,
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, DSF_HOST),
     usesPartnerAdsAffiliate: false,
+    allowsOutbound: false,
   },
   "lauridsen-vine": {
     id: "lauridsen-vine",
@@ -40,6 +46,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: "https://lauridsenvine.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "lauridsenvine.dk"),
     usesPartnerAdsAffiliate: true,
+    allowsOutbound: true,
   },
   "winther-vin": {
     id: "winther-vin",
@@ -49,6 +56,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: "https://winthervin.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "winthervin.dk"),
     usesPartnerAdsAffiliate: true,
+    allowsOutbound: true,
   },
   "dh-wines": {
     id: "dh-wines",
@@ -58,6 +66,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: "https://dhwines.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "dhwines.dk"),
     usesPartnerAdsAffiliate: true,
+    allowsOutbound: true,
   },
   "johnsen-wine": {
     id: "johnsen-wine",
@@ -67,6 +76,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: "https://www.johnsenwine.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "johnsenwine.dk"),
     usesPartnerAdsAffiliate: true,
+    allowsOutbound: true,
   },
   "sps-wine": {
     id: "sps-wine",
@@ -76,6 +86,7 @@ export const MERCHANT_WINE_CONFIGS: Record<MerchantWineId, MerchantWineConfig> =
     shopBaseUrl: "https://www.spswine.dk/",
     sanitizeProductUrl: (url) => sanitizeProductUrlForHost(url, "spswine.dk"),
     usesPartnerAdsAffiliate: true,
+    allowsOutbound: true,
   },
 };
 
@@ -86,8 +97,13 @@ export function getMerchantWineConfig(id: MerchantWineId): MerchantWineConfig {
 export function merchantOutboundClickUrl(merchantId: MerchantWineId, productPageUrl: string): string {
   const cfg = getMerchantWineConfig(merchantId);
   const clean = cfg.sanitizeProductUrl(productPageUrl);
-  if (!cfg.usesPartnerAdsAffiliate) return clean;
+  if (!cfg.allowsOutbound || !cfg.usesPartnerAdsAffiliate) return clean;
   return partnerAdsKlikUrl(cfg.partnerAdsBannerId, clean);
+}
+
+/** Gratis / ikke-samarbejdspartner: ingen klik videre til shoppen. */
+export function merchantAllowsOutbound(merchantId: MerchantWineId): boolean {
+  return getMerchantWineConfig(merchantId).allowsOutbound;
 }
 
 /** @deprecated Brug merchantOutboundClickUrl */
