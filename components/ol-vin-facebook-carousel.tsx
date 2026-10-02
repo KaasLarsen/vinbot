@@ -25,13 +25,18 @@ function formatDaDate(iso: string): string {
 }
 
 function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
-  const onOrderClick = () =>
+  const isAffiliate = post.affiliate !== false;
+  const linkRel = isAffiliate ? "nofollow sponsored noopener noreferrer" : "noopener noreferrer";
+
+  const onOrderClick = () => {
+    if (!isAffiliate) return;
     trackAffiliateClick({
       merchant: post.merchant ?? "Øl & Vin",
       placement: "tilbud-ol-vin-facebook",
       slug: post.id,
       url: post.orderHref,
     });
+  };
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:border-stone-300 hover:shadow-md">
@@ -43,7 +48,7 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
         <a
           href={post.orderHref}
           target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
+          rel={linkRel}
           onClick={onOrderClick}
           className={`${IMAGE_FRAME}${post.imageFit === "cover" ? " relative" : ""}`}
         >
@@ -69,7 +74,7 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
           <a
             href={post.orderHref}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onOrderClick}
             className="hover:underline"
           >
@@ -81,7 +86,7 @@ function FacebookPostCard({ post }: { post: OlVinFacebookPost }) {
           <a
             href={post.orderHref}
             target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
+            rel={linkRel}
             onClick={onOrderClick}
             className="inline-flex flex-1 items-center justify-center rounded-xl bg-rose-900 px-3 py-2 text-xs font-medium text-white hover:bg-rose-950"
           >

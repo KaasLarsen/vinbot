@@ -1,5 +1,5 @@
 import { PARTNER_ADS_KLIK_BANNERS, partnerAdsKlikUrl } from "@/lib/partner-ads-links";
-import { facebookOlVinUrl } from "@/lib/site";
+import { facebookOlVinUrl, siteUrl } from "@/lib/site";
 
 /**
  * Kuraterede opslag fra Øl & Vin på Facebook.
@@ -11,7 +11,7 @@ export type OlVinFacebookPost = {
   excerpt: string;
   /** ISO-dato YYYY-MM-DD */
   date: string;
-  /** Partner-Ads klik til butik (vinbot-ejet uid — ikke Facebook-kampagnelink). */
+  /** Partner-Ads klik til butik, eller intern Vinbot-URL for gratis butikker. */
   orderHref: string;
   /** Billede fra opslaget under /public */
   image: string;
@@ -21,22 +21,19 @@ export type OlVinFacebookPost = {
   imageFit?: "contain" | "cover";
   /** Merchant-navn til analytics på Bestil her-klik. */
   merchant?: string;
+  /** False = ingen affiliate-tracking / sponsored-rel (gratis butik eller intern side). */
+  affiliate?: boolean;
 };
 
-const BOCCANTINO_PRODUCT =
-  "https://densidsteflaske.dk/products/primitivo-susumaniello-salento-boccantino-2024";
-
-const RIESLING_PRODUCT = "https://densidsteflaske.dk/products/alte-reben-riesling-trocken-2022";
-
-const GUVNOR_ROSE_PRODUCT = "https://densidsteflaske.dk/products/the-guv-nor-rose";
-
 const IMMORTALIS_PRIORAT_PRODUCT = "https://lauridsenvine.dk/products/immortalis-priorat";
-
-const NEBBIOLO_PRODUCT = "https://densidsteflaske.dk/products/langhe-nebbiolo-la-farghetta-2021";
 
 /** Unik Partner-Ads uid pr. opslag (må ikke indeholde `/`). */
 function olVinOrderLink(bannerId: string, productUrl: string, trackingUid: string): string {
   return partnerAdsKlikUrl(bannerId, productUrl, trackingUid);
+}
+
+function vinbotPath(path: string): string {
+  return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
@@ -46,9 +43,11 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     excerpt:
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). The Guv'nor Rosé — frisk spansk rosé med jordbær, ribs og citrus. Perfekt til terrasse, tapas og fisk.",
     date: "2026-07-17",
-    orderHref: GUVNOR_ROSE_PRODUCT,
+    orderHref: vinbotPath("/den-sidste-flaske"),
     image: "/images/ol-vin/post-guvnor-rose-bottle.webp",
+    ctaLabel: "Læs på Vinbot",
     merchant: "Den Sidste Flaske",
+    affiliate: false,
   },
   {
     id: "2026-07-17-riesling",
@@ -56,9 +55,11 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     excerpt:
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 119 kr.). Frisk, sprød og tør Riesling med citrus, grønne æbler og mineralitet — perfekt til fisk, skaldyr og terrassen.",
     date: "2026-07-17",
-    orderHref: RIESLING_PRODUCT,
+    orderHref: vinbotPath("/den-sidste-flaske/vin/weinhof-519-alte-reben-rheingau-riesling-trocken"),
     image: "/images/ol-vin/post-riesling-bottle.webp",
+    ctaLabel: "Læs på Vinbot",
     merchant: "Den Sidste Flaske",
+    affiliate: false,
   },
   {
     id: "2026-07-17-boccantino",
@@ -66,9 +67,11 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     excerpt:
       "Kun 55 kr. pr. flaske ved køb af 12 flasker (normalpris 109 kr.). Boccantino Primitivo & Susumaniello — fyldig, blød og frugtig italiensk rødvin.",
     date: "2026-07-17",
-    orderHref: BOCCANTINO_PRODUCT,
+    orderHref: vinbotPath("/den-sidste-flaske/vin/primitivo-susumaniello-salento-boccantino"),
     image: "/images/ol-vin/post-boccantino-bottle.webp",
+    ctaLabel: "Læs på Vinbot",
     merchant: "Den Sidste Flaske",
+    affiliate: false,
   },
   {
     id: "2026-07-01-vinbot",
@@ -81,6 +84,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     ctaLabel: "Besøg Vinbot",
     imageFit: "cover",
     merchant: "Vinbot",
+    affiliate: false,
   },
   {
     id: "2026-06-16-immortalis-priorat",
@@ -95,6 +99,7 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     ),
     image: "/images/ol-vin/post-immortalis-priorat.jpg",
     merchant: "Lauridsen Vine",
+    affiliate: true,
   },
   {
     id: "2026-06-02-nebbiolo",
@@ -102,9 +107,11 @@ export const OL_VIN_FACEBOOK_POSTS: OlVinFacebookPost[] = [
     excerpt:
       "Langhe Nebbiolo La Farghetta 2021 fra Piemonte. Vinen kan også købes hos Den Sidste Flaske — autentisk Nebbiolo med kirsebær, rose og klassisk struktur.",
     date: "2026-06-02",
-    orderHref: NEBBIOLO_PRODUCT,
+    orderHref: vinbotPath("/den-sidste-flaske/vin/langhe-nebbiolo-la-farghetta-2021"),
     image: "/images/ol-vin/post-nebbiolo-bottle.webp",
+    ctaLabel: "Læs på Vinbot",
     merchant: "Den Sidste Flaske",
+    affiliate: false,
   },
 ];
 

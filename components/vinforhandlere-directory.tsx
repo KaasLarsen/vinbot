@@ -61,7 +61,7 @@ export function VinforhandlereDirectory({ hubs }: { hubs: MerchantHubConfig[] })
                 </h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{hub.blurb}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-900">
-                  Se flasker og shop
+                  {hub.affiliate.kind === "feed-only" ? "Se flasker og info" : "Se flasker og shop"}
                   <span
                     aria-hidden
                     className="transition-transform duration-300 group-hover:translate-x-0.5"
