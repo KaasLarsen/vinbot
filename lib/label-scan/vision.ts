@@ -1,3 +1,5 @@
+import { getOpenAiApiKey, hasOpenAi } from "@/lib/openai/client";
+
 export type VisionWineGuess = {
   /** Fri tekst der beskriver etiketten (navn, producent, årgang, drue…). */
   rawText: string;
@@ -18,10 +20,11 @@ const SYSTEM = `Du aflæser vinflaske-etiketter. Svar KUN med JSON:
 export async function extractWineFromLabelImage(
   imageDataUrl: string,
 ): Promise<VisionWineGuess | null> {
-  const key = process.env.OPENAI_API_KEY?.trim();
-  if (!key) return null;
+  const key = getOpenAiApiKey();
+  if (!key || !key.startsWith("sk-")) return null;
 
-  const model = process.env.OPENAI_VISION_MODEL?.trim() || "gpt-4o-mini";
+  const model =
+    process.env.OPENAI_VISION_MODEL?.trim().replace(/^["']|["']$/g, "") || "gpt-4o-mini";
 
   try {
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -80,5 +83,5 @@ export async function extractWineFromLabelImage(
 }
 
 export function hasOpenAiVision(): boolean {
-  return Boolean(process.env.OPENAI_API_KEY?.trim());
+  return hasOpenAi();
 }

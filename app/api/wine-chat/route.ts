@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hasOpenAi, openAiChatJson } from "@/lib/openai/client";
+import { hasOpenAi, openAiChatJson, openAiKeyMeta, probeOpenAi } from "@/lib/openai/client";
 import { runSearch } from "@/lib/search/engine";
 import type { ProductHit } from "@/lib/search/types";
 import { tasteSimilarity } from "@/lib/taste/vector";
@@ -198,7 +198,21 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   // Chat er altid tilgængelig (OpenAI hvis sat, ellers katalog-fallback).
-  return NextResponse.json({ available: true, openai: hasOpenAi() });
+  const probe = req.nextUrl.searchParams.get("probe") === "1";
+  const meta = openAiKeyMeta();
+  if (!probe) {
+    return NextResponse.json({ available: true, openai: hasOpenAi(), key: meta });
+  }
+
+  const result = await probeOpenAi();
+  return NextResponse.json({
+    available: true,
+    openai: hasOpenAi(),
+    key: meta,
+    probe: result.ok
+      ? { ok: true }
+      : { ok: false, code: result.error.code, message: result.error.message, status: result.error.status },
+  });
 }
