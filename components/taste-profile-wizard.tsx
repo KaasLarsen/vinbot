@@ -1,19 +1,32 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { proxyImg } from "@/lib/search/helpers";
-import { MIN_LIKES_FOR_PROFILE } from "@/lib/taste/storage";
+import { getStoredTasteProfile, MIN_LIKES_FOR_PROFILE } from "@/lib/taste/storage";
 import { useTasteProfile } from "@/lib/taste/use-taste-profile";
 import type { TasteCandidate, TasteRatedWine } from "@/lib/taste/types";
+
+const EMPTY_CANDIDATES: TasteCandidate[] = [];
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  /** Fra forsiden (SSR) — undgår 20+ sek vent på katalog-API. */
+  initialCandidates?: TasteCandidate[];
 };
 
-export function TasteProfileWizard({ open, onClose }: Props) {
+export function TasteProfileWizard({
+  open,
+  onClose,
+  initialCandidates = EMPTY_CANDIDATES,
+}: Props) {
   const { profile, save, clear } = useTasteProfile();
-  const [candidates, setCandidates] = useState<TasteCandidate[]>([]);
+  const seededRef = useRef(initialCandidates);
+  if (initialCandidates.length > 0) seededRef.current = initialCandidates;
+
+  const [candidates, setCandidates] = useState<TasteCandidate[]>(() =>
+    initialCandidates.length > 0 ? initialCandidates : EMPTY_CANDIDATES,
+  );
   const [loading, setLoading] = useState(false);
   const [ratings, setRatings] = useState<Record<string, boolean>>({});
   const [error, setError] = useState<string | null>(null);
@@ -23,19 +36,38 @@ export function TasteProfileWizard({ open, onClose }: Props) {
     if (!open) return;
     setDone(false);
     setError(null);
+    const existing = getStoredTasteProfile();
     const initial: Record<string, boolean> = {};
-    for (const r of profile?.ratings ?? []) {
+    for (const r of existing?.ratings ?? []) {
       initial[r.slug] = r.liked;
     }
     setRatings(initial);
+
+    const seeded = seededRef.current;
+    if (seeded.length > 0) {
+      setCandidates(seeded);
+      setLoading(false);
+      return;
+    }
 
     let cancelled = false;
     setLoading(true);
     void (async () => {
       try {
         const res = await fetch("/api/taste/candidates");
-        const json = (await res.json()) as { candidates: TasteCandidate[] };
-        if (!cancelled) setCandidates(json.candidates || []);
+        const json = (await res.json()) as { candidates?: TasteCandidate[]; error?: string };
+        if (!res.ok) {
+          if (!cancelled) {
+            setCandidates([]);
+            setError("Kunne ikke hente vine. Prøv igen.");
+          }
+          return;
+        }
+        if (!cancelled) {
+          const list = json.candidates || [];
+          setCandidates(list);
+          if (list.length === 0) setError("Ingen vine lige nu. Prøv igen om lidt.");
+        }
       } catch {
         if (!cancelled) setError("Kunne ikke hente vine. Prøv igen.");
       } finally {
@@ -45,7 +77,7 @@ export function TasteProfileWizard({ open, onClose }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [open, profile]);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -212,7 +244,7 @@ export function TasteProfileWizard({ open, onClose }: Props) {
                 <button
                   type="button"
                   onClick={finish}
-                  disabled={likes < MIN_LIKES_FOR_PROFILE || loading}
+                  disabled={likes < MIN_LIKES_FOR_PROFILE || loading || candidates.length === 0}
                   className="w-full rounded-xl bg-rose-900 px-4 py-3 text-sm font-semibold text-white hover:bg-rose-800 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Gem smagsprofil

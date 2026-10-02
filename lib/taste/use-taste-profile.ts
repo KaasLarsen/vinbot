@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import {
   TASTE_PROFILE_EVENT,
+  TASTE_PROFILE_KEY,
   clearStoredTasteProfile,
   getStoredTasteProfile,
   profileIsReady,
@@ -10,17 +11,44 @@ import {
 } from "@/lib/taste/storage";
 import type { TasteProfile, TasteRatedWine } from "@/lib/taste/types";
 
+/** Cache snapshot så useSyncExternalStore ikke får nyt objekt hver gang (uendelige re-renders). */
+let snapshotRaw: string | null | undefined = undefined;
+let snapshotProfile: TasteProfile | null = null;
+
+function readCachedSnapshot(): TasteProfile | null {
+  if (typeof window === "undefined") return null;
+  let raw: string | null;
+  try {
+    raw = localStorage.getItem(TASTE_PROFILE_KEY);
+  } catch {
+    raw = null;
+  }
+  if (raw === snapshotRaw) return snapshotProfile;
+  snapshotRaw = raw;
+  snapshotProfile = getStoredTasteProfile();
+  return snapshotProfile;
+}
+
+function invalidateSnapshotCache() {
+  snapshotRaw = undefined;
+  snapshotProfile = null;
+}
+
 function subscribe(onStoreChange: () => void) {
-  window.addEventListener(TASTE_PROFILE_EVENT, onStoreChange);
-  window.addEventListener("storage", onStoreChange);
+  const notify = () => {
+    invalidateSnapshotCache();
+    onStoreChange();
+  };
+  window.addEventListener(TASTE_PROFILE_EVENT, notify);
+  window.addEventListener("storage", notify);
   return () => {
-    window.removeEventListener(TASTE_PROFILE_EVENT, onStoreChange);
-    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(TASTE_PROFILE_EVENT, notify);
+    window.removeEventListener("storage", notify);
   };
 }
 
 function getSnapshot(): TasteProfile | null {
-  return getStoredTasteProfile();
+  return readCachedSnapshot();
 }
 
 function getServerSnapshot(): TasteProfile | null {

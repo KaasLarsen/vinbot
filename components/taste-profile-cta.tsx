@@ -3,8 +3,17 @@
 import { useState } from "react";
 import { TasteProfileWizard } from "@/components/taste-profile-wizard";
 import { useTasteProfile } from "@/lib/taste/use-taste-profile";
+import type { TasteCandidate } from "@/lib/taste/types";
 
-export function TasteProfileCta({ className = "" }: { className?: string }) {
+const EMPTY_CANDIDATES: TasteCandidate[] = [];
+
+export function TasteProfileCta({
+  className = "",
+  initialCandidates = EMPTY_CANDIDATES,
+}: {
+  className?: string;
+  initialCandidates?: TasteCandidate[];
+}) {
   const { ready } = useTasteProfile();
   const [open, setOpen] = useState(false);
 
@@ -29,7 +38,11 @@ export function TasteProfileCta({ className = "" }: { className?: string }) {
           </button>
         )}
       </div>
-      <TasteProfileWizard open={open} onClose={() => setOpen(false)} />
+      <TasteProfileWizard
+        open={open}
+        onClose={() => setOpen(false)}
+        initialCandidates={initialCandidates}
+      />
     </>
   );
 }
