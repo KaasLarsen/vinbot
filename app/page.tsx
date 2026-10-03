@@ -42,45 +42,40 @@ export default function HomePage() {
   return (
     <PageShell className="py-10">
       <HomeAffiliatePopup />
-      <div className="lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)] lg:items-start lg:gap-6">
-        <HomeHeroSearchSection>
-          <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
-            AI-chat · danske forhandlere
-          </p>
-          <h1
-            id="home-ask-heading"
-            className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl"
-          >
-            Spørg Vinbot om vin
-          </h1>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
-            Skriv ret, køleskab, stemning eller budget — vi finder flasker hos danske forhandlere.
-          </p>
 
-          <WineFridgeChat className="relative z-10 mt-5 max-w-3xl" />
+      <HomeHeroSearchSection>
+        <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
+          AI-chat · danske forhandlere
+        </p>
+        <h1
+          id="home-ask-heading"
+          className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl"
+        >
+          Spørg Vinbot om vin
+        </h1>
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
+          Skriv ret, køleskab, stemning eller budget — vi finder flasker hos danske forhandlere.
+        </p>
 
-          <div className="mt-3" id="taste-profile">
-            <TasteProfileServer variant="line" />
-          </div>
+        <WineFridgeChat className="relative z-10 mt-5 max-w-3xl" />
 
-          <HomeHeroSecondary className="relative z-10 mt-4" />
-        </HomeHeroSearchSection>
-
-        <div className="lg:flex lg:flex-col lg:gap-6">
-          <WineQuantityCalculator
-            variant="compact"
-            defaultCollapsed
-            className="mt-10 lg:mt-0"
-            heading="Hvor mange flasker til festen?"
-            intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
-          />
-
-          <HomeBestDealsSearchSection />
-
-          <HomeLigeNuStrip />
-
-          <HomeRabatkoderStrip />
+        <div className="mt-3" id="taste-profile">
+          <TasteProfileServer variant="line" />
         </div>
+
+        <HomeHeroSecondary className="relative z-10 mt-4" />
+      </HomeHeroSearchSection>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2 md:gap-5">
+        <WineQuantityCalculator
+          variant="compact"
+          defaultCollapsed
+          heading="Hvor mange flasker til festen?"
+          intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
+        />
+        <HomeBestDealsSearchSection />
+        <HomeLigeNuStrip />
+        <HomeRabatkoderStrip />
       </div>
 
       <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />

@@ -52,7 +52,7 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
 
   return (
     <section
-      className="mt-8 min-w-0 max-w-full overflow-x-clip rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5 lg:mt-0"
+      className="min-w-0 max-w-full overflow-x-clip rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5"
       aria-labelledby="home-best-deals-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Tilbud</p>

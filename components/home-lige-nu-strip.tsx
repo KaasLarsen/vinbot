@@ -8,7 +8,7 @@ export function HomeLigeNuStrip() {
 
   return (
     <section
-      className="mt-8 rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5 lg:mt-0"
+      className="rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5"
       aria-labelledby="home-lige-nu-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Lige nu</p>
