@@ -8,11 +8,11 @@ export function HomeRabatkoderStrip() {
 
   return (
     <section
-      className="rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-3 sm:p-4"
+      className="flex h-full flex-col rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-4 shadow-sm sm:p-5"
       aria-labelledby="home-rabatkoder-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-emerald-900/90">Rabatkoder</p>
-      <h2 id="home-rabatkoder-heading" className="mt-1 text-base font-semibold tracking-tight text-stone-900 sm:text-lg">
+      <h2 id="home-rabatkoder-heading" className="mt-1 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">
         Gode koder lige nu
       </h2>
 
@@ -38,7 +38,7 @@ export function HomeRabatkoderStrip() {
         ))}
       </ul>
 
-      <div className="mt-2.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-1 pt-3">
         <p className="text-[11px] leading-snug text-stone-500">* Annoncelinks — koden kopieres.</p>
         <Link
           href="/rabatkoder"

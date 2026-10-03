@@ -52,7 +52,7 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
 
   return (
     <section
-      className="min-w-0 max-w-full overflow-x-clip rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 sm:p-5"
+      className="flex h-full min-w-0 max-w-full flex-col overflow-x-clip rounded-2xl border border-rose-200/70 bg-rose-50/90 p-4 shadow-sm sm:p-5"
       aria-labelledby="home-best-deals-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">Tilbud</p>
@@ -118,7 +118,7 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
         </div>
       ) : null}
 
-      <p className="mt-3">
+      <p className="mt-auto pt-3">
         <Link href="/tilbud" className="text-sm font-medium text-rose-900 hover:underline">
           Se flere tilbud →
         </Link>

@@ -17,7 +17,7 @@ import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-hig
 import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
 import { HomeDealsStrip } from "@/components/home-deals-strip";
 import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
-import { WineQuantityCalculator } from "@/components/wine-quantity-calculator";
+import { HomeFeatureGrid } from "@/components/home-feature-grid";
 import { TasteProfileServer } from "@/components/taste-profile-server";
 import { WineFridgeChat } from "@/components/wine-fridge-chat";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
@@ -66,17 +66,11 @@ export default function HomePage() {
         <HomeHeroSecondary className="relative z-10 mt-4" />
       </HomeHeroSearchSection>
 
-      <div className="mt-6 grid items-start gap-4 md:grid-cols-2 md:gap-5">
-        <WineQuantityCalculator
-          variant="compact"
-          defaultCollapsed
-          heading="Hvor mange flasker til festen?"
-          intro="Angiv gæster og festtype — få Vinbot-formlen med 15 % buffer."
-        />
-        <HomeBestDealsSearchSection />
-        <HomeLigeNuStrip />
-        <HomeRabatkoderStrip />
-      </div>
+      <HomeFeatureGrid
+        deals={<HomeBestDealsSearchSection />}
+        moment={<HomeLigeNuStrip />}
+        codes={<HomeRabatkoderStrip />}
+      />
 
       <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />
 

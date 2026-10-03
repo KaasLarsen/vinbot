@@ -27,6 +27,8 @@ type WineQuantityCalculatorProps = {
    */
   secondaryCta?: SecondaryCta | null;
   className?: string;
+  /** Forsiden bruger det til at undgå at strække nabo-boksen, mens formlen er åben. */
+  onExpandedChange?: (expanded: boolean) => void;
 };
 
 const PARTY_OPTIONS: { id: PartyType; label: string; hint: string }[] = [
@@ -44,6 +46,7 @@ export function WineQuantityCalculator({
   defaultCollapsed = false,
   secondaryCta,
   className = "",
+  onExpandedChange,
 }: WineQuantityCalculatorProps) {
   const isCompact = variant === "compact";
   const canCollapse = isCompact && defaultCollapsed;
@@ -82,6 +85,10 @@ export function WineQuantityCalculator({
   const padding = isCompact ? "p-4 sm:p-5" : "p-5 sm:p-6";
 
   useEffect(() => {
+    onExpandedChange?.(expanded);
+  }, [expanded, onExpandedChange]);
+
+  useEffect(() => {
     if (!showPicks) return;
     const node = picksRef.current;
     if (!node) return;
@@ -96,16 +103,16 @@ export function WineQuantityCalculator({
   if (canCollapse && !expanded) {
     return (
       <section
-        className={`rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 shadow-sm ${padding} ${className}`}
+        className={`flex h-full flex-col rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-white to-stone-50 shadow-sm ${padding} ${className}`}
         aria-labelledby="wine-qty-calc-heading"
       >
         <button
           type="button"
           onClick={() => setExpanded(true)}
           aria-expanded={false}
-          className="flex w-full items-start gap-3 text-left"
+          className="flex w-full flex-1 flex-col text-left"
         >
-          <div className="min-w-0 flex-1">
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-wider text-amber-900/80">Vinbot-formlen</p>
             <h2
               id="wine-qty-calc-heading"
@@ -119,7 +126,7 @@ export function WineQuantityCalculator({
               {result.guests} gæster · {partyLabel}
             </p>
           </div>
-          <span className="mt-1 shrink-0 rounded-full border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-950 shadow-sm">
+          <span className="mt-auto self-end pt-4 shrink-0 rounded-full border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-950 shadow-sm">
             Åbn
           </span>
         </button>
