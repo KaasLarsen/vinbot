@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 const HERO_IMAGE = "/images/hero/hero-vin-atmosphere.jpg";
 
-/** Kompakt vinsøgnings-hero — rosé/bokeh til højre, læsbar tekst til venstre. */
+/** Hero med AI-bjælke — rosé/bokeh til højre, læsbar tekst til venstre. */
 export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
   return (
     <section className="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-rose-900/10">
@@ -20,7 +20,7 @@ export function HomeHeroSearchSection({ children }: { children: ReactNode }) {
         <div className="absolute inset-0 bg-gradient-to-br from-rose-950/8 via-transparent to-amber-900/15" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-rose-950/20 to-transparent sm:h-32" />
       </div>
-      <div className="relative z-10 px-5 py-7 sm:px-8 sm:py-8 lg:min-h-[28rem] lg:px-10 lg:py-10">{children}</div>
+      <div className="relative z-10 px-5 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-10">{children}</div>
     </section>
   );
 }

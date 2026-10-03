@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FoodWinePicker } from "@/components/food-wine-picker";
 import { HomeLigeNuStrip } from "@/components/home-lige-nu-strip";
 import { HomeRabatkoderStrip } from "@/components/home-rabatkoder-strip";
 import { HomeBestDealsSearchSection } from "@/components/home-best-deals-search-section";
 import { HomeHeroSearchSection } from "@/components/home-hero-search-section";
+import { HomeHeroSecondary } from "@/components/home-hero-secondary";
 import { HomeDrinksStrip } from "@/components/home-drinks-strip";
 import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
-import { HomeWineSearch } from "@/components/home-wine-search";
-import { HomeLabelScanButton } from "@/components/home-label-scan-button";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
 import { CampaignBanner } from "@/components/campaign-banner";
 import { HomeAffiliatePopup } from "@/components/home-affiliate-popup";
@@ -47,36 +45,25 @@ export default function HomePage() {
       <div className="lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)] lg:items-start lg:gap-6">
         <HomeHeroSearchSection>
           <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
-            Vinsøgning · danske forhandlere
+            AI-chat · danske forhandlere
           </p>
-          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl">
-            Find vin på sekunder
+          <h1
+            id="home-ask-heading"
+            className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-stone-900 sm:mt-3 sm:max-w-2xl sm:text-4xl"
+          >
+            Spørg Vinbot om vin
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-700">
-            Skriv ret, drue, stemning eller budget — vi finder flasker og priser hos danske forhandlere.
+            Skriv ret, køleskab, stemning eller budget — vi finder flasker hos danske forhandlere.
           </p>
 
-          <HomeLabelScanButton />
+          <WineFridgeChat className="relative z-10 mt-5 max-w-3xl" />
 
-          <div className="mt-4" id="taste-profile">
-            <TasteProfileServer />
+          <div className="mt-3" id="taste-profile">
+            <TasteProfileServer variant="line" />
           </div>
 
-          <div className="mt-5 max-w-3xl rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/50 backdrop-blur-sm sm:p-5">
-            <FoodWinePicker />
-          </div>
-
-          <div className="relative z-10 mt-4 max-w-3xl">
-            <WineFridgeChat />
-          </div>
-
-          <div className="relative z-10 mt-4 max-w-xl">
-            <p className="mb-2 text-sm font-medium text-stone-800">Eller søg frit på flaske, drue eller budget</p>
-            <HomeWineSearch
-              controlsClassName="rounded-xl border border-white/80 bg-white/90 p-3 shadow-sm"
-              resultsClassName="mt-3 rounded-xl border border-white/80 bg-white/95 p-4 shadow-sm sm:p-5"
-            />
-          </div>
+          <HomeHeroSecondary className="relative z-10 mt-4" />
         </HomeHeroSearchSection>
 
         <div className="lg:flex lg:flex-col lg:gap-6">

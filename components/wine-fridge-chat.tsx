@@ -4,12 +4,24 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { ProductCard } from "@/components/product-card";
 import type { ProductHit } from "@/lib/search/types";
 import { tasteContextForApi } from "@/lib/taste/storage";
-import { useTasteProfile } from "@/lib/taste/use-taste-profile";
 
-const EXAMPLES = [
-  "Jeg har tre slatne gulerødder, et kyllingebryst og gedeost. Hvilken vin?",
-  "Pasta, tomat og basilikum — hvad skal jeg købe i Føtex?",
-  "Rester af grillkød og salat. Rød eller hvid?",
+const CHIPS = [
+  {
+    label: "Pasta og tomat",
+    message: "Pasta, tomat og basilikum — hvad skal jeg købe i Føtex?",
+  },
+  {
+    label: "Grillkød",
+    message: "Rester af grillkød og salat. Rød eller hvid?",
+  },
+  {
+    label: "Køleskabet",
+    message: "Jeg har tre slatne gulerødder, et kyllingebryst og gedeost. Hvilken vin?",
+  },
+  {
+    label: "Under 100 kr",
+    message: "Hverdagsvin under 100 kr til pasta og tomat.",
+  },
 ] as const;
 
 type ChatMsg = {
@@ -20,7 +32,6 @@ type ChatMsg = {
 
 export function WineFridgeChat({ className = "" }: { className?: string }) {
   const inputId = useId();
-  const { ready } = useTasteProfile();
   const [available, setAvailable] = useState<boolean | null>(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -92,37 +103,56 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
     return null;
   }
 
-  return (
-    <section
-      className={`rounded-2xl border border-stone-200 bg-white/95 p-4 shadow-sm sm:p-5 ${className}`}
-      aria-labelledby="fridge-chat-heading"
-    >
-      <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90">AI-chat</p>
-      <h2 id="fridge-chat-heading" className="mt-1 text-lg font-semibold tracking-tight text-stone-900">
-        Hvad har du i køleskabet?
-      </h2>
-      <p className="mt-1.5 text-sm leading-relaxed text-stone-600">
-        Skriv fritekst — Vinbot foreslår vine hos danske forhandlere
-        {ready ? " (tilpasset din smagsprofil)" : ""}.
-      </p>
+  const chatting = messages.length > 0;
 
-      {messages.length === 0 ? (
-        <ul className="mt-3 flex flex-col gap-2">
-          {EXAMPLES.map((ex) => (
-            <li key={ex}>
+  return (
+    <section className={className} aria-labelledby="home-ask-heading">
+      <form
+        className="flex gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void send(input);
+        }}
+      >
+        <label htmlFor={inputId} className="sr-only">
+          Spørg Vinbot om vin
+        </label>
+        <input
+          id={inputId}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ret, køleskab, stemning eller budget…"
+          disabled={loading || available === null}
+          className="min-w-0 flex-1 rounded-2xl border border-white/80 bg-white px-4 py-3.5 text-base text-stone-900 shadow-lg ring-1 ring-rose-200/60 placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200 sm:py-4 sm:text-lg"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim() || available === null}
+          className="shrink-0 rounded-2xl bg-rose-900 px-5 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-rose-800 disabled:opacity-50 sm:px-6"
+        >
+          Spørg
+        </button>
+      </form>
+
+      {chatting ? null : (
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {CHIPS.map((chip) => (
+            <li key={chip.label}>
               <button
                 type="button"
-                onClick={() => void send(ex)}
+                onClick={() => void send(chip.message)}
                 disabled={loading || available === null}
-                className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2 text-left text-sm text-stone-700 hover:border-rose-300 hover:bg-rose-50 disabled:opacity-50"
+                className="rounded-full border border-stone-200/90 bg-white/90 px-3 py-1.5 text-sm text-stone-700 shadow-sm hover:border-rose-300 hover:bg-rose-50 disabled:opacity-50"
               >
-                {ex}
+                {chip.label}
               </button>
             </li>
           ))}
         </ul>
-      ) : (
-        <div className="mt-4 max-h-80 space-y-3 overflow-y-auto" aria-live="polite">
+      )}
+
+      {chatting ? (
+        <div className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/40" aria-live="polite">
           {messages.map((m, i) => (
             <div key={`${m.role}-${i}`} className={m.role === "user" ? "text-right" : ""}>
               <div
@@ -147,36 +177,9 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
           ))}
           {loading ? <p className="text-sm text-stone-500">Tænker…</p> : null}
         </div>
-      )}
+      ) : null}
 
       {error ? <p className="mt-2 text-sm text-rose-800">{error}</p> : null}
-
-      <form
-        className="mt-4 flex gap-2"
-        onSubmit={(e) => {
-          e.preventDefault();
-          void send(input);
-        }}
-      >
-        <label htmlFor={inputId} className="sr-only">
-          Beskriv hvad du har i køleskabet
-        </label>
-        <input
-          id={inputId}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Fx kylling, gedeost, gulerødder…"
-          disabled={loading || available === null}
-          className="min-w-0 flex-1 rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-base text-stone-900 placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
-        />
-        <button
-          type="submit"
-          disabled={loading || !input.trim() || available === null}
-          className="shrink-0 rounded-xl bg-rose-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-rose-800 disabled:opacity-50"
-        >
-          Send
-        </button>
-      </form>
     </section>
   );
 }

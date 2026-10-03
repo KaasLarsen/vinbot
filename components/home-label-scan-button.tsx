@@ -18,31 +18,22 @@ function CameraIcon({ className }: { className?: string }) {
 }
 
 /**
- * Tydelig kamera-CTA til forsiden — åbner etiket-scanner (adskilt fra stregkode-scan i søgefeltet).
+ * Kompakt etiket-scan på telefon — skjult på computer, hvor tastatur-søgning er hurtigere.
  */
 export function HomeLabelScanButton() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <div className="mt-5 flex flex-col items-center sm:items-start lg:hidden">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="group flex w-full max-w-sm flex-col items-center gap-2 rounded-2xl border border-rose-900/15 bg-white/90 px-5 py-4 text-center shadow-md ring-1 ring-rose-200/60 backdrop-blur-sm transition hover:border-rose-900/25 hover:shadow-lg active:scale-[0.99] sm:max-w-md sm:flex-row sm:text-left"
-          aria-label="Scan vin-etiket med kamera"
-        >
-          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-rose-900 text-white shadow-sm transition group-hover:bg-rose-950">
-            <CameraIcon className="h-7 w-7" />
-          </span>
-          <span className="min-w-0">
-            <span className="block text-base font-semibold text-stone-900">Scan etiket</span>
-            <span className="mt-0.5 block text-sm leading-snug text-stone-600">
-              Tag et billede i butikken eller til middagen — vi finder tilbud og guide.
-            </span>
-          </span>
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex items-center gap-1.5 font-medium text-stone-700 underline-offset-2 hover:text-rose-900 hover:underline lg:hidden"
+        aria-label="Scan vin-etiket med kamera"
+      >
+        <CameraIcon className="h-4 w-4" />
+        Scan etiket
+      </button>
       {open ? <LabelScanner onClose={() => setOpen(false)} /> : null}
     </>
   );

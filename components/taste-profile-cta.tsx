@@ -10,9 +10,11 @@ const EMPTY_CANDIDATES: TasteCandidate[] = [];
 export function TasteProfileCta({
   className = "",
   initialCandidates = EMPTY_CANDIDATES,
+  variant = "button",
 }: {
   className?: string;
   initialCandidates?: TasteCandidate[];
+  variant?: "button" | "line";
 }) {
   const { ready } = useTasteProfile();
   const [open, setOpen] = useState(false);
@@ -20,7 +22,15 @@ export function TasteProfileCta({
   return (
     <>
       <div className={className}>
-        {ready ? (
+        {variant === "line" ? (
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="text-sm text-stone-600 underline-offset-2 hover:text-rose-900 hover:underline"
+          >
+            {ready ? "Tilpasset din smag · Rediger" : "Lav din smagsprofil"}
+          </button>
+        ) : ready ? (
           <button
             type="button"
             onClick={() => setOpen(true)}
