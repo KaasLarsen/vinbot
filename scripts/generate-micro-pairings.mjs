@@ -16,8 +16,9 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 import { MICRO_DISHES as MICRO_DISHES_BASE } from "./micro-pairings-catalog.mjs";
 import { MICRO_DISHES_EXTRA } from "./micro-pairings-catalog-extra.mjs";
+import { MICRO_DISHES_BATCH3 } from "./micro-pairings-catalog-batch3.mjs";
 
-const MICRO_DISHES = [...MICRO_DISHES_BASE, ...MICRO_DISHES_EXTRA];
+const MICRO_DISHES = [...MICRO_DISHES_BASE, ...MICRO_DISHES_EXTRA, ...MICRO_DISHES_BATCH3];
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const guidesDir = path.join(root, "content/guides");
