@@ -17,3 +17,12 @@ export const ADTRACTION_WITT_LIVING_SHOP =
  */
 export const ADTRACTION_JORGSHOLM_SHOP =
   "https://pin.jorgsholm.dk/t/t?a=2048668934&as=2022448293&t=2&tk=1&fid=3287&url=https://jorgsholm.dk";
+
+/** Factor — færdigretter (ingen produktfeed; kun shop/abonnementsklik). */
+export const ADTRACTION_FACTOR = "https://adtr.co/3rb8kb";
+
+/** BetterFeast — nem madkasse (ingen produktfeed; kun shop/abonnementsklik). */
+export const ADTRACTION_BETTERFEAST = "https://adtr.co/gbohc6";
+
+/** HelloFresh — måltidskasse med opskrifter (ingen produktfeed; kun shop/abonnementsklik). */
+export const ADTRACTION_HELLOFRESH = "https://adtr.co/kvrnd9";

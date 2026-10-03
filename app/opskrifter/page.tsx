@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { HomeRecipesStripClient } from "@/components/home-recipes-strip-client";
+import { MealKitAffiliateCta } from "@/components/meal-kit-affiliate-cta";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { RecipeHubBrowser } from "@/components/recipe-hub-browser";
 import { getAllRecipes, getRecipeBySlug } from "@/lib/content/recipes";
@@ -129,6 +130,8 @@ export default async function OpskrifterHubPage({ searchParams }: PageProps) {
           .
         </p>
       </header>
+
+      <MealKitAffiliateCta className="mt-8 max-w-2xl" slug="meal-kit-opskrifter" hub="opskrifter" />
 
       <div className="mt-10">
         <RecipeHubBrowser recipes={cards} initialFilters={initialFilters}>

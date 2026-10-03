@@ -4,6 +4,7 @@ import { FoodWinePicker } from "@/components/food-wine-picker";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
+import { MealKitAffiliateCta } from "@/components/meal-kit-affiliate-cta";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listGuides, listMadOgVinHubGuides } from "@/lib/content/guides";
@@ -62,6 +63,8 @@ export default function MadOgVinHubPage() {
         className="mt-8 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
         heading="Find vin til aftensmaden"
       />
+
+      <MealKitAffiliateCta className="mt-8 max-w-2xl" slug="mad-og-vin" hub="mad-og-vin" />
 
       <p className="mt-8 text-sm text-stone-600">
         Startklassikere:{" "}
