@@ -1,6 +1,6 @@
 # Tilføj en forhandler (intern ops)
 
-Eksterne butikker ansøger via [/forhandlere](https://www.vinbot.dk/forhandlere). Denne guide er til dig/agenten, når feedet skal ind i koden.
+Eksterne butikker ansøger via [/forhandlere](https://www.vinbot.dk/forhandlere). Produktfeed-krav (felter, formater, eksempler) står på [/produktfeed](https://www.vinbot.dk/produktfeed). Denne guide er til dig/agenten, når feedet skal ind i koden.
 
 ## 1. Produktfeed
 
@@ -60,4 +60,4 @@ Sørg for at feed-URL’er allerede er tracked (Partner-Ads/Adtraction/Daisycon-
 
 ## 6. Ekstern ansøgning
 
-Butikker uden kode-adgang: henvis til [/forhandlere](https://www.vinbot.dk/forhandlere) (feed-URL, e-mail, gratis / affiliate / CPC). Signup går via Resend til `info@vinbot.dk`.
+Butikker uden kode-adgang: henvis til [/produktfeed](https://www.vinbot.dk/produktfeed) for feed-krav og [/forhandlere](https://www.vinbot.dk/forhandlere) for ansøgning (feed-URL, e-mail, gratis / affiliate / CPC). Signup går via Resend til `info@vinbot.dk`.

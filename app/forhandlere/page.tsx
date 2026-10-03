@@ -130,6 +130,12 @@ export default function ForhandlerePage() {
           Gratis butikker indgår i søgningen uden link videre til shoppen, og prioriteres ikke på
           guides og hub-sider — se forskellen under gratis listing vs. partner ovenfor.
         </p>
+        <p className="leading-relaxed">
+          <Link href="/produktfeed" className="font-medium text-rose-900 hover:underline">
+            Se fulde produktfeed-krav
+          </Link>{" "}
+          — felter, formater, Google Merchant-tags og kopierbare XML/CSV-eksempler til jeres udvikler.
+        </p>
       </section>
 
       <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">

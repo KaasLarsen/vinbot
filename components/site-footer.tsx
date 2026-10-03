@@ -148,6 +148,9 @@ export function SiteFooter() {
               <Link href="/partnere" className="hover:text-rose-900">
                 Bliv CPC-partner
               </Link>
+              <Link href="/produktfeed" className="hover:text-rose-900">
+                Produktfeed
+              </Link>
               <RetailerSignupCta />
             </nav>
             <div className="mt-8">

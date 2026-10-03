@@ -185,7 +185,14 @@ export function RetailerSignupModal({ open, onClose }: Props) {
                 Har I et produktfeed? <span className="text-rose-800">*</span>
               </legend>
               <p className="mt-1 text-xs text-stone-500">
-                Et XML/CSV-feed med jeres sortiment, så vi kan vise jeres flasker
+                Et XML/CSV-feed med jeres sortiment, så vi kan vise jeres flasker.{" "}
+                <Link
+                  href="/produktfeed"
+                  onClick={onClose}
+                  className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2 hover:text-rose-950"
+                >
+                  Se feed-krav
+                </Link>
               </p>
               <div className="mt-2 flex gap-4">
                 <label className="inline-flex items-center gap-2 text-sm text-stone-700">
