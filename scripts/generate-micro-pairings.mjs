@@ -14,7 +14,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import matter from "gray-matter";
 import readingTime from "reading-time";
-import { MICRO_DISHES } from "./micro-pairings-catalog.mjs";
+import { MICRO_DISHES as MICRO_DISHES_BASE } from "./micro-pairings-catalog.mjs";
+import { MICRO_DISHES_EXTRA } from "./micro-pairings-catalog-extra.mjs";
+
+const MICRO_DISHES = [...MICRO_DISHES_BASE, ...MICRO_DISHES_EXTRA];
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const guidesDir = path.join(root, "content/guides");
@@ -56,6 +59,8 @@ function parseArgs(argv) {
   let force = false;
   let registryOnly = false;
   let limit = Infinity;
+  let concurrency = 3;
+  let offset = 0;
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--check") check = true;
@@ -64,9 +69,11 @@ function parseArgs(argv) {
     else if (arg === "--registry-only") registryOnly = true;
     else if (arg === "--only") only.push(...(argv[++i] || "").split(",").filter(Boolean));
     else if (arg === "--limit") limit = Number(argv[++i] || "0");
+    else if (arg === "--offset") offset = Number(argv[++i] || "0");
+    else if (arg === "--concurrency") concurrency = Math.max(1, Number(argv[++i] || "1"));
     else if (arg.startsWith("--only=")) only.push(...arg.slice(7).split(",").filter(Boolean));
   }
-  return { check, selfTest, force, registryOnly, only: new Set(only), limit };
+  return { check, selfTest, force, registryOnly, only: new Set(only), limit, offset, concurrency };
 }
 
 export function fitDescription(raw, dish, defaultWine, altWine, avoidWine) {
@@ -503,14 +510,19 @@ async function main() {
     return;
   }
 
-  const selected = MICRO_DISHES.filter((dish) => args.only.size === 0 || args.only.has(dish.slug)).slice(0, args.limit);
+  const selected = MICRO_DISHES.filter((dish) => args.only.size === 0 || args.only.has(dish.slug)).slice(
+    args.offset,
+    args.offset + args.limit,
+  );
   let written = 0;
   let failed = 0;
-  for (const dish of selected) {
+  let skipped = 0;
+
+  async function processDish(dish) {
     const target = path.join(guidesDir, `${dish.slug}.mdx`);
     if (fs.existsSync(target) && !args.force) {
-      console.log(`springer over ${dish.slug}`);
-      continue;
+      skipped += 1;
+      return;
     }
     console.log(`skriver ${dish.slug}`);
     try {
@@ -518,7 +530,7 @@ async function main() {
       if (!draft || draft.issues.length) {
         failed += 1;
         console.error(`fejlede ${dish.slug}: ${(draft?.issues || ["ukendt"]).join("; ")}`);
-        continue;
+        return;
       }
       fs.writeFileSync(target, buildMdx(dish, draft.title, draft.description, draft.body));
       written += 1;
@@ -528,8 +540,19 @@ async function main() {
       console.error(`fejlede ${dish.slug}: ${error instanceof Error ? error.message : error}`);
     }
   }
+
+  const queue = [...selected];
+  const workers = Array.from({ length: Math.min(args.concurrency, queue.length || 1) }, async () => {
+    while (queue.length) {
+      const dish = queue.shift();
+      if (!dish) break;
+      await processDish(dish);
+    }
+  });
+  await Promise.all(workers);
+
   const registered = writeRegistry();
-  console.log(`skrev ${written}, fejlede ${failed}, register ${registered}`);
+  console.log(`skrev ${written}, sprang over ${skipped}, fejlede ${failed}, register ${registered}`);
   if (failed) process.exit(1);
 }
 
