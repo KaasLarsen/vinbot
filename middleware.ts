@@ -10,13 +10,17 @@ function withPathnameHeader(request: NextRequest): NextResponse {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-/** Apex → www (canonical host) + pathname til `not-found.tsx` under `/vine/[slug]`. */
+/**
+ * Apex → www (canonical host) + pathname til `not-found.tsx` under `/vine/[slug]`.
+ * Forsiden på apex skal svare 200: Daisycons ejertjek følger ikke 307/308 og
+ * melder "Connection to the remote server failed", når vinbot.dk redirecter.
+ */
 export async function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
-  if (host === "vinbot.dk") {
+  if (host === "vinbot.dk" && request.nextUrl.pathname !== "/") {
     const url = request.nextUrl.clone();
     url.hostname = "www.vinbot.dk";
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(url, 301);
   }
 
   const isPartnerPath = request.nextUrl.pathname.startsWith("/partnere");
