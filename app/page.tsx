@@ -66,7 +66,7 @@ export default function HomePage() {
         <HomeHeroSecondary className="relative z-10 mt-4" />
       </HomeHeroSearchSection>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2 md:gap-5">
+      <div className="mt-6 grid items-start gap-4 md:grid-cols-2 md:gap-5">
         <WineQuantityCalculator
           variant="compact"
           defaultCollapsed
