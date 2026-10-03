@@ -57,6 +57,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   alternates: { canonical: siteUrl },
+  /** Daisycon publisher-ejerskab af vinbot.dk. Fjernes ikke — crawleren tjekker tagget løbende. */
+  other: {
+    "daisycon-verification":
+      "9a294b5ccb72311e43bc86196f9e9f600b849266c4de894cbcf29d0bbc86196f9e9f600b849266e12da57de09b7b76da6b9b417e623a9f7ae32f93f6edfc7a9a294b5ccb72311e436f35a36791673645abc4de894cb0e7b240330bbe66c68a675",
+  },
 };
 
 export default function RootLayout({
