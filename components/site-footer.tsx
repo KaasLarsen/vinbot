@@ -60,6 +60,9 @@ export function SiteFooter() {
               <Link href="/rabatkoder" className="hover:text-rose-900">
                 Rabatkoder
               </Link>
+              <Link href="/vinbot-formlen" className="hover:text-rose-900">
+                Vinbot-formlen
+              </Link>
               <Link href="/julevin-beregner" className="hover:text-rose-900">
                 Julevin-beregner
               </Link>

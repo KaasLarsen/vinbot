@@ -9,6 +9,8 @@ import {
   type PartyType,
 } from "@/lib/wine-quantity/formula";
 
+type SecondaryCta = { href: string; label: string };
+
 type WineQuantityCalculatorProps = {
   heading?: string;
   intro?: string;
@@ -18,6 +20,12 @@ type WineQuantityCalculatorProps = {
   variant?: "full" | "compact";
   /** Start sammenklappet (kun relevant for `compact` — fx forsiden). */
   defaultCollapsed?: boolean;
+  /**
+   * Sekundær CTA under resultatet.
+   * `undefined` = default (compact → /vinbot-formlen, full → /fest-og-vin).
+   * `null` = skjul (fx når beregneren allerede står på /vinbot-formlen).
+   */
+  secondaryCta?: SecondaryCta | null;
   className?: string;
 };
 
@@ -27,12 +35,6 @@ const PARTY_OPTIONS: { id: PartyType; label: string; hint: string }[] = [
   { id: "bryllup", label: "Bryllup / lang fest", hint: "1 flaske/gæst" },
 ];
 
-function guideHrefForPartyType(partyType: PartyType): string {
-  return partyType === "bryllup"
-    ? "/guides/hvor-meget-vin-til-bryllup"
-    : "/guides/hvor-meget-vin-til-fest";
-}
-
 export function WineQuantityCalculator({
   heading = "Beregn flasker til festen",
   intro = "Antal drikkende gæster + festtype — så får du Vinbot-formlen med 15 % buffer. Find derefter festvine til indkøbet.",
@@ -40,6 +42,7 @@ export function WineQuantityCalculator({
   defaultGuests = 40,
   variant = "full",
   defaultCollapsed = false,
+  secondaryCta,
   className = "",
 }: WineQuantityCalculatorProps) {
   const isCompact = variant === "compact";
@@ -69,7 +72,13 @@ export function WineQuantityCalculator({
   );
 
   const picksQuery = wineQuantitySearchQuery(result);
-  const guideHref = guideHrefForPartyType(partyType);
+  const resolvedSecondaryCta: SecondaryCta | null =
+    secondaryCta === null
+      ? null
+      : (secondaryCta ??
+        (isCompact
+          ? { href: "/vinbot-formlen", label: "Åbn Vinbot-formlen" }
+          : { href: "/fest-og-vin", label: "Fest- og selskab-hub" }));
   const padding = isCompact ? "p-4 sm:p-5" : "p-5 sm:p-6";
 
   useEffect(() => {
@@ -292,21 +301,14 @@ export function WineQuantityCalculator({
           >
             {showPicks ? "Opdater festvine" : "Find festvine til indkøbet"}
           </button>
-          {isCompact ? (
+          {resolvedSecondaryCta ? (
             <Link
-              href={guideHref}
+              href={resolvedSecondaryCta.href}
               className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 hover:border-rose-300 hover:bg-rose-50"
             >
-              Finjustér i guiden
+              {resolvedSecondaryCta.label}
             </Link>
-          ) : (
-            <Link
-              href="/fest-og-vin"
-              className="inline-flex items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm font-medium text-stone-800 hover:border-rose-300 hover:bg-rose-50"
-            >
-              Fest- og selskab-hub
-            </Link>
-          )}
+          ) : null}
         </div>
 
         {showPicks ? (

@@ -35,6 +35,21 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
     ],
   },
   {
+    label: "Vinbot-formlen",
+    href: "/vinbot-formlen",
+    keywords: [
+      "vinbot-formlen",
+      "formel",
+      "beregner",
+      "flasker",
+      "hvor meget vin",
+      "hvor mange flasker",
+      "fest",
+      "mængde",
+      "buffer",
+    ],
+  },
+  {
     label: "Julevin-beregner",
     href: "/julevin-beregner",
     keywords: ["julevin", "nytårsvin", "nytaarsvin", "beregner", "flasker", "juleaften", "hvor meget vin"],
@@ -96,6 +111,7 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
 
 /** Populære genveje når feltet er tomt (roterer ikke — stabilt sæt). */
 const QUICK_PICKS: NavSearchSuggestion[] = [
+  { href: "/vinbot-formlen", label: "Vinbot-formlen — flasker til festen", kind: "quick", score: 0 },
   { href: "/julevin-beregner", label: "Julevin- og nytårsvins-beregner", kind: "quick", score: 0 },
   { href: "/guides/vin-til-julefrokost", label: "Vin til julefrokost", kind: "quick", score: 0 },
   { href: "/black-friday", label: "Black Friday vin-hub", kind: "quick", score: 0 },

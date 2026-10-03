@@ -72,7 +72,11 @@ export default function FestOgVinHubPage() {
       <section className="mt-8 rounded-lg bg-amber-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Vin til fest — beregn mængde</h2>
         <p className="mt-3 text-sm text-stone-700">
-          Start her:{" "}
+          Start med{" "}
+          <Link href="/vinbot-formlen" className="font-medium text-rose-900 hover:underline">
+            Vinbot-formlen
+          </Link>{" "}
+          (flasker pr. gæst + 15 % buffer), eller læs{" "}
           <Link href="/guides/hvor-meget-vin-til-fest" className="font-medium text-rose-900 hover:underline">
             hvor meget vin til fest
           </Link>
@@ -109,6 +113,12 @@ export default function FestOgVinHubPage() {
         <div className="rounded-lg border border-stone-200 bg-white p-5">
           <h2 className="text-lg font-semibold text-stone-900">Mængde og planlægning</h2>
           <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-stone-700">
+            <li>
+              <Link href="/vinbot-formlen" className="text-rose-900 hover:underline">
+                Vinbot-formlen
+              </Link>{" "}
+              — beregn flasker med 15 % buffer
+            </li>
             <li>
               <Link href="/guides/hvor-meget-vin-til-fest" className="text-rose-900 hover:underline">
                 Hvor meget vin til fest
