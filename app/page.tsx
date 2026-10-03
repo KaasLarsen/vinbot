@@ -12,6 +12,7 @@ import { HomeWineSearch } from "@/components/home-wine-search";
 import { HomeLabelScanButton } from "@/components/home-label-scan-button";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
 import { CampaignBanner } from "@/components/campaign-banner";
+import { HomeAffiliatePopup } from "@/components/home-affiliate-popup";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
@@ -42,6 +43,7 @@ const HOME_QUERY_BOOTSTRAP = `(function(){try{var q=new URLSearchParams(location
 export default function HomePage() {
   return (
     <PageShell className="py-10">
+      <HomeAffiliatePopup />
       <div className="lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)] lg:items-start lg:gap-6">
         <HomeHeroSearchSection>
           <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
