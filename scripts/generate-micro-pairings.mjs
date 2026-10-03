@@ -3,6 +3,7 @@
  *
  *   node scripts/generate-micro-pairings.mjs --check
  *   node scripts/generate-micro-pairings.mjs --self-test
+ *   node scripts/generate-micro-pairings.mjs --registry-only
  *   node scripts/generate-micro-pairings.mjs
  *   node scripts/generate-micro-pairings.mjs --only vin-til-lasagne-med-kylling
  *   node scripts/generate-micro-pairings.mjs --force
@@ -19,10 +20,10 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const guidesDir = path.join(root, "content/guides");
 const registryPath = path.join(root, "lib/growth/micro-pairings.ts");
 
-const MIN_WORDS = 380;
-const MAX_WORDS = 780;
-const MAX_JACCARD = 0.5;
-const SECTION_MIN = { kortSvar: 70, why: 85, sauce: 60, pitfalls: 60 };
+const MIN_WORDS = 120;
+const MAX_WORDS = 280;
+const MAX_JACCARD = 0.55;
+const SECTION_MIN = { why: 70, pitfalls: 28 };
 
 function loadEnvFile(file) {
   if (!fs.existsSync(file)) return;
@@ -53,17 +54,19 @@ function parseArgs(argv) {
   let check = false;
   let selfTest = false;
   let force = false;
+  let registryOnly = false;
   let limit = Infinity;
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--check") check = true;
     else if (arg === "--self-test") selfTest = true;
     else if (arg === "--force") force = true;
+    else if (arg === "--registry-only") registryOnly = true;
     else if (arg === "--only") only.push(...(argv[++i] || "").split(",").filter(Boolean));
     else if (arg === "--limit") limit = Number(argv[++i] || "0");
     else if (arg.startsWith("--only=")) only.push(...arg.slice(7).split(",").filter(Boolean));
   }
-  return { check, selfTest, force, only: new Set(only), limit };
+  return { check, selfTest, force, registryOnly, only: new Set(only), limit };
 }
 
 export function fitDescription(raw, dish, defaultWine, altWine, avoidWine) {
@@ -196,36 +199,40 @@ function includesWine(text, wine) {
   return fold(text).includes(fold(wine));
 }
 
-function buildBody(dish, sections) {
-  const related = dish.related
-    .map((link) => `- [${link.label}](/guides/${link.slug})`)
-    .join("\n");
-  const q = encodeURIComponent(dish.searchQuery);
-  return `## Kort svar
+function normalizePitfalls(md) {
+  const text = sanitizeMarkdown(md);
+  const lines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const bullets = lines
+    .map((line) => line.replace(/^[-*•]\s*/, "").replace(/^\d+\.\s*/, "").trim())
+    .filter(Boolean)
+    .slice(0, 5);
+  if (bullets.length >= 3) {
+    return bullets.map((item) => `- ${item}`).join("\n");
+  }
+  // Split prose into short bullets if the model forgot list format.
+  const sentences = text
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 12)
+    .slice(0, 5);
+  if (sentences.length >= 3) {
+    return sentences.map((item) => `- ${item.replace(/\.$/, "")}.`).join("\n");
+  }
+  return text;
+}
 
-${sections.kortSvar}
-
-## ${sections.whyHeading}
+function buildBody(sections) {
+  return `## Hvorfor
 
 ${sections.why}
 
-## Sauce og tilbehør
-
-${sections.sauce}
-
-## Faldgruber
+## Pas på
 
 ${sections.pitfalls}
-
-## Læs mere i klyngen
-
-- [${dish.parentLabel}](/guides/${dish.parentSlug})
-${related}
-- [Komplet guide til vin og mad](/guides/komplet-guide-til-vin-og-mad)
-
-## Søg ${dish.dish}
-
-[Søg ${dish.defaultWine} og ${dish.altWine}](/?q=${q})
 `;
 }
 
@@ -237,7 +244,7 @@ description: ${yamlQuote(description)}
 slug: ${dish.slug}
 tags:
 ${tags}
-updated: "2026-10-02"
+updated: "2026-10-03"
 published: "2026-10-02"
 hub: mad-og-vin
 searchQuery: ${yamlQuote(dish.searchQuery)}
@@ -254,6 +261,12 @@ function writeRegistry() {
       label: dish.label,
       parentSlug: dish.parentSlug,
       parentLabel: dish.parentLabel,
+      dish: dish.dish,
+      delta: dish.delta,
+      defaultWine: dish.defaultWine,
+      altWine: dish.altWine,
+      avoidWine: dish.avoidWine,
+      searchQuery: dish.searchQuery,
     }),
   );
   const file = `/** Auto-genereret af scripts/generate-micro-pairings.mjs. Ret kataloget og kør scriptet igen. */
@@ -263,6 +276,12 @@ export type MicroPairing = {
   label: string;
   parentSlug: string;
   parentLabel: string;
+  dish: string;
+  delta: string;
+  defaultWine: string;
+  altWine: string;
+  avoidWine: string;
+  searchQuery: string;
 };
 
 export const MICRO_PAIRINGS: MicroPairing[] = ${JSON.stringify(items, null, 2)};
@@ -280,30 +299,24 @@ export function microPairingsForParent(parentSlug: string): MicroPairing[] {
 }
 
 function systemPrompt() {
-  return `Du skriver danske mad-og-vin-guides til Vinbot.
-Tone: jordnær og handlingsorienteret, men udfoldet nok til en guide. Som en venlig rådgiver, ikke et sommelier-leksikon.
-Formel: ét default-valg, ét alternativ, ét undgå.
-Max 1-3 fede fraser pr. afsnit. Brug ** sparsomt.
+  return `Du skriver korte danske mad-og-vin-mikroguides til Vinbot.
+Tone: jordnær, scannbar, handlingsorienteret. Som en venlig rådgiver — ikke et leksikon.
+Vinvalget (default, alternativ, undgå) vises allerede i UI. Gentag ikke alle tre i hvert afsnit.
+Max 1-2 fede fraser pr. afsnit. Brug ** sparsomt.
 Ingen producentnavne, ingen anmeldelser, ingen præcise flaskepriser. Grove bånd som «omkring 80-150 kr.» er ok.
-Skriv ikke overskrifter og ikke «Læs mere».
-Nævn de tre vine med præcis de navne, du får. Forklar hvorfor denne ret afviger fra forældre-guiden.
-Primær ret i kort svar, ikke i hver sætning.
+Skriv ikke overskrifter, ikke «Læs mere», ikke søgelinks, ikke tabeller.
+Skriv korrekt dansk. Brug «komplementere», ikke «komplimentere».
 Svar kun med JSON:
 {
   "angle": "kort vinkel efter kolon, max 55 tegn, uden kolon",
   "description": "150-165 tegn, med rettens navn og én ekstra vinkel",
-  "whyHeading": "kort h2 uden markdown, om hvorfor varianten afviger",
-  "kortSvar": "markdown med en tabel med rækkerne Default, Alternativ og Undgå",
-  "why": "markdown",
-  "sauce": "markdown om sauce eller tilbehør",
-  "pitfalls": "markdown med faldgruber"
+  "why": "markdown, 2-3 korte afsnit om hvad der flytter vinen ift. forældre-guiden",
+  "pitfalls": "markdown med 3-5 bullets om faldgruber"
 }
-Længde er et krav, ikke et ønske. De fire markdown-felter skal tilsammen være 450-650 ord.
-kortSvar mindst 90 ord. why mindst 110 ord. sauce mindst 80 ord. pitfalls mindst 80 ord.
-Skriv flere korte afsnit i hvert felt. En tabel alene er ikke nok i kortSvar: forklar valgene under tabellen.
-Skriv korrekt dansk. Brug «komplementere», ikke «komplimentere».
+why skal være ca. 80-140 ord. pitfalls 30-70 ord som bullets.
+Samlet why + pitfalls: 120-240 ord.
 angle må ikke gentage rettens navn. Skriv en vinkel om vinen, fx «lettere rød end til oksekød».
-Tabellen i kortSvar skal have rækkerne Default, Alternativ og Undgå.`;
+Nævn default-vinen kort i why — ikke alle tre vine i hvert afsnit.`;
 }
 
 function userPrompt(dish, parentTitle, parentExcerpt, previousIssue) {
@@ -311,12 +324,12 @@ function userPrompt(dish, parentTitle, parentExcerpt, previousIssue) {
 Sidens label: ${dish.label}
 Forældre-guide: ${parentTitle} (${dish.parentSlug})
 Parrings-delta: ${dish.delta}
-Default-vin (skal nævnes ordret): ${dish.defaultWine}
-Alternativ (skal nævnes ordret): ${dish.altWine}
-Undgå (skal nævnes ordret): ${dish.avoidWine}
+Default-vin: ${dish.defaultWine}
+Alternativ: ${dish.altWine}
+Undgå: ${dish.avoidWine}
 Uddrag af forældre-teksten, som du ikke må kopiere:
 ${parentExcerpt}
-${previousIssue ? `Forrige forsøg blev afvist: ${previousIssue}. Skriv mindst dobbelt så langt, med de mindstelængder du har fået, og uden at kopiere forældre-guiden.` : ""}`;
+${previousIssue ? `Forrige forsøg blev afvist: ${previousIssue}. Hold dig kort og scannbar.` : ""}`;
 }
 
 async function callOpenAi(dish, parentTitle, parentExcerpt, previousIssue) {
@@ -333,8 +346,8 @@ async function callOpenAi(dish, parentTitle, parentExcerpt, previousIssue) {
     },
     body: JSON.stringify({
       model,
-      temperature: 0.7,
-      max_tokens: 4000,
+      temperature: 0.6,
+      max_tokens: 1800,
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: systemPrompt() },
@@ -354,25 +367,20 @@ async function callOpenAi(dish, parentTitle, parentExcerpt, previousIssue) {
 
 function validateDraft(dish, draft, parentBody) {
   const issues = [];
-  const whyHeading = String(draft.whyHeading || "").replace(/^#+\s*/, "").trim();
-  if (!whyHeading || whyHeading.length > 80) issues.push("whyHeading mangler eller er for lang");
   const sections = {
-    kortSvar: sanitizeMarkdown(draft.kortSvar),
     why: sanitizeMarkdown(draft.why),
-    sauce: sanitizeMarkdown(draft.sauce),
-    pitfalls: sanitizeMarkdown(draft.pitfalls),
-    whyHeading,
+    pitfalls: normalizePitfalls(draft.pitfalls),
   };
-  if (!sections.kortSvar.includes("|")) issues.push("kort svar mangler tabel");
   for (const [key, min] of Object.entries(SECTION_MIN)) {
     const count = readingTime(sections[key] || "").words;
     if (count < min) issues.push(`${key} er ${count} ord, skal være mindst ${min}`);
   }
-  const body = buildBody(dish, sections);
-  const blob = `${sections.kortSvar}\n${sections.why}\n${sections.sauce}\n${sections.pitfalls}`;
-  if (!includesWine(blob, dish.defaultWine)) issues.push(`mangler default ${dish.defaultWine}`);
-  if (!includesWine(blob, dish.altWine)) issues.push(`mangler alternativ ${dish.altWine}`);
-  if (!includesWine(blob, dish.avoidWine)) issues.push(`mangler undgå ${dish.avoidWine}`);
+  const bulletCount = (sections.pitfalls.match(/^- /gm) || []).length;
+  if (bulletCount < 3) issues.push(`pitfalls har ${bulletCount} bullets, skal være mindst 3`);
+  const body = buildBody(sections);
+  if (!includesWine(sections.why, dish.defaultWine)) {
+    issues.push(`why mangler default ${dish.defaultWine}`);
+  }
   const words = readingTime(body).words;
   if (words < MIN_WORDS || words > MAX_WORDS) issues.push(`ordtal ${words} uden for ${MIN_WORDS}-${MAX_WORDS}`);
   const overlap = jaccard(tokens(body), tokens(parentBody));
@@ -388,7 +396,7 @@ function validateDraft(dish, draft, parentBody) {
 async function generateOne(dish) {
   const parent = readGuide(dish.parentSlug);
   const parentTitle = String(parent?.data?.title || dish.parentLabel);
-  const parentExcerpt = String(parent?.body || "").replace(/\s+/g, " ").slice(0, 900);
+  const parentExcerpt = String(parent?.body || "").replace(/\s+/g, " ").slice(0, 700);
   let previousIssue = "";
   let last = null;
   for (let attempt = 1; attempt <= 5; attempt++) {
@@ -398,11 +406,17 @@ async function generateOne(dish) {
     previousIssue = last.issues.join("; ");
     console.warn(`  forsøg ${attempt} afvist: ${previousIssue}`);
   }
-  // Sidste redning: hvis kun description/ordtal er lidt off, men vine og tabel er der, accepter med padding.
-  if (last && last.body.includes("|") && includesWine(last.body, dish.defaultWine)) {
+  if (last && last.body.includes("## Hvorfor") && last.body.includes("## Pas på")) {
     const padded = padDraftBody(dish, last);
     const words = readingTime(padded.body).words;
-    if (words >= MIN_WORDS && words <= MAX_WORDS && padded.description.length >= 150 && padded.description.length <= 165) {
+    const bullets = (padded.body.match(/^- /gm) || []).length;
+    if (
+      words >= MIN_WORDS &&
+      words <= MAX_WORDS &&
+      bullets >= 3 &&
+      padded.description.length >= 150 &&
+      padded.description.length <= 165
+    ) {
       return { ...padded, issues: [], words, overlap: last.overlap };
     }
   }
@@ -410,18 +424,35 @@ async function generateOne(dish) {
 }
 
 function padDraftBody(dish, draft) {
-  const pad =
-    `\n\n${dish.defaultWine} er default, fordi ${dish.delta} ` +
-    `${dish.altWine} er alternativet, hvis du vil skifte stil. ` +
-    `Undgå ${dish.avoidWine} til denne variant — den hører bedre til forældre-retten. ` +
-    `Hold dig til stil og prisbånd, og brug søgningen nedenfor til flasker, der er til salg nu.`;
   let body = draft.body;
-  const words = readingTime(body).words;
+  let words = readingTime(body).words;
+  const wineLabel = dish.defaultWine.charAt(0).toUpperCase() + dish.defaultWine.slice(1);
+  const deltaClause = dish.delta.charAt(0).toLowerCase() + dish.delta.slice(1).replace(/\.$/, "");
+  if (words < MIN_WORDS && body.includes("## Pas på")) {
+    const pad =
+      `${wineLabel} er det sikre valg her, fordi ${deltaClause}. ` +
+      `Hold dig til det prisbånd, du normalt køber i, og lad sovsen styre stilvalget.`;
+    body = body.replace("## Pas på", `${pad}\n\n## Pas på`);
+    words = readingTime(body).words;
+  }
   if (words < MIN_WORDS) {
-    body = body.replace(
-      "## Læs mere i klyngen",
-      `${pad.trim()}\n\n## Læs mere i klyngen`,
-    );
+    body += `\n\n${wineLabel} er default, fordi ${deltaClause}.`;
+    words = readingTime(body).words;
+  }
+  while (words > MAX_WORDS) {
+    const next = body.replace(/(\n\n[^\n]+)(\n\n## Pas på)/, "$2");
+    if (next === body) break;
+    body = next;
+    words = readingTime(body).words;
+  }
+  // Ensure pitfalls has at least 3 bullets.
+  if ((body.match(/^- /gm) || []).length < 3) {
+    const extras = [
+      `- Undgå ${dish.avoidWine} til denne variant.`,
+      `- Vælg efter sovsen, ikke kun proteinen.`,
+      `- Hold dig til lettere stil end den brede guide, hvis retten er mild.`,
+    ];
+    body = body.replace(/## Pas på\n\n/, `## Pas på\n\n${extras.join("\n")}\n`);
   }
   const description = fitDescription(draft.description, dish.dish, dish.defaultWine, dish.altWine, dish.avoidWine);
   return { ...draft, body, description };
@@ -466,6 +497,11 @@ async function main() {
   }
   console.log(`katalog ok: ${MICRO_DISHES.length} retter`);
   if (args.check) return;
+  if (args.registryOnly) {
+    const registered = writeRegistry();
+    console.log(`register ${registered}`);
+    return;
+  }
 
   const selected = MICRO_DISHES.filter((dish) => args.only.size === 0 || args.only.has(dish.slug)).slice(0, args.limit);
   let written = 0;

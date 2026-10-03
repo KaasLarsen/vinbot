@@ -5,6 +5,10 @@ import { microPairingBySlug, microPairingsForParent } from "@/lib/growth/micro-p
 export function GuideMicroPairings({ slug }: { slug: string }) {
   const self = microPairingBySlug(slug);
   const children = microPairingsForParent(slug);
+  const siblings = self
+    ? microPairingsForParent(self.parentSlug).filter((item) => item.slug !== slug)
+    : [];
+
   if (!self && children.length === 0) return null;
 
   return (
@@ -12,10 +16,10 @@ export function GuideMicroPairings({ slug }: { slug: string }) {
       {self ? (
         <section className="not-prose mt-10 border-t border-stone-200 pt-8" aria-labelledby="micro-pairing-parent">
           <h2 id="micro-pairing-parent" className="text-xl font-semibold text-stone-900">
-            Den brede guide
+            Læs videre
           </h2>
           <p className="mt-2 text-sm text-stone-600">
-            Denne side er en specifik variant. Den overordnede parring står i forældre-guiden.
+            Den overordnede parring står i forældre-guiden.
           </p>
           <p className="mt-4">
             <Link
@@ -25,6 +29,23 @@ export function GuideMicroPairings({ slug }: { slug: string }) {
               {self.parentLabel}
             </Link>
           </p>
+          {siblings.length > 0 ? (
+            <>
+              <p className="mt-6 text-sm font-medium text-stone-700">Andre varianter</p>
+              <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+                {siblings.map((sibling) => (
+                  <li key={sibling.slug}>
+                    <Link
+                      href={`/guides/${sibling.slug}`}
+                      className="font-medium text-rose-900 underline decoration-rose-200 underline-offset-4 hover:text-rose-950"
+                    >
+                      {sibling.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </section>
       ) : null}
       {children.length > 0 ? (

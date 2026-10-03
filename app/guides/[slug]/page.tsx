@@ -22,8 +22,10 @@ import { GuideRecipeCrosslinks } from "@/components/guide-recipe-crosslinks";
 import { GuideDrinkCrosslinks } from "@/components/guide-drink-crosslinks";
 import { GuideClusterCrosslinks } from "@/components/guide-cluster-crosslinks";
 import { GuideMicroPairings } from "@/components/guide-micro-pairings";
+import { GuideMicroPairingAnswer } from "@/components/guide-micro-pairing-answer";
 import { GuideInlineSearch } from "@/components/guide-inline-search";
 import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
+import { microPairingBySlug } from "@/lib/growth/micro-pairings";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 import { guideIntentFromFrontmatter } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
@@ -110,6 +112,8 @@ export default async function GuidePage({ params }: Props) {
         : undefined;
 
   const seasonEvent = defaultEventForGuideSlug(slug);
+  const microPairing = microPairingBySlug(slug);
+  const isMicro = Boolean(microPairing);
   const intent = guideIntentFromFrontmatter(slug, frontmatter);
   const searchHref = intent
     ? `/?q=${encodeURIComponent(intent.q)}${intent.max != null ? `&max=${intent.max}` : ""}`
@@ -160,27 +164,34 @@ export default async function GuidePage({ params }: Props) {
         <p className="mt-2 text-sm text-stone-500">
           {showBothDates ? (
             <>
-              Publiceret {datePublished} · Opdateret {dateModified} · ca. {readingMinutes} min læsetid ·{" "}
+              Publiceret {datePublished} · Opdateret {dateModified} · ca. {readingMinutes} min læsetid
             </>
           ) : (
-            <>
-              Opdateret {dateModified} · ca. {readingMinutes} min læsetid ·{" "}
-            </>
+            <>Opdateret {dateModified} · ca. {readingMinutes} min læsetid</>
           )}
-          <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-800 hover:underline">
-            Se også hovedguiden om vin og mad
-          </Link>
+          {!isMicro ? (
+            <>
+              {" · "}
+              <Link href="/guides/komplet-guide-til-vin-og-mad" className="text-rose-800 hover:underline">
+                Se også hovedguiden om vin og mad
+              </Link>
+            </>
+          ) : null}
         </p>
       </header>
-      <GuideToc items={toc} />
-      {slug === "hvor-meget-vin-til-fest" || slug === "hvor-meget-vin-til-bryllup" || slug === "hvor-meget-papvin-til-fest" ? (
+      {microPairing ? <GuideMicroPairingAnswer pairing={microPairing} /> : null}
+      {!isMicro ? <GuideToc items={toc} /> : null}
+      {!isMicro &&
+      (slug === "hvor-meget-vin-til-fest" ||
+        slug === "hvor-meget-vin-til-bryllup" ||
+        slug === "hvor-meget-papvin-til-fest") ? (
         <WineQuantityCalculator
           className="mt-8"
           defaultPartyType={slug === "hvor-meget-vin-til-bryllup" ? "bryllup" : "middag"}
           defaultGuests={slug === "hvor-meget-vin-til-bryllup" ? 80 : 40}
         />
       ) : null}
-      {seasonEvent ? (
+      {!isMicro && seasonEvent ? (
         <SeasonWineCalculator
           className="mt-8"
           defaultEvent={seasonEvent}
@@ -188,18 +199,9 @@ export default async function GuidePage({ params }: Props) {
           intro="Antal gæster og budget — så får du en konkret vinmenu med vine til salg nu."
         />
       ) : null}
-      <div className="prose prose-stone mt-8 max-w-none">
+      <div className={`prose prose-stone max-w-none ${isMicro ? "mt-6" : "mt-8"}`}>
         {content}
       </div>
-      <GuideMicroPairings slug={slug} />
-      {slug.startsWith("vin-til-") || slug === "hvorfor-smager-rodvin-grimt-til-ost" ? (
-        <FoodWinePicker
-          className="mt-10 border-t border-stone-200 pt-8"
-          heading="Tre flasker til retten"
-          intro="Vælg budget — eller en anden ret — så viser vi vine, der er til salg hos forhandlerne nu."
-          initialDishId={dishIdForGuideSlug(slug)}
-        />
-      ) : null}
       {intent ? (
         <GuideProductPicks
           q={intent.q}
@@ -211,17 +213,28 @@ export default async function GuidePage({ params }: Props) {
           heading={slug === "bedste-box-vin" ? "Flere boxvine fra forhandlere" : "Se 3 forslag fra danske forhandlere"}
         />
       ) : null}
-      {intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
-      {intent && hub === "regioner" ? <GuideLauridsenRegionCta slug={slug} /> : null}
-      <GuideWineDetailLinks guideSlug={slug} />
-      <GuideClusterCrosslinks guideSlug={slug} />
-      <GuideRecipeCrosslinks guideSlug={slug} />
-      <GuideDrinkCrosslinks guideSlug={slug} />
+      <GuideMicroPairings slug={slug} />
+      {!isMicro && (slug.startsWith("vin-til-") || slug === "hvorfor-smager-rodvin-grimt-til-ost") ? (
+        <FoodWinePicker
+          className="mt-10 border-t border-stone-200 pt-8"
+          heading="Tre flasker til retten"
+          intro="Vælg budget — eller en anden ret — så viser vi vine, der er til salg hos forhandlerne nu."
+          initialDishId={dishIdForGuideSlug(slug)}
+        />
+      ) : null}
+      {!isMicro && intent && guideHasInlineSearch(slug) ? <GuideInlineSearch slug={slug} intent={intent} /> : null}
+      {!isMicro && intent && hub === "regioner" ? <GuideLauridsenRegionCta slug={slug} /> : null}
+      {!isMicro ? <GuideWineDetailLinks guideSlug={slug} /> : null}
+      {!isMicro ? <GuideClusterCrosslinks guideSlug={slug} /> : null}
+      {!isMicro ? <GuideRecipeCrosslinks guideSlug={slug} /> : null}
+      {!isMicro ? <GuideDrinkCrosslinks guideSlug={slug} /> : null}
       {faqItems?.length ? <GuideFaqAccordion items={faqItems} /> : null}
       <PartnerAdsLeaderboard className="mt-12" hub={hub} slug={slug} />
-      <div className="mt-12">
-        <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
-      </div>
+      {!isMicro ? (
+        <div className="mt-12">
+          <RelatedGuides tags={frontmatter.tags || []} excludeSlug={slug} />
+        </div>
+      ) : null}
     </PageShell>
   );
 }
