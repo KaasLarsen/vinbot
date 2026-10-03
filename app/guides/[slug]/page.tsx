@@ -21,10 +21,11 @@ import { GuideWineDetailLinks } from "@/components/guide-wine-detail-links";
 import { GuideRecipeCrosslinks } from "@/components/guide-recipe-crosslinks";
 import { GuideDrinkCrosslinks } from "@/components/guide-drink-crosslinks";
 import { GuideClusterCrosslinks } from "@/components/guide-cluster-crosslinks";
+import { GuideMicroPairings } from "@/components/guide-micro-pairings";
 import { GuideInlineSearch } from "@/components/guide-inline-search";
 import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
-import { deriveGuideIntent } from "@/lib/guide-intent";
+import { guideIntentFromFrontmatter } from "@/lib/guide-intent";
 import { editorialTeamName } from "@/lib/site";
 import { buildGuideSerpDescription, buildGuideSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
@@ -109,7 +110,7 @@ export default async function GuidePage({ params }: Props) {
         : undefined;
 
   const seasonEvent = defaultEventForGuideSlug(slug);
-  const intent = deriveGuideIntent(slug);
+  const intent = guideIntentFromFrontmatter(slug, frontmatter);
   const searchHref = intent
     ? `/?q=${encodeURIComponent(intent.q)}${intent.max != null ? `&max=${intent.max}` : ""}`
     : "/";
@@ -190,6 +191,7 @@ export default async function GuidePage({ params }: Props) {
       <div className="prose prose-stone mt-8 max-w-none">
         {content}
       </div>
+      <GuideMicroPairings slug={slug} />
       {slug.startsWith("vin-til-") || slug === "hvorfor-smager-rodvin-grimt-til-ost" ? (
         <FoodWinePicker
           className="mt-10 border-t border-stone-200 pt-8"

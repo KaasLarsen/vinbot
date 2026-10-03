@@ -8,4 +8,6 @@ export type GuideFrontmatter = {
   /** Første publicering; udelades = antages samme som `updated`. */
   published?: string;
   hub?: string;
+  /** Drue/stil til feed-søgning. Bruges i stedet for slug-fallback, når den er sat. */
+  searchQuery?: string;
 };

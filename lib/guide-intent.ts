@@ -20,6 +20,27 @@ export type GuideIntent = {
   label: string;
 };
 
+export function guideSearchLabelFromTitle(title: string): string {
+  const head = title.split(":")[0]?.trim() || title.trim();
+  if (!head) return "vin";
+  return head.charAt(0).toLowerCase() + head.slice(1);
+}
+
+/** Frontmatter `searchQuery` vinder over slug-afledt søgning. */
+export function guideIntentFromFrontmatter(
+  slug: string,
+  frontmatter: { title?: string; searchQuery?: string },
+): GuideIntent | null {
+  const q = frontmatter.searchQuery?.trim();
+  if (q) {
+    return deriveGuideIntent(slug, {
+      searchIntent: q,
+      searchLabel: guideSearchLabelFromTitle(frontmatter.title || ""),
+    });
+  }
+  return deriveGuideIntent(slug);
+}
+
 /** Synlig i JSX — brug hvis frontmatter ikke overstyrer. */
 export function deriveGuideIntent(
   slug: string,

@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { createGuideMdxComponents } from "@/lib/content/guide-mdx-components";
 import { extractGuideToc } from "@/lib/content/guide-headings";
 import type { GuideFrontmatter } from "@/lib/content/guide-types";
+import { microPairingBySlug } from "@/lib/growth/micro-pairings";
 
 export type { GuideFrontmatter } from "@/lib/content/guide-types";
 
@@ -49,6 +50,7 @@ export function listMadOgVinHubGuides(): GuideFrontmatter[] {
   return listGuides().filter(
     (g) =>
       !g.slug.startsWith("bedste-") &&
+      !microPairingBySlug(g.slug) &&
       !isVidenGuide(g.slug) &&
       !isOlieLeksikonGuide(g.slug, g.hub) &&
       (g.hub === "mad-og-vin" || (g.tags || []).some((t) => t.toLowerCase().includes("mad"))),
