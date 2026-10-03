@@ -82,7 +82,7 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 }
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v12-wine-only-grocery";
+const FEED_PRODUCTS_CACHE_VERSION = "v13-exclude-champagne-cooler";
 const PLA_FEED_CACHE_VERSION = "v2-pla-desc";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */

@@ -33,7 +33,12 @@ export function wineStyleOfBlob(blob: string): "red" | "white" | "rose" | "spark
 /** True hvis tydelig champagne-**vin** (ikke glas). */
 function isChampagneWine(t: string): boolean {
   if (!t.includes("champagne")) return false;
-  if (/champagneglas|champagne glas|champagne-k|flutes|sæt\s*\d|gavekort/i.test(t)) return false;
+  if (
+    /champagneglas|champagne\s*glas|champagnek[oø]ler|champagne\s*cooler|champagne-k|flutes|sæt\s*\d|gavekort/i.test(
+      t,
+    )
+  )
+    return false;
   return true;
 }
 
