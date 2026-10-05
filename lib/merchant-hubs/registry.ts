@@ -1226,6 +1226,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: { kind: "feed-only" },
   },
   {
+    slug: "oskar-davidsen",
+    displayName: "Oskar Davidsen",
+    feedMerchant: "Oskar Davidsen",
+    blurb: "Dansk vinforhandler med gratis produktfeed i Vinbots søgning.",
+    title: "Oskar Davidsen — shop og inspiration | Vinbot",
+    description:
+      "Oskar Davidsen er en dansk vinforhandler i Vinbots gratis feed. Se flasker og priser — Oskar Davidsen er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+    introParagraphs: [
+      "Oskar Davidsen er en dansk vinwebshop, der indgår i Vinbot via et gratis produktfeed (uden affiliate-provision). Vi viser flaskerne, fordi de beriger søgningen for vores læsere.",
+      "Oskar Davidsen er markeret som ikke-samarbejdspartner: du kan se sortiment og priser her, men Vinbot linker ikke videre til oskar-davidsen.dk.",
+      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+    ],
+    matchHeading: "Hvornår er Oskar Davidsen et godt match?",
+    matchBullets: [
+      "Du har set Oskar Davidsen i Vinbots søgeresultater.",
+      "Du vil se deres flasker i prissammenligningen.",
+      "Du sammenligner priser på tværs af flere butikker.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/tilbud", label: "Vin tilbud" },
+    ],
+    shopCtaLabel: "Besøg Oskar Davidsen",
+    shopIntro: "Oskar Davidsen er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    productIntro: "Flasker fra Oskar Davidsen i vores feed (uden link videre til shoppen).",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Oskar Davidsen",
+        queries: ["rødvin", "hvidvin", "bordeaux"],
+        placement: "oskar-davidsen-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot ikke til Oskar Davidsen?",
+        answer:
+          "Oskar Davidsen er på gratis feed-tier og er ikke samarbejdspartner. Vi viser flasker og priser i søgningen, men uden klik videre til shoppen.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Priser i feedet kan være forældede — tjek altid hos forhandleren selv, hvis du vil handle.",
+      },
+    ],
+    affiliate: { kind: "feed-only" },
+  },
+  {
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",

@@ -575,6 +575,8 @@ export function looksLikeXML(txt: string): boolean {
   return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt);
 }
 
+export { looksLikeJSON, parseJSONProducts } from "./parse-json-products";
+
 export function proxyImg(src: string): string {
   return `/api/img?src=${encodeURIComponent(src)}`;
 }
