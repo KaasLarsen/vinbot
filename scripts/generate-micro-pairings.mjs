@@ -19,6 +19,7 @@ import { MICRO_DISHES_EXTRA } from "./micro-pairings-catalog-extra.mjs";
 import { MICRO_DISHES_BATCH3 } from "./micro-pairings-catalog-batch3.mjs";
 import { MICRO_DISHES_BATCH4 } from "./micro-pairings-catalog-batch4.mjs";
 import { MICRO_DISHES_BATCH5 } from "./micro-pairings-catalog-batch5.mjs";
+import { MICRO_DISHES_BATCH6 } from "./micro-pairings-catalog-batch6.mjs";
 
 const MICRO_DISHES = [
   ...MICRO_DISHES_BASE,
@@ -26,6 +27,7 @@ const MICRO_DISHES = [
   ...MICRO_DISHES_BATCH3,
   ...MICRO_DISHES_BATCH4,
   ...MICRO_DISHES_BATCH5,
+  ...MICRO_DISHES_BATCH6,
 ];
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
