@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideHubBrowser } from "@/components/guide-hub-browser";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { GuideOilPick } from "@/components/guide-mdx-oil-pick";
+import { KitchenOneOilGrid } from "@/components/kitchenone-oil-grid";
 import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
@@ -10,9 +10,9 @@ import { listOlieLeksikonHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
-const PAGE_TITLE = "Olie-Leksikon: ekstra jomfru, falsk olie og sundhed";
+const PAGE_TITLE = "Olie-Leksikon: ekstra jomfru olivenolie, falsk olie og sundhed";
 const PAGE_DESCRIPTION =
-  "Hvad ekstra jomfru olivenolie betyder, hvordan du spotter falsk EVOO, og hvorfor god olie kradser i halsen. Kvalitet, koldpresning og tre flasker vi selv bruger.";
+  "Ekstra jomfru olivenolie forklaret: EU-klasse, koldpresning, falsk EVOO og hvorfor kvalitet kradser i halsen. Se flasker med billede og pris hos KitchenOne.";
 const PAGE_URL = `${siteUrl}/olie-leksikon`;
 
 export const metadata: Metadata = {
@@ -117,31 +117,16 @@ export default function OlieLeksikonHubPage() {
         </div>
       </section>
 
-      <section className="mt-10 max-w-3xl space-y-4 text-stone-700">
-        <h2 className="text-2xl font-semibold text-stone-900">Tre flasker vi selv bruger</h2>
-        <p>
-          Vi har testet markedet, og her er 3 ægte, certificerede ekstra jomfruolivenolier, vi personligt
-          godkender — Extra Virgin som EU-kvalitetsklasse, finish-olie til tallerkenen, ikke laboratorie-stempel
-          eller DOP. Annoncelink via Partner-Ads.
+      <section className="mt-10">
+        <h2 className="text-2xl font-semibold text-stone-900">Olivenolie hos KitchenOne</h2>
+        <p className="mt-3 max-w-3xl text-stone-700">
+          Extra virgin til finish, plus urte-, chili-, hvidløg- og trøffelolie til tallerkenen. Extra virgin her er
+          EU-kvalitetsklassen — ikke et laboratorie-stempel eller DOP.
         </p>
-        <GuideOilPick
-          oilId="nicolas-vahe-evoo"
-          heading="Ekstra jomfru 500 ml — kraftig finish"
-          slug="olie-leksikon-hub"
-          hub="olie-leksikon"
-        />
-        <GuideOilPick
-          oilId="nicolas-vahe-greece"
-          heading="Græsk extra virgin — mild og frugtig"
-          slug="olie-leksikon-hub"
-          hub="olie-leksikon"
-        />
-        <GuideOilPick
-          oilId="nicolas-vahe-italy"
-          heading="Italiensk extra virgin — grøn peber"
-          slug="olie-leksikon-hub"
-          hub="olie-leksikon"
-        />
+        <KitchenOneOilGrid slug="olie-leksikon-hub" hub="olie-leksikon" />
+        <p className="mt-4 max-w-3xl text-xs text-stone-500">
+          Annoncelink via partner — du handler hos KitchenOne. Pris og lager kan have ændret sig.
+        </p>
       </section>
 
       <section className="mt-10">
@@ -153,12 +138,17 @@ export default function OlieLeksikonHubPage() {
         hub="olie-leksikon"
         slug="olie-leksikon-hub"
         products={[]}
-        seoHeading="Hvorfor et olie-leksikon ved siden af vinen?"
+        seoHeading="Ekstra jomfru olivenolie: klasse, finish og hvad du køber"
         faq={[
           {
             question: "Hvad betyder ekstra jomfru olivenolie?",
             answer:
               "Extra virgin / ekstra jomfru er EU’s højeste kvalitetsklasse for olivenolie: mekanisk udvundet, lav frie fedtsyrer og ingen raffinering. Det er et kemisk og sensorisk krav — ikke et marketingord.",
+          },
+          {
+            question: "Hvad betyder koldpresset olivenolie?",
+            answer:
+              "Koldpresset betyder, at olivenmassen holdes under en temperaturgrænse, så aroma ikke koges væk. Uden «ekstra jomfru» på etiketten er ordet reklame. Raffineret olie kan også have været kold et sted i processen.",
           },
           {
             question: "Hvorfor kradser god olivenolie i halsen?",
@@ -170,29 +160,64 @@ export default function OlieLeksikonHubPage() {
             answer:
               "Ja. Typisk mix med billigere planteolie, gammel eller raffineret olie solgt som extra virgin, eller uklar oprindelse («packed in»). Køb navngiven extra virgin og brug den som finish.",
           },
+          {
+            question: "Skal ekstra jomfru olivenolie bruges til stegning?",
+            answer:
+              "Nej. Varme slår aromaen ihjel. Brug ekstra jomfru som finish ved bordet — caprese, grønt, fisk, ost og pizza efter ovnen. Stegepanden får en billigere olie.",
+          },
         ]}
       >
+        <h3 className="text-xl font-semibold text-stone-900">Ekstra jomfru er en klasse</h3>
         <p>
-          Vinbot er primært vin. Olivenolie hører alligevel her, fordi den samme logik gælder:{" "}
-          <strong>kvalitetsklasse, oprindelse og hvordan du bruger flasken</strong>. Extra virgin er finish, ikke
-          stegeolie. Se{" "}
-          <Link href="/guides/olivenolie-finish" className="text-rose-900 hover:underline">
-            olivenolie som finish
-          </Link>{" "}
-          til caprese, pizza og is.
+          <strong>Ekstra jomfru olivenolie</strong> (extra virgin) er EU’s højeste klasse: mekanisk pres, lav syre og
+          ingen raffinering. Det er ikke et pænt italiensk ord på etiketten.{" "}
+          <Link href="/guides/hvad-er-ekstra-jomfru-olivenolie" className="text-rose-900 hover:underline">
+            Læs hvad ekstra jomfru betyder
+          </Link>
+          .
         </p>
+        <h3 className="text-xl font-semibold text-stone-900">Koldpresset er ikke nok</h3>
         <p>
-          Gaver:{" "}
+          <strong>Koldpresset</strong> uden «ekstra jomfru» er reklame. Jomfru ligger under extra virgin. «Olivenolie»,
+          «pure» og «light» er som regel raffineret — fint til panden, tyndt som finish.
+        </p>
+        <h3 className="text-xl font-semibold text-stone-900">Sådan spotter du svag olie</h3>
+        <p>
+          «Packed in» uden oprindelse, ingen høstdato og en dunk til discountpris er de typiske signaler.{" "}
+          <Link href="/guides/falsk-olivenolie" className="text-rose-900 hover:underline">
+            Sådan spotter du falsk olivenolie
+          </Link>
+          .
+        </p>
+        <h3 className="text-xl font-semibold text-stone-900">Halskrads er ofte kvalitet</h3>
+        <p>
+          Bidet i halsen kommer fra <strong>polyfenoler</strong> (oleocanthal). Frisk extra virgin kradser. Raffineret
+          olie gør det sjældent.{" "}
+          <Link href="/guides/olivenolie-sundhed" className="text-rose-900 hover:underline">
+            Olivenolie og sundhed
+          </Link>
+          .
+        </p>
+        <h3 className="text-xl font-semibold text-stone-900">Finish ved bordet</h3>
+        <p>
+          Den dyre flaske dryppes over caprese, grønt, fisk og pizza efter ovnen. Stegepanden får en billigere olie.{" "}
+          <Link href="/guides/olivenolie-finish" className="text-rose-900 hover:underline">
+            Olivenolie som finish
+          </Link>
+          . Opbevar den mørkt og køligt, og brug den mens den er frisk.
+        </p>
+        <h3 className="text-xl font-semibold text-stone-900">Gaver</h3>
+        <p>
           <Link href="/guides/vin-og-olie-vaertsgave" className="text-rose-900 hover:underline">
-            vin og olie som værtsgave
+            Vin og olie som værtsgave
           </Link>
-          ,{" "}
+          {" og "}
           <Link href="/guides/vaertindegave-olivenolie" className="text-rose-900 hover:underline">
-            værtindegave olivenolie
+            værtindegave med olivenolie
           </Link>
-          . Mad og vin:{" "}
+          . Til glasset:{" "}
           <Link href="/mad-og-vin" className="text-rose-900 hover:underline">
-            mad-og-vin-hubben
+            mad og vin
           </Link>
           .
         </p>
