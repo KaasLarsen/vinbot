@@ -37,9 +37,9 @@ export default function OmOsPage() {
 
       <h1 className="mt-6 text-3xl font-semibold tracking-tight text-stone-900">Om Vinbot</h1>
       <p className="mt-4 text-lg leading-relaxed text-stone-700">
-        Vinbot er en dansk vinguide-side og vinsøgning, som hjælper dig med at finde den rigtige flaske — til
-        maden, sæsonen eller lejligheden — og sammenligne pris på tværs af flere danske netbutikker på samme
-        tid. Vi sælger ikke vin selv. Vi <em>inspirerer</em>, <em>forklarer</em> og <em>viser vej</em>.
+        Vinbot er din go-to til at finde vin: en dansk vinguide med AI-søgning, der hjælper dig med at
+        parre vin med mad, sæson og lejlighed — og vise flasker hos danske netbutikker. Vi sælger ikke vin
+        selv. Vi <em>inspirerer</em>, <em>forklarer</em> og <em>viser vej</em>.
       </p>
 
       <section className="mt-10 space-y-4 text-stone-700">
@@ -53,8 +53,9 @@ export default function OmOsPage() {
         </p>
         <p className="leading-relaxed">
           Derfor bygger Vinbot to ting oven på hinanden: En redaktionel base af <strong>vinguides</strong>{" "}
-          (druer, regioner, madparring, sæson, humør) og en <strong>sammenligningssøgning</strong> på tværs
-          af danske netbutikker. Guides giver dig kontekst. Søgningen giver dig prisen.
+          (druer, regioner, madparring, sæson, humør) og en <strong>AI-vinsøgning</strong> på tværs af
+          danske netbutikker. Guides giver dig kontekst. Søgningen hjælper dig med at finde den rigtige
+          flaske — og se, hvor den sælges.
         </p>
       </section>
 

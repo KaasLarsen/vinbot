@@ -1149,8 +1149,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     matchHeading: "Hvornår er Vinpalle et godt match?",
     matchBullets: [
       "Du har set Vinpalle i Vinbots søgeresultater.",
-      "Du vil se deres flasker i prissammenligningen.",
-      "Du sammenligner priser på tværs af flere butikker.",
+      "Du vil se deres flasker i vinsøgningen.",
+      "Du bruger AI-søgningen til at finde vin på tværs af flere butikker.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },
@@ -1196,7 +1196,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     matchBullets: [
       "Du leder efter italiensk vin, Bulichella eller en smagekasse.",
       "Du har set Villa Bianca i Vinbots søgeresultater.",
-      "Du vil se deres flasker i prissammenligningen.",
+      "Du vil se deres flasker i vinsøgningen.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },

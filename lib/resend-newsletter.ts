@@ -5,7 +5,7 @@ import { contactEmail, siteName, siteUrl } from "@/lib/site";
 const SEGMENT_NAME = "Vinbot nyhedsbrev";
 const TOPIC_NAME = "Vinbot nyhedsbrev";
 const TOPIC_DESCRIPTION =
-  "Tilbud, tips og nyheder fra Vinbot — prissammenligning og inspiration fra danske vinforhandlere.";
+  "Tilbud, tips og nyheder fra Vinbot — AI-vinsøgning og inspiration fra danske vinforhandlere.";
 
 type NewsletterIds = {
   segmentId: string;

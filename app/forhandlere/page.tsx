@@ -54,8 +54,8 @@ export default function ForhandlerePage() {
             hub-sider, og der er <strong>ingen klik videre</strong> til jeres shop fra Vinbot.
           </li>
           <li>
-            God start, hvis I bare vil være synlige i prissammenligningen. For shop-links kræves
-            affiliate eller CPC.
+            God start, hvis I bare vil være synlige i vinsøgningen. For shop-links kræves affiliate
+            eller CPC.
           </li>
         </ul>
       </section>

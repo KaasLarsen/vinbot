@@ -279,7 +279,8 @@ export default async function BlackFridayHubPage() {
         seoHeading="Black Friday på Vinbot — uvildigt overblik"
       >
         <p>
-          Vinbot er en prissammenligning og aggregator. Du handler hos forhandleren via affiliate-links. Se også{" "}
+          Vinbot hjælper dig med at finde vin via AI-søgning og guider. Du handler hos forhandleren via
+          affiliate-links. Se også{" "}
           <Link href="/tilbud" className="text-rose-900 hover:underline">
             alle vintilbud
           </Link>{" "}

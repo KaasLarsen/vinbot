@@ -1,6 +1,6 @@
 # Vinbot
 
-Dansk vinguide og prissammenligning: redaktionelle guides/opskrifter plus vinsøgning på tværs af danske (og nogle internationale) forhandlere. Vinbot sælger ikke vin — køb sker via affiliate-links til butikkerne.
+Dansk vinguide og AI-vinsøgning: redaktionelle guides/opskrifter plus vinsøgning på tværs af danske (og nogle internationale) forhandlere. Vinbot sælger ikke vin — køb sker via affiliate-links til butikkerne.
 
 Produktion: [vinbot.dk](https://www.vinbot.dk)
 
