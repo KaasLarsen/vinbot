@@ -301,15 +301,6 @@ export function deriveGuideIntent(
     };
   }
 
-  if (slug.startsWith("vin-til-")) {
-    const food = slug.replace(/^vin-til-/, "").replace(/-/g, " ");
-    return {
-      q: food,
-      max: null,
-      label: `vin til ${food}`,
-    };
-  }
-
   if (slug === "hvorfor-smager-rodvin-grimt-til-ost") {
     return {
       q: "pinot noir beaujolais tawny portvin",
@@ -727,6 +718,16 @@ export function deriveGuideIntent(
       q: "riesling gewurztraminer gruner veltliner albarino cava",
       max: 150,
       label: "vin til asiatisk mad",
+    };
+  }
+
+  /** Efter specialcases: slug alene, så mad-ordet kan udvides via intents.ts. */
+  if (slug.startsWith("vin-til-")) {
+    const food = slug.replace(/^vin-til-/, "").replace(/-/g, " ");
+    return {
+      q: food,
+      max: null,
+      label: `vin til ${food}`,
     };
   }
 

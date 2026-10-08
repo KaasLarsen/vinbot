@@ -12,7 +12,7 @@ export function intentTermsFromQuery(q = ""): string[] {
   countryIntentTermsFromQuery(q).forEach((t) => add(t));
 
   if (
-    /(juleaften|julemad|flæskesteg|flaeskesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost|mortensaften|mortens)/.test(
+    /(juleaften|julemad|flæskesteg|flaeskesteg|flaesketesteg|andesteg|andebryst|juleand|ribbensteg|julefrokost|mortensaften|mortens)/.test(
       txt,
     )
   ) {
@@ -51,7 +51,7 @@ export function intentTermsFromQuery(q = ""): string[] {
     add("cabernet sauvignon", "malbec", "barolo", "bordeaux", "syrah", "shiraz", "rioja");
   }
 
-  if (/(svinekød|svinekoed|svinekod|gris|kamsteg|flæskesteg|flaeskesteg)/.test(txt)) {
+  if (/(svinekød|svinekoed|svinekod|gris|kamsteg|flæskesteg|flaeskesteg|flaesketesteg)/.test(txt)) {
     add("pinot noir", "bourgogne", "cotes du rhone", "chianti");
   }
 
