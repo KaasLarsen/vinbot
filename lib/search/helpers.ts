@@ -230,8 +230,18 @@ const NON_WINE_GROCERY_TITLE_MARKERS: readonly string[] = [
   "soap",
 ];
 
+/**
+ * Korte markører («ske», «glas», «fad») skal være hele ord.
+ * Ellers ryger rigtige flasker: «ske» sidder i «økologiske» og «flaske», «fad» i «fadlagret».
+ */
+function hardwareMarkerMatches(text: string, marker: string): boolean {
+  if (marker.includes(" ") || marker.length >= 6) return text.includes(marker);
+  const esc = marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(?:^|[^a-z0-9æøå])${esc}(?:[^a-z0-9æøå]|$)`, "i").test(text);
+}
+
 function catalogTextLooksLikeNonWineHardware(text: string): boolean {
-  return NON_WINE_HARDWARE_MARKERS.some((w) => text.includes(w));
+  return NON_WINE_HARDWARE_MARKERS.some((w) => hardwareMarkerMatches(text, w));
 }
 
 function titleLooksLikeNonWineGroceryOrGadget(title: string): boolean {

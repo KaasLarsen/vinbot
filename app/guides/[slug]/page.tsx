@@ -210,7 +210,16 @@ export default async function GuidePage({ params }: Props) {
           hub={hub}
           label={intent.label}
           searchHref={searchHref}
-          heading={slug === "bedste-box-vin" ? "Flere boxvine fra forhandlere" : "Se 3 forslag fra danske forhandlere"}
+          heading={
+            slug === "bedste-box-vin"
+              ? "Flere boxvine fra forhandlere"
+              : slug === "naturvin-funky-smag" ||
+                  slug === "naturvin-til-mad" ||
+                  slug === "naturvin-holdbarhed-og-servering" ||
+                  slug === "okologisk-vs-biodynamisk-vs-naturvin"
+                ? "Se 3 forslag fra SPS Wine"
+                : "Se 3 forslag fra danske forhandlere"
+          }
         />
       ) : null}
       <GuideMicroPairings slug={slug} />
