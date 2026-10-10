@@ -8,11 +8,14 @@ import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listNaturvinHubGuides } from "@/lib/content/guides";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
+import { ProductFeedPreview } from "@/components/product-feed-preview";
 
 const PAGE_TITLE = "Naturvin — smag, mad, økologi og servering";
 const PAGE_DESCRIPTION =
   "Naturvin-hub: funky smag vs. fejl, økologisk vs. biodynamisk vs. naturvin, mad til orange og pét-nat, og hvor længe en åbnet flaske holder.";
 const PAGE_URL = `${siteUrl}/naturvin`;
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -154,6 +157,27 @@ export default function NaturvinHubPage() {
               </Link>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-2xl font-semibold text-stone-900">Hos SPS Wine</h2>
+        <p className="mt-2 max-w-3xl text-sm text-stone-600">
+          SPS Wine skriver selv <strong className="font-medium text-stone-800">naturvin</strong> eller{" "}
+          <strong className="font-medium text-stone-800">orangevin</strong> i titel eller kategori. Det er deres
+          opdeling i shoppen — ikke et stempel på alle forhandlere. Pris og lager tjekkes hos dem.{" "}
+          <Link href="/sps-wine" className="text-rose-900 hover:underline">
+            Hele SPS Wine
+          </Link>
+          .
+        </p>
+        <div className="mt-6">
+          <ProductFeedPreview
+            query="sps naturvin orangevin"
+            merchant="SPS Wine"
+            maxItems={8}
+            placement="naturvin-hub-sps"
+          />
         </div>
       </section>
 

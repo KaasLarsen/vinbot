@@ -430,6 +430,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "Du følger gerne med i rabatter og kampagner (se rabatkoder).",
     ],
     guideLinks: [
+      { href: "/naturvin", label: "Naturvin-guider" },
       { href: "/rabatkoder", label: "Rabatkoder" },
       { href: "/regioner", label: "Regioner" },
       { href: "/vine", label: "Vin-katalog" },
@@ -439,6 +440,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     showRabatkoderLink: true,
     productIntro: "Udvalgte flasker fra SPS Wine i vores feed — klik videre for at købe hos dem.",
     productSections: [
+      {
+        title: "Naturvin og orangevin",
+        queries: ["sps naturvin orangevin"],
+        placement: "sps-wine-page-naturvin",
+      },
       {
         title: "Udvalgte vine hos SPS Wine",
         queries: ["pinot chardonnay riesling", "rioja chianti bordeaux", "champagne prosecco"],
