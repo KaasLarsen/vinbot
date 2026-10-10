@@ -8,7 +8,7 @@ import type { DealSearchItem } from "@/lib/deals/types";
 import { rankByTaste } from "@/lib/taste/vector";
 import { useTasteProfile } from "@/lib/taste/use-taste-profile";
 
-const QUICK_CHIPS = ["Portvin", "Champagne", "Rosé"] as const;
+const QUICK_CHIPS = ["Portvin", "Champagne", "Bordeaux", "Bourgogne", "Rosé"] as const;
 
 function topMatches(
   index: DealSearchItem[],
@@ -62,7 +62,7 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
       <p className="mt-1.5 text-sm leading-relaxed text-stone-700">
         {ready
           ? "Tilpasset din smagsprofil — skriv for at filtrere yderligere."
-          : "Skriv fx Portvin — vi viser de 3 stærkeste rabatter."}
+          : "Skriv fx Bordeaux eller Bourgogne — vi viser de 3 stærkeste rabatter."}
       </p>
 
       <div className="mt-3 min-w-0">
@@ -74,7 +74,7 @@ export function HomeBestDealsSearch({ index }: { index: DealSearchItem[] }) {
           type="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="fx Portvin, champagne, rosé"
+          placeholder="fx Bordeaux, Bourgogne, Portvin"
           autoComplete="off"
           enterKeyHint="search"
           className="w-full max-w-full rounded-xl border border-rose-200 bg-white px-3 py-2.5 text-base text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-200"
