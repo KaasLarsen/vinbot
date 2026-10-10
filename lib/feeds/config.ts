@@ -234,4 +234,9 @@ export const FEEDS: FeedConfig[] = [
     wineFilter: false,
     vinAdjacentIncludeAny: ["wine", "bulichella", "smagekasse"],
   },
+  {
+    merchant: "Oskar Davidsen",
+    url: "https://api.taster-wine.com/shopapi/datafeeds/da-dk/ClerkProvider",
+    tier: "free",
+  },
 ];

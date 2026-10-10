@@ -10,6 +10,7 @@ import {
   parseXMLProducts,
   UA,
 } from "./helpers";
+import { looksLikeJSON, parseJSONProducts } from "./parse-json-products";
 
 /** Kun vin/vintilbehør i feeds der ellers har blandet sortiment (fx glas + smykker). */
 function filterVinAdjacentCatalog(feed: FeedConfig, products: FeedProduct[]): FeedProduct[] {
@@ -30,7 +31,7 @@ export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProd
   const tier = feedTier(feed);
   const headers = {
     "user-agent": UA,
-    accept: "text/xml,application/xml,text/plain,text/csv,*/*",
+    accept: "application/json,text/xml,application/xml,text/plain,text/csv,*/*",
   };
   const r = await fetch(url, {
     headers,
@@ -41,7 +42,11 @@ export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProd
   const buf = await r.arrayBuffer();
   const text = decodeText(buf);
 
-  let products = looksLikeXML(text) ? parseXMLProducts(text, merchant) : parseCSVProducts(text, merchant);
+  let products = looksLikeXML(text)
+    ? parseXMLProducts(text, merchant)
+    : looksLikeJSON(text)
+      ? parseJSONProducts(text, merchant)
+      : parseCSVProducts(text, merchant);
   products = products.map((p) => ({ ...p, tier }));
   if (feed.wineFilter !== false) {
     products = products.filter(isWineLike);
@@ -82,7 +87,7 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 }
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v13-exclude-champagne-cooler";
+const FEED_PRODUCTS_CACHE_VERSION = "v14-clerk-json-oskar-davidsen";
 const PLA_FEED_CACHE_VERSION = "v2-pla-desc";
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
