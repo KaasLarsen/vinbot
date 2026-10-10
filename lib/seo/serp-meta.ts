@@ -197,6 +197,26 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Pét-nat for begyndere: naturvinens bobler, forskel på champagne, åbning, servering og første køb.",
   },
+  "naturvin-funky-smag": {
+    title: "Naturvin: forstå den funky smag",
+    description:
+      "Funky, uklar, mus og brett: hvad der er stil i naturvin, og hvad der er en fejl du skal hælde ud.",
+  },
+  "okologisk-vs-biodynamisk-vs-naturvin": {
+    title: "Økologisk vs. biodynamisk vs. naturvin",
+    description:
+      "Økologisk, biodynamisk og naturvin er ikke det samme. Tabel over mark, kælder, logo — og hvad mærket ikke lover.",
+  },
+  "naturvin-til-mad": {
+    title: "Naturvin til mad: orange, glou-glou, pét-nat",
+    description:
+      "Hvad du spiser til orangevin, kølig glou-glou og pét-nat. Én ret der virker, ét alternativ og ét mismatch.",
+  },
+  "naturvin-holdbarhed-og-servering": {
+    title: "Naturvin: holdbarhed og servering",
+    description:
+      "Åbnet naturvin holder ofte samme aften eller næste dag. Hvorfor lavt svovl gør den sårbar, og hvornår rød skal være kølig.",
+  },
 
   "hvor-mange-enheder-alkohol-i-et-glas-vin": {
     title: "Hvor mange genstande i en flaske vin?",

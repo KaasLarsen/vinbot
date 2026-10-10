@@ -22,6 +22,9 @@ const VIDEN_SLUGS = new Set<string>([
   "kalorier-i-alkoholfri-hvidvin",
   "vin-tiktok-trends-spicy-sauvy-og-vineddike",
   "orangevin-for-begyndere",
+  "naturvin-funky-smag",
+  "okologisk-vs-biodynamisk-vs-naturvin",
+  "naturvin-holdbarhed-og-servering",
   "vin-marketing-tricks-forbruger-guide",
   "hurtig-koeling-vin-is-salt-10-minutter",
   "isspand-og-flaskekoeler-vin",
@@ -65,6 +68,7 @@ const MAD_EXTRA_SLUGS = new Set<string>([
   "alkoholfri-hvidvin-i-madlavning",
   "alkoholfri-gin-tonic-og-aperitif",
   "hvorfor-smager-rodvin-grimt-til-ost",
+  "naturvin-til-mad",
 ]);
 
 /** Region-guides uden vinregion-*-prefix (fx Etna-dybde). */

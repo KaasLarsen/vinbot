@@ -122,6 +122,10 @@ export default function VinVidenHubPage() {
           hedvin-hubben
         </Link>
         ,{" "}
+        <Link href="/naturvin" className="text-rose-900 hover:underline">
+          naturvin-hubben
+        </Link>
+        ,{" "}
         <Link href="/guides/vin-trends-og-forbrug-i-danmark" className="text-rose-900 hover:underline">
           vin-trends og forbrug i Danmark
         </Link>
@@ -281,6 +285,9 @@ export default function VinVidenHubPage() {
           <Link href="/guides/vin-swap-underdog-regioner" className="text-rose-900 hover:underline">Vin-swap — underdog-regioner</Link>
           <Link href="/guides/etna-vin-vulkanvin-sicilien" className="text-rose-900 hover:underline">Etna og vulkanvin</Link>
           <Link href="/guides/orangevin-for-begyndere" className="text-rose-900 hover:underline">Orangevin for begyndere</Link>
+          <Link href="/guides/naturvin-funky-smag" className="text-rose-900 hover:underline">Naturvin: den funky smag</Link>
+          <Link href="/guides/okologisk-vs-biodynamisk-vs-naturvin" className="text-rose-900 hover:underline">Øko vs. biodynamisk vs. naturvin</Link>
+          <Link href="/guides/naturvin-holdbarhed-og-servering" className="text-rose-900 hover:underline">Naturvin: holdbarhed og servering</Link>
           <Link href="/guides/hurtig-koeling-vin-is-salt-10-minutter" className="text-rose-900 hover:underline">Hurtig-køling (is + salt)</Link>
           <Link href="/guides/vin-marketing-tricks-forbruger-guide" className="text-rose-900 hover:underline">Vin-marketing afsløret</Link>
           <Link href="/guides/vin-tiktok-trends-spicy-sauvy-og-vineddike" className="text-rose-900 hover:underline">TikTok: Spicy Sauvy B & vineddike</Link>

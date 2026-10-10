@@ -56,6 +56,23 @@ const moreNavGroups: NavGroup[] = [
         ],
       },
       {
+        href: "/naturvin",
+        label: "Naturvin",
+        activePrefixes: [
+          "/naturvin",
+          "/guides/naturvin-hvad-er-det",
+          "/guides/naturvin-funky-smag",
+          "/guides/naturvin-til-mad",
+          "/guides/naturvin-holdbarhed-og-servering",
+          "/guides/okologisk-vs-biodynamisk-vs-naturvin",
+          "/guides/orangevin-for-begyndere",
+          "/guides/hvad-er-orange-vin",
+          "/guides/pet-nat-for-begyndere",
+          "/guides/hvad-er-pet-nat",
+          "/guides/hvad-er-biodynamisk-vin",
+        ],
+      },
+      {
         href: "/alkoholfri-vin",
         label: "Alkoholfri",
         activePrefixes: [

@@ -89,6 +89,10 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
         <Link href="/alkoholfri-vin" className="text-rose-900 hover:underline">
           alkoholfri vin
         </Link>{" "}
+        og{" "}
+        <Link href="/naturvin" className="text-rose-900 hover:underline">
+          naturvin
+        </Link>{" "}
         for kuraterede udvalg.
       </p>
       <p className="mt-3 text-sm text-stone-600">

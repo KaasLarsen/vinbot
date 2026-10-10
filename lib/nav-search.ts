@@ -55,6 +55,20 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
     keywords: ["julevin", "nytårsvin", "nytaarsvin", "beregner", "flasker", "juleaften", "hvor meget vin"],
   },
   {
+    label: "Naturvin",
+    href: "/naturvin",
+    keywords: [
+      "naturvin",
+      "natural wine",
+      "orangevin",
+      "orange wine",
+      "pet-nat",
+      "pét-nat",
+      "biodynamisk",
+      "funky",
+    ],
+  },
+  {
     label: "Alkoholfri vin",
     href: "/alkoholfri-vin",
     keywords: ["alkoholfri", "0%", "0 %", "uden alkohol", "leitz", "noughty", "lavalkohol"],

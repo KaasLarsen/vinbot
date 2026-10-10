@@ -1935,7 +1935,75 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
     {
       question: "Hvilken mad passer til naturvin?",
       answer:
-        "Start som ved al vin med salt, fedme og syre — funky eller oxidative naturvine trives ofte til charcuteri, ost, delevenlig bistro-mad og surdejspizza. Meget udadvendte flasker har typisk brug for mere direkte smag i tallerkenen end fine saucer; se naturvin-guidens afsnit om mad.",
+        "Start som ved al vin med salt, fedme og syre — funky eller oxidative naturvine trives ofte til charcuteri, ost, delevenlig bistro-mad og surdejspizza. Orange, kølig glou-glou og pét-nat har hver deres ret; se naturvin til mad.",
+    },
+  ],
+  "naturvin-funky-smag": [
+    {
+      question: "Hvad betyder funky naturvin?",
+      answer:
+        "Ofte gær, cider, brøddej eller et strejf stald, mens frugten stadig er der. Det er stil, især med mad — ikke automatisk en fejl.",
+    },
+    {
+      question: "Hvad er mus i vin?",
+      answer:
+        "En fejl, ikke karakter. Den hænger i eftersmagen som et bur, kiksede cornflakes eller tør kiks, ofte nogle sekunder efter du har sunket. Hæld flasken ud.",
+    },
+    {
+      question: "Er uklar naturvin dårlig?",
+      answer:
+        "Nej, hvis den lugter rent. Uklarhed er ofte gær, der er blevet i flasken, især i pét-nat og ufiltreret vin. Uklar plus eddike eller råd er en anden sag.",
+    },
+  ],
+  "okologisk-vs-biodynamisk-vs-naturvin": [
+    {
+      question: "Er økologisk vin det samme som naturvin?",
+      answer:
+        "Nej. Økologisk er et EU-mærke for marken. Naturvin er et løst ord om kælderen og har ikke ét officielt logo. En økologisk vin kan være filtreret og tilsat gær.",
+    },
+    {
+      question: "Er biodynamisk vin naturvin?",
+      answer:
+        "Ikke nødvendigvis. Biodynamisk (Demeter eller Biodyvin) er økologisk plus ekstra markpraksis og strammere sulfitloft. Kælderen kan stadig være mere indgribende end det, folk kalder naturvin.",
+    },
+    {
+      question: "Kan jeg stole på ordet naturvin på etiketten?",
+      answer:
+        "Ikke alene. Der findes ikke et fælles EU-mærke. Spørg efter stil — ren, oxidativ eller mousserende — og smag. Logoer du kan tjekke er EU-blad, Demeter og Biodyvin.",
+    },
+  ],
+  "naturvin-til-mad": [
+    {
+      question: "Hvad spiser man til orangevin?",
+      answer:
+        "Krydret asiatisk, ferment og tungere grønt. Den har tannin som en let rød og syre som hvid. Undgå delikat dampet fisk uden sovs.",
+    },
+    {
+      question: "Hvad passer til glou-glou?",
+      answer:
+        "Charcuteri, picnic og pølser. Server den let afkølet. Undgå fadlagret okse og tung brun sovs.",
+    },
+    {
+      question: "Hvad drikker man pét-nat til?",
+      answer:
+        "Salt snacks, aperitif, brunch og fed hverdagsmad. Den er sjældent rigtig til sød dessert.",
+    },
+  ],
+  "naturvin-holdbarhed-og-servering": [
+    {
+      question: "Hvor længe holder åbnet naturvin?",
+      answer:
+        "Ofte samme aften eller næste dag i køleskab med prop. Lavt eller intet tilsat svovl gør den mere sårbar over for luft end en almindelig hverdagsvin.",
+    },
+    {
+      question: "Skal rød naturvin serveres kold?",
+      answer:
+        "Mange lette, saftige røde (glou-glou) smager bedst ved 12–14 °C. En tannisk, mørk flaske bliver stum, hvis den er for kold.",
+    },
+    {
+      question: "Skal naturvin i karaffel?",
+      answer:
+        "Sjældent i timevis. Luft kan få en lav-svovl-flaske til at falde sammen. Smag den først i glasset.",
     },
   ],
   "vin-til-grill-og-bbq": [

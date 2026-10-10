@@ -34,6 +34,12 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
     guideSlug === "bedste-portvin" ||
     guideSlug.startsWith("portvin") ||
     guideSlug.includes("portvin");
+  const isNaturvinSlug =
+    guideSlug === "naturvin-hvad-er-det" ||
+    guideSlug === "naturvin-funky-smag" ||
+    guideSlug === "naturvin-til-mad" ||
+    guideSlug === "naturvin-holdbarhed-og-servering" ||
+    guideSlug === "okologisk-vs-biodynamisk-vs-naturvin";
   const isOilSlug =
     guideSlug.startsWith("olivenolie-") ||
     guideSlug === "vaertindegave-olivenolie" ||
@@ -93,7 +99,14 @@ function ClusterSection({ block, guideSlug }: { block: GuideClusterBlock; guideS
           </Link>
         </p>
       ) : null}
-      {tone === "amber" && !isHedvinSlug && !isOilSlug ? (
+      {tone === "amber" && isNaturvinSlug ? (
+        <p className="mt-4 text-sm text-stone-600">
+          <Link href="/naturvin" className={`font-medium hover:underline ${styles.footer}`}>
+            Se hele naturvin-hubben
+          </Link>
+        </p>
+      ) : null}
+      {tone === "amber" && !isHedvinSlug && !isNaturvinSlug && !isOilSlug ? (
         <p className="mt-4 text-sm text-stone-600">
           <Link href="/vin-viden" className={`font-medium hover:underline ${styles.footer}`}>
             Se hele vin-viden-hubben

@@ -11,6 +11,7 @@ export const HUB_ROTATIONS: Record<string, HubRotationMerchant[]> = {
   "vin-viden": ["johnsen", "lauridsen", "dh"],
   "olie-leksikon": ["dh", "lauridsen", "winther"],
   hedvin: ["lauridsen", "johnsen", "dh"],
+  naturvin: ["sps", "lauridsen", "johnsen"],
   regioner: ["lauridsen", "dh", "johnsen"],
   saeson: ["winther", "lauridsen", "dh"],
   "fest-og-vin": ["winther", "lauridsen", "johnsen"],

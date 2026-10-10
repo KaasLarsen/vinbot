@@ -91,6 +91,9 @@ const VIDEN_EXTRA_SLUGS = new Set<string>([
   "hvorfor-smager-papvin-anderledes",
   "kan-man-fryse-papvin",
   "papvin-5-liter",
+  "naturvin-funky-smag",
+  "okologisk-vs-biodynamisk-vs-naturvin",
+  "naturvin-holdbarhed-og-servering",
 ]);
 
 function isVidenGuide(slug: string): boolean {
@@ -465,6 +468,34 @@ export function listHedvinHubGuides(): GuideFrontmatter[] {
   const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
   const out: GuideFrontmatter[] = [];
   for (const slug of HEDVIN_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
+/** Kurateret rækkefølge til /naturvin-hubben. */
+const NATURVIN_HUB_SLUGS: readonly string[] = [
+  "naturvin-hvad-er-det",
+  "naturvin-funky-smag",
+  "okologisk-vs-biodynamisk-vs-naturvin",
+  "naturvin-til-mad",
+  "naturvin-holdbarhed-og-servering",
+  "orangevin-for-begyndere",
+  "hvad-er-orange-vin",
+  "pet-nat-for-begyndere",
+  "hvad-er-pet-nat",
+  "hvad-er-biodynamisk-vin",
+  "bedste-okologiske-vin",
+  "hvad-er-sulfit-i-vin",
+  "chillable-reds",
+];
+
+/** Hub «Naturvin»: smag, mærke, mad og servering — ikke et produktfilter. */
+export function listNaturvinHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of NATURVIN_HUB_SLUGS) {
     const g = bySlug.get(slug);
     if (g) out.push(g);
   }
