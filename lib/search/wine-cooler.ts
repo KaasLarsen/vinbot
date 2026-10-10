@@ -60,7 +60,8 @@ const COOLER_TITLE_PREFIX =
   /^(vinkoleskab|vinkoleskabe|vinskab|integrerbar|integrerbart|vinlagringsskab|vinlagring|fritstaende vinkoleskab|indbygbar vinkoleskab|indbygning vinkoleskab)\b/;
 
 /** Titel indeholder rigtigt skab (ikke isbøtte/vinkøler). */
-const COOLER_TITLE_WORD = /\b(vinkoleskab|vinkoleskabe|vinlagringsskab|vinskab|wine\s*cooler)\b/;
+const COOLER_TITLE_WORD =
+  /\b(vinkoleskab|vinkoleskabe|vinlagringsskab|vinskab|champagnekoleskab|multifunktionsskab|wine\s*cooler)\b|\bwinecave\b/;
 
 /** Titler der altid er tilbehør — også når de nævner «vinkøleskab» eller WineCave i titlen. */
 const ACCESSORY_TITLE_MARKERS: readonly string[] = [
@@ -104,17 +105,7 @@ export function productIsWineCooler(p: Pick<FeedProduct, "title" | "desc" | "cat
   /** Ren vinkøler/isbøtte uden «vinkøleskab» i titel. */
   if (/\bvinkoler\b/.test(title) && !COOLER_TITLE_WORD.test(title)) return false;
   if (NOT_COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return false;
-  if (COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) {
-    if (
-      category.includes("vinkoleskab") ||
-      category.includes("vinskab") ||
-      /freestanding wine|built-in wine|undercounter wine|slide-in wine|integrated wine/.test(category) ||
-      COOLER_TITLE_WORD.test(title) ||
-      COOLER_TITLE_PREFIX.test(title)
-    ) {
-      return true;
-    }
-  }
+  if (COOLER_CATEGORY_MARKERS.some((m) => category.includes(m))) return true;
   if (COOLER_TITLE_WORD.test(title)) return true;
   return COOLER_TITLE_PREFIX.test(title);
 }

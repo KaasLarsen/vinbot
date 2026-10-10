@@ -14,7 +14,7 @@ async function buildTasteCandidates(limit = 8): Promise<TasteCandidate[]> {
 
 const getCachedTasteCandidates = unstable_cache(
   () => buildTasteCandidates(8),
-  ["vinbot-taste-candidates-v1"],
+  ["vinbot-taste-candidates-v2-bottles"],
   { revalidate: 3600, tags: ["vinbot-feeds"] },
 );
 

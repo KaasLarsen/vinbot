@@ -1,3 +1,5 @@
+import { looksLikeWineCabinetOrAromaKit } from "../search/non-wine-cabinet.ts";
+
 import type { CanonicalWine } from "./types";
 
 /** Kurateret mix på forsiden: alkoholfri + hvid + bobler + rød — opdater når feeds skifter. */
@@ -31,8 +33,16 @@ function withImage(wine: CanonicalWine | null | undefined): (CanonicalWine & { i
   return wine as CanonicalWine & { image: string };
 }
 
+function isBottleCandidate(wine: CanonicalWine): boolean {
+  return !looksLikeWineCabinetOrAromaKit({
+    title: [wine.displayTitle, wine.brand].filter(Boolean).join(" "),
+    category: wine.category,
+  });
+}
+
 /** Groft stilskøn til forside-fallback (uafhængigt af søge-engine). */
 function roughStyleOf(wine: CanonicalWine): RoughStyle | null {
+  if (!isBottleCandidate(wine)) return null;
   const t = [wine.displayTitle, wine.brand, wine.category].filter(Boolean).join(" ").toLowerCase();
   if (/champagne|prosecco|cava|cr[eé]mant|mousserende|sparkling|\bbobler\b/.test(t)) return "bobler";
   if (/ros[eé]|rosevin/.test(t)) return "rose";
@@ -64,7 +74,7 @@ export function pickFeaturedHomeWinesFromCatalog(
 
   const push = (w: CanonicalWine | null | undefined): boolean => {
     const ok = withImage(w);
-    if (!ok || seen.has(ok.slug)) return false;
+    if (!ok || seen.has(ok.slug) || !isBottleCandidate(ok)) return false;
     seen.add(ok.slug);
     picked.push(ok);
     return true;

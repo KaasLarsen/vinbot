@@ -88,7 +88,7 @@ async function buildCrossMerchantDealsPool(opts: CrossDealsPoolOpts): Promise<Cr
 
 const getCachedCrossMerchantDealsPool = unstable_cache(
   (optsJson: string) => buildCrossMerchantDealsPool(JSON.parse(optsJson) as CrossDealsPoolOpts),
-  ["vinbot-cross-merchant-deals-pool-v1"],
+  ["vinbot-cross-merchant-deals-pool-v2-bottles"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 

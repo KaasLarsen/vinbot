@@ -55,6 +55,54 @@ test("pickFeaturedHomeWinesFromCatalog fylder op når kuraterede slug'e mangler"
   );
 });
 
+test("pickFeaturedHomeWinesFromCatalog springer vinskabe og duftsæt over", () => {
+  const catalog = [
+    wine({
+      slug: "cooler",
+      displayTitle: "Champagnekøleskab til indbygning - WineCave 700 30S Anthracite Black",
+      brand: "mQuvée",
+      category: "Wine - Built-in (under counter)",
+      image: "https://img/c.jpg",
+    }),
+    wine({
+      slug: "aroma",
+      displayTitle: "Le Nez du Vin - Red Wines 12 aromas - Duftsæt",
+      brand: "Le Nez du Vin",
+      category: "Wine",
+      image: "https://img/a.jpg",
+    }),
+    wine({
+      slug: "multi",
+      displayTitle: "Artevino multifunktionsskab OXG3T199NVSD",
+      brand: "Artevino",
+      image: "https://img/m.jpg",
+    }),
+    wine({
+      slug: "cooler-2",
+      displayTitle: "Champagnekøleskab til indbygning 60 cm - mQuvée WineCave 700 60S",
+      brand: "mQuvée",
+      image: "https://img/c2.jpg",
+    }),
+    wine({
+      slug: "white-1",
+      displayTitle: "Riesling Mosel",
+      category: "Hvidvin",
+      description: "Serveres fra køleskab.",
+      image: "https://img/w.jpg",
+    }),
+    wine({ slug: "spark-1", displayTitle: "Champagne Brut", category: "Champagne", image: "https://img/s.jpg" }),
+    wine({ slug: "red-1", displayTitle: "Rioja Reserva", category: "Rødvin", image: "https://img/r.jpg" }),
+  ];
+
+  const picked = pickFeaturedHomeWinesFromCatalog(catalog, ["gone-slug"], ["gone-af"], 4);
+  const slugs = picked.map((w) => w.slug);
+
+  assert.deepEqual(slugs.filter((s) => ["cooler", "aroma", "multi", "cooler-2"].includes(s)), []);
+  assert.ok(slugs.includes("white-1"));
+  assert.ok(slugs.includes("spark-1"));
+  assert.ok(slugs.includes("red-1"));
+});
+
 test("pickFeaturedHomeWinesFromCatalog respekterer kuraterede slug'e først", () => {
   const catalog = [
     wine({ slug: "curated-af", displayTitle: "Alkoholfri curated", image: "https://img/af.jpg" }),

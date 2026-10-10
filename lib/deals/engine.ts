@@ -111,7 +111,7 @@ async function buildFeedDealsPool(opts: FeedDealsPoolOpts): Promise<DealHit[]> {
 
 const getCachedFeedDealsPool = unstable_cache(
   (optsJson: string) => buildFeedDealsPool(JSON.parse(optsJson) as FeedDealsPoolOpts),
-  ["vinbot-feed-deals-pool-v1"],
+  ["vinbot-feed-deals-pool-v2-bottles"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 
@@ -153,7 +153,7 @@ async function buildFeedDealSearchIndex(minDiscount: number): Promise<DealSearch
 
 const getCachedFeedDealSearchIndex = unstable_cache(
   (minDiscount: number) => buildFeedDealSearchIndex(minDiscount),
-  ["vinbot-feed-deal-search-index-v1"],
+  ["vinbot-feed-deal-search-index-v2-bottles"],
   { revalidate: 21600, tags: ["vinbot-feeds"] },
 );
 

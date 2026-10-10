@@ -2,6 +2,7 @@ import type { FeedProduct, ProductHit } from "./types";
 import { ensurePartnerAdsKlikUid } from "@/lib/partner-ads-links";
 import { buildCountrySynonymMap } from "@/lib/lande/registry";
 import { intentTermsFromQuery } from "./intents";
+import { looksLikeWineCabinetOrAromaKit } from "./non-wine-cabinet";
 
 export const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
@@ -250,12 +251,13 @@ function titleLooksLikeNonWineGroceryOrGadget(title: string): boolean {
   return NON_WINE_GROCERY_TITLE_MARKERS.some((w) => t.includes(w));
 }
 
-/** Til forsiden/produktsøgning: kun vin — ikke glas og øvrigt tilbehør fra blandfeeds (Likehome m.fl.). */
+/** Til forsiden/produktsøgning: kun vin — ikke glas, vinskabe, duftsæt og øvrigt tilbehør. */
 export function productEligibleForWineSearch(
   p: Pick<FeedProduct, "title" | "desc" | "category">,
 ): boolean {
   const text = `${p.title || ""} ${p.desc || ""} ${p.category || ""}`.toLowerCase();
   if (titleLooksLikeNonWineGroceryOrGadget(p.title || "")) return false;
+  if (looksLikeWineCabinetOrAromaKit(p)) return false;
   return !catalogTextLooksLikeNonWineHardware(text);
 }
 
@@ -263,6 +265,7 @@ export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">):
   const text = `${p.title || ""} ${p.desc || ""} ${p.category || ""}`.toLowerCase();
 
   if (titleLooksLikeNonWineGroceryOrGadget(p.title || "")) return false;
+  if (looksLikeWineCabinetOrAromaKit(p)) return false;
   if (catalogTextLooksLikeNonWineHardware(text)) return false;
 
   const positive = [
