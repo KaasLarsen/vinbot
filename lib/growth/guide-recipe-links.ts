@@ -644,7 +644,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "aeble-hvidvinskompot-med-timian", label: "Æble- og hvidvinskompot med timian" },
     { slug: "portvinsglasering-til-and-og-flaeskesteg", label: "Portvinsglasering til and" },
     { slug: "shaoxing-hoisin-glace", label: "Shaoxing-hoisin-glace" },
-    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" }
+    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" },
+    { slug: "andebryst-med-rodvin-og-lakridssauce", label: "Andebryst med lakridssauce" },
+    { slug: "andelaar-i-ripasso", label: "Andelår i ripasso" },
+    { slug: "andebryst-med-rodvin-og-kirsebaerglace", label: "Andebryst med kirsebærglace" },
+    { slug: "ande-ragu-med-rodvin", label: "Ande-ragù med rødvin" },
+    { slug: "andebryst-med-oloroso-sherrysauce", label: "Andebryst med oloroso" },
+    { slug: "andebryst-med-madeira-og-svampesauce", label: "Andebryst med madeira og svampe" },
+    { slug: "andebryst-med-champagnesauce-og-druer", label: "Andebryst med champagnesauce" },
+    { slug: "andeconfit-med-hvidvin-og-boenner", label: "Andeconfit med hvidvin og bønner" }
   ],
   "vin-til-gas": [
     { slug: "andesteg-med-port-og-hvidvin", label: "Andesteg med port og hvidvin" },
@@ -792,7 +800,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
 
   "vin-til-foie-gras": [
-    { slug: "sauternes-gele-med-safran", label: "Sauternes-gelé med safran" }
+    { slug: "sauternes-gele-med-safran", label: "Sauternes-gelé med safran" },
+    { slug: "andelevermousse-med-hvid-portvinsgele", label: "Andelevermousse med hvid portvinsgelé" }
   ],
 
   "champagne-til-mad": [
@@ -800,7 +809,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "hummersuppe-med-cognac-og-bobler", label: "Hummersuppe med cognac og bobler" },
     { slug: "hummerbisque-med-cognac-og-hvidvin", label: "Hummerbisque" },
     { slug: "asparges-med-mousserende-sabayon", label: "Asparges med mousserende sabayon" },
-    { slug: "champagne-mousserende-vinsmarinade", label: "Mousserende fisk" }
+    { slug: "champagne-mousserende-vinsmarinade", label: "Mousserende fisk" },
+    { slug: "andebryst-med-champagnesauce-og-druer", label: "Andebryst med champagnesauce og druer" }
   ],
   "bedste-rosevin": [
     { slug: "dampet-laks-med-rosevinssauce", label: "Dampet laks med rosévinssauce" },
@@ -811,7 +821,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "kyllingeleverparfait-med-portvinsgele", label: "Kyllingeleverparfait med portvinsgelé" },
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
     { slug: "figner-i-krydret-portvinssirup", label: "Figner i portvinssirup" },
-    { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" }
+    { slug: "kirsebaersovs-med-portvin", label: "Kirsebærsovs med portvin" },
+    { slug: "andelevermousse-med-hvid-portvinsgele", label: "Andelevermousse med hvid portvinsgelé" }
   ],
   "riesling-til-asiatisk-mad": [
     { slug: "tom-kha-gai-med-hvidvin", label: "Tom Kha Gai med hvidvin" },
@@ -936,10 +947,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "vin-til-juleand": [
     { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
-    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" }
+    { slug: "gloegg-sauce-til-julestegen", label: "Gløgg-sauce til julestegen" },
+    { slug: "andebryst-med-rodvin-og-kirsebaerglace", label: "Andebryst med kirsebærglace" },
+    { slug: "rodvinspaerer-med-confiteret-and", label: "Rødvinspærer med confit-and" }
   ],
   "pinot-noir-til-and": [
-    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" }
+    { slug: "andebryst-med-portvins-og-figneglasering", label: "Andebryst med portvins-figneglasering" },
+    { slug: "andebryst-med-rodvin-og-lakridssauce", label: "Andebryst med lakridssauce" },
+    { slug: "andebryst-med-rodvin-og-kirsebaerglace", label: "Andebryst med kirsebærglace" },
+    { slug: "andebryst-med-vermouth-og-appelsin", label: "Andebryst med vermouth og appelsin" }
   ],
   "portvin-til-chokolade": [
     { slug: "rodvinskage-med-mork-chokolade", label: "Rødvinskage med mørk chokolade" }
@@ -959,7 +975,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "hvad-er-sherry-vin": [
     { slug: "sherry-trifle", label: "Sherry Trifle" },
-    { slug: "sherry-appelsinmarinade", label: "Sherry-appelsinmarinade" }
+    { slug: "sherry-appelsinmarinade", label: "Sherry-appelsinmarinade" },
+    { slug: "andebryst-med-oloroso-sherrysauce", label: "Andebryst med oloroso-sherry" }
   ],
   "chardonnay-til-fisk": [
     { slug: "hvidvinsdampet-torsk-en-papillote", label: "Torsk en papillote" },
@@ -990,7 +1007,9 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
     { slug: "gyoza-dampet-i-sake", label: "Gyoza dampet i sake" },
     { slug: "klassisk-teriyaki-marinade", label: "Teriyaki" },
     { slug: "sake-misomarinade", label: "Sake-miso" },
-    { slug: "sake-dampede-muslinger", label: "Sake-dampede muslinger" }
+    { slug: "sake-dampede-muslinger", label: "Sake-dampede muslinger" },
+    { slug: "sake-dampet-andebryst", label: "Sake-dampet andebryst" },
+    { slug: "andebryst-med-umeshu-blommevin", label: "Andebryst med umeshu" }
   ],
   "bedste-bobler": [
     { slug: "asparges-med-mousserende-sabayon", label: "Asparges med sabayon" },
@@ -1012,7 +1031,8 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   ],
   "hvad-er-madeira-vin": [
     { slug: "madeira-allehaandemarinade", label: "Madeira-marinade" },
-    { slug: "cremet-svampesuppe-med-madeira", label: "Svampesuppe med Madeira" }
+    { slug: "cremet-svampesuppe-med-madeira", label: "Svampesuppe med Madeira" },
+    { slug: "andebryst-med-madeira-og-svampesauce", label: "Andebryst med madeira og svampe" }
   ],
   "vin-til-lys-fisk": [
     { slug: "hvidvins-dildmarinade", label: "Hvidvin-dild" },
@@ -1285,6 +1305,15 @@ export const GUIDE_RECIPE_LINKS: Record<string, readonly { slug: string; label: 
   "kemien-i-marinering-med-vin": [
     { slug: "hvidvins-bearnaiseessens", label: "Béarnaiseessens (reduktion)" },
     { slug: "rodvinssauce-essens", label: "Rødvinssauce-essens" }
+  ],
+  "hvid-portvin": [
+    { slug: "andelevermousse-med-hvid-portvinsgele", label: "Andelevermousse med hvid portvinsgelé" }
+  ],
+  "hvad-er-vermouth": [
+    { slug: "andebryst-med-vermouth-og-appelsin", label: "Andebryst med vermouth og appelsin" }
+  ],
+  "amarone-vs-ripasso": [
+    { slug: "andelaar-i-ripasso", label: "Andelår i ripasso" }
   ],
 
 };
