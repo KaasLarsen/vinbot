@@ -416,6 +416,44 @@ function validateDraft(dish, draft, parentBody) {
   return { issues, title, description, body, words, overlap };
 }
 
+function hashPick(slug, items) {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  return items[h % items.length];
+}
+
+function inferProfileKey(dish) {
+  const d = fold(dish.defaultWine);
+  const a = fold(dish.altWine);
+  const avoid = fold(dish.avoidWine);
+  const delta = fold(dish.delta || "");
+  // Prefer delta cues when wines alone are ambiguous (riesling is used in several profiles).
+  if (d.includes("riesling") && /\b(chili|harissa|cajun|kimchi|vindaloo|piri|gochujang|chipotle|nduja)\b/.test(delta)) {
+    return "chiliHeat";
+  }
+  if (d.includes("riesling") && a.includes("rose")) return "chiliHeat";
+  if (d.includes("riesling") && a.includes("gewurz")) return "sweetSpice";
+  if (d.includes("riesling") && a.includes("portvin")) return "sweetDessert";
+  if (d.includes("riesling") && (a.includes("silvaner") || a.includes("pinot"))) return "freshWhite";
+  if (d.includes("sauternes") || d.includes("moscatel") || a.includes("moscatel") || a.includes("sauternes")) {
+    return "sweetDessert";
+  }
+  if (d.includes("cava") || d.includes("cremant")) return "bubbles";
+  if (d.includes("rose")) return "rose";
+  if (d.includes("albarino") || d.includes("muscadet") || d.includes("vinho")) return "saltyFish";
+  if (d.includes("chardonnay") || d.includes("pinot blanc")) return "creamyWhite";
+  if (d.includes("sauvignon") || d.includes("assyrtiko") || d.includes("vermentino") || d.includes("moschofilero")) {
+    return "freshWhite";
+  }
+  if (d.includes("syrah") || d.includes("malbec") || d.includes("tempranillo")) return "spicyRed";
+  if (d.includes("garnacha") || d.includes("barbera") || d.includes("sangiovese")) return "juicyRed";
+  if (d.includes("pinot") || d.includes("gamay") || d.includes("nebbiolo")) return "lighterRed";
+  if (d.includes("zinfandel")) return "bbqSweet";
+  if (d.includes("fino") || d.includes("manzanilla") || d.includes("sherry")) return "sherry";
+  if (d.includes("riesling") && avoid.includes("zinfandel")) return "freshWhite";
+  return "lighterRed";
+}
+
 function offlineDraft(dish) {
   const wine = dish.defaultWine;
   const wineCap = wine.charAt(0).toUpperCase() + wine.slice(1);
@@ -426,23 +464,187 @@ function offlineDraft(dish) {
     .split(/[.!]/)
     .map((s) => s.trim())
     .filter(Boolean);
-  const hook = (bits[0] || "Sovs og tilbehør").toLowerCase();
-  const avoidHint = (bits[bits.length - 1] || `${avoid} bliver forkert`).toLowerCase();
+  const hook = bits[0] || "Sovs og tilbehør";
+  const hookLow = hook.toLowerCase();
+  const avoidBit = (bits[bits.length - 1] || `${avoid} bliver forkert`).toLowerCase();
   const dishName = dish.dish;
-  const angleSeed = bits[0] || "lettere valg end den brede guide";
+  const profile = inferProfileKey(dish);
+  const parentHint = dish.parentLabel.replace(/^Vin til\s+/i, "").toLowerCase();
 
-  const why = `${wineCap} er default til ${dishName}, fordi ${hook} flytter glasset mere end den brede forældre-guide. Det er en smallere vinkel: match stil til sovs og tilbehør, ikke kun til proteinen.
+  const angleByProfile = {
+    chiliHeat: `syre der køler ${hookLow}`,
+    sweetSpice: `${hookLow} vil have frugt og syre`,
+    sweetDessert: `sødme der følger ${hookLow}`,
+    bubbles: `bobler til ${hookLow}`,
+    rose: `lettere glas til ${hookLow}`,
+    saltyFish: `salte noter og frisk syre`,
+    creamyWhite: `fedme i glasset til ${hookLow}`,
+    freshWhite: `sprød hvid til ${hookLow}`,
+    spicyRed: `mørkere frugt til ${hookLow}`,
+    juicyRed: `saftig rød til ${hookLow}`,
+    lighterRed: `lettere rød end til ${parentHint}`,
+    bbqSweet: `sødlig frugt til ${hookLow}`,
+    sherry: `salt og nød til ${hookLow}`,
+  };
+  const angleSeed = angleByProfile[profile] || `${hookLow} styrer glasset`;
 
-${altCap} er det naturlige alternativ, hvis du vil have en anden tekstur eller lidt mere frugt. Undgå ${avoid}, når ${avoidHint}. Hold dig til det prisbånd, du normalt køber i, og lad sovsen styre stilvalget.
+  const whyOpeners = {
+    chiliHeat: [
+      `${wineCap} er default til ${dishName}, fordi ${hookLow} løfter varmen. Her skal glasset have frugt og syre, der køler — ikke ekstra alkohol og krydderi, der forstærker chiliens bid.`,
+      `I ${dishName} er det ${hookLow}, der tipper balancen. ${wineCap} holder grebet og friskheden uden at skubbe varmen op i munden.`,
+    ],
+    sweetSpice: [
+      `${wineCap} matcher ${dishName}, fordi ${hookLow} trækker søde og krydrede noter frem. En frisk, aromatisk hvid kan følge frugten uden at blive tung eller bitter.`,
+      `Til ${dishName} er det ${hookLow}, der styrer glasset. ${wineCap} har frugt og syre nok til at følge med, hvor en streng rød ofte falder igennem.`,
+    ],
+    sweetDessert: [
+      `${wineCap} er det sikre valg til ${dishName}: ${hookLow} kræver sødme i glasset. En tør vin bliver bitter og kort, fordi desserten «vinder» over vinen.`,
+      `Dessertvinklen på ${dishName} er tydelig — ${hookLow} kalder på ${wineCap}. Skip den tørre rød «fordi det er fest»; den smager forkert her.`,
+    ],
+    bubbles: [
+      `${wineCap} til ${dishName} giver friskhed og mousse, der renser ganen. Når tallerkens kant ellers kan føles tung eller fedtet, holder boblerne grebet let.`,
+      `Til ${dishName} virker ${wineCap}, fordi boblerne skærer igennem fedme og salt og holder glasset scannbart mellem bidene.`,
+    ],
+    rose: [
+      `${wineCap} er default til ${dishName}: ${hookLow} vil have et let, køligt glas frem for tung tannin. Frugt og friskhed skal følge tallerkenen, ikke overdøve den.`,
+      `Ved ${dishName} er ${hookLow} i fokus. ${wineCap} følger den lette kant uden at lægge et mørkt, tørt greb ovenpå.`,
+    ],
+    saltyFish: [
+      `${wineCap} er default til ${dishName}, fordi ${hookLow} og salt/mineralitet skal mødes af en skarp, kølig hvid. Fad og tung frugt lægger sig bare ovenpå.`,
+      `Til ${dishName} styrer ${hookLow}: ${wineCap} skærer rent, holder mineraliteten i fokus og lader fisken eller skaldyret være hovedpersonen.`,
+    ],
+    creamyWhite: [
+      `${wineCap} matcher ${dishName}, fordi ${hookLow} har fedme. Glasset skal have krop og blød frugt, så det følger cremen — ikke knivskarp syre, der skærer for hårdt.`,
+      `Når ${dishName} drejer om ${hookLow}, er ${wineCap} det sikre valg. Den følger smør, fløde eller blød sauce uden at blive skarp eller tynd.`,
+    ],
+    freshWhite: [
+      `${wineCap} er default til ${dishName}: ${hookLow} vil have sprød syre og urtefriskhed frem for fad og smør. Et tungt glas kvæler den lette kant.`,
+      `Til ${dishName} er det ${hookLow}, der flytter valget. ${wineCap} holder glasset let, klart og køligt, så urter og syre stadig kan mærkes.`,
+    ],
+    spicyRed: [
+      `${wineCap} til ${dishName}, fordi ${hookLow} har nok dybde til en mørkere, krydret rød. En let pinot drukner her og smager tynd ved siden af sovsen.`,
+      `I ${dishName} skal glasset have greb, når ${hookLow} er i spil. ${wineCap} følger kød, røg og krydderi bedre end en lys, blød rød.`,
+    ],
+    juicyRed: [
+      `${wineCap} er default til ${dishName}: ${hookLow} vil have saftig frugt og moderate tanniner. Et tungt cabernet-greb gør munden tør og retten mindre lækker.`,
+      `Til ${dishName} styrer ${hookLow}. ${wineCap} giver frugt og syre, så sovs og tilbehør stadig kan smages mellem slurkene.`,
+    ],
+    lighterRed: [
+      `${wineCap} er default til ${dishName}, fordi ${hookLow} kalder på en lettere rød end den brede guide til ${parentHint}. Tanninen skal ned, så retten ikke bliver overdøvet.`,
+      `Ved ${dishName} er ${hookLow} afgørende. ${wineCap} holder glasset frugtigt og blødt nok til, at den smallere variant faktisk smager af noget.`,
+    ],
+    bbqSweet: [
+      `${wineCap} matcher ${dishName}, fordi ${hookLow} har sødlig røg eller glasur. En tør, let rød mister grebet og smager surt ved siden af den søde kant.`,
+      `Til ${dishName} følger ${wineCap} den søde kant fra ${hookLow} bedre end en stram, tør stil, der kun fungerer til «rent» kød.`,
+    ],
+    sherry: [
+      `${wineCap} til ${dishName}: ${hookLow} og salt/nødder mødes bedst af en tør, mineralsk stil. En tung rød lægger sig ovenpå og slører de salte noter.`,
+      `Når ${dishName} drejer om ${hookLow}, er ${wineCap} skarpere og mere præcis end en frugtig rød, der fylder for meget i munden.`,
+    ],
+  };
 
-Hold glasset køligt nok til, at syre og frugt stadig kan følge retten. Smag først på sovsen, så på vinen — og justér med et køligere glas eller et lettere valg, hvis balancen tipper.`;
+  const whyMiddles = [
+    `${altCap} er et godt alternativ, hvis du vil have en anden tekstur eller lidt mere frugt i glasset. Hold dig i samme stilfamilie, så balancen stadig passer til ${hookLow}.`,
+    `Har du hellere ${alt} derhjemme, virker det også — bare hold stilvalget i samme boldgade og undgå at «opgradere» til noget tungere uden grund.`,
+    `${altCap} kan tage over, hvis du vil skubbe frugt eller friskhed en tak op. Det er stadig et bedre match end at hoppe til en helt anden vægtklasse.`,
+  ];
 
-  const pitfalls = [
-    `- Undgå ${avoid} til denne variant — den er for tung eller for skarp her.`,
-    `- Vælg efter sovsen og tilbehøret, ikke kun proteinen.`,
-    `- Hold dig til lettere stil end den brede guide, hvis retten er mild.`,
-    `- Smag vin og ret sammen, før du åbner den anden flaske.`,
-  ].join("\n");
+  const whyCloses = [
+    `Undgå ${avoid}, når ${avoidBit}. Køb i dit normale prisbånd, smag sovs og vin sammen, og lad tilbehøret styre før druenavnet på etiketten.`,
+    `Spring ${avoid} over her: ${avoidBit}. Hold glasset køligt nok til, at syre og frugt stadig kan følge ${dishName} bid for bid.`,
+    `${avoid.charAt(0).toUpperCase() + avoid.slice(1)} bliver typisk forkert, når ${avoidBit}. Vælg heller ${wine} eller ${alt}, og justér med temperatur og et mindre glas, hvis retten er mild.`,
+  ];
+
+  const opener = hashPick(dish.slug, whyOpeners[profile] || whyOpeners.lighterRed);
+  const middle = hashPick(dish.slug + "m", whyMiddles);
+  const closer = hashPick(dish.slug + "c", whyCloses);
+  let why = `${opener}\n\n${middle}\n\n${closer}`;
+  if (readingTime(why).words < SECTION_MIN.why) {
+    why += `\n\nDet er en smallere side end guiden til ${parentHint}: her er det ${hookLow} og tilbehøret, der bestemmer glasset — ikke bare proteinen.`;
+  }
+
+  const pitfallSets = {
+    chiliHeat: [
+      `- Undgå ${avoid}: den forstærker ofte varmen i stedet for at køle den.`,
+      `- Tjek chiliens niveau — mild ret tåler mere frugt, hot ret vil have mere syre.`,
+      `- Server ${wine} køligt, så frugten stadig kan følge ${hookLow}.`,
+      `- Smag først på retten, før du åbner en tungere flaske «for en sikkerheds skyld».`,
+    ],
+    sweetSpice: [
+      `- Undgå ${avoid}, der bliver bitter eller for tanninrig med ${hookLow}.`,
+      `- Pas på for tør stil, hvis retten har sød glasur eller frugt.`,
+      `- Hold ${wine} frisk — for varmt glas mister syren.`,
+      `- Match intensiteten til tilbehøret, ikke kun til kødet.`,
+    ],
+    sweetDessert: [
+      `- Undgå tør ${avoid}: den smager kort og bitter ved siden af ${hookLow}.`,
+      `- Vinen skal være mindst lige så sød som desserten.`,
+      `- Små glas er nok — det er finish, ikke hovedret.`,
+      `- Skip fadede tørre røde «fordi det er fest».`,
+    ],
+    bubbles: [
+      `- Undgå tung ${avoid}, der lægger sig ovenpå ${hookLow}.`,
+      `- Hold boblerne kolde, ellers bliver glasset fladt og sødt.`,
+      `- Vælg brut/tør stil til salt og friture, ikke sød mousserende.`,
+      `- Skænk først, når tallerkenen er klar — bobler falder hurtigt.`,
+    ],
+    creamyWhite: [
+      `- Undgå knivskarp ${avoid}, der skærer for hårdt i ${hookLow}.`,
+      `- For let hvid drukner i creme og smør.`,
+      `- Tjek fadniveau: let fad er ok, tung eg kan blive smørret.`,
+      `- Smag sauce og vin sammen — det er sovsen, der bestemmer.`,
+    ],
+    freshWhite: [
+      `- Undgå fadede ${avoid}, der bliver smørrede ved siden af ${hookLow}.`,
+      `- For tung rød overdøver urter og syre i retten.`,
+      `- Server køligt, så syren stadig er skarp.`,
+      `- Vælg efter dressing/tilbehør, ikke kun protein.`,
+    ],
+    saltyFish: [
+      `- Undgå rød ${avoid}: tannin og salt støder sammen.`,
+      `- For tung hvid med fad drukner ${hookLow}.`,
+      `- Hold glasset koldt og mineraliteten i fokus.`,
+      `- Citron og olie i retten kan kræve endnu mere syre i glasset.`,
+    ],
+    spicyRed: [
+      `- Undgå for let ${avoid}, der drukner i ${hookLow}.`,
+      `- For høj tannin uden frugt bliver tør og kantet.`,
+      `- Match krydderi og røg — ikke kun «stort kød».`,
+      `- Decantér kun, hvis vinen er ung og lukket.`,
+    ],
+    juicyRed: [
+      `- Undgå tung ${avoid} med hård tannin til ${hookLow}.`,
+      `- For sød/marmeladeagtig stil kan tage fokus fra retten.`,
+      `- Hold frugt og syre i balance med sovsen.`,
+      `- Smag med tilbehøret (sennep, sylte, gravy), ikke kun kødet.`,
+    ],
+    lighterRed: [
+      `- Undgå ${avoid}: for meget tannin til ${hookLow}.`,
+      `- For mørk, ekstraheret rød overdøver den lettere variant.`,
+      `- Server let køligt, så frugten ikke bliver blød.`,
+      `- Vælg efter sauce/tilbehør — det er her forældre-guiden er for bred.`,
+    ],
+    bbqSweet: [
+      `- Undgå tør, streng ${avoid}, der mister grebet mod ${hookLow}.`,
+      `- For sød vin kan blive slikket, hvis glasuren allerede er sød.`,
+      `- Match røg og sødme, ikke kun proteinen.`,
+      `- Smag sauce først — BBQ tipper glasset mere end kødet.`,
+    ],
+    rose: [
+      `- Undgå tung ${avoid}, der er for mørk til ${hookLow}.`,
+      `- For sød rosé kan smage slikket ved siden af salt snacks.`,
+      `- Hold glasset koldt.`,
+      `- Vælg efter tilbehør (melon, chili, kød), ikke kun «sommer».`,
+    ],
+    sherry: [
+      `- Undgå tung ${avoid}, der lægger sig ovenpå ${hookLow}.`,
+      `- Oxideret/sød sherry er en anden stil — hold dig tør her.`,
+      `- Server køligt i mindre glas.`,
+      `- Salt og nødder i retten skal mødes af mineralitet, ikke frugtbombe.`,
+    ],
+  };
+
+  const pitfalls = (pitfallSets[profile] || pitfallSets.lighterRed).join("\n");
 
   return {
     angle: angleSeed,
@@ -492,14 +694,19 @@ function padDraftBody(dish, draft) {
   const wineLabel = dish.defaultWine.charAt(0).toUpperCase() + dish.defaultWine.slice(1);
   const deltaClause = dish.delta.charAt(0).toLowerCase() + dish.delta.slice(1).replace(/\.$/, "");
   if (words < MIN_WORDS && body.includes("## Pas på")) {
+    const hook = String(dish.delta || "")
+      .split(/[.!]/)
+      .map((s) => s.trim())
+      .filter(Boolean)[0]
+      ?.toLowerCase();
     const pad =
-      `${wineLabel} er det sikre valg her, fordi ${deltaClause}. ` +
+      `${wineLabel} er det sikre valg her, fordi ${hook || "sovs og tilbehør"} styrer glasset mere end den brede forældre-guide. ` +
       `Hold dig til det prisbånd, du normalt køber i, og lad sovsen styre stilvalget.`;
     body = body.replace("## Pas på", `${pad}\n\n## Pas på`);
     words = readingTime(body).words;
   }
   if (words < MIN_WORDS) {
-    body += `\n\n${wineLabel} er default, fordi ${deltaClause}.`;
+    body += `\n\n${wineLabel} er default, fordi sovs og tilbehør flytter glasset mere end proteinen alene.`;
     words = readingTime(body).words;
   }
   while (words > MAX_WORDS) {
