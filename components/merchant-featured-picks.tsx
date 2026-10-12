@@ -108,24 +108,32 @@ export function MerchantFeaturedPicks({
             pick.directLink || !cfg.usesPartnerAdsAffiliate ? clean : merchantOutboundClickUrl(merchantId, clean);
           const placement = variant === "home" ? `home-${merchantId}-featured` : `hub-${merchantId}-featured`;
           const detailSlug = pick.directLink ? undefined : wineDetailSlugForProductUrl(merchantId, pick.productUrl);
+          const detailHref = detailSlug ? `${cfg.hubPath}/vin/${detailSlug}` : null;
+          const image = pick.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={pick.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
+          ) : (
+            <div className="px-2 text-center text-xs text-stone-400">{cfg.displayName}</div>
+          );
           return (
             <li key={pick.productUrl}>
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-md">
-                <FeaturedPickOutbound
-                  baseHref={baseHref}
-                  merchant={cfg.displayName}
-                  placement={placement}
-                  className={IMAGE_FRAME}
-                  usesAffiliate={cfg.usesPartnerAdsAffiliate}
-                  allowsOutbound={cfg.allowsOutbound}
-                >
-                  {pick.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={pick.imageUrl} alt="" className="max-h-full max-w-full object-contain p-2" loading="lazy" />
-                  ) : (
-                    <div className="px-2 text-center text-xs text-stone-400">{cfg.displayName}</div>
-                  )}
-                </FeaturedPickOutbound>
+                {detailHref ? (
+                  <Link href={detailHref} className={IMAGE_FRAME} aria-label={`Læs om ${pick.title}`}>
+                    {image}
+                  </Link>
+                ) : (
+                  <FeaturedPickOutbound
+                    baseHref={baseHref}
+                    merchant={cfg.displayName}
+                    placement={placement}
+                    className={IMAGE_FRAME}
+                    usesAffiliate={cfg.usesPartnerAdsAffiliate}
+                    allowsOutbound={cfg.allowsOutbound}
+                  >
+                    {image}
+                  </FeaturedPickOutbound>
+                )}
                 <div className="flex flex-1 flex-col items-center gap-2 p-4 text-center">
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
@@ -136,7 +144,11 @@ export function MerchantFeaturedPicks({
                     ) : null}
                   </div>
                   <h3 className="line-clamp-2 text-base font-semibold leading-snug text-stone-900">
-                    {cfg.allowsOutbound ? (
+                    {detailHref ? (
+                      <Link href={detailHref} className="hover:underline">
+                        {pick.title}
+                      </Link>
+                    ) : cfg.allowsOutbound ? (
                       <FeaturedPickOutbound
                         baseHref={baseHref}
                         merchant={cfg.displayName}
@@ -152,11 +164,11 @@ export function MerchantFeaturedPicks({
                     )}
                   </h3>
                   {pick.blurb ? <p className="line-clamp-3 text-sm text-stone-600">{pick.blurb}</p> : null}
-                  {detailSlug ? (
-                    <p className="text-sm">
+                  {detailHref ? (
+                    <p className="w-full text-sm">
                       <Link
-                        href={`${cfg.hubPath}/vin/${detailSlug}`}
-                        className="font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-900"
+                        href={detailHref}
+                        className="inline-flex min-h-11 w-full items-center justify-center font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
                       >
                         Læs Vinbots side om vinen →
                       </Link>

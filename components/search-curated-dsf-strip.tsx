@@ -81,18 +81,24 @@ function CuratedPickCard({ pick, query }: { pick: ReturnType<typeof listCuratedP
     <span className="px-2 text-center text-xs text-stone-400">{cfg.displayName}</span>
   );
 
+  const detailHref = detailSlug ? `${cfg.hubPath}/vin/${detailSlug}` : null;
+
   return (
     <li>
       <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm">
-        {cfg.allowsOutbound ? (
+        {detailHref ? (
+          <Link href={detailHref} className={IMAGE_FRAME} aria-label={`Læs om ${pick.title}`}>
+            {image}
+          </Link>
+        ) : cfg.allowsOutbound ? (
           <a href={pick.productUrl} target="_blank" rel={imageRel} onClick={trackImage} className={IMAGE_FRAME}>
             {image}
           </a>
         ) : (
           <div className={IMAGE_FRAME}>{image}</div>
         )}
-        <div className="flex flex-1 flex-col gap-2 p-3">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-1 flex-col items-center gap-2 p-3 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <p className="text-[10px] font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
             {!cfg.allowsOutbound ? (
               <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
@@ -100,13 +106,21 @@ function CuratedPickCard({ pick, query }: { pick: ReturnType<typeof listCuratedP
               </span>
             ) : null}
           </div>
-          <h3 className="line-clamp-2 text-sm font-semibold text-stone-900">{pick.title}</h3>
+          <h3 className="line-clamp-2 text-sm font-semibold text-stone-900">
+            {detailHref ? (
+              <Link href={detailHref} className="hover:underline">
+                {pick.title}
+              </Link>
+            ) : (
+              pick.title
+            )}
+          </h3>
           {pick.blurb ? <p className="line-clamp-2 text-xs text-stone-600">{pick.blurb}</p> : null}
           <WinePickPrices pick={pick} />
-          {detailSlug ? (
+          {detailHref ? (
             <Link
-              href={`${cfg.hubPath}/vin/${detailSlug}`}
-              className="text-xs font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-900"
+              href={detailHref}
+              className="inline-flex min-h-11 w-full items-center justify-center text-xs font-medium text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950"
             >
               Læs Vinbots side om vinen →
             </Link>
