@@ -61,7 +61,7 @@ export function WineDetailPageView({ wine }: { wine: WineDetailPage }) {
       question: `Hvor køber jeg ${wine.displayTitle.split("—")[0]?.trim() ?? "vinen"}?`,
       answer: allowsOutbound
         ? `Du handler hos ${cfg.displayName}. Knappen «${wine.primaryCtaLabel ?? `Se vinen hos ${cfg.displayName}`}» åbner butikken i et nyt vindue.`
-        : `${cfg.displayName} er ikke samarbejdspartner på Vinbot. Vi beskriver flasken redaktionelt — uden link videre til shoppen. Søg selv hos forhandleren, hvis du vil købe.`,
+        : `Vi beskriver ${cfg.displayName}-flasken redaktionelt — uden link videre til shoppen. Søg selv hos forhandleren, hvis du vil købe.`,
     },
     {
       question: "Er prisen på Vinbot altid den samme som hos forhandleren?",

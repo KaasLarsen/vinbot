@@ -60,7 +60,8 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
   const shopHref = resolveMerchantHubShopHref(hub);
   const related = getRelatedMerchantHubs(hub.slug, 8);
   const featuredPicks = hub.featuredWineId ? getFeaturedPicksForMerchant(hub.featuredWineId) : [];
-  const showShopButton = Boolean(shopHref) && hub.affiliate.kind !== "feed-only";
+  const isFeedOnly = hub.affiliate.kind === "feed-only";
+  const showShopButton = Boolean(shopHref) && !isFeedOnly;
   const logo = getMerchantLogo(hub.slug);
   const accent = merchantAccentForSlug(hub.slug);
   const introLead = hub.introParagraphs[0] ?? null;
@@ -123,7 +124,7 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
 
           <div className="px-6 py-7 sm:px-10 sm:py-8">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">
-              Vinforhandler · affiliate
+              Vinforhandler
             </p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
               {hub.displayName}
@@ -161,8 +162,9 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
             )}
 
             <p className="mt-4 text-xs leading-relaxed text-stone-500">
-              Vinbot sælger ikke vin — du handler og betaler altid hos {hub.displayName}. Links kan
-              give os provision, typisk uden merpris for dig.
+              {isFeedOnly
+                ? `Vinbot sælger ikke vin. Vi viser ${hub.displayName} som inspiration — uden link videre til shoppen.`
+                : `Vinbot sælger ikke vin — du handler og betaler altid hos ${hub.displayName}. Links kan give os provision, typisk uden merpris for dig.`}
             </p>
           </div>
         </header>

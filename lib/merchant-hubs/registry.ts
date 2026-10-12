@@ -35,10 +35,10 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Restpartier, daglige tilbud og sjældne flasker — redaktionel inspiration på Vinbot.",
     title: "Den Sidste Flaske (densidsteflaske) — vin tilbud",
     description:
-      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Redaktionel inspiration på Vinbot — Den Sidste Flaske er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Den Sidste Flaske / densidsteflaske.dk: daglige tilbud, restpartier og sjældne flasker. Redaktionel inspiration på Vinbot — uden link videre til shoppen.",
     introParagraphs: [
       "Den Sidste Flaske — også søgt som densidsteflaske — er en af landets stærkeste vin-shops med restpartier, limited releases og daglige tilbud. Her på Vinbot får du inspiration, læsning og konkrete idéer om flaskerne.",
-      "Den Sidste Flaske er markeret som ikke-samarbejdspartner: du kan læse om flaskerne her, men Vinbot linker ikke videre til densidsteflaske.dk.",
+      "Du kan læse om flaskerne her — Vinbot linker ikke videre til densidsteflaske.dk.",
       "Sortimentet skifter ofte: restpartier, kampagner og limited editions betyder, at dagens tilbud kan være væk i morgen. Brug derfor altid forhandlerens egen side som kilde til pris, lager og årgang, hvis du selv vælger at handle der.",
     ],
     matchHeading: "Hvornår er Den Sidste Flaske et godt match?",
@@ -57,7 +57,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Den Sidste Flaske",
     shopIntro:
-      "Den Sidste Flaske er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+      "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
     showDsfFeatured: true,
     productIntro:
       "Inspiration fra andre gode forhandlere — samme idé som ovenfor, med billeder og priser du kan klikke videre på.",
@@ -82,12 +82,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvad er Den Sidste Flaske?",
         answer:
-          "Den Sidste Flaske (densidsteflaske.dk) er en dansk vinwebshop med restpartier, limited releases og daglige tilbud. På Vinbot kan du læse om udvalgte flasker — vi sælger ikke selv vin, og DSF er ikke samarbejdspartner.",
+          "Den Sidste Flaske (densidsteflaske.dk) er en dansk vinwebshop med restpartier, limited releases og daglige tilbud. På Vinbot kan du læse om udvalgte flasker — vi sælger ikke selv vin.",
       },
       {
         question: "Hvorfor linker Vinbot ikke til Den Sidste Flaske?",
         answer:
-          "Den Sidste Flaske er på gratis listing og er ikke samarbejdspartner. Vi viser redaktionel inspiration og kuraterede vinsider, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Den Sidste Flaske. Du kan læse om flaskerne her — uden link videre til shoppen.",
       },
       {
         question: "Kan jeg sammenligne med andre butikker?",
@@ -178,7 +178,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "Winther Vin: dansk vinwebshop med fokus på kvalitet, kampagner og mulighed for at blande kassen. Link til shoppen fra Vinbot, nyhedsbrev og vine fra vores vinsøgning.",
     introParagraphs: [
       "Winther Vin er en dansk vinforhandler med både fysisk butik og webshop — kendt for et stort sortiment, kampagner og mulighed for at blande din egen kasse i stedet for kun at købe én vin i seks eksemplarer. Et naturligt næste skridt efter mad- og vin-inspiration eller når du har fundet en drue i drueoversigten.",
-      "Vinbot sælger ikke vin. Brug vinsøgningen til at sammenligne på tværs; denne side samler kontekst om Winther Vin og viser flasker fra deres feed, du kan klikke videre på.",
+      "Vinbot sælger ikke vin. Brug vinsøgningen til at sammenligne på tværs; denne side samler kontekst om Winther Vin og viser flasker fra dem, du kan klikke videre på.",
       "Mange læsere bruger Winther, når de vil shoppe til fest, gave eller en blandet kasse til aftenen — og samtidig holde øje med nyhedsbrev og aktuelle kampagner.",
     ],
     matchHeading: "Hvornår er Winther Vin et godt match?",
@@ -198,7 +198,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     showRabatkoderLink: true,
     featuredWineId: "winther-vin",
     productIntro:
-      "Fra vores produktfeed — udvalget skifter. Vil du sammenligne med andre butikker, brug forsiden.",
+      "Udvalget skifter — Vil du sammenligne med andre butikker, brug forsiden.",
     productSections: [
       {
         title: "Klassikere og fest",
@@ -243,7 +243,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "DH Wines: dansk vinwebshop med håndplukket udvalg til mad og hverdag. Link til shoppen fra Vinbot, rabatter via nyhedsbrev og vine fra vores vinsøgning.",
     introParagraphs: [
       "DH Wines er en dansk netbutik med et håndplukket sortiment — oplagt når du har læst en guide til vin og mad og vil finde konkrete flasker, der matcher bordet i hverdagen eller til weekendens menu.",
-      "Vinbot sælger ikke vin. Brug vinsøgningen på forsiden til at sammenligne pris på tværs; her dykker vi ned i DH Wines og viser udvalgte flasker fra deres feed.",
+      "Vinbot sælger ikke vin. Brug vinsøgningen på forsiden til at sammenligne pris på tværs; her dykker vi ned i DH Wines og viser udvalgte flasker fra dem.",
       "Hvis du foretrækker et overskueligt, kurateret udvalg frem for uendelige hylder, er DH Wines ofte et godt næste skridt efter Vinbots inspiration.",
     ],
     matchHeading: "Hvornår er DH Wines et godt match?",
@@ -261,7 +261,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopIntro: "Åbner DH Wines i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
     featuredWineId: "dh-wines",
-    productIntro: "Et udsnit fra vores produktfeed — udvalg og priser kan skifte dag til dag.",
+    productIntro: "Et udsnit af udvalget — priser kan skifte dag til dag.",
     productSections: [
       {
         title: "Smagsprøve på sortimentet",
@@ -306,7 +306,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "Johnsen Wine: vinforhandler med fokus på kurateret sortiment og personlig service. Link til shoppen fra Vinbot, nyhedsbrev-rabatter og produkter du også finder i vores vinsøgning.",
     introParagraphs: [
       "Johnsen Wine er en dansk vinforhandler med kurateret sortiment og stærkt fokus på kvalitet og vejledning — et oplagt sted at fortsætte, når du har fundet retning i en drue- eller regionguide, og vil se konkrete flasker hos én shop.",
-      "Vinbot sælger ikke vin. Brug vinsøgningen på forsiden til at sammenligne på tværs; her fokuserer vi på Johnsen Wine (i produktfeedet vist som «Johnsen Vine»).",
+      "Vinbot sælger ikke vin. Brug vinsøgningen på forsiden til at sammenligne på tværs; her fokuserer vi på Johnsen Wine (i søgningen vist som «Johnsen Vine»).",
       "Shoppen egner sig godt, når du vil gå fra overblik til handling hos en etableret forhandler med fokus på vinoplevelse — ikke kun den billigste flaske.",
     ],
     matchHeading: "Hvornår er Johnsen Wine et godt match?",
@@ -325,7 +325,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     showRabatkoderLink: true,
     featuredWineId: "johnsen-wine",
     productIntro:
-      "Fra vores produktfeed (vist som «Johnsen Vine» i data). Udvalget varierer — sammenlign gerne på forsiden.",
+      "Fra søgningen (vist som «Johnsen Vine»). Udvalget varierer — sammenlign gerne på forsiden.",
     productSections: [
       {
         title: "Smagsprøve på sortimentet",
@@ -366,7 +366,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     introParagraphs: [
       "Havnens Vin er en dansk forhandler med vin, bobler og spiritus — oplagt når du har fundet retning i vores guider og vil se konkrete flasker hos én shop.",
       "Vinbot sælger ikke vin. Brug vinsøgningen på forsiden eller vin-kataloget til at sammenligne på tværs; her fokuserer vi på Havnens Vin.",
-      "Flasker fra deres Daisycon-feed indgår i vores søgning, når de matcher vinfiltrene — så kan du både browse her og købe via tracked links.",
+      "Flasker fra Havnens Vin indgår i vores søgning, når de matcher vinfiltrene — så kan du både browse her og klikke videre til køb.",
     ],
     matchHeading: "Hvornår er Havnens Vin et godt match?",
     matchBullets: [
@@ -401,7 +401,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Kan jeg se Havnens Vin i Vinbots vin-katalog?",
         answer:
-          "Ja. Flasker fra feedet indgår i vinsøgningen og under /vine, når de matcher vores vinfiltre — sammenlign pris og forhandler der.",
+          "Ja. Flasker indgår i vinsøgningen og under vin-kataloget, når de matcher vores filtre — sammenlign pris og forhandler der.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -417,16 +417,16 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Dansk vinwebshop med fokus på kvalitet og et bredt, spændende sortiment.",
     title: "SPS Wine — shop og inspiration | Vinbot",
     description:
-      "SPS Wine er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre via affiliate-link — uden merpris for dig.",
+      "SPS Wine er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre til shoppen — uden merpris for dig.",
     introParagraphs: [
-      "SPS Wine er en dansk vinwebshop, der indgår i Vinbots produktfeed — så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
-      "Her på siden får du en kort introduktion til forhandleren, FAQ om affiliate, og konkrete flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du handler altid hos SPS Wine.",
+      "SPS Wine er en dansk vinwebshop, så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
+      "Her på siden får du en kort introduktion til forhandleren, FAQ og konkrete flasker. Vinbot sælger ikke vin; du handler altid hos SPS Wine.",
       "Brug siden, når du vil gå fra inspiration til køb hos én specifik shop — eller sammenlign først på forsiden på tværs af flere forhandlere.",
     ],
     matchHeading: "Hvornår er SPS Wine et godt match?",
     matchBullets: [
       "Du har set SPS Wine i Vinbots søgeresultater og vil dykke ned i deres udvalg.",
-      "Du vil have direkte flaske-links med billede og pris fra deres feed.",
+      "Du vil have direkte flaske-links med billede og pris fra dem.",
       "Du følger gerne med i rabatter og kampagner (se rabatkoder).",
     ],
     guideLinks: [
@@ -438,7 +438,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg SPS Wine",
     shopIntro: "Åbner SPS Wine i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Udvalgte flasker fra SPS Wine i vores feed — klik videre for at købe hos dem.",
+    productIntro: "Udvalgte flasker fra SPS Wine — klik videre for at købe hos dem.",
     productSections: [
       {
         title: "Naturvin og orangevin",
@@ -460,7 +460,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til SPS Wine?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. SPS Wine indgår i vores Partner-Ads-feed og sorterer godt ind i vores læseres søgninger.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. SPS Wine dukker ofte op, når læsere søger efter lignende vine.",
       },
       {
         question: "Kan jeg få rabat?",
@@ -480,16 +480,16 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Vinwebshop med fokusvenlige flasker og jævnlige kampagner.",
     title: "Winefriends — shop og inspiration | Vinbot",
     description:
-      "Winefriends er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker og gå videre via Partner-Ads-link.",
+      "Winefriends er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker og gå videre til shoppen.",
     introParagraphs: [
-      "Winefriends er en dansk vinwebshop, hvis sortiment indgår i Vinbots Partner-Ads-feed. Her får du en hub med intro, FAQ og flasker du kan klikke videre på.",
+      "Winefriends er en dansk vinwebshop, Her får du intro, FAQ og flasker du kan klikke videre på.",
       "Vinbot sælger ikke vin. Brug forsiden til at sammenligne på tværs; denne side er dedikeret til Winefriends.",
       "Shoppen passer godt, når du vil finde vine til aftenen, gæster eller en gave — og samtidig holde øje med kampagner via rabatkoder.",
     ],
     matchHeading: "Hvornår er Winefriends et godt match?",
     matchBullets: [
       "Du har set Winefriends i søgeresultaterne og vil se mere fra dem.",
-      "Du vil have direkte produkt-CTA’er med billede og pris.",
+      "Du vil have direkte flaske-links med billede og pris.",
       "Du følger gerne nyhedsbrev og rabatter.",
     ],
     guideLinks: [
@@ -500,7 +500,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg Winefriends",
     shopIntro: "Åbner Winefriends i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Udvalgte flasker fra Winefriends i vores feed.",
+    productIntro: "Udvalgte flasker fra Winefriends.",
     productSections: [
       {
         title: "Udvalgte vine",
@@ -512,7 +512,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Winefriends?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Winefriends har aktivt Partner-Ads-feed i vores søgning.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Winefriends indgår i vores søgning.",
       },
       {
         question: "Kan jeg få rabat?",
@@ -532,16 +532,16 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Dansk vinwebshop med fokus på italienske klassikere, smagekasser og gode hverdagsvine.",
     title: "Buus Vine — shop og inspiration | Vinbot",
     description:
-      "Buus Vine er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre via Partner-Ads-link.",
+      "Buus Vine er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre til shoppen.",
     introParagraphs: [
-      "Buus Vine er en dansk vinwebshop, hvis sortiment indgår i Vinbots Partner-Ads-feed — så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
-      "Her på siden får du en kort introduktion til forhandleren, FAQ om affiliate, og konkrete flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du handler altid hos Buus Vine.",
+      "Buus Vine er en dansk vinwebshop, Du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
+      "Her på siden får du en kort introduktion til forhandleren, FAQ og konkrete flasker. Vinbot sælger ikke vin; du handler altid hos Buus Vine.",
       "Shoppen passer godt, når du jagter italienske klassikere som Barolo og Amarone, smagekasser eller vine til hverdag og selskab.",
     ],
     matchHeading: "Hvornår er Buus Vine et godt match?",
     matchBullets: [
       "Du har set Buus Vine i Vinbots søgeresultater og vil dykke ned i deres udvalg.",
-      "Du vil have direkte flaske-links med billede og pris fra deres feed.",
+      "Du vil have direkte flaske-links med billede og pris fra dem.",
       "Du leder efter italienske vine, smagekasser eller kampagneflasker.",
     ],
     guideLinks: [
@@ -552,7 +552,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg Buus Vine",
     shopIntro: "Åbner Buus Vine i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Udvalgte flasker fra Buus Vine i vores feed — klik videre for at købe hos dem.",
+    productIntro: "Udvalgte flasker fra Buus Vine — klik videre for at købe hos dem.",
     productSections: [
       {
         title: "Udvalgte vine hos Buus Vine",
@@ -569,7 +569,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Buus Vine?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Buus Vine indgår i vores Partner-Ads-feed og sorterer godt ind i vores læseres søgninger.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Buus Vine dukker ofte op, når læsere søger efter lignende vine.",
       },
       {
         question: "Kan jeg få rabat?",
@@ -589,16 +589,16 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Klassisk dansk vinimportør med fokus på Champagne, Bourgogne og europæiske kvalitetsvine.",
     title: "Otto Suenson — shop og inspiration | Vinbot",
     description:
-      "Otto Suenson er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre via Partner-Ads-link.",
+      "Otto Suenson er en dansk vinforhandler i Vinbots søgning. Læs om shoppen, se flasker med pris og gå videre til shoppen.",
     introParagraphs: [
-      "Otto Suenson er en dansk vinwebshop og importør, hvis sortiment indgår i Vinbots Partner-Ads-feed — så du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
-      "Her på siden får du en kort introduktion til forhandleren, FAQ om affiliate, og konkrete flaske-CTA’er fra feedet. Vinbot sælger ikke vin; du handler altid hos Otto Suenson.",
+      "Otto Suenson er en dansk vinwebshop og importør, Du kan finde deres flasker i vores søgning og katalog, når de matcher vinfiltrene.",
+      "Her på siden får du en kort introduktion til forhandleren, FAQ og konkrete flasker. Vinbot sælger ikke vin; du handler altid hos Otto Suenson.",
       "Shoppen passer godt, når du jagter Champagne, Bourgogne, Riesling eller andre europæiske kvalitetsvine — inkl. magnum og mere eksklusive årgange.",
     ],
     matchHeading: "Hvornår er Otto Suenson et godt match?",
     matchBullets: [
       "Du har set Otto Suenson i Vinbots søgeresultater og vil dykke ned i deres udvalg.",
-      "Du vil have direkte flaske-links med billede og pris fra deres feed.",
+      "Du vil have direkte flaske-links med billede og pris fra dem.",
       "Du leder efter Champagne, Bourgogne eller klassiske europæiske vine.",
     ],
     guideLinks: [
@@ -609,7 +609,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg Otto Suenson",
     shopIntro: "Åbner Otto Suenson i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Udvalgte flasker fra Otto Suenson i vores feed — klik videre for at købe hos dem.",
+    productIntro: "Udvalgte flasker fra Otto Suenson — klik videre for at købe hos dem.",
     productSections: [
       {
         title: "Udvalgte vine hos Otto Suenson",
@@ -626,7 +626,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Otto Suenson?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Otto Suenson indgår i vores Partner-Ads-feed og sorterer godt ind i vores læseres søgninger.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Otto Suenson dukker ofte op, når læsere søger efter lignende vine.",
       },
       {
         question: "Kan jeg få rabat?",
@@ -646,10 +646,10 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Vin, spiritus og bar — til aftenen, cocktails og hygge.",
     title: "Barlife — shop og inspiration | Vinbot",
     description:
-      "Barlife er en dansk forhandler i Vinbots feed med vin og spiritus. Se flasker, læs FAQ og gå videre via Partner-Ads.",
+      "Barlife er en dansk forhandler i Vinbots søgning med vin og spiritus. Se flasker, læs FAQ og gå videre til shoppen.",
     introParagraphs: [
-      "Barlife er en dansk webshop med vin og spiritus — relevant når du både kigger efter flasker til bordet og til baren. Deres produkter indgår i Vinbots Partner-Ads-feed.",
-      "Vinbot sælger ikke vin. Denne side giver dig kontekst og flaske-CTA’er; du handler hos Barlife.",
+      "Barlife er en dansk webshop med vin og spiritus — relevant når du både kigger efter flasker til bordet og til baren. Du kan finde deres produkter i Vinbots søgning.",
+      "Vinbot sælger ikke vin. Denne side giver dig kontekst og flasker; du handler hos Barlife.",
       "Kombiner gerne med vores guider om fest, humør og mad, før du klikker videre til shoppen.",
     ],
     matchHeading: "Hvornår er Barlife et godt match?",
@@ -665,7 +665,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Barlife",
     shopIntro: "Åbner Barlife i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Udvalgte produkter fra Barlife i vores feed.",
+    productIntro: "Udvalgte produkter fra Barlife.",
     productSections: [
       {
         title: "Vin og bobler",
@@ -677,7 +677,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Barlife?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Barlife har aktivt Partner-Ads-feed.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Barlife indgår i vores søgning.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -690,14 +690,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "d-wine",
     displayName: "D’Wine",
     feedMerchant: null,
-    blurb: "Dansk vinwebshop — gratis listing på Vinbot (ikke samarbejdspartner).",
+    blurb: "Dansk vinwebshop — inspiration på Vinbot.",
     title: "D’Wine — shop og inspiration | Vinbot",
     description:
-      "D’Wine er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — D’Wine er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "D’Wine er en dansk vinforhandler. Inspiration og kontekst på Vinbot — uden link videre til shoppen.",
     introParagraphs: [
-      "D’Wine er en dansk vinwebshop. De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
-      "D’Wine er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til d-wine.dk.",
-      "Brug vinsøgningen på forsiden til at sammenligne andre forhandlere med aktivt feed.",
+      "D’Wine er en dansk vinwebshop med et overskueligt sortiment til hverdag og weekend.",
+      "Du kan læse om forhandleren her — Vinbot linker ikke videre til d-wine.dk.",
+      "Brug vinsøgningen på forsiden til at sammenligne andre forhandlere.",
     ],
     matchHeading: "Hvornår er D’Wine et godt match?",
     matchBullets: [
@@ -711,7 +711,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/mad-og-vin", label: "Mad og vin" },
     ],
     shopCtaLabel: "Besøg D’Wine",
-    shopIntro: "D’Wine er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
     productIntro:
       "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
     productSections: [
@@ -730,12 +730,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til D’Wine?",
         answer:
-          "D’Wine har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med D’Wine. Du kan læse om forhandleren her — uden link videre til shoppen.",
       },
       {
-        question: "Kan jeg stadig finde D’Wine-flasker i søgningen?",
+        question: "Kan jeg finde D’Wine-flasker i søgningen?",
         answer:
-          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
+          "Nej — deres sortiment synkroniseres ikke lige nu. Brug forsiden til at sammenligne andre forhandlere.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -748,14 +748,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "mere-om-vin",
     displayName: "Mere om Vin",
     feedMerchant: null,
-    blurb: "Stor dansk vinwebshop — gratis listing på Vinbot (ikke samarbejdspartner).",
+    blurb: "Stor dansk vinwebshop — inspiration på Vinbot.",
     title: "Mere om Vin — shop og inspiration | Vinbot",
     description:
-      "Mere om Vin er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — Mere om Vin er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Mere om Vin er en dansk vinforhandler. Inspiration og kontekst på Vinbot — uden link videre til shoppen.",
     introParagraphs: [
       "Mere om Vin er en etableret dansk vinwebshop med et bredt sortiment — fra hverdagsvine til flasker til weekend, gave og fest.",
-      "De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
-      "Mere om Vin er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til mereomvin.dk.",
+      "Du kan læse om forhandleren her — Vinbot linker ikke videre til mereomvin.dk.",
+      "Brug vinsøgningen på forsiden til at sammenligne andre forhandlere.",
     ],
     matchHeading: "Hvornår er Mere om Vin et godt match?",
     matchBullets: [
@@ -769,7 +769,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/vine", label: "Vin-katalog" },
     ],
     shopCtaLabel: "Besøg Mere om Vin",
-    shopIntro: "Mere om Vin er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
     productIntro:
       "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
     productSections: [
@@ -788,12 +788,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til Mere om Vin?",
         answer:
-          "Mere om Vin har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Mere om Vin. Du kan læse om forhandleren her — uden link videre til shoppen.",
       },
       {
-        question: "Kan jeg stadig finde Mere om Vin-flasker i søgningen?",
+        question: "Kan jeg finde Mere om Vin-flasker i søgningen?",
         answer:
-          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
+          "Nej — deres sortiment synkroniseres ikke lige nu. Brug forsiden til at sammenligne andre forhandlere.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -806,14 +806,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "vinea",
     displayName: "Vinea",
     feedMerchant: null,
-    blurb: "Dansk vinshop — gratis listing på Vinbot (ikke samarbejdspartner).",
+    blurb: "Dansk vinshop — inspiration på Vinbot.",
     title: "Vinea — shop og inspiration | Vinbot",
     description:
-      "Vinea er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — Vinea er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Vinea er en dansk vinforhandler. Inspiration og kontekst på Vinbot — uden link videre til shoppen.",
     introParagraphs: [
       "Vinea er en dansk vinwebshop med sortiment til både hverdag og særlige anledninger.",
-      "De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
-      "Vinea er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til vinea.dk.",
+      "Du kan læse om forhandleren her — Vinbot linker ikke videre til vinea.dk.",
+      "Brug vinsøgningen på forsiden til at sammenligne andre forhandlere.",
     ],
     matchHeading: "Hvornår er Vinea et godt match?",
     matchBullets: [
@@ -827,7 +827,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/vine", label: "Vin-katalog" },
     ],
     shopCtaLabel: "Besøg Vinea",
-    shopIntro: "Vinea er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
     productIntro:
       "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
     productSections: [
@@ -841,12 +841,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til Vinea?",
         answer:
-          "Vinea har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Vinea. Du kan læse om forhandleren her — uden link videre til shoppen.",
       },
       {
-        question: "Kan jeg stadig finde Vinea-flasker i søgningen?",
+        question: "Kan jeg finde Vinea-flasker i søgningen?",
         answer:
-          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
+          "Nej — deres sortiment synkroniseres ikke lige nu. Brug forsiden til at sammenligne andre forhandlere.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -862,9 +862,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     blurb: "Gourmet og vin — flasker til madbordet og særlige anledninger.",
     title: "Gourmetshoppen — shop og inspiration | Vinbot",
     description:
-      "Gourmetshoppen er en Partner-Ads-forhandler i Vinbots feed. Se vin og gå videre til shoppen med tracked links.",
+      "Gourmetshoppen er en vinforhandler i Vinbots søgning. Se vin og gå videre til shoppen.",
     introParagraphs: [
-      "Gourmetshoppen indgår i Vinbots Partner-Ads-feed med vine og relaterede produkter. Denne hub giver dig intro, FAQ og flasker som go-to-actions.",
+      "Gourmetshoppen har vine og relaterede produkter i Vinbots søgning. Her får du intro, FAQ og flasker du kan klikke videre på.",
       "Vinbot sælger ikke vin. Du handler altid hos Gourmetshoppen, når du klikker videre.",
       "Kombiner gerne med vores mad-og-vin-guider, før du vælger flaske.",
     ],
@@ -881,7 +881,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Gourmetshoppen",
     shopIntro: "Åbner Gourmetshoppen i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Udvalgte vine fra Gourmetshoppen i vores feed.",
+    productIntro: "Udvalgte vine fra Gourmetshoppen.",
     productSections: [
       {
         title: "Vin hos Gourmetshoppen",
@@ -893,7 +893,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Gourmetshoppen?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Gourmetshoppen har aktivt Partner-Ads-feed.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Gourmetshoppen indgår i vores søgning.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -906,20 +906,20 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "westjysk-smag",
     displayName: "Westjysk Smag",
     feedMerchant: "Westjysk Smag",
-    blurb: "Vestjysk smag — lokale produkter og vin i Vinbots feed.",
+    blurb: "Vestjysk smag — lokale produkter og vin i Vinbots søgning.",
     title: "Westjysk Smag — shop og inspiration | Vinbot",
     description:
-      "Westjysk Smag er en Partner-Ads-forhandler i Vinbots søgning. Læs om shoppen og se flasker med direkte købs-links.",
+      "Westjysk Smag er en forhandler i Vinbots søgning. Læs om shoppen og se flasker med links til køb.",
     introParagraphs: [
-      "Westjysk Smag indgår i Vinbots Partner-Ads-produktfeed. Her samler vi intro, FAQ og flaske-CTA’er, så du nemt kan gå videre til køb.",
+      "Westjysk Smag indgår i Vinbots søgning. Her samler vi intro, FAQ og flasker, så du nemt kan gå videre til køb.",
       "Vinbot sælger ikke vin. Sammenlign gerne på forsiden; denne side handler kun om Westjysk Smag.",
       "Brug flaskekortene nedenfor som klare næste skridt, når en vare matcher det, du leder efter.",
     ],
     matchHeading: "Hvornår er Westjysk Smag et godt match?",
     matchBullets: [
       "Du har set Westjysk Smag i Vinbots resultater.",
-      "Du vil støtte en vestjysk forhandler med feed i vores søgning.",
-      "Du vil have tracked links fra Vinbot til shoppen.",
+      "Du vil støtte en vestjysk forhandler i vores søgning.",
+      "Du vil gå direkte fra Vinbot til shoppen.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },
@@ -927,7 +927,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Westjysk Smag",
     shopIntro: "Åbner Westjysk Smag i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Produkter fra Westjysk Smag i vores feed.",
+    productIntro: "Produkter fra Westjysk Smag.",
     productSections: [
       {
         title: "Udvalgte produkter",
@@ -952,12 +952,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "winesommelier",
     displayName: "Winesommelier",
     feedMerchant: "Winesommelier",
-    blurb: "Vin med fokus på smag og vejledning — i Vinbots Partner-Ads-feed.",
+    blurb: "Vin med fokus på smag og vejledning — i Vinbots søgning.",
     title: "Winesommelier — shop og inspiration | Vinbot",
     description:
-      "Winesommelier er en dansk vinforhandler i Vinbots feed. Inspiration, flasker og link til shoppen via Partner-Ads.",
+      "Winesommelier er en dansk vinforhandler i Vinbots søgning. Inspiration, flasker og link til shoppen.",
     introParagraphs: [
-      "Winesommelier er en dansk vinwebshop i Vinbots Partner-Ads-feed. På denne hub får du baggrund, FAQ og flasker du kan købe via tracked links.",
+      "Winesommelier er en dansk vinwebshop i Vinbots søgning. Her får du baggrund, FAQ og flasker du kan klikke videre på.",
       "Vinbot sælger ikke vin. Brug vinsøgningen til at sammenligne; her er fokus Winesommelier.",
       "Shoppen passer godt, når du vil gå fra guide-læsning til konkrete flasker hos én forhandler.",
     ],
@@ -965,7 +965,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     matchBullets: [
       "Du har set Winesommelier i søgeresultaterne.",
       "Du vil have sommelier-agtig inspiration kombineret med køb online.",
-      "Du vil bruge flaskekort som go-to-action.",
+      "Du vil bruge flaskekortene som næste skridt til køb.",
     ],
     guideLinks: [
       { href: "/druesorter", label: "Druesorter" },
@@ -974,7 +974,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Winesommelier",
     shopIntro: "Åbner Winesommelier i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Flasker fra Winesommelier i vores feed.",
+    productIntro: "Flasker fra Winesommelier.",
     productSections: [
       {
         title: "Udvalgte vine",
@@ -1004,8 +1004,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     description:
       "Bottles With History: vintage og ældre vine. Se flasker med pris på Vinbot og klik videre til shoppen.",
     introParagraphs: [
-      "Bottles With History specialiserer sig i vintage og ældre vine — flasker der har ligget i årtier og fortæller en historie. Deres sortiment synkroniseres til Vinbot via Daisycon.",
-      "Vinbot sælger ikke vin. På denne side får du intro og flaske-CTA’er fra feedet; shop-landing uden separat tracking-URL betyder, at de tracked køb primært sker via produktkortene.",
+      "Bottles With History specialiserer sig i vintage og ældre vine — flasker der har ligget i årtier og fortæller en historie. Du kan finde deres flasker i Vinbots søgning.",
+      "Vinbot sælger ikke vin. På denne side får du intro og flasker; det nemmeste er at klikke videre fra flaskekortene nedenfor.",
       "Oplagt til gaver, jubilæer og særlige anledninger, hvor årgang og historie betyder mere end hverdagspris.",
     ],
     matchHeading: "Hvornår er Bottles With History et godt match?",
@@ -1021,8 +1021,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Se flasker nedenfor",
     shopIntro:
-      "Primær go-to-action er flaskekortene — de linker videre via Daisycon-feed. Åbn bottleswithhistory.dk, når du vil browse hele sortimentet.",
-    productIntro: "Vintage og ældre vine fra Bottles With History i vores feed.",
+      "Brug flaskekortene nedenfor — de linker videre til shoppen. Åbn bottleswithhistory.dk, når du vil browse hele sortimentet.",
+    productIntro: "Vintage og ældre vine fra Bottles With History.",
     productSections: [
       {
         title: "Udvalgte flasker",
@@ -1034,12 +1034,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvad er Bottles With History?",
         answer:
-          "Bottles With History er en vinforhandler med vintage og ældre vine. På Vinbot kan du se flasker fra deres feed og klikke videre til shoppen.",
+          "Bottles With History er en vinforhandler med vintage og ældre vine. På Vinbot kan du se flasker og klikke videre til shoppen.",
       },
       {
         question: "Hvorfor linker Vinbot til Bottles With History?",
         answer:
-          "Når du køber efter et klik fra Vinbot (typisk via produktfeedet), kan vi modtage provision — typisk uden merpris for dig.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -1052,28 +1052,28 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "8wines",
     displayName: "8wines",
     feedMerchant: "8wines",
-    blurb: "International vinwebshop med stort udvalg — i Vinbots Daisycon-feed.",
+    blurb: "International vinwebshop med stort udvalg — i Vinbots søgning.",
     title: "8wines — shop og inspiration | Vinbot",
     description:
-      "8wines er en vinforhandler i Vinbots Daisycon-feed. Se flasker med pris og klik videre til køb.",
+      "8wines er en vinforhandler i Vinbots søgning. Se flasker med pris og klik videre til køb.",
     introParagraphs: [
-      "8wines er en international vinwebshop, hvis produkter indgår i Vinbots Daisycon-feed. Denne hub giver dig kontekst og flaske-CTA’er.",
-      "Vinbot sælger ikke vin. De tracked links ligger primært på produktkortene fra feedet.",
+      "8wines er en international vinwebshop i Vinbots søgning. Her får du kontekst og flasker du kan klikke videre på.",
+      "Vinbot sælger ikke vin. Det nemmeste er at klikke videre fra flaskekortene nedenfor.",
       "Brug forsiden til at sammenligne med danske forhandlere, hvis du vil se flere shops side om side.",
     ],
     matchHeading: "Hvornår er 8wines et godt match?",
     matchBullets: [
       "Du har set 8wines i Vinbots søgeresultater.",
       "Du vil browse et stort, internationalt sortiment.",
-      "Du vil bruge flaskekort som direkte købs-CTA.",
+      "Du vil bruge flaskekort som næste skridt til køb.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },
       { href: "/regioner", label: "Regioner" },
     ],
     shopCtaLabel: "Se flasker nedenfor",
-    shopIntro: "Go-to-action er flaskekortene fra Daisycon-feedet — klik videre for at købe.",
-    productIntro: "Flasker fra 8wines i vores feed.",
+    shopIntro: "Brug flaskekortene nedenfor — klik videre for at købe.",
+    productIntro: "Flasker fra 8wines.",
     productSections: [
       {
         title: "Udvalgte vine hos 8wines",
@@ -1085,7 +1085,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til 8wines?",
         answer:
-          "Når du køber efter et klik fra Vinbot via feedet, kan vi modtage provision — typisk uden merpris for dig.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -1098,13 +1098,13 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "wine-store",
     displayName: "Wine Store",
     feedMerchant: "Wine Store",
-    blurb: "Vinwebshop i Vinbots Daisycon-feed — flasker med direkte købs-links.",
+    blurb: "Vinwebshop i Vinbots søgning — flasker med direkte købs-links.",
     title: "Wine Store — shop og inspiration | Vinbot",
     description:
-      "Wine Store er en forhandler i Vinbots Daisycon-feed. Se flasker, læs FAQ og klik videre til køb.",
+      "Wine Store er en forhandler i Vinbots søgning. Se flasker, læs FAQ og klik videre til køb.",
     introParagraphs: [
-      "Wine Store indgår i Vinbots Daisycon-produktfeed. Her får du en hub med intro, FAQ og flasker som go-to-actions.",
-      "Vinbot sælger ikke vin. Tracking sker primært via produktlinks fra feedet.",
+      "Wine Store indgår i Vinbots søgning. Her får du intro, FAQ og flasker du kan klikke videre på.",
+      "Vinbot sælger ikke vin. Det nemmeste er at klikke videre fra flaskekortene nedenfor.",
       "Sammenlign gerne med andre forhandlere på forsiden, før du vælger, hvor du handler.",
     ],
     matchHeading: "Hvornår er Wine Store et godt match?",
@@ -1118,8 +1118,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/guides", label: "Guider" },
     ],
     shopCtaLabel: "Se flasker nedenfor",
-    shopIntro: "Primær CTA er flaskekortene nedenfor — de linker videre via Daisycon.",
-    productIntro: "Flasker fra Wine Store i vores feed.",
+    shopIntro: "Brug flaskekortene nedenfor — de linker videre til shoppen.",
+    productIntro: "Flasker fra Wine Store.",
     productSections: [
       {
         title: "Udvalgte vine",
@@ -1131,7 +1131,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Wine Store?",
         answer:
-          "Når du køber efter et klik fra Vinbot via feedet, kan vi modtage provision — typisk uden merpris for dig.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -1144,20 +1144,20 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "decantalo",
     displayName: "Decantalo",
     feedMerchant: "Decantalo",
-    blurb: "International vinwebshop med spanske og europæiske flasker — i Vinbots Daisycon-feed.",
+    blurb: "International vinwebshop med spanske og europæiske flasker — i Vinbots søgning.",
     title: "Decantalo — shop og inspiration | Vinbot",
     description:
-      "Decantalo er en international vinforhandler i Vinbots Daisycon-feed. Se flasker med pris og klik videre til køb.",
+      "Decantalo er en international vinforhandler i Vinbots søgning. Se flasker med pris og klik videre til køb.",
     introParagraphs: [
-      "Decantalo er en international vinwebshop med stærkt fokus på spanske og europæiske vine. Deres sortiment synkroniseres til Vinbot via Daisycon, så du kan finde flasker i søgningen og klikke videre til shoppen.",
-      "Vinbot sælger ikke vin. Du handler og betaler altid hos Decantalo — via shop-CTA eller produktkort fra feedet.",
+      "Decantalo er en international vinwebshop med stærkt fokus på spanske og europæiske vine. Du kan finde flasker i søgningen og klikke videre til shoppen.",
+      "Vinbot sælger ikke vin. Du handler og betaler altid hos Decantalo — via shop-link eller flaskekortene nedenfor.",
       "Brug forsiden til at sammenligne med danske forhandlere, hvis du vil se flere shops side om side — og husk fragt og told, når du handler internationalt.",
     ],
     matchHeading: "Hvornår er Decantalo et godt match?",
     matchBullets: [
       "Du har set Decantalo i Vinbots søgeresultater.",
       "Du vil browse spanske eller internationale vine hos én shop.",
-      "Du vil bruge flaskekort eller shop-link som direkte købs-CTA.",
+      "Du vil bruge flaskekort eller shop-link som næste skridt til køb.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },
@@ -1166,7 +1166,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Decantalo",
     shopIntro: "Åbner Decantalo i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Flasker fra Decantalo i vores Daisycon-feed.",
+    productIntro: "Flasker fra Decantalo.",
     productSections: [
       {
         title: "Udvalgte vine hos Decantalo",
@@ -1178,12 +1178,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Decantalo?",
         answer:
-          "Når du køber efter et klik fra Vinbot via feedet eller shop-linket, kan vi modtage provision — typisk uden merpris for dig.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
       },
       {
         question: "Kan jeg se Decantalo i Vinbots vin-katalog?",
         answer:
-          "Ja. Flasker fra feedet indgår i vinsøgningen og under /vine, når de matcher vores vinfiltre — sammenlign pris og forhandler der.",
+          "Ja. Flasker indgår i vinsøgningen og under vin-kataloget, når de matcher vores filtre — sammenlign pris og forhandler der.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
@@ -1196,12 +1196,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "quierovinos",
     displayName: "QuieroVinos",
     feedMerchant: null,
-    blurb: "International vinwebshop — link til shoppen via Daisycon (ingen produktfeed endnu).",
+    blurb: "International vinwebshop — link til shoppen (sortiment i søgningen kommer senere).",
     title: "QuieroVinos — shop og inspiration | Vinbot",
     description:
-      "QuieroVinos er en international vinforhandler Vinbot linker til via Daisycon. Inspiration og direkte shop-link — uden produktfeed i søgningen endnu.",
+      "QuieroVinos er en international vinforhandler. Inspiration og direkte shop-link — sortiment i søgningen kommer senere.",
     introParagraphs: [
-      "QuieroVinos er en international vinwebshop. Vinbot har endnu ikke deres produktfeed i søgningen — hubben her giver kontekst og et tracked link videre til shoppen.",
+      "QuieroVinos er en international vinwebshop. Sortimentet er endnu ikke i vores søgning — her får du kontekst og et link videre til shoppen.",
       "Vinbot sælger ikke vin. Du handler og betaler altid hos QuieroVinos, når du klikker videre.",
       "Brug vinsøgningen på forsiden til at sammenligne flasker fra andre forhandlere, før du vælger, hvor du handler.",
     ],
@@ -1220,7 +1220,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopIntro: "Åbner QuieroVinos i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
     productIntro:
-      "Inspiration fra andre forhandlere i Vinbots søgning — QuieroVinos har endnu ikke produktfeed hos os.",
+      "Inspiration fra andre forhandlere i Vinbots søgning — QuieroVinos er endnu ikke i kataloget.",
     productSections: [
       {
         title: "Spanske og internationale vine (andre shops)",
@@ -1237,7 +1237,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Kan jeg se QuieroVinos-flasker i Vinbots søgning?",
         answer:
-          "Ikke endnu — QuieroVinos har ingen produktfeed hos os. Brug shop-linket ovenfor, eller sammenlign andre forhandlere i vinsøgningen.",
+          "Ikke endnu. Brug shop-linket ovenfor, eller sammenlign andre forhandlere i vinsøgningen.",
       },
       {
         question: "Kan jeg få rabat hos QuieroVinos?",
@@ -1255,14 +1255,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "vinpalle",
     displayName: "Vinpalle",
     feedMerchant: "Vinpalle",
-    blurb: "Dansk vinshop med gratis produktfeed i Vinbots søgning.",
+    blurb: "Dansk vinshop med flasker i Vinbots søgning.",
     title: "Vinpalle — shop og inspiration | Vinbot",
     description:
-      "Vinpalle er en dansk vinforhandler i Vinbots gratis feed. Se flasker og priser — Vinpalle er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Vinpalle er en vinforhandler hos Vinbot. Se flasker og priser — uden link videre til shoppen.",
     introParagraphs: [
-      "Vinpalle er en dansk vinwebshop, der indgår i Vinbot via et gratis Google Shopping-feed (uden affiliate-provision). Vi viser flaskerne, fordi de beriger søgningen for vores læsere.",
-      "Vinpalle er markeret som ikke-samarbejdspartner: du kan se sortiment og priser her, men Vinbot linker ikke videre til vinpalle.dk.",
-      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+      "Vinpalle er en dansk vinwebshop. Du kan se udvalgte flasker og priser her på Vinbot.",
+      "Vinbot linker ikke videre til vinpalle.dk — brug siden til at danne dig et indtryk, før du selv opsøger shoppen.",
+      "Brug vinsøgningen på forsiden, når du vil sammenligne på tværs af flere forhandlere.",
     ],
     matchHeading: "Hvornår er Vinpalle et godt match?",
     matchBullets: [
@@ -1275,8 +1275,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/tilbud", label: "Vin tilbud" },
     ],
     shopCtaLabel: "Besøg Vinpalle",
-    shopIntro: "Vinpalle er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
-    productIntro: "Flasker fra Vinpalle i vores feed (uden link videre til shoppen).",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
+    productIntro: "Udvalgte flasker fra Vinpalle — uden link videre til shoppen.",
     productSections: [
       {
         title: "Udvalgte vine hos Vinpalle",
@@ -1288,11 +1288,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til Vinpalle?",
         answer:
-          "Vinpalle er på gratis feed-tier og er ikke samarbejdspartner. Vi viser flasker og priser i søgningen, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Vinpalle. Du kan se flasker og priser her — uden link videre til shoppen.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Priser i feedet kan være forældede — tjek altid hos forhandleren selv, hvis du vil handle.",
+        answer: "Nej. Priser kan skifte — tjek altid hos forhandleren selv, hvis du vil handle.",
       },
     ],
     affiliate: { kind: "feed-only" },
@@ -1301,14 +1301,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "villa-bianca",
     displayName: "Villa Bianca",
     feedMerchant: "Villa Bianca",
-    blurb: "Italiensk vin og Bulichella — gratis produktfeed i Vinbots søgning.",
+    blurb: "Italiensk vin og Bulichella — flasker i Vinbots søgning.",
     title: "Villa Bianca — shop og inspiration | Vinbot",
     description:
-      "Villa Bianca er en italiensk vinforhandler i Vinbots gratis feed. Se flasker og priser — Villa Bianca er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Villa Bianca er en vinforhandler hos Vinbot. Se flasker og priser — uden link videre til shoppen.",
     introParagraphs: [
-      "Villa Bianca sælger italiensk vin — blandt andet Bulichella og smagekasser. Shoppen indgår i Vinbot via et gratis Google Shopping-feed (uden affiliate-provision). Vi viser flaskerne, fordi de beriger søgningen.",
-      "Villa Bianca er markeret som ikke-samarbejdspartner: du kan se sortiment og priser her, men Vinbot linker ikke videre til villabianca.eu.",
-      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+      "Villa Bianca sælger italiensk vin — blandt andet Bulichella og smagekasser. Du kan se udvalgte flasker og priser her på Vinbot.",
+      "Vinbot linker ikke videre til villabianca.eu — brug siden til at danne dig et indtryk, før du selv opsøger shoppen.",
+      "Brug vinsøgningen på forsiden, når du vil sammenligne på tværs af flere forhandlere.",
     ],
     matchHeading: "Hvornår er Villa Bianca et godt match?",
     matchBullets: [
@@ -1321,8 +1321,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/tilbud", label: "Vin tilbud" },
     ],
     shopCtaLabel: "Besøg Villa Bianca",
-    shopIntro: "Villa Bianca er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
-    productIntro: "Flasker fra Villa Bianca i vores feed (uden link videre til shoppen).",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
+    productIntro: "Udvalgte flasker fra Villa Bianca — uden link videre til shoppen.",
     productSections: [
       {
         title: "Udvalgte vine hos Villa Bianca",
@@ -1334,11 +1334,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til Villa Bianca?",
         answer:
-          "Villa Bianca er på gratis feed-tier og er ikke samarbejdspartner. Vi viser flasker og priser i søgningen, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Villa Bianca. Du kan se flasker og priser her — uden link videre til shoppen.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Priser i feedet kan være forældede — tjek altid hos forhandleren selv, hvis du vil handle.",
+        answer: "Nej. Priser kan skifte — tjek altid hos forhandleren selv, hvis du vil handle.",
       },
     ],
     affiliate: { kind: "feed-only" },
@@ -1347,14 +1347,14 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "vindien",
     displayName: "Vindien",
     feedMerchant: "Vindien",
-    blurb: "Indisk og georgisk vin — gratis produktfeed i Vinbots søgning.",
+    blurb: "Indisk og georgisk vin — flasker i Vinbots søgning.",
     title: "Vindien — indisk vin og inspiration | Vinbot",
     description:
-      "Vindien er en dansk vinforhandler i Vinbots gratis feed med fokus på indisk og georgisk vin. Se flasker og priser — Vindien er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+      "Vindien er en vinforhandler hos Vinbot. Fokus på indisk og georgisk vin. Se flasker og priser — uden link videre til shoppen.",
     introParagraphs: [
-      "Vindien sælger indisk vin (Sula, Grover Zampa, Fratelli m.fl.) og udvalgt georgisk vin. Shoppen indgår i Vinbot via et gratis produktfeed (uden affiliate-provision). Vi viser flaskerne, fordi de beriger søgningen for vores læsere.",
-      "Vindien er markeret som ikke-samarbejdspartner: du kan se sortiment og priser her, men Vinbot linker ikke videre til vindien.dk.",
-      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+      "Vindien sælger indisk vin (Sula, Grover Zampa, Fratelli m.fl.) og udvalgt georgisk vin. Du kan se udvalgte flasker og priser her på Vinbot.",
+      "Vinbot linker ikke videre til vindien.dk — brug siden til at danne dig et indtryk, før du selv opsøger shoppen.",
+      "Brug vinsøgningen på forsiden, når du vil sammenligne på tværs af flere forhandlere.",
     ],
     matchHeading: "Hvornår er Vindien et godt match?",
     matchBullets: [
@@ -1367,8 +1367,8 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/tilbud", label: "Vin tilbud" },
     ],
     shopCtaLabel: "Besøg Vindien",
-    shopIntro: "Vindien er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
-    productIntro: "Flasker fra Vindien i vores feed (uden link videre til shoppen).",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
+    productIntro: "Udvalgte flasker fra Vindien — uden link videre til shoppen.",
     productSections: [
       {
         title: "Udvalgte vine hos Vindien",
@@ -1380,11 +1380,11 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot ikke til Vindien?",
         answer:
-          "Vindien er på gratis feed-tier og er ikke samarbejdspartner. Vi viser flasker og priser i søgningen, men uden klik videre til shoppen.",
+          "Vi har ikke et aktivt samarbejde med Vindien. Du kan se flasker og priser her — uden link videre til shoppen.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Priser i feedet kan være forældede — tjek altid hos forhandleren selv, hvis du vil handle.",
+        answer: "Nej. Priser kan skifte — tjek altid hos forhandleren selv, hvis du vil handle.",
       },
     ],
     affiliate: { kind: "feed-only" },
@@ -1393,20 +1393,20 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",
-    blurb: "Whisky, rom og vin — kurateret spiritusshop i Vinbots feed.",
+    blurb: "Whisky, rom og vin — kurateret spiritusshop i Vinbots søgning.",
     title: "Whiskystack — whisky, rom og vin | Vinbot",
     description:
-      "Whiskystack er en dansk spiritus- og vinforhandler i Vinbots Partner-Ads-feed. Se produkter og gå videre via tracked links.",
+      "Whiskystack er en dansk spiritus- og vinforhandler i Vinbots søgning. Se produkter og gå videre til shoppen.",
     introParagraphs: [
-      "Whiskystack er en dansk webshop med fokus på whisky, rom og udvalgt vin. Deres produkter indgår i Vinbots Partner-Ads-feed.",
-      "Vinbot er primært vin — men Whiskystack dukker op, når søgninger og feed matcher. Her får du en hub med intro, FAQ og produkt-CTA’er.",
+      "Whiskystack er en dansk webshop med fokus på whisky, rom og udvalgt vin. Du kan finde deres produkter i Vinbots søgning.",
+      "Vinbot er primært vin — men Whiskystack dukker op, når søgningen matcher. Her får du intro, FAQ og produkter du kan klikke videre på.",
       "Du handler altid hos Whiskystack; Vinbot sælger ikke spiritus eller vin.",
     ],
     matchHeading: "Hvornår er Whiskystack et godt match?",
     matchBullets: [
       "Du leder efter whisky, rom eller begrænset vinudvalg.",
       "Du har set Whiskystack i Vinbots resultater.",
-      "Du vil have tracked Partner-Ads-links fra Vinbot.",
+      "Du vil gå direkte fra Vinbot til shoppen.",
     ],
     guideLinks: [
       { href: "/fest-og-vin", label: "Fest og vin" },
@@ -1414,7 +1414,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     ],
     shopCtaLabel: "Besøg Whiskystack",
     shopIntro: "Åbner Whiskystack i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Produkter fra Whiskystack i vores feed.",
+    productIntro: "Produkter fra Whiskystack.",
     productSections: [
       {
         title: "Udvalgte produkter",
@@ -1439,20 +1439,20 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "beer-me",
     displayName: "Beer Me",
     feedMerchant: "Beer Me",
-    blurb: "Øl og abonnement — dansk shop i Vinbots Partner-Ads-feed.",
+    blurb: "Øl og abonnement — dansk shop i Vinbots søgning.",
     title: "Beer Me — øl og shop | Vinbot",
     description:
-      "Beer Me er en dansk ølforhandler i Vinbots feed. Se produkter, læs om affiliate og gå videre til beer-me.dk.",
+      "Beer Me er en dansk ølforhandler i Vinbots søgning. Se produkter og gå videre til beer-me.dk.",
     introParagraphs: [
-      "Beer Me er en dansk webshop og ølabonnement, der indgår i Vinbots Partner-Ads-feed. Vinbot er vin-first, men Beer Me er relevant for læsere, der også søger øl.",
-      "I footeren finder du også et dedikeret abonnements-promo. Denne hub dækker shoppen bredere med produkt-CTA’er fra feedet.",
+      "Beer Me er en dansk webshop og ølabonnement. Vinbot er vin-first, men Beer Me er relevant for læsere, der også søger øl.",
+      "I footeren finder du også et dedikeret abonnements-promo. Denne side dækker shoppen bredere med produkter fra søgningen.",
       "Vinbot sælger ikke øl — du handler altid hos Beer Me.",
     ],
     matchHeading: "Hvornår er Beer Me et godt match?",
     matchBullets: [
       "Du leder efter øl eller ølabonnement.",
       "Du har set Beer Me i Vinbots søgning eller footer-promo.",
-      "Du vil have tracked links fra Vinbot til beer-me.dk.",
+      "Du vil gå direkte fra Vinbot til beer-me.dk.",
     ],
     guideLinks: [
       { href: "/fest-og-vin", label: "Fest og vin" },
@@ -1461,7 +1461,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg Beer Me",
     shopIntro: "Åbner Beer Me i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Produkter fra Beer Me i vores feed.",
+    productIntro: "Produkter fra Beer Me.",
     productSections: [
       {
         title: "Udvalgte produkter",
@@ -1473,7 +1473,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       {
         question: "Hvorfor linker Vinbot til Beer Me?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Beer Me har både shop-feed og abonnements-klikbanner.",
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Beer Me har både shop og abonnement.",
       },
       {
         question: "Kan jeg få rabat?",

@@ -11,13 +11,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Vinforhandlere — danske shops Vinbot samarbejder med | Vinbot",
   description:
-    "Oversigt over vinforhandlere Vinbot linker til: Lauridsen, Winther, DH Wines, SPS Wine og flere — plus gratis listings som Den Sidste Flaske. Inspiration, flasker og affiliate-links.",
+    "Oversigt over vinforhandlere hos Vinbot: Lauridsen, Winther, DH Wines, SPS Wine, Den Sidste Flaske og flere. Inspiration, flasker og links til shoppen.",
   alternates: { canonical: `${siteUrl}/vinforhandlere` },
   openGraph: {
     url: `${siteUrl}/vinforhandlere`,
     title: "Vinforhandlere hos Vinbot",
     description:
-      "Alle vinforhandlere Vinbot samarbejder med — hubs med inspiration og direkte flaske-links.",
+      "Vinforhandlere hos Vinbot — inspiration, flasker og næste skridt til køb.",
   },
 };
 
@@ -40,7 +40,7 @@ export default function VinforhandlereIndexPage() {
 
         <header className="mt-6 max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-900/70">
-            Affiliate-partnere · {hubs.length} shops
+            {hubs.length} vinforhandlere
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
             Vinforhandlere

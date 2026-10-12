@@ -39,7 +39,7 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
         Kuraterede flasker
       </h2>
       <p className="mt-1 text-sm text-stone-600">
-        Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne fra produktfeed ovenfor.
+        Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne ovenfor.
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {picks.map((pick) => (
