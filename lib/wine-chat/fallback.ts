@@ -31,17 +31,19 @@ export function heuristicBeerChatPlan(message: string): WineChatPlan {
   const queries: string[] = [];
   let reply: string;
 
-  if (/\b(stout|porter|mørkt|braiser|okse|and|gryde)\b/i.test(text)) {
-    queries.push("stout", "porter");
-    reply =
-      "Til tungt, braiseret kød peger jeg på stout eller porter — malt, ristet karakter og nok krop til saucen." +
-      budgetNote;
-  } else if (/\b(grill|bøf|bof|burger|bbq|krydre|chili|ipa)\b/i.test(text)) {
+  // Prefiks-match (ikke \b efter token): «grillkød», «gryderet», «oksekød» skal ramme.
+  // Grill før gryde, så chip-tekst med begge lander på IPA.
+  if (/\b(grill|bøf|bof|burger|bbq|krydre|chili|ipa)/i.test(text)) {
     queries.push("ipa", "pale ale");
     reply =
       "Til grill, burger og krydret mad er en IPA eller pale ale et sikkert specialøl-valg — bitterhed og frugt skærer igennem fedt." +
       budgetNote;
-  } else if (/\b(pølse|poelse|lager|pilsner)\b/i.test(text)) {
+  } else if (/\b(stout|porter|mørkt|braiser|okse|gryde)/i.test(text)) {
+    queries.push("stout", "porter");
+    reply =
+      "Til tungt, braiseret kød peger jeg på stout eller porter — malt, ristet karakter og nok krop til saucen." +
+      budgetNote;
+  } else if (/\b(pølse|poelse|lager|pilsner)/i.test(text)) {
     queries.push("lager", "pilsner");
     reply =
       "Til pølser og let grillmad fungerer en frisk lager eller pilsner — ren, sprød og uden at overdøve maden." +

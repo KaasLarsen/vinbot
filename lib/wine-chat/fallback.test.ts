@@ -26,8 +26,10 @@ describe("heuristicWineChatPlan", () => {
 });
 
 describe("heuristicBeerChatPlan", () => {
-  it("peger på IPA til grill", () => {
-    const plan = heuristicBeerChatPlan("Specialøl til grillkød");
+  it("peger på IPA til grillkød (præfiks-match, før gryde)", () => {
+    const plan = heuristicBeerChatPlan(
+      "Specialøl til maden — hvad passer til grillkød eller en kraftig gryderet?",
+    );
     assert.ok(plan.searchQueries.some((q) => /ipa|pale ale/i.test(q)));
     assert.match(plan.reply, /IPA|pale ale|grill/i);
   });
