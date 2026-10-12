@@ -7,6 +7,7 @@
  *   node scripts/generate-micro-pairings.mjs
  *   node scripts/generate-micro-pairings.mjs --only vin-til-lasagne-med-kylling
  *   node scripts/generate-micro-pairings.mjs --force
+ *   node scripts/generate-micro-pairings.mjs --offline --limit 100
  */
 
 import fs from "fs";
@@ -20,6 +21,7 @@ import { MICRO_DISHES_BATCH3 } from "./micro-pairings-catalog-batch3.mjs";
 import { MICRO_DISHES_BATCH4 } from "./micro-pairings-catalog-batch4.mjs";
 import { MICRO_DISHES_BATCH5 } from "./micro-pairings-catalog-batch5.mjs";
 import { MICRO_DISHES_BATCH6 } from "./micro-pairings-catalog-batch6.mjs";
+import { MICRO_DISHES_BATCH7 } from "./micro-pairings-catalog-batch7.mjs";
 
 const MICRO_DISHES = [
   ...MICRO_DISHES_BASE,
@@ -28,6 +30,7 @@ const MICRO_DISHES = [
   ...MICRO_DISHES_BATCH4,
   ...MICRO_DISHES_BATCH5,
   ...MICRO_DISHES_BATCH6,
+  ...MICRO_DISHES_BATCH7,
 ];
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -69,6 +72,7 @@ function parseArgs(argv) {
   let selfTest = false;
   let force = false;
   let registryOnly = false;
+  let offline = false;
   let limit = Infinity;
   let concurrency = 3;
   let offset = 0;
@@ -78,13 +82,14 @@ function parseArgs(argv) {
     else if (arg === "--self-test") selfTest = true;
     else if (arg === "--force") force = true;
     else if (arg === "--registry-only") registryOnly = true;
+    else if (arg === "--offline") offline = true;
     else if (arg === "--only") only.push(...(argv[++i] || "").split(",").filter(Boolean));
     else if (arg === "--limit") limit = Number(argv[++i] || "0");
     else if (arg === "--offset") offset = Number(argv[++i] || "0");
     else if (arg === "--concurrency") concurrency = Math.max(1, Number(argv[++i] || "1"));
     else if (arg.startsWith("--only=")) only.push(...arg.slice(7).split(",").filter(Boolean));
   }
-  return { check, selfTest, force, registryOnly, only: new Set(only), limit, offset, concurrency };
+  return { check, selfTest, force, registryOnly, offline, only: new Set(only), limit, offset, concurrency };
 }
 
 export function fitDescription(raw, dish, defaultWine, altWine, avoidWine) {
@@ -262,8 +267,8 @@ description: ${yamlQuote(description)}
 slug: ${dish.slug}
 tags:
 ${tags}
-updated: "2026-10-03"
-published: "2026-10-02"
+updated: "2026-10-12"
+published: "2026-10-12"
 hub: mad-og-vin
 searchQuery: ${yamlQuote(dish.searchQuery)}
 ---
@@ -411,18 +416,58 @@ function validateDraft(dish, draft, parentBody) {
   return { issues, title, description, body, words, overlap };
 }
 
-async function generateOne(dish) {
+function offlineDraft(dish) {
+  const wine = dish.defaultWine;
+  const wineCap = wine.charAt(0).toUpperCase() + wine.slice(1);
+  const alt = dish.altWine;
+  const altCap = alt.charAt(0).toUpperCase() + alt.slice(1);
+  const avoid = dish.avoidWine;
+  const bits = String(dish.delta || "")
+    .split(/[.!]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const hook = (bits[0] || "Sovs og tilbehør").toLowerCase();
+  const avoidHint = (bits[bits.length - 1] || `${avoid} bliver forkert`).toLowerCase();
+  const dishName = dish.dish;
+  const angleSeed = bits[0] || "lettere valg end den brede guide";
+
+  const why = `${wineCap} er default til ${dishName}, fordi ${hook} flytter glasset mere end den brede forældre-guide. Det er en smallere vinkel: match stil til sovs og tilbehør, ikke kun til proteinen.
+
+${altCap} er det naturlige alternativ, hvis du vil have en anden tekstur eller lidt mere frugt. Undgå ${avoid}, når ${avoidHint}. Hold dig til det prisbånd, du normalt køber i, og lad sovsen styre stilvalget.
+
+Hold glasset køligt nok til, at syre og frugt stadig kan følge retten. Smag først på sovsen, så på vinen — og justér med et køligere glas eller et lettere valg, hvis balancen tipper.`;
+
+  const pitfalls = [
+    `- Undgå ${avoid} til denne variant — den er for tung eller for skarp her.`,
+    `- Vælg efter sovsen og tilbehøret, ikke kun proteinen.`,
+    `- Hold dig til lettere stil end den brede guide, hvis retten er mild.`,
+    `- Smag vin og ret sammen, før du åbner den anden flaske.`,
+  ].join("\n");
+
+  return {
+    angle: angleSeed,
+    description: `Vin til ${dishName}: ${wine} som default og ${alt} som alternativ. Undgå ${avoid}, når sovs og tilbehør flytter glasset.`,
+    why,
+    pitfalls,
+  };
+}
+
+async function generateOne(dish, { offline = false } = {}) {
   const parent = readGuide(dish.parentSlug);
   const parentTitle = String(parent?.data?.title || dish.parentLabel);
   const parentExcerpt = String(parent?.body || "").replace(/\s+/g, " ").slice(0, 700);
   let previousIssue = "";
   let last = null;
-  for (let attempt = 1; attempt <= 5; attempt++) {
-    const draft = await callOpenAi(dish, parentTitle, parentExcerpt, previousIssue);
+  const attempts = offline ? 1 : 5;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    const draft = offline
+      ? offlineDraft(dish)
+      : await callOpenAi(dish, parentTitle, parentExcerpt, previousIssue);
     last = validateDraft(dish, draft, parent?.body || "");
     if (last.issues.length === 0) return last;
     previousIssue = last.issues.join("; ");
     console.warn(`  forsøg ${attempt} afvist: ${previousIssue}`);
+    if (offline) break;
   }
   if (last && last.body.includes("## Hvorfor") && last.body.includes("## Pas på")) {
     const padded = padDraftBody(dish, last);
@@ -535,9 +580,9 @@ async function main() {
       skipped += 1;
       return;
     }
-    console.log(`skriver ${dish.slug}`);
+    console.log(`skriver ${dish.slug}${args.offline ? " (offline)" : ""}`);
     try {
-      const draft = await generateOne(dish);
+      const draft = await generateOne(dish, { offline: args.offline });
       if (!draft || draft.issues.length) {
         failed += 1;
         console.error(`fejlede ${dish.slug}: ${(draft?.issues || ["ukendt"]).join("; ")}`);
