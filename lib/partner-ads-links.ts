@@ -83,8 +83,6 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   spsWine: "112662",
   /** Barlife — samme banner som produktfeed */
   barlife: "46609",
-  /** D’Wine — samme banner som produktfeed */
-  dWine: "92927",
   /** Gourmetshoppen — samme banner som produktfeed */
   gourmetshoppen: "80950",
   /** Westjysk Smag — samme banner som produktfeed */

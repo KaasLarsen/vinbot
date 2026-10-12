@@ -62,7 +62,9 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   "johnsen-wine": "importers",
   "havnens-vin": "importers",
   "sps-wine": "importers",
+  "mere-om-vin": "importers",
   winefriends: "importers",
+  vinea: "importers",
   "buus-vine": "importers",
   "otto-suenson": "importers",
   "d-wine": "importers",
@@ -98,8 +100,6 @@ const PARTNER_BLURBS: Record<string, string> = {
     "Otto Suenson er en klassisk dansk vinimportør med Champagne, Bourgogne og europæiske kvalitetsvine. Hold øje med Black Friday, hvis du vil finde magnum, prestige-flasker eller julegaver — og stadig sammenligne før-prisen.",
   barlife:
     "Barlife blander vin og spiritus til hjemmebaren. Hold øje med Black Friday, hvis du skal bruge både rødvin til and og noget at blande drinks af til nytår — og sammenlign flaskeprisen, ikke kun kampagneprocenten.",
-  "d-wine":
-    "D’Wine er en dansk forhandler med vin i Vinbots sammenligning. På Black Friday er de værd at tjekke, hvis du vil have et mindre, overskueligt udvalg frem for kædernes uendelige hylder.",
   gourmetshoppen:
     "Gourmetshoppen samler vin med delikatesser. Hold øje med Black Friday, hvis julegavekurven skal rumme både flaske og noget spiseligt — og hold øje med, at rabatten sidder på vinen, ikke kun på tilbehøret.",
   "westjysk-smag":

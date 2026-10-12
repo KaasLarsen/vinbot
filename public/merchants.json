@@ -27,7 +27,7 @@
     "name": "D'Wine",
     "host": "d-wine.dk",
     "search": "https://d-wine.dk/?s={Q}&jet_ajax_search_settings=%7B%22search_source%22%3A%5B%22page%22%2C%22product%22%5D%7D&post_type=page%2Cproduct",
-    "commission": 8
+    "commission": 0
   },
   {
     "name": "Fantombryg",
@@ -48,10 +48,22 @@
     "commission": 10
   },
   {
+    "name": "Mere om Vin",
+    "host": "mereomvin.dk",
+    "search": "https://mereomvin.dk/?s={Q}&post_type=product&dgwt_wcas=1",
+    "commission": 0
+  },
+  {
     "name": "SPS Wine",
     "host": "spswine.dk",
     "search": "https://www.spswine.dk/?s={Q}&post_type=product",
     "commission": 15
+  },
+  {
+    "name": "Vinea",
+    "host": "vinea.dk",
+    "search": "https://vinea.dk/search?options%5Bprefix%5D=last&q={Q}",
+    "commission": 0
   },
   {
     "name": "Winther Vin",

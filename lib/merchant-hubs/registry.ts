@@ -689,21 +689,21 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
   {
     slug: "d-wine",
     displayName: "D’Wine",
-    feedMerchant: "D’Wine",
-    blurb: "Dansk vinwebshop med Partner-Ads-feed i Vinbots søgning.",
+    feedMerchant: null,
+    blurb: "Dansk vinwebshop — gratis listing på Vinbot (ikke samarbejdspartner).",
     title: "D’Wine — shop og inspiration | Vinbot",
     description:
-      "D’Wine er en dansk vinforhandler med Partner-Ads-produktfeed hos Vinbot. Inspiration, flasker med pris og link til d-wine.dk.",
+      "D’Wine er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — D’Wine er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
     introParagraphs: [
-      "D’Wine er en dansk vinwebshop, hvis sortiment synkroniseres til Vinbot via Partner-Ads (samme banner som produktfeedet). Her får du en dedikeret hub med SEO-tekst, FAQ og flaske-CTA’er.",
-      "Vinbot sælger ikke vin. Brug forsiden til at sammenligne forhandlere; på denne side er fokus D’Wine.",
-      "Klik på en flaske for at gå videre til shoppen — eller brug knappen nedenfor til at åbne d-wine.dk via tracked link.",
+      "D’Wine er en dansk vinwebshop. De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
+      "D’Wine er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til d-wine.dk.",
+      "Brug vinsøgningen på forsiden til at sammenligne andre forhandlere med aktivt feed.",
     ],
     matchHeading: "Hvornår er D’Wine et godt match?",
     matchBullets: [
-      "Du har set D’Wine i Vinbots søgeresultater.",
-      "Du vil handle hos en dansk vinwebshop med feed-synk til Vinbot.",
-      "Du vil have klare go-to-actions via flaskekort.",
+      "Du leder efter en mindre, overskuelig dansk vinwebshop.",
+      "Du vil orientere dig om forhandleren, før du selv opsøger shoppen.",
+      "Du sammenligner gerne med andre butikker via Vinbots søgning.",
     ],
     guideLinks: [
       { href: "/vine", label: "Vin-katalog" },
@@ -711,37 +711,149 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       { href: "/mad-og-vin", label: "Mad og vin" },
     ],
     shopCtaLabel: "Besøg D’Wine",
-    shopIntro: "Åbner D’Wine i et nyt vindue — du handler og betaler altid hos dem.",
-    productIntro: "Flasker fra D’Wine i vores Partner-Ads-feed.",
+    shopIntro: "D’Wine er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    productIntro:
+      "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
     productSections: [
       {
-        title: "Udvalgte vine hos D’Wine",
-        queries: ["pinot noir", "chardonnay riesling", "champagne prosecco"],
-        placement: "d-wine-page-table",
+        title: "Bobler og festlige vine",
+        queries: ["champagne cava prosecco bobler"],
+        placement: "d-wine-page-bubbles",
       },
       {
-        title: "Rødvin og hvidvin",
-        queries: ["rødvin italien spanien", "hvidvin sauvignon"],
-        placement: "d-wine-page-colors",
+        title: "Klassiske røde og hvide",
+        queries: ["pinot noir", "chardonnay sauvignon"],
+        placement: "d-wine-page-table",
       },
     ],
     faq: [
       {
-        question: "Har D’Wine Partner-Ads?",
+        question: "Hvorfor linker Vinbot ikke til D’Wine?",
         answer:
-          "Ja. D’Wine har et Partner-Ads-produktfeed hos Vinbot (banner-id matcher klikbanner). Hubben og shop-linket bruger samme tracking.",
+          "D’Wine har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
       },
       {
-        question: "Hvorfor linker Vinbot til D’Wine?",
+        question: "Kan jeg stadig finde D’Wine-flasker i søgningen?",
         answer:
-          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
       },
       {
         question: "Er priserne på Vinbot altid aktuelle?",
-        answer: "Nej. Brug altid d-wine.dk som kilde til endelig pris, lager og levering.",
+        answer: "Nej. Brug altid forhandlerens egen side som kilde til endelig pris, lager og levering.",
       },
     ],
-    affiliate: pa(B.dWine, "https://d-wine.dk/"),
+    affiliate: { kind: "feed-only" },
+  },
+  {
+    slug: "mere-om-vin",
+    displayName: "Mere om Vin",
+    feedMerchant: null,
+    blurb: "Stor dansk vinwebshop — gratis listing på Vinbot (ikke samarbejdspartner).",
+    title: "Mere om Vin — shop og inspiration | Vinbot",
+    description:
+      "Mere om Vin er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — Mere om Vin er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+    introParagraphs: [
+      "Mere om Vin er en etableret dansk vinwebshop med et bredt sortiment — fra hverdagsvine til flasker til weekend, gave og fest.",
+      "De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
+      "Mere om Vin er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til mereomvin.dk.",
+    ],
+    matchHeading: "Hvornår er Mere om Vin et godt match?",
+    matchBullets: [
+      "Du vil orientere dig om en stor, dansk online-vinshop.",
+      "Du sammenligner gerne med andre forhandlere via Vinbots søgning.",
+      "Du læser guider på Vinbot og vil kende butikkerne bag resultaterne.",
+    ],
+    guideLinks: [
+      { href: "/guides", label: "Guider" },
+      { href: "/mad-og-vin", label: "Mad og vin" },
+      { href: "/vine", label: "Vin-katalog" },
+    ],
+    shopCtaLabel: "Besøg Mere om Vin",
+    shopIntro: "Mere om Vin er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    productIntro:
+      "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
+    productSections: [
+      {
+        title: "Klassikere fra andre shops",
+        queries: ["bourgogne pinot noir", "rioja tempranillo", "chardonnay sauvignon"],
+        placement: "mere-om-vin-page-table",
+      },
+      {
+        title: "Bobler",
+        queries: ["champagne prosecco cava brut"],
+        placement: "mere-om-vin-page-bubbles",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot ikke til Mere om Vin?",
+        answer:
+          "Mere om Vin har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
+      },
+      {
+        question: "Kan jeg stadig finde Mere om Vin-flasker i søgningen?",
+        answer:
+          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid forhandlerens egen side som kilde til endelig pris, lager og levering.",
+      },
+    ],
+    affiliate: { kind: "feed-only" },
+  },
+  {
+    slug: "vinea",
+    displayName: "Vinea",
+    feedMerchant: null,
+    blurb: "Dansk vinshop — gratis listing på Vinbot (ikke samarbejdspartner).",
+    title: "Vinea — shop og inspiration | Vinbot",
+    description:
+      "Vinea er en dansk vinforhandler på Vinbot som gratis listing. Inspiration og kontekst — Vinea er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+    introParagraphs: [
+      "Vinea er en dansk vinwebshop med sortiment til både hverdag og særlige anledninger.",
+      "De havde tidligere Partner-Ads hos Vinbot; programmet er lukket, og butikken er derfor på gratis listing uden affiliate-provision.",
+      "Vinea er markeret som ikke-samarbejdspartner: du kan læse om forhandleren her, men Vinbot linker ikke videre til vinea.dk.",
+    ],
+    matchHeading: "Hvornår er Vinea et godt match?",
+    matchBullets: [
+      "Du vil orientere dig om Vinea som dansk vinwebshop.",
+      "Du sammenligner gerne med andre forhandlere via Vinbots søgning.",
+      "Du læser region- og drueguider og vil kende butikkerne bag resultaterne.",
+    ],
+    guideLinks: [
+      { href: "/regioner", label: "Regioner" },
+      { href: "/druesorter", label: "Druesorter" },
+      { href: "/vine", label: "Vin-katalog" },
+    ],
+    shopCtaLabel: "Besøg Vinea",
+    shopIntro: "Vinea er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    productIntro:
+      "Inspiration fra andre gode forhandlere i Vinbots søgning — med billede og pris du kan klikke videre på.",
+    productSections: [
+      {
+        title: "Udvalgte vine fra andre shops",
+        queries: ["pinot noir bourgogne", "riesling alsace", "champagne brut"],
+        placement: "vinea-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot ikke til Vinea?",
+        answer:
+          "Vinea har lukket deres partnerprogram og er på gratis listing. Vi viser redaktionel inspiration, men uden klik videre til shoppen.",
+      },
+      {
+        question: "Kan jeg stadig finde Vinea-flasker i søgningen?",
+        answer:
+          "Nej — uden aktivt produktfeed synkroniseres sortimentet ikke længere. Brug forsiden til at sammenligne andre forhandlere.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid forhandlerens egen side som kilde til endelig pris, lager og levering.",
+      },
+    ],
+    affiliate: { kind: "feed-only" },
   },
   {
     slug: "gourmetshoppen",
