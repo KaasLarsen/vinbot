@@ -18,6 +18,13 @@ export type RecipeWineToDrink = {
   label: string;
 };
 
+/** Valgfri øl-parring under vin — beer-søgning (Beer Me), ikke vinsøgning. */
+export type RecipeBeerToDrink = {
+  searchQuery: string;
+  searchMax?: number;
+  label: string;
+};
+
 export type RecipeFrontmatter = {
   title: string;
   description: string;
@@ -36,6 +43,8 @@ export type RecipeFrontmatter = {
   /** Vin der bruges i opskriften — påkrævet for cooking, udelades for pairing-only. */
   wineInRecipe?: RecipeWineInRecipe;
   wineToDrink: RecipeWineToDrink;
+  /** Valgfri: 1–2 øl-forslag under vin (soft MVP). */
+  beerToDrink?: RecipeBeerToDrink;
   relatedGuides?: string[];
   ingredients: string[];
   instructions: string[];

@@ -1461,11 +1461,13 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     shopCtaLabel: "Besøg Beer Me",
     shopIntro: "Åbner Beer Me i et nyt vindue — du handler og betaler altid hos dem.",
     showRabatkoderLink: true,
-    productIntro: "Produkter fra Beer Me.",
+    productIntro: "Produkter fra Beer Me — specialøl og craft via vores øl-søgning.",
+    productSearchScope: "beer",
+    productEmptyLabel: "øl",
     productSections: [
       {
-        title: "Udvalgte produkter",
-        queries: ["øl", "ipa", "stout"],
+        title: "Udvalgte øl",
+        queries: ["ipa", "stout", "lager", "ale"],
         placement: "beer-me-page-table",
       },
     ],

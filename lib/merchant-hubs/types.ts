@@ -51,6 +51,10 @@ export type MerchantHubConfig = {
   showDsfFeatured?: boolean;
   productIntro: string;
   productSections: MerchantHubProductSection[];
+  /** Produktsektioner: vin (standard) eller øl via runBeerSearch. */
+  productSearchScope?: "wine" | "beer";
+  /** Tom-state label i ProductFeedPreview (fx «øl»). */
+  productEmptyLabel?: string;
   faq: MerchantHubFaq[];
   affiliate: MerchantHubAffiliate;
 };

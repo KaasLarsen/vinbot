@@ -8,7 +8,11 @@
 
 type AffiliateEventParams = {
   merchant: string;
-  /** Placering: fx guide-picks, guide-mdx-picks, home-search, search-curated-wine, search-dsf-curated, guide-inline-search, partner-leaderboard-{hub}, home-featured-store-*, product-feed-preview, food-picker, food-picker-oil, recipe-oil. */
+  /**
+   * Placering: fx guide-picks, home-search, recipe-picks, recipe-oil,
+   * recipe-beer-picks, wine-chat, wine-chat-beer, ol-og-mad-feed, beer-me-page-table,
+   * partner-leaderboard-{hub}, product-feed-preview.
+   */
   placement: string;
   slug?: string;
   hub?: string;

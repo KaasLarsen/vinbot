@@ -9,6 +9,7 @@ import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
 import { RecipeSteps } from "@/components/recipe-steps";
 import { RecipeWineBox } from "@/components/recipe-wine-box";
 import { RecipeShopSection } from "@/components/recipe-shop-section";
+import { RecipeBeerShopSection } from "@/components/recipe-beer-shop-section";
 import { RecipeOilBox } from "@/components/recipe-oil-box";
 import { getAllRecipeSlugs, getRecipe } from "@/lib/content/recipes";
 import { recipePublicationAndModified } from "@/lib/recipe-dates";
@@ -189,6 +190,9 @@ export default async function RecipePage({ params }: Props) {
               : "Køb vin til retten — direkte fra forhandlere"
           }
         />
+        {frontmatter.beerToDrink ? (
+          <RecipeBeerShopSection recipeSlug={slug} beerToDrink={frontmatter.beerToDrink} />
+        ) : null}
         <RecipeOilBox recipeSlug={slug} />
       </div>
 

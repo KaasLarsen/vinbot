@@ -179,7 +179,9 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
             <div>
               <h2 className="text-2xl font-semibold text-stone-900">
                 {hub.feedMerchant
-                  ? `Udvalgte flasker hos ${hub.displayName}`
+                  ? hub.productSearchScope === "beer"
+                    ? `Udvalgte øl hos ${hub.displayName}`
+                    : `Udvalgte flasker hos ${hub.displayName}`
                   : "Måske finder du også…"}
               </h2>
               <p className="mt-2 max-w-3xl text-stone-700">{hub.productIntro}</p>
@@ -191,6 +193,8 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
                 title={section.title}
                 merchant={hub.feedMerchant}
                 placement={section.placement}
+                searchScope={hub.productSearchScope === "beer" ? "beer" : "wine"}
+                emptyLabel={hub.productEmptyLabel ?? "vine"}
               />
             ))}
           </section>

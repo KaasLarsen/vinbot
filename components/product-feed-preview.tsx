@@ -1,14 +1,16 @@
 import { ProductCard } from "@/components/product-card";
+import { runBeerSearch } from "@/lib/search/beer-engine";
 import { runSearch } from "@/lib/search/engine";
 import { runWineCoolerSearch } from "@/lib/search/wine-cooler-engine";
 import { runWineGlassSearch } from "@/lib/search/wine-glass-engine";
 import type { ProductHit } from "@/lib/search/types";
 
-type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass";
+type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass" | "beer";
 
 async function runScopedSearch(q: string, maxPrice: number | null, searchScope: FeedSearchScope) {
   if (searchScope === "wine-cooler") return runWineCoolerSearch(q, maxPrice);
   if (searchScope === "wine-glass") return runWineGlassSearch(q, maxPrice);
+  if (searchScope === "beer") return runBeerSearch(q, maxPrice);
   return runSearch(q, maxPrice);
 }
 
@@ -68,7 +70,7 @@ export async function ProductFeedPreview({
   placement?: string;
   /** CSS grid-klasser (fx 4 kolonner på forsiden). */
   gridClassName?: string;
-  /** Vinsøgning (standard), vinkøleskabe eller vinglas fra tilbehørsfeeds. */
+  /** Vinsøgning (standard), vinkøleskabe, vinglas eller øl fra beer-feeds. */
   searchScope?: FeedSearchScope;
   emptyLabel?: string;
 }) {
