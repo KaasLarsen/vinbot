@@ -20,6 +20,8 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   vinea: { src: "/images/merchants/vinea.png" },
   barlife: { src: "/images/merchants/barlife.png" },
   "d-wine": { src: "/images/merchants/d-wine.png" },
+  "buus-vine": { src: "/images/merchants/buus-vine.png", wide: true },
+  "otto-suenson": { src: "/images/merchants/otto-suenson.png" },
   gourmetshoppen: { src: "" }, // monogram
   "westjysk-smag": { src: "" },
   winesommelier: { src: "/images/merchants/winesommelier.jpg" },
