@@ -989,24 +989,49 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
     "billedurl",
   ]);
 
-  const ipSale = pick([...SALE_PRICE_TAGS]);
+  /* Dedicated sale columns first — empty sale_price must not block fallback to `price`. */
+  const ipSaleOnly = pick([
+    "nypris",
+    "g_sale_price",
+    "sale_price",
+    "saleprice",
+    "ourprice",
+    "current_price",
+  ]);
+  const ipList = pick(["price_inc_vat", "price_with_vat", "g_price", "pris", "price"]);
   const ipRef = pick([...REFERENCE_PRICE_TAGS]);
 
   const ic = pick(["currency", "currency_iso", "valuta"]);
   const ib = pick(["brand", "manufacturer", "producer", "vendor", "forhandler"]);
   const ig = pick(["gtin", "ean", "upc", "barcode", "g_gtin", "g_ean", "ggtin", "gean"]);
   const im = pick(["mpn", "sku", "partnumber", "part_number"]);
+  const idesc = pick(["description", "desc", "productdescription", "beskrivelse"]);
+  const icat = pick([
+    "product_type",
+    "producttype",
+    "category",
+    "kategori",
+    "google_product_category",
+  ]);
   const out: FeedProduct[] = [];
   for (const r of rows) {
     const title = r[it] || "";
     const url = r[iu] || "";
     let image = r[ii] || "";
     if (image && image.includes("|")) image = image.split("|")[0].trim();
-    const salePrice = toNumber(r[ipSale] || "");
-    const referencePrice = ipRef >= 0 ? toNumber(r[ipRef] || "") : null;
+    const saleOnly = ipSaleOnly >= 0 ? toNumber(r[ipSaleOnly] || "") : null;
+    const listPrice = ipList >= 0 ? toNumber(r[ipList] || "") : null;
+    const explicitRef = ipRef >= 0 ? toNumber(r[ipRef] || "") : null;
+    /* Google Shopping CSV: sale_price when set, else price. */
+    const salePrice = saleOnly ?? listPrice;
+    const referencePrice =
+      explicitRef ??
+      (saleOnly != null && listPrice != null && listPrice > saleOnly ? listPrice : null);
     const prices = buildFeedProductPrices(salePrice, referencePrice);
     const currency = r[ic] || "DKK";
     const brand = r[ib] || "";
+    const desc = idesc >= 0 ? (r[idesc] || "").trim() : "";
+    const category = icat >= 0 ? (r[icat] || "").trim() : "";
     const gtin = ig >= 0 ? normalizeBarcodeDigits(r[ig] || "") : null;
     const mpn = im >= 0 && r[im]?.trim() ? r[im].trim() : null;
     if (!title || !url) continue;
@@ -1014,8 +1039,8 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
       merchant,
       tier: "paid",
       title,
-      desc: "",
-      category: "",
+      desc,
+      category,
       brand,
       gtin,
       mpn,
@@ -1023,7 +1048,9 @@ export function parseCSVProducts(text: string, merchant: string): FeedProduct[] 
       currency,
       image,
       url: ensurePartnerAdsKlikUid(url),
-      _search: normalize([title, brand, merchant].filter(Boolean).join(" ")),
+      _search: normalize(
+        [title, brand, merchant, category, desc.slice(0, 200)].filter(Boolean).join(" "),
+      ),
     });
   }
   return out;

@@ -56,6 +56,7 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "Likehome.dk": ["likehome", "like home"],
   Vinpalle: ["vinpalle", "vin palle"],
   "Villa Bianca": ["villa bianca", "villabianca"],
+  Vindien: ["vindien", "vin dien", "indisk vin"],
   Winesommelier: ["wine sommelier"],
   Gourmetshoppen: ["gourmet shoppen"],
   Winefriends: ["wine friends"],

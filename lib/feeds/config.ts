@@ -234,4 +234,9 @@ export const FEEDS: FeedConfig[] = [
     wineFilter: false,
     vinAdjacentIncludeAny: ["wine", "bulichella", "smagekasse"],
   },
+  {
+    merchant: "Vindien",
+    url: "https://vindien.dk/wp-content/uploads/2026/10/Vindien-Vinbot.csv",
+    tier: "free",
+  },
 ];

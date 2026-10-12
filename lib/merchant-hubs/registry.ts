@@ -1344,6 +1344,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: { kind: "feed-only" },
   },
   {
+    slug: "vindien",
+    displayName: "Vindien",
+    feedMerchant: "Vindien",
+    blurb: "Indisk og georgisk vin — gratis produktfeed i Vinbots søgning.",
+    title: "Vindien — indisk vin og inspiration | Vinbot",
+    description:
+      "Vindien er en dansk vinforhandler i Vinbots gratis feed med fokus på indisk og georgisk vin. Se flasker og priser — Vindien er ikke samarbejdspartner, så der er ingen link videre til shoppen.",
+    introParagraphs: [
+      "Vindien sælger indisk vin (Sula, Grover Zampa, Fratelli m.fl.) og udvalgt georgisk vin. Shoppen indgår i Vinbot via et gratis produktfeed (uden affiliate-provision). Vi viser flaskerne, fordi de beriger søgningen for vores læsere.",
+      "Vindien er markeret som ikke-samarbejdspartner: du kan se sortiment og priser her, men Vinbot linker ikke videre til vindien.dk.",
+      "Brug denne hub til at forstå forhandleren og se udvalgte flasker fra feedet.",
+    ],
+    matchHeading: "Hvornår er Vindien et godt match?",
+    matchBullets: [
+      "Du leder efter indisk vin, Sula, Grover Zampa eller Fratelli.",
+      "Du har set Vindien i Vinbots søgeresultater.",
+      "Du vil se deres flasker i vinsøgningen.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/tilbud", label: "Vin tilbud" },
+    ],
+    shopCtaLabel: "Besøg Vindien",
+    shopIntro: "Vindien er ikke samarbejdspartner — der er ingen shop-CTA fra denne hub.",
+    productIntro: "Flasker fra Vindien i vores feed (uden link videre til shoppen).",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Vindien",
+        queries: ["sula", "grover", "fratelli", "hvidvin"],
+        placement: "vindien-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot ikke til Vindien?",
+        answer:
+          "Vindien er på gratis feed-tier og er ikke samarbejdspartner. Vi viser flasker og priser i søgningen, men uden klik videre til shoppen.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Priser i feedet kan være forældede — tjek altid hos forhandleren selv, hvis du vil handle.",
+      },
+    ],
+    affiliate: { kind: "feed-only" },
+  },
+  {
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",

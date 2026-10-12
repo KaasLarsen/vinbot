@@ -29,6 +29,7 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   decantalo: { src: "/images/merchants/decantalo.png" },
   quierovinos: { src: "/images/merchants/quierovinos.png", wide: true },
   vinpalle: { src: "/images/merchants/vinpalle.png" },
+  vindien: { src: "/images/merchants/vindien.png" },
   whiskystack: { src: "/images/merchants/whiskystack.png" },
   "beer-me": { src: "/images/merchants/beer-me.png" },
   /** BF-oversigt: outsiders uden fil endnu → monogram. */
