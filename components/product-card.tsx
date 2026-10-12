@@ -52,8 +52,8 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
           <div className={IMAGE_FRAME}>{image}</div>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-1 flex-col items-center gap-2 p-4 text-center">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{product.merchant}</p>
           {isFree ? (
             <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">
@@ -71,7 +71,7 @@ export function ProductCard({ product, placement = "home-search" }: { product: P
           )}
         </h3>
         {price && (
-          <div className="flex flex-wrap items-baseline gap-2">
+          <div className="flex flex-wrap items-baseline justify-center gap-2">
             <p className="text-lg font-semibold text-stone-800">{price}</p>
             {referencePrice ? (
               <p className="text-sm text-stone-500 line-through">{referencePrice}</p>

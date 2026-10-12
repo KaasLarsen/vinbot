@@ -48,10 +48,10 @@ export function VineFeaturedStrip({ wines }: { wines: VineFeaturedWine[] }) {
                     loading="lazy"
                   />
                 </div>
-                <div className="flex min-h-0 flex-1 flex-col border-t border-stone-100 px-3 pb-3 pt-3 sm:px-4">
+                <div className="flex min-h-0 flex-1 flex-col items-center border-t border-stone-100 px-3 pb-3 pt-3 text-center sm:px-4">
                   <p className="line-clamp-2 min-h-[2.5rem] text-sm font-medium leading-snug text-stone-900">{w.displayTitle}</p>
-                  {w.brand ? <p className="mt-1 truncate text-xs text-stone-500">{w.brand}</p> : null}
-                  <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
+                  {w.brand ? <p className="mt-1 w-full truncate text-xs text-stone-500">{w.brand}</p> : null}
+                  <div className="mt-auto flex flex-wrap items-center justify-center gap-2 pt-3">
                     {w.catalogStyle ? (
                       <span className="rounded-md bg-stone-100 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-stone-600">
                         {STYLE_BADGE[w.catalogStyle]}

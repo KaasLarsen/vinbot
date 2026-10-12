@@ -55,12 +55,12 @@ export function VinforhandlereDirectory({ hubs }: { hubs: MerchantHubConfig[] })
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col items-center p-5 text-center">
                 <h2 className="text-lg font-semibold tracking-tight text-stone-900 transition group-hover:text-rose-900">
                   {hub.displayName}
                 </h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{hub.blurb}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-900">
+                <span className="mt-4 inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-rose-900">
                   {hub.affiliate.kind === "feed-only" ? "Se flasker og info" : "Se flasker og shop"}
                   <span
                     aria-hidden

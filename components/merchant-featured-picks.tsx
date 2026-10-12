@@ -126,8 +126,8 @@ export function MerchantFeaturedPicks({
                     <div className="px-2 text-center text-xs text-stone-400">{cfg.displayName}</div>
                   )}
                 </FeaturedPickOutbound>
-                <div className="flex flex-1 flex-col gap-2 p-4">
-                  <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-1 flex-col items-center gap-2 p-4 text-center">
+                  <div className="flex flex-wrap items-center justify-center gap-2">
                     <p className="text-xs font-medium uppercase tracking-wide text-rose-800/90">{cfg.displayName}</p>
                     {!cfg.allowsOutbound ? (
                       <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-stone-600">

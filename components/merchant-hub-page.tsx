@@ -281,7 +281,7 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
                         </span>
                       )}
                     </div>
-                    <div className="px-3 py-3">
+                    <div className="px-3 py-3 text-center">
                       <span className="text-sm font-semibold text-stone-900 transition group-hover:text-rose-900">
                         {other.displayName}
                       </span>
