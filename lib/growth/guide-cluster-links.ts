@@ -1435,6 +1435,7 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
     "Julemad og fest — relaterede guider",
     "And, flæskesteg og risalamande — planlæg vin til hele julefrokosten.",
     [MAD_HUB],
+    [{ slug: "vin-til-glogg", label: "Vin til gløgg" }],
     [{ slug: "vin-til-julefrokost", label: "Vin til julefrokost" }],
     [{ slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" }],
     [{ slug: "vin-til-kransekage", label: "Vin til kransekage" }],
