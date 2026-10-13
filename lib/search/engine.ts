@@ -195,6 +195,21 @@ async function runMerchantBrowse(
   return { source: "fallback", products: [], meta };
 }
 
+/**
+ * Søger kun i én forhandlers feed (til hub-previews m.m.).
+ * Undgår fuld multi-feed-scan når merchant allerede er kendt.
+ */
+export async function runMerchantScopedSearch(
+  merchant: string,
+  query: string,
+  budgetMaxParam: number | null = null,
+  budgetMinParam: number | null = null,
+): Promise<SearchResult> {
+  const remaining = query.trim();
+  const qRaw = remaining ? `${merchant} ${remaining}` : merchant;
+  return runMerchantBrowse(qRaw, budgetMaxParam, merchant, remaining, budgetMinParam);
+}
+
 async function runGtinSearch(
   barcode: string,
   budgetMaxParam: number | null,

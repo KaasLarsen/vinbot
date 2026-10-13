@@ -6,7 +6,7 @@ import { VinforhandlereDirectory } from "@/components/vinforhandlere-directory";
 import { getAllMerchantHubs } from "@/lib/merchant-hubs";
 import { siteUrl } from "@/lib/site";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Vinforhandlere — danske shops Vinbot samarbejder med | Vinbot",

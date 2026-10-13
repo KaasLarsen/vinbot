@@ -3,7 +3,8 @@ import { getMerchantHub } from "@/lib/merchant-hubs";
 import { siteUrl } from "@/lib/site";
 import { MerchantHubPage } from "@/components/merchant-hub-page";
 
-export const dynamic = "force-dynamic";
+/** Samme cadence som forsiden / vin-detail — Partner Ads UID sættes client-side. */
+export const revalidate = 21600;
 
 function hubOrThrow(slug: string) {
   const hub = getMerchantHub(slug);

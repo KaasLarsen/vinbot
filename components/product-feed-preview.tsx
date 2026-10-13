@@ -1,14 +1,21 @@
 import { ProductCard } from "@/components/product-card";
-import { runSearch } from "@/lib/search/engine";
+import { runMerchantScopedSearch, runSearch } from "@/lib/search/engine";
 import { runWineCoolerSearch } from "@/lib/search/wine-cooler-engine";
 import { runWineGlassSearch } from "@/lib/search/wine-glass-engine";
 import type { ProductHit } from "@/lib/search/types";
 
 type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass";
 
-async function runScopedSearch(q: string, maxPrice: number | null, searchScope: FeedSearchScope) {
+async function runScopedSearch(
+  q: string,
+  maxPrice: number | null,
+  searchScope: FeedSearchScope,
+  merchant?: string | null,
+) {
   if (searchScope === "wine-cooler") return runWineCoolerSearch(q, maxPrice);
   if (searchScope === "wine-glass") return runWineGlassSearch(q, maxPrice);
+  const merchantName = merchant?.trim();
+  if (merchantName) return runMerchantScopedSearch(merchantName, q, maxPrice);
   return runSearch(q, maxPrice);
 }
 
@@ -17,7 +24,7 @@ function merchantMatches(product: ProductHit, merchant?: string | null) {
   return product.merchant.trim().toLowerCase() === merchant.trim().toLowerCase();
 }
 
-/** Kør flere søgninger og slå unikke produkter sammen (samme URL kun én gang) — godt når én query giver få hits for én forhandler. */
+/** Kør flere søgninger parallelt og slå unikke produkter sammen (samme URL kun én gang). */
 async function mergeSearchQueries(
   queries: string[],
   maxPrice: number | null,
@@ -25,18 +32,20 @@ async function mergeSearchQueries(
   maxItems: number,
   searchScope: FeedSearchScope,
 ): Promise<ProductHit[]> {
+  const results = await Promise.all(
+    queries.map((q) => runScopedSearch(q.trim(), maxPrice, searchScope, merchant)),
+  );
+
   const seen = new Set<string>();
   const out: ProductHit[] = [];
-  for (const q of queries) {
-    if (out.length >= maxItems) break;
-    const { products } = await runScopedSearch(q.trim(), maxPrice, searchScope);
+  for (const { products } of results) {
     const filtered = products.filter((p) => merchantMatches(p, merchant));
     for (const p of filtered) {
       const key = p.url.trim().toLowerCase();
       if (seen.has(key)) continue;
       seen.add(key);
       out.push(p);
-      if (out.length >= maxItems) break;
+      if (out.length >= maxItems) return out;
     }
   }
   return out;
@@ -87,8 +96,8 @@ export async function ProductFeedPreview({
 
   const filtered =
     mergedQueries.length === 1
-      ? (await runScopedSearch(mergedQueries[0], maxPrice ?? null, searchScope)).products.filter((p) =>
-          merchantMatches(p, merchant),
+      ? (await runScopedSearch(mergedQueries[0], maxPrice ?? null, searchScope, merchant)).products.filter(
+          (p) => merchantMatches(p, merchant),
         )
       : await mergeSearchQueries(mergedQueries, maxPrice ?? null, merchant, maxItems, searchScope);
 
