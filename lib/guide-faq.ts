@@ -1881,6 +1881,11 @@ export const guideFaqBySlug: Record<string, { question: string; answer: string }
       answer:
         "Begge virker. Færdig gløgg er ofte meget sød — smag til med tør rød. Hjemmelavet giver kontrol over sødme og alkohol. Brug aldrig din bedste gaveflaske i gryden.",
     },
+    {
+      question: "Kan man bruge papvin til gløgg?",
+      answer:
+        "Ja — tør, frugtig rød 3 L under ca. 150 kr er praktisk til mange gæster. Undgå sød saft-rød og sur rest. Se guiden gløgg på papvin.",
+    },
   ],
   "vin-til-juleand": [
     {

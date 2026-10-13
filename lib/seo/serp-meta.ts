@@ -1064,6 +1064,11 @@ const GUIDE_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Boks-vin til campingvogn og sommerhus: varme i bilen, 1,5 vs. 3 L, køling og holdbarhed i sommervarmen.",
   },
+  "vin-til-glogg": {
+    title: "Vin til gløgg: hvad i gryden?",
+    description:
+      "Vin til gløgg: Rhône, Languedoc eller garnacha 60–120 kr i gryden — plus papvin, hvid, port og hvad du drikker til æbleskiver.",
+  },
   "glogg-paa-papvin": {
     title: "Gløgg på papvin: billig rød som base",
     description:

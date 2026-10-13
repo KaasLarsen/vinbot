@@ -250,6 +250,7 @@ export default async function GuidePage({ params }: Props) {
 
 function hubLabel(hub: string): string {
   const m: Record<string, string> = {
+    glogg: "Gløgg",
     "mad-og-vin": "Mad & vin",
     "humoer-og-vin": "Humør & vin",
     "bedste-vine": "Bedste vine",

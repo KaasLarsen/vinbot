@@ -14,6 +14,10 @@ export function getDrinkImageAbsoluteUrl(slug: string, siteUrl: string): string 
 /** Alt-tekst til hero og kort. */
 export function getDrinkImageAlt(title: string): string {
   const drink = title.split(" — ")[0]?.trim() || title;
+  const lower = drink.toLowerCase();
+  if (lower.includes("gløgg") || lower.includes("gloegg") || lower.includes("glühwein")) {
+    return `${drink} — varm juledrik`;
+  }
   return `${drink} — cocktail med vin`;
 }
 

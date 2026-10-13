@@ -84,12 +84,23 @@ export default async function DrinkPage({ params }: Props) {
   const recipeCategory = drinkCategoryForSchema(frontmatter.tags);
   const totalTime = drinkTotalTimeIso(frontmatter.prepTime, frontmatter.cookTime);
 
-  const crumbs = [
-    { href: "/", label: "Forside" },
-    { href: "/mad-og-vin", label: "Mad & vin" },
-    { href: "/drinks", label: "Drinks" },
-    { href: `/drinks/${slug}`, label: frontmatter.title },
-  ];
+  const isGlogg = (frontmatter.tags ?? []).some((t) => {
+    const x = t.toLowerCase();
+    return x === "gløgg" || x === "gloegg" || x === "glogg";
+  });
+  const crumbs = isGlogg
+    ? [
+        { href: "/", label: "Forside" },
+        { href: "/glogg", label: "Gløgg" },
+        { href: "/drinks", label: "Drinks" },
+        { href: `/drinks/${slug}`, label: frontmatter.title },
+      ]
+    : [
+        { href: "/", label: "Forside" },
+        { href: "/mad-og-vin", label: "Mad & vin" },
+        { href: "/drinks", label: "Drinks" },
+        { href: `/drinks/${slug}`, label: frontmatter.title },
+      ];
 
   const breadcrumbLdItems = crumbs.map((c) => ({
     name: c.label,
