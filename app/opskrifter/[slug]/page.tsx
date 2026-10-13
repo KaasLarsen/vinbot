@@ -10,6 +10,7 @@ import { RecipeSteps } from "@/components/recipe-steps";
 import { RecipeWineBox } from "@/components/recipe-wine-box";
 import { RecipeShopSection } from "@/components/recipe-shop-section";
 import { RecipeOilBox } from "@/components/recipe-oil-box";
+import { MealKitAffiliateCta } from "@/components/meal-kit-affiliate-cta";
 import { getAllRecipeSlugs, getRecipe } from "@/lib/content/recipes";
 import { recipePublicationAndModified } from "@/lib/recipe-dates";
 import { difficultyLabel, formatIsoDuration } from "@/lib/recipe-format";
@@ -190,6 +191,7 @@ export default async function RecipePage({ params }: Props) {
           }
         />
         <RecipeOilBox recipeSlug={slug} />
+        <MealKitAffiliateCta className="mt-8 max-w-2xl" slug={slug} hub="opskrifter" />
       </div>
 
       <div className="mt-10 space-y-10">
