@@ -1436,6 +1436,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.whiskystack, "https://whiskystack.com/"),
   },
   {
+    slug: "spitus",
+    displayName: "Spitus",
+    feedMerchant: "Spitus",
+    blurb: "Spiritus, champagne og portvin — dansk shop i Vinbots søgning.",
+    title: "Spitus — spiritus, champagne og vin | Vinbot",
+    description:
+      "Spitus er en dansk spiritus- og vinforhandler i Vinbots søgning. Se champagne, portvin og mere — og gå videre til spitus.dk.",
+    introParagraphs: [
+      "Spitus er en dansk webshop med fokus på spiritus (whisky, gin, vodka m.m.) samt champagne, portvin og udvalgt vin. Du kan finde deres vin- og bobler-produkter i Vinbots søgning.",
+      "Vinbot er primært vin — men Spitus dukker op, når søgningen matcher. Her får du intro, FAQ og produkter du kan klikke videre på.",
+      "Du handler altid hos Spitus; Vinbot sælger ikke spiritus eller vin.",
+    ],
+    matchHeading: "Hvornår er Spitus et godt match?",
+    matchBullets: [
+      "Du leder efter champagne, portvin eller begrænset vinudvalg.",
+      "Du har set Spitus i Vinbots resultater.",
+      "Du vil gå direkte fra Vinbot til spitus.dk.",
+    ],
+    guideLinks: [
+      { href: "/fest-og-vin", label: "Fest og vin" },
+      { href: "/guides", label: "Guider" },
+    ],
+    shopCtaLabel: "Besøg Spitus",
+    shopIntro: "Åbner Spitus i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro: "Produkter fra Spitus.",
+    productSections: [
+      {
+        title: "Udvalgte produkter",
+        queries: ["champagne", "portvin", "bobler"],
+        placement: "spitus-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Spitus?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid spitus.dk som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.spitus, "https://spitus.dk/"),
+  },
+  {
     slug: "beer-me",
     displayName: "Beer Me",
     feedMerchant: "Beer Me",

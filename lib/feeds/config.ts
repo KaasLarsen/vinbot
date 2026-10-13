@@ -159,6 +159,7 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
   { merchant: "Otto Suenson", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=117927&feedid=4434" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
+  { merchant: "Spitus", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112205&feedid=3805" },
   { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
   {
     merchant: "Vinkøleskabet.dk",

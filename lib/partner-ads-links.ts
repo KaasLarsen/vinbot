@@ -58,6 +58,8 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   beerMeShop: "74625",
   /** Whiskystack — samme banner som produktfeed */
   whiskystack: "105231",
+  /** Spitus — samme banner som produktfeed */
+  spitus: "112205",
   /** Winther Vin — samme banner som produktfeed */
   wintherVin: "76708",
   /** Lauridsen Vine — samme banner som produktfeed */
