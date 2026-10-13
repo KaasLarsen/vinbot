@@ -1616,7 +1616,20 @@ export const GUIDE_CLUSTER_LINKS: Record<string, GuideClusterBlock | GuideCluste
   ),
   "glogg-paa-papvin": papvinBlock(
     ["glogg-paa-papvin"],
-    "Billig rød som base — budget-boks, frost-rester og holdbarhed.",
+    "Billig rød som base — budget-boks, frost-rester og holdbarhed. Se også [gløgg-hubben](/glogg).",
+  ),
+  "vin-til-glogg": madBlock(
+    ["vin-til-glogg"],
+    "Gløgg og jul",
+    "Vin i gryden vs. ved siden af — plus papvin-base, julemad og alkoholfri.",
+    [{ slug: "glogg-paa-papvin", label: "Gløgg på papvin" }],
+    [{ slug: "vin-til-julemad-den-store-guide", label: "Vin til julemad" }],
+    [
+      { slug: "vin-til-juleaften", label: "Vin til juleaften" },
+      { slug: "vin-til-julefrokost", label: "Vin til julefrokost" },
+      { slug: "alkoholfri-vin-til-jul", label: "Alkoholfri vin til jul" },
+      { slug: "bedste-julevin", label: "Bedste julevin" },
+    ],
   ),
   "papvin-til-skiferie": papvinBlock(
     ["papvin-til-skiferie"],

@@ -63,6 +63,9 @@ export function SiteFooter() {
               <Link href="/vinbot-formlen" className="hover:text-rose-900">
                 Vinbot-formlen
               </Link>
+              <Link href="/glogg" className="hover:text-rose-900">
+                Gløgg
+              </Link>
               <Link href="/julevin-beregner" className="hover:text-rose-900">
                 Julevin-beregner
               </Link>
