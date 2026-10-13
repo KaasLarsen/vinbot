@@ -123,7 +123,19 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
   {
     label: "Øl & mad",
     href: "/ol-og-mad",
-    keywords: ["øl", "oel", "beer", "specialøl", "ipa", "stout", "øl til mad", "beer me"],
+    keywords: [
+      "øl",
+      "oel",
+      "beer",
+      "specialøl",
+      "ipa",
+      "stout",
+      "øl til mad",
+      "beer me",
+      "fantombryg",
+      "herslev",
+      "bryghus",
+    ],
   },
   { label: "Alle guides", href: "/guides", keywords: ["guide", "guides", "artikel"] },
 ];

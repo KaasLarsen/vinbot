@@ -11,9 +11,15 @@ function normalize(s = ""): string {
 }
 
 export const BEER_ME_MERCHANT = "Beer Me";
+export const FANTOMBRYG_MERCHANT = "Fantombryg";
+export const HERSLEV_BRYGHUS_MERCHANT = "Herslev Bryghus";
 
 /** Feeds der indgår i øl-søgning (ikke almindelig vinsøgning). */
-export const BEER_MERCHANTS: readonly string[] = [BEER_ME_MERCHANT];
+export const BEER_MERCHANTS: readonly string[] = [
+  BEER_ME_MERCHANT,
+  FANTOMBRYG_MERCHANT,
+  HERSLEV_BRYGHUS_MERCHANT,
+];
 
 const BEER_POSITIVE: readonly string[] = [
   "øl",

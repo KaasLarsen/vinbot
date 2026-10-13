@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/site";
 
 const PAGE_TITLE = "Øl & mad — specialøl til retten | Vinbot";
 const PAGE_DESCRIPTION =
-  "Vinbot er vin-first, men her finder du specialøl til maden: øl-parring på udvalgte opskrifter, AI-chip og Beer Me. Start med grill, gryderetter og and.";
+  "Vinbot er vin-first, men her finder du specialøl til maden: øl-parring på udvalgte opskrifter, AI-chip og forhandlere som Beer Me, Fantombryg og Herslev Bryghus.";
 const PAGE_URL = `${siteUrl}/ol-og-mad`;
 
 export const metadata: Metadata = {
@@ -17,6 +17,24 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: { canonical: PAGE_URL },
 };
+
+const MERCHANT_LINKS = [
+  {
+    href: "/beer-me",
+    label: "Beer Me",
+    blurb: "Specialøl og abonnement — bredt craft-udvalg.",
+  },
+  {
+    href: "/fantombryg",
+    label: "Fantombryg",
+    blurb: "Økologisk specialøl og ølgaver fra dansk bryghus.",
+  },
+  {
+    href: "/herslev-bryghus",
+    label: "Herslev Bryghus",
+    blurb: "Økologisk lager, saison og sæsonbryg fra Sjælland.",
+  },
+] as const;
 
 const RECIPE_LINKS = [
   { href: "/opskrifter/andesteg", label: "Andesteg", blurb: "Stout eller porter til juleanden." },
@@ -82,8 +100,38 @@ export default function OlOgMadPage() {
         <Link href="/beer-me" className="font-medium text-rose-900 hover:underline">
           Beer Me
         </Link>
+        ,{" "}
+        <Link href="/fantombryg" className="font-medium text-rose-900 hover:underline">
+          Fantombryg
+        </Link>{" "}
+        og{" "}
+        <Link href="/herslev-bryghus" className="font-medium text-rose-900 hover:underline">
+          Herslev Bryghus
+        </Link>
         .
       </p>
+
+      <section className="mt-10" aria-labelledby="ol-merchants-heading">
+        <h2 id="ol-merchants-heading" className="text-2xl font-semibold text-stone-900">
+          Ølforhandlere
+        </h2>
+        <p className="mt-2 max-w-2xl text-stone-600">
+          Tre danske Partner-Ads-partnere i vores øl-søgning — du handler altid hos dem.
+        </p>
+        <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+          {MERCHANT_LINKS.map((m) => (
+            <li key={m.href}>
+              <Link
+                href={m.href}
+                className="block rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+              >
+                <h3 className="text-lg font-semibold text-stone-900">{m.label}</h3>
+                <p className="mt-2 text-sm text-stone-600">{m.blurb}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="mt-10" aria-labelledby="ol-recipes-heading">
         <h2 id="ol-recipes-heading" className="text-2xl font-semibold text-stone-900">
@@ -109,22 +157,18 @@ export default function OlOgMadPage() {
 
       <section className="mt-14" aria-labelledby="ol-shop-heading">
         <h2 id="ol-shop-heading" className="text-2xl font-semibold text-stone-900">
-          Specialøl hos Beer Me
+          Specialøl på tværs af forhandlere
         </h2>
         <p className="mt-2 max-w-2xl text-stone-600">
-          Udvalg fra vores øl-søgning — du handler altid hos forhandleren.{" "}
-          <Link href="/beer-me" className="font-medium text-rose-900 hover:underline">
-            Mere om Beer Me →
-          </Link>
+          Udvalg fra vores øl-søgning (Beer Me, Fantombryg og Herslev Bryghus).
         </p>
         <div className="mt-6">
           <ProductFeedPreview
-            queries={["ipa", "stout", "lager"]}
-            merchant="Beer Me"
+            queries={["ipa", "stout", "lager", "saison"]}
             placement="ol-og-mad-feed"
             searchScope="beer"
             emptyLabel="øl"
-            maxItems={6}
+            maxItems={9}
             gridClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           />
         </div>

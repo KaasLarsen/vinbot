@@ -56,6 +56,10 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   beerMe: "74589",
   /** Beer Me — webshop / produktfeed (samme banner som feed_udlaes) */
   beerMeShop: "74625",
+  /** Fantombryg — samme banner som produktfeed */
+  fantombryg: "113923",
+  /** Herslev Bryghus — samme banner som produktfeed */
+  herslevBryghus: "113988",
   /** Whiskystack — samme banner som produktfeed */
   whiskystack: "105231",
   /** Winther Vin — samme banner som produktfeed */

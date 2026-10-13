@@ -226,6 +226,26 @@ export const FEEDS: FeedConfig[] = [
     vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
     vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
   },
+  /**
+   * Fantombryg — økologisk specialøl. Samme beer-spor som Beer Me (ikke vinsøgning).
+   */
+  {
+    merchant: "Fantombryg",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=113923&feedid=3991",
+    wineFilter: false,
+    vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
+    vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
+  },
+  /**
+   * Herslev Bryghus — økologisk bryghus-øl. Samme beer-spor som Beer Me (ikke vinsøgning).
+   */
+  {
+    merchant: "Herslev Bryghus",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=113988&feedid=4002",
+    wineFilter: false,
+    vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
+    vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
+  },
   {
     merchant: "Vinkøleskabet.dk",
     url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0",

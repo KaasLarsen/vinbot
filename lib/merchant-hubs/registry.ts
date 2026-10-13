@@ -1455,6 +1455,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       "Du vil gå direkte fra Vinbot til beer-me.dk.",
     ],
     guideLinks: [
+      { href: "/ol-og-mad", label: "Øl & mad" },
       { href: "/fest-og-vin", label: "Fest og vin" },
       { href: "/rabatkoder", label: "Rabatkoder" },
     ],
@@ -1487,6 +1488,104 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
       },
     ],
     affiliate: pa(B.beerMeShop, "https://www.beer-me.dk/"),
+  },
+  {
+    slug: "fantombryg",
+    displayName: "Fantombryg",
+    feedMerchant: "Fantombryg",
+    blurb: "Økologisk specialøl fra dansk bryghus — i Vinbots øl-søgning.",
+    title: "Fantombryg — økologisk specialøl | Vinbot",
+    description:
+      "Fantombryg er et dansk økologisk bryghus i Vinbots øl-søgning. Se produkter og gå videre til fantombryg.dk.",
+    introParagraphs: [
+      "Fantombryg brygger økologisk specialøl. Vinbot er vin-first, men Fantombryg er relevant, når du vil have øl til maden eller som gave.",
+      "Produkterne her kommer fra vores øl-søgning — du handler og betaler altid hos Fantombryg.",
+      "Sammenlign gerne med Beer Me og Herslev Bryghus via Øl & mad-hubben.",
+    ],
+    matchHeading: "Hvornår er Fantombryg et godt match?",
+    matchBullets: [
+      "Du vil have økologisk specialøl fra et dansk bryghus.",
+      "Du leder efter IPA, classic eller ølgave med personlig hilsen.",
+      "Du vil gå direkte fra Vinbot til fantombryg.dk.",
+    ],
+    guideLinks: [
+      { href: "/ol-og-mad", label: "Øl & mad" },
+      { href: "/beer-me", label: "Beer Me" },
+      { href: "/herslev-bryghus", label: "Herslev Bryghus" },
+    ],
+    shopCtaLabel: "Besøg Fantombryg",
+    shopIntro: "Åbner Fantombryg i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro: "Økologisk specialøl fra Fantombryg via vores øl-søgning.",
+    productSearchScope: "beer",
+    productEmptyLabel: "øl",
+    productSections: [
+      {
+        title: "Udvalgte øl",
+        queries: ["ipa", "classic", "øl"],
+        placement: "fantombryg-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Fantombryg?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid fantombryg.dk som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.fantombryg, "https://fantombryg.dk/"),
+  },
+  {
+    slug: "herslev-bryghus",
+    displayName: "Herslev Bryghus",
+    feedMerchant: "Herslev Bryghus",
+    blurb: "Økologisk bryghusøl fra Sjælland — i Vinbots øl-søgning.",
+    title: "Herslev Bryghus — økologisk øl | Vinbot",
+    description:
+      "Herslev Bryghus er et dansk økologisk bryghus i Vinbots øl-søgning. Se produkter og gå videre til herslevbryghus.dk.",
+    introParagraphs: [
+      "Herslev Bryghus brygger økologisk øl med fokus på klassiske og sæsonbetonede stilarter. Vinbot er vin-first, men Herslev passer godt, når øl er alternativet til glasset.",
+      "Produkterne her kommer fra vores øl-søgning — du handler altid hos Herslev Bryghus.",
+      "Se også Beer Me og Fantombryg under Øl & mad.",
+    ],
+    matchHeading: "Hvornår er Herslev Bryghus et godt match?",
+    matchBullets: [
+      "Du vil have økologisk lager, saison eller sæsonbryg.",
+      "Du foretrækker bryghus direkte frem for blandet specialøl-shop.",
+      "Du vil gå direkte fra Vinbot til herslevbryghus.dk.",
+    ],
+    guideLinks: [
+      { href: "/ol-og-mad", label: "Øl & mad" },
+      { href: "/beer-me", label: "Beer Me" },
+      { href: "/fantombryg", label: "Fantombryg" },
+    ],
+    shopCtaLabel: "Besøg Herslev Bryghus",
+    shopIntro: "Åbner Herslev Bryghus i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro: "Øl fra Herslev Bryghus via vores øl-søgning.",
+    productSearchScope: "beer",
+    productEmptyLabel: "øl",
+    productSections: [
+      {
+        title: "Udvalgte øl",
+        queries: ["lager", "saison", "øl"],
+        placement: "herslev-bryghus-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Herslev Bryghus?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid herslevbryghus.dk som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.herslevBryghus, "https://herslevbryghus.dk/"),
   },
 ];
 
