@@ -1,6 +1,7 @@
 /**
  * Heuristisk fallback når OpenAI fejler — stadig vin-forslag via katalog-søgning.
  * Svarene skal ligne en kort sommelier-anbefaling, så chatten ikke føles «død».
+ * Øl-intent håndteres separat via heuristicBeerChatPlan.
  */
 
 const RED_HINTS =
@@ -18,6 +19,48 @@ export type WineChatPlan = {
   searchQueries: string[];
   budgetMax: number | null;
 };
+
+/** Fallback når brugeren eksplicit vil have øl. */
+export function heuristicBeerChatPlan(message: string): WineChatPlan {
+  const text = message.trim();
+  const budgetMatch = text.match(BUDGET_RE);
+  const budgetMax = budgetMatch ? Number(budgetMatch[1]) : null;
+  const budget = budgetMax != null && Number.isFinite(budgetMax) ? budgetMax : null;
+  const budgetNote = budget != null ? ` Jeg holder mig omkring max ${budget} kr.` : "";
+
+  const queries: string[] = [];
+  let reply: string;
+
+  // Prefiks-match (ikke \b efter token): «grillkød», «gryderet», «oksekød» skal ramme.
+  // Grill før gryde, så chip-tekst med begge lander på IPA.
+  if (/\b(grill|bøf|bof|burger|bbq|krydre|chili|ipa)/i.test(text)) {
+    queries.push("ipa", "pale ale");
+    reply =
+      "Til grill, burger og krydret mad er en IPA eller pale ale et sikkert specialøl-valg — bitterhed og frugt skærer igennem fedt." +
+      budgetNote;
+  } else if (/\b(stout|porter|mørkt|braiser|okse|gryde)/i.test(text)) {
+    queries.push("stout", "porter");
+    reply =
+      "Til tungt, braiseret kød peger jeg på stout eller porter — malt, ristet karakter og nok krop til saucen." +
+      budgetNote;
+  } else if (/\b(pølse|poelse|lager|pilsner)/i.test(text)) {
+    queries.push("lager", "pilsner");
+    reply =
+      "Til pølser og let grillmad fungerer en frisk lager eller pilsner — ren, sprød og uden at overdøve maden." +
+      budgetNote;
+  } else {
+    queries.push("ipa", "stout", "ale");
+    reply =
+      "Her er specialøl fra Beer Me, der kan passe til maden. Skriv gerne kød/sauce, så bliver stilen skarpere (fx IPA til grill, stout til gryde)." +
+      budgetNote;
+  }
+
+  return {
+    reply,
+    searchQueries: [...new Set(queries.filter(Boolean))].slice(0, 3),
+    budgetMax: budget,
+  };
+}
 
 function budgetNote(budgetMax: number | null): string {
   return budgetMax != null ? ` Jeg holder mig omkring max ${budgetMax} kr.` : "";

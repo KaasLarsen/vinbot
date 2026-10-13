@@ -29,6 +29,61 @@ export function feedTier(feed: Pick<FeedConfig, "tier">): FeedTier {
   return feed.tier === "free" ? "free" : "paid";
 }
 
+/** Beer Me — behold øl/specialøl, ikke merchandise/glas. */
+const BEER_FEED_INCLUDE: string[] = [
+  "øl",
+  "oel",
+  "beer",
+  "ipa",
+  "stout",
+  "porter",
+  "lager",
+  "pilsner",
+  "ale",
+  "witbier",
+  "weizen",
+  "weissbier",
+  "saison",
+  "gose",
+  "sour",
+  "lambic",
+  "gueuze",
+  "tripel",
+  "dubbel",
+  "quad",
+  "barleywine",
+  "neipa",
+  "apa",
+  "pale ale",
+  "brown ale",
+  "amber",
+  "märzen",
+  "marzen",
+  "bock",
+  "dunkel",
+  "kölsch",
+  "kolsch",
+  "bryg",
+  "brew",
+  "craft",
+  "alkoholfri øl",
+  "alkoholfri oel",
+  "non-alcoholic beer",
+];
+const BEER_FEED_EXCLUDE: string[] = [
+  "ølglas",
+  "oelglas",
+  "beer glass",
+  "pintglas",
+  "gaveæske uden",
+  "t-shirt",
+  "hoodie",
+  "merchandise",
+  "cap ",
+  "kasket",
+  "åbner gave",
+];
+
 /** Stramt filter til store Partner-Ads-feeds — kun vinkøleskabe, ikke vinkølere/isbøtter. */
 export const WINE_COOLER_ONLY_INCLUDE: string[] = [
   "vinkøleskab",
@@ -159,7 +214,38 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
   { merchant: "Otto Suenson", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=117927&feedid=4434" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
-  { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
+  /**
+   * Beer Me — øl (ikke vin). wineFilter slået fra + beer-include, så sortimentet
+   * kommer i cache; almindelig vinsøgning bruger stadig isWineLike/productEligibleForWineSearch.
+   * Øl-hits hentes via runBeerSearch / ProductFeedPreview searchScope=beer.
+   */
+  {
+    merchant: "Beer Me",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666",
+    wineFilter: false,
+    vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
+    vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
+  },
+  /**
+   * Fantombryg — økologisk specialøl. Samme beer-spor som Beer Me (ikke vinsøgning).
+   */
+  {
+    merchant: "Fantombryg",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=113923&feedid=3991",
+    wineFilter: false,
+    vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
+    vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
+  },
+  /**
+   * Herslev Bryghus — økologisk bryghus-øl. Samme beer-spor som Beer Me (ikke vinsøgning).
+   */
+  {
+    merchant: "Herslev Bryghus",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=113988&feedid=4002",
+    wineFilter: false,
+    vinAdjacentIncludeAny: BEER_FEED_INCLUDE,
+    vinAdjacentExcludeAny: BEER_FEED_EXCLUDE,
+  },
   {
     merchant: "Vinkøleskabet.dk",
     url: "https://adtraction.com/productfeed.htm?type=feed&format=XML&encoding=UTF8&epi=0&zip=0&cdelim=tab&tdelim=singlequote&sd=0&sn=0&flat=0&apid=1954033179&asid=2022448293&gsh=1&pfid=2796&gt=0",

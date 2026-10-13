@@ -22,12 +22,18 @@ const CHIPS = [
     label: "Under 100 kr",
     message: "Hverdagsvin under 100 kr til pasta og tomat.",
   },
+  {
+    label: "Specialøl til maden",
+    message: "Specialøl til maden — hvad passer til grillkød eller en kraftig gryderet?",
+  },
 ] as const;
 
 type ChatMsg = {
   role: "user" | "assistant";
   text: string;
   products?: ProductHit[];
+  /** wine (default) eller beer — styrer affiliate placement. */
+  mode?: "wine" | "beer";
 };
 
 export function WineFridgeChat({ className = "" }: { className?: string }) {
@@ -77,6 +83,7 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
           reply?: string;
           products?: ProductHit[];
           error?: string;
+          mode?: "wine" | "beer";
         };
         if (!res.ok || !json.ok) {
           setError(json.error || "Kunne ikke hente svar.");
@@ -88,6 +95,7 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
             role: "assistant",
             text: json.reply || "Her er nogle forslag.",
             products: json.products || [],
+            mode: json.mode === "beer" ? "beer" : "wine",
           },
         ]);
       } catch {
@@ -168,7 +176,10 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
                 <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                   {m.products.map((p) => (
                     <li key={`${p.url}-${p.title}`}>
-                      <ProductCard product={p} placement="wine-chat" />
+                      <ProductCard
+                        product={p}
+                        placement={m.mode === "beer" ? "wine-chat-beer" : "wine-chat"}
+                      />
                     </li>
                   ))}
                 </ul>

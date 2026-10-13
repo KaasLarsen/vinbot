@@ -92,7 +92,8 @@ export default function HomePage() {
             Udforsk emner
           </h2>
           <p className="mt-1 text-sm text-stone-600">
-            Mad, fest, sæson, vin-viden, vinglas og olivenolie — spring direkte ind i det, der interesserer dig.
+            Mad, fest, sæson, vin-viden, vinglas, olivenolie og øl til maden — spring direkte ind i det, der
+            interesserer dig.
           </p>
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -201,6 +202,15 @@ export default function HomePage() {
           <h3 className="text-lg font-semibold text-stone-900">Olie-Leksikon</h3>
           <p className="mt-2 text-stone-600">
             Extra virgin, falsk olivenolie og hvorfor god olie kradser i halsen — kvalitet og sundhed uden mirakelkur.
+          </p>
+        </Link>
+        <Link
+          href="/ol-og-mad"
+          className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-rose-200 hover:shadow-md"
+        >
+          <h3 className="text-lg font-semibold text-stone-900">Øl & mad</h3>
+          <p className="mt-2 text-stone-600">
+            Specialøl som alternativ til glasset — på udvalgte opskrifter, i AI-chatten og hos Beer Me.
           </p>
         </Link>
         </div>

@@ -34,6 +34,8 @@ export const MERCHANT_LOGOS: Record<string, MerchantLogo> = {
   vindien: { src: "/images/merchants/vindien.png" },
   whiskystack: { src: "/images/merchants/whiskystack.png" },
   "beer-me": { src: "/images/merchants/beer-me.png" },
+  fantombryg: { src: "" },
+  "herslev-bryghus": { src: "" },
   /** BF-oversigt: outsiders uden fil endnu → monogram. */
   "philipson-wine": { src: "" },
   "theis-vine": { src: "" },

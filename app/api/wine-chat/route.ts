@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hasOpenAi, openAiChatJson, openAiKeyMeta, probeOpenAi } from "@/lib/openai/client";
+import { runBeerSearch } from "@/lib/search/beer-engine";
 import { runSearch } from "@/lib/search/engine";
 import type { ProductHit } from "@/lib/search/types";
 import { tasteSimilarity } from "@/lib/taste/vector";
 import type { TasteVector } from "@/lib/taste/types";
-import { heuristicWineChatPlan } from "@/lib/wine-chat/fallback";
+import { BEER_CHAT_SYSTEM, messageHasBeerIntent } from "@/lib/wine-chat/beer-intent";
+import { heuristicBeerChatPlan, heuristicWineChatPlan } from "@/lib/wine-chat/fallback";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -62,18 +64,21 @@ Svar KUN med JSON:
 - searchQueries: 1–3 korte danske søgestrenge der finder vin i en webshop (fx "vin til gedeost kylling", "barbera", "tør hvidvin under 120").
 - budgetMax: antal kroner eller null.
 - Undgå alkoholpromille/rådgivning om beruselse. Foreslå vin til mad.
-- Hvis smagsprofil er givet, skævvred stil (fx tung rød vs let hvid) derefter.`;
+- Hvis smagsprofil er givet, skævvred stil (fx tung rød vs let hvid) derefter.
+- Foreslå IKKE øl medmindre brugeren eksplicit beder om øl.`;
 
 async function collectProducts(
   queries: string[],
   budgetMax: number | null,
   vector: TasteVector | null,
+  mode: "wine" | "beer",
 ): Promise<ProductHit[]> {
   const seen = new Set<string>();
   const products: ProductHit[] = [];
 
   for (const q of queries) {
-    const result = await runSearch(q, budgetMax, null);
+    const result =
+      mode === "beer" ? await runBeerSearch(q, budgetMax) : await runSearch(q, budgetMax, null);
     for (const p of result.products) {
       const key = p.url || `${p.merchant}:${p.title}`;
       if (seen.has(key)) continue;
@@ -121,8 +126,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const beerMode = messageHasBeerIntent(message);
     const taste = body.taste ?? null;
-    const vector = vectorFromCtx(taste);
+    const vector = beerMode ? null : vectorFromCtx(taste);
     let reply: string;
     let queries: string[];
     let budgetMax: number | null;
@@ -130,12 +136,15 @@ export async function POST(req: NextRequest) {
     let aiError: { status: number | null; code: string; message: string } | null = null;
 
     if (hasOpenAi()) {
-      const tasteNote = taste
-        ? `Smagsprofil: styles=${JSON.stringify(taste.styles ?? {})}, tokens=${(taste.tokens ?? []).join(", ")}, body=${taste.body ?? 0}, oak=${taste.oak ?? 0}`
-        : "Ingen smagsprofil.";
+      const tasteNote =
+        !beerMode && taste
+          ? `Smagsprofil: styles=${JSON.stringify(taste.styles ?? {})}, tokens=${(taste.tokens ?? []).join(", ")}, body=${taste.body ?? 0}, oak=${taste.oak ?? 0}`
+          : beerMode
+            ? "Bruger vil have øl til maden (ikke vin)."
+            : "Ingen smagsprofil.";
 
       const ai = await openAiChatJson({
-        system: SYSTEM,
+        system: beerMode ? BEER_CHAT_SYSTEM : SYSTEM,
         user: `${tasteNote}\n\nBruger: ${message}`,
         maxTokens: 400,
         temperature: 0.5,
@@ -143,7 +152,11 @@ export async function POST(req: NextRequest) {
 
       if (ai.ok) {
         source = "openai";
-        reply = String(ai.data.reply ?? "").trim() || "Her er vine, der kan passe til det, du har.";
+        reply =
+          String(ai.data.reply ?? "").trim() ||
+          (beerMode
+            ? "Her er specialøl, der kan passe til det, du har."
+            : "Her er vine, der kan passe til det, du har.");
         const queriesRaw = Array.isArray(ai.data.searchQueries) ? ai.data.searchQueries : [];
         queries = queriesRaw
           .map((q) => String(q ?? "").trim())
@@ -154,24 +167,24 @@ export async function POST(req: NextRequest) {
             ? ai.data.budgetMax
             : null;
         if (!queries.length) {
-          queries.push(message.slice(0, 80));
+          queries.push(beerMode ? "ipa stout" : message.slice(0, 80));
         }
       } else {
         aiError = ai.error;
         console.error("[wine-chat] openai failed, using fallback", ai.error);
-        const plan = heuristicWineChatPlan(message);
+        const plan = beerMode ? heuristicBeerChatPlan(message) : heuristicWineChatPlan(message);
         reply = plan.reply;
         queries = plan.searchQueries;
         budgetMax = plan.budgetMax;
       }
     } else {
-      const plan = heuristicWineChatPlan(message);
+      const plan = beerMode ? heuristicBeerChatPlan(message) : heuristicWineChatPlan(message);
       reply = plan.reply;
       queries = plan.searchQueries;
       budgetMax = plan.budgetMax;
     }
 
-    const products = await collectProducts(queries, budgetMax, vector);
+    const products = await collectProducts(queries, budgetMax, vector, beerMode ? "beer" : "wine");
 
     return NextResponse.json({
       ok: true,
@@ -179,6 +192,7 @@ export async function POST(req: NextRequest) {
       queries,
       products,
       source,
+      mode: beerMode ? "beer" : "wine",
       ...(aiError
         ? {
             aiWarning: {

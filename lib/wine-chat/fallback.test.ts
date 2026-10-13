@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { heuristicWineChatPlan } from "./fallback.ts";
+import { heuristicBeerChatPlan, heuristicWineChatPlan } from "./fallback.ts";
 
 describe("heuristicWineChatPlan", () => {
   it("foreslår både rød og hvid til grillkød + salat", () => {
@@ -24,3 +24,19 @@ describe("heuristicWineChatPlan", () => {
     assert.match(plan.reply, /bobler|prosecco|cava/i);
   });
 });
+
+describe("heuristicBeerChatPlan", () => {
+  it("peger på IPA til grillkød (præfiks-match, før gryde)", () => {
+    const plan = heuristicBeerChatPlan(
+      "Specialøl til maden — hvad passer til grillkød eller en kraftig gryderet?",
+    );
+    assert.ok(plan.searchQueries.some((q) => /ipa|pale ale/i.test(q)));
+    assert.match(plan.reply, /IPA|pale ale|grill/i);
+  });
+
+  it("peger på stout til braiseret kød", () => {
+    const plan = heuristicBeerChatPlan("stout til braiseret oksekød");
+    assert.ok(plan.searchQueries.some((q) => /stout|porter/i.test(q)));
+  });
+});
+

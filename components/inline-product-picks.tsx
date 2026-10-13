@@ -19,6 +19,10 @@ export type InlineProductPicksProps = {
   searchHref: string;
   heading?: string;
   max_items?: number;
+  /** wine (standard) → /api/search; beer → /api/search/beer */
+  searchScope?: "wine" | "beer";
+  ariaLabel?: string;
+  emptyHint?: string;
 };
 
 export function InlineProductPicks({
@@ -31,6 +35,9 @@ export function InlineProductPicks({
   searchHref,
   heading = "Se 3 forslag fra danske forhandlere",
   max_items = 3,
+  searchScope = "wine",
+  ariaLabel = "Anbefalede vine",
+  emptyHint = "— vi søger på tværs af 10+ danske forhandlere.",
 }: InlineProductPicksProps) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<ProductHit[]>([]);
@@ -44,7 +51,8 @@ export function InlineProductPicks({
       try {
         const params = new URLSearchParams({ q });
         if (max != null && Number.isFinite(max)) params.set("max", String(max));
-        const r = await fetch(`/api/search?${params.toString()}`);
+        const apiPath = searchScope === "beer" ? "/api/search/beer" : "/api/search";
+        const r = await fetch(`${apiPath}?${params.toString()}`);
         const json = (await r.json()) as ApiResponse;
         if (cancelled) return;
         setProducts((json.products || []).slice(0, max_items));
@@ -58,11 +66,11 @@ export function InlineProductPicks({
     return () => {
       cancelled = true;
     };
-  }, [q, max, max_items]);
+  }, [q, max, max_items, searchScope]);
 
   return (
     <section
-      aria-label="Anbefalede vine"
+      aria-label={ariaLabel}
       className="not-prose mt-10 border-t border-stone-200 pt-8"
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
@@ -93,7 +101,7 @@ export function InlineProductPicks({
           <Link href={searchHref} className="font-semibold text-rose-900 underline decoration-rose-300 underline-offset-4 hover:text-rose-950">
             Prøv den fulde søgning
           </Link>{" "}
-          — vi søger på tværs af 10+ danske forhandlere.
+          {emptyHint}
         </div>
       ) : (
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
