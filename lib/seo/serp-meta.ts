@@ -1859,6 +1859,16 @@ const DRINK_SERP_OVERRIDES: Record<string, { title?: string; description?: strin
     description:
       "Hjemmelavet rødvinsgløgg med kanel, nelliker, appelsin og port. Klassisk jule-drink til 8–10 glas.",
   },
+  hvidvinsgloegg: {
+    title: "Hvidvinsgløgg opskrift",
+    description:
+      "Hvidvinsgløgg med pinot gris eller viognier, æblejuice og julekrydderier. Lys juledrik til ca. 8 glas.",
+  },
+  "alkoholfri-gloegg": {
+    title: "Alkoholfri gløgg opskrift",
+    description:
+      "Alkoholfri gløgg med saft, te eller alkoholfri rød. Samme krydderi som klassisk gløgg — uden alkohol.",
+  },
   rossini: {
     title: "Rossini opskrift — prosecco og jordbær",
     description:

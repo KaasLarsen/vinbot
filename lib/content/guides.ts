@@ -474,6 +474,41 @@ export function listHedvinHubGuides(): GuideFrontmatter[] {
   return out;
 }
 
+/** Kurateret rækkefølge til /glogg-hubben. */
+const GLOGG_HUB_SLUGS: readonly string[] = [
+  "vin-til-glogg",
+  "glogg-paa-papvin",
+  "bedste-julevin",
+  "vin-til-juleaften",
+  "vin-til-julefrokost",
+  "vin-til-julemad-den-store-guide",
+  "vin-til-aebleskiver",
+  "alkoholfri-vin-til-jul",
+  "bedste-papvin-under-150-kr",
+  "bedste-box-vin",
+  "hvad-er-portvin",
+  "bedste-portvin",
+  "ruby-portvin",
+  "vin-til-gloegg-aften-med-aebleskiver",
+  "vin-til-gloegg-aften-med-pebernoedder",
+  "vin-til-gloegg-aften-med-blaskimmel",
+  "vin-til-gloegg-aften-med-noedder-og-rosiner",
+  "vin-til-gloegg-aften-med-brunsviger",
+  "vin-til-gloegg-aften-med-chili-chokolade",
+  "vin-til-julemad-med-gloegg-dessert",
+];
+
+/** Hub «Gløgg»: vin i gryden, opskrifter, papvin og julehygge. */
+export function listGloggHubGuides(): GuideFrontmatter[] {
+  const bySlug = new Map(listGuides().map((g) => [g.slug, g]));
+  const out: GuideFrontmatter[] = [];
+  for (const slug of GLOGG_HUB_SLUGS) {
+    const g = bySlug.get(slug);
+    if (g) out.push(g);
+  }
+  return out;
+}
+
 /** Kurateret rækkefølge til /naturvin-hubben. */
 const NATURVIN_HUB_SLUGS: readonly string[] = [
   "naturvin-hvad-er-det",

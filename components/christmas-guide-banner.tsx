@@ -35,6 +35,9 @@ export function ChristmasGuideBanner({ slug }: Props) {
           Åbn den store julevinsguide →
         </Link>
         <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+          <Link href="/glogg" className="font-medium text-white underline decoration-rose-300/80 underline-offset-4 hover:decoration-white">
+            Gløgg
+          </Link>
           <Link href="/guides/vin-til-juleaften" className="font-medium text-white underline decoration-rose-300/80 underline-offset-4 hover:decoration-white">
             Vin til juleaften
           </Link>

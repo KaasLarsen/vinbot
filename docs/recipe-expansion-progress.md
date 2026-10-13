@@ -233,7 +233,8 @@ Listen «10 supper & desserter» er nu dækket (7 fandtes i forvejen).
 | 4 | `portvinsgloegg` | Portvin / jul |
 | 5 | `kir-royal` | Champagne / aperitif |
 
-Næste idéer: flere saucer (madeira-jus, marsala), hvidvinsgløgg, alkoholfri gløgg, spritz, Bellini.
+Næste idéer: flere saucer (madeira-jus, marsala), spritz, Bellini.
+Tilføjet: `hvidvinsgloegg`, `alkoholfri-gloegg` + hub `/glogg`.
 
 ---
 

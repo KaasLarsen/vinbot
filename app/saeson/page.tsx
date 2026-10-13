@@ -119,6 +119,7 @@ export default function SaesonHubPage() {
           <h3 className="text-lg font-semibold text-stone-900">Vinter (december-februar)</h3>
           <p className="mt-2 text-sm text-stone-700">
             Jul, julefrokost, nytår og fastelavn. Tør riesling og bobler til sild, beaujolais til medister, kraftig rødvin til flæskesteg og champagne til nytår. Læs om{" "}
+            <Link href="/glogg" className="text-rose-900 hover:underline">gløgg</Link>,{" "}
             <Link href="/guides/vin-til-juleaften" className="text-rose-900 hover:underline">juleaften</Link>,{" "}
             <Link href="/guides/vin-til-flaesketesteg" className="text-rose-900 hover:underline">flæskesteg</Link>,{" "}
             <Link href="/guides/vin-til-julemad-den-store-guide" className="text-rose-900 hover:underline">julemad</Link>,{" "}

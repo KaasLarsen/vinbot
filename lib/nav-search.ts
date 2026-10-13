@@ -31,8 +31,12 @@ const HUB_LINKS: { label: string; href: string; keywords: string[] }[] = [
       "french 75",
       "port tonic",
       "frosé",
-      "gløgg",
     ],
+  },
+  {
+    label: "Gløgg",
+    href: "/glogg",
+    keywords: ["gløgg", "glogg", "gloegg", "glühwein", "gluhwein", "varme drikke", "juledrik"],
   },
   {
     label: "Vinbot-formlen",

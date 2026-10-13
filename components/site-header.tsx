@@ -28,6 +28,7 @@ const moreNavGroups: NavGroup[] = [
       { href: "/humoer-og-vin", label: "Humør & stemning" },
       { href: "/saeson", label: "Sæson" },
       { href: "/fest-og-vin", label: "Fest & selskab" },
+      { href: "/glogg", label: "Gløgg", activePrefix: "/glogg" },
       { href: "/julevin-beregner", label: "Julevin-beregner" },
     ],
   },
