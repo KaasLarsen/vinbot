@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { HomeStickyPartnerBanners } from "@/components/home-sticky-partner-banners";
 import { AnalyticsConsentGate } from "@/components/analytics-consent-gate";
 import { AdSenseConsentGate } from "@/components/adsense-consent-gate";
 import { AgeGate } from "@/components/age-gate";
@@ -101,7 +100,6 @@ window.gtag = window.gtag || gtag;
         <CookieBanner />
         <OrganizationJsonLd />
         <WebSiteJsonLd url={siteUrl} />
-        <HomeStickyPartnerBanners />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

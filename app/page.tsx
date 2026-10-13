@@ -10,7 +10,7 @@ import { HomeRecipesStrip } from "@/components/home-recipes-strip";
 import { HomeWinesStrip } from "@/components/home-wines-strip";
 import { HomeFeedStripsGate } from "@/components/home-feed-strips-gate";
 import { CampaignBanner } from "@/components/campaign-banner";
-import { HomeAffiliatePopup } from "@/components/home-affiliate-popup";
+import { DagensTilbudPopup } from "@/components/dagens-tilbud-popup";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { FeaturedAffiliateStores } from "@/components/featured-affiliate-stores";
 import { LauridsenHomeFeedHighlight } from "@/components/lauridsen-home-feed-highlight";
@@ -20,6 +20,7 @@ import { HomePriceRunnerStrip } from "@/components/home-pricerunner-strip";
 import { HomeFeatureGrid } from "@/components/home-feature-grid";
 import { TasteProfileServer } from "@/components/taste-profile-server";
 import { WineFridgeChat } from "@/components/wine-fridge-chat";
+import { getDagensTilbud } from "@/lib/deals/dagens";
 import { getFeaturedPicksForMerchant } from "@/lib/merchant-featured-picks";
 import { siteName } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
@@ -38,10 +39,12 @@ export const metadata: Metadata = {
 
 const HOME_QUERY_BOOTSTRAP = `(function(){try{var q=new URLSearchParams(location.search).get("q");if(q&&q.trim())document.documentElement.setAttribute("data-vinbot-home-q","")}catch(e){}})();`;
 
-export default function HomePage() {
+export default async function HomePage() {
+  const dagensTilbud = await getDagensTilbud();
+
   return (
     <PageShell className="py-10">
-      <HomeAffiliatePopup />
+      {dagensTilbud ? <DagensTilbudPopup deal={dagensTilbud} /> : null}
 
       <HomeHeroSearchSection>
         <p className="text-xs font-semibold uppercase tracking-wider text-rose-900/90 sm:text-sm">
