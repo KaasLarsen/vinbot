@@ -29,6 +29,46 @@ export function feedTier(feed: Pick<FeedConfig, "tier">): FeedTier {
   return feed.tier === "free" ? "free" : "paid";
 }
 
+/**
+ * Løvegården — blandet delikatessefeed; kun alkoholfri drikke, cider, mocktails og AF-vin.
+ * Hold includes stramme, så ost/krydderier/nonfood ikke lander i vinsøgningen.
+ */
+export const LOVEGAARDEN_AF_DRINKS_INCLUDE: string[] = [
+  "alkoholfri",
+  "cider",
+  "mocktail",
+  "himmelstund",
+  "sir james",
+  "poderi di lea",
+  "anna spinato",
+  "spumante",
+  "gløgg",
+  "ribsvin",
+  "frugtvin",
+];
+export const LOVEGAARDEN_AF_DRINKS_EXCLUDE: string[] = [
+  "eddike",
+  "nelliker",
+  "gummi",
+  "pesto",
+  "pastasauce",
+  "vaskeduft",
+  "opvask",
+  "marmelade",
+  "karamel",
+  "adventskalender",
+  "julekalender",
+  "whiskey",
+  "whisky",
+  "new grove",
+  "brockmans",
+  "buzzballz",
+  "akvavit",
+  "økvavit",
+  "likør",
+  "tea bags",
+];
+
 /** Stramt filter til store Partner-Ads-feeds — kun vinkøleskabe, ikke vinkølere/isbøtter. */
 export const WINE_COOLER_ONLY_INCLUDE: string[] = [
   "vinkøleskab",
@@ -160,6 +200,13 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Otto Suenson", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=117927&feedid=4434" },
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
   { merchant: "Spitus", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112205&feedid=3805" },
+  {
+    merchant: "Løvegården",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105167&feedid=3208",
+    wineFilter: false,
+    vinAdjacentIncludeAny: LOVEGAARDEN_AF_DRINKS_INCLUDE,
+    vinAdjacentExcludeAny: LOVEGAARDEN_AF_DRINKS_EXCLUDE,
+  },
   { merchant: "Beer Me", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=74625&feedid=1666" },
   {
     merchant: "Vinkøleskabet.dk",

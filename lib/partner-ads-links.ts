@@ -60,6 +60,12 @@ export const PARTNER_ADS_KLIK_BANNERS = {
   whiskystack: "105231",
   /** Spitus — samme banner som produktfeed */
   spitus: "112205",
+  /** Løvegården — samme banner som produktfeed (shop/deeplink) */
+  lovegaarden: "105167",
+  /** Løvegården — display 320×160 */
+  lovegaardenDisplay: "104980",
+  /** Løvegården — display skyscraper 160×600 */
+  lovegaardenSkyscraper: "104977",
   /** Winther Vin — samme banner som produktfeed */
   wintherVin: "76708",
   /** Lauridsen Vine — samme banner som produktfeed */

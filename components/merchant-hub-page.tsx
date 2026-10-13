@@ -9,6 +9,7 @@ import {
   MerchantFeaturedProductsJsonLd,
 } from "@/components/json-ld";
 import { MerchantFeaturedPicks } from "@/components/merchant-featured-picks";
+import { MerchantHubDisplayBanners } from "@/components/merchant-hub-display-banners";
 import { MerchantHubShopLink } from "@/components/merchant-hub-shop-link";
 import { PageShell } from "@/components/page-shell";
 import { ProductFeedPreview } from "@/components/product-feed-preview";
@@ -174,13 +175,22 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
           <MerchantFeaturedPicks merchantId={hub.featuredWineId} picks={featuredPicks} />
         ) : null}
 
+        {hub.displayBanners && hub.displayBanners.length > 0 ? (
+          <MerchantHubDisplayBanners
+            banners={hub.displayBanners}
+            merchant={hub.feedMerchant ?? hub.displayName}
+            slug={hub.slug}
+          />
+        ) : null}
+
         {hub.productSections.length > 0 ? (
           <section className="mt-12 space-y-10">
             <div>
               <h2 className="text-2xl font-semibold text-stone-900">
-                {hub.feedMerchant
-                  ? `Udvalgte flasker hos ${hub.displayName}`
-                  : "Måske finder du også…"}
+                {hub.productsHeading ??
+                  (hub.feedMerchant
+                    ? `Udvalgte flasker hos ${hub.displayName}`
+                    : "Måske finder du også…")}
               </h2>
               <p className="mt-2 max-w-3xl text-stone-700">{hub.productIntro}</p>
             </div>

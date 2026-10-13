@@ -16,6 +16,14 @@ export type MerchantHubProductSection = {
   placement: string;
 };
 
+/** Partner-Ads visbanner.php — display-kreativer på hubben. */
+export type MerchantHubDisplayBanner = {
+  bannerId: string;
+  alt: string;
+  /** Skyscraper (høj) vs. leaderboard/box. */
+  variant?: "skyscraper" | "box";
+};
+
 export type MerchantHubAffiliate =
   | { kind: "partner-ads"; bannerId: string; shopUrl: string }
   | { kind: "daisycon"; shopHref: string }
@@ -49,6 +57,10 @@ export type MerchantHubConfig = {
   featuredWineId?: MerchantWineId;
   /** Den Sidste Flaske har egne featured picks uden feed. */
   showDsfFeatured?: boolean;
+  /** Overskrift over produktsektioner (default: «Udvalgte flasker hos …»). */
+  productsHeading?: string;
+  /** Partner-Ads display-bannere (visbanner) under hero. */
+  displayBanners?: MerchantHubDisplayBanner[];
   productIntro: string;
   productSections: MerchantHubProductSection[];
   faq: MerchantHubFaq[];

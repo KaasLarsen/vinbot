@@ -187,6 +187,11 @@ export default function AlkoholfriVinHubPage() {
               </Link>
             </li>
             <li>
+              <Link href="/lovegaarden" className="text-rose-900 hover:underline">
+                Løvegården — alkoholfri cider, mocktails og 0 % vin
+              </Link>
+            </li>
+            <li>
               <Link href="/?q=alkoholfri%20leitz%20torres%200%25" className="text-rose-900 hover:underline">
                 Sammenlign priser online
               </Link>

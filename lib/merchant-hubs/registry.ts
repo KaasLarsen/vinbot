@@ -1482,6 +1482,83 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.spitus, "https://spitus.dk/"),
   },
   {
+    slug: "lovegaarden",
+    displayName: "Løvegården",
+    feedMerchant: "Løvegården",
+    blurb: "Alkoholfri cider, mocktails og 0 % vin — glutenfri gourmetshop i Vinbots søgning.",
+    title: "Løvegården — alkoholfri cider og 0 % vin | Vinbot",
+    description:
+      "Løvegården er en dansk glutenfri webshop med alkoholfri cider, mocktails og alkoholfri vin. Se udvalget på Vinbot og gå videre til loevegaarden.dk.",
+    introParagraphs: [
+      "Løvegården er en dansk glutenfri gourmetshop med et stærkt udvalg af alkoholfri drikke — cider, mocktails, spritz og udvalgt 0 % vin. På Vinbot viser vi de drikke, der giver mening i en vin- og alkoholfri kontekst.",
+      "Du finder blandt andet Himmelstund-cider, Sir James mocktails, alkoholfri spumante og gløgg. Delikatesser og nonfood fra shoppen er filtreret fra Vinbots søgning.",
+      "Du handler altid hos Løvegården; Vinbot sælger ikke vin eller cider.",
+    ],
+    matchHeading: "Hvornår er Løvegården et godt match?",
+    matchBullets: [
+      "Du leder efter alkoholfri cider, mocktails eller 0 % vin.",
+      "Du vil have glutenfri valg til fest, jul eller Dry January.",
+      "Du har set Løvegården i Vinbots alkoholfri-søgning.",
+    ],
+    guideLinks: [
+      { href: "/alkoholfri-vin", label: "Alkoholfri vin" },
+      { href: "/guides/bedste-alkoholfri-bobler", label: "Bedste alkoholfri bobler" },
+      { href: "/guides/alkoholfri-gin-tonic-og-aperitif", label: "Alkoholfri gin & aperitif" },
+      { href: "/guides/alkoholfri-vin-til-dry-january", label: "Dry January" },
+    ],
+    shopCtaLabel: "Besøg Løvegården",
+    shopIntro: "Åbner Løvegården i et nyt vindue — du handler og betaler altid hos dem.",
+    productsHeading: "Udvalgte alkoholfri drikke hos Løvegården",
+    productIntro:
+      "Alkoholfri cider, mocktails og 0 % vin fra Løvegårdens feed — filtreret til drikke, ikke delikatesser.",
+    displayBanners: [
+      {
+        bannerId: B.lovegaardenDisplay,
+        alt: "Løvegården — alkoholfri cider og drikke",
+        variant: "box",
+      },
+      {
+        bannerId: B.lovegaardenSkyscraper,
+        alt: "Løvegården — shop alkoholfri",
+        variant: "skyscraper",
+      },
+    ],
+    productSections: [
+      {
+        title: "Alkoholfri cider",
+        queries: ["alkoholfri cider", "himmelstund cider", "æblecider"],
+        placement: "lovegaarden-page-cider",
+      },
+      {
+        title: "Mocktails og spritz",
+        queries: ["sir james", "himmelstund spritz", "mocktail alkoholfri"],
+        placement: "lovegaarden-page-mocktail",
+      },
+      {
+        title: "Alkoholfri vin og bobler",
+        queries: ["alkoholfri spumante", "anna spinato", "alkoholfri vin"],
+        placement: "lovegaarden-page-vin",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Løvegården?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig. Løvegården er relevant for alkoholfri cider, mocktails og 0 % vin.",
+      },
+      {
+        question: "Kommer hele Løvegårdens sortiment i Vinbots søgning?",
+        answer:
+          "Nej. Vi viser alkoholfri drikke, cider, mocktails og udvalgt 0 % vin — ikke ost, krydderier og øvrige delikatesser.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid loevegaarden.dk som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.lovegaarden, "https://www.loevegaarden.dk/"),
+  },
+  {
     slug: "beer-me",
     displayName: "Beer Me",
     feedMerchant: "Beer Me",
