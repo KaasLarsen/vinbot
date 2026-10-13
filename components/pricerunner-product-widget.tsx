@@ -158,46 +158,70 @@ export function PriceRunnerProductWidget({
 
   if (!resolved) return null;
 
+  const trackedCompareUrl = withPriceRunnerRefSite(resolved.compareUrl);
+  const displayHeading = heading ?? `Sammenlign priser — ${resolved.title}`;
+
+  const header = (
+    <>
+      <h3 className="text-lg font-semibold text-stone-900">{displayHeading}</h3>
+      <p className="mt-1 text-sm text-stone-600">
+        Priserne svinger ofte mellem butikker — tjek lager, årgang og fragt før du køber.
+      </p>
+    </>
+  );
+
+  const compareCta = (
+    <a
+      href={trackedCompareUrl}
+      rel={compareLinkRel}
+      target="_blank"
+      className="mt-3 inline-flex items-center rounded-lg bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
+    >
+      Se laveste pris →
+    </a>
+  );
+
   if (!allowMarketing) {
     return (
       <aside className={className} aria-label={`Prissammenligning: ${resolved.title}`}>
-        {heading ? <h3 className="mb-3 text-lg font-semibold text-stone-900">{heading}</h3> : null}
+        {header}
         {isClient ? (
-          <p className="rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-relaxed text-stone-700">
-            Prissammenligning via PriceRunner vises, når du har accepteret cookies til statistik og annoncer.{" "}
+          <p className="mt-3 rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-relaxed text-stone-700">
+            Accepter cookies til statistik og annoncer for at se prissammenligning via PriceRunner — eller åbn
+            PriceRunner direkte.{" "}
             <Link href="/cookiepolitik" className="font-medium text-rose-900 underline decoration-rose-300 underline-offset-2">
               Cookiepolitik
             </Link>
           </p>
         ) : (
-          <div className="min-h-[8rem] w-full animate-pulse rounded-lg bg-stone-100" />
+          <div className="mt-3 min-h-[8rem] w-full animate-pulse rounded-lg bg-stone-100" />
         )}
+        {compareCta}
       </aside>
     );
   }
 
-  const trackedCompareUrl = withPriceRunnerRefSite(resolved.compareUrl);
-
   return (
     <aside className={className} aria-label={`Prissammenligning: ${resolved.title}`}>
-      {heading ? <h3 className="mb-3 text-lg font-semibold text-stone-900">{heading}</h3> : null}
+      {header}
+
+      {compareCta}
 
       <div
         ref={hostRef}
         id={widgetId}
-        className={status === "loading" ? "min-h-[12rem] w-full animate-pulse rounded-lg bg-stone-100" : "block w-full"}
+        className={
+          status === "loading"
+            ? "mt-4 min-h-[12rem] w-full animate-pulse rounded-lg bg-stone-100"
+            : "mt-4 block w-full"
+        }
         style={{ display: "block", width: "100%" }}
       />
 
       {status === "error" ? (
-        <a
-          href={trackedCompareUrl}
-          rel={compareLinkRel}
-          target="_blank"
-          className="mt-3 inline-flex rounded-lg bg-rose-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-rose-950"
-        >
-          Sammenlign priser for {resolved.title}
-        </a>
+        <p className="mt-3 text-sm text-stone-600">
+          Widget kunne ikke indlæses. Brug knappen ovenfor for at sammenligne priser på PriceRunner.
+        </p>
       ) : null}
 
       <div className="mt-2 inline-block">

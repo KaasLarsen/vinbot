@@ -33,10 +33,11 @@ export function GuideTopicHubExtras({
       {products.length > 0 ? (
         <section className="mt-12" aria-labelledby="hub-pricerunner-heading">
           <h2 id="hub-pricerunner-heading" className="text-2xl font-semibold text-stone-900">
-            Sammenlign priser
+            Find den billigste pris
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-stone-600">
-            Prissammenligning via PriceRunner (annonce). Tjek altid lager, årgang og fragt hos forhandleren.
+            Samme produkt hos flere butikker — se hvor prisen er lavest lige nu (annonce via PriceRunner). Tjek
+            altid lager, årgang og fragt hos forhandleren.
           </p>
           {products.map((p) => (
             <PriceRunnerProductWidget

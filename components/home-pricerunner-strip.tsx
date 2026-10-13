@@ -3,14 +3,14 @@ import { PriceRunnerProductWidget } from "@/components/pricerunner-product-widge
 
 export function HomePriceRunnerStrip() {
   return (
-    <section className="mt-16" aria-labelledby="home-pricerunner-heading">
+    <section className="mt-12" aria-labelledby="home-pricerunner-heading">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="max-w-2xl">
           <h2 id="home-pricerunner-heading" className="text-xl font-semibold tracking-tight text-stone-900">
-            Sammenlign priser
+            Find den billigste flaske og tilbehør
           </h2>
           <p className="mt-1 text-sm text-stone-600">
-            Flaske og vintilbehør via PriceRunner (annonce). Tjek altid lager, årgang og fragt hos forhandleren.
+            Samme produkt, forskellige butikker — se hvor prisen er lavest lige nu (annonce via PriceRunner).
           </p>
         </div>
         <div className="flex flex-wrap gap-x-4 gap-y-1">
@@ -25,7 +25,7 @@ export function HomePriceRunnerStrip() {
 
       <PriceRunnerProductWidget
         productKey="trapiche-oak-cask-malbec"
-        heading="Vin — Trapiche Oak Cask Malbec"
+        heading="Ugens flaske — Trapiche Oak Cask Malbec"
         className="mt-6"
       />
       <PriceRunnerProductWidget

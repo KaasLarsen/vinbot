@@ -77,6 +77,8 @@ export default async function HomePage() {
 
       <script dangerouslySetInnerHTML={{ __html: HOME_QUERY_BOOTSTRAP }} />
 
+      <HomePriceRunnerStrip />
+
       <HomeFeedStripsGate>
         <div data-home-feed-strips>
           <HomeWinesStrip />
@@ -86,8 +88,6 @@ export default async function HomePage() {
           <HomeDealsStrip />
         </div>
       </HomeFeedStripsGate>
-
-      <HomePriceRunnerStrip />
 
       <section className="mt-16" aria-labelledby="home-topics-heading">
         <div className="max-w-2xl">
