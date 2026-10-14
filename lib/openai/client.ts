@@ -136,6 +136,7 @@ async function callChatCompletions(opts: {
     method: "POST",
     headers,
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(8_000),
   });
 
   if (!res.ok) {
@@ -222,6 +223,13 @@ export async function openAiChatJson(opts: {
         if (result.error.code === "model_not_found") break;
       } catch (err) {
         console.error("[openai] error:", err);
+        const timedOut = err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError");
+        if (timedOut) {
+          return {
+            ok: false,
+            error: { status: null, code: "timeout", message: "OpenAI svarede ikke i tide." },
+          };
+        }
         lastError = {
           status: null,
           code: "network",

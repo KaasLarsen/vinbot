@@ -7,7 +7,7 @@ import type { TasteVector } from "@/lib/taste/types";
 import { heuristicWineChatPlan } from "@/lib/wine-chat/fallback";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+export const maxDuration = 60;
 
 const MAX_MESSAGE_LEN = 600;
 const RATE_WINDOW_MS = 60_000;
@@ -71,9 +71,10 @@ async function collectProducts(
 ): Promise<ProductHit[]> {
   const seen = new Set<string>();
   const products: ProductHit[] = [];
+  const limited = queries.map((q) => q.trim()).filter(Boolean).slice(0, 2);
+  const results = await Promise.all(limited.map((q) => runSearch(q, budgetMax, null)));
 
-  for (const q of queries) {
-    const result = await runSearch(q, budgetMax, null);
+  for (const result of results) {
     for (const p of result.products) {
       const key = p.url || `${p.merchant}:${p.title}`;
       if (seen.has(key)) continue;

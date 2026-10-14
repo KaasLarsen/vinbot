@@ -72,12 +72,22 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
             taste: tasteContextForApi(),
           }),
         });
-        const json = (await res.json()) as {
+        if (res.status === 502 || res.status === 504) {
+          setError("Søgningen tog for lang tid. Prøv igen.");
+          return;
+        }
+        let json: {
           ok?: boolean;
           reply?: string;
           products?: ProductHit[];
           error?: string;
         };
+        try {
+          json = (await res.json()) as typeof json;
+        } catch {
+          setError("Søgningen tog for lang tid. Prøv igen.");
+          return;
+        }
         if (!res.ok || !json.ok) {
           setError(json.error || "Kunne ikke hente svar.");
           return;

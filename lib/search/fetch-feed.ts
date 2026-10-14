@@ -36,7 +36,7 @@ export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProd
     headers,
     redirect: "follow",
     cache: "no-store",
-    signal: AbortSignal.timeout(45_000),
+    signal: AbortSignal.timeout(12_000),
   });
   const buf = await r.arrayBuffer();
   const text = decodeText(buf);
@@ -101,8 +101,12 @@ export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProdu
       ["vinbot-feed", FEED_PRODUCTS_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
       { revalidate: 21600, tags: ["vinbot-feeds"] },
     )();
-  } catch {
-    return fetchFeedProductsInner(feed);
+  } catch (err) {
+    console.error(
+      `[feed] cache FAILED for ${feed.merchant}:`,
+      err instanceof Error ? err.message : err,
+    );
+    return [];
   }
 }
 
