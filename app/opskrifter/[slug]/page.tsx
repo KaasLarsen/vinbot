@@ -26,6 +26,8 @@ import { ChristmasGuideBanner } from "@/components/christmas-guide-banner";
 import { buildRecipeSerpDescription, buildRecipeSerpTitle } from "@/lib/seo/serp-meta";
 import { recipeRoleLabel } from "@/lib/content/recipe-types";
 import { PageShell } from "@/components/page-shell";
+import { RecipeRating } from "@/components/recipe-rating";
+import { getCachedRecipeRatingSummary } from "@/lib/recipe-ratings/store";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -70,6 +72,7 @@ export default async function RecipePage({ params }: Props) {
   const { slug } = await params;
   const data = await getRecipe(slug);
   if (!data) notFound();
+  const rating = await getCachedRecipeRatingSummary("recipe", slug);
 
   const { frontmatter, content, readingMinutes } = data;
   const url = `${siteUrl}/opskrifter/${slug}`;
@@ -126,6 +129,11 @@ export default async function RecipePage({ params }: Props) {
         recipeIngredient={frontmatter.ingredients}
         recipeInstructions={frontmatter.instructions}
         keywords={frontmatter.tags}
+        aggregateRating={
+          rating.count > 0 && rating.average != null
+            ? { ratingValue: rating.average, ratingCount: rating.count }
+            : undefined
+        }
       />
       <BreadcrumbJsonLd items={breadcrumbLdItems} />
       <Breadcrumbs items={crumbs} />
@@ -166,6 +174,7 @@ export default async function RecipePage({ params }: Props) {
             </>
           )}
         </p>
+        <RecipeRating kind="recipe" slug={slug} initialAverage={rating.average} initialCount={rating.count} />
       </header>
 
       <RecipeHeroImage slug={slug} title={frontmatter.title} />

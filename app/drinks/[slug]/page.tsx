@@ -23,6 +23,8 @@ import {
 } from "@/lib/drink-images";
 import { buildDrinkSerpDescription, buildDrinkSerpTitle } from "@/lib/seo/serp-meta";
 import { PageShell } from "@/components/page-shell";
+import { RecipeRating } from "@/components/recipe-rating";
+import { getCachedRecipeRatingSummary } from "@/lib/recipe-ratings/store";
 import { GuideFaqAccordion } from "@/components/guide-faq-accordion";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -72,6 +74,7 @@ export default async function DrinkPage({ params }: Props) {
   const { slug } = await params;
   const data = await getDrink(slug);
   if (!data) notFound();
+  const rating = await getCachedRecipeRatingSummary("drink", slug);
 
   const { frontmatter, content, readingMinutes } = data;
   const url = `${siteUrl}/drinks/${slug}`;
@@ -146,6 +149,11 @@ export default async function DrinkPage({ params }: Props) {
         recipeIngredient={frontmatter.ingredients}
         recipeInstructions={frontmatter.instructions}
         keywords={frontmatter.tags}
+        aggregateRating={
+          rating.count > 0 && rating.average != null
+            ? { ratingValue: rating.average, ratingCount: rating.count }
+            : undefined
+        }
       />
       <BreadcrumbJsonLd items={breadcrumbLdItems} />
       {faqItems.length > 0 ? <FaqJsonLd items={faqItems} /> : null}
@@ -181,6 +189,7 @@ export default async function DrinkPage({ params }: Props) {
             </>
           )}
         </p>
+        <RecipeRating kind="drink" slug={slug} initialAverage={rating.average} initialCount={rating.count} />
       </header>
 
       <DrinkHeroImage slug={slug} title={frontmatter.title} />

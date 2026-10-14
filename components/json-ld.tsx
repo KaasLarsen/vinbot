@@ -55,6 +55,7 @@ type RecipeJsonLdProps = {
   recipeIngredient: string[];
   recipeInstructions: string[];
   keywords?: string[];
+  aggregateRating?: { ratingValue: number; ratingCount: number };
 };
 
 export function RecipeJsonLd({
@@ -73,6 +74,7 @@ export function RecipeJsonLd({
   recipeIngredient,
   recipeInstructions,
   keywords,
+  aggregateRating,
 }: RecipeJsonLdProps) {
   const orgRef = { "@id": organizationSchemaId };
   const data: Record<string, unknown> = {
@@ -108,6 +110,15 @@ export function RecipeJsonLd({
   if (recipeCategory) data.recipeCategory = recipeCategory;
   if (recipeCuisine) data.recipeCuisine = recipeCuisine;
   if (keywords && keywords.length > 0) data.keywords = keywords.join(", ");
+  if (aggregateRating && aggregateRating.ratingCount > 0 && Number.isFinite(aggregateRating.ratingValue)) {
+    data.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: aggregateRating.ratingValue,
+      ratingCount: aggregateRating.ratingCount,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 

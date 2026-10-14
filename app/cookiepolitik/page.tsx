@@ -48,7 +48,8 @@ export default function CookiepolitikPage() {
         <p>
           Teknik der gør sitet brugbart — fx sessions- og sikkerhedsrelevante cookies fra vores host (Vercel) og lokal lagring af dit{" "}
           <strong>cookievalg</strong>, din <strong>18+-bekræftelse</strong> og eventuelt din <strong>smagsprofil</strong>{" "}
-          (favoritvine i localStorage, så vi ikke spørger ved hvert sidevisning). De indlæses uanset bannervalg. De identificerer dig ikke på tværs af sites.
+          (favoritvine i localStorage, så vi ikke spørger ved hvert sidevisning). Når du giver en opskrift eller drink stjerner, sætter vi cookien{" "}
+          <strong>vb_voter</strong>, så den samme browser kun tæller én gang og kan ændre sin stemme. Den kræver ikke login og bruges ikke til annoncer. De indlæses uanset bannervalg. De identificerer dig ikke på tværs af sites.
         </p>
 
         <h2 className="text-xl font-semibold text-stone-900">Valgfrie cookies — efter samtykke</h2>
