@@ -24,10 +24,15 @@ const CHIPS = [
   },
 ] as const;
 
+const INITIAL_VISIBLE = 4;
+const PAGE_MORE = 4;
+
 type ChatMsg = {
   role: "user" | "assistant";
   text: string;
   products?: ProductHit[];
+  /** Hvor mange flasker der vises for dette svar. Nye svar starter på 4. */
+  visibleCount?: number;
 };
 
 export function WineFridgeChat({ className = "" }: { className?: string }) {
@@ -92,12 +97,14 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
           setError(json.error || "Kunne ikke hente svar.");
           return;
         }
+        const products = json.products || [];
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
             text: json.reply || "Her er nogle forslag.",
-            products: json.products || [],
+            products,
+            visibleCount: Math.min(INITIAL_VISIBLE, products.length),
           },
         ]);
       } catch {
@@ -162,29 +169,61 @@ export function WineFridgeChat({ className = "" }: { className?: string }) {
       )}
 
       {chatting ? (
-        <div className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/40" aria-live="polite">
-          {messages.map((m, i) => (
-            <div key={`${m.role}-${i}`} className={m.role === "user" ? "text-right" : ""}>
-              <div
-                className={`inline-block max-w-[95%] rounded-2xl px-3 py-2 text-left text-sm ${
-                  m.role === "user"
-                    ? "bg-rose-900 text-white"
-                    : "border border-stone-200 bg-stone-50 text-stone-800"
-                }`}
-              >
-                {m.text}
+        <div className="mt-4 space-y-3 rounded-2xl border border-white/80 bg-white/95 p-4 shadow-lg ring-1 ring-rose-200/40" aria-live="polite">
+          {messages.map((m, i) => {
+            const products = m.products ?? [];
+            const visibleCount = m.visibleCount ?? INITIAL_VISIBLE;
+            const visibleProducts = products.slice(0, visibleCount);
+            const remaining = products.length - visibleProducts.length;
+            return (
+              <div key={`${m.role}-${i}`} className={m.role === "user" ? "text-right" : ""}>
+                <div
+                  className={`inline-block max-w-[95%] rounded-2xl px-3 py-2 text-left text-sm ${
+                    m.role === "user"
+                      ? "bg-rose-900 text-white"
+                      : "border border-stone-200 bg-stone-50 text-stone-800"
+                  }`}
+                >
+                  {m.text}
+                </div>
+                {visibleProducts.length > 0 ? (
+                  <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+                    {visibleProducts.map((p) => (
+                      <li key={`${p.url}-${p.title}`}>
+                        <ProductCard product={p} placement="wine-chat" />
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {remaining > 0 ? (
+                  <div className="mt-3 flex flex-col items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMessages((prev) =>
+                          prev.map((msg, idx) =>
+                            idx === i
+                              ? {
+                                  ...msg,
+                                  visibleCount: Math.min(
+                                    (msg.visibleCount ?? INITIAL_VISIBLE) + PAGE_MORE,
+                                    msg.products?.length ?? 0,
+                                  ),
+                                }
+                              : msg,
+                          ),
+                        )
+                      }
+                      className="rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm hover:border-rose-400 hover:bg-rose-50"
+                    >
+                      Se flere forslag
+                    </button>
+                    <p className="text-xs text-stone-500">+{Math.min(PAGE_MORE, remaining)} næste</p>
+                  </div>
+                ) : null}
               </div>
-              {m.products && m.products.length > 0 ? (
-                <ul className="mt-2 grid gap-2 sm:grid-cols-2">
-                  {m.products.map((p) => (
-                    <li key={`${p.url}-${p.title}`}>
-                      <ProductCard product={p} placement="wine-chat" />
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
-          ))}
+            );
+          })}
           {loading ? <p className="text-sm text-stone-500">Tænker…</p> : null}
         </div>
       ) : null}

@@ -10,6 +10,8 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const MAX_MESSAGE_LEN = 600;
+/** Første visning er 4; resten foldes ud med «Se flere forslag». */
+const PRODUCT_POOL = 12;
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 8;
 
@@ -91,7 +93,7 @@ async function collectProducts(
     return sb - sa;
   });
 
-  return products.slice(0, 4);
+  return products.slice(0, PRODUCT_POOL);
 }
 
 export async function POST(req: NextRequest) {
