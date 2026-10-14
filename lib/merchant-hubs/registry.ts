@@ -300,7 +300,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "johnsen-wine",
     displayName: "Johnsen Wine",
     feedMerchant: "Johnsen Vine",
-    blurb: "Kurateret sortiment når du vil dykke dybere i vinoplevelsen.",
+    blurb: "Udvalgt sortiment når du vil dykke dybere i vinoplevelsen.",
     title: "Johnsen Wine — shop og inspiration | Vinbot",
     description:
       "Johnsen Wine: vinforhandler med fokus på kurateret sortiment og personlig service. Link til shoppen fra Vinbot, nyhedsbrev-rabatter og produkter du også finder i vores vinsøgning.",
@@ -1393,7 +1393,7 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",
-    blurb: "Whisky, rom og vin — kurateret spiritusshop i Vinbots søgning.",
+    blurb: "Whisky, rom og vin — udvalgt spiritusshop i Vinbots søgning.",
     title: "Whiskystack — whisky, rom og vin | Vinbot",
     description:
       "Whiskystack er en dansk spiritus- og vinforhandler i Vinbots søgning. Se produkter og gå videre til shoppen.",

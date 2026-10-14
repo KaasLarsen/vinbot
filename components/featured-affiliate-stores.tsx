@@ -56,7 +56,7 @@ const STORES: Store[] = [
   {
     id: "johnsen",
     name: "Johnsen Wine",
-    blurb: "Kurateret sortiment når du vil dykke dybere.",
+    blurb: "Udvalgt sortiment når du vil dykke dybere.",
     href: partnerAdsKlikUrl(PARTNER_ADS_KLIK_BANNERS.johnsenWine, "https://www.johnsenwine.dk/"),
     logoSrc: "/images/merchants/johnsen-wine.png",
     logoW: 320,

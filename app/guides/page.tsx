@@ -93,7 +93,7 @@ export default async function GuidesIndexPage({ searchParams }: PageProps) {
         <Link href="/naturvin" className="text-rose-900 hover:underline">
           naturvin
         </Link>{" "}
-        for kuraterede udvalg.
+        for udvalgte samlinger.
       </p>
       <p className="mt-3 text-sm text-stone-600">
         Godt sted at starte:{" "}

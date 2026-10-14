@@ -39,7 +39,7 @@ const WINTHER: BannerChoice = {
 const JOHNSEN: BannerChoice = {
   bannerId: JOHNSEN_LEADERBOARD_BANNER_ID,
   merchant: "Johnsen Wine",
-  copy: "Johnsen Wine: kurateret sortiment til vin-interesserede — se her",
+  copy: "Johnsen Wine: udvalgt sortiment til vin-interesserede — se her",
   logoSrc: "/images/merchants/johnsen-wine.png",
   logoW: 320,
   logoH: 80,

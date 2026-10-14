@@ -15,7 +15,7 @@ export function VineCuratedDetailCta({ wine }: { wine: CanonicalWine }) {
       <div className="mt-6 rounded-2xl border border-rose-100 bg-rose-50/60 p-5">
         <p className="text-sm font-medium text-stone-900">Læs Vinbots dybere guide til denne flaske</p>
         <p className="mt-1 text-sm text-stone-700">
-          Madmatch, servering og specs — kurateret side hos {cfg.displayName}.
+          Madmatch, servering og specs — udvalgt side hos {cfg.displayName}.
         </p>
         <Link
           href={href}

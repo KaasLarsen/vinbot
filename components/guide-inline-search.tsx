@@ -43,7 +43,7 @@ export function GuideInlineSearch({ slug, intent }: Props) {
         {/box|bib|papvin|bag/.test(intent.q) ? (
           <>Sammenlign bag-in-box på tværs af danske forhandlere — kun ægte papvin/boxvine.</>
         ) : (
-          <>Sammenlign pris på tværs af danske forhandlere — plus kuraterede enkeltvin-sider fra Vinbot.</>
+          <>Sammenlign pris på tværs af danske forhandlere — plus udvalgte enkeltvin-sider fra Vinbot.</>
         )}
       </p>
       <div className="mt-4">

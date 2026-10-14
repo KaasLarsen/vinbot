@@ -36,7 +36,7 @@ export function SearchCuratedWineStrip({ query, maxBudget, prominent = false }: 
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-rose-800/90">Ud over feed-søgningen</p>
       <h2 id="search-curated-wine-heading" className="mt-1 text-lg font-semibold text-stone-900">
-        Kuraterede flasker
+        Udvalgte flasker
       </h2>
       <p className="mt-1 text-sm text-stone-600">
         Vinbot har egne sider om udvalgte flasker. De kommer ikke med i søgeresultaterne ovenfor.

@@ -21,7 +21,7 @@ export function RecipeCuratedWineLinks({ recipeSlug, tags = [], relatedGuides = 
       aria-labelledby="recipe-curated-wine-heading"
     >
       <h2 id="recipe-curated-wine-heading" className="text-lg font-semibold text-stone-900">
-        Kuraterede flasker med shop-link
+        Udvalgte flasker med shop-link
       </h2>
       <p className="mt-1 text-sm text-stone-600">
         Udvalgte enkeltvin-sider på Vinbot — tjek altid pris og lager hos butikken.

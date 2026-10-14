@@ -21,7 +21,7 @@ export function FooterAffiliatePromos({ beerMeHref }: Props) {
           >
             Specialøl på abonnement hos Beer Me
           </AffiliateTrackedLink>{" "}
-          — kuraterede månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
+          — udvalgte månedskasser fra danske og udenlandske mikrobryggerier, når du vil udforske øl uden for Vinbots vinunivers.
         </p>
       </div>
     </div>
