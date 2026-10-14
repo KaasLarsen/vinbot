@@ -1,5 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 
+import { getSupabaseAnonKey } from "@/lib/supabase/env";
+
 /** httpOnly-cookie. Én browser, én stemme pr. opskrift. */
 export const VOTER_COOKIE = "vb_voter";
 
@@ -23,9 +25,11 @@ export function readOrCreateVoterId(existing: string | undefined): { id: string;
 }
 
 function pepper(): string {
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
-  if (!key) throw new Error("SUPABASE_SERVICE_ROLE_KEY mangler");
-  return key;
+  try {
+    return getSupabaseAnonKey();
+  } catch {
+    return "vinbot-recipe-rating";
+  }
 }
 
 export function hashVoterId(voterId: string): string {

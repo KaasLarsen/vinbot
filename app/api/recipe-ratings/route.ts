@@ -9,7 +9,7 @@ import {
   saveRecipeRating,
 } from "@/lib/recipe-ratings/store";
 import { hashVoterId, readOrCreateVoterId, VOTER_COOKIE, voterCookieOptions } from "@/lib/recipe-ratings/voter";
-import { hasSupabaseServiceRole } from "@/lib/supabase/service";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
 
@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
   const summary = await getCachedRecipeRatingSummary(kindRaw, slug);
   let myRating: number | null = null;
   const voter = readOrCreateVoterId(req.cookies.get(VOTER_COOKIE)?.value);
-  if (!voter.isNew && hasSupabaseServiceRole()) {
+  if (!voter.isNew && isSupabaseConfigured()) {
     myRating = await readVoterRating(kindRaw, slug, hashVoterId(voter.id));
   }
 
@@ -90,9 +90,6 @@ export async function POST(req: NextRequest) {
   }
   if (!contentExists(body.kind, slug)) {
     return NextResponse.json({ error: "Ukendt opskrift." }, { status: 404 });
-  }
-  if (!hasSupabaseServiceRole()) {
-    return NextResponse.json({ error: "Stemmer er ikke tilgængelige lige nu." }, { status: 503 });
   }
 
   const voter = readOrCreateVoterId(req.cookies.get(VOTER_COOKIE)?.value);
