@@ -23,6 +23,7 @@ import { GuideDrinkCrosslinks } from "@/components/guide-drink-crosslinks";
 import { GuideClusterCrosslinks } from "@/components/guide-cluster-crosslinks";
 import { GuideMicroPairings } from "@/components/guide-micro-pairings";
 import { GuideMicroPairingAnswer } from "@/components/guide-micro-pairing-answer";
+import { SupermarketGuideBanner } from "@/components/supermarket-guide-banner";
 import { GuideInlineSearch } from "@/components/guide-inline-search";
 import { guideHasInlineSearch } from "@/lib/growth/guide-inline-search-slugs";
 import { microPairingBySlug } from "@/lib/growth/micro-pairings";
@@ -179,6 +180,7 @@ export default async function GuidePage({ params }: Props) {
           ) : null}
         </p>
       </header>
+      <SupermarketGuideBanner guideSlug={slug} />
       {microPairing ? <GuideMicroPairingAnswer pairing={microPairing} /> : null}
       {!isMicro ? <GuideToc items={toc} /> : null}
       {!isMicro &&

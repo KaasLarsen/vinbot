@@ -6,6 +6,8 @@ import { GuideTopicHubExtras } from "@/components/guide-topic-hub-extras";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { BreadcrumbJsonLd, CollectionPageJsonLd } from "@/components/json-ld";
 import { listSupermarkedVinHubGuides } from "@/lib/content/guides";
+import { getAllChains } from "@/lib/supermarket/chains";
+import { chainH1 } from "@/lib/supermarket/freshness";
 import { siteUrl } from "@/lib/site";
 import { PageShell } from "@/components/page-shell";
 
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
 
 export default function SupermarkedVinHubPage() {
   const guides = listSupermarkedVinHubGuides();
+  const chains = getAllChains();
   const cards = guides.map((g) => ({
     slug: g.slug,
     title: g.title,
@@ -70,6 +73,25 @@ export default function SupermarkedVinHubPage() {
         </Link>
         .
       </p>
+
+      <section className="mt-8" aria-labelledby="chains-now-heading">
+        <h2 id="chains-now-heading" className="text-xl font-semibold text-stone-900">
+          Kæderne lige nu
+        </h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {chains.map((chain) => (
+            <li key={chain.slug}>
+              <Link
+                href={`/vin-i/${chain.slug}`}
+                className="block h-full rounded-xl border border-stone-200 bg-white p-4 hover:border-rose-300"
+              >
+                <span className="font-medium text-rose-900">{chainH1(chain.name)}</span>
+                <span className="mt-1 block text-sm text-stone-600">{chain.teaser}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="mt-8 rounded-lg bg-amber-50 p-6">
         <h2 className="text-xl font-semibold text-stone-900">Mest brugt ved hylden</h2>

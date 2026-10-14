@@ -95,6 +95,7 @@ const moreNavGroups: NavGroup[] = [
         label: "Supermarked",
         activePrefixes: [
           "/supermarked-vin",
+          "/vin-i",
           "/guides/vin-i-supermarkedet",
           "/guides/discount-vin-hylde",
           "/guides/ugens-vinkup-supermarked",

@@ -104,6 +104,7 @@ async function buildSitemapIndexXml(): Promise<string> {
     { loc: `${base}/sitemap-vine.xml`, lastmod: vineLastmod },
     { loc: `${base}/sitemap-pla.xml`, lastmod: new Date() },
     { loc: `${base}/sitemap-lande.xml`, lastmod: fileLastModified(path.join(process.cwd(), "lib/lande/registry.ts")) },
+    { loc: `${base}/sitemap-vin-i.xml`, lastmod: fileLastModified(path.join(process.cwd(), "lib/supermarket/chains.ts")) },
     { loc: `${base}/sitemap-mad.xml`, lastmod: newest(byCat.mad) },
     { loc: `${base}/sitemap-druer.xml`, lastmod: newest(byCat.druer) },
     { loc: `${base}/sitemap-regioner.xml`, lastmod: newest(byCat.regioner) },
@@ -117,7 +118,7 @@ async function buildSitemapIndexXml(): Promise<string> {
  * Cache kort — indekset er et let XML-dokument, men **generering** kan være langsom (I/O).
  * Undersitemaps som `sitemap-vine.xml` kalder kun ét dataset og rammer sjældnere timeout i GSC.
  */
-const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v5-drinks"], {
+const getCachedSitemapIndexXml = unstable_cache(buildSitemapIndexXml, ["vinbot-sitemap-index-v6-vin-i"], {
   revalidate: 300,
   tags: ["sitemap-index", "vinbot-feeds"],
 });
