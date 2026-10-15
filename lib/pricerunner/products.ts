@@ -302,6 +302,27 @@ export const priceRunnerProducts = {
     compareUrl:
       "https://www.pricerunner.dk/pl/465-3222430955/Vine/E.-Guigal-2019-Cuvee-Philipson-Cotes-du-Rhone-Rouge-Guigal-Syrah-Roedvin-fra-Rhone-Frankrig-Sammenlign-Priser",
   },
+  "diamond-hill-shiraz-merlot-3l": {
+    productId: "4982625",
+    title: "Diamond Hill Shiraz Merlot 3 L BiB",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-4982625/Vine/Diamond-Hill-Shiraz-Merlot-13.5-3L-Sammenlign-Priser",
+  },
+  "grande-alberone-rosso-3l": {
+    productId: "3200014075",
+    title: "Grande Alberone Rosso 3 L BiB",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-3200014075/Vine/Grande-Alberone-Rosso-14.5-3L-Sammenlign-Priser",
+  },
+  "lindemans-chardonnay-300cl": {
+    productId: "5197065",
+    title: "Lindeman's Chardonnay South Australia 3 L BiB",
+    category: "vin",
+    compareUrl:
+      "https://www.pricerunner.dk/pl/465-5197065/Vine/Lindeman-s-Chardonnay-South-Australia-13-300cl-Sammenlign-Priser",
+  },
   "latelier-du-vin-vintermometer": {
     productId: "5163357",
     title: "L'Atelier du Vin Vintermometer",
