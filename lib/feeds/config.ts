@@ -69,6 +69,61 @@ export const LOVEGAARDEN_AF_DRINKS_EXCLUDE: string[] = [
   "tea bags",
 ];
 
+/**
+ * Spiritus-shops (Whiskystack, Spitus, Skotlander, Barlife) — wineFilter: false.
+ * Inkluderer spiritus + udvalgte vin-termer, så champagne/port hos Spitus/Barlife
+ * stadig lander i den delte feed-cache til hovedvinsøgningen.
+ */
+export const SPIRITS_FEED_INCLUDE: string[] = [
+  "gin",
+  "rom",
+  "rum",
+  "whisky",
+  "whiskey",
+  "vodka",
+  "likør",
+  "likor",
+  "liqueur",
+  "spiritus",
+  "akvavit",
+  "cognac",
+  "brandy",
+  "tequila",
+  "snaps",
+  "mezcal",
+  "armagnac",
+  "calvados",
+  "champagne",
+  "prosecco",
+  "cava",
+  "portvin",
+  "mousserende",
+  "sparkling",
+  "rødvin",
+  "roedvin",
+  "hvidvin",
+  "rosévin",
+  "rosevin",
+  "dessertvin",
+  "bobler",
+];
+
+export const SPIRITS_FEED_EXCLUDE: string[] = [
+  "plakat",
+  "poster",
+  "merchandise",
+  "t-shirt",
+  "tshirt",
+  "hoodie",
+  "gaveæske tom",
+  "øl",
+  "oel",
+  "beer",
+  "bryg",
+  "craft beer",
+  "humleland",
+];
+
 /** Stramt filter til store Partner-Ads-feeds — kun vinkøleskabe, ikke vinkølere/isbøtter. */
 export const WINE_COOLER_ONLY_INCLUDE: string[] = [
   "vinkøleskab",
@@ -161,7 +216,13 @@ const VIN_ADJ_LIKEHOME_INCLUDE_EXTRA: string[] = [
 /** Partner- og shop-feeds til vinsøgning. KitchenOne (PA feed 1862) må ikke tilføjes — blandet køkkenkatalog. */
 export const FEEDS: FeedConfig[] = [
   { merchant: "Winther Vin", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=76708&feedid=1766" },
-  { merchant: "Barlife", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=46609&feedid=651" },
+  {
+    merchant: "Barlife",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=46609&feedid=651",
+    wineFilter: false,
+    vinAdjacentIncludeAny: SPIRITS_FEED_INCLUDE,
+    vinAdjacentExcludeAny: SPIRITS_FEED_EXCLUDE,
+  },
   { merchant: "DH Wines", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=108173&feedid=3461" },
   /* D’Wine: Partner-Ads-program lukket — hub findes som gratis listing uden feed. */
   { merchant: "Gourmetshoppen", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=80950&feedid=1925" },
@@ -198,11 +259,26 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Winefriends", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=115348&feedid=4162" },
   { merchant: "Buus Vine", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=118149&feedid=4450" },
   { merchant: "Otto Suenson", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=117927&feedid=4434" },
-  { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
-  { merchant: "Spitus", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112205&feedid=3805" },
+  {
+    merchant: "Whiskystack",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220",
+    wineFilter: false,
+    vinAdjacentIncludeAny: SPIRITS_FEED_INCLUDE,
+    vinAdjacentExcludeAny: SPIRITS_FEED_EXCLUDE,
+  },
+  {
+    merchant: "Spitus",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112205&feedid=3805",
+    wineFilter: false,
+    vinAdjacentIncludeAny: SPIRITS_FEED_INCLUDE,
+    vinAdjacentExcludeAny: SPIRITS_FEED_EXCLUDE,
+  },
   {
     merchant: "Skotlander Spirits",
     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=90048&feedid=2297",
+    wineFilter: false,
+    vinAdjacentIncludeAny: SPIRITS_FEED_INCLUDE,
+    vinAdjacentExcludeAny: SPIRITS_FEED_EXCLUDE,
   },
   {
     merchant: "Løvegården",

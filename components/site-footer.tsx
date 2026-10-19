@@ -87,6 +87,9 @@ export function SiteFooter() {
               <Link href="/vinglas" className="hover:text-rose-900">
                 Vinglas
               </Link>
+              <Link href="/spiritus" className="hover:text-rose-900">
+                Spiritus
+              </Link>
               <Link href="/vintilbehor" className="hover:text-rose-900">
                 Vintilbehør
               </Link>

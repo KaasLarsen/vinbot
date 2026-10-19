@@ -3,6 +3,7 @@ import { ensurePartnerAdsKlikUid } from "@/lib/partner-ads-links";
 import { buildCountrySynonymMap } from "@/lib/lande/registry";
 import { intentTermsFromQuery } from "./intents";
 import { looksLikeWineCabinetOrAromaKit } from "./non-wine-cabinet";
+import { productIsSpiritLike } from "./spirits";
 
 export const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
@@ -251,14 +252,17 @@ function titleLooksLikeNonWineGroceryOrGadget(title: string): boolean {
   return NON_WINE_GROCERY_TITLE_MARKERS.some((w) => t.includes(w));
 }
 
-/** Til forsiden/produktsøgning: kun vin — ikke glas, vinskabe, duftsæt og øvrigt tilbehør. */
+/** Til forsiden/produktsøgning: kun vin — ikke glas, vinskabe, duftsæt, spiritus og øvrigt tilbehør. */
 export function productEligibleForWineSearch(
   p: Pick<FeedProduct, "title" | "desc" | "category">,
 ): boolean {
   const text = `${p.title || ""} ${p.desc || ""} ${p.category || ""}`.toLowerCase();
   if (titleLooksLikeNonWineGroceryOrGadget(p.title || "")) return false;
   if (looksLikeWineCabinetOrAromaKit(p)) return false;
-  return !catalogTextLooksLikeNonWineHardware(text);
+  if (catalogTextLooksLikeNonWineHardware(text)) return false;
+  /* Spiritus-shops åbnes med wineFilter:false — hold dem ude af vinsøgningen. */
+  if (productIsSpiritLike(p)) return false;
+  return true;
 }
 
 export function isWineLike(p: Pick<FeedProduct, "title" | "desc" | "category">): boolean {

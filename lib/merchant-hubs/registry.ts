@@ -668,6 +668,12 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     productIntro: "Udvalgte produkter fra Barlife.",
     productSections: [
       {
+        title: "Spiritus til baren",
+        queries: ["gin", "rom", "whisky"],
+        placement: "barlife-page-spirits",
+        searchScope: "spirits",
+      },
+      {
         title: "Vin og bobler",
         queries: ["vin rødvin hvidvin", "prosecco champagne", "rosé"],
         placement: "barlife-page-table",
@@ -1418,8 +1424,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     productSections: [
       {
         title: "Udvalgte produkter",
-        queries: ["whisky", "rom", "vin"],
+        queries: ["whisky", "rom", "gin"],
         placement: "whiskystack-page-table",
+        searchScope: "spirits",
       },
     ],
     faq: [
@@ -1464,8 +1471,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     productSections: [
       {
         title: "Udvalgte produkter",
-        queries: ["champagne", "portvin", "bobler"],
+        queries: ["whisky", "gin", "vodka"],
         placement: "spitus-page-table",
+        searchScope: "spirits",
       },
     ],
     faq: [
@@ -1510,8 +1518,9 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     productSections: [
       {
         title: "Udvalgte produkter",
-        queries: ["rom", "gin", "drinkspakke"],
+        queries: ["rom", "gin", "likør"],
         placement: "skotlander-spirits-page-table",
+        searchScope: "spirits",
       },
     ],
     faq: [

@@ -57,6 +57,16 @@ const moreNavGroups: NavGroup[] = [
         ],
       },
       {
+        href: "/spiritus",
+        label: "Spiritus",
+        activePrefixes: [
+          "/spiritus",
+          "/skotlander-spirits",
+          "/whiskystack",
+          "/spitus",
+        ],
+      },
+      {
         href: "/naturvin",
         label: "Naturvin",
         activePrefixes: [

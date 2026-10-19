@@ -201,6 +201,7 @@ export function MerchantHubPage({ hub }: { hub: MerchantHubConfig }) {
                 title={section.title}
                 merchant={hub.feedMerchant}
                 placement={section.placement}
+                searchScope={section.searchScope ?? "wine"}
               />
             ))}
           </section>

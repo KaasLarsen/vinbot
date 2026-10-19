@@ -14,6 +14,8 @@ export type MerchantHubProductSection = {
   title: string;
   queries: string[];
   placement: string;
+  /** Default wine; spirits-shops bruger «spirits» så gin/rom ikke filtreres væk. */
+  searchScope?: "wine" | "wine-cooler" | "wine-glass" | "spirits";
 };
 
 /** Partner-Ads visbanner.php — display-kreativer på hubben. */

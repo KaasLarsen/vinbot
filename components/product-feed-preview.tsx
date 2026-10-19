@@ -2,9 +2,10 @@ import { ProductCard } from "@/components/product-card";
 import { runMerchantScopedSearch, runSearch } from "@/lib/search/engine";
 import { runWineCoolerSearch } from "@/lib/search/wine-cooler-engine";
 import { runWineGlassSearch } from "@/lib/search/wine-glass-engine";
+import { runSpiritsSearch } from "@/lib/search/spirits-engine";
 import type { ProductHit } from "@/lib/search/types";
 
-type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass";
+type FeedSearchScope = "wine" | "wine-cooler" | "wine-glass" | "spirits";
 
 async function runScopedSearch(
   q: string,
@@ -14,6 +15,7 @@ async function runScopedSearch(
 ) {
   if (searchScope === "wine-cooler") return runWineCoolerSearch(q, maxPrice);
   if (searchScope === "wine-glass") return runWineGlassSearch(q, maxPrice);
+  if (searchScope === "spirits") return runSpiritsSearch(q, maxPrice);
   const merchantName = merchant?.trim();
   if (merchantName) return runMerchantScopedSearch(merchantName, q, maxPrice);
   return runSearch(q, maxPrice);
