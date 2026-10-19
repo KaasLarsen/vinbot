@@ -1482,6 +1482,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: pa(B.spitus, "https://spitus.dk/"),
   },
   {
+    slug: "skotlander-spirits",
+    displayName: "Skotlander Spirits",
+    feedMerchant: "Skotlander Spirits",
+    blurb: "Dansk rom, gin og likør fra Jammerbugten — spiritusshop i Vinbots søgning.",
+    title: "Skotlander Spirits — dansk rom, gin og likør | Vinbot",
+    description:
+      "Skotlander Spirits er en dansk producent og webshop med rom, gin og likør. Se produkter i Vinbots søgning og gå videre til skotlander.com.",
+    introParagraphs: [
+      "Skotlander Spirits laver prisvindende dansk rom, gin og likør i den gamle slagtehal i Jammerbugten — blandt andet Great Dane-rom og Herbie Gin. Du kan finde udvalgte produkter i Vinbots søgning.",
+      "Vinbot er primært vin — men Skotlander dukker op, når søgningen matcher (fx drinkspakker med vin, portvin/sherry til lagring, eller flasker der også beskrives i en vin-kontekst).",
+      "Du handler altid hos Skotlander Spirits; Vinbot sælger ikke spiritus eller vin.",
+    ],
+    matchHeading: "Hvornår er Skotlander Spirits et godt match?",
+    matchBullets: [
+      "Du leder efter dansk rom, gin, likør eller drinkspakker.",
+      "Du har set Skotlander Spirits i Vinbots resultater.",
+      "Du vil gå direkte fra Vinbot til skotlander.com.",
+    ],
+    guideLinks: [
+      { href: "/fest-og-vin", label: "Fest og vin" },
+      { href: "/guides", label: "Guider" },
+    ],
+    shopCtaLabel: "Besøg Skotlander Spirits",
+    shopIntro: "Åbner Skotlander Spirits i et nyt vindue — du handler og betaler altid hos dem.",
+    productIntro: "Produkter fra Skotlander Spirits.",
+    productSections: [
+      {
+        title: "Udvalgte produkter",
+        queries: ["rom", "gin", "drinkspakke"],
+        placement: "skotlander-spirits-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot til Skotlander Spirits?",
+        answer:
+          "Når du køber efter et klik fra Vinbot, kan vi modtage provision — typisk uden merpris for dig.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Brug altid skotlander.com som kilde til pris, lager og levering.",
+      },
+    ],
+    affiliate: pa(B.skotlanderSpirits, "https://skotlander.com/"),
+  },
+  {
     slug: "lovegaarden",
     displayName: "Løvegården",
     feedMerchant: "Løvegården",

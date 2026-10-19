@@ -201,6 +201,10 @@ export const FEEDS: FeedConfig[] = [
   { merchant: "Whiskystack", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105231&feedid=3220" },
   { merchant: "Spitus", url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=112205&feedid=3805" },
   {
+    merchant: "Skotlander Spirits",
+    url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=90048&feedid=2297",
+  },
+  {
     merchant: "Løvegården",
     url: "https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=50537&bannerid=105167&feedid=3208",
     wineFilter: false,

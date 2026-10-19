@@ -64,6 +64,13 @@ const EXTRA_ALIASES: Record<string, string[]> = {
   "Otto Suenson": ["otto", "otto suenson", "suenson"],
   Whiskystack: ["whisky stack"],
   Spitus: ["spitus", "spitus.dk"],
+  "Skotlander Spirits": [
+    "skotlander",
+    "skotlander spirits",
+    "skotlander.com",
+    "great dane",
+    "herbie gin",
+  ],
   Løvegården: ["lovegaarden", "løvegården", "loevegaarden", "løvegaarden"],
   "Beer Me": ["beerme", "beer me"],
   Barlife: ["bar life"],

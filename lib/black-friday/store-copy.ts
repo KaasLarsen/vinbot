@@ -75,6 +75,7 @@ const STORE_CATEGORY_BY_SLUG: Record<string, BlackFridayStoreCategoryId> = {
   barlife: "gourmet",
   whiskystack: "gourmet",
   spitus: "gourmet",
+  "skotlander-spirits": "gourmet",
   lovegaarden: "gourmet",
 };
 
@@ -122,6 +123,8 @@ const PARTNER_BLURBS: Record<string, string> = {
     "Whiskystack er primært whisky og rom, men har også vin i feedet. Hold øje med Black Friday, hvis julegaverne skal være spiritus frem for endnu en flaske rødvin — og sammenlign stadig før-prisen, før du klikker køb.",
   spitus:
     "Spitus er primært spiritus (whisky, gin, vodka), men har også champagne, portvin og lidt stille vin. Hold øje med Black Friday, hvis julegaverne skal være bobler eller spiritus — og sammenlign stadig før-prisen, før du klikker køb.",
+  "skotlander-spirits":
+    "Skotlander Spirits er dansk rom, gin og likør fra Jammerbugten (Great Dane, Herbie Gin m.m.). Hold øje med Black Friday, hvis julegaverne skal være spiritus eller drinkspakker — og sammenlign stadig før-prisen, før du klikker køb.",
   lovegaarden:
     "Løvegården er en glutenfri gourmetshop med alkoholfri cider, mocktails og 0 % vin. Hold øje med Black Friday, hvis julen skal have bobler og gløgg uden alkohol — og sammenlign stadig før-prisen, før du klikker køb.",
 };
