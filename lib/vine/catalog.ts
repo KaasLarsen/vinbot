@@ -9,6 +9,8 @@ import { isWineLike, normalize, productEligibleForWineSearch } from "@/lib/searc
 import { inferWineProducerBrand } from "@/lib/schema/product-identifiers";
 
 import { combineRichDescriptions } from "./product-text";
+import { attachRelatedCards } from "./related-wines";
+import { WINE_SHARD_COUNT, wineShardIndex } from "./shards";
 import { shortHash, wineSlugFromId } from "./slug";
 import type { CanonicalWine, VineOffer, WineCatalog } from "./types";
 
@@ -185,42 +187,138 @@ async function buildWineCatalog(): Promise<WineCatalog> {
 
 async function buildWineCatalogForCache(): Promise<WineCatalog> {
   const catalog = await buildWineCatalog();
+  const slim = catalog.wines.map((w) => ({
+    ...w,
+    description: (w.description ?? "").slice(0, 400) || null,
+    alternateListingTitles: (w.alternateListingTitles ?? []).slice(0, 4),
+  }));
   return {
     ...catalog,
-    wines: catalog.wines.map((w) => ({
-      ...w,
-      description: (w.description ?? "").slice(0, 400) || null,
-      alternateListingTitles: (w.alternateListingTitles ?? []).slice(0, 4),
-    })),
+    wines: attachRelatedCards(slim),
   };
 }
 
-export const getCachedWineCatalog = unstable_cache(buildWineCatalogForCache, ["vinbot-wine-catalog-v17-bottles"], {
-  revalidate: 21600,
-  tags: ["vinbot-feeds"],
-});
+const CATALOG_MEMO_TTL_MS = 5 * 60 * 1000;
+let catalogMemo: { at: number; catalog: WineCatalog } | null = null;
+let catalogInflight: Promise<WineCatalog> | null = null;
 
-/** Per-request dedupe mellem `generateMetadata` og side-komponent. */
-export const loadWineCatalog = cache(async (): Promise<WineCatalog> => {
-  try {
-    const cached = await getCachedWineCatalog();
-    if (cached.wines.length > 0) return cached;
-  } catch {
-    // fall through
+/**
+ * Én klyngning pr. proces, også når flere shards fyldes parallelt.
+ * Request-stien kalder ikke denne direkte — kun unstable_cache-callbacks og cron-warm.
+ */
+function buildWineCatalogSingleFlight(): Promise<WineCatalog> {
+  if (catalogMemo && Date.now() - catalogMemo.at < CATALOG_MEMO_TTL_MS) {
+    return Promise.resolve(catalogMemo.catalog);
   }
-  return buildWineCatalog();
+  if (!catalogInflight) {
+    catalogInflight = buildWineCatalogForCache()
+      .then((catalog) => {
+        catalogMemo = { at: Date.now(), catalog };
+        return catalog;
+      })
+      .finally(() => {
+        catalogInflight = null;
+      });
+  }
+  return catalogInflight;
+}
+
+const emptyCatalog = (): WineCatalog => ({
+  wines: [],
+  offerCount: 0,
+  generatedAt: new Date(0).toISOString(),
 });
 
-/** Opvarm Data Cache efter cron-revalidate — undgår cold-start 5xx ved mass-crawl. */
-export async function warmWineCatalog(): Promise<WineCatalog> {
+let loggedEmptyCatalog = false;
+
+function logEmptyCatalogOnce(): void {
+  if (loggedEmptyCatalog) return;
+  loggedEmptyCatalog = true;
+  console.error("[catalog] cache empty or failed");
+}
+
+function shardCache(index: number) {
+  return unstable_cache(
+    async () => {
+      const catalog = await buildWineCatalogSingleFlight();
+      return catalog.wines.filter((w) => wineShardIndex(w.slug) === index);
+    },
+    ["vinbot-wine-shard-v18", String(index)],
+    { revalidate: 21600, tags: ["vinbot-feeds"] },
+  );
+}
+
+async function readWineShard(index: number): Promise<CanonicalWine[]> {
+  try {
+    return await shardCache(index)();
+  } catch (err) {
+    console.error("[catalog] shard cache failed", index, err instanceof Error ? err.message : "unknown");
+    if (catalogMemo && Date.now() - catalogMemo.at < CATALOG_MEMO_TTL_MS) {
+      return catalogMemo.catalog.wines.filter((w) => wineShardIndex(w.slug) === index);
+    }
+    return [];
+  }
+}
+
+export type WineSitemapIndex = {
+  generatedAt: string;
+  slugs: string[];
+};
+
+/**
+ * Samme shards som vinsiderne. Et separat katalog-kald kan liste slug'e,
+ * der ikke ligger i de shards, siderne læser.
+ */
+export async function getCachedWineSitemapIndex(): Promise<WineSitemapIndex> {
+  const parts = await Promise.all(Array.from({ length: WINE_SHARD_COUNT }, (_, i) => readWineShard(i)));
+  const wines = parts.flat();
+  if (wines.length === 0) {
+    logEmptyCatalogOnce();
+    return { generatedAt: emptyCatalog().generatedAt, slugs: [] };
+  }
+  return {
+    generatedAt: wines[0]?.updated ?? emptyCatalog().generatedAt,
+    slugs: wines.map((w) => w.slug),
+  };
+}
+
+function catalogFromWines(wines: CanonicalWine[], generatedAt: string): WineCatalog {
+  return {
+    wines,
+    offerCount: wines.reduce((n, w) => n + w.offers.length, 0),
+    generatedAt,
+  };
+}
+
+/** Samler shards. Ved cache-fejl returneres tomt katalog — ingen feed-parse i requestet. */
+export const loadWineCatalog = cache(async (): Promise<WineCatalog> => {
+  const parts = await Promise.all(Array.from({ length: WINE_SHARD_COUNT }, (_, i) => readWineShard(i)));
+  const wines = parts.flat();
+  if (wines.length === 0) {
+    logEmptyCatalogOnce();
+    return emptyCatalog();
+  }
+  return catalogFromWines(wines, wines[0]?.updated ?? emptyCatalog().generatedAt);
+});
+
+/** Fuld katalog-samling fra shards. Bruges hvor hele listen skal bruges, ikke på `/vine/[slug]`. */
+export async function getCachedWineCatalog(): Promise<WineCatalog> {
   return loadWineCatalog();
 }
 
-const winesBySlug = cache(async (): Promise<Map<string, CanonicalWine>> => {
-  const { wines } = await loadWineCatalog();
-  return new Map(wines.map((w) => [w.slug, w]));
-});
+/** Opvarm Data Cache efter cron-revalidate — bygger shards én gang og gemmer dem. */
+export async function warmWineCatalog(): Promise<WineCatalog> {
+  const parts = await Promise.all(Array.from({ length: WINE_SHARD_COUNT }, (_, i) => readWineShard(i)));
+  const index = await getCachedWineSitemapIndex();
+  const wines = parts.flat();
+  if (wines.length === 0) {
+    console.error("[catalog] warm produced no wines");
+    return emptyCatalog();
+  }
+  return catalogFromWines(wines, index.generatedAt || wines[0]?.updated || emptyCatalog().generatedAt);
+}
 
 export const getWineBySlug = cache(async (slug: string): Promise<CanonicalWine | null> => {
-  return (await winesBySlug()).get(slug) ?? null;
+  const shard = await readWineShard(wineShardIndex(slug));
+  return shard.find((w) => w.slug === slug) ?? null;
 });

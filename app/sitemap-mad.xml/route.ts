@@ -2,7 +2,7 @@ import { siteUrl } from "@/lib/site";
 import { indexableGuidesByCategory } from "@/lib/sitemap-categories";
 import { guideToUrl, renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 /** Mad & vin: vin-til-*, komplet guide og rosévin + sommer. */
 export async function GET(): Promise<Response> {

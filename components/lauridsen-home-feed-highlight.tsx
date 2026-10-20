@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
-import { runSearch } from "@/lib/search/engine";
+import { runMerchantScopedSearch } from "@/lib/search/engine";
 
 const LAURIDSEN_MERCHANT = "Lauridsen Vine";
 
 /** Dynamiske produktforslag fra Lauridsen på forsiden. Skjules hvis der ikke er aktuelle hits. */
 export async function LauridsenHomeFeedHighlight() {
-  const { products } = await runSearch("bourgogne bordeaux champagne pinot chardonnay riesling", null);
+  const { products } = await runMerchantScopedSearch(
+    LAURIDSEN_MERCHANT,
+    "bourgogne bordeaux champagne pinot chardonnay riesling",
+  );
   const filtered = products
     .filter((p) => p.merchant.trim().toLowerCase() === LAURIDSEN_MERCHANT.toLowerCase())
     .slice(0, 4);

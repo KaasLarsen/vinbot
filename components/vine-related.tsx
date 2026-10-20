@@ -1,11 +1,10 @@
 import Link from "next/link";
 
 import { proxyImg } from "@/lib/search/helpers";
-import type { CanonicalWine } from "@/lib/vine/types";
-import { lowestShelfPrice } from "@/lib/vine/related-wines";
+import type { RelatedWineCard } from "@/lib/vine/types";
 
 type VineRelatedWinesProps = {
-  wines: CanonicalWine[];
+  wines: RelatedWineCard[];
   heading?: string;
   lead?: string;
 };
@@ -25,7 +24,7 @@ export function VineRelatedWines({
       <p className="mt-1 text-sm text-stone-600">{lead}</p>
       <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
         {wines.map((w) => {
-          const from = lowestShelfPrice(w);
+          const from = w.fromPrice;
           return (
             <li key={w.id}>
               <Link
@@ -51,7 +50,7 @@ export function VineRelatedWines({
                 {w.brand ? <p className="mt-0.5 truncate text-xs text-stone-500">{w.brand}</p> : null}
                 <p className="mt-auto pt-2 text-xs tabular-nums text-stone-600">
                   {typeof from === "number" ? `fra ${from.toLocaleString("da-DK")} kr` : "Pris varierer"}
-                  {w.offers.length === 1 ? " · 1 butik" : ` · ${w.offers.length} butikker`}
+                  {w.offerCount === 1 ? " · 1 butik" : ` · ${w.offerCount} butikker`}
                 </p>
               </Link>
             </li>

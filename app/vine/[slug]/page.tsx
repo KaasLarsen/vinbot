@@ -13,9 +13,8 @@ import { VineRelatedWines } from "@/components/vine-related";
 import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/json-ld";
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
-import { getWineBySlug, loadWineCatalog } from "@/lib/vine/catalog";
+import { getWineBySlug } from "@/lib/vine/catalog";
 import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
-import { pickRelatedWines } from "@/lib/vine/related-wines";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
 import type { CanonicalWine } from "@/lib/vine/types";
@@ -47,10 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function VineRelatedSection({ wine }: { wine: CanonicalWine }) {
-  const catalog = await loadWineCatalog();
-  const relatedWines = pickRelatedWines(wine, catalog.wines, { limit: 8 });
-  return <VineRelatedWines wines={relatedWines} />;
+function VineRelatedSection({ wine }: { wine: CanonicalWine }) {
+  return <VineRelatedWines wines={wine.related ?? []} />;
 }
 
 function RelatedFallback() {
@@ -63,7 +60,6 @@ export default async function VineProductPage({ params }: Props) {
   const { slug } = await params;
   const wine = await getWineBySlug(slug);
   if (!wine) notFound();
-  const catalog = await loadWineCatalog();
   const faqItems = vineProductFaqItems(wine);
 
   const url = `${siteUrl}/vine/${wine.slug}`;
@@ -105,8 +101,8 @@ export default async function VineProductPage({ params }: Props) {
         ) : null}
         <p className="mt-2 text-xs text-stone-500">
           Sidst synkroniseret i Vinbots indeks:{" "}
-          <time dateTime={catalog.generatedAt}>
-            {new Date(catalog.generatedAt).toLocaleString("da-DK", {
+          <time dateTime={wine.updated}>
+            {new Date(wine.updated).toLocaleString("da-DK", {
               dateStyle: "long",
               timeStyle: "short",
             })}

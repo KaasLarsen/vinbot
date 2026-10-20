@@ -1,5 +1,5 @@
 import { normalize } from "@/lib/search/helpers";
-import type { CanonicalWine } from "@/lib/vine/types";
+import type { CanonicalWine, RelatedWineCard } from "@/lib/vine/types";
 import { vineCatalogStyleFromBlob } from "@/lib/vine/catalog-style";
 
 /** Laveste tilbudspris (til sammenligning i samme «hylde»). */
@@ -142,4 +142,24 @@ export function pickRelatedWines(
   }
 
   return out.slice(0, limit);
+}
+
+export function toRelatedWineCard(wine: CanonicalWine): RelatedWineCard {
+  return {
+    id: wine.id,
+    slug: wine.slug,
+    displayTitle: wine.displayTitle,
+    brand: wine.brand,
+    image: wine.image,
+    fromPrice: lowestShelfPrice(wine),
+    offerCount: wine.offers.length,
+  };
+}
+
+/** Kør den eksisterende related-udvælgelse én gang pr. katalog, ikke pr. side. */
+export function attachRelatedCards(wines: CanonicalWine[], limit = 8): CanonicalWine[] {
+  return wines.map((wine) => ({
+    ...wine,
+    related: pickRelatedWines(wine, wines, { limit }).map(toRelatedWineCard),
+  }));
 }

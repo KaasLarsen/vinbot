@@ -95,8 +95,9 @@ const getCachedCrossMerchantDealsPool = unstable_cache(
 async function loadCrossMerchantDealsPool(opts: CrossDealsPoolOpts): Promise<CrossMerchantDeal[]> {
   try {
     return await getCachedCrossMerchantDealsPool(JSON.stringify(opts));
-  } catch {
-    return buildCrossMerchantDealsPool(opts);
+  } catch (err) {
+    console.error("[deals] cross-merchant cache failed", err instanceof Error ? err.message : "unknown");
+    return [];
   }
 }
 

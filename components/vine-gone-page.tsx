@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VineRelatedWines } from "@/components/vine-related";
+import { toRelatedWineCard } from "@/lib/vine/related-wines";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { PageShell } from "@/components/page-shell";
 
@@ -55,7 +56,7 @@ export function VineGonePage({ slug, hintLabel, suggestions }: Props) {
 
       {suggestions.length > 0 ? (
         <VineRelatedWines
-          wines={suggestions}
+          wines={suggestions.map(toRelatedWineCard)}
           heading="Lignende vine i kataloget nu"
           lead="Baseret på producent og navn fra det gamle link — ikke nødvendigvis samme årgang eller butik."
         />

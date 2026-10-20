@@ -2,7 +2,7 @@ import { siteUrl } from "@/lib/site";
 import { getAllDrinks } from "@/lib/content/drinks";
 import { renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");

@@ -1,8 +1,8 @@
 import { siteUrl } from "@/lib/site";
-import { getCachedWineCatalog } from "@/lib/vine/catalog";
+import { getCachedWineSitemapIndex } from "@/lib/vine/catalog";
 import { renderUrlset, sitemapResponseInit, type SitemapUrl } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 export const maxDuration = 60;
 
 /**
@@ -11,8 +11,8 @@ export const maxDuration = 60;
  */
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");
-  const catalog = await getCachedWineCatalog();
-  const lastmod = new Date(catalog.generatedAt);
+  const index = await getCachedWineSitemapIndex();
+  const lastmod = new Date(index.generatedAt);
 
   const urls: SitemapUrl[] = [
     {
@@ -21,8 +21,8 @@ export async function GET(): Promise<Response> {
       changefreq: "weekly" as const,
       priority: 0.55,
     },
-    ...catalog.wines.map((w) => ({
-      loc: `${base}/vine/${w.slug}`,
+    ...index.slugs.map((slug) => ({
+      loc: `${base}/vine/${slug}`,
       lastmod,
       changefreq: "weekly" as const,
       priority: 0.5,

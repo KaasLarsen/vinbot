@@ -7,29 +7,13 @@ import remarkGfm from "remark-gfm";
 import { createGuideMdxComponents } from "@/lib/content/guide-mdx-components";
 import { extractGuideToc } from "@/lib/content/guide-headings";
 import type { GuideFrontmatter } from "@/lib/content/guide-types";
+import { getGuideSlugs, listGuides } from "./guide-index";
 import { microPairingBySlug } from "@/lib/growth/micro-pairings";
 
 export type { GuideFrontmatter } from "@/lib/content/guide-types";
+export { getGuideSlugs, listGuides };
 
 const guidesDir = path.join(process.cwd(), "content/guides");
-
-export function getGuideSlugs(): string[] {
-  if (!fs.existsSync(guidesDir)) return [];
-  return fs
-    .readdirSync(guidesDir)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(/\.mdx$/, ""));
-}
-
-export function listGuides(): GuideFrontmatter[] {
-  return getGuideSlugs()
-    .map((slug) => {
-      const raw = fs.readFileSync(path.join(guidesDir, `${slug}.mdx`), "utf8");
-      const { data } = matter(raw);
-      return { ...(data as GuideFrontmatter), slug };
-    })
-    .sort((a, b) => (a.updated < b.updated ? 1 : -1));
-}
 
 /** Kerneartikler i Olie-Leksikonet — ikke vin-viden, selvom slug starter med hvad-er-. */
 export const OLIE_LEKSIKON_GUIDE_SLUGS = [

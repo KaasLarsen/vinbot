@@ -24,6 +24,17 @@ export type VineOffer = {
   discountPercent?: number | null;
 };
 
+/** Kort til «relaterede vine» — beregnes når kataloget bygges, ikke pr. sidevisning. */
+export type RelatedWineCard = {
+  id: string;
+  slug: string;
+  displayTitle: string;
+  brand: string;
+  image: string | null;
+  fromPrice: number | null;
+  offerCount: number;
+};
+
 export type CanonicalWine = {
   /** Intern nøgle, fx gtin:xxxx eller sig:hex */
   id: string;
@@ -44,6 +55,8 @@ export type CanonicalWine = {
   offers: VineOffer[];
   /** Seneste pris-opdatering (server). */
   updated: string;
+  /** Forudberegnede relaterede vine. Tom hvis kataloget er fra før feltet fandtes. */
+  related?: RelatedWineCard[];
 };
 
 export type WineCatalog = {

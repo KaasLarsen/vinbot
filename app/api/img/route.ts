@@ -42,13 +42,16 @@ export async function GET(req: NextRequest) {
       status: 200,
       headers: {
         "content-type": ct,
-        "cache-control": "public, max-age=86400",
+        "cache-control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
       },
     });
   } catch {
     return new NextResponse(placeholderSvg(), {
       status: 200,
-      headers: { "content-type": "image/svg+xml" },
+      headers: {
+        "content-type": "image/svg+xml",
+        "cache-control": "public, max-age=600",
+      },
     });
   }
 }

@@ -2,7 +2,7 @@ import { siteUrl } from "@/lib/site";
 import { indexableGuidesByCategory } from "@/lib/sitemap-categories";
 import { guideToUrl, renderUrlset, sitemapResponseInit } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 /** Andre guides: bobler, opbevaring, naturvin, begreber, etikette, stemning, køb-online m.fl. */
 export async function GET(): Promise<Response> {

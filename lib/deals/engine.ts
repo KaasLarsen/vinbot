@@ -118,8 +118,9 @@ const getCachedFeedDealsPool = unstable_cache(
 async function loadFeedDealsPool(opts: FeedDealsPoolOpts): Promise<DealHit[]> {
   try {
     return await getCachedFeedDealsPool(JSON.stringify(opts));
-  } catch {
-    return buildFeedDealsPool(opts);
+  } catch (err) {
+    console.error("[deals] cache failed", err instanceof Error ? err.message : "unknown");
+    return [];
   }
 }
 
@@ -161,8 +162,9 @@ const getCachedFeedDealSearchIndex = unstable_cache(
 export async function getFeedDealSearchIndex(minDiscount = DEFAULT_MIN_DISCOUNT): Promise<DealSearchItem[]> {
   try {
     return await getCachedFeedDealSearchIndex(minDiscount);
-  } catch {
-    return buildFeedDealSearchIndex(minDiscount);
+  } catch (err) {
+    console.error("[deals] search index cache failed", err instanceof Error ? err.message : "unknown");
+    return [];
   }
 }
 

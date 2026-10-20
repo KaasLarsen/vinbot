@@ -9,13 +9,13 @@ import { getAllDrinks } from "@/lib/content/drinks";
 import { classifyGuide } from "@/lib/sitemap-categories";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderIndex, sitemapResponseInit } from "@/lib/sitemap-xml";
-import { getCachedWineCatalog } from "@/lib/vine/catalog";
+import { getCachedWineSitemapIndex } from "@/lib/vine/catalog";
 
 /** Undgår timeout ved kolde starts (tungere end undersitemaps: guides + disk-scan + vin-katalog). */
 export const maxDuration = 60;
 
-/** Opdater ved hvert crawl (korrekt efter deploy + nye guides). */
-export const dynamic = "force-dynamic";
+/** Offentligt indeks. Opdateres med feed-kataloget, ikke ved hvert crawl. */
+export const revalidate = 21600;
 
 function newest(dates: Date[]): Date | undefined {
   if (!dates.length) return undefined;
@@ -93,7 +93,7 @@ async function buildSitemapIndexXml(): Promise<string> {
     fileLastModified(path.join(process.cwd(), "lib/wine-detail-pages/pages/johnsen-wine-batch6.ts")),
   ]);
 
-  const vineCatalog = await getCachedWineCatalog();
+  const vineCatalog = await getCachedWineSitemapIndex();
   const vineLastmod = new Date(vineCatalog.generatedAt);
 
   return renderIndex([

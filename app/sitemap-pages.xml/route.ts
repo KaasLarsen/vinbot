@@ -2,7 +2,7 @@ import { siteUrl } from "@/lib/site";
 import { discoverStaticAppRoutes, fileLastModified } from "@/lib/sitemap-discovery";
 import { renderUrlset, sitemapResponseInit, type SitemapUrl } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 /** Statiske App Router-sider (hub-sider, forside, info). */
 export async function GET(): Promise<Response> {

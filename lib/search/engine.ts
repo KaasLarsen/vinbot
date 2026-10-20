@@ -1,4 +1,7 @@
+import { unstable_cache } from "next/cache";
+
 import { FEEDS, feedTier } from "@/lib/feeds/config";
+import { normalizeSearchArgs } from "@/lib/search/cache-key";
 import type { ProductHit, SearchMeta, SearchResult } from "./types";
 import {
   expandQuery,
@@ -273,7 +276,7 @@ async function runGtinSearch(
   return { source: "fallback", products: [], meta };
 }
 
-export async function runSearch(
+async function runSearchUncached(
   qRaw: string,
   budgetMaxParam: number | null,
   budgetMinParam: number | null = null,
@@ -378,4 +381,21 @@ export async function runSearch(
 
   if (items.length) return { source: "feed", products: items, meta };
   return { source: "fallback", products: [], meta };
+}
+
+const cachedRunSearch = unstable_cache(
+  async (q: string, budgetMax: number | null, budgetMin: number | null) =>
+    runSearchUncached(q, budgetMax, budgetMin),
+  ["vinbot-search-v1"],
+  { revalidate: 600, tags: ["vinbot-feeds"] },
+);
+
+/** Identiske søgninger genbruges i 10 minutter. Feed-data er allerede op til 6 timer gamle. */
+export async function runSearch(
+  qRaw: string,
+  budgetMaxParam: number | null,
+  budgetMinParam: number | null = null,
+): Promise<SearchResult> {
+  const normalized = normalizeSearchArgs(qRaw, budgetMinParam, budgetMaxParam);
+  return cachedRunSearch(normalized.q, normalized.budgetMax, normalized.budgetMin);
 }

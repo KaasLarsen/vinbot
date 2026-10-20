@@ -4,7 +4,7 @@ import { siteUrl } from "@/lib/site";
 import { fileLastModified } from "@/lib/sitemap-discovery";
 import { renderUrlset, sitemapResponseInit, type SitemapUrl } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 21600;
 
 /** /vin-i + /vin-i/[slug] */
 export async function GET(): Promise<Response> {
