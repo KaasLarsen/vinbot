@@ -13,7 +13,7 @@ import {
   proxyImg,
   score,
 } from "./helpers";
-import { getCachedFeedProducts } from "./fetch-feed";
+import { getCachedFeedProducts, getCachedFeedProductsForSearch } from "./fetch-feed";
 import { detectMerchantIntent } from "./merchant-intent";
 import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
@@ -228,7 +228,7 @@ async function runGtinSearch(
   const lists = await Promise.all(
     WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
-        let products = await getCachedFeedProducts(feed);
+        let products = await getCachedFeedProductsForSearch(feed);
         products = applyPriceFilter(products, priceMin, priceMax);
 
         const matches = products.filter(
@@ -311,7 +311,7 @@ async function runSearchUncached(
   const lists = await Promise.all(
     WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
-        let products = await getCachedFeedProducts(feed);
+        let products = await getCachedFeedProductsForSearch(feed);
         products = applyPriceFilter(products, priceMin, priceMax);
 
         if (!products.length) {
@@ -387,7 +387,7 @@ async function runSearchUncached(
 const cachedRunSearch = unstable_cache(
   async (q: string, budgetMax: number | null, budgetMin: number | null) =>
     runSearchUncached(q, budgetMax, budgetMin),
-  ["vinbot-search-v3-no-cooler-glass"],
+  ["vinbot-search-v4-search-feed-cache"],
   { revalidate: 600, tags: ["vinbot-feeds"] },
 );
 

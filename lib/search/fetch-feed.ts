@@ -65,6 +65,45 @@ async function fetchFeedProductsForCache(feed: FeedConfig): Promise<FeedProduct[
   return slimFeedProductsForCache(products);
 }
 
+/**
+ * Max produkter pr. feed i søge-cachen. Kæmpe Daisycon-kataloger (fx Decantalo ~5k+)
+ * gør ellers hver multi-feed-søgning dyr at deserialisere fra Data Cache.
+ */
+const SEARCH_FEED_PRODUCT_CAP = 1500;
+
+/** Ultra-slim + cap — kun til live søgning, ikke katalog/PLA/browse. */
+function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
+  const ranked = [...products].sort(
+    (a, b) =>
+      (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+      (a.price == null ? 1 : 0) - (b.price == null ? 1 : 0) ||
+      (a.price ?? 9e9) - (b.price ?? 9e9),
+  );
+  return ranked.slice(0, SEARCH_FEED_PRODUCT_CAP).map((p) => ({
+    merchant: p.merchant,
+    tier: p.tier,
+    title: p.title,
+    desc: "",
+    category: "",
+    brand: p.brand || "",
+    gtin: p.gtin,
+    mpn: null,
+    price: p.price,
+    salePrice: p.salePrice,
+    referencePrice: p.referencePrice,
+    discountPercent: p.discountPercent,
+    currency: p.currency || "DKK",
+    image: p.image,
+    url: p.url,
+    _search: (p._search || "").slice(0, 160),
+  }));
+}
+
+async function fetchFeedProductsForSearchCache(feed: FeedConfig): Promise<FeedProduct[]> {
+  const products = await fetchFeedProductsInner(feed);
+  return slimFeedProductsForSearch(products);
+}
+
 const PLA_DESC_MAX = 1800;
 
 /** Til Google PLA og dynamiske produktsider — beholder kort beskrivelse (egen cache-nøgle). */
@@ -83,18 +122,22 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
 const FEED_PRODUCTS_CACHE_VERSION = "v15-spirits-hub";
+const SEARCH_FEED_CACHE_VERSION = "v1-search-cap-1500";
 const PLA_FEED_CACHE_VERSION = "v4-spirits-hub";
+
+function feedFilterKey(feed: FeedConfig): string {
+  return feed.wineFilter !== false
+    ? "wine"
+    : [
+        "nof-wine-filter",
+        feed.vinAdjacentIncludeAny?.join(",") ?? "",
+        feed.vinAdjacentExcludeAny?.join(",") ?? "",
+      ].join("|");
+}
 
 /** Cache pr. feed (6 timer). Tag `vinbot-feeds` til cron revalidate. */
 export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProduct[]> {
-  const filterKey =
-    feed.wineFilter !== false
-      ? "wine"
-      : [
-          "nof-wine-filter",
-          feed.vinAdjacentIncludeAny?.join(",") ?? "",
-          feed.vinAdjacentExcludeAny?.join(",") ?? "",
-        ].join("|");
+  const filterKey = feedFilterKey(feed);
   try {
     return await unstable_cache(
       () => fetchFeedProductsForCache(feed),
@@ -104,6 +147,28 @@ export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProdu
   } catch (err) {
     console.error(
       `[feed] cache FAILED for ${feed.merchant}:`,
+      err instanceof Error ? err.message : err,
+    );
+    return [];
+  }
+}
+
+/**
+ * Lettere feed-cache til multi-feed vinsøgning/spiritus.
+ * Cap + slim holder Data Cache-læsning hurtig (Decantalo m.fl.).
+ * Merchant-browse og katalog bruger stadig `getCachedFeedProducts`.
+ */
+export async function getCachedFeedProductsForSearch(feed: FeedConfig): Promise<FeedProduct[]> {
+  const filterKey = feedFilterKey(feed);
+  try {
+    return await unstable_cache(
+      () => fetchFeedProductsForSearchCache(feed),
+      ["vinbot-feed-search", SEARCH_FEED_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
+      { revalidate: 21600, tags: ["vinbot-feeds"] },
+    )();
+  } catch (err) {
+    console.error(
+      `[feed-search] cache FAILED for ${feed.merchant}:`,
       err instanceof Error ? err.message : err,
     );
     return [];

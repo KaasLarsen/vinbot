@@ -10,7 +10,7 @@ import {
   spiritsSearchHayMatchesTerm,
 } from "./spirits";
 import { normalizeUrl, parsePriceFilter, proxyImg, score } from "./helpers";
-import { getCachedFeedProducts } from "./fetch-feed";
+import { getCachedFeedProductsForSearch } from "./fetch-feed";
 
 const RESULT_CAP = 48;
 const DIVERSIFY_PREFIX = 12;
@@ -58,7 +58,7 @@ async function runSpiritsSearchUncached(qRaw: string, budgetMaxParam: number | n
   const lists = await Promise.all(
     spiritsFeeds.map(async (feed) => {
       try {
-        let products = await getCachedFeedProducts(feed);
+        let products = await getCachedFeedProductsForSearch(feed);
         products = products.filter(productIsSpiritLike);
 
         if (priceMin != null || priceMax != null) {
@@ -125,7 +125,7 @@ async function runSpiritsSearchUncached(qRaw: string, budgetMaxParam: number | n
 
 const cachedRunSpiritsSearch = unstable_cache(
   async (q: string, budgetMax: number | null) => runSpiritsSearchUncached(q, budgetMax),
-  ["vinbot-spirits-search-v1"],
+  ["vinbot-spirits-search-v2-search-feed-cache"],
   { revalidate: 600, tags: ["vinbot-feeds"] },
 );
 
