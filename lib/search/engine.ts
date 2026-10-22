@@ -387,7 +387,7 @@ async function runSearchUncached(
 const cachedRunSearch = unstable_cache(
   async (q: string, budgetMax: number | null, budgetMin: number | null) =>
     runSearchUncached(q, budgetMax, budgetMin),
-  ["vinbot-search-v2-no-coolers"],
+  ["vinbot-search-v3-no-cooler-glass"],
   { revalidate: 600, tags: ["vinbot-feeds"] },
 );
 

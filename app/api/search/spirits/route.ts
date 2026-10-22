@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { runSpiritsSearch } from "@/lib/search/spirits-engine";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 export async function GET(req: NextRequest) {
   try {
@@ -10,7 +11,11 @@ export async function GET(req: NextRequest) {
     const budgetMaxParam = maxParam ? parseInt(maxParam, 10) : null;
 
     const result = await runSpiritsSearch(qRaw, Number.isFinite(budgetMaxParam) ? budgetMaxParam : null);
-    return NextResponse.json(result);
+    return NextResponse.json(result, {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
+    });
   } catch (e) {
     console.error("[spirits-search] fatal:", e);
     return NextResponse.json({
