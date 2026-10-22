@@ -75,6 +75,7 @@ export async function GET(req: NextRequest) {
   }
   const featured = await warmFeaturedWinePages();
   let searchWarm: Awaited<ReturnType<typeof warmPopularSearches>> | { error: string } = {
+    feeds: [],
     wine: [],
     spirits: [],
   };
