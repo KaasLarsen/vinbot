@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ProductHit, SearchMeta } from "@/lib/search/types";
 import {
   productMatchesWineStyle,
@@ -481,6 +481,7 @@ export function WineSearch({
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const searchAbortRef = useRef<AbortController | null>(null);
   const [scannerOpen, setScannerOpen] = useState(false);
   /** Antal bedste match der vises først: 3 eller 5 */
   const [firstCount, setFirstCount] = useState<3 | 5>(3);
@@ -521,6 +522,10 @@ export function WineSearch({
 
   const search = useCallback(
     async (query: string, budget?: number | null, opts?: { fromBarcode?: boolean }) => {
+      searchAbortRef.current?.abort();
+      const ac = new AbortController();
+      searchAbortRef.current = ac;
+
       setLoading(true);
       setError(null);
       setFallbackCheapest(null);
@@ -529,8 +534,9 @@ export function WineSearch({
       try {
         const params = new URLSearchParams({ q: query });
         if (budget != null && Number.isFinite(budget)) params.set("max", String(budget));
-        const r = await fetch(`/api/search?${params.toString()}`);
+        const r = await fetch(`/api/search?${params.toString()}`, { signal: ac.signal });
         const json = (await r.json()) as ApiResponse;
+        if (ac.signal.aborted) return;
         setData(json);
         if (opts?.fromBarcode) {
           trackWineBarcodeScan(
@@ -538,16 +544,23 @@ export function WineSearch({
             query,
           );
         }
-      } catch {
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") return;
         setError("Kunne ikke hente resultater. Prøv igen.");
         setData(null);
         if (opts?.fromBarcode) trackWineBarcodeScan("other", query);
       } finally {
-        setLoading(false);
+        if (!ac.signal.aborted) setLoading(false);
       }
     },
     [],
   );
+
+  useEffect(() => {
+    return () => {
+      searchAbortRef.current?.abort();
+    };
+  }, []);
 
   const onBarcodeDetected = useCallback(
     (code: string) => {
@@ -594,13 +607,13 @@ export function WineSearch({
     if (lastBudget == null) return;
     if (!lastQuery.trim()) return;
 
-    let cancelled = false;
+    const ac = new AbortController();
     (async () => {
       try {
         const params = new URLSearchParams({ q: lastQuery });
-        const r = await fetch(`/api/search?${params.toString()}`);
+        const r = await fetch(`/api/search?${params.toString()}`, { signal: ac.signal });
         const json = (await r.json()) as ApiResponse;
-        if (cancelled) return;
+        if (ac.signal.aborted) return;
         const cheapest = [...(json.products || [])]
           .filter((p) => typeof p.price === "number")
           .sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity))[0];
@@ -611,7 +624,7 @@ export function WineSearch({
     })();
 
     return () => {
-      cancelled = true;
+      ac.abort();
     };
   }, [data, lastQuery, lastBudget]);
 
@@ -798,9 +811,30 @@ export function WineSearch({
             disabled={loading}
             className="rounded-xl bg-rose-900 px-6 py-3 font-semibold text-white shadow-sm hover:bg-rose-950 disabled:opacity-60"
           >
-            {loading ? "Søger…" : "Søg vin"}
+            {loading ? "Henter vine…" : "Søg vin"}
           </button>
         </form>
+
+        {loading ? (
+          <div
+            className="space-y-3 rounded-xl border border-stone-200/80 bg-stone-50/70 px-4 py-4"
+            role="status"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <p className="text-sm font-medium text-stone-800">Henter vine…</p>
+            <p className="text-sm text-stone-600">Vi sammenligner tilbud fra vinhandlerne — det tager et øjeblik.</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="h-36 animate-pulse rounded-xl bg-stone-200/80"
+                  aria-hidden
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         {chips.length > 0 && (!queryFocused || q.trim()) ? (
           <div className="rounded-xl border border-stone-200/80 bg-stone-50/60 px-3 py-3 sm:px-4">
@@ -847,7 +881,7 @@ export function WineSearch({
         {error && <p className="text-sm text-red-700">{error}</p>}
       </div>
 
-      {data && (
+      {data && !loading && (
         <div
           className={["space-y-4", resultsClassName].filter(Boolean).join(" ")}
         >

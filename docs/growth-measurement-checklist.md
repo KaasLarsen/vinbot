@@ -5,13 +5,21 @@ Brug denne tjekliste hver 14. dag. Formålet er at skelne **trafik**, **affiliat
 ## Partner-Ads (provision)
 
 1. Log ind på [Partner-Ads](https://www.partner-ads.com/) → partner **50537**.
-2. Filtrér statistik på **UID: `vinbot`** (sat på alle `klikbanner.php`-links siden maj 2026).
-3. Notér pr. **banner-id** / forhandler:
-   - Antal klik (7 og 30 dage)
-   - Antal salg / provision (hvis tilgængeligt)
-4. Sammenlign med **total klik uden UID** — hvor stor andel kommer fra Vinbot-sporet?
+2. Start med statistik **uden UID-filter** (i går + i dag / 7 dage). Hvis den også er 0 → trafik/CTA, ikke broken links.
+3. Split derefter på UID (sat på `klikbanner.php`-links):
 
-**Fortolkning:** Klik uden salg → konvertering/indhold. Ingen klik → CTA-placering eller forkert intent.
+   | UID | Betydning |
+   |-----|-----------|
+   | `vinbot` | Organisk / standard (default) |
+   | `vinbot-google` | Session der landede via Google Ads / PLA |
+   | `vinbot_dagens` | Klik fra «dagens tilbud»-popup |
+
+4. Notér pr. **banner-id** / forhandler:
+   - Antal klik (7 og 30 dage) — total + pr. UID
+   - Antal salg / provision (hvis tilgængeligt)
+5. Sammenlign **total uden UID** med summen af de tre UID’er — afvigelse kan være gamle links eller andre kilder.
+
+**Fortolkning:** Kun `vinbot` = 0 mens total/andre UID’er har klik → forkert filter, ikke dead tracking. Klik uden salg → konvertering/indhold. Ingen klik i nogen UID → CTA-placering, trafik eller forkert intent.
 
 ## Google Analytics 4
 

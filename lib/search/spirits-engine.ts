@@ -1,4 +1,7 @@
+import { unstable_cache } from "next/cache";
+
 import { FEEDS } from "@/lib/feeds/config";
+import { normalizeSearchArgs } from "@/lib/search/cache-key";
 import type { ProductHit, SearchResult } from "./types";
 import {
   expandSpiritsQuery,
@@ -43,7 +46,7 @@ function diversifyTopByMerchant(items: ProductHit[], prefixCount: number): Produ
   return [...out, ...rest];
 }
 
-export async function runSpiritsSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
+async function runSpiritsSearchUncached(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
   const priceFilter = parsePriceFilter(qRaw, budgetMaxParam);
   const { min: priceMin, max: priceMax } = priceFilter;
   const terms = expandSpiritsQuery(qRaw);
@@ -118,4 +121,16 @@ export async function runSpiritsSearch(qRaw: string, budgetMaxParam: number | nu
     products: [],
     meta,
   };
+}
+
+const cachedRunSpiritsSearch = unstable_cache(
+  async (q: string, budgetMax: number | null) => runSpiritsSearchUncached(q, budgetMax),
+  ["vinbot-spirits-search-v1"],
+  { revalidate: 600, tags: ["vinbot-feeds"] },
+);
+
+/** Identiske spiritus-søgninger genbruges i 10 minutter. */
+export async function runSpiritsSearch(qRaw: string, budgetMaxParam: number | null): Promise<SearchResult> {
+  const normalized = normalizeSearchArgs(qRaw, null, budgetMaxParam);
+  return cachedRunSpiritsSearch(normalized.q, normalized.budgetMax);
 }

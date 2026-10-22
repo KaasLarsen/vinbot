@@ -17,6 +17,7 @@ import { getCachedFeedProducts } from "./fetch-feed";
 import { detectMerchantIntent } from "./merchant-intent";
 import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
+import { WINE_SEARCH_FEEDS } from "./wine-search-feeds";
 
 const RESULT_CAP = 48;
 /** Højere loft når brugeren browser én butiks sortiment. */
@@ -63,7 +64,7 @@ function diversifyTopByMerchant(items: ProductHit[], prefixCount: number): Produ
 
 function emptyMeta(partial?: Partial<SearchMeta>): SearchMeta {
   return {
-    feeds_total: FEEDS.length,
+    feeds_total: WINE_SEARCH_FEEDS.length,
     feeds_ok: 0,
     feeds_failed: 0,
     priceMin: null,
@@ -225,7 +226,7 @@ async function runGtinSearch(
   let feeds_failed = 0;
 
   const lists = await Promise.all(
-    FEEDS.map(async (feed) => {
+    WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
         let products = await getCachedFeedProducts(feed);
         products = applyPriceFilter(products, priceMin, priceMax);
@@ -308,7 +309,7 @@ async function runSearchUncached(
   let feeds_failed = 0;
 
   const lists = await Promise.all(
-    FEEDS.map(async (feed) => {
+    WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
         let products = await getCachedFeedProducts(feed);
         products = applyPriceFilter(products, priceMin, priceMax);
@@ -386,7 +387,7 @@ async function runSearchUncached(
 const cachedRunSearch = unstable_cache(
   async (q: string, budgetMax: number | null, budgetMin: number | null) =>
     runSearchUncached(q, budgetMax, budgetMin),
-  ["vinbot-search-v1"],
+  ["vinbot-search-v2-no-coolers"],
   { revalidate: 600, tags: ["vinbot-feeds"] },
 );
 

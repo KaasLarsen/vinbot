@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { siteUrl } from "@/lib/site";
 import { recordDailyPriceSnapshot } from "@/lib/black-friday/price-snapshots";
 import { dispatchPriceAlerts } from "@/lib/price-alerts/dispatch";
+import { warmPopularSearches } from "@/lib/search/warm-popular";
 import { warmWineCatalog } from "@/lib/vine/catalog";
 import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
 
@@ -13,8 +14,9 @@ import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
  * - Lokalt (uden VERCEL): tilladt uden secret så I kan køre `curl localhost:3000/...` under udvikling.
  * - Opvarmer vin-katalog efter revalidate så cold-start ikke giver 5xx ved mass-crawl.
  * - Hitter forsides-udvalget `/vine/[slug]` så ISR er varm når brugere klikker fra hjem.
+ * - Fylder populære søgeresultater i cache, så første bruger ikke venter på cold search.
  */
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 async function warmFeaturedWinePages(): Promise<{ warmed: string[]; failed: string[] }> {
   const warmed: string[] = [];
@@ -72,6 +74,16 @@ export async function GET(req: NextRequest) {
     priceAlerts = { error: "dispatch failed" };
   }
   const featured = await warmFeaturedWinePages();
+  let searchWarm: Awaited<ReturnType<typeof warmPopularSearches>> | { error: string } = {
+    wine: [],
+    spirits: [],
+  };
+  try {
+    searchWarm = await warmPopularSearches();
+  } catch (err) {
+    console.error("warmPopularSearches:", err);
+    searchWarm = { error: "warm search failed" };
+  }
   return NextResponse.json({
     revalidated: true,
     tag: "vinbot-feeds",
@@ -81,5 +93,6 @@ export async function GET(req: NextRequest) {
     priceAlerts,
     featuredWarmed: featured.warmed,
     featuredFailed: featured.failed,
+    searchWarm,
   });
 }
