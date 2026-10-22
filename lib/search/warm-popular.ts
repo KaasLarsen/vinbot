@@ -30,7 +30,7 @@ export async function warmPopularSearches(): Promise<WarmPopularSearchResult> {
   const feeds = await Promise.all(
     WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
-        const products = await getCachedFeedProductsForSearch(feed);
+        const products = await getCachedFeedProductsForSearch(feed, { warm: true });
         return { merchant: feed.merchant, ok: products.length > 0, n: products.length };
       } catch (err) {
         console.error("[warm-search] feed failed", feed.merchant, err instanceof Error ? err.message : err);

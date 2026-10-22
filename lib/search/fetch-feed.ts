@@ -104,11 +104,15 @@ function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
   }));
 }
 
-/** Bruger-requests: fail hurtigt. Cron-warm kan kalde med længere timeout via opts. */
+/** Bruger-requests: fail hurtigt. Cron-warm bruger længere timeout (se warm-nøgle). */
 const SEARCH_FEED_FETCH_TIMEOUT_MS = 3_500;
+const SEARCH_FEED_WARM_TIMEOUT_MS = 12_000;
 
-async function fetchFeedProductsForSearchCache(feed: FeedConfig): Promise<FeedProduct[]> {
-  const products = await fetchFeedProductsInner(feed, { timeoutMs: SEARCH_FEED_FETCH_TIMEOUT_MS });
+async function fetchFeedProductsForSearchCache(
+  feed: FeedConfig,
+  timeoutMs: number,
+): Promise<FeedProduct[]> {
+  const products = await fetchFeedProductsInner(feed, { timeoutMs });
   return slimFeedProductsForSearch(products);
 }
 
