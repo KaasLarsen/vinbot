@@ -14,6 +14,7 @@ import {
   score,
 } from "./helpers";
 import { getCachedFeedProducts, getCachedFeedProductsForSearch } from "./fetch-feed";
+import { withSearchFeedTimeout } from "./feed-timeout";
 import { detectMerchantIntent } from "./merchant-intent";
 import { brandTermsBeyondFormat, productIsBagInBox, productMatchesWineFormat, wineFormatIntentFromQuery } from "./wine-format";
 import { productMatchesWineStyle, wineStyleIntentFromQuery } from "./wine-style";
@@ -228,14 +229,15 @@ async function runGtinSearch(
   const lists = await Promise.all(
     WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
-        let products = await getCachedFeedProductsForSearch(feed);
-        products = applyPriceFilter(products, priceMin, priceMax);
+        const loaded = await withSearchFeedTimeout(getCachedFeedProductsForSearch(feed), []);
+        let products = applyPriceFilter(loaded, priceMin, priceMax);
 
         const matches = products.filter(
           (p) => productEligibleForWineSearch(p) && productGtinMatchesQuery(p.gtin, barcode),
         );
 
-        feeds_ok++;
+        if (!loaded.length) feeds_failed++;
+        else feeds_ok++;
         return matches.length ? toHits(matches) : [];
       } catch (err) {
         feeds_failed++;
@@ -311,11 +313,11 @@ async function runSearchUncached(
   const lists = await Promise.all(
     WINE_SEARCH_FEEDS.map(async (feed) => {
       try {
-        let products = await getCachedFeedProductsForSearch(feed);
-        products = applyPriceFilter(products, priceMin, priceMax);
+        const loaded = await withSearchFeedTimeout(getCachedFeedProductsForSearch(feed), []);
+        let products = applyPriceFilter(loaded, priceMin, priceMax);
 
-        if (!products.length) {
-          feeds_ok++;
+        if (!loaded.length) {
+          feeds_failed++;
           return [];
         }
 
@@ -334,13 +336,8 @@ async function runSearchUncached(
           return terms.some((t) => (p._search || "").includes(t));
         });
 
-        if (!matches.length) {
-          feeds_ok++;
-          return [];
-        }
-
         feeds_ok++;
-        return toHits(matches);
+        return matches.length ? toHits(matches) : [];
       } catch (err) {
         feeds_failed++;
         console.error(`[search] feed FAILED for ${feed.merchant}:`, err instanceof Error ? err.message : err);
@@ -387,7 +384,7 @@ async function runSearchUncached(
 const cachedRunSearch = unstable_cache(
   async (q: string, budgetMax: number | null, budgetMin: number | null) =>
     runSearchUncached(q, budgetMax, budgetMin),
-  ["vinbot-search-v4-search-feed-cache"],
+  ["vinbot-search-v5-feed-timeout"],
   { revalidate: 600, tags: ["vinbot-feeds"] },
 );
 

@@ -10,6 +10,7 @@ import {
   spiritsSearchHayMatchesTerm,
 } from "./spirits";
 import { normalizeUrl, parsePriceFilter, proxyImg, score } from "./helpers";
+import { withSearchFeedTimeout } from "./feed-timeout";
 import { getCachedFeedProductsForSearch } from "./fetch-feed";
 
 const RESULT_CAP = 48;

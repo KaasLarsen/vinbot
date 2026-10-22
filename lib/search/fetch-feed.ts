@@ -67,9 +67,10 @@ async function fetchFeedProductsForCache(feed: FeedConfig): Promise<FeedProduct[
 
 /**
  * Max produkter pr. feed i søge-cachen. Kæmpe Daisycon-kataloger (fx Decantalo ~5k+)
- * gør ellers hver multi-feed-søgning dyr at deserialisere fra Data Cache.
+ * overskrider ellers Data Cache 2MB — så cachen aldrig persisterer og hvert request
+ * downloader feedet forfra (~5–12 s).
  */
-const SEARCH_FEED_PRODUCT_CAP = 1500;
+const SEARCH_FEED_PRODUCT_CAP = 800;
 
 /** Ultra-slim + cap — kun til live søgning, ikke katalog/PLA/browse. */
 function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
@@ -122,7 +123,7 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
 const FEED_PRODUCTS_CACHE_VERSION = "v15-spirits-hub";
-const SEARCH_FEED_CACHE_VERSION = "v1-search-cap-1500";
+const SEARCH_FEED_CACHE_VERSION = "v2-search-cap-800";
 const PLA_FEED_CACHE_VERSION = "v4-spirits-hub";
 
 function feedFilterKey(feed: FeedConfig): string {
