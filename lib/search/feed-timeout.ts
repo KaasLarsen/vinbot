@@ -1,5 +1,5 @@
 /** Per-feed budget i multi-feed søgning — én langsom Daisycon må ikke holde hele svaret. */
-export const SEARCH_FEED_TIMEOUT_MS = 4_000;
+export const SEARCH_FEED_TIMEOUT_MS = 3_800;
 
 export async function withSearchFeedTimeout<T>(
   promise: Promise<T>,

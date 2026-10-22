@@ -25,9 +25,13 @@ function filterVinAdjacentCatalog(feed: FeedConfig, products: FeedProduct[]): Fe
   });
 }
 
-export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProduct[]> {
+export async function fetchFeedProductsInner(
+  feed: FeedConfig,
+  opts?: { timeoutMs?: number },
+): Promise<FeedProduct[]> {
   const { merchant, url } = feed;
   const tier = feedTier(feed);
+  const timeoutMs = opts?.timeoutMs ?? 12_000;
   const headers = {
     "user-agent": UA,
     accept: "text/xml,application/xml,text/plain,text/csv,*/*",
@@ -36,7 +40,7 @@ export async function fetchFeedProductsInner(feed: FeedConfig): Promise<FeedProd
     headers,
     redirect: "follow",
     cache: "no-store",
-    signal: AbortSignal.timeout(12_000),
+    signal: AbortSignal.timeout(timeoutMs),
   });
   const buf = await r.arrayBuffer();
   const text = decodeText(buf);
@@ -100,8 +104,11 @@ function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
   }));
 }
 
+/** Bruger-requests: fail hurtigt. Cron-warm kan kalde med længere timeout via opts. */
+const SEARCH_FEED_FETCH_TIMEOUT_MS = 3_500;
+
 async function fetchFeedProductsForSearchCache(feed: FeedConfig): Promise<FeedProduct[]> {
-  const products = await fetchFeedProductsInner(feed);
+  const products = await fetchFeedProductsInner(feed, { timeoutMs: SEARCH_FEED_FETCH_TIMEOUT_MS });
   return slimFeedProductsForSearch(products);
 }
 
