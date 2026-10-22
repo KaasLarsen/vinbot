@@ -70,7 +70,7 @@ async function fetchFeedProductsForCache(feed: FeedConfig): Promise<FeedProduct[
  * overskrider ellers Data Cache 2MB — så cachen aldrig persisterer og hvert request
  * downloader feedet forfra (~5–12 s).
  */
-const SEARCH_FEED_PRODUCT_CAP = 800;
+const SEARCH_FEED_PRODUCT_CAP = 400;
 
 /** Ultra-slim + cap — kun til live søgning, ikke katalog/PLA/browse. */
 function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
@@ -83,20 +83,20 @@ function slimFeedProductsForSearch(products: FeedProduct[]): FeedProduct[] {
   return ranked.slice(0, SEARCH_FEED_PRODUCT_CAP).map((p) => ({
     merchant: p.merchant,
     tier: p.tier,
-    title: p.title,
+    title: (p.title || "").slice(0, 120),
     desc: "",
     category: "",
-    brand: p.brand || "",
-    gtin: p.gtin,
+    brand: (p.brand || "").slice(0, 40),
+    gtin: null,
     mpn: null,
     price: p.price,
     salePrice: p.salePrice,
-    referencePrice: p.referencePrice,
-    discountPercent: p.discountPercent,
-    currency: p.currency || "DKK",
-    image: p.image,
+    referencePrice: null,
+    discountPercent: null,
+    currency: "DKK",
+    image: p.image || "",
     url: p.url,
-    _search: (p._search || "").slice(0, 160),
+    _search: (p._search || "").slice(0, 100),
   }));
 }
 
@@ -123,7 +123,7 @@ async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProdu
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
 const FEED_PRODUCTS_CACHE_VERSION = "v15-spirits-hub";
-const SEARCH_FEED_CACHE_VERSION = "v2-search-cap-800";
+const SEARCH_FEED_CACHE_VERSION = "v3-search-cap-400";
 const PLA_FEED_CACHE_VERSION = "v4-spirits-hub";
 
 function feedFilterKey(feed: FeedConfig): string {

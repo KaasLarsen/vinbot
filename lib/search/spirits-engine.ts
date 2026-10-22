@@ -59,8 +59,12 @@ async function runSpiritsSearchUncached(qRaw: string, budgetMaxParam: number | n
   const lists = await Promise.all(
     spiritsFeeds.map(async (feed) => {
       try {
-        let products = await getCachedFeedProductsForSearch(feed);
-        products = products.filter(productIsSpiritLike);
+        const loaded = await withSearchFeedTimeout(getCachedFeedProductsForSearch(feed), []);
+        if (!loaded.length) {
+          feeds_failed++;
+          return [] as ProductHit[];
+        }
+        let products = loaded.filter(productIsSpiritLike);
 
         if (priceMin != null || priceMax != null) {
           products = products.filter((p) => {
