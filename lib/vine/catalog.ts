@@ -237,13 +237,31 @@ function logEmptyCatalogOnce(): void {
   console.error("[catalog] cache empty or failed");
 }
 
+/** Warn før Next.js Data Cache 2 MB-loftet (~1.5 MB JSON). */
+const SHARD_SIZE_WARN_BYTES = Math.floor(1.5 * 1024 * 1024);
+
+function logShardSize(index: number, wines: CanonicalWine[]): void {
+  try {
+    const bytes = Buffer.byteLength(JSON.stringify(wines), "utf8");
+    if (bytes > SHARD_SIZE_WARN_BYTES) {
+      console.warn(
+        `[catalog] shard ${index} ~${(bytes / (1024 * 1024)).toFixed(2)} MB (${wines.length} wines) — near Data Cache 2 MB limit`,
+      );
+    }
+  } catch {
+    /* ignore size probe failures */
+  }
+}
+
 function shardCache(index: number) {
   return unstable_cache(
     async () => {
       const catalog = await buildWineCatalogSingleFlight();
-      return catalog.wines.filter((w) => wineShardIndex(w.slug) === index);
+      const wines = catalog.wines.filter((w) => wineShardIndex(w.slug) === index);
+      logShardSize(index, wines);
+      return wines;
     },
-    ["vinbot-wine-shard-v18", String(index)],
+    ["vinbot-wine-shard-v19", String(index)],
     { revalidate: 21600, tags: ["vinbot-feeds"] },
   );
 }
@@ -309,6 +327,9 @@ export async function getCachedWineCatalog(): Promise<WineCatalog> {
 /** Opvarm Data Cache efter cron-revalidate — bygger shards én gang og gemmer dem. */
 export async function warmWineCatalog(): Promise<WineCatalog> {
   const parts = await Promise.all(Array.from({ length: WINE_SHARD_COUNT }, (_, i) => readWineShard(i)));
+  for (let i = 0; i < parts.length; i++) {
+    logShardSize(i, parts[i] ?? []);
+  }
   const index = await getCachedWineSitemapIndex();
   const wines = parts.flat();
   if (wines.length === 0) {

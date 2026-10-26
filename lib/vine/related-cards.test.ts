@@ -69,4 +69,27 @@ test("forudberegnede related-kort matcher pickRelatedWines", () => {
   );
   assert.equal(withRelated[0].related?.[0]?.fromPrice, 110);
   assert.equal(withRelated[0].related?.[0]?.offerCount, 1);
+  assert.equal(withRelated[0].related?.[0]?.image, null);
+});
+
+test("attachRelatedCards default er max 4 related uden image", () => {
+  const wines = Array.from({ length: 10 }, (_, i) =>
+    wine({
+      slug: `rod-${i}`,
+      displayTitle: `Rødvin ${i}`,
+      category: "Rødvin",
+      brand: "Test",
+      price: 100 + i,
+    }),
+  );
+  wines[0] = {
+    ...wines[0],
+    image: "https://example.test/bottle.jpg",
+  };
+
+  const withRelated = attachRelatedCards(wines);
+  assert.ok((withRelated[0].related?.length ?? 0) <= 4);
+  for (const card of withRelated[0].related ?? []) {
+    assert.equal(card.image, null);
+  }
 });

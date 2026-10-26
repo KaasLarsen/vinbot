@@ -1,5 +1,5 @@
 /** Antal cache-entries for vin-kataloget. Hver shard skal holde sig under Next.js' 2 MB-loft. */
-export const WINE_SHARD_COUNT = 8;
+export const WINE_SHARD_COUNT = 16;
 
 /** Stabil shard for en slug. Samme slug rammer altid samme shard. */
 export function wineShardIndex(slug: string): number {

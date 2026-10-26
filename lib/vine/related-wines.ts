@@ -156,10 +156,16 @@ export function toRelatedWineCard(wine: CanonicalWine): RelatedWineCard {
   };
 }
 
-/** Kør den eksisterende related-udvælgelse én gang pr. katalog, ikke pr. side. */
-export function attachRelatedCards(wines: CanonicalWine[], limit = 8): CanonicalWine[] {
+/**
+ * Kør related-udvælgelse én gang pr. katalog, ikke pr. side.
+ * Max 4 kort uden image — holder shard-JSON under Data Cache 2 MB.
+ */
+export function attachRelatedCards(wines: CanonicalWine[], limit = 4): CanonicalWine[] {
   return wines.map((wine) => ({
     ...wine,
-    related: pickRelatedWines(wine, wines, { limit }).map(toRelatedWineCard),
+    related: pickRelatedWines(wine, wines, { limit }).map((related) => ({
+      ...toRelatedWineCard(related),
+      image: null,
+    })),
   }));
 }

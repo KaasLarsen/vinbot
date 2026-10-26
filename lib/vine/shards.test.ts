@@ -3,6 +3,10 @@ import { test } from "node:test";
 
 import { WINE_SHARD_COUNT, wineShardIndex } from "./shards.ts";
 
+test("WINE_SHARD_COUNT er 16 for Data Cache-størrelse", () => {
+  assert.equal(WINE_SHARD_COUNT, 16);
+});
+
 test("wineShardIndex er stabil og inden for shard-antallet", () => {
   const slug = "riesling-2024-riesling-l-dr-loosen-515ff401";
   const index = wineShardIndex(slug);
