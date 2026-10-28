@@ -367,4 +367,9 @@ export const FEEDS: FeedConfig[] = [
     url: "https://vindien.dk/wp-content/uploads/2026/10/Vindien-Vinbot.csv",
     tier: "free",
   },
+  {
+    merchant: "Bichel Vine",
+    url: "https://bichel.dk/bichel_google_feed.xml",
+    tier: "free",
+  },
 ];

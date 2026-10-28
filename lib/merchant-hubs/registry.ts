@@ -1396,6 +1396,52 @@ export const MERCHANT_HUBS: MerchantHubConfig[] = [
     affiliate: { kind: "feed-only" },
   },
   {
+    slug: "bichel-vine",
+    displayName: "Bichel Vine",
+    feedMerchant: "Bichel Vine",
+    blurb: "Dansk vinimportør med champagne og klassiske flasker i Vinbots søgning.",
+    title: "Bichel Vine — shop og inspiration | Vinbot",
+    description:
+      "Bichel Vine er en vinforhandler hos Vinbot. Se flasker og priser — uden link videre til shoppen.",
+    introParagraphs: [
+      "Bichel Vine er en dansk vinimportør med blandt andet champagne, cremant og klassiske vine. Du kan se udvalgte flasker og priser her på Vinbot.",
+      "Vinbot linker ikke videre til bichel.dk — brug siden til at danne dig et indtryk, før du selv opsøger shoppen.",
+      "Brug vinsøgningen på forsiden, når du vil sammenligne på tværs af flere forhandlere.",
+    ],
+    matchHeading: "Hvornår er Bichel Vine et godt match?",
+    matchBullets: [
+      "Du leder efter champagne, cremant eller klassiske flasker.",
+      "Du har set Bichel Vine i Vinbots søgeresultater.",
+      "Du vil se deres flasker i vinsøgningen.",
+    ],
+    guideLinks: [
+      { href: "/vine", label: "Vin-katalog" },
+      { href: "/tilbud", label: "Vin tilbud" },
+    ],
+    shopCtaLabel: "Besøg Bichel Vine",
+    shopIntro: "Vi linker ikke videre til shoppen herfra — find inspiration her, eller besøg forhandleren selv.",
+    productIntro: "Udvalgte flasker fra Bichel Vine — uden link videre til shoppen.",
+    productSections: [
+      {
+        title: "Udvalgte vine hos Bichel Vine",
+        queries: ["champagne", "pinot", "rødvin", "cremant"],
+        placement: "bichel-vine-page-table",
+      },
+    ],
+    faq: [
+      {
+        question: "Hvorfor linker Vinbot ikke til Bichel Vine?",
+        answer:
+          "Vi har ikke et aktivt samarbejde med Bichel Vine. Du kan se flasker og priser her — uden link videre til shoppen.",
+      },
+      {
+        question: "Er priserne på Vinbot altid aktuelle?",
+        answer: "Nej. Priser kan skifte — tjek altid hos forhandleren selv, hvis du vil handle.",
+      },
+    ],
+    affiliate: { kind: "feed-only" },
+  },
+  {
     slug: "whiskystack",
     displayName: "Whiskystack",
     feedMerchant: "Whiskystack",

@@ -29,7 +29,6 @@ const CURATED_OUTSIDERS: { slug: string; displayName: string }[] = [
   { slug: "vildmedvin", displayName: "VildMedVin" },
   { slug: "vinmedmere", displayName: "Vinmedmere" },
   { slug: "andrup-vin", displayName: "Andrup Vin" },
-  { slug: "bichel-vine", displayName: "Bichel Vine" },
   { slug: "holte-vinlager", displayName: "Holte Vinlager" },
   { slug: "vin-og-vin", displayName: "Vin & Vin" },
 ];
