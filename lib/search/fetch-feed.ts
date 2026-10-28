@@ -169,12 +169,18 @@ export async function getCachedFeedProducts(feed: FeedConfig): Promise<FeedProdu
  * Lettere feed-cache til multi-feed vinsøgning/spiritus.
  * Cap + slim holder Data Cache-læsning hurtig (Decantalo m.fl.).
  * Merchant-browse og katalog bruger stadig `getCachedFeedProducts`.
+ *
+ * `warm: true` (cron): længere HTTP-timeout, samme Data Cache-nøgle som live søgning.
  */
-export async function getCachedFeedProductsForSearch(feed: FeedConfig): Promise<FeedProduct[]> {
+export async function getCachedFeedProductsForSearch(
+  feed: FeedConfig,
+  opts?: { warm?: boolean },
+): Promise<FeedProduct[]> {
   const filterKey = feedFilterKey(feed);
+  const timeoutMs = opts?.warm ? SEARCH_FEED_WARM_TIMEOUT_MS : SEARCH_FEED_FETCH_TIMEOUT_MS;
   try {
     return await unstable_cache(
-      () => fetchFeedProductsForSearchCache(feed),
+      () => fetchFeedProductsForSearchCache(feed, timeoutMs),
       ["vinbot-feed-search", SEARCH_FEED_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
       { revalidate: 21600, tags: ["vinbot-feeds"] },
     )();
