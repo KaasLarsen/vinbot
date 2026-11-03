@@ -1,18 +1,21 @@
 import { siteUrl } from "@/lib/site";
-import { getCachedWineSitemapIndex } from "@/lib/vine/catalog";
+import { getCachedWineCatalog } from "@/lib/vine/catalog";
+import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
+import { pickWineSitemapSlugs, WINE_SITEMAP_SLUG_LIMIT } from "@/lib/vine/sitemap-slugs";
 import { renderUrlset, sitemapResponseInit, type SitemapUrl } from "@/lib/sitemap-xml";
 
 export const revalidate = 21600;
 export const maxDuration = 60;
 
 /**
- * Vin-katalog-hub + alle aktuelle `/vine/[slug]` fra feed-kataloget.
- * Gone/404-slugs er ikke i kataloget og listes ikke.
+ * Vin-katalog-hub + capped `/vine/[slug]` (featured + billed-vine).
+ * Cap begrænser crawl-bølger / CDN-spikes; øvrige sider findes via interne links.
  */
 export async function GET(): Promise<Response> {
   const base = siteUrl.replace(/\/$/, "");
-  const index = await getCachedWineSitemapIndex();
-  const lastmod = new Date(index.generatedAt);
+  const catalog = await getCachedWineCatalog();
+  const lastmod = new Date(catalog.generatedAt);
+  const slugs = pickWineSitemapSlugs(catalog.wines, FEATURED_WINE_SLUGS, WINE_SITEMAP_SLUG_LIMIT);
 
   const urls: SitemapUrl[] = [
     {
@@ -21,7 +24,7 @@ export async function GET(): Promise<Response> {
       changefreq: "weekly" as const,
       priority: 0.55,
     },
-    ...index.slugs.map((slug) => ({
+    ...slugs.map((slug) => ({
       loc: `${base}/vine/${slug}`,
       lastmod,
       changefreq: "weekly" as const,

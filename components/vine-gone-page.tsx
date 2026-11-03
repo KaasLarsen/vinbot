@@ -1,29 +1,19 @@
 import Link from "next/link";
 
-import { Breadcrumbs } from "@/components/breadcrumbs";
+import { VineGoneBreadcrumbs, VineGonePathHint } from "@/components/vine-gone-path-hint";
 import { VineRelatedWines } from "@/components/vine-related";
 import { toRelatedWineCard } from "@/lib/vine/related-wines";
 import type { CanonicalWine } from "@/lib/vine/types";
 import { PageShell } from "@/components/page-shell";
 
 type Props = {
-  slug: string;
-  hintLabel: string | null;
   suggestions: CanonicalWine[];
 };
 
-export function VineGonePage({ slug, hintLabel, suggestions }: Props) {
-  const displayHint = hintLabel?.trim() || slug.replace(/-/g, " ");
-
+export function VineGonePage({ suggestions }: Props) {
   return (
     <PageShell className="py-10">
-      <Breadcrumbs
-        items={[
-          { href: "/", label: "Forside" },
-          { href: "/vine", label: "Vin-katalog" },
-          { href: `/vine/${slug}`, label: "Ikke længere tilgængelig" },
-        ]}
-      />
+      <VineGoneBreadcrumbs />
 
       <div className="mt-8 rounded-2xl border border-amber-200/90 bg-amber-50/80 px-6 py-8 shadow-sm">
         <p className="text-sm font-medium uppercase tracking-wide text-amber-900/80">Udløbet katalog-link</p>
@@ -31,9 +21,9 @@ export function VineGonePage({ slug, hintLabel, suggestions }: Props) {
           Denne vin er ikke længere i kataloget
         </h1>
         <p className="mt-4 max-w-2xl text-stone-700 leading-relaxed">
-          Vin-kataloget opdateres løbende fra forhandlernes produktfeeds.{" "}
-          <span className="font-medium text-stone-900">{displayHint}</span> findes ikke lige nu under det
-          gamle link — vinen kan være udsolgt, skiftet navn eller samlet med en anden listing.
+          Vin-kataloget opdateres løbende fra forhandlernes produktfeeds. <VineGonePathHint /> findes ikke
+          lige nu under det gamle link — vinen kan være udsolgt, skiftet navn eller samlet med en anden
+          listing.
         </p>
         <p className="mt-3 text-sm text-stone-600">
           Priser og tilbud kan ændre sig hurtigt. Sammenlign altid hos forhandleren, før du køber.

@@ -4,16 +4,11 @@ import { NextResponse } from "next/server";
 
 import { siteUrl } from "@/lib/site";
 
-function withPathnameHeader(request: NextRequest): NextResponse {
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", request.nextUrl.pathname);
-  return NextResponse.next({ request: { headers: requestHeaders } });
-}
-
 /**
- * Apex → www (canonical host) + pathname til `not-found.tsx` under `/vine/[slug]`.
+ * Apex → www (canonical host).
  * Forsiden på apex skal svare 200: Daisycons ejertjek følger ikke 307/308 og
  * melder "Connection to the remote server failed", når vinbot.dk redirecter.
+ * Ingen request-headers på `/vine/*` — ellers bliver ISR dynamisk (CDN MISS).
  */
 export async function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
@@ -24,9 +19,8 @@ export async function middleware(request: NextRequest) {
   }
 
   const isPartnerPath = request.nextUrl.pathname.startsWith("/partnere");
-  const isVinePath = request.nextUrl.pathname.startsWith("/vine/");
 
-  let response = isVinePath ? withPathnameHeader(request) : NextResponse.next({ request });
+  let response = NextResponse.next({ request });
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const supabaseKey =

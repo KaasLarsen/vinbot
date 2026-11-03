@@ -14,6 +14,7 @@ import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/jso
 import { proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
 import { getWineBySlug } from "@/lib/vine/catalog";
+import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
 import { vineProductFaqItems } from "@/lib/vine/editorial-product-copy";
 import { vineMetaDescription, vinePageIntro, vinePagePairing } from "@/lib/vine/copy";
 import { vivinoSearchUrl } from "@/lib/vine/vivino-link";
@@ -26,7 +27,13 @@ import { currentPaidDeal } from "@/lib/price-alerts/match";
 type Props = { params: Promise<{ slug: string }> };
 
 export const revalidate = 21600;
+export const dynamicParams = true;
 export const maxDuration = 60;
+
+/** Byg featured ISR ved deploy; øvrige slug’e on-demand (stadig cachebare). */
+export function generateStaticParams() {
+  return FEATURED_WINE_SLUGS.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
