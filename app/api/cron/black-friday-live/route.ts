@@ -2,11 +2,14 @@ import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 import { getBlackFridayPhase } from "@/lib/black-friday/phase";
+import { warmPopularSearches } from "@/lib/search/warm-popular";
+import { warmWineCatalog } from "@/lib/vine/catalog";
 
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 /**
- * Timevis cron: revaliderer kun feeds under Black Week (live-fase).
+ * Timevis cron: revaliderer feeds under Black Week (live-fase) og warmer
+ * katalog + populære søgninger, så traffic ikke stampeder cold rebuilds.
  */
 export async function GET(req: NextRequest) {
   const secret = process.env.CRON_SECRET?.trim();
@@ -27,5 +30,34 @@ export async function GET(req: NextRequest) {
   }
 
   revalidateTag("vinbot-feeds", "max");
-  return NextResponse.json({ revalidated: true, phase: "live" });
+
+  let catalogWines = 0;
+  let catalogGeneratedAt: string | null = null;
+  try {
+    const catalog = await warmWineCatalog();
+    catalogWines = catalog.wines.length;
+    catalogGeneratedAt = catalog.generatedAt;
+  } catch (err) {
+    console.error("warmWineCatalog (bf-live):", err);
+  }
+
+  let searchWarm: Awaited<ReturnType<typeof warmPopularSearches>> | { error: string } = {
+    feeds: [],
+    wine: [],
+    spirits: [],
+  };
+  try {
+    searchWarm = await warmPopularSearches();
+  } catch (err) {
+    console.error("warmPopularSearches (bf-live):", err);
+    searchWarm = { error: "warm search failed" };
+  }
+
+  return NextResponse.json({
+    revalidated: true,
+    phase: "live",
+    catalogWines,
+    catalogGeneratedAt,
+    searchWarm,
+  });
 }

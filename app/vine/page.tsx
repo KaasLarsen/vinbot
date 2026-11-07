@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_URL },
 };
 
-/** Katalog-build er for tung til SSG inden for Vercels page-timeout — render on request. */
-export const dynamic = "force-dynamic";
+/** ISR: undgå force-dynamic der loader hele kataloget på hvert hit (GB-hours). */
+export const revalidate = 21600;
 export const maxDuration = 60;
 
 export default async function VineHubPage() {

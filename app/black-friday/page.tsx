@@ -46,7 +46,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
+/** 6h — live-friskhed dækkes af black-friday-live cron + feed-warm. */
+export const revalidate = 21600;
 export const maxDuration = 60;
 
 function daLongDate(p: { year: number; month: number; day: number }): string {

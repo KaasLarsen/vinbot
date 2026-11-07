@@ -55,9 +55,22 @@ export async function fetchFeedProductsInner(
   return products;
 }
 
+/**
+ * Max produkter pr. feed i fuld cache (katalog/deals/browse).
+ * Decantalo m.fl. er 5k+ — uden cap overskrider Data Cache 2MB og hvert miss
+ * downloader + parser hele feedet igen (tung GB-hours-kilde).
+ */
+const FULL_FEED_PRODUCT_CAP = 1200;
+
 /** Fjern tunge felter så Data Cache holder sig under Next.js 2MB-grænsen. */
 function slimFeedProductsForCache(products: FeedProduct[]): FeedProduct[] {
-  return products.map((p) => ({
+  const ranked = [...products].sort(
+    (a, b) =>
+      (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+      (a.price == null ? 1 : 0) - (b.price == null ? 1 : 0) ||
+      (a.price ?? 9e9) - (b.price ?? 9e9),
+  );
+  return ranked.slice(0, FULL_FEED_PRODUCT_CAP).map((p) => ({
     ...p,
     desc: "",
     _search: (p._search || "").slice(0, 240),
@@ -129,13 +142,21 @@ function slimFeedProductsForPla(products: FeedProduct[]): FeedProduct[] {
 
 async function fetchFeedProductsForPlaCache(feed: FeedConfig): Promise<FeedProduct[]> {
   const products = await fetchFeedProductsInner(feed);
-  return slimFeedProductsForPla(products);
+  const slim = slimFeedProductsForPla(products);
+  // Samme cap som fuld cache — PLA-beskrivelse er tungere pr. række.
+  const ranked = [...slim].sort(
+    (a, b) =>
+      (a.image ? 0 : 1) - (b.image ? 0 : 1) ||
+      (a.price == null ? 1 : 0) - (b.price == null ? 1 : 0) ||
+      (a.price ?? 9e9) - (b.price ?? 9e9),
+  );
+  return ranked.slice(0, FULL_FEED_PRODUCT_CAP);
 }
 
 /** Bump ved parser-/filterændringer så tomme Daisycon-cache ikke hænger efter deploy. */
-const FEED_PRODUCTS_CACHE_VERSION = "v15-spirits-hub";
+const FEED_PRODUCTS_CACHE_VERSION = "v16-full-cap-1200";
 const SEARCH_FEED_CACHE_VERSION = "v3-search-cap-400";
-const PLA_FEED_CACHE_VERSION = "v4-spirits-hub";
+const PLA_FEED_CACHE_VERSION = "v5-pla-cap-1200";
 
 function feedFilterKey(feed: FeedConfig): string {
   return feed.wineFilter !== false
@@ -194,21 +215,19 @@ export async function getCachedFeedProductsForSearch(
 }
 
 export async function getCachedFeedProductsForPla(feed: FeedConfig): Promise<FeedProduct[]> {
-  const filterKey =
-    feed.wineFilter !== false
-      ? "wine"
-      : [
-          "nof-wine-filter",
-          feed.vinAdjacentIncludeAny?.join(",") ?? "",
-          feed.vinAdjacentExcludeAny?.join(",") ?? "",
-        ].join("|");
+  const filterKey = feedFilterKey(feed);
   try {
     return await unstable_cache(
       () => fetchFeedProductsForPlaCache(feed),
       ["vinbot-feed-pla", PLA_FEED_CACHE_VERSION, feed.merchant, feed.url, feedTier(feed), filterKey],
       { revalidate: 21600, tags: ["vinbot-feeds"] },
     )();
-  } catch {
-    return slimFeedProductsForPla(await fetchFeedProductsInner(feed));
+  } catch (err) {
+    console.error(
+      `[feed-pla] cache FAILED for ${feed.merchant}:`,
+      err instanceof Error ? err.message : err,
+    );
+    // Ingen uncached double-fetch — det fordobler GB-hours ved cache-fejl.
+    return [];
   }
 }

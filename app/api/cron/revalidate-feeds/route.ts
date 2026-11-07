@@ -29,6 +29,7 @@ async function warmFeaturedWinePages(): Promise<{ warmed: string[]; failed: stri
           method: "GET",
           headers: { "user-agent": "VinbotCronWarm/1.0" },
           cache: "no-store",
+          signal: AbortSignal.timeout(15_000),
         });
         if (res.ok) warmed.push(slug);
         else failed.push(slug);
