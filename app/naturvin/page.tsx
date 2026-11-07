@@ -15,7 +15,9 @@ const PAGE_DESCRIPTION =
   "Naturvin-hub: funky smag vs. fejl, økologisk vs. biodynamisk vs. naturvin, mad til orange og pét-nat, og hvor længe en åbnet flaske holder.";
 const PAGE_URL = `${siteUrl}/naturvin`;
 
-export const dynamic = "force-dynamic";
+/** ISR: ProductFeedPreview må ikke køre force-dynamic på hvert hit. */
+export const revalidate = 21600;
+export const maxDuration = 60;
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

@@ -8,8 +8,9 @@ import { warmWineCatalog } from "@/lib/vine/catalog";
 export const maxDuration = 120;
 
 /**
- * Timevis cron: revaliderer feeds under Black Week (live-fase) og warmer
- * katalog + populære søgninger, så traffic ikke stampeder cold rebuilds.
+ * Black Week cron (hver 3. time i vercel.json): revaliderer feeds i live-fase
+ * og warmer katalog + populære søgninger, så traffic ikke stampeder cold rebuilds.
+ * Uden for live returnerer 204 (næsten gratis).
  */
 export async function GET(req: NextRequest) {
   const secret = process.env.CRON_SECRET?.trim();

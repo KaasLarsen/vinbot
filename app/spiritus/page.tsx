@@ -49,8 +49,8 @@ export const metadata: Metadata = {
   openGraph: { url: PAGE_URL, title: PAGE_TITLE, description: PAGE_DESCRIPTION },
 };
 
-/** Feed-søgning under SSG overstiger ofte Vercels page-timeout. */
-export const dynamic = "force-dynamic";
+/** Statisk hub — live søgning kører client-side via /api/search/spirits. */
+export const revalidate = 86400;
 
 export default function SpiritusPage() {
   return (

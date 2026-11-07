@@ -11,7 +11,7 @@ import { VineStructuralSection } from "@/components/vine-profile-structural";
 import { VineCuratedDetailCta } from "@/components/vine-curated-detail-cta";
 import { VineRelatedWines } from "@/components/vine-related";
 import { BreadcrumbJsonLd, FaqJsonLd, WineProductJsonLd } from "@/components/json-ld";
-import { proxyImg } from "@/lib/search/helpers";
+import { absoluteProductImageUrl, proxyImg } from "@/lib/search/helpers";
 import { siteUrl } from "@/lib/site";
 import { getWineBySlug } from "@/lib/vine/catalog";
 import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${wine.displayTitle}${wine.brand ? ` · ${wine.brand}` : ""}`;
   const description = vineMetaDescription(wine, 158);
   const ogImages =
-    wine.image != null ? [{ url: `${siteUrl}/api/img?src=${encodeURIComponent(wine.image)}`, alt: wine.displayTitle }] : undefined;
+    wine.image != null ? [{ url: absoluteProductImageUrl(wine.image, siteUrl), alt: wine.displayTitle }] : undefined;
 
   return {
     title,
@@ -76,8 +76,7 @@ export default async function VineProductPage({ params }: Props) {
     { name: wine.displayTitle, url },
   ];
 
-  const imageAbsolute =
-    wine.image != null ? `${siteUrl}/api/img?src=${encodeURIComponent(wine.image)}` : null;
+  const imageAbsolute = wine.image != null ? absoluteProductImageUrl(wine.image, siteUrl) : null;
 
   return (
     <PageShell className="py-10">

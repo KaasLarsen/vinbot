@@ -64,8 +64,9 @@ export const metadata: Metadata = {
   openGraph: { url: PAGE_URL },
 };
 
-/** Feed-preview under SSG overstiger ofte Vercels page-timeout. */
-export const dynamic = "force-dynamic";
+/** ISR i stedet for force-dynamic — feed-preview regenereres hver 6. time. */
+export const revalidate = 21600;
+export const maxDuration = 60;
 
 export default function VinglasPage() {
   return (

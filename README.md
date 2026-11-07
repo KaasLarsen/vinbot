@@ -65,7 +65,7 @@ Sæt de samme værdier i Vercel (Production + Preview) ved deploy.
 
 Push til `main` deployer automatisk til Vercel production via Git-integration (ingen GitHub Actions-token).
 
-Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 6. time). Under Black Week revaliderer `/api/cron/black-friday-live` hver time.
+Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 12. time). Under Black Week revaliderer `/api/cron/black-friday-live` hver 3. time.
 
 Permanent hub: `/black-friday`.
 

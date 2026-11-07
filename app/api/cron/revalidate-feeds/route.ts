@@ -14,7 +14,8 @@ import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
  * - Lokalt (uden VERCEL): tilladt uden secret så I kan køre `curl localhost:3000/...` under udvikling.
  * - Opvarmer vin-katalog efter revalidate så cold-start ikke giver 5xx ved mass-crawl.
  * - Hitter forsides-udvalget `/vine/[slug]` så ISR er varm når brugere klikker fra hjem.
- * - Fylder populære søgeresultater i cache, så første bruger ikke venter på cold search.
+ * - Fylder få populære søgeresultater i cache, så første bruger ikke venter på cold search.
+ * - Schedule: hver 12. time (se vercel.json) — balance mellem friskhed og Fluid GB-hours.
  */
 export const maxDuration = 120;
 

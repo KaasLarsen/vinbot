@@ -624,8 +624,69 @@ export function looksLikeXML(txt: string): boolean {
   return /<\?xml|<rss|<feed|<channel|<products|<product|<item|<produkter|<produkt/i.test(txt);
 }
 
+/**
+ * CDN/hosts der typisk tillader hotlinking. Direkte URL sparer et Function-hit
+ * pr. unikt billede via `/api/img` (stor del af Fluid invocations).
+ * Ukendte/hotlink-beskyttede hosts går stadig via proxy.
+ */
+const DIRECT_IMAGE_HOST_SUFFIXES: readonly string[] = [
+  "cdn.shopify.com",
+  "shopifycdn.com",
+  "myshopify.com",
+  "cloudinary.com",
+  "imgix.net",
+  "googleusercontent.com",
+  "ggpht.com",
+  "wp.com",
+  "wixstatic.com",
+  "squarespace-cdn.com",
+  "bigcommerce.com",
+  "scene7.com",
+  "cloudfront.net",
+  "akamaihd.net",
+  "azureedge.net",
+  "img.daisycon.io",
+  "images.unsplash.com",
+  "ctfassets.net",
+  "sanity.io",
+];
+
+export function imageHostAllowsDirectHotlink(hostname: string): boolean {
+  const host = hostname.trim().toLowerCase().replace(/\.$/, "");
+  if (!host) return false;
+  return DIRECT_IMAGE_HOST_SUFFIXES.some((suffix) => host === suffix || host.endsWith(`.${suffix}`));
+}
+
+/** Absolut https-URL til produktbillede uden proxy — ellers null. */
+export function tryDirectProductImageUrl(src: string): string | null {
+  let raw = (src || "").trim();
+  if (!raw) return null;
+  if (raw.startsWith("//")) raw = `https:${raw}`;
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:") return null;
+    if (!imageHostAllowsDirectHotlink(url.hostname)) return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Billed-URL til UI. Brug direkte CDN når muligt; ellers `/api/img` (referer-guard + cache).
+ */
 export function proxyImg(src: string): string {
+  const direct = tryDirectProductImageUrl(src);
+  if (direct) return direct;
   return `/api/img?src=${encodeURIComponent(src)}`;
+}
+
+/** Absolut billede-URL til JSON-LD / Open Graph. */
+export function absoluteProductImageUrl(src: string, siteOrigin: string): string {
+  const resolved = proxyImg(src);
+  if (/^https?:\/\//i.test(resolved)) return resolved;
+  const origin = siteOrigin.replace(/\/$/, "");
+  return `${origin}${resolved.startsWith("/") ? resolved : `/${resolved}`}`;
 }
 
 export function normalizeUrl(maybe: string, pageUrl: string): string | null {
