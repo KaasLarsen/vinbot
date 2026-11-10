@@ -10,22 +10,26 @@ import { useMarketingConsent } from "@/lib/use-marketing-consent";
  *
  * Publisher-scriptet indlæses uafhængigt via <AdSenseConsentGate /> i layout — dét
  * kræver kun NEXT_PUBLIC_ADSENSE_CLIENT, så Googlebot kan verificere publisher-tagget.
- * Selve annonce-slots (denne komponent) kræver både env ACTIVE=true og cookie-valget "Accepter".
+ * Selve annonce-slots (denne komponent) kræver env ACTIVE=true, et slot-id og cookie-valget "Accepter".
+ * In-article bruger data-ad-format="fluid" og data-ad-layout="in-article".
  */
 export function AdSenseLoader() {
   return null;
 }
 
-type SlotProps = { slot: string; className?: string; format?: "auto" | "rectangle" | "horizontal" | "vertical" };
+type AdFormat = "auto" | "rectangle" | "horizontal" | "vertical" | "in-article";
+
+type SlotProps = { slot: string; className?: string; format?: AdFormat };
 
 export function AdSlot({ slot, className = "", format = "auto" }: SlotProps) {
   const allowAds = useMarketingConsent();
   const enabled = isAdsenseSlotsActive();
   const client = getAdsenseClientId();
   const pushedRef = useRef(false);
+  const inArticle = format === "in-article";
 
   useEffect(() => {
-    if (!enabled || !allowAds || pushedRef.current) return;
+    if (!enabled || !allowAds || !slot || pushedRef.current) return;
     try {
       const w = window as unknown as { adsbygoogle?: object[] };
       w.adsbygoogle = w.adsbygoogle || [];
@@ -36,17 +40,17 @@ export function AdSlot({ slot, className = "", format = "auto" }: SlotProps) {
     }
   }, [enabled, allowAds, slot]);
 
-  if (!enabled || !allowAds) return null;
+  if (!enabled || !allowAds || !slot) return null;
 
   return (
     <div className={className}>
       <ins
-        className="adsbygoogle block min-h-[100px] w-full"
+        className={`adsbygoogle block w-full ${inArticle ? "min-h-[250px]" : "min-h-[100px]"}`}
         style={{ display: "block" }}
         data-ad-client={client}
         data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
+        data-ad-format={inArticle ? "fluid" : format}
+        {...(inArticle ? { "data-ad-layout": "in-article" } : { "data-full-width-responsive": "true" })}
       />
     </div>
   );

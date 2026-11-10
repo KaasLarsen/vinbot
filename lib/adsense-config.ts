@@ -7,6 +7,8 @@
  * - `NEXT_PUBLIC_ADSENSE_ACTIVE === "true"` styrer om faktiske annonce-slots
  *   renderes (kræver dermed også samtykke). Slå først til når Google har
  *   godkendt sitet.
+ * - `NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE` er tallet fra en In-article-enhed
+ *   (`data-ad-slot`). Uden det vises ingen artikel-annonce.
  */
 export function isAdsenseScriptEnabled(): boolean {
   return Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim());
@@ -25,6 +27,11 @@ export function isAdsenseEnabled(): boolean {
 
 export function getAdsenseClientId(): string {
   return process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() || "";
+}
+
+/** Slot-id til in-article-feltet i guides, opskrifter, drinks og vin-sider. */
+export function getAdsenseArticleSlotId(): string {
+  return process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE?.trim() || "";
 }
 
 /** Publisher-ID til ads.txt (`pub-…`), udledt fra `ca-pub-…` eller fallback som matcher .env.example. */

@@ -13,6 +13,7 @@ import { getBedsteFallbackFaq } from "@/lib/guide-faq-bedste-fallback";
 import { getVidenFallbackFaq } from "@/lib/guide-faq-viden-fallback";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RelatedGuides } from "@/components/related-guides";
+import { ArticleAd } from "@/components/article-ad";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { GuideCatalogSearchBar } from "@/components/guide-catalog-search-bar";
 import { GuideProductPicks } from "@/components/guide-product-picks";
@@ -240,6 +241,7 @@ export default async function GuidePage({ params }: Props) {
       {!isMicro ? <GuideRecipeCrosslinks guideSlug={slug} /> : null}
       {!isMicro ? <GuideDrinkCrosslinks guideSlug={slug} /> : null}
       {faqItems?.length ? <GuideFaqAccordion items={faqItems} /> : null}
+      <ArticleAd />
       <PartnerAdsLeaderboard className="mt-12" hub={hub} slug={slug} />
       {!isMicro ? (
         <div className="mt-12">

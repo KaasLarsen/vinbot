@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+import { ArticleAd } from "@/components/article-ad";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VivinoCommunityLink } from "@/components/vivino-community-link";
 import { VineProfileEditorial, VineProfileFaq } from "@/components/vine-profile-editorial";
@@ -235,6 +236,8 @@ export default async function VineProductPage({ params }: Props) {
         <Suspense fallback={<RelatedFallback />}>
           <VineRelatedSection wine={wine} />
         </Suspense>
+
+        <ArticleAd />
 
         <VineProfileFaq items={faqItems} />
 

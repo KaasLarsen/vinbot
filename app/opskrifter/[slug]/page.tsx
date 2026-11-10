@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, RecipeJsonLd } from "@/components/json-ld";
+import { ArticleAd } from "@/components/article-ad";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { RecipeIngredients } from "@/components/recipe-ingredients";
 import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
@@ -211,6 +212,8 @@ export default async function RecipePage({ params }: Props) {
       <div className="prose prose-stone mt-10 max-w-none">
         {content}
       </div>
+
+      <ArticleAd />
 
       {frontmatter.relatedGuides?.length ? (
         <RecipeRelatedGuides slugs={frontmatter.relatedGuides} />

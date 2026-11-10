@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BreadcrumbJsonLd, FaqJsonLd, RecipeJsonLd } from "@/components/json-ld";
+import { ArticleAd } from "@/components/article-ad";
 import { PartnerAdsLeaderboard } from "@/components/partner-ads-leaderboard";
 import { RecipeIngredients } from "@/components/recipe-ingredients";
 import { RecipeRelatedGuides } from "@/components/recipe-related-guides";
@@ -211,6 +212,8 @@ export default async function DrinkPage({ params }: Props) {
       </div>
 
       <div className="prose prose-stone mt-10 max-w-none">{content}</div>
+
+      <ArticleAd />
 
       {faqItems.length > 0 ? <GuideFaqAccordion items={faqItems} /> : null}
 
