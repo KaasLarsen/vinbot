@@ -17,7 +17,8 @@ export type WarmPopularSearchResult = {
   spirits: { q: string; ok: boolean; n: number }[];
 };
 
-const FEED_WARM_CONCURRENCY = 6;
+/** Lav concurrency under Fluid — undgå provisioned-memory spikes under warm. */
+const FEED_WARM_CONCURRENCY = 2;
 
 async function mapPool<T, R>(items: readonly T[], concurrency: number, fn: (item: T) => Promise<R>): Promise<R[]> {
   const out: R[] = new Array(items.length);
@@ -34,13 +35,9 @@ async function mapPool<T, R>(items: readonly T[], concurrency: number, fn: (item
   return out;
 }
 
-/**
- * Fylder søge-feed-cache + populære result-caches, så første bruger efter cron
- * ikke betaler Daisycon-cold-downloads. Begrænset concurrency for at holde
- * provisioned memory nede under Fluid Compute.
- */
-export async function warmPopularSearches(): Promise<WarmPopularSearchResult> {
-  const feeds = await mapPool(WINE_SEARCH_FEEDS, FEED_WARM_CONCURRENCY, async (feed) => {
+/** Fylder kun søge-feed-cachen (før katalog / query-warm). */
+export async function warmSearchFeeds(): Promise<WarmPopularSearchResult["feeds"]> {
+  return mapPool(WINE_SEARCH_FEEDS, FEED_WARM_CONCURRENCY, async (feed) => {
     try {
       const products = await getCachedFeedProductsForSearch(feed, { warm: true });
       return { merchant: feed.merchant, ok: products.length > 0, n: products.length };
@@ -49,7 +46,12 @@ export async function warmPopularSearches(): Promise<WarmPopularSearchResult> {
       return { merchant: feed.merchant, ok: false, n: 0 };
     }
   });
+}
 
+/** Fylder populære result-caches (forudsætter varme feeds). */
+export async function warmPopularSearchQueries(): Promise<
+  Pick<WarmPopularSearchResult, "wine" | "spirits">
+> {
   const wine = await mapPool(POPULAR_WINE_SEARCH_QUERIES, 2, async (q) => {
     try {
       const result = await runSearch(q, null, null);
@@ -70,5 +72,16 @@ export async function warmPopularSearches(): Promise<WarmPopularSearchResult> {
     }
   });
 
+  return { wine, spirits };
+}
+
+/**
+ * Fylder søge-feed-cache + populære result-caches, så første bruger efter cron
+ * ikke betaler Daisycon-cold-downloads. Begrænset concurrency for at holde
+ * provisioned memory nede under Fluid Compute.
+ */
+export async function warmPopularSearches(): Promise<WarmPopularSearchResult> {
+  const feeds = await warmSearchFeeds();
+  const { wine, spirits } = await warmPopularSearchQueries();
   return { feeds, wine, spirits };
 }

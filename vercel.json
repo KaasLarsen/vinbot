@@ -7,6 +7,10 @@
       "schedule": "0 */12 * * *"
     },
     {
+      "path": "/api/cron/force-revalidate-feeds",
+      "schedule": "30 3 * * *"
+    },
+    {
       "path": "/api/cron/black-friday-live",
       "schedule": "0 */3 * * *"
     }

@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { allowImgUpstreamFetch } from "@/lib/cron/img-referer";
+import { isHeavyWorkPaused } from "@/lib/cron/pause-heavy";
+import { siteUrl } from "@/lib/site";
+
 /** Hold image-proxy billig: slow origins må ikke brænde default function duration. */
 export const maxDuration = 10;
 
@@ -8,6 +12,14 @@ const UA =
 
 const FETCH_TIMEOUT_MS = 8_000;
 const MAX_BYTES = 2 * 1024 * 1024;
+
+function siteHost(): string {
+  try {
+    return new URL(siteUrl).hostname;
+  } catch {
+    return "www.vinbot.dk";
+  }
+}
 
 function placeholderSvg(): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><rect width="256" height="256" rx="24" fill="#1a1a1f"/><g fill="#cfc8bf"><path d="M86 44h84v24c0 25-19 46-42 46s-42-21-42-46V44z"/><rect x="122" y="114" width="12" height="78" rx="6"/><rect x="94" y="194" width="68" height="10" rx="5"/></g></svg>`;
@@ -93,6 +105,10 @@ async function readBodyCapped(res: Response, maxBytes: number): Promise<Uint8Arr
 
 export async function GET(req: NextRequest) {
   try {
+    if (isHeavyWorkPaused()) {
+      return placeholderResponse(60);
+    }
+
     let src = req.nextUrl.searchParams.get("src")?.trim() || "";
     if (!src) return new NextResponse("missing src", { status: 400 });
     if (src.startsWith("//")) src = "https:" + src;
@@ -103,6 +119,17 @@ export async function GET(req: NextRequest) {
     }
     if (isBlockedHost(url.hostname)) {
       return placeholderResponse();
+    }
+
+    const allowed = allowImgUpstreamFetch({
+      referer: req.headers.get("referer"),
+      origin: req.headers.get("origin"),
+      userAgent: req.headers.get("user-agent"),
+      siteHost: siteHost(),
+    });
+    if (!allowed) {
+      // Kort cache — bots må ikke fylde CDN med placeholders for vilkårlige src.
+      return placeholderResponse(120);
     }
 
     async function go(ref?: string) {

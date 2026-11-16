@@ -1,101 +1,33 @@
-import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-import { siteUrl } from "@/lib/site";
-import { recordDailyPriceSnapshot } from "@/lib/black-friday/price-snapshots";
-import { dispatchPriceAlerts } from "@/lib/price-alerts/dispatch";
-import { warmPopularSearches } from "@/lib/search/warm-popular";
-import { warmWineCatalog } from "@/lib/vine/catalog";
-import { FEATURED_WINE_SLUGS } from "@/lib/vine/featured-slugs";
+import { authorizeCron, wantsForceRevalidate } from "@/lib/cron/auth";
+import { isHeavyWorkPaused } from "@/lib/cron/pause-heavy";
+import { warmAfterFeedChange } from "@/lib/cron/warm-feeds";
 
 /**
- * Beskytter feed-cache revalidering.
+ * Feed keep-warm / (sjælden) force-revalidate.
  * - På Vercel: sæt CRON_SECRET — Vercel Cron sender `Authorization: Bearer <CRON_SECRET>`.
  * - Lokalt (uden VERCEL): tilladt uden secret så I kan køre `curl localhost:3000/...` under udvikling.
- * - Opvarmer vin-katalog efter revalidate så cold-start ikke giver 5xx ved mass-crawl.
- * - Hitter forsides-udvalget `/vine/[slug]` så ISR er varm når brugere klikker fra hjem.
- * - Fylder få populære søgeresultater i cache, så første bruger ikke venter på cold search.
- * - Schedule: hver 12. time (se vercel.json) — balance mellem friskhed og Fluid GB-hours.
+ * - Default (hver 12. time): warm uden revalidateTag — undgår Fluid stampede under trafik.
+ * - `?force=1` (natlig cron): invalider tag + sekventiel warm.
+ * - `VINBOT_PAUSE_HEAVY=1`: øjeblikkelig 204 nødstop.
  */
 export const maxDuration = 120;
 
-async function warmFeaturedWinePages(): Promise<{ warmed: string[]; failed: string[] }> {
-  const warmed: string[] = [];
-  const failed: string[] = [];
-  await Promise.all(
-    FEATURED_WINE_SLUGS.map(async (slug) => {
-      const url = `${siteUrl}/vine/${slug}`;
-      try {
-        const res = await fetch(url, {
-          method: "GET",
-          headers: { "user-agent": "VinbotCronWarm/1.0" },
-          cache: "no-store",
-          signal: AbortSignal.timeout(15_000),
-        });
-        if (res.ok) warmed.push(slug);
-        else failed.push(slug);
-      } catch {
-        failed.push(slug);
-      }
-    }),
-  );
-  return { warmed, failed };
-}
-
 export async function GET(req: NextRequest) {
-  const secret = process.env.CRON_SECRET?.trim();
-  const onVercel = Boolean(process.env.VERCEL);
-
-  if (onVercel && !secret) {
-    return NextResponse.json(
-      { error: "CRON_SECRET is not configured. Add it in Vercel → Project → Environment Variables." },
-      { status: 503 },
-    );
+  if (isHeavyWorkPaused()) {
+    return new NextResponse(null, { status: 204 });
   }
 
-  if (secret) {
-    const auth = req.headers.get("authorization");
-    if (auth !== `Bearer ${secret}`) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-  }
+  const denied = authorizeCron(req);
+  if (denied) return denied;
 
-  revalidateTag("vinbot-feeds", "max");
-  const catalog = await warmWineCatalog();
-  const snapshot = await recordDailyPriceSnapshot(catalog);
-  let priceAlerts: { considered: number; sent: number; skipped: number; failed: number } | { error: string } = {
-    considered: 0,
-    sent: 0,
-    skipped: 0,
-    failed: 0,
-  };
-  try {
-    priceAlerts = await dispatchPriceAlerts(catalog);
-  } catch (err) {
-    console.error("dispatchPriceAlerts:", err);
-    priceAlerts = { error: "dispatch failed" };
-  }
-  const featured = await warmFeaturedWinePages();
-  let searchWarm: Awaited<ReturnType<typeof warmPopularSearches>> | { error: string } = {
-    feeds: [],
-    wine: [],
-    spirits: [],
-  };
-  try {
-    searchWarm = await warmPopularSearches();
-  } catch (err) {
-    console.error("warmPopularSearches:", err);
-    searchWarm = { error: "warm search failed" };
-  }
-  return NextResponse.json({
-    revalidated: true,
-    tag: "vinbot-feeds",
-    catalogWines: catalog.wines.length,
-    catalogGeneratedAt: catalog.generatedAt,
-    priceSnapshot: snapshot,
-    priceAlerts,
-    featuredWarmed: featured.warmed,
-    featuredFailed: featured.failed,
-    searchWarm,
+  const force = wantsForceRevalidate(req);
+  const result = await warmAfterFeedChange({
+    force,
+    includeFeatured: true,
+    includePriceSideEffects: true,
   });
+
+  return NextResponse.json(result);
 }

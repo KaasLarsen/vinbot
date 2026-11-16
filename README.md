@@ -25,7 +25,8 @@ Se [`.env.example`](.env.example) for alle felter. Vigtigste:
 | `NEXT_PUBLIC_SITE_URL` | Canonical base-URL (typisk `https://www.vinbot.dk`) |
 | `NEXT_PUBLIC_ADSENSE_CLIENT` / `NEXT_PUBLIC_ADSENSE_ACTIVE` | AdSense |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 |
-| `CRON_SECRET` | Auth til Vercel cron (`/api/cron/revalidate-feeds` og `/api/cron/black-friday-live`) |
+| `CRON_SECRET` | Auth til Vercel cron (`/api/cron/revalidate-feeds`, `/api/cron/force-revalidate-feeds`, `/api/cron/black-friday-live`) |
+| `VINBOT_PAUSE_HEAVY` | Valgfrit nødstop (`1`) — pauser cron-warm og `/api/img` upstream |
 | `BLOB_STORE_ID` (OIDC) / `BLOB_READ_WRITE_TOKEN` | Valgfrit — daglige pris-snapshots. Store connected i Vercel er nok; token er fallback. |
 | `RESEND_API_KEY` / `RESEND_FROM` | Forhandler-tilmelding + nyhedsbrev (Contacts) |
 | `RESEND_NEWSLETTER_SEGMENT_ID` / `RESEND_NEWSLETTER_TOPIC_ID` | Valgfrit — ellers auto find/opret «Vinbot nyhedsbrev» |
@@ -65,7 +66,7 @@ Sæt de samme værdier i Vercel (Production + Preview) ved deploy.
 
 Push til `main` deployer automatisk til Vercel production via Git-integration (ingen GitHub Actions-token).
 
-Feed-cache genindlæses via cron: `GET /api/cron/revalidate-feeds` med `Authorization: Bearer <CRON_SECRET>` (Vercel kører det typisk hver 12. time). Under Black Week revaliderer `/api/cron/black-friday-live` hver 3. time.
+Feed-cache: `GET /api/cron/revalidate-feeds` warmer hver 12. time **uden** mass-invalidation (undgår Fluid stampede). Natlig `GET /api/cron/force-revalidate-feeds` (03:30 UTC) invaliderer tagget og warmer sekventielt. Under Black Week warmer `/api/cron/black-friday-live` hver 3. time (stadig uden tag-nuke). Auth: `Authorization: Bearer <CRON_SECRET>`.
 
 Permanent hub: `/black-friday`.
 

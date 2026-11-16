@@ -55,7 +55,7 @@ Sørg for at feed-URL’er allerede er tracked (Partner-Ads/Adtraction/Daisycon-
 1. `npm run dev` — søg efter et produktnavn fra butikken på forsiden.
 2. Tjek at merchant-filter viser butikken.
 3. Hvis GTIN findes i feedet: test EAN/stregkode-søgning.
-4. Efter deploy: cron flusher feeds (`/api/cron/revalidate-feeds` med `CRON_SECRET`), eller vent på næste planlagte kørsel.
+4. Efter deploy: force-flush feeds (`/api/cron/force-revalidate-feeds` med `CRON_SECRET`), eller vent på natlig force-cron / 6h Data Cache TTL.
 5. Valgfrit: `npm run audit:feed-deals` hvis I forventer før/efter-pris i feedet.
 
 ## 6. Ekstern ansøgning
